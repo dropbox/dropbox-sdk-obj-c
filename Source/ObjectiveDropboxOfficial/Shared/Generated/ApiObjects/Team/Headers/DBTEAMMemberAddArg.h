@@ -11,6 +11,8 @@
 @class DBTEAMAdminTier;
 @class DBTEAMMemberAddArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,29 +27,29 @@
 #pragma mark - Instance fields
 
 /// (no description).
-@property (nonatomic, readonly, copy) NSString * _Nonnull memberEmail;
+@property (nonatomic, readonly, copy) NSString *memberEmail;
 
 /// Member's first name.
-@property (nonatomic, readonly, copy) NSString * _Nonnull memberGivenName;
+@property (nonatomic, readonly, copy) NSString *memberGivenName;
 
 /// Member's last name.
-@property (nonatomic, readonly, copy) NSString * _Nonnull memberSurname;
+@property (nonatomic, readonly, copy) NSString *memberSurname;
 
 /// External ID for member.
-@property (nonatomic, readonly, copy) NSString * _Nullable memberExternalId;
+@property (nonatomic, readonly, copy, nullable) NSString *memberExternalId;
 
 /// Persistent ID for member. This field is only available to teams using
 /// persistent ID SAML configuration.
-@property (nonatomic, readonly, copy) NSString * _Nullable memberPersistentId;
+@property (nonatomic, readonly, copy, nullable) NSString *memberPersistentId;
 
 /// Whether to send a welcome email to the member. If send_welcome_email is
 /// false, no email invitation will be sent to the user. This may be useful for
 /// apps using single sign-on (SSO) flows for onboarding that want to handle
 /// announcements themselves.
-@property (nonatomic, readonly) NSNumber * _Nonnull sendWelcomeEmail;
+@property (nonatomic, readonly) NSNumber *sendWelcomeEmail;
 
 /// (no description).
-@property (nonatomic, readonly) DBTEAMAdminTier * _Nonnull role;
+@property (nonatomic, readonly) DBTEAMAdminTier *role;
 
 #pragma mark - Constructors
 
@@ -68,13 +70,13 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail
-                            memberGivenName:(NSString * _Nonnull)memberGivenName
-                              memberSurname:(NSString * _Nonnull)memberSurname
-                           memberExternalId:(NSString * _Nullable)memberExternalId
-                         memberPersistentId:(NSString * _Nullable)memberPersistentId
-                           sendWelcomeEmail:(NSNumber * _Nullable)sendWelcomeEmail
-                                       role:(DBTEAMAdminTier * _Nullable)role;
+- (instancetype)initWithMemberEmail:(NSString *)memberEmail
+                    memberGivenName:(NSString *)memberGivenName
+                      memberSurname:(NSString *)memberSurname
+                   memberExternalId:(nullable NSString *)memberExternalId
+                 memberPersistentId:(nullable NSString *)memberPersistentId
+                   sendWelcomeEmail:(nullable NSNumber *)sendWelcomeEmail
+                               role:(nullable DBTEAMAdminTier *)role;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -86,11 +88,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail
-                            memberGivenName:(NSString * _Nonnull)memberGivenName
-                              memberSurname:(NSString * _Nonnull)memberSurname;
+- (instancetype)initWithMemberEmail:(NSString *)memberEmail
+                    memberGivenName:(NSString *)memberGivenName
+                      memberSurname:(NSString *)memberSurname;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -109,7 +111,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMemberAddArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMemberAddArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMemberAddArg *)instance;
 
 ///
 /// Deserializes `DBTEAMMemberAddArg` instances.
@@ -119,6 +121,8 @@
 ///
 /// @return An instantiation of the `DBTEAMMemberAddArg` object.
 ///
-+ (DBTEAMMemberAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMemberAddArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

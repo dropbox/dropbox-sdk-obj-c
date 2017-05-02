@@ -12,6 +12,8 @@
 @class DBSHARINGChangeFileMemberAccessArgs;
 @class DBSHARINGMemberSelector;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -28,13 +30,13 @@
 #pragma mark - Instance fields
 
 /// File for which we are changing a member's access.
-@property (nonatomic, readonly, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString *file;
 
 /// The member whose access we are changing.
-@property (nonatomic, readonly) DBSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBSHARINGMemberSelector *member;
 
 /// The new access level for the member.
-@property (nonatomic, readonly) DBSHARINGAccessLevel * _Nonnull accessLevel;
+@property (nonatomic, readonly) DBSHARINGAccessLevel *accessLevel;
 
 #pragma mark - Constructors
 
@@ -47,11 +49,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
-                              member:(DBSHARINGMemberSelector * _Nonnull)member
-                         accessLevel:(DBSHARINGAccessLevel * _Nonnull)accessLevel;
+- (instancetype)initWithFile:(NSString *)file
+                      member:(DBSHARINGMemberSelector *)member
+                 accessLevel:(DBSHARINGAccessLevel *)accessLevel;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -71,7 +73,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGChangeFileMemberAccessArgs` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGChangeFileMemberAccessArgs * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGChangeFileMemberAccessArgs *)instance;
 
 ///
 /// Deserializes `DBSHARINGChangeFileMemberAccessArgs` instances.
@@ -82,6 +84,8 @@
 /// @return An instantiation of the `DBSHARINGChangeFileMemberAccessArgs`
 /// object.
 ///
-+ (DBSHARINGChangeFileMemberAccessArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGChangeFileMemberAccessArgs *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

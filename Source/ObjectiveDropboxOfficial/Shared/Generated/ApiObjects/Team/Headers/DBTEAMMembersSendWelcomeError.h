@@ -10,6 +10,8 @@
 
 @class DBTEAMMembersSendWelcomeError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -51,7 +53,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUserNotFound;
+- (instancetype)initWithUserNotFound;
 
 ///
 /// Initializes union class with tag state of "user_not_in_team".
@@ -61,16 +63,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUserNotInTeam;
+- (instancetype)initWithUserNotInTeam;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -101,7 +103,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -121,7 +123,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersSendWelcomeError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSendWelcomeError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMembersSendWelcomeError *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersSendWelcomeError` instances.
@@ -131,6 +133,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMMembersSendWelcomeError` object.
 ///
-+ (DBTEAMMembersSendWelcomeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMembersSendWelcomeError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

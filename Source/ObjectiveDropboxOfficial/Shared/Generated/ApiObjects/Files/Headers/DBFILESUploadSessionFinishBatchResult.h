@@ -11,6 +11,8 @@
 @class DBFILESUploadSessionFinishBatchResult;
 @class DBFILESUploadSessionFinishBatchResultEntry;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// Commit result for each file in the batch.
-@property (nonatomic, readonly) NSArray<DBFILESUploadSessionFinishBatchResultEntry *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBFILESUploadSessionFinishBatchResultEntry *> *entries;
 
 #pragma mark - Constructors
 
@@ -36,9 +38,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEntries:(NSArray<DBFILESUploadSessionFinishBatchResultEntry *> * _Nonnull)entries;
+- (instancetype)initWithEntries:(NSArray<DBFILESUploadSessionFinishBatchResultEntry *> *)entries;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -58,7 +60,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionFinishBatchResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESUploadSessionFinishBatchResult *)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionFinishBatchResult` instances.
@@ -69,6 +71,8 @@
 /// @return An instantiation of the `DBFILESUploadSessionFinishBatchResult`
 /// object.
 ///
-+ (DBFILESUploadSessionFinishBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESUploadSessionFinishBatchResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

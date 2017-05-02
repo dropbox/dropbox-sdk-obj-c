@@ -10,6 +10,8 @@
 
 @class DBSHARINGResolvedVisibility;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -67,7 +69,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPublic;
+- (instancetype)initWithPublic;
 
 ///
 /// Initializes union class with tag state of "team_only".
@@ -77,7 +79,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamOnly;
+- (instancetype)initWithTeamOnly;
 
 ///
 /// Initializes union class with tag state of "password".
@@ -87,7 +89,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPassword;
+- (instancetype)initWithPassword;
 
 ///
 /// Initializes union class with tag state of "team_and_password".
@@ -98,7 +100,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamAndPassword;
+- (instancetype)initWithTeamAndPassword;
 
 ///
 /// Initializes union class with tag state of "shared_folder_only".
@@ -109,16 +111,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedFolderOnly;
+- (instancetype)initWithSharedFolderOnly;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -172,7 +174,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -191,7 +193,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGResolvedVisibility` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGResolvedVisibility * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGResolvedVisibility *)instance;
 
 ///
 /// Deserializes `DBSHARINGResolvedVisibility` instances.
@@ -201,6 +203,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGResolvedVisibilityTag) {
 ///
 /// @return An instantiation of the `DBSHARINGResolvedVisibility` object.
 ///
-+ (DBSHARINGResolvedVisibility * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGResolvedVisibility *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

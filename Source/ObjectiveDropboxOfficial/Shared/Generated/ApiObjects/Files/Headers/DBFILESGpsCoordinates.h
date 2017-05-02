@@ -10,6 +10,8 @@
 
 @class DBFILESGpsCoordinates;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,10 +28,10 @@
 #pragma mark - Instance fields
 
 /// Latitude of the GPS coordinates.
-@property (nonatomic, readonly) NSNumber * _Nonnull latitude;
+@property (nonatomic, readonly) NSNumber *latitude;
 
 /// Longitude of the GPS coordinates.
-@property (nonatomic, readonly) NSNumber * _Nonnull longitude;
+@property (nonatomic, readonly) NSNumber *longitude;
 
 #pragma mark - Constructors
 
@@ -41,9 +43,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithLatitude:(NSNumber * _Nonnull)latitude longitude:(NSNumber * _Nonnull)longitude;
+- (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -62,7 +64,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGpsCoordinates` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESGpsCoordinates * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESGpsCoordinates *)instance;
 
 ///
 /// Deserializes `DBFILESGpsCoordinates` instances.
@@ -72,6 +74,8 @@
 ///
 /// @return An instantiation of the `DBFILESGpsCoordinates` object.
 ///
-+ (DBFILESGpsCoordinates * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESGpsCoordinates *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

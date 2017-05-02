@@ -12,6 +12,8 @@
 @class DBPAPERAddMember;
 @class DBPAPERAddPaperDocUser;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,13 +29,13 @@
 
 /// User which should be added to the Paper doc. Specify only email or Dropbox
 /// account id.
-@property (nonatomic, readonly) NSArray<DBPAPERAddMember *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBPAPERAddMember *> *members;
 
 /// A personal message that will be emailed to each successfully added member.
-@property (nonatomic, readonly, copy) NSString * _Nullable customMessage;
+@property (nonatomic, readonly, copy, nullable) NSString *customMessage;
 
 /// Clients should set this to true if no email shall be sent to added users.
-@property (nonatomic, readonly) NSNumber * _Nonnull quiet;
+@property (nonatomic, readonly) NSNumber *quiet;
 
 #pragma mark - Constructors
 
@@ -50,10 +52,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDocId:(NSString * _Nonnull)docId
-                              members:(NSArray<DBPAPERAddMember *> * _Nonnull)members
-                        customMessage:(NSString * _Nullable)customMessage
-                                quiet:(NSNumber * _Nullable)quiet;
+- (instancetype)initWithDocId:(NSString *)docId
+                      members:(NSArray<DBPAPERAddMember *> *)members
+                customMessage:(nullable NSString *)customMessage
+                        quiet:(nullable NSNumber *)quiet;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -65,7 +67,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDocId:(NSString * _Nonnull)docId members:(NSArray<DBPAPERAddMember *> * _Nonnull)members;
+- (instancetype)initWithDocId:(NSString *)docId members:(NSArray<DBPAPERAddMember *> *)members;
 
 @end
 
@@ -84,7 +86,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERAddPaperDocUser` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERAddPaperDocUser * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERAddPaperDocUser *)instance;
 
 ///
 /// Deserializes `DBPAPERAddPaperDocUser` instances.
@@ -94,6 +96,8 @@
 ///
 /// @return An instantiation of the `DBPAPERAddPaperDocUser` object.
 ///
-+ (DBPAPERAddPaperDocUser * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERAddPaperDocUser *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -11,6 +11,8 @@
 @class DBSHARINGFolderAction;
 @class DBSHARINGGetMetadataArgs;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,12 +27,12 @@
 #pragma mark - Instance fields
 
 /// The ID for the shared folder.
-@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString *sharedFolderId;
 
 /// This is a list indicating whether the returned folder data will include a
 /// boolean value  `allow` in `DBSHARINGFolderPermission` that describes whether
 /// the current user can perform the  FolderAction on the folder.
-@property (nonatomic, readonly) NSArray<DBSHARINGFolderAction *> * _Nullable actions;
+@property (nonatomic, readonly, nullable) NSArray<DBSHARINGFolderAction *> *actions;
 
 #pragma mark - Constructors
 
@@ -45,8 +47,8 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
-                                       actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions;
+- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId
+                               actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -56,9 +58,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
+- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -77,7 +79,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetMetadataArgs` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGGetMetadataArgs * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGGetMetadataArgs *)instance;
 
 ///
 /// Deserializes `DBSHARINGGetMetadataArgs` instances.
@@ -87,6 +89,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGGetMetadataArgs` object.
 ///
-+ (DBSHARINGGetMetadataArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGGetMetadataArgs *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

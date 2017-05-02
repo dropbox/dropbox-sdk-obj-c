@@ -10,6 +10,8 @@
 
 @class DBSHARINGAclUpdatePolicy;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -53,7 +55,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOwner;
+- (instancetype)initWithOwner;
 
 ///
 /// Initializes union class with tag state of "editors".
@@ -63,16 +65,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEditors;
+- (instancetype)initWithEditors;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -102,7 +104,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -121,7 +123,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGAclUpdatePolicy` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGAclUpdatePolicy * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGAclUpdatePolicy *)instance;
 
 ///
 /// Deserializes `DBSHARINGAclUpdatePolicy` instances.
@@ -131,6 +133,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
 ///
 /// @return An instantiation of the `DBSHARINGAclUpdatePolicy` object.
 ///
-+ (DBSHARINGAclUpdatePolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGAclUpdatePolicy *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

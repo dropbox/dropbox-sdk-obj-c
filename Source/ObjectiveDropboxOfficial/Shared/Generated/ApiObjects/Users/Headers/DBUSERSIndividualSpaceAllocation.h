@@ -10,6 +10,8 @@
 
 @class DBUSERSIndividualSpaceAllocation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,7 +26,7 @@
 #pragma mark - Instance fields
 
 /// The total space allocated to the user's account (bytes).
-@property (nonatomic, readonly) NSNumber * _Nonnull allocated;
+@property (nonatomic, readonly) NSNumber *allocated;
 
 #pragma mark - Constructors
 
@@ -35,9 +37,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAllocated:(NSNumber * _Nonnull)allocated;
+- (instancetype)initWithAllocated:(NSNumber *)allocated;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -57,7 +59,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBUSERSIndividualSpaceAllocation` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBUSERSIndividualSpaceAllocation * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBUSERSIndividualSpaceAllocation *)instance;
 
 ///
 /// Deserializes `DBUSERSIndividualSpaceAllocation` instances.
@@ -67,6 +69,8 @@
 ///
 /// @return An instantiation of the `DBUSERSIndividualSpaceAllocation` object.
 ///
-+ (DBUSERSIndividualSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBUSERSIndividualSpaceAllocation *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

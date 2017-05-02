@@ -6,8 +6,12 @@
 
 #import "DBOAuthManager.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBOAuthManager (Protected)
 
-- (DBOAuthResult * _Nonnull)extractFromRedirectURL:(NSURL * _Nonnull)url;
+- (DBOAuthResult *)extractFromRedirectURL:(NSURL *)url;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -14,6 +14,8 @@
 @class DBSHARINGSharedFileMetadata;
 @class DBUSERSTeam;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -30,47 +32,47 @@
 #pragma mark - Instance fields
 
 /// The metadata of the link associated for the file.
-@property (nonatomic, readonly) DBSHARINGSharedContentLinkMetadata * _Nullable linkMetadata;
+@property (nonatomic, readonly, nullable) DBSHARINGSharedContentLinkMetadata *linkMetadata;
 
 /// Policies governing this shared file.
-@property (nonatomic, readonly) DBSHARINGFolderPolicy * _Nonnull policy;
+@property (nonatomic, readonly) DBSHARINGFolderPolicy *policy;
 
 /// The sharing permissions that requesting user has on this file. This
 /// corresponds to the entries given in `actions` in
 /// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
 /// `DBSHARINGGetFileMetadataArg`.
-@property (nonatomic, readonly) NSArray<DBSHARINGFilePermission *> * _Nullable permissions;
+@property (nonatomic, readonly, nullable) NSArray<DBSHARINGFilePermission *> *permissions;
 
 /// The team that owns the file. This field is not present if the file is not
 /// owned by a team.
-@property (nonatomic, readonly) DBUSERSTeam * _Nullable ownerTeam;
+@property (nonatomic, readonly, nullable) DBUSERSTeam *ownerTeam;
 
 /// The ID of the parent shared folder. This field is present only if the file
 /// is contained within a shared folder.
-@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy, nullable) NSString *parentSharedFolderId;
 
 /// URL for displaying a web preview of the shared file.
-@property (nonatomic, readonly, copy) NSString * _Nonnull previewUrl;
+@property (nonatomic, readonly, copy) NSString *previewUrl;
 
 /// The lower-case full path of this file. Absent for unmounted files.
-@property (nonatomic, readonly, copy) NSString * _Nullable pathLower;
+@property (nonatomic, readonly, copy, nullable) NSString *pathLower;
 
 /// The cased path to be used for display purposes only. In rare instances the
 /// casing will not correctly match the user's filesystem, but this behavior
 /// will match the path provided in the Core API v1. Absent for unmounted files.
-@property (nonatomic, readonly, copy) NSString * _Nullable pathDisplay;
+@property (nonatomic, readonly, copy, nullable) NSString *pathDisplay;
 
 /// The name of this file.
-@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString *name;
 
 /// The ID of the file.
-@property (nonatomic, readonly, copy) NSString * _Nonnull id_;
+@property (nonatomic, readonly, copy) NSString *id_;
 
 /// Timestamp indicating when the current user was invited to this shared file.
 /// If the user was not invited to the shared file, the timestamp will indicate
 /// when the user was invited to the parent shared folder. This value may be
 /// absent.
-@property (nonatomic, readonly) NSDate * _Nullable timeInvited;
+@property (nonatomic, readonly, nullable) NSDate *timeInvited;
 
 #pragma mark - Constructors
 
@@ -103,17 +105,17 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPolicy:(DBSHARINGFolderPolicy * _Nonnull)policy
-                            previewUrl:(NSString * _Nonnull)previewUrl
-                                  name:(NSString * _Nonnull)name
-                                   id_:(NSString * _Nonnull)id_
-                          linkMetadata:(DBSHARINGSharedContentLinkMetadata * _Nullable)linkMetadata
-                           permissions:(NSArray<DBSHARINGFilePermission *> * _Nullable)permissions
-                             ownerTeam:(DBUSERSTeam * _Nullable)ownerTeam
-                  parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId
-                             pathLower:(NSString * _Nullable)pathLower
-                           pathDisplay:(NSString * _Nullable)pathDisplay
-                           timeInvited:(NSDate * _Nullable)timeInvited;
+- (instancetype)initWithPolicy:(DBSHARINGFolderPolicy *)policy
+                    previewUrl:(NSString *)previewUrl
+                          name:(NSString *)name
+                           id_:(NSString *)id_
+                  linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata
+                   permissions:(nullable NSArray<DBSHARINGFilePermission *> *)permissions
+                     ownerTeam:(nullable DBUSERSTeam *)ownerTeam
+          parentSharedFolderId:(nullable NSString *)parentSharedFolderId
+                     pathLower:(nullable NSString *)pathLower
+                   pathDisplay:(nullable NSString *)pathDisplay
+                   timeInvited:(nullable NSDate *)timeInvited;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -126,12 +128,12 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPolicy:(DBSHARINGFolderPolicy * _Nonnull)policy
-                            previewUrl:(NSString * _Nonnull)previewUrl
-                                  name:(NSString * _Nonnull)name
-                                   id_:(NSString * _Nonnull)id_;
+- (instancetype)initWithPolicy:(DBSHARINGFolderPolicy *)policy
+                    previewUrl:(NSString *)previewUrl
+                          name:(NSString *)name
+                           id_:(NSString *)id_;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -150,7 +152,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFileMetadata` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFileMetadata * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGSharedFileMetadata *)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedFileMetadata` instances.
@@ -160,6 +162,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGSharedFileMetadata` object.
 ///
-+ (DBSHARINGSharedFileMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGSharedFileMetadata *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

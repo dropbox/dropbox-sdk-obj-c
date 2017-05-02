@@ -10,6 +10,8 @@
 
 @class DBSHARINGGetSharedLinksError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -39,7 +41,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinksErrorTag) {
 
 /// (no description). @note Ensure the `isPath` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString * _Nullable path;
+@property (nonatomic, readonly, copy, nullable) NSString *path;
 
 #pragma mark - Constructors
 
@@ -50,16 +52,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinksErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nullable)path;
+- (instancetype)initWithPath:(nullable NSString *)path;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -85,7 +87,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinksErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -105,7 +107,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinksErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetSharedLinksError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGGetSharedLinksError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGGetSharedLinksError *)instance;
 
 ///
 /// Deserializes `DBSHARINGGetSharedLinksError` instances.
@@ -115,6 +117,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinksErrorTag) {
 ///
 /// @return An instantiation of the `DBSHARINGGetSharedLinksError` object.
 ///
-+ (DBSHARINGGetSharedLinksError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGGetSharedLinksError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

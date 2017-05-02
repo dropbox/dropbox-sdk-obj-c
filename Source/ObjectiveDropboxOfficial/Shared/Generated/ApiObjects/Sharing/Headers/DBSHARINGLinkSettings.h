@@ -13,6 +13,8 @@
 @class DBSHARINGLinkPassword;
 @class DBSHARINGLinkSettings;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -29,13 +31,13 @@
 #pragma mark - Instance fields
 
 /// The type of audience on the link for this file.
-@property (nonatomic, readonly) DBSHARINGLinkAudience * _Nullable audience;
+@property (nonatomic, readonly, nullable) DBSHARINGLinkAudience *audience;
 
 /// An expiry timestamp to set on a link.
-@property (nonatomic, readonly) DBSHARINGLinkExpiry * _Nullable expiry;
+@property (nonatomic, readonly, nullable) DBSHARINGLinkExpiry *expiry;
 
 /// The password for the link.
-@property (nonatomic, readonly) DBSHARINGLinkPassword * _Nullable password;
+@property (nonatomic, readonly, nullable) DBSHARINGLinkPassword *password;
 
 #pragma mark - Constructors
 
@@ -48,9 +50,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAudience:(DBSHARINGLinkAudience * _Nullable)audience
-                                  expiry:(DBSHARINGLinkExpiry * _Nullable)expiry
-                                password:(DBSHARINGLinkPassword * _Nullable)password;
+- (instancetype)initWithAudience:(nullable DBSHARINGLinkAudience *)audience
+                          expiry:(nullable DBSHARINGLinkExpiry *)expiry
+                        password:(nullable DBSHARINGLinkPassword *)password;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -59,9 +61,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initDefault;
+- (instancetype)initDefault;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -80,7 +82,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGLinkSettings` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGLinkSettings * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGLinkSettings *)instance;
 
 ///
 /// Deserializes `DBSHARINGLinkSettings` instances.
@@ -90,6 +92,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGLinkSettings` object.
 ///
-+ (DBSHARINGLinkSettings * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGLinkSettings *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

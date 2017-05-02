@@ -11,6 +11,8 @@
 @class DBSHARINGListFoldersResult;
 @class DBSHARINGSharedFolderMetadata;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -29,13 +31,13 @@
 #pragma mark - Instance fields
 
 /// List of all shared folders the authenticated user has access to.
-@property (nonatomic, readonly) NSArray<DBSHARINGSharedFolderMetadata *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBSHARINGSharedFolderMetadata *> *entries;
 
 /// Present if there are additional shared folders that have not been returned
 /// yet. Pass the cursor into the corresponding continue endpoint (either
 /// `listFoldersContinue` or `listMountableFoldersContinue`) to list additional
 /// folders.
-@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy, nullable) NSString *cursor;
 
 #pragma mark - Constructors
 
@@ -51,8 +53,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEntries:(NSArray<DBSHARINGSharedFolderMetadata *> * _Nonnull)entries
-                                 cursor:(NSString * _Nullable)cursor;
+- (instancetype)initWithEntries:(NSArray<DBSHARINGSharedFolderMetadata *> *)entries cursor:(nullable NSString *)cursor;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -63,9 +64,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEntries:(NSArray<DBSHARINGSharedFolderMetadata *> * _Nonnull)entries;
+- (instancetype)initWithEntries:(NSArray<DBSHARINGSharedFolderMetadata *> *)entries;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -84,7 +85,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFoldersResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGListFoldersResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGListFoldersResult *)instance;
 
 ///
 /// Deserializes `DBSHARINGListFoldersResult` instances.
@@ -94,6 +95,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGListFoldersResult` object.
 ///
-+ (DBSHARINGListFoldersResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGListFoldersResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

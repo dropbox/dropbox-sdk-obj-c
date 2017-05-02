@@ -13,6 +13,8 @@
 @class DBSHARINGInviteeInfo;
 @class DBSHARINGUserInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,21 +29,21 @@
 #pragma mark - Instance fields
 
 /// List of email addresses that are invited on the Paper folder.
-@property (nonatomic, readonly) NSArray<DBSHARINGInviteeInfo *> * _Nonnull invitees;
+@property (nonatomic, readonly) NSArray<DBSHARINGInviteeInfo *> *invitees;
 
 /// List of users that are invited on the Paper folder.
-@property (nonatomic, readonly) NSArray<DBSHARINGUserInfo *> * _Nonnull users;
+@property (nonatomic, readonly) NSArray<DBSHARINGUserInfo *> *users;
 
 /// Pass the cursor into `docsFolderUsersListContinue` to paginate through all
 /// users. The cursor preserves all properties as specified in the original call
 /// to `docsFolderUsersList`.
-@property (nonatomic, readonly) DBPAPERCursor * _Nonnull cursor;
+@property (nonatomic, readonly) DBPAPERCursor *cursor;
 
 /// Will be set to True if a subsequent call with the provided cursor to
 /// `docsFolderUsersListContinue` returns immediately with some results. If set
 /// to False please allow some delay before making another call to
 /// `docsFolderUsersListContinue`.
-@property (nonatomic, readonly) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly) NSNumber *hasMore;
 
 #pragma mark - Constructors
 
@@ -61,12 +63,12 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvitees:(NSArray<DBSHARINGInviteeInfo *> * _Nonnull)invitees
-                                   users:(NSArray<DBSHARINGUserInfo *> * _Nonnull)users
-                                  cursor:(DBPAPERCursor * _Nonnull)cursor
-                                 hasMore:(NSNumber * _Nonnull)hasMore;
+- (instancetype)initWithInvitees:(NSArray<DBSHARINGInviteeInfo *> *)invitees
+                           users:(NSArray<DBSHARINGUserInfo *> *)users
+                          cursor:(DBPAPERCursor *)cursor
+                         hasMore:(NSNumber *)hasMore;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -86,7 +88,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnFolderResponse` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERListUsersOnFolderResponse * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERListUsersOnFolderResponse *)instance;
 
 ///
 /// Deserializes `DBPAPERListUsersOnFolderResponse` instances.
@@ -96,6 +98,8 @@
 ///
 /// @return An instantiation of the `DBPAPERListUsersOnFolderResponse` object.
 ///
-+ (DBPAPERListUsersOnFolderResponse * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERListUsersOnFolderResponse *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

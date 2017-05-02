@@ -10,6 +10,8 @@
 
 @class DBFILESListFolderGetLatestCursorResult;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 
 /// Pass the cursor into `listFolderContinue` to see what's changed in the
 /// folder since your previous query.
-@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString *cursor;
 
 #pragma mark - Constructors
 
@@ -37,9 +39,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
+- (instancetype)initWithCursor:(NSString *)cursor;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +61,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListFolderGetLatestCursorResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESListFolderGetLatestCursorResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESListFolderGetLatestCursorResult *)instance;
 
 ///
 /// Deserializes `DBFILESListFolderGetLatestCursorResult` instances.
@@ -70,6 +72,8 @@
 /// @return An instantiation of the `DBFILESListFolderGetLatestCursorResult`
 /// object.
 ///
-+ (DBFILESListFolderGetLatestCursorResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESListFolderGetLatestCursorResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

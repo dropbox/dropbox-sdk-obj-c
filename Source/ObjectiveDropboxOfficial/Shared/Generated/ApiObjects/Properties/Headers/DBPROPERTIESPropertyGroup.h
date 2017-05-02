@@ -11,6 +11,8 @@
 @class DBPROPERTIESPropertyField;
 @class DBPROPERTIESPropertyGroup;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,11 +29,11 @@
 #pragma mark - Instance fields
 
 /// A unique identifier for a property template type.
-@property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
+@property (nonatomic, readonly, copy) NSString *templateId;
 
 /// This is a list of custom properties associated with a file. There can be up
 /// to 32 properties for a template.
-@property (nonatomic, readonly) NSArray<DBPROPERTIESPropertyField *> * _Nonnull fields;
+@property (nonatomic, readonly) NSArray<DBPROPERTIESPropertyField *> *fields;
 
 #pragma mark - Constructors
 
@@ -44,10 +46,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId
-                                    fields:(NSArray<DBPROPERTIESPropertyField *> * _Nonnull)fields;
+- (instancetype)initWithTemplateId:(NSString *)templateId fields:(NSArray<DBPROPERTIESPropertyField *> *)fields;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -66,7 +67,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESPropertyGroup` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyGroup * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPROPERTIESPropertyGroup *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyGroup` instances.
@@ -76,6 +77,8 @@
 ///
 /// @return An instantiation of the `DBPROPERTIESPropertyGroup` object.
 ///
-+ (DBPROPERTIESPropertyGroup * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPROPERTIESPropertyGroup *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

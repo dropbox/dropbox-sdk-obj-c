@@ -8,9 +8,9 @@
 
 @interface DBTasksStorage ()
 
-@property (nonatomic) NSMutableDictionary<NSString *, DBUploadTaskImpl *> * _Nonnull uploadTasks;
-@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadUrlTaskImpl *> * _Nonnull downloadUrlTasks;
-@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadDataTaskImpl *> * _Nonnull downloadDataTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBUploadTaskImpl *> * uploadTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadUrlTaskImpl *> * downloadUrlTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadDataTaskImpl *> * downloadDataTasks;
 
 @property (nonatomic) BOOL cancel;
 

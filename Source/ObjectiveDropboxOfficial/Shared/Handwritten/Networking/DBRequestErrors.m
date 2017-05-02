@@ -370,7 +370,7 @@
 
 #pragma mark - Error subtype retrieval methods
 
-- (DBRequestHttpError * _Nonnull)asHttpError {
+- (DBRequestHttpError *)asHttpError {
   if (![self isHttpError]) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBRequestErrorHttp`, but was %@.", [self tagName]];
@@ -381,7 +381,7 @@
                               userMessage:_userMessage];
 }
 
-- (DBRequestBadInputError * _Nonnull)asBadInputError {
+- (DBRequestBadInputError *)asBadInputError {
   if (![self isBadInputError]) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBRequestErrorBadInput`, but was %@.", [self tagName]];
@@ -392,7 +392,7 @@
                                   userMessage:_userMessage];
 }
 
-- (DBRequestAuthError * _Nonnull)asAuthError {
+- (DBRequestAuthError *)asAuthError {
   if (![self isAuthError]) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBRequestErrorAuth`, but was %@.", [self tagName]];
@@ -404,7 +404,7 @@
                       structuredAuthError:_structuredAuthError];
 }
 
-- (DBRequestAccessError * _Nonnull)asAccessError {
+- (DBRequestAccessError *)asAccessError {
   if (![self isAccessError]) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBRequestErrorAccess`, but was %@.", [self tagName]];
@@ -416,7 +416,7 @@
                       structuredAccessError:_structuredAccessError];
 }
 
-- (DBRequestRateLimitError * _Nonnull)asRateLimitError {
+- (DBRequestRateLimitError *)asRateLimitError {
   if (![self isRateLimitError]) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBRequestErrorRateLimit`, but was %@.", [self tagName]];
@@ -429,7 +429,7 @@
                                        backoff:_backoff];
 }
 
-- (DBRequestInternalServerError * _Nonnull)asInternalServerError {
+- (DBRequestInternalServerError *)asInternalServerError {
   if (![self isInternalServerError]) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBRequestErrorInternalServer`, but was %@.", [self tagName]];
@@ -440,7 +440,7 @@
                                         userMessage:_userMessage];
 }
 
-- (DBRequestClientError * _Nonnull)asClientError {
+- (DBRequestClientError *)asClientError {
   if (![self isClientError]) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBRequestErrorClient`, but was %@.", [self tagName]];

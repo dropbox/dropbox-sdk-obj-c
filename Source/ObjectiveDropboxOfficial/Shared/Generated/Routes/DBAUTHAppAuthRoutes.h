@@ -17,15 +17,18 @@
 ///
 /// Routes for the `Auth` namespace
 ///
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBAUTHAppAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> client;
 
 /// Initializes the `DBAUTHAppAuthRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
+- (instancetype)init:(id<DBTransportClient>)client;
 
 ///
 /// Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.
@@ -36,8 +39,10 @@
 /// @return Through the response callback, the caller will receive a `DBAUTHTokenFromOAuth1Result` object on success or
 /// a `DBAUTHTokenFromOAuth1Error` object on failure.
 ///
-- (DBRpcTask<DBAUTHTokenFromOAuth1Result *, DBAUTHTokenFromOAuth1Error *> * _Nonnull)
-  tokenFromOauth1:(NSString * _Nonnull)oauth1Token
-oauth1TokenSecret:(NSString * _Nonnull)oauth1TokenSecret;
+- (DBRpcTask<DBAUTHTokenFromOAuth1Result *, DBAUTHTokenFromOAuth1Error *> *)tokenFromOauth1:(NSString *)oauth1Token
+                                                                          oauth1TokenSecret:
+                                                                              (NSString *)oauth1TokenSecret;
 
 @end
+
+NS_ASSUME_NONNULL_END

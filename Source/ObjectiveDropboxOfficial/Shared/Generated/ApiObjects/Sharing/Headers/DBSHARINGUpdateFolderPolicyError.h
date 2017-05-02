@@ -11,6 +11,8 @@
 @class DBSHARINGSharedFolderAccessError;
 @class DBSHARINGUpdateFolderPolicyError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -56,7 +58,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 
 /// (no description). @note Ensure the `isAccessError` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBSHARINGSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBSHARINGSharedFolderAccessError *accessError;
 
 #pragma mark - Constructors
 
@@ -67,7 +69,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessError:(DBSHARINGSharedFolderAccessError * _Nonnull)accessError;
+- (instancetype)initWithAccessError:(DBSHARINGSharedFolderAccessError *)accessError;
 
 ///
 /// Initializes union class with tag state of "not_on_team".
@@ -77,7 +79,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotOnTeam;
+- (instancetype)initWithNotOnTeam;
 
 ///
 /// Initializes union class with tag state of
@@ -88,7 +90,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamPolicyDisallowsMemberPolicy;
+- (instancetype)initWithTeamPolicyDisallowsMemberPolicy;
 
 ///
 /// Initializes union class with tag state of "disallowed_shared_link_policy".
@@ -99,7 +101,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDisallowedSharedLinkPolicy;
+- (instancetype)initWithDisallowedSharedLinkPolicy;
 
 ///
 /// Initializes union class with tag state of "no_permission".
@@ -109,16 +111,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNoPermission;
+- (instancetype)initWithNoPermission;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -176,7 +178,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -196,7 +198,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGUpdateFolderPolicyError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGUpdateFolderPolicyError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGUpdateFolderPolicyError *)instance;
 
 ///
 /// Deserializes `DBSHARINGUpdateFolderPolicyError` instances.
@@ -206,6 +208,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGUpdateFolderPolicyErrorTag) {
 ///
 /// @return An instantiation of the `DBSHARINGUpdateFolderPolicyError` object.
 ///
-+ (DBSHARINGUpdateFolderPolicyError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGUpdateFolderPolicyError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

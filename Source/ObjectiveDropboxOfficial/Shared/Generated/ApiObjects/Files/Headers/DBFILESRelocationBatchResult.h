@@ -11,6 +11,8 @@
 @class DBFILESRelocationBatchResult;
 @class DBFILESRelocationResult;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// (no description).
-@property (nonatomic, readonly) NSArray<DBFILESRelocationResult *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBFILESRelocationResult *> *entries;
 
 #pragma mark - Constructors
 
@@ -36,9 +38,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEntries:(NSArray<DBFILESRelocationResult *> * _Nonnull)entries;
+- (instancetype)initWithEntries:(NSArray<DBFILESRelocationResult *> *)entries;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -58,7 +60,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationBatchResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESRelocationBatchResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESRelocationBatchResult *)instance;
 
 ///
 /// Deserializes `DBFILESRelocationBatchResult` instances.
@@ -68,6 +70,8 @@
 ///
 /// @return An instantiation of the `DBFILESRelocationBatchResult` object.
 ///
-+ (DBFILESRelocationBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESRelocationBatchResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

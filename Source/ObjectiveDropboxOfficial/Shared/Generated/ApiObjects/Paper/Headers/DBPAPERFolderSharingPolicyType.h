@@ -10,6 +10,8 @@
 
 @class DBPAPERFolderSharingPolicyType;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -51,7 +53,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSharingPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeam;
+- (instancetype)initWithTeam;
 
 ///
 /// Initializes union class with tag state of "invite_only".
@@ -61,9 +63,9 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSharingPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInviteOnly;
+- (instancetype)initWithInviteOnly;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -86,7 +88,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSharingPolicyTypeTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -106,7 +108,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSharingPolicyTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERFolderSharingPolicyType` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERFolderSharingPolicyType * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERFolderSharingPolicyType *)instance;
 
 ///
 /// Deserializes `DBPAPERFolderSharingPolicyType` instances.
@@ -116,6 +118,8 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSharingPolicyTypeTag) {
 ///
 /// @return An instantiation of the `DBPAPERFolderSharingPolicyType` object.
 ///
-+ (DBPAPERFolderSharingPolicyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERFolderSharingPolicyType *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

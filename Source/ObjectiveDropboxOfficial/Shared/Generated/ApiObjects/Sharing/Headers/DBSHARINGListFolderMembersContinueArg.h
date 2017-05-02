@@ -10,6 +10,8 @@
 
 @class DBSHARINGListFolderMembersContinueArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 
 /// The cursor returned by your last call to `listFolderMembers` or
 /// `listFolderMembersContinue`.
-@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString *cursor;
 
 #pragma mark - Constructors
 
@@ -37,9 +39,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
+- (instancetype)initWithCursor:(NSString *)cursor;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +61,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFolderMembersContinueArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGListFolderMembersContinueArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGListFolderMembersContinueArg *)instance;
 
 ///
 /// Deserializes `DBSHARINGListFolderMembersContinueArg` instances.
@@ -70,6 +72,8 @@
 /// @return An instantiation of the `DBSHARINGListFolderMembersContinueArg`
 /// object.
 ///
-+ (DBSHARINGListFolderMembersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGListFolderMembersContinueArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

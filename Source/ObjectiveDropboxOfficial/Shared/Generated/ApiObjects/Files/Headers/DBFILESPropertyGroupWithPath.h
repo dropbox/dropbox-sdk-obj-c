@@ -11,6 +11,8 @@
 @class DBFILESPropertyGroupWithPath;
 @class DBPROPERTIESPropertyGroup;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,10 +27,10 @@
 #pragma mark - Instance fields
 
 /// A unique identifier for the file.
-@property (nonatomic, readonly, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString *path;
 
 /// Filled custom property templates associated with a file.
-@property (nonatomic, readonly) NSArray<DBPROPERTIESPropertyGroup *> * _Nonnull propertyGroups;
+@property (nonatomic, readonly) NSArray<DBPROPERTIESPropertyGroup *> *propertyGroups;
 
 #pragma mark - Constructors
 
@@ -41,10 +43,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path
-                      propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> * _Nonnull)propertyGroups;
+- (instancetype)initWithPath:(NSString *)path propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -64,7 +65,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESPropertyGroupWithPath` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESPropertyGroupWithPath * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESPropertyGroupWithPath *)instance;
 
 ///
 /// Deserializes `DBFILESPropertyGroupWithPath` instances.
@@ -74,6 +75,8 @@
 ///
 /// @return An instantiation of the `DBFILESPropertyGroupWithPath` object.
 ///
-+ (DBFILESPropertyGroupWithPath * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESPropertyGroupWithPath *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

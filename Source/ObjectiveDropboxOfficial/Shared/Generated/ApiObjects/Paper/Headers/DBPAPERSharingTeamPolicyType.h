@@ -10,6 +10,8 @@
 
 @class DBPAPERSharingTeamPolicyType;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -52,7 +54,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingTeamPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPeopleWithLinkCanEdit;
+- (instancetype)initWithPeopleWithLinkCanEdit;
 
 ///
 /// Initializes union class with tag state of
@@ -63,7 +65,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingTeamPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPeopleWithLinkCanViewAndComment;
+- (instancetype)initWithPeopleWithLinkCanViewAndComment;
 
 ///
 /// Initializes union class with tag state of "invite_only".
@@ -73,9 +75,9 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingTeamPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInviteOnly;
+- (instancetype)initWithInviteOnly;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -109,7 +111,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingTeamPolicyTypeTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -129,7 +131,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingTeamPolicyTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERSharingTeamPolicyType` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERSharingTeamPolicyType * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERSharingTeamPolicyType *)instance;
 
 ///
 /// Deserializes `DBPAPERSharingTeamPolicyType` instances.
@@ -139,6 +141,8 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingTeamPolicyTypeTag) {
 ///
 /// @return An instantiation of the `DBPAPERSharingTeamPolicyType` object.
 ///
-+ (DBPAPERSharingTeamPolicyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERSharingTeamPolicyType *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

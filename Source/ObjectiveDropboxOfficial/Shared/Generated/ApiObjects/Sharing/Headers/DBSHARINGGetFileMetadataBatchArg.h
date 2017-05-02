@@ -11,6 +11,8 @@
 @class DBSHARINGFileAction;
 @class DBSHARINGGetFileMetadataBatchArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,10 +29,10 @@
 #pragma mark - Instance fields
 
 /// The files to query.
-@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull files;
+@property (nonatomic, readonly) NSArray<NSString *> *files;
 
 /// File actions to query.
-@property (nonatomic, readonly) NSArray<DBSHARINGFileAction *> * _Nullable actions;
+@property (nonatomic, readonly, nullable) NSArray<DBSHARINGFileAction *> *actions;
 
 #pragma mark - Constructors
 
@@ -42,8 +44,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files
-                              actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
+- (instancetype)initWithFiles:(NSArray<NSString *> *)files actions:(nullable NSArray<DBSHARINGFileAction *> *)actions;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -53,9 +54,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files;
+- (instancetype)initWithFiles:(NSArray<NSString *> *)files;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -75,7 +76,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetFileMetadataBatchArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGGetFileMetadataBatchArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGGetFileMetadataBatchArg *)instance;
 
 ///
 /// Deserializes `DBSHARINGGetFileMetadataBatchArg` instances.
@@ -85,6 +86,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGGetFileMetadataBatchArg` object.
 ///
-+ (DBSHARINGGetFileMetadataBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGGetFileMetadataBatchArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBFILESPathRootError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 
 /// The user's latest path root value. None if the user no longer has a path
 /// root.
-@property (nonatomic, readonly, copy) NSString * _Nullable pathRoot;
+@property (nonatomic, readonly, copy, nullable) NSString *pathRoot;
 
 #pragma mark - Constructors
 
@@ -37,7 +39,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPathRoot:(NSString * _Nullable)pathRoot;
+- (instancetype)initWithPathRoot:(nullable NSString *)pathRoot;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -46,9 +48,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initDefault;
+- (instancetype)initDefault;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -67,7 +69,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESPathRootError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESPathRootError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESPathRootError *)instance;
 
 ///
 /// Deserializes `DBFILESPathRootError` instances.
@@ -77,6 +79,8 @@
 ///
 /// @return An instantiation of the `DBFILESPathRootError` object.
 ///
-+ (DBFILESPathRootError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESPathRootError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

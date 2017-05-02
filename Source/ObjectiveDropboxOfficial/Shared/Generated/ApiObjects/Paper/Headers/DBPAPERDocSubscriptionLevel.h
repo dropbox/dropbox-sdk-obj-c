@@ -10,6 +10,8 @@
 
 @class DBPAPERDocSubscriptionLevel;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -56,7 +58,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDefault_;
+- (instancetype)initWithDefault_;
 
 ///
 /// Initializes union class with tag state of "ignore".
@@ -66,7 +68,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithIgnore;
+- (instancetype)initWithIgnore;
 
 ///
 /// Initializes union class with tag state of "every".
@@ -76,7 +78,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEvery;
+- (instancetype)initWithEvery;
 
 ///
 /// Initializes union class with tag state of "no_email".
@@ -86,9 +88,9 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNoEmail;
+- (instancetype)initWithNoEmail;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -125,7 +127,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -144,7 +146,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERDocSubscriptionLevel` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERDocSubscriptionLevel * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERDocSubscriptionLevel *)instance;
 
 ///
 /// Deserializes `DBPAPERDocSubscriptionLevel` instances.
@@ -154,6 +156,8 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 ///
 /// @return An instantiation of the `DBPAPERDocSubscriptionLevel` object.
 ///
-+ (DBPAPERDocSubscriptionLevel * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERDocSubscriptionLevel *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

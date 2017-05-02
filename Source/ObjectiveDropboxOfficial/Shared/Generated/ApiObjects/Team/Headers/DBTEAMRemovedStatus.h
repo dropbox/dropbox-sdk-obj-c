@@ -10,6 +10,8 @@
 
 @class DBTEAMRemovedStatus;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,7 +26,7 @@
 #pragma mark - Instance fields
 
 /// True if the removed team member is recoverable
-@property (nonatomic, readonly) NSNumber * _Nonnull isRecoverable;
+@property (nonatomic, readonly) NSNumber *isRecoverable;
 
 #pragma mark - Constructors
 
@@ -35,9 +37,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithIsRecoverable:(NSNumber * _Nonnull)isRecoverable;
+- (instancetype)initWithIsRecoverable:(NSNumber *)isRecoverable;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -56,7 +58,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRemovedStatus` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMRemovedStatus * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMRemovedStatus *)instance;
 
 ///
 /// Deserializes `DBTEAMRemovedStatus` instances.
@@ -66,6 +68,8 @@
 ///
 /// @return An instantiation of the `DBTEAMRemovedStatus` object.
 ///
-+ (DBTEAMRemovedStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMRemovedStatus *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

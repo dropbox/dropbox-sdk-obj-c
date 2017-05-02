@@ -39,7 +39,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   });
 }
 
-- (nonnull instancetype)initWithAccessToken:(NSString *)accessToken
+- (instancetype)initWithAccessToken:(NSString *)accessToken
                             transportConfig:(DBTransportBaseConfig *)transportConfig {
   if (self = [super init]) {
     _accessToken = accessToken;

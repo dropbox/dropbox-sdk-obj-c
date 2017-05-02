@@ -11,6 +11,8 @@
 @class DBTEAMMembersDeactivateArg;
 @class DBTEAMUserSelectorArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -28,11 +30,11 @@
 #pragma mark - Instance fields
 
 /// Identity of user to remove/suspend.
-@property (nonatomic, readonly) DBTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBTEAMUserSelectorArg *user;
 
 /// If provided, controls if the user's data will be deleted on their linked
 /// devices.
-@property (nonatomic, readonly) NSNumber * _Nonnull wipeData;
+@property (nonatomic, readonly) NSNumber *wipeData;
 
 #pragma mark - Constructors
 
@@ -45,7 +47,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData;
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user wipeData:(nullable NSNumber *)wipeData;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -55,9 +57,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user;
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -76,7 +78,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersDeactivateArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMembersDeactivateArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMembersDeactivateArg *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersDeactivateArg` instances.
@@ -86,6 +88,8 @@
 ///
 /// @return An instantiation of the `DBTEAMMembersDeactivateArg` object.
 ///
-+ (DBTEAMMembersDeactivateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMembersDeactivateArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

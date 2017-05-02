@@ -12,6 +12,8 @@
 @class DBPAPERRemovePaperDocUser;
 @class DBSHARINGMemberSelector;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,7 +29,7 @@
 
 /// User which should be removed from the Paper doc. Specify only email or
 /// Dropbox account id.
-@property (nonatomic, readonly) DBSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBSHARINGMemberSelector *member;
 
 #pragma mark - Constructors
 
@@ -40,7 +42,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDocId:(NSString * _Nonnull)docId member:(DBSHARINGMemberSelector * _Nonnull)member;
+- (instancetype)initWithDocId:(NSString *)docId member:(DBSHARINGMemberSelector *)member;
 
 @end
 
@@ -59,7 +61,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERRemovePaperDocUser` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERRemovePaperDocUser * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERRemovePaperDocUser *)instance;
 
 ///
 /// Deserializes `DBPAPERRemovePaperDocUser` instances.
@@ -69,6 +71,8 @@
 ///
 /// @return An instantiation of the `DBPAPERRemovePaperDocUser` object.
 ///
-+ (DBPAPERRemovePaperDocUser * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERRemovePaperDocUser *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

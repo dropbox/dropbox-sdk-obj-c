@@ -6,6 +6,8 @@
 
 @class DBBatchUploadData;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Dropbox task object for custom batch upload route.
 ///
@@ -23,7 +25,7 @@
 ///
 /// @returns A DBBatchUploadTask instance.
 ///
-- (nonnull instancetype)initWithUploadData:(DBBatchUploadData * _Nonnull)uploadData;
+- (instancetype)initWithUploadData:(DBBatchUploadData *)uploadData;
 
 ///
 /// Cancels the current request.
@@ -40,3 +42,5 @@
 - (BOOL)uploadsInProgress;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBASYNCLaunchResultBase;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -44,7 +46,7 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchResultBaseTag) {
 /// an id that can be used to obtain the status of the asynchronous job. @note
 /// Ensure the `isAsyncJobId` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
+@property (nonatomic, readonly, copy) NSString *asyncJobId;
 
 #pragma mark - Constructors
 
@@ -61,9 +63,9 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchResultBaseTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
+- (instancetype)initWithAsyncJobId:(NSString *)asyncJobId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -82,7 +84,7 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchResultBaseTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -101,7 +103,7 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchResultBaseTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBASYNCLaunchResultBase` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBASYNCLaunchResultBase * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBASYNCLaunchResultBase *)instance;
 
 ///
 /// Deserializes `DBASYNCLaunchResultBase` instances.
@@ -111,6 +113,8 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchResultBaseTag) {
 ///
 /// @return An instantiation of the `DBASYNCLaunchResultBase` object.
 ///
-+ (DBASYNCLaunchResultBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBASYNCLaunchResultBase *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

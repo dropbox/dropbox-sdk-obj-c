@@ -10,6 +10,8 @@
 
 @class DBSHARINGUnshareFileArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,7 +28,7 @@
 #pragma mark - Instance fields
 
 /// The file to unshare.
-@property (nonatomic, readonly, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString *file;
 
 #pragma mark - Constructors
 
@@ -37,9 +39,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
+- (instancetype)initWithFile:(NSString *)file;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -58,7 +60,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGUnshareFileArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGUnshareFileArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGUnshareFileArg *)instance;
 
 ///
 /// Deserializes `DBSHARINGUnshareFileArg` instances.
@@ -68,6 +70,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGUnshareFileArg` object.
 ///
-+ (DBSHARINGUnshareFileArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGUnshareFileArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

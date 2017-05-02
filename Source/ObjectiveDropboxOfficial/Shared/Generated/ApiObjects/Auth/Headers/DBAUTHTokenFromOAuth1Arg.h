@@ -10,6 +10,8 @@
 
 @class DBAUTHTokenFromOAuth1Arg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,10 +26,10 @@
 #pragma mark - Instance fields
 
 /// The supplied OAuth 1.0 access token.
-@property (nonatomic, readonly, copy) NSString * _Nonnull oauth1Token;
+@property (nonatomic, readonly, copy) NSString *oauth1Token;
 
 /// The token secret associated with the supplied access token.
-@property (nonatomic, readonly, copy) NSString * _Nonnull oauth1TokenSecret;
+@property (nonatomic, readonly, copy) NSString *oauth1TokenSecret;
 
 #pragma mark - Constructors
 
@@ -40,10 +42,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOauth1Token:(NSString * _Nonnull)oauth1Token
-                          oauth1TokenSecret:(NSString * _Nonnull)oauth1TokenSecret;
+- (instancetype)initWithOauth1Token:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -62,7 +63,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBAUTHTokenFromOAuth1Arg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBAUTHTokenFromOAuth1Arg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBAUTHTokenFromOAuth1Arg *)instance;
 
 ///
 /// Deserializes `DBAUTHTokenFromOAuth1Arg` instances.
@@ -72,6 +73,8 @@
 ///
 /// @return An instantiation of the `DBAUTHTokenFromOAuth1Arg` object.
 ///
-+ (DBAUTHTokenFromOAuth1Arg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBAUTHTokenFromOAuth1Arg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

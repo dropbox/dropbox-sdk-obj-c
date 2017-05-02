@@ -11,6 +11,8 @@
 
 @class DBPAPERListUsersOnPaperDocContinueArgs;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,7 +28,7 @@
 
 /// The cursor obtained from `docsUsersList` or `docsUsersListContinue`. Allows
 /// for pagination.
-@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString *cursor;
 
 #pragma mark - Constructors
 
@@ -39,7 +41,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDocId:(NSString * _Nonnull)docId cursor:(NSString * _Nonnull)cursor;
+- (instancetype)initWithDocId:(NSString *)docId cursor:(NSString *)cursor;
 
 @end
 
@@ -59,7 +61,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnPaperDocContinueArgs` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERListUsersOnPaperDocContinueArgs * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERListUsersOnPaperDocContinueArgs *)instance;
 
 ///
 /// Deserializes `DBPAPERListUsersOnPaperDocContinueArgs` instances.
@@ -70,6 +72,8 @@
 /// @return An instantiation of the `DBPAPERListUsersOnPaperDocContinueArgs`
 /// object.
 ///
-+ (DBPAPERListUsersOnPaperDocContinueArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERListUsersOnPaperDocContinueArgs *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

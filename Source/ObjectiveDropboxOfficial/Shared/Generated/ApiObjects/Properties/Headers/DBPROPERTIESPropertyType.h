@@ -10,6 +10,8 @@
 
 @class DBPROPERTIESPropertyType;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -50,16 +52,16 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithString;
+- (instancetype)initWithString;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -82,7 +84,7 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -101,7 +103,7 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESPropertyType` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyType * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPROPERTIESPropertyType *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyType` instances.
@@ -111,6 +113,8 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 ///
 /// @return An instantiation of the `DBPROPERTIESPropertyType` object.
 ///
-+ (DBPROPERTIESPropertyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPROPERTIESPropertyType *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

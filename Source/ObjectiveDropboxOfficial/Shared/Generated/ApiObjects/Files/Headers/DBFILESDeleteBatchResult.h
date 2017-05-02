@@ -11,6 +11,8 @@
 @class DBFILESDeleteBatchResult;
 @class DBFILESDeleteBatchResultEntry;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// (no description).
-@property (nonatomic, readonly) NSArray<DBFILESDeleteBatchResultEntry *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBFILESDeleteBatchResultEntry *> *entries;
 
 #pragma mark - Constructors
 
@@ -36,9 +38,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEntries:(NSArray<DBFILESDeleteBatchResultEntry *> * _Nonnull)entries;
+- (instancetype)initWithEntries:(NSArray<DBFILESDeleteBatchResultEntry *> *)entries;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -57,7 +59,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESDeleteBatchResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESDeleteBatchResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESDeleteBatchResult *)instance;
 
 ///
 /// Deserializes `DBFILESDeleteBatchResult` instances.
@@ -67,6 +69,8 @@
 ///
 /// @return An instantiation of the `DBFILESDeleteBatchResult` object.
 ///
-+ (DBFILESDeleteBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESDeleteBatchResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

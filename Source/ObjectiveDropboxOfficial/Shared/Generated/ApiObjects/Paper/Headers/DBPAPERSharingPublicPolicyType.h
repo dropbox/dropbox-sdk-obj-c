@@ -10,6 +10,8 @@
 
 @class DBPAPERSharingPublicPolicyType;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -53,7 +55,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingPublicPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPeopleWithLinkCanEdit;
+- (instancetype)initWithPeopleWithLinkCanEdit;
 
 ///
 /// Initializes union class with tag state of
@@ -64,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingPublicPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPeopleWithLinkCanViewAndComment;
+- (instancetype)initWithPeopleWithLinkCanViewAndComment;
 
 ///
 /// Initializes union class with tag state of "invite_only".
@@ -74,7 +76,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingPublicPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInviteOnly;
+- (instancetype)initWithInviteOnly;
 
 ///
 /// Initializes union class with tag state of "disabled".
@@ -84,9 +86,9 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingPublicPolicyTypeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDisabled;
+- (instancetype)initWithDisabled;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -127,7 +129,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingPublicPolicyTypeTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -147,7 +149,7 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingPublicPolicyTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERSharingPublicPolicyType` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERSharingPublicPolicyType * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERSharingPublicPolicyType *)instance;
 
 ///
 /// Deserializes `DBPAPERSharingPublicPolicyType` instances.
@@ -157,6 +159,8 @@ typedef NS_ENUM(NSInteger, DBPAPERSharingPublicPolicyTypeTag) {
 ///
 /// @return An instantiation of the `DBPAPERSharingPublicPolicyType` object.
 ///
-+ (DBPAPERSharingPublicPolicyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERSharingPublicPolicyType *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

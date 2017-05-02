@@ -11,6 +11,8 @@
 @class DBSHARINGMemberPermission;
 @class DBSHARINGParentFolderAccessInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,13 +29,13 @@
 #pragma mark - Instance fields
 
 /// Display name for the folder.
-@property (nonatomic, readonly, copy) NSString * _Nonnull folderName;
+@property (nonatomic, readonly, copy) NSString *folderName;
 
 /// The identifier of the parent shared folder.
-@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString *sharedFolderId;
 
 /// The user's permissions for the parent shared folder.
-@property (nonatomic, readonly) NSArray<DBSHARINGMemberPermission *> * _Nonnull permissions;
+@property (nonatomic, readonly) NSArray<DBSHARINGMemberPermission *> *permissions;
 
 #pragma mark - Constructors
 
@@ -46,11 +48,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFolderName:(NSString * _Nonnull)folderName
-                            sharedFolderId:(NSString * _Nonnull)sharedFolderId
-                               permissions:(NSArray<DBSHARINGMemberPermission *> * _Nonnull)permissions;
+- (instancetype)initWithFolderName:(NSString *)folderName
+                    sharedFolderId:(NSString *)sharedFolderId
+                       permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -70,7 +72,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGParentFolderAccessInfo` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGParentFolderAccessInfo * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGParentFolderAccessInfo *)instance;
 
 ///
 /// Deserializes `DBSHARINGParentFolderAccessInfo` instances.
@@ -80,6 +82,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGParentFolderAccessInfo` object.
 ///
-+ (DBSHARINGParentFolderAccessInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGParentFolderAccessInfo *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

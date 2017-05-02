@@ -11,6 +11,8 @@
 @class DBFILESWriteConflictError;
 @class DBFILESWriteError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -53,12 +55,12 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 
 /// (no description). @note Ensure the `isMalformedPath` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString * _Nullable malformedPath;
+@property (nonatomic, readonly, copy, nullable) NSString *malformedPath;
 
 /// Couldn't write to the target path because there was something in the way.
 /// @note Ensure the `isConflict` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBFILESWriteConflictError * _Nonnull conflict;
+@property (nonatomic, readonly) DBFILESWriteConflictError *conflict;
 
 #pragma mark - Constructors
 
@@ -69,7 +71,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
+- (instancetype)initWithMalformedPath:(nullable NSString *)malformedPath;
 
 ///
 /// Initializes union class with tag state of "conflict".
@@ -82,7 +84,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithConflict:(DBFILESWriteConflictError * _Nonnull)conflict;
+- (instancetype)initWithConflict:(DBFILESWriteConflictError *)conflict;
 
 ///
 /// Initializes union class with tag state of "no_write_permission".
@@ -92,7 +94,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNoWritePermission;
+- (instancetype)initWithNoWritePermission;
 
 ///
 /// Initializes union class with tag state of "insufficient_space".
@@ -102,7 +104,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInsufficientSpace;
+- (instancetype)initWithInsufficientSpace;
 
 ///
 /// Initializes union class with tag state of "disallowed_name".
@@ -112,16 +114,16 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDisallowedName;
+- (instancetype)initWithDisallowedName;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -182,7 +184,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -201,7 +203,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESWriteError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESWriteError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESWriteError *)instance;
 
 ///
 /// Deserializes `DBFILESWriteError` instances.
@@ -211,6 +213,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESWriteError` object.
 ///
-+ (DBFILESWriteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESWriteError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

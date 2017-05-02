@@ -11,6 +11,8 @@
 @class DBFILESLookupError;
 @class DBFILESPropertiesError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -47,11 +49,11 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 /// Property template does not exist for given identifier. @note Ensure the
 /// `isTemplateNotFound` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
+@property (nonatomic, readonly, copy) NSString *templateNotFound;
 
 /// (no description). @note Ensure the `isPath` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBFILESLookupError *path;
 
 #pragma mark - Constructors
 
@@ -66,7 +68,7 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
+- (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound;
 
 ///
 /// Initializes union class with tag state of "restricted_content".
@@ -76,14 +78,14 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithRestrictedContent;
+- (instancetype)initWithRestrictedContent;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "path".
@@ -92,9 +94,9 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(DBFILESLookupError * _Nonnull)path;
+- (instancetype)initWithPath:(DBFILESLookupError *)path;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -141,7 +143,7 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -160,7 +162,7 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESPropertiesError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESPropertiesError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESPropertiesError *)instance;
 
 ///
 /// Deserializes `DBFILESPropertiesError` instances.
@@ -170,6 +172,8 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESPropertiesError` object.
 ///
-+ (DBFILESPropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESPropertiesError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -12,6 +12,8 @@
 @class DBSHARINGLinkPermission;
 @class DBSHARINGSharedContentLinkMetadataBase;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -29,20 +31,20 @@
 /// options may be unavailable. For example, team_only may be unavailable if the
 /// content is not owned by a user on a team. The 'default' audience option is
 /// always available if the user can modify link settings.
-@property (nonatomic, readonly) NSArray<DBSHARINGLinkAudience *> * _Nonnull audienceOptions;
+@property (nonatomic, readonly) NSArray<DBSHARINGLinkAudience *> *audienceOptions;
 
 /// The current audience of the link.
-@property (nonatomic, readonly) DBSHARINGLinkAudience * _Nonnull currentAudience;
+@property (nonatomic, readonly) DBSHARINGLinkAudience *currentAudience;
 
 /// Whether the link has an expiry set on it. A link with an expiry will have
 /// its  audience changed to members when the expiry is reached.
-@property (nonatomic, readonly) NSDate * _Nullable expiry;
+@property (nonatomic, readonly, nullable) NSDate *expiry;
 
 /// A list of permissions for actions you can perform on the link.
-@property (nonatomic, readonly) NSArray<DBSHARINGLinkPermission *> * _Nonnull linkPermissions;
+@property (nonatomic, readonly) NSArray<DBSHARINGLinkPermission *> *linkPermissions;
 
 /// Whether the link is protected by a password.
-@property (nonatomic, readonly) NSNumber * _Nonnull passwordProtected;
+@property (nonatomic, readonly) NSNumber *passwordProtected;
 
 #pragma mark - Constructors
 
@@ -64,11 +66,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> * _Nonnull)audienceOptions
-                                currentAudience:(DBSHARINGLinkAudience * _Nonnull)currentAudience
-                                linkPermissions:(NSArray<DBSHARINGLinkPermission *> * _Nonnull)linkPermissions
-                              passwordProtected:(NSNumber * _Nonnull)passwordProtected
-                                         expiry:(NSDate * _Nullable)expiry;
+- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions
+                        currentAudience:(DBSHARINGLinkAudience *)currentAudience
+                        linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions
+                      passwordProtected:(NSNumber *)passwordProtected
+                                 expiry:(nullable NSDate *)expiry;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -86,12 +88,12 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> * _Nonnull)audienceOptions
-                                currentAudience:(DBSHARINGLinkAudience * _Nonnull)currentAudience
-                                linkPermissions:(NSArray<DBSHARINGLinkPermission *> * _Nonnull)linkPermissions
-                              passwordProtected:(NSNumber * _Nonnull)passwordProtected;
+- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions
+                        currentAudience:(DBSHARINGLinkAudience *)currentAudience
+                        linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions
+                      passwordProtected:(NSNumber *)passwordProtected;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -111,7 +113,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedContentLinkMetadataBase` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedContentLinkMetadataBase * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGSharedContentLinkMetadataBase *)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedContentLinkMetadataBase` instances.
@@ -122,6 +124,8 @@
 /// @return An instantiation of the `DBSHARINGSharedContentLinkMetadataBase`
 /// object.
 ///
-+ (DBSHARINGSharedContentLinkMetadataBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGSharedContentLinkMetadataBase *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

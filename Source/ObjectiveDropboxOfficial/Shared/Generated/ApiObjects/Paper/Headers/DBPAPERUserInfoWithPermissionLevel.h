@@ -12,6 +12,8 @@
 @class DBPAPERUserInfoWithPermissionLevel;
 @class DBSHARINGUserInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,10 +28,10 @@
 #pragma mark - Instance fields
 
 /// User shared on the Paper doc.
-@property (nonatomic, readonly) DBSHARINGUserInfo * _Nonnull user;
+@property (nonatomic, readonly) DBSHARINGUserInfo *user;
 
 /// Permission level for the user.
-@property (nonatomic, readonly) DBPAPERPaperDocPermissionLevel * _Nonnull permissionLevel;
+@property (nonatomic, readonly) DBPAPERPaperDocPermissionLevel *permissionLevel;
 
 #pragma mark - Constructors
 
@@ -41,10 +43,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUser:(DBSHARINGUserInfo * _Nonnull)user
-                     permissionLevel:(DBPAPERPaperDocPermissionLevel * _Nonnull)permissionLevel;
+- (instancetype)initWithUser:(DBSHARINGUserInfo *)user
+             permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -64,7 +66,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERUserInfoWithPermissionLevel` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERUserInfoWithPermissionLevel * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERUserInfoWithPermissionLevel *)instance;
 
 ///
 /// Deserializes `DBPAPERUserInfoWithPermissionLevel` instances.
@@ -74,6 +76,8 @@
 ///
 /// @return An instantiation of the `DBPAPERUserInfoWithPermissionLevel` object.
 ///
-+ (DBPAPERUserInfoWithPermissionLevel * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERUserInfoWithPermissionLevel *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

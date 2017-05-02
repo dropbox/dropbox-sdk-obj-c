@@ -11,6 +11,8 @@
 @class DBSHARINGGetSharedLinksResult;
 @class DBSHARINGLinkMetadata;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// Shared links applicable to the path argument.
-@property (nonatomic, readonly) NSArray<DBSHARINGLinkMetadata *> * _Nonnull links;
+@property (nonatomic, readonly) NSArray<DBSHARINGLinkMetadata *> *links;
 
 #pragma mark - Constructors
 
@@ -36,9 +38,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithLinks:(NSArray<DBSHARINGLinkMetadata *> * _Nonnull)links;
+- (instancetype)initWithLinks:(NSArray<DBSHARINGLinkMetadata *> *)links;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -58,7 +60,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetSharedLinksResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGGetSharedLinksResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGGetSharedLinksResult *)instance;
 
 ///
 /// Deserializes `DBSHARINGGetSharedLinksResult` instances.
@@ -68,6 +70,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGGetSharedLinksResult` object.
 ///
-+ (DBSHARINGGetSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGGetSharedLinksResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

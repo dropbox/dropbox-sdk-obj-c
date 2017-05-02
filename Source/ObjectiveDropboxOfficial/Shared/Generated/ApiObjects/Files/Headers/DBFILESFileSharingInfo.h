@@ -11,6 +11,8 @@
 
 @class DBFILESFileSharingInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,11 +29,11 @@
 #pragma mark - Instance fields
 
 /// ID of shared folder that holds this file.
-@property (nonatomic, readonly, copy) NSString * _Nonnull parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString *parentSharedFolderId;
 
 /// The last user who modified the file. This field will be null if the user's
 /// account has been deleted.
-@property (nonatomic, readonly, copy) NSString * _Nullable modifiedBy;
+@property (nonatomic, readonly, copy, nullable) NSString *modifiedBy;
 
 #pragma mark - Constructors
 
@@ -46,9 +48,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly
-                    parentSharedFolderId:(NSString * _Nonnull)parentSharedFolderId
-                              modifiedBy:(NSString * _Nullable)modifiedBy;
+- (instancetype)initWithReadOnly:(NSNumber *)readOnly
+            parentSharedFolderId:(NSString *)parentSharedFolderId
+                      modifiedBy:(nullable NSString *)modifiedBy;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -60,8 +62,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly
-                    parentSharedFolderId:(NSString * _Nonnull)parentSharedFolderId;
+- (instancetype)initWithReadOnly:(NSNumber *)readOnly parentSharedFolderId:(NSString *)parentSharedFolderId;
 
 @end
 
@@ -80,7 +81,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESFileSharingInfo` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESFileSharingInfo * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESFileSharingInfo *)instance;
 
 ///
 /// Deserializes `DBFILESFileSharingInfo` instances.
@@ -90,6 +91,8 @@
 ///
 /// @return An instantiation of the `DBFILESFileSharingInfo` object.
 ///
-+ (DBFILESFileSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESFileSharingInfo *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

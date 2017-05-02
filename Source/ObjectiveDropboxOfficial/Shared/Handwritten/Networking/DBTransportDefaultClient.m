@@ -14,7 +14,7 @@
 @implementation DBTransportDefaultClient {
   /// The delegate used to manage execution of all response / error code. By default, this
   /// is an instance of `DBDelegate` with the main thread queue as delegate queue.
-  DBDelegate * _Nonnull _delegate;
+  DBDelegate *_delegate;
 }
 
 @synthesize session = _session;

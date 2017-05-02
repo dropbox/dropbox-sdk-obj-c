@@ -11,6 +11,8 @@
 @class DBFILESLookupError;
 @class DBFILESPathRootError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -58,12 +60,12 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 
 /// (no description). @note Ensure the `isMalformedPath` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString * _Nullable malformedPath;
+@property (nonatomic, readonly, copy, nullable) NSString *malformedPath;
 
 /// The path root parameter provided is invalid. @note Ensure the
 /// `isInvalidPathRoot` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
-@property (nonatomic, readonly) DBFILESPathRootError * _Nonnull invalidPathRoot;
+@property (nonatomic, readonly) DBFILESPathRootError *invalidPathRoot;
 
 #pragma mark - Constructors
 
@@ -74,7 +76,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
+- (instancetype)initWithMalformedPath:(nullable NSString *)malformedPath;
 
 ///
 /// Initializes union class with tag state of "not_found".
@@ -84,7 +86,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotFound;
+- (instancetype)initWithNotFound;
 
 ///
 /// Initializes union class with tag state of "not_file".
@@ -94,7 +96,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotFile;
+- (instancetype)initWithNotFile;
 
 ///
 /// Initializes union class with tag state of "not_folder".
@@ -104,7 +106,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotFolder;
+- (instancetype)initWithNotFolder;
 
 ///
 /// Initializes union class with tag state of "restricted_content".
@@ -115,7 +117,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithRestrictedContent;
+- (instancetype)initWithRestrictedContent;
 
 ///
 /// Initializes union class with tag state of "invalid_path_root".
@@ -127,16 +129,16 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvalidPathRoot:(DBFILESPathRootError * _Nonnull)invalidPathRoot;
+- (instancetype)initWithInvalidPathRoot:(DBFILESPathRootError *)invalidPathRoot;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -203,7 +205,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -222,7 +224,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESLookupError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESLookupError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESLookupError *)instance;
 
 ///
 /// Deserializes `DBFILESLookupError` instances.
@@ -232,6 +234,8 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESLookupError` object.
 ///
-+ (DBFILESLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESLookupError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

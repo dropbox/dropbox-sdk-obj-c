@@ -10,6 +10,8 @@
 
 @class DBTEAMRevokeLinkedAppBatchError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -43,9 +45,9 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppBatchErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -61,7 +63,7 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppBatchErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -81,7 +83,7 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppBatchErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeLinkedAppBatchError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppBatchError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMRevokeLinkedAppBatchError *)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeLinkedAppBatchError` instances.
@@ -91,6 +93,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppBatchErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMRevokeLinkedAppBatchError` object.
 ///
-+ (DBTEAMRevokeLinkedAppBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMRevokeLinkedAppBatchError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

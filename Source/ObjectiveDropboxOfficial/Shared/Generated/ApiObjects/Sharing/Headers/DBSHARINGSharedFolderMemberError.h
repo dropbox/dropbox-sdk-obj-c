@@ -11,6 +11,8 @@
 @class DBSHARINGMemberAccessLevelResult;
 @class DBSHARINGSharedFolderMemberError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -48,7 +50,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 /// The target member only has inherited access to the shared folder. @note
 /// Ensure the `isNoExplicitAccess` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
+@property (nonatomic, readonly) DBSHARINGMemberAccessLevelResult *noExplicitAccess;
 
 #pragma mark - Constructors
 
@@ -60,7 +62,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvalidDropboxId;
+- (instancetype)initWithInvalidDropboxId;
 
 ///
 /// Initializes union class with tag state of "not_a_member".
@@ -70,7 +72,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotAMember;
+- (instancetype)initWithNotAMember;
 
 ///
 /// Initializes union class with tag state of "no_explicit_access".
@@ -83,16 +85,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNoExplicitAccess:(DBSHARINGMemberAccessLevelResult * _Nonnull)noExplicitAccess;
+- (instancetype)initWithNoExplicitAccess:(DBSHARINGMemberAccessLevelResult *)noExplicitAccess;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -136,7 +138,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -156,7 +158,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFolderMemberError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFolderMemberError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGSharedFolderMemberError *)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedFolderMemberError` instances.
@@ -166,6 +168,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// @return An instantiation of the `DBSHARINGSharedFolderMemberError` object.
 ///
-+ (DBSHARINGSharedFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGSharedFolderMemberError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

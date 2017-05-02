@@ -7,7 +7,7 @@
 #import "DBTasksStorage.h"
 
 @implementation DBBatchUploadTask {
-  DBBatchUploadData * _Nonnull _uploadData;
+  DBBatchUploadData *_uploadData;
 }
 
 - (instancetype)initWithUploadData:(DBBatchUploadData *)uploadData {

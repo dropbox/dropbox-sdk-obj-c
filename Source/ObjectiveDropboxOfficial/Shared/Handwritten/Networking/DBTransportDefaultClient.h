@@ -7,6 +7,8 @@
 #import "DBTransportBaseClient.h"
 #import "DBTransportClientProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class DBTransportDefaultConfig;
 
 ///
@@ -34,7 +36,7 @@
 
 /// A serial delegate queue used for executing blocks of code that touch state shared across threads (mainly the request
 /// handlers storage).
-@property (nonatomic, readonly) NSOperationQueue * _Nonnull delegateQueue;
+@property (nonatomic, readonly) NSOperationQueue * delegateQueue;
 
 /// If set to true when the `DBTransportDefaultClient` object is initialized, all network requests are made on
 /// foreground sessions (by default, most upload/download operations are performed with a background session). This is
@@ -45,15 +47,15 @@
 
 /// The foreground session used to make all foreground requests (RPC style requests, upload from `NSData` and
 /// `NSInputStream`, and download to `NSData`).
-@property (nonatomic, strong) NSURLSession * _Nonnull session;
+@property (nonatomic, strong) NSURLSession * session;
 
 /// By default, the background session used to make all background requests (Upload and Download style requests, except
 /// for upload from `NSData` and `NSInputStream`, and download to `NSData`) unless `forceForegroundSession` is set to
 /// true, in which case, it is simply the same session as the foreground session.
-@property (nonatomic, strong) NSURLSession * _Nonnull secondarySession;
+@property (nonatomic, strong) NSURLSession * secondarySession;
 
 /// The foreground session on which longpoll requests are made. Has a much longer timeout period than other sessions.
-@property (nonatomic, strong) NSURLSession * _Nonnull longpollSession;
+@property (nonatomic, strong) NSURLSession * longpollSession;
 
 #pragma mark - Constructors
 
@@ -66,8 +68,8 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
-                            transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
+- (instancetype)initWithAccessToken:(nullable NSString *)accessToken
+                            transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///
 /// Creates a transport config with the same settings as the current transport client, to be used to instantiate an
@@ -79,6 +81,8 @@
 /// @return A transport config with the same settings as the current transport client, except with information to
 /// perform actions on behalf of the team member specified by `asMemberId`.
 ///
-- (DBTransportDefaultConfig * _Nonnull)duplicateTransportConfigWithAsMemberId:(NSString * _Nonnull)asMemberId;
+- (DBTransportDefaultConfig *)duplicateTransportConfigWithAsMemberId:(NSString *)asMemberId;
 
 @end
+
+NS_ASSUME_NONNULL_END

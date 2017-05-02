@@ -21,8 +21,8 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
 @implementation DBOfficialAppConnector {
   NSString *_appKey;
   NSString *_urlScheme;
-  BOOL (^_canOpenURLWrapper)(NSURL * _Nonnull);
-  void (^_openURLWrapper)(NSURL * _Nonnull);
+  BOOL (^_canOpenURLWrapper)(NSURL *);
+  void (^_openURLWrapper)(NSURL *);
 }
 
 - (instancetype)initWithAppKey:(NSString *)appKey

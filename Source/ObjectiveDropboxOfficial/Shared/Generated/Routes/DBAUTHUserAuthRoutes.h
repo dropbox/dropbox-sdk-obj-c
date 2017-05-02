@@ -17,15 +17,18 @@
 ///
 /// Routes for the `Auth` namespace
 ///
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBAUTHUserAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> client;
 
 /// Initializes the `DBAUTHUserAuthRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
+- (instancetype)init:(id<DBTransportClient>)client;
 
 ///
 /// Disables the access token used to authenticate the call.
@@ -34,6 +37,8 @@
 /// @return Through the response callback, the caller will receive a `void` object on success or a `void` object on
 /// failure.
 ///
-- (DBRpcTask<DBNilObject *, DBNilObject *> * _Nonnull)tokenRevoke;
+- (DBRpcTask<DBNilObject *, DBNilObject *> *)tokenRevoke;
 
 @end
+
+NS_ASSUME_NONNULL_END

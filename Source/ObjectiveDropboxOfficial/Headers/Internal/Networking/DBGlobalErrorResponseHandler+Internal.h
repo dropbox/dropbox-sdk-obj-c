@@ -8,10 +8,14 @@
 
 @class DBTask;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBGlobalErrorResponseHandler (Internal)
 
 + (void)executeRegisteredResponseBlocksWithRouteError:(id _Nullable)routeError
-                                         networkError:(DBRequestError * _Nullable)networkError
-                                          restartTask:(DBTask * _Nonnull)restartTask;
+                                         networkError:(nullable DBRequestError *)networkError
+                                          restartTask:(DBTask *)restartTask;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -54,7 +54,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
 }
 
 + (void)registerNetworkErrorResponseBlock:(DBNetworkErrorResponseBlock)networkErrorResponseBlock
-                                    queue:(NSOperationQueue * _Nullable)queue {
+                                    queue:(nullable NSOperationQueue *)queue {
   NSOperationQueue *queueToUse = queue ?: [NSOperationQueue mainQueue];
 
   @synchronized([DBGlobalErrorResponseHandler class]) {

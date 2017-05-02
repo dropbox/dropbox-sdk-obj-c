@@ -11,6 +11,8 @@
 @class DBAUTHRateLimitError;
 @class DBAUTHRateLimitReason;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,11 +29,11 @@
 #pragma mark - Instance fields
 
 /// The reason why the app is being rate limited.
-@property (nonatomic, readonly) DBAUTHRateLimitReason * _Nonnull reason;
+@property (nonatomic, readonly) DBAUTHRateLimitReason *reason;
 
 /// The number of seconds that the app should wait before making another
 /// request.
-@property (nonatomic, readonly) NSNumber * _Nonnull retryAfter;
+@property (nonatomic, readonly) NSNumber *retryAfter;
 
 #pragma mark - Constructors
 
@@ -44,8 +46,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithReason:(DBAUTHRateLimitReason * _Nonnull)reason
-                            retryAfter:(NSNumber * _Nullable)retryAfter;
+- (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason retryAfter:(nullable NSNumber *)retryAfter;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -55,9 +56,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithReason:(DBAUTHRateLimitReason * _Nonnull)reason;
+- (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -76,7 +77,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBAUTHRateLimitError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBAUTHRateLimitError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBAUTHRateLimitError *)instance;
 
 ///
 /// Deserializes `DBAUTHRateLimitError` instances.
@@ -86,6 +87,8 @@
 ///
 /// @return An instantiation of the `DBAUTHRateLimitError` object.
 ///
-+ (DBAUTHRateLimitError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBAUTHRateLimitError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

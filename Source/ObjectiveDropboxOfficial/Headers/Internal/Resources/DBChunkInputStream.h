@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Subclass of `NSInputStream` to enforce "bounds" on file stream, for
 /// chunk uploading.
@@ -24,8 +26,10 @@
 ///
 /// @return An initialized DBChunkInputStream instance.
 ///
-- (nonnull instancetype)initWithFileUrl:(NSURL * _Nonnull)fileUrl
+- (instancetype)initWithFileUrl:(NSURL *)fileUrl
                              startBytes:(NSUInteger)startBytes
                                endBytes:(NSUInteger)endBytes;
 
 @end
+
+NS_ASSUME_NONNULL_END

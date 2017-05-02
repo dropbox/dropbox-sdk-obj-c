@@ -11,6 +11,8 @@
 @class DBTEAMTeamFolderGetInfoItem;
 @class DBTEAMTeamFolderMetadata;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -42,11 +44,11 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderGetInfoItemTag) {
 /// An ID that was provided as a parameter to `teamFolderGetInfo` did not match
 /// any of the team's team folders. @note Ensure the `isIdNotFound` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString * _Nonnull idNotFound;
+@property (nonatomic, readonly, copy) NSString *idNotFound;
 
 /// Properties of a team folder. @note Ensure the `isTeamFolderMetadata` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMTeamFolderMetadata * _Nonnull teamFolderMetadata;
+@property (nonatomic, readonly) DBTEAMTeamFolderMetadata *teamFolderMetadata;
 
 #pragma mark - Constructors
 
@@ -62,7 +64,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderGetInfoItemTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithIdNotFound:(NSString * _Nonnull)idNotFound;
+- (instancetype)initWithIdNotFound:(NSString *)idNotFound;
 
 ///
 /// Initializes union class with tag state of "team_folder_metadata".
@@ -74,9 +76,9 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderGetInfoItemTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamFolderMetadata:(DBTEAMTeamFolderMetadata * _Nonnull)teamFolderMetadata;
+- (instancetype)initWithTeamFolderMetadata:(DBTEAMTeamFolderMetadata *)teamFolderMetadata;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -107,7 +109,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderGetInfoItemTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -126,7 +128,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderGetInfoItemTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderGetInfoItem` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderGetInfoItem * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderGetInfoItem *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderGetInfoItem` instances.
@@ -136,6 +138,8 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderGetInfoItemTag) {
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderGetInfoItem` object.
 ///
-+ (DBTEAMTeamFolderGetInfoItem * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderGetInfoItem *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

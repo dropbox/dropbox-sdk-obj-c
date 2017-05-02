@@ -13,6 +13,8 @@
 @class DBTEAMPOLICIESSharedLinkCreatePolicy;
 @class DBTEAMPOLICIESTeamSharingPolicies;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -29,13 +31,13 @@
 #pragma mark - Instance fields
 
 /// Who can join folders shared by team members.
-@property (nonatomic, readonly) DBTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull sharedFolderMemberPolicy;
+@property (nonatomic, readonly) DBTEAMPOLICIESSharedFolderMemberPolicy *sharedFolderMemberPolicy;
 
 /// Which shared folders team members can join.
-@property (nonatomic, readonly) DBTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull sharedFolderJoinPolicy;
+@property (nonatomic, readonly) DBTEAMPOLICIESSharedFolderJoinPolicy *sharedFolderJoinPolicy;
 
 /// Who can view shared links owned by team members.
-@property (nonatomic, readonly) DBTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull sharedLinkCreatePolicy;
+@property (nonatomic, readonly) DBTEAMPOLICIESSharedLinkCreatePolicy *sharedLinkCreatePolicy;
 
 #pragma mark - Constructors
 
@@ -49,12 +51,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)
-initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull)sharedFolderMemberPolicy
-          sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)sharedFolderJoinPolicy
-          sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)sharedLinkCreatePolicy;
+- (instancetype)initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy
+                          sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy
+                          sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -74,7 +75,7 @@ initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy * _Nonn
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESTeamSharingPolicies` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMPOLICIESTeamSharingPolicies * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMPOLICIESTeamSharingPolicies *)instance;
 
 ///
 /// Deserializes `DBTEAMPOLICIESTeamSharingPolicies` instances.
@@ -84,6 +85,8 @@ initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy * _Nonn
 ///
 /// @return An instantiation of the `DBTEAMPOLICIESTeamSharingPolicies` object.
 ///
-+ (DBTEAMPOLICIESTeamSharingPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMPOLICIESTeamSharingPolicies *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

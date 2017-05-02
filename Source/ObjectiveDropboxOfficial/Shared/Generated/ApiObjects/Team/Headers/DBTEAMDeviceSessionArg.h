@@ -10,6 +10,8 @@
 
 @class DBTEAMDeviceSessionArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,10 +26,10 @@
 #pragma mark - Instance fields
 
 /// The session id
-@property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
+@property (nonatomic, readonly, copy) NSString *sessionId;
 
 /// The unique id of the member owning the device
-@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString *teamMemberId;
 
 #pragma mark - Constructors
 
@@ -39,9 +41,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
+- (instancetype)initWithSessionId:(NSString *)sessionId teamMemberId:(NSString *)teamMemberId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -60,7 +62,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMDeviceSessionArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMDeviceSessionArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMDeviceSessionArg *)instance;
 
 ///
 /// Deserializes `DBTEAMDeviceSessionArg` instances.
@@ -70,6 +72,8 @@
 ///
 /// @return An instantiation of the `DBTEAMDeviceSessionArg` object.
 ///
-+ (DBTEAMDeviceSessionArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMDeviceSessionArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

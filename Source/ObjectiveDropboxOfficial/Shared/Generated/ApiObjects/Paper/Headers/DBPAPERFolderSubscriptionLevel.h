@@ -10,6 +10,8 @@
 
 @class DBPAPERFolderSubscriptionLevel;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -54,7 +56,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNone;
+- (instancetype)initWithNone;
 
 ///
 /// Initializes union class with tag state of "activity_only".
@@ -63,7 +65,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithActivityOnly;
+- (instancetype)initWithActivityOnly;
 
 ///
 /// Initializes union class with tag state of "daily_emails".
@@ -73,7 +75,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDailyEmails;
+- (instancetype)initWithDailyEmails;
 
 ///
 /// Initializes union class with tag state of "weekly_emails".
@@ -83,9 +85,9 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithWeeklyEmails;
+- (instancetype)initWithWeeklyEmails;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -122,7 +124,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -142,7 +144,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERFolderSubscriptionLevel` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERFolderSubscriptionLevel * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERFolderSubscriptionLevel *)instance;
 
 ///
 /// Deserializes `DBPAPERFolderSubscriptionLevel` instances.
@@ -152,6 +154,8 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// @return An instantiation of the `DBPAPERFolderSubscriptionLevel` object.
 ///
-+ (DBPAPERFolderSubscriptionLevel * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERFolderSubscriptionLevel *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

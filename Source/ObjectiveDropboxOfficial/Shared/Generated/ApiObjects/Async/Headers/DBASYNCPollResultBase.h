@@ -10,6 +10,8 @@
 
 @class DBASYNCPollResultBase;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -49,9 +51,9 @@ typedef NS_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInProgress;
+- (instancetype)initWithInProgress;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -67,7 +69,7 @@ typedef NS_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -86,7 +88,7 @@ typedef NS_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBASYNCPollResultBase` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBASYNCPollResultBase * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBASYNCPollResultBase *)instance;
 
 ///
 /// Deserializes `DBASYNCPollResultBase` instances.
@@ -96,6 +98,8 @@ typedef NS_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
 ///
 /// @return An instantiation of the `DBASYNCPollResultBase` object.
 ///
-+ (DBASYNCPollResultBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBASYNCPollResultBase *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -12,6 +12,8 @@
 @class DBSHARINGRemoveFolderMemberError;
 @class DBSHARINGRemoveMemberJobStatus;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -47,11 +49,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 /// whether the member has another form of access. @note Ensure the `isComplete`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
-@property (nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull complete;
+@property (nonatomic, readonly) DBSHARINGMemberAccessLevelResult *complete;
 
 /// (no description). @note Ensure the `isFailed` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBSHARINGRemoveFolderMemberError * _Nonnull failed;
+@property (nonatomic, readonly) DBSHARINGRemoveFolderMemberError *failed;
 
 #pragma mark - Constructors
 
@@ -63,7 +65,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInProgress;
+- (instancetype)initWithInProgress;
 
 ///
 /// Initializes union class with tag state of "complete".
@@ -77,7 +79,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithComplete:(DBSHARINGMemberAccessLevelResult * _Nonnull)complete;
+- (instancetype)initWithComplete:(DBSHARINGMemberAccessLevelResult *)complete;
 
 ///
 /// Initializes union class with tag state of "failed".
@@ -86,9 +88,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFailed:(DBSHARINGRemoveFolderMemberError * _Nonnull)failed;
+- (instancetype)initWithFailed:(DBSHARINGRemoveFolderMemberError *)failed;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -124,7 +126,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -144,7 +146,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRemoveMemberJobStatus` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGRemoveMemberJobStatus * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGRemoveMemberJobStatus *)instance;
 
 ///
 /// Deserializes `DBSHARINGRemoveMemberJobStatus` instances.
@@ -154,6 +156,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 ///
 /// @return An instantiation of the `DBSHARINGRemoveMemberJobStatus` object.
 ///
-+ (DBSHARINGRemoveMemberJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGRemoveMemberJobStatus *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

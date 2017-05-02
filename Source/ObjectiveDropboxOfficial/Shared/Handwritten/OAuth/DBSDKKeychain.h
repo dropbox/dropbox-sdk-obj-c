@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)storeValueWithKey:(NSString *)key value:(NSString *)value;
 
 /// Retrieves a value from the corresponding key from the keychain.
-+ (NSString * _Nullable)retrieveTokenWithKey:(NSString *)key;
++ (nullable NSString *)retrieveTokenWithKey:(NSString *)key;
 
 /// Retrieves all token uids from the keychain.
 + (NSArray<NSString *> *)retrieveAllTokenIds;
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Checks if performing a v1 token migration is necessary, and if so, performs it.
 + (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
-                                  queue:(NSOperationQueue * _Nullable)queue
+                                  queue:(nullable NSOperationQueue *)queue
                                  appKey:(NSString *)appKey
                               appSecret:(NSString *)appSecret;
 

@@ -13,6 +13,8 @@
 @class DBSHARINGLinkPermission;
 @class DBSHARINGSharedContentLinkMetadata;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -29,7 +31,7 @@
 #pragma mark - Instance fields
 
 /// The URL of the link.
-@property (nonatomic, readonly, copy) NSString * _Nonnull url;
+@property (nonatomic, readonly, copy) NSString *url;
 
 #pragma mark - Constructors
 
@@ -52,12 +54,12 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> * _Nonnull)audienceOptions
-                                currentAudience:(DBSHARINGLinkAudience * _Nonnull)currentAudience
-                                linkPermissions:(NSArray<DBSHARINGLinkPermission *> * _Nonnull)linkPermissions
-                              passwordProtected:(NSNumber * _Nonnull)passwordProtected
-                                            url:(NSString * _Nonnull)url
-                                         expiry:(NSDate * _Nullable)expiry;
+- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions
+                        currentAudience:(DBSHARINGLinkAudience *)currentAudience
+                        linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions
+                      passwordProtected:(NSNumber *)passwordProtected
+                                    url:(NSString *)url
+                                 expiry:(nullable NSDate *)expiry;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -76,11 +78,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> * _Nonnull)audienceOptions
-                                currentAudience:(DBSHARINGLinkAudience * _Nonnull)currentAudience
-                                linkPermissions:(NSArray<DBSHARINGLinkPermission *> * _Nonnull)linkPermissions
-                              passwordProtected:(NSNumber * _Nonnull)passwordProtected
-                                            url:(NSString * _Nonnull)url;
+- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions
+                        currentAudience:(DBSHARINGLinkAudience *)currentAudience
+                        linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions
+                      passwordProtected:(NSNumber *)passwordProtected
+                                    url:(NSString *)url;
 
 @end
 
@@ -100,7 +102,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedContentLinkMetadata` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedContentLinkMetadata * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGSharedContentLinkMetadata *)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedContentLinkMetadata` instances.
@@ -110,6 +112,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGSharedContentLinkMetadata` object.
 ///
-+ (DBSHARINGSharedContentLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGSharedContentLinkMetadata *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

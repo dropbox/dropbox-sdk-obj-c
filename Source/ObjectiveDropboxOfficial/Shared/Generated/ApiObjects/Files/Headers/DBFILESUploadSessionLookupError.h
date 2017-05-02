@@ -11,6 +11,8 @@
 @class DBFILESUploadSessionLookupError;
 @class DBFILESUploadSessionOffsetError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -56,7 +58,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 /// successfully but the client did not receive the response, e.g. due to a
 /// network error. @note Ensure the `isIncorrectOffset` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBFILESUploadSessionOffsetError * _Nonnull incorrectOffset;
+@property (nonatomic, readonly) DBFILESUploadSessionOffsetError *incorrectOffset;
 
 #pragma mark - Constructors
 
@@ -68,7 +70,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotFound;
+- (instancetype)initWithNotFound;
 
 ///
 /// Initializes union class with tag state of "incorrect_offset".
@@ -85,7 +87,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithIncorrectOffset:(DBFILESUploadSessionOffsetError * _Nonnull)incorrectOffset;
+- (instancetype)initWithIncorrectOffset:(DBFILESUploadSessionOffsetError *)incorrectOffset;
 
 ///
 /// Initializes union class with tag state of "closed".
@@ -95,7 +97,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithClosed;
+- (instancetype)initWithClosed;
 
 ///
 /// Initializes union class with tag state of "not_closed".
@@ -105,16 +107,16 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotClosed;
+- (instancetype)initWithNotClosed;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -162,7 +164,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -182,7 +184,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionLookupError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionLookupError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESUploadSessionLookupError *)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionLookupError` instances.
@@ -192,6 +194,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESUploadSessionLookupError` object.
 ///
-+ (DBFILESUploadSessionLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESUploadSessionLookupError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

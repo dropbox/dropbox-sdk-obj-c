@@ -11,6 +11,8 @@
 @class DBTEAMTeamFolderListResult;
 @class DBTEAMTeamFolderMetadata;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,7 +29,7 @@
 #pragma mark - Instance fields
 
 /// List of all team folders in the authenticated team.
-@property (nonatomic, readonly) NSArray<DBTEAMTeamFolderMetadata *> * _Nonnull teamFolders;
+@property (nonatomic, readonly) NSArray<DBTEAMTeamFolderMetadata *> *teamFolders;
 
 #pragma mark - Constructors
 
@@ -38,9 +40,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamFolders:(NSArray<DBTEAMTeamFolderMetadata *> * _Nonnull)teamFolders;
+- (instancetype)initWithTeamFolders:(NSArray<DBTEAMTeamFolderMetadata *> *)teamFolders;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +61,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderListResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderListResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderListResult *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderListResult` instances.
@@ -69,6 +71,8 @@
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderListResult` object.
 ///
-+ (DBTEAMTeamFolderListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderListResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

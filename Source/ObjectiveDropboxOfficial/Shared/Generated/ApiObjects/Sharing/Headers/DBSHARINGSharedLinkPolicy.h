@@ -10,6 +10,8 @@
 
 @class DBSHARINGSharedLinkPolicy;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -54,7 +56,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAnyone;
+- (instancetype)initWithAnyone;
 
 ///
 /// Initializes union class with tag state of "team".
@@ -64,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeam;
+- (instancetype)initWithTeam;
 
 ///
 /// Initializes union class with tag state of "members".
@@ -74,16 +76,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMembers;
+- (instancetype)initWithMembers;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -120,7 +122,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -139,7 +141,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedLinkPolicy` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkPolicy * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGSharedLinkPolicy *)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedLinkPolicy` instances.
@@ -149,6 +151,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 ///
 /// @return An instantiation of the `DBSHARINGSharedLinkPolicy` object.
 ///
-+ (DBSHARINGSharedLinkPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGSharedLinkPolicy *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

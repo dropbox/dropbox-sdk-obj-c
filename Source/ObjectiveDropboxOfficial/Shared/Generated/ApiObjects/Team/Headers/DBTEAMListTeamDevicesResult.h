@@ -11,6 +11,8 @@
 @class DBTEAMListTeamDevicesResult;
 @class DBTEAMMemberDevices;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,15 +27,15 @@
 #pragma mark - Instance fields
 
 /// The devices of each member of the team
-@property (nonatomic, readonly) NSArray<DBTEAMMemberDevices *> * _Nonnull devices;
+@property (nonatomic, readonly) NSArray<DBTEAMMemberDevices *> *devices;
 
 /// If true, then there are more devices available. Pass the cursor to
 /// `devicesListTeamDevices` to retrieve the rest.
-@property (nonatomic, readonly) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly) NSNumber *hasMore;
 
 /// Pass the cursor into `devicesListTeamDevices` to receive the next sub list
 /// of team's devices.
-@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy, nullable) NSString *cursor;
 
 #pragma mark - Constructors
 
@@ -48,9 +50,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> * _Nonnull)devices
-                                hasMore:(NSNumber * _Nonnull)hasMore
-                                 cursor:(NSString * _Nullable)cursor;
+- (instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> *)devices
+                        hasMore:(NSNumber *)hasMore
+                         cursor:(nullable NSString *)cursor;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -62,10 +64,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> * _Nonnull)devices
-                                hasMore:(NSNumber * _Nonnull)hasMore;
+- (instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> *)devices hasMore:(NSNumber *)hasMore;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -84,7 +85,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListTeamDevicesResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMListTeamDevicesResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMListTeamDevicesResult *)instance;
 
 ///
 /// Deserializes `DBTEAMListTeamDevicesResult` instances.
@@ -94,6 +95,8 @@
 ///
 /// @return An instantiation of the `DBTEAMListTeamDevicesResult` object.
 ///
-+ (DBTEAMListTeamDevicesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMListTeamDevicesResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

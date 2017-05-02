@@ -10,6 +10,8 @@
 
 @class DBSHARINGLinkAction;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -61,7 +63,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithChangeAudience;
+- (instancetype)initWithChangeAudience;
 
 ///
 /// Initializes union class with tag state of "remove_expiry".
@@ -71,7 +73,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithRemoveExpiry;
+- (instancetype)initWithRemoveExpiry;
 
 ///
 /// Initializes union class with tag state of "remove_password".
@@ -81,7 +83,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithRemovePassword;
+- (instancetype)initWithRemovePassword;
 
 ///
 /// Initializes union class with tag state of "set_expiry".
@@ -91,7 +93,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSetExpiry;
+- (instancetype)initWithSetExpiry;
 
 ///
 /// Initializes union class with tag state of "set_password".
@@ -101,16 +103,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSetPassword;
+- (instancetype)initWithSetPassword;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -161,7 +163,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -180,7 +182,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGLinkAction` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGLinkAction * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGLinkAction *)instance;
 
 ///
 /// Deserializes `DBSHARINGLinkAction` instances.
@@ -190,6 +192,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 ///
 /// @return An instantiation of the `DBSHARINGLinkAction` object.
 ///
-+ (DBSHARINGLinkAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGLinkAction *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBTEAMGroupsListContinueArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,7 +26,7 @@
 #pragma mark - Instance fields
 
 /// Indicates from what point to get the next set of groups.
-@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString *cursor;
 
 #pragma mark - Constructors
 
@@ -35,9 +37,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
+- (instancetype)initWithCursor:(NSString *)cursor;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -56,7 +58,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupsListContinueArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsListContinueArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMGroupsListContinueArg *)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsListContinueArg` instances.
@@ -66,6 +68,8 @@
 ///
 /// @return An instantiation of the `DBTEAMGroupsListContinueArg` object.
 ///
-+ (DBTEAMGroupsListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMGroupsListContinueArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

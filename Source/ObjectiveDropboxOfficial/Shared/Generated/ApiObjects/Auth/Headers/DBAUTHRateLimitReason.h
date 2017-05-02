@@ -10,6 +10,8 @@
 
 @class DBAUTHRateLimitReason;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -51,7 +53,7 @@ typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTooManyRequests;
+- (instancetype)initWithTooManyRequests;
 
 ///
 /// Initializes union class with tag state of "too_many_write_operations".
@@ -61,16 +63,16 @@ typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTooManyWriteOperations;
+- (instancetype)initWithTooManyWriteOperations;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -103,7 +105,7 @@ typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -122,7 +124,7 @@ typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBAUTHRateLimitReason` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBAUTHRateLimitReason * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBAUTHRateLimitReason *)instance;
 
 ///
 /// Deserializes `DBAUTHRateLimitReason` instances.
@@ -132,6 +134,8 @@ typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
 ///
 /// @return An instantiation of the `DBAUTHRateLimitReason` object.
 ///
-+ (DBAUTHRateLimitReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBAUTHRateLimitReason *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

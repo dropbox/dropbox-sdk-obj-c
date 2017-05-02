@@ -9,18 +9,22 @@
 @class DBOAuthManager;
 @class DBTransportDefaultConfig;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBClientsManager (Protected)
 
-+ (void)setupWithOAuthManager:(DBOAuthManager * _Nonnull)oAuthManager
-              transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
++ (void)setupWithOAuthManager:(DBOAuthManager *)oAuthManager
+              transportConfig:(DBTransportDefaultConfig *)transportConfig;
 
-+ (void)setupWithOAuthManagerTeam:(DBOAuthManager * _Nonnull)oAuthManager
-                  transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
++ (void)setupWithOAuthManagerTeam:(DBOAuthManager *)oAuthManager
+                  transportConfig:(DBTransportDefaultConfig *)transportConfig;
 
-+ (void)setTransportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
++ (void)setTransportConfig:(DBTransportDefaultConfig *)transportConfig;
 
-+ (DBTransportDefaultConfig * _Nonnull)transportConfig;
++ (DBTransportDefaultConfig *)transportConfig;
 
-+ (void)setAppKey:(NSString * _Nonnull)appKey;
++ (void)setAppKey:(NSString *)appKey;
 
 @end
+
+NS_ASSUME_NONNULL_END

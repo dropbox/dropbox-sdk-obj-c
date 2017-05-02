@@ -10,6 +10,8 @@
 
 @class DBPAPERPaperDocExportResult;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,17 +26,17 @@
 #pragma mark - Instance fields
 
 /// The Paper doc owner's email.
-@property (nonatomic, readonly, copy) NSString * _Nonnull owner;
+@property (nonatomic, readonly, copy) NSString *owner;
 
 /// The Paper doc title.
-@property (nonatomic, readonly, copy) NSString * _Nonnull title;
+@property (nonatomic, readonly, copy) NSString *title;
 
 /// The Paper doc revision. Simply an ever increasing number.
-@property (nonatomic, readonly) NSNumber * _Nonnull revision;
+@property (nonatomic, readonly) NSNumber *revision;
 
 /// MIME type of the export. This corresponds to ExportFormat specified in the
 /// request.
-@property (nonatomic, readonly, copy) NSString * _Nonnull mimeType;
+@property (nonatomic, readonly, copy) NSString *mimeType;
 
 #pragma mark - Constructors
 
@@ -49,12 +51,12 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOwner:(NSString * _Nonnull)owner
-                                title:(NSString * _Nonnull)title
-                             revision:(NSNumber * _Nonnull)revision
-                             mimeType:(NSString * _Nonnull)mimeType;
+- (instancetype)initWithOwner:(NSString *)owner
+                        title:(NSString *)title
+                     revision:(NSNumber *)revision
+                     mimeType:(NSString *)mimeType;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -73,7 +75,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocExportResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERPaperDocExportResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERPaperDocExportResult *)instance;
 
 ///
 /// Deserializes `DBPAPERPaperDocExportResult` instances.
@@ -83,6 +85,8 @@
 ///
 /// @return An instantiation of the `DBPAPERPaperDocExportResult` object.
 ///
-+ (DBPAPERPaperDocExportResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERPaperDocExportResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

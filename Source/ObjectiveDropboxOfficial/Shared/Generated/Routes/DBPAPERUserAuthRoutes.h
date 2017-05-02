@@ -44,15 +44,18 @@
 ///
 /// Routes for the `Paper` namespace
 ///
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBPAPERUserAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> client;
 
 /// Initializes the `DBPAPERUserAuthRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
+- (instancetype)init:(id<DBTransportClient>)client;
 
 ///
 /// Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.
@@ -62,7 +65,7 @@
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> * _Nonnull)docsArchive:(NSString * _Nonnull)docId;
+- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> *)docsArchive:(NSString *)docId;
 
 ///
 /// Exports and downloads Paper doc either as HTML or markdown.
@@ -75,11 +78,11 @@
 /// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
 /// a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBDownloadUrlTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> * _Nonnull)
-docsDownloadUrl:(NSString * _Nonnull)docId
-   exportFormat:(DBPAPERExportFormat * _Nonnull)exportFormat
+- (DBDownloadUrlTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
+docsDownloadUrl:(NSString *)docId
+   exportFormat:(DBPAPERExportFormat *)exportFormat
       overwrite:(BOOL)overwrite
-    destination:(NSURL * _Nonnull)destination;
+    destination:(NSURL *)destination;
 
 ///
 /// Exports and downloads Paper doc either as HTML or markdown.
@@ -96,13 +99,13 @@ docsDownloadUrl:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
 /// a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBDownloadUrlTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> * _Nonnull)
-docsDownloadUrl:(NSString * _Nonnull)docId
-   exportFormat:(DBPAPERExportFormat * _Nonnull)exportFormat
+- (DBDownloadUrlTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
+docsDownloadUrl:(NSString *)docId
+   exportFormat:(DBPAPERExportFormat *)exportFormat
       overwrite:(BOOL)overwrite
-    destination:(NSURL * _Nonnull)destination
-byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
-  byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+    destination:(NSURL *)destination
+byteOffsetStart:(NSNumber *)byteOffsetStart
+  byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Exports and downloads Paper doc either as HTML or markdown.
@@ -111,9 +114,9 @@ byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
 /// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
 /// a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> * _Nonnull)
-docsDownloadData:(NSString * _Nonnull)docId
-    exportFormat:(DBPAPERExportFormat * _Nonnull)exportFormat;
+- (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)docsDownloadData:(NSString *)docId
+                                                                                    exportFormat:(DBPAPERExportFormat *)
+                                                                                                     exportFormat;
 
 ///
 /// Exports and downloads Paper doc either as HTML or markdown.
@@ -126,11 +129,11 @@ docsDownloadData:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
 /// a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> * _Nonnull)
-docsDownloadData:(NSString * _Nonnull)docId
-    exportFormat:(DBPAPERExportFormat * _Nonnull)exportFormat
- byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
-   byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+- (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
+docsDownloadData:(NSString *)docId
+    exportFormat:(DBPAPERExportFormat *)exportFormat
+ byteOffsetStart:(NSNumber *)byteOffsetStart
+   byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private
@@ -141,8 +144,7 @@ docsDownloadData:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERListUsersOnFolderResponse` object on
 /// success or a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBPAPERListUsersOnFolderResponse *, DBPAPERDocLookupError *> * _Nonnull)docsFolderUsersList:
-    (NSString * _Nonnull)docId;
+- (DBRpcTask<DBPAPERListUsersOnFolderResponse *, DBPAPERDocLookupError *> *)docsFolderUsersList:(NSString *)docId;
 
 ///
 /// Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private
@@ -155,9 +157,9 @@ docsDownloadData:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERListUsersOnFolderResponse` object on
 /// success or a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBPAPERListUsersOnFolderResponse *, DBPAPERDocLookupError *> * _Nonnull)
-docsFolderUsersList:(NSString * _Nonnull)docId
-              limit:(NSNumber * _Nullable)limit;
+- (DBRpcTask<DBPAPERListUsersOnFolderResponse *, DBPAPERDocLookupError *> *)docsFolderUsersList:(NSString *)docId
+                                                                                          limit:(nullable NSNumber *)
+                                                                                                    limit;
 
 ///
 /// Once a cursor has been retrieved from `docsFolderUsersList`, use this to paginate through all users on the Paper
@@ -169,9 +171,9 @@ docsFolderUsersList:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERListUsersOnFolderResponse` object on
 /// success or a `DBPAPERListUsersCursorError` object on failure.
 ///
-- (DBRpcTask<DBPAPERListUsersOnFolderResponse *, DBPAPERListUsersCursorError *> * _Nonnull)
-docsFolderUsersListContinue:(NSString * _Nonnull)docId
-                     cursor:(NSString * _Nonnull)cursor;
+- (DBRpcTask<DBPAPERListUsersOnFolderResponse *, DBPAPERListUsersCursorError *> *)
+docsFolderUsersListContinue:(NSString *)docId
+                     cursor:(NSString *)cursor;
 
 ///
 /// Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for
@@ -183,8 +185,7 @@ docsFolderUsersListContinue:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERFoldersContainingPaperDoc` object on
 /// success or a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBPAPERFoldersContainingPaperDoc *, DBPAPERDocLookupError *> * _Nonnull)docsGetFolderInfo:
-    (NSString * _Nonnull)docId;
+- (DBRpcTask<DBPAPERFoldersContainingPaperDoc *, DBPAPERDocLookupError *> *)docsGetFolderInfo:(NSString *)docId;
 
 ///
 /// Return the list of all Paper docs according to the argument specifications. To iterate over through the full
@@ -194,7 +195,7 @@ docsFolderUsersListContinue:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERListPaperDocsResponse` object on success or
 /// a `void` object on failure.
 ///
-- (DBRpcTask<DBPAPERListPaperDocsResponse *, DBNilObject *> * _Nonnull)docsList;
+- (DBRpcTask<DBPAPERListPaperDocsResponse *, DBNilObject *> *)docsList;
 
 ///
 /// Return the list of all Paper docs according to the argument specifications. To iterate over through the full
@@ -209,11 +210,11 @@ docsFolderUsersListContinue:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERListPaperDocsResponse` object on success or
 /// a `void` object on failure.
 ///
-- (DBRpcTask<DBPAPERListPaperDocsResponse *, DBNilObject *> * _Nonnull)
- docsList:(DBPAPERListPaperDocsFilterBy * _Nullable)filterBy
-   sortBy:(DBPAPERListPaperDocsSortBy * _Nullable)sortBy
-sortOrder:(DBPAPERListPaperDocsSortOrder * _Nullable)sortOrder
-    limit:(NSNumber * _Nullable)limit;
+- (DBRpcTask<DBPAPERListPaperDocsResponse *, DBNilObject *> *)docsList:(nullable DBPAPERListPaperDocsFilterBy *)filterBy
+                                                                sortBy:(nullable DBPAPERListPaperDocsSortBy *)sortBy
+                                                             sortOrder:
+                                                                 (nullable DBPAPERListPaperDocsSortOrder *)sortOrder
+                                                                 limit:(nullable NSNumber *)limit;
 
 ///
 /// Once a cursor has been retrieved from `docsList`, use this to paginate through all Paper doc.
@@ -223,8 +224,7 @@ sortOrder:(DBPAPERListPaperDocsSortOrder * _Nullable)sortOrder
 /// @return Through the response callback, the caller will receive a `DBPAPERListPaperDocsResponse` object on success or
 /// a `DBPAPERListDocsCursorError` object on failure.
 ///
-- (DBRpcTask<DBPAPERListPaperDocsResponse *, DBPAPERListDocsCursorError *> * _Nonnull)docsListContinue:
-    (NSString * _Nonnull)cursor;
+- (DBRpcTask<DBPAPERListPaperDocsResponse *, DBPAPERListDocsCursorError *> *)docsListContinue:(NSString *)cursor;
 
 ///
 /// Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered.  Note: This action
@@ -234,7 +234,7 @@ sortOrder:(DBPAPERListPaperDocsSortOrder * _Nullable)sortOrder
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> * _Nonnull)docsPermanentlyDelete:(NSString * _Nonnull)docId;
+- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> *)docsPermanentlyDelete:(NSString *)docId;
 
 ///
 /// Gets the default sharing policy for the given Paper doc.
@@ -243,7 +243,7 @@ sortOrder:(DBPAPERListPaperDocsSortOrder * _Nullable)sortOrder
 /// @return Through the response callback, the caller will receive a `DBPAPERSharingPolicy` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBPAPERSharingPolicy *, DBPAPERDocLookupError *> * _Nonnull)docsSharingPolicyGet:(NSString * _Nonnull)docId;
+- (DBRpcTask<DBPAPERSharingPolicy *, DBPAPERDocLookupError *> *)docsSharingPolicyGet:(NSString *)docId;
 
 ///
 /// Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by
@@ -255,9 +255,8 @@ sortOrder:(DBPAPERListPaperDocsSortOrder * _Nullable)sortOrder
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> * _Nonnull)docsSharingPolicySet:(NSString * _Nonnull)docId
-                                                                      sharingPolicy:
-                                                                          (DBPAPERSharingPolicy * _Nonnull)sharingPolicy;
+- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> *)docsSharingPolicySet:(NSString *)docId
+                                                              sharingPolicy:(DBPAPERSharingPolicy *)sharingPolicy;
 
 ///
 /// Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox
@@ -268,9 +267,9 @@ sortOrder:(DBPAPERListPaperDocsSortOrder * _Nullable)sortOrder
 /// @return Through the response callback, the caller will receive a `NSArray<DBPAPERAddPaperDocUserMemberResult *>`
 /// object on success or a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBPAPERAddPaperDocUserMemberResult *> *, DBPAPERDocLookupError *> * _Nonnull)
-docsUsersAdd:(NSString * _Nonnull)docId
-     members:(NSArray<DBPAPERAddMember *> * _Nonnull)members;
+- (DBRpcTask<NSArray<DBPAPERAddPaperDocUserMemberResult *> *, DBPAPERDocLookupError *> *)
+docsUsersAdd:(NSString *)docId
+     members:(NSArray<DBPAPERAddMember *> *)members;
 
 ///
 /// Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox
@@ -283,11 +282,11 @@ docsUsersAdd:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `NSArray<DBPAPERAddPaperDocUserMemberResult *>`
 /// object on success or a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBPAPERAddPaperDocUserMemberResult *> *, DBPAPERDocLookupError *> * _Nonnull)
- docsUsersAdd:(NSString * _Nonnull)docId
-      members:(NSArray<DBPAPERAddMember *> * _Nonnull)members
-customMessage:(NSString * _Nullable)customMessage
-        quiet:(NSNumber * _Nullable)quiet;
+- (DBRpcTask<NSArray<DBPAPERAddPaperDocUserMemberResult *> *, DBPAPERDocLookupError *> *)
+ docsUsersAdd:(NSString *)docId
+      members:(NSArray<DBPAPERAddMember *> *)members
+customMessage:(nullable NSString *)customMessage
+        quiet:(nullable NSNumber *)quiet;
 
 ///
 /// Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been
@@ -298,8 +297,7 @@ customMessage:(NSString * _Nullable)customMessage
 /// @return Through the response callback, the caller will receive a `DBPAPERListUsersOnPaperDocResponse` object on
 /// success or a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBPAPERListUsersOnPaperDocResponse *, DBPAPERDocLookupError *> * _Nonnull)docsUsersList:
-    (NSString * _Nonnull)docId;
+- (DBRpcTask<DBPAPERListUsersOnPaperDocResponse *, DBPAPERDocLookupError *> *)docsUsersList:(NSString *)docId;
 
 ///
 /// Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been
@@ -313,10 +311,10 @@ customMessage:(NSString * _Nullable)customMessage
 /// @return Through the response callback, the caller will receive a `DBPAPERListUsersOnPaperDocResponse` object on
 /// success or a `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBPAPERListUsersOnPaperDocResponse *, DBPAPERDocLookupError *> * _Nonnull)
-docsUsersList:(NSString * _Nonnull)docId
-        limit:(NSNumber * _Nullable)limit
-     filterBy:(DBPAPERUserOnPaperDocFilter * _Nullable)filterBy;
+- (DBRpcTask<DBPAPERListUsersOnPaperDocResponse *, DBPAPERDocLookupError *> *)
+docsUsersList:(NSString *)docId
+        limit:(nullable NSNumber *)limit
+     filterBy:(nullable DBPAPERUserOnPaperDocFilter *)filterBy;
 
 ///
 /// Once a cursor has been retrieved from `docsUsersList`, use this to paginate through all users on the Paper doc.
@@ -326,9 +324,9 @@ docsUsersList:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `DBPAPERListUsersOnPaperDocResponse` object on
 /// success or a `DBPAPERListUsersCursorError` object on failure.
 ///
-- (DBRpcTask<DBPAPERListUsersOnPaperDocResponse *, DBPAPERListUsersCursorError *> * _Nonnull)
-docsUsersListContinue:(NSString * _Nonnull)docId
-               cursor:(NSString * _Nonnull)cursor;
+- (DBRpcTask<DBPAPERListUsersOnPaperDocResponse *, DBPAPERListUsersCursorError *> *)
+docsUsersListContinue:(NSString *)docId
+               cursor:(NSString *)cursor;
 
 ///
 /// Allows an owner or editor to remove users from a Paper doc using their email or Dropbox account id.  Note: Doc owner
@@ -339,8 +337,9 @@ docsUsersListContinue:(NSString * _Nonnull)docId
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> * _Nonnull)docsUsersRemove:(NSString * _Nonnull)docId
-                                                                        member:
-                                                                            (DBSHARINGMemberSelector * _Nonnull)member;
+- (DBRpcTask<DBNilObject *, DBPAPERDocLookupError *> *)docsUsersRemove:(NSString *)docId
+                                                                member:(DBSHARINGMemberSelector *)member;
 
 @end
+
+NS_ASSUME_NONNULL_END

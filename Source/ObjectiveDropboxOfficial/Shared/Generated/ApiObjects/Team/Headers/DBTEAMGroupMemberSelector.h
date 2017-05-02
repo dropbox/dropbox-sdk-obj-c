@@ -12,6 +12,8 @@
 @class DBTEAMGroupSelector;
 @class DBTEAMUserSelectorArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -28,10 +30,10 @@
 #pragma mark - Instance fields
 
 /// Specify a group.
-@property (nonatomic, readonly) DBTEAMGroupSelector * _Nonnull group;
+@property (nonatomic, readonly) DBTEAMGroupSelector *group;
 
 /// Identity of a user that is a member of group.
-@property (nonatomic, readonly) DBTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBTEAMUserSelectorArg *user;
 
 #pragma mark - Constructors
 
@@ -43,9 +45,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroup:(DBTEAMGroupSelector * _Nonnull)group user:(DBTEAMUserSelectorArg * _Nonnull)user;
+- (instancetype)initWithGroup:(DBTEAMGroupSelector *)group user:(DBTEAMUserSelectorArg *)user;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -64,7 +66,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupMemberSelector` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMemberSelector * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMGroupMemberSelector *)instance;
 
 ///
 /// Deserializes `DBTEAMGroupMemberSelector` instances.
@@ -74,6 +76,8 @@
 ///
 /// @return An instantiation of the `DBTEAMGroupMemberSelector` object.
 ///
-+ (DBTEAMGroupMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMGroupMemberSelector *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBTEAMAdminTier;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -55,7 +57,7 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamAdmin;
+- (instancetype)initWithTeamAdmin;
 
 ///
 /// Initializes union class with tag state of "user_management_admin".
@@ -65,7 +67,7 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUserManagementAdmin;
+- (instancetype)initWithUserManagementAdmin;
 
 ///
 /// Initializes union class with tag state of "support_admin".
@@ -75,7 +77,7 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSupportAdmin;
+- (instancetype)initWithSupportAdmin;
 
 ///
 /// Initializes union class with tag state of "member_only".
@@ -85,9 +87,9 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMemberOnly;
+- (instancetype)initWithMemberOnly;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -126,7 +128,7 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -145,7 +147,7 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 /// @return A json-compatible dictionary representation of the `DBTEAMAdminTier`
 /// API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMAdminTier * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMAdminTier *)instance;
 
 ///
 /// Deserializes `DBTEAMAdminTier` instances.
@@ -155,6 +157,8 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 ///
 /// @return An instantiation of the `DBTEAMAdminTier` object.
 ///
-+ (DBTEAMAdminTier * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMAdminTier *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

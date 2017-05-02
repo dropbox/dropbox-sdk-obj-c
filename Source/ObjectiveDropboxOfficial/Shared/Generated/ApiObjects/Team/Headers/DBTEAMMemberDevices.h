@@ -13,6 +13,8 @@
 @class DBTEAMMemberDevices;
 @class DBTEAMMobileClientSession;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -29,16 +31,16 @@
 #pragma mark - Instance fields
 
 /// The member unique Id
-@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString *teamMemberId;
 
 /// List of web sessions made by this team member
-@property (nonatomic, readonly) NSArray<DBTEAMActiveWebSession *> * _Nullable webSessions;
+@property (nonatomic, readonly, nullable) NSArray<DBTEAMActiveWebSession *> *webSessions;
 
 /// List of desktop clients by this team member
-@property (nonatomic, readonly) NSArray<DBTEAMDesktopClientSession *> * _Nullable desktopClients;
+@property (nonatomic, readonly, nullable) NSArray<DBTEAMDesktopClientSession *> *desktopClients;
 
 /// List of mobile clients by this team member
-@property (nonatomic, readonly) NSArray<DBTEAMMobileClientSession *> * _Nullable mobileClients;
+@property (nonatomic, readonly, nullable) NSArray<DBTEAMMobileClientSession *> *mobileClients;
 
 #pragma mark - Constructors
 
@@ -52,10 +54,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId
-                                 webSessions:(NSArray<DBTEAMActiveWebSession *> * _Nullable)webSessions
-                              desktopClients:(NSArray<DBTEAMDesktopClientSession *> * _Nullable)desktopClients
-                               mobileClients:(NSArray<DBTEAMMobileClientSession *> * _Nullable)mobileClients;
+- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId
+                         webSessions:(nullable NSArray<DBTEAMActiveWebSession *> *)webSessions
+                      desktopClients:(nullable NSArray<DBTEAMDesktopClientSession *> *)desktopClients
+                       mobileClients:(nullable NSArray<DBTEAMMobileClientSession *> *)mobileClients;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -65,9 +67,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
+- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -86,7 +88,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMemberDevices` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMemberDevices * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMemberDevices *)instance;
 
 ///
 /// Deserializes `DBTEAMMemberDevices` instances.
@@ -96,6 +98,8 @@
 ///
 /// @return An instantiation of the `DBTEAMMemberDevices` object.
 ///
-+ (DBTEAMMemberDevices * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMemberDevices *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END
