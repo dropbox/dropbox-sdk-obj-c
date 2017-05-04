@@ -20,13 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBRpcTaskImpl : DBRpcTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionDataTask * dataTask;
+@property (nonatomic, readonly) NSURLSessionDataTask *dataTask;
 
 /// The session that was used to make to the request.
-@property (nonatomic, readonly) NSURLSession * session;
+@property (nonatomic, readonly) NSURLSession *session;
 
 /// The delegate used manage handler code.
-@property (nonatomic, readonly) DBDelegate * delegate;
+@property (nonatomic, readonly) DBDelegate *delegate;
 
 ///
 /// `DBRpcTaskImpl` full constructor.
@@ -40,9 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionDataTask *)task
-                             session:(NSURLSession *)session
-                            delegate:(DBDelegate *)delegate
-                               route:(DBRoute *)route;
+                     session:(NSURLSession *)session
+                    delegate:(DBDelegate *)delegate
+                       route:(DBRoute *)route;
 @end
 
 #pragma mark - Upload-style network task
@@ -50,19 +50,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBUploadTaskImpl : DBUploadTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionUploadTask * uploadTask;
+@property (nonatomic, readonly) NSURLSessionUploadTask *uploadTask;
 
 /// The session that was used to make to the request.
-@property (nonatomic, readonly) NSURLSession * session;
+@property (nonatomic, readonly) NSURLSession *session;
 
 /// The delegate used manage handler code.
-@property (nonatomic, readonly) DBDelegate * delegate;
+@property (nonatomic, readonly) DBDelegate *delegate;
 
 /// The url to upload.
-@property (nonatomic, readonly, nullable) NSURL * inputUrl;
+@property (nonatomic, readonly, nullable) NSURL *inputUrl;
 
 /// The data to upload.
-@property (nonatomic, readonly, nullable) NSData * inputData;
+@property (nonatomic, readonly, nullable) NSData *inputData;
 
 ///
 /// `DBUploadTask` full constructor.
@@ -78,11 +78,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionUploadTask *)task
-                             session:(NSURLSession *)session
-                            delegate:(DBDelegate *)delegate
-                               route:(DBRoute *)route
-                            inputUrl:(nullable NSURL *)inputUrl
-                           inputData:(nullable NSData *)inputData;
+                     session:(NSURLSession *)session
+                    delegate:(DBDelegate *)delegate
+                       route:(DBRoute *)route
+                    inputUrl:(nullable NSURL *)inputUrl
+                   inputData:(nullable NSData *)inputData;
 @end
 
 #pragma mark - Download-style network task (NSURL)
@@ -90,13 +90,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBDownloadUrlTaskImpl : DBDownloadUrlTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionDownloadTask * downloadUrlTask;
+@property (nonatomic, readonly) NSURLSessionDownloadTask *downloadUrlTask;
 
 /// The session that was used to make to the request.
-@property (nonatomic, readonly) NSURLSession * session;
+@property (nonatomic, readonly) NSURLSession *session;
 
 /// The delegate used manage handler code.
-@property (nonatomic, readonly) DBDelegate * delegate;
+@property (nonatomic, readonly) DBDelegate *delegate;
 
 ///
 /// `DBDownloadUrlTask` full constructor.
@@ -112,11 +112,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
-                             session:(NSURLSession *)session
-                            delegate:(DBDelegate *)delegate
-                               route:(DBRoute *)route
-                           overwrite:(BOOL)overwrite
-                         destination:(NSURL *)destination;
+                     session:(NSURLSession *)session
+                    delegate:(DBDelegate *)delegate
+                       route:(DBRoute *)route
+                   overwrite:(BOOL)overwrite
+                 destination:(NSURL *)destination;
 @end
 
 #pragma mark - Download-style network task (NSData)
@@ -124,13 +124,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBDownloadDataTaskImpl : DBDownloadDataTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionDownloadTask * downloadDataTask;
+@property (nonatomic, readonly) NSURLSessionDownloadTask *downloadDataTask;
 
 /// The session that was used to make to the request.
-@property (nonatomic, readonly) NSURLSession * session;
+@property (nonatomic, readonly) NSURLSession *session;
 
 /// The delegate used manage handler code.
-@property (nonatomic, readonly) DBDelegate * delegate;
+@property (nonatomic, readonly) DBDelegate *delegate;
 
 ///
 /// DBDownloadDataTask full constructor.
@@ -144,9 +144,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
-                             session:(NSURLSession *)session
-                            delegate:(DBDelegate *)delegate
-                               route:(DBRoute *)route;
+                     session:(NSURLSession *)session
+                    delegate:(DBDelegate *)delegate
+                       route:(DBRoute *)route;
 @end
 
 NS_ASSUME_NONNULL_END

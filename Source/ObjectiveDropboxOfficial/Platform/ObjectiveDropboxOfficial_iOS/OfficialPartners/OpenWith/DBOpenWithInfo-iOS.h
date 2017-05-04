@@ -15,34 +15,34 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBOpenWithInfo : NSObject <NSCoding>
 
 /// The Dropbox user ID of the current user.
-@property (nonatomic, copy, readonly) NSString * userId;
+@property (nonatomic, copy, readonly) NSString *userId;
 
 /// The Dropbox revision for the file.
-@property (nonatomic, copy, readonly) NSString * rev;
+@property (nonatomic, copy, readonly) NSString *rev;
 
 /// The Dropbox path for the file.
-@property (nonatomic, copy, readonly) NSString * path;
+@property (nonatomic, copy, readonly) NSString *path;
 
 /// The time the file was modified last.
-@property (nonatomic, copy, readonly, nullable) NSDate * modifiedTime;
+@property (nonatomic, copy, readonly, nullable) NSDate *modifiedTime;
 
 /// Whether the file is read only or not.
 @property (nonatomic, readonly) BOOL readOnly;
 
 /// The Dropbox verb associated with the file.
-@property (nonatomic, copy, readonly) NSString * verb;
+@property (nonatomic, copy, readonly) NSString *verb;
 
 /// The Dropbox session ID associated with the file.
-@property (nonatomic, copy, readonly, nullable) NSString * sessionId;
+@property (nonatomic, copy, readonly, nullable) NSString *sessionId;
 
 /// The Dropbox file ID associated with the file.
-@property (nonatomic, copy, readonly, nullable) NSString * fileId;
+@property (nonatomic, copy, readonly, nullable) NSString *fileId;
 
 /// Relevant Dropbox file data associated with the file.
-@property (nonatomic, copy, readonly, nullable) NSData * fileData;
+@property (nonatomic, copy, readonly, nullable) NSData *fileData;
 
 /// The source application from which the file content originated.
-@property (nonatomic, copy, readonly, nullable) NSString * sourceApp;
+@property (nonatomic, copy, readonly, nullable) NSString *sourceApp;
 
 ///
 /// Initializer containing the parameters that we were opened with. Some of these parameters are necessary to return to
@@ -63,15 +63,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sourceApp The source application from which the file content originated.
 ///
 - (id)initWithUserId:(NSString *)userId
-                          rev:(NSString *)rev
-                         path:(NSString *)path
-                 modifiedTime:(nullable NSDate *)modifiedTime
-                     readOnly:(BOOL)readOnly
-                         verb:(NSString *)verb
-                    sessionId:(nullable NSString *)sessionId
-                       fileId:(nullable NSString *)fileId
-                     fileData:(nullable NSData *)fileData
-                    sourceApp:(nullable NSString *)sourceApp;
+                 rev:(NSString *)rev
+                path:(NSString *)path
+        modifiedTime:(nullable NSDate *)modifiedTime
+            readOnly:(BOOL)readOnly
+                verb:(NSString *)verb
+           sessionId:(nullable NSString *)sessionId
+              fileId:(nullable NSString *)fileId
+            fileData:(nullable NSData *)fileData
+           sourceApp:(nullable NSString *)sourceApp;
 
 ///
 /// Saves open with info to disc.

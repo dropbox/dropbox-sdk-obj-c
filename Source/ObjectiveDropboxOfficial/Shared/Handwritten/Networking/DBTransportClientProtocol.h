@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DBTransportClient <NSObject>
 
 /// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic, copy, nullable) NSString * accessToken;
+@property (nonatomic, copy, nullable) NSString *accessToken;
 
 #pragma mark - RPC-style request
 

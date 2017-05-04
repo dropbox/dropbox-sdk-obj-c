@@ -26,8 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedApplication:(NSWorkspace *)sharedApplication
-                                       controller:(NSViewController *)controller
-                                          openURL:(void (^_Nonnull)(NSURL *))openURL;
+                               controller:(NSViewController *)controller
+                                  openURL:(void (^_Nonnull)(NSURL *))openURL;
 
 @end
 

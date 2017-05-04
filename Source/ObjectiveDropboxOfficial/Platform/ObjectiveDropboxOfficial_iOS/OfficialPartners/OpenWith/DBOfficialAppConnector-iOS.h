@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAppKey:(NSString *)appKey
-                     canOpenURLWrapper:(BOOL (^)(NSURL *))canOpenURLWrapper
-                        openURLWrapper:(void (^)(NSURL *))openURLWrapper;
+             canOpenURLWrapper:(BOOL (^)(NSURL *))canOpenURLWrapper
+                openURLWrapper:(void (^)(NSURL *))openURLWrapper;
 
 ///
 /// Returns to the Dropbox app specified by app

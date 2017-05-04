@@ -2,15 +2,15 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBTasksStorage.h"
 #import "DBSDKConstants.h"
 #import "DBTasksImpl.h"
-#import "DBTasksStorage.h"
 
 @interface DBTasksStorage ()
 
-@property (nonatomic) NSMutableDictionary<NSString *, DBUploadTaskImpl *> * uploadTasks;
-@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadUrlTaskImpl *> * downloadUrlTasks;
-@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadDataTaskImpl *> * downloadDataTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBUploadTaskImpl *> *uploadTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadUrlTaskImpl *> *downloadUrlTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadDataTaskImpl *> *downloadDataTasks;
 
 @property (nonatomic) BOOL cancel;
 

@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
 
 /// The access token that is retrieved in the event of a successful OAuth authorization.
 /// @note Ensure the `isSuccess` method returns true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBAccessToken * accessToken;
+@property (nonatomic, readonly) DBAccessToken *accessToken;
 
 /// The type of OAuth error that is returned in the event of an unsuccessful OAuth authorization.
 /// @note Ensure the `isError` method returns true before accessing, otherwise a runtime exception will be raised.
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
 /// The error description string associated with the `DBAuthErrorType` that is returned in the event of an unsuccessful
 /// OAuth authorization.
 /// @note Ensure the `isError` method returns true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString * errorDescription;
+@property (nonatomic, readonly, copy) NSString *errorDescription;
 
 #pragma mark - Constructors
 
@@ -91,8 +91,7 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
 ///
 /// @return An initialized `DBOAuthResult` instance.
 ///
-- (instancetype)initWithError:(NSString *)errorType
-                     errorDescription:(NSString *)errorDescription;
+- (instancetype)initWithError:(NSString *)errorType errorDescription:(NSString *)errorDescription;
 
 ///
 /// Initializes union class with tag state of "cancel".

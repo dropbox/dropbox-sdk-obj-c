@@ -2,8 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBCustomDatatypes.h"
 #import "DBCustomTasks.h"
+#import "DBCustomDatatypes.h"
 #import "DBTasksStorage.h"
 
 @implementation DBBatchUploadTask {

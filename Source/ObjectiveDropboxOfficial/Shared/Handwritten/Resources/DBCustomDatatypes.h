@@ -71,9 +71,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFileCommitInfo:(NSDictionary<NSURL *, DBFILESCommitInfo *> *)fileUrlsToCommitInfo
-                                 progressBlock:(DBProgressBlock _Nullable)progressBlock
-                                 responseBlock:(DBBatchUploadResponseBlock)responseBlock
-                                         queue:(NSOperationQueue *)queue;
+                         progressBlock:(DBProgressBlock _Nullable)progressBlock
+                         responseBlock:(DBBatchUploadResponseBlock)responseBlock
+                                 queue:(NSOperationQueue *)queue;
 
 @end
 

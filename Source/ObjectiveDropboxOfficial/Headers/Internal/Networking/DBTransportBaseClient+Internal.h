@@ -16,19 +16,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBTransportBaseClient (Internal)
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
-                                   accessToken:(NSString *)accessToken
-                                 serializedArg:(NSString *)serializedArg;
+                           accessToken:(NSString *)accessToken
+                         serializedArg:(NSString *)serializedArg;
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
-                                   accessToken:(NSString *)accessToken
-                                 serializedArg:(NSString *)serializedArg
-                               byteOffsetStart:(nullable NSNumber *)byteOffsetStart
-                                 byteOffsetEnd:(nullable NSNumber *)byteOffsetEnd;
+                           accessToken:(NSString *)accessToken
+                         serializedArg:(NSString *)serializedArg
+                       byteOffsetStart:(nullable NSNumber *)byteOffsetStart
+                         byteOffsetEnd:(nullable NSNumber *)byteOffsetEnd;
 
 + (NSURLRequest *)requestWithHeaders:(NSDictionary *)httpHeaders
-                                         url:(NSURL *)url
-                                     content:(nullable NSData *)content
-                                      stream:(nullable NSInputStream *)stream;
+                                 url:(NSURL *)url
+                             content:(nullable NSData *)content
+                              stream:(nullable NSInputStream *)stream;
 
 + (NSURL *)urlWithRoute:(DBRoute *)route;
 
@@ -44,13 +44,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable id)routeErrorWithRoute:(nullable DBRoute *)route data:(nullable NSData *)data statusCode:(int)statusCode;
 
 + (nullable id)routeResultWithRoute:(nullable DBRoute *)route
-                                data:(nullable NSData *)data
-                  serializationError:(NSError * _Nullable * _Nullable)serializationError;
+                               data:(nullable NSData *)data
+                 serializationError:(NSError *_Nullable *_Nullable)serializationError;
 
 + (BOOL)statusCodeIsRouteError:(int)statusCode;
 
 + (nullable NSString *)caseInsensitiveLookupWithKey:(nullable NSString *)lookupKey
-                                         dictionary:(NSDictionary<id, id> * _Nullable)dictionary;
+                                         dictionary:(NSDictionary<id, id> *_Nullable)dictionary;
 
 + (NSString *)sdkVersion;
 

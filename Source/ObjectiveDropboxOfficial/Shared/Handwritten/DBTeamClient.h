@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAccessToken:(NSString *)accessToken
-                            transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
+                    transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///
 /// Returns a `DBUserClient` instance that can be used to make API calls on behalf of the designated team member.

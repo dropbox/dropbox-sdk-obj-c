@@ -255,7 +255,7 @@ typedef void (^DBUploadResponseBlock)(TResponse _Nullable result, TError _Nullab
 }
 
 typedef void (^DBDownloadUrlResponseBlock)(TResponse _Nullable result, TError _Nullable routeError,
-                                           DBRequestError * _Nullable networkError, NSURL * destination);
+                                           DBRequestError *_Nullable networkError, NSURL *destination);
 
 ///
 /// Installs a response handler for the current request.

@@ -378,7 +378,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   NSMutableDictionary<NSString *, NSString *> *tokenConversionResults = [NSMutableDictionary new];
   NSLock *tokenConversionResultsLock = [NSLock new];
 
-  NSMutableArray<NSArray<NSString *> *> * unsuccessfullyMigratedTokenData = [NSMutableArray new];
+  NSMutableArray<NSArray<NSString *> *> *unsuccessfullyMigratedTokenData = [NSMutableArray new];
   NSLock *unsuccessfullyMigratedTokenDataLock = [NSLock new];
 
   for (NSArray<NSString *> *v1TokenData in v1TokensData) {

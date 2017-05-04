@@ -20,11 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBAccessToken : NSObject
 
 /// The OAuth2 access token.
-@property (nonatomic, readonly, copy) NSString * accessToken;
+@property (nonatomic, readonly, copy) NSString *accessToken;
 
 /// The unique identifier of the access token used for storing in `DBKeychain`. Either the `account_id` (if user app) or
 /// the `team_id` if (team app).
-@property (nonatomic, readonly, copy) NSString * uid;
+@property (nonatomic, readonly, copy) NSString *uid;
 
 ///
 /// DBAccessToken full constructor.
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 /// Sets the locale of the OAuth flow webpages. If `nil`, then defaults to device locale.
-@property (nonatomic, strong) NSLocale * locale;
+@property (nonatomic, strong) NSLocale *locale;
 
 #pragma mark - Shared instance accessors and mutators
 

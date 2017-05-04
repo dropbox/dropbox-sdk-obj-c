@@ -29,8 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedApplication:(UIApplication *)sharedApplication
-                                       controller:(UIViewController *)controller
-                                          openURL:(void (^_Nonnull)(NSURL *))openURL;
+                               controller:(UIViewController *)controller
+                                  openURL:(void (^_Nonnull)(NSURL *))openURL;
 
 + (nullable DBMobileSharedApplication *)mobileSharedApplication;
 

@@ -11,8 +11,8 @@
 static DBNetworkErrorResponseBlock s_networkErrorResponseBlock = nil;
 static NSOperationQueue *s_networkErrorQueue;
 
-static NSMutableDictionary<Class, DBRouteErrorResponseBlock> * _Nullable s_routeErrorToResponseBlock;
-static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorToQueue;
+static NSMutableDictionary<Class, DBRouteErrorResponseBlock> *_Nullable s_routeErrorToResponseBlock;
+static NSMutableDictionary<Class, NSOperationQueue *> *_Nullable s_routeErrorToQueue;
 
 @implementation DBGlobalErrorResponseHandler
 

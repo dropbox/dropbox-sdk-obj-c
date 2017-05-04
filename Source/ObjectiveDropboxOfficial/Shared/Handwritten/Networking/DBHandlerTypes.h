@@ -28,8 +28,8 @@ typedef void (^DBProgressBlock)(int64_t bytesWritten, int64_t totalBytesWritten,
 /// `/upload_session/finish_batch/check`. The fourth argument is a mapping of client-side NSURLs to general request
 /// errors, which occured during the upload of the corresponding file.
 typedef void (^DBBatchUploadResponseBlock)(
-    NSDictionary<NSURL *, DBFILESUploadSessionFinishBatchResultEntry *> * _Nullable fileUrlsToBatchResultEntries,
-    DBASYNCPollError * _Nullable finishBatchRouteError, DBRequestError * _Nullable finishBatchRequestError,
+    NSDictionary<NSURL *, DBFILESUploadSessionFinishBatchResultEntry *> *_Nullable fileUrlsToBatchResultEntries,
+    DBASYNCPollError *_Nullable finishBatchRouteError, DBRequestError *_Nullable finishBatchRequestError,
     NSDictionary<NSURL *, DBRequestError *> *fileUrlsToRequestErrors);
 
 /// Special custom response block for performing SDK token migration between API v1 tokens and API v2 tokens. First

@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAccessToken:(NSString *)accessToken
-                            transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
+                    transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///
 /// Returns the current access token used to make API requests.

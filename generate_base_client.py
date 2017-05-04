@@ -40,7 +40,7 @@ _cmdline_parser.add_argument(
 )
 _cmdline_parser.add_argument(
     '-o',
-    '--output_path',
+    '--output-path',
     type=str,
     help='Path to generation output.',
 )
@@ -49,6 +49,12 @@ _cmdline_parser.add_argument(
     '--clang-format-path',
     type=str,
     help='Path clang-format tool for formatting code.',
+)
+_cmdline_parser.add_argument(
+    '-f',
+    '--format-output-path',
+    type=str,
+    help='Path to format output.',
 )
 
 
@@ -74,7 +80,8 @@ def main():
     dropbox_src_path = os.path.abspath('Source')
     dropbox_default_output_path = os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
     dropbox_pkg_path = args.output_path if args.output_path else dropbox_default_output_path
-    dropbox_format_path = os.path.abspath('Format')
+    dropbox_format_script_path = os.path.abspath('Format')
+    dropbox_format_output_path = args.format_output_path if args.format_output_path else dropbox_src_path
 
     # if os.path.exists(dropbox_default_output_path):
     #     shutil.rmtree(dropbox_default_output_path)
@@ -127,10 +134,10 @@ def main():
     if verbose:
         print('Formatting source files')
 
-    cmd = ['sh', 'format_files.sh', dropbox_pkg_path]
+    cmd = ['sh', 'format_files.sh', dropbox_format_output_path]
     if args.clang_format_path:
         cmd.append(args.clang_format_path)
-    o = subprocess.check_output(cmd, cwd=dropbox_format_path)
+    o = subprocess.check_output(cmd, cwd=dropbox_format_script_path)
     if o:
         print('Output:', o)
 

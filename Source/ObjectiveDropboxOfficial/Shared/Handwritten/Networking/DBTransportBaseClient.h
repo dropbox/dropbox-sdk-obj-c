@@ -11,22 +11,22 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBTransportBaseClient : NSObject
 
 /// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic, readonly, copy, nullable) NSString * accessToken;
+@property (nonatomic, readonly, copy, nullable) NSString *accessToken;
 
 /// The user agent associated with all networking requests. Used for server logging.
-@property (nonatomic, readonly, copy) NSString * userAgent;
+@property (nonatomic, readonly, copy) NSString *userAgent;
 
 /// The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key is used for
 /// querying endpoints the have "app auth" authentication type.
-@property (nonatomic, readonly, copy, nullable) NSString * appKey;
+@property (nonatomic, readonly, copy, nullable) NSString *appKey;
 
 /// The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app key is used for
 /// querying endpoints the have "app auth" authentication type.
-@property (nonatomic, readonly, copy, nullable) NSString * appSecret;
+@property (nonatomic, readonly, copy, nullable) NSString *appSecret;
 
 /// An additional authentication header field used when a team app with the appropriate permissions "performs" user API
 /// actions on behalf of a team member.
-@property (nonatomic, readonly, copy, nullable) NSString * asMemberId;
+@property (nonatomic, readonly, copy, nullable) NSString *asMemberId;
 
 ///
 /// Full constructor.
@@ -37,8 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAccessToken:(NSString *)accessToken
-                            transportConfig:(DBTransportBaseConfig *)transportConfig;
+- (instancetype)initWithAccessToken:(NSString *)accessToken transportConfig:(DBTransportBaseConfig *)transportConfig;
 
 @end
 

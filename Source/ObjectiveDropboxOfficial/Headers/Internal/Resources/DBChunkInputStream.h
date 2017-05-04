@@ -26,9 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized DBChunkInputStream instance.
 ///
-- (instancetype)initWithFileUrl:(NSURL *)fileUrl
-                             startBytes:(NSUInteger)startBytes
-                               endBytes:(NSUInteger)endBytes;
+- (instancetype)initWithFileUrl:(NSURL *)fileUrl startBytes:(NSUInteger)startBytes endBytes:(NSUInteger)endBytes;
 
 @end
 

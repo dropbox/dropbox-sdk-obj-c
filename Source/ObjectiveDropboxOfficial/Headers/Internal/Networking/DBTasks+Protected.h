@@ -13,30 +13,28 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBRpcTask (Protected)
 
 - (DBRpcResponseBlockStorage)storageBlockWithResponseBlock:(DBRpcResponseBlockImpl)responseBlock
-                                                       cleanupBlock:(DBCleanupBlock)cleanupBlock;
+                                              cleanupBlock:(DBCleanupBlock)cleanupBlock;
 
 @end
 
 @interface DBUploadTask (Protected)
 
 - (DBUploadResponseBlockStorage)storageBlockWithResponseBlock:(DBUploadResponseBlockImpl)responseBlock
-                                                          cleanupBlock:(DBCleanupBlock)cleanupBlock;
+                                                 cleanupBlock:(DBCleanupBlock)cleanupBlock;
 
 @end
 
 @interface DBDownloadUrlTask (Protected)
 
-- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:
-                                               (DBDownloadUrlResponseBlockImpl)responseBlock
-                                                            cleanupBlock:(DBCleanupBlock)cleanupBlock;
+- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock
+                                                   cleanupBlock:(DBCleanupBlock)cleanupBlock;
 
 @end
 
 @interface DBDownloadDataTask (Protected)
 
-- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:
-                                               (DBDownloadDataResponseBlockImpl)responseBlock
-                                                            cleanupBlock:(DBCleanupBlock)cleanupBlock;
+- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock
+                                                   cleanupBlock:(DBCleanupBlock)cleanupBlock;
 
 @end
 

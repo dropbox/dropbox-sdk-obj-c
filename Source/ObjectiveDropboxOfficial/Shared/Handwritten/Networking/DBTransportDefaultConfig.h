@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// A serial delegate queue used for executing blocks of code that touch state shared across threads (mainly the request
 /// handlers storage).
-@property (nonatomic, readonly, nullable) NSOperationQueue * delegateQueue;
+@property (nonatomic, readonly, nullable) NSOperationQueue *delegateQueue;
 
 /// If set to true, all network requests are made on foreground sessions (by default, most upload/download operations
 /// are performed with a background session). This is appropriate for use cases where file upload / download operations
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The identifier for the shared container into which files in background URL sessions should be downloaded. This needs
 /// to be set when downloading via an app extension.
-@property (nonatomic, readonly, nullable) NSString * sharedContainerIdentifier;
+@property (nonatomic, readonly, nullable) NSString *sharedContainerIdentifier;
 
 ///
 /// Convenience constructor.
@@ -66,8 +66,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAppKey:(NSString *)appKey
-                             appSecret:(NSString *)appSecret
-                         delegateQueue:(nullable NSOperationQueue *)delegateQueue;
+                     appSecret:(NSString *)appSecret
+                 delegateQueue:(nullable NSOperationQueue *)delegateQueue;
 
 ///
 /// Convenience constructor.
@@ -101,10 +101,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAppKey:(NSString *)appKey
-                             appSecret:(nullable NSString *)appSecret
-                             userAgent:(nullable NSString *)userAgent
-                         delegateQueue:(nullable NSOperationQueue *)delegateQueue
-                forceForegroundSession:(BOOL)forceForegroundSession;
+                     appSecret:(nullable NSString *)appSecret
+                     userAgent:(nullable NSString *)userAgent
+                 delegateQueue:(nullable NSOperationQueue *)delegateQueue
+        forceForegroundSession:(BOOL)forceForegroundSession;
 
 ///
 /// Convenience constructor.
@@ -124,11 +124,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAppKey:(NSString *)appKey
-                             appSecret:(nullable NSString *)appSecret
-                             userAgent:(nullable NSString *)userAgent
-                            asMemberId:(nullable NSString *)asMemberId
-                         delegateQueue:(nullable NSOperationQueue *)delegateQueue
-                forceForegroundSession:(BOOL)forceForegroundSession;
+                     appSecret:(nullable NSString *)appSecret
+                     userAgent:(nullable NSString *)userAgent
+                    asMemberId:(nullable NSString *)asMemberId
+                 delegateQueue:(nullable NSOperationQueue *)delegateQueue
+        forceForegroundSession:(BOOL)forceForegroundSession;
 
 ///
 /// Full constructor.
@@ -150,12 +150,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAppKey:(NSString *)appKey
-                             appSecret:(nullable NSString *)appSecret
-                             userAgent:(nullable NSString *)userAgent
-                            asMemberId:(nullable NSString *)asMemberId
-                         delegateQueue:(nullable NSOperationQueue *)delegateQueue
-                forceForegroundSession:(BOOL)forceForegroundSession
-             sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier;
+                     appSecret:(nullable NSString *)appSecret
+                     userAgent:(nullable NSString *)userAgent
+                    asMemberId:(nullable NSString *)asMemberId
+                 delegateQueue:(nullable NSOperationQueue *)delegateQueue
+        forceForegroundSession:(BOOL)forceForegroundSession
+     sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier;
 
 @end
 

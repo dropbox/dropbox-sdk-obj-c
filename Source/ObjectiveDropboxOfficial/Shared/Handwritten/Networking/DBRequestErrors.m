@@ -2,11 +2,11 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBRequestErrors.h"
 #import "DBAUTHAccessError.h"
 #import "DBAUTHAuthError.h"
 #import "DBAUTHRateLimitError.h"
 #import "DBOAuthManager.h"
-#import "DBRequestErrors.h"
 
 #pragma mark - HTTP error
 
