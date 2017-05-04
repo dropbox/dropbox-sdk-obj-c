@@ -217,7 +217,7 @@ carthage update --platform iOS
 ```
 Once you have checked-out out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` file into your project as a subproject.
 
-Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add the `ObjectiveDropboxOfficial.framework` file for the iOS platform.
+Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Linked Frameworks and Libraries** > **+** and then add the `ObjectiveDropboxOfficial.framework` file for the iOS platform.
 
 ##### macOS
 ```bash
