@@ -157,14 +157,14 @@
 
   DBDownloadResponseBlockStorage responseHandler = sessionData.downloadHandlers[taskId];
 
-  NSError *fileMoveError = nil;
-  NSString *tmpOutputPath = [self moveFileToTempStorage:location fileMoveError:&fileMoveError];
-  NSURL *tmpOutputUrl = fileMoveError == nil ? [NSURL URLWithString:tmpOutputPath] : nil;
+  NSError *fileError = nil;
+  NSString *tmpOutputPath = [self moveFileToTempStorage:location fileError:&fileError];
+  NSURL *tmpOutputUrl = fileError == nil ? [NSURL URLWithString:tmpOutputPath] : nil;
 
   if (responseHandler) {
     NSOperationQueue *queueToUse = sessionData.responseHandlerQueues[taskId] ?: [NSOperationQueue mainQueue];
     [queueToUse addOperationWithBlock:^{
-      responseHandler(tmpOutputUrl, downloadTask.response, fileMoveError);
+      responseHandler(tmpOutputUrl, downloadTask.response, fileError);
     }];
 
     [sessionData.downloadHandlers removeObjectForKey:taskId];
@@ -176,16 +176,28 @@
   } else {
     sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:nil
                                                                          responseMetadata:downloadTask.response
-                                                                            responseError:fileMoveError
+                                                                            responseError:fileError
                                                                                 urlOutput:tmpOutputUrl];
   }
 }
 
-- (NSString *)moveFileToTempStorage:(NSURL *)startingLocation fileMoveError:(NSError **)fileMoveError {
-  NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSString *tmpOutputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSUUID UUID].UUIDString];
+- (NSString *)moveFileToTempStorage:(NSURL *)startingLocation fileError:(NSError **)fileError {
+  NSString *tmpOutputPath = nil;
 
-  [fileManager moveItemAtPath:[startingLocation path] toPath:tmpOutputPath error:fileMoveError];
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+
+  NSString *tmpDirPath = NSTemporaryDirectory();
+  BOOL isDir = NO;
+  BOOL success = YES;
+
+  if (![fileManager fileExistsAtPath:tmpDirPath isDirectory:&isDir]) {
+    success = [fileManager createDirectoryAtPath:tmpDirPath withIntermediateDirectories:YES attributes:nil error:fileError];
+  }
+
+  if (success) {
+    tmpOutputPath = [tmpDirPath stringByAppendingPathComponent:[NSUUID UUID].UUIDString];
+    [fileManager moveItemAtPath:[startingLocation path] toPath:tmpOutputPath error:fileError];
+  }
 
   return tmpOutputPath;
 }
