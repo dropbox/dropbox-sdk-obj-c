@@ -29,7 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBFILESUploadSessionLookupErrorTag` enum type represents the possible
 /// tag states with which the `DBFILESUploadSessionLookupError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
-  /// The upload session id was not found.
+  /// The upload session ID was not found or has expired. Upload sessions are
+  /// valid for 48 hours.
   DBFILESUploadSessionLookupErrorNotFound,
 
   /// The specified offset was incorrect. See the value for the correct
@@ -65,8 +66,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// Initializes union class with tag state of "not_found".
 ///
-/// Description of the "not_found" tag state: The upload session id was not
-/// found.
+/// Description of the "not_found" tag state: The upload session ID was not
+/// found or has expired. Upload sessions are valid for 48 hours.
 ///
 /// @return An initialized instance.
 ///

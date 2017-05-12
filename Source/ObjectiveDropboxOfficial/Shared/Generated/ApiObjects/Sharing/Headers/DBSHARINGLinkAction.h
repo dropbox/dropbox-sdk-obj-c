@@ -30,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGLinkActionTag` enum type represents the possible tag states
 /// with which the `DBSHARINGLinkAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
+  /// Change the access level of the link.
+  DBSHARINGLinkActionChangeAccessLevel,
+
   /// Change the audience of the link.
   DBSHARINGLinkActionChangeAudience,
 
@@ -54,6 +57,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 @property (nonatomic, readonly) DBSHARINGLinkActionTag tag;
 
 #pragma mark - Constructors
+
+///
+/// Initializes union class with tag state of "change_access_level".
+///
+/// Description of the "change_access_level" tag state: Change the access level
+/// of the link.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithChangeAccessLevel;
 
 ///
 /// Initializes union class with tag state of "change_audience".
@@ -115,6 +128,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkActionTag) {
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "change_access_level".
+///
+/// @return Whether the union's current tag state has value
+/// "change_access_level".
+///
+- (BOOL)isChangeAccessLevel;
 
 ///
 /// Retrieves whether the union's current tag state has value "change_audience".

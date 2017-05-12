@@ -37,6 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Information on the browser used for this web session
 @property (nonatomic, readonly, copy) NSString *browser;
 
+/// The time this session expires
+@property (nonatomic, readonly, nullable) NSDate *expires;
+
 #pragma mark - Constructors
 
 ///
@@ -51,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// was made
 /// @param created The time this session was created
 /// @param updated The time of the last activity from this session
+/// @param expires The time this session expires
 ///
 /// @return An initialized instance.
 ///
@@ -61,7 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
                         ipAddress:(nullable NSString *)ipAddress
                           country:(nullable NSString *)country
                           created:(nullable NSDate *)created
-                          updated:(nullable NSDate *)updated;
+                          updated:(nullable NSDate *)updated
+                          expires:(nullable NSDate *)expires;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

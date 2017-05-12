@@ -27,8 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// User which should be removed from the Paper doc. Specify only email or
-/// Dropbox account id.
+/// User which should be removed from the Paper doc. Specify only email address
+/// or Dropbox account ID.
 @property (nonatomic, readonly) DBSHARINGMemberSelector *member;
 
 #pragma mark - Constructors
@@ -36,9 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 /// @param member User which should be removed from the Paper doc. Specify only
-/// email or Dropbox account id.
+/// email address or Dropbox account ID.
 ///
 /// @return An initialized instance.
 ///

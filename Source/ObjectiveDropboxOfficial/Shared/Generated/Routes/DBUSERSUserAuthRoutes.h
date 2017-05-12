@@ -9,8 +9,8 @@
 #import "DBTasks.h"
 
 @class DBNilObject;
-@class DBUSERSAccountType;
 @class DBUSERSBasicAccount;
+@class DBUSERSCOMMONAccountType;
 @class DBUSERSFullAccount;
 @class DBUSERSFullTeam;
 @class DBUSERSGetAccountBatchError;

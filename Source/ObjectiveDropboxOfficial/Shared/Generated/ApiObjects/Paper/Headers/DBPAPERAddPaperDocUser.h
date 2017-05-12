@@ -27,14 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// User which should be added to the Paper doc. Specify only email or Dropbox
-/// account id.
+/// User which should be added to the Paper doc. Specify only email address or
+/// Dropbox account ID.
 @property (nonatomic, readonly) NSArray<DBPAPERAddMember *> *members;
 
 /// A personal message that will be emailed to each successfully added member.
 @property (nonatomic, readonly, copy, nullable) NSString *customMessage;
 
-/// Clients should set this to true if no email shall be sent to added users.
+/// Clients should set this to true if no email message shall be sent to added
+/// users.
 @property (nonatomic, readonly) NSNumber *quiet;
 
 #pragma mark - Constructors
@@ -42,13 +43,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 /// @param members User which should be added to the Paper doc. Specify only
-/// email or Dropbox account id.
+/// email address or Dropbox account ID.
 /// @param customMessage A personal message that will be emailed to each
 /// successfully added member.
-/// @param quiet Clients should set this to true if no email shall be sent to
-/// added users.
+/// @param quiet Clients should set this to true if no email message shall be
+/// sent to added users.
 ///
 /// @return An initialized instance.
 ///
@@ -61,9 +62,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 /// @param members User which should be added to the Paper doc. Specify only
-/// email or Dropbox account id.
+/// email address or Dropbox account ID.
 ///
 /// @return An initialized instance.
 ///

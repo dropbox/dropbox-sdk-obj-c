@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the devicesRevokeDeviceSessionBatch route object.
 + (DBRoute *)DBTEAMDevicesRevokeDeviceSessionBatch;
 
+/// Accessor method for the featuresGetValues route object.
++ (DBRoute *)DBTEAMFeaturesGetValues;
+
 /// Accessor method for the getInfo route object.
 + (DBRoute *)DBTEAMGetInfo;
 
@@ -166,11 +169,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the teamFolderList route object.
 + (DBRoute *)DBTEAMTeamFolderList;
 
+/// Accessor method for the teamFolderListContinue route object.
++ (DBRoute *)DBTEAMTeamFolderListContinue;
+
 /// Accessor method for the teamFolderPermanentlyDelete route object.
 + (DBRoute *)DBTEAMTeamFolderPermanentlyDelete;
 
 /// Accessor method for the teamFolderRename route object.
 + (DBRoute *)DBTEAMTeamFolderRename;
+
+/// Accessor method for the tokenGetAuthenticatedAdmin route object.
++ (DBRoute *)DBTEAMTokenGetAuthenticatedAdmin;
 
 @end
 

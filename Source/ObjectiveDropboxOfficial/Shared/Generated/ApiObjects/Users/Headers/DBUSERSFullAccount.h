@@ -9,7 +9,7 @@
 #import "DBSerializableProtocol.h"
 #import "DBUSERSAccount.h"
 
-@class DBUSERSAccountType;
+@class DBUSERSCOMMONAccountType;
 @class DBUSERSFullAccount;
 @class DBUSERSFullTeam;
 @class DBUSERSName;
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSNumber *isPaired;
 
 /// What type of account this user has.
-@property (nonatomic, readonly) DBUSERSAccountType *accountType;
+@property (nonatomic, readonly) DBUSERSCOMMONAccountType *accountType;
 
 #pragma mark - Constructors
 
@@ -96,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
                            locale:(NSString *)locale
                      referralLink:(NSString *)referralLink
                          isPaired:(NSNumber *)isPaired
-                      accountType:(DBUSERSAccountType *)accountType
+                      accountType:(DBUSERSCOMMONAccountType *)accountType
                   profilePhotoUrl:(nullable NSString *)profilePhotoUrl
                           country:(nullable NSString *)country
                              team:(nullable DBUSERSFullTeam *)team
@@ -132,7 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
                            locale:(NSString *)locale
                      referralLink:(NSString *)referralLink
                          isPaired:(NSNumber *)isPaired
-                      accountType:(DBUSERSAccountType *)accountType;
+                      accountType:(DBUSERSCOMMONAccountType *)accountType;
 
 @end
 

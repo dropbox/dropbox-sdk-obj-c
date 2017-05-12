@@ -30,17 +30,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBPAPERDocSubscriptionLevelTag` enum type represents the possible tag
 /// states with which the `DBPAPERDocSubscriptionLevel` union can exist.
 typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
-  /// No change e-mails unless you're the creator.
+  /// No change email messages unless you're the creator.
   DBPAPERDocSubscriptionLevelDefault_,
 
-  /// Ignored: Not shown in pad lists or activity and no email is sent.
+  /// Ignored: Not shown in pad lists or activity and no email message is
+  /// sent.
   DBPAPERDocSubscriptionLevelIgnore,
 
-  /// Subscribed: Shown in pad lists and activity and change e-mails are sent.
+  /// Subscribed: Shown in pad lists and activity and change email messages
+  /// are sent.
   DBPAPERDocSubscriptionLevelEvery,
 
   /// Unsubscribed: Shown in pad lists, but not in activity and no change
-  /// e-mails are sent.
+  /// email messages are sent.
   DBPAPERDocSubscriptionLevelNoEmail,
 
 };
@@ -53,8 +55,8 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 ///
 /// Initializes union class with tag state of "default".
 ///
-/// Description of the "default" tag state: No change e-mails unless you're the
-/// creator.
+/// Description of the "default" tag state: No change email messages unless
+/// you're the creator.
 ///
 /// @return An initialized instance.
 ///
@@ -64,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 /// Initializes union class with tag state of "ignore".
 ///
 /// Description of the "ignore" tag state: Ignored: Not shown in pad lists or
-/// activity and no email is sent.
+/// activity and no email message is sent.
 ///
 /// @return An initialized instance.
 ///
@@ -74,7 +76,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 /// Initializes union class with tag state of "every".
 ///
 /// Description of the "every" tag state: Subscribed: Shown in pad lists and
-/// activity and change e-mails are sent.
+/// activity and change email messages are sent.
 ///
 /// @return An initialized instance.
 ///
@@ -84,7 +86,7 @@ typedef NS_ENUM(NSInteger, DBPAPERDocSubscriptionLevelTag) {
 /// Initializes union class with tag state of "no_email".
 ///
 /// Description of the "no_email" tag state: Unsubscribed: Shown in pad lists,
-/// but not in activity and no change e-mails are sent.
+/// but not in activity and no change email messages are sent.
 ///
 /// @return An initialized instance.
 ///

@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// The Paper doc ID.
 @property (nonatomic, readonly, copy) NSString *docId;
 
 #pragma mark - Constructors
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 ///
 /// @return An initialized instance.
 ///

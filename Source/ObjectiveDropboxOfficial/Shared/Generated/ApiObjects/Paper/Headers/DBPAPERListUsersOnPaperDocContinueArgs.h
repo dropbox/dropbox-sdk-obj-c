@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 /// @param cursor The cursor obtained from `docsUsersList` or
 /// `docsUsersListContinue`. Allows for pagination.
 ///

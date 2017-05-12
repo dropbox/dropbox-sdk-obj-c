@@ -8,6 +8,8 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
+@class DBSHARINGExpectedSharedContentLinkMetadata;
 @class DBSHARINGFilePermission;
 @class DBSHARINGFolderPolicy;
 @class DBSHARINGSharedContentLinkMetadata;
@@ -31,17 +33,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The metadata of the link associated for the file.
+/// The current user's access level for this shared file.
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *accessType;
+
+/// The ID of the file.
+@property (nonatomic, readonly, copy) NSString *id_;
+
+/// The expected metadata of the link associated for the file when it is first
+/// shared. Absent if the link already exists. This is for an unreleased feature
+/// so it may not be returned yet.
+@property (nonatomic, readonly, nullable) DBSHARINGExpectedSharedContentLinkMetadata *expectedLinkMetadata;
+
+/// The metadata of the link associated for the file. This is for an unreleased
+/// feature so it may not be returned yet.
 @property (nonatomic, readonly, nullable) DBSHARINGSharedContentLinkMetadata *linkMetadata;
 
-/// Policies governing this shared file.
-@property (nonatomic, readonly) DBSHARINGFolderPolicy *policy;
-
-/// The sharing permissions that requesting user has on this file. This
-/// corresponds to the entries given in `actions` in
-/// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
-/// `DBSHARINGGetFileMetadataArg`.
-@property (nonatomic, readonly, nullable) NSArray<DBSHARINGFilePermission *> *permissions;
+/// The name of this file.
+@property (nonatomic, readonly, copy) NSString *name;
 
 /// The team that owns the file. This field is not present if the file is not
 /// owned by a team.
@@ -51,22 +59,25 @@ NS_ASSUME_NONNULL_BEGIN
 /// is contained within a shared folder.
 @property (nonatomic, readonly, copy, nullable) NSString *parentSharedFolderId;
 
-/// URL for displaying a web preview of the shared file.
-@property (nonatomic, readonly, copy) NSString *previewUrl;
-
-/// The lower-case full path of this file. Absent for unmounted files.
-@property (nonatomic, readonly, copy, nullable) NSString *pathLower;
-
 /// The cased path to be used for display purposes only. In rare instances the
 /// casing will not correctly match the user's filesystem, but this behavior
 /// will match the path provided in the Core API v1. Absent for unmounted files.
 @property (nonatomic, readonly, copy, nullable) NSString *pathDisplay;
 
-/// The name of this file.
-@property (nonatomic, readonly, copy) NSString *name;
+/// The lower-case full path of this file. Absent for unmounted files.
+@property (nonatomic, readonly, copy, nullable) NSString *pathLower;
 
-/// The ID of the file.
-@property (nonatomic, readonly, copy) NSString *id_;
+/// The sharing permissions that requesting user has on this file. This
+/// corresponds to the entries given in `actions` in
+/// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
+/// `DBSHARINGGetFileMetadataArg`.
+@property (nonatomic, readonly, nullable) NSArray<DBSHARINGFilePermission *> *permissions;
+
+/// Policies governing this shared file.
+@property (nonatomic, readonly) DBSHARINGFolderPolicy *policy;
+
+/// URL for displaying a web preview of the shared file.
+@property (nonatomic, readonly, copy) NSString *previewUrl;
 
 /// Timestamp indicating when the current user was invited to this shared file.
 /// If the user was not invited to the shared file, the timestamp will indicate
@@ -79,25 +90,30 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
+/// @param id_ The ID of the file.
+/// @param name The name of this file.
 /// @param policy Policies governing this shared file.
 /// @param previewUrl URL for displaying a web preview of the shared file.
-/// @param name The name of this file.
-/// @param id_ The ID of the file.
-/// @param linkMetadata The metadata of the link associated for the file.
-/// @param permissions The sharing permissions that requesting user has on this
-/// file. This corresponds to the entries given in `actions` in
-/// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
-/// `DBSHARINGGetFileMetadataArg`.
+/// @param accessType The current user's access level for this shared file.
+/// @param expectedLinkMetadata The expected metadata of the link associated for
+/// the file when it is first shared. Absent if the link already exists. This is
+/// for an unreleased feature so it may not be returned yet.
+/// @param linkMetadata The metadata of the link associated for the file. This
+/// is for an unreleased feature so it may not be returned yet.
 /// @param ownerTeam The team that owns the file. This field is not present if
 /// the file is not owned by a team.
 /// @param parentSharedFolderId The ID of the parent shared folder. This field
 /// is present only if the file is contained within a shared folder.
-/// @param pathLower The lower-case full path of this file. Absent for unmounted
-/// files.
 /// @param pathDisplay The cased path to be used for display purposes only. In
 /// rare instances the casing will not correctly match the user's filesystem,
 /// but this behavior will match the path provided in the Core API v1. Absent
 /// for unmounted files.
+/// @param pathLower The lower-case full path of this file. Absent for unmounted
+/// files.
+/// @param permissions The sharing permissions that requesting user has on this
+/// file. This corresponds to the entries given in `actions` in
+/// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
+/// `DBSHARINGGetFileMetadataArg`.
 /// @param timeInvited Timestamp indicating when the current user was invited to
 /// this shared file. If the user was not invited to the shared file, the
 /// timestamp will indicate when the user was invited to the parent shared
@@ -105,33 +121,35 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithPolicy:(DBSHARINGFolderPolicy *)policy
-                    previewUrl:(NSString *)previewUrl
-                          name:(NSString *)name
-                           id_:(NSString *)id_
-                  linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata
-                   permissions:(nullable NSArray<DBSHARINGFilePermission *> *)permissions
-                     ownerTeam:(nullable DBUSERSTeam *)ownerTeam
-          parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                     pathLower:(nullable NSString *)pathLower
-                   pathDisplay:(nullable NSString *)pathDisplay
-                   timeInvited:(nullable NSDate *)timeInvited;
+- (instancetype)initWithId_:(NSString *)id_
+                       name:(NSString *)name
+                     policy:(DBSHARINGFolderPolicy *)policy
+                 previewUrl:(NSString *)previewUrl
+                 accessType:(nullable DBSHARINGAccessLevel *)accessType
+       expectedLinkMetadata:(nullable DBSHARINGExpectedSharedContentLinkMetadata *)expectedLinkMetadata
+               linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata
+                  ownerTeam:(nullable DBUSERSTeam *)ownerTeam
+       parentSharedFolderId:(nullable NSString *)parentSharedFolderId
+                pathDisplay:(nullable NSString *)pathDisplay
+                  pathLower:(nullable NSString *)pathLower
+                permissions:(nullable NSArray<DBSHARINGFilePermission *> *)permissions
+                timeInvited:(nullable NSDate *)timeInvited;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
+/// @param id_ The ID of the file.
+/// @param name The name of this file.
 /// @param policy Policies governing this shared file.
 /// @param previewUrl URL for displaying a web preview of the shared file.
-/// @param name The name of this file.
-/// @param id_ The ID of the file.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithPolicy:(DBSHARINGFolderPolicy *)policy
-                    previewUrl:(NSString *)previewUrl
-                          name:(NSString *)name
-                           id_:(NSString *)id_;
+- (instancetype)initWithId_:(NSString *)id_
+                       name:(NSString *)name
+                     policy:(DBSHARINGFolderPolicy *)policy
+                 previewUrl:(NSString *)previewUrl;
 
 - (instancetype)init NS_UNAVAILABLE;
 

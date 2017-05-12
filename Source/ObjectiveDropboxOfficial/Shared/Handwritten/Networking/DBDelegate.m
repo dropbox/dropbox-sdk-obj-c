@@ -191,7 +191,8 @@
   BOOL success = YES;
 
   if (![fileManager fileExistsAtPath:tmpDirPath isDirectory:&isDir]) {
-    success = [fileManager createDirectoryAtPath:tmpDirPath withIntermediateDirectories:YES attributes:nil error:fileError];
+    success =
+        [fileManager createDirectoryAtPath:tmpDirPath withIntermediateDirectories:YES attributes:nil error:fileError];
   }
 
   if (success) {

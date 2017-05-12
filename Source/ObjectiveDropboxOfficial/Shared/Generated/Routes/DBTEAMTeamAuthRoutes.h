@@ -28,6 +28,10 @@
 @class DBTEAMDesktopClientSession;
 @class DBTEAMDeviceSessionArg;
 @class DBTEAMDevicesActive;
+@class DBTEAMFeature;
+@class DBTEAMFeatureValue;
+@class DBTEAMFeaturesGetValuesBatchError;
+@class DBTEAMFeaturesGetValuesBatchResult;
 @class DBTEAMGetActivityReport;
 @class DBTEAMGetDevicesReport;
 @class DBTEAMGetMembershipReport;
@@ -106,6 +110,7 @@
 @class DBTEAMTeamFolderCreateError;
 @class DBTEAMTeamFolderGetInfoItem;
 @class DBTEAMTeamFolderInvalidStatusError;
+@class DBTEAMTeamFolderListContinueError;
 @class DBTEAMTeamFolderListError;
 @class DBTEAMTeamFolderListResult;
 @class DBTEAMTeamFolderMetadata;
@@ -115,6 +120,8 @@
 @class DBTEAMTeamGetInfoResult;
 @class DBTEAMTeamMemberInfo;
 @class DBTEAMTeamMemberProfile;
+@class DBTEAMTokenGetAuthenticatedAdminError;
+@class DBTEAMTokenGetAuthenticatedAdminResult;
 @class DBTEAMUpdatePropertyTemplateResult;
 @class DBTEAMUserSelectorArg;
 
@@ -242,6 +249,19 @@ devicesListTeamDevices:(nullable NSString *)cursor
 ///
 - (DBRpcTask<DBTEAMRevokeDeviceSessionBatchResult *, DBTEAMRevokeDeviceSessionBatchError *> *)
 devicesRevokeDeviceSessionBatch:(NSArray<DBTEAMRevokeDeviceSessionArg *> *)revokeDevices;
+
+///
+/// Get the values for one or more featues. This route allows you to check your account's capability for what feature
+/// you can access or what value you have for certain features. Permission : Team information.
+///
+/// @param features A list of features in Feature. If the list is empty, this route will return
+/// FeaturesGetValuesBatchError.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMFeaturesGetValuesBatchResult` object on
+/// success or a `DBTEAMFeaturesGetValuesBatchError` object on failure.
+///
+- (DBRpcTask<DBTEAMFeaturesGetValuesBatchResult *, DBTEAMFeaturesGetValuesBatchError *> *)featuresGetValues:
+    (NSArray<DBTEAMFeature *> *)features;
 
 ///
 /// Retrieves information about a team.
@@ -1077,6 +1097,18 @@ teamFolderArchive:(NSString *)teamFolderId
 - (DBRpcTask<DBTEAMTeamFolderListResult *, DBTEAMTeamFolderListError *> *)teamFolderList:(nullable NSNumber *)limit;
 
 ///
+/// Once a cursor has been retrieved from `teamFolderList`, use this to paginate through all team folders. Permission :
+/// Team member file access.
+///
+/// @param cursor Indicates from what point to get the next set of team folders.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderListResult` object on success or a
+/// `DBTEAMTeamFolderListContinueError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderListResult *, DBTEAMTeamFolderListContinueError *> *)teamFolderListContinue:
+    (NSString *)cursor;
+
+///
 /// Permanently deletes an archived team folder. Permission : Team member file access.
 ///
 /// @param teamFolderId The ID of the team folder.
@@ -1097,6 +1129,16 @@ teamFolderArchive:(NSString *)teamFolderId
 ///
 - (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderRenameError *> *)teamFolderRename:(NSString *)teamFolderId
                                                                                       name:(NSString *)name;
+
+///
+/// Returns the member profile of the admin who generated the team access token used to make the call.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTokenGetAuthenticatedAdminResult` object on
+/// success or a `DBTEAMTokenGetAuthenticatedAdminError` object on failure.
+///
+- (DBRpcTask<DBTEAMTokenGetAuthenticatedAdminResult *, DBTEAMTokenGetAuthenticatedAdminError *> *)
+    tokenGetAuthenticatedAdmin;
 
 @end
 

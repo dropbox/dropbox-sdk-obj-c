@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The list of Paper doc ids that can be used to access the given Paper docs or
+/// The list of Paper doc IDs that can be used to access the given Paper docs or
 /// supplied to other API methods. The list is sorted in the order specified by
 /// the initial call to `docsList`.
 @property (nonatomic, readonly) NSArray<NSString *> *docIds;
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param docIds The list of Paper doc ids that can be used to access the given
+/// @param docIds The list of Paper doc IDs that can be used to access the given
 /// Paper docs or supplied to other API methods. The list is sorted in the order
 /// specified by the initial call to `docsList`.
 /// @param cursor Pass the cursor into `docsListContinue` to paginate through

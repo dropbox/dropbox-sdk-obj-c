@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TeamFolderListResult` struct.
 ///
-/// Result for `teamFolderList`.
+/// Result for `teamFolderList` and `teamFolderListContinue`.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -31,16 +31,31 @@ NS_ASSUME_NONNULL_BEGIN
 /// List of all team folders in the authenticated team.
 @property (nonatomic, readonly) NSArray<DBTEAMTeamFolderMetadata *> *teamFolders;
 
+/// Pass the cursor into `teamFolderListContinue` to obtain additional team
+/// folders.
+@property (nonatomic, readonly, copy) NSString *cursor;
+
+/// Is true if there are additional team folders that have not been returned
+/// yet. An additional call to `teamFolderListContinue` can retrieve them.
+@property (nonatomic, readonly) NSNumber *hasMore;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param teamFolders List of all team folders in the authenticated team.
+/// @param cursor Pass the cursor into `teamFolderListContinue` to obtain
+/// additional team folders.
+/// @param hasMore Is true if there are additional team folders that have not
+/// been returned yet. An additional call to `teamFolderListContinue` can
+/// retrieve them.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTeamFolders:(NSArray<DBTEAMTeamFolderMetadata *> *)teamFolders;
+- (instancetype)initWithTeamFolders:(NSArray<DBTEAMTeamFolderMetadata *> *)teamFolders
+                             cursor:(NSString *)cursor
+                            hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 

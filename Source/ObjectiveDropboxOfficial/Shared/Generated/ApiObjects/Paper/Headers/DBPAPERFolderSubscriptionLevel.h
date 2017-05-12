@@ -30,16 +30,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBPAPERFolderSubscriptionLevelTag` enum type represents the possible
 /// tag states with which the `DBPAPERFolderSubscriptionLevel` union can exist.
 typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
-  /// Not shown in activity, no e-mails.
+  /// Not shown in activity, no email messages.
   DBPAPERFolderSubscriptionLevelNone,
 
-  /// Shown in activity, no e-mails.
+  /// Shown in activity, no email messages.
   DBPAPERFolderSubscriptionLevelActivityOnly,
 
-  /// Shown in activity, daily e-mails.
+  /// Shown in activity, daily email messages.
   DBPAPERFolderSubscriptionLevelDailyEmails,
 
-  /// Shown in activity, weekly e-mails.
+  /// Shown in activity, weekly email messages.
   DBPAPERFolderSubscriptionLevelWeeklyEmails,
 
 };
@@ -52,7 +52,8 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// Initializes union class with tag state of "none".
 ///
-/// Description of the "none" tag state: Not shown in activity, no e-mails.
+/// Description of the "none" tag state: Not shown in activity, no email
+/// messages.
 ///
 /// @return An initialized instance.
 ///
@@ -61,7 +62,8 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// Initializes union class with tag state of "activity_only".
 ///
-/// Description of the "activity_only" tag state: Shown in activity, no e-mails.
+/// Description of the "activity_only" tag state: Shown in activity, no email
+/// messages.
 ///
 /// @return An initialized instance.
 ///
@@ -70,8 +72,8 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 ///
 /// Initializes union class with tag state of "daily_emails".
 ///
-/// Description of the "daily_emails" tag state: Shown in activity, daily
-/// e-mails.
+/// Description of the "daily_emails" tag state: Shown in activity, daily email
+/// messages.
 ///
 /// @return An initialized instance.
 ///
@@ -81,7 +83,7 @@ typedef NS_ENUM(NSInteger, DBPAPERFolderSubscriptionLevelTag) {
 /// Initializes union class with tag state of "weekly_emails".
 ///
 /// Description of the "weekly_emails" tag state: Shown in activity, weekly
-/// e-mails.
+/// email messages.
 ///
 /// @return An initialized instance.
 ///

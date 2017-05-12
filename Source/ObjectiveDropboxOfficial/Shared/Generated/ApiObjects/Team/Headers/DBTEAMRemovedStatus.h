@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// True if the removed team member is recoverable
+/// True if the removed team member is recoverable.
 @property (nonatomic, readonly) NSNumber *isRecoverable;
 
 #pragma mark - Constructors
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param isRecoverable True if the removed team member is recoverable
+/// @param isRecoverable True if the removed team member is recoverable.
 ///
 /// @return An initialized instance.
 ///

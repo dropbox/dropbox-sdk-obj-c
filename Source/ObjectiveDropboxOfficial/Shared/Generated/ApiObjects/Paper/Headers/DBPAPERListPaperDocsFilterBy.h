@@ -28,10 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBPAPERListPaperDocsFilterByTag` enum type represents the possible tag
 /// states with which the `DBPAPERListPaperDocsFilterBy` union can exist.
 typedef NS_ENUM(NSInteger, DBPAPERListPaperDocsFilterByTag) {
-  /// Fetches all Paper doc ids that the user has ever accessed.
+  /// Fetches all Paper doc IDs that the user has ever accessed.
   DBPAPERListPaperDocsFilterByDocsAccessed,
 
-  /// Fetches only the Paper doc ids that the user has created.
+  /// Fetches only the Paper doc IDs that the user has created.
   DBPAPERListPaperDocsFilterByDocsCreated,
 
   /// (no description).
@@ -47,7 +47,7 @@ typedef NS_ENUM(NSInteger, DBPAPERListPaperDocsFilterByTag) {
 ///
 /// Initializes union class with tag state of "docs_accessed".
 ///
-/// Description of the "docs_accessed" tag state: Fetches all Paper doc ids that
+/// Description of the "docs_accessed" tag state: Fetches all Paper doc IDs that
 /// the user has ever accessed.
 ///
 /// @return An initialized instance.
@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, DBPAPERListPaperDocsFilterByTag) {
 ///
 /// Initializes union class with tag state of "docs_created".
 ///
-/// Description of the "docs_created" tag state: Fetches only the Paper doc ids
+/// Description of the "docs_created" tag state: Fetches only the Paper doc IDs
 /// that the user has created.
 ///
 /// @return An initialized instance.

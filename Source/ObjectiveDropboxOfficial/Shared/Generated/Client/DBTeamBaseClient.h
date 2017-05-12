@@ -5,6 +5,7 @@
 ///
 
 #import "DBRequestErrors.h"
+#import "DBTEAMLOGTeamAuthRoutes.h"
 #import "DBTEAMTeamAuthRoutes.h"
 #import "DBTasks.h"
 #import <Foundation/Foundation.h>
@@ -26,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Routes within the `team` namespace.
 @property (nonatomic, readonly) DBTEAMTeamAuthRoutes *teamRoutes;
+
+/// Routes within the `teamLog` namespace.
+@property (nonatomic, readonly) DBTEAMLOGTeamAuthRoutes *teamLogRoutes;
 
 /// Initializes the `DBTeamBaseClient` object with a networking client.
 - (instancetype)initWithTransportClient:(id<DBTransportClient>)client;

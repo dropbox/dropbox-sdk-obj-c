@@ -50,9 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Whether to force the share to happen asynchronously.
 @property (nonatomic, readonly) NSNumber *forceAsync;
 
-/// This is a list indicating whether each returned folder data entry will
-/// include a boolean field `allow` in `DBSHARINGFolderPermission` that
-/// describes whether the current user can perform the `FolderAction` on the
+/// A list of `FolderAction`s corresponding to `FolderPermission`s that should
+/// appear in the  response's `permissions` in `DBSHARINGSharedFolderMetadata`
+/// field describing the actions the  authenticated user can perform on the
 /// folder.
 @property (nonatomic, readonly, nullable) NSArray<DBSHARINGFolderAction *> *actions;
 
@@ -76,10 +76,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// content inside this shared folder.  The current user must be on a team to
 /// set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param forceAsync Whether to force the share to happen asynchronously.
-/// @param actions This is a list indicating whether each returned folder data
-/// entry will include a boolean field `allow` in `DBSHARINGFolderPermission`
-/// that describes whether the current user can perform the `FolderAction` on
-/// the folder.
+/// @param actions A list of `FolderAction`s corresponding to
+/// `FolderPermission`s that should appear in the  response's `permissions` in
+/// `DBSHARINGSharedFolderMetadata` field describing the actions the
+/// authenticated user can perform on the folder.
 /// @param linkSettings Settings on the link for this folder.
 /// @param viewerInfoPolicy Who can enable/disable viewer info for this shared
 /// folder.

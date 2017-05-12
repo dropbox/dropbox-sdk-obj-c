@@ -37,6 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// The user's permissions for the parent shared folder.
 @property (nonatomic, readonly) NSArray<DBSHARINGMemberPermission *> *permissions;
 
+/// The full path to the parent shared folder relative to the acting user's
+/// root.
+@property (nonatomic, readonly, copy) NSString *path;
+
 #pragma mark - Constructors
 
 ///
@@ -45,12 +49,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param folderName Display name for the folder.
 /// @param sharedFolderId The identifier of the parent shared folder.
 /// @param permissions The user's permissions for the parent shared folder.
+/// @param path The full path to the parent shared folder relative to the acting
+/// user's root.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFolderName:(NSString *)folderName
                     sharedFolderId:(NSString *)sharedFolderId
-                       permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions;
+                       permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions
+                              path:(NSString *)path;
 
 - (instancetype)init NS_UNAVAILABLE;
 

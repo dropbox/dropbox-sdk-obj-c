@@ -21,6 +21,7 @@
 @class DBSHARINGAddMemberSelectorError;
 @class DBSHARINGCreateSharedLinkError;
 @class DBSHARINGCreateSharedLinkWithSettingsError;
+@class DBSHARINGExpectedSharedContentLinkMetadata;
 @class DBSHARINGFileAction;
 @class DBSHARINGFileMemberActionError;
 @class DBSHARINGFileMemberActionIndividualResult;
@@ -322,7 +323,9 @@ createSharedLinkWithSettings:(NSString *)path
 /// Returns shared file metadata.
 ///
 /// @param file The file to query.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFileMetadata` field describing the actions the  authenticated user can perform on
+/// the file.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFileMetadata` object on success or
 /// a `DBSHARINGGetFileMetadataError` object on failure.
@@ -346,7 +349,9 @@ getFileMetadata:(NSString *)file
 /// Returns shared file metadata.
 ///
 /// @param files The files to query.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFileMetadata` field describing the actions the  authenticated user can perform on
+/// the file.
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGGetFileMetadataBatchResult *>`
 /// object on success or a `DBSHARINGSharingUserError` object on failure.
@@ -370,8 +375,9 @@ getFileMetadataBatch:(NSArray<NSString *> *)files
 /// Returns shared folder metadata by its folder ID. Apps must have full Dropbox access to use this endpoint.
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param actions This is a list indicating whether the returned folder data will include a boolean value  `allow` in
-/// `DBSHARINGFolderPermission` that describes whether the current user can perform the  FolderAction on the folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMetadata` object on success
 /// or a `DBSHARINGSharedFolderAccessError` object on failure.
@@ -708,9 +714,9 @@ listFolderMembers:(NSString *)sharedFolderId
 /// endpoint.
 ///
 /// @param limit The maximum number of results to return per request.
-/// @param actions This is a list indicating whether each returned folder data entry will include a boolean field
-/// `allow` in `DBSHARINGFolderPermission` that describes whether the current user can perform the `FolderAction` on the
-/// folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `void` object on failure.
@@ -747,9 +753,9 @@ listFolderMembers:(NSString *)sharedFolderId
 /// use this endpoint.
 ///
 /// @param limit The maximum number of results to return per request.
-/// @param actions This is a list indicating whether each returned folder data entry will include a boolean field
-/// `allow` in `DBSHARINGFolderPermission` that describes whether the current user can perform the `FolderAction` on the
-/// folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `void` object on failure.
@@ -786,7 +792,9 @@ listMountableFolders:(nullable NSNumber *)limit
 /// folders, and does  not include unclaimed invitations.
 ///
 /// @param limit Number of files to return max per query. Defaults to 100 if no limit is specified.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFileMetadata` field describing the actions the  authenticated user can perform on
+/// the file.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFilesResult` object on success or a
 /// `DBSHARINGSharingUserError` object on failure.
@@ -1006,9 +1014,9 @@ removeFolderMember:(NSString *)sharedFolderId
 /// @param sharedLinkPolicy The policy to apply to shared links created for content inside this shared folder.  The
 /// current user must be on a team to set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param forceAsync Whether to force the share to happen asynchronously.
-/// @param actions This is a list indicating whether each returned folder data entry will include a boolean field
-/// `allow` in `DBSHARINGFolderPermission` that describes whether the current user can perform the `FolderAction` on the
-/// folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 /// @param linkSettings Settings on the link for this folder.
 /// @param viewerInfoPolicy Who can enable/disable viewer info for this shared folder.
 ///
@@ -1137,6 +1145,9 @@ updateFolderMember:(NSString *)sharedFolderId
 /// @param sharedLinkPolicy The policy to apply to shared links created for content inside this shared folder. The
 /// current user must be on a team to set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param linkSettings Settings on the link for this folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMetadata` object on success
 /// or a `DBSHARINGUpdateFolderPolicyError` object on failure.
@@ -1147,7 +1158,8 @@ updateFolderPolicy:(NSString *)sharedFolderId
    aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
   viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
   sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
-      linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings;
+      linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings
+           actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions;
 
 @end
 

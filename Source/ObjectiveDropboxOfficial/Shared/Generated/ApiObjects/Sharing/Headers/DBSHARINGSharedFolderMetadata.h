@@ -34,7 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// The metadata of the shared content link to this shared folder. Absent if
-/// there is no link on the folder.
+/// there is no link on the folder. This is for an unreleased feature so it may
+/// not be returned yet.
 @property (nonatomic, readonly, nullable) DBSHARINGSharedContentLinkMetadata *linkMetadata;
 
 /// The name of the this shared folder.
@@ -79,7 +80,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param pathLower The lower-cased full path of this shared folder. Absent for
 /// unmounted folders.
 /// @param linkMetadata The metadata of the shared content link to this shared
-/// folder. Absent if there is no link on the folder.
+/// folder. Absent if there is no link on the folder. This is for an unreleased
+/// feature so it may not be returned yet.
 /// @param permissions Actions the current user may perform on the folder and
 /// its contents. The set of permissions corresponds to the FolderActions in the
 /// request.

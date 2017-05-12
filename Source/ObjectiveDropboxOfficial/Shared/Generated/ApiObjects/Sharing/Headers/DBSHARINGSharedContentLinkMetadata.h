@@ -9,6 +9,8 @@
 #import "DBSHARINGSharedContentLinkMetadataBase.h"
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
+@class DBSHARINGAudienceRestrictingSharedFolder;
 @class DBSHARINGLinkAudience;
 @class DBSHARINGLinkPermission;
 @class DBSHARINGSharedContentLinkMetadata;
@@ -48,6 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// the link.
 /// @param passwordProtected Whether the link is protected by a password.
 /// @param url The URL of the link.
+/// @param accessLevel The access level on the link for this file.
+/// @param audienceRestrictingSharedFolder The shared folder that prevents the
+/// link audience for this link from being more restrictive.
 /// @param expiry Whether the link has an expiry set on it. A link with an
 /// expiry will have its  audience changed to members when the expiry is
 /// reached.
@@ -59,6 +64,9 @@ NS_ASSUME_NONNULL_BEGIN
                         linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions
                       passwordProtected:(NSNumber *)passwordProtected
                                     url:(NSString *)url
+                            accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
+        audienceRestrictingSharedFolder:
+            (nullable DBSHARINGAudienceRestrictingSharedFolder *)audienceRestrictingSharedFolder
                                  expiry:(nullable NSDate *)expiry;
 
 ///

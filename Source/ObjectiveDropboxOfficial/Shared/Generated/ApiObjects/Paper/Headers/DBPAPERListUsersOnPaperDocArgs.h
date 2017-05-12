@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 /// @param limit Size limit per batch. The maximum number of users that can be
 /// retrieved per batch is 1000. Higher value results in invalid arguments
 /// error.
@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 ///
 /// @return An initialized instance.
 ///

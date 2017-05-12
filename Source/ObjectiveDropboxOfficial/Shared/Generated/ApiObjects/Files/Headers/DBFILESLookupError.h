@@ -9,7 +9,6 @@
 #import "DBSerializableProtocol.h"
 
 @class DBFILESLookupError;
-@class DBFILESPathRootError;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -47,9 +46,6 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
   /// example, sometimes there are legal restrictions due to copyright claims.
   DBFILESLookupErrorRestrictedContent,
 
-  /// The path root parameter provided is invalid.
-  DBFILESLookupErrorInvalidPathRoot,
-
   /// (no description).
   DBFILESLookupErrorOther,
 
@@ -61,11 +57,6 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 /// (no description). @note Ensure the `isMalformedPath` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy, nullable) NSString *malformedPath;
-
-/// The path root parameter provided is invalid. @note Ensure the
-/// `isInvalidPathRoot` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
-@property (nonatomic, readonly) DBFILESPathRootError *invalidPathRoot;
 
 #pragma mark - Constructors
 
@@ -120,18 +111,6 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 - (instancetype)initWithRestrictedContent;
 
 ///
-/// Initializes union class with tag state of "invalid_path_root".
-///
-/// Description of the "invalid_path_root" tag state: The path root parameter
-/// provided is invalid.
-///
-/// @param invalidPathRoot The path root parameter provided is invalid.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithInvalidPathRoot:(DBFILESPathRootError *)invalidPathRoot;
-
-///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -181,17 +160,6 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 /// "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "invalid_path_root".
-///
-/// @note Call this method and ensure it returns true before accessing the
-/// `invalidPathRoot` property, otherwise a runtime exception will be thrown.
-///
-/// @return Whether the union's current tag state has value "invalid_path_root".
-///
-- (BOOL)isInvalidPathRoot;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

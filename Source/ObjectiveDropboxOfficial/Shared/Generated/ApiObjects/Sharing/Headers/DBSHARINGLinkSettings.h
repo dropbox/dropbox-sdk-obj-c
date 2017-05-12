@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
 @class DBSHARINGLinkAudience;
 @class DBSHARINGLinkExpiry;
 @class DBSHARINGLinkPassword;
@@ -30,6 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// The access level on the link for this file. Currently, it only accepts
+/// 'viewer' and 'viewer_no_comment'.
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *accessLevel;
+
 /// The type of audience on the link for this file.
 @property (nonatomic, readonly, nullable) DBSHARINGLinkAudience *audience;
 
@@ -44,15 +49,18 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
+/// @param accessLevel The access level on the link for this file. Currently, it
+/// only accepts 'viewer' and 'viewer_no_comment'.
 /// @param audience The type of audience on the link for this file.
 /// @param expiry An expiry timestamp to set on a link.
 /// @param password The password for the link.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAudience:(nullable DBSHARINGLinkAudience *)audience
-                          expiry:(nullable DBSHARINGLinkExpiry *)expiry
-                        password:(nullable DBSHARINGLinkPassword *)password;
+- (instancetype)initWithAccessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
+                           audience:(nullable DBSHARINGLinkAudience *)audience
+                             expiry:(nullable DBSHARINGLinkExpiry *)expiry
+                           password:(nullable DBSHARINGLinkPassword *)password;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

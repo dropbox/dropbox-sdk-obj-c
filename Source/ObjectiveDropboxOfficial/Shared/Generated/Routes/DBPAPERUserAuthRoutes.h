@@ -58,9 +58,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init:(id<DBTransportClient>)client;
 
 ///
-/// Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.
-/// Note: This action can be performed only by the doc owner.
+/// Marks the given Paper doc as archived. Note: This action can be performed or undone by anyone with edit permissions
+/// to the doc.
 ///
+/// @param docId The Paper doc ID.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
@@ -181,6 +182,7 @@ docsFolderUsersListContinue:(NSString *)docId
 /// folderName) from the root folder to the folder directly containing the Paper doc.  Note: If the Paper doc is not in
 /// any folder (aka unfiled) the response will be empty.
 ///
+/// @param docId The Paper doc ID.
 ///
 /// @return Through the response callback, the caller will receive a `DBPAPERFoldersContainingPaperDoc` object on
 /// success or a `DBPAPERDocLookupError` object on failure.
@@ -230,6 +232,7 @@ docsFolderUsersListContinue:(NSString *)docId
 /// Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered.  Note: This action
 /// can be performed only by the doc owner.
 ///
+/// @param docId The Paper doc ID.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
@@ -239,6 +242,7 @@ docsFolderUsersListContinue:(NSString *)docId
 ///
 /// Gets the default sharing policy for the given Paper doc.
 ///
+/// @param docId The Paper doc ID.
 ///
 /// @return Through the response callback, the caller will receive a `DBPAPERSharingPolicy` object on success or a
 /// `DBPAPERDocLookupError` object on failure.
@@ -259,10 +263,10 @@ docsFolderUsersListContinue:(NSString *)docId
                                                               sharingPolicy:(DBPAPERSharingPolicy *)sharingPolicy;
 
 ///
-/// Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox
-/// account id.  Note: The Doc owner's permissions cannot be changed.
+/// Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or
+/// Dropbox account ID.  Note: The Doc owner's permissions cannot be changed.
 ///
-/// @param members User which should be added to the Paper doc. Specify only email or Dropbox account id.
+/// @param members User which should be added to the Paper doc. Specify only email address or Dropbox account ID.
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBPAPERAddPaperDocUserMemberResult *>`
 /// object on success or a `DBPAPERDocLookupError` object on failure.
@@ -272,12 +276,12 @@ docsUsersAdd:(NSString *)docId
      members:(NSArray<DBPAPERAddMember *> *)members;
 
 ///
-/// Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox
-/// account id.  Note: The Doc owner's permissions cannot be changed.
+/// Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or
+/// Dropbox account ID.  Note: The Doc owner's permissions cannot be changed.
 ///
-/// @param members User which should be added to the Paper doc. Specify only email or Dropbox account id.
+/// @param members User which should be added to the Paper doc. Specify only email address or Dropbox account ID.
 /// @param customMessage A personal message that will be emailed to each successfully added member.
-/// @param quiet Clients should set this to true if no email shall be sent to added users.
+/// @param quiet Clients should set this to true if no email message shall be sent to added users.
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBPAPERAddPaperDocUserMemberResult *>`
 /// object on success or a `DBPAPERDocLookupError` object on failure.
@@ -329,10 +333,10 @@ docsUsersListContinue:(NSString *)docId
                cursor:(NSString *)cursor;
 
 ///
-/// Allows an owner or editor to remove users from a Paper doc using their email or Dropbox account id.  Note: Doc owner
-/// cannot be removed.
+/// Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID.  Note:
+/// Doc owner cannot be removed.
 ///
-/// @param member User which should be removed from the Paper doc. Specify only email or Dropbox account id.
+/// @param member User which should be removed from the Paper doc. Specify only email address or Dropbox account ID.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBPAPERDocLookupError` object on failure.

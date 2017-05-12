@@ -31,7 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// The file to query.
 @property (nonatomic, readonly, copy) NSString *file;
 
-/// File actions to query.
+/// A list of `FileAction`s corresponding to `FilePermission`s that should
+/// appear in the  response's `permissions` in `DBSHARINGSharedFileMetadata`
+/// field describing the actions the  authenticated user can perform on the
+/// file.
 @property (nonatomic, readonly, nullable) NSArray<DBSHARINGFileAction *> *actions;
 
 #pragma mark - Constructors
@@ -40,7 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file The file to query.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s
+/// that should appear in the  response's `permissions` in
+/// `DBSHARINGSharedFileMetadata` field describing the actions the
+/// authenticated user can perform on the file.
 ///
 /// @return An initialized instance.
 ///

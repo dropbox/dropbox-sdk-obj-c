@@ -25,6 +25,7 @@
 #import "DBSHARINGCreateSharedLinkError.h"
 #import "DBSHARINGCreateSharedLinkWithSettingsArg.h"
 #import "DBSHARINGCreateSharedLinkWithSettingsError.h"
+#import "DBSHARINGExpectedSharedContentLinkMetadata.h"
 #import "DBSHARINGFileAction.h"
 #import "DBSHARINGFileLinkMetadata.h"
 #import "DBSHARINGFileMemberActionError.h"
@@ -679,14 +680,16 @@
                   aclUpdatePolicy:(DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
                  viewerInfoPolicy:(DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
                  sharedLinkPolicy:(DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
-                     linkSettings:(DBSHARINGLinkSettings *)linkSettings {
+                     linkSettings:(DBSHARINGLinkSettings *)linkSettings
+                          actions:(NSArray<DBSHARINGFolderAction *> *)actions {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGUpdateFolderPolicy;
   DBSHARINGUpdateFolderPolicyArg *arg = [[DBSHARINGUpdateFolderPolicyArg alloc] initWithSharedFolderId:sharedFolderId
                                                                                           memberPolicy:memberPolicy
                                                                                        aclUpdatePolicy:aclUpdatePolicy
                                                                                       viewerInfoPolicy:viewerInfoPolicy
                                                                                       sharedLinkPolicy:sharedLinkPolicy
-                                                                                          linkSettings:linkSettings];
+                                                                                          linkSettings:linkSettings
+                                                                                               actions:actions];
   return [self.client requestRpc:route arg:arg];
 }
 

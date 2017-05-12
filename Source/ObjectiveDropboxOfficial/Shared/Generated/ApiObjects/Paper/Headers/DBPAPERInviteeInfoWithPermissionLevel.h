@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Email invited to the Paper doc.
+/// Email address invited to the Paper doc.
 @property (nonatomic, readonly) DBSHARINGInviteeInfo *invitee;
 
 /// Permission level for the invitee.
@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param invitee Email invited to the Paper doc.
+/// @param invitee Email address invited to the Paper doc.
 /// @param permissionLevel Permission level for the invitee.
 ///
 /// @return An initialized instance.

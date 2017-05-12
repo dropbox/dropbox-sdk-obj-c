@@ -17,6 +17,7 @@
 #import "DBSHARINGAddMemberSelectorError.h"
 #import "DBSHARINGCreateSharedLinkError.h"
 #import "DBSHARINGCreateSharedLinkWithSettingsError.h"
+#import "DBSHARINGExpectedSharedContentLinkMetadata.h"
 #import "DBSHARINGFileLinkMetadata.h"
 #import "DBSHARINGFileMemberActionError.h"
 #import "DBSHARINGFileMemberActionIndividualResult.h"

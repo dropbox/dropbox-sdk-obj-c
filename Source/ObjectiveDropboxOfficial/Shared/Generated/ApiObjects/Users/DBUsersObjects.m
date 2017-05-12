@@ -172,184 +172,6 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBUSERSAccountType.h"
-
-#pragma mark - API Object
-
-@implementation DBUSERSAccountType
-
-#pragma mark - Constructors
-
-- (instancetype)initWithBasic {
-  self = [super init];
-  if (self) {
-    _tag = DBUSERSAccountTypeBasic;
-  }
-  return self;
-}
-
-- (instancetype)initWithPro {
-  self = [super init];
-  if (self) {
-    _tag = DBUSERSAccountTypePro;
-  }
-  return self;
-}
-
-- (instancetype)initWithBusiness {
-  self = [super init];
-  if (self) {
-    _tag = DBUSERSAccountTypeBusiness;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isBasic {
-  return _tag == DBUSERSAccountTypeBasic;
-}
-
-- (BOOL)isPro {
-  return _tag == DBUSERSAccountTypePro;
-}
-
-- (BOOL)isBusiness {
-  return _tag == DBUSERSAccountTypeBusiness;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBUSERSAccountTypeBasic:
-    return @"DBUSERSAccountTypeBasic";
-  case DBUSERSAccountTypePro:
-    return @"DBUSERSAccountTypePro";
-  case DBUSERSAccountTypeBusiness:
-    return @"DBUSERSAccountTypeBusiness";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (NSDictionary *)serialize:(id)instance {
-  return [DBUSERSAccountTypeSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBUSERSAccountTypeSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBUSERSAccountTypeSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBUSERSAccountTypeBasic:
-    result = prime * result + [[self tagName] hash];
-  case DBUSERSAccountTypePro:
-    result = prime * result + [[self tagName] hash];
-  case DBUSERSAccountTypeBusiness:
-    result = prime * result + [[self tagName] hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToAccountType:other];
-}
-
-- (BOOL)isEqualToAccountType:(DBUSERSAccountType *)anAccountType {
-  if (self == anAccountType) {
-    return YES;
-  }
-  if (self.tag != anAccountType.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBUSERSAccountTypeBasic:
-    return [[self tagName] isEqual:[anAccountType tagName]];
-  case DBUSERSAccountTypePro:
-    return [[self tagName] isEqual:[anAccountType tagName]];
-  case DBUSERSAccountTypeBusiness:
-    return [[self tagName] isEqual:[anAccountType tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBUSERSAccountTypeSerializer
-
-+ (NSDictionary *)serialize:(DBUSERSAccountType *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isBasic]) {
-    jsonDict[@".tag"] = @"basic";
-  } else if ([valueObj isPro]) {
-    jsonDict[@".tag"] = @"pro";
-  } else if ([valueObj isBusiness]) {
-    jsonDict[@".tag"] = @"business";
-  } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
-  }
-
-  return jsonDict;
-}
-
-+ (DBUSERSAccountType *)deserialize:(NSDictionary *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"basic"]) {
-    return [[DBUSERSAccountType alloc] initWithBasic];
-  } else if ([tag isEqualToString:@"pro"]) {
-    return [[DBUSERSAccountType alloc] initWithPro];
-  } else if ([tag isEqualToString:@"business"]) {
-    return [[DBUSERSAccountType alloc] initWithBusiness];
-  } else {
-    @throw([NSException
-        exceptionWithName:@"InvalidTag"
-                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-                 userInfo:nil]);
-  }
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
 #import "DBUSERSAccount.h"
 #import "DBUSERSBasicAccount.h"
 #import "DBUSERSName.h"
@@ -542,7 +364,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBUSERSAccount.h"
-#import "DBUSERSAccountType.h"
+#import "DBUSERSCOMMONAccountType.h"
 #import "DBUSERSFullAccount.h"
 #import "DBUSERSFullTeam.h"
 #import "DBUSERSName.h"
@@ -561,7 +383,7 @@
                            locale:(NSString *)locale
                      referralLink:(NSString *)referralLink
                          isPaired:(NSNumber *)isPaired
-                      accountType:(DBUSERSAccountType *)accountType
+                      accountType:(DBUSERSCOMMONAccountType *)accountType
                   profilePhotoUrl:(NSString *)profilePhotoUrl
                           country:(NSString *)country
                              team:(DBUSERSFullTeam *)team
@@ -596,7 +418,7 @@
                            locale:(NSString *)locale
                      referralLink:(NSString *)referralLink
                          isPaired:(NSNumber *)isPaired
-                      accountType:(DBUSERSAccountType *)accountType {
+                      accountType:(DBUSERSCOMMONAccountType *)accountType {
   return [self initWithAccountId:accountId
                             name:name
                            email:email
@@ -750,7 +572,7 @@
   jsonDict[@"locale"] = valueObj.locale;
   jsonDict[@"referral_link"] = valueObj.referralLink;
   jsonDict[@"is_paired"] = valueObj.isPaired;
-  jsonDict[@"account_type"] = [DBUSERSAccountTypeSerializer serialize:valueObj.accountType];
+  jsonDict[@"account_type"] = [DBUSERSCOMMONAccountTypeSerializer serialize:valueObj.accountType];
   if (valueObj.profilePhotoUrl) {
     jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
   }
@@ -776,7 +598,7 @@
   NSString *locale = valueDict[@"locale"];
   NSString *referralLink = valueDict[@"referral_link"];
   NSNumber *isPaired = valueDict[@"is_paired"];
-  DBUSERSAccountType *accountType = [DBUSERSAccountTypeSerializer deserialize:valueDict[@"account_type"]];
+  DBUSERSCOMMONAccountType *accountType = [DBUSERSCOMMONAccountTypeSerializer deserialize:valueDict[@"account_type"]];
   NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] ?: nil;
   NSString *country = valueDict[@"country"] ?: nil;
   DBUSERSFullTeam *team = valueDict[@"team"] ? [DBUSERSFullTeamSerializer deserialize:valueDict[@"team"]] : nil;
