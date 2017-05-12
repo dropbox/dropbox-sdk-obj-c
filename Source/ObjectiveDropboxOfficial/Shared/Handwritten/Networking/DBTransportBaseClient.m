@@ -209,7 +209,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
                                     httpHeaders:(NSDictionary *)httpHeaders {
   DBRequestError *dbxError;
 
-  if (clientError) {
+  if (clientError && errorData == nil) {
     return [[DBRequestError alloc] initAsClientError:clientError];
   }
 

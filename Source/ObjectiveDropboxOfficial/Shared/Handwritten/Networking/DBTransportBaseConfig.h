@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy, nullable) NSString *appSecret;
 
 /// The user agent associated with all networking requests. Used for server logging.
-@property (nonatomic, readonly, copy) NSString *userAgent;
+@property (nonatomic, readonly, copy, nullable) NSString *userAgent;
 
 /// An additional authentication header field used when a team app with the appropriate permissions "performs" user API
 /// actions on behalf of a team member.
