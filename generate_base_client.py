@@ -83,9 +83,10 @@ def main():
     dropbox_format_script_path = os.path.abspath('Format')
     dropbox_format_output_path = args.format_output_path if args.format_output_path else dropbox_src_path
 
-    # if os.path.exists(dropbox_default_output_path):
-    #     shutil.rmtree(dropbox_default_output_path)
-    # os.makedirs(dropbox_default_output_path)
+    # clear out all old files
+    if not args.format_output_path:
+        shutil.rmtree(dropbox_default_output_path)
+        os.makedirs(dropbox_default_output_path)
 
     if verbose:
         print('Dropbox package path: %s' % dropbox_pkg_path)
