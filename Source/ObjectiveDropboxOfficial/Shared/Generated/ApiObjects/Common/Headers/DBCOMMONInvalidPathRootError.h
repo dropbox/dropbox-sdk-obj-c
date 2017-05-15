@@ -8,25 +8,24 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBFILESPathRootError;
+@class DBCOMMONInvalidPathRootError;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `PathRootError` struct.
+/// The `InvalidPathRootError` struct.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESPathRootError : NSObject <DBSerializable, NSCopying>
+@interface DBCOMMONInvalidPathRootError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// The user's latest path root value. None if the user no longer has a path
-/// root.
+/// The latest path root id for user's team if the user is still in a team.
 @property (nonatomic, readonly, copy, nullable) NSString *pathRoot;
 
 #pragma mark - Constructors
@@ -34,8 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param pathRoot The user's latest path root value. None if the user no
-/// longer has a path root.
+/// @param pathRoot The latest path root id for user's team if the user is still
+/// in a team.
 ///
 /// @return An initialized instance.
 ///
@@ -57,29 +56,30 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `PathRootError` struct.
+/// The serialization class for the `InvalidPathRootError` struct.
 ///
-@interface DBFILESPathRootErrorSerializer : NSObject
+@interface DBCOMMONInvalidPathRootErrorSerializer : NSObject
 
 ///
-/// Serializes `DBFILESPathRootError` instances.
+/// Serializes `DBCOMMONInvalidPathRootError` instances.
 ///
-/// @param instance An instance of the `DBFILESPathRootError` API object.
+/// @param instance An instance of the `DBCOMMONInvalidPathRootError` API
+/// object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBFILESPathRootError` API object.
+/// `DBCOMMONInvalidPathRootError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESPathRootError *)instance;
++ (NSDictionary *)serialize:(DBCOMMONInvalidPathRootError *)instance;
 
 ///
-/// Deserializes `DBFILESPathRootError` instances.
+/// Deserializes `DBCOMMONInvalidPathRootError` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBFILESPathRootError` API object.
+/// `DBCOMMONInvalidPathRootError` API object.
 ///
-/// @return An instantiation of the `DBFILESPathRootError` object.
+/// @return An instantiation of the `DBCOMMONInvalidPathRootError` object.
 ///
-+ (DBFILESPathRootError *)deserialize:(NSDictionary *)dict;
++ (DBCOMMONInvalidPathRootError *)deserialize:(NSDictionary *)dict;
 
 @end
 

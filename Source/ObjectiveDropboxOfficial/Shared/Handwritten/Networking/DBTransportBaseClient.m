@@ -7,6 +7,7 @@
 #import "DBAUTHAccessError.h"
 #import "DBAUTHAuthError.h"
 #import "DBAUTHRateLimitError.h"
+#import "DBCOMMONPathRootError.h"
 #import "DBRequestErrors.h"
 #import "DBSDKConstants.h"
 #import "DBStoneBase.h"
@@ -258,6 +259,13 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
                                             errorContent:errorContent
                                              userMessage:userMessage
                                    structuredAccessError:accessError];
+  } else if (statusCode == 422) {
+    DBCOMMONPathRootError *pathRootError = [DBCOMMONPathRootErrorSerializer deserialize:deserializedData[@"error"]];
+    dbxError = [[DBRequestError alloc] initAsPathRootError:requestId
+                                                statusCode:@(statusCode)
+                                              errorContent:errorContent
+                                               userMessage:userMessage
+                                   structuredPathRootError:pathRootError];
   } else if (statusCode == 429) {
     DBAUTHRateLimitError *rateLimitError = [DBAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]];
     NSString *retryAfter = httpHeaders[@"Retry-After"];

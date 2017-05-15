@@ -6,6 +6,7 @@
 #import "DBAUTHAccessError.h"
 #import "DBAUTHAuthError.h"
 #import "DBAUTHRateLimitError.h"
+#import "DBCOMMONPathRootError.h"
 #import "DBOAuthManager.h"
 
 #pragma mark - HTTP error
@@ -119,6 +120,35 @@
 
 @end
 
+#pragma mark - Path Root error
+
+@implementation DBRequestPathRootError
+
+- (instancetype)init:(NSString *)requestId
+                 statusCode:(NSNumber *)statusCode
+               errorContent:(NSString *)errorContent
+                userMessage:(NSString *)userMessage
+    structuredPathRootError:(DBCOMMONPathRootError *)structuredPathRootError {
+  self = [super init:requestId statusCode:statusCode errorContent:errorContent userMessage:userMessage];
+  if (self) {
+    _structuredPathRootError = structuredPathRootError;
+  }
+  return self;
+}
+
+- (NSString *)description {
+  NSDictionary *values = @{
+    @"RequestId" : self.requestId ?: @"nil",
+    @"StatusCode" : self.statusCode ?: @"nil",
+    @"ErrorContent" : self.errorContent ?: @"nil",
+    @"UserMessage" : self.userMessage ?: @"nil",
+    @"StructuredPathRootError" : [NSString stringWithFormat:@"%@", _structuredPathRootError] ?: @"nil"
+  };
+  return [NSString stringWithFormat:@"DropboxPathRootError[%@];", values];
+}
+
+@end
+
 #pragma mark - Rate Limit error
 
 @implementation DBRequestRateLimitError
@@ -210,6 +240,7 @@
                    userMessage:userMessage
            structuredAuthError:nil
          structuredAccessError:nil
+       structuredPathRootError:nil
       structuredRateLimitError:nil
                        backoff:nil
                        nsError:nil];
@@ -226,6 +257,7 @@
                    userMessage:userMessage
            structuredAuthError:nil
          structuredAccessError:nil
+       structuredPathRootError:nil
       structuredRateLimitError:nil
                        backoff:nil
                        nsError:nil];
@@ -243,6 +275,7 @@
                    userMessage:userMessage
            structuredAuthError:structuredAuthError
          structuredAccessError:nil
+       structuredPathRootError:nil
       structuredRateLimitError:nil
                        backoff:nil
                        nsError:nil];
@@ -260,6 +293,25 @@
                    userMessage:userMessage
            structuredAuthError:nil
          structuredAccessError:structuredAccessError
+       structuredPathRootError:nil
+      structuredRateLimitError:nil
+                       backoff:nil
+                       nsError:nil];
+}
+
+- (instancetype)initAsPathRootError:(NSString *)requestId
+                         statusCode:(NSNumber *)statusCode
+                       errorContent:(NSString *)errorContent
+                        userMessage:(NSString *)userMessage
+            structuredPathRootError:(DBCOMMONPathRootError *)structuredPathRootError {
+  return [self init:DBRequestErrorPathRoot
+                     requestId:requestId
+                    statusCode:statusCode
+                  errorContent:errorContent
+                   userMessage:userMessage
+           structuredAuthError:nil
+         structuredAccessError:nil
+       structuredPathRootError:structuredPathRootError
       structuredRateLimitError:nil
                        backoff:nil
                        nsError:nil];
@@ -278,6 +330,7 @@
                    userMessage:userMessage
            structuredAuthError:nil
          structuredAccessError:nil
+       structuredPathRootError:nil
       structuredRateLimitError:structuredRateLimitError
                        backoff:backoff
                        nsError:nil];
@@ -294,6 +347,7 @@
                    userMessage:userMessage
            structuredAuthError:nil
          structuredAccessError:nil
+       structuredPathRootError:nil
       structuredRateLimitError:nil
                        backoff:nil
                        nsError:nil];
@@ -307,6 +361,7 @@
                    userMessage:nil
            structuredAuthError:nil
          structuredAccessError:nil
+       structuredPathRootError:nil
       structuredRateLimitError:nil
                        backoff:nil
                        nsError:nsError];
@@ -319,6 +374,7 @@
                  userMessage:(NSString *)userMessage
          structuredAuthError:(DBAUTHAuthError *)structuredAuthError
        structuredAccessError:(DBAUTHAccessError *)structuredAccessError
+     structuredPathRootError:(DBCOMMONPathRootError *)structuredPathRootError
     structuredRateLimitError:(DBAUTHRateLimitError *)structuredRateLimitError
                      backoff:(NSNumber *)backoff
                      nsError:(NSError *)nsError {
@@ -331,6 +387,7 @@
     _userMessage = userMessage;
     _structuredAuthError = structuredAuthError;
     _structuredAccessError = structuredAccessError;
+    _structuredPathRootError = structuredPathRootError;
     _structuredRateLimitError = structuredRateLimitError;
     _backoff = backoff;
     _nsError = nsError;
@@ -354,6 +411,10 @@
 
 - (BOOL)isAccessError {
   return _tag == DBRequestErrorAccess;
+}
+
+- (BOOL)isPathRootError {
+  return _tag == DBRequestErrorPathRoot;
 }
 
 - (BOOL)isRateLimitError {
@@ -416,6 +477,18 @@
                       structuredAccessError:_structuredAccessError];
 }
 
+- (DBRequestPathRootError *)asPathRootError {
+  if (![self isPathRootError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required `DBRequestErrorPathRoot`, but was %@.", [self tagName]];
+  }
+  return [[DBRequestPathRootError alloc] init:_requestId
+                                   statusCode:_statusCode
+                                 errorContent:_errorContent
+                                  userMessage:_userMessage
+                      structuredPathRootError:_structuredPathRootError];
+}
+
 - (DBRequestRateLimitError *)asRateLimitError {
   if (![self isRateLimitError]) {
     [NSException raise:@"IllegalStateException"
@@ -458,6 +531,8 @@
     return @"DBRequestErrorBadInput";
   case DBRequestErrorAuth:
     return @"DBRequestErrorAuth";
+  case DBRequestErrorPathRoot:
+    return @"DBRequestPathRoot";
   case DBRequestErrorAccess:
     return @"DBRequestErrorAccess";
   case DBRequestErrorRateLimit:
@@ -483,6 +558,8 @@
     return [NSString stringWithFormat:@"%@", [self asAuthError]];
   case DBRequestErrorAccess:
     return [NSString stringWithFormat:@"%@", [self asAccessError]];
+  case DBRequestErrorPathRoot:
+    return [NSString stringWithFormat:@"%@", [self asPathRootError]];
   case DBRequestErrorRateLimit:
     return [NSString stringWithFormat:@"%@", [self asRateLimitError]];
   case DBRequestErrorInternalServer:

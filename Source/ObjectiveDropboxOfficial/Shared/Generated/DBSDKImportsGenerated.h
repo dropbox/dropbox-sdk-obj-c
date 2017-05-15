@@ -46,6 +46,10 @@
 
 // `Common` namespace types
 
+#import "DBCOMMONInvalidPathRootError.h"
+#import "DBCOMMONPathRoot.h"
+#import "DBCOMMONPathRootError.h"
+
 // `Files` namespace types
 
 #import "DBFILESAddPropertiesError.h"

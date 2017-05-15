@@ -7,6 +7,7 @@
 @class DBAUTHAccessError;
 @class DBAUTHAuthError;
 @class DBAUTHRateLimitError;
+@class DBCOMMONPathRootError;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -162,13 +163,55 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param userMessage A human-readable error message that is optionally returned from some API endpoints.
 /// @param structuredAccessError The structured object returned by the Dropbox API in the event of a 403 access error.
 ///
-/// @return An initialized DBRequestAuthError instance.
+/// @return An initialized DBRequestAccessError instance.
 ///
 - (instancetype)init:(NSString *)requestId
                statusCode:(NSNumber *)statusCode
              errorContent:(NSString *)errorContent
               userMessage:(nullable NSString *)userMessage
     structuredAccessError:(DBAUTHAccessError *)structuredAccessError;
+
+///
+/// Description method.
+///
+/// @return A human-readable representation of the current DBRequestAccessError object.
+///
+- (NSString *)description;
+
+@end
+
+#pragma mark - Path Root error
+
+///
+/// Path Root request error.
+///
+/// Contains relevant information regarding a failed network request. Initialized in the event of an HTTP 422 response.
+/// Extends DBRequestHttpError.
+///
+@interface DBRequestPathRootError : DBRequestHttpError
+
+/// The structured object returned by the Dropbox API in the event of a 422 path root error.
+@property (nonatomic, readonly) DBCOMMONPathRootError *structuredPathRootError;
+
+///
+/// DBRequestPathRootError full constructor.
+///
+/// @param requestId The Dropbox request id of the network call. This is useful to Dropbox for debugging issues with
+/// Dropbox's SDKs and API.
+/// @param statusCode The HTTP response status code of the request.
+/// @param errorContent A string representation of the error body received in the reponse. If for a route-specific
+/// error, this field will be the value of the "error_summary" key.
+/// @param userMessage A human-readable error message that is optionally returned from some API endpoints.
+/// @param structuredPathRootError The structured object returned by the Dropbox API in the event of a 422 path root
+/// error.
+///
+/// @return An initialized DBRequestPathRootError instance.
+///
+- (instancetype)init:(NSString *)requestId
+                 statusCode:(NSNumber *)statusCode
+               errorContent:(NSString *)errorContent
+                userMessage:(nullable NSString *)userMessage
+    structuredPathRootError:(DBCOMMONPathRootError *)structuredPathRootError;
 
 ///
 /// Description method.
@@ -315,6 +358,9 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
   /// Errors due to invalid authentication credentials.
   DBRequestErrorAuth,
 
+  /// Errors due to invalid authentication credentials.
+  DBRequestErrorPathRoot,
+
   /// Errors due to invalid permission to access.
   DBRequestErrorAccess,
 
@@ -352,6 +398,9 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 
 /// The structured object returned by the Dropbox API in the event of a 403 access error.
 @property (nonatomic, readonly, nullable) DBAUTHAccessError *structuredAccessError;
+
+/// The structured object returned by the Dropbox API in the event of a 422 path root error.
+@property (nonatomic, readonly, nullable) DBCOMMONPathRootError *structuredPathRootError;
 
 /// The structured object returned by the Dropbox API in the event of a 429 rate-limit error.
 @property (nonatomic, readonly, nullable) DBAUTHRateLimitError *structuredRateLimitError;
@@ -449,6 +498,28 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 ///
 /// DBRequestError convenience constructor.
 ///
+/// Initializes the `DBRequestError` with all the required state for representing a Path Root error.
+///
+/// @param requestId The Dropbox request id of the network call. This is useful to Dropbox for debugging issues with
+/// Dropbox's SDKs and API.
+/// @param statusCode The HTTP response status code of the request.
+/// @param errorContent A string representation of the error body received in the reponse. If for a route-specific
+/// error, this field will be the value of the "error_summary" key.
+/// @param userMessage A human-readable error message that is optionally returned from some API endpoints.
+/// @param structuredPathRootError The structured object returned by the Dropbox API in the event of a 422 path root
+/// error.
+///
+/// @return An initialized `DBRequestError` instance with Auth error state.
+///
+- (instancetype)initAsPathRootError:(nullable NSString *)requestId
+                         statusCode:(nullable NSNumber *)statusCode
+                       errorContent:(nullable NSString *)errorContent
+                        userMessage:(nullable NSString *)userMessage
+            structuredPathRootError:(DBCOMMONPathRootError *)structuredPathRootError;
+
+///
+/// DBRequestError convenience constructor.
+///
 /// Initializes the `DBRequestError` with all the required state for representing a
 /// Rate Limit error.
 ///
@@ -516,6 +587,8 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// @param userMessage A human-readable error message that is optionally returned from some API endpoints.
 /// @param structuredAuthError The structured object returned by the Dropbox API in the event of a 401 auth error.
 /// @param structuredAccessError The structured object returned by the Dropbox API in the event of a 403 access error.
+/// @param structuredPathRootError The structured object returned by the Dropbox API in the event of a 422 path root
+/// error.
 /// @param structuredRateLimitError The structured object returned by the Dropbox API in the event of a 429 rate-limit
 /// error.
 /// @param backoff The number of seconds to wait before making any additional requests in the event of a rate-limit
@@ -531,6 +604,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
                  userMessage:(nullable NSString *)userMessage
          structuredAuthError:(nullable DBAUTHAuthError *)structuredAuthError
        structuredAccessError:(nullable DBAUTHAccessError *)structuredAccessError
+     structuredPathRootError:(nullable DBCOMMONPathRootError *)structuredPathRootError
     structuredRateLimitError:(nullable DBAUTHRateLimitError *)structuredRateLimitError
                      backoff:(nullable NSNumber *)backoff
                      nsError:(nullable NSError *)nsError;
@@ -564,6 +638,13 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
+
+///
+/// Retrieves whether the error's current tag state has value "path_root_error".
+///
+/// @return Whether the union's current tag state has value "path_root_error".
+///
+- (BOOL)isPathRootError;
 
 ///
 /// Retrieves whether the error's current tag state has value "rate_limit_error".
@@ -627,6 +708,16 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// @return An initialized `DBRequestAccessError` instance.
 ///
 - (DBRequestAccessError *)asAccessError;
+
+///
+/// Creates a DBRequestAccessError instance based on the data in the current `DBRequestError` instance.
+///
+/// @note Will throw error if current `DBRequestError` instance tag state is not "auth_error". Should only use after
+/// checking if `isAccessError` returns true for the current `DBRequestError` instance.
+///
+/// @return An initialized `DBRequestAccessError` instance.
+///
+- (DBRequestPathRootError *)asPathRootError;
 
 ///
 /// Creates a `DBRequestRateLimitError` instance based on the data in the current `DBRequestError` instance.
