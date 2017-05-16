@@ -33,7 +33,11 @@
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     sessionConfig.timeoutIntervalForRequest = 60.0;
 
-    _session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:_delegate delegateQueue:_delegateQueue];
+    NSOperationQueue *sessionDelegateQueue = [[NSOperationQueue alloc] init];
+    sessionDelegateQueue.maxConcurrentOperationCount = 1; // [Michael Fey, 2017-05-16] From the NSURLSession documentation: "The queue should be a serial queue, in order to ensure the correct ordering of callbacks."
+    sessionDelegateQueue.name = [NSString stringWithFormat:@"%@ NSURLSession delegate queue", NSStringFromClass(self.class)];
+    sessionDelegateQueue.qualityOfService = NSQualityOfServiceUtility;
+    _session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:_delegate delegateQueue:sessionDelegateQueue];
     _forceForegroundSession = transportConfig.forceForegroundSession ? YES : NO;
     if (!_forceForegroundSession) {
       NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
@@ -42,9 +46,14 @@
       if (transportConfig.sharedContainerIdentifier) {
         backgroundSessionConfig.sharedContainerIdentifier = transportConfig.sharedContainerIdentifier;
       }
+
+      NSOperationQueue *secondarySessionDelegateQueue = [[NSOperationQueue alloc] init];
+      secondarySessionDelegateQueue.maxConcurrentOperationCount = 1; // [Michael Fey, 2017-05-16] From the NSURLSession documentation: "The queue should be a serial queue, in order to ensure the correct ordering of callbacks."
+      secondarySessionDelegateQueue.name = [NSString stringWithFormat:@"%@ Secondary NSURLSession delegate queue", NSStringFromClass(self.class)];
+      secondarySessionDelegateQueue.qualityOfService = NSQualityOfServiceUtility;
       _secondarySession = [NSURLSession sessionWithConfiguration:backgroundSessionConfig
                                                         delegate:_delegate
-                                                   delegateQueue:_delegateQueue];
+                                                   delegateQueue:secondarySessionDelegateQueue];
     } else {
       _secondarySession = _session;
     }
@@ -52,8 +61,12 @@
     NSURLSessionConfiguration *longpollSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     longpollSessionConfig.timeoutIntervalForRequest = 480.0;
 
+    NSOperationQueue *longpollSessionDelegateQueue = [[NSOperationQueue alloc] init];
+    longpollSessionDelegateQueue.maxConcurrentOperationCount = 1; // [Michael Fey, 2017-05-16] From the NSURLSession documentation: "The queue should be a serial queue, in order to ensure the correct ordering of callbacks."
+    longpollSessionDelegateQueue.name = [NSString stringWithFormat:@"%@ Longpoll NSURLSession delegate queue", NSStringFromClass(self.class)];
+    longpollSessionDelegateQueue.qualityOfService = NSQualityOfServiceUtility;
     _longpollSession =
-        [NSURLSession sessionWithConfiguration:longpollSessionConfig delegate:_delegate delegateQueue:_delegateQueue];
+        [NSURLSession sessionWithConfiguration:longpollSessionConfig delegate:_delegate delegateQueue:longpollSessionDelegateQueue];
   }
   return self;
 }
