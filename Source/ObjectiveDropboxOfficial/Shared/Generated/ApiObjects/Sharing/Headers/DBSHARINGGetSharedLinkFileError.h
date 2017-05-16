@@ -10,6 +10,8 @@
 
 @class DBSHARINGGetSharedLinkFileError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -56,7 +58,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedLinkNotFound;
+- (instancetype)initWithSharedLinkNotFound;
 
 ///
 /// Initializes union class with tag state of "shared_link_access_denied".
@@ -66,7 +68,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedLinkAccessDenied;
+- (instancetype)initWithSharedLinkAccessDenied;
 
 ///
 /// Initializes union class with tag state of "unsupported_link_type".
@@ -76,14 +78,14 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUnsupportedLinkType;
+- (instancetype)initWithUnsupportedLinkType;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "shared_link_is_directory".
@@ -93,9 +95,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedLinkIsDirectory;
+- (instancetype)initWithSharedLinkIsDirectory;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -147,7 +149,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -167,7 +169,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetSharedLinkFileError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGGetSharedLinkFileError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGGetSharedLinkFileError *)instance;
 
 ///
 /// Deserializes `DBSHARINGGetSharedLinkFileError` instances.
@@ -177,6 +179,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 ///
 /// @return An instantiation of the `DBSHARINGGetSharedLinkFileError` object.
 ///
-+ (DBSHARINGGetSharedLinkFileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGGetSharedLinkFileError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

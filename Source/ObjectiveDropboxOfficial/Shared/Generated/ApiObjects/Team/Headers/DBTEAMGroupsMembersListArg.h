@@ -11,6 +11,8 @@
 @class DBTEAMGroupSelector;
 @class DBTEAMGroupsMembersListArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,10 +27,10 @@
 #pragma mark - Instance fields
 
 /// The group whose members are to be listed.
-@property (nonatomic, readonly) DBTEAMGroupSelector * _Nonnull group;
+@property (nonatomic, readonly) DBTEAMGroupSelector *group;
 
 /// Number of results to return per call.
-@property (nonatomic, readonly) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly) NSNumber *limit;
 
 #pragma mark - Constructors
 
@@ -40,7 +42,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroup:(DBTEAMGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit;
+- (instancetype)initWithGroup:(DBTEAMGroupSelector *)group limit:(nullable NSNumber *)limit;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -50,9 +52,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroup:(DBTEAMGroupSelector * _Nonnull)group;
+- (instancetype)initWithGroup:(DBTEAMGroupSelector *)group;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -71,7 +73,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupsMembersListArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsMembersListArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMGroupsMembersListArg *)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsMembersListArg` instances.
@@ -81,6 +83,8 @@
 ///
 /// @return An instantiation of the `DBTEAMGroupsMembersListArg` object.
 ///
-+ (DBTEAMGroupsMembersListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMGroupsMembersListArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

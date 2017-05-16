@@ -11,6 +11,8 @@
 
 @class DBTEAMTeamFolderRenameArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// New team folder name.
-@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString *name;
 
 #pragma mark - Constructors
 
@@ -37,7 +39,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamFolderId:(NSString * _Nonnull)teamFolderId name:(NSString * _Nonnull)name;
+- (instancetype)initWithTeamFolderId:(NSString *)teamFolderId name:(NSString *)name;
 
 @end
 
@@ -56,7 +58,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderRenameArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderRenameArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderRenameArg *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderRenameArg` instances.
@@ -66,6 +68,8 @@
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderRenameArg` object.
 ///
-+ (DBTEAMTeamFolderRenameArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderRenameArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

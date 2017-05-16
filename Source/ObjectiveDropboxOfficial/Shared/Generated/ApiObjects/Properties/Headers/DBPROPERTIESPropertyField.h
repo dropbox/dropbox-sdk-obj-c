@@ -10,6 +10,8 @@
 
 @class DBPROPERTIESPropertyField;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,11 +27,11 @@
 
 /// This is the name or key of a custom property in a property template. File
 /// property names can be up to 256 bytes.
-@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString *name;
 
 /// Value of a custom property attached to a file. Values can be up to 1024
 /// bytes.
-@property (nonatomic, readonly, copy) NSString * _Nonnull value;
+@property (nonatomic, readonly, copy) NSString *value;
 
 #pragma mark - Constructors
 
@@ -43,9 +45,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithName:(NSString * _Nonnull)name value:(NSString * _Nonnull)value;
+- (instancetype)initWithName:(NSString *)name value:(NSString *)value;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -64,7 +66,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESPropertyField` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyField * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPROPERTIESPropertyField *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyField` instances.
@@ -74,6 +76,8 @@
 ///
 /// @return An instantiation of the `DBPROPERTIESPropertyField` object.
 ///
-+ (DBPROPERTIESPropertyField * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPROPERTIESPropertyField *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

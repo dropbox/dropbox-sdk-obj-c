@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DBTransportClient <NSObject>
 
 /// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic, copy) NSString * _Nullable accessToken;
+@property (nonatomic, copy, nullable) NSString *accessToken;
 
 #pragma mark - RPC-style request
 
@@ -119,8 +119,8 @@ NS_ASSUME_NONNULL_BEGIN
                                    arg:(id<DBSerializable> _Nullable)arg
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination
-                       byteOffsetStart:(NSNumber * _Nullable)byteOffsetStart
-                         byteOffsetEnd:(NSNumber * _Nullable)byteOffsetEnd;
+                       byteOffsetStart:(nullable NSNumber *)byteOffsetStart
+                         byteOffsetEnd:(nullable NSNumber *)byteOffsetEnd;
 
 #pragma mark - Download-style request (NSData)
 
@@ -152,8 +152,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBDownloadDataTask *)requestDownload:(DBRoute *)route
                                     arg:(id<DBSerializable> _Nullable)arg
-                        byteOffsetStart:(NSNumber * _Nullable)byteOffsetStart
-                          byteOffsetEnd:(NSNumber * _Nullable)byteOffsetEnd;
+                        byteOffsetStart:(nullable NSNumber *)byteOffsetStart
+                          byteOffsetEnd:(nullable NSNumber *)byteOffsetEnd;
 
 @end
 

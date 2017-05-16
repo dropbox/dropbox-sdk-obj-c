@@ -10,6 +10,8 @@
 
 @class DBTEAMUsersSelectorArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -45,15 +47,15 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 
 /// List of member IDs. @note Ensure the `isTeamMemberIds` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull teamMemberIds;
+@property (nonatomic, readonly) NSArray<NSString *> *teamMemberIds;
 
 /// List of external user IDs. @note Ensure the `isExternalIds` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull externalIds;
+@property (nonatomic, readonly) NSArray<NSString *> *externalIds;
 
 /// List of email addresses. @note Ensure the `isEmails` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull emails;
+@property (nonatomic, readonly) NSArray<NSString *> *emails;
 
 #pragma mark - Constructors
 
@@ -66,7 +68,7 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamMemberIds:(NSArray<NSString *> * _Nonnull)teamMemberIds;
+- (instancetype)initWithTeamMemberIds:(NSArray<NSString *> *)teamMemberIds;
 
 ///
 /// Initializes union class with tag state of "external_ids".
@@ -77,7 +79,7 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithExternalIds:(NSArray<NSString *> * _Nonnull)externalIds;
+- (instancetype)initWithExternalIds:(NSArray<NSString *> *)externalIds;
 
 ///
 /// Initializes union class with tag state of "emails".
@@ -88,9 +90,9 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithEmails:(NSArray<NSString *> * _Nonnull)emails;
+- (instancetype)initWithEmails:(NSArray<NSString *> *)emails;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -129,7 +131,7 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -148,7 +150,7 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMUsersSelectorArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMUsersSelectorArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMUsersSelectorArg *)instance;
 
 ///
 /// Deserializes `DBTEAMUsersSelectorArg` instances.
@@ -158,6 +160,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// @return An instantiation of the `DBTEAMUsersSelectorArg` object.
 ///
-+ (DBTEAMUsersSelectorArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMUsersSelectorArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

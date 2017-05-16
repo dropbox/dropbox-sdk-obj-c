@@ -11,6 +11,8 @@
 @class DBTransportDefaultConfig;
 @class DBOAuthResult;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Dropbox Clients Manager.
 ///
@@ -26,35 +28,35 @@
 ///
 /// @return The app key of the current Dropbox API app.
 ///
-+ (NSString * _Nullable)appKey;
++ (nullable NSString *)appKey;
 
 ///
 /// Accessor method for the authorized `DBUserClient` shared instance.
 ///
 /// @return The authorized `DBUserClient` shared instance.
 ///
-+ (DBUserClient * _Nullable)authorizedClient;
++ (nullable DBUserClient *)authorizedClient;
 
 ///
 /// Multi-Dropbox account use case. Returns all current Dropbox user clients.
 ///
 /// @return Mapping of `tokenUid` (account ID) to authorized `DBUserClient` instance.
 ///
-+ (NSDictionary<NSString *, DBUserClient *> * _Nonnull)authorizedClients;
++ (NSDictionary<NSString *, DBUserClient *> *)authorizedClients;
 
 ///
 /// Accessor method for the authorized `DBTeamClient` shared instance.
 ///
 /// @return The the authorized `DBTeamClient` shared instance.
 ///
-+ (DBTeamClient * _Nullable)authorizedTeamClient;
++ (nullable DBTeamClient *)authorizedTeamClient;
 
 ///
 /// Multi-Dropbox account use case. Returns all current Dropbox team clients.
 ///
 /// @return Mapping of `tokenUid` (account ID) to authorized `DBTeamClient` instance.
 ///
-+ (NSDictionary<NSString *, DBTeamClient *> * _Nonnull)authorizedTeamClients;
++ (NSDictionary<NSString *, DBTeamClient *> *)authorizedTeamClients;
 
 ///
 /// Multi-Dropbox account use case. Creates and stores a new shared authorized user client instance with the access
@@ -66,7 +68,7 @@
 ///
 /// @returns Whether a valid token exists in storage for the supplied `tokenUid`.
 ///
-+ (BOOL)authorizeClientFromKeychain:(NSString * _Nullable)tokenUid;
++ (BOOL)authorizeClientFromKeychain:(nullable NSString *)tokenUid;
 
 ///
 /// Multi-Dropbox account use case. Creates and stores a new shared authorized team client instance with the access
@@ -78,7 +80,7 @@
 ///
 /// @returns Whether a valid token exists in storage for the supplied `tokenUid`.
 ///
-+ (BOOL)authorizeTeamClientFromKeychain:(NSString * _Nullable)tokenUid;
++ (BOOL)authorizeTeamClientFromKeychain:(nullable NSString *)tokenUid;
 
 ///
 /// Handles launching the SDK with a redirect url from an external source to authorize a user API client.
@@ -90,7 +92,7 @@
 ///
 /// @return The `DBOAuthResult` result from the authorization attempt.
 ///
-+ (DBOAuthResult * _Nullable)handleRedirectURL:(NSURL * _Nonnull)url;
++ (nullable DBOAuthResult *)handleRedirectURL:(NSURL *)url;
 
 ///
 /// Handles launching the SDK with a redirect url from an external source to authorize a team API client.
@@ -102,7 +104,7 @@
 ///
 /// @return The `DBOAuthResult` result from the authorization attempt.
 ///
-+ (DBOAuthResult * _Nullable)handleRedirectURLTeam:(NSURL * _Nonnull)url;
++ (nullable DBOAuthResult *)handleRedirectURLTeam:(NSURL *)url;
 
 ///
 /// Multi-Dropbox account use case. Sets to `nil` the active user / team shared authorized client, clears the stored
@@ -111,7 +113,7 @@
 ///
 /// @param tokenUid The uid of the token to clear.
 ///
-+ (void)unlinkAndResetClient:(NSString * _Nonnull)tokenUid;
++ (void)unlinkAndResetClient:(NSString *)tokenUid;
 
 ///
 /// Sets to `nil` the active user / team shared authorized client and clears all stored access tokens in `DBKeychain`.
@@ -141,9 +143,11 @@
 ///
 /// @return Whether a token migration will be performed.
 ///
-+ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock _Nonnull)responseBlock
-                                  queue:(NSOperationQueue * _Nullable)queue
-                                 appKey:(NSString * _Nonnull)appKey
-                              appSecret:(NSString * _Nonnull)appSecret;
++ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
+                                  queue:(nullable NSOperationQueue *)queue
+                                 appKey:(NSString *)appKey
+                              appSecret:(NSString *)appSecret;
 
 @end
+
+NS_ASSUME_NONNULL_END

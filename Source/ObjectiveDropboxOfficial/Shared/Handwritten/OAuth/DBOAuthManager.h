@@ -8,6 +8,8 @@
 @class DBOAuthResult;
 @protocol DBSharedApplication;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - Access token class
 
 ///
@@ -18,11 +20,11 @@
 @interface DBAccessToken : NSObject
 
 /// The OAuth2 access token.
-@property (nonatomic, readonly, copy) NSString * _Nonnull accessToken;
+@property (nonatomic, readonly, copy) NSString *accessToken;
 
 /// The unique identifier of the access token used for storing in `DBKeychain`. Either the `account_id` (if user app) or
 /// the `team_id` if (team app).
-@property (nonatomic, readonly, copy) NSString * _Nonnull uid;
+@property (nonatomic, readonly, copy) NSString *uid;
 
 ///
 /// DBAccessToken full constructor.
@@ -32,7 +34,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken uid:(NSString * _Nonnull)uid;
+- (instancetype)initWithAccessToken:(NSString *)accessToken uid:(NSString *)uid;
 
 @end
 
@@ -54,7 +56,7 @@
 }
 
 /// Sets the locale of the OAuth flow webpages. If `nil`, then defaults to device locale.
-@property (nonatomic, strong) NSLocale * _Nonnull locale;
+@property (nonatomic, strong) NSLocale *locale;
 
 #pragma mark - Shared instance accessors and mutators
 
@@ -65,7 +67,7 @@
 ///
 /// @return The `DBOAuthManager` shared instance.
 ///
-+ (DBOAuthManager * _Nullable)sharedOAuthManager;
++ (nullable DBOAuthManager *)sharedOAuthManager;
 
 ///
 /// Mutator method for `DBOAuthManager` shared instance.
@@ -74,7 +76,7 @@
 ///
 /// @param sharedOAuthManager The updated reference to the `DBOAuthManager` shared instance.
 ///
-+ (void)setSharedOAuthManager:(DBOAuthManager * _Nonnull)sharedOAuthManager;
++ (void)setSharedOAuthManager:(DBOAuthManager *)sharedOAuthManager;
 
 #pragma mark - Constructors
 
@@ -85,7 +87,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey;
+- (instancetype)initWithAppKey:(NSString *)appKey;
 
 ///
 /// `DBOAuthManager` full constructor.
@@ -95,7 +97,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey host:(NSString * _Nonnull)host;
+- (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host;
 
 #pragma mark - Auth flow methods
 
@@ -107,7 +109,7 @@
 ///
 /// @param sharedApplication A platform-neutral shared application abstraction for rendering auth flow.
 ///
-- (void)authorizeFromSharedApplication:(id<DBSharedApplication> _Nonnull)sharedApplication;
+- (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication;
 
 ///
 /// Handles a redirect back into the application (from whichever auth flow was being used).
@@ -116,7 +118,7 @@
 ///
 /// @return `nil` if SDK cannot handle the redirect URL, otherwise returns an instance of `DBOAuthResult`.
 ///
-- (DBOAuthResult * _Nullable)handleRedirectURL:(NSURL * _Nonnull)url;
+- (nullable DBOAuthResult *)handleRedirectURL:(NSURL *)url;
 
 #pragma mark - Keychain methods
 
@@ -127,14 +129,14 @@
 ///
 /// @return Whether the save operation succeeded.
 ///
-- (BOOL)storeAccessToken:(DBAccessToken * _Nonnull)accessToken;
+- (BOOL)storeAccessToken:(DBAccessToken *)accessToken;
 
 ///
 /// Utility function to return an arbitrary access token from the `DBKeychain` class, if any exist.
 ///
 /// @return the "first" access token found, if any, otherwise nil.
 ///
-- (DBAccessToken * _Nullable)retrieveFirstAccessToken;
+- (nullable DBAccessToken *)retrieveFirstAccessToken;
 
 ///
 /// Retrieves the access token for a particular user from the `DBKeychain` class.
@@ -143,14 +145,14 @@
 ///
 /// @return An access token if present, otherwise nil.
 ///
-- (DBAccessToken * _Nullable)retrieveAccessToken:(NSString * _Nonnull)tokenUid;
+- (nullable DBAccessToken *)retrieveAccessToken:(NSString *)tokenUid;
 
 ///
 /// Retrieves all stored access tokens from the `DBKeychain` class.
 ///
 /// @return a dictionary mapping token uids to their access tokens.
 ///
-- (NSDictionary<NSString *, DBAccessToken *> * _Nonnull)retrieveAllAccessTokens;
+- (NSDictionary<NSString *, DBAccessToken *> *)retrieveAllAccessTokens;
 
 ///
 /// Checks if there are any stored access tokens in the `DBKeychain` class.
@@ -166,7 +168,7 @@
 ///
 /// @return Whether the delete operation succeeded.
 ///
-- (BOOL)clearStoredAccessToken:(NSString * _Nonnull)tokenUid;
+- (BOOL)clearStoredAccessToken:(NSString *)tokenUid;
 
 ///
 /// Deletes all stored access tokens in the `DBKeychain` class.
@@ -188,3 +190,5 @@
 @property (nonatomic, assign) BOOL disableSignup;
 
 @end
+
+NS_ASSUME_NONNULL_END

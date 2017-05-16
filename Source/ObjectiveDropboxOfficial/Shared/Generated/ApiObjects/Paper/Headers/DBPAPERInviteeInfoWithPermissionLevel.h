@@ -12,6 +12,8 @@
 @class DBPAPERPaperDocPermissionLevel;
 @class DBSHARINGInviteeInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,26 +27,26 @@
 
 #pragma mark - Instance fields
 
-/// Email invited to the Paper doc.
-@property (nonatomic, readonly) DBSHARINGInviteeInfo * _Nonnull invitee;
+/// Email address invited to the Paper doc.
+@property (nonatomic, readonly) DBSHARINGInviteeInfo *invitee;
 
 /// Permission level for the invitee.
-@property (nonatomic, readonly) DBPAPERPaperDocPermissionLevel * _Nonnull permissionLevel;
+@property (nonatomic, readonly) DBPAPERPaperDocPermissionLevel *permissionLevel;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param invitee Email invited to the Paper doc.
+/// @param invitee Email address invited to the Paper doc.
 /// @param permissionLevel Permission level for the invitee.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvitee:(DBSHARINGInviteeInfo * _Nonnull)invitee
-                        permissionLevel:(DBPAPERPaperDocPermissionLevel * _Nonnull)permissionLevel;
+- (instancetype)initWithInvitee:(DBSHARINGInviteeInfo *)invitee
+                permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -64,7 +66,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERInviteeInfoWithPermissionLevel` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERInviteeInfoWithPermissionLevel * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERInviteeInfoWithPermissionLevel *)instance;
 
 ///
 /// Deserializes `DBPAPERInviteeInfoWithPermissionLevel` instances.
@@ -75,6 +77,8 @@
 /// @return An instantiation of the `DBPAPERInviteeInfoWithPermissionLevel`
 /// object.
 ///
-+ (DBPAPERInviteeInfoWithPermissionLevel * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERInviteeInfoWithPermissionLevel *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

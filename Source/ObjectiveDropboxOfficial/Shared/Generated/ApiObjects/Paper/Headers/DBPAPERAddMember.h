@@ -12,6 +12,8 @@
 @class DBPAPERPaperDocPermissionLevel;
 @class DBSHARINGMemberSelector;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,11 +28,11 @@
 #pragma mark - Instance fields
 
 /// Permission for the user.
-@property (nonatomic, readonly) DBPAPERPaperDocPermissionLevel * _Nonnull permissionLevel;
+@property (nonatomic, readonly) DBPAPERPaperDocPermissionLevel *permissionLevel;
 
-/// User which should be added to the Paper doc. Specify only email or Dropbox
-/// account id.
-@property (nonatomic, readonly) DBSHARINGMemberSelector * _Nonnull member;
+/// User which should be added to the Paper doc. Specify only email address or
+/// Dropbox account ID.
+@property (nonatomic, readonly) DBSHARINGMemberSelector *member;
 
 #pragma mark - Constructors
 
@@ -38,26 +40,26 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param member User which should be added to the Paper doc. Specify only
-/// email or Dropbox account id.
+/// email address or Dropbox account ID.
 /// @param permissionLevel Permission for the user.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMember:(DBSHARINGMemberSelector * _Nonnull)member
-                       permissionLevel:(DBPAPERPaperDocPermissionLevel * _Nullable)permissionLevel;
+- (instancetype)initWithMember:(DBSHARINGMemberSelector *)member
+               permissionLevel:(nullable DBPAPERPaperDocPermissionLevel *)permissionLevel;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
 /// @param member User which should be added to the Paper doc. Specify only
-/// email or Dropbox account id.
+/// email address or Dropbox account ID.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMember:(DBSHARINGMemberSelector * _Nonnull)member;
+- (instancetype)initWithMember:(DBSHARINGMemberSelector *)member;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -76,7 +78,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERAddMember` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERAddMember * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERAddMember *)instance;
 
 ///
 /// Deserializes `DBPAPERAddMember` instances.
@@ -86,6 +88,8 @@
 ///
 /// @return An instantiation of the `DBPAPERAddMember` object.
 ///
-+ (DBPAPERAddMember * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERAddMember *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -11,6 +11,8 @@
 @class DBTEAMMembersListResult;
 @class DBTEAMTeamMemberInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,14 +27,14 @@
 #pragma mark - Instance fields
 
 /// List of team members.
-@property (nonatomic, readonly) NSArray<DBTEAMTeamMemberInfo *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBTEAMTeamMemberInfo *> *members;
 
 /// Pass the cursor into `membersListContinue` to obtain the additional members.
-@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString *cursor;
 
 /// Is true if there are additional team members that have not been returned
 /// yet. An additional call to `membersListContinue` can retrieve them.
-@property (nonatomic, readonly) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly) NSNumber *hasMore;
 
 #pragma mark - Constructors
 
@@ -48,11 +50,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMembers:(NSArray<DBTEAMTeamMemberInfo *> * _Nonnull)members
-                                 cursor:(NSString * _Nonnull)cursor
-                                hasMore:(NSNumber * _Nonnull)hasMore;
+- (instancetype)initWithMembers:(NSArray<DBTEAMTeamMemberInfo *> *)members
+                         cursor:(NSString *)cursor
+                        hasMore:(NSNumber *)hasMore;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -71,7 +73,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersListResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMembersListResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMembersListResult *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersListResult` instances.
@@ -81,6 +83,8 @@
 ///
 /// @return An instantiation of the `DBTEAMMembersListResult` object.
 ///
-+ (DBTEAMMembersListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMembersListResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

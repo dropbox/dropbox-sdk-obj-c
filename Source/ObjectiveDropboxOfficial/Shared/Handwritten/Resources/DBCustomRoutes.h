@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @returns Special `DBBatchUploadTask` that exposes cancellation method.
 ///
 - (DBBatchUploadTask *)batchUploadFiles:(NSDictionary<NSURL *, DBFILESCommitInfo *> *)fileUrlsToCommitInfo
-                                  queue:(NSOperationQueue * _Nullable)queue
+                                  queue:(nullable NSOperationQueue *)queue
                           progressBlock:(DBProgressBlock _Nullable)progressBlock
                           responseBlock:(DBBatchUploadResponseBlock)responseBlock;
 

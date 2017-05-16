@@ -10,6 +10,8 @@
 
 @class DBFILESListRevisionsArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,10 +26,10 @@
 #pragma mark - Instance fields
 
 /// The path to the file you want to see the revisions of.
-@property (nonatomic, readonly, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString *path;
 
 /// The maximum number of revision entries returned.
-@property (nonatomic, readonly) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly) NSNumber *limit;
 
 #pragma mark - Constructors
 
@@ -39,7 +41,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit;
+- (instancetype)initWithPath:(NSString *)path limit:(nullable NSNumber *)limit;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -49,9 +51,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
+- (instancetype)initWithPath:(NSString *)path;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -70,7 +72,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListRevisionsArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESListRevisionsArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESListRevisionsArg *)instance;
 
 ///
 /// Deserializes `DBFILESListRevisionsArg` instances.
@@ -80,6 +82,8 @@
 ///
 /// @return An instantiation of the `DBFILESListRevisionsArg` object.
 ///
-+ (DBFILESListRevisionsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESListRevisionsArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

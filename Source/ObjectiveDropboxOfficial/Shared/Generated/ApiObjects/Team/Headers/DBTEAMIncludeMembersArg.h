@@ -10,6 +10,8 @@
 
 @class DBTEAMIncludeMembersArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,7 +28,7 @@
 /// Whether to return the list of members in the group.  Note that the default
 /// value will cause all the group members  to be returned in the response. This
 /// may take a long time for large groups.
-@property (nonatomic, readonly) NSNumber * _Nonnull returnMembers;
+@property (nonatomic, readonly) NSNumber *returnMembers;
 
 #pragma mark - Constructors
 
@@ -39,7 +41,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithReturnMembers:(NSNumber * _Nullable)returnMembers;
+- (instancetype)initWithReturnMembers:(nullable NSNumber *)returnMembers;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -48,9 +50,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initDefault;
+- (instancetype)initDefault;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -69,7 +71,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMIncludeMembersArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMIncludeMembersArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMIncludeMembersArg *)instance;
 
 ///
 /// Deserializes `DBTEAMIncludeMembersArg` instances.
@@ -79,6 +81,8 @@
 ///
 /// @return An instantiation of the `DBTEAMIncludeMembersArg` object.
 ///
-+ (DBTEAMIncludeMembersArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMIncludeMembersArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

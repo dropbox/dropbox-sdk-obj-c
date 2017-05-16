@@ -11,6 +11,8 @@
 @class DBTEAMRevokeDeviceSessionBatchResult;
 @class DBTEAMRevokeDeviceSessionStatus;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// (no description).
-@property (nonatomic, readonly) NSArray<DBTEAMRevokeDeviceSessionStatus *> * _Nonnull revokeDevicesStatus;
+@property (nonatomic, readonly) NSArray<DBTEAMRevokeDeviceSessionStatus *> *revokeDevicesStatus;
 
 #pragma mark - Constructors
 
@@ -36,10 +38,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithRevokeDevicesStatus:
-    (NSArray<DBTEAMRevokeDeviceSessionStatus *> * _Nonnull)revokeDevicesStatus;
+- (instancetype)initWithRevokeDevicesStatus:(NSArray<DBTEAMRevokeDeviceSessionStatus *> *)revokeDevicesStatus;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +60,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeDeviceSessionBatchResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeDeviceSessionBatchResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMRevokeDeviceSessionBatchResult *)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeDeviceSessionBatchResult` instances.
@@ -70,6 +71,8 @@
 /// @return An instantiation of the `DBTEAMRevokeDeviceSessionBatchResult`
 /// object.
 ///
-+ (DBTEAMRevokeDeviceSessionBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMRevokeDeviceSessionBatchResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

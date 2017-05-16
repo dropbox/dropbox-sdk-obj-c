@@ -10,6 +10,8 @@
 
 @class DBPAPERRefPaperDoc;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -23,21 +25,21 @@
 
 #pragma mark - Instance fields
 
-/// (no description).
-@property (nonatomic, readonly, copy) NSString * _Nonnull docId;
+/// The Paper doc ID.
+@property (nonatomic, readonly, copy) NSString *docId;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param docId (no description).
+/// @param docId The Paper doc ID.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDocId:(NSString * _Nonnull)docId;
+- (instancetype)initWithDocId:(NSString *)docId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -56,7 +58,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERRefPaperDoc` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERRefPaperDoc * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERRefPaperDoc *)instance;
 
 ///
 /// Deserializes `DBPAPERRefPaperDoc` instances.
@@ -66,6 +68,8 @@
 ///
 /// @return An instantiation of the `DBPAPERRefPaperDoc` object.
 ///
-+ (DBPAPERRefPaperDoc * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERRefPaperDoc *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

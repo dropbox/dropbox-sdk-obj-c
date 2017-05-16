@@ -11,6 +11,8 @@
 @class DBSHARINGJobError;
 @class DBSHARINGJobStatus;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -43,7 +45,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 
 /// The asynchronous job returned an error. @note Ensure the `isFailed` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBSHARINGJobError * _Nonnull failed;
+@property (nonatomic, readonly) DBSHARINGJobError *failed;
 
 #pragma mark - Constructors
 
@@ -55,7 +57,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInProgress;
+- (instancetype)initWithInProgress;
 
 ///
 /// Initializes union class with tag state of "complete".
@@ -64,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithComplete;
+- (instancetype)initWithComplete;
 
 ///
 /// Initializes union class with tag state of "failed".
@@ -76,9 +78,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFailed:(DBSHARINGJobError * _Nonnull)failed;
+- (instancetype)initWithFailed:(DBSHARINGJobError *)failed;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -111,7 +113,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -130,7 +132,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGJobStatus` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGJobStatus * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGJobStatus *)instance;
 
 ///
 /// Deserializes `DBSHARINGJobStatus` instances.
@@ -140,6 +142,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// @return An instantiation of the `DBSHARINGJobStatus` object.
 ///
-+ (DBSHARINGJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGJobStatus *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

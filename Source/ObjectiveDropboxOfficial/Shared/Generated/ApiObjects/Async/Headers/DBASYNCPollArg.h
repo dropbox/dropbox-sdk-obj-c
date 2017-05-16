@@ -10,6 +10,8 @@
 
 @class DBASYNCPollArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,7 +29,7 @@
 
 /// Id of the asynchronous job. This is the value of a response returned from
 /// the method that launched the job.
-@property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
+@property (nonatomic, readonly, copy) NSString *asyncJobId;
 
 #pragma mark - Constructors
 
@@ -39,9 +41,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
+- (instancetype)initWithAsyncJobId:(NSString *)asyncJobId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -60,7 +62,7 @@
 /// @return A json-compatible dictionary representation of the `DBASYNCPollArg`
 /// API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBASYNCPollArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBASYNCPollArg *)instance;
 
 ///
 /// Deserializes `DBASYNCPollArg` instances.
@@ -70,6 +72,8 @@
 ///
 /// @return An instantiation of the `DBASYNCPollArg` object.
 ///
-+ (DBASYNCPollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBASYNCPollArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

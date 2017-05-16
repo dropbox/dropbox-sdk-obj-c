@@ -11,6 +11,8 @@
 @class NSWorkspace;
 @class NSViewController;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Code with platform-specific (here, macOS) dependencies.
 ///
@@ -25,9 +27,9 @@
 /// @param controller The `NSViewController` with which to render the OAuth flow.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.
 ///
-+ (void)authorizeFromControllerDesktop:(NSWorkspace * _Nonnull)sharedApplication
-                            controller:(NSViewController * _Nullable)controller
-                               openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL;
++ (void)authorizeFromControllerDesktop:(NSWorkspace *)sharedApplication
+                            controller:(nullable NSViewController *)controller
+                               openURL:(void (^_Nonnull)(NSURL *))openURL;
 
 ///
 /// Stores the user app key for desktop. If any access token already exists, initializes an authorized shared
@@ -41,7 +43,7 @@
 /// create an app or to locate your app's app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
 ///
-+ (void)setupWithAppKeyDesktop:(NSString * _Nonnull)appKey;
++ (void)setupWithAppKeyDesktop:(NSString *)appKey;
 
 ///
 /// Stores the user transport config info for desktop. If any access token already exists, initializes an authorized
@@ -53,7 +55,7 @@
 ///
 /// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
 ///
-+ (void)setupWithTransportConfigDesktop:(DBTransportDefaultConfig * _Nullable)transportConfig;
++ (void)setupWithTransportConfigDesktop:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///
 /// Stores the team app key for desktop. If any access token already exists, initializes an authorized shared
@@ -67,7 +69,7 @@
 /// create an app or to locate your app's app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
 ///
-+ (void)setupWithTeamAppKeyDesktop:(NSString * _Nonnull)appKey;
++ (void)setupWithTeamAppKeyDesktop:(NSString *)appKey;
 
 ///
 /// Stores the team transport config info for desktop. If any access token already exists, initializes an authorized
@@ -79,6 +81,8 @@
 ///
 /// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
 ///
-+ (void)setupWithTeamTransportConfigDesktop:(DBTransportDefaultConfig * _Nullable)transportConfig;
++ (void)setupWithTeamTransportConfigDesktop:(nullable DBTransportDefaultConfig *)transportConfig;
 
 @end
+
+NS_ASSUME_NONNULL_END

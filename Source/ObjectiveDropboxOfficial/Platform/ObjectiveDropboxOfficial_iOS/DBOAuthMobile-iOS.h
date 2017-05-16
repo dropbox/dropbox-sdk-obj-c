@@ -10,6 +10,8 @@
 
 #pragma mark - Shared application
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Platform-specific (here, iOS) shared application.
 ///
@@ -26,13 +28,13 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedApplication:(UIApplication * _Nonnull)sharedApplication
-                                       controller:(UIViewController * _Nonnull)controller
-                                          openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL;
+- (instancetype)initWithSharedApplication:(UIApplication *)sharedApplication
+                               controller:(UIViewController *)controller
+                                  openURL:(void (^_Nonnull)(NSURL *))openURL;
 
-+ (DBMobileSharedApplication * _Nullable)mobileSharedApplication;
++ (nullable DBMobileSharedApplication *)mobileSharedApplication;
 
-+ (void)setMobileSharedApplication:(DBMobileSharedApplication * _Nonnull)mobileSharedApplication;
++ (void)setMobileSharedApplication:(DBMobileSharedApplication *)mobileSharedApplication;
 
 - (void)dismissAuthController;
 
@@ -45,6 +47,8 @@
 ///
 @interface DBMobileSafariViewController : SFSafariViewController <SFSafariViewControllerDelegate>
 
-- (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url cancelHandler:(DBOAuthCancelBlock _Nonnull)cancelHandler;
+- (instancetype)initWithUrl:(NSURL *)url cancelHandler:(DBOAuthCancelBlock)cancelHandler;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBTEAMDateRange;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,10 +28,10 @@
 #pragma mark - Instance fields
 
 /// Optional starting date (inclusive)
-@property (nonatomic, readonly) NSDate * _Nullable startDate;
+@property (nonatomic, readonly, nullable) NSDate *startDate;
 
 /// Optional ending date (exclusive)
-@property (nonatomic, readonly) NSDate * _Nullable endDate;
+@property (nonatomic, readonly, nullable) NSDate *endDate;
 
 #pragma mark - Constructors
 
@@ -41,7 +43,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
+- (instancetype)initWithStartDate:(nullable NSDate *)startDate endDate:(nullable NSDate *)endDate;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -50,9 +52,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initDefault;
+- (instancetype)initDefault;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -71,7 +73,7 @@
 /// @return A json-compatible dictionary representation of the `DBTEAMDateRange`
 /// API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMDateRange * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMDateRange *)instance;
 
 ///
 /// Deserializes `DBTEAMDateRange` instances.
@@ -81,6 +83,8 @@
 ///
 /// @return An instantiation of the `DBTEAMDateRange` object.
 ///
-+ (DBTEAMDateRange * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMDateRange *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

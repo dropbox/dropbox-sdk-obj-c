@@ -11,12 +11,14 @@
 @class DBTEAMTeamFolderListResult;
 @class DBTEAMTeamFolderMetadata;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
 /// The `TeamFolderListResult` struct.
 ///
-/// Result for `teamFolderList`.
+/// Result for `teamFolderList` and `teamFolderListContinue`.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,7 +29,15 @@
 #pragma mark - Instance fields
 
 /// List of all team folders in the authenticated team.
-@property (nonatomic, readonly) NSArray<DBTEAMTeamFolderMetadata *> * _Nonnull teamFolders;
+@property (nonatomic, readonly) NSArray<DBTEAMTeamFolderMetadata *> *teamFolders;
+
+/// Pass the cursor into `teamFolderListContinue` to obtain additional team
+/// folders.
+@property (nonatomic, readonly, copy) NSString *cursor;
+
+/// Is true if there are additional team folders that have not been returned
+/// yet. An additional call to `teamFolderListContinue` can retrieve them.
+@property (nonatomic, readonly) NSNumber *hasMore;
 
 #pragma mark - Constructors
 
@@ -35,12 +45,19 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param teamFolders List of all team folders in the authenticated team.
+/// @param cursor Pass the cursor into `teamFolderListContinue` to obtain
+/// additional team folders.
+/// @param hasMore Is true if there are additional team folders that have not
+/// been returned yet. An additional call to `teamFolderListContinue` can
+/// retrieve them.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTeamFolders:(NSArray<DBTEAMTeamFolderMetadata *> * _Nonnull)teamFolders;
+- (instancetype)initWithTeamFolders:(NSArray<DBTEAMTeamFolderMetadata *> *)teamFolders
+                             cursor:(NSString *)cursor
+                            hasMore:(NSNumber *)hasMore;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +76,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderListResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderListResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderListResult *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderListResult` instances.
@@ -69,6 +86,8 @@
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderListResult` object.
 ///
-+ (DBTEAMTeamFolderListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderListResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

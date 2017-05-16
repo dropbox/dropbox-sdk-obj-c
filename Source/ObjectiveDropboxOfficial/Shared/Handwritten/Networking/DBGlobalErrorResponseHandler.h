@@ -48,7 +48,7 @@ typedef void (^DBNetworkErrorResponseBlock)(DBRequestError *networkError, DBTask
 /// error type, but any of its instance fields, and its instance fields' instance fields, and so on.
 ///
 + (void)registerRouteErrorResponseBlock:(DBRouteErrorResponseBlock)routeErrorResponseBlock
-                         routeErrorType:(Class _Nonnull)routeErrorType;
+                         routeErrorType:(Class)routeErrorType;
 
 ///
 /// Registers a global error handler for a specific route error type.
@@ -60,15 +60,15 @@ typedef void (^DBNetworkErrorResponseBlock)(DBRequestError *networkError, DBTask
 /// @param queue The operation queue on which to execute the supplied global response handler.
 ///
 + (void)registerRouteErrorResponseBlock:(DBRouteErrorResponseBlock)routeErrorResponseBlock
-                         routeErrorType:(Class _Nonnull)routeErrorType
-                                  queue:(NSOperationQueue * _Nullable)queue;
+                         routeErrorType:(Class)routeErrorType
+                                  queue:(nullable NSOperationQueue *)queue;
 
 ///
 /// Removes the global error handler associated with the supplied error type.
 ///
 /// routeErrorType The associated error type of the response handler to be removed.
 ///
-+ (void)removeRouteErrorResponseBlockWithRouteErrorType:(Class _Nonnull)routeErrorType;
++ (void)removeRouteErrorResponseBlockWithRouteErrorType:(Class)routeErrorType;
 
 ///
 /// Convenience method for registering a single global error handler for handling general network errors.
@@ -88,7 +88,7 @@ typedef void (^DBNetworkErrorResponseBlock)(DBRequestError *networkError, DBTask
 /// @param queue The operation queue on which to execute the supplied global response handler.
 ///
 + (void)registerNetworkErrorResponseBlock:(DBNetworkErrorResponseBlock)networkErrorResponseBlock
-                                    queue:(NSOperationQueue * _Nullable)queue;
+                                    queue:(nullable NSOperationQueue *)queue;
 
 ///
 /// Removes the single global error handler for general network errors.

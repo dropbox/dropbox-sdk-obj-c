@@ -10,6 +10,8 @@
 
 @class DBTEAMRevokeLinkedAppError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -51,7 +53,7 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAppNotFound;
+- (instancetype)initWithAppNotFound;
 
 ///
 /// Initializes union class with tag state of "member_not_found".
@@ -60,16 +62,16 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMemberNotFound;
+- (instancetype)initWithMemberNotFound;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -100,7 +102,7 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -119,7 +121,7 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeLinkedAppError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMRevokeLinkedAppError *)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeLinkedAppError` instances.
@@ -129,6 +131,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMRevokeLinkedAppError` object.
 ///
-+ (DBTEAMRevokeLinkedAppError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMRevokeLinkedAppError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

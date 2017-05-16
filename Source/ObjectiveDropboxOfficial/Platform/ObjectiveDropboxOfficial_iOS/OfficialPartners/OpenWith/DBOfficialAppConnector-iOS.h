@@ -6,6 +6,8 @@
 
 @class DBOpenWithInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Manages returning to the official Dropbox app.
 ///
@@ -25,9 +27,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey
-                     canOpenURLWrapper:(BOOL (^_Nonnull)(NSURL * _Nonnull))canOpenURLWrapper
-                        openURLWrapper:(void (^_Nonnull)(NSURL * _Nonnull))openURLWrapper;
+- (instancetype)initWithAppKey:(NSString *)appKey
+             canOpenURLWrapper:(BOOL (^)(NSURL *))canOpenURLWrapper
+                openURLWrapper:(void (^)(NSURL *))openURLWrapper;
 
 ///
 /// Returns to the Dropbox app specified by app
@@ -38,7 +40,7 @@
 /// Dropbox app.
 /// @param changesPending Whether there are changes pending in Dropbox for the file.
 ///
-- (void)returnToDropboxApp:(DBOpenWithInfo * _Nonnull)openWithInfo changesPending:(BOOL)changesPending;
+- (void)returnToDropboxApp:(DBOpenWithInfo *)openWithInfo changesPending:(BOOL)changesPending;
 
 ///
 /// Returns to the Dropbox app specified by app passing along the error and a dictionary of extra information.
@@ -51,10 +53,10 @@
 /// @param errorName The error encoutered to pass back to the official Dropbox app.
 /// @param extras Extra information to pass back to the official Dropbox app.
 ///
-- (void)returnToDropboxApp:(DBOpenWithInfo * _Nonnull)openWithInfo
+- (void)returnToDropboxApp:(DBOpenWithInfo *)openWithInfo
             changesPending:(BOOL)changesPending
-                 errorName:(NSString * _Nullable)errorName
-                    extras:(NSDictionary * _Nullable)extras;
+                 errorName:(nullable NSString *)errorName
+                    extras:(nullable NSDictionary *)extras;
 
 ///
 /// Parses the url from the official Dropbox app into a `DBOpenWithInfo` object.
@@ -63,7 +65,7 @@
 ///
 /// @return Structured data parsed from the supplied url.
 ///
-+ (DBOpenWithInfo * _Nullable)openWithInfoFromURL:(NSURL * _Nonnull)url;
+- (nullable DBOpenWithInfo *)openWithInfoFromURL:(NSURL *)url;
 
 ///
 /// Determines whether an official Dropbox app is installed.
@@ -79,6 +81,8 @@
 ///
 /// @return @c DBOpenWithInfo object that wraps the relevant information for returning to the official Dropbox app.
 ///
-+ (DBOpenWithInfo * _Nullable)retriveOfficialDropboxAppOpenWithInfo;
++ (nullable DBOpenWithInfo *)retriveOfficialDropboxAppOpenWithInfo;
 
 @end
+
+NS_ASSUME_NONNULL_END

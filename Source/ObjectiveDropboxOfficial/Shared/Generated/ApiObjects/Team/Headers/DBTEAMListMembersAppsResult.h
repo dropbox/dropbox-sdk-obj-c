@@ -11,6 +11,8 @@
 @class DBTEAMListMembersAppsResult;
 @class DBTEAMMemberLinkedApps;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,15 +29,15 @@
 #pragma mark - Instance fields
 
 /// The linked applications of each member of the team
-@property (nonatomic, readonly) NSArray<DBTEAMMemberLinkedApps *> * _Nonnull apps;
+@property (nonatomic, readonly) NSArray<DBTEAMMemberLinkedApps *> *apps;
 
 /// If true, then there are more apps available. Pass the cursor to
 /// `linkedAppsListMembersLinkedApps` to retrieve the rest.
-@property (nonatomic, readonly) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly) NSNumber *hasMore;
 
 /// Pass the cursor into `linkedAppsListMembersLinkedApps` to receive the next
 /// sub list of team's applications.
-@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy, nullable) NSString *cursor;
 
 #pragma mark - Constructors
 
@@ -50,9 +52,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> * _Nonnull)apps
-                             hasMore:(NSNumber * _Nonnull)hasMore
-                              cursor:(NSString * _Nullable)cursor;
+- (instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> *)apps
+                     hasMore:(NSNumber *)hasMore
+                      cursor:(nullable NSString *)cursor;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -64,10 +66,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> * _Nonnull)apps
-                             hasMore:(NSNumber * _Nonnull)hasMore;
+- (instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> *)apps hasMore:(NSNumber *)hasMore;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -86,7 +87,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListMembersAppsResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMListMembersAppsResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMListMembersAppsResult *)instance;
 
 ///
 /// Deserializes `DBTEAMListMembersAppsResult` instances.
@@ -96,6 +97,8 @@
 ///
 /// @return An instantiation of the `DBTEAMListMembersAppsResult` object.
 ///
-+ (DBTEAMListMembersAppsResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMListMembersAppsResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

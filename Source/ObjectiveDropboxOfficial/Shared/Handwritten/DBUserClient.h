@@ -8,6 +8,8 @@
 
 @class DBTransportDefaultConfig;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Dropbox User API Client for all endpoints with auth type "user".
 ///
@@ -26,7 +28,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
+- (instancetype)initWithAccessToken:(NSString *)accessToken;
 
 ///
 /// Full constructor.
@@ -36,13 +38,13 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
-                            transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                    transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///
 /// Returns the current access token used to make API requests.
 ///
-- (NSString * _Nullable)accessToken;
+- (nullable NSString *)accessToken;
 
 ///
 /// Returns whether the client is authorized.
@@ -52,3 +54,5 @@
 - (BOOL)isAuthorized;
 
 @end
+
+NS_ASSUME_NONNULL_END

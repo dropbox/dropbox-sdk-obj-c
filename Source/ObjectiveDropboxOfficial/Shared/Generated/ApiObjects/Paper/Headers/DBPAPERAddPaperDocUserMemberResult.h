@@ -12,6 +12,8 @@
 @class DBPAPERAddPaperDocUserResult;
 @class DBSHARINGMemberSelector;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -28,10 +30,10 @@
 #pragma mark - Instance fields
 
 /// One of specified input members.
-@property (nonatomic, readonly) DBSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBSHARINGMemberSelector *member;
 
 /// The outcome of the action on this member.
-@property (nonatomic, readonly) DBPAPERAddPaperDocUserResult * _Nonnull result;
+@property (nonatomic, readonly) DBPAPERAddPaperDocUserResult *result;
 
 #pragma mark - Constructors
 
@@ -43,10 +45,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMember:(DBSHARINGMemberSelector * _Nonnull)member
-                                result:(DBPAPERAddPaperDocUserResult * _Nonnull)result;
+- (instancetype)initWithMember:(DBSHARINGMemberSelector *)member result:(DBPAPERAddPaperDocUserResult *)result;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -66,7 +67,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERAddPaperDocUserMemberResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERAddPaperDocUserMemberResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERAddPaperDocUserMemberResult *)instance;
 
 ///
 /// Deserializes `DBPAPERAddPaperDocUserMemberResult` instances.
@@ -76,6 +77,8 @@
 ///
 /// @return An instantiation of the `DBPAPERAddPaperDocUserMemberResult` object.
 ///
-+ (DBPAPERAddPaperDocUserMemberResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERAddPaperDocUserMemberResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

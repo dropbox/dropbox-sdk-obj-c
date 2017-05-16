@@ -10,6 +10,8 @@
 
 @class DBUSERSTeam;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,10 +28,10 @@
 #pragma mark - Instance fields
 
 /// The team's unique ID.
-@property (nonatomic, readonly, copy) NSString * _Nonnull id_;
+@property (nonatomic, readonly, copy) NSString *id_;
 
 /// The name of the team.
-@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString *name;
 
 #pragma mark - Constructors
 
@@ -41,9 +43,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name;
+- (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -62,7 +64,7 @@
 /// @return A json-compatible dictionary representation of the `DBUSERSTeam` API
 /// object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBUSERSTeam * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBUSERSTeam *)instance;
 
 ///
 /// Deserializes `DBUSERSTeam` instances.
@@ -72,6 +74,8 @@
 ///
 /// @return An instantiation of the `DBUSERSTeam` object.
 ///
-+ (DBUSERSTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBUSERSTeam *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

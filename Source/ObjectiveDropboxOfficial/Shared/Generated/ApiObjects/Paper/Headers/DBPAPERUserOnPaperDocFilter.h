@@ -10,6 +10,8 @@
 
 @class DBPAPERUserOnPaperDocFilter;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -51,7 +53,7 @@ typedef NS_ENUM(NSInteger, DBPAPERUserOnPaperDocFilterTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithVisited;
+- (instancetype)initWithVisited;
 
 ///
 /// Initializes union class with tag state of "shared".
@@ -62,16 +64,16 @@ typedef NS_ENUM(NSInteger, DBPAPERUserOnPaperDocFilterTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithShared;
+- (instancetype)initWithShared;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -101,7 +103,7 @@ typedef NS_ENUM(NSInteger, DBPAPERUserOnPaperDocFilterTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -120,7 +122,7 @@ typedef NS_ENUM(NSInteger, DBPAPERUserOnPaperDocFilterTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERUserOnPaperDocFilter` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPAPERUserOnPaperDocFilter * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPAPERUserOnPaperDocFilter *)instance;
 
 ///
 /// Deserializes `DBPAPERUserOnPaperDocFilter` instances.
@@ -130,6 +132,8 @@ typedef NS_ENUM(NSInteger, DBPAPERUserOnPaperDocFilterTag) {
 ///
 /// @return An instantiation of the `DBPAPERUserOnPaperDocFilter` object.
 ///
-+ (DBPAPERUserOnPaperDocFilter * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPAPERUserOnPaperDocFilter *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

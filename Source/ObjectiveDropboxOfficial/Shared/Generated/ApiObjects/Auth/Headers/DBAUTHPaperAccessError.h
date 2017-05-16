@@ -10,6 +10,8 @@
 
 @class DBAUTHPaperAccessError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -49,7 +51,7 @@ typedef NS_ENUM(NSInteger, DBAUTHPaperAccessErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPaperDisabled;
+- (instancetype)initWithPaperDisabled;
 
 ///
 /// Initializes union class with tag state of "not_paper_user".
@@ -59,16 +61,16 @@ typedef NS_ENUM(NSInteger, DBAUTHPaperAccessErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNotPaperUser;
+- (instancetype)initWithNotPaperUser;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -98,7 +100,7 @@ typedef NS_ENUM(NSInteger, DBAUTHPaperAccessErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -117,7 +119,7 @@ typedef NS_ENUM(NSInteger, DBAUTHPaperAccessErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBAUTHPaperAccessError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBAUTHPaperAccessError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBAUTHPaperAccessError *)instance;
 
 ///
 /// Deserializes `DBAUTHPaperAccessError` instances.
@@ -127,6 +129,8 @@ typedef NS_ENUM(NSInteger, DBAUTHPaperAccessErrorTag) {
 ///
 /// @return An instantiation of the `DBAUTHPaperAccessError` object.
 ///
-+ (DBAUTHPaperAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBAUTHPaperAccessError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

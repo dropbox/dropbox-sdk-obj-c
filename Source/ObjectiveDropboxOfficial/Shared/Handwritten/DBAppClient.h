@@ -8,6 +8,8 @@
 
 @class DBTransportDefaultConfig;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Dropbox API Client for all endpoints with auth type "app".
 ///
@@ -29,7 +31,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret;
+- (instancetype)initWithAppKey:(NSString *)appKey appSecret:(NSString *)appSecret;
 
 ///
 /// Full constructor.
@@ -39,6 +41,8 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTransportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
+- (instancetype)initWithTransportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 @end
+
+NS_ASSUME_NONNULL_END

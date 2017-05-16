@@ -12,6 +12,8 @@
 @class DBSHARINGFileMemberActionError;
 @class DBSHARINGFileMemberActionIndividualResult;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -45,12 +47,12 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 /// member still has access via a parent shared folder. @note Ensure the
 /// `isSuccess` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
-@property (nonatomic, readonly) DBSHARINGAccessLevel * _Nullable success;
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *success;
 
 /// User was not able to perform this action. @note Ensure the `isMemberError`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
-@property (nonatomic, readonly) DBSHARINGFileMemberActionError * _Nonnull memberError;
+@property (nonatomic, readonly) DBSHARINGFileMemberActionError *memberError;
 
 #pragma mark - Constructors
 
@@ -67,7 +69,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSuccess:(DBSHARINGAccessLevel * _Nullable)success;
+- (instancetype)initWithSuccess:(nullable DBSHARINGAccessLevel *)success;
 
 ///
 /// Initializes union class with tag state of "member_error".
@@ -79,9 +81,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMemberError:(DBSHARINGFileMemberActionError * _Nonnull)memberError;
+- (instancetype)initWithMemberError:(DBSHARINGFileMemberActionError *)memberError;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -110,7 +112,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -131,7 +133,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGFileMemberActionIndividualResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGFileMemberActionIndividualResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGFileMemberActionIndividualResult *)instance;
 
 ///
 /// Deserializes `DBSHARINGFileMemberActionIndividualResult` instances.
@@ -142,6 +144,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 /// @return An instantiation of the `DBSHARINGFileMemberActionIndividualResult`
 /// object.
 ///
-+ (DBSHARINGFileMemberActionIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGFileMemberActionIndividualResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

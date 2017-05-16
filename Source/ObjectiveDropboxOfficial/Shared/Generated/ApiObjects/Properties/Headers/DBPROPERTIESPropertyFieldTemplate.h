@@ -11,6 +11,8 @@
 @class DBPROPERTIESPropertyFieldTemplate;
 @class DBPROPERTIESPropertyType;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -29,15 +31,15 @@
 
 /// This is the name or key of a custom property in a property template. File
 /// property names can be up to 256 bytes.
-@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString *name;
 
 /// This is the description for a custom property in a property template. File
 /// property description can be up to 1024 bytes.
-@property (nonatomic, readonly, copy) NSString * _Nonnull description_;
+@property (nonatomic, readonly, copy) NSString *description_;
 
 /// This is the data type of the value of this property. This type will be
 /// enforced upon property creation and modifications.
-@property (nonatomic, readonly) DBPROPERTIESPropertyType * _Nonnull type;
+@property (nonatomic, readonly) DBPROPERTIESPropertyType *type;
 
 #pragma mark - Constructors
 
@@ -53,11 +55,11 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithName:(NSString * _Nonnull)name
-                        description_:(NSString * _Nonnull)description_
-                                type:(DBPROPERTIESPropertyType * _Nonnull)type;
+- (instancetype)initWithName:(NSString *)name
+                description_:(NSString *)description_
+                        type:(DBPROPERTIESPropertyType *)type;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -77,7 +79,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESPropertyFieldTemplate` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyFieldTemplate * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBPROPERTIESPropertyFieldTemplate *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyFieldTemplate` instances.
@@ -87,6 +89,8 @@
 ///
 /// @return An instantiation of the `DBPROPERTIESPropertyFieldTemplate` object.
 ///
-+ (DBPROPERTIESPropertyFieldTemplate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBPROPERTIESPropertyFieldTemplate *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

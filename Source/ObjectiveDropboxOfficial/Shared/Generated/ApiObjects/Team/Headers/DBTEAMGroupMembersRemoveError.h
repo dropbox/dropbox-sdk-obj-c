@@ -10,6 +10,8 @@
 
 @class DBTEAMGroupMembersRemoveError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -56,12 +58,12 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 /// These members are not part of your team. @note Ensure the
 /// `isMembersNotInTeam` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
-@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull membersNotInTeam;
+@property (nonatomic, readonly) NSArray<NSString *> *membersNotInTeam;
 
 /// These users were not found in Dropbox. @note Ensure the `isUsersNotFound`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
-@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull usersNotFound;
+@property (nonatomic, readonly) NSArray<NSString *> *usersNotFound;
 
 #pragma mark - Constructors
 
@@ -73,14 +75,14 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroupNotFound;
+- (instancetype)initWithGroupNotFound;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "system_managed_group_disallowed".
@@ -90,7 +92,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
+- (instancetype)initWithSystemManagedGroupDisallowed;
 
 ///
 /// Initializes union class with tag state of "member_not_in_group".
@@ -100,7 +102,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMemberNotInGroup;
+- (instancetype)initWithMemberNotInGroup;
 
 ///
 /// Initializes union class with tag state of "group_not_in_team".
@@ -110,7 +112,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroupNotInTeam;
+- (instancetype)initWithGroupNotInTeam;
 
 ///
 /// Initializes union class with tag state of "members_not_in_team".
@@ -122,7 +124,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMembersNotInTeam:(NSArray<NSString *> * _Nonnull)membersNotInTeam;
+- (instancetype)initWithMembersNotInTeam:(NSArray<NSString *> *)membersNotInTeam;
 
 ///
 /// Initializes union class with tag state of "users_not_found".
@@ -134,9 +136,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUsersNotFound:(NSArray<NSString *> * _Nonnull)usersNotFound;
+- (instancetype)initWithUsersNotFound:(NSArray<NSString *> *)usersNotFound;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -207,7 +209,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -227,7 +229,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupMembersRemoveError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMembersRemoveError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMGroupMembersRemoveError *)instance;
 
 ///
 /// Deserializes `DBTEAMGroupMembersRemoveError` instances.
@@ -237,6 +239,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMGroupMembersRemoveError` object.
 ///
-+ (DBTEAMGroupMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMGroupMembersRemoveError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -11,6 +11,8 @@
 @class DBSHARINGLinkMetadata;
 @class DBSHARINGVisibility;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -28,13 +30,13 @@
 #pragma mark - Instance fields
 
 /// URL of the shared link.
-@property (nonatomic, readonly, copy) NSString * _Nonnull url;
+@property (nonatomic, readonly, copy) NSString *url;
 
 /// Who can access the link.
-@property (nonatomic, readonly) DBSHARINGVisibility * _Nonnull visibility;
+@property (nonatomic, readonly) DBSHARINGVisibility *visibility;
 
 /// Expiration time, if set. By default the link won't expire.
-@property (nonatomic, readonly) NSDate * _Nullable expires;
+@property (nonatomic, readonly, nullable) NSDate *expires;
 
 #pragma mark - Constructors
 
@@ -47,9 +49,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url
-                         visibility:(DBSHARINGVisibility * _Nonnull)visibility
-                            expires:(NSDate * _Nullable)expires;
+- (instancetype)initWithUrl:(NSString *)url
+                 visibility:(DBSHARINGVisibility *)visibility
+                    expires:(nullable NSDate *)expires;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -60,9 +62,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBSHARINGVisibility * _Nonnull)visibility;
+- (instancetype)initWithUrl:(NSString *)url visibility:(DBSHARINGVisibility *)visibility;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -81,7 +83,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGLinkMetadata` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGLinkMetadata * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGLinkMetadata *)instance;
 
 ///
 /// Deserializes `DBSHARINGLinkMetadata` instances.
@@ -91,6 +93,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGLinkMetadata` object.
 ///
-+ (DBSHARINGLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGLinkMetadata *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

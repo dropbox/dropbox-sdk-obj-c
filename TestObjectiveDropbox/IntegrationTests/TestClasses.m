@@ -2090,9 +2090,7 @@ void MyLog(NSString *format, ...) {
     }];
   };
 
-  DBTEAMMemberAddArg *memberAddArg = [[DBTEAMMemberAddArg alloc] initWithMemberEmail:_tester.testData.teamMemberNewEmail
-                                                                     memberGivenName:@"FirstName"
-                                                                       memberSurname:@"LastName"];
+  DBTEAMMemberAddArg *memberAddArg = [[DBTEAMMemberAddArg alloc] initWithMemberEmail:_tester.testData.teamMemberNewEmail];
   [[[_tester.team membersAdd:@[ memberAddArg ]]
       setResponseBlock:^(DBTEAMMembersAddLaunch *result, DBNilObject *routeError, DBRequestError *error) {
         if (result) {

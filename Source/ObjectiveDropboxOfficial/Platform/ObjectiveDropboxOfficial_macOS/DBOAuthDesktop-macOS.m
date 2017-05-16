@@ -6,9 +6,9 @@
 #import "DBOAuthManager.h"
 
 @implementation DBDesktopSharedApplication {
-  NSWorkspace * _Nullable _sharedWorkspace;
-  NSViewController * _Nullable _controller;
-  void (^_openURL)(NSURL * _Nullable);
+  NSWorkspace *_sharedWorkspace;
+  NSViewController *_controller;
+  void (^_openURL)(NSURL *);
 }
 
 - (instancetype)initWithSharedApplication:(NSWorkspace *)sharedWorkspace
@@ -32,31 +32,31 @@
   }
 }
 
-- (void)presentErrorMessageWithHandlers:(NSString * _Nonnull)message
-                                  title:(NSString * _Nonnull)title
-                         buttonHandlers:(NSDictionary<NSString *, void (^)()> * _Nonnull)buttonHandlers {
+- (void)presentErrorMessageWithHandlers:(NSString *)message
+                                  title:(NSString *)title
+                         buttonHandlers:(NSDictionary<NSString *, void (^)()> *)buttonHandlers {
 #pragma unused(buttonHandlers)
   [self presentErrorMessage:message title:title];
 }
 
-- (BOOL)presentPlatformSpecificAuth:(NSURL * _Nonnull)authURL {
+- (BOOL)presentPlatformSpecificAuth:(NSURL *)authURL {
 #pragma unused(authURL)
   // no platform-specific auth methods for macOS
   return NO;
 }
 
-- (void)presentAuthChannel:(NSURL * _Nonnull)authURL cancelHandler:(void (^_Nonnull)(void))cancelHandler {
+- (void)presentAuthChannel:(NSURL *)authURL cancelHandler:(void (^_Nonnull)(void))cancelHandler {
 #pragma unused(cancelHandler)
   if (_controller) {
     [self presentExternalApp:authURL];
   }
 }
 
-- (void)presentExternalApp:(NSURL * _Nonnull)url {
+- (void)presentExternalApp:(NSURL *)url {
   _openURL(url);
 }
 
-- (BOOL)canPresentExternalApp:(NSURL * _Nonnull)url {
+- (BOOL)canPresentExternalApp:(NSURL *)url {
 #pragma unused(url)
   return YES;
 }

@@ -11,6 +11,8 @@
 @class DBSHARINGListFolderMembersContinueError;
 @class DBSHARINGSharedFolderAccessError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -44,7 +46,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 
 /// (no description). @note Ensure the `isAccessError` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBSHARINGSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBSHARINGSharedFolderAccessError *accessError;
 
 #pragma mark - Constructors
 
@@ -55,7 +57,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessError:(DBSHARINGSharedFolderAccessError * _Nonnull)accessError;
+- (instancetype)initWithAccessError:(DBSHARINGSharedFolderAccessError *)accessError;
 
 ///
 /// Initializes union class with tag state of "invalid_cursor".
@@ -65,16 +67,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvalidCursor;
+- (instancetype)initWithInvalidCursor;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -107,7 +109,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -128,7 +130,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFolderMembersContinueError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGListFolderMembersContinueError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGListFolderMembersContinueError *)instance;
 
 ///
 /// Deserializes `DBSHARINGListFolderMembersContinueError` instances.
@@ -139,6 +141,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 /// @return An instantiation of the `DBSHARINGListFolderMembersContinueError`
 /// object.
 ///
-+ (DBSHARINGListFolderMembersContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGListFolderMembersContinueError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

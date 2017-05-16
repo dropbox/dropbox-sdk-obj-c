@@ -10,6 +10,8 @@
 
 @class DBFILESSaveUrlArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,10 +26,10 @@
 #pragma mark - Instance fields
 
 /// The path in Dropbox where the URL will be saved to.
-@property (nonatomic, readonly, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString *path;
 
 /// The URL to be saved.
-@property (nonatomic, readonly, copy) NSString * _Nonnull url;
+@property (nonatomic, readonly, copy) NSString *url;
 
 #pragma mark - Constructors
 
@@ -39,9 +41,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path url:(NSString * _Nonnull)url;
+- (instancetype)initWithPath:(NSString *)path url:(NSString *)url;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -60,7 +62,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSaveUrlArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESSaveUrlArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESSaveUrlArg *)instance;
 
 ///
 /// Deserializes `DBFILESSaveUrlArg` instances.
@@ -70,6 +72,8 @@
 ///
 /// @return An instantiation of the `DBFILESSaveUrlArg` object.
 ///
-+ (DBFILESSaveUrlArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESSaveUrlArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

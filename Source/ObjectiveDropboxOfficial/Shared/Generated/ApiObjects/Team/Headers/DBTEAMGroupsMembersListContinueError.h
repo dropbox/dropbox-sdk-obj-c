@@ -10,6 +10,8 @@
 
 @class DBTEAMGroupsMembersListContinueError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -47,16 +49,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsMembersListContinueErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvalidCursor;
+- (instancetype)initWithInvalidCursor;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -79,7 +81,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsMembersListContinueErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -100,7 +102,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsMembersListContinueErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupsMembersListContinueError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsMembersListContinueError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMGroupsMembersListContinueError *)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsMembersListContinueError` instances.
@@ -111,6 +113,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsMembersListContinueErrorTag) {
 /// @return An instantiation of the `DBTEAMGroupsMembersListContinueError`
 /// object.
 ///
-+ (DBTEAMGroupsMembersListContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMGroupsMembersListContinueError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

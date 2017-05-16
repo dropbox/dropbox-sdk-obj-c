@@ -2,8 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthManager.h"
 #import "DBOAuthMobile-iOS.h"
+#import "DBOAuthManager.h"
 #import "DBSDKSystem.h"
 
 #pragma mark - Shared application
@@ -11,9 +11,9 @@
 static DBMobileSharedApplication *s_mobileSharedApplication;
 
 @implementation DBMobileSharedApplication {
-  UIApplication * _Nullable _sharedApplication;
-  UIViewController * _Nullable _controller;
-  void (^_openURL)(NSURL * _Nullable);
+  UIApplication *_sharedApplication;
+  UIViewController *_controller;
+  void (^_openURL)(NSURL *);
 }
 
 + (DBMobileSharedApplication *)mobileSharedApplication {
@@ -51,15 +51,15 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
   }
 }
 
-- (void)presentErrorMessageWithHandlers:(NSString * _Nonnull)message
-                                  title:(NSString * _Nonnull)title
-                         buttonHandlers:(NSDictionary<NSString *, void (^)()> * _Nonnull)buttonHandlers {
+- (void)presentErrorMessageWithHandlers:(NSString *)message
+                                  title:(NSString *)title
+                         buttonHandlers:(NSDictionary<NSString *, void (^)()> *)buttonHandlers {
   UIAlertController *alertController =
       [UIAlertController alertControllerWithTitle:title
                                           message:message
                                    preferredStyle:(UIAlertControllerStyle)UIAlertControllerStyleAlert];
 
-  [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel"
+  [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancels the current window.")
                                                       style:(UIAlertActionStyle)UIAlertActionStyleCancel
                                                     handler:^(UIAlertAction *action) {
 #pragma unused(action)
@@ -69,7 +69,7 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
                                                         handler();
                                                       }
                                                     }]];
-  [alertController addAction:[UIAlertAction actionWithTitle:@"Retry"
+  [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Retry", @"Retries the previous action.")
                                                       style:(UIAlertActionStyle)UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction *action) {
 #pragma unused(action)
@@ -88,12 +88,12 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
   }
 }
 
-- (BOOL)presentPlatformSpecificAuth:(NSURL * _Nonnull)authURL {
+- (BOOL)presentPlatformSpecificAuth:(NSURL *)authURL {
   [self presentExternalApp:authURL];
   return YES;
 }
 
-- (void)presentAuthChannel:(NSURL * _Nonnull)authURL cancelHandler:(DBOAuthCancelBlock)cancelHandler {
+- (void)presentAuthChannel:(NSURL *)authURL cancelHandler:(DBOAuthCancelBlock)cancelHandler {
   if (_controller) {
     DBMobileSafariViewController *safariViewController =
         [[DBMobileSafariViewController alloc] initWithUrl:authURL cancelHandler:cancelHandler];
@@ -101,17 +101,18 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
   }
 }
 
-- (void)presentExternalApp:(NSURL * _Nonnull)url {
+- (void)presentExternalApp:(NSURL *)url {
   _openURL(url);
 }
 
-- (BOOL)canPresentExternalApp:(NSURL * _Nonnull)url {
+- (BOOL)canPresentExternalApp:(NSURL *)url {
   return [_sharedApplication canOpenURL:url];
 }
 
 - (void)dismissAuthController {
   if (_controller != nil) {
-    if (_controller.presentedViewController != nil && _controller.presentedViewController.isBeingDismissed == NO && [_controller.presentedViewController isKindOfClass:[DBMobileSafariViewController class]]) {
+    if (_controller.presentedViewController != nil && _controller.presentedViewController.isBeingDismissed == NO &&
+        [_controller.presentedViewController isKindOfClass:[DBMobileSafariViewController class]]) {
       [_controller dismissViewControllerAnimated:YES completion:nil];
     }
   }

@@ -10,6 +10,8 @@
 
 @class DBTEAMTeamFolderCreateError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -53,7 +55,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvalidFolderName;
+- (instancetype)initWithInvalidFolderName;
 
 ///
 /// Initializes union class with tag state of "folder_name_already_used".
@@ -63,7 +65,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFolderNameAlreadyUsed;
+- (instancetype)initWithFolderNameAlreadyUsed;
 
 ///
 /// Initializes union class with tag state of "folder_name_reserved".
@@ -73,16 +75,16 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFolderNameReserved;
+- (instancetype)initWithFolderNameReserved;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -125,7 +127,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -144,7 +146,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderCreateError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderCreateError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderCreateError *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderCreateError` instances.
@@ -154,6 +156,8 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderCreateError` object.
 ///
-+ (DBTEAMTeamFolderCreateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderCreateError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

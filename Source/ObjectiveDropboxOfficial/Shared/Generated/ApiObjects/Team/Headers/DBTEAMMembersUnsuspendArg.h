@@ -11,6 +11,8 @@
 @class DBTEAMMembersUnsuspendArg;
 @class DBTEAMUserSelectorArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -28,7 +30,7 @@
 #pragma mark - Instance fields
 
 /// Identity of user to unsuspend.
-@property (nonatomic, readonly) DBTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBTEAMUserSelectorArg *user;
 
 #pragma mark - Constructors
 
@@ -39,9 +41,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user;
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -60,7 +62,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersUnsuspendArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMembersUnsuspendArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMembersUnsuspendArg *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersUnsuspendArg` instances.
@@ -70,6 +72,8 @@
 ///
 /// @return An instantiation of the `DBTEAMMembersUnsuspendArg` object.
 ///
-+ (DBTEAMMembersUnsuspendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMembersUnsuspendArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

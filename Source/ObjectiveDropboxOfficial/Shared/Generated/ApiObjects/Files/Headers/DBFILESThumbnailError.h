@@ -11,6 +11,8 @@
 @class DBFILESLookupError;
 @class DBFILESThumbnailError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -47,7 +49,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 /// An error occurs when downloading metadata for the image. @note Ensure the
 /// `isPath` method returns true before accessing, otherwise a runtime exception
 /// will be raised.
-@property (nonatomic, readonly) DBFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBFILESLookupError *path;
 
 #pragma mark - Constructors
 
@@ -61,7 +63,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(DBFILESLookupError * _Nonnull)path;
+- (instancetype)initWithPath:(DBFILESLookupError *)path;
 
 ///
 /// Initializes union class with tag state of "unsupported_extension".
@@ -71,7 +73,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUnsupportedExtension;
+- (instancetype)initWithUnsupportedExtension;
 
 ///
 /// Initializes union class with tag state of "unsupported_image".
@@ -81,7 +83,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUnsupportedImage;
+- (instancetype)initWithUnsupportedImage;
 
 ///
 /// Initializes union class with tag state of "conversion_error".
@@ -91,9 +93,9 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithConversionError;
+- (instancetype)initWithConversionError;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -137,7 +139,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -156,7 +158,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESThumbnailError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESThumbnailError *)instance;
 
 ///
 /// Deserializes `DBFILESThumbnailError` instances.
@@ -166,6 +168,8 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESThumbnailError` object.
 ///
-+ (DBFILESThumbnailError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESThumbnailError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

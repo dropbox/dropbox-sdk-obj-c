@@ -11,6 +11,8 @@
 @class DBTEAMRevokeLinkedAppBatchResult;
 @class DBTEAMRevokeLinkedAppStatus;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// (no description).
-@property (nonatomic, readonly) NSArray<DBTEAMRevokeLinkedAppStatus *> * _Nonnull revokeLinkedAppStatus;
+@property (nonatomic, readonly) NSArray<DBTEAMRevokeLinkedAppStatus *> *revokeLinkedAppStatus;
 
 #pragma mark - Constructors
 
@@ -36,10 +38,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithRevokeLinkedAppStatus:
-    (NSArray<DBTEAMRevokeLinkedAppStatus *> * _Nonnull)revokeLinkedAppStatus;
+- (instancetype)initWithRevokeLinkedAppStatus:(NSArray<DBTEAMRevokeLinkedAppStatus *> *)revokeLinkedAppStatus;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +60,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeLinkedAppBatchResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppBatchResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMRevokeLinkedAppBatchResult *)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeLinkedAppBatchResult` instances.
@@ -69,6 +70,8 @@
 ///
 /// @return An instantiation of the `DBTEAMRevokeLinkedAppBatchResult` object.
 ///
-+ (DBTEAMRevokeLinkedAppBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMRevokeLinkedAppBatchResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

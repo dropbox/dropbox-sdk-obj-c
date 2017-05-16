@@ -11,6 +11,8 @@
 @class DBSHARINGFileAction;
 @class DBSHARINGListFilesArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -28,10 +30,13 @@
 
 /// Number of files to return max per query. Defaults to 100 if no limit is
 /// specified.
-@property (nonatomic, readonly) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly) NSNumber *limit;
 
-/// File actions to query.
-@property (nonatomic, readonly) NSArray<DBSHARINGFileAction *> * _Nullable actions;
+/// A list of `FileAction`s corresponding to `FilePermission`s that should
+/// appear in the  response's `permissions` in `DBSHARINGSharedFileMetadata`
+/// field describing the actions the  authenticated user can perform on the
+/// file.
+@property (nonatomic, readonly, nullable) NSArray<DBSHARINGFileAction *> *actions;
 
 #pragma mark - Constructors
 
@@ -40,12 +45,14 @@
 ///
 /// @param limit Number of files to return max per query. Defaults to 100 if no
 /// limit is specified.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s
+/// that should appear in the  response's `permissions` in
+/// `DBSHARINGSharedFileMetadata` field describing the actions the
+/// authenticated user can perform on the file.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit
-                              actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
+- (instancetype)initWithLimit:(nullable NSNumber *)limit actions:(nullable NSArray<DBSHARINGFileAction *> *)actions;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -54,9 +61,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initDefault;
+- (instancetype)initDefault;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -75,7 +82,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFilesArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGListFilesArg *)instance;
 
 ///
 /// Deserializes `DBSHARINGListFilesArg` instances.
@@ -85,6 +92,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGListFilesArg` object.
 ///
-+ (DBSHARINGListFilesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGListFilesArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

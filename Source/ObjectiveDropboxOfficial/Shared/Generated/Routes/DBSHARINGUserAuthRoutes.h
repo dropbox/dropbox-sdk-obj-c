@@ -21,6 +21,7 @@
 @class DBSHARINGAddMemberSelectorError;
 @class DBSHARINGCreateSharedLinkError;
 @class DBSHARINGCreateSharedLinkWithSettingsError;
+@class DBSHARINGExpectedSharedContentLinkMetadata;
 @class DBSHARINGFileAction;
 @class DBSHARINGFileMemberActionError;
 @class DBSHARINGFileMemberActionIndividualResult;
@@ -109,15 +110,18 @@
 ///
 /// Routes for the `Sharing` namespace
 ///
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBSHARINGUserAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> client;
 
 /// Initializes the `DBSHARINGUserAuthRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
+- (instancetype)init:(id<DBTransportClient>)client;
 
 ///
 /// Adds specified members to a file.
@@ -129,9 +133,9 @@
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGFileMemberActionResult *>` object
 /// on success or a `DBSHARINGAddFileMemberError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBSHARINGFileMemberActionResult *> *, DBSHARINGAddFileMemberError *> * _Nonnull)
-addFileMember:(NSString * _Nonnull)file
-      members:(NSArray<DBSHARINGMemberSelector *> * _Nonnull)members;
+- (DBRpcTask<NSArray<DBSHARINGFileMemberActionResult *> *, DBSHARINGAddFileMemberError *> *)
+addFileMember:(NSString *)file
+      members:(NSArray<DBSHARINGMemberSelector *> *)members;
 
 ///
 /// Adds specified members to a file.
@@ -147,13 +151,13 @@ addFileMember:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGFileMemberActionResult *>` object
 /// on success or a `DBSHARINGAddFileMemberError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBSHARINGFileMemberActionResult *> *, DBSHARINGAddFileMemberError *> * _Nonnull)
-      addFileMember:(NSString * _Nonnull)file
-            members:(NSArray<DBSHARINGMemberSelector *> * _Nonnull)members
-      customMessage:(NSString * _Nullable)customMessage
-              quiet:(NSNumber * _Nullable)quiet
-        accessLevel:(DBSHARINGAccessLevel * _Nullable)accessLevel
-addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
+- (DBRpcTask<NSArray<DBSHARINGFileMemberActionResult *> *, DBSHARINGAddFileMemberError *> *)
+      addFileMember:(NSString *)file
+            members:(NSArray<DBSHARINGMemberSelector *> *)members
+      customMessage:(nullable NSString *)customMessage
+              quiet:(nullable NSNumber *)quiet
+        accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
+addMessageAsComment:(nullable NSNumber *)addMessageAsComment;
 
 ///
 /// Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new
@@ -166,9 +170,8 @@ addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGAddFolderMemberError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBSHARINGAddFolderMemberError *> * _Nonnull)
-addFolderMember:(NSString * _Nonnull)sharedFolderId
-        members:(NSArray<DBSHARINGAddMember *> * _Nonnull)members;
+- (DBRpcTask<DBNilObject *, DBSHARINGAddFolderMemberError *> *)addFolderMember:(NSString *)sharedFolderId
+                                                                       members:(NSArray<DBSHARINGAddMember *> *)members;
 
 ///
 /// Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new
@@ -183,11 +186,10 @@ addFolderMember:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGAddFolderMemberError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBSHARINGAddFolderMemberError *> * _Nonnull)
-addFolderMember:(NSString * _Nonnull)sharedFolderId
-        members:(NSArray<DBSHARINGAddMember *> * _Nonnull)members
-          quiet:(NSNumber * _Nullable)quiet
-  customMessage:(NSString * _Nullable)customMessage;
+- (DBRpcTask<DBNilObject *, DBSHARINGAddFolderMemberError *> *)addFolderMember:(NSString *)sharedFolderId
+                                                                       members:(NSArray<DBSHARINGAddMember *> *)members
+                                                                         quiet:(nullable NSNumber *)quiet
+                                                                 customMessage:(nullable NSString *)customMessage;
 
 ///
 /// DEPRECATED: Identical to update_file_member but with less information returned.
@@ -199,10 +201,10 @@ addFolderMember:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `DBSHARINGFileMemberActionResult` object on success
 /// or a `DBSHARINGFileMemberActionError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGFileMemberActionResult *, DBSHARINGFileMemberActionError *> * _Nonnull)
-changeFileMemberAccess:(NSString * _Nonnull)file
-                member:(DBSHARINGMemberSelector * _Nonnull)member
-           accessLevel:(DBSHARINGAccessLevel * _Nonnull)accessLevel
+- (DBRpcTask<DBSHARINGFileMemberActionResult *, DBSHARINGFileMemberActionError *> *)
+changeFileMemberAccess:(NSString *)file
+                member:(DBSHARINGMemberSelector *)member
+           accessLevel:(DBSHARINGAccessLevel *)accessLevel
     __deprecated_msg("change_file_member_access is deprecated. Use update_file_member.");
 
 ///
@@ -214,7 +216,7 @@ changeFileMemberAccess:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBSHARINGJobStatus` object on success or a
 /// `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGJobStatus *, DBASYNCPollError *> * _Nonnull)checkJobStatus:(NSString * _Nonnull)asyncJobId;
+- (DBRpcTask<DBSHARINGJobStatus *, DBASYNCPollError *> *)checkJobStatus:(NSString *)asyncJobId;
 
 ///
 /// Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this
@@ -226,8 +228,7 @@ changeFileMemberAccess:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBSHARINGRemoveMemberJobStatus` object on success
 /// or a `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGRemoveMemberJobStatus *, DBASYNCPollError *> * _Nonnull)checkRemoveMemberJobStatus:
-    (NSString * _Nonnull)asyncJobId;
+- (DBRpcTask<DBSHARINGRemoveMemberJobStatus *, DBASYNCPollError *> *)checkRemoveMemberJobStatus:(NSString *)asyncJobId;
 
 ///
 /// Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this
@@ -239,8 +240,7 @@ changeFileMemberAccess:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBSHARINGShareFolderJobStatus` object on success
 /// or a `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGShareFolderJobStatus *, DBASYNCPollError *> * _Nonnull)checkShareJobStatus:
-    (NSString * _Nonnull)asyncJobId;
+- (DBRpcTask<DBSHARINGShareFolderJobStatus *, DBASYNCPollError *> *)checkShareJobStatus:(NSString *)asyncJobId;
 
 ///
 /// DEPRECATED: Create a shared link. If a shared link already exists for the given path, that link is returned. Note
@@ -255,8 +255,7 @@ changeFileMemberAccess:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBSHARINGPathLinkMetadata` object on success or a
 /// `DBSHARINGCreateSharedLinkError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGPathLinkMetadata *, DBSHARINGCreateSharedLinkError *> * _Nonnull)createSharedLink:
-    (NSString * _Nonnull)path
+- (DBRpcTask<DBSHARINGPathLinkMetadata *, DBSHARINGCreateSharedLinkError *> *)createSharedLink:(NSString *)path
     __deprecated_msg("create_shared_link is deprecated. Use create_shared_link_with_settings.");
 
 ///
@@ -276,10 +275,10 @@ changeFileMemberAccess:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBSHARINGPathLinkMetadata` object on success or a
 /// `DBSHARINGCreateSharedLinkError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGPathLinkMetadata *, DBSHARINGCreateSharedLinkError *> * _Nonnull)
-createSharedLink:(NSString * _Nonnull)path
-        shortUrl:(NSNumber * _Nullable)shortUrl
-   pendingUpload:(DBSHARINGPendingUploadMode * _Nullable)pendingUpload
+- (DBRpcTask<DBSHARINGPathLinkMetadata *, DBSHARINGCreateSharedLinkError *> *)
+createSharedLink:(NSString *)path
+        shortUrl:(nullable NSNumber *)shortUrl
+   pendingUpload:(nullable DBSHARINGPendingUploadMode *)pendingUpload
     __deprecated_msg("create_shared_link is deprecated. Use create_shared_link_with_settings.");
 
 ///
@@ -292,8 +291,8 @@ createSharedLink:(NSString * _Nonnull)path
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGCreateSharedLinkWithSettingsError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGCreateSharedLinkWithSettingsError *> * _Nonnull)
-createSharedLinkWithSettings:(NSString * _Nonnull)path;
+- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGCreateSharedLinkWithSettingsError *> *)
+createSharedLinkWithSettings:(NSString *)path;
 
 ///
 /// Create a shared link with custom settings. If no settings are given then the default visibility is `public` in
@@ -306,9 +305,9 @@ createSharedLinkWithSettings:(NSString * _Nonnull)path;
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGCreateSharedLinkWithSettingsError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGCreateSharedLinkWithSettingsError *> * _Nonnull)
-createSharedLinkWithSettings:(NSString * _Nonnull)path
-                    settings:(DBSHARINGSharedLinkSettings * _Nullable)settings;
+- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGCreateSharedLinkWithSettingsError *> *)
+createSharedLinkWithSettings:(NSString *)path
+                    settings:(nullable DBSHARINGSharedLinkSettings *)settings;
 
 ///
 /// Returns shared file metadata.
@@ -318,21 +317,22 @@ createSharedLinkWithSettings:(NSString * _Nonnull)path
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFileMetadata` object on success or
 /// a `DBSHARINGGetFileMetadataError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFileMetadata *, DBSHARINGGetFileMetadataError *> * _Nonnull)getFileMetadata:
-    (NSString * _Nonnull)file;
+- (DBRpcTask<DBSHARINGSharedFileMetadata *, DBSHARINGGetFileMetadataError *> *)getFileMetadata:(NSString *)file;
 
 ///
 /// Returns shared file metadata.
 ///
 /// @param file The file to query.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFileMetadata` field describing the actions the  authenticated user can perform on
+/// the file.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFileMetadata` object on success or
 /// a `DBSHARINGGetFileMetadataError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFileMetadata *, DBSHARINGGetFileMetadataError *> * _Nonnull)
-getFileMetadata:(NSString * _Nonnull)file
-        actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
+- (DBRpcTask<DBSHARINGSharedFileMetadata *, DBSHARINGGetFileMetadataError *> *)
+getFileMetadata:(NSString *)file
+        actions:(nullable NSArray<DBSHARINGFileAction *> *)actions;
 
 ///
 /// Returns shared file metadata.
@@ -342,21 +342,23 @@ getFileMetadata:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGGetFileMetadataBatchResult *>`
 /// object on success or a `DBSHARINGSharingUserError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBSHARINGGetFileMetadataBatchResult *> *, DBSHARINGSharingUserError *> * _Nonnull)
-getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files;
+- (DBRpcTask<NSArray<DBSHARINGGetFileMetadataBatchResult *> *, DBSHARINGSharingUserError *> *)getFileMetadataBatch:
+    (NSArray<NSString *> *)files;
 
 ///
 /// Returns shared file metadata.
 ///
 /// @param files The files to query.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFileMetadata` field describing the actions the  authenticated user can perform on
+/// the file.
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGGetFileMetadataBatchResult *>`
 /// object on success or a `DBSHARINGSharingUserError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBSHARINGGetFileMetadataBatchResult *> *, DBSHARINGSharingUserError *> * _Nonnull)
-getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files
-             actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
+- (DBRpcTask<NSArray<DBSHARINGGetFileMetadataBatchResult *> *, DBSHARINGSharingUserError *> *)
+getFileMetadataBatch:(NSArray<NSString *> *)files
+             actions:(nullable NSArray<DBSHARINGFileAction *> *)actions;
 
 ///
 /// Returns shared folder metadata by its folder ID. Apps must have full Dropbox access to use this endpoint.
@@ -366,22 +368,23 @@ getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMetadata` object on success
 /// or a `DBSHARINGSharedFolderAccessError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGSharedFolderAccessError *> * _Nonnull)getFolderMetadata:
-    (NSString * _Nonnull)sharedFolderId;
+- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGSharedFolderAccessError *> *)getFolderMetadata:
+    (NSString *)sharedFolderId;
 
 ///
 /// Returns shared folder metadata by its folder ID. Apps must have full Dropbox access to use this endpoint.
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param actions This is a list indicating whether the returned folder data will include a boolean value  `allow` in
-/// `DBSHARINGFolderPermission` that describes whether the current user can perform the  FolderAction on the folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMetadata` object on success
 /// or a `DBSHARINGSharedFolderAccessError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGSharedFolderAccessError *> * _Nonnull)
-getFolderMetadata:(NSString * _Nonnull)sharedFolderId
-          actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions;
+- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGSharedFolderAccessError *> *)
+getFolderMetadata:(NSString *)sharedFolderId
+          actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -395,10 +398,10 @@ getFolderMetadata:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileUrl:(NSString * _Nonnull)url
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
+getSharedLinkFileUrl:(NSString *)url
            overwrite:(BOOL)overwrite
-         destination:(NSURL * _Nonnull)destination;
+         destination:(NSURL *)destination;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -415,12 +418,12 @@ getSharedLinkFileUrl:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileUrl:(NSString * _Nonnull)url
-                path:(NSString * _Nullable)path
-        linkPassword:(NSString * _Nullable)linkPassword
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
+getSharedLinkFileUrl:(NSString *)url
+                path:(nullable NSString *)path
+        linkPassword:(nullable NSString *)linkPassword
            overwrite:(BOOL)overwrite
-         destination:(NSURL * _Nonnull)destination;
+         destination:(NSURL *)destination;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -438,12 +441,12 @@ getSharedLinkFileUrl:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileUrl:(NSString * _Nonnull)url
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
+getSharedLinkFileUrl:(NSString *)url
            overwrite:(BOOL)overwrite
-         destination:(NSURL * _Nonnull)destination
-     byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
-       byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+         destination:(NSURL *)destination
+     byteOffsetStart:(NSNumber *)byteOffsetStart
+       byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -464,14 +467,14 @@ getSharedLinkFileUrl:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileUrl:(NSString * _Nonnull)url
-                path:(NSString * _Nullable)path
-        linkPassword:(NSString * _Nullable)linkPassword
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
+getSharedLinkFileUrl:(NSString *)url
+                path:(nullable NSString *)path
+        linkPassword:(nullable NSString *)linkPassword
            overwrite:(BOOL)overwrite
-         destination:(NSURL * _Nonnull)destination
-     byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
-       byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+         destination:(NSURL *)destination
+     byteOffsetStart:(NSNumber *)byteOffsetStart
+       byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -481,8 +484,8 @@ getSharedLinkFileUrl:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileData:
-    (NSString * _Nonnull)url;
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileData:
+    (NSString *)url;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -495,10 +498,10 @@ getSharedLinkFileUrl:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileData:(NSString * _Nonnull)url
-                 path:(NSString * _Nullable)path
-         linkPassword:(NSString * _Nullable)linkPassword;
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
+getSharedLinkFileData:(NSString *)url
+                 path:(nullable NSString *)path
+         linkPassword:(nullable NSString *)linkPassword;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -512,10 +515,10 @@ getSharedLinkFileData:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileData:(NSString * _Nonnull)url
-      byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
-        byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
+getSharedLinkFileData:(NSString *)url
+      byteOffsetStart:(NSNumber *)byteOffsetStart
+        byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Download the shared link's file from a user's Dropbox.
@@ -532,12 +535,12 @@ getSharedLinkFileData:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
 ///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileData:(NSString * _Nonnull)url
-                 path:(NSString * _Nullable)path
-         linkPassword:(NSString * _Nullable)linkPassword
-      byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
-        byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
+getSharedLinkFileData:(NSString *)url
+                 path:(nullable NSString *)path
+         linkPassword:(nullable NSString *)linkPassword
+      byteOffsetStart:(NSNumber *)byteOffsetStart
+        byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Get the shared link's metadata.
@@ -547,8 +550,7 @@ getSharedLinkFileData:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGSharedLinkError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGSharedLinkError *> * _Nonnull)getSharedLinkMetadata:
-    (NSString * _Nonnull)url;
+- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGSharedLinkError *> *)getSharedLinkMetadata:(NSString *)url;
 
 ///
 /// Get the shared link's metadata.
@@ -561,10 +563,10 @@ getSharedLinkFileData:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGSharedLinkError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGSharedLinkError *> * _Nonnull)
-getSharedLinkMetadata:(NSString * _Nonnull)url
-                 path:(NSString * _Nullable)path
-         linkPassword:(NSString * _Nullable)linkPassword;
+- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGSharedLinkError *> *)
+getSharedLinkMetadata:(NSString *)url
+                 path:(nullable NSString *)path
+         linkPassword:(nullable NSString *)linkPassword;
 
 ///
 /// DEPRECATED: Returns a list of LinkMetadata objects for this user, including collection links. If no path is given,
@@ -576,7 +578,7 @@ getSharedLinkMetadata:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGGetSharedLinksResult` object on success
 /// or a `DBSHARINGGetSharedLinksError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGGetSharedLinksResult *, DBSHARINGGetSharedLinksError *> * _Nonnull)getSharedLinks
+- (DBRpcTask<DBSHARINGGetSharedLinksResult *, DBSHARINGGetSharedLinksError *> *)getSharedLinks
     __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
 
 ///
@@ -590,8 +592,8 @@ getSharedLinkMetadata:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGGetSharedLinksResult` object on success
 /// or a `DBSHARINGGetSharedLinksError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGGetSharedLinksResult *, DBSHARINGGetSharedLinksError *> * _Nonnull)getSharedLinks:
-    (NSString * _Nullable)path __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
+- (DBRpcTask<DBSHARINGGetSharedLinksResult *, DBSHARINGGetSharedLinksError *> *)getSharedLinks:(nullable NSString *)path
+    __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
 
 ///
 /// Use to obtain the members who have been invited to a file, both inherited and uninherited members.
@@ -601,8 +603,7 @@ getSharedLinkMetadata:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFileMembers` object on success or a
 /// `DBSHARINGListFileMembersError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFileMembers *, DBSHARINGListFileMembersError *> * _Nonnull)listFileMembers:
-    (NSString * _Nonnull)file;
+- (DBRpcTask<DBSHARINGSharedFileMembers *, DBSHARINGListFileMembersError *> *)listFileMembers:(NSString *)file;
 
 ///
 /// Use to obtain the members who have been invited to a file, both inherited and uninherited members.
@@ -615,11 +616,11 @@ getSharedLinkMetadata:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFileMembers` object on success or a
 /// `DBSHARINGListFileMembersError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFileMembers *, DBSHARINGListFileMembersError *> * _Nonnull)
- listFileMembers:(NSString * _Nonnull)file
-         actions:(NSArray<DBSHARINGMemberAction *> * _Nullable)actions
-includeInherited:(NSNumber * _Nullable)includeInherited
-           limit:(NSNumber * _Nullable)limit;
+- (DBRpcTask<DBSHARINGSharedFileMembers *, DBSHARINGListFileMembersError *> *)
+ listFileMembers:(NSString *)file
+         actions:(nullable NSArray<DBSHARINGMemberAction *> *)actions
+includeInherited:(nullable NSNumber *)includeInherited
+           limit:(nullable NSNumber *)limit;
 
 ///
 /// Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result
@@ -631,8 +632,8 @@ includeInherited:(NSNumber * _Nullable)includeInherited
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGListFileMembersBatchResult *>`
 /// object on success or a `DBSHARINGSharingUserError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBSHARINGListFileMembersBatchResult *> *, DBSHARINGSharingUserError *> * _Nonnull)
-listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files;
+- (DBRpcTask<NSArray<DBSHARINGListFileMembersBatchResult *> *, DBSHARINGSharingUserError *> *)listFileMembersBatch:
+    (NSArray<NSString *> *)files;
 
 ///
 /// Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result
@@ -645,9 +646,9 @@ listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files;
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGListFileMembersBatchResult *>`
 /// object on success or a `DBSHARINGSharingUserError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBSHARINGListFileMembersBatchResult *> *, DBSHARINGSharingUserError *> * _Nonnull)
-listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files
-               limit:(NSNumber * _Nullable)limit;
+- (DBRpcTask<NSArray<DBSHARINGListFileMembersBatchResult *> *, DBSHARINGSharingUserError *> *)
+listFileMembersBatch:(NSArray<NSString *> *)files
+               limit:(nullable NSNumber *)limit;
 
 ///
 /// Once a cursor has been retrieved from `listFileMembers` or `listFileMembersBatch`, use this to paginate through all
@@ -659,8 +660,8 @@ listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFileMembers` object on success or a
 /// `DBSHARINGListFileMembersContinueError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFileMembers *, DBSHARINGListFileMembersContinueError *> * _Nonnull)listFileMembersContinue:
-    (NSString * _Nonnull)cursor;
+- (DBRpcTask<DBSHARINGSharedFileMembers *, DBSHARINGListFileMembersContinueError *> *)listFileMembersContinue:
+    (NSString *)cursor;
 
 ///
 /// Returns shared folder membership by its folder ID. Apps must have full Dropbox access to use this endpoint.
@@ -670,8 +671,8 @@ listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMembers` object on success or
 /// a `DBSHARINGSharedFolderAccessError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMembers *, DBSHARINGSharedFolderAccessError *> * _Nonnull)listFolderMembers:
-    (NSString * _Nonnull)sharedFolderId;
+- (DBRpcTask<DBSHARINGSharedFolderMembers *, DBSHARINGSharedFolderAccessError *> *)listFolderMembers:
+    (NSString *)sharedFolderId;
 
 ///
 /// Returns shared folder membership by its folder ID. Apps must have full Dropbox access to use this endpoint.
@@ -681,10 +682,10 @@ listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMembers` object on success or
 /// a `DBSHARINGSharedFolderAccessError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMembers *, DBSHARINGSharedFolderAccessError *> * _Nonnull)
-listFolderMembers:(NSString * _Nonnull)sharedFolderId
-          actions:(NSArray<DBSHARINGMemberAction *> * _Nullable)actions
-            limit:(NSNumber * _Nullable)limit;
+- (DBRpcTask<DBSHARINGSharedFolderMembers *, DBSHARINGSharedFolderAccessError *> *)
+listFolderMembers:(NSString *)sharedFolderId
+          actions:(nullable NSArray<DBSHARINGMemberAction *> *)actions
+            limit:(nullable NSNumber *)limit;
 
 ///
 /// Once a cursor has been retrieved from `listFolderMembers`, use this to paginate through all shared folder members.
@@ -695,8 +696,8 @@ listFolderMembers:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMembers` object on success or
 /// a `DBSHARINGListFolderMembersContinueError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMembers *, DBSHARINGListFolderMembersContinueError *> * _Nonnull)
-listFolderMembersContinue:(NSString * _Nonnull)cursor;
+- (DBRpcTask<DBSHARINGSharedFolderMembers *, DBSHARINGListFolderMembersContinueError *> *)listFolderMembersContinue:
+    (NSString *)cursor;
 
 ///
 /// Return the list of all shared folders the current user has access to. Apps must have full Dropbox access to use this
@@ -706,23 +707,23 @@ listFolderMembersContinue:(NSString * _Nonnull)cursor;
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> * _Nonnull)listFolders;
+- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> *)listFolders;
 
 ///
 /// Return the list of all shared folders the current user has access to. Apps must have full Dropbox access to use this
 /// endpoint.
 ///
 /// @param limit The maximum number of results to return per request.
-/// @param actions This is a list indicating whether each returned folder data entry will include a boolean field
-/// `allow` in `DBSHARINGFolderPermission` that describes whether the current user can perform the `FolderAction` on the
-/// folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> * _Nonnull)
-listFolders:(NSNumber * _Nullable)limit
-    actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions;
+- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> *)listFolders:(nullable NSNumber *)limit
+                                                                actions:(nullable NSArray<DBSHARINGFolderAction *> *)
+                                                                            actions;
 
 ///
 /// Once a cursor has been retrieved from `listFolders`, use this to paginate through all shared folders. The cursor
@@ -734,8 +735,8 @@ listFolders:(NSNumber * _Nullable)limit
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `DBSHARINGListFoldersContinueError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFoldersResult *, DBSHARINGListFoldersContinueError *> * _Nonnull)listFoldersContinue:
-    (NSString * _Nonnull)cursor;
+- (DBRpcTask<DBSHARINGListFoldersResult *, DBSHARINGListFoldersContinueError *> *)listFoldersContinue:
+    (NSString *)cursor;
 
 ///
 /// Return the list of all shared folders the current user can mount or unmount. Apps must have full Dropbox access to
@@ -745,23 +746,23 @@ listFolders:(NSNumber * _Nullable)limit
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> * _Nonnull)listMountableFolders;
+- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> *)listMountableFolders;
 
 ///
 /// Return the list of all shared folders the current user can mount or unmount. Apps must have full Dropbox access to
 /// use this endpoint.
 ///
 /// @param limit The maximum number of results to return per request.
-/// @param actions This is a list indicating whether each returned folder data entry will include a boolean field
-/// `allow` in `DBSHARINGFolderPermission` that describes whether the current user can perform the `FolderAction` on the
-/// folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> * _Nonnull)
-listMountableFolders:(NSNumber * _Nullable)limit
-             actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions;
+- (DBRpcTask<DBSHARINGListFoldersResult *, DBNilObject *> *)
+listMountableFolders:(nullable NSNumber *)limit
+             actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions;
 
 ///
 /// Once a cursor has been retrieved from `listMountableFolders`, use this to paginate through all mountable shared
@@ -773,8 +774,8 @@ listMountableFolders:(NSNumber * _Nullable)limit
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFoldersResult` object on success or a
 /// `DBSHARINGListFoldersContinueError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFoldersResult *, DBSHARINGListFoldersContinueError *> * _Nonnull)listMountableFoldersContinue:
-    (NSString * _Nonnull)cursor;
+- (DBRpcTask<DBSHARINGListFoldersResult *, DBSHARINGListFoldersContinueError *> *)listMountableFoldersContinue:
+    (NSString *)cursor;
 
 ///
 /// Returns a list of all files shared with current user.  Does not include files the user has received via shared
@@ -784,21 +785,23 @@ listMountableFolders:(NSNumber * _Nullable)limit
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFilesResult` object on success or a
 /// `DBSHARINGSharingUserError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFilesResult *, DBSHARINGSharingUserError *> * _Nonnull)listReceivedFiles;
+- (DBRpcTask<DBSHARINGListFilesResult *, DBSHARINGSharingUserError *> *)listReceivedFiles;
 
 ///
 /// Returns a list of all files shared with current user.  Does not include files the user has received via shared
 /// folders, and does  not include unclaimed invitations.
 ///
 /// @param limit Number of files to return max per query. Defaults to 100 if no limit is specified.
-/// @param actions File actions to query.
+/// @param actions A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFileMetadata` field describing the actions the  authenticated user can perform on
+/// the file.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFilesResult` object on success or a
 /// `DBSHARINGSharingUserError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFilesResult *, DBSHARINGSharingUserError *> * _Nonnull)
-listReceivedFiles:(NSNumber * _Nullable)limit
-          actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
+- (DBRpcTask<DBSHARINGListFilesResult *, DBSHARINGSharingUserError *> *)
+listReceivedFiles:(nullable NSNumber *)limit
+          actions:(nullable NSArray<DBSHARINGFileAction *> *)actions;
 
 ///
 /// Get more results with a cursor from `listReceivedFiles`.
@@ -808,8 +811,8 @@ listReceivedFiles:(NSNumber * _Nullable)limit
 /// @return Through the response callback, the caller will receive a `DBSHARINGListFilesResult` object on success or a
 /// `DBSHARINGListFilesContinueError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListFilesResult *, DBSHARINGListFilesContinueError *> * _Nonnull)listReceivedFilesContinue:
-    (NSString * _Nonnull)cursor;
+- (DBRpcTask<DBSHARINGListFilesResult *, DBSHARINGListFilesContinueError *> *)listReceivedFilesContinue:
+    (NSString *)cursor;
 
 ///
 /// List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a
@@ -821,7 +824,7 @@ listReceivedFiles:(NSNumber * _Nullable)limit
 /// @return Through the response callback, the caller will receive a `DBSHARINGListSharedLinksResult` object on success
 /// or a `DBSHARINGListSharedLinksError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListSharedLinksResult *, DBSHARINGListSharedLinksError *> * _Nonnull)listSharedLinks;
+- (DBRpcTask<DBSHARINGListSharedLinksResult *, DBSHARINGListSharedLinksError *> *)listSharedLinks;
 
 ///
 /// List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a
@@ -836,10 +839,10 @@ listReceivedFiles:(NSNumber * _Nullable)limit
 /// @return Through the response callback, the caller will receive a `DBSHARINGListSharedLinksResult` object on success
 /// or a `DBSHARINGListSharedLinksError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGListSharedLinksResult *, DBSHARINGListSharedLinksError *> * _Nonnull)
-listSharedLinks:(NSString * _Nullable)path
-         cursor:(NSString * _Nullable)cursor
-     directOnly:(NSNumber * _Nullable)directOnly;
+- (DBRpcTask<DBSHARINGListSharedLinksResult *, DBSHARINGListSharedLinksError *> *)
+listSharedLinks:(nullable NSString *)path
+         cursor:(nullable NSString *)cursor
+     directOnly:(nullable NSNumber *)directOnly;
 
 ///
 /// Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or
@@ -853,9 +856,9 @@ listSharedLinks:(NSString * _Nullable)path
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGModifySharedLinkSettingsError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGModifySharedLinkSettingsError *> * _Nonnull)
-modifySharedLinkSettings:(NSString * _Nonnull)url
-                settings:(DBSHARINGSharedLinkSettings * _Nonnull)settings;
+- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGModifySharedLinkSettingsError *> *)
+modifySharedLinkSettings:(NSString *)url
+                settings:(DBSHARINGSharedLinkSettings *)settings;
 
 ///
 /// Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or
@@ -870,10 +873,10 @@ modifySharedLinkSettings:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGModifySharedLinkSettingsError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGModifySharedLinkSettingsError *> * _Nonnull)
-modifySharedLinkSettings:(NSString * _Nonnull)url
-                settings:(DBSHARINGSharedLinkSettings * _Nonnull)settings
-        removeExpiration:(NSNumber * _Nullable)removeExpiration;
+- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGModifySharedLinkSettingsError *> *)
+modifySharedLinkSettings:(NSString *)url
+                settings:(DBSHARINGSharedLinkSettings *)settings
+        removeExpiration:(nullable NSNumber *)removeExpiration;
 
 ///
 /// The current user mounts the designated folder. Mount a shared folder for a user after they have been added as a
@@ -885,8 +888,7 @@ modifySharedLinkSettings:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMetadata` object on success
 /// or a `DBSHARINGMountFolderError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGMountFolderError *> * _Nonnull)mountFolder:
-    (NSString * _Nonnull)sharedFolderId;
+- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGMountFolderError *> *)mountFolder:(NSString *)sharedFolderId;
 
 ///
 /// The current user relinquishes their membership in the designated file. Note that the current user may still have
@@ -897,8 +899,7 @@ modifySharedLinkSettings:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGRelinquishFileMembershipError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBSHARINGRelinquishFileMembershipError *> * _Nonnull)relinquishFileMembership:
-    (NSString * _Nonnull)file;
+- (DBRpcTask<DBNilObject *, DBSHARINGRelinquishFileMembershipError *> *)relinquishFileMembership:(NSString *)file;
 
 ///
 /// The current user relinquishes their membership in the designated shared folder and will no longer have access to the
@@ -911,8 +912,8 @@ modifySharedLinkSettings:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
 /// `DBSHARINGRelinquishFolderMembershipError` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGRelinquishFolderMembershipError *> * _Nonnull)
-relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId;
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGRelinquishFolderMembershipError *> *)relinquishFolderMembership:
+    (NSString *)sharedFolderId;
 
 ///
 /// The current user relinquishes their membership in the designated shared folder and will no longer have access to the
@@ -926,9 +927,9 @@ relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId;
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
 /// `DBSHARINGRelinquishFolderMembershipError` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGRelinquishFolderMembershipError *> * _Nonnull)
-relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId
-                leaveACopy:(NSNumber * _Nullable)leaveACopy;
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGRelinquishFolderMembershipError *> *)
+relinquishFolderMembership:(NSString *)sharedFolderId
+                leaveACopy:(nullable NSNumber *)leaveACopy;
 
 ///
 /// DEPRECATED: Identical to remove_file_member_2 but with less information returned.
@@ -940,9 +941,9 @@ relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `DBSHARINGFileMemberActionIndividualResult` object
 /// on success or a `DBSHARINGRemoveFileMemberError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGFileMemberActionIndividualResult *, DBSHARINGRemoveFileMemberError *> * _Nonnull)
-removeFileMember:(NSString * _Nonnull)file
-          member:(DBSHARINGMemberSelector * _Nonnull)member
+- (DBRpcTask<DBSHARINGFileMemberActionIndividualResult *, DBSHARINGRemoveFileMemberError *> *)
+removeFileMember:(NSString *)file
+          member:(DBSHARINGMemberSelector *)member
     __deprecated_msg("remove_file_member is deprecated. Use remove_file_member_2.");
 
 ///
@@ -955,9 +956,9 @@ removeFileMember:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBSHARINGFileMemberRemoveActionResult` object on
 /// success or a `DBSHARINGRemoveFileMemberError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGFileMemberRemoveActionResult *, DBSHARINGRemoveFileMemberError *> * _Nonnull)
-removeFileMember2:(NSString * _Nonnull)file
-           member:(DBSHARINGMemberSelector * _Nonnull)member;
+- (DBRpcTask<DBSHARINGFileMemberRemoveActionResult *, DBSHARINGRemoveFileMemberError *> *)
+removeFileMember2:(NSString *)file
+           member:(DBSHARINGMemberSelector *)member;
 
 ///
 /// Allows an owner or editor (if the ACL update policy allows) of a shared folder to remove another member. Apps must
@@ -971,10 +972,10 @@ removeFileMember2:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `DBSHARINGRemoveFolderMemberError` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBSHARINGRemoveFolderMemberError *> * _Nonnull)
-removeFolderMember:(NSString * _Nonnull)sharedFolderId
-            member:(DBSHARINGMemberSelector * _Nonnull)member
-        leaveACopy:(NSNumber * _Nonnull)leaveACopy;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBSHARINGRemoveFolderMemberError *> *)
+removeFolderMember:(NSString *)sharedFolderId
+            member:(DBSHARINGMemberSelector *)member
+        leaveACopy:(NSNumber *)leaveACopy;
 
 ///
 /// Revoke a shared link. Note that even after revoking a shared link to a file, the file may be accessible if there are
@@ -986,7 +987,7 @@ removeFolderMember:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGRevokeSharedLinkError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBSHARINGRevokeSharedLinkError *> * _Nonnull)revokeSharedLink:(NSString * _Nonnull)url;
+- (DBRpcTask<DBNilObject *, DBSHARINGRevokeSharedLinkError *> *)revokeSharedLink:(NSString *)url;
 
 ///
 /// Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed
@@ -999,7 +1000,7 @@ removeFolderMember:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `DBSHARINGShareFolderLaunch` object on success or a
 /// `DBSHARINGShareFolderError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGShareFolderLaunch *, DBSHARINGShareFolderError *> * _Nonnull)shareFolder:(NSString * _Nonnull)path;
+- (DBRpcTask<DBSHARINGShareFolderLaunch *, DBSHARINGShareFolderError *> *)shareFolder:(NSString *)path;
 
 ///
 /// Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed
@@ -1013,24 +1014,24 @@ removeFolderMember:(NSString * _Nonnull)sharedFolderId
 /// @param sharedLinkPolicy The policy to apply to shared links created for content inside this shared folder.  The
 /// current user must be on a team to set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param forceAsync Whether to force the share to happen asynchronously.
-/// @param actions This is a list indicating whether each returned folder data entry will include a boolean field
-/// `allow` in `DBSHARINGFolderPermission` that describes whether the current user can perform the `FolderAction` on the
-/// folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 /// @param linkSettings Settings on the link for this folder.
 /// @param viewerInfoPolicy Who can enable/disable viewer info for this shared folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGShareFolderLaunch` object on success or a
 /// `DBSHARINGShareFolderError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGShareFolderLaunch *, DBSHARINGShareFolderError *> * _Nonnull)
-     shareFolder:(NSString * _Nonnull)path
-    memberPolicy:(DBSHARINGMemberPolicy * _Nullable)memberPolicy
- aclUpdatePolicy:(DBSHARINGAclUpdatePolicy * _Nullable)aclUpdatePolicy
-sharedLinkPolicy:(DBSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy
-      forceAsync:(NSNumber * _Nullable)forceAsync
-         actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions
-    linkSettings:(DBSHARINGLinkSettings * _Nullable)linkSettings
-viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
+- (DBRpcTask<DBSHARINGShareFolderLaunch *, DBSHARINGShareFolderError *> *)
+     shareFolder:(NSString *)path
+    memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy
+ aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
+sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
+      forceAsync:(nullable NSNumber *)forceAsync
+         actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions
+    linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings
+viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy;
 
 ///
 /// Transfer ownership of a shared folder to a member of the shared folder. User must have `owner` in
@@ -1043,8 +1044,8 @@ viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGTransferFolderError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBSHARINGTransferFolderError *> * _Nonnull)transferFolder:(NSString * _Nonnull)sharedFolderId
-                                                                         toDropboxId:(NSString * _Nonnull)toDropboxId;
+- (DBRpcTask<DBNilObject *, DBSHARINGTransferFolderError *> *)transferFolder:(NSString *)sharedFolderId
+                                                                 toDropboxId:(NSString *)toDropboxId;
 
 ///
 /// The current user unmounts the designated folder. They can re-mount the folder at a later time using `mountFolder`.
@@ -1055,7 +1056,7 @@ viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGUnmountFolderError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBSHARINGUnmountFolderError *> * _Nonnull)unmountFolder:(NSString * _Nonnull)sharedFolderId;
+- (DBRpcTask<DBNilObject *, DBSHARINGUnmountFolderError *> *)unmountFolder:(NSString *)sharedFolderId;
 
 ///
 /// Remove all members from this file. Does not remove inherited members.
@@ -1065,7 +1066,7 @@ viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGUnshareFileError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBSHARINGUnshareFileError *> * _Nonnull)unshareFile:(NSString * _Nonnull)file;
+- (DBRpcTask<DBNilObject *, DBSHARINGUnshareFileError *> *)unshareFile:(NSString *)file;
 
 ///
 /// Allows a shared folder owner to unshare the folder. You'll need to call `checkJobStatus` to determine if the action
@@ -1076,8 +1077,7 @@ viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
 /// `DBSHARINGUnshareFolderError` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGUnshareFolderError *> * _Nonnull)unshareFolder:
-    (NSString * _Nonnull)sharedFolderId;
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGUnshareFolderError *> *)unshareFolder:(NSString *)sharedFolderId;
 
 ///
 /// Allows a shared folder owner to unshare the folder. You'll need to call `checkJobStatus` to determine if the action
@@ -1090,9 +1090,8 @@ viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
 /// `DBSHARINGUnshareFolderError` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGUnshareFolderError *> * _Nonnull)
-unshareFolder:(NSString * _Nonnull)sharedFolderId
-   leaveACopy:(NSNumber * _Nullable)leaveACopy;
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBSHARINGUnshareFolderError *> *)unshareFolder:(NSString *)sharedFolderId
+                                                                             leaveACopy:(nullable NSNumber *)leaveACopy;
 
 ///
 /// Changes a member's access on a shared file.
@@ -1101,10 +1100,10 @@ unshareFolder:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `DBSHARINGMemberAccessLevelResult` object on
 /// success or a `DBSHARINGFileMemberActionError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGMemberAccessLevelResult *, DBSHARINGFileMemberActionError *> * _Nonnull)
-updateFileMember:(NSString * _Nonnull)file
-          member:(DBSHARINGMemberSelector * _Nonnull)member
-     accessLevel:(DBSHARINGAccessLevel * _Nonnull)accessLevel;
+- (DBRpcTask<DBSHARINGMemberAccessLevelResult *, DBSHARINGFileMemberActionError *> *)
+updateFileMember:(NSString *)file
+          member:(DBSHARINGMemberSelector *)member
+     accessLevel:(DBSHARINGAccessLevel *)accessLevel;
 
 ///
 /// Allows an owner or editor of a shared folder to update another member's permissions. Apps must have full Dropbox
@@ -1118,10 +1117,10 @@ updateFileMember:(NSString * _Nonnull)file
 /// @return Through the response callback, the caller will receive a `DBSHARINGMemberAccessLevelResult` object on
 /// success or a `DBSHARINGUpdateFolderMemberError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGMemberAccessLevelResult *, DBSHARINGUpdateFolderMemberError *> * _Nonnull)
-updateFolderMember:(NSString * _Nonnull)sharedFolderId
-            member:(DBSHARINGMemberSelector * _Nonnull)member
-       accessLevel:(DBSHARINGAccessLevel * _Nonnull)accessLevel;
+- (DBRpcTask<DBSHARINGMemberAccessLevelResult *, DBSHARINGUpdateFolderMemberError *> *)
+updateFolderMember:(NSString *)sharedFolderId
+            member:(DBSHARINGMemberSelector *)member
+       accessLevel:(DBSHARINGAccessLevel *)accessLevel;
 
 ///
 /// Update the sharing policies for a shared folder. User must have `owner` in `DBSHARINGAccessLevel` access to the
@@ -1132,8 +1131,8 @@ updateFolderMember:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMetadata` object on success
 /// or a `DBSHARINGUpdateFolderPolicyError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGUpdateFolderPolicyError *> * _Nonnull)updateFolderPolicy:
-    (NSString * _Nonnull)sharedFolderId;
+- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGUpdateFolderPolicyError *> *)updateFolderPolicy:
+    (NSString *)sharedFolderId;
 
 ///
 /// Update the sharing policies for a shared folder. User must have `owner` in `DBSHARINGAccessLevel` access to the
@@ -1146,16 +1145,22 @@ updateFolderMember:(NSString * _Nonnull)sharedFolderId
 /// @param sharedLinkPolicy The policy to apply to shared links created for content inside this shared folder. The
 /// current user must be on a team to set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param linkSettings Settings on the link for this folder.
+/// @param actions A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's
+/// `permissions` in `DBSHARINGSharedFolderMetadata` field describing the actions the  authenticated user can perform on
+/// the folder.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedFolderMetadata` object on success
 /// or a `DBSHARINGUpdateFolderPolicyError` object on failure.
 ///
-- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGUpdateFolderPolicyError *> * _Nonnull)
-updateFolderPolicy:(NSString * _Nonnull)sharedFolderId
-      memberPolicy:(DBSHARINGMemberPolicy * _Nullable)memberPolicy
-   aclUpdatePolicy:(DBSHARINGAclUpdatePolicy * _Nullable)aclUpdatePolicy
-  viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy
-  sharedLinkPolicy:(DBSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy
-      linkSettings:(DBSHARINGLinkSettings * _Nullable)linkSettings;
+- (DBRpcTask<DBSHARINGSharedFolderMetadata *, DBSHARINGUpdateFolderPolicyError *> *)
+updateFolderPolicy:(NSString *)sharedFolderId
+      memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy
+   aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
+  viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
+  sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
+      linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings
+           actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions;
 
 @end
+
+NS_ASSUME_NONNULL_END

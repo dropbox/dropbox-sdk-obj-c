@@ -11,6 +11,8 @@
 @class DBTEAMMembersGetInfoArgs;
 @class DBTEAMUserSelectorArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// List of team members.
-@property (nonatomic, readonly) NSArray<DBTEAMUserSelectorArg *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBTEAMUserSelectorArg *> *members;
 
 #pragma mark - Constructors
 
@@ -36,9 +38,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMembers:(NSArray<DBTEAMUserSelectorArg *> * _Nonnull)members;
+- (instancetype)initWithMembers:(NSArray<DBTEAMUserSelectorArg *> *)members;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -57,7 +59,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersGetInfoArgs` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMembersGetInfoArgs * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMembersGetInfoArgs *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersGetInfoArgs` instances.
@@ -67,6 +69,8 @@
 ///
 /// @return An instantiation of the `DBTEAMMembersGetInfoArgs` object.
 ///
-+ (DBTEAMMembersGetInfoArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMembersGetInfoArgs *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBTEAMTeamFolderListArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,7 +26,7 @@
 #pragma mark - Instance fields
 
 /// The maximum number of results to return per request.
-@property (nonatomic, readonly) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly) NSNumber *limit;
 
 #pragma mark - Constructors
 
@@ -35,7 +37,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit;
+- (instancetype)initWithLimit:(nullable NSNumber *)limit;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -44,9 +46,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initDefault;
+- (instancetype)initDefault;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -65,7 +67,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderListArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderListArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderListArg *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderListArg` instances.
@@ -75,6 +77,8 @@
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderListArg` object.
 ///
-+ (DBTEAMTeamFolderListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderListArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

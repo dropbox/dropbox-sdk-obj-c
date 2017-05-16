@@ -9,6 +9,8 @@
 @class DBUserClient;
 @class DBTransportDefaultConfig;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Dropbox Business (Team) API Client for all endpoints with auth type "team".
 ///
@@ -27,7 +29,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
+- (instancetype)initWithAccessToken:(NSString *)accessToken;
 
 ///
 /// Full constructor.
@@ -37,8 +39,8 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
-                            transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                    transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///
 /// Returns a `DBUserClient` instance that can be used to make API calls on behalf of the designated team member.
@@ -50,12 +52,12 @@
 ///
 /// @return An initialized User API client instance.
 ///
-- (DBUserClient * _Nonnull)userClientWithMemberId:(NSString * _Nonnull)memberId;
+- (DBUserClient *)userClientWithMemberId:(NSString *)memberId;
 
 ///
 /// Returns the current access token used to make API requests.
 ///
-- (NSString * _Nullable)accessToken;
+- (nullable NSString *)accessToken;
 
 ///
 /// Returns whether the client is authorized.
@@ -65,3 +67,5 @@
 - (BOOL)isAuthorized;
 
 @end
+
+NS_ASSUME_NONNULL_END

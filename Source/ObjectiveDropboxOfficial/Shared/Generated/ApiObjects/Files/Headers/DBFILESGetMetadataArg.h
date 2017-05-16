@@ -10,6 +10,8 @@
 
 @class DBFILESGetMetadataArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,18 +26,18 @@
 #pragma mark - Instance fields
 
 /// The path of a file or folder on Dropbox.
-@property (nonatomic, readonly, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString *path;
 
 /// If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
-@property (nonatomic, readonly) NSNumber * _Nonnull includeMediaInfo;
+@property (nonatomic, readonly) NSNumber *includeMediaInfo;
 
 /// If true, DeletedMetadata will be returned for deleted file or folder,
 /// otherwise `notFound` in `DBFILESLookupError` will be returned.
-@property (nonatomic, readonly) NSNumber * _Nonnull includeDeleted;
+@property (nonatomic, readonly) NSNumber *includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
-@property (nonatomic, readonly) NSNumber * _Nonnull includeHasExplicitSharedMembers;
+@property (nonatomic, readonly) NSNumber *includeHasExplicitSharedMembers;
 
 #pragma mark - Constructors
 
@@ -54,10 +56,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path
-                    includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo
-                      includeDeleted:(NSNumber * _Nullable)includeDeleted
-     includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
+- (instancetype)initWithPath:(NSString *)path
+                   includeMediaInfo:(nullable NSNumber *)includeMediaInfo
+                     includeDeleted:(nullable NSNumber *)includeDeleted
+    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -67,9 +69,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
+- (instancetype)initWithPath:(NSString *)path;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -88,7 +90,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetMetadataArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESGetMetadataArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESGetMetadataArg *)instance;
 
 ///
 /// Deserializes `DBFILESGetMetadataArg` instances.
@@ -98,6 +100,8 @@
 ///
 /// @return An instantiation of the `DBFILESGetMetadataArg` object.
 ///
-+ (DBFILESGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESGetMetadataArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

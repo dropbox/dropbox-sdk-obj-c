@@ -10,6 +10,8 @@
 @class UIApplication;
 @class UIViewController;
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Code with platform-specific (here, iOS) dependencies.
 ///
@@ -24,9 +26,9 @@
 /// @param controller The `UIViewController` with which to render the OAuth flow.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.
 ///
-+ (void)authorizeFromController:(UIApplication * _Nonnull)sharedApplication
-                     controller:(UIViewController * _Nullable)controller
-                        openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL;
++ (void)authorizeFromController:(UIApplication *)sharedApplication
+                     controller:(nullable UIViewController *)controller
+                        openURL:(void (^_Nonnull)(NSURL *))openURL;
 
 ///
 /// Stores the user app key. If any access token already exists, initializes an authorized shared `DBUserClient`
@@ -40,7 +42,7 @@
 /// create an app or to locate your app's app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
 ///
-+ (void)setupWithAppKey:(NSString * _Nonnull)appKey;
++ (void)setupWithAppKey:(NSString *)appKey;
 
 ///
 /// Stores the user transport config info. If any access token already exists, initializes an authorized shared
@@ -52,7 +54,7 @@
 ///
 /// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
 ///
-+ (void)setupWithTransportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
++ (void)setupWithTransportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///
 /// Stores the team app key. If any access token already exists, initializes an authorized shared `DBTeamClient`
@@ -66,7 +68,7 @@
 /// create an app or to locate your app's app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
 ///
-+ (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey;
++ (void)setupWithTeamAppKey:(NSString *)appKey;
 
 ///
 /// Stores the team transport config info. If any access token already exists, initializes an authorized shared
@@ -78,6 +80,8 @@
 ///
 /// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
 ///
-+ (void)setupWithTeamTransportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
++ (void)setupWithTeamTransportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 @end
+
+NS_ASSUME_NONNULL_END

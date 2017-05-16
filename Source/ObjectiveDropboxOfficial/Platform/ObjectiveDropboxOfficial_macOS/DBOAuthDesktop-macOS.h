@@ -7,6 +7,8 @@
 
 #import "DBSharedApplicationProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Platform-specific (here, macOS) shared application.
 ///
@@ -23,8 +25,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedApplication:(NSWorkspace * _Nonnull)sharedApplication
-                                       controller:(NSViewController * _Nonnull)controller
-                                          openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL;
+- (instancetype)initWithSharedApplication:(NSWorkspace *)sharedApplication
+                               controller:(NSViewController *)controller
+                                  openURL:(void (^_Nonnull)(NSURL *))openURL;
 
 @end
+
+NS_ASSUME_NONNULL_END

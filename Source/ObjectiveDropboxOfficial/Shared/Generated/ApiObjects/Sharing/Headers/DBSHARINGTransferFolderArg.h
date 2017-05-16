@@ -10,6 +10,8 @@
 
 @class DBSHARINGTransferFolderArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,10 +26,10 @@
 #pragma mark - Instance fields
 
 /// The ID for the shared folder.
-@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString *sharedFolderId;
 
 /// A account or team member ID to transfer ownership to.
-@property (nonatomic, readonly, copy) NSString * _Nonnull toDropboxId;
+@property (nonatomic, readonly, copy) NSString *toDropboxId;
 
 #pragma mark - Constructors
 
@@ -39,10 +41,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
-                                   toDropboxId:(NSString * _Nonnull)toDropboxId;
+- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId toDropboxId:(NSString *)toDropboxId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -61,7 +62,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGTransferFolderArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGTransferFolderArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGTransferFolderArg *)instance;
 
 ///
 /// Deserializes `DBSHARINGTransferFolderArg` instances.
@@ -71,6 +72,8 @@
 ///
 /// @return An instantiation of the `DBSHARINGTransferFolderArg` object.
 ///
-+ (DBSHARINGTransferFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGTransferFolderArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBFILESSearchMode;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -49,7 +51,7 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFilename;
+- (instancetype)initWithFilename;
 
 ///
 /// Initializes union class with tag state of "filename_and_content".
@@ -59,7 +61,7 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFilenameAndContent;
+- (instancetype)initWithFilenameAndContent;
 
 ///
 /// Initializes union class with tag state of "deleted_filename".
@@ -69,9 +71,9 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithDeletedFilename;
+- (instancetype)initWithDeletedFilename;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -104,7 +106,7 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -123,7 +125,7 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSearchMode` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESSearchMode * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESSearchMode *)instance;
 
 ///
 /// Deserializes `DBFILESSearchMode` instances.
@@ -133,6 +135,8 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// @return An instantiation of the `DBFILESSearchMode` object.
 ///
-+ (DBFILESSearchMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESSearchMode *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

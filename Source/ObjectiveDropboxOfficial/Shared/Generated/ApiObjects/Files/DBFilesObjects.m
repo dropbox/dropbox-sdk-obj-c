@@ -7571,7 +7571,6 @@
 @end
 
 #import "DBFILESLookupError.h"
-#import "DBFILESPathRootError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -7580,7 +7579,6 @@
 @implementation DBFILESLookupError
 
 @synthesize malformedPath = _malformedPath;
-@synthesize invalidPathRoot = _invalidPathRoot;
 
 #pragma mark - Constructors
 
@@ -7625,15 +7623,6 @@
   return self;
 }
 
-- (instancetype)initWithInvalidPathRoot:(DBFILESPathRootError *)invalidPathRoot {
-  self = [super init];
-  if (self) {
-    _tag = DBFILESLookupErrorInvalidPathRoot;
-    _invalidPathRoot = invalidPathRoot;
-  }
-  return self;
-}
-
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -7650,14 +7639,6 @@
                 format:@"Invalid tag: required DBFILESLookupErrorMalformedPath, but was %@.", [self tagName]];
   }
   return _malformedPath;
-}
-
-- (DBFILESPathRootError *)invalidPathRoot {
-  if (![self isInvalidPathRoot]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBFILESLookupErrorInvalidPathRoot, but was %@.", [self tagName]];
-  }
-  return _invalidPathRoot;
 }
 
 #pragma mark - Tag state methods
@@ -7682,10 +7663,6 @@
   return _tag == DBFILESLookupErrorRestrictedContent;
 }
 
-- (BOOL)isInvalidPathRoot {
-  return _tag == DBFILESLookupErrorInvalidPathRoot;
-}
-
 - (BOOL)isOther {
   return _tag == DBFILESLookupErrorOther;
 }
@@ -7702,8 +7679,6 @@
     return @"DBFILESLookupErrorNotFolder";
   case DBFILESLookupErrorRestrictedContent:
     return @"DBFILESLookupErrorRestrictedContent";
-  case DBFILESLookupErrorInvalidPathRoot:
-    return @"DBFILESLookupErrorInvalidPathRoot";
   case DBFILESLookupErrorOther:
     return @"DBFILESLookupErrorOther";
   }
@@ -7754,8 +7729,6 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESLookupErrorRestrictedContent:
     result = prime * result + [[self tagName] hash];
-  case DBFILESLookupErrorInvalidPathRoot:
-    result = prime * result + [self.invalidPathRoot hash];
   case DBFILESLookupErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -7795,8 +7768,6 @@
     return [[self tagName] isEqual:[aLookupError tagName]];
   case DBFILESLookupErrorRestrictedContent:
     return [[self tagName] isEqual:[aLookupError tagName]];
-  case DBFILESLookupErrorInvalidPathRoot:
-    return [self.invalidPathRoot isEqual:aLookupError.invalidPathRoot];
   case DBFILESLookupErrorOther:
     return [[self tagName] isEqual:[aLookupError tagName]];
   }
@@ -7825,9 +7796,6 @@
     jsonDict[@".tag"] = @"not_folder";
   } else if ([valueObj isRestrictedContent]) {
     jsonDict[@".tag"] = @"restricted_content";
-  } else if ([valueObj isInvalidPathRoot]) {
-    jsonDict[@"invalid_path_root"] = [[DBFILESPathRootErrorSerializer serialize:valueObj.invalidPathRoot] mutableCopy];
-    jsonDict[@".tag"] = @"invalid_path_root";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -7851,9 +7819,6 @@
     return [[DBFILESLookupError alloc] initWithNotFolder];
   } else if ([tag isEqualToString:@"restricted_content"]) {
     return [[DBFILESLookupError alloc] initWithRestrictedContent];
-  } else if ([tag isEqualToString:@"invalid_path_root"]) {
-    DBFILESPathRootError *invalidPathRoot = [DBFILESPathRootErrorSerializer deserialize:valueDict];
-    return [[DBFILESLookupError alloc] initWithInvalidPathRoot:invalidPathRoot];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESLookupError alloc] initWithOther];
   } else {
@@ -8189,114 +8154,6 @@
       exceptionWithName:@"InvalidTag"
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
-}
-
-@end
-
-#import "DBFILESPathRootError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-
-#pragma mark - API Object
-
-@implementation DBFILESPathRootError
-
-#pragma mark - Constructors
-
-- (instancetype)initWithPathRoot:(NSString *)pathRoot {
-
-  self = [super init];
-  if (self) {
-    _pathRoot = pathRoot;
-  }
-  return self;
-}
-
-- (instancetype)initDefault {
-  return [self initWithPathRoot:nil];
-}
-
-#pragma mark - Serialization methods
-
-+ (NSDictionary *)serialize:(id)instance {
-  return [DBFILESPathRootErrorSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBFILESPathRootErrorSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBFILESPathRootErrorSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  if (self.pathRoot) {
-    result = prime * result + [self.pathRoot hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPathRootError:other];
-}
-
-- (BOOL)isEqualToPathRootError:(DBFILESPathRootError *)aPathRootError {
-  if (self == aPathRootError) {
-    return YES;
-  }
-  if (self.pathRoot) {
-    if (![self.pathRoot isEqual:aPathRootError.pathRoot]) {
-      return NO;
-    }
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBFILESPathRootErrorSerializer
-
-+ (NSDictionary *)serialize:(DBFILESPathRootError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if (valueObj.pathRoot) {
-    jsonDict[@"path_root"] = valueObj.pathRoot;
-  }
-
-  return jsonDict;
-}
-
-+ (DBFILESPathRootError *)deserialize:(NSDictionary *)valueDict {
-  NSString *pathRoot = valueDict[@"path_root"] ?: nil;
-
-  return [[DBFILESPathRootError alloc] initWithPathRoot:pathRoot];
 }
 
 @end
@@ -16162,6 +16019,14 @@
   return self;
 }
 
+- (instancetype)initWithTooManyWriteOperations {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESUploadSessionFinishErrorTooManyWriteOperations;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -16203,6 +16068,10 @@
   return _tag == DBFILESUploadSessionFinishErrorTooManySharedFolderTargets;
 }
 
+- (BOOL)isTooManyWriteOperations {
+  return _tag == DBFILESUploadSessionFinishErrorTooManyWriteOperations;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESUploadSessionFinishErrorOther;
 }
@@ -16215,6 +16084,8 @@
     return @"DBFILESUploadSessionFinishErrorPath";
   case DBFILESUploadSessionFinishErrorTooManySharedFolderTargets:
     return @"DBFILESUploadSessionFinishErrorTooManySharedFolderTargets";
+  case DBFILESUploadSessionFinishErrorTooManyWriteOperations:
+    return @"DBFILESUploadSessionFinishErrorTooManyWriteOperations";
   case DBFILESUploadSessionFinishErrorOther:
     return @"DBFILESUploadSessionFinishErrorOther";
   }
@@ -16259,6 +16130,8 @@
     result = prime * result + [self.path hash];
   case DBFILESUploadSessionFinishErrorTooManySharedFolderTargets:
     result = prime * result + [[self tagName] hash];
+  case DBFILESUploadSessionFinishErrorTooManyWriteOperations:
+    result = prime * result + [[self tagName] hash];
   case DBFILESUploadSessionFinishErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -16292,6 +16165,8 @@
     return [self.path isEqual:anUploadSessionFinishError.path];
   case DBFILESUploadSessionFinishErrorTooManySharedFolderTargets:
     return [[self tagName] isEqual:[anUploadSessionFinishError tagName]];
+  case DBFILESUploadSessionFinishErrorTooManyWriteOperations:
+    return [[self tagName] isEqual:[anUploadSessionFinishError tagName]];
   case DBFILESUploadSessionFinishErrorOther:
     return [[self tagName] isEqual:[anUploadSessionFinishError tagName]];
   }
@@ -16316,6 +16191,8 @@
     jsonDict[@".tag"] = @"path";
   } else if ([valueObj isTooManySharedFolderTargets]) {
     jsonDict[@".tag"] = @"too_many_shared_folder_targets";
+  } else if ([valueObj isTooManyWriteOperations]) {
+    jsonDict[@".tag"] = @"too_many_write_operations";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -16337,6 +16214,8 @@
     return [[DBFILESUploadSessionFinishError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"too_many_shared_folder_targets"]) {
     return [[DBFILESUploadSessionFinishError alloc] initWithTooManySharedFolderTargets];
+  } else if ([tag isEqualToString:@"too_many_write_operations"]) {
+    return [[DBFILESUploadSessionFinishError alloc] initWithTooManyWriteOperations];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESUploadSessionFinishError alloc] initWithOther];
   } else {
@@ -17392,6 +17271,14 @@
   return self;
 }
 
+- (instancetype)initWithTeamFolder {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESWriteErrorTeamFolder;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -17440,6 +17327,10 @@
   return _tag == DBFILESWriteErrorDisallowedName;
 }
 
+- (BOOL)isTeamFolder {
+  return _tag == DBFILESWriteErrorTeamFolder;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESWriteErrorOther;
 }
@@ -17456,6 +17347,8 @@
     return @"DBFILESWriteErrorInsufficientSpace";
   case DBFILESWriteErrorDisallowedName:
     return @"DBFILESWriteErrorDisallowedName";
+  case DBFILESWriteErrorTeamFolder:
+    return @"DBFILESWriteErrorTeamFolder";
   case DBFILESWriteErrorOther:
     return @"DBFILESWriteErrorOther";
   }
@@ -17506,6 +17399,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESWriteErrorDisallowedName:
     result = prime * result + [[self tagName] hash];
+  case DBFILESWriteErrorTeamFolder:
+    result = prime * result + [[self tagName] hash];
   case DBFILESWriteErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -17545,6 +17440,8 @@
     return [[self tagName] isEqual:[aWriteError tagName]];
   case DBFILESWriteErrorDisallowedName:
     return [[self tagName] isEqual:[aWriteError tagName]];
+  case DBFILESWriteErrorTeamFolder:
+    return [[self tagName] isEqual:[aWriteError tagName]];
   case DBFILESWriteErrorOther:
     return [[self tagName] isEqual:[aWriteError tagName]];
   }
@@ -17574,6 +17471,8 @@
     jsonDict[@".tag"] = @"insufficient_space";
   } else if ([valueObj isDisallowedName]) {
     jsonDict[@".tag"] = @"disallowed_name";
+  } else if ([valueObj isTeamFolder]) {
+    jsonDict[@".tag"] = @"team_folder";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -17598,6 +17497,8 @@
     return [[DBFILESWriteError alloc] initWithInsufficientSpace];
   } else if ([tag isEqualToString:@"disallowed_name"]) {
     return [[DBFILESWriteError alloc] initWithDisallowedName];
+  } else if ([tag isEqualToString:@"team_folder"]) {
+    return [[DBFILESWriteError alloc] initWithTeamFolder];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESWriteError alloc] initWithOther];
   } else {

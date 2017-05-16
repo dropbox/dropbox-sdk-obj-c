@@ -10,6 +10,8 @@
 
 @class DBFILESListFolderLongpollResult;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,11 +27,11 @@
 
 /// Indicates whether new changes are available. If true, call
 /// `listFolderContinue` to retrieve the changes.
-@property (nonatomic, readonly) NSNumber * _Nonnull changes;
+@property (nonatomic, readonly) NSNumber *changes;
 
 /// If present, backoff for at least this many seconds before calling
 /// `listFolderLongpoll` again.
-@property (nonatomic, readonly) NSNumber * _Nullable backoff;
+@property (nonatomic, readonly, nullable) NSNumber *backoff;
 
 #pragma mark - Constructors
 
@@ -43,7 +45,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithChanges:(NSNumber * _Nonnull)changes backoff:(NSNumber * _Nullable)backoff;
+- (instancetype)initWithChanges:(NSNumber *)changes backoff:(nullable NSNumber *)backoff;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -54,9 +56,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithChanges:(NSNumber * _Nonnull)changes;
+- (instancetype)initWithChanges:(NSNumber *)changes;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -76,7 +78,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListFolderLongpollResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESListFolderLongpollResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESListFolderLongpollResult *)instance;
 
 ///
 /// Deserializes `DBFILESListFolderLongpollResult` instances.
@@ -86,6 +88,8 @@
 ///
 /// @return An instantiation of the `DBFILESListFolderLongpollResult` object.
 ///
-+ (DBFILESListFolderLongpollResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESListFolderLongpollResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

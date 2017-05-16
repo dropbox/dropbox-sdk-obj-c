@@ -11,6 +11,8 @@
 @class DBSHARINGRelinquishFileMembershipError;
 @class DBSHARINGSharingFileAccessError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -48,7 +50,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 
 /// (no description). @note Ensure the `isAccessError` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBSHARINGSharingFileAccessError *accessError;
 
 #pragma mark - Constructors
 
@@ -59,7 +61,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError * _Nonnull)accessError;
+- (instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError *)accessError;
 
 ///
 /// Initializes union class with tag state of "group_access".
@@ -70,7 +72,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroupAccess;
+- (instancetype)initWithGroupAccess;
 
 ///
 /// Initializes union class with tag state of "no_permission".
@@ -80,16 +82,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNoPermission;
+- (instancetype)initWithNoPermission;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -129,7 +131,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -150,7 +152,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishFileMembershipError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGRelinquishFileMembershipError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGRelinquishFileMembershipError *)instance;
 
 ///
 /// Deserializes `DBSHARINGRelinquishFileMembershipError` instances.
@@ -161,6 +163,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 /// @return An instantiation of the `DBSHARINGRelinquishFileMembershipError`
 /// object.
 ///
-+ (DBSHARINGRelinquishFileMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGRelinquishFileMembershipError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

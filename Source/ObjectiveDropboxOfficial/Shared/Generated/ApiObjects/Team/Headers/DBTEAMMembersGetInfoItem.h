@@ -11,6 +11,8 @@
 @class DBTEAMMembersGetInfoItem;
 @class DBTEAMTeamMemberInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -48,11 +50,11 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 /// external ID, depending on how the method was called. @note Ensure the
 /// `isIdNotFound` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
-@property (nonatomic, readonly, copy) NSString * _Nonnull idNotFound;
+@property (nonatomic, readonly, copy) NSString *idNotFound;
 
 /// Info about a team member. @note Ensure the `isMemberInfo` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMTeamMemberInfo * _Nonnull memberInfo;
+@property (nonatomic, readonly) DBTEAMTeamMemberInfo *memberInfo;
 
 #pragma mark - Constructors
 
@@ -71,7 +73,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithIdNotFound:(NSString * _Nonnull)idNotFound;
+- (instancetype)initWithIdNotFound:(NSString *)idNotFound;
 
 ///
 /// Initializes union class with tag state of "member_info".
@@ -82,9 +84,9 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithMemberInfo:(DBTEAMTeamMemberInfo * _Nonnull)memberInfo;
+- (instancetype)initWithMemberInfo:(DBTEAMTeamMemberInfo *)memberInfo;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -113,7 +115,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -132,7 +134,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersGetInfoItem` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMMembersGetInfoItem * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMMembersGetInfoItem *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersGetInfoItem` instances.
@@ -142,6 +144,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// @return An instantiation of the `DBTEAMMembersGetInfoItem` object.
 ///
-+ (DBTEAMMembersGetInfoItem * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMMembersGetInfoItem *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

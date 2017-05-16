@@ -11,6 +11,8 @@
 @class DBTEAMGroupFullInfo;
 @class DBTEAMGroupMembersChangeResult;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -27,11 +29,11 @@
 #pragma mark - Instance fields
 
 /// The group info after member change operation has been performed.
-@property (nonatomic, readonly) DBTEAMGroupFullInfo * _Nonnull groupInfo;
+@property (nonatomic, readonly) DBTEAMGroupFullInfo *groupInfo;
 
 /// An ID that can be used to obtain the status of granting/revoking group-owned
 /// resources.
-@property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
+@property (nonatomic, readonly, copy) NSString *asyncJobId;
 
 #pragma mark - Constructors
 
@@ -45,10 +47,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroupInfo:(DBTEAMGroupFullInfo * _Nonnull)groupInfo
-                               asyncJobId:(NSString * _Nonnull)asyncJobId;
+- (instancetype)initWithGroupInfo:(DBTEAMGroupFullInfo *)groupInfo asyncJobId:(NSString *)asyncJobId;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -68,7 +69,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupMembersChangeResult` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMembersChangeResult * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMGroupMembersChangeResult *)instance;
 
 ///
 /// Deserializes `DBTEAMGroupMembersChangeResult` instances.
@@ -78,6 +79,8 @@
 ///
 /// @return An instantiation of the `DBTEAMGroupMembersChangeResult` object.
 ///
-+ (DBTEAMGroupMembersChangeResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMGroupMembersChangeResult *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @class DBTEAMTeamFolderAccessError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -51,7 +53,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderAccessErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithInvalidTeamFolderId;
+- (instancetype)initWithInvalidTeamFolderId;
 
 ///
 /// Initializes union class with tag state of "no_access".
@@ -61,16 +63,16 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderAccessErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithNoAccess;
+- (instancetype)initWithNoAccess;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -102,7 +104,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderAccessErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -121,7 +123,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderAccessErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderAccessError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderAccessError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderAccessError *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderAccessError` instances.
@@ -131,6 +133,8 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderAccessErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderAccessError` object.
 ///
-+ (DBTEAMTeamFolderAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderAccessError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

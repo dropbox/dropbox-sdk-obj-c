@@ -10,6 +10,8 @@
 
 @class DBUSERSGetAccountBatchArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -25,7 +27,7 @@
 
 /// List of user account identifiers.  Should not contain any duplicate account
 /// IDs.
-@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull accountIds;
+@property (nonatomic, readonly) NSArray<NSString *> *accountIds;
 
 #pragma mark - Constructors
 
@@ -37,9 +39,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
+- (instancetype)initWithAccountIds:(NSArray<NSString *> *)accountIds;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -58,7 +60,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBUSERSGetAccountBatchArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBUSERSGetAccountBatchArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBUSERSGetAccountBatchArg *)instance;
 
 ///
 /// Deserializes `DBUSERSGetAccountBatchArg` instances.
@@ -68,6 +70,8 @@
 ///
 /// @return An instantiation of the `DBUSERSGetAccountBatchArg` object.
 ///
-+ (DBUSERSGetAccountBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBUSERSGetAccountBatchArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

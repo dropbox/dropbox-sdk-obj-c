@@ -4,6 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///
 /// Information for returning to the official Dropbox app.
 ///
@@ -13,34 +15,34 @@
 @interface DBOpenWithInfo : NSObject <NSCoding>
 
 /// The Dropbox user ID of the current user.
-@property (nonatomic, copy, readonly) NSString * _Nonnull userId;
+@property (nonatomic, copy, readonly) NSString *userId;
 
 /// The Dropbox revision for the file.
-@property (nonatomic, copy, readonly) NSString * _Nonnull rev;
+@property (nonatomic, copy, readonly) NSString *rev;
 
 /// The Dropbox path for the file.
-@property (nonatomic, copy, readonly) NSString * _Nonnull path;
+@property (nonatomic, copy, readonly) NSString *path;
 
 /// The time the file was modified last.
-@property (nonatomic, copy, readonly) NSDate * _Nullable modifiedTime;
+@property (nonatomic, copy, readonly, nullable) NSDate *modifiedTime;
 
 /// Whether the file is read only or not.
 @property (nonatomic, readonly) BOOL readOnly;
 
 /// The Dropbox verb associated with the file.
-@property (nonatomic, copy, readonly) NSString * _Nonnull verb;
+@property (nonatomic, copy, readonly) NSString *verb;
 
 /// The Dropbox session ID associated with the file.
-@property (nonatomic, copy, readonly) NSString * _Nullable sessionId;
+@property (nonatomic, copy, readonly, nullable) NSString *sessionId;
 
 /// The Dropbox file ID associated with the file.
-@property (nonatomic, copy, readonly) NSString * _Nullable fileId;
+@property (nonatomic, copy, readonly, nullable) NSString *fileId;
 
 /// Relevant Dropbox file data associated with the file.
-@property (nonatomic, copy, readonly) NSData * _Nullable fileData;
+@property (nonatomic, copy, readonly, nullable) NSData *fileData;
 
 /// The source application from which the file content originated.
-@property (nonatomic, copy, readonly) NSString * _Nullable sourceApp;
+@property (nonatomic, copy, readonly, nullable) NSString *sourceApp;
 
 ///
 /// Initializer containing the parameters that we were opened with. Some of these parameters are necessary to return to
@@ -60,16 +62,16 @@
 /// @param fileData Relevant Dropbox file data associated with the file.
 /// @param sourceApp The source application from which the file content originated.
 ///
-- (id _Nonnull)initWithUserId:(NSString * _Nonnull)userId
-                          rev:(NSString * _Nonnull)rev
-                         path:(NSString * _Nonnull)path
-                 modifiedTime:(NSDate * _Nullable)modifiedTime
-                     readOnly:(BOOL)readOnly
-                         verb:(NSString * _Nonnull)verb
-                    sessionId:(NSString * _Nullable)sessionId
-                       fileId:(NSString * _Nullable)fileId
-                     fileData:(NSData * _Nullable)fileData
-                    sourceApp:(NSString * _Nullable)sourceApp;
+- (id)initWithUserId:(NSString *)userId
+                 rev:(NSString *)rev
+                path:(NSString *)path
+        modifiedTime:(nullable NSDate *)modifiedTime
+            readOnly:(BOOL)readOnly
+                verb:(NSString *)verb
+           sessionId:(nullable NSString *)sessionId
+              fileId:(nullable NSString *)fileId
+            fileData:(nullable NSData *)fileData
+           sourceApp:(nullable NSString *)sourceApp;
 
 ///
 /// Saves open with info to disc.
@@ -78,7 +80,7 @@
 ///
 /// @param sessionId The Dropbox session ID supplied by the official app to be used as a storage lookup key.
 ///
-- (void)writeToStorageForSession:(NSString * _Nullable)sessionId;
+- (void)writeToStorageForSession:(nullable NSString *)sessionId;
 
 ///
 /// Retrieves open with info from disc.
@@ -87,6 +89,8 @@
 ///
 /// @param sessionId The Dropbox session ID supplied by the official app to be used as a storage lookup key.
 ///
-+ (DBOpenWithInfo * _Nullable)popFromStorageForSession:(NSString * _Nonnull)sessionId;
++ (nullable DBOpenWithInfo *)popFromStorageForSession:(NSString *)sessionId;
 
 @end
+
+NS_ASSUME_NONNULL_END

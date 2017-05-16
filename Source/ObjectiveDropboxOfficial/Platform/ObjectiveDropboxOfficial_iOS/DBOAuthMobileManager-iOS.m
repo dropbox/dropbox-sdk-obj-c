@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBOAuthMobileManager-iOS.h"
 #import "DBOAuthManager+Protected.h"
 #import "DBOAuthMobile-iOS.h"
-#import "DBOAuthMobileManager-iOS.h"
 #import "DBOAuthResult.h"
 #import "DBSharedApplicationProtocol.h"
 

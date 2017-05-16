@@ -10,6 +10,8 @@
 
 @class DBFILESGetTemporaryLinkArg;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -24,7 +26,7 @@
 #pragma mark - Instance fields
 
 /// The path to the file you want a temporary link to.
-@property (nonatomic, readonly, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString *path;
 
 #pragma mark - Constructors
 
@@ -35,9 +37,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
+- (instancetype)initWithPath:(NSString *)path;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -56,7 +58,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetTemporaryLinkArg` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESGetTemporaryLinkArg * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESGetTemporaryLinkArg *)instance;
 
 ///
 /// Deserializes `DBFILESGetTemporaryLinkArg` instances.
@@ -66,6 +68,8 @@
 ///
 /// @return An instantiation of the `DBFILESGetTemporaryLinkArg` object.
 ///
-+ (DBFILESGetTemporaryLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESGetTemporaryLinkArg *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

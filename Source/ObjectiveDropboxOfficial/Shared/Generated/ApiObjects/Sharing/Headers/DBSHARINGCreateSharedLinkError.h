@@ -11,6 +11,8 @@
 @class DBFILESLookupError;
 @class DBSHARINGCreateSharedLinkError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -40,7 +42,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGCreateSharedLinkErrorTag) {
 
 /// (no description). @note Ensure the `isPath` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBFILESLookupError *path;
 
 #pragma mark - Constructors
 
@@ -51,16 +53,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGCreateSharedLinkErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithPath:(DBFILESLookupError * _Nonnull)path;
+- (instancetype)initWithPath:(DBFILESLookupError *)path;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -86,7 +88,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGCreateSharedLinkErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -106,7 +108,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGCreateSharedLinkErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGCreateSharedLinkError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBSHARINGCreateSharedLinkError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBSHARINGCreateSharedLinkError *)instance;
 
 ///
 /// Deserializes `DBSHARINGCreateSharedLinkError` instances.
@@ -116,6 +118,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGCreateSharedLinkErrorTag) {
 ///
 /// @return An instantiation of the `DBSHARINGCreateSharedLinkError` object.
 ///
-+ (DBSHARINGCreateSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBSHARINGCreateSharedLinkError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

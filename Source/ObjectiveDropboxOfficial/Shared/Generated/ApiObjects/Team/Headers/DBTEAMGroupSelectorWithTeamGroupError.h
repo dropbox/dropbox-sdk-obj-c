@@ -10,6 +10,8 @@
 
 @class DBTEAMGroupSelectorWithTeamGroupError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -54,14 +56,14 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorWithTeamGroupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithGroupNotFound;
+- (instancetype)initWithGroupNotFound;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "system_managed_group_disallowed".
@@ -71,9 +73,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorWithTeamGroupErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
+- (instancetype)initWithSystemManagedGroupDisallowed;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -105,7 +107,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorWithTeamGroupErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -126,7 +128,7 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorWithTeamGroupErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupSelectorWithTeamGroupError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMGroupSelectorWithTeamGroupError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMGroupSelectorWithTeamGroupError *)instance;
 
 ///
 /// Deserializes `DBTEAMGroupSelectorWithTeamGroupError` instances.
@@ -137,6 +139,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorWithTeamGroupErrorTag) {
 /// @return An instantiation of the `DBTEAMGroupSelectorWithTeamGroupError`
 /// object.
 ///
-+ (DBTEAMGroupSelectorWithTeamGroupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMGroupSelectorWithTeamGroupError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

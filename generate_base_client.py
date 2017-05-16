@@ -39,17 +39,22 @@ _cmdline_parser.add_argument(
     default=True,
 )
 _cmdline_parser.add_argument(
-    '-f',
-    '--formatting',
-    action='store_false',
-    help='Sets whether source should be formatted.',
-    default=True,
-)
-_cmdline_parser.add_argument(
     '-o',
-    '--output_path',
+    '--output-path',
     type=str,
     help='Path to generation output.',
+)
+_cmdline_parser.add_argument(
+    '-c',
+    '--clang-format-path',
+    type=str,
+    help='Path clang-format tool for formatting code.',
+)
+_cmdline_parser.add_argument(
+    '-f',
+    '--format-output-path',
+    type=str,
+    help='Path to format output.',
 )
 
 
@@ -75,11 +80,13 @@ def main():
     dropbox_src_path = os.path.abspath('Source')
     dropbox_default_output_path = os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
     dropbox_pkg_path = args.output_path if args.output_path else dropbox_default_output_path
-    dropbox_format_path = os.path.abspath('Format')
+    dropbox_format_script_path = os.path.abspath('Format')
+    dropbox_format_output_path = args.format_output_path if args.format_output_path else dropbox_src_path
 
-    # if os.path.exists(dropbox_default_output_path):
-    #     shutil.rmtree(dropbox_default_output_path)
-    # os.makedirs(dropbox_default_output_path)
+    # clear out all old files
+    if not args.format_output_path:
+        shutil.rmtree(dropbox_default_output_path)
+        os.makedirs(dropbox_default_output_path)
 
     if verbose:
         print('Dropbox package path: %s' % dropbox_pkg_path)
@@ -125,17 +132,15 @@ def main():
     if o:
         print('Output:', o)
 
-    if args.formatting:
-        if verbose:
-            print('Formatting source files')
+    if verbose:
+        print('Formatting source files')
 
-        files = subprocess.check_output(
-            (['find', '../Source', '-iname', '*.[mh]']), cwd=dropbox_src_path)
-
-        o = subprocess.check_output(
-            (['sh', 'reformat_files.sh', files]), cwd=dropbox_format_path)
-        if o:
-            print('Output:', o)
+    cmd = ['sh', 'format_files.sh', dropbox_format_output_path]
+    if args.clang_format_path:
+        cmd.append(args.clang_format_path)
+    o = subprocess.check_output(cmd, cwd=dropbox_format_script_path)
+    if o:
+        print('Output:', o)
 
 
 def _get_client_args():
@@ -153,20 +158,20 @@ def _get_client_args():
 
     client_args = {
         'upload': [
-            ('upload', ['Url', [('inputUrl', 'inputUrl', 'NSString * _Nonnull', input_doc.format('NSString *')), ], ]),
-            ('upload', ['Data', [('inputData', 'inputData', 'NSData * _Nonnull', input_doc.format('NSData *')), ], ]),
-            ('upload', ['Stream', [('inputStream', 'inputStream', 'NSInputStream * _Nonnull', input_doc.format('NSInputStream *')), ], ]),
+            ('upload', ['Url', [('inputUrl', 'inputUrl', 'NSString *', input_doc.format('NSString *')), ], ]),
+            ('upload', ['Data', [('inputData', 'inputData', 'NSData *', input_doc.format('NSData *')), ], ]),
+            ('upload', ['Stream', [('inputStream', 'inputStream', 'NSInputStream *', input_doc.format('NSInputStream *')), ], ]),
         ],
         'download': [
             ('download_url', ['Url', [('overwrite', 'overwrite', 'BOOL', overwrite_doc),
-                ('destination', 'destination', 'NSURL * _Nonnull', dest_doc), ], ]),
+                ('destination', 'destination', 'NSURL *', dest_doc), ], ]),
             ('download_url', ['Url', [('overwrite', 'overwrite', 'BOOL', overwrite_doc),
-                ('destination', 'destination', 'NSURL * _Nonnull', dest_doc),
-                ('byteOffsetStart', 'byteOffsetStart', 'NSNumber * _Nonnull', download_range_start_doc),
-                ('byteOffsetEnd', 'byteOffsetEnd', 'NSNumber * _Nonnull', download_range_end_doc)], ]),
+                ('destination', 'destination', 'NSURL *', dest_doc),
+                ('byteOffsetStart', 'byteOffsetStart', 'NSNumber *', download_range_start_doc),
+                ('byteOffsetEnd', 'byteOffsetEnd', 'NSNumber *', download_range_end_doc)], ]),
             ('download_data', ['Data', []]),
-            ('download_data', ['Data', [('byteOffsetStart', 'byteOffsetStart', 'NSNumber * _Nonnull', download_range_start_doc),
-                ('byteOffsetEnd', 'byteOffsetEnd', 'NSNumber * _Nonnull', download_range_end_doc)]]),
+            ('download_data', ['Data', [('byteOffsetStart', 'byteOffsetStart', 'NSNumber *', download_range_start_doc),
+                ('byteOffsetEnd', 'byteOffsetEnd', 'NSNumber *', download_range_end_doc)]]),
         ],
     }
 

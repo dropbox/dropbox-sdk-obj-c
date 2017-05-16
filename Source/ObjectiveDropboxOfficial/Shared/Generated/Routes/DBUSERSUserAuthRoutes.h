@@ -9,8 +9,8 @@
 #import "DBTasks.h"
 
 @class DBNilObject;
-@class DBUSERSAccountType;
 @class DBUSERSBasicAccount;
+@class DBUSERSCOMMONAccountType;
 @class DBUSERSFullAccount;
 @class DBUSERSFullTeam;
 @class DBUSERSGetAccountBatchError;
@@ -24,15 +24,18 @@
 ///
 /// Routes for the `Users` namespace
 ///
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBUSERSUserAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> client;
 
 /// Initializes the `DBUSERSUserAuthRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
+- (instancetype)init:(id<DBTransportClient>)client;
 
 ///
 /// Get information about a user's account.
@@ -42,7 +45,7 @@
 /// @return Through the response callback, the caller will receive a `DBUSERSBasicAccount` object on success or a
 /// `DBUSERSGetAccountError` object on failure.
 ///
-- (DBRpcTask<DBUSERSBasicAccount *, DBUSERSGetAccountError *> * _Nonnull)getAccount:(NSString * _Nonnull)accountId;
+- (DBRpcTask<DBUSERSBasicAccount *, DBUSERSGetAccountError *> *)getAccount:(NSString *)accountId;
 
 ///
 /// Get information about multiple user accounts.  At most 300 accounts may be queried per request.
@@ -52,8 +55,8 @@
 /// @return Through the response callback, the caller will receive a `NSArray<DBUSERSBasicAccount *>` object on success
 /// or a `DBUSERSGetAccountBatchError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBUSERSBasicAccount *> *, DBUSERSGetAccountBatchError *> * _Nonnull)getAccountBatch:
-    (NSArray<NSString *> * _Nonnull)accountIds;
+- (DBRpcTask<NSArray<DBUSERSBasicAccount *> *, DBUSERSGetAccountBatchError *> *)getAccountBatch:
+    (NSArray<NSString *> *)accountIds;
 
 ///
 /// Get information about the current user's account.
@@ -62,7 +65,7 @@
 /// @return Through the response callback, the caller will receive a `DBUSERSFullAccount` object on success or a `void`
 /// object on failure.
 ///
-- (DBRpcTask<DBUSERSFullAccount *, DBNilObject *> * _Nonnull)getCurrentAccount;
+- (DBRpcTask<DBUSERSFullAccount *, DBNilObject *> *)getCurrentAccount;
 
 ///
 /// Get the space usage information for the current user's account.
@@ -71,6 +74,8 @@
 /// @return Through the response callback, the caller will receive a `DBUSERSSpaceUsage` object on success or a `void`
 /// object on failure.
 ///
-- (DBRpcTask<DBUSERSSpaceUsage *, DBNilObject *> * _Nonnull)getSpaceUsage;
+- (DBRpcTask<DBUSERSSpaceUsage *, DBNilObject *> *)getSpaceUsage;
 
 @end
+
+NS_ASSUME_NONNULL_END

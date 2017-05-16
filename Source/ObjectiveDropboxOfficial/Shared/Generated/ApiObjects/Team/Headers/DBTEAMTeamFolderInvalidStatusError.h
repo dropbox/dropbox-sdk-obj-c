@@ -10,6 +10,8 @@
 
 @class DBTEAMTeamFolderInvalidStatusError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -54,7 +56,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithActive;
+- (instancetype)initWithActive;
 
 ///
 /// Initializes union class with tag state of "archived".
@@ -64,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithArchived;
+- (instancetype)initWithArchived;
 
 ///
 /// Initializes union class with tag state of "archive_in_progress".
@@ -74,16 +76,16 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithArchiveInProgress;
+- (instancetype)initWithArchiveInProgress;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -122,7 +124,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -142,7 +144,7 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderInvalidStatusError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBTEAMTeamFolderInvalidStatusError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBTEAMTeamFolderInvalidStatusError *)instance;
 
 ///
 /// Deserializes `DBTEAMTeamFolderInvalidStatusError` instances.
@@ -152,6 +154,8 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMTeamFolderInvalidStatusError` object.
 ///
-+ (DBTEAMTeamFolderInvalidStatusError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBTEAMTeamFolderInvalidStatusError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

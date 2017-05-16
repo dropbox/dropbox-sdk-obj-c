@@ -10,6 +10,8 @@
 
 @class DBFILESSharingInfo;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -26,7 +28,7 @@
 #pragma mark - Instance fields
 
 /// True if the file or folder is inside a read-only shared folder.
-@property (nonatomic, readonly) NSNumber * _Nonnull readOnly;
+@property (nonatomic, readonly) NSNumber *readOnly;
 
 #pragma mark - Constructors
 
@@ -38,9 +40,9 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
+- (instancetype)initWithReadOnly:(NSNumber *)readOnly;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +61,7 @@
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSharingInfo` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESSharingInfo * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESSharingInfo *)instance;
 
 ///
 /// Deserializes `DBFILESSharingInfo` instances.
@@ -69,6 +71,8 @@
 ///
 /// @return An instantiation of the `DBFILESSharingInfo` object.
 ///
-+ (DBFILESSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESSharingInfo *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

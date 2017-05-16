@@ -10,6 +10,8 @@
 
 @class DBFILESWriteConflictError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark - API Object
 
 ///
@@ -53,7 +55,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFile;
+- (instancetype)initWithFile;
 
 ///
 /// Initializes union class with tag state of "folder".
@@ -62,7 +64,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFolder;
+- (instancetype)initWithFolder;
 
 ///
 /// Initializes union class with tag state of "file_ancestor".
@@ -72,16 +74,16 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithFileAncestor;
+- (instancetype)initWithFileAncestor;
 
 ///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (instancetype)initWithOther;
 
-- (nonnull instancetype)init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
@@ -118,7 +120,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 ///
 /// @return A human-readable string representing the union's current tag state.
 ///
-- (NSString * _Nonnull)tagName;
+- (NSString *)tagName;
 
 @end
 
@@ -137,7 +139,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESWriteConflictError` API object.
 ///
-+ (NSDictionary * _Nonnull)serialize:(DBFILESWriteConflictError * _Nonnull)instance;
++ (NSDictionary *)serialize:(DBFILESWriteConflictError *)instance;
 
 ///
 /// Deserializes `DBFILESWriteConflictError` instances.
@@ -147,6 +149,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESWriteConflictError` object.
 ///
-+ (DBFILESWriteConflictError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBFILESWriteConflictError *)deserialize:(NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -48,7 +48,7 @@ static DBOAuthManager *s_sharedOAuthManager;
 #pragma mark - Constructors
 
 - (instancetype)initWithAppKey:(NSString *)appKey {
-  NSString *hostToUse = !kDebug ? @"www.dropbox.com" : @"meta-dbdev.dev.corp.dropbox.com";
+  NSString *hostToUse = !kSDKDebug ? @"www.dropbox.com" : @"meta-dbdev.dev.corp.dropbox.com";
   return [self initWithAppKey:appKey host:hostToUse];
 }
 
@@ -60,7 +60,11 @@ static DBOAuthManager *s_sharedOAuthManager;
     _cancelURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];
     _host = host;
     _urls = [NSMutableArray arrayWithObjects:_redirectURL, nil];
+#ifdef TARGET_OS_MAC
+    _disableSignup = NO;
+#else
     _disableSignup = YES;
+#endif
   }
   return self;
 }
@@ -93,8 +97,10 @@ static DBOAuthManager *s_sharedOAuthManager;
   };
 
   if ([[DBSDKReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
-    NSString *message = @"Try again once you have an internet connection.";
-    NSString *title = @"No internet connection";
+    NSString *message = NSLocalizedString(@"Try again once you have an internet connection.",
+                                          @"Displayed when commencing authorization flow without internet connection.");
+    NSString *title = NSLocalizedString(@"No internet connection",
+                                        @"Displayed when commencing authorization flow without internet connection.");
 
     NSDictionary<NSString *, void (^)()> *buttonHandlers = @{
       @"Cancel" : ^{
