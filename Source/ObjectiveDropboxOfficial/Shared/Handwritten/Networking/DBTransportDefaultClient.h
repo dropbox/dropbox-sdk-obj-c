@@ -63,12 +63,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
+/// @param tokenUid Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects
+/// are each associated with a particular Dropbox account.
 /// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
 /// `DBTransportDefaultConfig` offers a number of different constructors to customize networking settings.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAccessToken:(nullable NSString *)accessToken
+                           tokenUid:(nullable NSString *)tokenUid
                     transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///

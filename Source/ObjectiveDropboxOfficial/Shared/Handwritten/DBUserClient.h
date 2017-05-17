@@ -19,26 +19,46 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBUserClient : DBUserBaseClient
 
+/// Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects are each
+/// associated with a particular Dropbox account.
+@property (nonatomic, readonly, copy, nullable) NSString *tokenUid;
+
 ///
 /// Convenience constructor.
 ///
 /// Uses standard network configuration parameters.
 ///
-/// @param accessToken The Dropbox OAuth2 access token used to make requests.
+/// @param accessToken The Dropbox OAuth 2.0 access token used to make requests.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAccessToken:(NSString *)accessToken;
 
 ///
-/// Full constructor.
+/// Convenience constructor.
 ///
+/// @param accessToken The Dropbox OAuth 2.0 access token used to make requests.
 /// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
 /// `DBTransportDefaultConfig` offers a number of different constructors to customize networking settings.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAccessToken:(NSString *)accessToken
+                    transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
+
+///
+/// Full constructor.
+///
+/// @param accessToken The Dropbox OAuth 2.0 access token used to make requests.
+/// @param tokenUid Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects
+/// are each associated with a particular Dropbox account.
+/// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
+/// `DBTransportDefaultConfig` offers a number of different constructors to customize networking settings.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                           tokenUid:(nullable NSString *)tokenUid
                     transportConfig:(nullable DBTransportDefaultConfig *)transportConfig;
 
 ///

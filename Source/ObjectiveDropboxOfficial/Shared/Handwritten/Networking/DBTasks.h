@@ -35,9 +35,20 @@ NS_ASSUME_NONNULL_BEGIN
   NSOperationQueue *_queue;
 }
 
+/// Tracks the number of times this task has been retried.
 @property (nonatomic) int retryCount;
 
-- (instancetype)initWithRoute:(DBRoute *)route;
+/// Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects are each
+/// associated with a particular Dropbox account.
+@property (nonatomic, readonly, copy) NSString *tokenUid;
+
+///
+/// Full constructor.
+///
+/// @param route Information about the route to which the request is being made.
+/// @param tokenUid Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects
+/// are each associated with a particular Dropbox account.
+- (instancetype)initWithRoute:(DBRoute *)route tokenUid:(NSString *)tokenUid;
 
 ///
 /// Cancels the current request.

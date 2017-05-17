@@ -16,7 +16,7 @@
 
 - (instancetype)initWithTransportConfig:(DBTransportDefaultConfig *)transportConfig {
   DBTransportDefaultClient *transportClient =
-      [[DBTransportDefaultClient alloc] initWithAccessToken:nil transportConfig:transportConfig];
+      [[DBTransportDefaultClient alloc] initWithAccessToken:nil tokenUid:nil transportConfig:transportConfig];
   return [super initWithTransportClient:transportClient];
 }
 

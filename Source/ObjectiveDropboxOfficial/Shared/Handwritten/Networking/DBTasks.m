@@ -15,10 +15,12 @@
 
 @implementation DBTask : NSObject
 
-- (instancetype)initWithRoute:(DBRoute *)route {
+- (instancetype)initWithRoute:(DBRoute *)route tokenUid:(NSString *)tokenUid {
   self = [super init];
   if (self) {
     _route = route;
+    _queue = nil;
+    _tokenUid = [tokenUid copy];
   }
   return self;
 }
@@ -125,7 +127,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSError *serializationError;
       result = [DBTransportBaseClient routeResultWithRoute:route data:data serializationError:&serializationError];
@@ -212,7 +214,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSError *serializationError;
       result = [DBTransportBaseClient routeResultWithRoute:route data:data serializationError:&serializationError];
@@ -307,7 +309,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSFileManager *fileManager = [NSFileManager defaultManager];
       NSString *destinationPath = [destination path];
@@ -425,7 +427,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSError *serializationError;
       result =

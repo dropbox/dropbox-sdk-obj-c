@@ -16,8 +16,15 @@
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                     transportConfig:(DBTransportDefaultConfig *)transportConfig {
-  DBTransportDefaultClient *transportClient =
-      [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken transportConfig:transportConfig];
+  return [self initWithAccessToken:accessToken tokenUid:nil transportConfig:transportConfig];
+}
+
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                           tokenUid:(NSString *)tokenUid
+                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
+  DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken
+                                                                                           tokenUid:tokenUid
+                                                                                    transportConfig:transportConfig];
   return [super initWithTransportClient:transportClient];
 }
 

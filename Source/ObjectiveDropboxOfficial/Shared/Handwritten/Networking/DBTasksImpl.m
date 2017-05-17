@@ -18,10 +18,11 @@
 }
 
 - (instancetype)initWithTask:(NSURLSessionDataTask *)task
+                    tokenUid:(NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _dataTask = task;
     _session = session;
@@ -59,7 +60,8 @@
 - (DBTask *)restart {
   NSURLRequest *request = [_dataTask.originalRequest copy];
   NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
-  DBRpcTaskImpl *sdkTask = [[DBRpcTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:_route];
+  DBRpcTaskImpl *sdkTask =
+      [[DBRpcTaskImpl alloc] initWithTask:task tokenUid:self.tokenUid session:_session delegate:_delegate route:_route];
   sdkTask.retryCount += 1;
   [sdkTask setResponseBlock:_responseBlock queue:_queue];
   [task resume];
@@ -100,12 +102,13 @@
 }
 
 - (instancetype)initWithTask:(NSURLSessionUploadTask *)task
+                    tokenUid:(NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route
                     inputUrl:(NSURL *)inputUrl
                    inputData:(NSData *)inputData {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _uploadTask = task;
     _session = session;
@@ -154,6 +157,7 @@
   }
 
   DBUploadTaskImpl *sdkTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                            tokenUid:self.tokenUid
                                                              session:_session
                                                             delegate:_delegate
                                                                route:_route
@@ -203,12 +207,13 @@
 }
 
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
+                    tokenUid:(NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route
                    overwrite:(BOOL)overwrite
                  destination:(NSURL *)destination {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _downloadUrlTask = task;
     _session = session;
@@ -248,6 +253,7 @@
   NSURLRequest *request = [_downloadUrlTask.originalRequest copy];
   NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request];
   DBDownloadUrlTaskImpl *sdkTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:task
+                                                                      tokenUid:self.tokenUid
                                                                        session:_session
                                                                       delegate:_delegate
                                                                          route:_route
@@ -300,10 +306,11 @@
 }
 
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
+                    tokenUid:(NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _downloadDataTask = task;
     _session = session;
@@ -340,8 +347,11 @@
 - (DBTask *)restart {
   NSURLRequest *request = [_downloadDataTask.originalRequest copy];
   NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request];
-  DBDownloadDataTaskImpl *sdkTask =
-      [[DBDownloadDataTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:_route];
+  DBDownloadDataTaskImpl *sdkTask = [[DBDownloadDataTaskImpl alloc] initWithTask:task
+                                                                        tokenUid:self.tokenUid
+                                                                         session:_session
+                                                                        delegate:_delegate
+                                                                           route:_route];
   sdkTask.retryCount += 1;
   [sdkTask setResponseBlock:_responseBlock queue:_queue];
   [task resume];
