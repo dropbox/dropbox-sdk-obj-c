@@ -127,7 +127,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSError *serializationError;
       result = [DBTransportBaseClient routeResultWithRoute:route data:data serializationError:&serializationError];
@@ -214,7 +214,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSError *serializationError;
       result = [DBTransportBaseClient routeResultWithRoute:route data:data serializationError:&serializationError];
@@ -309,7 +309,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSFileManager *fileManager = [NSFileManager defaultManager];
       NSString *destinationPath = [destination path];
@@ -427,7 +427,7 @@
                        : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:networkError
-                                                                      restartTask:self];
+                                                                      restartTask:strongSelf];
     } else {
       NSError *serializationError;
       result =
