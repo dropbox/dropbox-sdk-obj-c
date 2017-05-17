@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects are each
 /// associated with a particular Dropbox account.
-@property (nonatomic, readonly, copy) NSString *tokenUid;
+@property (nonatomic, readonly, copy, nullable) NSString *tokenUid;
 
 ///
 /// Convenience constructor.

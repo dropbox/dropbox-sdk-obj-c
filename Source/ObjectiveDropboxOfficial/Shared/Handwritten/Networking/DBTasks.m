@@ -20,7 +20,7 @@
   if (self) {
     _route = route;
     _queue = nil;
-    _tokenUid = tokenUid;
+    _tokenUid = [tokenUid copy];
   }
   return self;
 }
