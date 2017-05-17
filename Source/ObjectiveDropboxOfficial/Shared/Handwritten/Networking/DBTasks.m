@@ -15,10 +15,12 @@
 
 @implementation DBTask : NSObject
 
-- (instancetype)initWithRoute:(DBRoute *)route {
+- (instancetype)initWithRoute:(DBRoute *)route tokenUid:(NSString *)tokenUid {
   self = [super init];
   if (self) {
     _route = route;
+    _queue = nil;
+    _tokenUid = tokenUid;
   }
   return self;
 }
