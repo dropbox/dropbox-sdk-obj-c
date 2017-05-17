@@ -275,6 +275,8 @@
 		F2B2C0801ECA4D71006520F8 /* DBFILESMediaMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA41ECA4D6F006520F8 /* DBFILESMediaMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C0811ECA4D71006520F8 /* DBFILESMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA51ECA4D6F006520F8 /* DBFILESMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C0821ECA4D71006520F8 /* DBFILESMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA51ECA4D6F006520F8 /* DBFILESMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B2C0831ECA4D71006520F8 /* DBFILESPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA61ECA4D6F006520F8 /* DBFILESPathRootError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B2C0841ECA4D71006520F8 /* DBFILESPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA61ECA4D6F006520F8 /* DBFILESPathRootError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C0851ECA4D71006520F8 /* DBFILESPhotoMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA71ECA4D6F006520F8 /* DBFILESPhotoMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C0861ECA4D71006520F8 /* DBFILESPhotoMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA71ECA4D6F006520F8 /* DBFILESPhotoMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C0871ECA4D71006520F8 /* DBFILESPreviewArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BCA81ECA4D6F006520F8 /* DBFILESPreviewArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1807,6 +1809,8 @@
 		F2B2C67E1ECA4D76006520F8 /* DBUsersObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B2BFB21ECA4D71006520F8 /* DBUsersObjects.m */; };
 		F2B2C67F1ECA4D76006520F8 /* DBUSERSAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BFB41ECA4D71006520F8 /* DBUSERSAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C6801ECA4D76006520F8 /* DBUSERSAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BFB41ECA4D71006520F8 /* DBUSERSAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B2C6811ECA4D76006520F8 /* DBUSERSAccountType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BFB51ECA4D71006520F8 /* DBUSERSAccountType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B2C6821ECA4D76006520F8 /* DBUSERSAccountType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BFB51ECA4D71006520F8 /* DBUSERSAccountType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C6831ECA4D76006520F8 /* DBUSERSBasicAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BFB61ECA4D71006520F8 /* DBUSERSBasicAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C6841ECA4D76006520F8 /* DBUSERSBasicAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BFB61ECA4D71006520F8 /* DBUSERSBasicAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B2C6851ECA4D76006520F8 /* DBUSERSFullAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B2BFB71ECA4D71006520F8 /* DBUSERSFullAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1933,12 +1937,12 @@
 		F2C59AFA1E9C2CAF00E8D2E6 /* DBOAuthMobileManager-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C59AF91E9C2CAF00E8D2E6 /* DBOAuthMobileManager-iOS.m */; };
 		F2C59AFD1E9C2EFC00E8D2E6 /* DBOAuthManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C59AFC1E9C2EFC00E8D2E6 /* DBOAuthManager+Protected.h */; };
 		F2C59AFE1E9C2EFC00E8D2E6 /* DBOAuthManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C59AFC1E9C2EFC00E8D2E6 /* DBOAuthManager+Protected.h */; };
-		F2D1FB561ECA742D00739563 /* DBCOMMONInvalidPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB531ECA742D00739563 /* DBCOMMONInvalidPathRootError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2D1FB571ECA742D00739563 /* DBCOMMONInvalidPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB531ECA742D00739563 /* DBCOMMONInvalidPathRootError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2D1FB581ECA742D00739563 /* DBCOMMONPathRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB541ECA742D00739563 /* DBCOMMONPathRoot.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2D1FB591ECA742D00739563 /* DBCOMMONPathRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB541ECA742D00739563 /* DBCOMMONPathRoot.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2D1FB5A1ECA742D00739563 /* DBCOMMONPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB551ECA742D00739563 /* DBCOMMONPathRootError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2D1FB5B1ECA742D00739563 /* DBCOMMONPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB551ECA742D00739563 /* DBCOMMONPathRootError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2D1FB561ECA742D00739563 /* DBCOMMONInvalidPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB531ECA742D00739563 /* DBCOMMONInvalidPathRootError.h */; };
+		F2D1FB571ECA742D00739563 /* DBCOMMONInvalidPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB531ECA742D00739563 /* DBCOMMONInvalidPathRootError.h */; };
+		F2D1FB581ECA742D00739563 /* DBCOMMONPathRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB541ECA742D00739563 /* DBCOMMONPathRoot.h */; };
+		F2D1FB591ECA742D00739563 /* DBCOMMONPathRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB541ECA742D00739563 /* DBCOMMONPathRoot.h */; };
+		F2D1FB5A1ECA742D00739563 /* DBCOMMONPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB551ECA742D00739563 /* DBCOMMONPathRootError.h */; };
+		F2D1FB5B1ECA742D00739563 /* DBCOMMONPathRootError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D1FB551ECA742D00739563 /* DBCOMMONPathRootError.h */; };
 		F2D40D3A1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2D40D3C1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D40D391E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m */; };
@@ -2096,6 +2100,7 @@
 		F2B2BCA31ECA4D6F006520F8 /* DBFILESMediaInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESMediaInfo.h; sourceTree = "<group>"; };
 		F2B2BCA41ECA4D6F006520F8 /* DBFILESMediaMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESMediaMetadata.h; sourceTree = "<group>"; };
 		F2B2BCA51ECA4D6F006520F8 /* DBFILESMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESMetadata.h; sourceTree = "<group>"; };
+		F2B2BCA61ECA4D6F006520F8 /* DBFILESPathRootError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESPathRootError.h; sourceTree = "<group>"; };
 		F2B2BCA71ECA4D6F006520F8 /* DBFILESPhotoMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESPhotoMetadata.h; sourceTree = "<group>"; };
 		F2B2BCA81ECA4D6F006520F8 /* DBFILESPreviewArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESPreviewArg.h; sourceTree = "<group>"; };
 		F2B2BCA91ECA4D6F006520F8 /* DBFILESPreviewError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESPreviewError.h; sourceTree = "<group>"; };
@@ -2862,6 +2867,7 @@
 		F2B2BFB01ECA4D71006520F8 /* DBTEAMPOLICIESTeamSharingPolicies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMPOLICIESTeamSharingPolicies.h; sourceTree = "<group>"; };
 		F2B2BFB21ECA4D71006520F8 /* DBUsersObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUsersObjects.m; sourceTree = "<group>"; };
 		F2B2BFB41ECA4D71006520F8 /* DBUSERSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUSERSAccount.h; sourceTree = "<group>"; };
+		F2B2BFB51ECA4D71006520F8 /* DBUSERSAccountType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUSERSAccountType.h; sourceTree = "<group>"; };
 		F2B2BFB61ECA4D71006520F8 /* DBUSERSBasicAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUSERSBasicAccount.h; sourceTree = "<group>"; };
 		F2B2BFB71ECA4D71006520F8 /* DBUSERSFullAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUSERSFullAccount.h; sourceTree = "<group>"; };
 		F2B2BFB81ECA4D71006520F8 /* DBUSERSFullTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUSERSFullTeam.h; sourceTree = "<group>"; };
@@ -3339,6 +3345,7 @@
 				F2B2BCA31ECA4D6F006520F8 /* DBFILESMediaInfo.h */,
 				F2B2BCA41ECA4D6F006520F8 /* DBFILESMediaMetadata.h */,
 				F2B2BCA51ECA4D6F006520F8 /* DBFILESMetadata.h */,
+				F2B2BCA61ECA4D6F006520F8 /* DBFILESPathRootError.h */,
 				F2B2BCA71ECA4D6F006520F8 /* DBFILESPhotoMetadata.h */,
 				F2B2BCA81ECA4D6F006520F8 /* DBFILESPreviewArg.h */,
 				F2B2BCA91ECA4D6F006520F8 /* DBFILESPreviewError.h */,
@@ -4225,6 +4232,7 @@
 			isa = PBXGroup;
 			children = (
 				F2B2BFB41ECA4D71006520F8 /* DBUSERSAccount.h */,
+				F2B2BFB51ECA4D71006520F8 /* DBUSERSAccountType.h */,
 				F2B2BFB61ECA4D71006520F8 /* DBUSERSBasicAccount.h */,
 				F2B2BFB71ECA4D71006520F8 /* DBUSERSFullAccount.h */,
 				F2B2BFB81ECA4D71006520F8 /* DBUSERSFullTeam.h */,
@@ -4409,6 +4417,7 @@
 				F2B2C5431ECA4D75006520F8 /* DBTEAMLOGPaperDocDeletedDetails.h in Headers */,
 				F2B2C3C11ECA4D73006520F8 /* DBTEAMUpdatePropertyTemplateResult.h in Headers */,
 				F2B2C2011ECA4D72006520F8 /* DBSHARINGMemberAction.h in Headers */,
+				F2B2C0831ECA4D71006520F8 /* DBFILESPathRootError.h in Headers */,
 				F2B2C5C31ECA4D75006520F8 /* DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails.h in Headers */,
 				F2B2C4E31ECA4D74006520F8 /* DBTEAMLOGMemberJoinDetails.h in Headers */,
 				F2B2C16B1ECA4D72006520F8 /* DBSHARINGAddFileMemberError.h in Headers */,
@@ -4541,6 +4550,7 @@
 				F2B2C2D71ECA4D73006520F8 /* DBTEAMGroupMembersSetAccessTypeArg.h in Headers */,
 				F2B2C47D1ECA4D74006520F8 /* DBTEAMLOGFileRequestAddDeadlineDetails.h in Headers */,
 				F2B2C0C11ECA4D71006520F8 /* DBFILESSearchMode.h in Headers */,
+				F2B2C6811ECA4D76006520F8 /* DBUSERSAccountType.h in Headers */,
 				F2B2C1FB1ECA4D72006520F8 /* DBSHARINGListSharedLinksError.h in Headers */,
 				F2B2C1211ECA4D71006520F8 /* DBPAPERListPaperDocsSortBy.h in Headers */,
 				F2B2C5911ECA4D75006520F8 /* DBTEAMLOGSessionLogInfo.h in Headers */,
@@ -5319,6 +5329,7 @@
 				F2B2C6881ECA4D76006520F8 /* DBUSERSFullTeam.h in Headers */,
 				F2B2C6861ECA4D76006520F8 /* DBUSERSFullAccount.h in Headers */,
 				F2B2C6841ECA4D76006520F8 /* DBUSERSBasicAccount.h in Headers */,
+				F2B2C6821ECA4D76006520F8 /* DBUSERSAccountType.h in Headers */,
 				F2B2C6801ECA4D76006520F8 /* DBUSERSAccount.h in Headers */,
 				F2B2C67C1ECA4D76006520F8 /* DBTEAMPOLICIESTeamSharingPolicies.h in Headers */,
 				F2B2C67A1ECA4D76006520F8 /* DBTEAMPOLICIESTeamMemberPolicies.h in Headers */,
@@ -6089,6 +6100,7 @@
 				F2B2C04A1ECA4D71006520F8 /* DBFILESFolderMetadata.h in Headers */,
 				F2B2C04C1ECA4D71006520F8 /* DBFILESFolderSharingInfo.h in Headers */,
 				F2B2C08A1ECA4D71006520F8 /* DBFILESPreviewError.h in Headers */,
+				F2B2C0841ECA4D71006520F8 /* DBFILESPathRootError.h in Headers */,
 				F2B2C1D41ECA4D72006520F8 /* DBSHARINGListFileMembersBatchArg.h in Headers */,
 				F2B2C05A1ECA4D71006520F8 /* DBFILESGetTemporaryLinkError.h in Headers */,
 				F2B2C1541ECA4D72006520F8 /* DBPROPERTIESListPropertyTemplateIds.h in Headers */,
