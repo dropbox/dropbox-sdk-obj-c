@@ -62,3 +62,10 @@ echo '--------------------'
 cat $mac_version | grep $1
 echo '--------------------'
 echo
+echo
+echo "Committing changes and tagging commit."
+git commit -am "$1 release."
+git tag "$1"
+echo
+echo "Changes ready for review and push"
+echo

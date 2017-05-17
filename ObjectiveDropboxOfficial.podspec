@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'ObjectiveDropboxOfficial'
-  s.version      = '3.0.18'
+  s.version      = '3.1.0'
   s.summary      = 'Dropbox Objective C SDK for APIv2'
   s.homepage     = 'https://dropbox.com/developers/'
   s.license      = 'MIT'

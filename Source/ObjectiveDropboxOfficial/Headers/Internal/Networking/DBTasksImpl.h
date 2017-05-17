@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBRpcTaskImpl` full constructor.
 ///
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
+/// @param tokenUid Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects
+/// are each associated with a particular Dropbox account.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
 /// @param route The static `DBRoute` instance associated with the route to which the request was made. Contains
@@ -40,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionDataTask *)task
+                    tokenUid:(nullable NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route;
@@ -68,6 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBUploadTask` full constructor.
 ///
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
+/// @param tokenUid Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects
+/// are each associated with a particular Dropbox account.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
 /// @param route The static `DBRoute` instance associated with the route to which the request was made. Contains
@@ -78,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionUploadTask *)task
+                    tokenUid:(nullable NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route
@@ -102,6 +108,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBDownloadUrlTask` full constructor.
 ///
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
+/// @param tokenUid Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects
+/// are each associated with a particular Dropbox account.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
 /// @param route The static `DBRoute` instance associated with the route to which the request was made. Contains
@@ -112,6 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
+                    tokenUid:(nullable NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route
@@ -136,6 +145,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// DBDownloadDataTask full constructor.
 ///
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
+/// @param tokenUid Identifies a unique Dropbox account. Used for the multi Dropbox account case where client objects
+/// are each associated with a particular Dropbox account.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
 /// @param route The static `DBRoute` instance associated with the route to which the request was made. Contains
@@ -144,6 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
+                    tokenUid:(nullable NSString *)tokenUid
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route;

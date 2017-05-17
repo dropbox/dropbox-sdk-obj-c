@@ -159,7 +159,7 @@ brew install carthage
 
 ```
 # ObjectiveDropboxOfficial
-github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 3.0.18
+github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 3.1.0
 ```
 
 Then, run the following command to checkout and build the Dropbox Objective-C SDK repository:
@@ -277,10 +277,11 @@ After you've made the above changes, your application's `.plist` file should loo
 
 ### Handling the authorization flow
 
-There are two methods to programmatically retrieve an OAuth 2.0 access token:
+There are three methods to programmatically retrieve an OAuth 2.0 access token:
 
 * **Direct auth** (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
-* **Safari view controller auth** (iOS, macOS): This launches a `SFSafariViewController` to facillitate the auth flow. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **Safari view controller auth** (iOS only): This launches a `SFSafariViewController` to facillitate the auth flow. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **Redirect to external browser** (macOS only): This launches the user's default browser to facillitate the auth flow. This is also desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
 
 To facilitate the above authorization flows, you should take the following steps:
 
@@ -403,6 +404,9 @@ To handle the redirection back into the Objective-C SDK once the authentication 
     } else if ([authResult isError]) {
       NSLog(@"Error: %@", authResult);
     }
+    // this forces your app to the foreground, after it has handled the browser redirect
+    [[NSRunningApplication currentApplication]
+        activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
   }
 }
 ```

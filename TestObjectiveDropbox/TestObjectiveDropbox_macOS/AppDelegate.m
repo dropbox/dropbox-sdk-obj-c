@@ -117,6 +117,8 @@ static ViewController *viewController = nil;
     }
   }
   [self checkButtons];
+  [[NSRunningApplication currentApplication]
+      activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
 }
 
 - (void)checkButtons {

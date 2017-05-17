@@ -40,9 +40,12 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   });
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken transportConfig:(DBTransportBaseConfig *)transportConfig {
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                           tokenUid:(NSString *)tokenUid
+                    transportConfig:(DBTransportBaseConfig *)transportConfig {
   if (self = [super init]) {
     _accessToken = accessToken;
+    _tokenUid = [tokenUid copy];
     _appKey = transportConfig.appKey;
     _appSecret = transportConfig.appSecret;
     NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kV2SDKDefaultUserAgentPrefix, kV2SDKVersion];

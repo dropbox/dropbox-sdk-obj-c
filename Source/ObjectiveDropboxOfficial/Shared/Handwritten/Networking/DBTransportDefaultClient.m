@@ -24,8 +24,9 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken
+                           tokenUid:(NSString *)tokenUid
                     transportConfig:(DBTransportDefaultConfig *)transportConfig {
-  if (self = [super initWithAccessToken:accessToken transportConfig:transportConfig]) {
+  if (self = [super initWithAccessToken:accessToken tokenUid:tokenUid transportConfig:transportConfig]) {
     _delegateQueue = transportConfig.delegateQueue ?: [NSOperationQueue new];
     _delegateQueue.maxConcurrentOperationCount = 1;
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
@@ -92,8 +93,11 @@
   }
 
   NSURLSessionDataTask *task = [sessionToUse dataTaskWithRequest:request];
-  DBRpcTaskImpl *rpcTask =
-      [[DBRpcTaskImpl alloc] initWithTask:task session:sessionToUse delegate:_delegate route:route];
+  DBRpcTaskImpl *rpcTask = [[DBRpcTaskImpl alloc] initWithTask:task
+                                                      tokenUid:self.tokenUid
+                                                       session:sessionToUse
+                                                      delegate:_delegate
+                                                         route:route];
   [task resume];
 
   return rpcTask;
@@ -112,6 +116,7 @@
 
   NSURLSessionUploadTask *task = [_secondarySession uploadTaskWithRequest:request fromFile:inputUrl];
   DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                               tokenUid:self.tokenUid
                                                                 session:_secondarySession
                                                                delegate:_delegate
                                                                   route:route
@@ -134,6 +139,7 @@
 
   NSURLSessionUploadTask *task = [_session uploadTaskWithRequest:request fromData:input];
   DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                               tokenUid:self.tokenUid
                                                                 session:_session
                                                                delegate:_delegate
                                                                   route:route
@@ -156,6 +162,7 @@
 
   NSURLSessionUploadTask *task = [_session uploadTaskWithStreamedRequest:request];
   DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                               tokenUid:self.tokenUid
                                                                 session:_session
                                                                delegate:_delegate
                                                                   route:route
@@ -198,6 +205,7 @@
 
   NSURLSessionDownloadTask *task = [_secondarySession downloadTaskWithRequest:request];
   DBDownloadUrlTaskImpl *downloadTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:task
+                                                                           tokenUid:self.tokenUid
                                                                             session:_secondarySession
                                                                            delegate:_delegate
                                                                               route:route
@@ -229,8 +237,11 @@
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
   NSURLSessionDownloadTask *task = [_secondarySession downloadTaskWithRequest:request];
-  DBDownloadDataTaskImpl *downloadTask =
-      [[DBDownloadDataTaskImpl alloc] initWithTask:task session:_secondarySession delegate:_delegate route:route];
+  DBDownloadDataTaskImpl *downloadTask = [[DBDownloadDataTaskImpl alloc] initWithTask:task
+                                                                             tokenUid:self.tokenUid
+                                                                              session:_secondarySession
+                                                                             delegate:_delegate
+                                                                                route:route];
   [task resume];
 
   return downloadTask;
