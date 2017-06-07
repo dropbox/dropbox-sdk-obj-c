@@ -53,7 +53,7 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
 
 - (void)presentErrorMessageWithHandlers:(NSString *)message
                                   title:(NSString *)title
-                         buttonHandlers:(NSDictionary<NSString *, void (^)()> *)buttonHandlers {
+                         buttonHandlers:(NSDictionary<NSString *, void (^)(void)> *)buttonHandlers {
   UIAlertController *alertController =
       [UIAlertController alertControllerWithTitle:title
                                           message:message
