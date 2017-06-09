@@ -123,10 +123,10 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   return headers;
 }
 
-+ (NSURLRequest *)requestWithHeaders:(NSDictionary *)httpHeaders
-                                 url:(NSURL *)url
-                             content:(NSData *)content
-                              stream:(NSInputStream *)stream {
++ (NSMutableURLRequest *)requestWithHeaders:(NSDictionary *)httpHeaders
+                                        url:(NSURL *)url
+                                    content:(NSData *)content
+                                     stream:(NSInputStream *)stream {
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
   for (NSString *key in httpHeaders) {
     [request addValue:httpHeaders[key] forHTTPHeaderField:key];
