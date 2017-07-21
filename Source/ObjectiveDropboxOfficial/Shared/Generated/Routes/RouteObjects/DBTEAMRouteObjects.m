@@ -89,6 +89,7 @@
 #import "DBTEAMMembersSuspendError.h"
 #import "DBTEAMMembersUnsuspendError.h"
 #import "DBTEAMMobileClientSession.h"
+#import "DBTEAMNamespaceMetadata.h"
 #import "DBTEAMPOLICIESTeamMemberPolicies.h"
 #import "DBTEAMRevokeDeviceSessionBatchError.h"
 #import "DBTEAMRevokeDeviceSessionBatchResult.h"
@@ -115,9 +116,12 @@
 #import "DBTEAMTeamFolderPermanentlyDeleteError.h"
 #import "DBTEAMTeamFolderRenameError.h"
 #import "DBTEAMTeamFolderStatus.h"
+#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
 #import "DBTEAMTeamGetInfoResult.h"
 #import "DBTEAMTeamMemberInfo.h"
 #import "DBTEAMTeamMemberProfile.h"
+#import "DBTEAMTeamNamespacesListContinueError.h"
+#import "DBTEAMTeamNamespacesListResult.h"
 #import "DBTEAMTokenGetAuthenticatedAdminError.h"
 #import "DBTEAMTokenGetAuthenticatedAdminResult.h"
 #import "DBTEAMUpdatePropertyTemplateResult.h"
@@ -162,6 +166,8 @@ static DBRoute *DBTEAMMembersSetAdminPermissions;
 static DBRoute *DBTEAMMembersSetProfile;
 static DBRoute *DBTEAMMembersSuspend;
 static DBRoute *DBTEAMMembersUnsuspend;
+static DBRoute *DBTEAMNamespacesList;
+static DBRoute *DBTEAMNamespacesListContinue;
 static DBRoute *DBTEAMPropertiesTemplateAdd;
 static DBRoute *DBTEAMPropertiesTemplateGet;
 static DBRoute *DBTEAMPropertiesTemplateList;
@@ -860,6 +866,42 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                 arrayDeserialBlock:nil];
   }
   return DBTEAMMembersUnsuspend;
+}
+
++ (DBRoute *)DBTEAMNamespacesList {
+  if (!DBTEAMNamespacesList) {
+    DBTEAMNamespacesList = [[DBRoute alloc] init:@"namespaces/list"
+                                      namespace_:@"team"
+                                      deprecated:@NO
+                                      resultType:[DBTEAMTeamNamespacesListResult class]
+                                       errorType:nil
+                                           attrs:@{
+                                             @"auth" : @"team",
+                                             @"host" : @"api",
+                                             @"style" : @"rpc"
+                                           }
+                                arraySerialBlock:nil
+                              arrayDeserialBlock:nil];
+  }
+  return DBTEAMNamespacesList;
+}
+
++ (DBRoute *)DBTEAMNamespacesListContinue {
+  if (!DBTEAMNamespacesListContinue) {
+    DBTEAMNamespacesListContinue = [[DBRoute alloc] init:@"namespaces/list/continue"
+                                              namespace_:@"team"
+                                              deprecated:@NO
+                                              resultType:[DBTEAMTeamNamespacesListResult class]
+                                               errorType:[DBTEAMTeamNamespacesListContinueError class]
+                                                   attrs:@{
+                                                     @"auth" : @"team",
+                                                     @"host" : @"api",
+                                                     @"style" : @"rpc"
+                                                   }
+                                        arraySerialBlock:nil
+                                      arrayDeserialBlock:nil];
+  }
+  return DBTEAMNamespacesListContinue;
 }
 
 + (DBRoute *)DBTEAMPropertiesTemplateAdd {

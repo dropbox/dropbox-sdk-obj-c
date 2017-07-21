@@ -8,40 +8,40 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGGroupsUserManagementPolicy;
+@class DBTEAMLOGGroupUserManagementPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `GroupsUserManagementPolicy` union.
+/// The `GroupUserManagementPolicy` union.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGGroupsUserManagementPolicy : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGGroupUserManagementPolicy : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMLOGGroupsUserManagementPolicyTag` enum type represents the
-/// possible tag states with which the `DBTEAMLOGGroupsUserManagementPolicy`
+/// The `DBTEAMLOGGroupUserManagementPolicyTag` enum type represents the
+/// possible tag states with which the `DBTEAMLOGGroupUserManagementPolicy`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGGroupsUserManagementPolicyTag) {
+typedef NS_ENUM(NSInteger, DBTEAMLOGGroupUserManagementPolicyTag) {
   /// (no description).
-  DBTEAMLOGGroupsUserManagementPolicyAllUsers,
+  DBTEAMLOGGroupUserManagementPolicyAllUsers,
 
   /// (no description).
-  DBTEAMLOGGroupsUserManagementPolicyOnlyAdmins,
+  DBTEAMLOGGroupUserManagementPolicyOnlyAdmins,
 
   /// (no description).
-  DBTEAMLOGGroupsUserManagementPolicyOther,
+  DBTEAMLOGGroupUserManagementPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic, readonly) DBTEAMLOGGroupsUserManagementPolicyTag tag;
+@property (nonatomic, readonly) DBTEAMLOGGroupUserManagementPolicyTag tag;
 
 #pragma mark - Constructors
 
@@ -103,31 +103,30 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGGroupsUserManagementPolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBTEAMLOGGroupsUserManagementPolicy` union.
+/// The serialization class for the `DBTEAMLOGGroupUserManagementPolicy` union.
 ///
-@interface DBTEAMLOGGroupsUserManagementPolicySerializer : NSObject
+@interface DBTEAMLOGGroupUserManagementPolicySerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGGroupsUserManagementPolicy` instances.
+/// Serializes `DBTEAMLOGGroupUserManagementPolicy` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGGroupsUserManagementPolicy` API
+/// @param instance An instance of the `DBTEAMLOGGroupUserManagementPolicy` API
 /// object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGGroupsUserManagementPolicy` API object.
+/// `DBTEAMLOGGroupUserManagementPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupsUserManagementPolicy *)instance;
++ (NSDictionary *)serialize:(DBTEAMLOGGroupUserManagementPolicy *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGGroupsUserManagementPolicy` instances.
+/// Deserializes `DBTEAMLOGGroupUserManagementPolicy` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGGroupsUserManagementPolicy` API object.
+/// `DBTEAMLOGGroupUserManagementPolicy` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGGroupsUserManagementPolicy`
-/// object.
+/// @return An instantiation of the `DBTEAMLOGGroupUserManagementPolicy` object.
 ///
-+ (DBTEAMLOGGroupsUserManagementPolicy *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGGroupUserManagementPolicy *)deserialize:(NSDictionary *)dict;
 
 @end
 
