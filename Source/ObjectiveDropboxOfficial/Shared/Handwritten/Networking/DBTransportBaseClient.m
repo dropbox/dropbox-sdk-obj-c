@@ -53,6 +53,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
                                                  stringByAppendingString:defaultUserAgent]
                                            : defaultUserAgent;
     _asMemberId = transportConfig.asMemberId;
+    _additionalHeaders = transportConfig.additionalHeaders;
   }
   return self;
 }
@@ -118,6 +119,10 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
     NSString *bytesRangeSpecifier = [NSString
         stringWithFormat:@"bytes=%lu-%lu", [byteOffsetStart unsignedLongValue], [byteOffsetEnd unsignedLongValue]];
     [headers setObject:bytesRangeSpecifier forKey:@"Range"];
+  }
+
+  if (_additionalHeaders != nil) {
+    [headers addEntriesFromDictionary:_additionalHeaders];
   }
 
   return headers;
