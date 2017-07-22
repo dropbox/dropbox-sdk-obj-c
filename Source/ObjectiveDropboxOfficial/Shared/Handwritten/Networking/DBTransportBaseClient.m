@@ -156,9 +156,8 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
     return nil;
   }
 
-  if (route.arraySerialBlock) {
-    NSArray *serializedArray = route.arraySerialBlock(arg);
-    return [[self class] jsonDataWithJsonObj:serializedArray];
+  if (route.dataStructSerialBlock) {
+    return [[self class] jsonDataWithJsonObj:route.dataStructSerialBlock(arg)];
   }
 
   NSDictionary *serializedDict = [[arg class] serialize:arg];
@@ -334,8 +333,8 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   }
 
   if (route.resultType) {
-    if (route.arrayDeserialBlock) {
-      return route.arrayDeserialBlock(jsonData);
+    if (route.dataStructDeserialBlock) {
+      return route.dataStructDeserialBlock(jsonData);
     }
     return [(Class)route.resultType deserialize:jsonData];
   }

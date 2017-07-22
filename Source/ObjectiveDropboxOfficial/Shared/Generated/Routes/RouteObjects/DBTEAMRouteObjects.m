@@ -199,8 +199,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                        @"host" : @"api",
                                                        @"style" : @"rpc"
                                                      }
-                                          arraySerialBlock:nil
-                                        arrayDeserialBlock:nil];
+                                     dataStructSerialBlock:nil
+                                   dataStructDeserialBlock:nil];
   }
   return DBTEAMDevicesListMemberDevices;
 }
@@ -217,8 +217,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
-                                           arraySerialBlock:nil
-                                         arrayDeserialBlock:nil];
+                                      dataStructSerialBlock:nil
+                                    dataStructDeserialBlock:nil];
   }
   return DBTEAMDevicesListMembersDevices;
 }
@@ -235,8 +235,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
-                                        arraySerialBlock:nil
-                                      arrayDeserialBlock:nil];
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
   }
   return DBTEAMDevicesListTeamDevices;
 }
@@ -253,8 +253,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                          @"host" : @"api",
                                                          @"style" : @"rpc"
                                                        }
-                                            arraySerialBlock:nil
-                                          arrayDeserialBlock:nil];
+                                       dataStructSerialBlock:nil
+                                     dataStructDeserialBlock:nil];
   }
   return DBTEAMDevicesRevokeDeviceSession;
 }
@@ -271,8 +271,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                               @"host" : @"api",
                                                               @"style" : @"rpc"
                                                             }
-                                                 arraySerialBlock:nil
-                                               arrayDeserialBlock:nil];
+                                            dataStructSerialBlock:nil
+                                          dataStructDeserialBlock:nil];
   }
   return DBTEAMDevicesRevokeDeviceSessionBatch;
 }
@@ -289,8 +289,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
-                                   arraySerialBlock:nil
-                                 arrayDeserialBlock:nil];
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
   }
   return DBTEAMFeaturesGetValues;
 }
@@ -307,8 +307,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                       @"host" : @"api",
                                       @"style" : @"rpc"
                                     }
-                         arraySerialBlock:nil
-                       arrayDeserialBlock:nil];
+                    dataStructSerialBlock:nil
+                  dataStructDeserialBlock:nil];
   }
   return DBTEAMGetInfo;
 }
@@ -325,8 +325,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                            @"host" : @"api",
                                            @"style" : @"rpc"
                                          }
-                              arraySerialBlock:nil
-                            arrayDeserialBlock:nil];
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsCreate;
 }
@@ -343,8 +343,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                            @"host" : @"api",
                                            @"style" : @"rpc"
                                          }
-                              arraySerialBlock:nil
-                            arrayDeserialBlock:nil];
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsDelete;
 }
@@ -361,9 +361,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
           @"host" : @"api",
           @"style" : @"rpc"
         }
-        arraySerialBlock:nil
-        arrayDeserialBlock:^id(id array) {
-          return [DBArraySerializer deserialize:array
+        dataStructSerialBlock:nil
+        dataStructDeserialBlock:^id(id dataStruct) {
+          return [DBArraySerializer deserialize:dataStruct
                                       withBlock:^id(id elem0) {
                                         return [DBTEAMGroupsGetInfoItemSerializer deserialize:elem0];
                                       }];
@@ -384,8 +384,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
-                                    arraySerialBlock:nil
-                                  arrayDeserialBlock:nil];
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsJobStatusGet;
 }
@@ -402,8 +402,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                          @"host" : @"api",
                                          @"style" : @"rpc"
                                        }
-                            arraySerialBlock:nil
-                          arrayDeserialBlock:nil];
+                       dataStructSerialBlock:nil
+                     dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsList;
 }
@@ -420,8 +420,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
-                                    arraySerialBlock:nil
-                                  arrayDeserialBlock:nil];
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsListContinue;
 }
@@ -438,8 +438,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
-                                  arraySerialBlock:nil
-                                arrayDeserialBlock:nil];
+                             dataStructSerialBlock:nil
+                           dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsMembersAdd;
 }
@@ -456,8 +456,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
-                                   arraySerialBlock:nil
-                                 arrayDeserialBlock:nil];
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsMembersList;
 }
@@ -474,8 +474,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
-                                           arraySerialBlock:nil
-                                         arrayDeserialBlock:nil];
+                                      dataStructSerialBlock:nil
+                                    dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsMembersListContinue;
 }
@@ -492,8 +492,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                   @"host" : @"api",
                                                   @"style" : @"rpc"
                                                 }
-                                     arraySerialBlock:nil
-                                   arrayDeserialBlock:nil];
+                                dataStructSerialBlock:nil
+                              dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsMembersRemove;
 }
@@ -510,9 +510,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
           @"host" : @"api",
           @"style" : @"rpc"
         }
-        arraySerialBlock:nil
-        arrayDeserialBlock:^id(id array) {
-          return [DBArraySerializer deserialize:array
+        dataStructSerialBlock:nil
+        dataStructDeserialBlock:^id(id dataStruct) {
+          return [DBArraySerializer deserialize:dataStruct
                                       withBlock:^id(id elem0) {
                                         return [DBTEAMGroupsGetInfoItemSerializer deserialize:elem0];
                                       }];
@@ -533,8 +533,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                            @"host" : @"api",
                                            @"style" : @"rpc"
                                          }
-                              arraySerialBlock:nil
-                            arrayDeserialBlock:nil];
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
   }
   return DBTEAMGroupsUpdate;
 }
@@ -551,8 +551,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                              @"host" : @"api",
                                                              @"style" : @"rpc"
                                                            }
-                                                arraySerialBlock:nil
-                                              arrayDeserialBlock:nil];
+                                           dataStructSerialBlock:nil
+                                         dataStructDeserialBlock:nil];
   }
   return DBTEAMLinkedAppsListMemberLinkedApps;
 }
@@ -569,8 +569,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                               @"host" : @"api",
                                                               @"style" : @"rpc"
                                                             }
-                                                 arraySerialBlock:nil
-                                               arrayDeserialBlock:nil];
+                                            dataStructSerialBlock:nil
+                                          dataStructDeserialBlock:nil];
   }
   return DBTEAMLinkedAppsListMembersLinkedApps;
 }
@@ -587,8 +587,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                            @"host" : @"api",
                                                            @"style" : @"rpc"
                                                          }
-                                              arraySerialBlock:nil
-                                            arrayDeserialBlock:nil];
+                                         dataStructSerialBlock:nil
+                                       dataStructDeserialBlock:nil];
   }
   return DBTEAMLinkedAppsListTeamLinkedApps;
 }
@@ -605,8 +605,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
-                                           arraySerialBlock:nil
-                                         arrayDeserialBlock:nil];
+                                      dataStructSerialBlock:nil
+                                    dataStructDeserialBlock:nil];
   }
   return DBTEAMLinkedAppsRevokeLinkedApp;
 }
@@ -623,8 +623,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                              @"host" : @"api",
                                                              @"style" : @"rpc"
                                                            }
-                                                arraySerialBlock:nil
-                                              arrayDeserialBlock:nil];
+                                           dataStructSerialBlock:nil
+                                         dataStructDeserialBlock:nil];
   }
   return DBTEAMLinkedAppsRevokeLinkedAppBatch;
 }
@@ -641,8 +641,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                          @"host" : @"api",
                                          @"style" : @"rpc"
                                        }
-                            arraySerialBlock:nil
-                          arrayDeserialBlock:nil];
+                       dataStructSerialBlock:nil
+                     dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersAdd;
 }
@@ -659,8 +659,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
-                                        arraySerialBlock:nil
-                                      arrayDeserialBlock:nil];
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersAddJobStatusGet;
 }
@@ -677,9 +677,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
           @"host" : @"api",
           @"style" : @"rpc"
         }
-        arraySerialBlock:nil
-        arrayDeserialBlock:^id(id array) {
-          return [DBArraySerializer deserialize:array
+        dataStructSerialBlock:nil
+        dataStructDeserialBlock:^id(id dataStruct) {
+          return [DBArraySerializer deserialize:dataStruct
                                       withBlock:^id(id elem0) {
                                         return [DBTEAMMembersGetInfoItemSerializer deserialize:elem0];
                                       }];
@@ -700,8 +700,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                           @"host" : @"api",
                                           @"style" : @"rpc"
                                         }
-                             arraySerialBlock:nil
-                           arrayDeserialBlock:nil];
+                        dataStructSerialBlock:nil
+                      dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersList;
 }
@@ -718,8 +718,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                   @"host" : @"api",
                                                   @"style" : @"rpc"
                                                 }
-                                     arraySerialBlock:nil
-                                   arrayDeserialBlock:nil];
+                                dataStructSerialBlock:nil
+                              dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersListContinue;
 }
@@ -736,8 +736,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
-                                arraySerialBlock:nil
-                              arrayDeserialBlock:nil];
+                           dataStructSerialBlock:nil
+                         dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersRecover;
 }
@@ -754,8 +754,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                             @"host" : @"api",
                                             @"style" : @"rpc"
                                           }
-                               arraySerialBlock:nil
-                             arrayDeserialBlock:nil];
+                          dataStructSerialBlock:nil
+                        dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersRemove;
 }
@@ -772,8 +772,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
-                                           arraySerialBlock:nil
-                                         arrayDeserialBlock:nil];
+                                      dataStructSerialBlock:nil
+                                    dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersRemoveJobStatusGet;
 }
@@ -790,8 +790,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                       @"host" : @"api",
                                                       @"style" : @"rpc"
                                                     }
-                                         arraySerialBlock:nil
-                                       arrayDeserialBlock:nil];
+                                    dataStructSerialBlock:nil
+                                  dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersSendWelcomeEmail;
 }
@@ -808,8 +808,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                          @"host" : @"api",
                                                          @"style" : @"rpc"
                                                        }
-                                            arraySerialBlock:nil
-                                          arrayDeserialBlock:nil];
+                                       dataStructSerialBlock:nil
+                                     dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersSetAdminPermissions;
 }
@@ -826,8 +826,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
-                                   arraySerialBlock:nil
-                                 arrayDeserialBlock:nil];
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersSetProfile;
 }
@@ -844,8 +844,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
-                                arraySerialBlock:nil
-                              arrayDeserialBlock:nil];
+                           dataStructSerialBlock:nil
+                         dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersSuspend;
 }
@@ -862,8 +862,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
-                                  arraySerialBlock:nil
-                                arrayDeserialBlock:nil];
+                             dataStructSerialBlock:nil
+                           dataStructDeserialBlock:nil];
   }
   return DBTEAMMembersUnsuspend;
 }
@@ -880,8 +880,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
-                                arraySerialBlock:nil
-                              arrayDeserialBlock:nil];
+                           dataStructSerialBlock:nil
+                         dataStructDeserialBlock:nil];
   }
   return DBTEAMNamespacesList;
 }
@@ -898,8 +898,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
-                                        arraySerialBlock:nil
-                                      arrayDeserialBlock:nil];
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
   }
   return DBTEAMNamespacesListContinue;
 }
@@ -916,8 +916,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                     @"host" : @"api",
                                                     @"style" : @"rpc"
                                                   }
-                                       arraySerialBlock:nil
-                                     arrayDeserialBlock:nil];
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
   }
   return DBTEAMPropertiesTemplateAdd;
 }
@@ -934,8 +934,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                     @"host" : @"api",
                                                     @"style" : @"rpc"
                                                   }
-                                       arraySerialBlock:nil
-                                     arrayDeserialBlock:nil];
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
   }
   return DBTEAMPropertiesTemplateGet;
 }
@@ -952,8 +952,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
-                                        arraySerialBlock:nil
-                                      arrayDeserialBlock:nil];
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
   }
   return DBTEAMPropertiesTemplateList;
 }
@@ -970,8 +970,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                        @"host" : @"api",
                                                        @"style" : @"rpc"
                                                      }
-                                          arraySerialBlock:nil
-                                        arrayDeserialBlock:nil];
+                                     dataStructSerialBlock:nil
+                                   dataStructDeserialBlock:nil];
   }
   return DBTEAMPropertiesTemplateUpdate;
 }
@@ -988,8 +988,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
-                                    arraySerialBlock:nil
-                                  arrayDeserialBlock:nil];
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
   }
   return DBTEAMReportsGetActivity;
 }
@@ -1006,8 +1006,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
-                                   arraySerialBlock:nil
-                                 arrayDeserialBlock:nil];
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
   }
   return DBTEAMReportsGetDevices;
 }
@@ -1024,8 +1024,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                    @"host" : @"api",
                                                    @"style" : @"rpc"
                                                  }
-                                      arraySerialBlock:nil
-                                    arrayDeserialBlock:nil];
+                                 dataStructSerialBlock:nil
+                               dataStructDeserialBlock:nil];
   }
   return DBTEAMReportsGetMembership;
 }
@@ -1042,8 +1042,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
-                                   arraySerialBlock:nil
-                                 arrayDeserialBlock:nil];
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
   }
   return DBTEAMReportsGetStorage;
 }
@@ -1060,8 +1060,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
-                                    arraySerialBlock:nil
-                                  arrayDeserialBlock:nil];
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderActivate;
 }
@@ -1078,8 +1078,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
-                                   arraySerialBlock:nil
-                                 arrayDeserialBlock:nil];
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderArchive;
 }
@@ -1096,8 +1096,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
-                                        arraySerialBlock:nil
-                                      arrayDeserialBlock:nil];
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderArchiveCheck;
 }
@@ -1114,8 +1114,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
-                                  arraySerialBlock:nil
-                                arrayDeserialBlock:nil];
+                             dataStructSerialBlock:nil
+                           dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderCreate;
 }
@@ -1132,9 +1132,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
           @"host" : @"api",
           @"style" : @"rpc"
         }
-        arraySerialBlock:nil
-        arrayDeserialBlock:^id(id array) {
-          return [DBArraySerializer deserialize:array
+        dataStructSerialBlock:nil
+        dataStructDeserialBlock:^id(id dataStruct) {
+          return [DBArraySerializer deserialize:dataStruct
                                       withBlock:^id(id elem0) {
                                         return [DBTEAMTeamFolderGetInfoItemSerializer deserialize:elem0];
                                       }];
@@ -1155,8 +1155,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
-                                arraySerialBlock:nil
-                              arrayDeserialBlock:nil];
+                           dataStructSerialBlock:nil
+                         dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderList;
 }
@@ -1173,8 +1173,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
-                                        arraySerialBlock:nil
-                                      arrayDeserialBlock:nil];
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderListContinue;
 }
@@ -1191,8 +1191,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                           @"host" : @"api",
                                                           @"style" : @"rpc"
                                                         }
-                                             arraySerialBlock:nil
-                                           arrayDeserialBlock:nil];
+                                        dataStructSerialBlock:nil
+                                      dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderPermanentlyDelete;
 }
@@ -1209,8 +1209,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
-                                  arraySerialBlock:nil
-                                arrayDeserialBlock:nil];
+                             dataStructSerialBlock:nil
+                           dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderRename;
 }
@@ -1227,8 +1227,8 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                                          @"host" : @"api",
                                                          @"style" : @"rpc"
                                                        }
-                                            arraySerialBlock:nil
-                                          arrayDeserialBlock:nil];
+                                       dataStructSerialBlock:nil
+                                     dataStructDeserialBlock:nil];
   }
   return DBTEAMTokenGetAuthenticatedAdmin;
 }
