@@ -8,40 +8,41 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGEnableDisableChangePolicy;
+@class DBTEAMLOGNetworkControlPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `EnableDisableChangePolicy` union.
+/// The `NetworkControlPolicy` union.
+///
+/// Network control policy
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGEnableDisableChangePolicy : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGNetworkControlPolicy : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMLOGEnableDisableChangePolicyTag` enum type represents the
-/// possible tag states with which the `DBTEAMLOGEnableDisableChangePolicy`
-/// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGEnableDisableChangePolicyTag) {
+/// The `DBTEAMLOGNetworkControlPolicyTag` enum type represents the possible tag
+/// states with which the `DBTEAMLOGNetworkControlPolicy` union can exist.
+typedef NS_ENUM(NSInteger, DBTEAMLOGNetworkControlPolicyTag) {
   /// (no description).
-  DBTEAMLOGEnableDisableChangePolicyDisabled,
+  DBTEAMLOGNetworkControlPolicyDisabled,
 
   /// (no description).
-  DBTEAMLOGEnableDisableChangePolicyEnabled,
+  DBTEAMLOGNetworkControlPolicyEnabled,
 
   /// (no description).
-  DBTEAMLOGEnableDisableChangePolicyOther,
+  DBTEAMLOGNetworkControlPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic, readonly) DBTEAMLOGEnableDisableChangePolicyTag tag;
+@property (nonatomic, readonly) DBTEAMLOGNetworkControlPolicyTag tag;
 
 #pragma mark - Constructors
 
@@ -103,30 +104,30 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEnableDisableChangePolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBTEAMLOGEnableDisableChangePolicy` union.
+/// The serialization class for the `DBTEAMLOGNetworkControlPolicy` union.
 ///
-@interface DBTEAMLOGEnableDisableChangePolicySerializer : NSObject
+@interface DBTEAMLOGNetworkControlPolicySerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGEnableDisableChangePolicy` instances.
+/// Serializes `DBTEAMLOGNetworkControlPolicy` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGEnableDisableChangePolicy` API
+/// @param instance An instance of the `DBTEAMLOGNetworkControlPolicy` API
 /// object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGEnableDisableChangePolicy` API object.
+/// `DBTEAMLOGNetworkControlPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGEnableDisableChangePolicy *)instance;
++ (NSDictionary *)serialize:(DBTEAMLOGNetworkControlPolicy *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGEnableDisableChangePolicy` instances.
+/// Deserializes `DBTEAMLOGNetworkControlPolicy` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGEnableDisableChangePolicy` API object.
+/// `DBTEAMLOGNetworkControlPolicy` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGEnableDisableChangePolicy` object.
+/// @return An instantiation of the `DBTEAMLOGNetworkControlPolicy` object.
 ///
-+ (DBTEAMLOGEnableDisableChangePolicy *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGNetworkControlPolicy *)deserialize:(NSDictionary *)dict;
 
 @end
 

@@ -8,22 +8,20 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGMemberSuspendDetails;
+@class DBFILESFileOpsResult;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `MemberSuspendDetails` struct.
-///
-/// Suspended a team member.
+/// The `FileOpsResult` struct.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGMemberSuspendDetails : NSObject <DBSerializable, NSCopying>
+@interface DBFILESFileOpsResult : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -43,30 +41,29 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `MemberSuspendDetails` struct.
+/// The serialization class for the `FileOpsResult` struct.
 ///
-@interface DBTEAMLOGMemberSuspendDetailsSerializer : NSObject
+@interface DBFILESFileOpsResultSerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGMemberSuspendDetails` instances.
+/// Serializes `DBFILESFileOpsResult` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGMemberSuspendDetails` API
-/// object.
+/// @param instance An instance of the `DBFILESFileOpsResult` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGMemberSuspendDetails` API object.
+/// `DBFILESFileOpsResult` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSuspendDetails *)instance;
++ (NSDictionary *)serialize:(DBFILESFileOpsResult *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGMemberSuspendDetails` instances.
+/// Deserializes `DBFILESFileOpsResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGMemberSuspendDetails` API object.
+/// `DBFILESFileOpsResult` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGMemberSuspendDetails` object.
+/// @return An instantiation of the `DBFILESFileOpsResult` object.
 ///
-+ (DBTEAMLOGMemberSuspendDetails *)deserialize:(NSDictionary *)dict;
++ (DBFILESFileOpsResult *)deserialize:(NSDictionary *)dict;
 
 @end
 

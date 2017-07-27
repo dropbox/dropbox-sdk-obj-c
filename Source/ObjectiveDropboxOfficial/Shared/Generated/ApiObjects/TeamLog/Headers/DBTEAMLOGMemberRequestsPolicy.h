@@ -8,43 +8,42 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGMemberRequestsChangePolicy;
+@class DBTEAMLOGMemberRequestsPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `MemberRequestsChangePolicy` union.
+/// The `MemberRequestsPolicy` union.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGMemberRequestsChangePolicy : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGMemberRequestsPolicy : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMLOGMemberRequestsChangePolicyTag` enum type represents the
-/// possible tag states with which the `DBTEAMLOGMemberRequestsChangePolicy`
-/// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGMemberRequestsChangePolicyTag) {
+/// The `DBTEAMLOGMemberRequestsPolicyTag` enum type represents the possible tag
+/// states with which the `DBTEAMLOGMemberRequestsPolicy` union can exist.
+typedef NS_ENUM(NSInteger, DBTEAMLOGMemberRequestsPolicyTag) {
   /// (no description).
-  DBTEAMLOGMemberRequestsChangePolicyDisabled,
+  DBTEAMLOGMemberRequestsPolicyDisabled,
 
   /// (no description).
-  DBTEAMLOGMemberRequestsChangePolicyRequireApproval,
+  DBTEAMLOGMemberRequestsPolicyRequireApproval,
 
   /// (no description).
-  DBTEAMLOGMemberRequestsChangePolicyAutoApproval,
+  DBTEAMLOGMemberRequestsPolicyAutoApproval,
 
   /// (no description).
-  DBTEAMLOGMemberRequestsChangePolicyOther,
+  DBTEAMLOGMemberRequestsPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic, readonly) DBTEAMLOGMemberRequestsChangePolicyTag tag;
+@property (nonatomic, readonly) DBTEAMLOGMemberRequestsPolicyTag tag;
 
 #pragma mark - Constructors
 
@@ -121,31 +120,30 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGMemberRequestsChangePolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBTEAMLOGMemberRequestsChangePolicy` union.
+/// The serialization class for the `DBTEAMLOGMemberRequestsPolicy` union.
 ///
-@interface DBTEAMLOGMemberRequestsChangePolicySerializer : NSObject
+@interface DBTEAMLOGMemberRequestsPolicySerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGMemberRequestsChangePolicy` instances.
+/// Serializes `DBTEAMLOGMemberRequestsPolicy` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGMemberRequestsChangePolicy` API
+/// @param instance An instance of the `DBTEAMLOGMemberRequestsPolicy` API
 /// object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGMemberRequestsChangePolicy` API object.
+/// `DBTEAMLOGMemberRequestsPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberRequestsChangePolicy *)instance;
++ (NSDictionary *)serialize:(DBTEAMLOGMemberRequestsPolicy *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGMemberRequestsChangePolicy` instances.
+/// Deserializes `DBTEAMLOGMemberRequestsPolicy` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGMemberRequestsChangePolicy` API object.
+/// `DBTEAMLOGMemberRequestsPolicy` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGMemberRequestsChangePolicy`
-/// object.
+/// @return An instantiation of the `DBTEAMLOGMemberRequestsPolicy` object.
 ///
-+ (DBTEAMLOGMemberRequestsChangePolicy *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGMemberRequestsPolicy *)deserialize:(NSDictionary *)dict;
 
 @end
 

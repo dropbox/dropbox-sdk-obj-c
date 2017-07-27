@@ -75,19 +75,19 @@
 
 - (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;
 
-- (void)delete_:(void (^_Nonnull)())nextTest;
-- (void)createFolder:(void (^_Nonnull)())nextTest;
+- (void)deleteV2:(void (^_Nonnull)())nextTest;
+- (void)createFolderV2:(void (^_Nonnull)())nextTest;
 - (void)listFolderError:(void (^_Nonnull)())nextTest;
 - (void)listFolder:(void (^_Nonnull)())nextTest;
 - (void)uploadData:(void (^_Nonnull)())nextTest;
 - (void)uploadDataSession:(void (^_Nonnull)())nextTest;
-- (void)dCopy:(void (^_Nonnull)())nextTest;
+- (void)dCopyV2:(void (^_Nonnull)())nextTest;
 - (void)dCopyReferenceGet:(void (^_Nonnull)())nextTest;
 - (void)getMetadata:(void (^_Nonnull)())nextTest;
 - (void)getMetadataError:(void (^_Nonnull)())nextTest;
 - (void)getTemporaryLink:(void (^_Nonnull)())nextTest;
 - (void)listRevisions:(void (^_Nonnull)())nextTest;
-- (void)move:(void (^_Nonnull)())nextTest;
+- (void)moveV2:(void (^_Nonnull)())nextTest;
 - (void)saveUrl:(void (^_Nonnull)())nextTest asMember:(BOOL)asMember;
 - (void)downloadToFile:(void (^_Nonnull)())nextTest;
 - (void)downloadToFileAgain:(void (^_Nonnull)())nextTest;

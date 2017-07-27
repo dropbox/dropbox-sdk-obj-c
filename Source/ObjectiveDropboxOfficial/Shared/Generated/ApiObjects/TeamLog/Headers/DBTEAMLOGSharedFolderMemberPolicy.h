@@ -8,39 +8,42 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGExternalSharingPolicy;
+@class DBTEAMLOGSharedFolderMemberPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `ExternalSharingPolicy` union.
+/// The `SharedFolderMemberPolicy` union.
+///
+/// Policy for controlling who can become a member of a shared folder
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGExternalSharingPolicy : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGSharedFolderMemberPolicy : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMLOGExternalSharingPolicyTag` enum type represents the possible
-/// tag states with which the `DBTEAMLOGExternalSharingPolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGExternalSharingPolicyTag) {
+/// The `DBTEAMLOGSharedFolderMemberPolicyTag` enum type represents the possible
+/// tag states with which the `DBTEAMLOGSharedFolderMemberPolicy` union can
+/// exist.
+typedef NS_ENUM(NSInteger, DBTEAMLOGSharedFolderMemberPolicyTag) {
   /// (no description).
-  DBTEAMLOGExternalSharingPolicyTeamOnly,
+  DBTEAMLOGSharedFolderMemberPolicyTeamOnly,
 
   /// (no description).
-  DBTEAMLOGExternalSharingPolicyAnyone,
+  DBTEAMLOGSharedFolderMemberPolicyAnyone,
 
   /// (no description).
-  DBTEAMLOGExternalSharingPolicyOther,
+  DBTEAMLOGSharedFolderMemberPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic, readonly) DBTEAMLOGExternalSharingPolicyTag tag;
+@property (nonatomic, readonly) DBTEAMLOGSharedFolderMemberPolicyTag tag;
 
 #pragma mark - Constructors
 
@@ -102,30 +105,30 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGExternalSharingPolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBTEAMLOGExternalSharingPolicy` union.
+/// The serialization class for the `DBTEAMLOGSharedFolderMemberPolicy` union.
 ///
-@interface DBTEAMLOGExternalSharingPolicySerializer : NSObject
+@interface DBTEAMLOGSharedFolderMemberPolicySerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGExternalSharingPolicy` instances.
+/// Serializes `DBTEAMLOGSharedFolderMemberPolicy` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGExternalSharingPolicy` API
+/// @param instance An instance of the `DBTEAMLOGSharedFolderMemberPolicy` API
 /// object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGExternalSharingPolicy` API object.
+/// `DBTEAMLOGSharedFolderMemberPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGExternalSharingPolicy *)instance;
++ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderMemberPolicy *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGExternalSharingPolicy` instances.
+/// Deserializes `DBTEAMLOGSharedFolderMemberPolicy` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGExternalSharingPolicy` API object.
+/// `DBTEAMLOGSharedFolderMemberPolicy` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGExternalSharingPolicy` object.
+/// @return An instantiation of the `DBTEAMLOGSharedFolderMemberPolicy` object.
 ///
-+ (DBTEAMLOGExternalSharingPolicy *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedFolderMemberPolicy *)deserialize:(NSDictionary *)dict;
 
 @end
 
