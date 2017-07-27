@@ -7,6 +7,122 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133C00CE1F2A6F2800C14AA1 /* DBFILESCreateFolderResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00CD1F2A6F2700C14AA1 /* DBFILESCreateFolderResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00CF1F2A6F4100C14AA1 /* DBFILESCreateFolderResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00CD1F2A6F2700C14AA1 /* DBFILESCreateFolderResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00D11F2A6F6300C14AA1 /* DBFILESFileOpsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D01F2A6F6300C14AA1 /* DBFILESFileOpsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00D21F2A6F6B00C14AA1 /* DBFILESFileOpsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D01F2A6F6300C14AA1 /* DBFILESFileOpsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00D41F2A701F00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D31F2A701F00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00D51F2A702A00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D31F2A701F00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00D71F2A708300C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D61F2A708300C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00D81F2A708D00C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D61F2A708300C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00DA1F2A70AC00C14AA1 /* DBSHARINGShareFolderArgBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D91F2A70AC00C14AA1 /* DBSHARINGShareFolderArgBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00DB1F2A70B300C14AA1 /* DBSHARINGShareFolderArgBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00D91F2A70AC00C14AA1 /* DBSHARINGShareFolderArgBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00DD1F2A70C300C14AA1 /* DBSHARINGAudienceExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00DC1F2A70C200C14AA1 /* DBSHARINGAudienceExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00DE1F2A70CA00C14AA1 /* DBSHARINGAudienceExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00DC1F2A70C200C14AA1 /* DBSHARINGAudienceExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00E01F2A70E600C14AA1 /* DBTEAMNamespaceMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00DF1F2A70E600C14AA1 /* DBTEAMNamespaceMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00E11F2A70EA00C14AA1 /* DBTEAMNamespaceMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00DF1F2A70E600C14AA1 /* DBTEAMNamespaceMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00E31F2A710300C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00E21F2A710300C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00E41F2A710800C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00E21F2A710300C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00E71F2A712C00C14AA1 /* DBTEAMTeamNamespacesListContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00E51F2A712B00C14AA1 /* DBTEAMTeamNamespacesListContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00E81F2A712C00C14AA1 /* DBTEAMTeamNamespacesListResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00E61F2A712B00C14AA1 /* DBTEAMTeamNamespacesListResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00E91F2A713000C14AA1 /* DBTEAMTeamNamespacesListContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00E51F2A712B00C14AA1 /* DBTEAMTeamNamespacesListContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00EA1F2A713000C14AA1 /* DBTEAMTeamNamespacesListResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00E61F2A712B00C14AA1 /* DBTEAMTeamNamespacesListResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00ED1F2A714800C14AA1 /* DBTEAMTeamNamespacesListArg.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00EB1F2A714800C14AA1 /* DBTEAMTeamNamespacesListArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00EE1F2A714800C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00EC1F2A714800C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00EF1F2A714D00C14AA1 /* DBTEAMTeamNamespacesListArg.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00EB1F2A714800C14AA1 /* DBTEAMTeamNamespacesListArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00F01F2A714D00C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00EC1F2A714800C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00F21F2A716A00C14AA1 /* DBSHARINGInsufficientPlan.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00F11F2A716900C14AA1 /* DBSHARINGInsufficientPlan.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00F31F2A717000C14AA1 /* DBSHARINGInsufficientPlan.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00F11F2A716900C14AA1 /* DBSHARINGInsufficientPlan.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00F61F2A718900C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00F41F2A718900C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00F71F2A718900C14AA1 /* DBTEAMNamespaceType.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00F51F2A718900C14AA1 /* DBTEAMNamespaceType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00F81F2A719100C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00F41F2A718900C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00F91F2A719100C14AA1 /* DBTEAMNamespaceType.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00F51F2A718900C14AA1 /* DBTEAMNamespaceType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00FC1F2A71AA00C14AA1 /* DBFILESDeleteBatchResultData.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00FA1F2A71A900C14AA1 /* DBFILESDeleteBatchResultData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00FD1F2A71AA00C14AA1 /* DBFILESRelocationBatchResultData.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00FB1F2A71A900C14AA1 /* DBFILESRelocationBatchResultData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00FE1F2A71B200C14AA1 /* DBFILESDeleteBatchResultData.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00FA1F2A71A900C14AA1 /* DBFILESDeleteBatchResultData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C00FF1F2A71B200C14AA1 /* DBFILESRelocationBatchResultData.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C00FB1F2A71A900C14AA1 /* DBFILESRelocationBatchResultData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01291F2A71E100C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01001F2A71E000C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C012A1F2A71E100C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01011F2A71E000C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C012B1F2A71E100C14AA1 /* DBTEAMLOGTwoAccountPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01021F2A71E000C14AA1 /* DBTEAMLOGTwoAccountPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C012C1F2A71E100C14AA1 /* DBTEAMLOGMemberStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01031F2A71E000C14AA1 /* DBTEAMLOGMemberStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C012D1F2A71E100C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01041F2A71E000C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C012E1F2A71E100C14AA1 /* DBTEAMLOGNetworkControlPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01051F2A71E000C14AA1 /* DBTEAMLOGNetworkControlPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C012F1F2A71E100C14AA1 /* DBTEAMLOGPaperPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01061F2A71E000C14AA1 /* DBTEAMLOGPaperPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01301F2A71E100C14AA1 /* DBTEAMLOGTimeUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01071F2A71E000C14AA1 /* DBTEAMLOGTimeUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01311F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01081F2A71E000C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01321F2A71E100C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01091F2A71E000C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01331F2A71E100C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010A1F2A71E000C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01341F2A71E100C14AA1 /* DBTEAMLOGEmmPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010B1F2A71E000C14AA1 /* DBTEAMLOGEmmPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01351F2A71E100C14AA1 /* DBTEAMLOGTeamMembershipType.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010C1F2A71E000C14AA1 /* DBTEAMLOGTeamMembershipType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01361F2A71E100C14AA1 /* DBTEAMLOGDurationLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010D1F2A71E000C14AA1 /* DBTEAMLOGDurationLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01371F2A71E100C14AA1 /* DBTEAMLOGSsoPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010E1F2A71E000C14AA1 /* DBTEAMLOGSsoPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01381F2A71E100C14AA1 /* DBTEAMLOGSharingMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010F1F2A71E000C14AA1 /* DBTEAMLOGSharingMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01391F2A71E100C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01101F2A71E000C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C013A1F2A71E100C14AA1 /* DBTEAMLOGAdminRole.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01111F2A71E000C14AA1 /* DBTEAMLOGAdminRole.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C013B1F2A71E100C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01121F2A71E000C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C013C1F2A71E100C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01131F2A71E000C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C013D1F2A71E100C14AA1 /* DBTEAMLOGTeamMergeToDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01141F2A71E000C14AA1 /* DBTEAMLOGTeamMergeToDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C013E1F2A71E100C14AA1 /* DBTEAMLOGFileCommentsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01151F2A71E000C14AA1 /* DBTEAMLOGFileCommentsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C013F1F2A71E100C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01161F2A71E000C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01401F2A71E100C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01171F2A71E100C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01411F2A71E100C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01181F2A71E100C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01421F2A71E100C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01191F2A71E100C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01431F2A71E100C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011A1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01441F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011B1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01451F2A71E100C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011C1F2A71E100C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01461F2A71E100C14AA1 /* DBTEAMLOGTfaPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011D1F2A71E100C14AA1 /* DBTEAMLOGTfaPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01471F2A71E100C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011E1F2A71E100C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01481F2A71E100C14AA1 /* DBTEAMLOGJoinTeamDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011F1F2A71E100C14AA1 /* DBTEAMLOGJoinTeamDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01491F2A71E100C14AA1 /* DBTEAMLOGPaperMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01201F2A71E100C14AA1 /* DBTEAMLOGPaperMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C014A1F2A71E100C14AA1 /* DBTEAMLOGTeamName.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01211F2A71E100C14AA1 /* DBTEAMLOGTeamName.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C014B1F2A71E100C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01221F2A71E100C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C014C1F2A71E100C14AA1 /* DBTEAMLOGSharingLinkPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01231F2A71E100C14AA1 /* DBTEAMLOGSharingLinkPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C014D1F2A71E100C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01241F2A71E100C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C014E1F2A71E100C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01251F2A71E100C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C014F1F2A71E100C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01261F2A71E100C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01501F2A71E100C14AA1 /* DBTEAMLOGFileRequestsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01271F2A71E100C14AA1 /* DBTEAMLOGFileRequestsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01511F2A71E100C14AA1 /* DBTEAMLOGCertificate.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01281F2A71E100C14AA1 /* DBTEAMLOGCertificate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01521F2A71F500C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01161F2A71E000C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01531F2A71F500C14AA1 /* DBTEAMLOGAdminRole.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01111F2A71E000C14AA1 /* DBTEAMLOGAdminRole.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01541F2A71F500C14AA1 /* DBTEAMLOGCertificate.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01281F2A71E100C14AA1 /* DBTEAMLOGCertificate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01551F2A71F500C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01221F2A71E100C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01561F2A71F500C14AA1 /* DBTEAMLOGDurationLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010D1F2A71E000C14AA1 /* DBTEAMLOGDurationLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01571F2A71F500C14AA1 /* DBTEAMLOGEmmPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010B1F2A71E000C14AA1 /* DBTEAMLOGEmmPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01581F2A71F500C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01001F2A71E000C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01591F2A71F500C14AA1 /* DBTEAMLOGFileCommentsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01151F2A71E000C14AA1 /* DBTEAMLOGFileCommentsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C015A1F2A71F500C14AA1 /* DBTEAMLOGFileRequestsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01271F2A71E100C14AA1 /* DBTEAMLOGFileRequestsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C015B1F2A71F500C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01041F2A71E000C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C015C1F2A71F500C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01171F2A71E100C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C015D1F2A71F500C14AA1 /* DBTEAMLOGJoinTeamDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011F1F2A71E100C14AA1 /* DBTEAMLOGJoinTeamDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C015E1F2A71F500C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01251F2A71E100C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C015F1F2A71F500C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010A1F2A71E000C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01601F2A71F500C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01091F2A71E000C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01611F2A71F500C14AA1 /* DBTEAMLOGMemberStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01031F2A71E000C14AA1 /* DBTEAMLOGMemberStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01621F2A71F500C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01191F2A71E100C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01631F2A71F500C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01101F2A71E000C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01641F2A71F500C14AA1 /* DBTEAMLOGNetworkControlPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01051F2A71E000C14AA1 /* DBTEAMLOGNetworkControlPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01651F2A71F500C14AA1 /* DBTEAMLOGPaperMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01201F2A71E100C14AA1 /* DBTEAMLOGPaperMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01661F2A71F500C14AA1 /* DBTEAMLOGPaperPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01061F2A71E000C14AA1 /* DBTEAMLOGPaperPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01671F2A71F500C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01181F2A71E100C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01681F2A71F500C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01011F2A71E000C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01691F2A71F500C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011E1F2A71E100C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C016A1F2A71F500C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01121F2A71E000C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C016B1F2A71F500C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01131F2A71E000C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C016C1F2A71F500C14AA1 /* DBTEAMLOGSharingLinkPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01231F2A71E100C14AA1 /* DBTEAMLOGSharingLinkPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C016D1F2A71F500C14AA1 /* DBTEAMLOGSharingMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010F1F2A71E000C14AA1 /* DBTEAMLOGSharingMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C016E1F2A71F500C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011A1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C016F1F2A71F500C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01081F2A71E000C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01701F2A71F500C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011B1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01711F2A71F500C14AA1 /* DBTEAMLOGSsoPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010E1F2A71E000C14AA1 /* DBTEAMLOGSsoPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01721F2A71F500C14AA1 /* DBTEAMLOGTeamMembershipType.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C010C1F2A71E000C14AA1 /* DBTEAMLOGTeamMembershipType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01731F2A71F500C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01241F2A71E100C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01741F2A71F500C14AA1 /* DBTEAMLOGTeamMergeToDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01141F2A71E000C14AA1 /* DBTEAMLOGTeamMergeToDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01751F2A71F500C14AA1 /* DBTEAMLOGTeamName.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01211F2A71E100C14AA1 /* DBTEAMLOGTeamName.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01761F2A71F500C14AA1 /* DBTEAMLOGTfaPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011D1F2A71E100C14AA1 /* DBTEAMLOGTfaPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01771F2A71F500C14AA1 /* DBTEAMLOGTimeUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01071F2A71E000C14AA1 /* DBTEAMLOGTimeUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01781F2A71F500C14AA1 /* DBTEAMLOGTwoAccountPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01021F2A71E000C14AA1 /* DBTEAMLOGTwoAccountPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C01791F2A71F500C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C011C1F2A71E100C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133C017A1F2A71F500C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 133C01261F2A71E100C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F235B5221E29913600144F8B /* DBOAuthMobile-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */; };
 		F235B5241E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51E1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m */; };
 		F235B52F1E29915400144F8B /* DBOAuthDesktop-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B5291E29915400144F8B /* DBOAuthDesktop-macOS.m */; };
@@ -1201,8 +1317,6 @@
 		F29C645B1ECBFF1B0027914E /* DBTEAMLOGEmmRemoveExceptionDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA21ECBFF180027914E /* DBTEAMLOGEmmRemoveExceptionDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C645C1ECBFF1B0027914E /* DBTEAMLOGEnabledDomainInvitesDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA31ECBFF180027914E /* DBTEAMLOGEnabledDomainInvitesDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C645D1ECBFF1B0027914E /* DBTEAMLOGEnabledDomainInvitesDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA31ECBFF180027914E /* DBTEAMLOGEnabledDomainInvitesDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C645E1ECBFF1B0027914E /* DBTEAMLOGEnableDisableChangePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA41ECBFF180027914E /* DBTEAMLOGEnableDisableChangePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C645F1ECBFF1B0027914E /* DBTEAMLOGEnableDisableChangePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA41ECBFF180027914E /* DBTEAMLOGEnableDisableChangePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64601ECBFF1B0027914E /* DBTEAMLOGEventCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA51ECBFF180027914E /* DBTEAMLOGEventCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64611ECBFF1B0027914E /* DBTEAMLOGEventCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA51ECBFF180027914E /* DBTEAMLOGEventCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64621ECBFF1B0027914E /* DBTEAMLOGEventDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA61ECBFF180027914E /* DBTEAMLOGEventDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1213,10 +1327,6 @@
 		F29C64671ECBFF1B0027914E /* DBTEAMLOGExtendedVersionHistoryChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA81ECBFF180027914E /* DBTEAMLOGExtendedVersionHistoryChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64681ECBFF1B0027914E /* DBTEAMLOGExtendedVersionHistoryPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA91ECBFF180027914E /* DBTEAMLOGExtendedVersionHistoryPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64691ECBFF1B0027914E /* DBTEAMLOGExtendedVersionHistoryPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EA91ECBFF180027914E /* DBTEAMLOGExtendedVersionHistoryPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C646A1ECBFF1B0027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EAA1ECBFF180027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C646B1ECBFF1B0027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EAA1ECBFF180027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C646C1ECBFF1B0027914E /* DBTEAMLOGExternalSharingPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EAB1ECBFF180027914E /* DBTEAMLOGExternalSharingPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C646D1ECBFF1B0027914E /* DBTEAMLOGExternalSharingPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EAB1ECBFF180027914E /* DBTEAMLOGExternalSharingPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C646E1ECBFF1B0027914E /* DBTEAMLOGFileAddCommentDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EAC1ECBFF180027914E /* DBTEAMLOGFileAddCommentDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C646F1ECBFF1B0027914E /* DBTEAMLOGFileAddCommentDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EAC1ECBFF180027914E /* DBTEAMLOGFileAddCommentDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64701ECBFF1B0027914E /* DBTEAMLOGFileAddDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EAD1ECBFF180027914E /* DBTEAMLOGFileAddDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1327,8 +1437,6 @@
 		F29C64D91ECBFF1B0027914E /* DBTEAMLOGGroupRemoveMemberDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE11ECBFF180027914E /* DBTEAMLOGGroupRemoveMemberDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64DA1ECBFF1B0027914E /* DBTEAMLOGGroupRenameDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE21ECBFF180027914E /* DBTEAMLOGGroupRenameDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64DB1ECBFF1B0027914E /* DBTEAMLOGGroupRenameDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE21ECBFF180027914E /* DBTEAMLOGGroupRenameDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64DC1ECBFF1B0027914E /* DBTEAMLOGGroupsUserManagementPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE31ECBFF180027914E /* DBTEAMLOGGroupsUserManagementPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64DD1ECBFF1B0027914E /* DBTEAMLOGGroupsUserManagementPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE31ECBFF180027914E /* DBTEAMLOGGroupsUserManagementPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64DE1ECBFF1B0027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE41ECBFF180027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64DF1ECBFF1B0027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE41ECBFF180027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64E01ECBFF1B0027914E /* DBTEAMLOGHostLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EE51ECBFF180027914E /* DBTEAMLOGHostLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1345,20 +1453,8 @@
 		F29C64EB1ECBFF1B0027914E /* DBTEAMLOGMemberChangeMembershipTypeDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEA1ECBFF180027914E /* DBTEAMLOGMemberChangeMembershipTypeDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64EC1ECBFF1B0027914E /* DBTEAMLOGMemberChangeNameDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEB1ECBFF180027914E /* DBTEAMLOGMemberChangeNameDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64ED1ECBFF1B0027914E /* DBTEAMLOGMemberChangeNameDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEB1ECBFF180027914E /* DBTEAMLOGMemberChangeNameDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64EE1ECBFF1B0027914E /* DBTEAMLOGMemberChangeRoleDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEC1ECBFF180027914E /* DBTEAMLOGMemberChangeRoleDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64EF1ECBFF1B0027914E /* DBTEAMLOGMemberChangeRoleDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEC1ECBFF180027914E /* DBTEAMLOGMemberChangeRoleDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F01ECBFF1B0027914E /* DBTEAMLOGMemberInviteDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EED1ECBFF180027914E /* DBTEAMLOGMemberInviteDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F11ECBFF1B0027914E /* DBTEAMLOGMemberInviteDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EED1ECBFF180027914E /* DBTEAMLOGMemberInviteDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F21ECBFF1B0027914E /* DBTEAMLOGMemberJoinDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEE1ECBFF180027914E /* DBTEAMLOGMemberJoinDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F31ECBFF1B0027914E /* DBTEAMLOGMemberJoinDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEE1ECBFF180027914E /* DBTEAMLOGMemberJoinDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F41ECBFF1B0027914E /* DBTEAMLOGMemberLeaveDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEF1ECBFF180027914E /* DBTEAMLOGMemberLeaveDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F51ECBFF1B0027914E /* DBTEAMLOGMemberLeaveDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EEF1ECBFF180027914E /* DBTEAMLOGMemberLeaveDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64F61ECBFF1B0027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF01ECBFF180027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64F71ECBFF1B0027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF01ECBFF180027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F81ECBFF1B0027914E /* DBTEAMLOGMemberRecoverDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF11ECBFF180027914E /* DBTEAMLOGMemberRecoverDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64F91ECBFF1B0027914E /* DBTEAMLOGMemberRecoverDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF11ECBFF180027914E /* DBTEAMLOGMemberRecoverDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64FA1ECBFF1B0027914E /* DBTEAMLOGMemberRequestsChangePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF21ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C64FB1ECBFF1B0027914E /* DBTEAMLOGMemberRequestsChangePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF21ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64FC1ECBFF1B0027914E /* DBTEAMLOGMemberRequestsChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF31ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64FD1ECBFF1B0027914E /* DBTEAMLOGMemberRequestsChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF31ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C64FE1ECBFF1B0027914E /* DBTEAMLOGMemberSpaceLimitsAddExceptionDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF41ECBFF180027914E /* DBTEAMLOGMemberSpaceLimitsAddExceptionDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1373,12 +1469,8 @@
 		F29C65071ECBFF1B0027914E /* DBTEAMLOGMemberSuggestDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF81ECBFF180027914E /* DBTEAMLOGMemberSuggestDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65081ECBFF1B0027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF91ECBFF180027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65091ECBFF1B0027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EF91ECBFF180027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C650A1ECBFF1B0027914E /* DBTEAMLOGMemberSuspendDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFA1ECBFF180027914E /* DBTEAMLOGMemberSuspendDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C650B1ECBFF1B0027914E /* DBTEAMLOGMemberSuspendDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFA1ECBFF180027914E /* DBTEAMLOGMemberSuspendDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C650C1ECBFF1B0027914E /* DBTEAMLOGMemberTransferAccountContentsDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFB1ECBFF180027914E /* DBTEAMLOGMemberTransferAccountContentsDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C650D1ECBFF1B0027914E /* DBTEAMLOGMemberTransferAccountContentsDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFB1ECBFF180027914E /* DBTEAMLOGMemberTransferAccountContentsDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C650E1ECBFF1B0027914E /* DBTEAMLOGMemberUnsuspendDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFC1ECBFF180027914E /* DBTEAMLOGMemberUnsuspendDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C650F1ECBFF1B0027914E /* DBTEAMLOGMemberUnsuspendDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFC1ECBFF180027914E /* DBTEAMLOGMemberUnsuspendDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65101ECBFF1B0027914E /* DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFD1ECBFF180027914E /* DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65111ECBFF1B0027914E /* DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFD1ECBFF180027914E /* DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65121ECBFF1B0027914E /* DBTEAMLOGMissingDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5EFE1ECBFF180027914E /* DBTEAMLOGMissingDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1403,8 +1495,6 @@
 		F29C65251ECBFF1B0027914E /* DBTEAMLOGNoteShareReceiveDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F071ECBFF180027914E /* DBTEAMLOGNoteShareReceiveDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65261ECBFF1B0027914E /* DBTEAMLOGOpenNoteSharedDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F081ECBFF180027914E /* DBTEAMLOGOpenNoteSharedDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65271ECBFF1B0027914E /* DBTEAMLOGOpenNoteSharedDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F081ECBFF180027914E /* DBTEAMLOGOpenNoteSharedDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65281ECBFF1B0027914E /* DBTEAMLOGOptionalChangePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F091ECBFF180027914E /* DBTEAMLOGOptionalChangePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65291ECBFF1B0027914E /* DBTEAMLOGOptionalChangePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F091ECBFF180027914E /* DBTEAMLOGOptionalChangePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C652A1ECBFF1B0027914E /* DBTEAMLOGOriginLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F0A1ECBFF180027914E /* DBTEAMLOGOriginLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C652B1ECBFF1B0027914E /* DBTEAMLOGOriginLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F0A1ECBFF180027914E /* DBTEAMLOGOriginLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C652C1ECBFF1B0027914E /* DBTEAMLOGPaperAccessType.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F0B1ECBFF180027914E /* DBTEAMLOGPaperAccessType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1525,10 +1615,6 @@
 		F29C659F1ECBFF1B0027914E /* DBTEAMLOGResellerSupportSessionStartDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F441ECBFF180027914E /* DBTEAMLOGResellerSupportSessionStartDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65A01ECBFF1B0027914E /* DBTEAMLOGSessionLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F451ECBFF180027914E /* DBTEAMLOGSessionLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65A11ECBFF1B0027914E /* DBTEAMLOGSessionLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F451ECBFF180027914E /* DBTEAMLOGSessionLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65A21ECBFF1B0027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F461ECBFF180027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65A31ECBFF1B0027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F461ECBFF180027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65A41ECBFF1B0027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F471ECBFF180027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65A51ECBFF1B0027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F471ECBFF180027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65A61ECBFF1B0027914E /* DBTEAMLOGSfAddGroupDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F481ECBFF180027914E /* DBTEAMLOGSfAddGroupDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65A71ECBFF1B0027914E /* DBTEAMLOGSfAddGroupDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F481ECBFF180027914E /* DBTEAMLOGSfAddGroupDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65A81ECBFF1B0027914E /* DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F491ECBFF180027914E /* DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1609,8 +1695,6 @@
 		F29C65F31ECBFF1C0027914E /* DBTEAMLOGSharedFolderCreateDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F6E1ECBFF190027914E /* DBTEAMLOGSharedFolderCreateDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65F41ECBFF1C0027914E /* DBTEAMLOGSharedFolderLinkPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F6F1ECBFF190027914E /* DBTEAMLOGSharedFolderLinkPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65F51ECBFF1C0027914E /* DBTEAMLOGSharedFolderLinkPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F6F1ECBFF190027914E /* DBTEAMLOGSharedFolderLinkPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65F61ECBFF1C0027914E /* DBTEAMLOGSharedFolderLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F701ECBFF190027914E /* DBTEAMLOGSharedFolderLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C65F71ECBFF1C0027914E /* DBTEAMLOGSharedFolderLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F701ECBFF190027914E /* DBTEAMLOGSharedFolderLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65F81ECBFF1C0027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F711ECBFF190027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65F91ECBFF1C0027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F711ECBFF190027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C65FA1ECBFF1C0027914E /* DBTEAMLOGSharedFolderMountDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F721ECBFF190027914E /* DBTEAMLOGSharedFolderMountDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1701,8 +1785,6 @@
 		F29C664F1ECBFF1C0027914E /* DBTEAMLOGTeamLinkedAppLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F9C1ECBFF190027914E /* DBTEAMLOGTeamLinkedAppLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C66501ECBFF1C0027914E /* DBTEAMLOGTeamMemberLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F9D1ECBFF190027914E /* DBTEAMLOGTeamMemberLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C66511ECBFF1C0027914E /* DBTEAMLOGTeamMemberLogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F9D1ECBFF190027914E /* DBTEAMLOGTeamMemberLogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C66521ECBFF1C0027914E /* DBTEAMLOGTeamMergeDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F9E1ECBFF190027914E /* DBTEAMLOGTeamMergeDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29C66531ECBFF1C0027914E /* DBTEAMLOGTeamMergeDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F9E1ECBFF190027914E /* DBTEAMLOGTeamMergeDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C66541ECBFF1C0027914E /* DBTEAMLOGTeamProfileAddLogoDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F9F1ECBFF190027914E /* DBTEAMLOGTeamProfileAddLogoDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C66551ECBFF1C0027914E /* DBTEAMLOGTeamProfileAddLogoDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5F9F1ECBFF190027914E /* DBTEAMLOGTeamProfileAddLogoDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29C66561ECBFF1C0027914E /* DBTEAMLOGTeamProfileChangeLogoDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C5FA01ECBFF190027914E /* DBTEAMLOGTeamProfileChangeLogoDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1949,6 +2031,64 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		133C00CD1F2A6F2700C14AA1 /* DBFILESCreateFolderResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESCreateFolderResult.h; sourceTree = "<group>"; };
+		133C00D01F2A6F6300C14AA1 /* DBFILESFileOpsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESFileOpsResult.h; sourceTree = "<group>"; };
+		133C00D31F2A701F00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMPOLICIESOfficeAddInPolicy.h; sourceTree = "<group>"; };
+		133C00D61F2A708300C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSHARINGAudienceExceptionContentInfo.h; sourceTree = "<group>"; };
+		133C00D91F2A70AC00C14AA1 /* DBSHARINGShareFolderArgBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSHARINGShareFolderArgBase.h; sourceTree = "<group>"; };
+		133C00DC1F2A70C200C14AA1 /* DBSHARINGAudienceExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSHARINGAudienceExceptions.h; sourceTree = "<group>"; };
+		133C00DF1F2A70E600C14AA1 /* DBTEAMNamespaceMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMNamespaceMetadata.h; sourceTree = "<group>"; };
+		133C00E21F2A710300C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMTeamFolderTeamSharedDropboxError.h; sourceTree = "<group>"; };
+		133C00E51F2A712B00C14AA1 /* DBTEAMTeamNamespacesListContinueError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMTeamNamespacesListContinueError.h; sourceTree = "<group>"; };
+		133C00E61F2A712B00C14AA1 /* DBTEAMTeamNamespacesListResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMTeamNamespacesListResult.h; sourceTree = "<group>"; };
+		133C00EB1F2A714800C14AA1 /* DBTEAMTeamNamespacesListArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMTeamNamespacesListArg.h; sourceTree = "<group>"; };
+		133C00EC1F2A714800C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMTeamNamespacesListContinueArg.h; sourceTree = "<group>"; };
+		133C00F11F2A716900C14AA1 /* DBSHARINGInsufficientPlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSHARINGInsufficientPlan.h; sourceTree = "<group>"; };
+		133C00F41F2A718900C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMHasTeamSharedDropboxValue.h; sourceTree = "<group>"; };
+		133C00F51F2A718900C14AA1 /* DBTEAMNamespaceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMNamespaceType.h; sourceTree = "<group>"; };
+		133C00FA1F2A71A900C14AA1 /* DBFILESDeleteBatchResultData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESDeleteBatchResultData.h; sourceTree = "<group>"; };
+		133C00FB1F2A71A900C14AA1 /* DBFILESRelocationBatchResultData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFILESRelocationBatchResultData.h; sourceTree = "<group>"; };
+		133C01001F2A71E000C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGFailureDetailsLogInfo.h; sourceTree = "<group>"; };
+		133C01011F2A71E000C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedContentDownloadsPolicy.h; sourceTree = "<group>"; };
+		133C01021F2A71E000C14AA1 /* DBTEAMLOGTwoAccountPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTwoAccountPolicy.h; sourceTree = "<group>"; };
+		133C01031F2A71E000C14AA1 /* DBTEAMLOGMemberStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberStatus.h; sourceTree = "<group>"; };
+		133C01041F2A71E000C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGGoogleSsoPolicy.h; sourceTree = "<group>"; };
+		133C01051F2A71E000C14AA1 /* DBTEAMLOGNetworkControlPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGNetworkControlPolicy.h; sourceTree = "<group>"; };
+		133C01061F2A71E000C14AA1 /* DBTEAMLOGPaperPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGPaperPolicy.h; sourceTree = "<group>"; };
+		133C01071F2A71E000C14AA1 /* DBTEAMLOGTimeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTimeUnit.h; sourceTree = "<group>"; };
+		133C01081F2A71E000C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSmartSyncOptOutDetails.h; sourceTree = "<group>"; };
+		133C01091F2A71E000C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberRequestsPolicy.h; sourceTree = "<group>"; };
+		133C010A1F2A71E000C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberChangeStatusDetails.h; sourceTree = "<group>"; };
+		133C010B1F2A71E000C14AA1 /* DBTEAMLOGEmmPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEmmPolicy.h; sourceTree = "<group>"; };
+		133C010C1F2A71E000C14AA1 /* DBTEAMLOGTeamMembershipType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamMembershipType.h; sourceTree = "<group>"; };
+		133C010D1F2A71E000C14AA1 /* DBTEAMLOGDurationLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGDurationLogInfo.h; sourceTree = "<group>"; };
+		133C010E1F2A71E000C14AA1 /* DBTEAMLOGSsoPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSsoPolicy.h; sourceTree = "<group>"; };
+		133C010F1F2A71E000C14AA1 /* DBTEAMLOGSharingMemberPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharingMemberPolicy.h; sourceTree = "<group>"; };
+		133C01101F2A71E000C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMicrosoftOfficeAddinPolicy.h; sourceTree = "<group>"; };
+		133C01111F2A71E000C14AA1 /* DBTEAMLOGAdminRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGAdminRole.h; sourceTree = "<group>"; };
+		133C01121F2A71E000C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderMemberPolicy.h; sourceTree = "<group>"; };
+		133C01131F2A71E000C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharingFolderJoinPolicy.h; sourceTree = "<group>"; };
+		133C01141F2A71E000C14AA1 /* DBTEAMLOGTeamMergeToDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamMergeToDetails.h; sourceTree = "<group>"; };
+		133C01151F2A71E000C14AA1 /* DBTEAMLOGFileCommentsPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGFileCommentsPolicy.h; sourceTree = "<group>"; };
+		133C01161F2A71E000C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGAccountCaptureAvailability.h; sourceTree = "<group>"; };
+		133C01171F2A71E100C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGGroupUserManagementPolicy.h; sourceTree = "<group>"; };
+		133C01181F2A71E100C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGRelocateAssetReferencesLogInfo.h; sourceTree = "<group>"; };
+		133C01191F2A71E100C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberSuggestionsPolicy.h; sourceTree = "<group>"; };
+		133C011A1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSmartSyncNotOptOutDetails.h; sourceTree = "<group>"; };
+		133C011B1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSmartSyncOptOutPolicy.h; sourceTree = "<group>"; };
+		133C011C1F2A71E100C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGWebSessionsFixedLengthPolicy.h; sourceTree = "<group>"; };
+		133C011D1F2A71E100C14AA1 /* DBTEAMLOGTfaPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTfaPolicy.h; sourceTree = "<group>"; };
+		133C011E1F2A71E100C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedContentViewerInfoPolicy.h; sourceTree = "<group>"; };
+		133C011F1F2A71E100C14AA1 /* DBTEAMLOGJoinTeamDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGJoinTeamDetails.h; sourceTree = "<group>"; };
+		133C01201F2A71E100C14AA1 /* DBTEAMLOGPaperMemberPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGPaperMemberPolicy.h; sourceTree = "<group>"; };
+		133C01211F2A71E100C14AA1 /* DBTEAMLOGTeamName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamName.h; sourceTree = "<group>"; };
+		133C01221F2A71E100C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGContentPermanentDeletePolicy.h; sourceTree = "<group>"; };
+		133C01231F2A71E100C14AA1 /* DBTEAMLOGSharingLinkPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharingLinkPolicy.h; sourceTree = "<group>"; };
+		133C01241F2A71E100C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamMergeFromDetails.h; sourceTree = "<group>"; };
+		133C01251F2A71E100C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberChangeAdminRoleDetails.h; sourceTree = "<group>"; };
+		133C01261F2A71E100C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGWebSessionsIdleLengthPolicy.h; sourceTree = "<group>"; };
+		133C01271F2A71E100C14AA1 /* DBTEAMLOGFileRequestsPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGFileRequestsPolicy.h; sourceTree = "<group>"; };
+		133C01281F2A71E100C14AA1 /* DBTEAMLOGCertificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGCertificate.h; sourceTree = "<group>"; };
 		F235B51B1E29913600144F8B /* DBOAuthMobile-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBOAuthMobile-iOS.h"; sourceTree = "<group>"; };
 		F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOAuthMobile-iOS.m"; sourceTree = "<group>"; };
 		F235B51D1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBClientsManager+MobileAuth-iOS.h"; sourceTree = "<group>"; };
@@ -2563,14 +2703,11 @@
 		F29C5EA11ECBFF180027914E /* DBTEAMLOGEmmRefreshAuthTokenDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEmmRefreshAuthTokenDetails.h; sourceTree = "<group>"; };
 		F29C5EA21ECBFF180027914E /* DBTEAMLOGEmmRemoveExceptionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEmmRemoveExceptionDetails.h; sourceTree = "<group>"; };
 		F29C5EA31ECBFF180027914E /* DBTEAMLOGEnabledDomainInvitesDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEnabledDomainInvitesDetails.h; sourceTree = "<group>"; };
-		F29C5EA41ECBFF180027914E /* DBTEAMLOGEnableDisableChangePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEnableDisableChangePolicy.h; sourceTree = "<group>"; };
 		F29C5EA51ECBFF180027914E /* DBTEAMLOGEventCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEventCategory.h; sourceTree = "<group>"; };
 		F29C5EA61ECBFF180027914E /* DBTEAMLOGEventDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEventDetails.h; sourceTree = "<group>"; };
 		F29C5EA71ECBFF180027914E /* DBTEAMLOGEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGEventType.h; sourceTree = "<group>"; };
 		F29C5EA81ECBFF180027914E /* DBTEAMLOGExtendedVersionHistoryChangePolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGExtendedVersionHistoryChangePolicyDetails.h; sourceTree = "<group>"; };
 		F29C5EA91ECBFF180027914E /* DBTEAMLOGExtendedVersionHistoryPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGExtendedVersionHistoryPolicy.h; sourceTree = "<group>"; };
-		F29C5EAA1ECBFF180027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGExternalSharingAccessibilityPolicy.h; sourceTree = "<group>"; };
-		F29C5EAB1ECBFF180027914E /* DBTEAMLOGExternalSharingPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGExternalSharingPolicy.h; sourceTree = "<group>"; };
 		F29C5EAC1ECBFF180027914E /* DBTEAMLOGFileAddCommentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGFileAddCommentDetails.h; sourceTree = "<group>"; };
 		F29C5EAD1ECBFF180027914E /* DBTEAMLOGFileAddDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGFileAddDetails.h; sourceTree = "<group>"; };
 		F29C5EAE1ECBFF180027914E /* DBTEAMLOGFileCommentsChangePolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGFileCommentsChangePolicyDetails.h; sourceTree = "<group>"; };
@@ -2626,7 +2763,6 @@
 		F29C5EE01ECBFF180027914E /* DBTEAMLOGGroupRemoveExternalIdDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGGroupRemoveExternalIdDetails.h; sourceTree = "<group>"; };
 		F29C5EE11ECBFF180027914E /* DBTEAMLOGGroupRemoveMemberDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGGroupRemoveMemberDetails.h; sourceTree = "<group>"; };
 		F29C5EE21ECBFF180027914E /* DBTEAMLOGGroupRenameDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGGroupRenameDetails.h; sourceTree = "<group>"; };
-		F29C5EE31ECBFF180027914E /* DBTEAMLOGGroupsUserManagementPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGGroupsUserManagementPolicy.h; sourceTree = "<group>"; };
 		F29C5EE41ECBFF180027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGGroupUserManagementChangePolicyDetails.h; sourceTree = "<group>"; };
 		F29C5EE51ECBFF180027914E /* DBTEAMLOGHostLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGHostLogInfo.h; sourceTree = "<group>"; };
 		F29C5EE61ECBFF180027914E /* DBTEAMLOGLinkAudience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGLinkAudience.h; sourceTree = "<group>"; };
@@ -2635,13 +2771,7 @@
 		F29C5EE91ECBFF180027914E /* DBTEAMLOGMemberChangeEmailDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberChangeEmailDetails.h; sourceTree = "<group>"; };
 		F29C5EEA1ECBFF180027914E /* DBTEAMLOGMemberChangeMembershipTypeDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberChangeMembershipTypeDetails.h; sourceTree = "<group>"; };
 		F29C5EEB1ECBFF180027914E /* DBTEAMLOGMemberChangeNameDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberChangeNameDetails.h; sourceTree = "<group>"; };
-		F29C5EEC1ECBFF180027914E /* DBTEAMLOGMemberChangeRoleDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberChangeRoleDetails.h; sourceTree = "<group>"; };
-		F29C5EED1ECBFF180027914E /* DBTEAMLOGMemberInviteDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberInviteDetails.h; sourceTree = "<group>"; };
-		F29C5EEE1ECBFF180027914E /* DBTEAMLOGMemberJoinDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberJoinDetails.h; sourceTree = "<group>"; };
-		F29C5EEF1ECBFF180027914E /* DBTEAMLOGMemberLeaveDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberLeaveDetails.h; sourceTree = "<group>"; };
 		F29C5EF01ECBFF180027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h; sourceTree = "<group>"; };
-		F29C5EF11ECBFF180027914E /* DBTEAMLOGMemberRecoverDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberRecoverDetails.h; sourceTree = "<group>"; };
-		F29C5EF21ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberRequestsChangePolicy.h; sourceTree = "<group>"; };
 		F29C5EF31ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberRequestsChangePolicyDetails.h; sourceTree = "<group>"; };
 		F29C5EF41ECBFF180027914E /* DBTEAMLOGMemberSpaceLimitsAddExceptionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberSpaceLimitsAddExceptionDetails.h; sourceTree = "<group>"; };
 		F29C5EF51ECBFF180027914E /* DBTEAMLOGMemberSpaceLimitsChangePolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberSpaceLimitsChangePolicyDetails.h; sourceTree = "<group>"; };
@@ -2649,9 +2779,7 @@
 		F29C5EF71ECBFF180027914E /* DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails.h; sourceTree = "<group>"; };
 		F29C5EF81ECBFF180027914E /* DBTEAMLOGMemberSuggestDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberSuggestDetails.h; sourceTree = "<group>"; };
 		F29C5EF91ECBFF180027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberSuggestionsChangePolicyDetails.h; sourceTree = "<group>"; };
-		F29C5EFA1ECBFF180027914E /* DBTEAMLOGMemberSuspendDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberSuspendDetails.h; sourceTree = "<group>"; };
 		F29C5EFB1ECBFF180027914E /* DBTEAMLOGMemberTransferAccountContentsDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberTransferAccountContentsDetails.h; sourceTree = "<group>"; };
-		F29C5EFC1ECBFF180027914E /* DBTEAMLOGMemberUnsuspendDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMemberUnsuspendDetails.h; sourceTree = "<group>"; };
 		F29C5EFD1ECBFF180027914E /* DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h; sourceTree = "<group>"; };
 		F29C5EFE1ECBFF180027914E /* DBTEAMLOGMissingDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMissingDetails.h; sourceTree = "<group>"; };
 		F29C5EFF1ECBFF180027914E /* DBTEAMLOGMobileSessionLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGMobileSessionLogInfo.h; sourceTree = "<group>"; };
@@ -2664,7 +2792,6 @@
 		F29C5F061ECBFF180027914E /* DBTEAMLOGNoteSharedDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGNoteSharedDetails.h; sourceTree = "<group>"; };
 		F29C5F071ECBFF180027914E /* DBTEAMLOGNoteShareReceiveDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGNoteShareReceiveDetails.h; sourceTree = "<group>"; };
 		F29C5F081ECBFF180027914E /* DBTEAMLOGOpenNoteSharedDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGOpenNoteSharedDetails.h; sourceTree = "<group>"; };
-		F29C5F091ECBFF180027914E /* DBTEAMLOGOptionalChangePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGOptionalChangePolicy.h; sourceTree = "<group>"; };
 		F29C5F0A1ECBFF180027914E /* DBTEAMLOGOriginLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGOriginLogInfo.h; sourceTree = "<group>"; };
 		F29C5F0B1ECBFF180027914E /* DBTEAMLOGPaperAccessType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGPaperAccessType.h; sourceTree = "<group>"; };
 		F29C5F0C1ECBFF180027914E /* DBTEAMLOGPaperChangeDeploymentPolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGPaperChangeDeploymentPolicyDetails.h; sourceTree = "<group>"; };
@@ -2725,8 +2852,6 @@
 		F29C5F431ECBFF180027914E /* DBTEAMLOGResellerSupportSessionEndDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGResellerSupportSessionEndDetails.h; sourceTree = "<group>"; };
 		F29C5F441ECBFF180027914E /* DBTEAMLOGResellerSupportSessionStartDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGResellerSupportSessionStartDetails.h; sourceTree = "<group>"; };
 		F29C5F451ECBFF180027914E /* DBTEAMLOGSessionLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSessionLogInfo.h; sourceTree = "<group>"; };
-		F29C5F461ECBFF180027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSessionsManagementIdleLengthPolicy.h; sourceTree = "<group>"; };
-		F29C5F471ECBFF180027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSessionsManagementSessionLengthPolicy.h; sourceTree = "<group>"; };
 		F29C5F481ECBFF180027914E /* DBTEAMLOGSfAddGroupDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSfAddGroupDetails.h; sourceTree = "<group>"; };
 		F29C5F491ECBFF180027914E /* DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails.h; sourceTree = "<group>"; };
 		F29C5F4A1ECBFF180027914E /* DBTEAMLOGSfExternalInviteWarnDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSfExternalInviteWarnDetails.h; sourceTree = "<group>"; };
@@ -2767,7 +2892,6 @@
 		F29C5F6D1ECBFF180027914E /* DBTEAMLOGSharedFolderChangeMemberPolicyDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderChangeMemberPolicyDetails.h; sourceTree = "<group>"; };
 		F29C5F6E1ECBFF190027914E /* DBTEAMLOGSharedFolderCreateDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderCreateDetails.h; sourceTree = "<group>"; };
 		F29C5F6F1ECBFF190027914E /* DBTEAMLOGSharedFolderLinkPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderLinkPolicy.h; sourceTree = "<group>"; };
-		F29C5F701ECBFF190027914E /* DBTEAMLOGSharedFolderLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderLogInfo.h; sourceTree = "<group>"; };
 		F29C5F711ECBFF190027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderMembershipManagementPolicy.h; sourceTree = "<group>"; };
 		F29C5F721ECBFF190027914E /* DBTEAMLOGSharedFolderMountDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderMountDetails.h; sourceTree = "<group>"; };
 		F29C5F731ECBFF190027914E /* DBTEAMLOGSharedFolderTransferOwnershipDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGSharedFolderTransferOwnershipDetails.h; sourceTree = "<group>"; };
@@ -2813,7 +2937,6 @@
 		F29C5F9B1ECBFF190027914E /* DBTEAMLOGTeamFolderStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamFolderStatus.h; sourceTree = "<group>"; };
 		F29C5F9C1ECBFF190027914E /* DBTEAMLOGTeamLinkedAppLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamLinkedAppLogInfo.h; sourceTree = "<group>"; };
 		F29C5F9D1ECBFF190027914E /* DBTEAMLOGTeamMemberLogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamMemberLogInfo.h; sourceTree = "<group>"; };
-		F29C5F9E1ECBFF190027914E /* DBTEAMLOGTeamMergeDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamMergeDetails.h; sourceTree = "<group>"; };
 		F29C5F9F1ECBFF190027914E /* DBTEAMLOGTeamProfileAddLogoDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamProfileAddLogoDetails.h; sourceTree = "<group>"; };
 		F29C5FA01ECBFF190027914E /* DBTEAMLOGTeamProfileChangeLogoDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamProfileChangeLogoDetails.h; sourceTree = "<group>"; };
 		F29C5FA11ECBFF190027914E /* DBTEAMLOGTeamProfileChangeNameDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTEAMLOGTeamProfileChangeNameDetails.h; sourceTree = "<group>"; };
@@ -3244,6 +3367,10 @@
 		F29C5C7F1ECBFF180027914E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				133C00FA1F2A71A900C14AA1 /* DBFILESDeleteBatchResultData.h */,
+				133C00FB1F2A71A900C14AA1 /* DBFILESRelocationBatchResultData.h */,
+				133C00D01F2A6F6300C14AA1 /* DBFILESFileOpsResult.h */,
+				133C00CD1F2A6F2700C14AA1 /* DBFILESCreateFolderResult.h */,
 				F29C5C801ECBFF180027914E /* DBFILESAddPropertiesError.h */,
 				F29C5C811ECBFF180027914E /* DBFILESAlphaGetMetadataArg.h */,
 				F29C5C821ECBFF180027914E /* DBFILESAlphaGetMetadataError.h */,
@@ -3452,6 +3579,10 @@
 		F29C5D281ECBFF180027914E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				133C00F11F2A716900C14AA1 /* DBSHARINGInsufficientPlan.h */,
+				133C00DC1F2A70C200C14AA1 /* DBSHARINGAudienceExceptions.h */,
+				133C00D91F2A70AC00C14AA1 /* DBSHARINGShareFolderArgBase.h */,
+				133C00D61F2A708300C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h */,
 				F29C5D291ECBFF180027914E /* DBSHARINGAccessLevel.h */,
 				F29C5D2A1ECBFF180027914E /* DBSHARINGAclUpdatePolicy.h */,
 				F29C5D2B1ECBFF180027914E /* DBSHARINGAddFileMemberArgs.h */,
@@ -3613,6 +3744,14 @@
 		F29C5DBC1ECBFF180027914E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				133C00F41F2A718900C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h */,
+				133C00F51F2A718900C14AA1 /* DBTEAMNamespaceType.h */,
+				133C00EB1F2A714800C14AA1 /* DBTEAMTeamNamespacesListArg.h */,
+				133C00EC1F2A714800C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h */,
+				133C00E51F2A712B00C14AA1 /* DBTEAMTeamNamespacesListContinueError.h */,
+				133C00E61F2A712B00C14AA1 /* DBTEAMTeamNamespacesListResult.h */,
+				133C00E21F2A710300C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h */,
+				133C00DF1F2A70E600C14AA1 /* DBTEAMNamespaceMetadata.h */,
 				F29C5DBD1ECBFF180027914E /* DBTEAMActiveWebSession.h */,
 				F29C5DBE1ECBFF180027914E /* DBTEAMAddPropertyTemplateArg.h */,
 				F29C5DBF1ECBFF180027914E /* DBTEAMAddPropertyTemplateResult.h */,
@@ -3810,6 +3949,47 @@
 		F29C5E671ECBFF180027914E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				133C01161F2A71E000C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h */,
+				133C01111F2A71E000C14AA1 /* DBTEAMLOGAdminRole.h */,
+				133C01281F2A71E100C14AA1 /* DBTEAMLOGCertificate.h */,
+				133C01221F2A71E100C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h */,
+				133C010D1F2A71E000C14AA1 /* DBTEAMLOGDurationLogInfo.h */,
+				133C010B1F2A71E000C14AA1 /* DBTEAMLOGEmmPolicy.h */,
+				133C01001F2A71E000C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h */,
+				133C01151F2A71E000C14AA1 /* DBTEAMLOGFileCommentsPolicy.h */,
+				133C01271F2A71E100C14AA1 /* DBTEAMLOGFileRequestsPolicy.h */,
+				133C01041F2A71E000C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h */,
+				133C01171F2A71E100C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h */,
+				133C011F1F2A71E100C14AA1 /* DBTEAMLOGJoinTeamDetails.h */,
+				133C01251F2A71E100C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h */,
+				133C010A1F2A71E000C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h */,
+				133C01091F2A71E000C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h */,
+				133C01031F2A71E000C14AA1 /* DBTEAMLOGMemberStatus.h */,
+				133C01191F2A71E100C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h */,
+				133C01101F2A71E000C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h */,
+				133C01051F2A71E000C14AA1 /* DBTEAMLOGNetworkControlPolicy.h */,
+				133C01201F2A71E100C14AA1 /* DBTEAMLOGPaperMemberPolicy.h */,
+				133C01061F2A71E000C14AA1 /* DBTEAMLOGPaperPolicy.h */,
+				133C01181F2A71E100C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h */,
+				133C01011F2A71E000C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h */,
+				133C011E1F2A71E100C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h */,
+				133C01121F2A71E000C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h */,
+				133C01131F2A71E000C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h */,
+				133C01231F2A71E100C14AA1 /* DBTEAMLOGSharingLinkPolicy.h */,
+				133C010F1F2A71E000C14AA1 /* DBTEAMLOGSharingMemberPolicy.h */,
+				133C011A1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h */,
+				133C01081F2A71E000C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h */,
+				133C011B1F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h */,
+				133C010E1F2A71E000C14AA1 /* DBTEAMLOGSsoPolicy.h */,
+				133C010C1F2A71E000C14AA1 /* DBTEAMLOGTeamMembershipType.h */,
+				133C01241F2A71E100C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h */,
+				133C01141F2A71E000C14AA1 /* DBTEAMLOGTeamMergeToDetails.h */,
+				133C01211F2A71E100C14AA1 /* DBTEAMLOGTeamName.h */,
+				133C011D1F2A71E100C14AA1 /* DBTEAMLOGTfaPolicy.h */,
+				133C01071F2A71E000C14AA1 /* DBTEAMLOGTimeUnit.h */,
+				133C01021F2A71E000C14AA1 /* DBTEAMLOGTwoAccountPolicy.h */,
+				133C011C1F2A71E100C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h */,
+				133C01261F2A71E100C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h */,
 				F29C5E681ECBFF180027914E /* DBTEAMLOGAccessMethodLogInfo.h */,
 				F29C5E691ECBFF180027914E /* DBTEAMLOGAccountCaptureChangeAvailabilityDetails.h */,
 				F29C5E6A1ECBFF180027914E /* DBTEAMLOGAccountCaptureChangePolicyDetails.h */,
@@ -3870,14 +4050,11 @@
 				F29C5EA11ECBFF180027914E /* DBTEAMLOGEmmRefreshAuthTokenDetails.h */,
 				F29C5EA21ECBFF180027914E /* DBTEAMLOGEmmRemoveExceptionDetails.h */,
 				F29C5EA31ECBFF180027914E /* DBTEAMLOGEnabledDomainInvitesDetails.h */,
-				F29C5EA41ECBFF180027914E /* DBTEAMLOGEnableDisableChangePolicy.h */,
 				F29C5EA51ECBFF180027914E /* DBTEAMLOGEventCategory.h */,
 				F29C5EA61ECBFF180027914E /* DBTEAMLOGEventDetails.h */,
 				F29C5EA71ECBFF180027914E /* DBTEAMLOGEventType.h */,
 				F29C5EA81ECBFF180027914E /* DBTEAMLOGExtendedVersionHistoryChangePolicyDetails.h */,
 				F29C5EA91ECBFF180027914E /* DBTEAMLOGExtendedVersionHistoryPolicy.h */,
-				F29C5EAA1ECBFF180027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h */,
-				F29C5EAB1ECBFF180027914E /* DBTEAMLOGExternalSharingPolicy.h */,
 				F29C5EAC1ECBFF180027914E /* DBTEAMLOGFileAddCommentDetails.h */,
 				F29C5EAD1ECBFF180027914E /* DBTEAMLOGFileAddDetails.h */,
 				F29C5EAE1ECBFF180027914E /* DBTEAMLOGFileCommentsChangePolicyDetails.h */,
@@ -3933,7 +4110,6 @@
 				F29C5EE01ECBFF180027914E /* DBTEAMLOGGroupRemoveExternalIdDetails.h */,
 				F29C5EE11ECBFF180027914E /* DBTEAMLOGGroupRemoveMemberDetails.h */,
 				F29C5EE21ECBFF180027914E /* DBTEAMLOGGroupRenameDetails.h */,
-				F29C5EE31ECBFF180027914E /* DBTEAMLOGGroupsUserManagementPolicy.h */,
 				F29C5EE41ECBFF180027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h */,
 				F29C5EE51ECBFF180027914E /* DBTEAMLOGHostLogInfo.h */,
 				F29C5EE61ECBFF180027914E /* DBTEAMLOGLinkAudience.h */,
@@ -3942,13 +4118,7 @@
 				F29C5EE91ECBFF180027914E /* DBTEAMLOGMemberChangeEmailDetails.h */,
 				F29C5EEA1ECBFF180027914E /* DBTEAMLOGMemberChangeMembershipTypeDetails.h */,
 				F29C5EEB1ECBFF180027914E /* DBTEAMLOGMemberChangeNameDetails.h */,
-				F29C5EEC1ECBFF180027914E /* DBTEAMLOGMemberChangeRoleDetails.h */,
-				F29C5EED1ECBFF180027914E /* DBTEAMLOGMemberInviteDetails.h */,
-				F29C5EEE1ECBFF180027914E /* DBTEAMLOGMemberJoinDetails.h */,
-				F29C5EEF1ECBFF180027914E /* DBTEAMLOGMemberLeaveDetails.h */,
 				F29C5EF01ECBFF180027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h */,
-				F29C5EF11ECBFF180027914E /* DBTEAMLOGMemberRecoverDetails.h */,
-				F29C5EF21ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicy.h */,
 				F29C5EF31ECBFF180027914E /* DBTEAMLOGMemberRequestsChangePolicyDetails.h */,
 				F29C5EF41ECBFF180027914E /* DBTEAMLOGMemberSpaceLimitsAddExceptionDetails.h */,
 				F29C5EF51ECBFF180027914E /* DBTEAMLOGMemberSpaceLimitsChangePolicyDetails.h */,
@@ -3956,9 +4126,7 @@
 				F29C5EF71ECBFF180027914E /* DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails.h */,
 				F29C5EF81ECBFF180027914E /* DBTEAMLOGMemberSuggestDetails.h */,
 				F29C5EF91ECBFF180027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h */,
-				F29C5EFA1ECBFF180027914E /* DBTEAMLOGMemberSuspendDetails.h */,
 				F29C5EFB1ECBFF180027914E /* DBTEAMLOGMemberTransferAccountContentsDetails.h */,
-				F29C5EFC1ECBFF180027914E /* DBTEAMLOGMemberUnsuspendDetails.h */,
 				F29C5EFD1ECBFF180027914E /* DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h */,
 				F29C5EFE1ECBFF180027914E /* DBTEAMLOGMissingDetails.h */,
 				F29C5EFF1ECBFF180027914E /* DBTEAMLOGMobileSessionLogInfo.h */,
@@ -3971,7 +4139,6 @@
 				F29C5F061ECBFF180027914E /* DBTEAMLOGNoteSharedDetails.h */,
 				F29C5F071ECBFF180027914E /* DBTEAMLOGNoteShareReceiveDetails.h */,
 				F29C5F081ECBFF180027914E /* DBTEAMLOGOpenNoteSharedDetails.h */,
-				F29C5F091ECBFF180027914E /* DBTEAMLOGOptionalChangePolicy.h */,
 				F29C5F0A1ECBFF180027914E /* DBTEAMLOGOriginLogInfo.h */,
 				F29C5F0B1ECBFF180027914E /* DBTEAMLOGPaperAccessType.h */,
 				F29C5F0C1ECBFF180027914E /* DBTEAMLOGPaperChangeDeploymentPolicyDetails.h */,
@@ -4032,8 +4199,6 @@
 				F29C5F431ECBFF180027914E /* DBTEAMLOGResellerSupportSessionEndDetails.h */,
 				F29C5F441ECBFF180027914E /* DBTEAMLOGResellerSupportSessionStartDetails.h */,
 				F29C5F451ECBFF180027914E /* DBTEAMLOGSessionLogInfo.h */,
-				F29C5F461ECBFF180027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h */,
-				F29C5F471ECBFF180027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h */,
 				F29C5F481ECBFF180027914E /* DBTEAMLOGSfAddGroupDetails.h */,
 				F29C5F491ECBFF180027914E /* DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails.h */,
 				F29C5F4A1ECBFF180027914E /* DBTEAMLOGSfExternalInviteWarnDetails.h */,
@@ -4074,7 +4239,6 @@
 				F29C5F6D1ECBFF180027914E /* DBTEAMLOGSharedFolderChangeMemberPolicyDetails.h */,
 				F29C5F6E1ECBFF190027914E /* DBTEAMLOGSharedFolderCreateDetails.h */,
 				F29C5F6F1ECBFF190027914E /* DBTEAMLOGSharedFolderLinkPolicy.h */,
-				F29C5F701ECBFF190027914E /* DBTEAMLOGSharedFolderLogInfo.h */,
 				F29C5F711ECBFF190027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h */,
 				F29C5F721ECBFF190027914E /* DBTEAMLOGSharedFolderMountDetails.h */,
 				F29C5F731ECBFF190027914E /* DBTEAMLOGSharedFolderTransferOwnershipDetails.h */,
@@ -4120,7 +4284,6 @@
 				F29C5F9B1ECBFF190027914E /* DBTEAMLOGTeamFolderStatus.h */,
 				F29C5F9C1ECBFF190027914E /* DBTEAMLOGTeamLinkedAppLogInfo.h */,
 				F29C5F9D1ECBFF190027914E /* DBTEAMLOGTeamMemberLogInfo.h */,
-				F29C5F9E1ECBFF190027914E /* DBTEAMLOGTeamMergeDetails.h */,
 				F29C5F9F1ECBFF190027914E /* DBTEAMLOGTeamProfileAddLogoDetails.h */,
 				F29C5FA01ECBFF190027914E /* DBTEAMLOGTeamProfileChangeLogoDetails.h */,
 				F29C5FA11ECBFF190027914E /* DBTEAMLOGTeamProfileChangeNameDetails.h */,
@@ -4158,6 +4321,7 @@
 		F29C5FB61ECBFF190027914E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				133C00D31F2A701F00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h */,
 				F29C5FB71ECBFF190027914E /* DBTEAMPOLICIESEmmState.h */,
 				F29C5FB81ECBFF190027914E /* DBTEAMPOLICIESSharedFolderJoinPolicy.h */,
 				F29C5FB91ECBFF190027914E /* DBTEAMPOLICIESSharedFolderMemberPolicy.h */,
@@ -4380,6 +4544,7 @@
 				F29C67021ECBFF1C0027914E /* DBUSERSRouteObjects.h in Headers */,
 				F29C61681ECBFF190027914E /* DBPROPERTIESPropertyFieldTemplate.h in Headers */,
 				F29C63D01ECBFF1B0027914E /* DBTEAMUpdatePropertyTemplateResult.h in Headers */,
+				133C00FD1F2A71AA00C14AA1 /* DBFILESRelocationBatchResultData.h in Headers */,
 				F29C61E61ECBFF1A0027914E /* DBSHARINGListFileMembersContinueArg.h in Headers */,
 				F29C63D81ECBFF1B0027914E /* DBTEAMUsersSelectorArg.h in Headers */,
 				F29C61701ECBFF190027914E /* DBPROPERTIESPropertyType.h in Headers */,
@@ -4388,7 +4553,6 @@
 				F29C62581ECBFF1A0027914E /* DBSHARINGSharedLinkError.h in Headers */,
 				F29C666C1ECBFF1C0027914E /* DBTEAMLOGTfaResetDetails.h in Headers */,
 				F29C66AC1ECBFF1C0027914E /* DBUSERSCOMMONAccountType.h in Headers */,
-				F29C650A1ECBFF1B0027914E /* DBTEAMLOGMemberSuspendDetails.h in Headers */,
 				F29C61001ECBFF190027914E /* DBFILESUploadWriteFailed.h in Headers */,
 				F29C64261ECBFF1B0027914E /* DBTEAMLOGDeviceDeleteOnUnlinkFailDetails.h in Headers */,
 				F29C63C61ECBFF1A0027914E /* DBTEAMTeamMembershipType.h in Headers */,
@@ -4402,6 +4566,8 @@
 				F29C636E1ECBFF1A0027914E /* DBTEAMMembersUnsuspendArg.h in Headers */,
 				F29C63CC1ECBFF1A0027914E /* DBTEAMTokenGetAuthenticatedAdminResult.h in Headers */,
 				F29C61C41ECBFF1A0027914E /* DBSHARINGGroupMembershipInfo.h in Headers */,
+				133C01301F2A71E100C14AA1 /* DBTEAMLOGTimeUnit.h in Headers */,
+				133C01331F2A71E100C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h in Headers */,
 				F29C63EE1ECBFF1B0027914E /* DBTEAMLOGAccountCapturePolicy.h in Headers */,
 				F29C60E01ECBFF190027914E /* DBFILESUpdatePropertyGroupArg.h in Headers */,
 				F29C654C1ECBFF1B0027914E /* DBTEAMLOGPaperDocChangeMemberRoleDetails.h in Headers */,
@@ -4429,6 +4595,7 @@
 				F29C62A61ECBFF1A0027914E /* DBTEAMDateRange.h in Headers */,
 				F29C60C81ECBFF190027914E /* DBFILESSearchArg.h in Headers */,
 				F29C60B21ECBFF190027914E /* DBFILESRemovePropertiesArg.h in Headers */,
+				133C01431F2A71E100C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h in Headers */,
 				F29C62461ECBFF1A0027914E /* DBSHARINGSharedContentLinkMetadataBase.h in Headers */,
 				F29C65AE1ECBFF1B0027914E /* DBTEAMLOGSfNestDetails.h in Headers */,
 				F29C63921ECBFF1A0027914E /* DBTEAMStorageBucket.h in Headers */,
@@ -4441,7 +4608,6 @@
 				F29C65E01ECBFF1C0027914E /* DBTEAMLOGSharedContentRemoveLinkPasswordDetails.h in Headers */,
 				F29C62E81ECBFF1A0027914E /* DBTEAMGroupSelector.h in Headers */,
 				F29C62C41ECBFF1A0027914E /* DBTEAMGetStorageReport.h in Headers */,
-				F29C646A1ECBFF1B0027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h in Headers */,
 				F29C61121ECBFF190027914E /* DBPAPERAddPaperDocUserResult.h in Headers */,
 				F29C65801ECBFF1B0027914E /* DBTEAMLOGPaperFolderTeamInviteDetails.h in Headers */,
 				F29C617A1ECBFF190027914E /* DBSHARINGAddFileMemberError.h in Headers */,
@@ -4450,6 +4616,7 @@
 				F29C603E1ECBFF190027914E /* DBFILESDeleteBatchArg.h in Headers */,
 				F29C64361ECBFF1B0027914E /* DBTEAMLOGDeviceUnlinkDetails.h in Headers */,
 				F29C62BC1ECBFF1A0027914E /* DBTEAMFeatureValue.h in Headers */,
+				133C00FC1F2A71AA00C14AA1 /* DBFILESDeleteBatchResultData.h in Headers */,
 				F29C62EE1ECBFF1A0027914E /* DBTEAMGroupsGetInfoError.h in Headers */,
 				F29C60FA1ECBFF190027914E /* DBFILESUploadSessionOffsetError.h in Headers */,
 				F29C659A1ECBFF1B0027914E /* DBTEAMLOGResellerLogInfo.h in Headers */,
@@ -4460,6 +4627,7 @@
 				F29C60741ECBFF190027914E /* DBFILESListFolderContinueArg.h in Headers */,
 				F29C65AC1ECBFF1B0027914E /* DBTEAMLOGSfInviteGroupDetails.h in Headers */,
 				F29C61B01ECBFF1A0027914E /* DBSHARINGGetFileMetadataBatchResult.h in Headers */,
+				133C012D1F2A71E100C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h in Headers */,
 				F29C65521ECBFF1B0027914E /* DBTEAMLOGPaperDocDeletedDetails.h in Headers */,
 				F29C63CE1ECBFF1B0027914E /* DBTEAMUpdatePropertyTemplateArg.h in Headers */,
 				F29C660C1ECBFF1C0027914E /* DBTEAMLOGShmodelDisableDetails.h in Headers */,
@@ -4467,6 +4635,7 @@
 				F29C66101ECBFF1C0027914E /* DBTEAMLOGShmodelGroupShareDetails.h in Headers */,
 				F29C600E1ECBFF190027914E /* DBASYNCPollResultBase.h in Headers */,
 				F29C65401ECBFF1B0027914E /* DBTEAMLOGPaperContentRemoveFromFolderDetails.h in Headers */,
+				133C014B1F2A71E100C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h in Headers */,
 				F29C65001ECBFF1B0027914E /* DBTEAMLOGMemberSpaceLimitsChangePolicyDetails.h in Headers */,
 				F29C62D21ECBFF1A0027914E /* DBTEAMGroupMembersAddArg.h in Headers */,
 				F29C66781ECBFF1C0027914E /* DBTEAMLOGWebSessionLogInfo.h in Headers */,
@@ -4520,6 +4689,7 @@
 				F29C66361ECBFF1C0027914E /* DBTEAMLOGSsoChangeLogoutUrlDetails.h in Headers */,
 				F29C61EC1ECBFF1A0027914E /* DBSHARINGListFileMembersError.h in Headers */,
 				F29C61CE1ECBFF1A0027914E /* DBSHARINGJobStatus.h in Headers */,
+				133C014E1F2A71E100C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h in Headers */,
 				F29C640C1ECBFF1B0027914E /* DBTEAMLOGCreateFolderDetails.h in Headers */,
 				F29C65381ECBFF1B0027914E /* DBTEAMLOGPaperContentArchiveDetails.h in Headers */,
 				F29C639A1ECBFF1A0027914E /* DBTEAMTeamFolderArchiveError.h in Headers */,
@@ -4537,10 +4707,11 @@
 				F29C663E1ECBFF1C0027914E /* DBTEAMLOGTeamActivityCreateReportDetails.h in Headers */,
 				F29C66481ECBFF1C0027914E /* DBTEAMLOGTeamFolderPermanentlyDeleteDetails.h in Headers */,
 				F29C630C1ECBFF1A0027914E /* DBTEAMListMemberAppsArg.h in Headers */,
-				F29C65A21ECBFF1B0027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h in Headers */,
 				F29C667A1ECBFF1C0027914E /* DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails.h in Headers */,
 				F29C666A1ECBFF1C0027914E /* DBTEAMLOGTfaRemoveSecurityKeyDetails.h in Headers */,
+				133C01491F2A71E100C14AA1 /* DBTEAMLOGPaperMemberPolicy.h in Headers */,
 				F29C659C1ECBFF1B0027914E /* DBTEAMLOGResellerSupportSessionEndDetails.h in Headers */,
+				133C01481F2A71E100C14AA1 /* DBTEAMLOGJoinTeamDetails.h in Headers */,
 				F29C622C1ECBFF1A0027914E /* DBSHARINGRelinquishFileMembershipError.h in Headers */,
 				F29C65DE1ECBFF1C0027914E /* DBTEAMLOGSharedContentRemoveLinkExpiryDetails.h in Headers */,
 				F29C66281ECBFF1C0027914E /* DBTEAMLOGSmartSyncChangePolicyDetails.h in Headers */,
@@ -4551,14 +4722,15 @@
 				F29C65D41ECBFF1C0027914E /* DBTEAMLOGSharedContentClaimInvitationDetails.h in Headers */,
 				F29C60121ECBFF190027914E /* DBAUTHAccessError.h in Headers */,
 				F29C61821ECBFF190027914E /* DBSHARINGAddMemberSelectorError.h in Headers */,
+				133C01361F2A71E100C14AA1 /* DBTEAMLOGDurationLogInfo.h in Headers */,
 				F29C62361ECBFF1A0027914E /* DBSHARINGRemoveFolderMemberArg.h in Headers */,
 				F29C632E1ECBFF1A0027914E /* DBTEAMListTeamDevicesResult.h in Headers */,
+				133C00F21F2A716A00C14AA1 /* DBSHARINGInsufficientPlan.h in Headers */,
 				F29C61221ECBFF190027914E /* DBPAPERFolderSubscriptionLevel.h in Headers */,
 				F29C63121ECBFF1A0027914E /* DBTEAMListMemberDevicesArg.h in Headers */,
 				F29C634A1ECBFF1A0027914E /* DBTEAMMembersGetInfoError.h in Headers */,
 				F29C60D21ECBFF190027914E /* DBFILESSearchResult.h in Headers */,
 				F29C63901ECBFF1A0027914E /* DBTEAMRevokeLinkedAppStatus.h in Headers */,
-				F29C64EE1ECBFF1B0027914E /* DBTEAMLOGMemberChangeRoleDetails.h in Headers */,
 				F29C64AE1ECBFF1B0027914E /* DBTEAMLOGGeoLocationLogInfo.h in Headers */,
 				F29C60961ECBFF190027914E /* DBFILESPreviewArg.h in Headers */,
 				F29C64A81ECBFF1B0027914E /* DBTEAMLOGFileSaveCopyReferenceDetails.h in Headers */,
@@ -4570,10 +4742,12 @@
 				F29C66841ECBFF1C0027914E /* DBTEAMPOLICIESSharedFolderMemberPolicy.h in Headers */,
 				F29C60E41ECBFF190027914E /* DBFILESUploadErrorWithProperties.h in Headers */,
 				F29C617C1ECBFF190027914E /* DBSHARINGAddFolderMemberArg.h in Headers */,
+				133C00D71F2A708300C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h in Headers */,
 				F29C64CE1ECBFF1B0027914E /* DBTEAMLOGGroupJoinPolicyUpdatedDetails.h in Headers */,
 				F29C63AA1ECBFF1A0027914E /* DBTEAMTeamFolderInvalidStatusError.h in Headers */,
 				F29C66401ECBFF1C0027914E /* DBTEAMLOGTeamEvent.h in Headers */,
 				F29C63421ECBFF1A0027914E /* DBTEAMMembersDeactivateArg.h in Headers */,
+				133C00EE1F2A714800C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h in Headers */,
 				F29C603A1ECBFF190027914E /* DBFILESCreateFolderError.h in Headers */,
 				F29C65B41ECBFF1B0027914E /* DBTEAMLOGSfTeamInviteChangeRoleDetails.h in Headers */,
 				F29C66301ECBFF1C0027914E /* DBTEAMLOGSpaceLimitsStatus.h in Headers */,
@@ -4592,22 +4766,24 @@
 				F29C65881ECBFF1B0027914E /* DBTEAMLOGPasswordLoginFailDetails.h in Headers */,
 				F29C62881ECBFF1A0027914E /* DBSHARINGUpdateFolderMemberError.h in Headers */,
 				F29C64041ECBFF1B0027914E /* DBTEAMLOGAssetLogInfo.h in Headers */,
-				F29C65281ECBFF1B0027914E /* DBTEAMLOGOptionalChangePolicy.h in Headers */,
 				F29C62C81ECBFF1A0027914E /* DBTEAMGroupCreateArg.h in Headers */,
 				F29C62DC1ECBFF1A0027914E /* DBTEAMGroupMemberSetAccessTypeError.h in Headers */,
 				F29C63A61ECBFF1A0027914E /* DBTEAMTeamFolderIdArg.h in Headers */,
 				F29C63241ECBFF1A0027914E /* DBTEAMListTeamAppsArg.h in Headers */,
 				F29C64B21ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsContinueArg.h in Headers */,
+				133C01421F2A71E100C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h in Headers */,
 				F29C65221ECBFF1B0027914E /* DBTEAMLOGNoteSharedDetails.h in Headers */,
 				F29C61AE1ECBFF1A0027914E /* DBSHARINGGetFileMetadataBatchArg.h in Headers */,
 				F29C623C1ECBFF1A0027914E /* DBSHARINGRequestedVisibility.h in Headers */,
 				F29C65D01ECBFF1C0027914E /* DBTEAMLOGSharedContentChangeMemberRoleDetails.h in Headers */,
-				F29C64F41ECBFF1B0027914E /* DBTEAMLOGMemberLeaveDetails.h in Headers */,
 				F29C64821ECBFF1B0027914E /* DBTEAMLOGFileMoveDetails.h in Headers */,
 				F29C60521ECBFF190027914E /* DBFILESDownloadArg.h in Headers */,
+				133C01451F2A71E100C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h in Headers */,
+				133C01411F2A71E100C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h in Headers */,
 				F29C644A1ECBFF1B0027914E /* DBTEAMLOGDomainVerificationAddDomainSuccessDetails.h in Headers */,
 				F29C61B21ECBFF1A0027914E /* DBSHARINGGetFileMetadataError.h in Headers */,
 				F29C65741ECBFF1B0027914E /* DBTEAMLOGPaperExternalViewAllowDetails.h in Headers */,
+				133C012A1F2A71E100C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h in Headers */,
 				F29C64B41ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsContinueError.h in Headers */,
 				F29C60EA1ECBFF190027914E /* DBFILESUploadSessionFinishArg.h in Headers */,
 				F29C614E1ECBFF190027914E /* DBPAPERRefPaperDoc.h in Headers */,
@@ -4656,16 +4832,17 @@
 				F29C64801ECBFF1B0027914E /* DBTEAMLOGFileLogInfo.h in Headers */,
 				F29C61881ECBFF190027914E /* DBSHARINGCollectionLinkMetadata.h in Headers */,
 				F29C60F61ECBFF190027914E /* DBFILESUploadSessionFinishError.h in Headers */,
-				F29C64F81ECBFF1B0027914E /* DBTEAMLOGMemberRecoverDetails.h in Headers */,
 				F29C60C21ECBFF190027914E /* DBFILESSaveUrlError.h in Headers */,
 				F29C609C1ECBFF190027914E /* DBFILESPropertyGroupUpdate.h in Headers */,
 				F29C65F41ECBFF1C0027914E /* DBTEAMLOGSharedFolderLinkPolicy.h in Headers */,
 				F29C60681ECBFF190027914E /* DBFILESGetTemporaryLinkArg.h in Headers */,
+				133C00E71F2A712C00C14AA1 /* DBTEAMTeamNamespacesListContinueError.h in Headers */,
 				F29C60561ECBFF190027914E /* DBFILESFileMetadata.h in Headers */,
 				F29C63861ECBFF1A0027914E /* DBTEAMRevokeLinkedApiAppArg.h in Headers */,
 				F29C657A1ECBFF1B0027914E /* DBTEAMLOGPaperFolderDeletedDetails.h in Headers */,
 				F29C603C1ECBFF190027914E /* DBFILESDeleteArg.h in Headers */,
 				F29C66A81ECBFF1C0027914E /* DBUSERSTeamSpaceAllocation.h in Headers */,
+				133C01401F2A71E100C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h in Headers */,
 				F29C64C41ECBFF1B0027914E /* DBTEAMLOGGroupChangeMemberRoleDetails.h in Headers */,
 				F29C656A1ECBFF1B0027914E /* DBTEAMLOGPaperDocUnresolveCommentDetails.h in Headers */,
 				F29C651A1ECBFF1B0027914E /* DBTEAMLOGNonTeamMemberLogInfo.h in Headers */,
@@ -4689,6 +4866,7 @@
 				F29C65EA1ECBFF1C0027914E /* DBTEAMLOGSharedFolderChangeConfidentialityDetails.h in Headers */,
 				F29C60E61ECBFF190027914E /* DBFILESUploadSessionAppendArg.h in Headers */,
 				F29C63761ECBFF1A0027914E /* DBTEAMRemovedStatus.h in Headers */,
+				133C00DD1F2A70C300C14AA1 /* DBSHARINGAudienceExceptions.h in Headers */,
 				F29C65C41ECBFF1C0027914E /* DBTEAMLOGSharedContentAddMemberDetails.h in Headers */,
 				F29C62041ECBFF1A0027914E /* DBSHARINGListFoldersContinueError.h in Headers */,
 				F29C61841ECBFF190027914E /* DBSHARINGAudienceRestrictingSharedFolder.h in Headers */,
@@ -4719,6 +4897,7 @@
 				F29C66741ECBFF1C0027914E /* DBTEAMLOGUserNameLogInfo.h in Headers */,
 				F29C64161ECBFF1B0027914E /* DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetails.h in Headers */,
 				F29C600C1ECBFF190027914E /* DBASYNCPollError.h in Headers */,
+				133C013E1F2A71E100C14AA1 /* DBTEAMLOGFileCommentsPolicy.h in Headers */,
 				F29C66CE1ECBFF1C0027914E /* DBAUTHUserAuthRoutes.h in Headers */,
 				F29C61281ECBFF190027914E /* DBPAPERListPaperDocsArgs.h in Headers */,
 				F29C60341ECBFF190027914E /* DBFILESCommitInfo.h in Headers */,
@@ -4745,6 +4924,7 @@
 				F29C61A61ECBFF1A0027914E /* DBSHARINGFolderLinkMetadata.h in Headers */,
 				F29C63E21ECBFF1B0027914E /* DBTEAMCOMMONTimeRange.h in Headers */,
 				F29C61D81ECBFF1A0027914E /* DBSHARINGLinkPassword.h in Headers */,
+				133C013C1F2A71E100C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h in Headers */,
 				F29C66A21ECBFF1C0027914E /* DBUSERSSpaceAllocation.h in Headers */,
 				F29C64A61ECBFF1B0027914E /* DBTEAMLOGFileRollbackChangesDetails.h in Headers */,
 				F29C668E1ECBFF1C0027914E /* DBUSERSAccount.h in Headers */,
@@ -4753,6 +4933,7 @@
 				F29C61D21ECBFF1A0027914E /* DBSHARINGLinkAudience.h in Headers */,
 				F29C61BE1ECBFF1A0027914E /* DBSHARINGGetSharedLinksError.h in Headers */,
 				F29C627C1ECBFF1A0027914E /* DBSHARINGUnshareFileArg.h in Headers */,
+				133C01391F2A71E100C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h in Headers */,
 				F29C65BA1ECBFF1B0027914E /* DBTEAMLOGSfTeamJoinFromOobLinkDetails.h in Headers */,
 				F29C64521ECBFF1B0027914E /* DBTEAMLOGEmmCreateExceptionsReportDetails.h in Headers */,
 				F29C60141ECBFF190027914E /* DBAUTHAuthError.h in Headers */,
@@ -4763,13 +4944,16 @@
 				F29C66BA1ECBFF1C0027914E /* DBSDKImportsGenerated.h in Headers */,
 				F29C64E01ECBFF1B0027914E /* DBTEAMLOGHostLogInfo.h in Headers */,
 				F29C65D21ECBFF1C0027914E /* DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails.h in Headers */,
+				133C013B1F2A71E100C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h in Headers */,
 				F29C64181ECBFF1B0027914E /* DBTEAMLOGDeviceApprovalsChangeOverageActionDetails.h in Headers */,
 				F29C64621ECBFF1B0027914E /* DBTEAMLOGEventDetails.h in Headers */,
 				F29C631C1ECBFF1A0027914E /* DBTEAMListMembersAppsResult.h in Headers */,
 				F29C623A1ECBFF1A0027914E /* DBSHARINGRemoveMemberJobStatus.h in Headers */,
 				F29C61F41ECBFF1A0027914E /* DBSHARINGListFilesContinueError.h in Headers */,
+				133C013D1F2A71E100C14AA1 /* DBTEAMLOGTeamMergeToDetails.h in Headers */,
 				F29C62841ECBFF1A0027914E /* DBSHARINGUpdateFileMemberArgs.h in Headers */,
 				F29C65C01ECBFF1B0027914E /* DBTEAMLOGSharedContentAddLinkExpiryDetails.h in Headers */,
+				133C014C1F2A71E100C14AA1 /* DBTEAMLOGSharingLinkPolicy.h in Headers */,
 				F29C628A1ECBFF1A0027914E /* DBSHARINGUpdateFolderPolicyArg.h in Headers */,
 				F29C64AA1ECBFF1B0027914E /* DBTEAMLOGFileUnlikeCommentDetails.h in Headers */,
 				F29C63E61ECBFF1B0027914E /* DBTEAMLOGAccessMethodLogInfo.h in Headers */,
@@ -4786,6 +4970,7 @@
 				F29C64941ECBFF1B0027914E /* DBTEAMLOGFileRequestCreateDetails.h in Headers */,
 				F29C65A81ECBFF1B0027914E /* DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails.h in Headers */,
 				F29C65041ECBFF1B0027914E /* DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails.h in Headers */,
+				133C014F1F2A71E100C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h in Headers */,
 				F29C60BA1ECBFF190027914E /* DBFILESSaveCopyReferenceArg.h in Headers */,
 				F29C65FA1ECBFF1C0027914E /* DBTEAMLOGSharedFolderMountDetails.h in Headers */,
 				F29C63161ECBFF1A0027914E /* DBTEAMListMemberDevicesResult.h in Headers */,
@@ -4801,7 +4986,6 @@
 				F29C62501ECBFF1A0027914E /* DBSHARINGSharedFolderMembers.h in Headers */,
 				F29C661C1ECBFF1C0027914E /* DBTEAMLOGShmodelTeamViewDetails.h in Headers */,
 				F29C610C1ECBFF190027914E /* DBPAPERAddMember.h in Headers */,
-				F29C64F01ECBFF1B0027914E /* DBTEAMLOGMemberInviteDetails.h in Headers */,
 				F29C65361ECBFF1B0027914E /* DBTEAMLOGPaperContentAddToFolderDetails.h in Headers */,
 				F29C65F01ECBFF1C0027914E /* DBTEAMLOGSharedFolderChangeMemberPolicyDetails.h in Headers */,
 				F29C604A1ECBFF190027914E /* DBFILESDeletedMetadata.h in Headers */,
@@ -4821,8 +5005,7 @@
 				F29C66EE1ECBFF1C0027914E /* DBFILESRouteObjects.h in Headers */,
 				F29C63821ECBFF1A0027914E /* DBTEAMRevokeDeviceSessionError.h in Headers */,
 				F29C604E1ECBFF190027914E /* DBFILESDeleteResult.h in Headers */,
-				F29C66521ECBFF1C0027914E /* DBTEAMLOGTeamMergeDetails.h in Headers */,
-				F29C65A41ECBFF1B0027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h in Headers */,
+				133C014A1F2A71E100C14AA1 /* DBTEAMLOGTeamName.h in Headers */,
 				F29C65EE1ECBFF1C0027914E /* DBTEAMLOGSharedFolderChangeMemberManagementPolicyDetails.h in Headers */,
 				F29C60701ECBFF190027914E /* DBFILESInvalidPropertyGroupError.h in Headers */,
 				F29C633E1ECBFF1A0027914E /* DBTEAMMembersAddJobStatus.h in Headers */,
@@ -4830,6 +5013,7 @@
 				F29C64CA1ECBFF1B0027914E /* DBTEAMLOGGroupDescriptionUpdatedDetails.h in Headers */,
 				F29C637A1ECBFF1A0027914E /* DBTEAMRevokeDeviceSessionArg.h in Headers */,
 				F29C625A1ECBFF1A0027914E /* DBSHARINGSharedLinkMetadata.h in Headers */,
+				133C01381F2A71E100C14AA1 /* DBTEAMLOGSharingMemberPolicy.h in Headers */,
 				F29C60B01ECBFF190027914E /* DBFILESRelocationResult.h in Headers */,
 				F29C60D81ECBFF190027914E /* DBFILESThumbnailError.h in Headers */,
 				F29C64201ECBFF1B0027914E /* DBTEAMLOGDeviceChangeIpDesktopDetails.h in Headers */,
@@ -4864,11 +5048,14 @@
 				F29C621E1ECBFF1A0027914E /* DBSHARINGMountFolderArg.h in Headers */,
 				F29C604C1ECBFF190027914E /* DBFILESDeleteError.h in Headers */,
 				F29C61F01ECBFF1A0027914E /* DBSHARINGListFilesArg.h in Headers */,
+				133C00E81F2A712C00C14AA1 /* DBTEAMTeamNamespacesListResult.h in Headers */,
 				F29C61641ECBFF190027914E /* DBPROPERTIESModifyPropertyTemplateError.h in Headers */,
 				F29C65D81ECBFF1C0027914E /* DBTEAMLOGSharedContentDownloadDetails.h in Headers */,
+				133C00F61F2A718900C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h in Headers */,
 				F29C60E81ECBFF190027914E /* DBFILESUploadSessionCursor.h in Headers */,
 				F29C63F81ECBFF1B0027914E /* DBTEAMLOGApiSessionLogInfo.h in Headers */,
 				F29C63D61ECBFF1B0027914E /* DBTEAMUserSelectorError.h in Headers */,
+				133C01501F2A71E100C14AA1 /* DBTEAMLOGFileRequestsPolicy.h in Headers */,
 				F29C62A01ECBFF1A0027914E /* DBTEAMApiApp.h in Headers */,
 				F29C65F81ECBFF1C0027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h in Headers */,
 				F29C659E1ECBFF1B0027914E /* DBTEAMLOGResellerSupportSessionStartDetails.h in Headers */,
@@ -4906,8 +5093,10 @@
 				F29C65821ECBFF1B0027914E /* DBTEAMLOGPaperTaggedValue.h in Headers */,
 				F29C647E1ECBFF1B0027914E /* DBTEAMLOGFileLikeCommentDetails.h in Headers */,
 				F29C64781ECBFF1B0027914E /* DBTEAMLOGFileDownloadDetails.h in Headers */,
+				133C01311F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h in Headers */,
 				F29C66961ECBFF1C0027914E /* DBUSERSGetAccountArg.h in Headers */,
 				F29C65581ECBFF1B0027914E /* DBTEAMLOGPaperDocEditDetails.h in Headers */,
+				133C00D41F2A701F00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h in Headers */,
 				F29C60841ECBFF190027914E /* DBFILESListRevisionsArg.h in Headers */,
 				F29C66141ECBFF1C0027914E /* DBTEAMLOGShmodelSetExpirationDetails.h in Headers */,
 				F29C613C1ECBFF190027914E /* DBPAPERListUsersOnPaperDocArgs.h in Headers */,
@@ -4917,12 +5106,16 @@
 				F29C605A1ECBFF190027914E /* DBFILESFolderMetadata.h in Headers */,
 				F29C65501ECBFF1B0027914E /* DBTEAMLOGPaperDocDeleteCommentDetails.h in Headers */,
 				F29C60761ECBFF190027914E /* DBFILESListFolderContinueError.h in Headers */,
+				133C01291F2A71E100C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h in Headers */,
 				F29C634E1ECBFF1A0027914E /* DBTEAMMembersListArg.h in Headers */,
 				F29C64A41ECBFF1B0027914E /* DBTEAMLOGFileRevertDetails.h in Headers */,
 				F29C648E1ECBFF1B0027914E /* DBTEAMLOGFileRequestChangeFolderDetails.h in Headers */,
 				F29C62F61ECBFF1A0027914E /* DBTEAMGroupsListContinueError.h in Headers */,
 				F29C61A81ECBFF1A0027914E /* DBSHARINGFolderPermission.h in Headers */,
 				F29C66B21ECBFF1C0027914E /* DBTeamBaseClient.h in Headers */,
+				133C01511F2A71E100C14AA1 /* DBTEAMLOGCertificate.h in Headers */,
+				133C00D11F2A6F6300C14AA1 /* DBFILESFileOpsResult.h in Headers */,
+				133C012B1F2A71E100C14AA1 /* DBTEAMLOGTwoAccountPolicy.h in Headers */,
 				F29C612E1ECBFF190027914E /* DBPAPERListPaperDocsResponse.h in Headers */,
 				F29C64321ECBFF1B0027914E /* DBTEAMLOGDeviceManagementEnabledDetails.h in Headers */,
 				F29C60661ECBFF190027914E /* DBFILESGetMetadataError.h in Headers */,
@@ -4955,6 +5148,7 @@
 				F29C64B81ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsResult.h in Headers */,
 				F29C62B41ECBFF1A0027914E /* DBTEAMFeature.h in Headers */,
 				F29C668A1ECBFF1C0027914E /* DBTEAMPOLICIESTeamSharingPolicies.h in Headers */,
+				133C012E1F2A71E100C14AA1 /* DBTEAMLOGNetworkControlPolicy.h in Headers */,
 				F29C616E1ECBFF190027914E /* DBPROPERTIESPropertyTemplateError.h in Headers */,
 				F29C640E1ECBFF1B0027914E /* DBTEAMLOGDataPlacementRestrictionChangePolicyDetails.h in Headers */,
 				F29C61061ECBFF190027914E /* DBFILESWriteError.h in Headers */,
@@ -4976,12 +5170,15 @@
 				F29C65AA1ECBFF1B0027914E /* DBTEAMLOGSfExternalInviteWarnDetails.h in Headers */,
 				F29C61421ECBFF190027914E /* DBPAPERPaperApiBaseError.h in Headers */,
 				F29C64461ECBFF1B0027914E /* DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails.h in Headers */,
+				133C01461F2A71E100C14AA1 /* DBTEAMLOGTfaPolicy.h in Headers */,
 				F29C638A1ECBFF1A0027914E /* DBTEAMRevokeLinkedAppBatchError.h in Headers */,
 				F29C62321ECBFF1A0027914E /* DBSHARINGRemoveFileMemberArg.h in Headers */,
+				133C00DA1F2A70AC00C14AA1 /* DBSHARINGShareFolderArgBase.h in Headers */,
 				F29C65DA1ECBFF1C0027914E /* DBTEAMLOGSharedContentRelinquishMembershipDetails.h in Headers */,
 				F29C60721ECBFF190027914E /* DBFILESListFolderArg.h in Headers */,
 				F29C620E1ECBFF1A0027914E /* DBSHARINGMemberAccessLevelResult.h in Headers */,
 				F29C65841ECBFF1B0027914E /* DBTEAMLOGParticipantLogInfo.h in Headers */,
+				133C01441F2A71E100C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h in Headers */,
 				F29C66DE1ECBFF1C0027914E /* DBTEAMLOGTeamAuthRoutes.h in Headers */,
 				F29C660E1ECBFF1C0027914E /* DBTEAMLOGShmodelFbShareDetails.h in Headers */,
 				F29C66041ECBFF1C0027914E /* DBTEAMLOGSharingChangeLinkPolicyDetails.h in Headers */,
@@ -5001,12 +5198,13 @@
 				F29C639E1ECBFF1A0027914E /* DBTEAMTeamFolderArchiveLaunch.h in Headers */,
 				F29C60EC1ECBFF190027914E /* DBFILESUploadSessionFinishBatchArg.h in Headers */,
 				F29C664C1ECBFF1C0027914E /* DBTEAMLOGTeamFolderStatus.h in Headers */,
+				133C012F1F2A71E100C14AA1 /* DBTEAMLOGPaperPolicy.h in Headers */,
 				F29C62FA1ECBFF1A0027914E /* DBTEAMGroupsMembersListArg.h in Headers */,
 				F29C605C1ECBFF190027914E /* DBFILESFolderSharingInfo.h in Headers */,
 				F29C633C1ECBFF1A0027914E /* DBTEAMMembersAddArg.h in Headers */,
+				133C00F71F2A718900C14AA1 /* DBTEAMNamespaceType.h in Headers */,
 				F29C64581ECBFF1B0027914E /* DBTEAMLOGEmmRefreshAuthTokenDetails.h in Headers */,
 				F29C64061ECBFF1B0027914E /* DBTEAMLOGCollectionShareDetails.h in Headers */,
-				F29C650E1ECBFF1B0027914E /* DBTEAMLOGMemberUnsuspendDetails.h in Headers */,
 				F29C60041ECBFF190027914E /* DBASYNCLaunchEmptyResult.h in Headers */,
 				F29C60221ECBFF190027914E /* DBAUTHTokenFromOAuth1Result.h in Headers */,
 				F29C62AC1ECBFF1A0027914E /* DBTEAMDesktopPlatform.h in Headers */,
@@ -5019,6 +5217,7 @@
 				F29C63B61ECBFF1A0027914E /* DBTEAMTeamFolderMetadata.h in Headers */,
 				F29C66D21ECBFF1C0027914E /* DBFILESUserAuthRoutes.h in Headers */,
 				F29C60A01ECBFF190027914E /* DBFILESRelocationArg.h in Headers */,
+				133C00ED1F2A714800C14AA1 /* DBTEAMTeamNamespacesListArg.h in Headers */,
 				F29C630E1ECBFF1A0027914E /* DBTEAMListMemberAppsError.h in Headers */,
 				F29C62221ECBFF1A0027914E /* DBSHARINGParentFolderAccessInfo.h in Headers */,
 				F29C61181ECBFF190027914E /* DBPAPERDocSubscriptionLevel.h in Headers */,
@@ -5028,7 +5227,7 @@
 				F29C64DE1ECBFF1B0027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h in Headers */,
 				F29C65E21ECBFF1C0027914E /* DBTEAMLOGSharedContentRemoveMemberDetails.h in Headers */,
 				F29C62A41ECBFF1A0027914E /* DBTEAMBaseTeamFolderError.h in Headers */,
-				F29C646C1ECBFF1B0027914E /* DBTEAMLOGExternalSharingPolicy.h in Headers */,
+				133C01351F2A71E100C14AA1 /* DBTEAMLOGTeamMembershipType.h in Headers */,
 				F29C62781ECBFF1A0027914E /* DBSHARINGUnmountFolderArg.h in Headers */,
 				F29C611A1ECBFF190027914E /* DBPAPERExportFormat.h in Headers */,
 				F29C60A81ECBFF190027914E /* DBFILESRelocationBatchLaunch.h in Headers */,
@@ -5052,7 +5251,6 @@
 				F29C66321ECBFF1C0027914E /* DBTEAMLOGSsoChangeCertDetails.h in Headers */,
 				F29C62721ECBFF1A0027914E /* DBSHARINGTeamMemberInfo.h in Headers */,
 				F29C627E1ECBFF1A0027914E /* DBSHARINGUnshareFileError.h in Headers */,
-				F29C645E1ECBFF1B0027914E /* DBTEAMLOGEnableDisableChangePolicy.h in Headers */,
 				F29C652C1ECBFF1B0027914E /* DBTEAMLOGPaperAccessType.h in Headers */,
 				F29C62D41ECBFF1A0027914E /* DBTEAMGroupMembersAddError.h in Headers */,
 				F29C64481ECBFF1B0027914E /* DBTEAMLOGDomainVerificationAddDomainFailDetails.h in Headers */,
@@ -5068,6 +5266,7 @@
 				F29C652A1ECBFF1B0027914E /* DBTEAMLOGOriginLogInfo.h in Headers */,
 				F29C664A1ECBFF1C0027914E /* DBTEAMLOGTeamFolderRenameDetails.h in Headers */,
 				F29C61EA1ECBFF1A0027914E /* DBSHARINGListFileMembersCountResult.h in Headers */,
+				133C00CE1F2A6F2800C14AA1 /* DBFILESCreateFolderResult.h in Headers */,
 				F29C665E1ECBFF1C0027914E /* DBTEAMLOGTfaAddSecurityKeyDetails.h in Headers */,
 				F29C61261ECBFF190027914E /* DBPAPERListDocsCursorError.h in Headers */,
 				F29C60261ECBFF190027914E /* DBCOMMONInvalidPathRootError.h in Headers */,
@@ -5089,7 +5288,6 @@
 				F29C62C21ECBFF1A0027914E /* DBTEAMGetMembershipReport.h in Headers */,
 				F29C606A1ECBFF190027914E /* DBFILESGetTemporaryLinkError.h in Headers */,
 				F29C644C1ECBFF1B0027914E /* DBTEAMLOGDomainVerificationRemoveDomainDetails.h in Headers */,
-				F29C64DC1ECBFF1B0027914E /* DBTEAMLOGGroupsUserManagementPolicy.h in Headers */,
 				F29C60E21ECBFF190027914E /* DBFILESUploadError.h in Headers */,
 				F29C61981ECBFF190027914E /* DBSHARINGFileLinkMetadata.h in Headers */,
 				F29C62161ECBFF1A0027914E /* DBSHARINGMemberSelector.h in Headers */,
@@ -5110,6 +5308,8 @@
 				F29C612C1ECBFF190027914E /* DBPAPERListPaperDocsFilterBy.h in Headers */,
 				F29C62001ECBFF1A0027914E /* DBSHARINGListFoldersArgs.h in Headers */,
 				F29C60EE1ECBFF190027914E /* DBFILESUploadSessionFinishBatchJobStatus.h in Headers */,
+				133C014D1F2A71E100C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h in Headers */,
+				133C01341F2A71E100C14AA1 /* DBTEAMLOGEmmPolicy.h in Headers */,
 				F29C62701ECBFF1A0027914E /* DBSHARINGSharingUserError.h in Headers */,
 				F29C66CA1ECBFF1C0027914E /* DBAUTHAppAuthRoutes.h in Headers */,
 				F29C625C1ECBFF1A0027914E /* DBSHARINGSharedLinkPolicy.h in Headers */,
@@ -5138,6 +5338,7 @@
 				F29C63F41ECBFF1B0027914E /* DBTEAMLOGAllowDownloadDisabledDetails.h in Headers */,
 				F29C65541ECBFF1B0027914E /* DBTEAMLOGPaperDocDownloadDetails.h in Headers */,
 				F29C66001ECBFF1C0027914E /* DBTEAMLOGSharedNoteOpenedDetails.h in Headers */,
+				133C01371F2A71E100C14AA1 /* DBTEAMLOGSsoPolicy.h in Headers */,
 				F29C64F61ECBFF1B0027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h in Headers */,
 				F29C62121ECBFF1A0027914E /* DBSHARINGMemberPermission.h in Headers */,
 				F29C60621ECBFF190027914E /* DBFILESGetCopyReferenceResult.h in Headers */,
@@ -5146,13 +5347,14 @@
 				F29C62601ECBFF1A0027914E /* DBSHARINGSharedLinkSettingsError.h in Headers */,
 				F29C65081ECBFF1B0027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h in Headers */,
 				F29C611E1ECBFF190027914E /* DBPAPERFoldersContainingPaperDoc.h in Headers */,
+				133C013A1F2A71E100C14AA1 /* DBTEAMLOGAdminRole.h in Headers */,
 				F29C61E01ECBFF1A0027914E /* DBSHARINGListFileMembersArg.h in Headers */,
 				F29C63FA1ECBFF1B0027914E /* DBTEAMLOGAppLinkTeamDetails.h in Headers */,
-				F29C64FA1ECBFF1B0027914E /* DBTEAMLOGMemberRequestsChangePolicy.h in Headers */,
 				F29C642C1ECBFF1B0027914E /* DBTEAMLOGDeviceLinkSuccessDetails.h in Headers */,
 				F29C662A1ECBFF1C0027914E /* DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails.h in Headers */,
 				F29C637C1ECBFF1A0027914E /* DBTEAMRevokeDeviceSessionBatchArg.h in Headers */,
 				F29C607C1ECBFF190027914E /* DBFILESListFolderLongpollArg.h in Headers */,
+				133C00E01F2A70E600C14AA1 /* DBTEAMNamespaceMetadata.h in Headers */,
 				F29C66081ECBFF1C0027914E /* DBTEAMLOGShmodelAppCreateDetails.h in Headers */,
 				F29C60861ECBFF190027914E /* DBFILESListRevisionsError.h in Headers */,
 				F29C65661ECBFF1B0027914E /* DBTEAMLOGPaperDocTeamInviteDetails.h in Headers */,
@@ -5179,7 +5381,6 @@
 				F29C66941ECBFF1C0027914E /* DBUSERSFullTeam.h in Headers */,
 				F29C658E1ECBFF1B0027914E /* DBTEAMLOGPasswordResetDetails.h in Headers */,
 				F29C65161ECBFF1B0027914E /* DBTEAMLOGNamespaceRelativePathLogInfo.h in Headers */,
-				F29C64F21ECBFF1B0027914E /* DBTEAMLOGMemberJoinDetails.h in Headers */,
 				F29C63C01ECBFF1A0027914E /* DBTEAMTeamGetInfoResult.h in Headers */,
 				F29C62E41ECBFF1A0027914E /* DBTEAMGroupMembersSelectorError.h in Headers */,
 				F29C669A1ECBFF1C0027914E /* DBUSERSGetAccountBatchError.h in Headers */,
@@ -5203,16 +5404,17 @@
 				F29C65241ECBFF1B0027914E /* DBTEAMLOGNoteShareReceiveDetails.h in Headers */,
 				F29C60F01ECBFF190027914E /* DBFILESUploadSessionFinishBatchLaunch.h in Headers */,
 				F29C63A21ECBFF1A0027914E /* DBTEAMTeamFolderCreateError.h in Headers */,
+				133C013F1F2A71E100C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h in Headers */,
 				F29C60081ECBFF190027914E /* DBASYNCPollArg.h in Headers */,
 				F29C62B81ECBFF1A0027914E /* DBTEAMFeaturesGetValuesBatchError.h in Headers */,
 				F29C65261ECBFF1B0027914E /* DBTEAMLOGOpenNoteSharedDetails.h in Headers */,
 				F29C64341ECBFF1B0027914E /* DBTEAMLOGDeviceType.h in Headers */,
 				F29C610E1ECBFF190027914E /* DBPAPERAddPaperDocUser.h in Headers */,
+				133C012C1F2A71E100C14AA1 /* DBTEAMLOGMemberStatus.h in Headers */,
 				F29C608A1ECBFF190027914E /* DBFILESLookupError.h in Headers */,
 				F29C62241ECBFF1A0027914E /* DBSHARINGPathLinkMetadata.h in Headers */,
 				F29C65C81ECBFF1C0027914E /* DBTEAMLOGSharedContentChangeInviteeRoleDetails.h in Headers */,
 				F29C61381ECBFF190027914E /* DBPAPERListUsersOnFolderContinueArgs.h in Headers */,
-				F29C65F61ECBFF1C0027914E /* DBTEAMLOGSharedFolderLogInfo.h in Headers */,
 				F29C63741ECBFF1A0027914E /* DBTEAMMobileClientSession.h in Headers */,
 				F29C624E1ECBFF1A0027914E /* DBSHARINGSharedFolderMemberError.h in Headers */,
 				F29C60CA1ECBFF190027914E /* DBFILESSearchError.h in Headers */,
@@ -5220,6 +5422,8 @@
 				F29C66861ECBFF1C0027914E /* DBTEAMPOLICIESSharedLinkCreatePolicy.h in Headers */,
 				F29C620A1ECBFF1A0027914E /* DBSHARINGListSharedLinksError.h in Headers */,
 				F29C63181ECBFF1A0027914E /* DBTEAMListMembersAppsArg.h in Headers */,
+				133C00E31F2A710300C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h in Headers */,
+				133C01471F2A71E100C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h in Headers */,
 				F29C602A1ECBFF190027914E /* DBCOMMONPathRootError.h in Headers */,
 				F29C63D21ECBFF1B0027914E /* DBTEAMUploadApiRateLimitValue.h in Headers */,
 				F29C61761ECBFF190027914E /* DBSHARINGAclUpdatePolicy.h in Headers */,
@@ -5246,6 +5450,7 @@
 				F29788C71E03692F00876A73 /* DBClientsManager.h in Headers */,
 				F29788C31E03692E00876A73 /* DBUserClient.h in Headers */,
 				F29788E31E03692F00876A73 /* DBTasks.h in Headers */,
+				133C01321F2A71E100C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h in Headers */,
 				F29788F71E03692F00876A73 /* DBTransportClientProtocol.h in Headers */,
 				F29788D71E03692F00876A73 /* DBRequestErrors.h in Headers */,
 				F29788CD1E03692F00876A73 /* DBTeamClient.h in Headers */,
@@ -5278,8 +5483,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				133C01631F2A71F500C14AA1 /* DBTEAMLOGMicrosoftOfficeAddinPolicy.h in Headers */,
 				F2A2CEB41E566611001D8449 /* DBSDKImports-macOS.h in Headers */,
 				F2AB345C1E89DEEE004F6379 /* DBAppClient.h in Headers */,
+				133C01561F2A71F500C14AA1 /* DBTEAMLOGDurationLogInfo.h in Headers */,
 				F29C67031ECBFF1C0027914E /* DBUSERSRouteObjects.h in Headers */,
 				F29C66FF1ECBFF1C0027914E /* DBTEAMRouteObjects.h in Headers */,
 				F29C66FB1ECBFF1C0027914E /* DBTEAMLOGRouteObjects.h in Headers */,
@@ -5295,6 +5502,7 @@
 				F29C66D31ECBFF1C0027914E /* DBFILESUserAuthRoutes.h in Headers */,
 				F29C66CF1ECBFF1C0027914E /* DBAUTHUserAuthRoutes.h in Headers */,
 				F29C66CB1ECBFF1C0027914E /* DBAUTHAppAuthRoutes.h in Headers */,
+				133C015A1F2A71F500C14AA1 /* DBTEAMLOGFileRequestsPolicy.h in Headers */,
 				F29C66C71ECBFF1C0027914E /* DBStoneValidators.h in Headers */,
 				F29C66C31ECBFF1C0027914E /* DBStoneSerializers.h in Headers */,
 				F29C66BF1ECBFF1C0027914E /* DBStoneBase.h in Headers */,
@@ -5306,6 +5514,7 @@
 				F29C66AD1ECBFF1C0027914E /* DBUSERSCOMMONAccountType.h in Headers */,
 				F29C66A91ECBFF1C0027914E /* DBUSERSTeamSpaceAllocation.h in Headers */,
 				F29C66A71ECBFF1C0027914E /* DBUSERSTeam.h in Headers */,
+				133C015C1F2A71F500C14AA1 /* DBTEAMLOGGroupUserManagementPolicy.h in Headers */,
 				F29C66A51ECBFF1C0027914E /* DBUSERSSpaceUsage.h in Headers */,
 				F29C66A31ECBFF1C0027914E /* DBUSERSSpaceAllocation.h in Headers */,
 				F29C66A11ECBFF1C0027914E /* DBUSERSName.h in Headers */,
@@ -5314,9 +5523,11 @@
 				F29C669B1ECBFF1C0027914E /* DBUSERSGetAccountBatchError.h in Headers */,
 				F29C66991ECBFF1C0027914E /* DBUSERSGetAccountBatchArg.h in Headers */,
 				F29C66971ECBFF1C0027914E /* DBUSERSGetAccountArg.h in Headers */,
+				133C015F1F2A71F500C14AA1 /* DBTEAMLOGMemberChangeStatusDetails.h in Headers */,
 				F29C66951ECBFF1C0027914E /* DBUSERSFullTeam.h in Headers */,
 				F29C66931ECBFF1C0027914E /* DBUSERSFullAccount.h in Headers */,
 				F29C66911ECBFF1C0027914E /* DBUSERSBasicAccount.h in Headers */,
+				133C01581F2A71F500C14AA1 /* DBTEAMLOGFailureDetailsLogInfo.h in Headers */,
 				F29C668F1ECBFF1C0027914E /* DBUSERSAccount.h in Headers */,
 				F29C668B1ECBFF1C0027914E /* DBTEAMPOLICIESTeamSharingPolicies.h in Headers */,
 				F29C66891ECBFF1C0027914E /* DBTEAMPOLICIESTeamMemberPolicies.h in Headers */,
@@ -5342,11 +5553,12 @@
 				F29C665F1ECBFF1C0027914E /* DBTEAMLOGTfaAddSecurityKeyDetails.h in Headers */,
 				F29C665D1ECBFF1C0027914E /* DBTEAMLOGTfaAddBackupPhoneDetails.h in Headers */,
 				F29C665B1ECBFF1C0027914E /* DBTEAMLOGTeamProfileRemoveLogoDetails.h in Headers */,
+				133C01601F2A71F500C14AA1 /* DBTEAMLOGMemberRequestsPolicy.h in Headers */,
 				F29C66591ECBFF1C0027914E /* DBTEAMLOGTeamProfileChangeNameDetails.h in Headers */,
 				F29C66571ECBFF1C0027914E /* DBTEAMLOGTeamProfileChangeLogoDetails.h in Headers */,
 				F29C66551ECBFF1C0027914E /* DBTEAMLOGTeamProfileAddLogoDetails.h in Headers */,
-				F29C66531ECBFF1C0027914E /* DBTEAMLOGTeamMergeDetails.h in Headers */,
 				F29C66511ECBFF1C0027914E /* DBTEAMLOGTeamMemberLogInfo.h in Headers */,
+				133C00EF1F2A714D00C14AA1 /* DBTEAMTeamNamespacesListArg.h in Headers */,
 				F29C664F1ECBFF1C0027914E /* DBTEAMLOGTeamLinkedAppLogInfo.h in Headers */,
 				F29C664D1ECBFF1C0027914E /* DBTEAMLOGTeamFolderStatus.h in Headers */,
 				F29C664B1ECBFF1C0027914E /* DBTEAMLOGTeamFolderRenameDetails.h in Headers */,
@@ -5389,9 +5601,9 @@
 				F29C66011ECBFF1C0027914E /* DBTEAMLOGSharedNoteOpenedDetails.h in Headers */,
 				F29C65FF1ECBFF1C0027914E /* DBTEAMLOGSharedFolderUnmountDetails.h in Headers */,
 				F29C65FD1ECBFF1C0027914E /* DBTEAMLOGSharedFolderTransferOwnershipDetails.h in Headers */,
+				133C01641F2A71F500C14AA1 /* DBTEAMLOGNetworkControlPolicy.h in Headers */,
 				F29C65FB1ECBFF1C0027914E /* DBTEAMLOGSharedFolderMountDetails.h in Headers */,
 				F29C65F91ECBFF1C0027914E /* DBTEAMLOGSharedFolderMembershipManagementPolicy.h in Headers */,
-				F29C65F71ECBFF1C0027914E /* DBTEAMLOGSharedFolderLogInfo.h in Headers */,
 				F29C65F51ECBFF1C0027914E /* DBTEAMLOGSharedFolderLinkPolicy.h in Headers */,
 				F29C65F31ECBFF1C0027914E /* DBTEAMLOGSharedFolderCreateDetails.h in Headers */,
 				F29C65F11ECBFF1C0027914E /* DBTEAMLOGSharedFolderChangeMemberPolicyDetails.h in Headers */,
@@ -5432,8 +5644,6 @@
 				F29C65AB1ECBFF1B0027914E /* DBTEAMLOGSfExternalInviteWarnDetails.h in Headers */,
 				F29C65A91ECBFF1B0027914E /* DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails.h in Headers */,
 				F29C65A71ECBFF1B0027914E /* DBTEAMLOGSfAddGroupDetails.h in Headers */,
-				F29C65A51ECBFF1B0027914E /* DBTEAMLOGSessionsManagementSessionLengthPolicy.h in Headers */,
-				F29C65A31ECBFF1B0027914E /* DBTEAMLOGSessionsManagementIdleLengthPolicy.h in Headers */,
 				F29C65A11ECBFF1B0027914E /* DBTEAMLOGSessionLogInfo.h in Headers */,
 				F29C659F1ECBFF1B0027914E /* DBTEAMLOGResellerSupportSessionStartDetails.h in Headers */,
 				F29C659D1ECBFF1B0027914E /* DBTEAMLOGResellerSupportSessionEndDetails.h in Headers */,
@@ -5494,7 +5704,6 @@
 				F29C652F1ECBFF1B0027914E /* DBTEAMLOGPaperChangeDeploymentPolicyDetails.h in Headers */,
 				F29C652D1ECBFF1B0027914E /* DBTEAMLOGPaperAccessType.h in Headers */,
 				F29C652B1ECBFF1B0027914E /* DBTEAMLOGOriginLogInfo.h in Headers */,
-				F29C65291ECBFF1B0027914E /* DBTEAMLOGOptionalChangePolicy.h in Headers */,
 				F29C65271ECBFF1B0027914E /* DBTEAMLOGOpenNoteSharedDetails.h in Headers */,
 				F29C65251ECBFF1B0027914E /* DBTEAMLOGNoteShareReceiveDetails.h in Headers */,
 				F29C65231ECBFF1B0027914E /* DBTEAMLOGNoteSharedDetails.h in Headers */,
@@ -5507,9 +5716,8 @@
 				F29C65151ECBFF1B0027914E /* DBTEAMLOGMobileSessionLogInfo.h in Headers */,
 				F29C65131ECBFF1B0027914E /* DBTEAMLOGMissingDetails.h in Headers */,
 				F29C65111ECBFF1B0027914E /* DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails.h in Headers */,
-				F29C650F1ECBFF1B0027914E /* DBTEAMLOGMemberUnsuspendDetails.h in Headers */,
 				F29C650D1ECBFF1B0027914E /* DBTEAMLOGMemberTransferAccountContentsDetails.h in Headers */,
-				F29C650B1ECBFF1B0027914E /* DBTEAMLOGMemberSuspendDetails.h in Headers */,
+				133C01781F2A71F500C14AA1 /* DBTEAMLOGTwoAccountPolicy.h in Headers */,
 				F29C65091ECBFF1B0027914E /* DBTEAMLOGMemberSuggestionsChangePolicyDetails.h in Headers */,
 				F29C65071ECBFF1B0027914E /* DBTEAMLOGMemberSuggestDetails.h in Headers */,
 				F29C65051ECBFF1B0027914E /* DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails.h in Headers */,
@@ -5517,13 +5725,7 @@
 				F29C65011ECBFF1B0027914E /* DBTEAMLOGMemberSpaceLimitsChangePolicyDetails.h in Headers */,
 				F29C64FF1ECBFF1B0027914E /* DBTEAMLOGMemberSpaceLimitsAddExceptionDetails.h in Headers */,
 				F29C64FD1ECBFF1B0027914E /* DBTEAMLOGMemberRequestsChangePolicyDetails.h in Headers */,
-				F29C64FB1ECBFF1B0027914E /* DBTEAMLOGMemberRequestsChangePolicy.h in Headers */,
-				F29C64F91ECBFF1B0027914E /* DBTEAMLOGMemberRecoverDetails.h in Headers */,
 				F29C64F71ECBFF1B0027914E /* DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h in Headers */,
-				F29C64F51ECBFF1B0027914E /* DBTEAMLOGMemberLeaveDetails.h in Headers */,
-				F29C64F31ECBFF1B0027914E /* DBTEAMLOGMemberJoinDetails.h in Headers */,
-				F29C64F11ECBFF1B0027914E /* DBTEAMLOGMemberInviteDetails.h in Headers */,
-				F29C64EF1ECBFF1B0027914E /* DBTEAMLOGMemberChangeRoleDetails.h in Headers */,
 				F29C64ED1ECBFF1B0027914E /* DBTEAMLOGMemberChangeNameDetails.h in Headers */,
 				F29C64EB1ECBFF1B0027914E /* DBTEAMLOGMemberChangeMembershipTypeDetails.h in Headers */,
 				F29C64E91ECBFF1B0027914E /* DBTEAMLOGMemberChangeEmailDetails.h in Headers */,
@@ -5532,13 +5734,13 @@
 				F29C64E31ECBFF1B0027914E /* DBTEAMLOGLinkAudience.h in Headers */,
 				F29C64E11ECBFF1B0027914E /* DBTEAMLOGHostLogInfo.h in Headers */,
 				F29C64DF1ECBFF1B0027914E /* DBTEAMLOGGroupUserManagementChangePolicyDetails.h in Headers */,
-				F29C64DD1ECBFF1B0027914E /* DBTEAMLOGGroupsUserManagementPolicy.h in Headers */,
 				F29C64DB1ECBFF1B0027914E /* DBTEAMLOGGroupRenameDetails.h in Headers */,
 				F29C64D91ECBFF1B0027914E /* DBTEAMLOGGroupRemoveMemberDetails.h in Headers */,
 				F29C64D71ECBFF1B0027914E /* DBTEAMLOGGroupRemoveExternalIdDetails.h in Headers */,
 				F29C64D51ECBFF1B0027914E /* DBTEAMLOGGroupMovedDetails.h in Headers */,
 				F29C64D31ECBFF1B0027914E /* DBTEAMLOGGroupManagementType.h in Headers */,
 				F29C64D11ECBFF1B0027914E /* DBTEAMLOGGroupLogInfo.h in Headers */,
+				133C00E41F2A710800C14AA1 /* DBTEAMTeamFolderTeamSharedDropboxError.h in Headers */,
 				F29C64CF1ECBFF1B0027914E /* DBTEAMLOGGroupJoinPolicyUpdatedDetails.h in Headers */,
 				F29C64CD1ECBFF1B0027914E /* DBTEAMLOGGroupJoinPolicy.h in Headers */,
 				F29C64CB1ECBFF1B0027914E /* DBTEAMLOGGroupDescriptionUpdatedDetails.h in Headers */,
@@ -5550,10 +5752,12 @@
 				F29C64BF1ECBFF1B0027914E /* DBTEAMLOGGroupAddMemberDetails.h in Headers */,
 				F29C64BD1ECBFF1B0027914E /* DBTEAMLOGGroupAddExternalIdDetails.h in Headers */,
 				F29C64BB1ECBFF1B0027914E /* DBTEAMLOGGoogleSsoChangePolicyDetails.h in Headers */,
+				133C00D81F2A708D00C14AA1 /* DBSHARINGAudienceExceptionContentInfo.h in Headers */,
 				F29C64B91ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsResult.h in Headers */,
 				F29C64B71ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsError.h in Headers */,
 				F29C64B51ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsContinueError.h in Headers */,
 				F29C64B31ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsContinueArg.h in Headers */,
+				133C00DE1F2A70CA00C14AA1 /* DBSHARINGAudienceExceptions.h in Headers */,
 				F29C64B11ECBFF1B0027914E /* DBTEAMLOGGetTeamEventsArg.h in Headers */,
 				F29C64AF1ECBFF1B0027914E /* DBTEAMLOGGeoLocationLogInfo.h in Headers */,
 				F29C64AD1ECBFF1B0027914E /* DBTEAMLOGFolderLogInfo.h in Headers */,
@@ -5586,21 +5790,23 @@
 				F29C64771ECBFF1B0027914E /* DBTEAMLOGFileDeleteDetails.h in Headers */,
 				F29C64751ECBFF1B0027914E /* DBTEAMLOGFileCopyDetails.h in Headers */,
 				F29C64731ECBFF1B0027914E /* DBTEAMLOGFileCommentsChangePolicyDetails.h in Headers */,
+				133C01621F2A71F500C14AA1 /* DBTEAMLOGMemberSuggestionsPolicy.h in Headers */,
 				F29C64711ECBFF1B0027914E /* DBTEAMLOGFileAddDetails.h in Headers */,
 				F29C646F1ECBFF1B0027914E /* DBTEAMLOGFileAddCommentDetails.h in Headers */,
-				F29C646D1ECBFF1B0027914E /* DBTEAMLOGExternalSharingPolicy.h in Headers */,
-				F29C646B1ECBFF1B0027914E /* DBTEAMLOGExternalSharingAccessibilityPolicy.h in Headers */,
 				F29C64691ECBFF1B0027914E /* DBTEAMLOGExtendedVersionHistoryPolicy.h in Headers */,
 				F29C64671ECBFF1B0027914E /* DBTEAMLOGExtendedVersionHistoryChangePolicyDetails.h in Headers */,
 				F29C64651ECBFF1B0027914E /* DBTEAMLOGEventType.h in Headers */,
 				F29C64631ECBFF1B0027914E /* DBTEAMLOGEventDetails.h in Headers */,
 				F29C64611ECBFF1B0027914E /* DBTEAMLOGEventCategory.h in Headers */,
-				F29C645F1ECBFF1B0027914E /* DBTEAMLOGEnableDisableChangePolicy.h in Headers */,
+				133C017A1F2A71F500C14AA1 /* DBTEAMLOGWebSessionsIdleLengthPolicy.h in Headers */,
 				F29C645D1ECBFF1B0027914E /* DBTEAMLOGEnabledDomainInvitesDetails.h in Headers */,
 				F29C645B1ECBFF1B0027914E /* DBTEAMLOGEmmRemoveExceptionDetails.h in Headers */,
 				F29C64591ECBFF1B0027914E /* DBTEAMLOGEmmRefreshAuthTokenDetails.h in Headers */,
+				133C00F91F2A719100C14AA1 /* DBTEAMNamespaceType.h in Headers */,
 				F29C64571ECBFF1B0027914E /* DBTEAMLOGEmmLoginSuccessDetails.h in Headers */,
 				F29C64551ECBFF1B0027914E /* DBTEAMLOGEmmCreateUsageReportDetails.h in Headers */,
+				133C01771F2A71F500C14AA1 /* DBTEAMLOGTimeUnit.h in Headers */,
+				133C016B1F2A71F500C14AA1 /* DBTEAMLOGSharingFolderJoinPolicy.h in Headers */,
 				F29C64531ECBFF1B0027914E /* DBTEAMLOGEmmCreateExceptionsReportDetails.h in Headers */,
 				F29C64511ECBFF1B0027914E /* DBTEAMLOGEmmChangePolicyDetails.h in Headers */,
 				F29C644F1ECBFF1B0027914E /* DBTEAMLOGEmmAddExceptionDetails.h in Headers */,
@@ -5645,6 +5851,7 @@
 				F29C64011ECBFF1B0027914E /* DBTEAMLOGAppUnlinkTeamDetails.h in Headers */,
 				F29C63FF1ECBFF1B0027914E /* DBTEAMLOGAppLogInfo.h in Headers */,
 				F29C63FD1ECBFF1B0027914E /* DBTEAMLOGAppLinkUserDetails.h in Headers */,
+				133C015B1F2A71F500C14AA1 /* DBTEAMLOGGoogleSsoPolicy.h in Headers */,
 				F29C63FB1ECBFF1B0027914E /* DBTEAMLOGAppLinkTeamDetails.h in Headers */,
 				F29C63F91ECBFF1B0027914E /* DBTEAMLOGApiSessionLogInfo.h in Headers */,
 				F29C63F71ECBFF1B0027914E /* DBTEAMLOGAllowDownloadEnabledDetails.h in Headers */,
@@ -5663,6 +5870,7 @@
 				F29C63D71ECBFF1B0027914E /* DBTEAMUserSelectorError.h in Headers */,
 				F29C63D51ECBFF1B0027914E /* DBTEAMUserSelectorArg.h in Headers */,
 				F29C63D31ECBFF1B0027914E /* DBTEAMUploadApiRateLimitValue.h in Headers */,
+				133C00CF1F2A6F4100C14AA1 /* DBFILESCreateFolderResult.h in Headers */,
 				F29C63D11ECBFF1B0027914E /* DBTEAMUpdatePropertyTemplateResult.h in Headers */,
 				F29C63CF1ECBFF1B0027914E /* DBTEAMUpdatePropertyTemplateArg.h in Headers */,
 				F29C63CD1ECBFF1A0027914E /* DBTEAMTokenGetAuthenticatedAdminResult.h in Headers */,
@@ -5681,6 +5889,7 @@
 				F29C63B31ECBFF1A0027914E /* DBTEAMTeamFolderListError.h in Headers */,
 				F29C63B11ECBFF1A0027914E /* DBTEAMTeamFolderListContinueError.h in Headers */,
 				F29C63AF1ECBFF1A0027914E /* DBTEAMTeamFolderListContinueArg.h in Headers */,
+				133C00DB1F2A70B300C14AA1 /* DBSHARINGShareFolderArgBase.h in Headers */,
 				F29C63AD1ECBFF1A0027914E /* DBTEAMTeamFolderListArg.h in Headers */,
 				F29C63AB1ECBFF1A0027914E /* DBTEAMTeamFolderInvalidStatusError.h in Headers */,
 				F29C63A91ECBFF1A0027914E /* DBTEAMTeamFolderIdListArg.h in Headers */,
@@ -5708,6 +5917,7 @@
 				F29C637B1ECBFF1A0027914E /* DBTEAMRevokeDeviceSessionArg.h in Headers */,
 				F29C63791ECBFF1A0027914E /* DBTEAMRevokeDesktopClientArg.h in Headers */,
 				F29C63771ECBFF1A0027914E /* DBTEAMRemovedStatus.h in Headers */,
+				133C01671F2A71F500C14AA1 /* DBTEAMLOGRelocateAssetReferencesLogInfo.h in Headers */,
 				F29C63751ECBFF1A0027914E /* DBTEAMMobileClientSession.h in Headers */,
 				F29C63731ECBFF1A0027914E /* DBTEAMMobileClientPlatform.h in Headers */,
 				F29C63711ECBFF1A0027914E /* DBTEAMMembersUnsuspendError.h in Headers */,
@@ -5717,7 +5927,9 @@
 				F29C63691ECBFF1A0027914E /* DBTEAMMembersSetProfileArg.h in Headers */,
 				F29C63671ECBFF1A0027914E /* DBTEAMMembersSetPermissionsResult.h in Headers */,
 				F29C63651ECBFF1A0027914E /* DBTEAMMembersSetPermissionsError.h in Headers */,
+				133C00E91F2A713000C14AA1 /* DBTEAMTeamNamespacesListContinueError.h in Headers */,
 				F29C63631ECBFF1A0027914E /* DBTEAMMembersSetPermissionsArg.h in Headers */,
+				133C01531F2A71F500C14AA1 /* DBTEAMLOGAdminRole.h in Headers */,
 				F29C63611ECBFF1A0027914E /* DBTEAMMembersSendWelcomeError.h in Headers */,
 				F29C635F1ECBFF1A0027914E /* DBTEAMMembersRemoveError.h in Headers */,
 				F29C635D1ECBFF1A0027914E /* DBTEAMMembersRemoveArg.h in Headers */,
@@ -5745,6 +5957,8 @@
 				F29C63311ECBFF1A0027914E /* DBTEAMMemberAccess.h in Headers */,
 				F29C632F1ECBFF1A0027914E /* DBTEAMListTeamDevicesResult.h in Headers */,
 				F29C632D1ECBFF1A0027914E /* DBTEAMListTeamDevicesError.h in Headers */,
+				133C01751F2A71F500C14AA1 /* DBTEAMLOGTeamName.h in Headers */,
+				133C00D21F2A6F6B00C14AA1 /* DBFILESFileOpsResult.h in Headers */,
 				F29C632B1ECBFF1A0027914E /* DBTEAMListTeamDevicesArg.h in Headers */,
 				F29C63291ECBFF1A0027914E /* DBTEAMListTeamAppsResult.h in Headers */,
 				F29C63271ECBFF1A0027914E /* DBTEAMListTeamAppsError.h in Headers */,
@@ -5752,6 +5966,8 @@
 				F29C63231ECBFF1A0027914E /* DBTEAMListMembersDevicesResult.h in Headers */,
 				F29C63211ECBFF1A0027914E /* DBTEAMListMembersDevicesError.h in Headers */,
 				F29C631F1ECBFF1A0027914E /* DBTEAMListMembersDevicesArg.h in Headers */,
+				133C016A1F2A71F500C14AA1 /* DBTEAMLOGSharedFolderMemberPolicy.h in Headers */,
+				133C01541F2A71F500C14AA1 /* DBTEAMLOGCertificate.h in Headers */,
 				F29C631D1ECBFF1A0027914E /* DBTEAMListMembersAppsResult.h in Headers */,
 				F29C631B1ECBFF1A0027914E /* DBTEAMListMembersAppsError.h in Headers */,
 				F29C63191ECBFF1A0027914E /* DBTEAMListMembersAppsArg.h in Headers */,
@@ -5774,6 +5990,8 @@
 				F29C62F71ECBFF1A0027914E /* DBTEAMGroupsListContinueError.h in Headers */,
 				F29C62F51ECBFF1A0027914E /* DBTEAMGroupsListContinueArg.h in Headers */,
 				F29C62F31ECBFF1A0027914E /* DBTEAMGroupsListArg.h in Headers */,
+				133C015D1F2A71F500C14AA1 /* DBTEAMLOGJoinTeamDetails.h in Headers */,
+				133C01721F2A71F500C14AA1 /* DBTEAMLOGTeamMembershipType.h in Headers */,
 				F29C62F11ECBFF1A0027914E /* DBTEAMGroupsGetInfoItem.h in Headers */,
 				F29C62EF1ECBFF1A0027914E /* DBTEAMGroupsGetInfoError.h in Headers */,
 				F29C62ED1ECBFF1A0027914E /* DBTEAMGroupSelectorWithTeamGroupError.h in Headers */,
@@ -5795,6 +6013,7 @@
 				F29C62CD1ECBFF1A0027914E /* DBTEAMGroupDeleteError.h in Headers */,
 				F29C62CB1ECBFF1A0027914E /* DBTEAMGroupCreateError.h in Headers */,
 				F29C62C91ECBFF1A0027914E /* DBTEAMGroupCreateArg.h in Headers */,
+				133C01661F2A71F500C14AA1 /* DBTEAMLOGPaperPolicy.h in Headers */,
 				F29C62C71ECBFF1A0027914E /* DBTEAMGroupAccessType.h in Headers */,
 				F29C62C51ECBFF1A0027914E /* DBTEAMGetStorageReport.h in Headers */,
 				F29C62C31ECBFF1A0027914E /* DBTEAMGetMembershipReport.h in Headers */,
@@ -5803,6 +6022,7 @@
 				F29C62BD1ECBFF1A0027914E /* DBTEAMFeatureValue.h in Headers */,
 				F29C62BB1ECBFF1A0027914E /* DBTEAMFeaturesGetValuesBatchResult.h in Headers */,
 				F29C62B91ECBFF1A0027914E /* DBTEAMFeaturesGetValuesBatchError.h in Headers */,
+				133C00F31F2A717000C14AA1 /* DBSHARINGInsufficientPlan.h in Headers */,
 				F29C62B71ECBFF1A0027914E /* DBTEAMFeaturesGetValuesBatchArg.h in Headers */,
 				F29C62B51ECBFF1A0027914E /* DBTEAMFeature.h in Headers */,
 				F29C62B31ECBFF1A0027914E /* DBTEAMDeviceSessionArg.h in Headers */,
@@ -5822,6 +6042,7 @@
 				F29C62951ECBFF1A0027914E /* DBSHARINGVisibility.h in Headers */,
 				F29C62931ECBFF1A0027914E /* DBSHARINGViewerInfoPolicy.h in Headers */,
 				F29C62911ECBFF1A0027914E /* DBSHARINGUserMembershipInfo.h in Headers */,
+				133C01551F2A71F500C14AA1 /* DBTEAMLOGContentPermanentDeletePolicy.h in Headers */,
 				F29C628F1ECBFF1A0027914E /* DBSHARINGUserInfo.h in Headers */,
 				F29C628D1ECBFF1A0027914E /* DBSHARINGUpdateFolderPolicyError.h in Headers */,
 				F29C628B1ECBFF1A0027914E /* DBSHARINGUpdateFolderPolicyArg.h in Headers */,
@@ -5832,6 +6053,7 @@
 				F29C62811ECBFF1A0027914E /* DBSHARINGUnshareFolderArg.h in Headers */,
 				F29C627F1ECBFF1A0027914E /* DBSHARINGUnshareFileError.h in Headers */,
 				F29C627D1ECBFF1A0027914E /* DBSHARINGUnshareFileArg.h in Headers */,
+				133C01571F2A71F500C14AA1 /* DBTEAMLOGEmmPolicy.h in Headers */,
 				F29C627B1ECBFF1A0027914E /* DBSHARINGUnmountFolderError.h in Headers */,
 				F29C62791ECBFF1A0027914E /* DBSHARINGUnmountFolderArg.h in Headers */,
 				F29C62771ECBFF1A0027914E /* DBSHARINGTransferFolderError.h in Headers */,
@@ -5840,6 +6062,7 @@
 				F29C62711ECBFF1A0027914E /* DBSHARINGSharingUserError.h in Headers */,
 				F29C626F1ECBFF1A0027914E /* DBSHARINGSharingFileAccessError.h in Headers */,
 				F29C626D1ECBFF1A0027914E /* DBSHARINGSharePathError.h in Headers */,
+				133C01741F2A71F500C14AA1 /* DBTEAMLOGTeamMergeToDetails.h in Headers */,
 				F29C626B1ECBFF1A0027914E /* DBSHARINGShareFolderLaunch.h in Headers */,
 				F29C62691ECBFF1A0027914E /* DBSHARINGShareFolderJobStatus.h in Headers */,
 				F29C62671ECBFF1A0027914E /* DBSHARINGShareFolderErrorBase.h in Headers */,
@@ -5870,6 +6093,7 @@
 				F29C62351ECBFF1A0027914E /* DBSHARINGRemoveFileMemberError.h in Headers */,
 				F29C62331ECBFF1A0027914E /* DBSHARINGRemoveFileMemberArg.h in Headers */,
 				F29C62311ECBFF1A0027914E /* DBSHARINGRelinquishFolderMembershipError.h in Headers */,
+				133C00D51F2A702A00C14AA1 /* DBTEAMPOLICIESOfficeAddInPolicy.h in Headers */,
 				F29C622F1ECBFF1A0027914E /* DBSHARINGRelinquishFolderMembershipArg.h in Headers */,
 				F29C622D1ECBFF1A0027914E /* DBSHARINGRelinquishFileMembershipError.h in Headers */,
 				F29C622B1ECBFF1A0027914E /* DBSHARINGRelinquishFileMembershipArg.h in Headers */,
@@ -5892,14 +6116,17 @@
 				F29C61DD1ECBFF1A0027914E /* DBSHARINGLinkPermissions.h in Headers */,
 				F29C602F1ECBFF190027914E /* DBFILESAddPropertiesError.h in Headers */,
 				F29C61E31ECBFF1A0027914E /* DBSHARINGListFileMembersBatchArg.h in Headers */,
+				133C016E1F2A71F500C14AA1 /* DBTEAMLOGSmartSyncNotOptOutDetails.h in Headers */,
 				F29C609D1ECBFF190027914E /* DBFILESPropertyGroupUpdate.h in Headers */,
 				F29C61011ECBFF190027914E /* DBFILESUploadWriteFailed.h in Headers */,
 				F29C604F1ECBFF190027914E /* DBFILESDeleteResult.h in Headers */,
+				133C01701F2A71F500C14AA1 /* DBTEAMLOGSmartSyncOptOutPolicy.h in Headers */,
 				F29C61131ECBFF190027914E /* DBPAPERAddPaperDocUserResult.h in Headers */,
 				F29C61911ECBFF190027914E /* DBSHARINGCreateSharedLinkWithSettingsError.h in Headers */,
 				F29C60431ECBFF190027914E /* DBFILESDeleteBatchJobStatus.h in Headers */,
 				F29C61AD1ECBFF1A0027914E /* DBSHARINGGetFileMetadataArg.h in Headers */,
 				F29C60091ECBFF190027914E /* DBASYNCPollArg.h in Headers */,
+				133C01681F2A71F500C14AA1 /* DBTEAMLOGSharedContentDownloadsPolicy.h in Headers */,
 				F29C603D1ECBFF190027914E /* DBFILESDeleteArg.h in Headers */,
 				F29C61B91ECBFF1A0027914E /* DBSHARINGGetSharedLinkFileError.h in Headers */,
 				F29C619F1ECBFF190027914E /* DBSHARINGFileMemberActionResult.h in Headers */,
@@ -5923,6 +6150,7 @@
 				F29C61B11ECBFF1A0027914E /* DBSHARINGGetFileMetadataBatchResult.h in Headers */,
 				F29C61071ECBFF190027914E /* DBFILESWriteError.h in Headers */,
 				F29C607F1ECBFF190027914E /* DBFILESListFolderLongpollError.h in Headers */,
+				133C00EA1F2A713000C14AA1 /* DBTEAMTeamNamespacesListResult.h in Headers */,
 				F29C60F51ECBFF190027914E /* DBFILESUploadSessionFinishBatchResultEntry.h in Headers */,
 				F29C60411ECBFF190027914E /* DBFILESDeleteBatchError.h in Headers */,
 				F29C619D1ECBFF190027914E /* DBSHARINGFileMemberActionIndividualResult.h in Headers */,
@@ -5936,14 +6164,17 @@
 				F29C60911ECBFF190027914E /* DBFILESMediaMetadata.h in Headers */,
 				F29C61331ECBFF190027914E /* DBPAPERListPaperDocsSortOrder.h in Headers */,
 				F29C60AF1ECBFF190027914E /* DBFILESRelocationPath.h in Headers */,
+				133C00E11F2A70EA00C14AA1 /* DBTEAMNamespaceMetadata.h in Headers */,
 				F29C620B1ECBFF1A0027914E /* DBSHARINGListSharedLinksError.h in Headers */,
 				F29C61C71ECBFF1A0027914E /* DBSHARINGInsufficientQuotaAmounts.h in Headers */,
 				F29C61991ECBFF190027914E /* DBSHARINGFileLinkMetadata.h in Headers */,
 				F29C61F11ECBFF1A0027914E /* DBSHARINGListFilesArg.h in Headers */,
 				F29C61551ECBFF190027914E /* DBPAPERSharingPublicPolicyType.h in Headers */,
+				133C00FF1F2A71B200C14AA1 /* DBFILESRelocationBatchResultData.h in Headers */,
 				F29C60391ECBFF190027914E /* DBFILESCreateFolderArg.h in Headers */,
 				F29C61C11ECBFF1A0027914E /* DBSHARINGGetSharedLinksResult.h in Headers */,
 				F29C601F1ECBFF190027914E /* DBAUTHTokenFromOAuth1Arg.h in Headers */,
+				133C01791F2A71F500C14AA1 /* DBTEAMLOGWebSessionsFixedLengthPolicy.h in Headers */,
 				F29C60D31ECBFF190027914E /* DBFILESSearchResult.h in Headers */,
 				F29C60171ECBFF190027914E /* DBAUTHInvalidAccountTypeError.h in Headers */,
 				F29C606D1ECBFF190027914E /* DBFILESGetTemporaryLinkResult.h in Headers */,
@@ -5952,11 +6183,14 @@
 				F29C61591ECBFF190027914E /* DBPAPERUserInfoWithPermissionLevel.h in Headers */,
 				F29C60FD1ECBFF190027914E /* DBFILESUploadSessionStartArg.h in Headers */,
 				F29C61C31ECBFF1A0027914E /* DBSHARINGGroupInfo.h in Headers */,
+				133C01731F2A71F500C14AA1 /* DBTEAMLOGTeamMergeFromDetails.h in Headers */,
 				F29C62091ECBFF1A0027914E /* DBSHARINGListSharedLinksArg.h in Headers */,
 				F29C606B1ECBFF190027914E /* DBFILESGetTemporaryLinkError.h in Headers */,
 				F29C61811ECBFF190027914E /* DBSHARINGAddMember.h in Headers */,
 				F29C61A71ECBFF1A0027914E /* DBSHARINGFolderLinkMetadata.h in Headers */,
+				133C015E1F2A71F500C14AA1 /* DBTEAMLOGMemberChangeAdminRoleDetails.h in Headers */,
 				F29C60151ECBFF190027914E /* DBAUTHAuthError.h in Headers */,
+				133C016F1F2A71F500C14AA1 /* DBTEAMLOGSmartSyncOptOutDetails.h in Headers */,
 				F29C61211ECBFF190027914E /* DBPAPERFolderSharingPolicyType.h in Headers */,
 				F29C60611ECBFF190027914E /* DBFILESGetCopyReferenceError.h in Headers */,
 				F29C60051ECBFF190027914E /* DBASYNCLaunchEmptyResult.h in Headers */,
@@ -5972,6 +6206,7 @@
 				F29C61DF1ECBFF1A0027914E /* DBSHARINGLinkSettings.h in Headers */,
 				F29C603F1ECBFF190027914E /* DBFILESDeleteBatchArg.h in Headers */,
 				F29C60F31ECBFF190027914E /* DBFILESUploadSessionFinishBatchResult.h in Headers */,
+				133C01521F2A71F500C14AA1 /* DBTEAMLOGAccountCaptureAvailability.h in Headers */,
 				F29C600D1ECBFF190027914E /* DBASYNCPollError.h in Headers */,
 				F29C61F31ECBFF1A0027914E /* DBSHARINGListFilesContinueArg.h in Headers */,
 				F29C61EF1ECBFF1A0027914E /* DBSHARINGListFileMembersIndividualResult.h in Headers */,
@@ -5986,6 +6221,7 @@
 				F29C60B91ECBFF190027914E /* DBFILESRestoreError.h in Headers */,
 				F29C61711ECBFF190027914E /* DBPROPERTIESPropertyType.h in Headers */,
 				F29C62031ECBFF1A0027914E /* DBSHARINGListFoldersContinueArg.h in Headers */,
+				133C00FE1F2A71B200C14AA1 /* DBFILESDeleteBatchResultData.h in Headers */,
 				F29C61F51ECBFF1A0027914E /* DBSHARINGListFilesContinueError.h in Headers */,
 				F29C60631ECBFF190027914E /* DBFILESGetCopyReferenceResult.h in Headers */,
 				F29C60331ECBFF190027914E /* DBFILESAlphaGetMetadataError.h in Headers */,
@@ -6011,6 +6247,7 @@
 				F29C616D1ECBFF190027914E /* DBPROPERTIESPropertyGroupTemplate.h in Headers */,
 				F29C61BF1ECBFF1A0027914E /* DBSHARINGGetSharedLinksError.h in Headers */,
 				F29C60991ECBFF190027914E /* DBFILESPreviewError.h in Headers */,
+				133C01651F2A71F500C14AA1 /* DBTEAMLOGPaperMemberPolicy.h in Headers */,
 				F29C61E11ECBFF1A0027914E /* DBSHARINGListFileMembersArg.h in Headers */,
 				F29C611F1ECBFF190027914E /* DBPAPERFoldersContainingPaperDoc.h in Headers */,
 				F29C60F91ECBFF190027914E /* DBFILESUploadSessionLookupError.h in Headers */,
@@ -6023,6 +6260,7 @@
 				F29C61171ECBFF190027914E /* DBPAPERDocLookupError.h in Headers */,
 				F29C61031ECBFF190027914E /* DBFILESVideoMetadata.h in Headers */,
 				F29C60A11ECBFF190027914E /* DBFILESRelocationArg.h in Headers */,
+				133C016D1F2A71F500C14AA1 /* DBTEAMLOGSharingMemberPolicy.h in Headers */,
 				F29C61111ECBFF190027914E /* DBPAPERAddPaperDocUserMemberResult.h in Headers */,
 				F29C614D1ECBFF190027914E /* DBPAPERPaperDocSharingPolicy.h in Headers */,
 				F29C60451ECBFF190027914E /* DBFILESDeleteBatchLaunch.h in Headers */,
@@ -6050,6 +6288,7 @@
 				F29C61051ECBFF190027914E /* DBFILESWriteConflictError.h in Headers */,
 				F29C61511ECBFF190027914E /* DBPAPERRemovePaperDocUser.h in Headers */,
 				F29C60291ECBFF190027914E /* DBCOMMONPathRoot.h in Headers */,
+				133C01711F2A71F500C14AA1 /* DBTEAMLOGSsoPolicy.h in Headers */,
 				F29C61B31ECBFF1A0027914E /* DBSHARINGGetFileMetadataError.h in Headers */,
 				F29C60531ECBFF190027914E /* DBFILESDownloadArg.h in Headers */,
 				F29C615B1ECBFF190027914E /* DBPAPERUserOnPaperDocFilter.h in Headers */,
@@ -6057,6 +6296,7 @@
 				F29C614F1ECBFF190027914E /* DBPAPERRefPaperDoc.h in Headers */,
 				F29C606F1ECBFF190027914E /* DBFILESGpsCoordinates.h in Headers */,
 				F29C615F1ECBFF190027914E /* DBPROPERTIESGetPropertyTemplateArg.h in Headers */,
+				133C01611F2A71F500C14AA1 /* DBTEAMLOGMemberStatus.h in Headers */,
 				F29C62071ECBFF1A0027914E /* DBSHARINGListFoldersResult.h in Headers */,
 				F29C60F71ECBFF190027914E /* DBFILESUploadSessionFinishError.h in Headers */,
 				F29C61CB1ECBFF1A0027914E /* DBSHARINGInviteeMembershipInfo.h in Headers */,
@@ -6067,9 +6307,11 @@
 				F29C604D1ECBFF190027914E /* DBFILESDeleteError.h in Headers */,
 				F29C61CF1ECBFF1A0027914E /* DBSHARINGJobStatus.h in Headers */,
 				F29C60871ECBFF190027914E /* DBFILESListRevisionsError.h in Headers */,
+				133C01761F2A71F500C14AA1 /* DBTEAMLOGTfaPolicy.h in Headers */,
 				F29C60EB1ECBFF190027914E /* DBFILESUploadSessionFinishArg.h in Headers */,
 				F29C608F1ECBFF190027914E /* DBFILESMediaInfo.h in Headers */,
 				F29C60C31ECBFF190027914E /* DBFILESSaveUrlError.h in Headers */,
+				133C01691F2A71F500C14AA1 /* DBTEAMLOGSharedContentViewerInfoPolicy.h in Headers */,
 				F29C60231ECBFF190027914E /* DBAUTHTokenFromOAuth1Result.h in Headers */,
 				F29C609B1ECBFF190027914E /* DBFILESPropertiesError.h in Headers */,
 				F29C613B1ECBFF190027914E /* DBPAPERListUsersOnFolderResponse.h in Headers */,
@@ -6086,6 +6328,7 @@
 				F29C60AD1ECBFF190027914E /* DBFILESRelocationError.h in Headers */,
 				F29C609F1ECBFF190027914E /* DBFILESPropertyGroupWithPath.h in Headers */,
 				F29C61DB1ECBFF1A0027914E /* DBSHARINGLinkPermission.h in Headers */,
+				133C016C1F2A71F500C14AA1 /* DBTEAMLOGSharingLinkPolicy.h in Headers */,
 				F29C61831ECBFF190027914E /* DBSHARINGAddMemberSelectorError.h in Headers */,
 				F29C61D71ECBFF1A0027914E /* DBSHARINGLinkMetadata.h in Headers */,
 				F29C60D51ECBFF190027914E /* DBFILESSharingInfo.h in Headers */,
@@ -6122,6 +6365,7 @@
 				F29C60071ECBFF190027914E /* DBASYNCLaunchResultBase.h in Headers */,
 				F29C607B1ECBFF190027914E /* DBFILESListFolderGetLatestCursorResult.h in Headers */,
 				F29C60691ECBFF190027914E /* DBFILESGetTemporaryLinkArg.h in Headers */,
+				133C00F01F2A714D00C14AA1 /* DBTEAMTeamNamespacesListContinueArg.h in Headers */,
 				F29C60DB1ECBFF190027914E /* DBFILESThumbnailFormat.h in Headers */,
 				F29C60ED1ECBFF190027914E /* DBFILESUploadSessionFinishBatchArg.h in Headers */,
 				F29C60E51ECBFF190027914E /* DBFILESUploadErrorWithProperties.h in Headers */,
@@ -6143,6 +6387,7 @@
 				F29C60BB1ECBFF190027914E /* DBFILESSaveCopyReferenceArg.h in Headers */,
 				F29C60D11ECBFF190027914E /* DBFILESSearchMode.h in Headers */,
 				F29C637D1ECBFF1A0027914E /* DBTEAMRevokeDeviceSessionBatchArg.h in Headers */,
+				133C01591F2A71F500C14AA1 /* DBTEAMLOGFileCommentsPolicy.h in Headers */,
 				F29C63E31ECBFF1B0027914E /* DBTEAMCOMMONTimeRange.h in Headers */,
 				F2AB0D8C1E666C96002617AB /* ObjectiveDropboxOfficialLib.h in Headers */,
 				F2C187EC1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */,
@@ -6180,6 +6425,7 @@
 				F2A2CE921E562901001D8449 /* DBTasks+Protected.h in Headers */,
 				F2A2CE931E56290B001D8449 /* DBTasksImpl.h in Headers */,
 				F2A2CE961E562917001D8449 /* DBChunkInputStream.h in Headers */,
+				133C00F81F2A719100C14AA1 /* DBTEAMHasTeamSharedDropboxValue.h in Headers */,
 				F2A2CEAA1E56567C001D8449 /* DBTransportBaseClient+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
