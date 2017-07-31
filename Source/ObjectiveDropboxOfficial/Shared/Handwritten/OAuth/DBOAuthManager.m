@@ -48,7 +48,8 @@ static DBOAuthManager *s_sharedOAuthManager;
 #pragma mark - Constructors
 
 - (instancetype)initWithAppKey:(NSString *)appKey {
-  NSString *hostToUse = !kSDKDebug ? @"www.dropbox.com" : @"meta-dbdev.dev.corp.dropbox.com";
+  NSString *hostToUse =
+      !kSDKDebug ? @"www.dropbox.com" : [NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kSDKDebugHost];
   return [self initWithAppKey:appKey host:hostToUse];
 }
 

@@ -31,9 +31,9 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
       };
     } else {
       kV2SDKBaseHosts = @{
-        @"api" : @"https://api-dbdev.dev.corp.dropbox.com/2",
-        @"content" : @"https://api-content-dbdev.dev.corp.dropbox.com/2",
-        @"notify" : @"https://notify-dbdev.dev.corp.dropboxapi.com/2",
+        @"api" : [NSString stringWithFormat:@"https://api-%@.dev.corp.dropbox.com/2", kSDKDebugHost],
+        @"content" : [NSString stringWithFormat:@"https://api-content-%@.dev.corp.dropbox.com/2", kSDKDebugHost],
+        @"notify" : [NSString stringWithFormat:@"https://notify-%@.dev.corp.dropboxapi.com/2", kSDKDebugHost],
       };
     }
 
