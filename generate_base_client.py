@@ -45,12 +45,6 @@ _cmdline_parser.add_argument(
     help='Path to generation output.',
 )
 _cmdline_parser.add_argument(
-    '-c',
-    '--clang-format-path',
-    type=str,
-    help='Path clang-format tool for formatting code.',
-)
-_cmdline_parser.add_argument(
     '-f',
     '--format-output-path',
     type=str,
@@ -136,8 +130,6 @@ def main():
         print('Formatting source files')
 
     cmd = ['sh', 'format_files.sh', dropbox_format_output_path]
-    if args.clang_format_path:
-        cmd.append(args.clang_format_path)
     o = subprocess.check_output(cmd, cwd=dropbox_format_script_path)
     if o:
         print('Output:', o)
