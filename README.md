@@ -1073,6 +1073,20 @@ following the instructions listed in the `ViewController.m` file.
 
 ---
 
+## Code generation
+
+If you're interested in manually generating the SDK serialization logic, perform the following:
+
+* clone this GitHub repository to your local filesystem
+* run `git submodule init` and then `git submodule update`
+* navigate to the [Stone GitHub repo](https://github.com/dropbox/stone), and install all necessary dependencies
+* run `./generate_base_client.py` to generate code
+
+To ensure your changes have not broken any existing functionality, you can run a series of integration tests by
+following the instructions listed in the `ViewController.m` file.
+
+---
+
 ## Bugs
 
 Please post any bugs to the [issue tracker](https://github.com/dropbox/dropbox-sdk-obj-c/issues) found on the project's GitHub page.
