@@ -8,43 +8,44 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGExternalSharingAccessibilityPolicy;
+@class DBTEAMLOGSharingLinkPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `ExternalSharingAccessibilityPolicy` union.
+/// The `SharingLinkPolicy` union.
+///
+/// Policy for controlling if team members can share links externally
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGExternalSharingAccessibilityPolicy : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGSharingLinkPolicy : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMLOGExternalSharingAccessibilityPolicyTag` enum type represents
-/// the possible tag states with which the
-/// `DBTEAMLOGExternalSharingAccessibilityPolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGExternalSharingAccessibilityPolicyTag) {
+/// The `DBTEAMLOGSharingLinkPolicyTag` enum type represents the possible tag
+/// states with which the `DBTEAMLOGSharingLinkPolicy` union can exist.
+typedef NS_ENUM(NSInteger, DBTEAMLOGSharingLinkPolicyTag) {
   /// (no description).
-  DBTEAMLOGExternalSharingAccessibilityPolicyTeamOnly,
+  DBTEAMLOGSharingLinkPolicyTeamOnly,
 
   /// (no description).
-  DBTEAMLOGExternalSharingAccessibilityPolicyDefaultTeamOnly,
+  DBTEAMLOGSharingLinkPolicyDefaultTeamOnly,
 
   /// (no description).
-  DBTEAMLOGExternalSharingAccessibilityPolicyDefaultAnyone,
+  DBTEAMLOGSharingLinkPolicyDefaultAnyone,
 
   /// (no description).
-  DBTEAMLOGExternalSharingAccessibilityPolicyOther,
+  DBTEAMLOGSharingLinkPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic, readonly) DBTEAMLOGExternalSharingAccessibilityPolicyTag tag;
+@property (nonatomic, readonly) DBTEAMLOGSharingLinkPolicyTag tag;
 
 #pragma mark - Constructors
 
@@ -121,32 +122,29 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGExternalSharingAccessibilityPolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the
-/// `DBTEAMLOGExternalSharingAccessibilityPolicy` union.
+/// The serialization class for the `DBTEAMLOGSharingLinkPolicy` union.
 ///
-@interface DBTEAMLOGExternalSharingAccessibilityPolicySerializer : NSObject
+@interface DBTEAMLOGSharingLinkPolicySerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGExternalSharingAccessibilityPolicy` instances.
+/// Serializes `DBTEAMLOGSharingLinkPolicy` instances.
 ///
-/// @param instance An instance of the
-/// `DBTEAMLOGExternalSharingAccessibilityPolicy` API object.
+/// @param instance An instance of the `DBTEAMLOGSharingLinkPolicy` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGExternalSharingAccessibilityPolicy` API object.
+/// `DBTEAMLOGSharingLinkPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGExternalSharingAccessibilityPolicy *)instance;
++ (NSDictionary *)serialize:(DBTEAMLOGSharingLinkPolicy *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGExternalSharingAccessibilityPolicy` instances.
+/// Deserializes `DBTEAMLOGSharingLinkPolicy` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGExternalSharingAccessibilityPolicy` API object.
+/// `DBTEAMLOGSharingLinkPolicy` API object.
 ///
-/// @return An instantiation of the
-/// `DBTEAMLOGExternalSharingAccessibilityPolicy` object.
+/// @return An instantiation of the `DBTEAMLOGSharingLinkPolicy` object.
 ///
-+ (DBTEAMLOGExternalSharingAccessibilityPolicy *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharingLinkPolicy *)deserialize:(NSDictionary *)dict;
 
 @end
 

@@ -8,42 +8,44 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGOptionalChangePolicy;
+@class DBTEAMLOGEmmPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `OptionalChangePolicy` union.
+/// The `EmmPolicy` union.
+///
+/// Enterprise mobility management policy
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGOptionalChangePolicy : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGEmmPolicy : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMLOGOptionalChangePolicyTag` enum type represents the possible tag
-/// states with which the `DBTEAMLOGOptionalChangePolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGOptionalChangePolicyTag) {
+/// The `DBTEAMLOGEmmPolicyTag` enum type represents the possible tag states
+/// with which the `DBTEAMLOGEmmPolicy` union can exist.
+typedef NS_ENUM(NSInteger, DBTEAMLOGEmmPolicyTag) {
   /// (no description).
-  DBTEAMLOGOptionalChangePolicyDisabled,
+  DBTEAMLOGEmmPolicyDisabled,
 
   /// (no description).
-  DBTEAMLOGOptionalChangePolicyOptional,
+  DBTEAMLOGEmmPolicyOptional,
 
   /// (no description).
-  DBTEAMLOGOptionalChangePolicyRequired,
+  DBTEAMLOGEmmPolicyRequired,
 
   /// (no description).
-  DBTEAMLOGOptionalChangePolicyOther,
+  DBTEAMLOGEmmPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic, readonly) DBTEAMLOGOptionalChangePolicyTag tag;
+@property (nonatomic, readonly) DBTEAMLOGEmmPolicyTag tag;
 
 #pragma mark - Constructors
 
@@ -119,30 +121,29 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGOptionalChangePolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBTEAMLOGOptionalChangePolicy` union.
+/// The serialization class for the `DBTEAMLOGEmmPolicy` union.
 ///
-@interface DBTEAMLOGOptionalChangePolicySerializer : NSObject
+@interface DBTEAMLOGEmmPolicySerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGOptionalChangePolicy` instances.
+/// Serializes `DBTEAMLOGEmmPolicy` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGOptionalChangePolicy` API
-/// object.
+/// @param instance An instance of the `DBTEAMLOGEmmPolicy` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGOptionalChangePolicy` API object.
+/// `DBTEAMLOGEmmPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGOptionalChangePolicy *)instance;
++ (NSDictionary *)serialize:(DBTEAMLOGEmmPolicy *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGOptionalChangePolicy` instances.
+/// Deserializes `DBTEAMLOGEmmPolicy` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGOptionalChangePolicy` API object.
+/// `DBTEAMLOGEmmPolicy` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGOptionalChangePolicy` object.
+/// @return An instantiation of the `DBTEAMLOGEmmPolicy` object.
 ///
-+ (DBTEAMLOGOptionalChangePolicy *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGEmmPolicy *)deserialize:(NSDictionary *)dict;
 
 @end
 
