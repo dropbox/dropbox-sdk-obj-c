@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderTransferOwnershipDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedFolderTransferOwnershipDetails` instances.

@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESDownloadArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESDownloadArg *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESDownloadArg *)instance;
 
 ///
 /// Deserializes `DBFILESDownloadArg` instances.

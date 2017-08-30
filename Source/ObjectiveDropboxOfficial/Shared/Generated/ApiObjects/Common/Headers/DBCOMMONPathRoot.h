@@ -218,7 +218,7 @@ typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBCOMMONPathRoot` API object.
 ///
-+ (NSDictionary *)serialize:(DBCOMMONPathRoot *)instance;
++ (nullable NSDictionary *)serialize:(DBCOMMONPathRoot *)instance;
 
 ///
 /// Deserializes `DBCOMMONPathRoot` instances.

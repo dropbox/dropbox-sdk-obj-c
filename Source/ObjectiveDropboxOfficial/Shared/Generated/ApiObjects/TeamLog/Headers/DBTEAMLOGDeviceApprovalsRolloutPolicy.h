@@ -134,7 +134,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGDeviceApprovalsRolloutPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceApprovalsRolloutPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsRolloutPolicy *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsRolloutPolicy *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDeviceApprovalsRolloutPolicy` instances.

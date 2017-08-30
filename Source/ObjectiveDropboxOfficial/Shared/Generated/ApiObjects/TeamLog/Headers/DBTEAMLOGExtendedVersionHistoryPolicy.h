@@ -117,7 +117,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGExtendedVersionHistoryPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGExtendedVersionHistoryPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGExtendedVersionHistoryPolicy *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGExtendedVersionHistoryPolicy *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGExtendedVersionHistoryPolicy` instances.

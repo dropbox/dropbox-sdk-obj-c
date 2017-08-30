@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGRemoveLogoutUrlDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGRemoveLogoutUrlDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGRemoveLogoutUrlDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGRemoveLogoutUrlDetails` instances.

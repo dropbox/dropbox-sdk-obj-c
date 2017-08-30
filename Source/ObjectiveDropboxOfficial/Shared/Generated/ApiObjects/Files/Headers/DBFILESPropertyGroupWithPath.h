@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESPropertyGroupWithPath` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESPropertyGroupWithPath *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESPropertyGroupWithPath *)instance;
 
 ///
 /// Deserializes `DBFILESPropertyGroupWithPath` instances.

@@ -99,7 +99,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAccessLevelSerializer serialize:instance];
 }
 
@@ -200,7 +200,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAccessLevel *)deserialize:(NSDictionary *)valueDict {
@@ -288,7 +288,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAclUpdatePolicySerializer serialize:instance];
 }
 
@@ -377,7 +377,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAclUpdatePolicy *)deserialize:(NSDictionary *)valueDict {
@@ -435,7 +435,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAddFileMemberArgsSerializer serialize:instance];
 }
 
@@ -535,7 +535,7 @@
   jsonDict[@"access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessLevel];
   jsonDict[@"add_message_as_comment"] = valueObj.addMessageAsComment;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAddFileMemberArgs *)deserialize:(NSDictionary *)valueDict {
@@ -678,7 +678,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAddFileMemberErrorSerializer serialize:instance];
 }
 
@@ -782,7 +782,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAddFileMemberError *)deserialize:(NSDictionary *)valueDict {
@@ -844,7 +844,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAddFolderMemberArgSerializer serialize:instance];
 }
 
@@ -934,7 +934,7 @@
     jsonDict[@"custom_message"] = valueObj.customMessage;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAddFolderMemberArg *)deserialize:(NSDictionary *)valueDict {
@@ -1191,7 +1191,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAddFolderMemberErrorSerializer serialize:instance];
 }
 
@@ -1339,7 +1339,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAddFolderMemberError *)deserialize:(NSDictionary *)valueDict {
@@ -1410,7 +1410,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAddMemberSerializer serialize:instance];
 }
 
@@ -1481,7 +1481,7 @@
   jsonDict[@"member"] = [DBSHARINGMemberSelectorSerializer serialize:valueObj.member];
   jsonDict[@"access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessLevel];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAddMember *)deserialize:(NSDictionary *)valueDict {
@@ -1650,7 +1650,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAddMemberSelectorErrorSerializer serialize:instance];
 }
 
@@ -1766,7 +1766,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAddMemberSelectorError *)deserialize:(NSDictionary *)valueDict {
@@ -1817,7 +1817,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAudienceExceptionContentInfoSerializer serialize:instance];
 }
 
@@ -1883,7 +1883,7 @@
 
   jsonDict[@"name"] = valueObj.name;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAudienceExceptionContentInfo *)deserialize:(NSDictionary *)valueDict {
@@ -1919,7 +1919,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAudienceExceptionsSerializer serialize:instance];
 }
 
@@ -1994,7 +1994,7 @@
                            return [DBSHARINGAudienceExceptionContentInfoSerializer serialize:elem0];
                          }];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAudienceExceptions *)deserialize:(NSDictionary *)valueDict {
@@ -2037,7 +2037,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGAudienceRestrictingSharedFolderSerializer serialize:instance];
 }
 
@@ -2114,7 +2114,7 @@
   jsonDict[@"name"] = valueObj.name;
   jsonDict[@"audience"] = [DBSHARINGLinkAudienceSerializer serialize:valueObj.audience];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGAudienceRestrictingSharedFolder *)deserialize:(NSDictionary *)valueDict {
@@ -2157,7 +2157,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGChangeFileMemberAccessArgsSerializer serialize:instance];
 }
 
@@ -2233,7 +2233,7 @@
   jsonDict[@"member"] = [DBSHARINGMemberSelectorSerializer serialize:valueObj.member];
   jsonDict[@"access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessLevel];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGChangeFileMemberAccessArgs *)deserialize:(NSDictionary *)valueDict {
@@ -2276,7 +2276,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkMetadataSerializer serialize:instance];
 }
 
@@ -2373,7 +2373,7 @@
     jsonDict[@".tag"] = @"collection";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -2418,7 +2418,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGCollectionLinkMetadataSerializer serialize:instance];
 }
 
@@ -2500,7 +2500,7 @@
     jsonDict[@"expires"] = [DBNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGCollectionLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -2545,7 +2545,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGCreateSharedLinkArgSerializer serialize:instance];
 }
 
@@ -2627,7 +2627,7 @@
     jsonDict[@"pending_upload"] = [DBSHARINGPendingUploadModeSerializer serialize:valueObj.pendingUpload];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGCreateSharedLinkArg *)deserialize:(NSDictionary *)valueDict {
@@ -2705,7 +2705,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGCreateSharedLinkErrorSerializer serialize:instance];
 }
 
@@ -2789,7 +2789,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGCreateSharedLinkError *)deserialize:(NSDictionary *)valueDict {
@@ -2836,7 +2836,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGCreateSharedLinkWithSettingsArgSerializer serialize:instance];
 }
 
@@ -2914,7 +2914,7 @@
     jsonDict[@"settings"] = [DBSHARINGSharedLinkSettingsSerializer serialize:valueObj.settings];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGCreateSharedLinkWithSettingsArg *)deserialize:(NSDictionary *)valueDict {
@@ -3045,7 +3045,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGCreateSharedLinkWithSettingsErrorSerializer serialize:instance];
 }
 
@@ -3152,7 +3152,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGCreateSharedLinkWithSettingsError *)deserialize:(NSDictionary *)valueDict {
@@ -3233,7 +3233,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedContentLinkMetadataBaseSerializer serialize:instance];
 }
 
@@ -3356,7 +3356,7 @@
     jsonDict[@"expiry"] = [DBNSDateSerializer serialize:valueObj.expiry dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedContentLinkMetadataBase *)deserialize:(NSDictionary *)valueDict {
@@ -3446,7 +3446,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGExpectedSharedContentLinkMetadataSerializer serialize:instance];
 }
 
@@ -3569,7 +3569,7 @@
     jsonDict[@"expiry"] = [DBNSDateSerializer serialize:valueObj.expiry dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGExpectedSharedContentLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -3770,7 +3770,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFileActionSerializer serialize:instance];
 }
 
@@ -3901,7 +3901,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFileAction *)deserialize:(NSDictionary *)valueDict {
@@ -4046,7 +4046,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFileErrorResultSerializer serialize:instance];
 }
 
@@ -4144,7 +4144,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFileErrorResult *)deserialize:(NSDictionary *)valueDict {
@@ -4222,7 +4222,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedLinkMetadataSerializer serialize:instance];
 }
 
@@ -4368,7 +4368,7 @@
     jsonDict[@".tag"] = @"folder";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -4456,7 +4456,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFileLinkMetadataSerializer serialize:instance];
 }
 
@@ -4609,7 +4609,7 @@
     jsonDict[@"content_owner_team_info"] = [DBUSERSTeamSerializer serialize:valueObj.contentOwnerTeamInfo];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFileLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -4768,7 +4768,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFileMemberActionErrorSerializer serialize:instance];
 }
 
@@ -4873,7 +4873,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFileMemberActionError *)deserialize:(NSDictionary *)valueDict {
@@ -4976,7 +4976,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFileMemberActionIndividualResultSerializer serialize:instance];
 }
 
@@ -5070,7 +5070,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFileMemberActionIndividualResult *)deserialize:(NSDictionary *)valueDict {
@@ -5119,7 +5119,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFileMemberActionResultSerializer serialize:instance];
 }
 
@@ -5190,7 +5190,7 @@
   jsonDict[@"member"] = [DBSHARINGMemberSelectorSerializer serialize:valueObj.member];
   jsonDict[@"result"] = [DBSHARINGFileMemberActionIndividualResultSerializer serialize:valueObj.result];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFileMemberActionResult *)deserialize:(NSDictionary *)valueDict {
@@ -5293,7 +5293,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFileMemberRemoveActionResultSerializer serialize:instance];
 }
 
@@ -5384,7 +5384,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFileMemberRemoveActionResult *)deserialize:(NSDictionary *)valueDict {
@@ -5437,7 +5437,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFilePermissionSerializer serialize:instance];
 }
 
@@ -5519,7 +5519,7 @@
     jsonDict[@"reason"] = [DBSHARINGPermissionDeniedReasonSerializer serialize:valueObj.reason];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFilePermission *)deserialize:(NSDictionary *)valueDict {
@@ -5752,7 +5752,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFolderActionSerializer serialize:instance];
 }
 
@@ -5907,7 +5907,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFolderAction *)deserialize:(NSDictionary *)valueDict {
@@ -6000,7 +6000,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFolderLinkMetadataSerializer serialize:instance];
 }
 
@@ -6131,7 +6131,7 @@
     jsonDict[@"content_owner_team_info"] = [DBUSERSTeamSerializer serialize:valueObj.contentOwnerTeamInfo];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFolderLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -6194,7 +6194,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFolderPermissionSerializer serialize:instance];
 }
 
@@ -6276,7 +6276,7 @@
     jsonDict[@"reason"] = [DBSHARINGPermissionDeniedReasonSerializer serialize:valueObj.reason];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFolderPermission *)deserialize:(NSDictionary *)valueDict {
@@ -6332,7 +6332,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGFolderPolicySerializer serialize:instance];
 }
 
@@ -6436,7 +6436,7 @@
     jsonDict[@"viewer_info_policy"] = [DBSHARINGViewerInfoPolicySerializer serialize:valueObj.viewerInfoPolicy];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGFolderPolicy *)deserialize:(NSDictionary *)valueDict {
@@ -6493,7 +6493,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetFileMetadataArgSerializer serialize:instance];
 }
 
@@ -6573,7 +6573,7 @@
                                               }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetFileMetadataArg *)deserialize:(NSDictionary *)valueDict {
@@ -6623,7 +6623,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetFileMetadataBatchArgSerializer serialize:instance];
 }
 
@@ -6706,7 +6706,7 @@
                                               }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetFileMetadataBatchArg *)deserialize:(NSDictionary *)valueDict {
@@ -6750,7 +6750,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetFileMetadataBatchResultSerializer serialize:instance];
 }
 
@@ -6821,7 +6821,7 @@
   jsonDict[@"file"] = valueObj.file;
   jsonDict[@"result"] = [DBSHARINGGetFileMetadataIndividualResultSerializer serialize:valueObj.result];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetFileMetadataBatchResult *)deserialize:(NSDictionary *)valueDict {
@@ -6922,7 +6922,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetFileMetadataErrorSerializer serialize:instance];
 }
 
@@ -7014,7 +7014,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetFileMetadataError *)deserialize:(NSDictionary *)valueDict {
@@ -7126,7 +7126,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetFileMetadataIndividualResultSerializer serialize:instance];
 }
 
@@ -7219,7 +7219,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetFileMetadataIndividualResult *)deserialize:(NSDictionary *)valueDict {
@@ -7270,7 +7270,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetMetadataArgsSerializer serialize:instance];
 }
 
@@ -7350,7 +7350,7 @@
                                               }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetMetadataArgs *)deserialize:(NSDictionary *)valueDict {
@@ -7446,7 +7446,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedLinkErrorSerializer serialize:instance];
 }
 
@@ -7541,7 +7541,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedLinkError *)deserialize:(NSDictionary *)valueDict {
@@ -7656,7 +7656,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetSharedLinkFileErrorSerializer serialize:instance];
 }
 
@@ -7757,7 +7757,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetSharedLinkFileError *)deserialize:(NSDictionary *)valueDict {
@@ -7809,7 +7809,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetSharedLinkMetadataArgSerializer serialize:instance];
 }
 
@@ -7897,7 +7897,7 @@
     jsonDict[@"link_password"] = valueObj.linkPassword;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetSharedLinkMetadataArg *)deserialize:(NSDictionary *)valueDict {
@@ -7935,7 +7935,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetSharedLinksArgSerializer serialize:instance];
 }
 
@@ -8007,7 +8007,7 @@
     jsonDict[@"path"] = valueObj.path;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetSharedLinksArg *)deserialize:(NSDictionary *)valueDict {
@@ -8080,7 +8080,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetSharedLinksErrorSerializer serialize:instance];
 }
 
@@ -8170,7 +8170,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetSharedLinksError *)deserialize:(NSDictionary *)valueDict {
@@ -8211,7 +8211,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGetSharedLinksResultSerializer serialize:instance];
 }
 
@@ -8280,7 +8280,7 @@
                                             return [DBSHARINGLinkMetadataSerializer serialize:elem0];
                                           }];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGetSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
@@ -8352,7 +8352,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGroupInfoSerializer serialize:instance];
 }
 
@@ -8471,7 +8471,7 @@
     jsonDict[@"member_count"] = valueObj.memberCount;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGroupInfo *)deserialize:(NSDictionary *)valueDict {
@@ -8534,7 +8534,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMembershipInfoSerializer serialize:instance];
 }
 
@@ -8630,7 +8630,7 @@
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMembershipInfo *)deserialize:(NSDictionary *)valueDict {
@@ -8687,7 +8687,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGGroupMembershipInfoSerializer serialize:instance];
 }
 
@@ -8788,7 +8788,7 @@
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGGroupMembershipInfo *)deserialize:(NSDictionary *)valueDict {
@@ -8838,7 +8838,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGInsufficientPlanSerializer serialize:instance];
 }
 
@@ -8915,7 +8915,7 @@
     jsonDict[@"upsell_url"] = valueObj.upsellUrl;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGInsufficientPlan *)deserialize:(NSDictionary *)valueDict {
@@ -8952,7 +8952,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGInsufficientQuotaAmountsSerializer serialize:instance];
 }
 
@@ -9028,7 +9028,7 @@
   jsonDict[@"space_shortage"] = valueObj.spaceShortage;
   jsonDict[@"space_left"] = valueObj.spaceLeft;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGInsufficientQuotaAmounts *)deserialize:(NSDictionary *)valueDict {
@@ -9105,7 +9105,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGInviteeInfoSerializer serialize:instance];
 }
 
@@ -9189,7 +9189,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGInviteeInfo *)deserialize:(NSDictionary *)valueDict {
@@ -9245,7 +9245,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGInviteeMembershipInfoSerializer serialize:instance];
 }
 
@@ -9357,7 +9357,7 @@
     jsonDict[@"user"] = [DBSHARINGUserInfoSerializer serialize:valueObj.user];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGInviteeMembershipInfo *)deserialize:(NSDictionary *)valueDict {
@@ -9498,7 +9498,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGJobErrorSerializer serialize:instance];
 }
 
@@ -9599,7 +9599,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGJobError *)deserialize:(NSDictionary *)valueDict {
@@ -9705,7 +9705,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGJobStatusSerializer serialize:instance];
 }
 
@@ -9797,7 +9797,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGJobStatus *)deserialize:(NSDictionary *)valueDict {
@@ -9941,7 +9941,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkActionSerializer serialize:instance];
 }
 
@@ -10054,7 +10054,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkAction *)deserialize:(NSDictionary *)valueDict {
@@ -10160,7 +10160,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkAudienceSerializer serialize:instance];
 }
 
@@ -10255,7 +10255,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkAudience *)deserialize:(NSDictionary *)valueDict {
@@ -10352,7 +10352,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkExpirySerializer serialize:instance];
 }
 
@@ -10442,7 +10442,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkExpiry *)deserialize:(NSDictionary *)valueDict {
@@ -10538,7 +10538,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkPasswordSerializer serialize:instance];
 }
 
@@ -10628,7 +10628,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkPassword *)deserialize:(NSDictionary *)valueDict {
@@ -10679,7 +10679,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkPermissionSerializer serialize:instance];
 }
 
@@ -10761,7 +10761,7 @@
     jsonDict[@"reason"] = [DBSHARINGPermissionDeniedReasonSerializer serialize:valueObj.reason];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkPermission *)deserialize:(NSDictionary *)valueDict {
@@ -10809,7 +10809,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkPermissionsSerializer serialize:instance];
 }
 
@@ -10909,7 +10909,7 @@
         [DBSHARINGSharedLinkAccessFailureReasonSerializer serialize:valueObj.revokeFailureReason];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkPermissions *)deserialize:(NSDictionary *)valueDict {
@@ -10970,7 +10970,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGLinkSettingsSerializer serialize:instance];
 }
 
@@ -11075,7 +11075,7 @@
     jsonDict[@"password"] = [DBSHARINGLinkPasswordSerializer serialize:valueObj.password];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGLinkSettings *)deserialize:(NSDictionary *)valueDict {
@@ -11129,7 +11129,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersArgSerializer serialize:instance];
 }
 
@@ -11219,7 +11219,7 @@
   jsonDict[@"include_inherited"] = valueObj.includeInherited;
   jsonDict[@"limit"] = valueObj.limit;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersArg *)deserialize:(NSDictionary *)valueDict {
@@ -11273,7 +11273,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersBatchArgSerializer serialize:instance];
 }
 
@@ -11347,7 +11347,7 @@
                                           }];
   jsonDict[@"limit"] = valueObj.limit;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersBatchArg *)deserialize:(NSDictionary *)valueDict {
@@ -11386,7 +11386,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersBatchResultSerializer serialize:instance];
 }
 
@@ -11457,7 +11457,7 @@
   jsonDict[@"file"] = valueObj.file;
   jsonDict[@"result"] = [DBSHARINGListFileMembersIndividualResultSerializer serialize:valueObj.result];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersBatchResult *)deserialize:(NSDictionary *)valueDict {
@@ -11491,7 +11491,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersContinueArgSerializer serialize:instance];
 }
 
@@ -11557,7 +11557,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersContinueArg *)deserialize:(NSDictionary *)valueDict {
@@ -11672,7 +11672,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersContinueErrorSerializer serialize:instance];
 }
 
@@ -11770,7 +11770,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersContinueError *)deserialize:(NSDictionary *)valueDict {
@@ -11817,7 +11817,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersCountResultSerializer serialize:instance];
 }
 
@@ -11888,7 +11888,7 @@
   jsonDict[@"members"] = [DBSHARINGSharedFileMembersSerializer serialize:valueObj.members];
   jsonDict[@"member_count"] = valueObj.memberCount;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersCountResult *)deserialize:(NSDictionary *)valueDict {
@@ -11988,7 +11988,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersErrorSerializer serialize:instance];
 }
 
@@ -12080,7 +12080,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersError *)deserialize:(NSDictionary *)valueDict {
@@ -12192,7 +12192,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFileMembersIndividualResultSerializer serialize:instance];
 }
 
@@ -12285,7 +12285,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFileMembersIndividualResult *)deserialize:(NSDictionary *)valueDict {
@@ -12336,7 +12336,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFilesArgSerializer serialize:instance];
 }
 
@@ -12416,7 +12416,7 @@
                                               }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFilesArg *)deserialize:(NSDictionary *)valueDict {
@@ -12454,7 +12454,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFilesContinueArgSerializer serialize:instance];
 }
 
@@ -12520,7 +12520,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFilesContinueArg *)deserialize:(NSDictionary *)valueDict {
@@ -12608,7 +12608,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFilesContinueErrorSerializer serialize:instance];
 }
 
@@ -12698,7 +12698,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFilesContinueError *)deserialize:(NSDictionary *)valueDict {
@@ -12746,7 +12746,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFilesResultSerializer serialize:instance];
 }
 
@@ -12826,7 +12826,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFilesResult *)deserialize:(NSDictionary *)valueDict {
@@ -12871,7 +12871,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFolderMembersCursorArgSerializer serialize:instance];
 }
 
@@ -12951,7 +12951,7 @@
   }
   jsonDict[@"limit"] = valueObj.limit;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFolderMembersCursorArg *)deserialize:(NSDictionary *)valueDict {
@@ -13000,7 +13000,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFolderMembersArgsSerializer serialize:instance];
 }
 
@@ -13085,7 +13085,7 @@
   }
   jsonDict[@"limit"] = valueObj.limit;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFolderMembersArgs *)deserialize:(NSDictionary *)valueDict {
@@ -13124,7 +13124,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFolderMembersContinueArgSerializer serialize:instance];
 }
 
@@ -13190,7 +13190,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFolderMembersContinueArg *)deserialize:(NSDictionary *)valueDict {
@@ -13279,7 +13279,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFolderMembersContinueErrorSerializer serialize:instance];
 }
 
@@ -13371,7 +13371,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFolderMembersContinueError *)deserialize:(NSDictionary *)valueDict {
@@ -13421,7 +13421,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFoldersArgsSerializer serialize:instance];
 }
 
@@ -13501,7 +13501,7 @@
                                               }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFoldersArgs *)deserialize:(NSDictionary *)valueDict {
@@ -13539,7 +13539,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFoldersContinueArgSerializer serialize:instance];
 }
 
@@ -13605,7 +13605,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFoldersContinueArg *)deserialize:(NSDictionary *)valueDict {
@@ -13667,7 +13667,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFoldersContinueErrorSerializer serialize:instance];
 }
 
@@ -13750,7 +13750,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFoldersContinueError *)deserialize:(NSDictionary *)valueDict {
@@ -13795,7 +13795,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListFoldersResultSerializer serialize:instance];
 }
 
@@ -13875,7 +13875,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListFoldersResult *)deserialize:(NSDictionary *)valueDict {
@@ -13923,7 +13923,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListSharedLinksArgSerializer serialize:instance];
 }
 
@@ -14017,7 +14017,7 @@
     jsonDict[@"direct_only"] = valueObj.directOnly;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListSharedLinksArg *)deserialize:(NSDictionary *)valueDict {
@@ -14107,7 +14107,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListSharedLinksErrorSerializer serialize:instance];
 }
 
@@ -14197,7 +14197,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListSharedLinksError *)deserialize:(NSDictionary *)valueDict {
@@ -14248,7 +14248,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGListSharedLinksResultSerializer serialize:instance];
 }
 
@@ -14333,7 +14333,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGListSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
@@ -14383,7 +14383,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMemberAccessLevelResultSerializer serialize:instance];
 }
 
@@ -14481,7 +14481,7 @@
                            }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMemberAccessLevelResult *)deserialize:(NSDictionary *)valueDict {
@@ -14624,7 +14624,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMemberActionSerializer serialize:instance];
 }
 
@@ -14737,7 +14737,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMemberAction *)deserialize:(NSDictionary *)valueDict {
@@ -14795,7 +14795,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMemberPermissionSerializer serialize:instance];
 }
 
@@ -14877,7 +14877,7 @@
     jsonDict[@"reason"] = [DBSHARINGPermissionDeniedReasonSerializer serialize:valueObj.reason];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMemberPermission *)deserialize:(NSDictionary *)valueDict {
@@ -14956,7 +14956,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMemberPolicySerializer serialize:instance];
 }
 
@@ -15045,7 +15045,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMemberPolicy *)deserialize:(NSDictionary *)valueDict {
@@ -15150,7 +15150,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMemberSelectorSerializer serialize:instance];
 }
 
@@ -15241,7 +15241,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMemberSelector *)deserialize:(NSDictionary *)valueDict {
@@ -15292,7 +15292,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGModifySharedLinkSettingsArgsSerializer serialize:instance];
 }
 
@@ -15368,7 +15368,7 @@
   jsonDict[@"settings"] = [DBSHARINGSharedLinkSettingsSerializer serialize:valueObj.settings];
   jsonDict[@"remove_expiration"] = valueObj.removeExpiration;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGModifySharedLinkSettingsArgs *)deserialize:(NSDictionary *)valueDict {
@@ -15504,7 +15504,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGModifySharedLinkSettingsErrorSerializer serialize:instance];
 }
 
@@ -15614,7 +15614,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGModifySharedLinkSettingsError *)deserialize:(NSDictionary *)valueDict {
@@ -15663,7 +15663,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMountFolderArgSerializer serialize:instance];
 }
 
@@ -15729,7 +15729,7 @@
 
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMountFolderArg *)deserialize:(NSDictionary *)valueDict {
@@ -15885,7 +15885,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGMountFolderErrorSerializer serialize:instance];
 }
 
@@ -16002,7 +16002,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGMountFolderError *)deserialize:(NSDictionary *)valueDict {
@@ -16063,7 +16063,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGParentFolderAccessInfoSerializer serialize:instance];
 }
 
@@ -16147,7 +16147,7 @@
                                                 }];
   jsonDict[@"path"] = valueObj.path;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGParentFolderAccessInfo *)deserialize:(NSDictionary *)valueDict {
@@ -16198,7 +16198,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGPathLinkMetadataSerializer serialize:instance];
 }
 
@@ -16285,7 +16285,7 @@
     jsonDict[@"expires"] = [DBNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGPathLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -16352,7 +16352,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGPendingUploadModeSerializer serialize:instance];
 }
 
@@ -16437,7 +16437,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGPendingUploadMode *)deserialize:(NSDictionary *)valueDict {
@@ -16703,7 +16703,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGPermissionDeniedReasonSerializer serialize:instance];
 }
 
@@ -16866,7 +16866,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGPermissionDeniedReason *)deserialize:(NSDictionary *)valueDict {
@@ -16932,7 +16932,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRelinquishFileMembershipArgSerializer serialize:instance];
 }
 
@@ -16998,7 +16998,7 @@
 
   jsonDict[@"file"] = valueObj.file;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRelinquishFileMembershipArg *)deserialize:(NSDictionary *)valueDict {
@@ -17101,7 +17101,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRelinquishFileMembershipErrorSerializer serialize:instance];
 }
 
@@ -17199,7 +17199,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRelinquishFileMembershipError *)deserialize:(NSDictionary *)valueDict {
@@ -17249,7 +17249,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRelinquishFolderMembershipArgSerializer serialize:instance];
 }
 
@@ -17321,7 +17321,7 @@
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   jsonDict[@"leave_a_copy"] = valueObj.leaveACopy;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRelinquishFolderMembershipArg *)deserialize:(NSDictionary *)valueDict {
@@ -17481,7 +17481,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRelinquishFolderMembershipErrorSerializer serialize:instance];
 }
 
@@ -17603,7 +17603,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRelinquishFolderMembershipError *)deserialize:(NSDictionary *)valueDict {
@@ -17658,7 +17658,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRemoveFileMemberArgSerializer serialize:instance];
 }
 
@@ -17729,7 +17729,7 @@
   jsonDict[@"file"] = valueObj.file;
   jsonDict[@"member"] = [DBSHARINGMemberSelectorSerializer serialize:valueObj.member];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRemoveFileMemberArg *)deserialize:(NSDictionary *)valueDict {
@@ -17855,7 +17855,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRemoveFileMemberErrorSerializer serialize:instance];
 }
 
@@ -17955,7 +17955,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRemoveFileMemberError *)deserialize:(NSDictionary *)valueDict {
@@ -18008,7 +18008,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRemoveFolderMemberArgSerializer serialize:instance];
 }
 
@@ -18084,7 +18084,7 @@
   jsonDict[@"member"] = [DBSHARINGMemberSelectorSerializer serialize:valueObj.member];
   jsonDict[@"leave_a_copy"] = valueObj.leaveACopy;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRemoveFolderMemberArg *)deserialize:(NSDictionary *)valueDict {
@@ -18245,7 +18245,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRemoveFolderMemberErrorSerializer serialize:instance];
 }
 
@@ -18362,7 +18362,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRemoveFolderMemberError *)deserialize:(NSDictionary *)valueDict {
@@ -18482,7 +18482,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRemoveMemberJobStatusSerializer serialize:instance];
 }
 
@@ -18575,7 +18575,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRemoveMemberJobStatus *)deserialize:(NSDictionary *)valueDict {
@@ -18665,7 +18665,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRequestedVisibilitySerializer serialize:instance];
 }
 
@@ -18756,7 +18756,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRequestedVisibility *)deserialize:(NSDictionary *)valueDict {
@@ -18886,7 +18886,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGResolvedVisibilitySerializer serialize:instance];
 }
 
@@ -18993,7 +18993,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGResolvedVisibility *)deserialize:(NSDictionary *)valueDict {
@@ -19039,7 +19039,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRevokeSharedLinkArgSerializer serialize:instance];
 }
 
@@ -19105,7 +19105,7 @@
 
   jsonDict[@"url"] = valueObj.url;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRevokeSharedLinkArg *)deserialize:(NSDictionary *)valueDict {
@@ -19210,7 +19210,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGRevokeSharedLinkErrorSerializer serialize:instance];
 }
 
@@ -19311,7 +19311,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGRevokeSharedLinkError *)deserialize:(NSDictionary *)valueDict {
@@ -19379,7 +19379,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGShareFolderArgBaseSerializer serialize:instance];
 }
 
@@ -19494,7 +19494,7 @@
     jsonDict[@"viewer_info_policy"] = [DBSHARINGViewerInfoPolicySerializer serialize:valueObj.viewerInfoPolicy];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGShareFolderArgBase *)deserialize:(NSDictionary *)valueDict {
@@ -19578,7 +19578,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGShareFolderArgSerializer serialize:instance];
 }
 
@@ -19718,7 +19718,7 @@
     jsonDict[@"link_settings"] = [DBSHARINGLinkSettingsSerializer serialize:valueObj.linkSettings];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGShareFolderArg *)deserialize:(NSDictionary *)valueDict {
@@ -19863,7 +19863,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGShareFolderErrorBaseSerializer serialize:instance];
 }
 
@@ -19965,7 +19965,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGShareFolderErrorBase *)deserialize:(NSDictionary *)valueDict {
@@ -20109,7 +20109,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGShareFolderErrorSerializer serialize:instance];
 }
 
@@ -20217,7 +20217,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGShareFolderError *)deserialize:(NSDictionary *)valueDict {
@@ -20332,7 +20332,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGShareFolderJobStatusSerializer serialize:instance];
 }
 
@@ -20425,7 +20425,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGShareFolderJobStatus *)deserialize:(NSDictionary *)valueDict {
@@ -20523,7 +20523,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGShareFolderLaunchSerializer serialize:instance];
 }
 
@@ -20610,7 +20610,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGShareFolderLaunch *)deserialize:(NSDictionary *)valueDict {
@@ -20863,7 +20863,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharePathErrorSerializer serialize:instance];
 }
 
@@ -21020,7 +21020,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharePathError *)deserialize:(NSDictionary *)valueDict {
@@ -21122,7 +21122,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedContentLinkMetadataSerializer serialize:instance];
 }
 
@@ -21259,7 +21259,7 @@
     jsonDict[@"audience_exceptions"] = [DBSHARINGAudienceExceptionsSerializer serialize:valueObj.audienceExceptions];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedContentLinkMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -21343,7 +21343,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedFileMembersSerializer serialize:instance];
 }
 
@@ -21439,7 +21439,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedFileMembers *)deserialize:(NSDictionary *)valueDict {
@@ -21546,7 +21546,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedFileMetadataSerializer serialize:instance];
 }
 
@@ -21744,7 +21744,7 @@
     jsonDict[@"time_invited"] = [DBNSDateSerializer serialize:valueObj.timeInvited dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedFileMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -21894,7 +21894,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedFolderAccessErrorSerializer serialize:instance];
 }
 
@@ -21995,7 +21995,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedFolderAccessError *)deserialize:(NSDictionary *)valueDict {
@@ -22110,7 +22110,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedFolderMemberErrorSerializer serialize:instance];
 }
 
@@ -22207,7 +22207,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedFolderMemberError *)deserialize:(NSDictionary *)valueDict {
@@ -22269,7 +22269,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedFolderMembersSerializer serialize:instance];
 }
 
@@ -22365,7 +22365,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedFolderMembers *)deserialize:(NSDictionary *)valueDict {
@@ -22443,7 +22443,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedFolderMetadataBaseSerializer serialize:instance];
 }
 
@@ -22566,7 +22566,7 @@
     jsonDict[@"path_lower"] = valueObj.pathLower;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedFolderMetadataBase *)deserialize:(NSDictionary *)valueDict {
@@ -22679,7 +22679,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedFolderMetadataSerializer serialize:instance];
 }
 
@@ -22852,7 +22852,7 @@
                                                   }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedFolderMetadata *)deserialize:(NSDictionary *)valueDict {
@@ -23010,7 +23010,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedLinkAccessFailureReasonSerializer serialize:instance];
 }
 
@@ -23118,7 +23118,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedLinkAccessFailureReason *)deserialize:(NSDictionary *)valueDict {
@@ -23222,7 +23222,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedLinkPolicySerializer serialize:instance];
 }
 
@@ -23317,7 +23317,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedLinkPolicy *)deserialize:(NSDictionary *)valueDict {
@@ -23368,7 +23368,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedLinkSettingsSerializer serialize:instance];
 }
 
@@ -23462,7 +23462,7 @@
     jsonDict[@"expires"] = [DBNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedLinkSettings *)deserialize:(NSDictionary *)valueDict {
@@ -23533,7 +23533,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharedLinkSettingsErrorSerializer serialize:instance];
 }
 
@@ -23618,7 +23618,7 @@
                                  userInfo:nil]);
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedLinkSettingsError *)deserialize:(NSDictionary *)valueDict {
@@ -23745,7 +23745,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharingFileAccessErrorSerializer serialize:instance];
 }
 
@@ -23852,7 +23852,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharingFileAccessError *)deserialize:(NSDictionary *)valueDict {
@@ -23928,7 +23928,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGSharingUserErrorSerializer serialize:instance];
 }
 
@@ -24011,7 +24011,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharingUserError *)deserialize:(NSDictionary *)valueDict {
@@ -24058,7 +24058,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGTeamMemberInfoSerializer serialize:instance];
 }
 
@@ -24140,7 +24140,7 @@
     jsonDict[@"member_id"] = valueObj.memberId;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGTeamMemberInfo *)deserialize:(NSDictionary *)valueDict {
@@ -24177,7 +24177,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGTransferFolderArgSerializer serialize:instance];
 }
 
@@ -24248,7 +24248,7 @@
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   jsonDict[@"to_dropbox_id"] = valueObj.toDropboxId;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGTransferFolderArg *)deserialize:(NSDictionary *)valueDict {
@@ -24407,7 +24407,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGTransferFolderErrorSerializer serialize:instance];
 }
 
@@ -24528,7 +24528,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGTransferFolderError *)deserialize:(NSDictionary *)valueDict {
@@ -24581,7 +24581,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUnmountFolderArgSerializer serialize:instance];
 }
 
@@ -24647,7 +24647,7 @@
 
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUnmountFolderArg *)deserialize:(NSDictionary *)valueDict {
@@ -24749,7 +24749,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUnmountFolderErrorSerializer serialize:instance];
 }
 
@@ -24846,7 +24846,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUnmountFolderError *)deserialize:(NSDictionary *)valueDict {
@@ -24891,7 +24891,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUnshareFileArgSerializer serialize:instance];
 }
 
@@ -24957,7 +24957,7 @@
 
   jsonDict[@"file"] = valueObj.file;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUnshareFileArg *)deserialize:(NSDictionary *)valueDict {
@@ -25056,7 +25056,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUnshareFileErrorSerializer serialize:instance];
 }
 
@@ -25148,7 +25148,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUnshareFileError *)deserialize:(NSDictionary *)valueDict {
@@ -25197,7 +25197,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUnshareFolderArgSerializer serialize:instance];
 }
 
@@ -25268,7 +25268,7 @@
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   jsonDict[@"leave_a_copy"] = valueObj.leaveACopy;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUnshareFolderArg *)deserialize:(NSDictionary *)valueDict {
@@ -25385,7 +25385,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUnshareFolderErrorSerializer serialize:instance];
 }
 
@@ -25488,7 +25488,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUnshareFolderError *)deserialize:(NSDictionary *)valueDict {
@@ -25539,7 +25539,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUpdateFileMemberArgsSerializer serialize:instance];
 }
 
@@ -25615,7 +25615,7 @@
   jsonDict[@"member"] = [DBSHARINGMemberSelectorSerializer serialize:valueObj.member];
   jsonDict[@"access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessLevel];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUpdateFileMemberArgs *)deserialize:(NSDictionary *)valueDict {
@@ -25656,7 +25656,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUpdateFolderMemberArgSerializer serialize:instance];
 }
 
@@ -25732,7 +25732,7 @@
   jsonDict[@"member"] = [DBSHARINGMemberSelectorSerializer serialize:valueObj.member];
   jsonDict[@"access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessLevel];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUpdateFolderMemberArg *)deserialize:(NSDictionary *)valueDict {
@@ -25891,7 +25891,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUpdateFolderMemberErrorSerializer serialize:instance];
 }
 
@@ -26004,7 +26004,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUpdateFolderMemberError *)deserialize:(NSDictionary *)valueDict {
@@ -26086,7 +26086,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUpdateFolderPolicyArgSerializer serialize:instance];
 }
 
@@ -26221,7 +26221,7 @@
                                               }];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUpdateFolderPolicyArg *)deserialize:(NSDictionary *)valueDict {
@@ -26393,7 +26393,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUpdateFolderPolicyErrorSerializer serialize:instance];
 }
 
@@ -26508,7 +26508,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUpdateFolderPolicyError *)deserialize:(NSDictionary *)valueDict {
@@ -26567,7 +26567,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUserInfoSerializer serialize:instance];
 }
 
@@ -26649,7 +26649,7 @@
     jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUserInfo *)deserialize:(NSDictionary *)valueDict {
@@ -26697,7 +26697,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGUserMembershipInfoSerializer serialize:instance];
 }
 
@@ -26798,7 +26798,7 @@
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGUserMembershipInfo *)deserialize:(NSDictionary *)valueDict {
@@ -26887,7 +26887,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGViewerInfoPolicySerializer serialize:instance];
 }
 
@@ -26976,7 +26976,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGViewerInfoPolicy *)deserialize:(NSDictionary *)valueDict {
@@ -27102,7 +27102,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBSHARINGVisibilitySerializer serialize:instance];
 }
 
@@ -27209,7 +27209,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGVisibility *)deserialize:(NSDictionary *)valueDict {

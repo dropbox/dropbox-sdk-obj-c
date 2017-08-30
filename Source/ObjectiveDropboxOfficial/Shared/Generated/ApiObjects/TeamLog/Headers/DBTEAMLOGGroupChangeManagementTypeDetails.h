@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupChangeManagementTypeDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupChangeManagementTypeDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGGroupChangeManagementTypeDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGroupChangeManagementTypeDetails` instances.

@@ -86,7 +86,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookUpPropertiesErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESLookUpPropertiesError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESLookUpPropertiesError *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESLookUpPropertiesError *)instance;
 
 ///
 /// Deserializes `DBFILESLookUpPropertiesError` instances.

@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRemovePropertiesArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESRemovePropertiesArg *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESRemovePropertiesArg *)instance;
 
 ///
 /// Deserializes `DBFILESRemovePropertiesArg` instances.

@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListTeamAppsArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMListTeamAppsArg *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMListTeamAppsArg *)instance;
 
 ///
 /// Deserializes `DBTEAMListTeamAppsArg` instances.

@@ -105,7 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMobileClientSession` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMMobileClientSession *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMMobileClientSession *)instance;
 
 ///
 /// Deserializes `DBTEAMMobileClientSession` instances.

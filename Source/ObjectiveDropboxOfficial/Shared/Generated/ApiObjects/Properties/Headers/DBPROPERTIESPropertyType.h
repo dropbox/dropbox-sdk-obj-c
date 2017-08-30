@@ -103,7 +103,7 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESPropertyType` API object.
 ///
-+ (NSDictionary *)serialize:(DBPROPERTIESPropertyType *)instance;
++ (nullable NSDictionary *)serialize:(DBPROPERTIESPropertyType *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyType` instances.

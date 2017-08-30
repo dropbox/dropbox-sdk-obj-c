@@ -177,7 +177,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMobileClientPlatform` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMMobileClientPlatform *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMMobileClientPlatform *)instance;
 
 ///
 /// Deserializes `DBTEAMMobileClientPlatform` instances.

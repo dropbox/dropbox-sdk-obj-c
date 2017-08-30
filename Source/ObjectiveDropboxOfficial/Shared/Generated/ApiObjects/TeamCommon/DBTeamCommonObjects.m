@@ -85,7 +85,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBTEAMCOMMONGroupManagementTypeSerializer serialize:instance];
 }
 
@@ -180,7 +180,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMCOMMONGroupManagementType *)deserialize:(NSDictionary *)valueDict {
@@ -241,7 +241,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBTEAMCOMMONGroupSummarySerializer serialize:instance];
 }
 
@@ -340,7 +340,7 @@
     jsonDict[@"member_count"] = valueObj.memberCount;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMCOMMONGroupSummary *)deserialize:(NSDictionary *)valueDict {
@@ -425,7 +425,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBTEAMCOMMONGroupTypeSerializer serialize:instance];
 }
 
@@ -514,7 +514,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMCOMMONGroupType *)deserialize:(NSDictionary *)valueDict {
@@ -559,7 +559,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBTEAMCOMMONTimeRangeSerializer serialize:instance];
 }
 
@@ -642,7 +642,7 @@
     jsonDict[@"end_time"] = [DBNSDateSerializer serialize:valueObj.endTime dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMCOMMONTimeRange *)deserialize:(NSDictionary *)valueDict {

@@ -52,7 +52,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSAccountSerializer serialize:instance];
 }
 
@@ -149,7 +149,7 @@
     jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSAccount *)deserialize:(NSDictionary *)valueDict {
@@ -223,7 +223,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSBasicAccountSerializer serialize:instance];
 }
 
@@ -336,7 +336,7 @@
     jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSBasicAccount *)deserialize:(NSDictionary *)valueDict {
@@ -436,7 +436,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSFullAccountSerializer serialize:instance];
 }
 
@@ -586,7 +586,7 @@
     jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSFullAccount *)deserialize:(NSDictionary *)valueDict {
@@ -643,7 +643,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSTeamSerializer serialize:instance];
 }
 
@@ -714,7 +714,7 @@
   jsonDict[@"id"] = valueObj.id_;
   jsonDict[@"name"] = valueObj.name;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSTeam *)deserialize:(NSDictionary *)valueDict {
@@ -754,7 +754,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSFullTeamSerializer serialize:instance];
 }
 
@@ -835,7 +835,7 @@
   jsonDict[@"sharing_policies"] = [DBTEAMPOLICIESTeamSharingPoliciesSerializer serialize:valueObj.sharingPolicies];
   jsonDict[@"office_addin_policy"] = [DBTEAMPOLICIESOfficeAddInPolicySerializer serialize:valueObj.officeAddinPolicy];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSFullTeam *)deserialize:(NSDictionary *)valueDict {
@@ -876,7 +876,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSGetAccountArgSerializer serialize:instance];
 }
 
@@ -942,7 +942,7 @@
 
   jsonDict[@"account_id"] = valueObj.accountId;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSGetAccountArg *)deserialize:(NSDictionary *)valueDict {
@@ -976,7 +976,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSGetAccountBatchArgSerializer serialize:instance];
 }
 
@@ -1045,7 +1045,7 @@
                                                   return elem0;
                                                 }];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSGetAccountBatchArg *)deserialize:(NSDictionary *)valueDict {
@@ -1121,7 +1121,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSGetAccountBatchErrorSerializer serialize:instance];
 }
 
@@ -1205,7 +1205,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSGetAccountBatchError *)deserialize:(NSDictionary *)valueDict {
@@ -1274,7 +1274,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSGetAccountErrorSerializer serialize:instance];
 }
 
@@ -1357,7 +1357,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSGetAccountError *)deserialize:(NSDictionary *)valueDict {
@@ -1395,7 +1395,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSIndividualSpaceAllocationSerializer serialize:instance];
 }
 
@@ -1461,7 +1461,7 @@
 
   jsonDict[@"allocated"] = valueObj.allocated;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSIndividualSpaceAllocation *)deserialize:(NSDictionary *)valueDict {
@@ -1501,7 +1501,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSNameSerializer serialize:instance];
 }
 
@@ -1587,7 +1587,7 @@
   jsonDict[@"display_name"] = valueObj.displayName;
   jsonDict[@"abbreviated_name"] = valueObj.abbreviatedName;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSName *)deserialize:(NSDictionary *)valueDict {
@@ -1694,7 +1694,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSSpaceAllocationSerializer serialize:instance];
 }
 
@@ -1785,7 +1785,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSSpaceAllocation *)deserialize:(NSDictionary *)valueDict {
@@ -1829,7 +1829,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSSpaceUsageSerializer serialize:instance];
 }
 
@@ -1900,7 +1900,7 @@
   jsonDict[@"used"] = valueObj.used;
   jsonDict[@"allocation"] = [DBUSERSSpaceAllocationSerializer serialize:valueObj.allocation];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSSpaceUsage *)deserialize:(NSDictionary *)valueDict {
@@ -1934,7 +1934,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBUSERSTeamSpaceAllocationSerializer serialize:instance];
 }
 
@@ -2005,7 +2005,7 @@
   jsonDict[@"used"] = valueObj.used;
   jsonDict[@"allocated"] = valueObj.allocated;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBUSERSTeamSpaceAllocation *)deserialize:(NSDictionary *)valueDict {

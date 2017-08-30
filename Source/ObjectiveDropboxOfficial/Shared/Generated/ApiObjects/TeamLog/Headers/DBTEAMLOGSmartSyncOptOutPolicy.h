@@ -115,7 +115,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGSmartSyncOptOutPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSmartSyncOptOutPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncOptOutPolicy *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSmartSyncOptOutPolicy *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSmartSyncOptOutPolicy` instances.

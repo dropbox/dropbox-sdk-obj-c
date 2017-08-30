@@ -33,7 +33,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBCOMMONInvalidPathRootErrorSerializer serialize:instance];
 }
 
@@ -105,7 +105,7 @@
     jsonDict[@"path_root"] = valueObj.pathRoot;
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBCOMMONInvalidPathRootError *)deserialize:(NSDictionary *)valueDict {
@@ -244,7 +244,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBCOMMONPathRootSerializer serialize:instance];
 }
 
@@ -353,7 +353,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBCOMMONPathRoot *)deserialize:(NSDictionary *)valueDict {
@@ -457,7 +457,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBCOMMONPathRootErrorSerializer serialize:instance];
 }
 
@@ -547,7 +547,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBCOMMONPathRootError *)deserialize:(NSDictionary *)valueDict {

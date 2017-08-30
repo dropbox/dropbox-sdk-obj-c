@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails` instances.

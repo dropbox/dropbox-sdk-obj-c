@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddLinkPasswordDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentAddLinkPasswordDetails` instances.

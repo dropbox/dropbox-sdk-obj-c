@@ -237,7 +237,7 @@ typedef NS_ENUM(NSInteger, DBFILESUpdatePropertiesErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUpdatePropertiesError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESUpdatePropertiesError *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESUpdatePropertiesError *)instance;
 
 ///
 /// Deserializes `DBFILESUpdatePropertiesError` instances.

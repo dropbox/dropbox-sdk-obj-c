@@ -138,7 +138,7 @@ typedef NS_ENUM(NSInteger, DBTEAMDesktopPlatformTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMDesktopPlatform` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMDesktopPlatform *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMDesktopPlatform *)instance;
 
 ///
 /// Deserializes `DBTEAMDesktopPlatform` instances.

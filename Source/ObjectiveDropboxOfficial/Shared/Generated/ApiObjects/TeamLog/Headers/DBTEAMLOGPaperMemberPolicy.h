@@ -134,7 +134,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperMemberPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperMemberPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperMemberPolicy *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGPaperMemberPolicy *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGPaperMemberPolicy` instances.

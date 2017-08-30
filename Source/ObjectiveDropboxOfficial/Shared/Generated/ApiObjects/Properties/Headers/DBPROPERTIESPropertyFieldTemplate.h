@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESPropertyFieldTemplate` API object.
 ///
-+ (NSDictionary *)serialize:(DBPROPERTIESPropertyFieldTemplate *)instance;
++ (nullable NSDictionary *)serialize:(DBPROPERTIESPropertyFieldTemplate *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyFieldTemplate` instances.

@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGSharingFolderJoinPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingFolderJoinPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingFolderJoinPolicy *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSharingFolderJoinPolicy *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharingFolderJoinPolicy` instances.

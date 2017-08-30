@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfTeamInviteDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamInviteDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSfTeamInviteDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSfTeamInviteDetails` instances.

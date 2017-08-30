@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestRemoveDeadlineDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestRemoveDeadlineDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGFileRequestRemoveDeadlineDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGFileRequestRemoveDeadlineDetails` instances.

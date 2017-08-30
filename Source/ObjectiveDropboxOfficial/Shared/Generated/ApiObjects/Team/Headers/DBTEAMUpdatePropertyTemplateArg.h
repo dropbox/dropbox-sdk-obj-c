@@ -93,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMUpdatePropertyTemplateArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMUpdatePropertyTemplateArg *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMUpdatePropertyTemplateArg *)instance;
 
 ///
 /// Deserializes `DBTEAMUpdatePropertyTemplateArg` instances.

@@ -81,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeLinkedApiAppArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMRevokeLinkedApiAppArg *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMRevokeLinkedApiAppArg *)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeLinkedApiAppArg` instances.

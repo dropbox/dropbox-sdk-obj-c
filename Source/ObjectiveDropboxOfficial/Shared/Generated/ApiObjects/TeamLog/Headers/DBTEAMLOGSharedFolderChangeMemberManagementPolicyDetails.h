@@ -101,7 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderChangeMemberManagementPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMemberManagementPolicyDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMemberManagementPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedFolderChangeMemberManagementPolicyDetails`

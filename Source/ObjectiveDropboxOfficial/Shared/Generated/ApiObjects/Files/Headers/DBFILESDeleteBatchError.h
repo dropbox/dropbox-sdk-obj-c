@@ -105,7 +105,7 @@ typedef NS_ENUM(NSInteger, DBFILESDeleteBatchErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESDeleteBatchError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESDeleteBatchError *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESDeleteBatchError *)instance;
 
 ///
 /// Deserializes `DBFILESDeleteBatchError` instances.

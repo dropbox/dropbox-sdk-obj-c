@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListMemberDevicesResult` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMListMemberDevicesResult *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMListMemberDevicesResult *)instance;
 
 ///
 /// Deserializes `DBTEAMListMemberDevicesResult` instances.

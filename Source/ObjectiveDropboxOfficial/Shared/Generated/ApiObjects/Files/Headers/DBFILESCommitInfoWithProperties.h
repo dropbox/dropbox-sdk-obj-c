@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESCommitInfoWithProperties` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESCommitInfoWithProperties *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESCommitInfoWithProperties *)instance;
 
 ///
 /// Deserializes `DBFILESCommitInfoWithProperties` instances.

@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails` instances.

@@ -5860,7 +5860,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEventType` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGEventType *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGEventType *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGEventType` instances.

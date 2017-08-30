@@ -116,7 +116,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGGroupUserManagementPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupUserManagementPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupUserManagementPolicy *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGGroupUserManagementPolicy *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGroupUserManagementPolicy` instances.

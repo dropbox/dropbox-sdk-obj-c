@@ -93,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderChangeConfidentialityDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeConfidentialityDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeConfidentialityDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedFolderChangeConfidentialityDetails` instances.

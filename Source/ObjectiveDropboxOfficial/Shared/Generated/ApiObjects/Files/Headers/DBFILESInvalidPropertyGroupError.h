@@ -208,7 +208,7 @@ typedef NS_ENUM(NSInteger, DBFILESInvalidPropertyGroupErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESInvalidPropertyGroupError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESInvalidPropertyGroupError *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESInvalidPropertyGroupError *)instance;
 
 ///
 /// Deserializes `DBFILESInvalidPropertyGroupError` instances.

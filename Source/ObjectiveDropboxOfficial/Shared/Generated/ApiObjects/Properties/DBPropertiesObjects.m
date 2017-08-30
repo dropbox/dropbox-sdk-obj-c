@@ -28,7 +28,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESGetPropertyTemplateArgSerializer serialize:instance];
 }
 
@@ -94,7 +94,7 @@
 
   jsonDict[@"template_id"] = valueObj.templateId;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESGetPropertyTemplateArg *)deserialize:(NSDictionary *)valueDict {
@@ -132,7 +132,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESPropertyGroupTemplateSerializer serialize:instance];
 }
 
@@ -211,7 +211,7 @@
                                              return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem0];
                                            }];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESPropertyGroupTemplate *)deserialize:(NSDictionary *)valueDict {
@@ -253,7 +253,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESGetPropertyTemplateResultSerializer serialize:instance];
 }
 
@@ -332,7 +332,7 @@
                                              return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem0];
                                            }];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESGetPropertyTemplateResult *)deserialize:(NSDictionary *)valueDict {
@@ -373,7 +373,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESListPropertyTemplateIdsSerializer serialize:instance];
 }
 
@@ -442,7 +442,7 @@
                                                    return elem0;
                                                  }];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESListPropertyTemplateIds *)deserialize:(NSDictionary *)valueDict {
@@ -533,7 +533,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESPropertyTemplateErrorSerializer serialize:instance];
 }
 
@@ -623,7 +623,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESPropertyTemplateError *)deserialize:(NSDictionary *)valueDict {
@@ -777,7 +777,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESModifyPropertyTemplateErrorSerializer serialize:instance];
 }
 
@@ -891,7 +891,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESModifyPropertyTemplateError *)deserialize:(NSDictionary *)valueDict {
@@ -941,7 +941,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESPropertyFieldSerializer serialize:instance];
 }
 
@@ -1012,7 +1012,7 @@
   jsonDict[@"name"] = valueObj.name;
   jsonDict[@"value"] = valueObj.value;
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESPropertyField *)deserialize:(NSDictionary *)valueDict {
@@ -1050,7 +1050,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:instance];
 }
 
@@ -1126,7 +1126,7 @@
   jsonDict[@"description"] = valueObj.description_;
   jsonDict[@"type"] = [DBPROPERTIESPropertyTypeSerializer serialize:valueObj.type];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESPropertyFieldTemplate *)deserialize:(NSDictionary *)valueDict {
@@ -1164,7 +1164,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESPropertyGroupSerializer serialize:instance];
 }
 
@@ -1238,7 +1238,7 @@
                                              return [DBPROPERTIESPropertyFieldSerializer serialize:elem0];
                                            }];
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESPropertyGroup *)deserialize:(NSDictionary *)valueDict {
@@ -1305,7 +1305,7 @@
 
 #pragma mark - Serialization methods
 
-+ (NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary *)serialize:(id)instance {
   return [DBPROPERTIESPropertyTypeSerializer serialize:instance];
 }
 
@@ -1388,7 +1388,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return jsonDict;
+  return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBPROPERTIESPropertyType *)deserialize:(NSDictionary *)valueDict {

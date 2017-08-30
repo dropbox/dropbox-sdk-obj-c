@@ -96,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeLinkAudienceDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkAudienceDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkAudienceDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentChangeLinkAudienceDetails` instances.

@@ -137,7 +137,7 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTemplateErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESPropertyTemplateError` API object.
 ///
-+ (NSDictionary *)serialize:(DBPROPERTIESPropertyTemplateError *)instance;
++ (nullable NSDictionary *)serialize:(DBPROPERTIESPropertyTemplateError *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyTemplateError` instances.

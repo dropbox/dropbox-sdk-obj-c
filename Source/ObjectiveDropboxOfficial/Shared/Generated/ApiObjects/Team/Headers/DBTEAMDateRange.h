@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the `DBTEAMDateRange`
 /// API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMDateRange *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMDateRange *)instance;
 
 ///
 /// Deserializes `DBTEAMDateRange` instances.

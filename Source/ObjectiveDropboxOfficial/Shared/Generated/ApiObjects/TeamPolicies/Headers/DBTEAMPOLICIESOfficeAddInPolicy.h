@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger, DBTEAMPOLICIESOfficeAddInPolicyTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESOfficeAddInPolicy` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESOfficeAddInPolicy *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMPOLICIESOfficeAddInPolicy *)instance;
 
 ///
 /// Deserializes `DBTEAMPOLICIESOfficeAddInPolicy` instances.

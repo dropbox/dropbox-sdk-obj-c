@@ -69,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails` instances.

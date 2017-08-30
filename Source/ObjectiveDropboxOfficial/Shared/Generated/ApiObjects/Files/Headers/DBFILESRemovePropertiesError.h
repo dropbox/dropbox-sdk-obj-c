@@ -193,7 +193,7 @@ typedef NS_ENUM(NSInteger, DBFILESRemovePropertiesErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRemovePropertiesError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESRemovePropertiesError *)instance;
++ (nullable NSDictionary *)serialize:(DBFILESRemovePropertiesError *)instance;
 
 ///
 /// Deserializes `DBFILESRemovePropertiesError` instances.

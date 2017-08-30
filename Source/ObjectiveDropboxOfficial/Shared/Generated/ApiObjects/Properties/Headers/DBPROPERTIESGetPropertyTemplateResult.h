@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBPROPERTIESGetPropertyTemplateResult` API object.
 ///
-+ (NSDictionary *)serialize:(DBPROPERTIESGetPropertyTemplateResult *)instance;
++ (nullable NSDictionary *)serialize:(DBPROPERTIESGetPropertyTemplateResult *)instance;
 
 ///
 /// Deserializes `DBPROPERTIESGetPropertyTemplateResult` instances.

@@ -101,7 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMActiveWebSession` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMActiveWebSession *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMActiveWebSession *)instance;
 
 ///
 /// Deserializes `DBTEAMActiveWebSession` instances.

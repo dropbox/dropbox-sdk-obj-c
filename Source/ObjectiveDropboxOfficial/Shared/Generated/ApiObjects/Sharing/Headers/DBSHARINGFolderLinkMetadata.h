@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGFolderLinkMetadata` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGFolderLinkMetadata *)instance;
++ (nullable NSDictionary *)serialize:(DBSHARINGFolderLinkMetadata *)instance;
 
 ///
 /// Deserializes `DBSHARINGFolderLinkMetadata` instances.
