@@ -50,6 +50,12 @@ _cmdline_parser.add_argument(
     type=str,
     help='Path to format output.',
 )
+_cmdline_parser.add_argument(
+    '-e',
+    '--exclude-from-analysis',
+    action='store_true',
+    help='Sets whether generated code should marked for exclusion from analysis.',
+)
 
 
 def main():
@@ -91,8 +97,13 @@ def main():
     types_cmd = (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style',
                  '-a', 'auth', 'obj_c_types', dropbox_pkg_path] + specs)
 
-    if args.documentation:
-        types_cmd += ['--', '-d', 'true']
+    if args.documentation or args.exclude_from_analysis:
+        types_cmd += ['--']
+        if args.documentation:
+            types_cmd += ['-d']
+        if args.exclude_from_analysis:
+            types_cmd += ['-e']
+
     o = subprocess.check_output(
         (types_cmd),
         cwd=stone_path)
