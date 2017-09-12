@@ -28,18 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Tag.
-@property (nonatomic, readonly, copy) NSString *tag;
+@property (nonatomic, readonly, copy) NSString *ptag;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param tag Tag.
+/// @param ptag Tag.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTag:(NSString *)tag;
+- (instancetype)initWithPtag:(NSString *)ptag;
 
 - (instancetype)init NS_UNAVAILABLE;
 

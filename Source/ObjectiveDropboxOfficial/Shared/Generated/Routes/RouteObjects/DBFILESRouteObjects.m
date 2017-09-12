@@ -30,6 +30,9 @@
 #import "DBFILESGetMetadataError.h"
 #import "DBFILESGetTemporaryLinkError.h"
 #import "DBFILESGetTemporaryLinkResult.h"
+#import "DBFILESGetThumbnailBatchError.h"
+#import "DBFILESGetThumbnailBatchResult.h"
+#import "DBFILESGetThumbnailBatchResultEntry.h"
 #import "DBFILESInvalidPropertyGroupError.h"
 #import "DBFILESListFolderContinueError.h"
 #import "DBFILESListFolderError.h"
@@ -105,6 +108,7 @@ static DBRoute *DBFILESGetMetadata;
 static DBRoute *DBFILESGetPreview;
 static DBRoute *DBFILESGetTemporaryLink;
 static DBRoute *DBFILESGetThumbnail;
+static DBRoute *DBFILESGetThumbnailBatch;
 static DBRoute *DBFILESListFolder;
 static DBRoute *DBFILESListFolderContinue;
 static DBRoute *DBFILESListFolderGetLatestCursor;
@@ -473,6 +477,24 @@ static DBRoute *DBFILESUploadSessionStart;
                         dataStructDeserialBlock:nil];
   }
   return DBFILESGetThumbnail;
+}
+
++ (DBRoute *)DBFILESGetThumbnailBatch {
+  if (!DBFILESGetThumbnailBatch) {
+    DBFILESGetThumbnailBatch = [[DBRoute alloc] init:@"get_thumbnail_batch"
+                                          namespace_:@"files"
+                                          deprecated:@NO
+                                          resultType:[DBFILESGetThumbnailBatchResult class]
+                                           errorType:[DBFILESGetThumbnailBatchError class]
+                                               attrs:@{
+                                                 @"auth" : @"user",
+                                                 @"host" : @"content",
+                                                 @"style" : @"rpc"
+                                               }
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
+  }
+  return DBFILESGetThumbnailBatch;
 }
 
 + (DBRoute *)DBFILESListFolder {

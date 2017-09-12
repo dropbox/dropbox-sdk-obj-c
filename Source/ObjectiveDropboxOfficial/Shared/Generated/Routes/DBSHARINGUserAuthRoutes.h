@@ -286,7 +286,7 @@ createSharedLink:(NSString *)path
 /// `DBSHARINGRequestedVisibility` (The resolved visibility, though, may depend on other aspects such as team and shared
 /// folder settings).
 ///
-/// @param path The path to be shared by the shared link
+/// @param path The path to be shared by the shared link.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGCreateSharedLinkWithSettingsError` object on failure.
@@ -299,8 +299,8 @@ createSharedLinkWithSettings:(NSString *)path;
 /// `DBSHARINGRequestedVisibility` (The resolved visibility, though, may depend on other aspects such as team and shared
 /// folder settings).
 ///
-/// @param path The path to be shared by the shared link
-/// @param settings The requested settings for the newly created shared link
+/// @param path The path to be shared by the shared link.
+/// @param settings The requested settings for the newly created shared link.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGCreateSharedLinkWithSettingsError` object on failure.
@@ -850,7 +850,7 @@ listSharedLinks:(nullable NSString *)path
 /// `DBSHARINGLinkPermissions` of the returned SharedLinkMetadata will reflect the actual visibility of the shared link
 /// and the `requestedVisibility` in `DBSHARINGLinkPermissions` will reflect the requested visibility.
 ///
-/// @param url URL of the shared link to change its settings
+/// @param url URL of the shared link to change its settings.
 /// @param settings Set of settings for the shared link.
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
@@ -866,7 +866,7 @@ modifySharedLinkSettings:(NSString *)url
 /// `DBSHARINGLinkPermissions` of the returned SharedLinkMetadata will reflect the actual visibility of the shared link
 /// and the `requestedVisibility` in `DBSHARINGLinkPermissions` will reflect the requested visibility.
 ///
-/// @param url URL of the shared link to change its settings
+/// @param url URL of the shared link to change its settings.
 /// @param settings Set of settings for the shared link.
 /// @param removeExpiration If set to true, removes the expiration of the shared link.
 ///

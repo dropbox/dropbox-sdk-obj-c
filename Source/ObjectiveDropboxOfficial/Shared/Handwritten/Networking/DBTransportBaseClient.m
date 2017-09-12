@@ -169,6 +169,9 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
     return nil;
   }
   NSData *jsonData = [self serializeDataWithRoute:route routeArg:arg];
+  if (!jsonData) {
+    return nil;
+  }
   NSString *asciiEscapedStr = [[self class] asciiEscapeWithString:[[self class] utf8StringWithData:jsonData]];
   NSMutableString *filteredStr = [[NSMutableString alloc] initWithString:asciiEscapedStr];
   [filteredStr replaceOccurrencesOfString:@"\\/"

@@ -24,6 +24,8 @@
 @class DBTEAMApiApp;
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMCOMMONGroupSummary;
+@class DBTEAMCustomQuotaError;
+@class DBTEAMCustomQuotaResult;
 @class DBTEAMDateRangeError;
 @class DBTEAMDesktopClientSession;
 @class DBTEAMDeviceSessionArg;
@@ -91,6 +93,7 @@
 @class DBTEAMMobileClientSession;
 @class DBTEAMNamespaceMetadata;
 @class DBTEAMPOLICIESTeamMemberPolicies;
+@class DBTEAMRemoveCustomQuotaResult;
 @class DBTEAMRevokeDesktopClientArg;
 @class DBTEAMRevokeDeviceSessionArg;
 @class DBTEAMRevokeDeviceSessionBatchError;
@@ -127,6 +130,8 @@
 @class DBTEAMTokenGetAuthenticatedAdminError;
 @class DBTEAMTokenGetAuthenticatedAdminResult;
 @class DBTEAMUpdatePropertyTemplateResult;
+@class DBTEAMUserCustomQuotaArg;
+@class DBTEAMUserCustomQuotaResult;
 @class DBTEAMUserSelectorArg;
 
 @protocol DBTransportClient;
@@ -150,7 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// List all device sessions of a team's member.
 ///
-/// @param teamMemberId The team's member id
+/// @param teamMemberId The team's member id.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMemberDevicesResult` object on success
 /// or a `DBTEAMListMemberDevicesError` object on failure.
@@ -161,10 +166,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// List all device sessions of a team's member.
 ///
-/// @param teamMemberId The team's member id
-/// @param includeWebSessions Whether to list web sessions of the team's member
-/// @param includeDesktopClients Whether to list linked desktop devices of the team's member
-/// @param includeMobileClients Whether to list linked mobile devices of the team's member
+/// @param teamMemberId The team's member id.
+/// @param includeWebSessions Whether to list web sessions of the team's member.
+/// @param includeDesktopClients Whether to list linked desktop devices of the team's member.
+/// @param includeMobileClients Whether to list linked mobile devices of the team's member.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMemberDevicesResult` object on success
 /// or a `DBTEAMListMemberDevicesError` object on failure.
@@ -189,10 +194,10 @@ devicesListMemberDevices:(NSString *)teamMemberId
 ///
 /// @param cursor At the first call to the `devicesListMembersDevices` the cursor shouldn't be passed. Then, if the
 /// result of the call includes a cursor, the following requests should include the received cursors in order to receive
-/// the next sub list of team devices
-/// @param includeWebSessions Whether to list web sessions of the team members
-/// @param includeDesktopClients Whether to list desktop clients of the team members
-/// @param includeMobileClients Whether to list mobile clients of the team members
+/// the next sub list of team devices.
+/// @param includeWebSessions Whether to list web sessions of the team members.
+/// @param includeDesktopClients Whether to list desktop clients of the team members.
+/// @param includeMobileClients Whether to list mobile clients of the team members.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMembersDevicesResult` object on success
 /// or a `DBTEAMListMembersDevicesError` object on failure.
@@ -218,10 +223,10 @@ devicesListMembersDevices:(nullable NSString *)cursor
 ///
 /// @param cursor At the first call to the `devicesListTeamDevices` the cursor shouldn't be passed. Then, if the result
 /// of the call includes a cursor, the following requests should include the received cursors in order to receive the
-/// next sub list of team devices
-/// @param includeWebSessions Whether to list web sessions of the team members
-/// @param includeDesktopClients Whether to list desktop clients of the team members
-/// @param includeMobileClients Whether to list mobile clients of the team members
+/// next sub list of team devices.
+/// @param includeWebSessions Whether to list web sessions of the team members.
+/// @param includeDesktopClients Whether to list desktop clients of the team members.
+/// @param includeMobileClients Whether to list mobile clients of the team members.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListTeamDevicesResult` object on success or
 /// a `DBTEAMListTeamDevicesError` object on failure.
@@ -234,7 +239,7 @@ devicesListTeamDevices:(nullable NSString *)cursor
     __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
 
 ///
-/// Revoke a device session of a team's member
+/// Revoke a device session of a team's member.
 ///
 /// @param revokeDeviceSessionArg The RevokeDeviceSessionArg union
 ///
@@ -245,7 +250,7 @@ devicesListTeamDevices:(nullable NSString *)cursor
     (DBTEAMRevokeDeviceSessionArg *)revokeDeviceSessionArg;
 
 ///
-/// Revoke a list of device sessions of team members
+/// Revoke a list of device sessions of team members.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMRevokeDeviceSessionBatchResult` object on
@@ -529,7 +534,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 /// List all linked applications of the team member. Note, this endpoint does not list any team-linked applications.
 ///
-/// @param teamMemberId The team member id
+/// @param teamMemberId The team member id.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMemberAppsResult` object on success or a
 /// `DBTEAMListMemberAppsError` object on failure.
@@ -553,7 +558,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 /// @param cursor At the first call to the `linkedAppsListMembersLinkedApps` the cursor shouldn't be passed. Then, if
 /// the result of the call includes a cursor, the following requests should include the received cursors in order to
-/// receive the next sub list of the team applications
+/// receive the next sub list of the team applications.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMembersAppsResult` object on success or
 /// a `DBTEAMListMembersAppsError` object on failure.
@@ -578,7 +583,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 /// @param cursor At the first call to the `linkedAppsListTeamLinkedApps` the cursor shouldn't be passed. Then, if the
 /// result of the call includes a cursor, the following requests should include the received cursors in order to receive
-/// the next sub list of the team applications
+/// the next sub list of the team applications.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListTeamAppsResult` object on success or a
 /// `DBTEAMListTeamAppsError` object on failure.
@@ -588,10 +593,10 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
     __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
 
 ///
-/// Revoke a linked application of the team member
+/// Revoke a linked application of the team member.
 ///
-/// @param appId The application's unique id
-/// @param teamMemberId The unique id of the member owning the device
+/// @param appId The application's unique id.
+/// @param teamMemberId The unique id of the member owning the device.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBTEAMRevokeLinkedAppError` object on failure.
@@ -600,11 +605,11 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
                                                                          teamMemberId:(NSString *)teamMemberId;
 
 ///
-/// Revoke a linked application of the team member
+/// Revoke a linked application of the team member.
 ///
-/// @param appId The application's unique id
-/// @param teamMemberId The unique id of the member owning the device
-/// @param keepAppFolder Whether to keep the application dedicated folder (in case the application uses  one)
+/// @param appId The application's unique id.
+/// @param teamMemberId The unique id of the member owning the device.
+/// @param keepAppFolder Whether to keep the application dedicated folder (in case the application uses  one).
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBTEAMRevokeLinkedAppError` object on failure.
@@ -615,7 +620,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
                                                                             (nullable NSNumber *)keepAppFolder;
 
 ///
-/// Revoke a list of linked applications of the team members
+/// Revoke a list of linked applications of the team members.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMRevokeLinkedAppBatchResult` object on
@@ -623,6 +628,41 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 - (DBRpcTask<DBTEAMRevokeLinkedAppBatchResult *, DBTEAMRevokeLinkedAppBatchError *> *)linkedAppsRevokeLinkedAppBatch:
     (NSArray<DBTEAMRevokeLinkedApiAppArg *> *)revokeLinkedApp;
+
+///
+/// Get users custom quota. Returns none as the custom quota if none was set. A maximum of 1000 members can be specified
+/// in a single call.
+///
+/// @param users List of users.
+///
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMCustomQuotaResult *>` object on
+/// success or a `DBTEAMCustomQuotaError` object on failure.
+///
+- (DBRpcTask<NSArray<DBTEAMCustomQuotaResult *> *, DBTEAMCustomQuotaError *> *)memberSpaceLimitsGetCustomQuota:
+    (NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
+/// Remove users custom quota. A maximum of 1000 members can be specified in a single call.
+///
+/// @param users List of users.
+///
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMRemoveCustomQuotaResult *>` object
+/// on success or a `DBTEAMCustomQuotaError` object on failure.
+///
+- (DBRpcTask<NSArray<DBTEAMRemoveCustomQuotaResult *> *, DBTEAMCustomQuotaError *> *)memberSpaceLimitsRemoveCustomQuota:
+    (NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
+/// Set users custom quota. Custom quota has to be at least 25GB. A maximum of 1000 members can be specified in a single
+/// call.
+///
+/// @param usersAndQuotas List of users and their custom quotas.
+///
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMCustomQuotaResult *>` object on
+/// success or a `DBTEAMCustomQuotaError` object on failure.
+///
+- (DBRpcTask<NSArray<DBTEAMCustomQuotaResult *> *, DBTEAMCustomQuotaError *> *)memberSpaceLimitsSetCustomQuota:
+    (NSArray<DBTEAMUserCustomQuotaArg *> *)usersAndQuotas;
 
 ///
 /// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
@@ -660,7 +700,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 
 ///
 /// Once an async_job_id is returned from `membersAdd` , use this to poll the status of the asynchronous request.
-/// Permission : Team member management
+/// Permission : Team member management.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -683,7 +723,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
     (NSArray<DBTEAMUserSelectorArg *> *)members;
 
 ///
-/// Lists members of a team. Permission : Team information
+/// Lists members of a team. Permission : Team information.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMMembersListResult` object on success or a
@@ -692,7 +732,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 - (DBRpcTask<DBTEAMMembersListResult *, DBTEAMMembersListError *> *)membersList;
 
 ///
-/// Lists members of a team. Permission : Team information
+/// Lists members of a team. Permission : Team information.
 ///
 /// @param limit Number of results to return per call.
 /// @param includeRemoved Whether to return removed members.
@@ -705,7 +745,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 
 ///
 /// Once a cursor has been retrieved from `membersList`, use this to paginate through all team members. Permission :
-/// Team information
+/// Team information.
 ///
 /// @param cursor Indicates from what point to get the next set of members.
 ///
@@ -766,7 +806,7 @@ transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
 
 ///
 /// Once an async_job_id is returned from `membersRemove` , use this to poll the status of the asynchronous request.
-/// Permission : Team member management
+/// Permission : Team member management.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -789,7 +829,7 @@ transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
     (DBTEAMUserSelectorArg *)userSelectorArg;
 
 ///
-/// Updates a team member's permissions. Permission : Team member management
+/// Updates a team member's permissions. Permission : Team member management.
 ///
 /// @param user Identity of user whose role will be set.
 /// @param dNewRole The new role of the member.
@@ -802,7 +842,7 @@ membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user
                   dNewRole:(DBTEAMAdminTier *)dNewRole;
 
 ///
-/// Updates a team member's profile. Permission : Team member management
+/// Updates a team member's profile. Permission : Team member management.
 ///
 /// @param user Identity of user whose profile will be set.
 ///
@@ -812,7 +852,7 @@ membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user
 - (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfileError *> *)membersSetProfile:(DBTEAMUserSelectorArg *)user;
 
 ///
-/// Updates a team member's profile. Permission : Team member management
+/// Updates a team member's profile. Permission : Team member management.
 ///
 /// @param user Identity of user whose profile will be set.
 /// @param dNewEmail New email for member.
@@ -886,7 +926,7 @@ membersSetProfile:(DBTEAMUserSelectorArg *)user
 /// owned by this team or members of the team, but shared folders may be owned by other users or other teams. Duplicates
 /// may occur in the list.
 ///
-/// @param limit The approximate maximum number of results to return per request. This limit may be exceeded.
+/// @param limit Specifying a value here has no effect.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMTeamNamespacesListResult` object on success
 /// or a `void` object on failure.
@@ -980,8 +1020,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's user activity.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetActivityReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.
@@ -1001,8 +1041,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's linked devices.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetDevicesReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.
@@ -1022,8 +1062,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's membership.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetMembershipReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.
@@ -1043,8 +1083,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's storage usage.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetStorageReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.

@@ -71,6 +71,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
   /// Folder is inside of another shared folder.
   DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder,
 
+  /// Policy cannot be changed due to restrictions from parent folder.
+  DBSHARINGPermissionDeniedReasonRestrictedByParentFolder,
+
   /// (no description).
   DBSHARINGPermissionDeniedReasonInsufficientPlan,
 
@@ -218,6 +221,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 - (instancetype)initWithFolderIsInsideSharedFolder;
 
 ///
+/// Initializes union class with tag state of "restricted_by_parent_folder".
+///
+/// Description of the "restricted_by_parent_folder" tag state: Policy cannot be
+/// changed due to restrictions from parent folder.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithRestrictedByParentFolder;
+
+///
 /// Initializes union class with tag state of "insufficient_plan".
 ///
 /// @param insufficientPlan (no description).
@@ -344,6 +357,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 /// "folder_is_inside_shared_folder".
 ///
 - (BOOL)isFolderIsInsideSharedFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "restricted_by_parent_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "restricted_by_parent_folder".
+///
+- (BOOL)isRestrictedByParentFolder;
 
 ///
 /// Retrieves whether the union's current tag state has value

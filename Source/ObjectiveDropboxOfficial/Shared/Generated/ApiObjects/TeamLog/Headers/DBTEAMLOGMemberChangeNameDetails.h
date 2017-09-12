@@ -31,8 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// New user's name.
 @property (nonatomic, readonly) DBTEAMLOGUserNameLogInfo *dNewValue;
 
-/// Previous user's name.
-@property (nonatomic, readonly) DBTEAMLOGUserNameLogInfo *previousValue;
+/// Previous user's name. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGUserNameLogInfo *previousValue;
 
 #pragma mark - Constructors
 
@@ -40,12 +40,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param dNewValue New user's name.
-/// @param previousValue Previous user's name.
+/// @param previousValue Previous user's name. Might be missing due to
+/// historical data gap.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithDNewValue:(DBTEAMLOGUserNameLogInfo *)dNewValue
-                    previousValue:(DBTEAMLOGUserNameLogInfo *)previousValue;
+                    previousValue:(nullable DBTEAMLOGUserNameLogInfo *)previousValue;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
+/// @param dNewValue New user's name.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDNewValue:(DBTEAMLOGUserNameLogInfo *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 

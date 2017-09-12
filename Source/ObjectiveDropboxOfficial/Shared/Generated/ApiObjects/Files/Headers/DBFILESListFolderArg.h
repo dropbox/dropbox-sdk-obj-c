@@ -43,6 +43,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// not  that file has any explicit members.
 @property (nonatomic, readonly) NSNumber *includeHasExplicitSharedMembers;
 
+/// If true, the results will include entries under mounted folders which
+/// includes app folder, shared folder and team folder.
+@property (nonatomic, readonly) NSNumber *includeMountedFolders;
+
+/// The maximum number of results to return per request. Note: This is an
+/// approximate number and there can be slightly more entries returned in some
+/// cases.
+@property (nonatomic, readonly, nullable) NSNumber *limit;
+
 #pragma mark - Constructors
 
 ///
@@ -59,6 +68,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param includeHasExplicitSharedMembers If true, the results will include a
 /// flag for each file indicating whether or not  that file has any explicit
 /// members.
+/// @param includeMountedFolders If true, the results will include entries under
+/// mounted folders which includes app folder, shared folder and team folder.
+/// @param limit The maximum number of results to return per request. Note: This
+/// is an approximate number and there can be slightly more entries returned in
+/// some cases.
 ///
 /// @return An initialized instance.
 ///
@@ -66,7 +80,9 @@ NS_ASSUME_NONNULL_BEGIN
                           recursive:(nullable NSNumber *)recursive
                    includeMediaInfo:(nullable NSNumber *)includeMediaInfo
                      includeDeleted:(nullable NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers;
+    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
+              includeMountedFolders:(nullable NSNumber *)includeMountedFolders
+                              limit:(nullable NSNumber *)limit;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

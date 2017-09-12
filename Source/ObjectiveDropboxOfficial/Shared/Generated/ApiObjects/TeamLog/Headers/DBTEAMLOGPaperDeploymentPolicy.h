@@ -29,10 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMLOGPaperDeploymentPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDeploymentPolicyTag) {
   /// (no description).
-  DBTEAMLOGPaperDeploymentPolicyPartial,
+  DBTEAMLOGPaperDeploymentPolicyFull,
 
   /// (no description).
-  DBTEAMLOGPaperDeploymentPolicyFull,
+  DBTEAMLOGPaperDeploymentPolicyPartial,
 
   /// (no description).
   DBTEAMLOGPaperDeploymentPolicyOther,
@@ -45,18 +45,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDeploymentPolicyTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of "partial".
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithPartial;
-
-///
 /// Initializes union class with tag state of "full".
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFull;
+
+///
+/// Initializes union class with tag state of "partial".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPartial;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -70,18 +70,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDeploymentPolicyTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "partial".
-///
-/// @return Whether the union's current tag state has value "partial".
-///
-- (BOOL)isPartial;
-
-///
 /// Retrieves whether the union's current tag state has value "full".
 ///
 /// @return Whether the union's current tag state has value "full".
 ///
 - (BOOL)isFull;
+
+///
+/// Retrieves whether the union's current tag state has value "partial".
+///
+/// @return Whether the union's current tag state has value "partial".
+///
+- (BOOL)isPartial;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

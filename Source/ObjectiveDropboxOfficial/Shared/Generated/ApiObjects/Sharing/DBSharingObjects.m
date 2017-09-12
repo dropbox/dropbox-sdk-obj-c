@@ -16574,6 +16574,14 @@
   return self;
 }
 
+- (instancetype)initWithRestrictedByParentFolder {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGPermissionDeniedReasonRestrictedByParentFolder;
+  }
+  return self;
+}
+
 - (instancetype)initWithInsufficientPlan:(DBSHARINGInsufficientPlan *)insufficientPlan {
   self = [super init];
   if (self) {
@@ -16656,6 +16664,10 @@
   return _tag == DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder;
 }
 
+- (BOOL)isRestrictedByParentFolder {
+  return _tag == DBSHARINGPermissionDeniedReasonRestrictedByParentFolder;
+}
+
 - (BOOL)isInsufficientPlan {
   return _tag == DBSHARINGPermissionDeniedReasonInsufficientPlan;
 }
@@ -16692,6 +16704,8 @@
     return @"DBSHARINGPermissionDeniedReasonUserNotOnTeam";
   case DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder:
     return @"DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder";
+  case DBSHARINGPermissionDeniedReasonRestrictedByParentFolder:
+    return @"DBSHARINGPermissionDeniedReasonRestrictedByParentFolder";
   case DBSHARINGPermissionDeniedReasonInsufficientPlan:
     return @"DBSHARINGPermissionDeniedReasonInsufficientPlan";
   case DBSHARINGPermissionDeniedReasonOther:
@@ -16758,6 +16772,8 @@
     result = prime * result + [[self tagName] hash];
   case DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder:
     result = prime * result + [[self tagName] hash];
+  case DBSHARINGPermissionDeniedReasonRestrictedByParentFolder:
+    result = prime * result + [[self tagName] hash];
   case DBSHARINGPermissionDeniedReasonInsufficientPlan:
     result = prime * result + [self.insufficientPlan hash];
   case DBSHARINGPermissionDeniedReasonOther:
@@ -16813,6 +16829,8 @@
     return [[self tagName] isEqual:[aPermissionDeniedReason tagName]];
   case DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder:
     return [[self tagName] isEqual:[aPermissionDeniedReason tagName]];
+  case DBSHARINGPermissionDeniedReasonRestrictedByParentFolder:
+    return [[self tagName] isEqual:[aPermissionDeniedReason tagName]];
   case DBSHARINGPermissionDeniedReasonInsufficientPlan:
     return [self.insufficientPlan isEqual:aPermissionDeniedReason.insufficientPlan];
   case DBSHARINGPermissionDeniedReasonOther:
@@ -16856,6 +16874,8 @@
     jsonDict[@".tag"] = @"user_not_on_team";
   } else if ([valueObj isFolderIsInsideSharedFolder]) {
     jsonDict[@".tag"] = @"folder_is_inside_shared_folder";
+  } else if ([valueObj isRestrictedByParentFolder]) {
+    jsonDict[@".tag"] = @"restricted_by_parent_folder";
   } else if ([valueObj isInsufficientPlan]) {
     jsonDict[@"insufficient_plan"] =
         [[DBSHARINGInsufficientPlanSerializer serialize:valueObj.insufficientPlan] mutableCopy];
@@ -16898,6 +16918,8 @@
     return [[DBSHARINGPermissionDeniedReason alloc] initWithUserNotOnTeam];
   } else if ([tag isEqualToString:@"folder_is_inside_shared_folder"]) {
     return [[DBSHARINGPermissionDeniedReason alloc] initWithFolderIsInsideSharedFolder];
+  } else if ([tag isEqualToString:@"restricted_by_parent_folder"]) {
+    return [[DBSHARINGPermissionDeniedReason alloc] initWithRestrictedByParentFolder];
   } else if ([tag isEqualToString:@"insufficient_plan"]) {
     DBSHARINGInsufficientPlan *insufficientPlan = [DBSHARINGInsufficientPlanSerializer deserialize:valueDict];
     return [[DBSHARINGPermissionDeniedReason alloc] initWithInsufficientPlan:insufficientPlan];

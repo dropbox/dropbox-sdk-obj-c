@@ -29,6 +29,9 @@
 #import "DBTEAMBaseTeamFolderError.h"
 #import "DBTEAMCOMMONGroupManagementType.h"
 #import "DBTEAMCOMMONGroupSummary.h"
+#import "DBTEAMCustomQuotaError.h"
+#import "DBTEAMCustomQuotaResult.h"
+#import "DBTEAMCustomQuotaUsersArg.h"
 #import "DBTEAMDateRange.h"
 #import "DBTEAMDateRangeError.h"
 #import "DBTEAMDesktopClientSession.h"
@@ -130,6 +133,7 @@
 #import "DBTEAMMobileClientSession.h"
 #import "DBTEAMNamespaceMetadata.h"
 #import "DBTEAMPOLICIESTeamMemberPolicies.h"
+#import "DBTEAMRemoveCustomQuotaResult.h"
 #import "DBTEAMRevokeDesktopClientArg.h"
 #import "DBTEAMRevokeDeviceSessionArg.h"
 #import "DBTEAMRevokeDeviceSessionBatchArg.h"
@@ -144,6 +148,7 @@
 #import "DBTEAMRevokeLinkedAppError.h"
 #import "DBTEAMRevokeLinkedAppStatus.h"
 #import "DBTEAMRouteObjects.h"
+#import "DBTEAMSetCustomQuotaArg.h"
 #import "DBTEAMStorageBucket.h"
 #import "DBTEAMTeamFolderAccessError.h"
 #import "DBTEAMTeamFolderActivateError.h"
@@ -179,6 +184,8 @@
 #import "DBTEAMTokenGetAuthenticatedAdminResult.h"
 #import "DBTEAMUpdatePropertyTemplateArg.h"
 #import "DBTEAMUpdatePropertyTemplateResult.h"
+#import "DBTEAMUserCustomQuotaArg.h"
+#import "DBTEAMUserCustomQuotaResult.h"
 #import "DBTEAMUserSelectorArg.h"
 #import "DBTEAMUserSelectorError.h"
 #import "DBTransportClientProtocol.h"
@@ -462,6 +469,24 @@
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsRevokeLinkedAppBatch;
   DBTEAMRevokeLinkedApiAppBatchArg *arg =
       [[DBTEAMRevokeLinkedApiAppBatchArg alloc] initWithRevokeLinkedApp:revokeLinkedApp];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsGetCustomQuota:(NSArray<DBTEAMUserSelectorArg *> *)users {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsGetCustomQuota;
+  DBTEAMCustomQuotaUsersArg *arg = [[DBTEAMCustomQuotaUsersArg alloc] initWithUsers:users];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsRemoveCustomQuota:(NSArray<DBTEAMUserSelectorArg *> *)users {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsRemoveCustomQuota;
+  DBTEAMCustomQuotaUsersArg *arg = [[DBTEAMCustomQuotaUsersArg alloc] initWithUsers:users];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsSetCustomQuota:(NSArray<DBTEAMUserCustomQuotaArg *> *)usersAndQuotas {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsSetCustomQuota;
+  DBTEAMSetCustomQuotaArg *arg = [[DBTEAMSetCustomQuotaArg alloc] initWithUsersAndQuotas:usersAndQuotas];
   return [self.client requestRpc:route arg:arg];
 }
 

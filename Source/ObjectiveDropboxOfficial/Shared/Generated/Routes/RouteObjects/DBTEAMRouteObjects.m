@@ -26,6 +26,8 @@
 #import "DBTEAMBaseTeamFolderError.h"
 #import "DBTEAMCOMMONGroupManagementType.h"
 #import "DBTEAMCOMMONGroupSummary.h"
+#import "DBTEAMCustomQuotaError.h"
+#import "DBTEAMCustomQuotaResult.h"
 #import "DBTEAMDateRangeError.h"
 #import "DBTEAMDesktopClientSession.h"
 #import "DBTEAMDevicesActive.h"
@@ -91,6 +93,7 @@
 #import "DBTEAMMobileClientSession.h"
 #import "DBTEAMNamespaceMetadata.h"
 #import "DBTEAMPOLICIESTeamMemberPolicies.h"
+#import "DBTEAMRemoveCustomQuotaResult.h"
 #import "DBTEAMRevokeDeviceSessionBatchError.h"
 #import "DBTEAMRevokeDeviceSessionBatchResult.h"
 #import "DBTEAMRevokeDeviceSessionError.h"
@@ -125,6 +128,8 @@
 #import "DBTEAMTokenGetAuthenticatedAdminError.h"
 #import "DBTEAMTokenGetAuthenticatedAdminResult.h"
 #import "DBTEAMUpdatePropertyTemplateResult.h"
+#import "DBTEAMUserCustomQuotaResult.h"
+#import "DBTEAMUserSelectorArg.h"
 #import "DBTEAMUserSelectorError.h"
 
 @implementation DBTEAMRouteObjects
@@ -153,6 +158,9 @@ static DBRoute *DBTEAMLinkedAppsListMembersLinkedApps;
 static DBRoute *DBTEAMLinkedAppsListTeamLinkedApps;
 static DBRoute *DBTEAMLinkedAppsRevokeLinkedApp;
 static DBRoute *DBTEAMLinkedAppsRevokeLinkedAppBatch;
+static DBRoute *DBTEAMMemberSpaceLimitsGetCustomQuota;
+static DBRoute *DBTEAMMemberSpaceLimitsRemoveCustomQuota;
+static DBRoute *DBTEAMMemberSpaceLimitsSetCustomQuota;
 static DBRoute *DBTEAMMembersAdd;
 static DBRoute *DBTEAMMembersAddJobStatusGet;
 static DBRoute *DBTEAMMembersGetInfo;
@@ -627,6 +635,75 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                          dataStructDeserialBlock:nil];
   }
   return DBTEAMLinkedAppsRevokeLinkedAppBatch;
+}
+
++ (DBRoute *)DBTEAMMemberSpaceLimitsGetCustomQuota {
+  if (!DBTEAMMemberSpaceLimitsGetCustomQuota) {
+    DBTEAMMemberSpaceLimitsGetCustomQuota = [[DBRoute alloc] init:@"member_space_limits/get_custom_quota"
+        namespace_:@"team"
+        deprecated:@NO
+        resultType:[NSArray<DBTEAMCustomQuotaResult *> class]
+        errorType:[DBTEAMCustomQuotaError class]
+        attrs:@{
+          @"auth" : @"team",
+          @"host" : @"api",
+          @"style" : @"rpc"
+        }
+        dataStructSerialBlock:nil
+        dataStructDeserialBlock:^id(id dataStruct) {
+          return [DBArraySerializer deserialize:dataStruct
+                                      withBlock:^id(id elem0) {
+                                        return [DBTEAMCustomQuotaResultSerializer deserialize:elem0];
+                                      }];
+        }];
+  }
+  return DBTEAMMemberSpaceLimitsGetCustomQuota;
+}
+
++ (DBRoute *)DBTEAMMemberSpaceLimitsRemoveCustomQuota {
+  if (!DBTEAMMemberSpaceLimitsRemoveCustomQuota) {
+    DBTEAMMemberSpaceLimitsRemoveCustomQuota = [[DBRoute alloc] init:@"member_space_limits/remove_custom_quota"
+        namespace_:@"team"
+        deprecated:@NO
+        resultType:[NSArray<DBTEAMRemoveCustomQuotaResult *> class]
+        errorType:[DBTEAMCustomQuotaError class]
+        attrs:@{
+          @"auth" : @"team",
+          @"host" : @"api",
+          @"style" : @"rpc"
+        }
+        dataStructSerialBlock:nil
+        dataStructDeserialBlock:^id(id dataStruct) {
+          return [DBArraySerializer deserialize:dataStruct
+                                      withBlock:^id(id elem0) {
+                                        return [DBTEAMRemoveCustomQuotaResultSerializer deserialize:elem0];
+                                      }];
+        }];
+  }
+  return DBTEAMMemberSpaceLimitsRemoveCustomQuota;
+}
+
++ (DBRoute *)DBTEAMMemberSpaceLimitsSetCustomQuota {
+  if (!DBTEAMMemberSpaceLimitsSetCustomQuota) {
+    DBTEAMMemberSpaceLimitsSetCustomQuota = [[DBRoute alloc] init:@"member_space_limits/set_custom_quota"
+        namespace_:@"team"
+        deprecated:@NO
+        resultType:[NSArray<DBTEAMCustomQuotaResult *> class]
+        errorType:[DBTEAMCustomQuotaError class]
+        attrs:@{
+          @"auth" : @"team",
+          @"host" : @"api",
+          @"style" : @"rpc"
+        }
+        dataStructSerialBlock:nil
+        dataStructDeserialBlock:^id(id dataStruct) {
+          return [DBArraySerializer deserialize:dataStruct
+                                      withBlock:^id(id elem0) {
+                                        return [DBTEAMCustomQuotaResultSerializer deserialize:elem0];
+                                      }];
+        }];
+  }
+  return DBTEAMMemberSpaceLimitsSetCustomQuota;
 }
 
 + (DBRoute *)DBTEAMMembersAdd {

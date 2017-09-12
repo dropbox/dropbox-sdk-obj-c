@@ -31,6 +31,9 @@
 @class DBFILESGetMetadataError;
 @class DBFILESGetTemporaryLinkError;
 @class DBFILESGetTemporaryLinkResult;
+@class DBFILESGetThumbnailBatchError;
+@class DBFILESGetThumbnailBatchResult;
+@class DBFILESGetThumbnailBatchResultEntry;
 @class DBFILESInvalidPropertyGroupError;
 @class DBFILESListFolderContinueError;
 @class DBFILESListFolderError;
@@ -64,6 +67,7 @@
 @class DBFILESSearchMatch;
 @class DBFILESSearchMode;
 @class DBFILESSearchResult;
+@class DBFILESThumbnailArg;
 @class DBFILESThumbnailError;
 @class DBFILESThumbnailFormat;
 @class DBFILESThumbnailSize;
@@ -482,7 +486,7 @@ alphaUploadStream:(NSString *)path
 /// Download a file from a user's Dropbox.
 ///
 /// @param path The path of the file to download.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -522,7 +526,7 @@ alphaUploadStream:(NSString *)path
 /// Download a file from a user's Dropbox.
 ///
 /// @param path The path of the file to download.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -556,7 +560,7 @@ alphaUploadStream:(NSString *)path
 /// Download a file from a user's Dropbox.
 ///
 /// @param path The path of the file to download.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESDownloadError` object on failure.
@@ -584,7 +588,7 @@ alphaUploadStream:(NSString *)path
 /// Download a file from a user's Dropbox.
 ///
 /// @param path The path of the file to download.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
@@ -653,7 +657,7 @@ alphaUploadStream:(NSString *)path
 /// error.
 ///
 /// @param path The path of the file to preview.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -699,7 +703,7 @@ alphaUploadStream:(NSString *)path
 /// error.
 ///
 /// @param path The path of the file to preview.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -739,7 +743,7 @@ alphaUploadStream:(NSString *)path
 /// error.
 ///
 /// @param path The path of the file to preview.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESPreviewError` object on failure.
@@ -773,7 +777,7 @@ alphaUploadStream:(NSString *)path
 /// error.
 ///
 /// @param path The path of the file to preview.
-/// @param rev Deprecated. Please specify revision in path instead.
+/// @param rev Please specify revision in path instead.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
@@ -959,6 +963,19 @@ getThumbnailData:(NSString *)path
    byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
+/// Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently supports
+/// files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB
+/// in size won't be converted to a thumbnail.
+///
+/// @param entries List of files to get thumbnails.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESGetThumbnailBatchResult` object on success
+/// or a `DBFILESGetThumbnailBatchError` object on failure.
+///
+- (DBRpcTask<DBFILESGetThumbnailBatchResult *, DBFILESGetThumbnailBatchError *> *)getThumbnailBatch:
+    (NSArray<DBFILESThumbnailArg *> *)entries;
+
+///
 /// Starts returning the contents of a folder. If the result's `hasMore` in `DBFILESListFolderResult` field is true,
 /// call `listFolderContinue` with the returned `cursor` in `DBFILESListFolderResult` to retrieve more entries. If
 /// you're using `recursive` in `DBFILESListFolderArg` set to true to keep a local cache of the contents of a Dropbox
@@ -1003,16 +1020,22 @@ getThumbnailData:(NSString *)path
 /// deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
+/// @param includeMountedFolders If true, the results will include entries under mounted folders which includes app
+/// folder, shared folder and team folder.
+/// @param limit The maximum number of results to return per request. Note: This is an approximate number and there can
+/// be slightly more entries returned in some cases.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderError` object on failure.
 ///
-- (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> *)listFolder:(NSString *)path
-                                                                     recursive:(nullable NSNumber *)recursive
-                                                              includeMediaInfo:(nullable NSNumber *)includeMediaInfo
-                                                                includeDeleted:(nullable NSNumber *)includeDeleted
-                                               includeHasExplicitSharedMembers:
-                                                   (nullable NSNumber *)includeHasExplicitSharedMembers;
+- (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> *)
+                     listFolder:(NSString *)path
+                      recursive:(nullable NSNumber *)recursive
+               includeMediaInfo:(nullable NSNumber *)includeMediaInfo
+                 includeDeleted:(nullable NSNumber *)includeDeleted
+includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
+          includeMountedFolders:(nullable NSNumber *)includeMountedFolders
+                          limit:(nullable NSNumber *)limit;
 
 ///
 /// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to
@@ -1051,6 +1074,10 @@ getThumbnailData:(NSString *)path
 /// deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
+/// @param includeMountedFolders If true, the results will include entries under mounted folders which includes app
+/// folder, shared folder and team folder.
+/// @param limit The maximum number of results to return per request. Note: This is an approximate number and there can
+/// be slightly more entries returned in some cases.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderGetLatestCursorResult` object on
 /// success or a `DBFILESListFolderError` object on failure.
@@ -1060,7 +1087,9 @@ getThumbnailData:(NSString *)path
                       recursive:(nullable NSNumber *)recursive
                includeMediaInfo:(nullable NSNumber *)includeMediaInfo
                  includeDeleted:(nullable NSNumber *)includeDeleted
-includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers;
+includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
+          includeMountedFolders:(nullable NSNumber *)includeMountedFolders
+                          limit:(nullable NSNumber *)limit;
 
 ///
 /// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you

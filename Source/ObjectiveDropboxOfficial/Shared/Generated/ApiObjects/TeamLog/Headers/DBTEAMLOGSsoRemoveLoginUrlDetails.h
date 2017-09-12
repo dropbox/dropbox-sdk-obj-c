@@ -8,26 +8,26 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGRemoveSsoUrlDetails;
+@class DBTEAMLOGSsoRemoveLoginUrlDetails;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `RemoveSsoUrlDetails` struct.
+/// The `SsoRemoveLoginUrlDetails` struct.
 ///
-/// Changed the sign-out URL for SSO.
+/// Removed the sign-in URL for SSO.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGRemoveSsoUrlDetails : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGSsoRemoveLoginUrlDetails : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// Previous single sign-on logout URL.
+/// Previous single sign-on login URL.
 @property (nonatomic, readonly, copy) NSString *previousValue;
 
 #pragma mark - Constructors
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param previousValue Previous single sign-on logout URL.
+/// @param previousValue Previous single sign-on login URL.
 ///
 /// @return An initialized instance.
 ///
@@ -48,30 +48,30 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `RemoveSsoUrlDetails` struct.
+/// The serialization class for the `SsoRemoveLoginUrlDetails` struct.
 ///
-@interface DBTEAMLOGRemoveSsoUrlDetailsSerializer : NSObject
+@interface DBTEAMLOGSsoRemoveLoginUrlDetailsSerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGRemoveSsoUrlDetails` instances.
+/// Serializes `DBTEAMLOGSsoRemoveLoginUrlDetails` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGRemoveSsoUrlDetails` API
+/// @param instance An instance of the `DBTEAMLOGSsoRemoveLoginUrlDetails` API
 /// object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGRemoveSsoUrlDetails` API object.
+/// `DBTEAMLOGSsoRemoveLoginUrlDetails` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGRemoveSsoUrlDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSsoRemoveLoginUrlDetails *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGRemoveSsoUrlDetails` instances.
+/// Deserializes `DBTEAMLOGSsoRemoveLoginUrlDetails` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGRemoveSsoUrlDetails` API object.
+/// `DBTEAMLOGSsoRemoveLoginUrlDetails` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGRemoveSsoUrlDetails` object.
+/// @return An instantiation of the `DBTEAMLOGSsoRemoveLoginUrlDetails` object.
 ///
-+ (DBTEAMLOGRemoveSsoUrlDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSsoRemoveLoginUrlDetails *)deserialize:(NSDictionary *)dict;
 
 @end
 

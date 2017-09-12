@@ -31,13 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// with which the `DBTEAMLOGTfaPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMLOGTfaPolicyTag) {
   /// (no description).
-  DBTEAMLOGTfaPolicyDisabled,
+  DBTEAMLOGTfaPolicyAllowDisable,
 
   /// (no description).
-  DBTEAMLOGTfaPolicyOptional,
-
-  /// (no description).
-  DBTEAMLOGTfaPolicyRequired,
+  DBTEAMLOGTfaPolicyStickyEnable,
 
   /// (no description).
   DBTEAMLOGTfaPolicyOther,
@@ -50,25 +47,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGTfaPolicyTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of "disabled".
+/// Initializes union class with tag state of "allow_disable".
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDisabled;
+- (instancetype)initWithAllowDisable;
 
 ///
-/// Initializes union class with tag state of "optional".
+/// Initializes union class with tag state of "sticky_enable".
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithOptional;
-
-///
-/// Initializes union class with tag state of "required".
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithRequired;
+- (instancetype)initWithStickyEnable;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -82,25 +72,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGTfaPolicyTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "disabled".
+/// Retrieves whether the union's current tag state has value "allow_disable".
 ///
-/// @return Whether the union's current tag state has value "disabled".
+/// @return Whether the union's current tag state has value "allow_disable".
 ///
-- (BOOL)isDisabled;
+- (BOOL)isAllowDisable;
 
 ///
-/// Retrieves whether the union's current tag state has value "optional".
+/// Retrieves whether the union's current tag state has value "sticky_enable".
 ///
-/// @return Whether the union's current tag state has value "optional".
+/// @return Whether the union's current tag state has value "sticky_enable".
 ///
-- (BOOL)isOptional;
-
-///
-/// Retrieves whether the union's current tag state has value "required".
-///
-/// @return Whether the union's current tag state has value "required".
-///
-- (BOOL)isRequired;
+- (BOOL)isStickyEnable;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

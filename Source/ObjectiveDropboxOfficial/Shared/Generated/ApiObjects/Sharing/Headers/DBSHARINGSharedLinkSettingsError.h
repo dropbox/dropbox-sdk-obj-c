@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkSettingsErrorTag) {
   /// User is not allowed to modify the settings of this link. Note that basic
   /// users can only set `public` in `DBSHARINGRequestedVisibility` as the
   /// `requestedVisibility` in `DBSHARINGSharedLinkSettings` and cannot set
-  /// `expires` in `DBSHARINGSharedLinkSettings`
+  /// `expires` in `DBSHARINGSharedLinkSettings`.
   DBSHARINGSharedLinkSettingsErrorNotAuthorized,
 
 };
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkSettingsErrorTag) {
 /// the settings of this link. Note that basic users can only set `public` in
 /// `DBSHARINGRequestedVisibility` as the `requestedVisibility` in
 /// `DBSHARINGSharedLinkSettings` and cannot set `expires` in
-/// `DBSHARINGSharedLinkSettings`
+/// `DBSHARINGSharedLinkSettings`.
 ///
 /// @return An initialized instance.
 ///

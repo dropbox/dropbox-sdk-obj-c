@@ -41,6 +41,10 @@
 #import "DBFILESGetTemporaryLinkArg.h"
 #import "DBFILESGetTemporaryLinkError.h"
 #import "DBFILESGetTemporaryLinkResult.h"
+#import "DBFILESGetThumbnailBatchArg.h"
+#import "DBFILESGetThumbnailBatchError.h"
+#import "DBFILESGetThumbnailBatchResult.h"
+#import "DBFILESGetThumbnailBatchResultEntry.h"
 #import "DBFILESInvalidPropertyGroupError.h"
 #import "DBFILESListFolderArg.h"
 #import "DBFILESListFolderContinueArg.h"
@@ -601,6 +605,12 @@
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
+- (DBRpcTask *)getThumbnailBatch:(NSArray<DBFILESThumbnailArg *> *)entries {
+  DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailBatch;
+  DBFILESGetThumbnailBatchArg *arg = [[DBFILESGetThumbnailBatchArg alloc] initWithEntries:entries];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)listFolder:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolder;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path];
@@ -611,13 +621,17 @@
                           recursive:(NSNumber *)recursive
                    includeMediaInfo:(NSNumber *)includeMediaInfo
                      includeDeleted:(NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers {
+    includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
+              includeMountedFolders:(NSNumber *)includeMountedFolders
+                              limit:(NSNumber *)limit {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolder;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
                                                         includeMediaInfo:includeMediaInfo
                                                           includeDeleted:includeDeleted
-                                         includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
+                                         includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
+                                                   includeMountedFolders:includeMountedFolders
+                                                                   limit:limit];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -637,13 +651,17 @@
                                recursive:(NSNumber *)recursive
                         includeMediaInfo:(NSNumber *)includeMediaInfo
                           includeDeleted:(NSNumber *)includeDeleted
-         includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers {
+         includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
+                   includeMountedFolders:(NSNumber *)includeMountedFolders
+                                   limit:(NSNumber *)limit {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolderGetLatestCursor;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
                                                         includeMediaInfo:includeMediaInfo
                                                           includeDeleted:includeDeleted
-                                         includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
+                                         includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
+                                                   includeMountedFolders:includeMountedFolders
+                                                                   limit:limit];
   return [self.client requestRpc:route arg:arg];
 }
 

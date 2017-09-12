@@ -37,6 +37,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperPolicyTag) {
   DBTEAMLOGPaperPolicyEnabled,
 
   /// (no description).
+  DBTEAMLOGPaperPolicyUnspecified,
+
+  /// (no description).
   DBTEAMLOGPaperPolicyOther,
 
 };
@@ -59,6 +62,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperPolicyTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithEnabled;
+
+///
+/// Initializes union class with tag state of "unspecified".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnspecified;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -84,6 +94,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperPolicyTag) {
 /// @return Whether the union's current tag state has value "enabled".
 ///
 - (BOOL)isEnabled;
+
+///
+/// Retrieves whether the union's current tag state has value "unspecified".
+///
+/// @return Whether the union's current tag state has value "unspecified".
+///
+- (BOOL)isUnspecified;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

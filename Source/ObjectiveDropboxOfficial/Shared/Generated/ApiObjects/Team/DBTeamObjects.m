@@ -1317,6 +1317,464 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMCustomQuotaError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMCustomQuotaError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTooManyUsers {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMCustomQuotaErrorTooManyUsers;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMCustomQuotaErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isTooManyUsers {
+  return _tag == DBTEAMCustomQuotaErrorTooManyUsers;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMCustomQuotaErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMCustomQuotaErrorTooManyUsers:
+    return @"DBTEAMCustomQuotaErrorTooManyUsers";
+  case DBTEAMCustomQuotaErrorOther:
+    return @"DBTEAMCustomQuotaErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMCustomQuotaErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMCustomQuotaErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMCustomQuotaErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMCustomQuotaErrorTooManyUsers:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMCustomQuotaErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToCustomQuotaError:other];
+}
+
+- (BOOL)isEqualToCustomQuotaError:(DBTEAMCustomQuotaError *)aCustomQuotaError {
+  if (self == aCustomQuotaError) {
+    return YES;
+  }
+  if (self.tag != aCustomQuotaError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMCustomQuotaErrorTooManyUsers:
+    return [[self tagName] isEqual:[aCustomQuotaError tagName]];
+  case DBTEAMCustomQuotaErrorOther:
+    return [[self tagName] isEqual:[aCustomQuotaError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMCustomQuotaErrorSerializer
+
++ (NSDictionary *)serialize:(DBTEAMCustomQuotaError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isTooManyUsers]) {
+    jsonDict[@".tag"] = @"too_many_users";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMCustomQuotaError *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"too_many_users"]) {
+    return [[DBTEAMCustomQuotaError alloc] initWithTooManyUsers];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMCustomQuotaError alloc] initWithOther];
+  } else {
+    return [[DBTEAMCustomQuotaError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMCustomQuotaResult.h"
+#import "DBTEAMUserCustomQuotaResult.h"
+#import "DBTEAMUserSelectorArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMCustomQuotaResult
+
+@synthesize success = _success;
+@synthesize invalidUser = _invalidUser;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSuccess:(DBTEAMUserCustomQuotaResult *)success {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMCustomQuotaResultSuccess;
+    _success = success;
+  }
+  return self;
+}
+
+- (instancetype)initWithInvalidUser:(DBTEAMUserSelectorArg *)invalidUser {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMCustomQuotaResultInvalidUser;
+    _invalidUser = invalidUser;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMCustomQuotaResultOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMUserCustomQuotaResult *)success {
+  if (![self isSuccess]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMCustomQuotaResultSuccess, but was %@.", [self tagName]];
+  }
+  return _success;
+}
+
+- (DBTEAMUserSelectorArg *)invalidUser {
+  if (![self isInvalidUser]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMCustomQuotaResultInvalidUser, but was %@.", [self tagName]];
+  }
+  return _invalidUser;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isSuccess {
+  return _tag == DBTEAMCustomQuotaResultSuccess;
+}
+
+- (BOOL)isInvalidUser {
+  return _tag == DBTEAMCustomQuotaResultInvalidUser;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMCustomQuotaResultOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMCustomQuotaResultSuccess:
+    return @"DBTEAMCustomQuotaResultSuccess";
+  case DBTEAMCustomQuotaResultInvalidUser:
+    return @"DBTEAMCustomQuotaResultInvalidUser";
+  case DBTEAMCustomQuotaResultOther:
+    return @"DBTEAMCustomQuotaResultOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMCustomQuotaResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMCustomQuotaResultSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMCustomQuotaResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMCustomQuotaResultSuccess:
+    result = prime * result + [self.success hash];
+  case DBTEAMCustomQuotaResultInvalidUser:
+    result = prime * result + [self.invalidUser hash];
+  case DBTEAMCustomQuotaResultOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToCustomQuotaResult:other];
+}
+
+- (BOOL)isEqualToCustomQuotaResult:(DBTEAMCustomQuotaResult *)aCustomQuotaResult {
+  if (self == aCustomQuotaResult) {
+    return YES;
+  }
+  if (self.tag != aCustomQuotaResult.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMCustomQuotaResultSuccess:
+    return [self.success isEqual:aCustomQuotaResult.success];
+  case DBTEAMCustomQuotaResultInvalidUser:
+    return [self.invalidUser isEqual:aCustomQuotaResult.invalidUser];
+  case DBTEAMCustomQuotaResultOther:
+    return [[self tagName] isEqual:[aCustomQuotaResult tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMCustomQuotaResultSerializer
+
++ (NSDictionary *)serialize:(DBTEAMCustomQuotaResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isSuccess]) {
+    jsonDict[@"success"] = [[DBTEAMUserCustomQuotaResultSerializer serialize:valueObj.success] mutableCopy];
+    jsonDict[@".tag"] = @"success";
+  } else if ([valueObj isInvalidUser]) {
+    jsonDict[@"invalid_user"] = [[DBTEAMUserSelectorArgSerializer serialize:valueObj.invalidUser] mutableCopy];
+    jsonDict[@".tag"] = @"invalid_user";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMCustomQuotaResult *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"success"]) {
+    DBTEAMUserCustomQuotaResult *success = [DBTEAMUserCustomQuotaResultSerializer deserialize:valueDict];
+    return [[DBTEAMCustomQuotaResult alloc] initWithSuccess:success];
+  } else if ([tag isEqualToString:@"invalid_user"]) {
+    DBTEAMUserSelectorArg *invalidUser = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"invalid_user"]];
+    return [[DBTEAMCustomQuotaResult alloc] initWithInvalidUser:invalidUser];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMCustomQuotaResult alloc] initWithOther];
+  } else {
+    return [[DBTEAMCustomQuotaResult alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMCustomQuotaUsersArg.h"
+#import "DBTEAMUserSelectorArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMCustomQuotaUsersArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUsers:(NSArray<DBTEAMUserSelectorArg *> *)users {
+  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](users);
+
+  self = [super init];
+  if (self) {
+    _users = users;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMCustomQuotaUsersArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMCustomQuotaUsersArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMCustomQuotaUsersArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.users hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToCustomQuotaUsersArg:other];
+}
+
+- (BOOL)isEqualToCustomQuotaUsersArg:(DBTEAMCustomQuotaUsersArg *)aCustomQuotaUsersArg {
+  if (self == aCustomQuotaUsersArg) {
+    return YES;
+  }
+  if (![self.users isEqual:aCustomQuotaUsersArg.users]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMCustomQuotaUsersArgSerializer
+
++ (NSDictionary *)serialize:(DBTEAMCustomQuotaUsersArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"users"] = [DBArraySerializer serialize:valueObj.users
+                                          withBlock:^id(id elem0) {
+                                            return [DBTEAMUserSelectorArgSerializer serialize:elem0];
+                                          }];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMCustomQuotaUsersArg *)deserialize:(NSDictionary *)valueDict {
+  NSArray<DBTEAMUserSelectorArg *> *users =
+      [DBArraySerializer deserialize:valueDict[@"users"]
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMUserSelectorArgSerializer deserialize:elem0];
+                           }];
+
+  return [[DBTEAMCustomQuotaUsersArg alloc] initWithUsers:users];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMDateRange.h"
 
 #pragma mark - API Object
@@ -17153,9 +17611,9 @@
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](dNewExternalId);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewGivenName);
+   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewGivenName);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewSurname);
+   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewSurname);
 
   self = [super init];
   if (self) {
@@ -19059,6 +19517,205 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMRemoveCustomQuotaResult.h"
+#import "DBTEAMUserSelectorArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMRemoveCustomQuotaResult
+
+@synthesize success = _success;
+@synthesize invalidUser = _invalidUser;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSuccess:(DBTEAMUserSelectorArg *)success {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMRemoveCustomQuotaResultSuccess;
+    _success = success;
+  }
+  return self;
+}
+
+- (instancetype)initWithInvalidUser:(DBTEAMUserSelectorArg *)invalidUser {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMRemoveCustomQuotaResultInvalidUser;
+    _invalidUser = invalidUser;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMRemoveCustomQuotaResultOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMUserSelectorArg *)success {
+  if (![self isSuccess]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMRemoveCustomQuotaResultSuccess, but was %@.", [self tagName]];
+  }
+  return _success;
+}
+
+- (DBTEAMUserSelectorArg *)invalidUser {
+  if (![self isInvalidUser]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMRemoveCustomQuotaResultInvalidUser, but was %@.", [self tagName]];
+  }
+  return _invalidUser;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isSuccess {
+  return _tag == DBTEAMRemoveCustomQuotaResultSuccess;
+}
+
+- (BOOL)isInvalidUser {
+  return _tag == DBTEAMRemoveCustomQuotaResultInvalidUser;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMRemoveCustomQuotaResultOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMRemoveCustomQuotaResultSuccess:
+    return @"DBTEAMRemoveCustomQuotaResultSuccess";
+  case DBTEAMRemoveCustomQuotaResultInvalidUser:
+    return @"DBTEAMRemoveCustomQuotaResultInvalidUser";
+  case DBTEAMRemoveCustomQuotaResultOther:
+    return @"DBTEAMRemoveCustomQuotaResultOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMRemoveCustomQuotaResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMRemoveCustomQuotaResultSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMRemoveCustomQuotaResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMRemoveCustomQuotaResultSuccess:
+    result = prime * result + [self.success hash];
+  case DBTEAMRemoveCustomQuotaResultInvalidUser:
+    result = prime * result + [self.invalidUser hash];
+  case DBTEAMRemoveCustomQuotaResultOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRemoveCustomQuotaResult:other];
+}
+
+- (BOOL)isEqualToRemoveCustomQuotaResult:(DBTEAMRemoveCustomQuotaResult *)aRemoveCustomQuotaResult {
+  if (self == aRemoveCustomQuotaResult) {
+    return YES;
+  }
+  if (self.tag != aRemoveCustomQuotaResult.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMRemoveCustomQuotaResultSuccess:
+    return [self.success isEqual:aRemoveCustomQuotaResult.success];
+  case DBTEAMRemoveCustomQuotaResultInvalidUser:
+    return [self.invalidUser isEqual:aRemoveCustomQuotaResult.invalidUser];
+  case DBTEAMRemoveCustomQuotaResultOther:
+    return [[self tagName] isEqual:[aRemoveCustomQuotaResult tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMRemoveCustomQuotaResultSerializer
+
++ (NSDictionary *)serialize:(DBTEAMRemoveCustomQuotaResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isSuccess]) {
+    jsonDict[@"success"] = [[DBTEAMUserSelectorArgSerializer serialize:valueObj.success] mutableCopy];
+    jsonDict[@".tag"] = @"success";
+  } else if ([valueObj isInvalidUser]) {
+    jsonDict[@"invalid_user"] = [[DBTEAMUserSelectorArgSerializer serialize:valueObj.invalidUser] mutableCopy];
+    jsonDict[@".tag"] = @"invalid_user";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMRemoveCustomQuotaResult *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"success"]) {
+    DBTEAMUserSelectorArg *success = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"success"]];
+    return [[DBTEAMRemoveCustomQuotaResult alloc] initWithSuccess:success];
+  } else if ([tag isEqualToString:@"invalid_user"]) {
+    DBTEAMUserSelectorArg *invalidUser = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"invalid_user"]];
+    return [[DBTEAMRemoveCustomQuotaResult alloc] initWithInvalidUser:invalidUser];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMRemoveCustomQuotaResult alloc] initWithOther];
+  } else {
+    return [[DBTEAMRemoveCustomQuotaResult alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMRemovedStatus.h"
 
 #pragma mark - API Object
@@ -20876,6 +21533,113 @@
       valueDict[@"error_type"] ? [DBTEAMRevokeLinkedAppErrorSerializer deserialize:valueDict[@"error_type"]] : nil;
 
   return [[DBTEAMRevokeLinkedAppStatus alloc] initWithSuccess:success errorType:errorType];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSetCustomQuotaArg.h"
+#import "DBTEAMUserCustomQuotaArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSetCustomQuotaArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUsersAndQuotas:(NSArray<DBTEAMUserCustomQuotaArg *> *)usersAndQuotas {
+  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](usersAndQuotas);
+
+  self = [super init];
+  if (self) {
+    _usersAndQuotas = usersAndQuotas;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMSetCustomQuotaArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMSetCustomQuotaArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMSetCustomQuotaArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.usersAndQuotas hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSetCustomQuotaArg:other];
+}
+
+- (BOOL)isEqualToSetCustomQuotaArg:(DBTEAMSetCustomQuotaArg *)aSetCustomQuotaArg {
+  if (self == aSetCustomQuotaArg) {
+    return YES;
+  }
+  if (![self.usersAndQuotas isEqual:aSetCustomQuotaArg.usersAndQuotas]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSetCustomQuotaArgSerializer
+
++ (NSDictionary *)serialize:(DBTEAMSetCustomQuotaArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"users_and_quotas"] = [DBArraySerializer serialize:valueObj.usersAndQuotas
+                                                     withBlock:^id(id elem0) {
+                                                       return [DBTEAMUserCustomQuotaArgSerializer serialize:elem0];
+                                                     }];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSetCustomQuotaArg *)deserialize:(NSDictionary *)valueDict {
+  NSArray<DBTEAMUserCustomQuotaArg *> *usersAndQuotas =
+      [DBArraySerializer deserialize:valueDict[@"users_and_quotas"]
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMUserCustomQuotaArgSerializer deserialize:elem0];
+                           }];
+
+  return [[DBTEAMSetCustomQuotaArg alloc] initWithUsersAndQuotas:usersAndQuotas];
 }
 
 @end
@@ -26791,6 +27555,230 @@
   } else {
     return [[DBTEAMUploadApiRateLimitValue alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMUserCustomQuotaArg.h"
+#import "DBTEAMUserSelectorArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMUserCustomQuotaArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user quotaGb:(NSNumber *)quotaGb {
+  [DBStoneValidators numericValidator:@(25) maxValue:nil](quotaGb);
+
+  self = [super init];
+  if (self) {
+    _user = user;
+    _quotaGb = quotaGb;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMUserCustomQuotaArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMUserCustomQuotaArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMUserCustomQuotaArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  result = prime * result + [self.quotaGb hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUserCustomQuotaArg:other];
+}
+
+- (BOOL)isEqualToUserCustomQuotaArg:(DBTEAMUserCustomQuotaArg *)anUserCustomQuotaArg {
+  if (self == anUserCustomQuotaArg) {
+    return YES;
+  }
+  if (![self.user isEqual:anUserCustomQuotaArg.user]) {
+    return NO;
+  }
+  if (![self.quotaGb isEqual:anUserCustomQuotaArg.quotaGb]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMUserCustomQuotaArgSerializer
+
++ (NSDictionary *)serialize:(DBTEAMUserCustomQuotaArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
+  jsonDict[@"quota_gb"] = valueObj.quotaGb;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMUserCustomQuotaArg *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMUserSelectorArg *user = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"user"]];
+  NSNumber *quotaGb = valueDict[@"quota_gb"];
+
+  return [[DBTEAMUserCustomQuotaArg alloc] initWithUser:user quotaGb:quotaGb];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMUserCustomQuotaResult.h"
+#import "DBTEAMUserSelectorArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMUserCustomQuotaResult
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user quotaGb:(NSNumber *)quotaGb {
+  [DBStoneValidators nullableValidator:[DBStoneValidators numericValidator:@(25) maxValue:nil]](quotaGb);
+
+  self = [super init];
+  if (self) {
+    _user = user;
+    _quotaGb = quotaGb;
+  }
+  return self;
+}
+
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user {
+  return [self initWithUser:user quotaGb:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMUserCustomQuotaResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMUserCustomQuotaResultSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMUserCustomQuotaResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  if (self.quotaGb) {
+    result = prime * result + [self.quotaGb hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUserCustomQuotaResult:other];
+}
+
+- (BOOL)isEqualToUserCustomQuotaResult:(DBTEAMUserCustomQuotaResult *)anUserCustomQuotaResult {
+  if (self == anUserCustomQuotaResult) {
+    return YES;
+  }
+  if (![self.user isEqual:anUserCustomQuotaResult.user]) {
+    return NO;
+  }
+  if (self.quotaGb) {
+    if (![self.quotaGb isEqual:anUserCustomQuotaResult.quotaGb]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMUserCustomQuotaResultSerializer
+
++ (NSDictionary *)serialize:(DBTEAMUserCustomQuotaResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
+  if (valueObj.quotaGb) {
+    jsonDict[@"quota_gb"] = valueObj.quotaGb;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMUserCustomQuotaResult *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMUserSelectorArg *user = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"user"]];
+  NSNumber *quotaGb = valueDict[@"quota_gb"] ?: nil;
+
+  return [[DBTEAMUserCustomQuotaResult alloc] initWithUser:user quotaGb:quotaGb];
 }
 
 @end
