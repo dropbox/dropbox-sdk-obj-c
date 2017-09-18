@@ -89,7 +89,7 @@
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
+      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   // RPC request submits argument in request body
   NSData *serializedArgData = [[self class] serializeDataWithRoute:route routeArg:arg];
@@ -121,7 +121,7 @@
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
+      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -144,7 +144,7 @@
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
+      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -167,7 +167,7 @@
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
+      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:input];
 
@@ -207,7 +207,6 @@
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs
-                                         accessToken:self.accessToken
                                        serializedArg:serializedArg
                                      byteOffsetStart:byteOffsetStart
                                        byteOffsetEnd:byteOffsetEnd];
@@ -240,7 +239,6 @@
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs
-                                         accessToken:self.accessToken
                                        serializedArg:serializedArg
                                      byteOffsetStart:byteOffsetStart
                                        byteOffsetEnd:byteOffsetEnd];

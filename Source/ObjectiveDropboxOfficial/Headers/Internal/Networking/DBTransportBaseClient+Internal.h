@@ -16,11 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBTransportBaseClient (Internal)
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
-                           accessToken:(NSString *)accessToken
                          serializedArg:(NSString *)serializedArg;
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
-                           accessToken:(NSString *)accessToken
                          serializedArg:(NSString *)serializedArg
                        byteOffsetStart:(nullable NSNumber *)byteOffsetStart
                          byteOffsetEnd:(nullable NSNumber *)byteOffsetEnd;

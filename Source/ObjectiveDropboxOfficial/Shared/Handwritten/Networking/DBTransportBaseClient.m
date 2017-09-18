@@ -59,17 +59,14 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 }
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
-                           accessToken:(NSString *)accessToken
                          serializedArg:(NSString *)serializedArg {
   return [self headersWithRouteInfo:routeAttributes
-                        accessToken:accessToken
                       serializedArg:serializedArg
                     byteOffsetStart:nil
                       byteOffsetEnd:nil];
 }
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
-                           accessToken:(NSString *)accessToken
                          serializedArg:(NSString *)serializedArg
                        byteOffsetStart:(NSNumber *)byteOffsetStart
                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
@@ -96,7 +93,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
       [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
                   forKey:@"Authorization"];
     } else {
-      [headers setObject:[NSString stringWithFormat:@"Bearer %@", accessToken] forKey:@"Authorization"];
+      [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessToken] forKey:@"Authorization"];
     }
   }
 

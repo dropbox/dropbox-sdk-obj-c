@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAppKey:(NSString *)appKey userAgent:(nullable NSString *)userAgent;
+- (instancetype)initWithAppKey:(nullable NSString *)appKey userAgent:(nullable NSString *)userAgent;
 
 ///
 /// Convenience constructor.
@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAppKey:(NSString *)appKey
+- (instancetype)initWithAppKey:(nullable NSString *)appKey
                      appSecret:(nullable NSString *)appSecret
                      userAgent:(nullable NSString *)userAgent;
 
@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAppKey:(NSString *)appKey
+- (instancetype)initWithAppKey:(nullable NSString *)appKey
                      appSecret:(nullable NSString *)appSecret
                      userAgent:(nullable NSString *)userAgent
                     asMemberId:(nullable NSString *)asMemberId;
@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAppKey:(NSString *)appKey
+- (instancetype)initWithAppKey:(nullable NSString *)appKey
                      appSecret:(nullable NSString *)appSecret
                      userAgent:(nullable NSString *)userAgent
                     asMemberId:(nullable NSString *)asMemberId
