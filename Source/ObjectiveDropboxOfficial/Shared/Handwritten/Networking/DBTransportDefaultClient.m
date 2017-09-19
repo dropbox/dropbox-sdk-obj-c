@@ -88,8 +88,7 @@
 - (DBRpcTaskImpl *)requestRpc:(DBRoute *)route arg:(id<DBSerializable>)arg {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   // RPC request submits argument in request body
   NSData *serializedArgData = [[self class] serializeDataWithRoute:route routeArg:arg];
@@ -120,8 +119,7 @@
   NSURL *inputUrl = [NSURL fileURLWithPath:input];
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -143,8 +141,7 @@
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputData:(NSData *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -166,8 +163,7 @@
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputStream:(NSInputStream *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:input];
 

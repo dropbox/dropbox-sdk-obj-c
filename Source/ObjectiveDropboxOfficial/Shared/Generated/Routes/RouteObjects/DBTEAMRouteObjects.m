@@ -10,16 +10,17 @@
 #import "DBASYNCPollEmptyResult.h"
 #import "DBASYNCPollError.h"
 #import "DBASYNCPollResultBase.h"
-#import "DBPROPERTIESGetPropertyTemplateResult.h"
-#import "DBPROPERTIESListPropertyTemplateIds.h"
-#import "DBPROPERTIESModifyPropertyTemplateError.h"
-#import "DBPROPERTIESPropertyFieldTemplate.h"
-#import "DBPROPERTIESPropertyGroupTemplate.h"
-#import "DBPROPERTIESPropertyTemplateError.h"
+#import "DBFILEPROPERTIESAddTemplateResult.h"
+#import "DBFILEPROPERTIESGetTemplateResult.h"
+#import "DBFILEPROPERTIESListTemplateResult.h"
+#import "DBFILEPROPERTIESModifyTemplateError.h"
+#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
+#import "DBFILEPROPERTIESPropertyGroupTemplate.h"
+#import "DBFILEPROPERTIESTemplateError.h"
+#import "DBFILEPROPERTIESUpdateTemplateResult.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTEAMActiveWebSession.h"
-#import "DBTEAMAddPropertyTemplateResult.h"
 #import "DBTEAMAdminTier.h"
 #import "DBTEAMApiApp.h"
 #import "DBTEAMBaseDfbReport.h"
@@ -127,7 +128,6 @@
 #import "DBTEAMTeamNamespacesListResult.h"
 #import "DBTEAMTokenGetAuthenticatedAdminError.h"
 #import "DBTEAMTokenGetAuthenticatedAdminResult.h"
-#import "DBTEAMUpdatePropertyTemplateResult.h"
 #import "DBTEAMUserCustomQuotaResult.h"
 #import "DBTEAMUserSelectorArg.h"
 #import "DBTEAMUserSelectorError.h"
@@ -985,9 +985,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
   if (!DBTEAMPropertiesTemplateAdd) {
     DBTEAMPropertiesTemplateAdd = [[DBRoute alloc] init:@"properties/template/add"
                                              namespace_:@"team"
-                                             deprecated:@NO
-                                             resultType:[DBTEAMAddPropertyTemplateResult class]
-                                              errorType:[DBPROPERTIESModifyPropertyTemplateError class]
+                                             deprecated:@YES
+                                             resultType:[DBFILEPROPERTIESAddTemplateResult class]
+                                              errorType:[DBFILEPROPERTIESModifyTemplateError class]
                                                   attrs:@{
                                                     @"auth" : @"team",
                                                     @"host" : @"api",
@@ -1003,9 +1003,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
   if (!DBTEAMPropertiesTemplateGet) {
     DBTEAMPropertiesTemplateGet = [[DBRoute alloc] init:@"properties/template/get"
                                              namespace_:@"team"
-                                             deprecated:@NO
-                                             resultType:[DBPROPERTIESGetPropertyTemplateResult class]
-                                              errorType:[DBPROPERTIESPropertyTemplateError class]
+                                             deprecated:@YES
+                                             resultType:[DBFILEPROPERTIESGetTemplateResult class]
+                                              errorType:[DBFILEPROPERTIESTemplateError class]
                                                   attrs:@{
                                                     @"auth" : @"team",
                                                     @"host" : @"api",
@@ -1021,9 +1021,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
   if (!DBTEAMPropertiesTemplateList) {
     DBTEAMPropertiesTemplateList = [[DBRoute alloc] init:@"properties/template/list"
                                               namespace_:@"team"
-                                              deprecated:@NO
-                                              resultType:[DBPROPERTIESListPropertyTemplateIds class]
-                                               errorType:[DBPROPERTIESPropertyTemplateError class]
+                                              deprecated:@YES
+                                              resultType:[DBFILEPROPERTIESListTemplateResult class]
+                                               errorType:[DBFILEPROPERTIESTemplateError class]
                                                    attrs:@{
                                                      @"auth" : @"team",
                                                      @"host" : @"api",
@@ -1039,9 +1039,9 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
   if (!DBTEAMPropertiesTemplateUpdate) {
     DBTEAMPropertiesTemplateUpdate = [[DBRoute alloc] init:@"properties/template/update"
                                                 namespace_:@"team"
-                                                deprecated:@NO
-                                                resultType:[DBTEAMUpdatePropertyTemplateResult class]
-                                                 errorType:[DBPROPERTIESModifyPropertyTemplateError class]
+                                                deprecated:@YES
+                                                resultType:[DBFILEPROPERTIESUpdateTemplateResult class]
+                                                 errorType:[DBFILEPROPERTIESModifyTemplateError class]
                                                      attrs:@{
                                                        @"auth" : @"team",
                                                        @"host" : @"api",

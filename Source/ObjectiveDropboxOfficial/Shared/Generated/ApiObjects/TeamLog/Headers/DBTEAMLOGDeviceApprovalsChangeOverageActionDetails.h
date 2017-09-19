@@ -9,7 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGDeviceApprovalsChangeOverageActionDetails;
-@class DBTEAMLOGDeviceApprovalsRolloutPolicy;
+@class DBTEAMPOLICIESRolloutMethod;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DeviceApprovalsChangeOverageActionDetails` struct.
 ///
 /// Changed the action taken when a team member is already over the limits (e.g
-/// when they join the team, an admin lowers limits, etc).
+/// when they join the team, an admin lowers limits, etc.).
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -30,10 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// New over the limits policy. Might be missing due to historical data gap.
-@property (nonatomic, readonly, nullable) DBTEAMLOGDeviceApprovalsRolloutPolicy *dNewValue;
+@property (nonatomic, readonly, nullable) DBTEAMPOLICIESRolloutMethod *dNewValue;
 
 /// Previous over the limit policy. Might be missing due to historical data gap.
-@property (nonatomic, readonly, nullable) DBTEAMLOGDeviceApprovalsRolloutPolicy *previousValue;
+@property (nonatomic, readonly, nullable) DBTEAMPOLICIESRolloutMethod *previousValue;
 
 #pragma mark - Constructors
 
@@ -47,8 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(nullable DBTEAMLOGDeviceApprovalsRolloutPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGDeviceApprovalsRolloutPolicy *)previousValue;
+- (instancetype)initWithDNewValue:(nullable DBTEAMPOLICIESRolloutMethod *)dNewValue
+                    previousValue:(nullable DBTEAMPOLICIESRolloutMethod *)previousValue;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

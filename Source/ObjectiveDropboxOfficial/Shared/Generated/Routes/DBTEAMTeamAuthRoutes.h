@@ -11,15 +11,16 @@
 @class DBASYNCLaunchEmptyResult;
 @class DBASYNCPollEmptyResult;
 @class DBASYNCPollError;
+@class DBFILEPROPERTIESAddTemplateResult;
+@class DBFILEPROPERTIESGetTemplateResult;
+@class DBFILEPROPERTIESListTemplateResult;
+@class DBFILEPROPERTIESModifyTemplateError;
+@class DBFILEPROPERTIESPropertyFieldTemplate;
+@class DBFILEPROPERTIESPropertyType;
+@class DBFILEPROPERTIESTemplateError;
+@class DBFILEPROPERTIESUpdateTemplateResult;
 @class DBNilObject;
-@class DBPROPERTIESGetPropertyTemplateResult;
-@class DBPROPERTIESListPropertyTemplateIds;
-@class DBPROPERTIESModifyPropertyTemplateError;
-@class DBPROPERTIESPropertyFieldTemplate;
-@class DBPROPERTIESPropertyTemplateError;
-@class DBPROPERTIESPropertyType;
 @class DBTEAMActiveWebSession;
-@class DBTEAMAddPropertyTemplateResult;
 @class DBTEAMAdminTier;
 @class DBTEAMApiApp;
 @class DBTEAMCOMMONGroupManagementType;
@@ -129,7 +130,6 @@
 @class DBTEAMTeamNamespacesListResult;
 @class DBTEAMTokenGetAuthenticatedAdminError;
 @class DBTEAMTokenGetAuthenticatedAdminResult;
-@class DBTEAMUpdatePropertyTemplateResult;
 @class DBTEAMUserCustomQuotaArg;
 @class DBTEAMUserCustomQuotaResult;
 @class DBTEAMUserSelectorArg;
@@ -770,8 +770,10 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 /// external_id must be provided to identify the user account. Accounts can be recovered via `membersRecover` for a 7
 /// day period or until the account has been permanently deleted or transferred to another account (whichever comes
 /// first). Calling `membersAdd` while a user is still recoverable on your team will return with `userAlreadyOnTeam` in
-/// `DBTEAMMemberAddResult`. This endpoint may initiate an asynchronous job. To obtain the final result of the job, the
-/// client should periodically poll `membersRemoveJobStatusGet`.
+/// `DBTEAMMemberAddResult`. Accounts can have their files transferred via the admin console for a limited time, based
+/// on the version history length associated with the team (120 days for most teams). This endpoint may initiate an
+/// asynchronous job. To obtain the final result of the job, the client should periodically poll
+/// `membersRemoveJobStatusGet`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
@@ -784,8 +786,10 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 /// external_id must be provided to identify the user account. Accounts can be recovered via `membersRecover` for a 7
 /// day period or until the account has been permanently deleted or transferred to another account (whichever comes
 /// first). Calling `membersAdd` while a user is still recoverable on your team will return with `userAlreadyOnTeam` in
-/// `DBTEAMMemberAddResult`. This endpoint may initiate an asynchronous job. To obtain the final result of the job, the
-/// client should periodically poll `membersRemoveJobStatusGet`.
+/// `DBTEAMMemberAddResult`. Accounts can have their files transferred via the admin console for a limited time, based
+/// on the version history length associated with the team (120 days for most teams). This endpoint may initiate an
+/// asynchronous job. To obtain the final result of the job, the client should periodically poll
+/// `membersRemoveJobStatusGet`.
 ///
 /// @param transferDestId If provided, files from the deleted member account will be transferred to this user.
 /// @param transferAdminId If provided, errors during the transfer process will be sent via email to this user. If the
@@ -946,67 +950,68 @@ membersSetProfile:(DBTEAMUserSelectorArg *)user
     (NSString *)cursor;
 
 ///
-/// Add a property template. See route files/properties/add to add properties to a file.
+/// DEPRECATED: The propertiesTemplateAdd route
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMAddPropertyTemplateResult` object on success
-/// or a `DBPROPERTIESModifyPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESAddTemplateResult` object on
+/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
 ///
-- (DBRpcTask<DBTEAMAddPropertyTemplateResult *, DBPROPERTIESModifyPropertyTemplateError *> *)
+- (DBRpcTask<DBFILEPROPERTIESAddTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)
 propertiesTemplateAdd:(NSString *)name
          description_:(NSString *)description_
-               fields:(NSArray<DBPROPERTIESPropertyFieldTemplate *> *)fields;
+               fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields
+    __deprecated_msg("properties/template/add is deprecated.");
 
 ///
-/// Get the schema for a specified template.
+/// DEPRECATED: The propertiesTemplateGet route
 ///
-/// @param templateId An identifier for property template added by route properties/template/add.
+/// @param templateId An identifier for template added by route  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
-/// @return Through the response callback, the caller will receive a `DBPROPERTIESGetPropertyTemplateResult` object on
-/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESGetTemplateResult` object on
+/// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
-- (DBRpcTask<DBPROPERTIESGetPropertyTemplateResult *, DBPROPERTIESPropertyTemplateError *> *)propertiesTemplateGet:
-    (NSString *)templateId;
+- (DBRpcTask<DBFILEPROPERTIESGetTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateGet:
+    (NSString *)templateId __deprecated_msg("properties/template/get is deprecated.");
 
 ///
-/// Get the property template identifiers for a team. To get the schema of each template use `propertiesTemplateGet`.
+/// DEPRECATED: The propertiesTemplateList route
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBPROPERTIESListPropertyTemplateIds` object on
-/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESListTemplateResult` object on
+/// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
-- (DBRpcTask<DBPROPERTIESListPropertyTemplateIds *, DBPROPERTIESPropertyTemplateError *> *)propertiesTemplateList;
+- (DBRpcTask<DBFILEPROPERTIESListTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateList
+    __deprecated_msg("properties/template/list is deprecated.");
 
 ///
-/// Update a property template. This route can update the template name, the template description and add optional
-/// properties to templates.
+/// DEPRECATED: The propertiesTemplateUpdate route
 ///
-/// @param templateId An identifier for property template added by `propertiesTemplateAdd`.
+/// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMUpdatePropertyTemplateResult` object on
-/// success or a `DBPROPERTIESModifyPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESUpdateTemplateResult` object on
+/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
 ///
-- (DBRpcTask<DBTEAMUpdatePropertyTemplateResult *, DBPROPERTIESModifyPropertyTemplateError *> *)
-propertiesTemplateUpdate:(NSString *)templateId;
+- (DBRpcTask<DBFILEPROPERTIESUpdateTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)propertiesTemplateUpdate:
+    (NSString *)templateId __deprecated_msg("properties/template/update is deprecated.");
 
 ///
-/// Update a property template. This route can update the template name, the template description and add optional
-/// properties to templates.
+/// DEPRECATED: The propertiesTemplateUpdate route
 ///
-/// @param templateId An identifier for property template added by `propertiesTemplateAdd`.
-/// @param name A display name for the property template. Property template names can be up to 256 bytes.
-/// @param description_ Description for new property template. Property template descriptions can be up to 1024 bytes.
-/// @param addFields This is a list of custom properties to add to the property template. There can be up to 64
-/// properties in a single property template.
+/// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
+/// @param name A display name for the template. template names can be up to 256 bytes.
+/// @param description_ Description for the new template. Template descriptions can be up to 1024 bytes.
+/// @param addFields Property field templates to be added to the group template. There can be up to 32 properties in a
+/// single template.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMUpdatePropertyTemplateResult` object on
-/// success or a `DBPROPERTIESModifyPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESUpdateTemplateResult` object on
+/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
 ///
-- (DBRpcTask<DBTEAMUpdatePropertyTemplateResult *, DBPROPERTIESModifyPropertyTemplateError *> *)
+- (DBRpcTask<DBFILEPROPERTIESUpdateTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)
 propertiesTemplateUpdate:(NSString *)templateId
                     name:(nullable NSString *)name
             description_:(nullable NSString *)description_
-               addFields:(nullable NSArray<DBPROPERTIESPropertyFieldTemplate *> *)addFields;
+               addFields:(nullable NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)addFields
+    __deprecated_msg("properties/template/update is deprecated.");
 
 ///
 /// Retrieves reporting data about a team's user activity.

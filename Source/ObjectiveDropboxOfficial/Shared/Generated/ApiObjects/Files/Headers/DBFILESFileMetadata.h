@@ -9,10 +9,10 @@
 #import "DBFILESMetadata.h"
 #import "DBSerializableProtocol.h"
 
+@class DBFILEPROPERTIESPropertyGroup;
 @class DBFILESFileMetadata;
 @class DBFILESFileSharingInfo;
 @class DBFILESMediaInfo;
-@class DBPROPERTIESPropertyGroup;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Additional information if the file has custom properties with the property
 /// template specified.
-@property (nonatomic, readonly, nullable) NSArray<DBPROPERTIESPropertyGroup *> *propertyGroups;
+@property (nonatomic, readonly, nullable) NSArray<DBFILEPROPERTIESPropertyGroup *> *propertyGroups;
 
 /// This flag will only be present if include_has_explicit_shared_members  is
 /// true in `listFolder` or `getMetadata`. If this  flag is present, it will be
@@ -129,7 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
         parentSharedFolderId:(nullable NSString *)parentSharedFolderId
                    mediaInfo:(nullable DBFILESMediaInfo *)mediaInfo
                  sharingInfo:(nullable DBFILESFileSharingInfo *)sharingInfo
-              propertyGroups:(nullable NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups
+              propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
     hasExplicitSharedMembers:(nullable NSNumber *)hasExplicitSharedMembers
                  contentHash:(nullable NSString *)contentHash;
 

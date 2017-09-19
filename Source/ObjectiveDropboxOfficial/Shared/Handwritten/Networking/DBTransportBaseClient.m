@@ -60,10 +60,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
                          serializedArg:(NSString *)serializedArg {
-  return [self headersWithRouteInfo:routeAttributes
-                      serializedArg:serializedArg
-                    byteOffsetStart:nil
-                      byteOffsetEnd:nil];
+  return [self headersWithRouteInfo:routeAttributes serializedArg:serializedArg byteOffsetStart:nil byteOffsetEnd:nil];
 }
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes

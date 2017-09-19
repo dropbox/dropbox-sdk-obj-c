@@ -9,9 +9,9 @@
 #import "DBFILESMetadata.h"
 #import "DBSerializableProtocol.h"
 
+@class DBFILEPROPERTIESPropertyGroup;
 @class DBFILESFolderMetadata;
 @class DBFILESFolderSharingInfo;
-@class DBPROPERTIESPropertyGroup;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Additional information if the file has custom properties with the property
 /// template specified.
-@property (nonatomic, readonly, nullable) NSArray<DBPROPERTIESPropertyGroup *> *propertyGroups;
+@property (nonatomic, readonly, nullable) NSArray<DBFILEPROPERTIESPropertyGroup *> *propertyGroups;
 
 #pragma mark - Constructors
 
@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
         parentSharedFolderId:(nullable NSString *)parentSharedFolderId
               sharedFolderId:(nullable NSString *)sharedFolderId
                  sharingInfo:(nullable DBFILESFolderSharingInfo *)sharingInfo
-              propertyGroups:(nullable NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups;
+              propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

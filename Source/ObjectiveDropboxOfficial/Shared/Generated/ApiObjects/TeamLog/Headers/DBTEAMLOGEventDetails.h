@@ -97,8 +97,6 @@
 @class DBTEAMLOGGroupChangeMemberRoleDetails;
 @class DBTEAMLOGGroupCreateDetails;
 @class DBTEAMLOGGroupDeleteDetails;
-@class DBTEAMLOGGroupDescriptionUpdatedDetails;
-@class DBTEAMLOGGroupJoinPolicyUpdatedDetails;
 @class DBTEAMLOGGroupMovedDetails;
 @class DBTEAMLOGGroupRemoveExternalIdDetails;
 @class DBTEAMLOGGroupRemoveMemberDetails;
@@ -136,7 +134,6 @@
 @class DBTEAMLOGPaperContentAddMemberDetails;
 @class DBTEAMLOGPaperContentAddToFolderDetails;
 @class DBTEAMLOGPaperContentArchiveDetails;
-@class DBTEAMLOGPaperContentChangeSubscriptionDetails;
 @class DBTEAMLOGPaperContentCreateDetails;
 @class DBTEAMLOGPaperContentPermanentlyDeleteDetails;
 @class DBTEAMLOGPaperContentRemoveFromFolderDetails;
@@ -146,6 +143,7 @@
 @class DBTEAMLOGPaperDocAddCommentDetails;
 @class DBTEAMLOGPaperDocChangeMemberRoleDetails;
 @class DBTEAMLOGPaperDocChangeSharingPolicyDetails;
+@class DBTEAMLOGPaperDocChangeSubscriptionDetails;
 @class DBTEAMLOGPaperDocDeleteCommentDetails;
 @class DBTEAMLOGPaperDocDeletedDetails;
 @class DBTEAMLOGPaperDocDownloadDetails;
@@ -158,13 +156,16 @@
 @class DBTEAMLOGPaperDocRevertDetails;
 @class DBTEAMLOGPaperDocSlackShareDetails;
 @class DBTEAMLOGPaperDocTeamInviteDetails;
+@class DBTEAMLOGPaperDocTrashedDetails;
 @class DBTEAMLOGPaperDocUnresolveCommentDetails;
+@class DBTEAMLOGPaperDocUntrashedDetails;
 @class DBTEAMLOGPaperDocViewDetails;
 @class DBTEAMLOGPaperEnabledUsersGroupAdditionDetails;
 @class DBTEAMLOGPaperEnabledUsersGroupRemovalDetails;
 @class DBTEAMLOGPaperExternalViewAllowDetails;
 @class DBTEAMLOGPaperExternalViewDefaultTeamDetails;
 @class DBTEAMLOGPaperExternalViewForbidDetails;
+@class DBTEAMLOGPaperFolderChangeSubscriptionDetails;
 @class DBTEAMLOGPaperFolderDeletedDetails;
 @class DBTEAMLOGPaperFolderFollowedDetails;
 @class DBTEAMLOGPaperFolderTeamInviteDetails;
@@ -539,12 +540,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// Deleted a group.
   DBTEAMLOGEventDetailsGroupDeleteDetails,
 
-  /// Updated a group.
-  DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails,
-
-  /// Updated a group join policy.
-  DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails,
-
   /// Moved a group.
   DBTEAMLOGEventDetailsGroupMovedDetails,
 
@@ -611,9 +606,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// Archived Paper doc or folder.
   DBTEAMLOGEventDetailsPaperContentArchiveDetails,
 
-  /// Followed or unfollowed a Paper doc or folder.
-  DBTEAMLOGEventDetailsPaperContentChangeSubscriptionDetails,
-
   /// Created a Paper doc or folder.
   DBTEAMLOGEventDetailsPaperContentCreateDetails,
 
@@ -640,6 +632,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// Changed the sharing policy for Paper doc.
   DBTEAMLOGEventDetailsPaperDocChangeSharingPolicyDetails,
+
+  /// Followed or unfollowed a Paper doc.
+  DBTEAMLOGEventDetailsPaperDocChangeSubscriptionDetails,
 
   /// Paper doc archived.
   DBTEAMLOGEventDetailsPaperDocDeletedDetails,
@@ -677,11 +672,20 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// Paper doc shared with team member.
   DBTEAMLOGEventDetailsPaperDocTeamInviteDetails,
 
+  /// Paper doc trashed.
+  DBTEAMLOGEventDetailsPaperDocTrashedDetails,
+
   /// Unresolved a Paper doc comment.
   DBTEAMLOGEventDetailsPaperDocUnresolveCommentDetails,
 
+  /// Paper doc untrashed.
+  DBTEAMLOGEventDetailsPaperDocUntrashedDetails,
+
   /// Viewed Paper doc.
   DBTEAMLOGEventDetailsPaperDocViewDetails,
+
+  /// Followed or unfollowed a Paper folder.
+  DBTEAMLOGEventDetailsPaperFolderChangeSubscriptionDetails,
 
   /// Paper folder archived.
   DBTEAMLOGEventDetailsPaperFolderDeletedDetails,
@@ -972,7 +976,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   DBTEAMLOGEventDetailsDeviceApprovalsChangeMobilePolicyDetails,
 
   /// Changed the action taken when a team member is already over the limits
-  /// (e.g when they join the team, an admin lowers limits, etc).
+  /// (e.g when they join the team, an admin lowers limits, etc.).
   DBTEAMLOGEventDetailsDeviceApprovalsChangeOverageActionDetails,
 
   /// Changed the action taken with respect to approval limits when a team
@@ -1523,15 +1527,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupDeleteDetails *groupDeleteDetails;
 
-/// Updated a group. @note Ensure the `isGroupDescriptionUpdatedDetails` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMLOGGroupDescriptionUpdatedDetails *groupDescriptionUpdatedDetails;
-
-/// Updated a group join policy. @note Ensure the
-/// `isGroupJoinPolicyUpdatedDetails` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMLOGGroupJoinPolicyUpdatedDetails *groupJoinPolicyUpdatedDetails;
-
 /// Moved a group. @note Ensure the `isGroupMovedDetails` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupMovedDetails *groupMovedDetails;
@@ -1638,11 +1633,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentArchiveDetails *paperContentArchiveDetails;
 
-/// Followed or unfollowed a Paper doc or folder. @note Ensure the
-/// `isPaperContentChangeSubscriptionDetails` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMLOGPaperContentChangeSubscriptionDetails *paperContentChangeSubscriptionDetails;
-
 /// Created a Paper doc or folder. @note Ensure the
 /// `isPaperContentCreateDetails` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
@@ -1687,6 +1677,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// `isPaperDocChangeSharingPolicyDetails` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocChangeSharingPolicyDetails *paperDocChangeSharingPolicyDetails;
+
+/// Followed or unfollowed a Paper doc. @note Ensure the
+/// `isPaperDocChangeSubscriptionDetails` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperDocChangeSubscriptionDetails *paperDocChangeSubscriptionDetails;
 
 /// Paper doc archived. @note Ensure the `isPaperDocDeletedDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -1745,14 +1740,27 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocTeamInviteDetails *paperDocTeamInviteDetails;
 
+/// Paper doc trashed. @note Ensure the `isPaperDocTrashedDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperDocTrashedDetails *paperDocTrashedDetails;
+
 /// Unresolved a Paper doc comment. @note Ensure the
 /// `isPaperDocUnresolveCommentDetails` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocUnresolveCommentDetails *paperDocUnresolveCommentDetails;
 
+/// Paper doc untrashed. @note Ensure the `isPaperDocUntrashedDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperDocUntrashedDetails *paperDocUntrashedDetails;
+
 /// Viewed Paper doc. @note Ensure the `isPaperDocViewDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocViewDetails *paperDocViewDetails;
+
+/// Followed or unfollowed a Paper folder. @note Ensure the
+/// `isPaperFolderChangeSubscriptionDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperFolderChangeSubscriptionDetails *paperFolderChangeSubscriptionDetails;
 
 /// Paper folder archived. @note Ensure the `isPaperFolderDeletedDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -2227,7 +2235,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
     DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetails *deviceApprovalsChangeMobilePolicyDetails;
 
 /// Changed the action taken when a team member is already over the limits (e.g
-/// when they join the team, an admin lowers limits, etc). @note Ensure the
+/// when they join the team, an admin lowers limits, etc.). @note Ensure the
 /// `isDeviceApprovalsChangeOverageActionDetails` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
@@ -3538,34 +3546,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 - (instancetype)initWithGroupDeleteDetails:(DBTEAMLOGGroupDeleteDetails *)groupDeleteDetails;
 
 ///
-/// Initializes union class with tag state of
-/// "group_description_updated_details".
-///
-/// Description of the "group_description_updated_details" tag state: Updated a
-/// group.
-///
-/// @param groupDescriptionUpdatedDetails Updated a group.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithGroupDescriptionUpdatedDetails:
-    (DBTEAMLOGGroupDescriptionUpdatedDetails *)groupDescriptionUpdatedDetails;
-
-///
-/// Initializes union class with tag state of
-/// "group_join_policy_updated_details".
-///
-/// Description of the "group_join_policy_updated_details" tag state: Updated a
-/// group join policy.
-///
-/// @param groupJoinPolicyUpdatedDetails Updated a group join policy.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithGroupJoinPolicyUpdatedDetails:
-    (DBTEAMLOGGroupJoinPolicyUpdatedDetails *)groupJoinPolicyUpdatedDetails;
-
-///
 /// Initializes union class with tag state of "group_moved_details".
 ///
 /// Description of the "group_moved_details" tag state: Moved a group.
@@ -3844,21 +3824,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 - (instancetype)initWithPaperContentArchiveDetails:(DBTEAMLOGPaperContentArchiveDetails *)paperContentArchiveDetails;
 
 ///
-/// Initializes union class with tag state of
-/// "paper_content_change_subscription_details".
-///
-/// Description of the "paper_content_change_subscription_details" tag state:
-/// Followed or unfollowed a Paper doc or folder.
-///
-/// @param paperContentChangeSubscriptionDetails Followed or unfollowed a Paper
-/// doc or folder.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithPaperContentChangeSubscriptionDetails:
-    (DBTEAMLOGPaperContentChangeSubscriptionDetails *)paperContentChangeSubscriptionDetails;
-
-///
 /// Initializes union class with tag state of "paper_content_create_details".
 ///
 /// Description of the "paper_content_create_details" tag state: Created a Paper
@@ -3980,6 +3945,20 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithPaperDocChangeSharingPolicyDetails:
     (DBTEAMLOGPaperDocChangeSharingPolicyDetails *)paperDocChangeSharingPolicyDetails;
+
+///
+/// Initializes union class with tag state of
+/// "paper_doc_change_subscription_details".
+///
+/// Description of the "paper_doc_change_subscription_details" tag state:
+/// Followed or unfollowed a Paper doc.
+///
+/// @param paperDocChangeSubscriptionDetails Followed or unfollowed a Paper doc.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperDocChangeSubscriptionDetails:
+    (DBTEAMLOGPaperDocChangeSubscriptionDetails *)paperDocChangeSubscriptionDetails;
 
 ///
 /// Initializes union class with tag state of "paper_doc_deleted_details".
@@ -4132,6 +4111,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 - (instancetype)initWithPaperDocTeamInviteDetails:(DBTEAMLOGPaperDocTeamInviteDetails *)paperDocTeamInviteDetails;
 
 ///
+/// Initializes union class with tag state of "paper_doc_trashed_details".
+///
+/// Description of the "paper_doc_trashed_details" tag state: Paper doc trashed.
+///
+/// @param paperDocTrashedDetails Paper doc trashed.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperDocTrashedDetails:(DBTEAMLOGPaperDocTrashedDetails *)paperDocTrashedDetails;
+
+///
 /// Initializes union class with tag state of
 /// "paper_doc_unresolve_comment_details".
 ///
@@ -4146,6 +4136,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
     (DBTEAMLOGPaperDocUnresolveCommentDetails *)paperDocUnresolveCommentDetails;
 
 ///
+/// Initializes union class with tag state of "paper_doc_untrashed_details".
+///
+/// Description of the "paper_doc_untrashed_details" tag state: Paper doc
+/// untrashed.
+///
+/// @param paperDocUntrashedDetails Paper doc untrashed.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperDocUntrashedDetails:(DBTEAMLOGPaperDocUntrashedDetails *)paperDocUntrashedDetails;
+
+///
 /// Initializes union class with tag state of "paper_doc_view_details".
 ///
 /// Description of the "paper_doc_view_details" tag state: Viewed Paper doc.
@@ -4155,6 +4157,21 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPaperDocViewDetails:(DBTEAMLOGPaperDocViewDetails *)paperDocViewDetails;
+
+///
+/// Initializes union class with tag state of
+/// "paper_folder_change_subscription_details".
+///
+/// Description of the "paper_folder_change_subscription_details" tag state:
+/// Followed or unfollowed a Paper folder.
+///
+/// @param paperFolderChangeSubscriptionDetails Followed or unfollowed a Paper
+/// folder.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperFolderChangeSubscriptionDetails:
+    (DBTEAMLOGPaperFolderChangeSubscriptionDetails *)paperFolderChangeSubscriptionDetails;
 
 ///
 /// Initializes union class with tag state of "paper_folder_deleted_details".
@@ -5414,11 +5431,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 /// Description of the "device_approvals_change_overage_action_details" tag
 /// state: Changed the action taken when a team member is already over the
-/// limits (e.g when they join the team, an admin lowers limits, etc).
+/// limits (e.g when they join the team, an admin lowers limits, etc.).
 ///
 /// @param deviceApprovalsChangeOverageActionDetails Changed the action taken
 /// when a team member is already over the limits (e.g when they join the team,
-/// an admin lowers limits, etc).
+/// an admin lowers limits, etc.).
 ///
 /// @return An initialized instance.
 ///
@@ -7104,32 +7121,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
-/// "group_description_updated_details".
-///
-/// @note Call this method and ensure it returns true before accessing the
-/// `groupDescriptionUpdatedDetails` property, otherwise a runtime exception
-/// will be thrown.
-///
-/// @return Whether the union's current tag state has value
-/// "group_description_updated_details".
-///
-- (BOOL)isGroupDescriptionUpdatedDetails;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "group_join_policy_updated_details".
-///
-/// @note Call this method and ensure it returns true before accessing the
-/// `groupJoinPolicyUpdatedDetails` property, otherwise a runtime exception will
-/// be thrown.
-///
-/// @return Whether the union's current tag state has value
-/// "group_join_policy_updated_details".
-///
-- (BOOL)isGroupJoinPolicyUpdatedDetails;
-
-///
-/// Retrieves whether the union's current tag state has value
 /// "group_moved_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -7411,19 +7402,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
-/// "paper_content_change_subscription_details".
-///
-/// @note Call this method and ensure it returns true before accessing the
-/// `paperContentChangeSubscriptionDetails` property, otherwise a runtime
-/// exception will be thrown.
-///
-/// @return Whether the union's current tag state has value
-/// "paper_content_change_subscription_details".
-///
-- (BOOL)isPaperContentChangeSubscriptionDetails;
-
-///
-/// Retrieves whether the union's current tag state has value
 /// "paper_content_create_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -7538,6 +7516,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "paper_doc_change_sharing_policy_details".
 ///
 - (BOOL)isPaperDocChangeSharingPolicyDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "paper_doc_change_subscription_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperDocChangeSubscriptionDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_doc_change_subscription_details".
+///
+- (BOOL)isPaperDocChangeSubscriptionDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -7697,6 +7688,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "paper_doc_trashed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperDocTrashedDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_doc_trashed_details".
+///
+- (BOOL)isPaperDocTrashedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "paper_doc_unresolve_comment_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -7710,6 +7714,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "paper_doc_untrashed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperDocUntrashedDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_doc_untrashed_details".
+///
+- (BOOL)isPaperDocUntrashedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "paper_doc_view_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -7720,6 +7737,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "paper_doc_view_details".
 ///
 - (BOOL)isPaperDocViewDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "paper_folder_change_subscription_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperFolderChangeSubscriptionDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_folder_change_subscription_details".
+///
+- (BOOL)isPaperFolderChangeSubscriptionDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

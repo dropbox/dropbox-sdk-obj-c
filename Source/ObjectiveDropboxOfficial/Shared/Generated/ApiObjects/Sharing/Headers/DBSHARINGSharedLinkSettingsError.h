@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkSettingsErrorTag) {
   /// SharedLinkSettings are empty, the requested visibility is `password` in
   /// `DBSHARINGRequestedVisibility` but the `linkPassword` in
   /// `DBSHARINGSharedLinkSettings` is missing, `expires` in
-  /// `DBSHARINGSharedLinkSettings` is set to the past, etc.)
+  /// `DBSHARINGSharedLinkSettings` is set to the past, etc.).
   DBSHARINGSharedLinkSettingsErrorInvalidSettings,
 
   /// User is not allowed to modify the settings of this link. Note that basic
@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkSettingsErrorTag) {
 /// invalid (for example, all attributes of the SharedLinkSettings are empty,
 /// the requested visibility is `password` in `DBSHARINGRequestedVisibility` but
 /// the `linkPassword` in `DBSHARINGSharedLinkSettings` is missing, `expires` in
-/// `DBSHARINGSharedLinkSettings` is set to the past, etc.)
+/// `DBSHARINGSharedLinkSettings` is set to the past, etc.).
 ///
 /// @return An initialized instance.
 ///

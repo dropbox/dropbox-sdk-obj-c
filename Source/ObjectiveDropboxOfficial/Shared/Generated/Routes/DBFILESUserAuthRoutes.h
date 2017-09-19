@@ -9,7 +9,19 @@
 #import "DBTasks.h"
 
 @class DBASYNCPollError;
-@class DBFILESAddPropertiesError;
+@class DBFILEPROPERTIESAddPropertiesError;
+@class DBFILEPROPERTIESGetTemplateResult;
+@class DBFILEPROPERTIESInvalidPropertyGroupError;
+@class DBFILEPROPERTIESListTemplateResult;
+@class DBFILEPROPERTIESLookUpPropertiesError;
+@class DBFILEPROPERTIESLookupError;
+@class DBFILEPROPERTIESPropertyField;
+@class DBFILEPROPERTIESPropertyFieldTemplate;
+@class DBFILEPROPERTIESPropertyGroup;
+@class DBFILEPROPERTIESPropertyGroupUpdate;
+@class DBFILEPROPERTIESRemovePropertiesError;
+@class DBFILEPROPERTIESTemplateError;
+@class DBFILEPROPERTIESUpdatePropertiesError;
 @class DBFILESAlphaGetMetadataError;
 @class DBFILESCommitInfo;
 @class DBFILESCreateFolderError;
@@ -34,7 +46,6 @@
 @class DBFILESGetThumbnailBatchError;
 @class DBFILESGetThumbnailBatchResult;
 @class DBFILESGetThumbnailBatchResultEntry;
-@class DBFILESInvalidPropertyGroupError;
 @class DBFILESListFolderContinueError;
 @class DBFILESListFolderError;
 @class DBFILESListFolderGetLatestCursorResult;
@@ -43,12 +54,10 @@
 @class DBFILESListFolderResult;
 @class DBFILESListRevisionsError;
 @class DBFILESListRevisionsResult;
-@class DBFILESLookUpPropertiesError;
 @class DBFILESLookupError;
 @class DBFILESMediaInfo;
 @class DBFILESMetadata;
 @class DBFILESPreviewError;
-@class DBFILESPropertyGroupUpdate;
 @class DBFILESRelocationBatchError;
 @class DBFILESRelocationBatchJobStatus;
 @class DBFILESRelocationBatchLaunch;
@@ -56,7 +65,6 @@
 @class DBFILESRelocationError;
 @class DBFILESRelocationPath;
 @class DBFILESRelocationResult;
-@class DBFILESRemovePropertiesError;
 @class DBFILESRestoreError;
 @class DBFILESSaveCopyReferenceError;
 @class DBFILESSaveCopyReferenceResult;
@@ -71,7 +79,6 @@
 @class DBFILESThumbnailError;
 @class DBFILESThumbnailFormat;
 @class DBFILESThumbnailSize;
-@class DBFILESUpdatePropertiesError;
 @class DBFILESUploadError;
 @class DBFILESUploadErrorWithProperties;
 @class DBFILESUploadSessionCursor;
@@ -87,12 +94,6 @@
 @class DBFILESWriteError;
 @class DBFILESWriteMode;
 @class DBNilObject;
-@class DBPROPERTIESGetPropertyTemplateResult;
-@class DBPROPERTIESListPropertyTemplateIds;
-@class DBPROPERTIESPropertyField;
-@class DBPROPERTIESPropertyFieldTemplate;
-@class DBPROPERTIESPropertyGroup;
-@class DBPROPERTIESPropertyTemplateError;
 
 @protocol DBTransportClient;
 
@@ -169,7 +170,7 @@ alphaUploadUrl:(NSString *)path
     autorename:(nullable NSNumber *)autorename
 clientModified:(nullable NSDate *)clientModified
           mute:(nullable NSNumber *)mute
-propertyGroups:(nullable NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups
+propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
       inputUrl:(NSString *)inputUrl;
 
 ///
@@ -202,7 +203,7 @@ alphaUploadData:(NSString *)path
      autorename:(nullable NSNumber *)autorename
  clientModified:(nullable NSDate *)clientModified
            mute:(nullable NSNumber *)mute
- propertyGroups:(nullable NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups
+ propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
       inputData:(NSData *)inputData;
 
 ///
@@ -236,7 +237,7 @@ alphaUploadStream:(NSString *)path
        autorename:(nullable NSNumber *)autorename
    clientModified:(nullable NSDate *)clientModified
              mute:(nullable NSNumber *)mute
-   propertyGroups:(nullable NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups
+   propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
       inputStream:(NSInputStream *)inputStream;
 
 ///
@@ -1268,80 +1269,82 @@ listFolderLongpoll:(NSString *)cursor
 - (DBRpcTask<DBNilObject *, DBFILESDeleteError *> *)permanentlyDelete:(NSString *)path;
 
 ///
-/// Add custom properties to a file using a filled property template. See properties/template/add to create new property
-/// templates.
+/// DEPRECATED: The propertiesAdd route
 ///
-/// @param path A unique identifier for the file.
-/// @param propertyGroups Filled custom property templates associated with a file.
+/// @param path A unique identifier for the file or folder.
+/// @param propertyGroups The property groups which are to be added to a Dropbox file.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESAddPropertiesError` object on failure.
+/// `DBFILEPROPERTIESAddPropertiesError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBFILESAddPropertiesError *> *)propertiesAdd:(NSString *)path
-                                                          propertyGroups:
-                                                              (NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups;
+- (DBRpcTask<DBNilObject *, DBFILEPROPERTIESAddPropertiesError *> *)
+ propertiesAdd:(NSString *)path
+propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+    __deprecated_msg("properties/add is deprecated.");
 
 ///
-/// Overwrite custom properties from a specified template associated with a file.
+/// DEPRECATED: The propertiesOverwrite route
 ///
-/// @param path A unique identifier for the file.
-/// @param propertyGroups Filled custom property templates associated with a file.
+/// @param path A unique identifier for the file or folder.
+/// @param propertyGroups The property groups "snapshot" updates to force apply.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESInvalidPropertyGroupError` object on failure.
+/// `DBFILEPROPERTIESInvalidPropertyGroupError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBFILESInvalidPropertyGroupError *> *)
+- (DBRpcTask<DBNilObject *, DBFILEPROPERTIESInvalidPropertyGroupError *> *)
 propertiesOverwrite:(NSString *)path
-     propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups;
+     propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+    __deprecated_msg("properties/overwrite is deprecated.");
 
 ///
-/// Remove all custom properties from a specified template associated with a file. To remove specific property key value
-/// pairs, see `propertiesUpdate`. To update a property template, see properties/template/update. Property templates
-/// can't be removed once created.
+/// DEPRECATED: The propertiesRemove route
 ///
-/// @param path A unique identifier for the file.
-/// @param propertyTemplateIds A list of identifiers for a property template created by route properties/template/add.
+/// @param path A unique identifier for the file or folder.
+/// @param propertyTemplateIds A list of identifiers for a template created by `templatesAddForUser` or
+/// `templatesAddForTeam`.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESRemovePropertiesError` object on failure.
+/// `DBFILEPROPERTIESRemovePropertiesError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBFILESRemovePropertiesError *> *)propertiesRemove:(NSString *)path
-                                                           propertyTemplateIds:
-                                                               (NSArray<NSString *> *)propertyTemplateIds;
+- (DBRpcTask<DBNilObject *, DBFILEPROPERTIESRemovePropertiesError *> *)propertiesRemove:(NSString *)path
+                                                                    propertyTemplateIds:
+                                                                        (NSArray<NSString *> *)propertyTemplateIds
+    __deprecated_msg("properties/remove is deprecated.");
 
 ///
-/// Get the schema for a specified template.
+/// DEPRECATED: The propertiesTemplateGet route
 ///
-/// @param templateId An identifier for property template added by route properties/template/add.
+/// @param templateId An identifier for template added by route  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
-/// @return Through the response callback, the caller will receive a `DBPROPERTIESGetPropertyTemplateResult` object on
-/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESGetTemplateResult` object on
+/// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
-- (DBRpcTask<DBPROPERTIESGetPropertyTemplateResult *, DBPROPERTIESPropertyTemplateError *> *)propertiesTemplateGet:
-    (NSString *)templateId;
+- (DBRpcTask<DBFILEPROPERTIESGetTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateGet:
+    (NSString *)templateId __deprecated_msg("properties/template/get is deprecated.");
 
 ///
-/// Get the property template identifiers for a user. To get the schema of each template use `propertiesTemplateGet`.
+/// DEPRECATED: The propertiesTemplateList route
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBPROPERTIESListPropertyTemplateIds` object on
-/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESListTemplateResult` object on
+/// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
-- (DBRpcTask<DBPROPERTIESListPropertyTemplateIds *, DBPROPERTIESPropertyTemplateError *> *)propertiesTemplateList;
+- (DBRpcTask<DBFILEPROPERTIESListTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateList
+    __deprecated_msg("properties/template/list is deprecated.");
 
 ///
-/// Add, update or remove custom properties from a specified template associated with a file. Fields that already exist
-/// and not described in the request will not be modified.
+/// DEPRECATED: The propertiesUpdate route
 ///
-/// @param path A unique identifier for the file.
-/// @param updatePropertyGroups Filled custom property templates associated with a file.
+/// @param path A unique identifier for the file or folder.
+/// @param updatePropertyGroups The property groups "delta" updates to apply.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUpdatePropertiesError` object on failure.
+/// `DBFILEPROPERTIESUpdatePropertiesError` object on failure.
 ///
-- (DBRpcTask<DBNilObject *, DBFILESUpdatePropertiesError *> *)propertiesUpdate:(NSString *)path
-                                                          updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> *)
-                                                                                   updatePropertyGroups;
+- (DBRpcTask<DBNilObject *, DBFILEPROPERTIESUpdatePropertiesError *> *)
+    propertiesUpdate:(NSString *)path
+updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePropertyGroups
+    __deprecated_msg("properties/update is deprecated.");
 
 ///
 /// Restore a file to a specific revision.
