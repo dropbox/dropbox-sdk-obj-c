@@ -1,5 +1,5 @@
 PODS:
-  - ObjectiveDropboxOfficial (3.2.0)
+  - ObjectiveDropboxOfficial (3.3.2)
 
 DEPENDENCIES:
   - ObjectiveDropboxOfficial (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  ObjectiveDropboxOfficial: 5f690e26ee7f8ec247c7259cd011d1ae41780285
+  ObjectiveDropboxOfficial: fabfe6b6bf3883f730386134c5c7e17f567dba06
 
 PODFILE CHECKSUM: ab0212b4bace4758ed2e1292c4087eec901dc0dc
 
