@@ -30,6 +30,11 @@ else
         echo "Generating documents..."
         jazzy --objc --readme $tmp_location/README.md --umbrella-header $tmp_location/UmbrellaHeader.h --framework-root $tmp_location --config ../.jazzy.json -o $docs_location
 
+        if [ -d $docs_location/css/ ]; then
+            rm -rf $docs_location/css/
+        fi
+        mkdir $docs_location/css/
+
         cp jazzy.css $docs_location/css/
 
         echo "Removing tmp sdk files..."
