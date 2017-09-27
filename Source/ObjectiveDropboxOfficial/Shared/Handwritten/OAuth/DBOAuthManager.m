@@ -48,14 +48,17 @@ static DBOAuthManager *s_sharedOAuthManager;
 #pragma mark - Constructors
 
 - (instancetype)initWithAppKey:(NSString *)appKey {
-  NSString *hostToUse =
-      !kSDKDebug ? @"www.dropbox.com" : [NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kSDKDebugHost];
-  return [self initWithAppKey:appKey host:hostToUse];
+  return [self initWithAppKey:appKey host:nil];
 }
 
-- (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host {
+- (instancetype)initWithAppKey:(NSString *)appKey host:(nullable NSString *)host {
   self = [super init];
   if (self) {
+      if (host == nil) {
+          host =
+          !kSDKDebug ? @"www.dropbox.com" : [NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kSDKDebugHost];
+      }
+
     _appKey = appKey;
     _redirectURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"db-%@://2/token", _appKey]];
     _cancelURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];

@@ -93,11 +93,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBOAuthManager` full constructor.
 ///
 /// @param appKey The app key from the developer console that identifies this app.
-/// @param host The host of the OAuth web flow.
+/// @param host The host of the OAuth web flow. Leave nil to use default host.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host;
+- (instancetype)initWithAppKey:(NSString *)appKey host:(nullable NSString *)host;
 
 #pragma mark - Auth flow methods
 
