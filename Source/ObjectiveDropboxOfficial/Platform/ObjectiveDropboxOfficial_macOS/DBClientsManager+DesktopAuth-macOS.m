@@ -29,8 +29,9 @@
 }
 
 + (void)setupWithTransportConfigDesktop:(DBTransportDefaultConfig *)transportConfig {
-  [[self class] setupWithOAuthManager:[[DBOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                      transportConfig:transportConfig];
+    [[self class] setupWithOAuthManager:[[DBOAuthManager alloc] initWithAppKey:transportConfig.appKey
+                                                                          host:transportConfig.hostname]
+                        transportConfig:transportConfig];
 }
 
 + (void)setupWithTeamAppKeyDesktop:(NSString *)appKey {
@@ -38,8 +39,9 @@
 }
 
 + (void)setupWithTeamTransportConfigDesktop:(DBTransportDefaultConfig *)transportConfig {
-  [[self class] setupWithOAuthManagerTeam:[[DBOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                          transportConfig:transportConfig];
+    [[self class] setupWithOAuthManagerTeam:[[DBOAuthManager alloc] initWithAppKey:transportConfig.appKey
+                                                                              host:transportConfig.hostname]
+                            transportConfig:transportConfig];
 }
 
 @end

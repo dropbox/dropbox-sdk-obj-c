@@ -27,10 +27,25 @@
                      userAgent:(NSString *)userAgent
                     asMemberId:(NSString *)asMemberId
              additionalHeaders:(NSDictionary<NSString *, NSString *> *)additionalHeaders {
+  return [self initWithAppKey:appKey
+                    appSecret:appSecret
+                     hostname:nil
+                    userAgent:userAgent
+                   asMemberId:asMemberId
+            additionalHeaders:additionalHeaders];
+}
+
+- (instancetype)initWithAppKey:(nullable NSString *)appKey
+                     appSecret:(nullable NSString *)appSecret
+                      hostname:(nullable NSString *)hostname
+                     userAgent:(nullable NSString *)userAgent
+                    asMemberId:(nullable NSString *)asMemberId
+             additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders {
   if (self = [super init]) {
     _userAgent = userAgent;
     _appKey = appKey;
     _appSecret = appSecret;
+    _hostname = hostname;
     _asMemberId = asMemberId;
     _additionalHeaders = additionalHeaders;
   }

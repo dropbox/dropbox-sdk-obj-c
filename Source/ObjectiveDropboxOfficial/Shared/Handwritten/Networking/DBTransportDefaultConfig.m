@@ -85,16 +85,37 @@
                  delegateQueue:(NSOperationQueue *)delegateQueue
         forceForegroundSession:(BOOL)forceForegroundSession
      sharedContainerIdentifier:(NSString *)sharedContainerIdentifier {
-  if (self = [super initWithAppKey:appKey
-                         appSecret:appSecret
-                         userAgent:userAgent
-                        asMemberId:asMemberId
-                 additionalHeaders:additionalHeaders]) {
-    _delegateQueue = delegateQueue;
-    _forceForegroundSession = forceForegroundSession;
-    _sharedContainerIdentifier = sharedContainerIdentifier;
-  }
-  return self;
+    return [self initWithAppKey:appKey
+                      appSecret:appSecret
+                       hostname:nil
+                      userAgent:userAgent
+                     asMemberId:asMemberId
+              additionalHeaders:additionalHeaders
+                  delegateQueue:delegateQueue
+         forceForegroundSession:forceForegroundSession
+      sharedContainerIdentifier:sharedContainerIdentifier];
+}
+
+- (instancetype)initWithAppKey:(NSString *)appKey
+                     appSecret:(nullable NSString *)appSecret
+                      hostname:(nullable NSString *)hostname
+                     userAgent:(nullable NSString *)userAgent
+                    asMemberId:(nullable NSString *)asMemberId
+             additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders
+                 delegateQueue:(nullable NSOperationQueue *)delegateQueue
+        forceForegroundSession:(BOOL)forceForegroundSession
+     sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier {
+    if (self = [super initWithAppKey:appKey
+                           appSecret:appSecret
+                            hostname:hostname
+                           userAgent:userAgent
+                          asMemberId:asMemberId
+                   additionalHeaders:additionalHeaders]) {
+        _delegateQueue = delegateQueue;
+        _forceForegroundSession = forceForegroundSession;
+        _sharedContainerIdentifier = sharedContainerIdentifier;
+    }
+    return self;
 }
 
 @end
