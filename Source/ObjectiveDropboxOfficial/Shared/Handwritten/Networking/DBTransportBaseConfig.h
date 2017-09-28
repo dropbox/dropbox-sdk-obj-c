@@ -4,6 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBTransportBaseHostnameConfig.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 ///
@@ -19,9 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// querying endpoints the have "app auth" authentication type.
 @property (nonatomic, readonly, copy, nullable) NSString *appSecret;
 
-/// The hostname used for oauth networking requests. Leave as nil to use the default, otherwise can be set to a custom
-///  value for debugging purposes.
-@property (nonatomic, readonly, copy, nullable) NSString *hostname;
+/// The hostname configuration used for various networking requests.
+@property (nonatomic, readonly, copy) DBTransportBaseHostnameConfig *hostnameConfig;
 
 /// The user agent associated with all networking requests. Used for server logging.
 @property (nonatomic, readonly, copy, nullable) NSString *userAgent;
@@ -104,8 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// is used for querying endpoints the have "app auth" authentication type.
 /// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
 /// key is used for querying endpoints the have "app auth" authentication type.
-/// @param hostname A custom hostname to use for networking requests. Only useful for debugging purposes and only
-/// affects the oauth flows at this time.
+/// @param hostnameConfig A set of custom hostnames to use for networking requests. Only useful for debugging purposes.
 /// @param userAgent The user agent associated with all networking requests. Used for server logging.
 /// @param asMemberId An additional authentication header field used when a team app with the appropriate permissions
 /// "performs" user API actions on behalf of a team member.
@@ -115,7 +115,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (instancetype)initWithAppKey:(nullable NSString *)appKey
                      appSecret:(nullable NSString *)appSecret
-                      hostname:(nullable NSString *)hostname
+                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
                      userAgent:(nullable NSString *)userAgent
                     asMemberId:(nullable NSString *)asMemberId
              additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders;

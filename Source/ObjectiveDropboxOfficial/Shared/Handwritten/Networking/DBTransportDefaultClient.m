@@ -86,7 +86,7 @@
 #pragma mark - RPC-style request
 
 - (DBRpcTaskImpl *)requestRpc:(DBRoute *)route arg:(id<DBSerializable>)arg {
-  NSURL *requestUrl = [[self class] urlWithRoute:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
@@ -117,7 +117,7 @@
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputUrl:(NSString *)input {
   NSURL *inputUrl = [NSURL fileURLWithPath:input];
-  NSURL *requestUrl = [[self class] urlWithRoute:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
@@ -139,7 +139,7 @@
 #pragma mark - Upload-style request (NSData)
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputData:(NSData *)input {
-  NSURL *requestUrl = [[self class] urlWithRoute:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
@@ -161,7 +161,7 @@
 #pragma mark - Upload-style request (NSInputStream)
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputStream:(NSInputStream *)input {
-  NSURL *requestUrl = [[self class] urlWithRoute:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
@@ -200,7 +200,7 @@
                            destination:(NSURL *)destination
                        byteOffsetStart:(NSNumber *)byteOffsetStart
                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
-  NSURL *requestUrl = [[self class] urlWithRoute:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs
                                        serializedArg:serializedArg
@@ -232,7 +232,7 @@
                                     arg:(id<DBSerializable>)arg
                         byteOffsetStart:(NSNumber *)byteOffsetStart
                           byteOffsetEnd:(NSNumber *)byteOffsetEnd {
-  NSURL *requestUrl = [[self class] urlWithRoute:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers = [self headersWithRouteInfo:route.attrs
                                        serializedArg:serializedArg
