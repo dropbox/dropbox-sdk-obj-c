@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
                                     content:(nullable NSData *)content
                                      stream:(nullable NSInputStream *)stream;
 
-+ (NSURL *)urlWithRoute:(DBRoute *)route;
+- (NSURL *)urlWithRoute:(DBRoute *)route;
 
 + (NSData *)serializeDataWithRoute:(DBRoute *)route routeArg:(id<DBSerializable>)arg;
 

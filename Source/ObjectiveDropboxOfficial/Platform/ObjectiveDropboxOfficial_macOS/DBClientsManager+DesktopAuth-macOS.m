@@ -30,7 +30,7 @@
 
 + (void)setupWithTransportConfigDesktop:(DBTransportDefaultConfig *)transportConfig {
     [[self class] setupWithOAuthManager:[[DBOAuthManager alloc] initWithAppKey:transportConfig.appKey
-                                                                          host:transportConfig.hostname]
+                                                                          host:transportConfig.hostnameConfig.meta]
                         transportConfig:transportConfig];
 }
 
@@ -40,7 +40,7 @@
 
 + (void)setupWithTeamTransportConfigDesktop:(DBTransportDefaultConfig *)transportConfig {
     [[self class] setupWithOAuthManagerTeam:[[DBOAuthManager alloc] initWithAppKey:transportConfig.appKey
-                                                                              host:transportConfig.hostname]
+                                                                              host:transportConfig.hostnameConfig.meta]
                             transportConfig:transportConfig];
 }
 

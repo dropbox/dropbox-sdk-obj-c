@@ -193,8 +193,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// is used for querying endpoints that have "app auth" authentication type.
 /// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
 /// key is used for querying endpoints that have "app auth" authentication type.
-/// @param hostname A custom hostname to use for networking requests. Only useful for debugging purposes and only
-/// affects the oauth flows at this time.
+/// @param hostnameConfig A custom hostname to use for networking requests. Only useful for debugging purposes.
 /// @param userAgent The user agent associated with all networking requests. Used for server logging.
 /// @param delegateQueue A serial delegate queue used for executing blocks of code that touch state shared across
 /// threads (mainly the request handlers storage).
@@ -210,7 +209,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (instancetype)initWithAppKey:(NSString *)appKey
                      appSecret:(nullable NSString *)appSecret
-                      hostname:(nullable NSString *)hostname
+                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
                      userAgent:(nullable NSString *)userAgent
                     asMemberId:(nullable NSString *)asMemberId
              additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders

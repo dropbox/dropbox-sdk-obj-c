@@ -16,29 +16,11 @@
 
 #pragma mark - Internal serialization helpers
 
-NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
+@interface DBTransportBaseClient ()
+@property (nonatomic, readonly, copy) DBTransportBaseHostnameConfig *hostnameConfig;
+@end
 
 @implementation DBTransportBaseClient
-
-+ (void)initialize {
-  static dispatch_once_t once;
-  dispatch_once(&once, ^{
-    if (!kSDKDebug) {
-      kV2SDKBaseHosts = @{
-        @"api" : @"https://api.dropbox.com/2",
-        @"content" : @"https://api-content.dropbox.com/2",
-        @"notify" : @"https://notify.dropboxapi.com/2",
-      };
-    } else {
-      kV2SDKBaseHosts = @{
-        @"api" : [NSString stringWithFormat:@"https://api-%@.dev.corp.dropbox.com/2", kSDKDebugHost],
-        @"content" : [NSString stringWithFormat:@"https://api-content-%@.dev.corp.dropbox.com/2", kSDKDebugHost],
-        @"notify" : [NSString stringWithFormat:@"https://notify-%@.dev.corp.dropboxapi.com/2", kSDKDebugHost],
-      };
-    }
-
-  });
-}
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                            tokenUid:(NSString *)tokenUid
@@ -48,6 +30,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
     _tokenUid = [tokenUid copy];
     _appKey = transportConfig.appKey;
     _appSecret = transportConfig.appSecret;
+    _hostnameConfig = transportConfig.hostnameConfig;
     NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kV2SDKDefaultUserAgentPrefix, kV2SDKVersion];
     _userAgent = transportConfig.userAgent ? [[transportConfig.userAgent stringByAppendingString:@"/"]
                                                  stringByAppendingString:defaultUserAgent]
@@ -140,9 +123,9 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   return request;
 }
 
-+ (NSURL *)urlWithRoute:(DBRoute *)route {
-  return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", kV2SDKBaseHosts[route.attrs[@"host"]],
-                                                         route.namespace_, route.name]];
+- (NSURL *)urlWithRoute:(DBRoute *)route {
+  NSString *routePrefix = [_hostnameConfig apiV2PrefixWithRouteType:route.attrs[@"host"]];
+  return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", routePrefix, route.namespace_, route.name]];
 }
 
 + (NSData *)serializeDataWithRoute:(DBRoute *)route routeArg:(id<DBSerializable>)arg {

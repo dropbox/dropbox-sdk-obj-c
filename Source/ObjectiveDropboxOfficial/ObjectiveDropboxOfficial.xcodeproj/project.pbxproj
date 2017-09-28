@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C3C29741F7D757E00C54011 /* DBTransportBaseHostnameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3C29721F7D757E00C54011 /* DBTransportBaseHostnameConfig.m */; };
+		3C3C29751F7D757E00C54011 /* DBTransportBaseHostnameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3C29721F7D757E00C54011 /* DBTransportBaseHostnameConfig.m */; };
+		3C3C29761F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C3C29771F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F235B5221E29913600144F8B /* DBOAuthMobile-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */; };
 		F235B5241E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51E1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m */; };
 		F235B52F1E29915400144F8B /* DBOAuthDesktop-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B5291E29915400144F8B /* DBOAuthDesktop-macOS.m */; };
@@ -2155,6 +2159,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C3C29721F7D757E00C54011 /* DBTransportBaseHostnameConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTransportBaseHostnameConfig.m; sourceTree = "<group>"; };
+		3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTransportBaseHostnameConfig.h; sourceTree = "<group>"; };
 		F235B51B1E29913600144F8B /* DBOAuthMobile-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBOAuthMobile-iOS.h"; sourceTree = "<group>"; };
 		F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOAuthMobile-iOS.m"; sourceTree = "<group>"; };
 		F235B51D1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBClientsManager+MobileAuth-iOS.h"; sourceTree = "<group>"; };
@@ -3404,6 +3410,8 @@
 				F297818A1E03692800876A73 /* DBTransportBaseClient.m */,
 				F24169491E5247D60038E306 /* DBTransportBaseConfig.h */,
 				F241694A1E5247D60038E306 /* DBTransportBaseConfig.m */,
+				3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */,
+				3C3C29721F7D757E00C54011 /* DBTransportBaseHostnameConfig.m */,
 				F297818B1E03692800876A73 /* DBTransportClientProtocol.h */,
 				F29781871E03692800876A73 /* DBTransportDefaultClient.h */,
 				F29781881E03692800876A73 /* DBTransportDefaultClient.m */,
@@ -4881,6 +4889,7 @@
 				F2984B7F1F70F7620014DC65 /* DBTEAMUserCustomQuotaArg.h in Headers */,
 				F2984C271F70F7620014DC65 /* DBTEAMLOGFileCommentNotificationPolicy.h in Headers */,
 				F2984B671F70F7620014DC65 /* DBTEAMTeamGetInfoResult.h in Headers */,
+				3C3C29761F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */,
 				F2984E431F70F7630014DC65 /* DBTEAMLOGTfaRemoveBackupPhoneDetails.h in Headers */,
 				F2984D9D1F70F7630014DC65 /* DBTEAMLOGSharedContentRemoveLinkPasswordDetails.h in Headers */,
 				F298497F1F70F7610014DC65 /* DBSHARINGListFileMembersContinueError.h in Headers */,
@@ -5851,6 +5860,7 @@
 				F2984E7E1F70F7630014DC65 /* DBUSERSAccount.h in Headers */,
 				F2984E7A1F70F7630014DC65 /* DBTEAMPOLICIESTeamSharingPolicies.h in Headers */,
 				F2984E781F70F7630014DC65 /* DBTEAMPOLICIESTeamMemberPolicies.h in Headers */,
+				3C3C29771F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */,
 				F2984E761F70F7630014DC65 /* DBTEAMPOLICIESSsoPolicy.h in Headers */,
 				F2984E741F70F7630014DC65 /* DBTEAMPOLICIESSharedLinkCreatePolicy.h in Headers */,
 				F2984E721F70F7630014DC65 /* DBTEAMPOLICIESSharedFolderMemberPolicy.h in Headers */,
@@ -6939,6 +6949,7 @@
 				F2984EEF1F70F7640014DC65 /* DBFILEREQUESTSRouteObjects.m in Sources */,
 				F29847C71F70F7610014DC65 /* DBFilesObjects.m in Sources */,
 				F2984EC31F70F7640014DC65 /* DBFILEPROPERTIESTeamAuthRoutes.m in Sources */,
+				3C3C29741F7D757E00C54011 /* DBTransportBaseHostnameConfig.m in Sources */,
 				F2984EDF1F70F7640014DC65 /* DBTEAMTeamAuthRoutes.m in Sources */,
 				F29788C91E03692F00876A73 /* DBClientsManager.m in Sources */,
 				F29849031F70F7610014DC65 /* DBSharingObjects.m in Sources */,
@@ -7040,6 +7051,7 @@
 				F2984B941F70F7620014DC65 /* DBTeamLogObjects.m in Sources */,
 				F2984EE41F70F7640014DC65 /* DBUSERSUserAuthRoutes.m in Sources */,
 				F29847AA1F70F7610014DC65 /* DBFileRequestsObjects.m in Sources */,
+				3C3C29751F7D757E00C54011 /* DBTransportBaseHostnameConfig.m in Sources */,
 				F2984EC01F70F7640014DC65 /* DBAUTHUserAuthRoutes.m in Sources */,
 				F2984ECC1F70F7640014DC65 /* DBFILEREQUESTSUserAuthRoutes.m in Sources */,
 				F2A2CEA21E562FEB001D8449 /* DBCustomDatatypes.m in Sources */,

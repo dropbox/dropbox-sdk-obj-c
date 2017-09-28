@@ -29,7 +29,7 @@
              additionalHeaders:(NSDictionary<NSString *, NSString *> *)additionalHeaders {
   return [self initWithAppKey:appKey
                     appSecret:appSecret
-                     hostname:nil
+               hostnameConfig:nil
                     userAgent:userAgent
                    asMemberId:asMemberId
             additionalHeaders:additionalHeaders];
@@ -37,7 +37,7 @@
 
 - (instancetype)initWithAppKey:(nullable NSString *)appKey
                      appSecret:(nullable NSString *)appSecret
-                      hostname:(nullable NSString *)hostname
+                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
                      userAgent:(nullable NSString *)userAgent
                     asMemberId:(nullable NSString *)asMemberId
              additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders {
@@ -45,7 +45,7 @@
     _userAgent = userAgent;
     _appKey = appKey;
     _appSecret = appSecret;
-    _hostname = hostname;
+    _hostnameConfig = hostnameConfig ?: [[DBTransportBaseHostnameConfig alloc] init];
     _asMemberId = asMemberId;
     _additionalHeaders = additionalHeaders;
   }

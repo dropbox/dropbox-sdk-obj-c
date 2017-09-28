@@ -87,7 +87,7 @@
      sharedContainerIdentifier:(NSString *)sharedContainerIdentifier {
     return [self initWithAppKey:appKey
                       appSecret:appSecret
-                       hostname:nil
+                 hostnameConfig:nil
                       userAgent:userAgent
                      asMemberId:asMemberId
               additionalHeaders:additionalHeaders
@@ -98,7 +98,7 @@
 
 - (instancetype)initWithAppKey:(NSString *)appKey
                      appSecret:(nullable NSString *)appSecret
-                      hostname:(nullable NSString *)hostname
+                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
                      userAgent:(nullable NSString *)userAgent
                     asMemberId:(nullable NSString *)asMemberId
              additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders
@@ -107,7 +107,7 @@
      sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier {
     if (self = [super initWithAppKey:appKey
                            appSecret:appSecret
-                            hostname:hostname
+                      hostnameConfig:hostnameConfig
                            userAgent:userAgent
                           asMemberId:asMemberId
                    additionalHeaders:additionalHeaders]) {

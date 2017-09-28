@@ -31,8 +31,9 @@
 }
 
 + (void)setupWithTransportConfig:(DBTransportDefaultConfig *)transportConfig {
-    [[self class] setupWithOAuthManager:[[DBOAuthMobileManager alloc] initWithAppKey:transportConfig.appKey
-                                                                                host:transportConfig.hostname]
+    [[self class] setupWithOAuthManager:[[DBOAuthMobileManager alloc]
+                                         initWithAppKey:transportConfig.appKey
+                                         host:transportConfig.hostnameConfig.meta]
                         transportConfig:transportConfig];
 }
 
@@ -41,8 +42,9 @@
 }
 
 + (void)setupWithTeamTransportConfig:(DBTransportDefaultConfig *)transportConfig {
-    [[self class] setupWithOAuthManagerTeam:[[DBOAuthMobileManager alloc] initWithAppKey:transportConfig.appKey
-                                                                                    host:transportConfig.hostname]
+    [[self class] setupWithOAuthManagerTeam:[[DBOAuthMobileManager alloc]
+                                             initWithAppKey:transportConfig.appKey
+                                             host:transportConfig.hostnameConfig.meta]
                             transportConfig:transportConfig];
 }
 
