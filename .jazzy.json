@@ -1,8 +1,4 @@
 {
-  "module_version": "3.0", 
-  "skip_undocumented": true, 
-  "author": "Dropbox, Inc.", 
-  "module": "ObjectiveDropboxOfficial", 
   "custom_categories": [
     {
       "name": "Async", 
@@ -2014,6 +2010,8 @@
       "children": []
     }
   ], 
+  "hide_documentation_coverage": true, 
+  "skip_undocumented": true, 
   "author_url": "https://dropbox.com/developers", 
-  "hide_documentation_coverage": true
+  "author": "Dropbox, Inc."
 }

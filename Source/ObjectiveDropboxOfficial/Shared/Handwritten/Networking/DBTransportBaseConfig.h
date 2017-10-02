@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy, nullable) NSString *appSecret;
 
 /// The hostname configuration used for various networking requests.
-@property (nonatomic, readonly, copy) DBTransportBaseHostnameConfig *hostnameConfig;
+@property (nonatomic, readonly, copy, nullable) DBTransportBaseHostnameConfig *hostnameConfig;
 
 /// The user agent associated with all networking requests. Used for server logging.
 @property (nonatomic, readonly, copy, nullable) NSString *userAgent;

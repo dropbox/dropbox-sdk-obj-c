@@ -30,7 +30,7 @@
     _tokenUid = [tokenUid copy];
     _appKey = transportConfig.appKey;
     _appSecret = transportConfig.appSecret;
-    _hostnameConfig = transportConfig.hostnameConfig;
+    _hostnameConfig = transportConfig.hostnameConfig ?: [[DBTransportBaseHostnameConfig alloc] init];
     NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kV2SDKDefaultUserAgentPrefix, kV2SDKVersion];
     _userAgent = transportConfig.userAgent ? [[transportConfig.userAgent stringByAppendingString:@"/"]
                                                  stringByAppendingString:defaultUserAgent]

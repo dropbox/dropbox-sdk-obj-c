@@ -35,17 +35,17 @@
             additionalHeaders:additionalHeaders];
 }
 
-- (instancetype)initWithAppKey:(nullable NSString *)appKey
-                     appSecret:(nullable NSString *)appSecret
-                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
-                     userAgent:(nullable NSString *)userAgent
-                    asMemberId:(nullable NSString *)asMemberId
-             additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders {
+- (instancetype)initWithAppKey:(NSString *)appKey
+                     appSecret:(NSString *)appSecret
+                hostnameConfig:(DBTransportBaseHostnameConfig *)hostnameConfig
+                     userAgent:(NSString *)userAgent
+                    asMemberId:(NSString *)asMemberId
+             additionalHeaders:(NSDictionary<NSString *, NSString *> *)additionalHeaders {
   if (self = [super init]) {
     _userAgent = userAgent;
     _appKey = appKey;
     _appSecret = appSecret;
-    _hostnameConfig = hostnameConfig ?: [[DBTransportBaseHostnameConfig alloc] init];
+    _hostnameConfig = hostnameConfig;
     _asMemberId = asMemberId;
     _additionalHeaders = additionalHeaders;
   }
