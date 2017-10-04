@@ -56,7 +56,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
 
 - iOS 9.0+
 - macOS 10.10+
-- Xcode 7.3+
+- Xcode 8+
 
 ---
 
@@ -336,6 +336,9 @@ To facilitate the above authorization flows, you should take the following steps
 You can commence the auth flow by calling `authorizeFromController:controller:openURL` method in your application's
 view controller.
 
+Please ensure that the supplied view controller is the top-most controller, so that the authorization view displays correctly. 
+
+
 ##### iOS
 
 ```objective-c
@@ -343,10 +346,21 @@ view controller.
 
 - (void)myButtonInControllerPressed {
   [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
-                                 controller:self
+                                 controller:[[self class] topMostController]
                                     openURL:^(NSURL *url) {
                                       [[UIApplication sharedApplication] openURL:url];
                                     }];
+}
+
++ (UIViewController*)topMostController
+{
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+
+    return topController;
 }
 
 ```
@@ -358,8 +372,19 @@ view controller.
 
 - (void)myButtonInControllerPressed {
   [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
-                                        controller:self
+                                        controller:[[self class] topMostController]
                                            openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }];
+}
+
++ (UIViewController*)topMostController
+{
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+
+    return topController;
 }
 ```
 

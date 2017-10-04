@@ -23,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Commences OAuth mobile flow from supplied view controller.
 ///
 /// @param sharedApplication The `UIApplication` with which to render the OAuth flow.
-/// @param controller The `UIViewController` with which to render the OAuth flow.
+/// @param controller The `UIViewController` with which to render the OAuth flow. Please ensure that this is the
+/// top-most view controller, so that the authorization view displays correctly.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.
 ///
 + (void)authorizeFromController:(UIApplication *)sharedApplication
