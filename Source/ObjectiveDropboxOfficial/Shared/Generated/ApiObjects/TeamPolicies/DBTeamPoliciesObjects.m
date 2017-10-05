@@ -1867,6 +1867,9 @@
 - (instancetype)initWithSharing:(DBTEAMPOLICIESTeamSharingPolicies *)sharing
                        emmState:(DBTEAMPOLICIESEmmState *)emmState
                     officeAddin:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddin {
+  [DBStoneValidators nonnullValidator:nil](sharing);
+  [DBStoneValidators nonnullValidator:nil](emmState);
+  [DBStoneValidators nonnullValidator:nil](officeAddin);
 
   self = [super init];
   if (self) {
@@ -1986,6 +1989,9 @@
 - (instancetype)initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy
                           sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy
                           sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy {
+  [DBStoneValidators nonnullValidator:nil](sharedFolderMemberPolicy);
+  [DBStoneValidators nonnullValidator:nil](sharedFolderJoinPolicy);
+  [DBStoneValidators nonnullValidator:nil](sharedLinkCreatePolicy);
 
   self = [super init];
   if (self) {

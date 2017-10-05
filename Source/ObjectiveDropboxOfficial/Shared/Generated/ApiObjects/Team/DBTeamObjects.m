@@ -21,6 +21,7 @@
                           country:(NSString *)country
                           created:(NSDate *)created
                           updated:(NSDate *)updated {
+  [DBStoneValidators nonnullValidator:nil](sessionId);
 
   self = [super init];
   if (self) {
@@ -192,6 +193,10 @@
                           created:(NSDate *)created
                           updated:(NSDate *)updated
                           expires:(NSDate *)expires {
+  [DBStoneValidators nonnullValidator:nil](sessionId);
+  [DBStoneValidators nonnullValidator:nil](userAgent);
+  [DBStoneValidators nonnullValidator:nil](os);
+  [DBStoneValidators nonnullValidator:nil](browser);
 
   self = [super initWithSessionId:sessionId ipAddress:ipAddress country:country created:created updated:updated];
   if (self) {
@@ -605,6 +610,9 @@
                     publisher:(NSString *)publisher
                  publisherUrl:(NSString *)publisherUrl
                        linked:(NSDate *)linked {
+  [DBStoneValidators nonnullValidator:nil](appId);
+  [DBStoneValidators nonnullValidator:nil](appName);
+  [DBStoneValidators nonnullValidator:nil](isAppFolder);
 
   self = [super init];
   if (self) {
@@ -767,6 +775,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithStartDate:(NSString *)startDate {
+  [DBStoneValidators nonnullValidator:nil](startDate);
 
   self = [super init];
   if (self) {
@@ -1458,7 +1467,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUsers:(NSArray<DBTEAMUserSelectorArg *> *)users {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](users);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](users);
 
   self = [super init];
   if (self) {
@@ -1827,6 +1839,12 @@
                           country:(NSString *)country
                           created:(NSDate *)created
                           updated:(NSDate *)updated {
+  [DBStoneValidators nonnullValidator:nil](sessionId);
+  [DBStoneValidators nonnullValidator:nil](hostName);
+  [DBStoneValidators nonnullValidator:nil](clientType);
+  [DBStoneValidators nonnullValidator:nil](clientVersion);
+  [DBStoneValidators nonnullValidator:nil](platform);
+  [DBStoneValidators nonnullValidator:nil](isDeleteOnUnlinkSupported);
 
   self = [super initWithSessionId:sessionId ipAddress:ipAddress country:country created:created updated:updated];
   if (self) {
@@ -2233,6 +2251,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithSessionId:(NSString *)sessionId teamMemberId:(NSString *)teamMemberId {
+  [DBStoneValidators nonnullValidator:nil](sessionId);
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
 
   self = [super init];
   if (self) {
@@ -2344,13 +2364,13 @@
                         android:(NSArray<NSNumber *> *)android
                           other:(NSArray<NSNumber *> *)other
                           total:(NSArray<NSNumber *> *)total {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](windows);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](macos);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](linux);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](ios);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](android);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](other);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](total);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](windows);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](macos);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](linux);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](ios);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](android);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](other);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](total);
 
   self = [super init];
   if (self) {
@@ -2917,7 +2937,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithFeatures:(NSArray<DBTEAMFeature *> *)features {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](features);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](features);
 
   self = [super init];
   if (self) {
@@ -3174,7 +3197,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithValues:(NSArray<DBTEAMFeatureValue *> *)values {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](values);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](values);
 
   self = [super init];
   if (self) {
@@ -3295,20 +3321,32 @@
     sharedLinksViewedByOutsideUser:(NSArray<NSNumber *> *)sharedLinksViewedByOutsideUser
     sharedLinksViewedByNotLoggedIn:(NSArray<NSNumber *> *)sharedLinksViewedByNotLoggedIn
             sharedLinksViewedTotal:(NSArray<NSNumber *> *)sharedLinksViewedTotal {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](adds);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](edits);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](deletes);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](activeUsers28Day);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](activeUsers7Day);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](activeUsers1Day);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](activeSharedFolders28Day);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](activeSharedFolders7Day);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](activeSharedFolders1Day);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedLinksCreated);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedLinksViewedByTeam);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedLinksViewedByOutsideUser);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedLinksViewedByNotLoggedIn);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedLinksViewedTotal);
+  [DBStoneValidators nonnullValidator:nil](startDate);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](adds);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](edits);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](deletes);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeUsers28Day);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeUsers7Day);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeUsers1Day);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeSharedFolders28Day);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeSharedFolders7Day);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeSharedFolders1Day);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedLinksCreated);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedLinksViewedByTeam);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](
+      sharedLinksViewedByOutsideUser);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](
+      sharedLinksViewedByNotLoggedIn);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedLinksViewedTotal);
 
   self = [super initWithStartDate:startDate];
   if (self) {
@@ -3615,6 +3653,10 @@
                        active1Day:(DBTEAMDevicesActive *)active1Day
                        active7Day:(DBTEAMDevicesActive *)active7Day
                       active28Day:(DBTEAMDevicesActive *)active28Day {
+  [DBStoneValidators nonnullValidator:nil](startDate);
+  [DBStoneValidators nonnullValidator:nil](active1Day);
+  [DBStoneValidators nonnullValidator:nil](active7Day);
+  [DBStoneValidators nonnullValidator:nil](active28Day);
 
   self = [super initWithStartDate:startDate];
   if (self) {
@@ -3742,11 +3784,15 @@
                     membersJoined:(NSArray<NSNumber *> *)membersJoined
                  suspendedMembers:(NSArray<NSNumber *> *)suspendedMembers
                          licenses:(NSArray<NSNumber *> *)licenses {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](teamSize);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](pendingInvites);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](membersJoined);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](suspendedMembers);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](licenses);
+  [DBStoneValidators nonnullValidator:nil](startDate);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](teamSize);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](pendingInvites);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](membersJoined);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](suspendedMembers);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](licenses);
 
   self = [super initWithStartDate:startDate];
   if (self) {
@@ -3921,12 +3967,25 @@
                     unsharedUsage:(NSArray<NSNumber *> *)unsharedUsage
                     sharedFolders:(NSArray<NSNumber *> *)sharedFolders
                  memberStorageMap:(NSArray<NSArray<DBTEAMStorageBucket *> *> *)memberStorageMap {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](totalUsage);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedUsage);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](unsharedUsage);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedFolders);
-  [DBStoneValidators arrayValidator:nil maxItems:nil
-                      itemValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](
+  [DBStoneValidators nonnullValidator:nil](startDate);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](totalUsage);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedUsage);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](unsharedUsage);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedFolders);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        arrayValidator:nil
+                              maxItems:nil
+                         itemValidator:[DBStoneValidators
+                                           nonnullValidator:[DBStoneValidators
+                                                                arrayValidator:nil
+                                                                      maxItems:nil
+                                                                 itemValidator:[DBStoneValidators
+                                                                                   nonnullValidator:nil]]]]](
       memberStorageMap);
 
   self = [super initWithStartDate:startDate];
@@ -4262,6 +4321,7 @@
 - (instancetype)initWithGroupName:(NSString *)groupName
                   groupExternalId:(NSString *)groupExternalId
               groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType {
+  [DBStoneValidators nonnullValidator:nil](groupName);
 
   self = [super init];
   if (self) {
@@ -5144,7 +5204,14 @@
                   groupExternalId:(NSString *)groupExternalId
                       memberCount:(NSNumber *)memberCount
                           members:(NSArray<DBTEAMGroupMemberInfo *> *)members {
-  [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](members);
+  [DBStoneValidators nonnullValidator:nil](groupName);
+  [DBStoneValidators nonnullValidator:nil](groupId);
+  [DBStoneValidators nonnullValidator:nil](groupManagementType);
+  [DBStoneValidators nonnullValidator:nil](created);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
 
   self = [super initWithGroupName:groupName
                           groupId:groupId
@@ -5333,6 +5400,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithProfile:(DBTEAMMemberProfile *)profile accessType:(DBTEAMGroupAccessType *)accessType {
+  [DBStoneValidators nonnullValidator:nil](profile);
+  [DBStoneValidators nonnullValidator:nil](accessType);
 
   self = [super init];
   if (self) {
@@ -5440,6 +5509,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group user:(DBTEAMUserSelectorArg *)user {
+  [DBStoneValidators nonnullValidator:nil](group);
+  [DBStoneValidators nonnullValidator:nil](user);
 
   self = [super init];
   if (self) {
@@ -5959,6 +6030,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithReturnMembers:(NSNumber *)returnMembers {
+  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super init];
   if (self) {
@@ -6066,7 +6138,12 @@
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group
                       members:(NSArray<DBTEAMMemberAccess *> *)members
                 returnMembers:(NSNumber *)returnMembers {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
+  [DBStoneValidators nonnullValidator:nil](group);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
+  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithReturnMembers:returnMembers];
   if (self) {
@@ -6559,7 +6636,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithGroupInfo:(DBTEAMGroupFullInfo *)groupInfo asyncJobId:(NSString *)asyncJobId {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](asyncJobId);
+  [DBStoneValidators nonnullValidator:nil](groupInfo);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](asyncJobId);
 
   self = [super init];
   if (self) {
@@ -6670,7 +6748,12 @@
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group
                         users:(NSArray<DBTEAMUserSelectorArg *> *)users
                 returnMembers:(NSNumber *)returnMembers {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](users);
+  [DBStoneValidators nonnullValidator:nil](group);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](users);
+  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithReturnMembers:returnMembers];
   if (self) {
@@ -7292,6 +7375,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group users:(DBTEAMUsersSelectorArg *)users {
+  [DBStoneValidators nonnullValidator:nil](group);
+  [DBStoneValidators nonnullValidator:nil](users);
 
   self = [super init];
   if (self) {
@@ -7404,6 +7489,10 @@
                          user:(DBTEAMUserSelectorArg *)user
                    accessType:(DBTEAMGroupAccessType *)accessType
                 returnMembers:(NSNumber *)returnMembers {
+  [DBStoneValidators nonnullValidator:nil](group);
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:nil](accessType);
+  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithGroup:group user:user];
   if (self) {
@@ -7718,6 +7807,8 @@
                 dNewGroupName:(NSString *)dNewGroupName
           dNewGroupExternalId:(NSString *)dNewGroupExternalId
       dNewGroupManagementType:(DBTEAMCOMMONGroupManagementType *)dNewGroupManagementType {
+  [DBStoneValidators nonnullValidator:nil](group);
+  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithReturnMembers:returnMembers];
   if (self) {
@@ -8450,7 +8541,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -8553,6 +8644,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super init];
   if (self) {
@@ -8805,7 +8897,12 @@
 - (instancetype)initWithGroups:(NSArray<DBTEAMCOMMONGroupSummary *> *)groups
                         cursor:(NSString *)cursor
                        hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](groups);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](groups);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -8926,7 +9023,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group limit:(NSNumber *)limit {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:nil](group);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -9036,6 +9134,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super init];
   if (self) {
@@ -9289,7 +9388,12 @@
 - (instancetype)initWithMembers:(NSArray<DBTEAMGroupMemberInfo *> *)members
                          cursor:(NSString *)cursor
                         hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -9963,6 +10067,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId {
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
 
   self = [super init];
   if (self) {
@@ -10213,7 +10318,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLinkedApiApps:(NSArray<DBTEAMApiApp *> *)linkedApiApps {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](linkedApiApps);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](linkedApiApps);
 
   self = [super init];
   if (self) {
@@ -10321,6 +10429,10 @@
                   includeWebSessions:(NSNumber *)includeWebSessions
                includeDesktopClients:(NSNumber *)includeDesktopClients
                 includeMobileClients:(NSNumber *)includeMobileClients {
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
+  [DBStoneValidators nonnullValidator:nil](includeWebSessions ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](includeDesktopClients ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](includeMobileClients ?: @YES);
 
   self = [super init];
   if (self) {
@@ -10607,11 +10719,17 @@
                     desktopClientSessions:(NSArray<DBTEAMDesktopClientSession *> *)desktopClientSessions
                      mobileClientSessions:(NSArray<DBTEAMMobileClientSession *> *)mobileClientSessions {
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeWebSessions);
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](activeWebSessions);
+  [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil
+                                                                maxItems:nil
+                                                           itemValidator:[DBStoneValidators nonnullValidator:nil]]](
+      desktopClientSessions);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](desktopClientSessions);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](mobileClientSessions);
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](mobileClientSessions);
 
   self = [super init];
   if (self) {
@@ -11039,7 +11157,11 @@
 - (instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> *)apps
                      hasMore:(NSNumber *)hasMore
                       cursor:(NSString *)cursor {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](apps);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](apps);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -11172,6 +11294,9 @@
             includeWebSessions:(NSNumber *)includeWebSessions
          includeDesktopClients:(NSNumber *)includeDesktopClients
           includeMobileClients:(NSNumber *)includeMobileClients {
+  [DBStoneValidators nonnullValidator:nil](includeWebSessions ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](includeDesktopClients ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](includeMobileClients ?: @YES);
 
   self = [super init];
   if (self) {
@@ -11458,7 +11583,11 @@
 - (instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> *)devices
                         hasMore:(NSNumber *)hasMore
                          cursor:(NSString *)cursor {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](devices);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](devices);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -11850,7 +11979,11 @@
 - (instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> *)apps
                      hasMore:(NSNumber *)hasMore
                       cursor:(NSString *)cursor {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](apps);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](apps);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -11983,6 +12116,9 @@
             includeWebSessions:(NSNumber *)includeWebSessions
          includeDesktopClients:(NSNumber *)includeDesktopClients
           includeMobileClients:(NSNumber *)includeMobileClients {
+  [DBStoneValidators nonnullValidator:nil](includeWebSessions ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](includeDesktopClients ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](includeMobileClients ?: @YES);
 
   self = [super init];
   if (self) {
@@ -12269,7 +12405,11 @@
 - (instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> *)devices
                         hasMore:(NSNumber *)hasMore
                          cursor:(NSString *)cursor {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](devices);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](devices);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -12401,6 +12541,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user accessType:(DBTEAMGroupAccessType *)accessType {
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:nil](accessType);
 
   self = [super init];
   if (self) {
@@ -12513,8 +12655,10 @@
                  memberPersistentId:(NSString *)memberPersistentId
                    sendWelcomeEmail:(NSNumber *)sendWelcomeEmail
                                role:(DBTEAMAdminTier *)role {
-  [DBStoneValidators stringValidator:nil maxLength:@(255)
-                             pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$"](memberEmail);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
+                                                               maxLength:@(255)
+                                                                 pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9."
+                                                                         @"-]*.[A-Za-z]{2,15}$"]](memberEmail);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](
       memberGivenName);
@@ -12522,6 +12666,8 @@
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](memberSurname);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
+  [DBStoneValidators nonnullValidator:nil](sendWelcomeEmail ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](role ?: [[DBTEAMAdminTier alloc] initWithMemberOnly]);
 
   self = [super init];
   if (self) {
@@ -13200,12 +13346,19 @@
                          webSessions:(NSArray<DBTEAMActiveWebSession *> *)webSessions
                       desktopClients:(NSArray<DBTEAMDesktopClientSession *> *)desktopClients
                        mobileClients:(NSArray<DBTEAMMobileClientSession *> *)mobileClients {
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](webSessions);
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](webSessions);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](desktopClients);
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](desktopClients);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](mobileClients);
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](mobileClients);
 
   self = [super init];
   if (self) {
@@ -13377,7 +13530,11 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId linkedApiApps:(NSArray<DBTEAMApiApp *> *)linkedApiApps {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](linkedApiApps);
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](linkedApiApps);
 
   self = [super init];
   if (self) {
@@ -13501,6 +13658,12 @@
                            accountId:(NSString *)accountId
                             joinedOn:(NSDate *)joinedOn
                         persistentId:(NSString *)persistentId {
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
+  [DBStoneValidators nonnullValidator:nil](email);
+  [DBStoneValidators nonnullValidator:nil](emailVerified);
+  [DBStoneValidators nonnullValidator:nil](status);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](membershipType);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
@@ -14010,7 +14173,11 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDNewMembers:(NSArray<DBTEAMMemberAddArg *> *)dNewMembers forceAsync:(NSNumber *)forceAsync {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](dNewMembers);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](dNewMembers);
+  [DBStoneValidators nonnullValidator:nil](forceAsync ?: @NO);
 
   self = [super init];
   if (self) {
@@ -14530,6 +14697,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user wipeData:(NSNumber *)wipeData {
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:nil](wipeData ?: @YES);
 
   self = [super init];
   if (self) {
@@ -14814,7 +14983,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithMembers:(NSArray<DBTEAMUserSelectorArg *> *)members {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
 
   self = [super init];
   if (self) {
@@ -15231,7 +15403,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:nil](includeRemoved ?: @NO);
 
   self = [super init];
   if (self) {
@@ -15341,6 +15514,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super init];
   if (self) {
@@ -15722,7 +15896,12 @@
 - (instancetype)initWithMembers:(NSArray<DBTEAMTeamMemberInfo *> *)members
                          cursor:(NSString *)cursor
                         hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -15843,6 +16022,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user {
+  [DBStoneValidators nonnullValidator:nil](user);
 
   self = [super init];
   if (self) {
@@ -16165,6 +16345,9 @@
               transferDestId:(DBTEAMUserSelectorArg *)transferDestId
              transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId
                  keepAccount:(NSNumber *)keepAccount {
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:nil](wipeData ?: @YES);
+  [DBStoneValidators nonnullValidator:nil](keepAccount ?: @NO);
 
   self = [super initWithUser:user wipeData:wipeData];
   if (self) {
@@ -16927,6 +17110,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user dNewRole:(DBTEAMAdminTier *)dNewRole {
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:nil](dNewRole);
 
   self = [super init];
   if (self) {
@@ -17273,6 +17458,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId role:(DBTEAMAdminTier *)role {
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
+  [DBStoneValidators nonnullValidator:nil](role);
 
   self = [super init];
   if (self) {
@@ -17384,6 +17571,7 @@
                dNewGivenName:(NSString *)dNewGivenName
                  dNewSurname:(NSString *)dNewSurname
             dNewPersistentId:(NSString *)dNewPersistentId {
+  [DBStoneValidators nonnullValidator:nil](user);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
                                                                 maxLength:@(255)
                                                                   pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
@@ -18158,6 +18346,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user {
+  [DBStoneValidators nonnullValidator:nil](user);
 
   self = [super init];
   if (self) {
@@ -18724,6 +18913,9 @@
                     clientVersion:(NSString *)clientVersion
                         osVersion:(NSString *)osVersion
                       lastCarrier:(NSString *)lastCarrier {
+  [DBStoneValidators nonnullValidator:nil](sessionId);
+  [DBStoneValidators nonnullValidator:nil](deviceName);
+  [DBStoneValidators nonnullValidator:nil](clientType);
 
   self = [super initWithSessionId:sessionId ipAddress:ipAddress country:country created:created updated:updated];
   if (self) {
@@ -18954,7 +19146,10 @@
                  namespaceId:(NSString *)namespaceId
                namespaceType:(DBTEAMNamespaceType *)namespaceType
                 teamMemberId:(NSString *)teamMemberId {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](namespaceId);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](namespaceId);
+  [DBStoneValidators nonnullValidator:nil](namespaceType);
 
   self = [super init];
   if (self) {
@@ -19505,6 +19700,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithIsRecoverable:(NSNumber *)isRecoverable {
+  [DBStoneValidators nonnullValidator:nil](isRecoverable);
 
   self = [super init];
   if (self) {
@@ -19606,6 +19802,9 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId
                      teamMemberId:(NSString *)teamMemberId
                    deleteOnUnlink:(NSNumber *)deleteOnUnlink {
+  [DBStoneValidators nonnullValidator:nil](sessionId);
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
+  [DBStoneValidators nonnullValidator:nil](deleteOnUnlink ?: @NO);
 
   self = [super initWithSessionId:sessionId teamMemberId:teamMemberId];
   if (self) {
@@ -19941,7 +20140,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRevokeDevices:(NSArray<DBTEAMRevokeDeviceSessionArg *> *)revokeDevices {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](revokeDevices);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](revokeDevices);
 
   self = [super init];
   if (self) {
@@ -20177,7 +20379,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRevokeDevicesStatus:(NSArray<DBTEAMRevokeDeviceSessionStatus *> *)revokeDevicesStatus {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](revokeDevicesStatus);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](revokeDevicesStatus);
 
   self = [super init];
   if (self) {
@@ -20459,6 +20664,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithSuccess:(NSNumber *)success errorType:(DBTEAMRevokeDeviceSessionError *)errorType {
+  [DBStoneValidators nonnullValidator:nil](success);
 
   self = [super init];
   if (self) {
@@ -20577,6 +20783,9 @@
 - (instancetype)initWithAppId:(NSString *)appId
                  teamMemberId:(NSString *)teamMemberId
                 keepAppFolder:(NSNumber *)keepAppFolder {
+  [DBStoneValidators nonnullValidator:nil](appId);
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
+  [DBStoneValidators nonnullValidator:nil](keepAppFolder ?: @YES);
 
   self = [super init];
   if (self) {
@@ -20695,7 +20904,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRevokeLinkedApp:(NSArray<DBTEAMRevokeLinkedApiAppArg *> *)revokeLinkedApp {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](revokeLinkedApp);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](revokeLinkedApp);
 
   self = [super init];
   if (self) {
@@ -20931,7 +21143,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRevokeLinkedAppStatus:(NSArray<DBTEAMRevokeLinkedAppStatus *> *)revokeLinkedAppStatus {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](revokeLinkedAppStatus);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](revokeLinkedAppStatus);
 
   self = [super init];
   if (self) {
@@ -21212,6 +21427,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithSuccess:(NSNumber *)success errorType:(DBTEAMRevokeLinkedAppError *)errorType {
+  [DBStoneValidators nonnullValidator:nil](success);
 
   self = [super init];
   if (self) {
@@ -21329,7 +21545,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUsersAndQuotas:(NSArray<DBTEAMUserCustomQuotaArg *> *)usersAndQuotas {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](usersAndQuotas);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](usersAndQuotas);
 
   self = [super init];
   if (self) {
@@ -21435,6 +21654,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithBucket:(NSString *)bucket users:(NSNumber *)users {
+  [DBStoneValidators nonnullValidator:nil](bucket);
+  [DBStoneValidators nonnullValidator:nil](users);
 
   self = [super init];
   if (self) {
@@ -21955,7 +22176,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](teamFolderId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
 
   self = [super init];
   if (self) {
@@ -22055,7 +22277,9 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId forceAsyncOff:(NSNumber *)forceAsyncOff {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](teamFolderId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:nil](forceAsyncOff ?: @NO);
 
   self = [super initWithTeamFolderId:teamFolderId];
   if (self) {
@@ -22795,6 +23019,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithName:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](name);
 
   self = [super init];
   if (self) {
@@ -23272,8 +23497,14 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamFolderIds:(NSArray<NSString *> *)teamFolderIds {
-  [DBStoneValidators arrayValidator:@(1) maxItems:nil
-                      itemValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        arrayValidator:@(1)
+                              maxItems:nil
+                         itemValidator:[DBStoneValidators
+                                           nonnullValidator:[DBStoneValidators stringValidator:nil
+                                                                                     maxLength:nil
+                                                                                       pattern:@"[-_0-9a-zA-Z:]+"]]]](
       teamFolderIds);
 
   self = [super init];
@@ -23574,7 +23805,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -23677,6 +23908,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super init];
   if (self) {
@@ -23927,6 +24159,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError *)accessError {
+  [DBStoneValidators nonnullValidator:nil](accessError);
 
   self = [super init];
   if (self) {
@@ -24029,7 +24262,12 @@
 - (instancetype)initWithTeamFolders:(NSArray<DBTEAMTeamFolderMetadata *> *)teamFolders
                              cursor:(NSString *)cursor
                             hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](teamFolders);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](teamFolders);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -24153,7 +24391,11 @@
                                 name:(NSString *)name
                               status:(DBTEAMTeamFolderStatus *)status
                  isTeamSharedDropbox:(NSNumber *)isTeamSharedDropbox {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](teamFolderId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](status);
+  [DBStoneValidators nonnullValidator:nil](isTeamSharedDropbox);
 
   self = [super init];
   if (self) {
@@ -24523,7 +24765,9 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId name:(NSString *)name {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](teamFolderId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:nil](name);
 
   self = [super initWithTeamFolderId:teamFolderId];
   if (self) {
@@ -25288,6 +25532,11 @@
             numLicensedUsers:(NSNumber *)numLicensedUsers
          numProvisionedUsers:(NSNumber *)numProvisionedUsers
                     policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies {
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](teamId);
+  [DBStoneValidators nonnullValidator:nil](numLicensedUsers);
+  [DBStoneValidators nonnullValidator:nil](numProvisionedUsers);
+  [DBStoneValidators nonnullValidator:nil](policies);
 
   self = [super init];
   if (self) {
@@ -25421,6 +25670,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithProfile:(DBTEAMTeamMemberProfile *)profile role:(DBTEAMAdminTier *)role {
+  [DBStoneValidators nonnullValidator:nil](profile);
+  [DBStoneValidators nonnullValidator:nil](role);
 
   self = [super init];
   if (self) {
@@ -25541,8 +25792,18 @@
                            accountId:(NSString *)accountId
                             joinedOn:(NSDate *)joinedOn
                         persistentId:(NSString *)persistentId {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](groups);
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](memberFolderId);
+  [DBStoneValidators nonnullValidator:nil](teamMemberId);
+  [DBStoneValidators nonnullValidator:nil](email);
+  [DBStoneValidators nonnullValidator:nil](emailVerified);
+  [DBStoneValidators nonnullValidator:nil](status);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](membershipType);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](groups);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](memberFolderId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
@@ -26155,7 +26416,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -26258,6 +26519,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super init];
   if (self) {
@@ -26511,7 +26773,12 @@
 - (instancetype)initWithNamespaces:(NSArray<DBTEAMNamespaceMetadata *> *)namespaces
                             cursor:(NSString *)cursor
                            hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](namespaces);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](namespaces);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -26806,6 +27073,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAdminProfile:(DBTEAMTeamMemberProfile *)adminProfile {
+  [DBStoneValidators nonnullValidator:nil](adminProfile);
 
   self = [super init];
   if (self) {
@@ -27092,7 +27360,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user quotaGb:(NSNumber *)quotaGb {
-  [DBStoneValidators numericValidator:@(25) maxValue:nil](quotaGb);
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(25) maxValue:nil]](quotaGb);
 
   self = [super init];
   if (self) {
@@ -27199,6 +27468,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user quotaGb:(NSNumber *)quotaGb {
+  [DBStoneValidators nonnullValidator:nil](user);
   [DBStoneValidators nullableValidator:[DBStoneValidators numericValidator:@(25) maxValue:nil]](quotaGb);
 
   self = [super init];

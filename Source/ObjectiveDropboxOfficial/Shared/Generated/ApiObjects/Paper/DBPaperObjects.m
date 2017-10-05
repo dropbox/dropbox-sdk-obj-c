@@ -20,6 +20,8 @@
 
 - (instancetype)initWithMember:(DBSHARINGMemberSelector *)member
                permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel {
+  [DBStoneValidators nonnullValidator:nil](member);
+  [DBStoneValidators nonnullValidator:nil](permissionLevel ?: [[DBPAPERPaperDocPermissionLevel alloc] initWithEdit]);
 
   self = [super init];
   if (self) {
@@ -132,6 +134,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId {
+  [DBStoneValidators nonnullValidator:nil](docId);
 
   self = [super init];
   if (self) {
@@ -235,7 +238,12 @@
                       members:(NSArray<DBPAPERAddMember *> *)members
                 customMessage:(NSString *)customMessage
                         quiet:(NSNumber *)quiet {
-  [DBStoneValidators arrayValidator:nil maxItems:@(20) itemValidator:nil](members);
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:@(20)
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
+  [DBStoneValidators nonnullValidator:nil](quiet ?: @NO);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -372,6 +380,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithMember:(DBSHARINGMemberSelector *)member result:(DBPAPERAddPaperDocUserResult *)result {
+  [DBStoneValidators nonnullValidator:nil](member);
+  [DBStoneValidators nonnullValidator:nil](result);
 
   self = [super init];
   if (self) {
@@ -760,6 +770,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithValue:(NSString *)value expiration:(NSDate *)expiration {
+  [DBStoneValidators nonnullValidator:nil](value);
 
   self = [super init];
   if (self) {
@@ -1575,6 +1586,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](id_);
+  [DBStoneValidators nonnullValidator:nil](name);
 
   self = [super init];
   if (self) {
@@ -2039,7 +2052,10 @@
 
 - (instancetype)initWithFolderSharingPolicyType:(DBPAPERFolderSharingPolicyType *)folderSharingPolicyType
                                         folders:(NSArray<DBPAPERFolder *> *)folders {
-  [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](folders);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](folders);
 
   self = [super init];
   if (self) {
@@ -2372,6 +2388,8 @@
 
 - (instancetype)initWithInvitee:(DBSHARINGInviteeInfo *)invitee
                 permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel {
+  [DBStoneValidators nonnullValidator:nil](invitee);
+  [DBStoneValidators nonnullValidator:nil](permissionLevel);
 
   self = [super init];
   if (self) {
@@ -2651,7 +2669,10 @@
                           sortBy:(DBPAPERListPaperDocsSortBy *)sortBy
                        sortOrder:(DBPAPERListPaperDocsSortOrder *)sortOrder
                            limit:(NSNumber *)limit {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:nil](filterBy ?: [[DBPAPERListPaperDocsFilterBy alloc] initWithDocsAccessed]);
+  [DBStoneValidators nonnullValidator:nil](sortBy ?: [[DBPAPERListPaperDocsSortBy alloc] initWithAccessed]);
+  [DBStoneValidators nonnullValidator:nil](sortOrder ?: [[DBPAPERListPaperDocsSortOrder alloc] initWithAscending]);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -2781,6 +2802,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super init];
   if (self) {
@@ -3055,7 +3077,12 @@
 - (instancetype)initWithDocIds:(NSArray<NSString *> *)docIds
                         cursor:(DBPAPERCursor *)cursor
                        hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](docIds);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](docIds);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -3754,7 +3781,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId limit:(NSNumber *)limit {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -3864,6 +3892,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId cursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -3974,8 +4004,16 @@
                            users:(NSArray<DBSHARINGUserInfo *> *)users
                           cursor:(DBPAPERCursor *)cursor
                          hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](invitees);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](users);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](invitees);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](users);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -4112,7 +4150,9 @@
 - (instancetype)initWithDocId:(NSString *)docId
                         limit:(NSNumber *)limit
                      filterBy:(DBPAPERUserOnPaperDocFilter *)filterBy {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:nil](filterBy ?: [[DBPAPERUserOnPaperDocFilter alloc] initWithShared]);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -4231,6 +4271,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId cursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -4344,8 +4386,17 @@
                         docOwner:(DBSHARINGUserInfo *)docOwner
                           cursor:(DBPAPERCursor *)cursor
                          hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](invitees);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](users);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](invitees);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](users);
+  [DBStoneValidators nonnullValidator:nil](docOwner);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -4708,6 +4759,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithImportFormat:(DBPAPERImportFormat *)importFormat parentFolderId:(NSString *)parentFolderId {
+  [DBStoneValidators nonnullValidator:nil](importFormat);
 
   self = [super init];
   if (self) {
@@ -5063,6 +5115,9 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId revision:(NSNumber *)revision title:(NSString *)title {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](revision);
+  [DBStoneValidators nonnullValidator:nil](title);
 
   self = [super init];
   if (self) {
@@ -5177,6 +5232,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId exportFormat:(DBPAPERExportFormat *)exportFormat {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](exportFormat);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -5284,6 +5341,10 @@
                         title:(NSString *)title
                      revision:(NSNumber *)revision
                      mimeType:(NSString *)mimeType {
+  [DBStoneValidators nonnullValidator:nil](owner);
+  [DBStoneValidators nonnullValidator:nil](title);
+  [DBStoneValidators nonnullValidator:nil](revision);
+  [DBStoneValidators nonnullValidator:nil](mimeType);
 
   self = [super init];
   if (self) {
@@ -5578,6 +5639,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId sharingPolicy:(DBPAPERSharingPolicy *)sharingPolicy {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](sharingPolicy);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -5688,6 +5751,10 @@
               docUpdatePolicy:(DBPAPERPaperDocUpdatePolicy *)docUpdatePolicy
                      revision:(NSNumber *)revision
                  importFormat:(DBPAPERImportFormat *)importFormat {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](docUpdatePolicy);
+  [DBStoneValidators nonnullValidator:nil](revision);
+  [DBStoneValidators nonnullValidator:nil](importFormat);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -6313,6 +6380,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId member:(DBSHARINGMemberSelector *)member {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](member);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -6931,6 +7000,8 @@
 
 - (instancetype)initWithUser:(DBSHARINGUserInfo *)user
              permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel {
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:nil](permissionLevel);
 
   self = [super init];
   if (self) {

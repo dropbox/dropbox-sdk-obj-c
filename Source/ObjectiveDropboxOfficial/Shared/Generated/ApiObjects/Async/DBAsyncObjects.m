@@ -334,7 +334,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](asyncJobId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](asyncJobId);
 
   self = [super init];
   if (self) {

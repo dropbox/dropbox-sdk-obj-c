@@ -23,7 +23,11 @@
                     emailVerified:(NSNumber *)emailVerified
                          disabled:(NSNumber *)disabled
                   profilePhotoUrl:(NSString *)profilePhotoUrl {
-  [DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](email);
+  [DBStoneValidators nonnullValidator:nil](emailVerified);
+  [DBStoneValidators nonnullValidator:nil](disabled);
 
   self = [super init];
   if (self) {
@@ -190,7 +194,12 @@
                        isTeammate:(NSNumber *)isTeammate
                   profilePhotoUrl:(NSString *)profilePhotoUrl
                      teamMemberId:(NSString *)teamMemberId {
-  [DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](email);
+  [DBStoneValidators nonnullValidator:nil](emailVerified);
+  [DBStoneValidators nonnullValidator:nil](disabled);
+  [DBStoneValidators nonnullValidator:nil](isTeammate);
 
   self = [super initWithAccountId:accountId
                              name:name
@@ -388,8 +397,15 @@
                           country:(NSString *)country
                              team:(DBUSERSFullTeam *)team
                      teamMemberId:(NSString *)teamMemberId {
-  [DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
-  [DBStoneValidators stringValidator:@(2) maxLength:nil pattern:nil](locale);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](email);
+  [DBStoneValidators nonnullValidator:nil](emailVerified);
+  [DBStoneValidators nonnullValidator:nil](disabled);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(2) maxLength:nil pattern:nil]](locale);
+  [DBStoneValidators nonnullValidator:nil](referralLink);
+  [DBStoneValidators nonnullValidator:nil](isPaired);
+  [DBStoneValidators nonnullValidator:nil](accountType);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(2) maxLength:@(2) pattern:nil]](country);
 
   self = [super initWithAccountId:accountId
@@ -632,6 +648,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](id_);
+  [DBStoneValidators nonnullValidator:nil](name);
 
   self = [super init];
   if (self) {
@@ -743,6 +761,10 @@
                        name:(NSString *)name
             sharingPolicies:(DBTEAMPOLICIESTeamSharingPolicies *)sharingPolicies
           officeAddinPolicy:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddinPolicy {
+  [DBStoneValidators nonnullValidator:nil](id_);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](sharingPolicies);
+  [DBStoneValidators nonnullValidator:nil](officeAddinPolicy);
 
   self = [super initWithId_:id_ name:name];
   if (self) {
@@ -865,7 +887,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAccountId:(NSString *)accountId {
-  [DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
   self = [super init];
   if (self) {
@@ -964,8 +986,14 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAccountIds:(NSArray<NSString *> *)accountIds {
-  [DBStoneValidators arrayValidator:@(1) maxItems:nil
-                      itemValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountIds);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        arrayValidator:@(1)
+                              maxItems:nil
+                         itemValidator:[DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40)
+                                                                                                    maxLength:@(40)
+                                                                                                      pattern:nil]]]](
+      accountIds);
 
   self = [super init];
   if (self) {
@@ -1385,6 +1413,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAllocated:(NSNumber *)allocated {
+  [DBStoneValidators nonnullValidator:nil](allocated);
 
   self = [super init];
   if (self) {
@@ -1487,6 +1516,11 @@
                      familiarName:(NSString *)familiarName
                       displayName:(NSString *)displayName
                   abbreviatedName:(NSString *)abbreviatedName {
+  [DBStoneValidators nonnullValidator:nil](givenName);
+  [DBStoneValidators nonnullValidator:nil](surname);
+  [DBStoneValidators nonnullValidator:nil](familiarName);
+  [DBStoneValidators nonnullValidator:nil](displayName);
+  [DBStoneValidators nonnullValidator:nil](abbreviatedName);
 
   self = [super init];
   if (self) {
@@ -1818,6 +1852,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUsed:(NSNumber *)used allocation:(DBUSERSSpaceAllocation *)allocation {
+  [DBStoneValidators nonnullValidator:nil](used);
+  [DBStoneValidators nonnullValidator:nil](allocation);
 
   self = [super init];
   if (self) {
@@ -1923,6 +1959,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUsed:(NSNumber *)used allocated:(NSNumber *)allocated {
+  [DBStoneValidators nonnullValidator:nil](used);
+  [DBStoneValidators nonnullValidator:nil](allocated);
 
   self = [super init];
   if (self) {

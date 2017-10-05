@@ -497,6 +497,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGAccountCaptureAvailability *)dNewValue
                     previousValue:(DBTEAMLOGAccountCaptureAvailability *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -620,6 +621,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGAccountCapturePolicy *)dNewValue
                     previousValue:(DBTEAMLOGAccountCapturePolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -739,6 +741,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDomainName:(NSString *)domainName {
+  [DBStoneValidators nonnullValidator:nil](domainName);
 
   self = [super init];
   if (self) {
@@ -1033,6 +1036,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDomainName:(NSString *)domainName {
+  [DBStoneValidators nonnullValidator:nil](domainName);
 
   self = [super init];
   if (self) {
@@ -1844,6 +1848,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRequestId:(NSString *)requestId {
+  [DBStoneValidators nonnullValidator:nil](requestId);
 
   self = [super init];
   if (self) {
@@ -1943,6 +1948,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAppInfo:(DBTEAMLOGAppLogInfo *)appInfo {
+  [DBStoneValidators nonnullValidator:nil](appInfo);
 
   self = [super init];
   if (self) {
@@ -2042,6 +2048,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAppInfo:(DBTEAMLOGAppLogInfo *)appInfo {
+  [DBStoneValidators nonnullValidator:nil](appInfo);
 
   self = [super init];
   if (self) {
@@ -2298,6 +2305,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAppInfo:(DBTEAMLOGAppLogInfo *)appInfo {
+  [DBStoneValidators nonnullValidator:nil](appInfo);
 
   self = [super init];
   if (self) {
@@ -2397,6 +2405,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAppInfo:(DBTEAMLOGAppLogInfo *)appInfo {
+  [DBStoneValidators nonnullValidator:nil](appInfo);
 
   self = [super init];
   if (self) {
@@ -2772,6 +2781,13 @@
                    serialNumber:(NSString *)serialNumber
                 sha1Fingerprint:(NSString *)sha1Fingerprint
                      commonName:(NSString *)commonName {
+  [DBStoneValidators nonnullValidator:nil](subject);
+  [DBStoneValidators nonnullValidator:nil](issuer);
+  [DBStoneValidators nonnullValidator:nil](issueDate);
+  [DBStoneValidators nonnullValidator:nil](expirationDate);
+  [DBStoneValidators nonnullValidator:nil](serialNumber);
+  [DBStoneValidators nonnullValidator:nil](sha1Fingerprint);
+  [DBStoneValidators nonnullValidator:nil](commonName);
 
   self = [super init];
   if (self) {
@@ -2918,6 +2934,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAlbumName:(NSString *)albumName {
+  [DBStoneValidators nonnullValidator:nil](albumName);
 
   self = [super init];
   if (self) {
@@ -3678,6 +3695,8 @@
 
 - (instancetype)initWithPreviousValue:(DBTEAMLOGPlacementRestriction *)previousValue
                             dNewValue:(DBTEAMLOGPlacementRestriction *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -3788,6 +3807,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPlacementRestriction:(DBTEAMLOGPlacementRestriction *)placementRestriction {
+  [DBStoneValidators nonnullValidator:nil](placementRestriction);
 
   self = [super init];
   if (self) {
@@ -4829,6 +4849,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo {
+  [DBStoneValidators nonnullValidator:nil](deviceInfo);
 
   self = [super init];
   if (self) {
@@ -4928,6 +4949,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo {
+  [DBStoneValidators nonnullValidator:nil](deviceInfo);
 
   self = [super init];
   if (self) {
@@ -5027,6 +5049,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUserAgent:(NSString *)userAgent deviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo {
+  [DBStoneValidators nonnullValidator:nil](userAgent);
 
   self = [super init];
   if (self) {
@@ -5144,6 +5167,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo numFailures:(NSNumber *)numFailures {
+  [DBStoneValidators nonnullValidator:nil](deviceInfo);
+  [DBStoneValidators nonnullValidator:nil](numFailures);
 
   self = [super init];
   if (self) {
@@ -5251,6 +5276,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo {
+  [DBStoneValidators nonnullValidator:nil](deviceInfo);
 
   self = [super init];
   if (self) {
@@ -5352,6 +5378,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceType:(DBTEAMLOGDeviceType *)deviceType deviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo {
+  [DBStoneValidators nonnullValidator:nil](deviceType);
 
   self = [super init];
   if (self) {
@@ -5469,6 +5496,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo {
+  [DBStoneValidators nonnullValidator:nil](deviceInfo);
 
   self = [super init];
   if (self) {
@@ -6177,6 +6205,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceInfo:(DBTEAMLOGDeviceLogInfo *)deviceInfo deleteData:(NSNumber *)deleteData {
+  [DBStoneValidators nonnullValidator:nil](deviceInfo);
+  [DBStoneValidators nonnullValidator:nil](deleteData);
 
   self = [super init];
   if (self) {
@@ -6730,7 +6760,11 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDomainName:(NSArray<NSString *> *)domainName numRecipients:(NSNumber *)numRecipients {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](domainName);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](domainName);
+  [DBStoneValidators nonnullValidator:nil](numRecipients);
 
   self = [super init];
   if (self) {
@@ -7120,6 +7154,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDomainName:(NSString *)domainName verificationMethod:(NSString *)verificationMethod {
+  [DBStoneValidators nonnullValidator:nil](domainName);
 
   self = [super init];
   if (self) {
@@ -7238,7 +7273,10 @@
 
 - (instancetype)initWithDomainNames:(NSArray<NSString *> *)domainNames
                  verificationMethod:(NSString *)verificationMethod {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](domainNames);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](domainNames);
 
   self = [super init];
   if (self) {
@@ -7363,7 +7401,10 @@
 
 - (instancetype)initWithDomainNames:(NSArray<NSString *> *)domainNames
                  verificationMethod:(NSString *)verificationMethod {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](domainNames);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](domainNames);
 
   self = [super init];
   if (self) {
@@ -7488,6 +7529,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithUnit:(DBTEAMLOGTimeUnit *)unit amount:(NSNumber *)amount {
+  [DBStoneValidators nonnullValidator:nil](unit);
+  [DBStoneValidators nonnullValidator:nil](amount);
 
   self = [super init];
   if (self) {
@@ -7686,6 +7729,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMPOLICIESEmmState *)dNewValue
                     previousValue:(DBTEAMPOLICIESEmmState *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -25643,6 +25687,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGExtendedVersionHistoryPolicy *)dNewValue
                     previousValue:(DBTEAMLOGExtendedVersionHistoryPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -26082,6 +26127,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -26291,6 +26337,8 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                                dNewValue:(DBTEAMLOGFileCommentNotificationPolicy *)dNewValue
                            previousValue:(DBTEAMLOGFileCommentNotificationPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -26597,6 +26645,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGFileCommentsPolicy *)dNewValue
                     previousValue:(DBTEAMLOGFileCommentsPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -26890,7 +26939,10 @@
 
 - (instancetype)initWithRelocateActionDetails:
     (NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](relocateActionDetails);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](relocateActionDetails);
 
   self = [super init];
   if (self) {
@@ -26997,6 +27049,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -27476,6 +27529,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -27594,6 +27648,7 @@
 - (instancetype)initWithPath:(DBTEAMLOGPathLogInfo *)path
                  displayName:(NSString *)displayName
                       fileId:(NSString *)fileId {
+  [DBStoneValidators nonnullValidator:nil](path);
 
   self = [super init];
   if (self) {
@@ -27726,6 +27781,7 @@
 - (instancetype)initWithPath:(DBTEAMLOGPathLogInfo *)path
                  displayName:(NSString *)displayName
                       fileId:(NSString *)fileId {
+  [DBStoneValidators nonnullValidator:nil](path);
 
   self = [super initWithPath:path displayName:displayName fileId:fileId];
   if (self) {
@@ -27853,7 +27909,10 @@
 
 - (instancetype)initWithRelocateActionDetails:
     (NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](relocateActionDetails);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](relocateActionDetails);
 
   self = [super init];
   if (self) {
@@ -28144,7 +28203,10 @@
 
 - (instancetype)initWithRelocateActionDetails:
     (NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](relocateActionDetails);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](relocateActionDetails);
 
   self = [super init];
   if (self) {
@@ -28795,7 +28857,10 @@
 
 - (instancetype)initWithSubmittedFileNames:(NSArray<NSString *> *)submittedFileNames
                               requestTitle:(NSString *)requestTitle {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](submittedFileNames);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](submittedFileNames);
 
   self = [super init];
   if (self) {
@@ -29138,6 +29203,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGFileRequestsPolicy *)dNewValue
                     previousValue:(DBTEAMLOGFileRequestsPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -29613,6 +29679,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -30003,7 +30070,10 @@
 
 - (instancetype)initWithRelocateActionDetails:
     (NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](relocateActionDetails);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](relocateActionDetails);
 
   self = [super init];
   if (self) {
@@ -30110,6 +30180,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -30225,6 +30296,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -30345,6 +30417,7 @@
 - (instancetype)initWithPath:(DBTEAMLOGPathLogInfo *)path
                  displayName:(NSString *)displayName
                       fileId:(NSString *)fileId {
+  [DBStoneValidators nonnullValidator:nil](path);
 
   self = [super initWithPath:path displayName:displayName fileId:fileId];
   if (self) {
@@ -30473,6 +30546,7 @@
                              city:(NSString *)city
                            region:(NSString *)region
                           country:(NSString *)country {
+  [DBStoneValidators nonnullValidator:nil](ipAddress);
 
   self = [super init];
   if (self) {
@@ -30619,7 +30693,7 @@
                     accountId:(NSString *)accountId
                          time:(DBTEAMCOMMONTimeRange *)time
                      category:(DBTEAMLOGEventCategory *)category {
-  [DBStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
+  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
@@ -30765,6 +30839,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
 
   self = [super init];
   if (self) {
@@ -31190,7 +31265,12 @@
 - (instancetype)initWithEvents:(NSArray<DBTEAMLOGTeamEvent *> *)events
                         cursor:(NSString *)cursor
                        hasMore:(NSNumber *)hasMore {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](events);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](events);
+  [DBStoneValidators nonnullValidator:nil](cursor);
+  [DBStoneValidators nonnullValidator:nil](hasMore);
 
   self = [super init];
   if (self) {
@@ -31312,6 +31392,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGGoogleSsoPolicy *)dNewValue
                     previousValue:(DBTEAMLOGGoogleSsoPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -31602,6 +31683,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -31700,6 +31782,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithIsGroupOwner:(NSNumber *)isGroupOwner {
+  [DBStoneValidators nonnullValidator:nil](isGroupOwner);
 
   self = [super init];
   if (self) {
@@ -31798,6 +31881,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue previousValue:(NSString *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
 
   self = [super init];
   if (self) {
@@ -31905,6 +31990,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMCOMMONGroupManagementType *)dNewValue
                     previousValue:(DBTEAMCOMMONGroupManagementType *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -32025,6 +32111,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithIsGroupOwner:(NSNumber *)isGroupOwner {
+  [DBStoneValidators nonnullValidator:nil](isGroupOwner);
 
   self = [super init];
   if (self) {
@@ -32124,6 +32211,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithJoinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy isAdminManaged:(NSNumber *)isAdminManaged {
+  [DBStoneValidators nonnullValidator:nil](joinPolicy);
 
   self = [super init];
   if (self) {
@@ -32522,6 +32610,7 @@
 - (instancetype)initWithDisplayName:(NSString *)displayName
                             groupId:(NSString *)groupId
                          externalId:(NSString *)externalId {
+  [DBStoneValidators nonnullValidator:nil](displayName);
 
   self = [super init];
   if (self) {
@@ -32741,6 +32830,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPreviousValue:(NSString *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
 
   self = [super init];
   if (self) {
@@ -32930,6 +33020,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPreviousValue:(NSString *)previousValue dNewValue:(NSString *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -33037,6 +33129,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGGroupUserManagementPolicy *)dNewValue
                     previousValue:(DBTEAMLOGGroupUserManagementPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -33457,9 +33550,18 @@
 - (instancetype)initWithLinkedApps:(NSArray<DBTEAMLOGAppLogInfo *> *)linkedApps
                      linkedDevices:(NSArray<DBTEAMLOGDeviceLogInfo *> *)linkedDevices
                linkedSharedFolders:(NSArray<DBTEAMLOGFolderLogInfo *> *)linkedSharedFolders {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](linkedApps);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](linkedDevices);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](linkedSharedFolders);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](linkedApps);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](linkedDevices);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](linkedSharedFolders);
 
   self = [super init];
   if (self) {
@@ -33882,6 +33984,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithValue:(DBTEAMLOGUserNameLogInfo *)value {
+  [DBStoneValidators nonnullValidator:nil](value);
 
   self = [super init];
   if (self) {
@@ -34104,8 +34207,11 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue previousValue:(NSString *)previousValue {
-  [DBStoneValidators stringValidator:nil maxLength:@(255)
-                             pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$"](dNewValue);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        stringValidator:nil
+                              maxLength:@(255)
+                                pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$"]](dNewValue);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
                                                                 maxLength:@(255)
                                                                   pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
@@ -34227,6 +34333,8 @@
 
 - (instancetype)initWithPrevValue:(DBTEAMLOGTeamMembershipType *)prevValue
                         dNewValue:(DBTEAMLOGTeamMembershipType *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](prevValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -34335,6 +34443,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGUserNameLogInfo *)dNewValue
                     previousValue:(DBTEAMLOGUserNameLogInfo *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -34456,6 +34565,7 @@
 - (instancetype)initWithDNewValue:(DBTEAMLOGMemberStatus *)dNewValue
                     previousValue:(DBTEAMLOGMemberStatus *)previousValue
                   teamJoinDetails:(DBTEAMLOGJoinTeamDetails *)teamJoinDetails {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -34683,6 +34793,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGMemberRequestsPolicy *)dNewValue
                     previousValue:(DBTEAMLOGMemberRequestsPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -35091,6 +35202,8 @@
 
 - (instancetype)initWithPreviousValue:(DBTEAMLOGSpaceLimitsLevel *)previousValue
                             dNewValue:(DBTEAMLOGSpaceLimitsLevel *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -35201,6 +35314,8 @@
 
 - (instancetype)initWithPreviousValue:(DBTEAMLOGSpaceLimitsStatus *)previousValue
                             dNewValue:(DBTEAMLOGSpaceLimitsStatus *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -35733,6 +35848,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGMemberSuggestionsPolicy *)dNewValue
                     previousValue:(DBTEAMLOGMemberSuggestionsPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -36028,6 +36144,8 @@
 
 - (instancetype)initWithSrcParticipantIndex:(NSNumber *)srcParticipantIndex
                        destParticipantIndex:(NSNumber *)destParticipantIndex {
+  [DBStoneValidators nonnullValidator:nil](srcParticipantIndex);
+  [DBStoneValidators nonnullValidator:nil](destParticipantIndex);
 
   self = [super init];
   if (self) {
@@ -36137,6 +36255,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGMicrosoftOfficeAddinPolicy *)dNewValue
                     previousValue:(DBTEAMLOGMicrosoftOfficeAddinPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -36757,6 +36876,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGNetworkControlPolicy *)dNewValue
                     previousValue:(DBTEAMLOGNetworkControlPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -37906,6 +38026,7 @@
 - (instancetype)initWithAccessMethod:(DBTEAMLOGAccessMethodLogInfo *)accessMethod
                          geoLocation:(DBTEAMLOGGeoLocationLogInfo *)geoLocation
                                 host:(DBTEAMLOGHostLogInfo *)host {
+  [DBStoneValidators nonnullValidator:nil](accessMethod);
 
   self = [super init];
   if (self) {
@@ -38325,6 +38446,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMPOLICIESPaperDeploymentPolicy *)dNewValue
                     previousValue:(DBTEAMPOLICIESPaperDeploymentPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -38447,6 +38569,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGPaperMemberPolicy *)dNewValue
                     previousValue:(DBTEAMLOGPaperMemberPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -38567,6 +38690,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMPOLICIESPaperEnabledPolicy *)dNewValue
                     previousValue:(DBTEAMPOLICIESPaperEnabledPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -38686,6 +38810,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -38786,6 +38911,9 @@
 - (instancetype)initWithEventUuid:(NSString *)eventUuid
                  targetAssetIndex:(NSNumber *)targetAssetIndex
                  parentAssetIndex:(NSNumber *)parentAssetIndex {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](parentAssetIndex);
 
   self = [super init];
   if (self) {
@@ -38901,6 +39029,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -38999,6 +39128,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39097,6 +39227,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39196,6 +39327,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39295,6 +39427,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39394,6 +39527,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39492,6 +39626,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39590,6 +39725,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39706,6 +39842,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid accessType:(DBTEAMLOGPaperAccessType *)accessType {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators nonnullValidator:nil](accessType);
 
   self = [super init];
   if (self) {
@@ -39814,6 +39952,7 @@
 - (instancetype)initWithEventUuid:(NSString *)eventUuid
               publicSharingPolicy:(NSString *)publicSharingPolicy
                 teamSharingPolicy:(NSString *)teamSharingPolicy {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -39947,6 +40086,8 @@
 - (instancetype)initWithEventUuid:(NSString *)eventUuid
             dNewSubscriptionLevel:(NSString *)dNewSubscriptionLevel
         previousSubscriptionLevel:(NSString *)previousSubscriptionLevel {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators nonnullValidator:nil](dNewSubscriptionLevel);
 
   self = [super init];
   if (self) {
@@ -40072,6 +40213,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -40187,6 +40329,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -40287,6 +40430,8 @@
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid
                  exportFileFormat:(DBTEAMLOGPaperDownloadFormat *)exportFileFormat {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators nonnullValidator:nil](exportFileFormat);
 
   self = [super init];
   if (self) {
@@ -40393,6 +40538,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -40508,6 +40654,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -40606,6 +40753,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -40704,6 +40852,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -40802,6 +40951,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -40900,6 +41050,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41016,6 +41167,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41114,6 +41266,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41212,6 +41365,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41310,6 +41464,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41408,6 +41563,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41524,6 +41680,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41622,6 +41779,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -41720,6 +41878,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDocId:(NSString *)docId docTitle:(NSString *)docTitle {
+  [DBStoneValidators nonnullValidator:nil](docId);
+  [DBStoneValidators nonnullValidator:nil](docTitle);
 
   self = [super init];
   if (self) {
@@ -42482,6 +42642,8 @@
 - (instancetype)initWithEventUuid:(NSString *)eventUuid
             dNewSubscriptionLevel:(NSString *)dNewSubscriptionLevel
         previousSubscriptionLevel:(NSString *)previousSubscriptionLevel {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators nonnullValidator:nil](dNewSubscriptionLevel);
 
   self = [super init];
   if (self) {
@@ -42607,6 +42769,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -42705,6 +42868,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -42803,6 +42967,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithFolderId:(NSString *)folderId folderName:(NSString *)folderName {
+  [DBStoneValidators nonnullValidator:nil](folderId);
+  [DBStoneValidators nonnullValidator:nil](folderName);
 
   self = [super init];
   if (self) {
@@ -42908,6 +43074,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
 
   self = [super init];
   if (self) {
@@ -43493,6 +43660,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithErrorDetails:(DBTEAMLOGFailureDetailsLogInfo *)errorDetails {
+  [DBStoneValidators nonnullValidator:nil](errorDetails);
 
   self = [super init];
   if (self) {
@@ -43867,6 +44035,7 @@
 
 - (instancetype)initWithNamespaceRelative:(DBTEAMLOGNamespaceRelativePathLogInfo *)namespaceRelative
                                contextual:(NSString *)contextual {
+  [DBStoneValidators nonnullValidator:nil](namespaceRelative);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](contextual);
 
@@ -43988,6 +44157,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGContentPermanentDeletePolicy *)dNewValue
                     previousValue:(DBTEAMLOGContentPermanentDeletePolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -44281,6 +44451,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithSrcAssetIndex:(NSNumber *)srcAssetIndex destAssetIndex:(NSNumber *)destAssetIndex {
+  [DBStoneValidators nonnullValidator:nil](srcAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](destAssetIndex);
 
   self = [super init];
   if (self) {
@@ -44388,6 +44560,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithResellerName:(NSString *)resellerName resellerId:(NSString *)resellerId {
+  [DBStoneValidators nonnullValidator:nil](resellerName);
+  [DBStoneValidators nonnullValidator:nil](resellerId);
 
   self = [super init];
   if (self) {
@@ -44680,6 +44854,9 @@
                       originalFolderName:(NSString *)originalFolderName
                                 teamName:(NSString *)teamName
                        sharingPermission:(NSString *)sharingPermission {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
+  [DBStoneValidators nonnullValidator:nil](teamName);
 
   self = [super init];
   if (self) {
@@ -44819,6 +44996,8 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -45036,6 +45215,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -45137,6 +45317,8 @@
                       originalFolderName:(NSString *)originalFolderName
                           prevParentNsId:(NSString *)prevParentNsId
                           dNewParentNsId:(NSString *)dNewParentNsId {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](prevParentNsId);
   [DBStoneValidators
@@ -45284,6 +45466,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -45391,6 +45575,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -45500,6 +45686,8 @@
                       originalFolderName:(NSString *)originalFolderName
                    dNewSharingPermission:(NSString *)dNewSharingPermission
                previousSharingPermission:(NSString *)previousSharingPermission {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -45645,6 +45833,8 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                        sharingPermission:(NSString *)sharingPermission {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -45771,6 +45961,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -45880,6 +46072,8 @@
                       originalFolderName:(NSString *)originalFolderName
                                 tokenKey:(NSString *)tokenKey
                        sharingPermission:(NSString *)sharingPermission {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -46023,6 +46217,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -46131,6 +46327,7 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                        sharingPermission:(NSString *)sharingPermission {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -46266,6 +46463,9 @@
                           expirationDays:(NSNumber *)expirationDays
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](expirationStartDate);
+  [DBStoneValidators nonnullValidator:nil](expirationDays);
 
   self = [super init];
   if (self) {
@@ -46421,6 +46621,7 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -46555,6 +46756,7 @@
                       originalFolderName:(NSString *)originalFolderName
                        sharingPermission:(NSString *)sharingPermission
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -46708,6 +46910,8 @@
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType
                            previousValue:(DBTEAMLOGSharedContentDownloadsPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -46873,6 +47077,8 @@
                       originalFolderName:(NSString *)originalFolderName
                    dNewSharingPermission:(NSString *)dNewSharingPermission
                previousSharingPermission:(NSString *)previousSharingPermission {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -47021,6 +47227,8 @@
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType
                            previousValue:(DBTEAMLOGLinkAudience *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -47183,6 +47391,9 @@
                           expirationDays:(NSNumber *)expirationDays
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](expirationStartDate);
+  [DBStoneValidators nonnullValidator:nil](expirationDays);
 
   self = [super init];
   if (self) {
@@ -47338,6 +47549,7 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -47473,6 +47685,7 @@
                    dNewSharingPermission:(NSString *)dNewSharingPermission
                previousSharingPermission:(NSString *)previousSharingPermission
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -47641,6 +47854,8 @@
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType
                            previousValue:(DBTEAMLOGSharedContentViewerInfoPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -47805,6 +48020,7 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                        sharedContentLink:(NSString *)sharedContentLink {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -47940,6 +48156,9 @@
                          targetAssetIndex:(NSNumber *)targetAssetIndex
                     relocateActionDetails:(DBTEAMLOGRelocateAssetReferencesLogInfo *)relocateActionDetails
                         sharingPermission:(NSString *)sharingPermission {
+  [DBStoneValidators nonnullValidator:nil](sharedContentLink);
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](relocateActionDetails);
 
   self = [super init];
   if (self) {
@@ -48081,6 +48300,8 @@
 - (instancetype)initWithSharedContentLink:(NSString *)sharedContentLink
                          targetAssetIndex:(NSNumber *)targetAssetIndex
                         sharingPermission:(NSString *)sharingPermission {
+  [DBStoneValidators nonnullValidator:nil](sharedContentLink);
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -48379,6 +48600,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -48487,6 +48710,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -48596,6 +48821,7 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -48729,6 +48955,7 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -48863,6 +49090,7 @@
                       originalFolderName:(NSString *)originalFolderName
                        sharingPermission:(NSString *)sharingPermission
                         sharedFolderType:(NSString *)sharedFolderType {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -49013,6 +49241,7 @@
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName
                        sharedContentLink:(NSString *)sharedContentLink {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -49145,6 +49374,7 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -49263,6 +49493,8 @@
 - (instancetype)initWithSharedContentLink:(NSString *)sharedContentLink
                          targetAssetIndex:(NSNumber *)targetAssetIndex
                         sharingPermission:(NSString *)sharingPermission {
+  [DBStoneValidators nonnullValidator:nil](sharedContentLink);
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -49565,6 +49797,9 @@
                       originalFolderName:(NSString *)originalFolderName
                                dNewValue:(DBTEAMLOGConfidentiality *)dNewValue
                            previousValue:(DBTEAMLOGConfidentiality *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -49710,6 +49945,9 @@
                                dNewValue:(DBTEAMLOGSharedFolderLinkPolicy *)dNewValue
                         sharedFolderType:(NSString *)sharedFolderType
                            previousValue:(DBTEAMLOGSharedFolderLinkPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -49872,6 +50110,9 @@
                                dNewValue:(DBTEAMLOGSharedFolderMembershipManagementPolicy *)dNewValue
                         sharedFolderType:(NSString *)sharedFolderType
                            previousValue:(DBTEAMLOGSharedFolderMembershipManagementPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -50035,6 +50276,9 @@
                                dNewValue:(DBTEAMLOGSharedFolderMemberPolicy *)dNewValue
                         sharedFolderType:(NSString *)sharedFolderType
                            previousValue:(DBTEAMLOGSharedFolderMemberPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -50192,6 +50436,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex parentNsId:(NSString *)parentNsId {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](parentNsId);
 
@@ -50852,6 +51097,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -50959,6 +51206,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -51067,6 +51316,8 @@
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
                       originalFolderName:(NSString *)originalFolderName {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](originalFolderName);
 
   self = [super init];
   if (self) {
@@ -51266,6 +51517,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGSharingFolderJoinPolicy *)dNewValue
                     previousValue:(DBTEAMLOGSharingFolderJoinPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -51389,6 +51641,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGSharingLinkPolicy *)dNewValue
                     previousValue:(DBTEAMLOGSharingLinkPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -51509,6 +51762,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGSharingMemberPolicy *)dNewValue
                     previousValue:(DBTEAMLOGSharingMemberPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -52534,7 +52788,10 @@
 
 - (instancetype)initWithSharingNonMemberRecipients:
     (NSArray<DBTEAMLOGNonTeamMemberLogInfo *> *)sharingNonMemberRecipients {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharingNonMemberRecipients);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                                               maxItems:nil
+                                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](
+      sharingNonMemberRecipients);
 
   self = [super init];
   if (self) {
@@ -52824,6 +53081,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithExpirationStartDate:(NSString *)expirationStartDate expirationDays:(NSNumber *)expirationDays {
+  [DBStoneValidators nonnullValidator:nil](expirationStartDate);
+  [DBStoneValidators nonnullValidator:nil](expirationDays);
 
   self = [super init];
   if (self) {
@@ -53754,6 +54013,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGSmartSyncPolicy *)dNewValue
                     previousValue:(DBTEAMLOGSmartSyncPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -53965,6 +54225,8 @@
 
 - (instancetype)initWithPreviousValue:(DBTEAMLOGSmartSyncOptOutPolicy *)previousValue
                             dNewValue:(DBTEAMLOGSmartSyncOptOutPolicy *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -54074,6 +54336,8 @@
 
 - (instancetype)initWithPreviousValue:(DBTEAMLOGSmartSyncOptOutPolicy *)previousValue
                             dNewValue:(DBTEAMLOGSmartSyncOptOutPolicy *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -54939,6 +55203,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -55146,6 +55411,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithCertificateDetails:(DBTEAMLOGCertificate *)certificateDetails {
+  [DBStoneValidators nonnullValidator:nil](certificateDetails);
 
   self = [super init];
   if (self) {
@@ -55245,6 +55511,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPreviousValue:(NSString *)previousValue dNewValue:(NSString *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -55473,6 +55741,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMPOLICIESSsoPolicy *)dNewValue
                     previousValue:(DBTEAMPOLICIESSsoPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -55589,6 +55858,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPreviousValue:(NSNumber *)previousValue dNewValue:(NSNumber *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -55696,6 +55967,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithErrorDetails:(DBTEAMLOGFailureDetailsLogInfo *)errorDetails {
+  [DBStoneValidators nonnullValidator:nil](errorDetails);
 
   self = [super init];
   if (self) {
@@ -55795,6 +56067,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPreviousValue:(NSString *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
 
   self = [super init];
   if (self) {
@@ -55893,6 +56166,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPreviousValue:(NSString *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
 
   self = [super init];
   if (self) {
@@ -55991,6 +56265,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate {
+  [DBStoneValidators nonnullValidator:nil](startDate);
+  [DBStoneValidators nonnullValidator:nil](endDate);
 
   self = [super init];
   if (self) {
@@ -56114,9 +56390,21 @@
                            origin:(DBTEAMLOGOriginLogInfo *)origin
                      participants:(NSArray<DBTEAMLOGParticipantLogInfo *> *)participants
                            assets:(NSArray<DBTEAMLOGAssetLogInfo *> *)assets {
+  [DBStoneValidators nonnullValidator:nil](timestamp);
+  [DBStoneValidators nonnullValidator:nil](eventCategory);
+  [DBStoneValidators nonnullValidator:nil](actor);
+  [DBStoneValidators nonnullValidator:nil](involveNonTeamMember);
+  [DBStoneValidators nonnullValidator:nil](context);
+  [DBStoneValidators nonnullValidator:nil](eventType);
+  [DBStoneValidators nonnullValidator:nil](details);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](participants);
-  [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](assets);
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](participants);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](assets);
 
   self = [super init];
   if (self) {
@@ -56344,6 +56632,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGTeamFolderStatus *)dNewValue
                     previousValue:(DBTEAMLOGTeamFolderStatus *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -56553,6 +56842,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
 
   self = [super init];
   if (self) {
@@ -56744,6 +57034,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRelocateActionDetails:(DBTEAMLOGRelocateAssetReferencesLogInfo *)relocateActionDetails {
+  [DBStoneValidators nonnullValidator:nil](relocateActionDetails);
 
   self = [super init];
   if (self) {
@@ -57486,6 +57777,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamName:(NSString *)teamName {
+  [DBStoneValidators nonnullValidator:nil](teamName);
 
   self = [super init];
   if (self) {
@@ -57584,6 +57876,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamName:(NSString *)teamName {
+  [DBStoneValidators nonnullValidator:nil](teamName);
 
   self = [super init];
   if (self) {
@@ -57682,6 +57975,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamDisplayName:(NSString *)teamDisplayName teamLegalName:(NSString *)teamLegalName {
+  [DBStoneValidators nonnullValidator:nil](teamDisplayName);
+  [DBStoneValidators nonnullValidator:nil](teamLegalName);
 
   self = [super init];
   if (self) {
@@ -57970,6 +58265,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGTeamName *)dNewValue previousValue:(DBTEAMLOGTeamName *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -58451,6 +58747,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGTfaPolicy *)dNewValue previousValue:(DBTEAMLOGTfaPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -58570,6 +58867,7 @@
 - (instancetype)initWithDNewValue:(DBTEAMLOGTfaConfiguration *)dNewValue
                     previousValue:(DBTEAMLOGTfaConfiguration *)previousValue
                    usedRescueCode:(NSNumber *)usedRescueCode {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -59672,6 +59970,7 @@
 
 - (instancetype)initWithDNewValue:(DBTEAMLOGTwoAccountPolicy *)dNewValue
                     previousValue:(DBTEAMLOGTwoAccountPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
@@ -60083,6 +60382,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithGivenName:(NSString *)givenName surname:(NSString *)surname locale:(NSString *)locale {
+  [DBStoneValidators nonnullValidator:nil](givenName);
+  [DBStoneValidators nonnullValidator:nil](surname);
 
   self = [super init];
   if (self) {

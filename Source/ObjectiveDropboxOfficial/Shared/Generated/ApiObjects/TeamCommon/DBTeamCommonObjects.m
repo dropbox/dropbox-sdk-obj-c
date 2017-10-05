@@ -217,6 +217,9 @@
               groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType
                   groupExternalId:(NSString *)groupExternalId
                       memberCount:(NSNumber *)memberCount {
+  [DBStoneValidators nonnullValidator:nil](groupName);
+  [DBStoneValidators nonnullValidator:nil](groupId);
+  [DBStoneValidators nonnullValidator:nil](groupManagementType);
 
   self = [super init];
   if (self) {

@@ -19,8 +19,14 @@
 
 - (instancetype)initWithPath:(NSString *)path
               propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](propertyGroups);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil
+                                             maxLength:nil
+                                               pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"]](path);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](propertyGroups);
 
   self = [super init];
   if (self) {
@@ -1169,7 +1175,12 @@
 - (instancetype)initWithName:(NSString *)name
                 description_:(NSString *)description_
                       fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](fields);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](description_);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](fields);
 
   self = [super init];
   if (self) {
@@ -1293,7 +1304,12 @@
 - (instancetype)initWithName:(NSString *)name
                 description_:(NSString *)description_
                       fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](fields);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](description_);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](fields);
 
   self = [super initWithName:name description_:description_ fields:fields];
   if (self) {
@@ -1410,7 +1426,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
 
   self = [super init];
   if (self) {
@@ -1509,7 +1526,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
 
   self = [super init];
   if (self) {
@@ -1612,7 +1630,12 @@
 - (instancetype)initWithName:(NSString *)name
                 description_:(NSString *)description_
                       fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](fields);
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](description_);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](fields);
 
   self = [super initWithName:name description_:description_ fields:fields];
   if (self) {
@@ -1729,8 +1752,14 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateIds:(NSArray<NSString *> *)templateIds {
-  [DBStoneValidators arrayValidator:nil maxItems:nil
-                      itemValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        arrayValidator:nil
+                              maxItems:nil
+                         itemValidator:[DBStoneValidators
+                                           nonnullValidator:[DBStoneValidators stringValidator:@(1)
+                                                                                     maxLength:nil
+                                                                                       pattern:@"(/|ptid:).*"]]]](
       templateIds);
 
   self = [super init];
@@ -2668,8 +2697,14 @@
 
 - (instancetype)initWithPath:(NSString *)path
               propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-  [DBStoneValidators arrayValidator:@(1) maxItems:nil itemValidator:nil](propertyGroups);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil
+                                             maxLength:nil
+                                               pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"]](path);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:@(1)
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](propertyGroups);
 
   self = [super init];
   if (self) {
@@ -2785,7 +2820,12 @@
 
 - (instancetype)initWithQueries:(NSArray<DBFILEPROPERTIESPropertiesSearchQuery *> *)queries
                  templateFilter:(DBFILEPROPERTIESTemplateFilter *)templateFilter {
-  [DBStoneValidators arrayValidator:@(1) maxItems:nil itemValidator:nil](queries);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:@(1)
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](queries);
+  [DBStoneValidators
+   nonnullValidator:nil](templateFilter ?: [[DBFILEPROPERTIESTemplateFilter alloc] initWithFilterNone]);
 
   self = [super init];
   if (self) {
@@ -3076,8 +3116,12 @@
 - (instancetype)initWithId_:(NSString *)id_
                        path:(NSString *)path
              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](id_);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](propertyGroups);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](id_);
+  [DBStoneValidators nonnullValidator:nil](path);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](propertyGroups);
 
   self = [super init];
   if (self) {
@@ -3366,6 +3410,10 @@
 - (instancetype)initWithQuery:(NSString *)query
                          mode:(DBFILEPROPERTIESPropertiesSearchMode *)mode
               logicalOperator:(DBFILEPROPERTIESLogicalOperator *)logicalOperator {
+  [DBStoneValidators nonnullValidator:nil](query);
+  [DBStoneValidators nonnullValidator:nil](mode);
+  [DBStoneValidators
+   nonnullValidator:nil](logicalOperator ?: [[DBFILEPROPERTIESLogicalOperator alloc] initWithOrOperator]);
 
   self = [super init];
   if (self) {
@@ -3487,7 +3535,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithMatches:(NSArray<DBFILEPROPERTIESPropertiesSearchMatch *> *)matches {
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](matches);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](matches);
 
   self = [super init];
   if (self) {
@@ -3593,6 +3644,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithName:(NSString *)name value:(NSString *)value {
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](value);
 
   self = [super init];
   if (self) {
@@ -3701,6 +3754,9 @@
 - (instancetype)initWithName:(NSString *)name
                 description_:(NSString *)description_
                         type:(DBFILEPROPERTIESPropertyType *)type {
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](description_);
+  [DBStoneValidators nonnullValidator:nil](type);
 
   self = [super init];
   if (self) {
@@ -3814,8 +3870,12 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId fields:(NSArray<DBFILEPROPERTIESPropertyField *> *)fields {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](fields);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](fields);
 
   self = [super init];
   if (self) {
@@ -3931,11 +3991,16 @@
 - (instancetype)initWithTemplateId:(NSString *)templateId
                  addOrUpdateFields:(NSArray<DBFILEPROPERTIESPropertyField *> *)addOrUpdateFields
                       removeFields:(NSArray<NSString *> *)removeFields {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](addOrUpdateFields);
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](removeFields);
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](addOrUpdateFields);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](removeFields);
 
   self = [super init];
   if (self) {
@@ -4235,9 +4300,18 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithPath:(NSString *)path propertyTemplateIds:(NSArray<NSString *> *)propertyTemplateIds {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-  [DBStoneValidators arrayValidator:nil maxItems:nil
-                      itemValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil
+                                             maxLength:nil
+                                               pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"]](path);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        arrayValidator:nil
+                              maxItems:nil
+                         itemValidator:[DBStoneValidators
+                                           nonnullValidator:[DBStoneValidators stringValidator:@(1)
+                                                                                     maxLength:nil
+                                                                                       pattern:@"(/|ptid:).*"]]]](
       propertyTemplateIds);
 
   self = [super init];
@@ -5000,8 +5074,14 @@
 
 - (instancetype)initWithPath:(NSString *)path
         updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePropertyGroups {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-  [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](updatePropertyGroups);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil
+                                             maxLength:nil
+                                               pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"]](path);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](updatePropertyGroups);
 
   self = [super init];
   if (self) {
@@ -5446,9 +5526,12 @@
                               name:(NSString *)name
                       description_:(NSString *)description_
                          addFields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)addFields {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
   [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](addFields);
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](addFields);
 
   self = [super init];
   if (self) {
@@ -5603,7 +5686,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
 
   self = [super init];
   if (self) {

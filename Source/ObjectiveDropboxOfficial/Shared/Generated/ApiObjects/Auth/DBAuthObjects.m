@@ -785,6 +785,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason retryAfter:(NSNumber *)retryAfter {
+  [DBStoneValidators nonnullValidator:nil](reason);
+  [DBStoneValidators nonnullValidator:nil](retryAfter ?: @(1));
 
   self = [super init];
   if (self) {
@@ -1067,8 +1069,9 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithOauth1Token:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](oauth1Token);
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](oauth1TokenSecret);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth1Token);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth1TokenSecret);
 
   self = [super init];
   if (self) {
@@ -1347,7 +1350,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithOauth2Token:(NSString *)oauth2Token {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](oauth2Token);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth2Token);
 
   self = [super init];
   if (self) {
