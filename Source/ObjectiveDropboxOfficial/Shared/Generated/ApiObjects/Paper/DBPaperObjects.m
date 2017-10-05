@@ -21,7 +21,6 @@
 - (instancetype)initWithMember:(DBSHARINGMemberSelector *)member
                permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel {
   [DBStoneValidators nonnullValidator:nil](member);
-  [DBStoneValidators nonnullValidator:nil](permissionLevel ?: [[DBPAPERPaperDocPermissionLevel alloc] initWithEdit]);
 
   self = [super init];
   if (self) {
@@ -243,7 +242,6 @@
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:@(20)
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
-  [DBStoneValidators nonnullValidator:nil](quiet ?: @NO);
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -2669,10 +2667,6 @@
                           sortBy:(DBPAPERListPaperDocsSortBy *)sortBy
                        sortOrder:(DBPAPERListPaperDocsSortOrder *)sortOrder
                            limit:(NSNumber *)limit {
-  [DBStoneValidators nonnullValidator:nil](filterBy ?: [[DBPAPERListPaperDocsFilterBy alloc] initWithDocsAccessed]);
-  [DBStoneValidators nonnullValidator:nil](sortBy ?: [[DBPAPERListPaperDocsSortBy alloc] initWithAccessed]);
-  [DBStoneValidators nonnullValidator:nil](sortOrder ?: [[DBPAPERListPaperDocsSortOrder alloc] initWithAscending]);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -3782,7 +3776,6 @@
 
 - (instancetype)initWithDocId:(NSString *)docId limit:(NSNumber *)limit {
   [DBStoneValidators nonnullValidator:nil](docId);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super initWithDocId:docId];
   if (self) {
@@ -4151,8 +4144,6 @@
                         limit:(NSNumber *)limit
                      filterBy:(DBPAPERUserOnPaperDocFilter *)filterBy {
   [DBStoneValidators nonnullValidator:nil](docId);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
-  [DBStoneValidators nonnullValidator:nil](filterBy ?: [[DBPAPERUserOnPaperDocFilter alloc] initWithShared]);
 
   self = [super initWithDocId:docId];
   if (self) {

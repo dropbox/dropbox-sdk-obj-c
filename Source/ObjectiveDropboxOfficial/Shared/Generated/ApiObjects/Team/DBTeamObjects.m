@@ -6030,7 +6030,6 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithReturnMembers:(NSNumber *)returnMembers {
-  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super init];
   if (self) {
@@ -6143,7 +6142,6 @@
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
-  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithReturnMembers:returnMembers];
   if (self) {
@@ -6753,7 +6751,6 @@
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](users);
-  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithReturnMembers:returnMembers];
   if (self) {
@@ -7492,7 +7489,6 @@
   [DBStoneValidators nonnullValidator:nil](group);
   [DBStoneValidators nonnullValidator:nil](user);
   [DBStoneValidators nonnullValidator:nil](accessType);
-  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithGroup:group user:user];
   if (self) {
@@ -7808,7 +7804,6 @@
           dNewGroupExternalId:(NSString *)dNewGroupExternalId
       dNewGroupManagementType:(DBTEAMCOMMONGroupManagementType *)dNewGroupManagementType {
   [DBStoneValidators nonnullValidator:nil](group);
-  [DBStoneValidators nonnullValidator:nil](returnMembers ?: @YES);
 
   self = [super initWithReturnMembers:returnMembers];
   if (self) {
@@ -8541,7 +8536,6 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -9024,7 +9018,6 @@
 
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group limit:(NSNumber *)limit {
   [DBStoneValidators nonnullValidator:nil](group);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -10430,9 +10423,6 @@
                includeDesktopClients:(NSNumber *)includeDesktopClients
                 includeMobileClients:(NSNumber *)includeMobileClients {
   [DBStoneValidators nonnullValidator:nil](teamMemberId);
-  [DBStoneValidators nonnullValidator:nil](includeWebSessions ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](includeDesktopClients ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](includeMobileClients ?: @YES);
 
   self = [super init];
   if (self) {
@@ -11294,9 +11284,6 @@
             includeWebSessions:(NSNumber *)includeWebSessions
          includeDesktopClients:(NSNumber *)includeDesktopClients
           includeMobileClients:(NSNumber *)includeMobileClients {
-  [DBStoneValidators nonnullValidator:nil](includeWebSessions ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](includeDesktopClients ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](includeMobileClients ?: @YES);
 
   self = [super init];
   if (self) {
@@ -12116,9 +12103,6 @@
             includeWebSessions:(NSNumber *)includeWebSessions
          includeDesktopClients:(NSNumber *)includeDesktopClients
           includeMobileClients:(NSNumber *)includeMobileClients {
-  [DBStoneValidators nonnullValidator:nil](includeWebSessions ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](includeDesktopClients ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](includeMobileClients ?: @YES);
 
   self = [super init];
   if (self) {
@@ -12666,8 +12650,6 @@
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](memberSurname);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
-  [DBStoneValidators nonnullValidator:nil](sendWelcomeEmail ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](role ?: [[DBTEAMAdminTier alloc] initWithMemberOnly]);
 
   self = [super init];
   if (self) {
@@ -14177,7 +14159,6 @@
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](dNewMembers);
-  [DBStoneValidators nonnullValidator:nil](forceAsync ?: @NO);
 
   self = [super init];
   if (self) {
@@ -14698,7 +14679,6 @@
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user wipeData:(NSNumber *)wipeData {
   [DBStoneValidators nonnullValidator:nil](user);
-  [DBStoneValidators nonnullValidator:nil](wipeData ?: @YES);
 
   self = [super init];
   if (self) {
@@ -15403,8 +15383,6 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
-  [DBStoneValidators nonnullValidator:nil](includeRemoved ?: @NO);
 
   self = [super init];
   if (self) {
@@ -16346,8 +16324,6 @@
              transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId
                  keepAccount:(NSNumber *)keepAccount {
   [DBStoneValidators nonnullValidator:nil](user);
-  [DBStoneValidators nonnullValidator:nil](wipeData ?: @YES);
-  [DBStoneValidators nonnullValidator:nil](keepAccount ?: @NO);
 
   self = [super initWithUser:user wipeData:wipeData];
   if (self) {
@@ -19804,7 +19780,6 @@
                    deleteOnUnlink:(NSNumber *)deleteOnUnlink {
   [DBStoneValidators nonnullValidator:nil](sessionId);
   [DBStoneValidators nonnullValidator:nil](teamMemberId);
-  [DBStoneValidators nonnullValidator:nil](deleteOnUnlink ?: @NO);
 
   self = [super initWithSessionId:sessionId teamMemberId:teamMemberId];
   if (self) {
@@ -20785,7 +20760,6 @@
                 keepAppFolder:(NSNumber *)keepAppFolder {
   [DBStoneValidators nonnullValidator:nil](appId);
   [DBStoneValidators nonnullValidator:nil](teamMemberId);
-  [DBStoneValidators nonnullValidator:nil](keepAppFolder ?: @YES);
 
   self = [super init];
   if (self) {
@@ -22279,7 +22253,6 @@
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId forceAsyncOff:(NSNumber *)forceAsyncOff {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
-  [DBStoneValidators nonnullValidator:nil](forceAsyncOff ?: @NO);
 
   self = [super initWithTeamFolderId:teamFolderId];
   if (self) {
@@ -23805,7 +23778,6 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {
@@ -26416,7 +26388,6 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
 
   self = [super init];
   if (self) {

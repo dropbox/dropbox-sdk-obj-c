@@ -786,7 +786,6 @@
 
 - (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason retryAfter:(NSNumber *)retryAfter {
   [DBStoneValidators nonnullValidator:nil](reason);
-  [DBStoneValidators nonnullValidator:nil](retryAfter ?: @(1));
 
   self = [super init];
   if (self) {

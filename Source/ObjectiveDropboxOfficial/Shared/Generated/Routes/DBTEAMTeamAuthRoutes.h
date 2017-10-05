@@ -216,7 +216,7 @@ devicesListMembersDevices:(nullable NSString *)cursor
 /// a `DBTEAMListTeamDevicesError` object on failure.
 ///
 - (DBRpcTask<DBTEAMListTeamDevicesResult *, DBTEAMListTeamDevicesError *> *)devicesListTeamDevices
-    __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
+    __deprecated_msg("devicesListTeamDevices is deprecated. Use devicesListMembersDevices.");
 
 ///
 /// DEPRECATED: List all device sessions of a team.
@@ -236,7 +236,7 @@ devicesListTeamDevices:(nullable NSString *)cursor
     includeWebSessions:(nullable NSNumber *)includeWebSessions
  includeDesktopClients:(nullable NSNumber *)includeDesktopClients
   includeMobileClients:(nullable NSNumber *)includeMobileClients
-    __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
+    __deprecated_msg("devicesListTeamDevices is deprecated. Use devicesListMembersDevices.");
 
 ///
 /// Revoke a device session of a team's member.
@@ -575,7 +575,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 /// `DBTEAMListTeamAppsError` object on failure.
 ///
 - (DBRpcTask<DBTEAMListTeamAppsResult *, DBTEAMListTeamAppsError *> *)linkedAppsListTeamLinkedApps
-    __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
+    __deprecated_msg("linkedAppsListTeamLinkedApps is deprecated. Use linkedAppsListMembersLinkedApps.");
 
 ///
 /// DEPRECATED: List all applications linked to the team members' accounts. Note, this endpoint doesn't list any
@@ -590,7 +590,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 - (DBRpcTask<DBTEAMListTeamAppsResult *, DBTEAMListTeamAppsError *> *)linkedAppsListTeamLinkedApps:
     (nullable NSString *)cursor
-    __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
+    __deprecated_msg("linkedAppsListTeamLinkedApps is deprecated. Use linkedAppsListMembersLinkedApps.");
 
 ///
 /// Revoke a linked application of the team member.
@@ -960,7 +960,7 @@ membersSetProfile:(DBTEAMUserSelectorArg *)user
 propertiesTemplateAdd:(NSString *)name
          description_:(NSString *)description_
                fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields
-    __deprecated_msg("properties/template/add is deprecated.");
+    __deprecated_msg("propertiesTemplateAdd is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesTemplateGet route
@@ -971,7 +971,7 @@ propertiesTemplateAdd:(NSString *)name
 /// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
 - (DBRpcTask<DBFILEPROPERTIESGetTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateGet:
-    (NSString *)templateId __deprecated_msg("properties/template/get is deprecated.");
+    (NSString *)templateId __deprecated_msg("propertiesTemplateGet is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesTemplateList route
@@ -981,7 +981,7 @@ propertiesTemplateAdd:(NSString *)name
 /// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
 - (DBRpcTask<DBFILEPROPERTIESListTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateList
-    __deprecated_msg("properties/template/list is deprecated.");
+    __deprecated_msg("propertiesTemplateList is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesTemplateUpdate route
@@ -992,7 +992,7 @@ propertiesTemplateAdd:(NSString *)name
 /// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
 ///
 - (DBRpcTask<DBFILEPROPERTIESUpdateTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)propertiesTemplateUpdate:
-    (NSString *)templateId __deprecated_msg("properties/template/update is deprecated.");
+    (NSString *)templateId __deprecated_msg("propertiesTemplateUpdate is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesTemplateUpdate route
@@ -1011,7 +1011,7 @@ propertiesTemplateUpdate:(NSString *)templateId
                     name:(nullable NSString *)name
             description_:(nullable NSString *)description_
                addFields:(nullable NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)addFields
-    __deprecated_msg("properties/template/update is deprecated.");
+    __deprecated_msg("propertiesTemplateUpdate is deprecated.");
 
 ///
 /// Retrieves reporting data about a team's user activity.

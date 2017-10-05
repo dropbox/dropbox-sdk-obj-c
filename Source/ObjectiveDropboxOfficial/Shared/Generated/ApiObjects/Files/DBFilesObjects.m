@@ -25,9 +25,6 @@
                         stringValidator:nil
                               maxLength:nil
                                 pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"]](path);
-  [DBStoneValidators nonnullValidator:nil](includeMediaInfo ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeDeleted ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeHasExplicitSharedMembers ?: @NO);
 
   self = [super init];
   if (self) {
@@ -164,9 +161,6 @@
                         stringValidator:nil
                               maxLength:nil
                                 pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"]](path);
-  [DBStoneValidators nonnullValidator:nil](includeMediaInfo ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeDeleted ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeHasExplicitSharedMembers ?: @NO);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators
                          arrayValidator:nil
@@ -671,9 +665,6 @@
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
                                                pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)"]](path);
-  [DBStoneValidators nonnullValidator:nil](mode ?: [[DBFILESWriteMode alloc] initWithAdd]);
-  [DBStoneValidators nonnullValidator:nil](autorename ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](mute ?: @NO);
 
   self = [super init];
   if (self) {
@@ -830,9 +821,6 @@
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
                                                pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)"]](path);
-  [DBStoneValidators nonnullValidator:nil](mode ?: [[DBFILESWriteMode alloc] initWithAdd]);
-  [DBStoneValidators nonnullValidator:nil](autorename ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](mute ?: @NO);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -1003,7 +991,6 @@
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
                                                                maxLength:nil
                                                                  pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"]](path);
-  [DBStoneValidators nonnullValidator:nil](autorename ?: @NO);
 
   self = [super init];
   if (self) {
@@ -4487,8 +4474,6 @@
       parentSharedFolderId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](sharedFolderId);
-  [DBStoneValidators nonnullValidator:nil](traverseOnly ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](noAccess ?: @NO);
 
   self = [super initWithReadOnly:readOnly];
   if (self) {
@@ -6195,11 +6180,6 @@
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
                                                pattern:@"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)"]](path);
-  [DBStoneValidators nonnullValidator:nil](recursive ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeMediaInfo ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeDeleted ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeHasExplicitSharedMembers ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](includeMountedFolders ?: @YES);
   [DBStoneValidators nullableValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(2000)]](limit);
 
   self = [super init];
@@ -6915,7 +6895,6 @@
 
 - (instancetype)initWithCursor:(NSString *)cursor timeout:(NSNumber *)timeout {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](cursor);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(30) maxValue:@(480)]](timeout ?: @(30));
 
   self = [super init];
   if (self) {
@@ -7423,7 +7402,6 @@
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
                                                pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"]](path);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(100)]](limit ?: @(10));
 
   self = [super init];
   if (self) {
@@ -9028,9 +9006,6 @@
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
                                                pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)"]](toPath);
-  [DBStoneValidators nonnullValidator:nil](allowSharedFolder ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](autorename ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](allowOwnershipTransfer ?: @NO);
 
   self = [super initWithFromPath:fromPath toPath:toPath];
   if (self) {
@@ -9171,9 +9146,6 @@
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
-  [DBStoneValidators nonnullValidator:nil](allowSharedFolder ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](autorename ?: @NO);
-  [DBStoneValidators nonnullValidator:nil](allowOwnershipTransfer ?: @NO);
 
   self = [super init];
   if (self) {
@@ -12310,9 +12282,6 @@
                                              maxLength:nil
                                                pattern:@"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)"]](path);
   [DBStoneValidators nonnullValidator:nil](query);
-  [DBStoneValidators nonnullValidator:nil](start ?: @(0));
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](maxResults ?: @(100));
-  [DBStoneValidators nonnullValidator:nil](mode ?: [[DBFILESSearchMode alloc] initWithFilename]);
 
   self = [super init];
   if (self) {
@@ -13209,8 +13178,6 @@
                         stringValidator:nil
                               maxLength:nil
                                 pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"]](path);
-  [DBStoneValidators nonnullValidator:nil](format ?: [[DBFILESThumbnailFormat alloc] initWithJpeg]);
-  [DBStoneValidators nonnullValidator:nil](size ?: [[DBFILESThumbnailSize alloc] initWithW64h64]);
 
   self = [super init];
   if (self) {
@@ -14293,7 +14260,6 @@
 
 - (instancetype)initWithCursor:(DBFILESUploadSessionCursor *)cursor close:(NSNumber *)close {
   [DBStoneValidators nonnullValidator:nil](cursor);
-  [DBStoneValidators nonnullValidator:nil](close ?: @NO);
 
   self = [super init];
   if (self) {
@@ -15986,7 +15952,6 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithClose:(NSNumber *)close {
-  [DBStoneValidators nonnullValidator:nil](close ?: @NO);
 
   self = [super init];
   if (self) {

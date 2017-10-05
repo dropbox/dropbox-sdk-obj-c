@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void (^_Nonnull)(id))nonnullValidator:(void (^_Nullable)(id))internalValidator;
 
++ (void)raiseIllegalStateErrorWithMessage:(NSString *)message;
+
 @end
 
 NS_ASSUME_NONNULL_END

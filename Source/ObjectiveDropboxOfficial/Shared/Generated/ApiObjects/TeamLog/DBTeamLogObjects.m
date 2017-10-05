@@ -30693,7 +30693,6 @@
                     accountId:(NSString *)accountId
                          time:(DBTEAMCOMMONTimeRange *)time
                      category:(DBTEAMLOGEventCategory *)category {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators numericValidator:@(1) maxValue:@(1000)]](limit ?: @(1000));
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 

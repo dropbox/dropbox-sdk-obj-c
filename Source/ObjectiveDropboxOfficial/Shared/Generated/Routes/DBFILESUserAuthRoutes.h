@@ -250,7 +250,7 @@ alphaUploadStream:(NSString *)path
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> *)dCopy:(NSString *)fromPath
                                                            toPath:(NSString *)toPath
-    __deprecated_msg("copy is deprecated. Use copy_v2.");
+    __deprecated_msg("dCopy is deprecated. Use dCopyV2.");
 
 ///
 /// DEPRECATED: Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all
@@ -270,7 +270,7 @@ alphaUploadStream:(NSString *)path
                                                 allowSharedFolder:(nullable NSNumber *)allowSharedFolder
                                                        autorename:(nullable NSNumber *)autorename
                                            allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer
-    __deprecated_msg("copy is deprecated. Use copy_v2.");
+    __deprecated_msg("dCopy is deprecated. Use dCopyV2.");
 
 ///
 /// Copy multiple files or folders to different locations at once in the user's Dropbox. If `allowSharedFolder` in
@@ -384,7 +384,7 @@ alphaUploadStream:(NSString *)path
 /// `DBFILESCreateFolderError` object on failure.
 ///
 - (DBRpcTask<DBFILESFolderMetadata *, DBFILESCreateFolderError *> *)createFolder:(NSString *)path
-    __deprecated_msg("create_folder is deprecated. Use create_folder_v2.");
+    __deprecated_msg("createFolder is deprecated. Use createFolderV2.");
 
 ///
 /// DEPRECATED: Create a folder at a given path.
@@ -397,7 +397,7 @@ alphaUploadStream:(NSString *)path
 ///
 - (DBRpcTask<DBFILESFolderMetadata *, DBFILESCreateFolderError *> *)createFolder:(NSString *)path
                                                                       autorename:(nullable NSNumber *)autorename
-    __deprecated_msg("create_folder is deprecated. Use create_folder_v2.");
+    __deprecated_msg("createFolder is deprecated. Use createFolderV2.");
 
 ///
 /// Create a folder at a given path.
@@ -432,7 +432,7 @@ alphaUploadStream:(NSString *)path
 /// `DBFILESDeleteError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESDeleteError *> *)delete_:(NSString *)path
-    __deprecated_msg("delete is deprecated. Use delete_v2.");
+    __deprecated_msg("delete_ is deprecated. Use deleteV2.");
 
 ///
 /// Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the
@@ -1160,7 +1160,7 @@ listFolderLongpoll:(NSString *)cursor
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> *)move:(NSString *)fromPath
                                                           toPath:(NSString *)toPath
-    __deprecated_msg("move is deprecated. Use move_v2.");
+    __deprecated_msg("move is deprecated. Use moveV2.");
 
 ///
 /// DEPRECATED: Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all
@@ -1180,7 +1180,7 @@ listFolderLongpoll:(NSString *)cursor
                                                allowSharedFolder:(nullable NSNumber *)allowSharedFolder
                                                       autorename:(nullable NSNumber *)autorename
                                           allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer
-    __deprecated_msg("move is deprecated. Use move_v2.");
+    __deprecated_msg("move is deprecated. Use moveV2.");
 
 ///
 /// Move multiple files or folders to different locations at once in the user's Dropbox. This route is 'all or nothing',
@@ -1280,7 +1280,7 @@ listFolderLongpoll:(NSString *)cursor
 - (DBRpcTask<DBNilObject *, DBFILEPROPERTIESAddPropertiesError *> *)
  propertiesAdd:(NSString *)path
 propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
-    __deprecated_msg("properties/add is deprecated.");
+    __deprecated_msg("propertiesAdd is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesOverwrite route
@@ -1294,7 +1294,7 @@ propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
 - (DBRpcTask<DBNilObject *, DBFILEPROPERTIESInvalidPropertyGroupError *> *)
 propertiesOverwrite:(NSString *)path
      propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
-    __deprecated_msg("properties/overwrite is deprecated.");
+    __deprecated_msg("propertiesOverwrite is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesRemove route
@@ -1309,7 +1309,7 @@ propertiesOverwrite:(NSString *)path
 - (DBRpcTask<DBNilObject *, DBFILEPROPERTIESRemovePropertiesError *> *)propertiesRemove:(NSString *)path
                                                                     propertyTemplateIds:
                                                                         (NSArray<NSString *> *)propertyTemplateIds
-    __deprecated_msg("properties/remove is deprecated.");
+    __deprecated_msg("propertiesRemove is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesTemplateGet route
@@ -1320,7 +1320,7 @@ propertiesOverwrite:(NSString *)path
 /// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
 - (DBRpcTask<DBFILEPROPERTIESGetTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateGet:
-    (NSString *)templateId __deprecated_msg("properties/template/get is deprecated.");
+    (NSString *)templateId __deprecated_msg("propertiesTemplateGet is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesTemplateList route
@@ -1330,7 +1330,7 @@ propertiesOverwrite:(NSString *)path
 /// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
 - (DBRpcTask<DBFILEPROPERTIESListTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateList
-    __deprecated_msg("properties/template/list is deprecated.");
+    __deprecated_msg("propertiesTemplateList is deprecated.");
 
 ///
 /// DEPRECATED: The propertiesUpdate route
@@ -1344,7 +1344,7 @@ propertiesOverwrite:(NSString *)path
 - (DBRpcTask<DBNilObject *, DBFILEPROPERTIESUpdatePropertiesError *> *)
     propertiesUpdate:(NSString *)path
 updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePropertyGroups
-    __deprecated_msg("properties/update is deprecated.");
+    __deprecated_msg("propertiesUpdate is deprecated.");
 
 ///
 /// Restore a file to a specific revision.
@@ -1541,7 +1541,7 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendUrl:(NSString *)sessionId
                                                                                     offset:(NSNumber *)offset
                                                                                   inputUrl:(NSString *)inputUrl
-    __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
+    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppendV2.");
 
 ///
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB.
@@ -1557,7 +1557,7 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendData:(NSString *)sessionId
                                                                                      offset:(NSNumber *)offset
                                                                                   inputData:(NSData *)inputData
-    __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
+    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppendV2.");
 
 ///
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB.
@@ -1574,7 +1574,7 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
                                                                                        offset:(NSNumber *)offset
                                                                                   inputStream:
                                                                                       (NSInputStream *)inputStream
-    __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
+    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppendV2.");
 
 ///
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single

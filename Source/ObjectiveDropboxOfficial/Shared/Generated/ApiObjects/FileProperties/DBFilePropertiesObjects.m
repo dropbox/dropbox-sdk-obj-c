@@ -2824,8 +2824,6 @@
    nonnullValidator:[DBStoneValidators arrayValidator:@(1)
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](queries);
-  [DBStoneValidators
-   nonnullValidator:nil](templateFilter ?: [[DBFILEPROPERTIESTemplateFilter alloc] initWithFilterNone]);
 
   self = [super init];
   if (self) {
@@ -3412,8 +3410,6 @@
               logicalOperator:(DBFILEPROPERTIESLogicalOperator *)logicalOperator {
   [DBStoneValidators nonnullValidator:nil](query);
   [DBStoneValidators nonnullValidator:nil](mode);
-  [DBStoneValidators
-   nonnullValidator:nil](logicalOperator ?: [[DBFILEPROPERTIESLogicalOperator alloc] initWithOrOperator]);
 
   self = [super init];
   if (self) {

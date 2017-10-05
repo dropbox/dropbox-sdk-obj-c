@@ -13,15 +13,17 @@
   void (^validator)(NSString *) = ^(NSString *value) {
     if (minLength != nil) {
       if ([value length] < [minLength unsignedIntegerValue]) {
-        [NSException raise:@"IllegalStateException"
-                    format:@"\"%@\" must be at least %@ characters", value, [minLength stringValue]];
+        NSString *exceptionMessage =
+            [NSString stringWithFormat:@"\"%@\" must be at least %@ characters", value, [minLength stringValue]];
+        [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
 
     if (maxLength != nil) {
       if ([value length] > [maxLength unsignedIntegerValue]) {
-        [NSException raise:@"IllegalStateException"
-                    format:@"\"%@\" must be at most %@ characters", value, [minLength stringValue]];
+        NSString *exceptionMessage =
+            [NSString stringWithFormat:@"\"%@\" must be at most %@ characters", value, [minLength stringValue]];
+        [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
 
@@ -30,7 +32,9 @@
       NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
       NSArray *matches = [re matchesInString:value options:0 range:NSMakeRange(0, [value length])];
       if ([matches count] == 0) {
-        [NSException raise:@"IllegalStateException" format:@"\"%@\" must match pattern \"%@\"", value, [re pattern]];
+        NSString *exceptionMessage =
+            [NSString stringWithFormat:@"\"%@\" must match pattern \"%@\"", value, [re pattern]];
+        [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
   };
@@ -42,14 +46,17 @@
   void (^validator)(NSNumber *) = ^(NSNumber *value) {
     if (minValue != nil) {
       if ([value unsignedIntegerValue] < [minValue unsignedIntegerValue]) {
-        [NSException raise:@"IllegalStateException"
-                    format:@"\"%@\" must be at least %@", value, [minValue stringValue]];
+        NSString *exceptionMessage =
+            [NSString stringWithFormat:@"\"%@\" must be at least %@", value, [minValue stringValue]];
+        [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
 
     if (maxValue != nil) {
       if ([value unsignedIntegerValue] > [maxValue unsignedIntegerValue]) {
-        [NSException raise:@"IllegalStateException" format:@"\"%@\" must be at most %@", value, [maxValue stringValue]];
+        NSString *exceptionMessage =
+            [NSString stringWithFormat:@"\"%@\" must be at most %@", value, [maxValue stringValue]];
+        [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
   };
@@ -63,15 +70,17 @@
   void (^validator)(NSArray<id> *) = ^(NSArray<id> *value) {
     if (minItems != nil) {
       if ([value count] < [minItems unsignedIntegerValue]) {
-        [NSException raise:@"IllegalStateException"
-                    format:@"\"%@\" must be at least %@ items", value, [minItems stringValue]];
+        NSString *exceptionMessage =
+            [NSString stringWithFormat:@"\"%@\" must be at least %@ items", value, [minItems stringValue]];
+        [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
 
     if (maxItems != nil) {
       if ([value count] > [maxItems unsignedIntegerValue]) {
-        [NSException raise:@"IllegalStateException"
-                    format:@"\"%@\" must be at most %@ items", value, [maxItems stringValue]];
+        NSString *exceptionMessage =
+            [NSString stringWithFormat:@"\"%@\" must be at most %@ items", value, [maxItems stringValue]];
+        [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
 
@@ -110,7 +119,7 @@
 + (void (^)(id))nonnullValidator:(void (^)(id))internalValidator {
   void (^validator)(id) = ^(id value) {
     if (value == nil) {
-      [NSException raise:@"IllegalStateException" format:@"\"%@\" must not be `nil`.", value];
+      [[self class] raiseIllegalStateErrorWithMessage:@"Value must not be `nil`"];
     }
 
     if (internalValidator != nil) {
@@ -121,4 +130,9 @@
   return validator;
 }
 
++ (void)raiseIllegalStateErrorWithMessage:(NSString *)message {
+  NSString *exceptionMessage =
+      [NSString stringWithFormat:@"%@:\n%@", message, [[NSThread callStackSymbols] objectAtIndex:0]];
+  [NSException raise:@"IllegalStateException" format:exceptionMessage, nil];
+}
 @end

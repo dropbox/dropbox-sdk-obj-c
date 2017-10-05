@@ -24,7 +24,6 @@
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
-  [DBStoneValidators nonnullValidator:nil](open ?: @YES);
 
   self = [super init];
   if (self) {
@@ -2136,8 +2135,6 @@
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
-  [DBStoneValidators
-   nonnullValidator:nil](deadline ?: [[DBFILEREQUESTSUpdateFileRequestDeadline alloc] initWithNoUpdate]);
 
   self = [super init];
   if (self) {
