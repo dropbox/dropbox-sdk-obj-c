@@ -105,16 +105,39 @@
                  delegateQueue:(nullable NSOperationQueue *)delegateQueue
         forceForegroundSession:(BOOL)forceForegroundSession
      sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier {
-  if (self = [super initWithAppKey:appKey
-                         appSecret:appSecret
-                    hostnameConfig:hostnameConfig
-                         userAgent:userAgent
-                        asMemberId:asMemberId
-                 additionalHeaders:additionalHeaders]) {
-    _delegateQueue = delegateQueue;
-    _forceForegroundSession = forceForegroundSession;
-    _sharedContainerIdentifier = sharedContainerIdentifier;
-  }
+    return [self initWithAppKey:appKey
+                      appSecret:appSecret
+                 hostnameConfig:hostnameConfig
+                    redirectURL:nil
+                      userAgent:userAgent
+                     asMemberId:asMemberId
+              additionalHeaders:additionalHeaders
+                  delegateQueue:delegateQueue
+         forceForegroundSession:forceForegroundSession
+      sharedContainerIdentifier:sharedContainerIdentifier];
+}
+
+- (instancetype)initWithAppKey:(NSString *)appKey
+                     appSecret:(nullable NSString *)appSecret
+                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
+                   redirectURL:(nullable NSString *)redirectURL
+                     userAgent:(nullable NSString *)userAgent
+                    asMemberId:(nullable NSString *)asMemberId
+             additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders
+                 delegateQueue:(nullable NSOperationQueue *)delegateQueue
+        forceForegroundSession:(BOOL)forceForegroundSession
+     sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier {
+    if (self = [super initWithAppKey:appKey
+                           appSecret:appSecret
+                      hostnameConfig:hostnameConfig 
+                         redirectURL:redirectURL
+                           userAgent:userAgent
+                          asMemberId:asMemberId
+                   additionalHeaders:additionalHeaders]) {
+      _delegateQueue = delegateQueue;
+      _forceForegroundSession = forceForegroundSession;
+      _sharedContainerIdentifier = sharedContainerIdentifier;
+    }
   return self;
 }
 
