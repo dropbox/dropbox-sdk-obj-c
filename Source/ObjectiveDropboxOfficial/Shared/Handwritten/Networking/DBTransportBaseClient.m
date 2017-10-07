@@ -326,11 +326,15 @@
   return statusCode == 409;
 }
 
-+ (NSString *)caseInsensitiveLookupWithKey:(NSString *)lookupKey dictionary:(NSDictionary<id, id> *)dictionary {
-  for (id key in dictionary) {
-    NSString *keyString = (NSString *)key;
-    if ([keyString.lowercaseString isEqualToString:lookupKey.lowercaseString]) {
-      return (NSString *)dictionary[key];
++ (nullable id)caseInsensitiveLookupWithKey:(nullable NSString *)lookupKey
+                     headerFieldsDictionary:(nullable NSDictionary<id, id> *)headerFieldsDictionary {
+  NSString *lowercaseLookupKey = lookupKey.lowercaseString;
+  for (id key in headerFieldsDictionary) {
+    if ([key isKindOfClass:[NSString class]]) {
+      NSString *keyString = (NSString *)key;
+      if ([keyString.lowercaseString isEqualToString:lowercaseLookupKey]) {
+        return headerFieldsDictionary[key];
+      }
     }
   }
   return nil;
