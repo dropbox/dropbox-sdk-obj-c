@@ -106,6 +106,10 @@
   __weak DBRpcTask *weakSelf = self;
   DBRpcResponseBlockStorage storageBlock = ^BOOL(NSData *data, NSURLResponse *response, NSError *clientError) {
     DBRpcTask *strongSelf = weakSelf;
+    if (strongSelf == nil) {
+      // Indicates failure and no-op
+      return NO;
+    }
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -193,6 +197,11 @@
   __weak DBUploadTask *weakSelf = self;
   DBUploadResponseBlockStorage storageBlock = ^BOOL(NSData *data, NSURLResponse *response, NSError *clientError) {
     DBUploadTask *strongSelf = weakSelf;
+    if (strongSelf == nil) {
+      // Indicates failure and no-op
+      return NO;
+    }
+
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -280,6 +289,11 @@
   __weak DBDownloadUrlTask *weakSelf = self;
   DBDownloadResponseBlockStorage storageBlock = ^BOOL(NSURL *location, NSURLResponse *response, NSError *clientError) {
     DBDownloadUrlTask *strongSelf = weakSelf;
+    if (strongSelf == nil) {
+      // Indicates failure and no-op
+      return NO;
+    }
+
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -398,6 +412,11 @@
   __weak DBDownloadDataTask *weakSelf = self;
   DBDownloadResponseBlockStorage storageBlock = ^BOOL(NSURL *location, NSURLResponse *response, NSError *clientError) {
     DBDownloadDataTask *strongSelf = weakSelf;
+    if (strongSelf == nil) {
+      // Indicates failure and no-op
+      return NO;
+    }
+
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
