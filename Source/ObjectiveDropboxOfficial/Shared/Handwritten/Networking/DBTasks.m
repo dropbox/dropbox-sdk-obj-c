@@ -284,9 +284,14 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSString *headerString =
-        [DBTransportBaseClient caseInsensitiveLookupWithKey:@"Dropbox-API-Result" dictionary:httpHeaders];
-    NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
+    id headerString = [DBTransportBaseClient caseInsensitiveLookupWithKey:@"Dropbox-API-Result"
+                                                   headerFieldsDictionary:httpHeaders];
+
+    NSData *resultData = nil;
+    if ([headerString isKindOfClass:[NSString class]]) {
+      // If `headerString == nil` then `resultData = nil`
+      resultData = [headerString dataUsingEncoding:NSUTF8StringEncoding];
+    }
 
     DBRoute *route = strongSelf->_route;
 
@@ -402,9 +407,14 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSString *headerString =
-        [DBTransportBaseClient caseInsensitiveLookupWithKey:@"Dropbox-API-Result" dictionary:httpHeaders];
-    NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
+    id headerString = [DBTransportBaseClient caseInsensitiveLookupWithKey:@"Dropbox-API-Result"
+                                                   headerFieldsDictionary:httpHeaders];
+
+    NSData *resultData = nil;
+    if ([headerString isKindOfClass:[NSString class]]) {
+      // If `headerString == nil` then `resultData = nil`
+      resultData = [headerString dataUsingEncoding:NSUTF8StringEncoding];
+    }
 
     DBRoute *route = strongSelf->_route;
 

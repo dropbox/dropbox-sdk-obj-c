@@ -47,8 +47,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL)statusCodeIsRouteError:(int)statusCode;
 
-+ (nullable NSString *)caseInsensitiveLookupWithKey:(nullable NSString *)lookupKey
-                                         dictionary:(NSDictionary<id, id> *_Nullable)dictionary;
+/**
+ *  This method performs a lookup for the passed in @p lookupKey on the given @p headerFieldsDictionary. However, since
+ *  HTTP header field keys are case insensitive, it compares the keys in the dictionary to @p lookupKey in a case
+ *  insensitive way.
+ *
+ *  @param lookupKey              The key that we want to fetch from the header dictionary. Irrespective of case
+ *  @param headerFieldsDictionary HTTP headers fiels dictionary (e.g. the result of calling allHeaderFields in an
+ *                                NSHTTPURLResponse instance)
+ *
+ *  @return The value corresponding to the passed in @p lookupKey or nil if none is found.
+ */
++ (nullable id)caseInsensitiveLookupWithKey:(nullable NSString *)lookupKey
+                     headerFieldsDictionary:(nullable NSDictionary<id, id> *)headerFieldsDictionary;
 
 + (NSString *)sdkVersion;
 
