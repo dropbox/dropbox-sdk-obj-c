@@ -82,7 +82,7 @@ propertiesOverwrite:(NSString *)path
      propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups;
 
 ///
-/// Remove the specified property group from the file. To remove specific property field key value pairs, see route
+/// Remove the specified property group from the file. To remove specific property field key value pairs, see
 /// `propertiesUpdate`. To update a template, see `templatesUpdateForUser` or `templatesUpdateForTeam`. Templates can't
 /// be removed once created.
 ///
@@ -138,7 +138,8 @@ propertiesSearch:(NSArray<DBFILEPROPERTIESPropertiesSearchQuery *> *)queries
 updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePropertyGroups;
 
 ///
-/// Add a template associated with a user. See route `propertiesAdd` to add properties to a file.
+/// Add a template associated with a user. See `propertiesAdd` to add properties to a file. This endpoint can't be
+/// called on a team member or admin's behalf.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESAddTemplateResult` object on
@@ -150,7 +151,7 @@ templatesAddForUser:(NSString *)name
              fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields;
 
 ///
-/// Get the schema for a specified template.
+/// Get the schema for a specified template. This endpoint can't be called on a team member or admin's behalf.
 ///
 /// @param templateId An identifier for template added by route  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
@@ -161,7 +162,8 @@ templatesAddForUser:(NSString *)name
     (NSString *)templateId;
 
 ///
-/// Get the template identifiers for a team. To get the schema of each template use `templatesGetForUser`.
+/// Get the template identifiers for a team. To get the schema of each template use `templatesGetForUser`. This endpoint
+/// can't be called on a team member or admin's behalf.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESListTemplateResult` object on
@@ -171,7 +173,7 @@ templatesAddForUser:(NSString *)name
 
 ///
 /// Update a template associated with a user. This route can update the template name, the template description and add
-/// optional properties to templates.
+/// optional properties to templates. This endpoint can't be called on a team member or admin's behalf.
 ///
 /// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
@@ -183,7 +185,7 @@ templatesAddForUser:(NSString *)name
 
 ///
 /// Update a template associated with a user. This route can update the template name, the template description and add
-/// optional properties to templates.
+/// optional properties to templates. This endpoint can't be called on a team member or admin's behalf.
 ///
 /// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
 /// @param name A display name for the template. template names can be up to 256 bytes.

@@ -42,8 +42,8 @@ typedef NS_ENUM(NSInteger, DBFILEPROPERTIESInvalidPropertyGroupErrorTag) {
   /// (no description).
   DBFILEPROPERTIESInvalidPropertyGroupErrorPath,
 
-  /// This folder cannot be tagged. Shared folders and team folders are not
-  /// supported for team-owned tags.
+  /// This folder cannot be tagged. Tagging folders is not supported for
+  /// team-owned templates.
   DBFILEPROPERTIESInvalidPropertyGroupErrorUnsupportedFolder,
 
   /// One or more of the supplied property field values is too large.
@@ -111,8 +111,7 @@ typedef NS_ENUM(NSInteger, DBFILEPROPERTIESInvalidPropertyGroupErrorTag) {
 /// Initializes union class with tag state of "unsupported_folder".
 ///
 /// Description of the "unsupported_folder" tag state: This folder cannot be
-/// tagged. Shared folders and team folders are not supported for team-owned
-/// tags.
+/// tagged. Tagging folders is not supported for team-owned templates.
 ///
 /// @return An initialized instance.
 ///

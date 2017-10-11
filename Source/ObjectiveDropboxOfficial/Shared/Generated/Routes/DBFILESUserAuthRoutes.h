@@ -53,6 +53,7 @@
 @class DBFILESListFolderLongpollResult;
 @class DBFILESListFolderResult;
 @class DBFILESListRevisionsError;
+@class DBFILESListRevisionsMode;
 @class DBFILESListRevisionsResult;
 @class DBFILESLookupError;
 @class DBFILESMediaInfo;
@@ -75,6 +76,7 @@
 @class DBFILESSearchMatch;
 @class DBFILESSearchMode;
 @class DBFILESSearchResult;
+@class DBFILESSharedLink;
 @class DBFILESThumbnailArg;
 @class DBFILESThumbnailError;
 @class DBFILESThumbnailFormat;
@@ -1025,6 +1027,9 @@ getThumbnailData:(NSString *)path
 /// folder, shared folder and team folder.
 /// @param limit The maximum number of results to return per request. Note: This is an approximate number and there can
 /// be slightly more entries returned in some cases.
+/// @param sharedLink A shared link to list the contents of. If the link is password-protected, the password must be
+/// provided. If this field is present, `path` in `DBFILESListFolderArg` will be relative to root of the shared link.
+/// Only non-recursive mode is supported for shared link.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderError` object on failure.
@@ -1036,7 +1041,8 @@ getThumbnailData:(NSString *)path
                  includeDeleted:(nullable NSNumber *)includeDeleted
 includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
           includeMountedFolders:(nullable NSNumber *)includeMountedFolders
-                          limit:(nullable NSNumber *)limit;
+                          limit:(nullable NSNumber *)limit
+                     sharedLink:(nullable DBFILESSharedLink *)sharedLink;
 
 ///
 /// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to
@@ -1079,6 +1085,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 /// folder, shared folder and team folder.
 /// @param limit The maximum number of results to return per request. Note: This is an approximate number and there can
 /// be slightly more entries returned in some cases.
+/// @param sharedLink A shared link to list the contents of. If the link is password-protected, the password must be
+/// provided. If this field is present, `path` in `DBFILESListFolderArg` will be relative to root of the shared link.
+/// Only non-recursive mode is supported for shared link.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderGetLatestCursorResult` object on
 /// success or a `DBFILESListFolderError` object on failure.
@@ -1090,7 +1099,8 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
                  includeDeleted:(nullable NSNumber *)includeDeleted
 includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
           includeMountedFolders:(nullable NSNumber *)includeMountedFolders
-                          limit:(nullable NSNumber *)limit;
+                          limit:(nullable NSNumber *)limit
+                     sharedLink:(nullable DBFILESSharedLink *)sharedLink;
 
 ///
 /// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you
@@ -1129,7 +1139,12 @@ listFolderLongpoll:(NSString *)cursor
            timeout:(nullable NSNumber *)timeout;
 
 ///
-/// Return revisions of a file.
+/// Returns revisions for files based on a file path or a file id. The file path or file id is identified from the
+/// latest file entry at the given file path or id. This end point allows your app to query either by file path or file
+/// id by setting the mode parameter appropriately. In the `path` in `DBFILESListRevisionsMode` (default) mode, all
+/// revisions at the same file path as the latest file entry are returned. If revisions with the same file id are
+/// desired, then mode must be set to `id_` in `DBFILESListRevisionsMode`. The `id_` in `DBFILESListRevisionsMode` mode
+/// is useful to retrieve revisions for a given file across moves or renames.
 ///
 /// @param path The path to the file you want to see the revisions of.
 ///
@@ -1139,16 +1154,24 @@ listFolderLongpoll:(NSString *)cursor
 - (DBRpcTask<DBFILESListRevisionsResult *, DBFILESListRevisionsError *> *)listRevisions:(NSString *)path;
 
 ///
-/// Return revisions of a file.
+/// Returns revisions for files based on a file path or a file id. The file path or file id is identified from the
+/// latest file entry at the given file path or id. This end point allows your app to query either by file path or file
+/// id by setting the mode parameter appropriately. In the `path` in `DBFILESListRevisionsMode` (default) mode, all
+/// revisions at the same file path as the latest file entry are returned. If revisions with the same file id are
+/// desired, then mode must be set to `id_` in `DBFILESListRevisionsMode`. The `id_` in `DBFILESListRevisionsMode` mode
+/// is useful to retrieve revisions for a given file across moves or renames.
 ///
 /// @param path The path to the file you want to see the revisions of.
+/// @param mode Determines the behavior of the API in listing the revisions for a given file path or id.
 /// @param limit The maximum number of revision entries returned.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListRevisionsResult` object on success or a
 /// `DBFILESListRevisionsError` object on failure.
 ///
-- (DBRpcTask<DBFILESListRevisionsResult *, DBFILESListRevisionsError *> *)listRevisions:(NSString *)path
-                                                                                  limit:(nullable NSNumber *)limit;
+- (DBRpcTask<DBFILESListRevisionsResult *, DBFILESListRevisionsError *> *)
+listRevisions:(NSString *)path
+         mode:(nullable DBFILESListRevisionsMode *)mode
+        limit:(nullable NSNumber *)limit;
 
 ///
 /// DEPRECATED: Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all

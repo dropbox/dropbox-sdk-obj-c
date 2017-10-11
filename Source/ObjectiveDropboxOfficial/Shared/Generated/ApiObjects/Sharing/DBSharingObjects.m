@@ -21532,7 +21532,7 @@
 #import "DBSHARINGGroupMembershipInfo.h"
 #import "DBSHARINGInviteeMembershipInfo.h"
 #import "DBSHARINGSharedFileMembers.h"
-#import "DBSHARINGUserMembershipInfo.h"
+#import "DBSHARINGUserFileMembershipInfo.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -21542,7 +21542,7 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithUsers:(NSArray<DBSHARINGUserMembershipInfo *> *)users
+- (instancetype)initWithUsers:(NSArray<DBSHARINGUserFileMembershipInfo *> *)users
                        groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups
                      invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees
                        cursor:(NSString *)cursor {
@@ -21569,7 +21569,7 @@
   return self;
 }
 
-- (instancetype)initWithUsers:(NSArray<DBSHARINGUserMembershipInfo *> *)users
+- (instancetype)initWithUsers:(NSArray<DBSHARINGUserFileMembershipInfo *> *)users
                        groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups
                      invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees {
   return [self initWithUsers:users groups:groups invitees:invitees cursor:nil];
@@ -21659,7 +21659,7 @@
 
   jsonDict[@"users"] = [DBArraySerializer serialize:valueObj.users
                                           withBlock:^id(id elem0) {
-                                            return [DBSHARINGUserMembershipInfoSerializer serialize:elem0];
+                                            return [DBSHARINGUserFileMembershipInfoSerializer serialize:elem0];
                                           }];
   jsonDict[@"groups"] = [DBArraySerializer serialize:valueObj.groups
                                            withBlock:^id(id elem0) {
@@ -21677,10 +21677,10 @@
 }
 
 + (DBSHARINGSharedFileMembers *)deserialize:(NSDictionary *)valueDict {
-  NSArray<DBSHARINGUserMembershipInfo *> *users =
+  NSArray<DBSHARINGUserFileMembershipInfo *> *users =
       [DBArraySerializer deserialize:valueDict[@"users"]
                            withBlock:^id(id elem0) {
-                             return [DBSHARINGUserMembershipInfoSerializer deserialize:elem0];
+                             return [DBSHARINGUserFileMembershipInfoSerializer deserialize:elem0];
                            }];
   NSArray<DBSHARINGGroupMembershipInfo *> *groups =
       [DBArraySerializer deserialize:valueDict[@"groups"]
@@ -26824,132 +26824,6 @@
 
 @end
 
-#import "DBSHARINGUserInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-
-#pragma mark - API Object
-
-@implementation DBSHARINGUserInfo
-
-#pragma mark - Constructors
-
-- (instancetype)initWithAccountId:(NSString *)accountId
-                         sameTeam:(NSNumber *)sameTeam
-                     teamMemberId:(NSString *)teamMemberId {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
-  [DBStoneValidators nonnullValidator:nil](sameTeam);
-
-  self = [super init];
-  if (self) {
-    _accountId = accountId;
-    _sameTeam = sameTeam;
-    _teamMemberId = teamMemberId;
-  }
-  return self;
-}
-
-- (instancetype)initWithAccountId:(NSString *)accountId sameTeam:(NSNumber *)sameTeam {
-  return [self initWithAccountId:accountId sameTeam:sameTeam teamMemberId:nil];
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBSHARINGUserInfoSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBSHARINGUserInfoSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBSHARINGUserInfoSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  result = prime * result + [self.accountId hash];
-  result = prime * result + [self.sameTeam hash];
-  if (self.teamMemberId) {
-    result = prime * result + [self.teamMemberId hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToUserInfo:other];
-}
-
-- (BOOL)isEqualToUserInfo:(DBSHARINGUserInfo *)anUserInfo {
-  if (self == anUserInfo) {
-    return YES;
-  }
-  if (![self.accountId isEqual:anUserInfo.accountId]) {
-    return NO;
-  }
-  if (![self.sameTeam isEqual:anUserInfo.sameTeam]) {
-    return NO;
-  }
-  if (self.teamMemberId) {
-    if (![self.teamMemberId isEqual:anUserInfo.teamMemberId]) {
-      return NO;
-    }
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBSHARINGUserInfoSerializer
-
-+ (NSDictionary *)serialize:(DBSHARINGUserInfo *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  jsonDict[@"account_id"] = valueObj.accountId;
-  jsonDict[@"same_team"] = valueObj.sameTeam;
-  if (valueObj.teamMemberId) {
-    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
-  }
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBSHARINGUserInfo *)deserialize:(NSDictionary *)valueDict {
-  NSString *accountId = valueDict[@"account_id"];
-  NSNumber *sameTeam = valueDict[@"same_team"];
-  NSString *teamMemberId = valueDict[@"team_member_id"] ?: nil;
-
-  return [[DBSHARINGUserInfo alloc] initWithAccountId:accountId sameTeam:sameTeam teamMemberId:teamMemberId];
-}
-
-@end
-
 #import "DBSHARINGAccessLevel.h"
 #import "DBSHARINGMemberPermission.h"
 #import "DBSHARINGMembershipInfo.h"
@@ -27110,6 +26984,313 @@
                                                      permissions:permissions
                                                         initials:initials
                                                      isInherited:isInherited];
+}
+
+@end
+
+#import "DBSHARINGAccessLevel.h"
+#import "DBSHARINGMemberPermission.h"
+#import "DBSHARINGUserFileMembershipInfo.h"
+#import "DBSHARINGUserInfo.h"
+#import "DBSHARINGUserMembershipInfo.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBSHARINGUserFileMembershipInfo
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType
+                              user:(DBSHARINGUserInfo *)user
+                       permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions
+                          initials:(NSString *)initials
+                       isInherited:(NSNumber *)isInherited
+                      timeLastSeen:(NSDate *)timeLastSeen {
+  [DBStoneValidators nonnullValidator:nil](accessType);
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](permissions);
+
+  self =
+      [super initWithAccessType:accessType user:user permissions:permissions initials:initials isInherited:isInherited];
+  if (self) {
+    _timeLastSeen = timeLastSeen;
+  }
+  return self;
+}
+
+- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType user:(DBSHARINGUserInfo *)user {
+  return [self initWithAccessType:accessType user:user permissions:nil initials:nil isInherited:nil timeLastSeen:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBSHARINGUserFileMembershipInfoSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBSHARINGUserFileMembershipInfoSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBSHARINGUserFileMembershipInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.accessType hash];
+  result = prime * result + [self.user hash];
+  if (self.permissions) {
+    result = prime * result + [self.permissions hash];
+  }
+  if (self.initials) {
+    result = prime * result + [self.initials hash];
+  }
+  result = prime * result + [self.isInherited hash];
+  if (self.timeLastSeen) {
+    result = prime * result + [self.timeLastSeen hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUserFileMembershipInfo:other];
+}
+
+- (BOOL)isEqualToUserFileMembershipInfo:(DBSHARINGUserFileMembershipInfo *)anUserFileMembershipInfo {
+  if (self == anUserFileMembershipInfo) {
+    return YES;
+  }
+  if (![self.accessType isEqual:anUserFileMembershipInfo.accessType]) {
+    return NO;
+  }
+  if (![self.user isEqual:anUserFileMembershipInfo.user]) {
+    return NO;
+  }
+  if (self.permissions) {
+    if (![self.permissions isEqual:anUserFileMembershipInfo.permissions]) {
+      return NO;
+    }
+  }
+  if (self.initials) {
+    if (![self.initials isEqual:anUserFileMembershipInfo.initials]) {
+      return NO;
+    }
+  }
+  if (![self.isInherited isEqual:anUserFileMembershipInfo.isInherited]) {
+    return NO;
+  }
+  if (self.timeLastSeen) {
+    if (![self.timeLastSeen isEqual:anUserFileMembershipInfo.timeLastSeen]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBSHARINGUserFileMembershipInfoSerializer
+
++ (NSDictionary *)serialize:(DBSHARINGUserFileMembershipInfo *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"access_type"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessType];
+  jsonDict[@"user"] = [DBSHARINGUserInfoSerializer serialize:valueObj.user];
+  if (valueObj.permissions) {
+    jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem0];
+                                                  }];
+  }
+  if (valueObj.initials) {
+    jsonDict[@"initials"] = valueObj.initials;
+  }
+  jsonDict[@"is_inherited"] = valueObj.isInherited;
+  if (valueObj.timeLastSeen) {
+    jsonDict[@"time_last_seen"] = [DBNSDateSerializer serialize:valueObj.timeLastSeen dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBSHARINGUserFileMembershipInfo *)deserialize:(NSDictionary *)valueDict {
+  DBSHARINGAccessLevel *accessType = [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"access_type"]];
+  DBSHARINGUserInfo *user = [DBSHARINGUserInfoSerializer deserialize:valueDict[@"user"]];
+  NSArray<DBSHARINGMemberPermission *> *permissions =
+      valueDict[@"permissions"] ? [DBArraySerializer deserialize:valueDict[@"permissions"]
+                                                       withBlock:^id(id elem0) {
+                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem0];
+                                                       }]
+                                : nil;
+  NSString *initials = valueDict[@"initials"] ?: nil;
+  NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
+  NSDate *timeLastSeen = valueDict[@"time_last_seen"] ? [DBNSDateSerializer deserialize:valueDict[@"time_last_seen"]
+                                                                             dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                                                      : nil;
+
+  return [[DBSHARINGUserFileMembershipInfo alloc] initWithAccessType:accessType
+                                                                user:user
+                                                         permissions:permissions
+                                                            initials:initials
+                                                         isInherited:isInherited
+                                                        timeLastSeen:timeLastSeen];
+}
+
+@end
+
+#import "DBSHARINGUserInfo.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBSHARINGUserInfo
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAccountId:(NSString *)accountId
+                         sameTeam:(NSNumber *)sameTeam
+                     teamMemberId:(NSString *)teamMemberId {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
+  [DBStoneValidators nonnullValidator:nil](sameTeam);
+
+  self = [super init];
+  if (self) {
+    _accountId = accountId;
+    _sameTeam = sameTeam;
+    _teamMemberId = teamMemberId;
+  }
+  return self;
+}
+
+- (instancetype)initWithAccountId:(NSString *)accountId sameTeam:(NSNumber *)sameTeam {
+  return [self initWithAccountId:accountId sameTeam:sameTeam teamMemberId:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBSHARINGUserInfoSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBSHARINGUserInfoSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBSHARINGUserInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.accountId hash];
+  result = prime * result + [self.sameTeam hash];
+  if (self.teamMemberId) {
+    result = prime * result + [self.teamMemberId hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUserInfo:other];
+}
+
+- (BOOL)isEqualToUserInfo:(DBSHARINGUserInfo *)anUserInfo {
+  if (self == anUserInfo) {
+    return YES;
+  }
+  if (![self.accountId isEqual:anUserInfo.accountId]) {
+    return NO;
+  }
+  if (![self.sameTeam isEqual:anUserInfo.sameTeam]) {
+    return NO;
+  }
+  if (self.teamMemberId) {
+    if (![self.teamMemberId isEqual:anUserInfo.teamMemberId]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBSHARINGUserInfoSerializer
+
++ (NSDictionary *)serialize:(DBSHARINGUserInfo *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"account_id"] = valueObj.accountId;
+  jsonDict[@"same_team"] = valueObj.sameTeam;
+  if (valueObj.teamMemberId) {
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBSHARINGUserInfo *)deserialize:(NSDictionary *)valueDict {
+  NSString *accountId = valueDict[@"account_id"];
+  NSNumber *sameTeam = valueDict[@"same_team"];
+  NSString *teamMemberId = valueDict[@"team_member_id"] ?: nil;
+
+  return [[DBSHARINGUserInfo alloc] initWithAccountId:accountId sameTeam:sameTeam teamMemberId:teamMemberId];
 }
 
 @end

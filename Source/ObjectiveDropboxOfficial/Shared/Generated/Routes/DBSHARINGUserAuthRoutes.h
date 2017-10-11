@@ -100,6 +100,7 @@
 @class DBSHARINGUnshareFolderError;
 @class DBSHARINGUpdateFolderMemberError;
 @class DBSHARINGUpdateFolderPolicyError;
+@class DBSHARINGUserFileMembershipInfo;
 @class DBSHARINGUserMembershipInfo;
 @class DBSHARINGViewerInfoPolicy;
 @class DBSHARINGVisibility;

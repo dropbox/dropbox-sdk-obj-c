@@ -6160,6 +6160,7 @@
 @end
 
 #import "DBFILESListFolderArg.h"
+#import "DBFILESSharedLink.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -6175,7 +6176,8 @@
                      includeDeleted:(NSNumber *)includeDeleted
     includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
               includeMountedFolders:(NSNumber *)includeMountedFolders
-                              limit:(NSNumber *)limit {
+                              limit:(NSNumber *)limit
+                         sharedLink:(DBFILESSharedLink *)sharedLink {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
@@ -6191,6 +6193,7 @@
     _includeHasExplicitSharedMembers = includeHasExplicitSharedMembers ?: @NO;
     _includeMountedFolders = includeMountedFolders ?: @YES;
     _limit = limit;
+    _sharedLink = sharedLink;
   }
   return self;
 }
@@ -6202,7 +6205,8 @@
                        includeDeleted:nil
       includeHasExplicitSharedMembers:nil
                 includeMountedFolders:nil
-                                limit:nil];
+                                limit:nil
+                           sharedLink:nil];
 }
 
 #pragma mark - Serialization methods
@@ -6243,6 +6247,9 @@
   result = prime * result + [self.includeMountedFolders hash];
   if (self.limit) {
     result = prime * result + [self.limit hash];
+  }
+  if (self.sharedLink) {
+    result = prime * result + [self.sharedLink hash];
   }
 
   return prime * result;
@@ -6287,6 +6294,11 @@
       return NO;
     }
   }
+  if (self.sharedLink) {
+    if (![self.sharedLink isEqual:aListFolderArg.sharedLink]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -6308,6 +6320,9 @@
   if (valueObj.limit) {
     jsonDict[@"limit"] = valueObj.limit;
   }
+  if (valueObj.sharedLink) {
+    jsonDict[@"shared_link"] = [DBFILESSharedLinkSerializer serialize:valueObj.sharedLink];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -6320,6 +6335,8 @@
   NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"] ?: @NO;
   NSNumber *includeMountedFolders = valueDict[@"include_mounted_folders"] ?: @YES;
   NSNumber *limit = valueDict[@"limit"] ?: nil;
+  DBFILESSharedLink *sharedLink =
+      valueDict[@"shared_link"] ? [DBFILESSharedLinkSerializer deserialize:valueDict[@"shared_link"]] : nil;
 
   return [[DBFILESListFolderArg alloc] initWithPath:path
                                           recursive:recursive
@@ -6327,7 +6344,8 @@
                                      includeDeleted:includeDeleted
                     includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
                               includeMountedFolders:includeMountedFolders
-                                              limit:limit];
+                                              limit:limit
+                                         sharedLink:sharedLink];
 }
 
 @end
@@ -7388,6 +7406,7 @@
 @end
 
 #import "DBFILESListRevisionsArg.h"
+#import "DBFILESListRevisionsMode.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -7397,7 +7416,7 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithPath:(NSString *)path limit:(NSNumber *)limit {
+- (instancetype)initWithPath:(NSString *)path mode:(DBFILESListRevisionsMode *)mode limit:(NSNumber *)limit {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
@@ -7406,13 +7425,14 @@
   self = [super init];
   if (self) {
     _path = path;
+    _mode = mode ?: [[DBFILESListRevisionsMode alloc] initWithPath];
     _limit = limit ?: @(10);
   }
   return self;
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-  return [self initWithPath:path limit:nil];
+  return [self initWithPath:path mode:nil limit:nil];
 }
 
 #pragma mark - Serialization methods
@@ -7446,6 +7466,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
+  result = prime * result + [self.mode hash];
   result = prime * result + [self.limit hash];
 
   return prime * result;
@@ -7470,6 +7491,9 @@
   if (![self.path isEqual:aListRevisionsArg.path]) {
     return NO;
   }
+  if (![self.mode isEqual:aListRevisionsArg.mode]) {
+    return NO;
+  }
   if (![self.limit isEqual:aListRevisionsArg.limit]) {
     return NO;
   }
@@ -7486,6 +7510,7 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"path"] = valueObj.path;
+  jsonDict[@"mode"] = [DBFILESListRevisionsModeSerializer serialize:valueObj.mode];
   jsonDict[@"limit"] = valueObj.limit;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
@@ -7493,9 +7518,12 @@
 
 + (DBFILESListRevisionsArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
+  DBFILESListRevisionsMode *mode = valueDict[@"mode"]
+                                       ? [DBFILESListRevisionsModeSerializer deserialize:valueDict[@"mode"]]
+                                       : [[DBFILESListRevisionsMode alloc] initWithPath];
   NSNumber *limit = valueDict[@"limit"] ?: @(10);
 
-  return [[DBFILESListRevisionsArg alloc] initWithPath:path limit:limit];
+  return [[DBFILESListRevisionsArg alloc] initWithPath:path mode:mode limit:limit];
 }
 
 @end
@@ -7660,6 +7688,179 @@
     return [[DBFILESListRevisionsError alloc] initWithOther];
   } else {
     return [[DBFILESListRevisionsError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBFILESListRevisionsMode.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESListRevisionsMode
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPath {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESListRevisionsModePath;
+  }
+  return self;
+}
+
+- (instancetype)initWithId_ {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESListRevisionsModeId_;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESListRevisionsModeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPath {
+  return _tag == DBFILESListRevisionsModePath;
+}
+
+- (BOOL)isId_ {
+  return _tag == DBFILESListRevisionsModeId_;
+}
+
+- (BOOL)isOther {
+  return _tag == DBFILESListRevisionsModeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBFILESListRevisionsModePath:
+    return @"DBFILESListRevisionsModePath";
+  case DBFILESListRevisionsModeId_:
+    return @"DBFILESListRevisionsModeId_";
+  case DBFILESListRevisionsModeOther:
+    return @"DBFILESListRevisionsModeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBFILESListRevisionsModeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBFILESListRevisionsModeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESListRevisionsModeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBFILESListRevisionsModePath:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESListRevisionsModeId_:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESListRevisionsModeOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListRevisionsMode:other];
+}
+
+- (BOOL)isEqualToListRevisionsMode:(DBFILESListRevisionsMode *)aListRevisionsMode {
+  if (self == aListRevisionsMode) {
+    return YES;
+  }
+  if (self.tag != aListRevisionsMode.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBFILESListRevisionsModePath:
+    return [[self tagName] isEqual:[aListRevisionsMode tagName]];
+  case DBFILESListRevisionsModeId_:
+    return [[self tagName] isEqual:[aListRevisionsMode tagName]];
+  case DBFILESListRevisionsModeOther:
+    return [[self tagName] isEqual:[aListRevisionsMode tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESListRevisionsModeSerializer
+
++ (NSDictionary *)serialize:(DBFILESListRevisionsMode *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPath]) {
+    jsonDict[@".tag"] = @"path";
+  } else if ([valueObj isId_]) {
+    jsonDict[@".tag"] = @"id";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESListRevisionsMode *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"path"]) {
+    return [[DBFILESListRevisionsMode alloc] initWithPath];
+  } else if ([tag isEqualToString:@"id"]) {
+    return [[DBFILESListRevisionsMode alloc] initWithId_];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESListRevisionsMode alloc] initWithOther];
+  } else {
+    return [[DBFILESListRevisionsMode alloc] initWithOther];
   }
 }
 
@@ -13154,6 +13355,122 @@
   NSNumber *start = valueDict[@"start"];
 
   return [[DBFILESSearchResult alloc] initWithMatches:matches more:more start:start];
+}
+
+@end
+
+#import "DBFILESSharedLink.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESSharedLink
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUrl:(NSString *)url password:(NSString *)password {
+  [DBStoneValidators nonnullValidator:nil](url);
+
+  self = [super init];
+  if (self) {
+    _url = url;
+    _password = password;
+  }
+  return self;
+}
+
+- (instancetype)initWithUrl:(NSString *)url {
+  return [self initWithUrl:url password:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBFILESSharedLinkSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBFILESSharedLinkSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESSharedLinkSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.url hash];
+  if (self.password) {
+    result = prime * result + [self.password hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharedLink:other];
+}
+
+- (BOOL)isEqualToSharedLink:(DBFILESSharedLink *)aSharedLink {
+  if (self == aSharedLink) {
+    return YES;
+  }
+  if (![self.url isEqual:aSharedLink.url]) {
+    return NO;
+  }
+  if (self.password) {
+    if (![self.password isEqual:aSharedLink.password]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESSharedLinkSerializer
+
++ (NSDictionary *)serialize:(DBFILESSharedLink *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"url"] = valueObj.url;
+  if (valueObj.password) {
+    jsonDict[@"password"] = valueObj.password;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESSharedLink *)deserialize:(NSDictionary *)valueDict {
+  NSString *url = valueDict[@"url"];
+  NSString *password = valueDict[@"password"] ?: nil;
+
+  return [[DBFILESSharedLink alloc] initWithUrl:url password:password];
 }
 
 @end

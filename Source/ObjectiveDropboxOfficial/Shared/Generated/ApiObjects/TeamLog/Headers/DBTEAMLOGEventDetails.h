@@ -129,6 +129,7 @@
 @class DBTEAMLOGOpenNoteSharedDetails;
 @class DBTEAMLOGPaperAdminExportStartDetails;
 @class DBTEAMLOGPaperChangeDeploymentPolicyDetails;
+@class DBTEAMLOGPaperChangeMemberLinkPolicyDetails;
 @class DBTEAMLOGPaperChangeMemberPolicyDetails;
 @class DBTEAMLOGPaperChangePolicyDetails;
 @class DBTEAMLOGPaperContentAddMemberDetails;
@@ -243,6 +244,7 @@
 @class DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails;
 @class DBTEAMLOGSmartSyncNotOptOutDetails;
 @class DBTEAMLOGSmartSyncOptOutDetails;
+@class DBTEAMLOGSsoAddCertDetails;
 @class DBTEAMLOGSsoAddLoginUrlDetails;
 @class DBTEAMLOGSsoAddLogoutUrlDetails;
 @class DBTEAMLOGSsoChangeCertDetails;
@@ -251,6 +253,7 @@
 @class DBTEAMLOGSsoChangePolicyDetails;
 @class DBTEAMLOGSsoChangeSamlIdentityModeDetails;
 @class DBTEAMLOGSsoLoginFailDetails;
+@class DBTEAMLOGSsoRemoveCertDetails;
 @class DBTEAMLOGSsoRemoveLoginUrlDetails;
 @class DBTEAMLOGSsoRemoveLogoutUrlDetails;
 @class DBTEAMLOGTeamActivityCreateReportDetails;
@@ -262,6 +265,7 @@
 @class DBTEAMLOGTeamMergeFromDetails;
 @class DBTEAMLOGTeamMergeToDetails;
 @class DBTEAMLOGTeamProfileAddLogoDetails;
+@class DBTEAMLOGTeamProfileChangeDefaultLanguageDetails;
 @class DBTEAMLOGTeamProfileChangeLogoDetails;
 @class DBTEAMLOGTeamProfileChangeNameDetails;
 @class DBTEAMLOGTeamProfileRemoveLogoDetails;
@@ -910,6 +914,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// Made a file/folder visible only to team members with the link.
   DBTEAMLOGEventDetailsShmodelVisibilityTeamOnlyDetails,
 
+  /// Added the X.509 certificate for SSO.
+  DBTEAMLOGEventDetailsSsoAddCertDetails,
+
   /// Added sign-in URL for SSO.
   DBTEAMLOGEventDetailsSsoAddLoginUrlDetails,
 
@@ -927,6 +934,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// Changed the SAML identity mode for SSO.
   DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails,
+
+  /// Removed the X.509 certificate for SSO.
+  DBTEAMLOGEventDetailsSsoRemoveCertDetails,
 
   /// Removed the sign-in URL for SSO.
   DBTEAMLOGEventDetailsSsoRemoveLoginUrlDetails,
@@ -1044,6 +1054,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// to specific members of the team.
   DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails,
 
+  /// Changed whether non team members can view Paper documents using a link.
+  DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails,
+
   /// Changed whether team members can share Paper documents externally (i.e.
   /// outside the team), and if so, whether they should be accessible only by
   /// team members or anyone by default.
@@ -1097,6 +1110,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// Added a team logo to be displayed on shared link headers.
   DBTEAMLOGEventDetailsTeamProfileAddLogoDetails,
+
+  /// Changed the default language for the team.
+  DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails,
 
   /// Changed the team logo to be displayed on shared link headers.
   DBTEAMLOGEventDetailsTeamProfileChangeLogoDetails,
@@ -2126,6 +2142,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGShmodelVisibilityTeamOnlyDetails *shmodelVisibilityTeamOnlyDetails;
 
+/// Added the X.509 certificate for SSO. @note Ensure the `isSsoAddCertDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGSsoAddCertDetails *ssoAddCertDetails;
+
 /// Added sign-in URL for SSO. @note Ensure the `isSsoAddLoginUrlDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoAddLoginUrlDetails *ssoAddLoginUrlDetails;
@@ -2154,6 +2175,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// `isSsoChangeSamlIdentityModeDetails` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangeSamlIdentityModeDetails *ssoChangeSamlIdentityModeDetails;
+
+/// Removed the X.509 certificate for SSO. @note Ensure the
+/// `isSsoRemoveCertDetails` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGSsoRemoveCertDetails *ssoRemoveCertDetails;
 
 /// Removed the sign-in URL for SSO. @note Ensure the
 /// `isSsoRemoveLoginUrlDetails` method returns true before accessing, otherwise
@@ -2349,6 +2375,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperChangeDeploymentPolicyDetails *paperChangeDeploymentPolicyDetails;
 
+/// Changed whether non team members can view Paper documents using a link.
+/// @note Ensure the `isPaperChangeMemberLinkPolicyDetails` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperChangeMemberLinkPolicyDetails *paperChangeMemberLinkPolicyDetails;
+
 /// Changed whether team members can share Paper documents externally (i.e.
 /// outside the team), and if so, whether they should be accessible only by team
 /// members or anyone by default. @note Ensure the
@@ -2432,6 +2463,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// `isTeamProfileAddLogoDetails` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamProfileAddLogoDetails *teamProfileAddLogoDetails;
+
+/// Changed the default language for the team. @note Ensure the
+/// `isTeamProfileChangeDefaultLanguageDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly)
+    DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *teamProfileChangeDefaultLanguageDetails;
 
 /// Changed the team logo to be displayed on shared link headers. @note Ensure
 /// the `isTeamProfileChangeLogoDetails` method returns true before accessing,
@@ -5151,6 +5188,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
     (DBTEAMLOGShmodelVisibilityTeamOnlyDetails *)shmodelVisibilityTeamOnlyDetails;
 
 ///
+/// Initializes union class with tag state of "sso_add_cert_details".
+///
+/// Description of the "sso_add_cert_details" tag state: Added the X.509
+/// certificate for SSO.
+///
+/// @param ssoAddCertDetails Added the X.509 certificate for SSO.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSsoAddCertDetails:(DBTEAMLOGSsoAddCertDetails *)ssoAddCertDetails;
+
+///
 /// Initializes union class with tag state of "sso_add_login_url_details".
 ///
 /// Description of the "sso_add_login_url_details" tag state: Added sign-in URL
@@ -5224,6 +5273,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithSsoChangeSamlIdentityModeDetails:
     (DBTEAMLOGSsoChangeSamlIdentityModeDetails *)ssoChangeSamlIdentityModeDetails;
+
+///
+/// Initializes union class with tag state of "sso_remove_cert_details".
+///
+/// Description of the "sso_remove_cert_details" tag state: Removed the X.509
+/// certificate for SSO.
+///
+/// @param ssoRemoveCertDetails Removed the X.509 certificate for SSO.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSsoRemoveCertDetails:(DBTEAMLOGSsoRemoveCertDetails *)ssoRemoveCertDetails;
 
 ///
 /// Initializes union class with tag state of "sso_remove_login_url_details".
@@ -5731,6 +5792,21 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Initializes union class with tag state of
+/// "paper_change_member_link_policy_details".
+///
+/// Description of the "paper_change_member_link_policy_details" tag state:
+/// Changed whether non team members can view Paper documents using a link.
+///
+/// @param paperChangeMemberLinkPolicyDetails Changed whether non team members
+/// can view Paper documents using a link.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperChangeMemberLinkPolicyDetails:
+    (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)paperChangeMemberLinkPolicyDetails;
+
+///
+/// Initializes union class with tag state of
 /// "paper_change_member_policy_details".
 ///
 /// Description of the "paper_change_member_policy_details" tag state: Changed
@@ -5951,6 +6027,21 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTeamProfileAddLogoDetails:(DBTEAMLOGTeamProfileAddLogoDetails *)teamProfileAddLogoDetails;
+
+///
+/// Initializes union class with tag state of
+/// "team_profile_change_default_language_details".
+///
+/// Description of the "team_profile_change_default_language_details" tag state:
+/// Changed the default language for the team.
+///
+/// @param teamProfileChangeDefaultLanguageDetails Changed the default language
+/// for the team.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamProfileChangeDefaultLanguageDetails:
+    (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)teamProfileChangeDefaultLanguageDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -8695,6 +8786,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "sso_add_cert_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `ssoAddCertDetails` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "sso_add_cert_details".
+///
+- (BOOL)isSsoAddCertDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "sso_add_login_url_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -8770,6 +8873,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "sso_change_saml_identity_mode_details".
 ///
 - (BOOL)isSsoChangeSamlIdentityModeDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "sso_remove_cert_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `ssoRemoveCertDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "sso_remove_cert_details".
+///
+- (BOOL)isSsoRemoveCertDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -9215,6 +9331,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "paper_change_member_link_policy_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperChangeMemberLinkPolicyDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_change_member_link_policy_details".
+///
+- (BOOL)isPaperChangeMemberLinkPolicyDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "paper_change_member_policy_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -9407,6 +9536,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "team_profile_add_logo_details".
 ///
 - (BOOL)isTeamProfileAddLogoDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_profile_change_default_language_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamProfileChangeDefaultLanguageDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_profile_change_default_language_details".
+///
+- (BOOL)isTeamProfileChangeDefaultLanguageDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

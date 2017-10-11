@@ -7399,8 +7399,7 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithDomainNames:(NSArray<NSString *> *)domainNames
-                 verificationMethod:(NSString *)verificationMethod {
+- (instancetype)initWithDomainNames:(NSArray<NSString *> *)domainNames {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
@@ -7409,13 +7408,8 @@
   self = [super init];
   if (self) {
     _domainNames = domainNames;
-    _verificationMethod = verificationMethod;
   }
   return self;
-}
-
-- (instancetype)initWithDomainNames:(NSArray<NSString *> *)domainNames {
-  return [self initWithDomainNames:domainNames verificationMethod:nil];
 }
 
 #pragma mark - Serialization methods
@@ -7449,9 +7443,6 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.domainNames hash];
-  if (self.verificationMethod) {
-    result = prime * result + [self.verificationMethod hash];
-  }
 
   return prime * result;
 }
@@ -7476,11 +7467,6 @@
   if (![self.domainNames isEqual:aDomainVerificationRemoveDomainDetails.domainNames]) {
     return NO;
   }
-  if (self.verificationMethod) {
-    if (![self.verificationMethod isEqual:aDomainVerificationRemoveDomainDetails.verificationMethod]) {
-      return NO;
-    }
-  }
   return YES;
 }
 
@@ -7497,9 +7483,6 @@
                                                  withBlock:^id(id elem0) {
                                                    return elem0;
                                                  }];
-  if (valueObj.verificationMethod) {
-    jsonDict[@"verification_method"] = valueObj.verificationMethod;
-  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -7509,10 +7492,8 @@
                                                           withBlock:^id(id elem0) {
                                                             return elem0;
                                                           }];
-  NSString *verificationMethod = valueDict[@"verification_method"] ?: nil;
 
-  return [[DBTEAMLOGDomainVerificationRemoveDomainDetails alloc] initWithDomainNames:domainNames
-                                                                  verificationMethod:verificationMethod];
+  return [[DBTEAMLOGDomainVerificationRemoveDomainDetails alloc] initWithDomainNames:domainNames];
 }
 
 @end
@@ -9316,6 +9297,7 @@
 #import "DBTEAMLOGOpenNoteSharedDetails.h"
 #import "DBTEAMLOGPaperAdminExportStartDetails.h"
 #import "DBTEAMLOGPaperChangeDeploymentPolicyDetails.h"
+#import "DBTEAMLOGPaperChangeMemberLinkPolicyDetails.h"
 #import "DBTEAMLOGPaperChangeMemberPolicyDetails.h"
 #import "DBTEAMLOGPaperChangePolicyDetails.h"
 #import "DBTEAMLOGPaperContentAddMemberDetails.h"
@@ -9430,6 +9412,7 @@
 #import "DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails.h"
 #import "DBTEAMLOGSmartSyncNotOptOutDetails.h"
 #import "DBTEAMLOGSmartSyncOptOutDetails.h"
+#import "DBTEAMLOGSsoAddCertDetails.h"
 #import "DBTEAMLOGSsoAddLoginUrlDetails.h"
 #import "DBTEAMLOGSsoAddLogoutUrlDetails.h"
 #import "DBTEAMLOGSsoChangeCertDetails.h"
@@ -9438,6 +9421,7 @@
 #import "DBTEAMLOGSsoChangePolicyDetails.h"
 #import "DBTEAMLOGSsoChangeSamlIdentityModeDetails.h"
 #import "DBTEAMLOGSsoLoginFailDetails.h"
+#import "DBTEAMLOGSsoRemoveCertDetails.h"
 #import "DBTEAMLOGSsoRemoveLoginUrlDetails.h"
 #import "DBTEAMLOGSsoRemoveLogoutUrlDetails.h"
 #import "DBTEAMLOGTeamActivityCreateReportDetails.h"
@@ -9449,6 +9433,7 @@
 #import "DBTEAMLOGTeamMergeFromDetails.h"
 #import "DBTEAMLOGTeamMergeToDetails.h"
 #import "DBTEAMLOGTeamProfileAddLogoDetails.h"
+#import "DBTEAMLOGTeamProfileChangeDefaultLanguageDetails.h"
 #import "DBTEAMLOGTeamProfileChangeLogoDetails.h"
 #import "DBTEAMLOGTeamProfileChangeNameDetails.h"
 #import "DBTEAMLOGTeamProfileRemoveLogoDetails.h"
@@ -9669,12 +9654,14 @@
 @synthesize shmodelVisibilityPasswordDetails = _shmodelVisibilityPasswordDetails;
 @synthesize shmodelVisibilityPublicDetails = _shmodelVisibilityPublicDetails;
 @synthesize shmodelVisibilityTeamOnlyDetails = _shmodelVisibilityTeamOnlyDetails;
+@synthesize ssoAddCertDetails = _ssoAddCertDetails;
 @synthesize ssoAddLoginUrlDetails = _ssoAddLoginUrlDetails;
 @synthesize ssoAddLogoutUrlDetails = _ssoAddLogoutUrlDetails;
 @synthesize ssoChangeCertDetails = _ssoChangeCertDetails;
 @synthesize ssoChangeLoginUrlDetails = _ssoChangeLoginUrlDetails;
 @synthesize ssoChangeLogoutUrlDetails = _ssoChangeLogoutUrlDetails;
 @synthesize ssoChangeSamlIdentityModeDetails = _ssoChangeSamlIdentityModeDetails;
+@synthesize ssoRemoveCertDetails = _ssoRemoveCertDetails;
 @synthesize ssoRemoveLoginUrlDetails = _ssoRemoveLoginUrlDetails;
 @synthesize ssoRemoveLogoutUrlDetails = _ssoRemoveLogoutUrlDetails;
 @synthesize teamFolderChangeStatusDetails = _teamFolderChangeStatusDetails;
@@ -9709,6 +9696,7 @@
 @synthesize microsoftOfficeAddinChangePolicyDetails = _microsoftOfficeAddinChangePolicyDetails;
 @synthesize networkControlChangePolicyDetails = _networkControlChangePolicyDetails;
 @synthesize paperChangeDeploymentPolicyDetails = _paperChangeDeploymentPolicyDetails;
+@synthesize paperChangeMemberLinkPolicyDetails = _paperChangeMemberLinkPolicyDetails;
 @synthesize paperChangeMemberPolicyDetails = _paperChangeMemberPolicyDetails;
 @synthesize paperChangePolicyDetails = _paperChangePolicyDetails;
 @synthesize permanentDeleteChangePolicyDetails = _permanentDeleteChangePolicyDetails;
@@ -9724,6 +9712,7 @@
 @synthesize webSessionsChangeFixedLengthPolicyDetails = _webSessionsChangeFixedLengthPolicyDetails;
 @synthesize webSessionsChangeIdleLengthPolicyDetails = _webSessionsChangeIdleLengthPolicyDetails;
 @synthesize teamProfileAddLogoDetails = _teamProfileAddLogoDetails;
+@synthesize teamProfileChangeDefaultLanguageDetails = _teamProfileChangeDefaultLanguageDetails;
 @synthesize teamProfileChangeLogoDetails = _teamProfileChangeLogoDetails;
 @synthesize teamProfileChangeNameDetails = _teamProfileChangeNameDetails;
 @synthesize teamProfileRemoveLogoDetails = _teamProfileRemoveLogoDetails;
@@ -11648,6 +11637,15 @@
   return self;
 }
 
+- (instancetype)initWithSsoAddCertDetails:(DBTEAMLOGSsoAddCertDetails *)ssoAddCertDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsSsoAddCertDetails;
+    _ssoAddCertDetails = ssoAddCertDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithSsoAddLoginUrlDetails:(DBTEAMLOGSsoAddLoginUrlDetails *)ssoAddLoginUrlDetails {
   self = [super init];
   if (self) {
@@ -11699,6 +11697,15 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails;
     _ssoChangeSamlIdentityModeDetails = ssoChangeSamlIdentityModeDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithSsoRemoveCertDetails:(DBTEAMLOGSsoRemoveCertDetails *)ssoRemoveCertDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsSsoRemoveCertDetails;
+    _ssoRemoveCertDetails = ssoRemoveCertDetails;
   }
   return self;
 }
@@ -12035,6 +12042,16 @@
   return self;
 }
 
+- (instancetype)initWithPaperChangeMemberLinkPolicyDetails:
+    (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)paperChangeMemberLinkPolicyDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails;
+    _paperChangeMemberLinkPolicyDetails = paperChangeMemberLinkPolicyDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithPaperChangeMemberPolicyDetails:
     (DBTEAMLOGPaperChangeMemberPolicyDetails *)paperChangeMemberPolicyDetails {
   self = [super init];
@@ -12175,6 +12192,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsTeamProfileAddLogoDetails;
     _teamProfileAddLogoDetails = teamProfileAddLogoDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamProfileChangeDefaultLanguageDetails:
+    (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)teamProfileChangeDefaultLanguageDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails;
+    _teamProfileChangeDefaultLanguageDetails = teamProfileChangeDefaultLanguageDetails;
   }
   return self;
 }
@@ -14085,6 +14112,14 @@
   return _shmodelVisibilityTeamOnlyDetails;
 }
 
+- (DBTEAMLOGSsoAddCertDetails *)ssoAddCertDetails {
+  if (![self isSsoAddCertDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsSsoAddCertDetails, but was %@.", [self tagName]];
+  }
+  return _ssoAddCertDetails;
+}
+
 - (DBTEAMLOGSsoAddLoginUrlDetails *)ssoAddLoginUrlDetails {
   if (![self isSsoAddLoginUrlDetails]) {
     [NSException
@@ -14136,6 +14171,14 @@
                        [self tagName]];
   }
   return _ssoChangeSamlIdentityModeDetails;
+}
+
+- (DBTEAMLOGSsoRemoveCertDetails *)ssoRemoveCertDetails {
+  if (![self isSsoRemoveCertDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsSsoRemoveCertDetails, but was %@.", [self tagName]];
+  }
+  return _ssoRemoveCertDetails;
 }
 
 - (DBTEAMLOGSsoRemoveLoginUrlDetails *)ssoRemoveLoginUrlDetails {
@@ -14455,6 +14498,15 @@
   return _paperChangeDeploymentPolicyDetails;
 }
 
+- (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)paperChangeMemberLinkPolicyDetails {
+  if (![self isPaperChangeMemberLinkPolicyDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _paperChangeMemberLinkPolicyDetails;
+}
+
 - (DBTEAMLOGPaperChangeMemberPolicyDetails *)paperChangeMemberPolicyDetails {
   if (![self isPaperChangeMemberPolicyDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -14590,6 +14642,16 @@
         format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamProfileAddLogoDetails, but was %@.", [self tagName]];
   }
   return _teamProfileAddLogoDetails;
+}
+
+- (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)teamProfileChangeDefaultLanguageDetails {
+  if (![self isTeamProfileChangeDefaultLanguageDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails, but was %@.",
+               [self tagName]];
+  }
+  return _teamProfileChangeDefaultLanguageDetails;
 }
 
 - (DBTEAMLOGTeamProfileChangeLogoDetails *)teamProfileChangeLogoDetails {
@@ -15495,6 +15557,10 @@
   return _tag == DBTEAMLOGEventDetailsShmodelVisibilityTeamOnlyDetails;
 }
 
+- (BOOL)isSsoAddCertDetails {
+  return _tag == DBTEAMLOGEventDetailsSsoAddCertDetails;
+}
+
 - (BOOL)isSsoAddLoginUrlDetails {
   return _tag == DBTEAMLOGEventDetailsSsoAddLoginUrlDetails;
 }
@@ -15517,6 +15583,10 @@
 
 - (BOOL)isSsoChangeSamlIdentityModeDetails {
   return _tag == DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails;
+}
+
+- (BOOL)isSsoRemoveCertDetails {
+  return _tag == DBTEAMLOGEventDetailsSsoRemoveCertDetails;
 }
 
 - (BOOL)isSsoRemoveLoginUrlDetails {
@@ -15655,6 +15725,10 @@
   return _tag == DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails;
 }
 
+- (BOOL)isPaperChangeMemberLinkPolicyDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails;
+}
+
 - (BOOL)isPaperChangeMemberPolicyDetails {
   return _tag == DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails;
 }
@@ -15713,6 +15787,10 @@
 
 - (BOOL)isTeamProfileAddLogoDetails {
   return _tag == DBTEAMLOGEventDetailsTeamProfileAddLogoDetails;
+}
+
+- (BOOL)isTeamProfileChangeDefaultLanguageDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails;
 }
 
 - (BOOL)isTeamProfileChangeLogoDetails {
@@ -16167,6 +16245,8 @@
     return @"DBTEAMLOGEventDetailsShmodelVisibilityPublicDetails";
   case DBTEAMLOGEventDetailsShmodelVisibilityTeamOnlyDetails:
     return @"DBTEAMLOGEventDetailsShmodelVisibilityTeamOnlyDetails";
+  case DBTEAMLOGEventDetailsSsoAddCertDetails:
+    return @"DBTEAMLOGEventDetailsSsoAddCertDetails";
   case DBTEAMLOGEventDetailsSsoAddLoginUrlDetails:
     return @"DBTEAMLOGEventDetailsSsoAddLoginUrlDetails";
   case DBTEAMLOGEventDetailsSsoAddLogoutUrlDetails:
@@ -16179,6 +16259,8 @@
     return @"DBTEAMLOGEventDetailsSsoChangeLogoutUrlDetails";
   case DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails:
     return @"DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails";
+  case DBTEAMLOGEventDetailsSsoRemoveCertDetails:
+    return @"DBTEAMLOGEventDetailsSsoRemoveCertDetails";
   case DBTEAMLOGEventDetailsSsoRemoveLoginUrlDetails:
     return @"DBTEAMLOGEventDetailsSsoRemoveLoginUrlDetails";
   case DBTEAMLOGEventDetailsSsoRemoveLogoutUrlDetails:
@@ -16247,6 +16329,8 @@
     return @"DBTEAMLOGEventDetailsNetworkControlChangePolicyDetails";
   case DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails:
     return @"DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails";
+  case DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails:
+    return @"DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails";
   case DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails:
     return @"DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails";
   case DBTEAMLOGEventDetailsPaperChangePolicyDetails:
@@ -16277,6 +16361,8 @@
     return @"DBTEAMLOGEventDetailsWebSessionsChangeIdleLengthPolicyDetails";
   case DBTEAMLOGEventDetailsTeamProfileAddLogoDetails:
     return @"DBTEAMLOGEventDetailsTeamProfileAddLogoDetails";
+  case DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails:
+    return @"DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails";
   case DBTEAMLOGEventDetailsTeamProfileChangeLogoDetails:
     return @"DBTEAMLOGEventDetailsTeamProfileChangeLogoDetails";
   case DBTEAMLOGEventDetailsTeamProfileChangeNameDetails:
@@ -16739,6 +16825,8 @@
     result = prime * result + [self.shmodelVisibilityPublicDetails hash];
   case DBTEAMLOGEventDetailsShmodelVisibilityTeamOnlyDetails:
     result = prime * result + [self.shmodelVisibilityTeamOnlyDetails hash];
+  case DBTEAMLOGEventDetailsSsoAddCertDetails:
+    result = prime * result + [self.ssoAddCertDetails hash];
   case DBTEAMLOGEventDetailsSsoAddLoginUrlDetails:
     result = prime * result + [self.ssoAddLoginUrlDetails hash];
   case DBTEAMLOGEventDetailsSsoAddLogoutUrlDetails:
@@ -16751,6 +16839,8 @@
     result = prime * result + [self.ssoChangeLogoutUrlDetails hash];
   case DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails:
     result = prime * result + [self.ssoChangeSamlIdentityModeDetails hash];
+  case DBTEAMLOGEventDetailsSsoRemoveCertDetails:
+    result = prime * result + [self.ssoRemoveCertDetails hash];
   case DBTEAMLOGEventDetailsSsoRemoveLoginUrlDetails:
     result = prime * result + [self.ssoRemoveLoginUrlDetails hash];
   case DBTEAMLOGEventDetailsSsoRemoveLogoutUrlDetails:
@@ -16819,6 +16909,8 @@
     result = prime * result + [self.networkControlChangePolicyDetails hash];
   case DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails:
     result = prime * result + [self.paperChangeDeploymentPolicyDetails hash];
+  case DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails:
+    result = prime * result + [self.paperChangeMemberLinkPolicyDetails hash];
   case DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails:
     result = prime * result + [self.paperChangeMemberPolicyDetails hash];
   case DBTEAMLOGEventDetailsPaperChangePolicyDetails:
@@ -16849,6 +16941,8 @@
     result = prime * result + [self.webSessionsChangeIdleLengthPolicyDetails hash];
   case DBTEAMLOGEventDetailsTeamProfileAddLogoDetails:
     result = prime * result + [self.teamProfileAddLogoDetails hash];
+  case DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails:
+    result = prime * result + [self.teamProfileChangeDefaultLanguageDetails hash];
   case DBTEAMLOGEventDetailsTeamProfileChangeLogoDetails:
     result = prime * result + [self.teamProfileChangeLogoDetails hash];
   case DBTEAMLOGEventDetailsTeamProfileChangeNameDetails:
@@ -17314,6 +17408,8 @@
     return [self.shmodelVisibilityPublicDetails isEqual:anEventDetails.shmodelVisibilityPublicDetails];
   case DBTEAMLOGEventDetailsShmodelVisibilityTeamOnlyDetails:
     return [self.shmodelVisibilityTeamOnlyDetails isEqual:anEventDetails.shmodelVisibilityTeamOnlyDetails];
+  case DBTEAMLOGEventDetailsSsoAddCertDetails:
+    return [self.ssoAddCertDetails isEqual:anEventDetails.ssoAddCertDetails];
   case DBTEAMLOGEventDetailsSsoAddLoginUrlDetails:
     return [self.ssoAddLoginUrlDetails isEqual:anEventDetails.ssoAddLoginUrlDetails];
   case DBTEAMLOGEventDetailsSsoAddLogoutUrlDetails:
@@ -17326,6 +17422,8 @@
     return [self.ssoChangeLogoutUrlDetails isEqual:anEventDetails.ssoChangeLogoutUrlDetails];
   case DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails:
     return [self.ssoChangeSamlIdentityModeDetails isEqual:anEventDetails.ssoChangeSamlIdentityModeDetails];
+  case DBTEAMLOGEventDetailsSsoRemoveCertDetails:
+    return [self.ssoRemoveCertDetails isEqual:anEventDetails.ssoRemoveCertDetails];
   case DBTEAMLOGEventDetailsSsoRemoveLoginUrlDetails:
     return [self.ssoRemoveLoginUrlDetails isEqual:anEventDetails.ssoRemoveLoginUrlDetails];
   case DBTEAMLOGEventDetailsSsoRemoveLogoutUrlDetails:
@@ -17404,6 +17502,8 @@
     return [self.networkControlChangePolicyDetails isEqual:anEventDetails.networkControlChangePolicyDetails];
   case DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails:
     return [self.paperChangeDeploymentPolicyDetails isEqual:anEventDetails.paperChangeDeploymentPolicyDetails];
+  case DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails:
+    return [self.paperChangeMemberLinkPolicyDetails isEqual:anEventDetails.paperChangeMemberLinkPolicyDetails];
   case DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails:
     return [self.paperChangeMemberPolicyDetails isEqual:anEventDetails.paperChangeMemberPolicyDetails];
   case DBTEAMLOGEventDetailsPaperChangePolicyDetails:
@@ -17436,6 +17536,9 @@
         [self.webSessionsChangeIdleLengthPolicyDetails isEqual:anEventDetails.webSessionsChangeIdleLengthPolicyDetails];
   case DBTEAMLOGEventDetailsTeamProfileAddLogoDetails:
     return [self.teamProfileAddLogoDetails isEqual:anEventDetails.teamProfileAddLogoDetails];
+  case DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails:
+    return
+        [self.teamProfileChangeDefaultLanguageDetails isEqual:anEventDetails.teamProfileChangeDefaultLanguageDetails];
   case DBTEAMLOGEventDetailsTeamProfileChangeLogoDetails:
     return [self.teamProfileChangeLogoDetails isEqual:anEventDetails.teamProfileChangeLogoDetails];
   case DBTEAMLOGEventDetailsTeamProfileChangeNameDetails:
@@ -18295,6 +18398,10 @@
     jsonDict[@"shmodel_visibility_team_only_details"] = [[DBTEAMLOGShmodelVisibilityTeamOnlyDetailsSerializer
         serialize:valueObj.shmodelVisibilityTeamOnlyDetails] mutableCopy];
     jsonDict[@".tag"] = @"shmodel_visibility_team_only_details";
+  } else if ([valueObj isSsoAddCertDetails]) {
+    jsonDict[@"sso_add_cert_details"] =
+        [[DBTEAMLOGSsoAddCertDetailsSerializer serialize:valueObj.ssoAddCertDetails] mutableCopy];
+    jsonDict[@".tag"] = @"sso_add_cert_details";
   } else if ([valueObj isSsoAddLoginUrlDetails]) {
     jsonDict[@"sso_add_login_url_details"] =
         [[DBTEAMLOGSsoAddLoginUrlDetailsSerializer serialize:valueObj.ssoAddLoginUrlDetails] mutableCopy];
@@ -18319,6 +18426,10 @@
     jsonDict[@"sso_change_saml_identity_mode_details"] = [[DBTEAMLOGSsoChangeSamlIdentityModeDetailsSerializer
         serialize:valueObj.ssoChangeSamlIdentityModeDetails] mutableCopy];
     jsonDict[@".tag"] = @"sso_change_saml_identity_mode_details";
+  } else if ([valueObj isSsoRemoveCertDetails]) {
+    jsonDict[@"sso_remove_cert_details"] =
+        [[DBTEAMLOGSsoRemoveCertDetailsSerializer serialize:valueObj.ssoRemoveCertDetails] mutableCopy];
+    jsonDict[@".tag"] = @"sso_remove_cert_details";
   } else if ([valueObj isSsoRemoveLoginUrlDetails]) {
     jsonDict[@"sso_remove_login_url_details"] =
         [[DBTEAMLOGSsoRemoveLoginUrlDetailsSerializer serialize:valueObj.ssoRemoveLoginUrlDetails] mutableCopy];
@@ -18466,6 +18577,10 @@
     jsonDict[@"paper_change_deployment_policy_details"] = [[DBTEAMLOGPaperChangeDeploymentPolicyDetailsSerializer
         serialize:valueObj.paperChangeDeploymentPolicyDetails] mutableCopy];
     jsonDict[@".tag"] = @"paper_change_deployment_policy_details";
+  } else if ([valueObj isPaperChangeMemberLinkPolicyDetails]) {
+    jsonDict[@"paper_change_member_link_policy_details"] = [[DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer
+        serialize:valueObj.paperChangeMemberLinkPolicyDetails] mutableCopy];
+    jsonDict[@".tag"] = @"paper_change_member_link_policy_details";
   } else if ([valueObj isPaperChangeMemberPolicyDetails]) {
     jsonDict[@"paper_change_member_policy_details"] = [[DBTEAMLOGPaperChangeMemberPolicyDetailsSerializer
         serialize:valueObj.paperChangeMemberPolicyDetails] mutableCopy];
@@ -18528,6 +18643,11 @@
     jsonDict[@"team_profile_add_logo_details"] =
         [[DBTEAMLOGTeamProfileAddLogoDetailsSerializer serialize:valueObj.teamProfileAddLogoDetails] mutableCopy];
     jsonDict[@".tag"] = @"team_profile_add_logo_details";
+  } else if ([valueObj isTeamProfileChangeDefaultLanguageDetails]) {
+    jsonDict[@"team_profile_change_default_language_details"] =
+        [[DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer
+            serialize:valueObj.teamProfileChangeDefaultLanguageDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_profile_change_default_language_details";
   } else if ([valueObj isTeamProfileChangeLogoDetails]) {
     jsonDict[@"team_profile_change_logo_details"] =
         [[DBTEAMLOGTeamProfileChangeLogoDetailsSerializer serialize:valueObj.teamProfileChangeLogoDetails] mutableCopy];
@@ -19402,6 +19522,9 @@
     DBTEAMLOGShmodelVisibilityTeamOnlyDetails *shmodelVisibilityTeamOnlyDetails =
         [DBTEAMLOGShmodelVisibilityTeamOnlyDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithShmodelVisibilityTeamOnlyDetails:shmodelVisibilityTeamOnlyDetails];
+  } else if ([tag isEqualToString:@"sso_add_cert_details"]) {
+    DBTEAMLOGSsoAddCertDetails *ssoAddCertDetails = [DBTEAMLOGSsoAddCertDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithSsoAddCertDetails:ssoAddCertDetails];
   } else if ([tag isEqualToString:@"sso_add_login_url_details"]) {
     DBTEAMLOGSsoAddLoginUrlDetails *ssoAddLoginUrlDetails =
         [DBTEAMLOGSsoAddLoginUrlDetailsSerializer deserialize:valueDict];
@@ -19426,6 +19549,10 @@
     DBTEAMLOGSsoChangeSamlIdentityModeDetails *ssoChangeSamlIdentityModeDetails =
         [DBTEAMLOGSsoChangeSamlIdentityModeDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithSsoChangeSamlIdentityModeDetails:ssoChangeSamlIdentityModeDetails];
+  } else if ([tag isEqualToString:@"sso_remove_cert_details"]) {
+    DBTEAMLOGSsoRemoveCertDetails *ssoRemoveCertDetails =
+        [DBTEAMLOGSsoRemoveCertDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithSsoRemoveCertDetails:ssoRemoveCertDetails];
   } else if ([tag isEqualToString:@"sso_remove_login_url_details"]) {
     DBTEAMLOGSsoRemoveLoginUrlDetails *ssoRemoveLoginUrlDetails =
         [DBTEAMLOGSsoRemoveLoginUrlDetailsSerializer deserialize:valueDict];
@@ -19578,6 +19705,11 @@
         [DBTEAMLOGPaperChangeDeploymentPolicyDetailsSerializer deserialize:valueDict];
     return
         [[DBTEAMLOGEventDetails alloc] initWithPaperChangeDeploymentPolicyDetails:paperChangeDeploymentPolicyDetails];
+  } else if ([tag isEqualToString:@"paper_change_member_link_policy_details"]) {
+    DBTEAMLOGPaperChangeMemberLinkPolicyDetails *paperChangeMemberLinkPolicyDetails =
+        [DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithPaperChangeMemberLinkPolicyDetails:paperChangeMemberLinkPolicyDetails];
   } else if ([tag isEqualToString:@"paper_change_member_policy_details"]) {
     DBTEAMLOGPaperChangeMemberPolicyDetails *paperChangeMemberPolicyDetails =
         [DBTEAMLOGPaperChangeMemberPolicyDetailsSerializer deserialize:valueDict];
@@ -19642,6 +19774,11 @@
     DBTEAMLOGTeamProfileAddLogoDetails *teamProfileAddLogoDetails =
         [DBTEAMLOGTeamProfileAddLogoDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithTeamProfileAddLogoDetails:teamProfileAddLogoDetails];
+  } else if ([tag isEqualToString:@"team_profile_change_default_language_details"]) {
+    DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *teamProfileChangeDefaultLanguageDetails =
+        [DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamProfileChangeDefaultLanguageDetails:teamProfileChangeDefaultLanguageDetails];
   } else if ([tag isEqualToString:@"team_profile_change_logo_details"]) {
     DBTEAMLOGTeamProfileChangeLogoDetails *teamProfileChangeLogoDetails =
         [DBTEAMLOGTeamProfileChangeLogoDetailsSerializer deserialize:valueDict];
@@ -21311,6 +21448,14 @@
   return self;
 }
 
+- (instancetype)initWithSsoAddCert {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeSsoAddCert;
+  }
+  return self;
+}
+
 - (instancetype)initWithSsoAddLoginUrl {
   self = [super init];
   if (self) {
@@ -21355,6 +21500,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGEventTypeSsoChangeSamlIdentityMode;
+  }
+  return self;
+}
+
+- (instancetype)initWithSsoRemoveCert {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeSsoRemoveCert;
   }
   return self;
 }
@@ -21631,6 +21784,14 @@
   return self;
 }
 
+- (instancetype)initWithPaperChangeMemberLinkPolicy {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperChangeMemberLinkPolicy;
+  }
+  return self;
+}
+
 - (instancetype)initWithPaperChangeMemberPolicy {
   self = [super init];
   if (self) {
@@ -21747,6 +21908,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGEventTypeTeamProfileAddLogo;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamProfileChangeDefaultLanguage {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage;
   }
   return self;
 }
@@ -22647,6 +22816,10 @@
   return _tag == DBTEAMLOGEventTypeShmodelVisibilityTeamOnly;
 }
 
+- (BOOL)isSsoAddCert {
+  return _tag == DBTEAMLOGEventTypeSsoAddCert;
+}
+
 - (BOOL)isSsoAddLoginUrl {
   return _tag == DBTEAMLOGEventTypeSsoAddLoginUrl;
 }
@@ -22669,6 +22842,10 @@
 
 - (BOOL)isSsoChangeSamlIdentityMode {
   return _tag == DBTEAMLOGEventTypeSsoChangeSamlIdentityMode;
+}
+
+- (BOOL)isSsoRemoveCert {
+  return _tag == DBTEAMLOGEventTypeSsoRemoveCert;
 }
 
 - (BOOL)isSsoRemoveLoginUrl {
@@ -22807,6 +22984,10 @@
   return _tag == DBTEAMLOGEventTypePaperChangeDeploymentPolicy;
 }
 
+- (BOOL)isPaperChangeMemberLinkPolicy {
+  return _tag == DBTEAMLOGEventTypePaperChangeMemberLinkPolicy;
+}
+
 - (BOOL)isPaperChangeMemberPolicy {
   return _tag == DBTEAMLOGEventTypePaperChangeMemberPolicy;
 }
@@ -22865,6 +23046,10 @@
 
 - (BOOL)isTeamProfileAddLogo {
   return _tag == DBTEAMLOGEventTypeTeamProfileAddLogo;
+}
+
+- (BOOL)isTeamProfileChangeDefaultLanguage {
+  return _tag == DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage;
 }
 
 - (BOOL)isTeamProfileChangeLogo {
@@ -23315,6 +23500,8 @@
     return @"DBTEAMLOGEventTypeShmodelVisibilityPublic";
   case DBTEAMLOGEventTypeShmodelVisibilityTeamOnly:
     return @"DBTEAMLOGEventTypeShmodelVisibilityTeamOnly";
+  case DBTEAMLOGEventTypeSsoAddCert:
+    return @"DBTEAMLOGEventTypeSsoAddCert";
   case DBTEAMLOGEventTypeSsoAddLoginUrl:
     return @"DBTEAMLOGEventTypeSsoAddLoginUrl";
   case DBTEAMLOGEventTypeSsoAddLogoutUrl:
@@ -23327,6 +23514,8 @@
     return @"DBTEAMLOGEventTypeSsoChangeLogoutUrl";
   case DBTEAMLOGEventTypeSsoChangeSamlIdentityMode:
     return @"DBTEAMLOGEventTypeSsoChangeSamlIdentityMode";
+  case DBTEAMLOGEventTypeSsoRemoveCert:
+    return @"DBTEAMLOGEventTypeSsoRemoveCert";
   case DBTEAMLOGEventTypeSsoRemoveLoginUrl:
     return @"DBTEAMLOGEventTypeSsoRemoveLoginUrl";
   case DBTEAMLOGEventTypeSsoRemoveLogoutUrl:
@@ -23395,6 +23584,8 @@
     return @"DBTEAMLOGEventTypeNetworkControlChangePolicy";
   case DBTEAMLOGEventTypePaperChangeDeploymentPolicy:
     return @"DBTEAMLOGEventTypePaperChangeDeploymentPolicy";
+  case DBTEAMLOGEventTypePaperChangeMemberLinkPolicy:
+    return @"DBTEAMLOGEventTypePaperChangeMemberLinkPolicy";
   case DBTEAMLOGEventTypePaperChangeMemberPolicy:
     return @"DBTEAMLOGEventTypePaperChangeMemberPolicy";
   case DBTEAMLOGEventTypePaperChangePolicy:
@@ -23425,6 +23616,8 @@
     return @"DBTEAMLOGEventTypeWebSessionsChangeIdleLengthPolicy";
   case DBTEAMLOGEventTypeTeamProfileAddLogo:
     return @"DBTEAMLOGEventTypeTeamProfileAddLogo";
+  case DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage:
+    return @"DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage";
   case DBTEAMLOGEventTypeTeamProfileChangeLogo:
     return @"DBTEAMLOGEventTypeTeamProfileChangeLogo";
   case DBTEAMLOGEventTypeTeamProfileChangeName:
@@ -23885,6 +24078,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeShmodelVisibilityTeamOnly:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventTypeSsoAddCert:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeSsoAddLoginUrl:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeSsoAddLogoutUrl:
@@ -23896,6 +24091,8 @@
   case DBTEAMLOGEventTypeSsoChangeLogoutUrl:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeSsoChangeSamlIdentityMode:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventTypeSsoRemoveCert:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeSsoRemoveLoginUrl:
     result = prime * result + [[self tagName] hash];
@@ -23965,6 +24162,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypePaperChangeDeploymentPolicy:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventTypePaperChangeMemberLinkPolicy:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypePaperChangeMemberPolicy:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypePaperChangePolicy:
@@ -23994,6 +24193,8 @@
   case DBTEAMLOGEventTypeWebSessionsChangeIdleLengthPolicy:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeTeamProfileAddLogo:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeTeamProfileChangeLogo:
     result = prime * result + [[self tagName] hash];
@@ -24444,6 +24645,8 @@
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeShmodelVisibilityTeamOnly:
     return [[self tagName] isEqual:[anEventType tagName]];
+  case DBTEAMLOGEventTypeSsoAddCert:
+    return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeSsoAddLoginUrl:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeSsoAddLogoutUrl:
@@ -24455,6 +24658,8 @@
   case DBTEAMLOGEventTypeSsoChangeLogoutUrl:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeSsoChangeSamlIdentityMode:
+    return [[self tagName] isEqual:[anEventType tagName]];
+  case DBTEAMLOGEventTypeSsoRemoveCert:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeSsoRemoveLoginUrl:
     return [[self tagName] isEqual:[anEventType tagName]];
@@ -24524,6 +24729,8 @@
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypePaperChangeDeploymentPolicy:
     return [[self tagName] isEqual:[anEventType tagName]];
+  case DBTEAMLOGEventTypePaperChangeMemberLinkPolicy:
+    return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypePaperChangeMemberPolicy:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypePaperChangePolicy:
@@ -24553,6 +24760,8 @@
   case DBTEAMLOGEventTypeWebSessionsChangeIdleLengthPolicy:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeTeamProfileAddLogo:
+    return [[self tagName] isEqual:[anEventType tagName]];
+  case DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeTeamProfileChangeLogo:
     return [[self tagName] isEqual:[anEventType tagName]];
@@ -24991,6 +25200,8 @@
     jsonDict[@".tag"] = @"shmodel_visibility_public";
   } else if ([valueObj isShmodelVisibilityTeamOnly]) {
     jsonDict[@".tag"] = @"shmodel_visibility_team_only";
+  } else if ([valueObj isSsoAddCert]) {
+    jsonDict[@".tag"] = @"sso_add_cert";
   } else if ([valueObj isSsoAddLoginUrl]) {
     jsonDict[@".tag"] = @"sso_add_login_url";
   } else if ([valueObj isSsoAddLogoutUrl]) {
@@ -25003,6 +25214,8 @@
     jsonDict[@".tag"] = @"sso_change_logout_url";
   } else if ([valueObj isSsoChangeSamlIdentityMode]) {
     jsonDict[@".tag"] = @"sso_change_saml_identity_mode";
+  } else if ([valueObj isSsoRemoveCert]) {
+    jsonDict[@".tag"] = @"sso_remove_cert";
   } else if ([valueObj isSsoRemoveLoginUrl]) {
     jsonDict[@".tag"] = @"sso_remove_login_url";
   } else if ([valueObj isSsoRemoveLogoutUrl]) {
@@ -25071,6 +25284,8 @@
     jsonDict[@".tag"] = @"network_control_change_policy";
   } else if ([valueObj isPaperChangeDeploymentPolicy]) {
     jsonDict[@".tag"] = @"paper_change_deployment_policy";
+  } else if ([valueObj isPaperChangeMemberLinkPolicy]) {
+    jsonDict[@".tag"] = @"paper_change_member_link_policy";
   } else if ([valueObj isPaperChangeMemberPolicy]) {
     jsonDict[@".tag"] = @"paper_change_member_policy";
   } else if ([valueObj isPaperChangePolicy]) {
@@ -25101,6 +25316,8 @@
     jsonDict[@".tag"] = @"web_sessions_change_idle_length_policy";
   } else if ([valueObj isTeamProfileAddLogo]) {
     jsonDict[@".tag"] = @"team_profile_add_logo";
+  } else if ([valueObj isTeamProfileChangeDefaultLanguage]) {
+    jsonDict[@".tag"] = @"team_profile_change_default_language";
   } else if ([valueObj isTeamProfileChangeLogo]) {
     jsonDict[@".tag"] = @"team_profile_change_logo";
   } else if ([valueObj isTeamProfileChangeName]) {
@@ -25535,6 +25752,8 @@
     return [[DBTEAMLOGEventType alloc] initWithShmodelVisibilityPublic];
   } else if ([tag isEqualToString:@"shmodel_visibility_team_only"]) {
     return [[DBTEAMLOGEventType alloc] initWithShmodelVisibilityTeamOnly];
+  } else if ([tag isEqualToString:@"sso_add_cert"]) {
+    return [[DBTEAMLOGEventType alloc] initWithSsoAddCert];
   } else if ([tag isEqualToString:@"sso_add_login_url"]) {
     return [[DBTEAMLOGEventType alloc] initWithSsoAddLoginUrl];
   } else if ([tag isEqualToString:@"sso_add_logout_url"]) {
@@ -25547,6 +25766,8 @@
     return [[DBTEAMLOGEventType alloc] initWithSsoChangeLogoutUrl];
   } else if ([tag isEqualToString:@"sso_change_saml_identity_mode"]) {
     return [[DBTEAMLOGEventType alloc] initWithSsoChangeSamlIdentityMode];
+  } else if ([tag isEqualToString:@"sso_remove_cert"]) {
+    return [[DBTEAMLOGEventType alloc] initWithSsoRemoveCert];
   } else if ([tag isEqualToString:@"sso_remove_login_url"]) {
     return [[DBTEAMLOGEventType alloc] initWithSsoRemoveLoginUrl];
   } else if ([tag isEqualToString:@"sso_remove_logout_url"]) {
@@ -25615,6 +25836,8 @@
     return [[DBTEAMLOGEventType alloc] initWithNetworkControlChangePolicy];
   } else if ([tag isEqualToString:@"paper_change_deployment_policy"]) {
     return [[DBTEAMLOGEventType alloc] initWithPaperChangeDeploymentPolicy];
+  } else if ([tag isEqualToString:@"paper_change_member_link_policy"]) {
+    return [[DBTEAMLOGEventType alloc] initWithPaperChangeMemberLinkPolicy];
   } else if ([tag isEqualToString:@"paper_change_member_policy"]) {
     return [[DBTEAMLOGEventType alloc] initWithPaperChangeMemberPolicy];
   } else if ([tag isEqualToString:@"paper_change_policy"]) {
@@ -25645,6 +25868,8 @@
     return [[DBTEAMLOGEventType alloc] initWithWebSessionsChangeIdleLengthPolicy];
   } else if ([tag isEqualToString:@"team_profile_add_logo"]) {
     return [[DBTEAMLOGEventType alloc] initWithTeamProfileAddLogo];
+  } else if ([tag isEqualToString:@"team_profile_change_default_language"]) {
+    return [[DBTEAMLOGEventType alloc] initWithTeamProfileChangeDefaultLanguage];
   } else if ([tag isEqualToString:@"team_profile_change_logo"]) {
     return [[DBTEAMLOGEventType alloc] initWithTeamProfileChangeLogo];
   } else if ([tag isEqualToString:@"team_profile_change_name"]) {
@@ -32209,19 +32434,20 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithJoinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy isAdminManaged:(NSNumber *)isAdminManaged {
+- (instancetype)initWithJoinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy
+                  isCompanyManaged:(NSNumber *)isCompanyManaged {
   [DBStoneValidators nonnullValidator:nil](joinPolicy);
 
   self = [super init];
   if (self) {
-    _isAdminManaged = isAdminManaged;
+    _isCompanyManaged = isCompanyManaged;
     _joinPolicy = joinPolicy;
   }
   return self;
 }
 
 - (instancetype)initWithJoinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy {
-  return [self initWithJoinPolicy:joinPolicy isAdminManaged:nil];
+  return [self initWithJoinPolicy:joinPolicy isCompanyManaged:nil];
 }
 
 #pragma mark - Serialization methods
@@ -32255,8 +32481,8 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.joinPolicy hash];
-  if (self.isAdminManaged) {
-    result = prime * result + [self.isAdminManaged hash];
+  if (self.isCompanyManaged) {
+    result = prime * result + [self.isCompanyManaged hash];
   }
 
   return prime * result;
@@ -32281,8 +32507,8 @@
   if (![self.joinPolicy isEqual:aGroupCreateDetails.joinPolicy]) {
     return NO;
   }
-  if (self.isAdminManaged) {
-    if (![self.isAdminManaged isEqual:aGroupCreateDetails.isAdminManaged]) {
+  if (self.isCompanyManaged) {
+    if (![self.isCompanyManaged isEqual:aGroupCreateDetails.isCompanyManaged]) {
       return NO;
     }
   }
@@ -32299,8 +32525,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"join_policy"] = [DBTEAMLOGGroupJoinPolicySerializer serialize:valueObj.joinPolicy];
-  if (valueObj.isAdminManaged) {
-    jsonDict[@"is_admin_managed"] = valueObj.isAdminManaged;
+  if (valueObj.isCompanyManaged) {
+    jsonDict[@"is_company_managed"] = valueObj.isCompanyManaged;
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
@@ -32308,9 +32534,9 @@
 
 + (DBTEAMLOGGroupCreateDetails *)deserialize:(NSDictionary *)valueDict {
   DBTEAMLOGGroupJoinPolicy *joinPolicy = [DBTEAMLOGGroupJoinPolicySerializer deserialize:valueDict[@"join_policy"]];
-  NSNumber *isAdminManaged = valueDict[@"is_admin_managed"] ?: nil;
+  NSNumber *isCompanyManaged = valueDict[@"is_company_managed"] ?: nil;
 
-  return [[DBTEAMLOGGroupCreateDetails alloc] initWithJoinPolicy:joinPolicy isAdminManaged:isAdminManaged];
+  return [[DBTEAMLOGGroupCreateDetails alloc] initWithJoinPolicy:joinPolicy isCompanyManaged:isCompanyManaged];
 }
 
 @end
@@ -32325,17 +32551,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithIsAdminManaged:(NSNumber *)isAdminManaged {
+- (instancetype)initWithIsCompanyManaged:(NSNumber *)isCompanyManaged {
 
   self = [super init];
   if (self) {
-    _isAdminManaged = isAdminManaged;
+    _isCompanyManaged = isCompanyManaged;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithIsAdminManaged:nil];
+  return [self initWithIsCompanyManaged:nil];
 }
 
 #pragma mark - Serialization methods
@@ -32368,8 +32594,8 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.isAdminManaged) {
-    result = prime * result + [self.isAdminManaged hash];
+  if (self.isCompanyManaged) {
+    result = prime * result + [self.isCompanyManaged hash];
   }
 
   return prime * result;
@@ -32391,8 +32617,8 @@
   if (self == aGroupDeleteDetails) {
     return YES;
   }
-  if (self.isAdminManaged) {
-    if (![self.isAdminManaged isEqual:aGroupDeleteDetails.isAdminManaged]) {
+  if (self.isCompanyManaged) {
+    if (![self.isCompanyManaged isEqual:aGroupDeleteDetails.isCompanyManaged]) {
       return NO;
     }
   }
@@ -32408,17 +32634,17 @@
 + (NSDictionary *)serialize:(DBTEAMLOGGroupDeleteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.isAdminManaged) {
-    jsonDict[@"is_admin_managed"] = valueObj.isAdminManaged;
+  if (valueObj.isCompanyManaged) {
+    jsonDict[@"is_company_managed"] = valueObj.isCompanyManaged;
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGGroupDeleteDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *isAdminManaged = valueDict[@"is_admin_managed"] ?: nil;
+  NSNumber *isCompanyManaged = valueDict[@"is_company_managed"] ?: nil;
 
-  return [[DBTEAMLOGGroupDeleteDetails alloc] initWithIsAdminManaged:isAdminManaged];
+  return [[DBTEAMLOGGroupDeleteDetails alloc] initWithIsCompanyManaged:isCompanyManaged];
 }
 
 @end
@@ -38551,6 +38777,107 @@
           : nil;
 
   return [[DBTEAMLOGPaperChangeDeploymentPolicyDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperChangeMemberLinkPolicyDetails.h"
+#import "DBTEAMLOGPaperMemberPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperChangeMemberLinkPolicyDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGPaperMemberPolicy *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperChangeMemberLinkPolicyDetails:other];
+}
+
+- (BOOL)isEqualToPaperChangeMemberLinkPolicyDetails:
+    (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)aPaperChangeMemberLinkPolicyDetails {
+  if (self == aPaperChangeMemberLinkPolicyDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aPaperChangeMemberLinkPolicyDetails.dNewValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGPaperMemberPolicySerializer serialize:valueObj.dNewValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMLOGPaperMemberPolicy *dNewValue = [DBTEAMLOGPaperMemberPolicySerializer deserialize:valueDict[@"new_value"]];
+
+  return [[DBTEAMLOGPaperChangeMemberLinkPolicyDetails alloc] initWithDNewValue:dNewValue];
 }
 
 @end
@@ -55193,6 +55520,107 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGCertificate.h"
+#import "DBTEAMLOGSsoAddCertDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSsoAddCertDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCertificateDetails:(DBTEAMLOGCertificate *)certificateDetails {
+  [DBStoneValidators nonnullValidator:nil](certificateDetails);
+
+  self = [super init];
+  if (self) {
+    _certificateDetails = certificateDetails;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGSsoAddCertDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGSsoAddCertDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGSsoAddCertDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.certificateDetails hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSsoAddCertDetails:other];
+}
+
+- (BOOL)isEqualToSsoAddCertDetails:(DBTEAMLOGSsoAddCertDetails *)aSsoAddCertDetails {
+  if (self == aSsoAddCertDetails) {
+    return YES;
+  }
+  if (![self.certificateDetails isEqual:aSsoAddCertDetails.certificateDetails]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSsoAddCertDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGSsoAddCertDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"certificate_details"] = [DBTEAMLOGCertificateSerializer serialize:valueObj.certificateDetails];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGSsoAddCertDetails *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMLOGCertificate *certificateDetails =
+      [DBTEAMLOGCertificateSerializer deserialize:valueDict[@"certificate_details"]];
+
+  return [[DBTEAMLOGSsoAddCertDetails alloc] initWithCertificateDetails:certificateDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGSsoAddLoginUrlDetails.h"
 
 #pragma mark - API Object
@@ -55409,14 +55837,20 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithCertificateDetails:(DBTEAMLOGCertificate *)certificateDetails {
-  [DBStoneValidators nonnullValidator:nil](certificateDetails);
+- (instancetype)initWithDNewCertificateDetails:(DBTEAMLOGCertificate *)dNewCertificateDetails
+                    previousCertificateDetails:(DBTEAMLOGCertificate *)previousCertificateDetails {
+  [DBStoneValidators nonnullValidator:nil](dNewCertificateDetails);
 
   self = [super init];
   if (self) {
-    _certificateDetails = certificateDetails;
+    _previousCertificateDetails = previousCertificateDetails;
+    _dNewCertificateDetails = dNewCertificateDetails;
   }
   return self;
+}
+
+- (instancetype)initWithDNewCertificateDetails:(DBTEAMLOGCertificate *)dNewCertificateDetails {
+  return [self initWithDNewCertificateDetails:dNewCertificateDetails previousCertificateDetails:nil];
 }
 
 #pragma mark - Serialization methods
@@ -55449,7 +55883,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.certificateDetails hash];
+  result = prime * result + [self.dNewCertificateDetails hash];
+  if (self.previousCertificateDetails) {
+    result = prime * result + [self.previousCertificateDetails hash];
+  }
 
   return prime * result;
 }
@@ -55470,8 +55907,13 @@
   if (self == aSsoChangeCertDetails) {
     return YES;
   }
-  if (![self.certificateDetails isEqual:aSsoChangeCertDetails.certificateDetails]) {
+  if (![self.dNewCertificateDetails isEqual:aSsoChangeCertDetails.dNewCertificateDetails]) {
     return NO;
+  }
+  if (self.previousCertificateDetails) {
+    if (![self.previousCertificateDetails isEqual:aSsoChangeCertDetails.previousCertificateDetails]) {
+      return NO;
+    }
   }
   return YES;
 }
@@ -55485,16 +55927,25 @@
 + (NSDictionary *)serialize:(DBTEAMLOGSsoChangeCertDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"certificate_details"] = [DBTEAMLOGCertificateSerializer serialize:valueObj.certificateDetails];
+  jsonDict[@"new_certificate_details"] = [DBTEAMLOGCertificateSerializer serialize:valueObj.dNewCertificateDetails];
+  if (valueObj.previousCertificateDetails) {
+    jsonDict[@"previous_certificate_details"] =
+        [DBTEAMLOGCertificateSerializer serialize:valueObj.previousCertificateDetails];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGSsoChangeCertDetails *)deserialize:(NSDictionary *)valueDict {
-  DBTEAMLOGCertificate *certificateDetails =
-      [DBTEAMLOGCertificateSerializer deserialize:valueDict[@"certificate_details"]];
+  DBTEAMLOGCertificate *dNewCertificateDetails =
+      [DBTEAMLOGCertificateSerializer deserialize:valueDict[@"new_certificate_details"]];
+  DBTEAMLOGCertificate *previousCertificateDetails =
+      valueDict[@"previous_certificate_details"]
+          ? [DBTEAMLOGCertificateSerializer deserialize:valueDict[@"previous_certificate_details"]]
+          : nil;
 
-  return [[DBTEAMLOGSsoChangeCertDetails alloc] initWithCertificateDetails:certificateDetails];
+  return [[DBTEAMLOGSsoChangeCertDetails alloc] initWithDNewCertificateDetails:dNewCertificateDetails
+                                                    previousCertificateDetails:previousCertificateDetails];
 }
 
 @end
@@ -56051,6 +56502,97 @@
       [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
 
   return [[DBTEAMLOGSsoLoginFailDetails alloc] initWithErrorDetails:errorDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGSsoRemoveCertDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSsoRemoveCertDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initDefault {
+
+  self = [super init];
+  if (self) {
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGSsoRemoveCertDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGSsoRemoveCertDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGSsoRemoveCertDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSsoRemoveCertDetails:other];
+}
+
+- (BOOL)isEqualToSsoRemoveCertDetails:(DBTEAMLOGSsoRemoveCertDetails *)aSsoRemoveCertDetails {
+  if (self == aSsoRemoveCertDetails) {
+    return YES;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSsoRemoveCertDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGSsoRemoveCertDetails *)valueObj {
+#pragma unused(valueObj)
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGSsoRemoveCertDetails *)deserialize:(NSDictionary *)valueDict {
+#pragma unused(valueDict)
+
+  return [[DBTEAMLOGSsoRemoveCertDetails alloc] initDefault];
 }
 
 @end
@@ -58163,6 +58705,116 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamProfileChangeDefaultLanguageDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamProfileChangeDefaultLanguageDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(NSString *)dNewValue previousValue:(NSString *)previousValue {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(2) maxLength:nil pattern:nil]](dNewValue);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:@(2) maxLength:nil pattern:nil]](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamProfileChangeDefaultLanguageDetails:other];
+}
+
+- (BOOL)isEqualToTeamProfileChangeDefaultLanguageDetails:
+    (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)aTeamProfileChangeDefaultLanguageDetails {
+  if (self == aTeamProfileChangeDefaultLanguageDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aTeamProfileChangeDefaultLanguageDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aTeamProfileChangeDefaultLanguageDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = valueObj.dNewValue;
+  jsonDict[@"previous_value"] = valueObj.previousValue;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *dNewValue = valueDict[@"new_value"];
+  NSString *previousValue = valueDict[@"previous_value"];
+
+  return [[DBTEAMLOGTeamProfileChangeDefaultLanguageDetails alloc] initWithDNewValue:dNewValue
+                                                                       previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGTeamProfileChangeLogoDetails.h"
 
 #pragma mark - API Object
@@ -58737,7 +59389,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGTfaChangePolicyDetails.h"
-#import "DBTEAMLOGTfaPolicy.h"
+#import "DBTEAMPOLICIESTwoStepVerificationPolicy.h"
 
 #pragma mark - API Object
 
@@ -58745,7 +59397,8 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithDNewValue:(DBTEAMLOGTfaPolicy *)dNewValue previousValue:(DBTEAMLOGTfaPolicy *)previousValue {
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESTwoStepVerificationPolicy *)dNewValue
+                    previousValue:(DBTEAMPOLICIESTwoStepVerificationPolicy *)previousValue {
   [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
@@ -58756,7 +59409,7 @@
   return self;
 }
 
-- (instancetype)initWithDNewValue:(DBTEAMLOGTfaPolicy *)dNewValue {
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESTwoStepVerificationPolicy *)dNewValue {
   return [self initWithDNewValue:dNewValue previousValue:nil];
 }
 
@@ -58834,18 +59487,21 @@
 + (NSDictionary *)serialize:(DBTEAMLOGTfaChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"new_value"] = [DBTEAMLOGTfaPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"new_value"] = [DBTEAMPOLICIESTwoStepVerificationPolicySerializer serialize:valueObj.dNewValue];
   if (valueObj.previousValue) {
-    jsonDict[@"previous_value"] = [DBTEAMLOGTfaPolicySerializer serialize:valueObj.previousValue];
+    jsonDict[@"previous_value"] = [DBTEAMPOLICIESTwoStepVerificationPolicySerializer serialize:valueObj.previousValue];
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGTfaChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
-  DBTEAMLOGTfaPolicy *dNewValue = [DBTEAMLOGTfaPolicySerializer deserialize:valueDict[@"new_value"]];
-  DBTEAMLOGTfaPolicy *previousValue =
-      valueDict[@"previous_value"] ? [DBTEAMLOGTfaPolicySerializer deserialize:valueDict[@"previous_value"]] : nil;
+  DBTEAMPOLICIESTwoStepVerificationPolicy *dNewValue =
+      [DBTEAMPOLICIESTwoStepVerificationPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMPOLICIESTwoStepVerificationPolicy *previousValue =
+      valueDict[@"previous_value"]
+          ? [DBTEAMPOLICIESTwoStepVerificationPolicySerializer deserialize:valueDict[@"previous_value"]]
+          : nil;
 
   return [[DBTEAMLOGTfaChangePolicyDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
 }
@@ -59200,179 +59856,6 @@
     return [[DBTEAMLOGTfaConfiguration alloc] initWithOther];
   } else {
     return [[DBTEAMLOGTfaConfiguration alloc] initWithOther];
-  }
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLOGTfaPolicy.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGTfaPolicy
-
-#pragma mark - Constructors
-
-- (instancetype)initWithAllowDisable {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGTfaPolicyAllowDisable;
-  }
-  return self;
-}
-
-- (instancetype)initWithStickyEnable {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGTfaPolicyStickyEnable;
-  }
-  return self;
-}
-
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGTfaPolicyOther;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isAllowDisable {
-  return _tag == DBTEAMLOGTfaPolicyAllowDisable;
-}
-
-- (BOOL)isStickyEnable {
-  return _tag == DBTEAMLOGTfaPolicyStickyEnable;
-}
-
-- (BOOL)isOther {
-  return _tag == DBTEAMLOGTfaPolicyOther;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBTEAMLOGTfaPolicyAllowDisable:
-    return @"DBTEAMLOGTfaPolicyAllowDisable";
-  case DBTEAMLOGTfaPolicyStickyEnable:
-    return @"DBTEAMLOGTfaPolicyStickyEnable";
-  case DBTEAMLOGTfaPolicyOther:
-    return @"DBTEAMLOGTfaPolicyOther";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGTfaPolicySerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGTfaPolicySerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGTfaPolicySerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBTEAMLOGTfaPolicyAllowDisable:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGTfaPolicyStickyEnable:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGTfaPolicyOther:
-    result = prime * result + [[self tagName] hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToTfaPolicy:other];
-}
-
-- (BOOL)isEqualToTfaPolicy:(DBTEAMLOGTfaPolicy *)aTfaPolicy {
-  if (self == aTfaPolicy) {
-    return YES;
-  }
-  if (self.tag != aTfaPolicy.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBTEAMLOGTfaPolicyAllowDisable:
-    return [[self tagName] isEqual:[aTfaPolicy tagName]];
-  case DBTEAMLOGTfaPolicyStickyEnable:
-    return [[self tagName] isEqual:[aTfaPolicy tagName]];
-  case DBTEAMLOGTfaPolicyOther:
-    return [[self tagName] isEqual:[aTfaPolicy tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGTfaPolicySerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaPolicy *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isAllowDisable]) {
-    jsonDict[@".tag"] = @"allow_disable";
-  } else if ([valueObj isStickyEnable]) {
-    jsonDict[@".tag"] = @"sticky_enable";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGTfaPolicy *)deserialize:(NSDictionary *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"allow_disable"]) {
-    return [[DBTEAMLOGTfaPolicy alloc] initWithAllowDisable];
-  } else if ([tag isEqualToString:@"sticky_enable"]) {
-    return [[DBTEAMLOGTfaPolicy alloc] initWithStickyEnable];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMLOGTfaPolicy alloc] initWithOther];
-  } else {
-    return [[DBTEAMLOGTfaPolicy alloc] initWithOther];
   }
 }
 

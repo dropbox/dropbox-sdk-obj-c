@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init:(id<DBTransportClient>)client;
 
 ///
-/// Add a template associated with a team. See route `propertiesAdd` to add properties to a file or folder.
+/// Add a template associated with a team. See `propertiesAdd` to add properties to a file or folder.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESAddTemplateResult` object on

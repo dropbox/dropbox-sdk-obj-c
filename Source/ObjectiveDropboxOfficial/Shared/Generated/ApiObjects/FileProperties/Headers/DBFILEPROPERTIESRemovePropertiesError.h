@@ -43,8 +43,8 @@ typedef NS_ENUM(NSInteger, DBFILEPROPERTIESRemovePropertiesErrorTag) {
   /// (no description).
   DBFILEPROPERTIESRemovePropertiesErrorPath,
 
-  /// This folder cannot be tagged. Shared folders and team folders are not
-  /// supported for team-owned tags.
+  /// This folder cannot be tagged. Tagging folders is not supported for
+  /// team-owned templates.
   DBFILEPROPERTIESRemovePropertiesErrorUnsupportedFolder,
 
   /// (no description).
@@ -112,8 +112,7 @@ typedef NS_ENUM(NSInteger, DBFILEPROPERTIESRemovePropertiesErrorTag) {
 /// Initializes union class with tag state of "unsupported_folder".
 ///
 /// Description of the "unsupported_folder" tag state: This folder cannot be
-/// tagged. Shared folders and team folders are not supported for team-owned
-/// tags.
+/// tagged. Tagging folders is not supported for team-owned templates.
 ///
 /// @return An initialized instance.
 ///

@@ -1143,7 +1143,7 @@ teamFolderArchive:(NSString *)teamFolderId
 - (DBRpcTask<DBTEAMTeamFolderArchiveJobStatus *, DBASYNCPollError *> *)teamFolderArchiveCheck:(NSString *)asyncJobId;
 
 ///
-/// Creates a new, active, team folder. Permission : Team member file access.
+/// Creates a new, active, team folder with no members. Permission : Team member file access.
 ///
 /// @param name Name for the new team folder.
 ///

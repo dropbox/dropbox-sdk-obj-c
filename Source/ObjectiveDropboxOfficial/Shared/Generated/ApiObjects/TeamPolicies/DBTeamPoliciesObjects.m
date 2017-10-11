@@ -2100,3 +2100,176 @@
 }
 
 @end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMPOLICIESTwoStepVerificationPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMPOLICIESTwoStepVerificationPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRequireTfaEnable {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable;
+  }
+  return self;
+}
+
+- (instancetype)initWithRequireTfaDisable {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESTwoStepVerificationPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isRequireTfaEnable {
+  return _tag == DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable;
+}
+
+- (BOOL)isRequireTfaDisable {
+  return _tag == DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMPOLICIESTwoStepVerificationPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable:
+    return @"DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable";
+  case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable:
+    return @"DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable";
+  case DBTEAMPOLICIESTwoStepVerificationPolicyOther:
+    return @"DBTEAMPOLICIESTwoStepVerificationPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMPOLICIESTwoStepVerificationPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMPOLICIESTwoStepVerificationPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMPOLICIESTwoStepVerificationPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESTwoStepVerificationPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTwoStepVerificationPolicy:other];
+}
+
+- (BOOL)isEqualToTwoStepVerificationPolicy:(DBTEAMPOLICIESTwoStepVerificationPolicy *)aTwoStepVerificationPolicy {
+  if (self == aTwoStepVerificationPolicy) {
+    return YES;
+  }
+  if (self.tag != aTwoStepVerificationPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable:
+    return [[self tagName] isEqual:[aTwoStepVerificationPolicy tagName]];
+  case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable:
+    return [[self tagName] isEqual:[aTwoStepVerificationPolicy tagName]];
+  case DBTEAMPOLICIESTwoStepVerificationPolicyOther:
+    return [[self tagName] isEqual:[aTwoStepVerificationPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMPOLICIESTwoStepVerificationPolicySerializer
+
++ (NSDictionary *)serialize:(DBTEAMPOLICIESTwoStepVerificationPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isRequireTfaEnable]) {
+    jsonDict[@".tag"] = @"require_tfa_enable";
+  } else if ([valueObj isRequireTfaDisable]) {
+    jsonDict[@".tag"] = @"require_tfa_disable";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMPOLICIESTwoStepVerificationPolicy *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"require_tfa_enable"]) {
+    return [[DBTEAMPOLICIESTwoStepVerificationPolicy alloc] initWithRequireTfaEnable];
+  } else if ([tag isEqualToString:@"require_tfa_disable"]) {
+    return [[DBTEAMPOLICIESTwoStepVerificationPolicy alloc] initWithRequireTfaDisable];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMPOLICIESTwoStepVerificationPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMPOLICIESTwoStepVerificationPolicy alloc] initWithOther];
+  }
+}
+
+@end

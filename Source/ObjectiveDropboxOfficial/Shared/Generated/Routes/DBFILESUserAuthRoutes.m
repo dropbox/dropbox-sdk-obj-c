@@ -74,6 +74,7 @@
 #import "DBFILESListFolderResult.h"
 #import "DBFILESListRevisionsArg.h"
 #import "DBFILESListRevisionsError.h"
+#import "DBFILESListRevisionsMode.h"
 #import "DBFILESListRevisionsResult.h"
 #import "DBFILESLookupError.h"
 #import "DBFILESMediaInfo.h"
@@ -104,6 +105,7 @@
 #import "DBFILESSearchMatch.h"
 #import "DBFILESSearchMode.h"
 #import "DBFILESSearchResult.h"
+#import "DBFILESSharedLink.h"
 #import "DBFILESThumbnailArg.h"
 #import "DBFILESThumbnailError.h"
 #import "DBFILESThumbnailFormat.h"
@@ -625,7 +627,8 @@
                      includeDeleted:(NSNumber *)includeDeleted
     includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
               includeMountedFolders:(NSNumber *)includeMountedFolders
-                              limit:(NSNumber *)limit {
+                              limit:(NSNumber *)limit
+                         sharedLink:(DBFILESSharedLink *)sharedLink {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolder;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
@@ -633,7 +636,8 @@
                                                           includeDeleted:includeDeleted
                                          includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
                                                    includeMountedFolders:includeMountedFolders
-                                                                   limit:limit];
+                                                                   limit:limit
+                                                              sharedLink:sharedLink];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -655,7 +659,8 @@
                           includeDeleted:(NSNumber *)includeDeleted
          includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
                    includeMountedFolders:(NSNumber *)includeMountedFolders
-                                   limit:(NSNumber *)limit {
+                                   limit:(NSNumber *)limit
+                              sharedLink:(DBFILESSharedLink *)sharedLink {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolderGetLatestCursor;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
@@ -663,7 +668,8 @@
                                                           includeDeleted:includeDeleted
                                          includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
                                                    includeMountedFolders:includeMountedFolders
-                                                                   limit:limit];
+                                                                   limit:limit
+                                                              sharedLink:sharedLink];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -685,9 +691,9 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)listRevisions:(NSString *)path limit:(NSNumber *)limit {
+- (DBRpcTask *)listRevisions:(NSString *)path mode:(DBFILESListRevisionsMode *)mode limit:(NSNumber *)limit {
   DBRoute *route = DBFILESRouteObjects.DBFILESListRevisions;
-  DBFILESListRevisionsArg *arg = [[DBFILESListRevisionsArg alloc] initWithPath:path limit:limit];
+  DBFILESListRevisionsArg *arg = [[DBFILESListRevisionsArg alloc] initWithPath:path mode:mode limit:limit];
   return [self.client requestRpc:route arg:arg];
 }
 

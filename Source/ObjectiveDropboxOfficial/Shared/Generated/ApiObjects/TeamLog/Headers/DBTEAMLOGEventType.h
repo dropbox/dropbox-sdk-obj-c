@@ -704,6 +704,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// Made a file/folder visible only to team members with the link.
   DBTEAMLOGEventTypeShmodelVisibilityTeamOnly,
 
+  /// Added the X.509 certificate for SSO.
+  DBTEAMLOGEventTypeSsoAddCert,
+
   /// Added sign-in URL for SSO.
   DBTEAMLOGEventTypeSsoAddLoginUrl,
 
@@ -721,6 +724,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// Changed the SAML identity mode for SSO.
   DBTEAMLOGEventTypeSsoChangeSamlIdentityMode,
+
+  /// Removed the X.509 certificate for SSO.
+  DBTEAMLOGEventTypeSsoRemoveCert,
 
   /// Removed the sign-in URL for SSO.
   DBTEAMLOGEventTypeSsoRemoveLoginUrl,
@@ -845,6 +851,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// to specific members of the team.
   DBTEAMLOGEventTypePaperChangeDeploymentPolicy,
 
+  /// Changed whether non team members can view Paper documents using a link.
+  /// This event is deprecated and will not be logged going forward as the
+  /// associated product functionality no longer exists.
+  DBTEAMLOGEventTypePaperChangeMemberLinkPolicy,
+
   /// Changed whether team members can share Paper documents externally (i.e.
   /// outside the team), and if so, whether they should be accessible only by
   /// team members or anyone by default.
@@ -898,6 +909,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// Added a team logo to be displayed on shared link headers.
   DBTEAMLOGEventTypeTeamProfileAddLogo,
+
+  /// Changed the default language for the team.
+  DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage,
 
   /// Changed the team logo to be displayed on shared link headers.
   DBTEAMLOGEventTypeTeamProfileChangeLogo,
@@ -3008,6 +3022,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithShmodelVisibilityTeamOnly;
 
 ///
+/// Initializes union class with tag state of "sso_add_cert".
+///
+/// Description of the "sso_add_cert" tag state: Added the X.509 certificate for
+/// SSO.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSsoAddCert;
+
+///
 /// Initializes union class with tag state of "sso_add_login_url".
 ///
 /// Description of the "sso_add_login_url" tag state: Added sign-in URL for SSO.
@@ -3065,6 +3089,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSsoChangeSamlIdentityMode;
+
+///
+/// Initializes union class with tag state of "sso_remove_cert".
+///
+/// Description of the "sso_remove_cert" tag state: Removed the X.509
+/// certificate for SSO.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSsoRemoveCert;
 
 ///
 /// Initializes union class with tag state of "sso_remove_login_url".
@@ -3440,6 +3474,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithPaperChangeDeploymentPolicy;
 
 ///
+/// Initializes union class with tag state of "paper_change_member_link_policy".
+///
+/// Description of the "paper_change_member_link_policy" tag state: Changed
+/// whether non team members can view Paper documents using a link. This event
+/// is deprecated and will not be logged going forward as the associated product
+/// functionality no longer exists.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperChangeMemberLinkPolicy;
+
+///
 /// Initializes union class with tag state of "paper_change_member_policy".
 ///
 /// Description of the "paper_change_member_policy" tag state: Changed whether
@@ -3598,6 +3644,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTeamProfileAddLogo;
+
+///
+/// Initializes union class with tag state of
+/// "team_profile_change_default_language".
+///
+/// Description of the "team_profile_change_default_language" tag state: Changed
+/// the default language for the team.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamProfileChangeDefaultLanguage;
 
 ///
 /// Initializes union class with tag state of "team_profile_change_logo".
@@ -5424,6 +5481,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (BOOL)isShmodelVisibilityTeamOnly;
 
 ///
+/// Retrieves whether the union's current tag state has value "sso_add_cert".
+///
+/// @return Whether the union's current tag state has value "sso_add_cert".
+///
+- (BOOL)isSsoAddCert;
+
+///
 /// Retrieves whether the union's current tag state has value
 /// "sso_add_login_url".
 ///
@@ -5473,6 +5537,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "sso_change_saml_identity_mode".
 ///
 - (BOOL)isSsoChangeSamlIdentityMode;
+
+///
+/// Retrieves whether the union's current tag state has value "sso_remove_cert".
+///
+/// @return Whether the union's current tag state has value "sso_remove_cert".
+///
+- (BOOL)isSsoRemoveCert;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -5780,6 +5851,15 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "paper_change_member_link_policy".
+///
+/// @return Whether the union's current tag state has value
+/// "paper_change_member_link_policy".
+///
+- (BOOL)isPaperChangeMemberLinkPolicy;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "paper_change_member_policy".
 ///
 /// @return Whether the union's current tag state has value
@@ -5910,6 +5990,15 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "team_profile_add_logo".
 ///
 - (BOOL)isTeamProfileAddLogo;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_profile_change_default_language".
+///
+/// @return Whether the union's current tag state has value
+/// "team_profile_change_default_language".
+///
+- (BOOL)isTeamProfileChangeDefaultLanguage;
 
 ///
 /// Retrieves whether the union's current tag state has value

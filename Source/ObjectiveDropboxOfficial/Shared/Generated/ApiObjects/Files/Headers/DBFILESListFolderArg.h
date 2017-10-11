@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBFILESListFolderArg;
+@class DBFILESSharedLink;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -52,6 +53,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// cases.
 @property (nonatomic, readonly, nullable) NSNumber *limit;
 
+/// A shared link to list the contents of. If the link is password-protected,
+/// the password must be provided. If this field is present, `path` in
+/// `DBFILESListFolderArg` will be relative to root of the shared link. Only
+/// non-recursive mode is supported for shared link.
+@property (nonatomic, readonly, nullable) DBFILESSharedLink *sharedLink;
+
 #pragma mark - Constructors
 
 ///
@@ -73,6 +80,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param limit The maximum number of results to return per request. Note: This
 /// is an approximate number and there can be slightly more entries returned in
 /// some cases.
+/// @param sharedLink A shared link to list the contents of. If the link is
+/// password-protected, the password must be provided. If this field is present,
+/// `path` in `DBFILESListFolderArg` will be relative to root of the shared
+/// link. Only non-recursive mode is supported for shared link.
 ///
 /// @return An initialized instance.
 ///
@@ -82,7 +93,8 @@ NS_ASSUME_NONNULL_BEGIN
                      includeDeleted:(nullable NSNumber *)includeDeleted
     includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
               includeMountedFolders:(nullable NSNumber *)includeMountedFolders
-                              limit:(nullable NSNumber *)limit;
+                              limit:(nullable NSNumber *)limit
+                         sharedLink:(nullable DBFILESSharedLink *)sharedLink;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
