@@ -51,11 +51,11 @@ static DBOAuthManager *s_sharedOAuthManager;
   return [self initWithAppKey:appKey host:nil];
 }
 
-- (instancetype)initWithAppKey:(NSString *)appKey host:(nullable NSString *)host {
+- (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host {
   return [self initWithAppKey:appKey host:host redirectURL:nil];
 }
 
-- (instancetype)initWithAppKey:(NSString *)appKey host:(nullable NSString *)host redirectURL:(nullable NSString *)redirectURL {
+- (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host redirectURL:(NSString *)redirectURL {
   self = [super init];
   if (self) {
     if (host == nil) {
