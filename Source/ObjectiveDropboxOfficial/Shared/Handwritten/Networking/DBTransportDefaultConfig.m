@@ -97,14 +97,14 @@
 }
 
 - (instancetype)initWithAppKey:(NSString *)appKey
-                     appSecret:(nullable NSString *)appSecret
-                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
-                     userAgent:(nullable NSString *)userAgent
-                    asMemberId:(nullable NSString *)asMemberId
-             additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders
-                 delegateQueue:(nullable NSOperationQueue *)delegateQueue
+                     appSecret:(NSString *)appSecret
+                hostnameConfig:(DBTransportBaseHostnameConfig *)hostnameConfig
+                     userAgent:(NSString *)userAgent
+                    asMemberId:(NSString *)asMemberId
+             additionalHeaders:(NSDictionary<NSString *, NSString *> *)additionalHeaders
+                 delegateQueue:(NSOperationQueue *)delegateQueue
         forceForegroundSession:(BOOL)forceForegroundSession
-     sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier {
+     sharedContainerIdentifier:(NSString *)sharedContainerIdentifier {
     return [self initWithAppKey:appKey
                       appSecret:appSecret
                  hostnameConfig:hostnameConfig
@@ -118,15 +118,15 @@
 }
 
 - (instancetype)initWithAppKey:(NSString *)appKey
-                     appSecret:(nullable NSString *)appSecret
-                hostnameConfig:(nullable DBTransportBaseHostnameConfig *)hostnameConfig
-                   redirectURL:(nullable NSString *)redirectURL
-                     userAgent:(nullable NSString *)userAgent
-                    asMemberId:(nullable NSString *)asMemberId
-             additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders
-                 delegateQueue:(nullable NSOperationQueue *)delegateQueue
+                     appSecret:(NSString *)appSecret
+                hostnameConfig:(DBTransportBaseHostnameConfig *)hostnameConfig
+                   redirectURL:(NSString *)redirectURL
+                     userAgent:(NSString *)userAgent
+                    asMemberId:(NSString *)asMemberId
+             additionalHeaders:(NSDictionary<NSString *, NSString *> *)additionalHeaders
+                 delegateQueue:(NSOperationQueue *)delegateQueue
         forceForegroundSession:(BOOL)forceForegroundSession
-     sharedContainerIdentifier:(nullable NSString *)sharedContainerIdentifier {
+     sharedContainerIdentifier:(NSString *)sharedContainerIdentifier {
     if (self = [super initWithAppKey:appKey
                            appSecret:appSecret
                       hostnameConfig:hostnameConfig 
