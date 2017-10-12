@@ -64,7 +64,7 @@ static DBOAuthManager *s_sharedOAuthManager;
     }
 
     if (!redirectURL) {
-      redirectURL = [NSString stringWithFormat:@"db-%@://2/token", _appKey];
+      redirectURL = [NSString stringWithFormat:@"db-%@://2/token", appKey];
     }
 
     _appKey = appKey;
