@@ -63,12 +63,8 @@ static DBOAuthManager *s_sharedOAuthManager;
           !kSDKDebug ? @"www.dropbox.com" : [NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kSDKDebugHost];
     }
 
-    if (!redirectURL) {
-      redirectURL = [NSString stringWithFormat:@"db-%@://2/token", appKey];
-    }
-
     _appKey = appKey;
-    _redirectURL = [[NSURL alloc] initWithString:redirectURL];
+    _redirectURL = [[NSURL alloc] initWithString:redirectURL ?: [NSString stringWithFormat:@"db-%@://2/token", appKey]];
     _cancelURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];
     _host = host;
     _urls = [NSMutableArray arrayWithObjects:_redirectURL, nil];
