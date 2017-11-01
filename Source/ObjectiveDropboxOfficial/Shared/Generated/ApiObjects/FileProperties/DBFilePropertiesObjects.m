@@ -4042,10 +4042,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.templateId hash];
-  if (self.addOrUpdateFields) {
+  if (self.addOrUpdateFields != nil) {
     result = prime * result + [self.addOrUpdateFields hash];
   }
-  if (self.removeFields) {
+  if (self.removeFields != nil) {
     result = prime * result + [self.removeFields hash];
   }
 
@@ -5574,13 +5574,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.templateId hash];
-  if (self.name) {
+  if (self.name != nil) {
     result = prime * result + [self.name hash];
   }
-  if (self.description_) {
+  if (self.description_ != nil) {
     result = prime * result + [self.description_ hash];
   }
-  if (self.addFields) {
+  if (self.addFields != nil) {
     result = prime * result + [self.addFields hash];
   }
 

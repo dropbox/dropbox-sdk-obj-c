@@ -108,7 +108,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAppKey:(NSString *)appKey host:(nullable NSString *)host redirectURL:(nullable NSString *)redirectURL;
+- (instancetype)initWithAppKey:(NSString *)appKey
+                          host:(nullable NSString *)host
+                   redirectURL:(nullable NSString *)redirectURL;
 
 #pragma mark - Auth flow methods
 

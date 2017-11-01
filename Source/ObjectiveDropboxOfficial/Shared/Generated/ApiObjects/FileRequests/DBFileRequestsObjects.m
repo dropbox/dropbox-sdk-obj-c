@@ -71,7 +71,7 @@
 
   result = prime * result + [self.title hash];
   result = prime * result + [self.destination hash];
-  if (self.deadline) {
+  if (self.deadline != nil) {
     result = prime * result + [self.deadline hash];
   }
   result = prime * result + [self.open hash];
@@ -1004,10 +1004,10 @@
   result = prime * result + [self.created hash];
   result = prime * result + [self.isOpen hash];
   result = prime * result + [self.fileCount hash];
-  if (self.destination) {
+  if (self.destination != nil) {
     result = prime * result + [self.destination hash];
   }
-  if (self.deadline) {
+  if (self.deadline != nil) {
     result = prime * result + [self.deadline hash];
   }
 
@@ -1166,7 +1166,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.deadline hash];
-  if (self.allowLateUploads) {
+  if (self.allowLateUploads != nil) {
     result = prime * result + [self.allowLateUploads hash];
   }
 
@@ -2182,14 +2182,14 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.id_ hash];
-  if (self.title) {
+  if (self.title != nil) {
     result = prime * result + [self.title hash];
   }
-  if (self.destination) {
+  if (self.destination != nil) {
     result = prime * result + [self.destination hash];
   }
   result = prime * result + [self.deadline hash];
-  if (self.open) {
+  if (self.open != nil) {
     result = prime * result + [self.open hash];
   }
 
@@ -2388,7 +2388,7 @@
   case DBFILEREQUESTSUpdateFileRequestDeadlineNoUpdate:
     result = prime * result + [[self tagName] hash];
   case DBFILEREQUESTSUpdateFileRequestDeadlineUpdate:
-    if (self.update) {
+    if (self.update != nil) {
       result = prime * result + [self.update hash];
     }
   case DBFILEREQUESTSUpdateFileRequestDeadlineOther:

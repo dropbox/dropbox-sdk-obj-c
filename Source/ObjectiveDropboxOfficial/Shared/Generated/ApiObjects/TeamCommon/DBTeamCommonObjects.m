@@ -275,10 +275,10 @@
   result = prime * result + [self.groupName hash];
   result = prime * result + [self.groupId hash];
   result = prime * result + [self.groupManagementType hash];
-  if (self.groupExternalId) {
+  if (self.groupExternalId != nil) {
     result = prime * result + [self.groupExternalId hash];
   }
-  if (self.memberCount) {
+  if (self.memberCount != nil) {
     result = prime * result + [self.memberCount hash];
   }
 
@@ -590,10 +590,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.startTime) {
+  if (self.startTime != nil) {
     result = prime * result + [self.startTime hash];
   }
-  if (self.endTime) {
+  if (self.endTime != nil) {
     result = prime * result + [self.endTime hash];
   }
 

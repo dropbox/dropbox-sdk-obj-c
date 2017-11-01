@@ -41,13 +41,13 @@
                      userAgent:(NSString *)userAgent
                     asMemberId:(NSString *)asMemberId
              additionalHeaders:(NSDictionary<NSString *, NSString *> *)additionalHeaders {
-    return [self initWithAppKey:appKey
-                      appSecret:appSecret
-                 hostnameConfig:hostnameConfig
-                    redirectURL:nil
-                      userAgent:userAgent
-                     asMemberId:asMemberId
-              additionalHeaders:additionalHeaders];
+  return [self initWithAppKey:appKey
+                    appSecret:appSecret
+               hostnameConfig:hostnameConfig
+                  redirectURL:nil
+                    userAgent:userAgent
+                   asMemberId:asMemberId
+            additionalHeaders:additionalHeaders];
 }
 
 - (instancetype)initWithAppKey:(NSString *)appKey
@@ -56,7 +56,7 @@
                    redirectURL:(NSString *)redirectURL
                      userAgent:(NSString *)userAgent
                     asMemberId:(NSString *)asMemberId
-             additionalHeaders:(NSDictionary<NSString *,NSString *> *)additionalHeaders {
+             additionalHeaders:(NSDictionary<NSString *, NSString *> *)additionalHeaders {
   if (self = [super init]) {
     _userAgent = userAgent;
     _appKey = appKey;

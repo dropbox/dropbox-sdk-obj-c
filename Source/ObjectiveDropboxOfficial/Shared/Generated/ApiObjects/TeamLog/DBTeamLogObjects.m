@@ -542,7 +542,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -666,7 +666,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -2193,10 +2193,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.appId) {
+  if (self.appId != nil) {
     result = prime * result + [self.appId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
 
@@ -3955,7 +3955,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sessionId) {
+  if (self.sessionId != nil) {
     result = prime * result + [self.sessionId hash];
   }
 
@@ -4097,7 +4097,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sessionId) {
+  if (self.sessionId != nil) {
     result = prime * result + [self.sessionId hash];
   }
 
@@ -4208,10 +4208,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -4336,10 +4336,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -4464,10 +4464,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -4592,10 +4592,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -5094,7 +5094,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.userAgent hash];
-  if (self.deviceInfo) {
+  if (self.deviceInfo != nil) {
     result = prime * result + [self.deviceInfo hash];
   }
 
@@ -5423,7 +5423,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.deviceType hash];
-  if (self.deviceInfo) {
+  if (self.deviceInfo != nil) {
     result = prime * result + [self.deviceInfo hash];
   }
 
@@ -5664,34 +5664,34 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.deviceId) {
+  if (self.deviceId != nil) {
     result = prime * result + [self.deviceId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
-  if (self.isEmmManaged) {
+  if (self.isEmmManaged != nil) {
     result = prime * result + [self.isEmmManaged hash];
   }
-  if (self.platform) {
+  if (self.platform != nil) {
     result = prime * result + [self.platform hash];
   }
-  if (self.macAddress) {
+  if (self.macAddress != nil) {
     result = prime * result + [self.macAddress hash];
   }
-  if (self.osVersion) {
+  if (self.osVersion != nil) {
     result = prime * result + [self.osVersion hash];
   }
-  if (self.deviceType) {
+  if (self.deviceType != nil) {
     result = prime * result + [self.deviceType hash];
   }
-  if (self.ipAddress) {
+  if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
-  if (self.lastActivity) {
+  if (self.lastActivity != nil) {
     result = prime * result + [self.lastActivity hash];
   }
-  if (self.appVersion) {
+  if (self.appVersion != nil) {
     result = prime * result + [self.appVersion hash];
   }
 
@@ -7199,7 +7199,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.domainName hash];
-  if (self.verificationMethod) {
+  if (self.verificationMethod != nil) {
     result = prime * result + [self.verificationMethod hash];
   }
 
@@ -7321,7 +7321,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.domainNames hash];
-  if (self.verificationMethod) {
+  if (self.verificationMethod != nil) {
     result = prime * result + [self.verificationMethod hash];
   }
 
@@ -7755,7 +7755,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -25957,7 +25957,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -26273,10 +26273,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.userFriendlyMessage) {
+  if (self.userFriendlyMessage != nil) {
     result = prime * result + [self.userFriendlyMessage hash];
   }
-  if (self.technicalErrorMessage) {
+  if (self.technicalErrorMessage != nil) {
     result = prime * result + [self.technicalErrorMessage hash];
   }
 
@@ -26397,7 +26397,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -26611,7 +26611,7 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -26915,7 +26915,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -27319,7 +27319,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -27799,7 +27799,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -27919,10 +27919,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
-  if (self.fileId) {
+  if (self.fileId != nil) {
     result = prime * result + [self.fileId hash];
   }
 
@@ -28049,10 +28049,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
-  if (self.fileId) {
+  if (self.fileId != nil) {
     result = prime * result + [self.fileId hash];
   }
 
@@ -28580,7 +28580,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -28689,7 +28689,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -28798,7 +28798,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -28907,7 +28907,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -29015,7 +29015,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -29130,7 +29130,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.submittedFileNames hash];
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -29251,7 +29251,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -29360,7 +29360,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle) {
+  if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
 
@@ -29473,7 +29473,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -29949,7 +29949,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -30450,7 +30450,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -30566,7 +30566,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -30685,10 +30685,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
-  if (self.fileId) {
+  if (self.fileId != nil) {
     result = prime * result + [self.fileId hash];
   }
 
@@ -30818,13 +30818,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.ipAddress hash];
-  if (self.city) {
+  if (self.city != nil) {
     result = prime * result + [self.city hash];
   }
-  if (self.region) {
+  if (self.region != nil) {
     result = prime * result + [self.region hash];
   }
-  if (self.country) {
+  if (self.country != nil) {
     result = prime * result + [self.country hash];
   }
 
@@ -30966,13 +30966,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.limit hash];
-  if (self.accountId) {
+  if (self.accountId != nil) {
     result = prime * result + [self.accountId hash];
   }
-  if (self.time) {
+  if (self.time != nil) {
     result = prime * result + [self.time hash];
   }
-  if (self.category) {
+  if (self.category != nil) {
     result = prime * result + [self.category hash];
   }
 
@@ -31661,7 +31661,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -32259,7 +32259,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -32481,7 +32481,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.joinPolicy hash];
-  if (self.isCompanyManaged) {
+  if (self.isCompanyManaged != nil) {
     result = prime * result + [self.isCompanyManaged hash];
   }
 
@@ -32594,7 +32594,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.isCompanyManaged) {
+  if (self.isCompanyManaged != nil) {
     result = prime * result + [self.isCompanyManaged hash];
   }
 
@@ -32881,10 +32881,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.displayName hash];
-  if (self.groupId) {
+  if (self.groupId != nil) {
     result = prime * result + [self.groupId hash];
   }
-  if (self.externalId) {
+  if (self.externalId != nil) {
     result = prime * result + [self.externalId hash];
   }
 
@@ -33399,7 +33399,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -33692,10 +33692,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.hostId) {
+  if (self.hostId != nil) {
     result = prime * result + [self.hostId hash];
   }
-  if (self.hostName) {
+  if (self.hostName != nil) {
     result = prime * result + [self.hostName hash];
   }
 
@@ -34352,10 +34352,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -34485,7 +34485,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -34713,7 +34713,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -34836,10 +34836,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
-  if (self.teamJoinDetails) {
+  if (self.teamJoinDetails != nil) {
     result = prime * result + [self.teamJoinDetails hash];
   }
 
@@ -35063,7 +35063,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -36118,7 +36118,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -36525,7 +36525,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -36908,7 +36908,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sessionId) {
+  if (self.sessionId != nil) {
     result = prime * result + [self.sessionId hash];
   }
 
@@ -37021,10 +37021,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.nsId) {
+  if (self.nsId != nil) {
     result = prime * result + [self.nsId hash];
   }
-  if (self.relativePath) {
+  if (self.relativePath != nil) {
     result = prime * result + [self.relativePath hash];
   }
 
@@ -37146,7 +37146,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -37448,13 +37448,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.accountId) {
+  if (self.accountId != nil) {
     result = prime * result + [self.accountId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
-  if (self.email) {
+  if (self.email != nil) {
     result = prime * result + [self.email hash];
   }
 
@@ -37610,13 +37610,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.accountId) {
+  if (self.accountId != nil) {
     result = prime * result + [self.accountId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
-  if (self.email) {
+  if (self.email != nil) {
     result = prime * result + [self.email hash];
   }
 
@@ -38297,10 +38297,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.accessMethod hash];
-  if (self.geoLocation) {
+  if (self.geoLocation != nil) {
     result = prime * result + [self.geoLocation hash];
   }
-  if (self.host) {
+  if (self.host != nil) {
     result = prime * result + [self.host hash];
   }
 
@@ -38716,7 +38716,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -38940,7 +38940,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -39061,7 +39061,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -40096,7 +40096,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.eventUuid hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -40324,10 +40324,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.eventUuid hash];
-  if (self.publicSharingPolicy) {
+  if (self.publicSharingPolicy != nil) {
     result = prime * result + [self.publicSharingPolicy hash];
   }
-  if (self.teamSharingPolicy) {
+  if (self.teamSharingPolicy != nil) {
     result = prime * result + [self.teamSharingPolicy hash];
   }
 
@@ -40460,7 +40460,7 @@
 
   result = prime * result + [self.eventUuid hash];
   result = prime * result + [self.dNewSubscriptionLevel hash];
-  if (self.previousSubscriptionLevel) {
+  if (self.previousSubscriptionLevel != nil) {
     result = prime * result + [self.previousSubscriptionLevel hash];
   }
 
@@ -40584,7 +40584,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.eventUuid hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -40909,7 +40909,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.eventUuid hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -41421,7 +41421,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.eventUuid hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -41934,7 +41934,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.eventUuid hash];
-  if (self.commentText) {
+  if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
 
@@ -43016,7 +43016,7 @@
 
   result = prime * result + [self.eventUuid hash];
   result = prime * result + [self.dNewSubscriptionLevel hash];
-  if (self.previousSubscriptionLevel) {
+  if (self.previousSubscriptionLevel != nil) {
     result = prime * result + [self.previousSubscriptionLevel hash];
   }
 
@@ -44408,7 +44408,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.namespaceRelative hash];
-  if (self.contextual) {
+  if (self.contextual != nil) {
     result = prime * result + [self.contextual hash];
   }
 
@@ -44528,7 +44528,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -45236,7 +45236,7 @@
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
   result = prime * result + [self.teamName hash];
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
 
@@ -45371,7 +45371,7 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -45700,10 +45700,10 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
-  if (self.prevParentNsId) {
+  if (self.prevParentNsId != nil) {
     result = prime * result + [self.prevParentNsId hash];
   }
-  if (self.dNewParentNsId) {
+  if (self.dNewParentNsId != nil) {
     result = prime * result + [self.dNewParentNsId hash];
   }
 
@@ -46065,10 +46065,10 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
-  if (self.dNewSharingPermission) {
+  if (self.dNewSharingPermission != nil) {
     result = prime * result + [self.dNewSharingPermission hash];
   }
-  if (self.previousSharingPermission) {
+  if (self.previousSharingPermission != nil) {
     result = prime * result + [self.previousSharingPermission hash];
   }
 
@@ -46208,7 +46208,7 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
 
@@ -46451,10 +46451,10 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
-  if (self.tokenKey) {
+  if (self.tokenKey != nil) {
     result = prime * result + [self.tokenKey hash];
   }
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
 
@@ -46699,10 +46699,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
 
@@ -46847,10 +46847,10 @@
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.expirationStartDate hash];
   result = prime * result + [self.expirationDays hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -46993,10 +46993,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -47132,13 +47132,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -47291,13 +47291,13 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -47456,10 +47456,10 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
-  if (self.dNewSharingPermission) {
+  if (self.dNewSharingPermission != nil) {
     result = prime * result + [self.dNewSharingPermission hash];
   }
-  if (self.previousSharingPermission) {
+  if (self.previousSharingPermission != nil) {
     result = prime * result + [self.previousSharingPermission hash];
   }
 
@@ -47607,13 +47607,13 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -47775,10 +47775,10 @@
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.expirationStartDate hash];
   result = prime * result + [self.expirationDays hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -47921,10 +47921,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -48063,16 +48063,16 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.dNewSharingPermission) {
+  if (self.dNewSharingPermission != nil) {
     result = prime * result + [self.dNewSharingPermission hash];
   }
-  if (self.previousSharingPermission) {
+  if (self.previousSharingPermission != nil) {
     result = prime * result + [self.previousSharingPermission hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -48235,13 +48235,13 @@
 
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -48392,10 +48392,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedContentLink) {
+  if (self.sharedContentLink != nil) {
     result = prime * result + [self.sharedContentLink hash];
   }
 
@@ -48538,7 +48538,7 @@
   result = prime * result + [self.sharedContentLink hash];
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.relocateActionDetails hash];
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
 
@@ -48674,7 +48674,7 @@
 
   result = prime * result + [self.sharedContentLink hash];
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
 
@@ -49193,10 +49193,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -49327,10 +49327,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -49466,13 +49466,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
 
@@ -49613,10 +49613,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
-  if (self.sharedContentLink) {
+  if (self.sharedContentLink != nil) {
     result = prime * result + [self.sharedContentLink hash];
   }
 
@@ -49745,7 +49745,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.originalFolderName) {
+  if (self.originalFolderName != nil) {
     result = prime * result + [self.originalFolderName hash];
   }
 
@@ -49867,7 +49867,7 @@
 
   result = prime * result + [self.sharedContentLink hash];
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
 
@@ -50179,7 +50179,7 @@
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -50329,10 +50329,10 @@
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -50494,10 +50494,10 @@
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -50660,10 +50660,10 @@
   result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.originalFolderName hash];
   result = prime * result + [self.dNewValue hash];
-  if (self.sharedFolderType) {
+  if (self.sharedFolderType != nil) {
     result = prime * result + [self.sharedFolderType hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -50809,7 +50809,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.targetAssetIndex hash];
-  if (self.parentNsId) {
+  if (self.parentNsId != nil) {
     result = prime * result + [self.parentNsId hash];
   }
 
@@ -51888,7 +51888,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -52012,7 +52012,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -52133,7 +52133,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -52792,10 +52792,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
-  if (self.tokenKey) {
+  if (self.tokenKey != nil) {
     result = prime * result + [self.tokenKey hash];
   }
 
@@ -52913,10 +52913,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
-  if (self.tokenKey) {
+  if (self.tokenKey != nil) {
     result = prime * result + [self.tokenKey hash];
   }
 
@@ -53034,10 +53034,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sharingPermission) {
+  if (self.sharingPermission != nil) {
     result = prime * result + [self.sharingPermission hash];
   }
-  if (self.tokenKey) {
+  if (self.tokenKey != nil) {
     result = prime * result + [self.tokenKey hash];
   }
 
@@ -54384,7 +54384,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -55771,7 +55771,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
 
@@ -55884,7 +55884,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewCertificateDetails hash];
-  if (self.previousCertificateDetails) {
+  if (self.previousCertificateDetails != nil) {
     result = prime * result + [self.previousCertificateDetails hash];
   }
 
@@ -56111,10 +56111,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
 
@@ -56236,7 +56236,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -57019,13 +57019,13 @@
   result = prime * result + [self.context hash];
   result = prime * result + [self.eventType hash];
   result = prime * result + [self.details hash];
-  if (self.origin) {
+  if (self.origin != nil) {
     result = prime * result + [self.origin hash];
   }
-  if (self.participants) {
+  if (self.participants != nil) {
     result = prime * result + [self.participants hash];
   }
-  if (self.assets) {
+  if (self.assets != nil) {
     result = prime * result + [self.assets hash];
   }
 
@@ -57218,7 +57218,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -57891,10 +57891,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.appId) {
+  if (self.appId != nil) {
     result = prime * result + [self.appId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
 
@@ -58027,19 +58027,19 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.accountId) {
+  if (self.accountId != nil) {
     result = prime * result + [self.accountId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
-  if (self.email) {
+  if (self.email != nil) {
     result = prime * result + [self.email hash];
   }
-  if (self.teamMemberId) {
+  if (self.teamMemberId != nil) {
     result = prime * result + [self.teamMemberId hash];
   }
-  if (self.memberExternalId) {
+  if (self.memberExternalId != nil) {
     result = prime * result + [self.memberExternalId hash];
   }
 
@@ -58961,7 +58961,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -59444,7 +59444,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -59568,10 +59568,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
-  if (self.usedRescueCode) {
+  if (self.usedRescueCode != nil) {
     result = prime * result + [self.usedRescueCode hash];
   }
 
@@ -60497,7 +60497,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.dNewValue hash];
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -60786,10 +60786,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.appId) {
+  if (self.appId != nil) {
     result = prime * result + [self.appId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
 
@@ -60912,7 +60912,7 @@
 
   result = prime * result + [self.givenName hash];
   result = prime * result + [self.surname hash];
-  if (self.locale) {
+  if (self.locale != nil) {
     result = prime * result + [self.locale hash];
   }
 
@@ -61030,10 +61030,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.appId) {
+  if (self.appId != nil) {
     result = prime * result + [self.appId hash];
   }
-  if (self.displayName) {
+  if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
   }
 
@@ -61150,7 +61150,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sessionId) {
+  if (self.sessionId != nil) {
     result = prime * result + [self.sessionId hash];
   }
 
@@ -61261,10 +61261,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 
@@ -61391,10 +61391,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dNewValue) {
+  if (self.dNewValue != nil) {
     result = prime * result + [self.dNewValue hash];
   }
-  if (self.previousValue) {
+  if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
   }
 

@@ -69,16 +69,16 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.sessionId hash];
-  if (self.ipAddress) {
+  if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
-  if (self.country) {
+  if (self.country != nil) {
     result = prime * result + [self.country hash];
   }
-  if (self.created) {
+  if (self.created != nil) {
     result = prime * result + [self.created hash];
   }
-  if (self.updated) {
+  if (self.updated != nil) {
     result = prime * result + [self.updated hash];
   }
 
@@ -257,19 +257,19 @@
   result = prime * result + [self.userAgent hash];
   result = prime * result + [self.os hash];
   result = prime * result + [self.browser hash];
-  if (self.ipAddress) {
+  if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
-  if (self.country) {
+  if (self.country != nil) {
     result = prime * result + [self.country hash];
   }
-  if (self.created) {
+  if (self.created != nil) {
     result = prime * result + [self.created hash];
   }
-  if (self.updated) {
+  if (self.updated != nil) {
     result = prime * result + [self.updated hash];
   }
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
 
@@ -663,13 +663,13 @@
   result = prime * result + [self.appId hash];
   result = prime * result + [self.appName hash];
   result = prime * result + [self.isAppFolder hash];
-  if (self.publisher) {
+  if (self.publisher != nil) {
     result = prime * result + [self.publisher hash];
   }
-  if (self.publisherUrl) {
+  if (self.publisherUrl != nil) {
     result = prime * result + [self.publisherUrl hash];
   }
-  if (self.linked) {
+  if (self.linked != nil) {
     result = prime * result + [self.linked hash];
   }
 
@@ -1619,10 +1619,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.startDate) {
+  if (self.startDate != nil) {
     result = prime * result + [self.startDate hash];
   }
-  if (self.endDate) {
+  if (self.endDate != nil) {
     result = prime * result + [self.endDate hash];
   }
 
@@ -1911,16 +1911,16 @@
   result = prime * result + [self.clientVersion hash];
   result = prime * result + [self.platform hash];
   result = prime * result + [self.isDeleteOnUnlinkSupported hash];
-  if (self.ipAddress) {
+  if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
-  if (self.country) {
+  if (self.country != nil) {
     result = prime * result + [self.country hash];
   }
-  if (self.created) {
+  if (self.created != nil) {
     result = prime * result + [self.created hash];
   }
-  if (self.updated) {
+  if (self.updated != nil) {
     result = prime * result + [self.updated hash];
   }
 
@@ -4367,10 +4367,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.groupName hash];
-  if (self.groupExternalId) {
+  if (self.groupExternalId != nil) {
     result = prime * result + [self.groupExternalId hash];
   }
-  if (self.groupManagementType) {
+  if (self.groupManagementType != nil) {
     result = prime * result + [self.groupManagementType hash];
   }
 
@@ -5272,13 +5272,13 @@
   result = prime * result + [self.groupId hash];
   result = prime * result + [self.groupManagementType hash];
   result = prime * result + [self.created hash];
-  if (self.groupExternalId) {
+  if (self.groupExternalId != nil) {
     result = prime * result + [self.groupExternalId hash];
   }
-  if (self.memberCount) {
+  if (self.memberCount != nil) {
     result = prime * result + [self.memberCount hash];
   }
-  if (self.members) {
+  if (self.members != nil) {
     result = prime * result + [self.members hash];
   }
 
@@ -7855,13 +7855,13 @@
 
   result = prime * result + [self.group hash];
   result = prime * result + [self.returnMembers hash];
-  if (self.dNewGroupName) {
+  if (self.dNewGroupName != nil) {
     result = prime * result + [self.dNewGroupName hash];
   }
-  if (self.dNewGroupExternalId) {
+  if (self.dNewGroupExternalId != nil) {
     result = prime * result + [self.dNewGroupExternalId hash];
   }
-  if (self.dNewGroupManagementType) {
+  if (self.dNewGroupManagementType != nil) {
     result = prime * result + [self.dNewGroupManagementType hash];
   }
 
@@ -10764,13 +10764,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.activeWebSessions) {
+  if (self.activeWebSessions != nil) {
     result = prime * result + [self.activeWebSessions hash];
   }
-  if (self.desktopClientSessions) {
+  if (self.desktopClientSessions != nil) {
     result = prime * result + [self.desktopClientSessions hash];
   }
-  if (self.mobileClientSessions) {
+  if (self.mobileClientSessions != nil) {
     result = prime * result + [self.mobileClientSessions hash];
   }
 
@@ -10927,7 +10927,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -11198,7 +11198,7 @@
 
   result = prime * result + [self.apps hash];
   result = prime * result + [self.hasMore hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -11329,7 +11329,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
   result = prime * result + [self.includeWebSessions hash];
@@ -11621,7 +11621,7 @@
 
   result = prime * result + [self.devices hash];
   result = prime * result + [self.hasMore hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -11746,7 +11746,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -12017,7 +12017,7 @@
 
   result = prime * result + [self.apps hash];
   result = prime * result + [self.hasMore hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -12148,7 +12148,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
   result = prime * result + [self.includeWebSessions hash];
@@ -12440,7 +12440,7 @@
 
   result = prime * result + [self.devices hash];
   result = prime * result + [self.hasMore hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -12705,16 +12705,16 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.memberEmail hash];
-  if (self.memberGivenName) {
+  if (self.memberGivenName != nil) {
     result = prime * result + [self.memberGivenName hash];
   }
-  if (self.memberSurname) {
+  if (self.memberSurname != nil) {
     result = prime * result + [self.memberSurname hash];
   }
-  if (self.memberExternalId) {
+  if (self.memberExternalId != nil) {
     result = prime * result + [self.memberExternalId hash];
   }
-  if (self.memberPersistentId) {
+  if (self.memberPersistentId != nil) {
     result = prime * result + [self.memberPersistentId hash];
   }
   result = prime * result + [self.sendWelcomeEmail hash];
@@ -13387,13 +13387,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.teamMemberId hash];
-  if (self.webSessions) {
+  if (self.webSessions != nil) {
     result = prime * result + [self.webSessions hash];
   }
-  if (self.desktopClients) {
+  if (self.desktopClients != nil) {
     result = prime * result + [self.desktopClients hash];
   }
-  if (self.mobileClients) {
+  if (self.mobileClients != nil) {
     result = prime * result + [self.mobileClients hash];
   }
 
@@ -13719,16 +13719,16 @@
   result = prime * result + [self.status hash];
   result = prime * result + [self.name hash];
   result = prime * result + [self.membershipType hash];
-  if (self.externalId) {
+  if (self.externalId != nil) {
     result = prime * result + [self.externalId hash];
   }
-  if (self.accountId) {
+  if (self.accountId != nil) {
     result = prime * result + [self.accountId hash];
   }
-  if (self.joinedOn) {
+  if (self.joinedOn != nil) {
     result = prime * result + [self.joinedOn hash];
   }
-  if (self.persistentId) {
+  if (self.persistentId != nil) {
     result = prime * result + [self.persistentId hash];
   }
 
@@ -16370,10 +16370,10 @@
 
   result = prime * result + [self.user hash];
   result = prime * result + [self.wipeData hash];
-  if (self.transferDestId) {
+  if (self.transferDestId != nil) {
     result = prime * result + [self.transferDestId hash];
   }
-  if (self.transferAdminId) {
+  if (self.transferAdminId != nil) {
     result = prime * result + [self.transferAdminId hash];
   }
   result = prime * result + [self.keepAccount hash];
@@ -17607,19 +17607,19 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.user hash];
-  if (self.dNewEmail) {
+  if (self.dNewEmail != nil) {
     result = prime * result + [self.dNewEmail hash];
   }
-  if (self.dNewExternalId) {
+  if (self.dNewExternalId != nil) {
     result = prime * result + [self.dNewExternalId hash];
   }
-  if (self.dNewGivenName) {
+  if (self.dNewGivenName != nil) {
     result = prime * result + [self.dNewGivenName hash];
   }
-  if (self.dNewSurname) {
+  if (self.dNewSurname != nil) {
     result = prime * result + [self.dNewSurname hash];
   }
-  if (self.dNewPersistentId) {
+  if (self.dNewPersistentId != nil) {
     result = prime * result + [self.dNewPersistentId hash];
   }
 
@@ -18952,25 +18952,25 @@
   result = prime * result + [self.sessionId hash];
   result = prime * result + [self.deviceName hash];
   result = prime * result + [self.clientType hash];
-  if (self.ipAddress) {
+  if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
-  if (self.country) {
+  if (self.country != nil) {
     result = prime * result + [self.country hash];
   }
-  if (self.created) {
+  if (self.created != nil) {
     result = prime * result + [self.created hash];
   }
-  if (self.updated) {
+  if (self.updated != nil) {
     result = prime * result + [self.updated hash];
   }
-  if (self.clientVersion) {
+  if (self.clientVersion != nil) {
     result = prime * result + [self.clientVersion hash];
   }
-  if (self.osVersion) {
+  if (self.osVersion != nil) {
     result = prime * result + [self.osVersion hash];
   }
-  if (self.lastCarrier) {
+  if (self.lastCarrier != nil) {
     result = prime * result + [self.lastCarrier hash];
   }
 
@@ -19176,7 +19176,7 @@
   result = prime * result + [self.name hash];
   result = prime * result + [self.namespaceId hash];
   result = prime * result + [self.namespaceType hash];
-  if (self.teamMemberId) {
+  if (self.teamMemberId != nil) {
     result = prime * result + [self.teamMemberId hash];
   }
 
@@ -20684,7 +20684,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.success hash];
-  if (self.errorType) {
+  if (self.errorType != nil) {
     result = prime * result + [self.errorType hash];
   }
 
@@ -21446,7 +21446,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.success hash];
-  if (self.errorType) {
+  if (self.errorType != nil) {
     result = prime * result + [self.errorType hash];
   }
 
@@ -25856,16 +25856,16 @@
   result = prime * result + [self.membershipType hash];
   result = prime * result + [self.groups hash];
   result = prime * result + [self.memberFolderId hash];
-  if (self.externalId) {
+  if (self.externalId != nil) {
     result = prime * result + [self.externalId hash];
   }
-  if (self.accountId) {
+  if (self.accountId != nil) {
     result = prime * result + [self.accountId hash];
   }
-  if (self.joinedOn) {
+  if (self.joinedOn != nil) {
     result = prime * result + [self.joinedOn hash];
   }
-  if (self.persistentId) {
+  if (self.persistentId != nil) {
     result = prime * result + [self.persistentId hash];
   }
 
@@ -27485,7 +27485,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.user hash];
-  if (self.quotaGb) {
+  if (self.quotaGb != nil) {
     result = prime * result + [self.quotaGb hash];
   }
 

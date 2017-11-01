@@ -288,7 +288,7 @@
 
   result = prime * result + [self.docId hash];
   result = prime * result + [self.members hash];
-  if (self.customMessage) {
+  if (self.customMessage != nil) {
     result = prime * result + [self.customMessage hash];
   }
   result = prime * result + [self.quiet hash];
@@ -813,7 +813,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.value hash];
-  if (self.expiration) {
+  if (self.expiration != nil) {
     result = prime * result + [self.expiration hash];
   }
 
@@ -2097,10 +2097,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.folderSharingPolicyType) {
+  if (self.folderSharingPolicyType != nil) {
     result = prime * result + [self.folderSharingPolicyType hash];
   }
-  if (self.folders) {
+  if (self.folders != nil) {
     result = prime * result + [self.folders hash];
   }
 
@@ -4795,7 +4795,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.importFormat hash];
-  if (self.parentFolderId) {
+  if (self.parentFolderId != nil) {
     result = prime * result + [self.parentFolderId hash];
   }
 
@@ -6523,10 +6523,10 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.publicSharingPolicy) {
+  if (self.publicSharingPolicy != nil) {
     result = prime * result + [self.publicSharingPolicy hash];
   }
-  if (self.teamSharingPolicy) {
+  if (self.teamSharingPolicy != nil) {
     result = prime * result + [self.teamSharingPolicy hash];
   }
 

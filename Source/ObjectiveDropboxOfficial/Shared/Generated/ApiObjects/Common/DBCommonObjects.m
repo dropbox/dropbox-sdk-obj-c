@@ -61,7 +61,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.pathRoot) {
+  if (self.pathRoot != nil) {
     result = prime * result + [self.pathRoot hash];
   }
 

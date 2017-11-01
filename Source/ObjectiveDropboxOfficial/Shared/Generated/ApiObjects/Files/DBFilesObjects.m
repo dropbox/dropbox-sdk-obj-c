@@ -223,7 +223,7 @@
   result = prime * result + [self.includeMediaInfo hash];
   result = prime * result + [self.includeDeleted hash];
   result = prime * result + [self.includeHasExplicitSharedMembers hash];
-  if (self.includePropertyTemplates) {
+  if (self.includePropertyTemplates != nil) {
     result = prime * result + [self.includePropertyTemplates hash];
   }
 
@@ -714,7 +714,7 @@
   result = prime * result + [self.path hash];
   result = prime * result + [self.mode hash];
   result = prime * result + [self.autorename hash];
-  if (self.clientModified) {
+  if (self.clientModified != nil) {
     result = prime * result + [self.clientModified hash];
   }
   result = prime * result + [self.mute hash];
@@ -870,11 +870,11 @@
   result = prime * result + [self.path hash];
   result = prime * result + [self.mode hash];
   result = prime * result + [self.autorename hash];
-  if (self.clientModified) {
+  if (self.clientModified != nil) {
     result = prime * result + [self.clientModified hash];
   }
   result = prime * result + [self.mute hash];
-  if (self.propertyGroups) {
+  if (self.propertyGroups != nil) {
     result = prime * result + [self.propertyGroups hash];
   }
 
@@ -3020,13 +3020,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.name hash];
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.pathDisplay) {
+  if (self.pathDisplay != nil) {
     result = prime * result + [self.pathDisplay hash];
   }
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
 
@@ -3194,13 +3194,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.name hash];
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.pathDisplay) {
+  if (self.pathDisplay != nil) {
     result = prime * result + [self.pathDisplay hash];
   }
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
 
@@ -3450,7 +3450,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.rev) {
+  if (self.rev != nil) {
     result = prime * result + [self.rev hash];
   }
 
@@ -3794,28 +3794,28 @@
   result = prime * result + [self.serverModified hash];
   result = prime * result + [self.rev hash];
   result = prime * result + [self.size hash];
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.pathDisplay) {
+  if (self.pathDisplay != nil) {
     result = prime * result + [self.pathDisplay hash];
   }
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
-  if (self.mediaInfo) {
+  if (self.mediaInfo != nil) {
     result = prime * result + [self.mediaInfo hash];
   }
-  if (self.sharingInfo) {
+  if (self.sharingInfo != nil) {
     result = prime * result + [self.sharingInfo hash];
   }
-  if (self.propertyGroups) {
+  if (self.propertyGroups != nil) {
     result = prime * result + [self.propertyGroups hash];
   }
-  if (self.hasExplicitSharedMembers) {
+  if (self.hasExplicitSharedMembers != nil) {
     result = prime * result + [self.hasExplicitSharedMembers hash];
   }
-  if (self.contentHash) {
+  if (self.contentHash != nil) {
     result = prime * result + [self.contentHash hash];
   }
 
@@ -4155,7 +4155,7 @@
 
   result = prime * result + [self.readOnly hash];
   result = prime * result + [self.parentSharedFolderId hash];
-  if (self.modifiedBy) {
+  if (self.modifiedBy != nil) {
     result = prime * result + [self.modifiedBy hash];
   }
 
@@ -4309,22 +4309,22 @@
 
   result = prime * result + [self.name hash];
   result = prime * result + [self.id_ hash];
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.pathDisplay) {
+  if (self.pathDisplay != nil) {
     result = prime * result + [self.pathDisplay hash];
   }
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
-  if (self.sharedFolderId) {
+  if (self.sharedFolderId != nil) {
     result = prime * result + [self.sharedFolderId hash];
   }
-  if (self.sharingInfo) {
+  if (self.sharingInfo != nil) {
     result = prime * result + [self.sharingInfo hash];
   }
-  if (self.propertyGroups) {
+  if (self.propertyGroups != nil) {
     result = prime * result + [self.propertyGroups hash];
   }
 
@@ -4520,10 +4520,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.readOnly hash];
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
-  if (self.sharedFolderId) {
+  if (self.sharedFolderId != nil) {
     result = prime * result + [self.sharedFolderId hash];
   }
   result = prime * result + [self.traverseOnly hash];
@@ -6245,10 +6245,10 @@
   result = prime * result + [self.includeDeleted hash];
   result = prime * result + [self.includeHasExplicitSharedMembers hash];
   result = prime * result + [self.includeMountedFolders hash];
-  if (self.limit) {
+  if (self.limit != nil) {
     result = prime * result + [self.limit hash];
   }
-  if (self.sharedLink) {
+  if (self.sharedLink != nil) {
     result = prime * result + [self.sharedLink hash];
   }
 
@@ -7218,7 +7218,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.changes hash];
-  if (self.backoff) {
+  if (self.backoff != nil) {
     result = prime * result + [self.backoff hash];
   }
 
@@ -7931,7 +7931,7 @@
 
   result = prime * result + [self.isDeleted hash];
   result = prime * result + [self.entries hash];
-  if (self.serverDeleted) {
+  if (self.serverDeleted != nil) {
     result = prime * result + [self.serverDeleted hash];
   }
 
@@ -8154,7 +8154,7 @@
 
   switch (_tag) {
   case DBFILESLookupErrorMalformedPath:
-    if (self.malformedPath) {
+    if (self.malformedPath != nil) {
       result = prime * result + [self.malformedPath hash];
     }
   case DBFILESLookupErrorNotFound:
@@ -8495,13 +8495,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dimensions) {
+  if (self.dimensions != nil) {
     result = prime * result + [self.dimensions hash];
   }
-  if (self.location) {
+  if (self.location != nil) {
     result = prime * result + [self.location hash];
   }
-  if (self.timeTaken) {
+  if (self.timeTaken != nil) {
     result = prime * result + [self.timeTaken hash];
   }
 
@@ -8651,13 +8651,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dimensions) {
+  if (self.dimensions != nil) {
     result = prime * result + [self.dimensions hash];
   }
-  if (self.location) {
+  if (self.location != nil) {
     result = prime * result + [self.location hash];
   }
-  if (self.timeTaken) {
+  if (self.timeTaken != nil) {
     result = prime * result + [self.timeTaken hash];
   }
 
@@ -8796,7 +8796,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.rev) {
+  if (self.rev != nil) {
     result = prime * result + [self.rev hash];
   }
 
@@ -13415,7 +13415,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.url hash];
-  if (self.password) {
+  if (self.password != nil) {
     result = prime * result + [self.password hash];
   }
 
@@ -16626,16 +16626,16 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.dimensions) {
+  if (self.dimensions != nil) {
     result = prime * result + [self.dimensions hash];
   }
-  if (self.location) {
+  if (self.location != nil) {
     result = prime * result + [self.location hash];
   }
-  if (self.timeTaken) {
+  if (self.timeTaken != nil) {
     result = prime * result + [self.timeTaken hash];
   }
-  if (self.duration) {
+  if (self.duration != nil) {
     result = prime * result + [self.duration hash];
   }
 
@@ -17092,7 +17092,7 @@
 
   switch (_tag) {
   case DBFILESWriteErrorMalformedPath:
-    if (self.malformedPath) {
+    if (self.malformedPath != nil) {
       result = prime * result + [self.malformedPath hash];
     }
   case DBFILESWriteErrorConflict:

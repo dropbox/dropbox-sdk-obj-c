@@ -471,7 +471,7 @@
 
   result = prime * result + [self.file hash];
   result = prime * result + [self.members hash];
-  if (self.customMessage) {
+  if (self.customMessage != nil) {
     result = prime * result + [self.customMessage hash];
   }
   result = prime * result + [self.quiet hash];
@@ -885,7 +885,7 @@
   result = prime * result + [self.sharedFolderId hash];
   result = prime * result + [self.members hash];
   result = prime * result + [self.quiet hash];
-  if (self.customMessage) {
+  if (self.customMessage != nil) {
     result = prime * result + [self.customMessage hash];
   }
 
@@ -2332,7 +2332,7 @@
 
   result = prime * result + [self.url hash];
   result = prime * result + [self.visibility hash];
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
 
@@ -2476,7 +2476,7 @@
 
   result = prime * result + [self.url hash];
   result = prime * result + [self.visibility hash];
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
 
@@ -2604,7 +2604,7 @@
 
   result = prime * result + [self.path hash];
   result = prime * result + [self.shortUrl hash];
-  if (self.pendingUpload) {
+  if (self.pendingUpload != nil) {
     result = prime * result + [self.pendingUpload hash];
   }
 
@@ -2897,7 +2897,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.settings) {
+  if (self.settings != nil) {
     result = prime * result + [self.settings hash];
   }
 
@@ -3305,13 +3305,13 @@
   result = prime * result + [self.currentAudience hash];
   result = prime * result + [self.linkPermissions hash];
   result = prime * result + [self.passwordProtected hash];
-  if (self.accessLevel) {
+  if (self.accessLevel != nil) {
     result = prime * result + [self.accessLevel hash];
   }
-  if (self.audienceRestrictingSharedFolder) {
+  if (self.audienceRestrictingSharedFolder != nil) {
     result = prime * result + [self.audienceRestrictingSharedFolder hash];
   }
-  if (self.expiry) {
+  if (self.expiry != nil) {
     result = prime * result + [self.expiry hash];
   }
 
@@ -3526,13 +3526,13 @@
   result = prime * result + [self.currentAudience hash];
   result = prime * result + [self.linkPermissions hash];
   result = prime * result + [self.passwordProtected hash];
-  if (self.accessLevel) {
+  if (self.accessLevel != nil) {
     result = prime * result + [self.accessLevel hash];
   }
-  if (self.audienceRestrictingSharedFolder) {
+  if (self.audienceRestrictingSharedFolder != nil) {
     result = prime * result + [self.audienceRestrictingSharedFolder hash];
   }
-  if (self.expiry) {
+  if (self.expiry != nil) {
     result = prime * result + [self.expiry hash];
   }
 
@@ -4304,19 +4304,19 @@
   result = prime * result + [self.url hash];
   result = prime * result + [self.name hash];
   result = prime * result + [self.linkPermissions hash];
-  if (self.id_) {
+  if (self.id_ != nil) {
     result = prime * result + [self.id_ hash];
   }
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.teamMemberInfo) {
+  if (self.teamMemberInfo != nil) {
     result = prime * result + [self.teamMemberInfo hash];
   }
-  if (self.contentOwnerTeamInfo) {
+  if (self.contentOwnerTeamInfo != nil) {
     result = prime * result + [self.contentOwnerTeamInfo hash];
   }
 
@@ -4548,19 +4548,19 @@
   result = prime * result + [self.serverModified hash];
   result = prime * result + [self.rev hash];
   result = prime * result + [self.size hash];
-  if (self.id_) {
+  if (self.id_ != nil) {
     result = prime * result + [self.id_ hash];
   }
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.teamMemberInfo) {
+  if (self.teamMemberInfo != nil) {
     result = prime * result + [self.teamMemberInfo hash];
   }
-  if (self.contentOwnerTeamInfo) {
+  if (self.contentOwnerTeamInfo != nil) {
     result = prime * result + [self.contentOwnerTeamInfo hash];
   }
 
@@ -5063,7 +5063,7 @@
 
   switch (_tag) {
   case DBSHARINGFileMemberActionIndividualResultSuccess:
-    if (self.success) {
+    if (self.success != nil) {
       result = prime * result + [self.success hash];
     }
   case DBSHARINGFileMemberActionIndividualResultMemberError:
@@ -5528,7 +5528,7 @@
 
   result = prime * result + [self.action hash];
   result = prime * result + [self.allow hash];
-  if (self.reason) {
+  if (self.reason != nil) {
     result = prime * result + [self.reason hash];
   }
 
@@ -6095,19 +6095,19 @@
   result = prime * result + [self.url hash];
   result = prime * result + [self.name hash];
   result = prime * result + [self.linkPermissions hash];
-  if (self.id_) {
+  if (self.id_ != nil) {
     result = prime * result + [self.id_ hash];
   }
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.teamMemberInfo) {
+  if (self.teamMemberInfo != nil) {
     result = prime * result + [self.teamMemberInfo hash];
   }
-  if (self.contentOwnerTeamInfo) {
+  if (self.contentOwnerTeamInfo != nil) {
     result = prime * result + [self.contentOwnerTeamInfo hash];
   }
 
@@ -6290,7 +6290,7 @@
 
   result = prime * result + [self.action hash];
   result = prime * result + [self.allow hash];
-  if (self.reason) {
+  if (self.reason != nil) {
     result = prime * result + [self.reason hash];
   }
 
@@ -6430,13 +6430,13 @@
 
   result = prime * result + [self.aclUpdatePolicy hash];
   result = prime * result + [self.sharedLinkPolicy hash];
-  if (self.memberPolicy) {
+  if (self.memberPolicy != nil) {
     result = prime * result + [self.memberPolicy hash];
   }
-  if (self.resolvedMemberPolicy) {
+  if (self.resolvedMemberPolicy != nil) {
     result = prime * result + [self.resolvedMemberPolicy hash];
   }
-  if (self.viewerInfoPolicy) {
+  if (self.viewerInfoPolicy != nil) {
     result = prime * result + [self.viewerInfoPolicy hash];
   }
 
@@ -6596,7 +6596,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.file hash];
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
 
@@ -6735,7 +6735,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.files hash];
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
 
@@ -7390,7 +7390,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.sharedFolderId hash];
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
 
@@ -7930,10 +7930,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.url hash];
-  if (self.path) {
+  if (self.path != nil) {
     result = prime * result + [self.path hash];
   }
-  if (self.linkPassword) {
+  if (self.linkPassword != nil) {
     result = prime * result + [self.linkPassword hash];
   }
 
@@ -8055,7 +8055,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.path) {
+  if (self.path != nil) {
     result = prime * result + [self.path hash];
   }
 
@@ -8202,7 +8202,7 @@
 
   switch (_tag) {
   case DBSHARINGGetSharedLinksErrorPath:
-    if (self.path) {
+    if (self.path != nil) {
       result = prime * result + [self.path hash];
     }
   case DBSHARINGGetSharedLinksErrorOther:
@@ -8489,10 +8489,10 @@
   result = prime * result + [self.isMember hash];
   result = prime * result + [self.isOwner hash];
   result = prime * result + [self.sameTeam hash];
-  if (self.groupExternalId) {
+  if (self.groupExternalId != nil) {
     result = prime * result + [self.groupExternalId hash];
   }
-  if (self.memberCount) {
+  if (self.memberCount != nil) {
     result = prime * result + [self.memberCount hash];
   }
 
@@ -8668,10 +8668,10 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.accessType hash];
-  if (self.permissions) {
+  if (self.permissions != nil) {
     result = prime * result + [self.permissions hash];
   }
-  if (self.initials) {
+  if (self.initials != nil) {
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
@@ -8826,10 +8826,10 @@
 
   result = prime * result + [self.accessType hash];
   result = prime * result + [self.group hash];
-  if (self.permissions) {
+  if (self.permissions != nil) {
     result = prime * result + [self.permissions hash];
   }
-  if (self.initials) {
+  if (self.initials != nil) {
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
@@ -8977,7 +8977,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.message hash];
-  if (self.upsellUrl) {
+  if (self.upsellUrl != nil) {
     result = prime * result + [self.upsellUrl hash];
   }
 
@@ -9392,14 +9392,14 @@
 
   result = prime * result + [self.accessType hash];
   result = prime * result + [self.invitee hash];
-  if (self.permissions) {
+  if (self.permissions != nil) {
     result = prime * result + [self.permissions hash];
   }
-  if (self.initials) {
+  if (self.initials != nil) {
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
-  if (self.user) {
+  if (self.user != nil) {
     result = prime * result + [self.user hash];
   }
 
@@ -10828,7 +10828,7 @@
 
   result = prime * result + [self.action hash];
   result = prime * result + [self.allow hash];
-  if (self.reason) {
+  if (self.reason != nil) {
     result = prime * result + [self.reason hash];
   }
 
@@ -10958,13 +10958,13 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.canRevoke hash];
-  if (self.resolvedVisibility) {
+  if (self.resolvedVisibility != nil) {
     result = prime * result + [self.resolvedVisibility hash];
   }
-  if (self.requestedVisibility) {
+  if (self.requestedVisibility != nil) {
     result = prime * result + [self.requestedVisibility hash];
   }
-  if (self.revokeFailureReason) {
+  if (self.revokeFailureReason != nil) {
     result = prime * result + [self.revokeFailureReason hash];
   }
 
@@ -11118,16 +11118,16 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.accessLevel) {
+  if (self.accessLevel != nil) {
     result = prime * result + [self.accessLevel hash];
   }
-  if (self.audience) {
+  if (self.audience != nil) {
     result = prime * result + [self.audience hash];
   }
-  if (self.expiry) {
+  if (self.expiry != nil) {
     result = prime * result + [self.expiry hash];
   }
-  if (self.password) {
+  if (self.password != nil) {
     result = prime * result + [self.password hash];
   }
 
@@ -11283,7 +11283,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.file hash];
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
   result = prime * result + [self.includeInherited hash];
@@ -12504,7 +12504,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.limit hash];
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
 
@@ -12918,7 +12918,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.entries hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -13044,7 +13044,7 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
   result = prime * result + [self.limit hash];
@@ -13177,7 +13177,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.sharedFolderId hash];
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
   result = prime * result + [self.limit hash];
@@ -13601,7 +13601,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.limit hash];
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
 
@@ -13979,7 +13979,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.entries hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -14106,13 +14106,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.path) {
+  if (self.path != nil) {
     result = prime * result + [self.path hash];
   }
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
-  if (self.directOnly) {
+  if (self.directOnly != nil) {
     result = prime * result + [self.directOnly hash];
   }
 
@@ -14437,7 +14437,7 @@
 
   result = prime * result + [self.links hash];
   result = prime * result + [self.hasMore hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -14572,13 +14572,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.accessLevel) {
+  if (self.accessLevel != nil) {
     result = prime * result + [self.accessLevel hash];
   }
-  if (self.warning) {
+  if (self.warning != nil) {
     result = prime * result + [self.warning hash];
   }
-  if (self.accessDetails) {
+  if (self.accessDetails != nil) {
     result = prime * result + [self.accessDetails hash];
   }
 
@@ -14988,7 +14988,7 @@
 
   result = prime * result + [self.action hash];
   result = prime * result + [self.allow hash];
-  if (self.reason) {
+  if (self.reason != nil) {
     result = prime * result + [self.reason hash];
   }
 
@@ -16404,7 +16404,7 @@
   result = prime * result + [self.url hash];
   result = prime * result + [self.visibility hash];
   result = prime * result + [self.path hash];
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
 
@@ -19619,17 +19619,17 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.aclUpdatePolicy) {
+  if (self.aclUpdatePolicy != nil) {
     result = prime * result + [self.aclUpdatePolicy hash];
   }
   result = prime * result + [self.forceAsync hash];
-  if (self.memberPolicy) {
+  if (self.memberPolicy != nil) {
     result = prime * result + [self.memberPolicy hash];
   }
-  if (self.sharedLinkPolicy) {
+  if (self.sharedLinkPolicy != nil) {
     result = prime * result + [self.sharedLinkPolicy hash];
   }
-  if (self.viewerInfoPolicy) {
+  if (self.viewerInfoPolicy != nil) {
     result = prime * result + [self.viewerInfoPolicy hash];
   }
 
@@ -19823,23 +19823,23 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.path hash];
-  if (self.aclUpdatePolicy) {
+  if (self.aclUpdatePolicy != nil) {
     result = prime * result + [self.aclUpdatePolicy hash];
   }
   result = prime * result + [self.forceAsync hash];
-  if (self.memberPolicy) {
+  if (self.memberPolicy != nil) {
     result = prime * result + [self.memberPolicy hash];
   }
-  if (self.sharedLinkPolicy) {
+  if (self.sharedLinkPolicy != nil) {
     result = prime * result + [self.sharedLinkPolicy hash];
   }
-  if (self.viewerInfoPolicy) {
+  if (self.viewerInfoPolicy != nil) {
     result = prime * result + [self.viewerInfoPolicy hash];
   }
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
-  if (self.linkSettings) {
+  if (self.linkSettings != nil) {
     result = prime * result + [self.linkSettings hash];
   }
 
@@ -21380,16 +21380,16 @@
   result = prime * result + [self.linkPermissions hash];
   result = prime * result + [self.passwordProtected hash];
   result = prime * result + [self.url hash];
-  if (self.accessLevel) {
+  if (self.accessLevel != nil) {
     result = prime * result + [self.accessLevel hash];
   }
-  if (self.audienceRestrictingSharedFolder) {
+  if (self.audienceRestrictingSharedFolder != nil) {
     result = prime * result + [self.audienceRestrictingSharedFolder hash];
   }
-  if (self.expiry) {
+  if (self.expiry != nil) {
     result = prime * result + [self.expiry hash];
   }
-  if (self.audienceExceptions) {
+  if (self.audienceExceptions != nil) {
     result = prime * result + [self.audienceExceptions hash];
   }
 
@@ -21608,7 +21608,7 @@
   result = prime * result + [self.users hash];
   result = prime * result + [self.groups hash];
   result = prime * result + [self.invitees hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -21819,34 +21819,34 @@
   result = prime * result + [self.name hash];
   result = prime * result + [self.policy hash];
   result = prime * result + [self.previewUrl hash];
-  if (self.accessType) {
+  if (self.accessType != nil) {
     result = prime * result + [self.accessType hash];
   }
-  if (self.expectedLinkMetadata) {
+  if (self.expectedLinkMetadata != nil) {
     result = prime * result + [self.expectedLinkMetadata hash];
   }
-  if (self.linkMetadata) {
+  if (self.linkMetadata != nil) {
     result = prime * result + [self.linkMetadata hash];
   }
-  if (self.ownerDisplayNames) {
+  if (self.ownerDisplayNames != nil) {
     result = prime * result + [self.ownerDisplayNames hash];
   }
-  if (self.ownerTeam) {
+  if (self.ownerTeam != nil) {
     result = prime * result + [self.ownerTeam hash];
   }
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
-  if (self.pathDisplay) {
+  if (self.pathDisplay != nil) {
     result = prime * result + [self.pathDisplay hash];
   }
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.permissions) {
+  if (self.permissions != nil) {
     result = prime * result + [self.permissions hash];
   }
-  if (self.timeInvited) {
+  if (self.timeInvited != nil) {
     result = prime * result + [self.timeInvited hash];
   }
 
@@ -22550,7 +22550,7 @@
   result = prime * result + [self.users hash];
   result = prime * result + [self.groups hash];
   result = prime * result + [self.invitees hash];
-  if (self.cursor) {
+  if (self.cursor != nil) {
     result = prime * result + [self.cursor hash];
   }
 
@@ -22729,16 +22729,16 @@
   result = prime * result + [self.accessType hash];
   result = prime * result + [self.isInsideTeamFolder hash];
   result = prime * result + [self.isTeamFolder hash];
-  if (self.ownerDisplayNames) {
+  if (self.ownerDisplayNames != nil) {
     result = prime * result + [self.ownerDisplayNames hash];
   }
-  if (self.ownerTeam) {
+  if (self.ownerTeam != nil) {
     result = prime * result + [self.ownerTeam hash];
   }
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
 
@@ -22982,22 +22982,22 @@
   result = prime * result + [self.previewUrl hash];
   result = prime * result + [self.sharedFolderId hash];
   result = prime * result + [self.timeInvited hash];
-  if (self.ownerDisplayNames) {
+  if (self.ownerDisplayNames != nil) {
     result = prime * result + [self.ownerDisplayNames hash];
   }
-  if (self.ownerTeam) {
+  if (self.ownerTeam != nil) {
     result = prime * result + [self.ownerTeam hash];
   }
-  if (self.parentSharedFolderId) {
+  if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
-  if (self.pathLower) {
+  if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
   }
-  if (self.linkMetadata) {
+  if (self.linkMetadata != nil) {
     result = prime * result + [self.linkMetadata hash];
   }
-  if (self.permissions) {
+  if (self.permissions != nil) {
     result = prime * result + [self.permissions hash];
   }
 
@@ -23663,13 +23663,13 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestedVisibility) {
+  if (self.requestedVisibility != nil) {
     result = prime * result + [self.requestedVisibility hash];
   }
-  if (self.linkPassword) {
+  if (self.linkPassword != nil) {
     result = prime * result + [self.linkPassword hash];
   }
-  if (self.expires) {
+  if (self.expires != nil) {
     result = prime * result + [self.expires hash];
   }
 
@@ -24357,7 +24357,7 @@
 
   result = prime * result + [self.teamInfo hash];
   result = prime * result + [self.displayName hash];
-  if (self.memberId) {
+  if (self.memberId != nil) {
     result = prime * result + [self.memberId hash];
   }
 
@@ -26402,22 +26402,22 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.sharedFolderId hash];
-  if (self.memberPolicy) {
+  if (self.memberPolicy != nil) {
     result = prime * result + [self.memberPolicy hash];
   }
-  if (self.aclUpdatePolicy) {
+  if (self.aclUpdatePolicy != nil) {
     result = prime * result + [self.aclUpdatePolicy hash];
   }
-  if (self.viewerInfoPolicy) {
+  if (self.viewerInfoPolicy != nil) {
     result = prime * result + [self.viewerInfoPolicy hash];
   }
-  if (self.sharedLinkPolicy) {
+  if (self.sharedLinkPolicy != nil) {
     result = prime * result + [self.sharedLinkPolicy hash];
   }
-  if (self.linkSettings) {
+  if (self.linkSettings != nil) {
     result = prime * result + [self.linkSettings hash];
   }
-  if (self.actions) {
+  if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
 
@@ -26893,10 +26893,10 @@
 
   result = prime * result + [self.accessType hash];
   result = prime * result + [self.user hash];
-  if (self.permissions) {
+  if (self.permissions != nil) {
     result = prime * result + [self.permissions hash];
   }
-  if (self.initials) {
+  if (self.initials != nil) {
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
@@ -27059,14 +27059,14 @@
 
   result = prime * result + [self.accessType hash];
   result = prime * result + [self.user hash];
-  if (self.permissions) {
+  if (self.permissions != nil) {
     result = prime * result + [self.permissions hash];
   }
-  if (self.initials) {
+  if (self.initials != nil) {
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
-  if (self.timeLastSeen) {
+  if (self.timeLastSeen != nil) {
     result = prime * result + [self.timeLastSeen hash];
   }
 
@@ -27230,7 +27230,7 @@
 
   result = prime * result + [self.accountId hash];
   result = prime * result + [self.sameTeam hash];
-  if (self.teamMemberId) {
+  if (self.teamMemberId != nil) {
     result = prime * result + [self.teamMemberId hash];
   }
 

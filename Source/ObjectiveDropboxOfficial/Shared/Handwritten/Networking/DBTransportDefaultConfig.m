@@ -105,7 +105,7 @@
                  delegateQueue:(NSOperationQueue *)delegateQueue
         forceForegroundSession:(BOOL)forceForegroundSession
      sharedContainerIdentifier:(NSString *)sharedContainerIdentifier {
-    return [self initWithAppKey:appKey
+  return [self initWithAppKey:appKey
                       appSecret:appSecret
                  hostnameConfig:hostnameConfig
                     redirectURL:nil
@@ -127,17 +127,17 @@
                  delegateQueue:(NSOperationQueue *)delegateQueue
         forceForegroundSession:(BOOL)forceForegroundSession
      sharedContainerIdentifier:(NSString *)sharedContainerIdentifier {
-    if (self = [super initWithAppKey:appKey
-                           appSecret:appSecret
-                      hostnameConfig:hostnameConfig 
-                         redirectURL:redirectURL
-                           userAgent:userAgent
-                          asMemberId:asMemberId
-                   additionalHeaders:additionalHeaders]) {
-      _delegateQueue = delegateQueue;
-      _forceForegroundSession = forceForegroundSession;
-      _sharedContainerIdentifier = sharedContainerIdentifier;
-    }
+  if (self = [super initWithAppKey:appKey
+                         appSecret:appSecret
+                    hostnameConfig:hostnameConfig
+                       redirectURL:redirectURL
+                         userAgent:userAgent
+                        asMemberId:asMemberId
+                 additionalHeaders:additionalHeaders]) {
+    _delegateQueue = delegateQueue;
+    _forceForegroundSession = forceForegroundSession;
+    _sharedContainerIdentifier = sharedContainerIdentifier;
+  }
   return self;
 }
 

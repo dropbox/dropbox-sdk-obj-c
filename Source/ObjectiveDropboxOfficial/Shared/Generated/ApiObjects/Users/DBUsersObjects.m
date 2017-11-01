@@ -89,7 +89,7 @@
   result = prime * result + [self.email hash];
   result = prime * result + [self.emailVerified hash];
   result = prime * result + [self.disabled hash];
-  if (self.profilePhotoUrl) {
+  if (self.profilePhotoUrl != nil) {
     result = prime * result + [self.profilePhotoUrl hash];
   }
 
@@ -266,10 +266,10 @@
   result = prime * result + [self.emailVerified hash];
   result = prime * result + [self.disabled hash];
   result = prime * result + [self.isTeammate hash];
-  if (self.profilePhotoUrl) {
+  if (self.profilePhotoUrl != nil) {
     result = prime * result + [self.profilePhotoUrl hash];
   }
-  if (self.teamMemberId) {
+  if (self.teamMemberId != nil) {
     result = prime * result + [self.teamMemberId hash];
   }
 
@@ -489,16 +489,16 @@
   result = prime * result + [self.referralLink hash];
   result = prime * result + [self.isPaired hash];
   result = prime * result + [self.accountType hash];
-  if (self.profilePhotoUrl) {
+  if (self.profilePhotoUrl != nil) {
     result = prime * result + [self.profilePhotoUrl hash];
   }
-  if (self.country) {
+  if (self.country != nil) {
     result = prime * result + [self.country hash];
   }
-  if (self.team) {
+  if (self.team != nil) {
     result = prime * result + [self.team hash];
   }
-  if (self.teamMemberId) {
+  if (self.teamMemberId != nil) {
     result = prime * result + [self.teamMemberId hash];
   }
 
