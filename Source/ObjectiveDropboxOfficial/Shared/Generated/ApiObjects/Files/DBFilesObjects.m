@@ -6,6 +6,7 @@
 
 /// Arguments, results, and errors for the `Files` namespace.
 
+#import "DBFILEPROPERTIESTemplateFilterBase.h"
 #import "DBFILESGetMetadataArg.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -19,7 +20,8 @@
 - (instancetype)initWithPath:(NSString *)path
                    includeMediaInfo:(NSNumber *)includeMediaInfo
                      includeDeleted:(NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers {
+    includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators
                         stringValidator:nil
@@ -32,12 +34,17 @@
     _includeMediaInfo = includeMediaInfo ?: @NO;
     _includeDeleted = includeDeleted ?: @NO;
     _includeHasExplicitSharedMembers = includeHasExplicitSharedMembers ?: @NO;
+    _includePropertyGroups = includePropertyGroups;
   }
   return self;
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-  return [self initWithPath:path includeMediaInfo:nil includeDeleted:nil includeHasExplicitSharedMembers:nil];
+  return [self initWithPath:path
+                     includeMediaInfo:nil
+                       includeDeleted:nil
+      includeHasExplicitSharedMembers:nil
+                includePropertyGroups:nil];
 }
 
 #pragma mark - Serialization methods
@@ -74,6 +81,9 @@
   result = prime * result + [self.includeMediaInfo hash];
   result = prime * result + [self.includeDeleted hash];
   result = prime * result + [self.includeHasExplicitSharedMembers hash];
+  if (self.includePropertyGroups != nil) {
+    result = prime * result + [self.includePropertyGroups hash];
+  }
 
   return prime * result;
 }
@@ -106,6 +116,11 @@
   if (![self.includeHasExplicitSharedMembers isEqual:aGetMetadataArg.includeHasExplicitSharedMembers]) {
     return NO;
   }
+  if (self.includePropertyGroups) {
+    if (![self.includePropertyGroups isEqual:aGetMetadataArg.includePropertyGroups]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -122,6 +137,10 @@
   jsonDict[@"include_media_info"] = valueObj.includeMediaInfo;
   jsonDict[@"include_deleted"] = valueObj.includeDeleted;
   jsonDict[@"include_has_explicit_shared_members"] = valueObj.includeHasExplicitSharedMembers;
+  if (valueObj.includePropertyGroups) {
+    jsonDict[@"include_property_groups"] =
+        [DBFILEPROPERTIESTemplateFilterBaseSerializer serialize:valueObj.includePropertyGroups];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -131,15 +150,21 @@
   NSNumber *includeMediaInfo = valueDict[@"include_media_info"] ?: @NO;
   NSNumber *includeDeleted = valueDict[@"include_deleted"] ?: @NO;
   NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"] ?: @NO;
+  DBFILEPROPERTIESTemplateFilterBase *includePropertyGroups =
+      valueDict[@"include_property_groups"]
+          ? [DBFILEPROPERTIESTemplateFilterBaseSerializer deserialize:valueDict[@"include_property_groups"]]
+          : nil;
 
   return [[DBFILESGetMetadataArg alloc] initWithPath:path
                                     includeMediaInfo:includeMediaInfo
                                       includeDeleted:includeDeleted
-                     includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
+                     includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
+                               includePropertyGroups:includePropertyGroups];
 }
 
 @end
 
+#import "DBFILEPROPERTIESTemplateFilterBase.h"
 #import "DBFILESAlphaGetMetadataArg.h"
 #import "DBFILESGetMetadataArg.h"
 #import "DBStoneSerializers.h"
@@ -155,6 +180,7 @@
                    includeMediaInfo:(NSNumber *)includeMediaInfo
                      includeDeleted:(NSNumber *)includeDeleted
     includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
            includePropertyTemplates:(NSArray<NSString *> *)includePropertyTemplates {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators
@@ -174,7 +200,8 @@
   self = [super initWithPath:path
                      includeMediaInfo:includeMediaInfo
                        includeDeleted:includeDeleted
-      includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
+      includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
+                includePropertyGroups:includePropertyGroups];
   if (self) {
     _includePropertyTemplates = includePropertyTemplates;
   }
@@ -186,6 +213,7 @@
                      includeMediaInfo:nil
                        includeDeleted:nil
       includeHasExplicitSharedMembers:nil
+                includePropertyGroups:nil
              includePropertyTemplates:nil];
 }
 
@@ -223,6 +251,9 @@
   result = prime * result + [self.includeMediaInfo hash];
   result = prime * result + [self.includeDeleted hash];
   result = prime * result + [self.includeHasExplicitSharedMembers hash];
+  if (self.includePropertyGroups != nil) {
+    result = prime * result + [self.includePropertyGroups hash];
+  }
   if (self.includePropertyTemplates != nil) {
     result = prime * result + [self.includePropertyTemplates hash];
   }
@@ -258,6 +289,11 @@
   if (![self.includeHasExplicitSharedMembers isEqual:anAlphaGetMetadataArg.includeHasExplicitSharedMembers]) {
     return NO;
   }
+  if (self.includePropertyGroups) {
+    if (![self.includePropertyGroups isEqual:anAlphaGetMetadataArg.includePropertyGroups]) {
+      return NO;
+    }
+  }
   if (self.includePropertyTemplates) {
     if (![self.includePropertyTemplates isEqual:anAlphaGetMetadataArg.includePropertyTemplates]) {
       return NO;
@@ -279,6 +315,10 @@
   jsonDict[@"include_media_info"] = valueObj.includeMediaInfo;
   jsonDict[@"include_deleted"] = valueObj.includeDeleted;
   jsonDict[@"include_has_explicit_shared_members"] = valueObj.includeHasExplicitSharedMembers;
+  if (valueObj.includePropertyGroups) {
+    jsonDict[@"include_property_groups"] =
+        [DBFILEPROPERTIESTemplateFilterBaseSerializer serialize:valueObj.includePropertyGroups];
+  }
   if (valueObj.includePropertyTemplates) {
     jsonDict[@"include_property_templates"] = [DBArraySerializer serialize:valueObj.includePropertyTemplates
                                                                  withBlock:^id(id elem0) {
@@ -294,6 +334,10 @@
   NSNumber *includeMediaInfo = valueDict[@"include_media_info"] ?: @NO;
   NSNumber *includeDeleted = valueDict[@"include_deleted"] ?: @NO;
   NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"] ?: @NO;
+  DBFILEPROPERTIESTemplateFilterBase *includePropertyGroups =
+      valueDict[@"include_property_groups"]
+          ? [DBFILEPROPERTIESTemplateFilterBaseSerializer deserialize:valueDict[@"include_property_groups"]]
+          : nil;
   NSArray<NSString *> *includePropertyTemplates =
       valueDict[@"include_property_templates"] ? [DBArraySerializer deserialize:valueDict[@"include_property_templates"]
                                                                       withBlock:^id(id elem0) {
@@ -305,6 +349,7 @@
                                          includeMediaInfo:includeMediaInfo
                                            includeDeleted:includeDeleted
                           includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
+                                    includePropertyGroups:includePropertyGroups
                                  includePropertyTemplates:includePropertyTemplates];
 }
 
@@ -645,6 +690,7 @@
 
 @end
 
+#import "DBFILEPROPERTIESPropertyGroup.h"
 #import "DBFILESCommitInfo.h"
 #import "DBFILESWriteMode.h"
 #import "DBStoneSerializers.h"
@@ -660,11 +706,16 @@
                         mode:(DBFILESWriteMode *)mode
                   autorename:(NSNumber *)autorename
               clientModified:(NSDate *)clientModified
-                        mute:(NSNumber *)mute {
+                        mute:(NSNumber *)mute
+              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
                                                pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)"]](path);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](propertyGroups);
 
   self = [super init];
   if (self) {
@@ -673,12 +724,13 @@
     _autorename = autorename ?: @NO;
     _clientModified = clientModified;
     _mute = mute ?: @NO;
+    _propertyGroups = propertyGroups;
   }
   return self;
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-  return [self initWithPath:path mode:nil autorename:nil clientModified:nil mute:nil];
+  return [self initWithPath:path mode:nil autorename:nil clientModified:nil mute:nil propertyGroups:nil];
 }
 
 #pragma mark - Serialization methods
@@ -718,6 +770,9 @@
     result = prime * result + [self.clientModified hash];
   }
   result = prime * result + [self.mute hash];
+  if (self.propertyGroups != nil) {
+    result = prime * result + [self.propertyGroups hash];
+  }
 
   return prime * result;
 }
@@ -755,6 +810,11 @@
   if (![self.mute isEqual:aCommitInfo.mute]) {
     return NO;
   }
+  if (self.propertyGroups) {
+    if (![self.propertyGroups isEqual:aCommitInfo.propertyGroups]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -775,6 +835,13 @@
         [DBNSDateSerializer serialize:valueObj.clientModified dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
   jsonDict[@"mute"] = valueObj.mute;
+  if (valueObj.propertyGroups) {
+    jsonDict[@"property_groups"] =
+        [DBArraySerializer serialize:valueObj.propertyGroups
+                           withBlock:^id(id elem0) {
+                             return [DBFILEPROPERTIESPropertyGroupSerializer serialize:elem0];
+                           }];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -788,12 +855,20 @@
                                                                                 dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                                                          : nil;
   NSNumber *mute = valueDict[@"mute"] ?: @NO;
+  NSArray<DBFILEPROPERTIESPropertyGroup *> *propertyGroups =
+      valueDict[@"property_groups"]
+          ? [DBArraySerializer deserialize:valueDict[@"property_groups"]
+                                 withBlock:^id(id elem0) {
+                                   return [DBFILEPROPERTIESPropertyGroupSerializer deserialize:elem0];
+                                 }]
+          : nil;
 
   return [[DBFILESCommitInfo alloc] initWithPath:path
                                             mode:mode
                                       autorename:autorename
                                   clientModified:clientModified
-                                            mute:mute];
+                                            mute:mute
+                                  propertyGroups:propertyGroups];
 }
 
 @end
@@ -826,9 +901,13 @@
                                               maxItems:nil
                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](propertyGroups);
 
-  self = [super initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute];
+  self = [super initWithPath:path
+                        mode:mode
+                  autorename:autorename
+              clientModified:clientModified
+                        mute:mute
+              propertyGroups:propertyGroups];
   if (self) {
-    _propertyGroups = propertyGroups;
   }
   return self;
 }
@@ -6159,6 +6238,7 @@
 
 @end
 
+#import "DBFILEPROPERTIESTemplateFilterBase.h"
 #import "DBFILESListFolderArg.h"
 #import "DBFILESSharedLink.h"
 #import "DBStoneSerializers.h"
@@ -6177,7 +6257,8 @@
     includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
               includeMountedFolders:(NSNumber *)includeMountedFolders
                               limit:(NSNumber *)limit
-                         sharedLink:(DBFILESSharedLink *)sharedLink {
+                         sharedLink:(DBFILESSharedLink *)sharedLink
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
@@ -6194,6 +6275,7 @@
     _includeMountedFolders = includeMountedFolders ?: @YES;
     _limit = limit;
     _sharedLink = sharedLink;
+    _includePropertyGroups = includePropertyGroups;
   }
   return self;
 }
@@ -6206,7 +6288,8 @@
       includeHasExplicitSharedMembers:nil
                 includeMountedFolders:nil
                                 limit:nil
-                           sharedLink:nil];
+                           sharedLink:nil
+                includePropertyGroups:nil];
 }
 
 #pragma mark - Serialization methods
@@ -6250,6 +6333,9 @@
   }
   if (self.sharedLink != nil) {
     result = prime * result + [self.sharedLink hash];
+  }
+  if (self.includePropertyGroups != nil) {
+    result = prime * result + [self.includePropertyGroups hash];
   }
 
   return prime * result;
@@ -6299,6 +6385,11 @@
       return NO;
     }
   }
+  if (self.includePropertyGroups) {
+    if (![self.includePropertyGroups isEqual:aListFolderArg.includePropertyGroups]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -6323,6 +6414,10 @@
   if (valueObj.sharedLink) {
     jsonDict[@"shared_link"] = [DBFILESSharedLinkSerializer serialize:valueObj.sharedLink];
   }
+  if (valueObj.includePropertyGroups) {
+    jsonDict[@"include_property_groups"] =
+        [DBFILEPROPERTIESTemplateFilterBaseSerializer serialize:valueObj.includePropertyGroups];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -6337,6 +6432,10 @@
   NSNumber *limit = valueDict[@"limit"] ?: nil;
   DBFILESSharedLink *sharedLink =
       valueDict[@"shared_link"] ? [DBFILESSharedLinkSerializer deserialize:valueDict[@"shared_link"]] : nil;
+  DBFILEPROPERTIESTemplateFilterBase *includePropertyGroups =
+      valueDict[@"include_property_groups"]
+          ? [DBFILEPROPERTIESTemplateFilterBaseSerializer deserialize:valueDict[@"include_property_groups"]]
+          : nil;
 
   return [[DBFILESListFolderArg alloc] initWithPath:path
                                           recursive:recursive
@@ -6345,7 +6444,8 @@
                     includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
                               includeMountedFolders:includeMountedFolders
                                               limit:limit
-                                         sharedLink:sharedLink];
+                                         sharedLink:sharedLink
+                              includePropertyGroups:includePropertyGroups];
 }
 
 @end
@@ -9560,6 +9660,14 @@
   return self;
 }
 
+- (instancetype)initWithInsufficientQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationErrorInsufficientQuota;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -9632,6 +9740,10 @@
   return _tag == DBFILESRelocationErrorCantTransferOwnership;
 }
 
+- (BOOL)isInsufficientQuota {
+  return _tag == DBFILESRelocationErrorInsufficientQuota;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationErrorOther;
 }
@@ -9656,6 +9768,8 @@
     return @"DBFILESRelocationErrorDuplicatedOrNestedPaths";
   case DBFILESRelocationErrorCantTransferOwnership:
     return @"DBFILESRelocationErrorCantTransferOwnership";
+  case DBFILESRelocationErrorInsufficientQuota:
+    return @"DBFILESRelocationErrorInsufficientQuota";
   case DBFILESRelocationErrorOther:
     return @"DBFILESRelocationErrorOther";
   }
@@ -9712,6 +9826,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationErrorCantTransferOwnership:
     result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationErrorInsufficientQuota:
+    result = prime * result + [[self tagName] hash];
   case DBFILESRelocationErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -9757,6 +9873,8 @@
     return [[self tagName] isEqual:[aRelocationError tagName]];
   case DBFILESRelocationErrorCantTransferOwnership:
     return [[self tagName] isEqual:[aRelocationError tagName]];
+  case DBFILESRelocationErrorInsufficientQuota:
+    return [[self tagName] isEqual:[aRelocationError tagName]];
   case DBFILESRelocationErrorOther:
     return [[self tagName] isEqual:[aRelocationError tagName]];
   }
@@ -9793,6 +9911,8 @@
     jsonDict[@".tag"] = @"duplicated_or_nested_paths";
   } else if ([valueObj isCantTransferOwnership]) {
     jsonDict[@".tag"] = @"cant_transfer_ownership";
+  } else if ([valueObj isInsufficientQuota]) {
+    jsonDict[@".tag"] = @"insufficient_quota";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -9826,6 +9946,8 @@
     return [[DBFILESRelocationError alloc] initWithDuplicatedOrNestedPaths];
   } else if ([tag isEqualToString:@"cant_transfer_ownership"]) {
     return [[DBFILESRelocationError alloc] initWithCantTransferOwnership];
+  } else if ([tag isEqualToString:@"insufficient_quota"]) {
+    return [[DBFILESRelocationError alloc] initWithInsufficientQuota];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationError alloc] initWithOther];
   } else {
@@ -9927,6 +10049,14 @@
   return self;
 }
 
+- (instancetype)initWithInsufficientQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorInsufficientQuota;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -10007,6 +10137,10 @@
   return _tag == DBFILESRelocationBatchErrorCantTransferOwnership;
 }
 
+- (BOOL)isInsufficientQuota {
+  return _tag == DBFILESRelocationBatchErrorInsufficientQuota;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationBatchErrorOther;
 }
@@ -10035,6 +10169,8 @@
     return @"DBFILESRelocationBatchErrorDuplicatedOrNestedPaths";
   case DBFILESRelocationBatchErrorCantTransferOwnership:
     return @"DBFILESRelocationBatchErrorCantTransferOwnership";
+  case DBFILESRelocationBatchErrorInsufficientQuota:
+    return @"DBFILESRelocationBatchErrorInsufficientQuota";
   case DBFILESRelocationBatchErrorOther:
     return @"DBFILESRelocationBatchErrorOther";
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -10093,6 +10229,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorCantTransferOwnership:
     result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationBatchErrorInsufficientQuota:
+    result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorOther:
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -10140,6 +10278,8 @@
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorCantTransferOwnership:
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
+  case DBFILESRelocationBatchErrorInsufficientQuota:
+    return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorOther:
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -10178,6 +10318,8 @@
     jsonDict[@".tag"] = @"duplicated_or_nested_paths";
   } else if ([valueObj isCantTransferOwnership]) {
     jsonDict[@".tag"] = @"cant_transfer_ownership";
+  } else if ([valueObj isInsufficientQuota]) {
+    jsonDict[@".tag"] = @"insufficient_quota";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isTooManyWriteOperations]) {
@@ -10213,6 +10355,8 @@
     return [[DBFILESRelocationBatchError alloc] initWithDuplicatedOrNestedPaths];
   } else if ([tag isEqualToString:@"cant_transfer_ownership"]) {
     return [[DBFILESRelocationBatchError alloc] initWithCantTransferOwnership];
+  } else if ([tag isEqualToString:@"insufficient_quota"]) {
+    return [[DBFILESRelocationBatchError alloc] initWithInsufficientQuota];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationBatchError alloc] initWithOther];
   } else if ([tag isEqualToString:@"too_many_write_operations"]) {

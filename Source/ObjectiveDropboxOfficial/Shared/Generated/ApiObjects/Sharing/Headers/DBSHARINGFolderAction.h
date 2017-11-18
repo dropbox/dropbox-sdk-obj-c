@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
   /// folder.
   DBSHARINGFolderActionLeaveACopy,
 
-  /// This action is deprecated. Use create_link instead.
+  /// Use create_link instead.
   DBSHARINGFolderActionShareLink,
 
   /// Create a shared link for folder.
@@ -193,8 +193,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "share_link".
 ///
-/// Description of the "share_link" tag state: This action is deprecated. Use
-/// create_link instead.
+/// Description of the "share_link" tag state: Use create_link instead.
 ///
 /// @return An initialized instance.
 ///

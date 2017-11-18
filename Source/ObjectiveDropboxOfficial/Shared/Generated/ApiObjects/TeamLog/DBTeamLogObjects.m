@@ -2787,7 +2787,6 @@
   [DBStoneValidators nonnullValidator:nil](expirationDate);
   [DBStoneValidators nonnullValidator:nil](serialNumber);
   [DBStoneValidators nonnullValidator:nil](sha1Fingerprint);
-  [DBStoneValidators nonnullValidator:nil](commonName);
 
   self = [super init];
   if (self) {
@@ -2800,6 +2799,21 @@
     _commonName = commonName;
   }
   return self;
+}
+
+- (instancetype)initWithSubject:(NSString *)subject
+                         issuer:(NSString *)issuer
+                      issueDate:(NSString *)issueDate
+                 expirationDate:(NSString *)expirationDate
+                   serialNumber:(NSString *)serialNumber
+                sha1Fingerprint:(NSString *)sha1Fingerprint {
+  return [self initWithSubject:subject
+                        issuer:issuer
+                     issueDate:issueDate
+                expirationDate:expirationDate
+                  serialNumber:serialNumber
+               sha1Fingerprint:sha1Fingerprint
+                    commonName:nil];
 }
 
 #pragma mark - Serialization methods
@@ -2838,7 +2852,9 @@
   result = prime * result + [self.expirationDate hash];
   result = prime * result + [self.serialNumber hash];
   result = prime * result + [self.sha1Fingerprint hash];
-  result = prime * result + [self.commonName hash];
+  if (self.commonName != nil) {
+    result = prime * result + [self.commonName hash];
+  }
 
   return prime * result;
 }
@@ -2877,8 +2893,10 @@
   if (![self.sha1Fingerprint isEqual:aCertificate.sha1Fingerprint]) {
     return NO;
   }
-  if (![self.commonName isEqual:aCertificate.commonName]) {
-    return NO;
+  if (self.commonName) {
+    if (![self.commonName isEqual:aCertificate.commonName]) {
+      return NO;
+    }
   }
   return YES;
 }
@@ -2898,7 +2916,9 @@
   jsonDict[@"expiration_date"] = valueObj.expirationDate;
   jsonDict[@"serial_number"] = valueObj.serialNumber;
   jsonDict[@"sha1_fingerprint"] = valueObj.sha1Fingerprint;
-  jsonDict[@"common_name"] = valueObj.commonName;
+  if (valueObj.commonName) {
+    jsonDict[@"common_name"] = valueObj.commonName;
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -2910,7 +2930,7 @@
   NSString *expirationDate = valueDict[@"expiration_date"];
   NSString *serialNumber = valueDict[@"serial_number"];
   NSString *sha1Fingerprint = valueDict[@"sha1_fingerprint"];
-  NSString *commonName = valueDict[@"common_name"];
+  NSString *commonName = valueDict[@"common_name"] ?: nil;
 
   return [[DBTEAMLOGCertificate alloc] initWithSubject:subject
                                                 issuer:issuer
@@ -8001,18 +8021,21 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBTEAMLOGEmmLoginSuccessDetails.h"
+#import "DBTEAMLOGEmmErrorDetails.h"
+#import "DBTEAMLOGFailureDetailsLogInfo.h"
 
 #pragma mark - API Object
 
-@implementation DBTEAMLOGEmmLoginSuccessDetails
+@implementation DBTEAMLOGEmmErrorDetails
 
 #pragma mark - Constructors
 
-- (instancetype)initDefault {
+- (instancetype)initWithErrorDetails:(DBTEAMLOGFailureDetailsLogInfo *)errorDetails {
+  [DBStoneValidators nonnullValidator:nil](errorDetails);
 
   self = [super init];
   if (self) {
+    _errorDetails = errorDetails;
   }
   return self;
 }
@@ -8020,17 +8043,17 @@
 #pragma mark - Serialization methods
 
 + (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGEmmLoginSuccessDetailsSerializer serialize:instance];
+  return [DBTEAMLOGEmmErrorDetailsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGEmmLoginSuccessDetailsSerializer deserialize:dict];
+  return [DBTEAMLOGEmmErrorDetailsSerializer deserialize:dict];
 }
 
 #pragma mark - Description method
 
 - (NSString *)description {
-  return [[DBTEAMLOGEmmLoginSuccessDetailsSerializer serialize:self] description];
+  return [[DBTEAMLOGEmmErrorDetailsSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
@@ -8047,6 +8070,8 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
+  result = prime * result + [self.errorDetails hash];
+
   return prime * result;
 }
 
@@ -8059,12 +8084,15 @@
   if (!other || ![other isKindOfClass:[self class]]) {
     return NO;
   }
-  return [self isEqualToEmmLoginSuccessDetails:other];
+  return [self isEqualToEmmErrorDetails:other];
 }
 
-- (BOOL)isEqualToEmmLoginSuccessDetails:(DBTEAMLOGEmmLoginSuccessDetails *)anEmmLoginSuccessDetails {
-  if (self == anEmmLoginSuccessDetails) {
+- (BOOL)isEqualToEmmErrorDetails:(DBTEAMLOGEmmErrorDetails *)anEmmErrorDetails {
+  if (self == anEmmErrorDetails) {
     return YES;
+  }
+  if (![self.errorDetails isEqual:anEmmErrorDetails.errorDetails]) {
+    return NO;
   }
   return YES;
 }
@@ -8073,19 +8101,21 @@
 
 #pragma mark - Serializer Object
 
-@implementation DBTEAMLOGEmmLoginSuccessDetailsSerializer
+@implementation DBTEAMLOGEmmErrorDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmLoginSuccessDetails *)valueObj {
-#pragma unused(valueObj)
++ (NSDictionary *)serialize:(DBTEAMLOGEmmErrorDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"error_details"] = [DBTEAMLOGFailureDetailsLogInfoSerializer serialize:valueObj.errorDetails];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmLoginSuccessDetails *)deserialize:(NSDictionary *)valueDict {
-#pragma unused(valueDict)
++ (DBTEAMLOGEmmErrorDetails *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMLOGFailureDetailsLogInfo *errorDetails =
+      [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
 
-  return [[DBTEAMLOGEmmLoginSuccessDetails alloc] initDefault];
+  return [[DBTEAMLOGEmmErrorDetails alloc] initWithErrorDetails:errorDetails];
 }
 
 @end
@@ -9218,7 +9248,7 @@
 #import "DBTEAMLOGEmmChangePolicyDetails.h"
 #import "DBTEAMLOGEmmCreateExceptionsReportDetails.h"
 #import "DBTEAMLOGEmmCreateUsageReportDetails.h"
-#import "DBTEAMLOGEmmLoginSuccessDetails.h"
+#import "DBTEAMLOGEmmErrorDetails.h"
 #import "DBTEAMLOGEmmRefreshAuthTokenDetails.h"
 #import "DBTEAMLOGEmmRemoveExceptionDetails.h"
 #import "DBTEAMLOGEnabledDomainInvitesDetails.h"
@@ -9240,8 +9270,8 @@
 #import "DBTEAMLOGFilePreviewDetails.h"
 #import "DBTEAMLOGFileRenameDetails.h"
 #import "DBTEAMLOGFileRequestAddDeadlineDetails.h"
+#import "DBTEAMLOGFileRequestChangeDetails.h"
 #import "DBTEAMLOGFileRequestChangeFolderDetails.h"
-#import "DBTEAMLOGFileRequestChangeTitleDetails.h"
 #import "DBTEAMLOGFileRequestCloseDetails.h"
 #import "DBTEAMLOGFileRequestCreateDetails.h"
 #import "DBTEAMLOGFileRequestReceiveFileDetails.h"
@@ -9270,6 +9300,8 @@
 #import "DBTEAMLOGGroupRemoveMemberDetails.h"
 #import "DBTEAMLOGGroupRenameDetails.h"
 #import "DBTEAMLOGGroupUserManagementChangePolicyDetails.h"
+#import "DBTEAMLOGLoginFailDetails.h"
+#import "DBTEAMLOGLoginSuccessDetails.h"
 #import "DBTEAMLOGLogoutDetails.h"
 #import "DBTEAMLOGMemberAddNameDetails.h"
 #import "DBTEAMLOGMemberChangeAdminRoleDetails.h"
@@ -9339,8 +9371,6 @@
 #import "DBTEAMLOGPaperFolderFollowedDetails.h"
 #import "DBTEAMLOGPaperFolderTeamInviteDetails.h"
 #import "DBTEAMLOGPasswordChangeDetails.h"
-#import "DBTEAMLOGPasswordLoginFailDetails.h"
-#import "DBTEAMLOGPasswordLoginSuccessDetails.h"
 #import "DBTEAMLOGPasswordResetAllDetails.h"
 #import "DBTEAMLOGPasswordResetDetails.h"
 #import "DBTEAMLOGPermanentDeleteChangePolicyDetails.h"
@@ -9420,7 +9450,7 @@
 #import "DBTEAMLOGSsoChangeLogoutUrlDetails.h"
 #import "DBTEAMLOGSsoChangePolicyDetails.h"
 #import "DBTEAMLOGSsoChangeSamlIdentityModeDetails.h"
-#import "DBTEAMLOGSsoLoginFailDetails.h"
+#import "DBTEAMLOGSsoErrorDetails.h"
 #import "DBTEAMLOGSsoRemoveCertDetails.h"
 #import "DBTEAMLOGSsoRemoveLoginUrlDetails.h"
 #import "DBTEAMLOGSsoRemoveLogoutUrlDetails.h"
@@ -9518,8 +9548,8 @@
 @synthesize fileRollbackChangesDetails = _fileRollbackChangesDetails;
 @synthesize fileSaveCopyReferenceDetails = _fileSaveCopyReferenceDetails;
 @synthesize fileRequestAddDeadlineDetails = _fileRequestAddDeadlineDetails;
+@synthesize fileRequestChangeDetails = _fileRequestChangeDetails;
 @synthesize fileRequestChangeFolderDetails = _fileRequestChangeFolderDetails;
-@synthesize fileRequestChangeTitleDetails = _fileRequestChangeTitleDetails;
 @synthesize fileRequestCloseDetails = _fileRequestCloseDetails;
 @synthesize fileRequestCreateDetails = _fileRequestCreateDetails;
 @synthesize fileRequestReceiveFileDetails = _fileRequestReceiveFileDetails;
@@ -9536,15 +9566,15 @@
 @synthesize groupRemoveExternalIdDetails = _groupRemoveExternalIdDetails;
 @synthesize groupRemoveMemberDetails = _groupRemoveMemberDetails;
 @synthesize groupRenameDetails = _groupRenameDetails;
-@synthesize emmLoginSuccessDetails = _emmLoginSuccessDetails;
+@synthesize emmErrorDetails = _emmErrorDetails;
+@synthesize loginFailDetails = _loginFailDetails;
+@synthesize loginSuccessDetails = _loginSuccessDetails;
 @synthesize logoutDetails = _logoutDetails;
-@synthesize passwordLoginFailDetails = _passwordLoginFailDetails;
-@synthesize passwordLoginSuccessDetails = _passwordLoginSuccessDetails;
 @synthesize resellerSupportSessionEndDetails = _resellerSupportSessionEndDetails;
 @synthesize resellerSupportSessionStartDetails = _resellerSupportSessionStartDetails;
 @synthesize signInAsSessionEndDetails = _signInAsSessionEndDetails;
 @synthesize signInAsSessionStartDetails = _signInAsSessionStartDetails;
-@synthesize ssoLoginFailDetails = _ssoLoginFailDetails;
+@synthesize ssoErrorDetails = _ssoErrorDetails;
 @synthesize memberAddNameDetails = _memberAddNameDetails;
 @synthesize memberChangeAdminRoleDetails = _memberChangeAdminRoleDetails;
 @synthesize memberChangeEmailDetails = _memberChangeEmailDetails;
@@ -10349,22 +10379,21 @@
   return self;
 }
 
+- (instancetype)initWithFileRequestChangeDetails:(DBTEAMLOGFileRequestChangeDetails *)fileRequestChangeDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsFileRequestChangeDetails;
+    _fileRequestChangeDetails = fileRequestChangeDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithFileRequestChangeFolderDetails:
     (DBTEAMLOGFileRequestChangeFolderDetails *)fileRequestChangeFolderDetails {
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGEventDetailsFileRequestChangeFolderDetails;
     _fileRequestChangeFolderDetails = fileRequestChangeFolderDetails;
-  }
-  return self;
-}
-
-- (instancetype)initWithFileRequestChangeTitleDetails:
-    (DBTEAMLOGFileRequestChangeTitleDetails *)fileRequestChangeTitleDetails {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGEventDetailsFileRequestChangeTitleDetails;
-    _fileRequestChangeTitleDetails = fileRequestChangeTitleDetails;
   }
   return self;
 }
@@ -10519,11 +10548,29 @@
   return self;
 }
 
-- (instancetype)initWithEmmLoginSuccessDetails:(DBTEAMLOGEmmLoginSuccessDetails *)emmLoginSuccessDetails {
+- (instancetype)initWithEmmErrorDetails:(DBTEAMLOGEmmErrorDetails *)emmErrorDetails {
   self = [super init];
   if (self) {
-    _tag = DBTEAMLOGEventDetailsEmmLoginSuccessDetails;
-    _emmLoginSuccessDetails = emmLoginSuccessDetails;
+    _tag = DBTEAMLOGEventDetailsEmmErrorDetails;
+    _emmErrorDetails = emmErrorDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithLoginFailDetails:(DBTEAMLOGLoginFailDetails *)loginFailDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsLoginFailDetails;
+    _loginFailDetails = loginFailDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithLoginSuccessDetails:(DBTEAMLOGLoginSuccessDetails *)loginSuccessDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsLoginSuccessDetails;
+    _loginSuccessDetails = loginSuccessDetails;
   }
   return self;
 }
@@ -10533,25 +10580,6 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsLogoutDetails;
     _logoutDetails = logoutDetails;
-  }
-  return self;
-}
-
-- (instancetype)initWithPasswordLoginFailDetails:(DBTEAMLOGPasswordLoginFailDetails *)passwordLoginFailDetails {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGEventDetailsPasswordLoginFailDetails;
-    _passwordLoginFailDetails = passwordLoginFailDetails;
-  }
-  return self;
-}
-
-- (instancetype)initWithPasswordLoginSuccessDetails:
-    (DBTEAMLOGPasswordLoginSuccessDetails *)passwordLoginSuccessDetails {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGEventDetailsPasswordLoginSuccessDetails;
-    _passwordLoginSuccessDetails = passwordLoginSuccessDetails;
   }
   return self;
 }
@@ -10595,11 +10623,11 @@
   return self;
 }
 
-- (instancetype)initWithSsoLoginFailDetails:(DBTEAMLOGSsoLoginFailDetails *)ssoLoginFailDetails {
+- (instancetype)initWithSsoErrorDetails:(DBTEAMLOGSsoErrorDetails *)ssoErrorDetails {
   self = [super init];
   if (self) {
-    _tag = DBTEAMLOGEventDetailsSsoLoginFailDetails;
-    _ssoLoginFailDetails = ssoLoginFailDetails;
+    _tag = DBTEAMLOGEventDetailsSsoErrorDetails;
+    _ssoErrorDetails = ssoErrorDetails;
   }
   return self;
 }
@@ -12898,6 +12926,15 @@
   return _fileRequestAddDeadlineDetails;
 }
 
+- (DBTEAMLOGFileRequestChangeDetails *)fileRequestChangeDetails {
+  if (![self isFileRequestChangeDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsFileRequestChangeDetails, but was %@.", [self tagName]];
+  }
+  return _fileRequestChangeDetails;
+}
+
 - (DBTEAMLOGFileRequestChangeFolderDetails *)fileRequestChangeFolderDetails {
   if (![self isFileRequestChangeFolderDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -12905,15 +12942,6 @@
                        [self tagName]];
   }
   return _fileRequestChangeFolderDetails;
-}
-
-- (DBTEAMLOGFileRequestChangeTitleDetails *)fileRequestChangeTitleDetails {
-  if (![self isFileRequestChangeTitleDetails]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBTEAMLOGEventDetailsFileRequestChangeTitleDetails, but was %@.",
-                       [self tagName]];
-  }
-  return _fileRequestChangeTitleDetails;
 }
 
 - (DBTEAMLOGFileRequestCloseDetails *)fileRequestCloseDetails {
@@ -13056,13 +13084,28 @@
   return _groupRenameDetails;
 }
 
-- (DBTEAMLOGEmmLoginSuccessDetails *)emmLoginSuccessDetails {
-  if (![self isEmmLoginSuccessDetails]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBTEAMLOGEventDetailsEmmLoginSuccessDetails, but was %@.", [self tagName]];
+- (DBTEAMLOGEmmErrorDetails *)emmErrorDetails {
+  if (![self isEmmErrorDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsEmmErrorDetails, but was %@.", [self tagName]];
   }
-  return _emmLoginSuccessDetails;
+  return _emmErrorDetails;
+}
+
+- (DBTEAMLOGLoginFailDetails *)loginFailDetails {
+  if (![self isLoginFailDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsLoginFailDetails, but was %@.", [self tagName]];
+  }
+  return _loginFailDetails;
+}
+
+- (DBTEAMLOGLoginSuccessDetails *)loginSuccessDetails {
+  if (![self isLoginSuccessDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsLoginSuccessDetails, but was %@.", [self tagName]];
+  }
+  return _loginSuccessDetails;
 }
 
 - (DBTEAMLOGLogoutDetails *)logoutDetails {
@@ -13071,24 +13114,6 @@
                 format:@"Invalid tag: required DBTEAMLOGEventDetailsLogoutDetails, but was %@.", [self tagName]];
   }
   return _logoutDetails;
-}
-
-- (DBTEAMLOGPasswordLoginFailDetails *)passwordLoginFailDetails {
-  if (![self isPasswordLoginFailDetails]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBTEAMLOGEventDetailsPasswordLoginFailDetails, but was %@.", [self tagName]];
-  }
-  return _passwordLoginFailDetails;
-}
-
-- (DBTEAMLOGPasswordLoginSuccessDetails *)passwordLoginSuccessDetails {
-  if (![self isPasswordLoginSuccessDetails]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBTEAMLOGEventDetailsPasswordLoginSuccessDetails, but was %@.", [self tagName]];
-  }
-  return _passwordLoginSuccessDetails;
 }
 
 - (DBTEAMLOGResellerSupportSessionEndDetails *)resellerSupportSessionEndDetails {
@@ -13127,12 +13152,12 @@
   return _signInAsSessionStartDetails;
 }
 
-- (DBTEAMLOGSsoLoginFailDetails *)ssoLoginFailDetails {
-  if (![self isSsoLoginFailDetails]) {
+- (DBTEAMLOGSsoErrorDetails *)ssoErrorDetails {
+  if (![self isSsoErrorDetails]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBTEAMLOGEventDetailsSsoLoginFailDetails, but was %@.", [self tagName]];
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsSsoErrorDetails, but was %@.", [self tagName]];
   }
-  return _ssoLoginFailDetails;
+  return _ssoErrorDetails;
 }
 
 - (DBTEAMLOGMemberAddNameDetails *)memberAddNameDetails {
@@ -15013,12 +15038,12 @@
   return _tag == DBTEAMLOGEventDetailsFileRequestAddDeadlineDetails;
 }
 
-- (BOOL)isFileRequestChangeFolderDetails {
-  return _tag == DBTEAMLOGEventDetailsFileRequestChangeFolderDetails;
+- (BOOL)isFileRequestChangeDetails {
+  return _tag == DBTEAMLOGEventDetailsFileRequestChangeDetails;
 }
 
-- (BOOL)isFileRequestChangeTitleDetails {
-  return _tag == DBTEAMLOGEventDetailsFileRequestChangeTitleDetails;
+- (BOOL)isFileRequestChangeFolderDetails {
+  return _tag == DBTEAMLOGEventDetailsFileRequestChangeFolderDetails;
 }
 
 - (BOOL)isFileRequestCloseDetails {
@@ -15085,20 +15110,20 @@
   return _tag == DBTEAMLOGEventDetailsGroupRenameDetails;
 }
 
-- (BOOL)isEmmLoginSuccessDetails {
-  return _tag == DBTEAMLOGEventDetailsEmmLoginSuccessDetails;
+- (BOOL)isEmmErrorDetails {
+  return _tag == DBTEAMLOGEventDetailsEmmErrorDetails;
+}
+
+- (BOOL)isLoginFailDetails {
+  return _tag == DBTEAMLOGEventDetailsLoginFailDetails;
+}
+
+- (BOOL)isLoginSuccessDetails {
+  return _tag == DBTEAMLOGEventDetailsLoginSuccessDetails;
 }
 
 - (BOOL)isLogoutDetails {
   return _tag == DBTEAMLOGEventDetailsLogoutDetails;
-}
-
-- (BOOL)isPasswordLoginFailDetails {
-  return _tag == DBTEAMLOGEventDetailsPasswordLoginFailDetails;
-}
-
-- (BOOL)isPasswordLoginSuccessDetails {
-  return _tag == DBTEAMLOGEventDetailsPasswordLoginSuccessDetails;
 }
 
 - (BOOL)isResellerSupportSessionEndDetails {
@@ -15117,8 +15142,8 @@
   return _tag == DBTEAMLOGEventDetailsSignInAsSessionStartDetails;
 }
 
-- (BOOL)isSsoLoginFailDetails {
-  return _tag == DBTEAMLOGEventDetailsSsoLoginFailDetails;
+- (BOOL)isSsoErrorDetails {
+  return _tag == DBTEAMLOGEventDetailsSsoErrorDetails;
 }
 
 - (BOOL)isMemberAddNameDetails {
@@ -15973,10 +15998,10 @@
     return @"DBTEAMLOGEventDetailsFileSaveCopyReferenceDetails";
   case DBTEAMLOGEventDetailsFileRequestAddDeadlineDetails:
     return @"DBTEAMLOGEventDetailsFileRequestAddDeadlineDetails";
+  case DBTEAMLOGEventDetailsFileRequestChangeDetails:
+    return @"DBTEAMLOGEventDetailsFileRequestChangeDetails";
   case DBTEAMLOGEventDetailsFileRequestChangeFolderDetails:
     return @"DBTEAMLOGEventDetailsFileRequestChangeFolderDetails";
-  case DBTEAMLOGEventDetailsFileRequestChangeTitleDetails:
-    return @"DBTEAMLOGEventDetailsFileRequestChangeTitleDetails";
   case DBTEAMLOGEventDetailsFileRequestCloseDetails:
     return @"DBTEAMLOGEventDetailsFileRequestCloseDetails";
   case DBTEAMLOGEventDetailsFileRequestCreateDetails:
@@ -16009,14 +16034,14 @@
     return @"DBTEAMLOGEventDetailsGroupRemoveMemberDetails";
   case DBTEAMLOGEventDetailsGroupRenameDetails:
     return @"DBTEAMLOGEventDetailsGroupRenameDetails";
-  case DBTEAMLOGEventDetailsEmmLoginSuccessDetails:
-    return @"DBTEAMLOGEventDetailsEmmLoginSuccessDetails";
+  case DBTEAMLOGEventDetailsEmmErrorDetails:
+    return @"DBTEAMLOGEventDetailsEmmErrorDetails";
+  case DBTEAMLOGEventDetailsLoginFailDetails:
+    return @"DBTEAMLOGEventDetailsLoginFailDetails";
+  case DBTEAMLOGEventDetailsLoginSuccessDetails:
+    return @"DBTEAMLOGEventDetailsLoginSuccessDetails";
   case DBTEAMLOGEventDetailsLogoutDetails:
     return @"DBTEAMLOGEventDetailsLogoutDetails";
-  case DBTEAMLOGEventDetailsPasswordLoginFailDetails:
-    return @"DBTEAMLOGEventDetailsPasswordLoginFailDetails";
-  case DBTEAMLOGEventDetailsPasswordLoginSuccessDetails:
-    return @"DBTEAMLOGEventDetailsPasswordLoginSuccessDetails";
   case DBTEAMLOGEventDetailsResellerSupportSessionEndDetails:
     return @"DBTEAMLOGEventDetailsResellerSupportSessionEndDetails";
   case DBTEAMLOGEventDetailsResellerSupportSessionStartDetails:
@@ -16025,8 +16050,8 @@
     return @"DBTEAMLOGEventDetailsSignInAsSessionEndDetails";
   case DBTEAMLOGEventDetailsSignInAsSessionStartDetails:
     return @"DBTEAMLOGEventDetailsSignInAsSessionStartDetails";
-  case DBTEAMLOGEventDetailsSsoLoginFailDetails:
-    return @"DBTEAMLOGEventDetailsSsoLoginFailDetails";
+  case DBTEAMLOGEventDetailsSsoErrorDetails:
+    return @"DBTEAMLOGEventDetailsSsoErrorDetails";
   case DBTEAMLOGEventDetailsMemberAddNameDetails:
     return @"DBTEAMLOGEventDetailsMemberAddNameDetails";
   case DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails:
@@ -16553,10 +16578,10 @@
     result = prime * result + [self.fileSaveCopyReferenceDetails hash];
   case DBTEAMLOGEventDetailsFileRequestAddDeadlineDetails:
     result = prime * result + [self.fileRequestAddDeadlineDetails hash];
+  case DBTEAMLOGEventDetailsFileRequestChangeDetails:
+    result = prime * result + [self.fileRequestChangeDetails hash];
   case DBTEAMLOGEventDetailsFileRequestChangeFolderDetails:
     result = prime * result + [self.fileRequestChangeFolderDetails hash];
-  case DBTEAMLOGEventDetailsFileRequestChangeTitleDetails:
-    result = prime * result + [self.fileRequestChangeTitleDetails hash];
   case DBTEAMLOGEventDetailsFileRequestCloseDetails:
     result = prime * result + [self.fileRequestCloseDetails hash];
   case DBTEAMLOGEventDetailsFileRequestCreateDetails:
@@ -16589,14 +16614,14 @@
     result = prime * result + [self.groupRemoveMemberDetails hash];
   case DBTEAMLOGEventDetailsGroupRenameDetails:
     result = prime * result + [self.groupRenameDetails hash];
-  case DBTEAMLOGEventDetailsEmmLoginSuccessDetails:
-    result = prime * result + [self.emmLoginSuccessDetails hash];
+  case DBTEAMLOGEventDetailsEmmErrorDetails:
+    result = prime * result + [self.emmErrorDetails hash];
+  case DBTEAMLOGEventDetailsLoginFailDetails:
+    result = prime * result + [self.loginFailDetails hash];
+  case DBTEAMLOGEventDetailsLoginSuccessDetails:
+    result = prime * result + [self.loginSuccessDetails hash];
   case DBTEAMLOGEventDetailsLogoutDetails:
     result = prime * result + [self.logoutDetails hash];
-  case DBTEAMLOGEventDetailsPasswordLoginFailDetails:
-    result = prime * result + [self.passwordLoginFailDetails hash];
-  case DBTEAMLOGEventDetailsPasswordLoginSuccessDetails:
-    result = prime * result + [self.passwordLoginSuccessDetails hash];
   case DBTEAMLOGEventDetailsResellerSupportSessionEndDetails:
     result = prime * result + [self.resellerSupportSessionEndDetails hash];
   case DBTEAMLOGEventDetailsResellerSupportSessionStartDetails:
@@ -16605,8 +16630,8 @@
     result = prime * result + [self.signInAsSessionEndDetails hash];
   case DBTEAMLOGEventDetailsSignInAsSessionStartDetails:
     result = prime * result + [self.signInAsSessionStartDetails hash];
-  case DBTEAMLOGEventDetailsSsoLoginFailDetails:
-    result = prime * result + [self.ssoLoginFailDetails hash];
+  case DBTEAMLOGEventDetailsSsoErrorDetails:
+    result = prime * result + [self.ssoErrorDetails hash];
   case DBTEAMLOGEventDetailsMemberAddNameDetails:
     result = prime * result + [self.memberAddNameDetails hash];
   case DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails:
@@ -17129,10 +17154,10 @@
     return [self.fileSaveCopyReferenceDetails isEqual:anEventDetails.fileSaveCopyReferenceDetails];
   case DBTEAMLOGEventDetailsFileRequestAddDeadlineDetails:
     return [self.fileRequestAddDeadlineDetails isEqual:anEventDetails.fileRequestAddDeadlineDetails];
+  case DBTEAMLOGEventDetailsFileRequestChangeDetails:
+    return [self.fileRequestChangeDetails isEqual:anEventDetails.fileRequestChangeDetails];
   case DBTEAMLOGEventDetailsFileRequestChangeFolderDetails:
     return [self.fileRequestChangeFolderDetails isEqual:anEventDetails.fileRequestChangeFolderDetails];
-  case DBTEAMLOGEventDetailsFileRequestChangeTitleDetails:
-    return [self.fileRequestChangeTitleDetails isEqual:anEventDetails.fileRequestChangeTitleDetails];
   case DBTEAMLOGEventDetailsFileRequestCloseDetails:
     return [self.fileRequestCloseDetails isEqual:anEventDetails.fileRequestCloseDetails];
   case DBTEAMLOGEventDetailsFileRequestCreateDetails:
@@ -17165,14 +17190,14 @@
     return [self.groupRemoveMemberDetails isEqual:anEventDetails.groupRemoveMemberDetails];
   case DBTEAMLOGEventDetailsGroupRenameDetails:
     return [self.groupRenameDetails isEqual:anEventDetails.groupRenameDetails];
-  case DBTEAMLOGEventDetailsEmmLoginSuccessDetails:
-    return [self.emmLoginSuccessDetails isEqual:anEventDetails.emmLoginSuccessDetails];
+  case DBTEAMLOGEventDetailsEmmErrorDetails:
+    return [self.emmErrorDetails isEqual:anEventDetails.emmErrorDetails];
+  case DBTEAMLOGEventDetailsLoginFailDetails:
+    return [self.loginFailDetails isEqual:anEventDetails.loginFailDetails];
+  case DBTEAMLOGEventDetailsLoginSuccessDetails:
+    return [self.loginSuccessDetails isEqual:anEventDetails.loginSuccessDetails];
   case DBTEAMLOGEventDetailsLogoutDetails:
     return [self.logoutDetails isEqual:anEventDetails.logoutDetails];
-  case DBTEAMLOGEventDetailsPasswordLoginFailDetails:
-    return [self.passwordLoginFailDetails isEqual:anEventDetails.passwordLoginFailDetails];
-  case DBTEAMLOGEventDetailsPasswordLoginSuccessDetails:
-    return [self.passwordLoginSuccessDetails isEqual:anEventDetails.passwordLoginSuccessDetails];
   case DBTEAMLOGEventDetailsResellerSupportSessionEndDetails:
     return [self.resellerSupportSessionEndDetails isEqual:anEventDetails.resellerSupportSessionEndDetails];
   case DBTEAMLOGEventDetailsResellerSupportSessionStartDetails:
@@ -17181,8 +17206,8 @@
     return [self.signInAsSessionEndDetails isEqual:anEventDetails.signInAsSessionEndDetails];
   case DBTEAMLOGEventDetailsSignInAsSessionStartDetails:
     return [self.signInAsSessionStartDetails isEqual:anEventDetails.signInAsSessionStartDetails];
-  case DBTEAMLOGEventDetailsSsoLoginFailDetails:
-    return [self.ssoLoginFailDetails isEqual:anEventDetails.ssoLoginFailDetails];
+  case DBTEAMLOGEventDetailsSsoErrorDetails:
+    return [self.ssoErrorDetails isEqual:anEventDetails.ssoErrorDetails];
   case DBTEAMLOGEventDetailsMemberAddNameDetails:
     return [self.memberAddNameDetails isEqual:anEventDetails.memberAddNameDetails];
   case DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails:
@@ -17846,14 +17871,14 @@
     jsonDict[@"file_request_add_deadline_details"] = [[DBTEAMLOGFileRequestAddDeadlineDetailsSerializer
         serialize:valueObj.fileRequestAddDeadlineDetails] mutableCopy];
     jsonDict[@".tag"] = @"file_request_add_deadline_details";
+  } else if ([valueObj isFileRequestChangeDetails]) {
+    jsonDict[@"file_request_change_details"] =
+        [[DBTEAMLOGFileRequestChangeDetailsSerializer serialize:valueObj.fileRequestChangeDetails] mutableCopy];
+    jsonDict[@".tag"] = @"file_request_change_details";
   } else if ([valueObj isFileRequestChangeFolderDetails]) {
     jsonDict[@"file_request_change_folder_details"] = [[DBTEAMLOGFileRequestChangeFolderDetailsSerializer
         serialize:valueObj.fileRequestChangeFolderDetails] mutableCopy];
     jsonDict[@".tag"] = @"file_request_change_folder_details";
-  } else if ([valueObj isFileRequestChangeTitleDetails]) {
-    jsonDict[@"file_request_change_title_details"] = [[DBTEAMLOGFileRequestChangeTitleDetailsSerializer
-        serialize:valueObj.fileRequestChangeTitleDetails] mutableCopy];
-    jsonDict[@".tag"] = @"file_request_change_title_details";
   } else if ([valueObj isFileRequestCloseDetails]) {
     jsonDict[@"file_request_close_details"] =
         [[DBTEAMLOGFileRequestCloseDetailsSerializer serialize:valueObj.fileRequestCloseDetails] mutableCopy];
@@ -17918,21 +17943,21 @@
     jsonDict[@"group_rename_details"] =
         [[DBTEAMLOGGroupRenameDetailsSerializer serialize:valueObj.groupRenameDetails] mutableCopy];
     jsonDict[@".tag"] = @"group_rename_details";
-  } else if ([valueObj isEmmLoginSuccessDetails]) {
-    jsonDict[@"emm_login_success_details"] =
-        [[DBTEAMLOGEmmLoginSuccessDetailsSerializer serialize:valueObj.emmLoginSuccessDetails] mutableCopy];
-    jsonDict[@".tag"] = @"emm_login_success_details";
+  } else if ([valueObj isEmmErrorDetails]) {
+    jsonDict[@"emm_error_details"] =
+        [[DBTEAMLOGEmmErrorDetailsSerializer serialize:valueObj.emmErrorDetails] mutableCopy];
+    jsonDict[@".tag"] = @"emm_error_details";
+  } else if ([valueObj isLoginFailDetails]) {
+    jsonDict[@"login_fail_details"] =
+        [[DBTEAMLOGLoginFailDetailsSerializer serialize:valueObj.loginFailDetails] mutableCopy];
+    jsonDict[@".tag"] = @"login_fail_details";
+  } else if ([valueObj isLoginSuccessDetails]) {
+    jsonDict[@"login_success_details"] =
+        [[DBTEAMLOGLoginSuccessDetailsSerializer serialize:valueObj.loginSuccessDetails] mutableCopy];
+    jsonDict[@".tag"] = @"login_success_details";
   } else if ([valueObj isLogoutDetails]) {
     jsonDict[@"logout_details"] = [[DBTEAMLOGLogoutDetailsSerializer serialize:valueObj.logoutDetails] mutableCopy];
     jsonDict[@".tag"] = @"logout_details";
-  } else if ([valueObj isPasswordLoginFailDetails]) {
-    jsonDict[@"password_login_fail_details"] =
-        [[DBTEAMLOGPasswordLoginFailDetailsSerializer serialize:valueObj.passwordLoginFailDetails] mutableCopy];
-    jsonDict[@".tag"] = @"password_login_fail_details";
-  } else if ([valueObj isPasswordLoginSuccessDetails]) {
-    jsonDict[@"password_login_success_details"] =
-        [[DBTEAMLOGPasswordLoginSuccessDetailsSerializer serialize:valueObj.passwordLoginSuccessDetails] mutableCopy];
-    jsonDict[@".tag"] = @"password_login_success_details";
   } else if ([valueObj isResellerSupportSessionEndDetails]) {
     jsonDict[@"reseller_support_session_end_details"] = [[DBTEAMLOGResellerSupportSessionEndDetailsSerializer
         serialize:valueObj.resellerSupportSessionEndDetails] mutableCopy];
@@ -17949,10 +17974,10 @@
     jsonDict[@"sign_in_as_session_start_details"] =
         [[DBTEAMLOGSignInAsSessionStartDetailsSerializer serialize:valueObj.signInAsSessionStartDetails] mutableCopy];
     jsonDict[@".tag"] = @"sign_in_as_session_start_details";
-  } else if ([valueObj isSsoLoginFailDetails]) {
-    jsonDict[@"sso_login_fail_details"] =
-        [[DBTEAMLOGSsoLoginFailDetailsSerializer serialize:valueObj.ssoLoginFailDetails] mutableCopy];
-    jsonDict[@".tag"] = @"sso_login_fail_details";
+  } else if ([valueObj isSsoErrorDetails]) {
+    jsonDict[@"sso_error_details"] =
+        [[DBTEAMLOGSsoErrorDetailsSerializer serialize:valueObj.ssoErrorDetails] mutableCopy];
+    jsonDict[@".tag"] = @"sso_error_details";
   } else if ([valueObj isMemberAddNameDetails]) {
     jsonDict[@"member_add_name_details"] =
         [[DBTEAMLOGMemberAddNameDetailsSerializer serialize:valueObj.memberAddNameDetails] mutableCopy];
@@ -18968,14 +18993,14 @@
     DBTEAMLOGFileRequestAddDeadlineDetails *fileRequestAddDeadlineDetails =
         [DBTEAMLOGFileRequestAddDeadlineDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithFileRequestAddDeadlineDetails:fileRequestAddDeadlineDetails];
+  } else if ([tag isEqualToString:@"file_request_change_details"]) {
+    DBTEAMLOGFileRequestChangeDetails *fileRequestChangeDetails =
+        [DBTEAMLOGFileRequestChangeDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithFileRequestChangeDetails:fileRequestChangeDetails];
   } else if ([tag isEqualToString:@"file_request_change_folder_details"]) {
     DBTEAMLOGFileRequestChangeFolderDetails *fileRequestChangeFolderDetails =
         [DBTEAMLOGFileRequestChangeFolderDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithFileRequestChangeFolderDetails:fileRequestChangeFolderDetails];
-  } else if ([tag isEqualToString:@"file_request_change_title_details"]) {
-    DBTEAMLOGFileRequestChangeTitleDetails *fileRequestChangeTitleDetails =
-        [DBTEAMLOGFileRequestChangeTitleDetailsSerializer deserialize:valueDict];
-    return [[DBTEAMLOGEventDetails alloc] initWithFileRequestChangeTitleDetails:fileRequestChangeTitleDetails];
   } else if ([tag isEqualToString:@"file_request_close_details"]) {
     DBTEAMLOGFileRequestCloseDetails *fileRequestCloseDetails =
         [DBTEAMLOGFileRequestCloseDetailsSerializer deserialize:valueDict];
@@ -19036,21 +19061,18 @@
   } else if ([tag isEqualToString:@"group_rename_details"]) {
     DBTEAMLOGGroupRenameDetails *groupRenameDetails = [DBTEAMLOGGroupRenameDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithGroupRenameDetails:groupRenameDetails];
-  } else if ([tag isEqualToString:@"emm_login_success_details"]) {
-    DBTEAMLOGEmmLoginSuccessDetails *emmLoginSuccessDetails =
-        [DBTEAMLOGEmmLoginSuccessDetailsSerializer deserialize:valueDict];
-    return [[DBTEAMLOGEventDetails alloc] initWithEmmLoginSuccessDetails:emmLoginSuccessDetails];
+  } else if ([tag isEqualToString:@"emm_error_details"]) {
+    DBTEAMLOGEmmErrorDetails *emmErrorDetails = [DBTEAMLOGEmmErrorDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithEmmErrorDetails:emmErrorDetails];
+  } else if ([tag isEqualToString:@"login_fail_details"]) {
+    DBTEAMLOGLoginFailDetails *loginFailDetails = [DBTEAMLOGLoginFailDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithLoginFailDetails:loginFailDetails];
+  } else if ([tag isEqualToString:@"login_success_details"]) {
+    DBTEAMLOGLoginSuccessDetails *loginSuccessDetails = [DBTEAMLOGLoginSuccessDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithLoginSuccessDetails:loginSuccessDetails];
   } else if ([tag isEqualToString:@"logout_details"]) {
     DBTEAMLOGLogoutDetails *logoutDetails = [DBTEAMLOGLogoutDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithLogoutDetails:logoutDetails];
-  } else if ([tag isEqualToString:@"password_login_fail_details"]) {
-    DBTEAMLOGPasswordLoginFailDetails *passwordLoginFailDetails =
-        [DBTEAMLOGPasswordLoginFailDetailsSerializer deserialize:valueDict];
-    return [[DBTEAMLOGEventDetails alloc] initWithPasswordLoginFailDetails:passwordLoginFailDetails];
-  } else if ([tag isEqualToString:@"password_login_success_details"]) {
-    DBTEAMLOGPasswordLoginSuccessDetails *passwordLoginSuccessDetails =
-        [DBTEAMLOGPasswordLoginSuccessDetailsSerializer deserialize:valueDict];
-    return [[DBTEAMLOGEventDetails alloc] initWithPasswordLoginSuccessDetails:passwordLoginSuccessDetails];
   } else if ([tag isEqualToString:@"reseller_support_session_end_details"]) {
     DBTEAMLOGResellerSupportSessionEndDetails *resellerSupportSessionEndDetails =
         [DBTEAMLOGResellerSupportSessionEndDetailsSerializer deserialize:valueDict];
@@ -19068,9 +19090,9 @@
     DBTEAMLOGSignInAsSessionStartDetails *signInAsSessionStartDetails =
         [DBTEAMLOGSignInAsSessionStartDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithSignInAsSessionStartDetails:signInAsSessionStartDetails];
-  } else if ([tag isEqualToString:@"sso_login_fail_details"]) {
-    DBTEAMLOGSsoLoginFailDetails *ssoLoginFailDetails = [DBTEAMLOGSsoLoginFailDetailsSerializer deserialize:valueDict];
-    return [[DBTEAMLOGEventDetails alloc] initWithSsoLoginFailDetails:ssoLoginFailDetails];
+  } else if ([tag isEqualToString:@"sso_error_details"]) {
+    DBTEAMLOGSsoErrorDetails *ssoErrorDetails = [DBTEAMLOGSsoErrorDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithSsoErrorDetails:ssoErrorDetails];
   } else if ([tag isEqualToString:@"member_add_name_details"]) {
     DBTEAMLOGMemberAddNameDetails *memberAddNameDetails =
         [DBTEAMLOGMemberAddNameDetailsSerializer deserialize:valueDict];
@@ -20360,18 +20382,18 @@
   return self;
 }
 
-- (instancetype)initWithFileRequestChangeFolder {
+- (instancetype)initWithFileRequestChange {
   self = [super init];
   if (self) {
-    _tag = DBTEAMLOGEventTypeFileRequestChangeFolder;
+    _tag = DBTEAMLOGEventTypeFileRequestChange;
   }
   return self;
 }
 
-- (instancetype)initWithFileRequestChangeTitle {
+- (instancetype)initWithFileRequestChangeFolder {
   self = [super init];
   if (self) {
-    _tag = DBTEAMLOGEventTypeFileRequestChangeTitle;
+    _tag = DBTEAMLOGEventTypeFileRequestChangeFolder;
   }
   return self;
 }
@@ -20504,10 +20526,26 @@
   return self;
 }
 
-- (instancetype)initWithEmmLoginSuccess {
+- (instancetype)initWithEmmError {
   self = [super init];
   if (self) {
-    _tag = DBTEAMLOGEventTypeEmmLoginSuccess;
+    _tag = DBTEAMLOGEventTypeEmmError;
+  }
+  return self;
+}
+
+- (instancetype)initWithLoginFail {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeLoginFail;
+  }
+  return self;
+}
+
+- (instancetype)initWithLoginSuccess {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeLoginSuccess;
   }
   return self;
 }
@@ -20516,22 +20554,6 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGEventTypeLogout;
-  }
-  return self;
-}
-
-- (instancetype)initWithPasswordLoginFail {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGEventTypePasswordLoginFail;
-  }
-  return self;
-}
-
-- (instancetype)initWithPasswordLoginSuccess {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGEventTypePasswordLoginSuccess;
   }
   return self;
 }
@@ -20568,10 +20590,10 @@
   return self;
 }
 
-- (instancetype)initWithSsoLoginFail {
+- (instancetype)initWithSsoError {
   self = [super init];
   if (self) {
-    _tag = DBTEAMLOGEventTypeSsoLoginFail;
+    _tag = DBTEAMLOGEventTypeSsoError;
   }
   return self;
 }
@@ -22272,12 +22294,12 @@
   return _tag == DBTEAMLOGEventTypeFileRequestAddDeadline;
 }
 
-- (BOOL)isFileRequestChangeFolder {
-  return _tag == DBTEAMLOGEventTypeFileRequestChangeFolder;
+- (BOOL)isFileRequestChange {
+  return _tag == DBTEAMLOGEventTypeFileRequestChange;
 }
 
-- (BOOL)isFileRequestChangeTitle {
-  return _tag == DBTEAMLOGEventTypeFileRequestChangeTitle;
+- (BOOL)isFileRequestChangeFolder {
+  return _tag == DBTEAMLOGEventTypeFileRequestChangeFolder;
 }
 
 - (BOOL)isFileRequestClose {
@@ -22344,20 +22366,20 @@
   return _tag == DBTEAMLOGEventTypeGroupRename;
 }
 
-- (BOOL)isEmmLoginSuccess {
-  return _tag == DBTEAMLOGEventTypeEmmLoginSuccess;
+- (BOOL)isEmmError {
+  return _tag == DBTEAMLOGEventTypeEmmError;
+}
+
+- (BOOL)isLoginFail {
+  return _tag == DBTEAMLOGEventTypeLoginFail;
+}
+
+- (BOOL)isLoginSuccess {
+  return _tag == DBTEAMLOGEventTypeLoginSuccess;
 }
 
 - (BOOL)isLogout {
   return _tag == DBTEAMLOGEventTypeLogout;
-}
-
-- (BOOL)isPasswordLoginFail {
-  return _tag == DBTEAMLOGEventTypePasswordLoginFail;
-}
-
-- (BOOL)isPasswordLoginSuccess {
-  return _tag == DBTEAMLOGEventTypePasswordLoginSuccess;
 }
 
 - (BOOL)isResellerSupportSessionEnd {
@@ -22376,8 +22398,8 @@
   return _tag == DBTEAMLOGEventTypeSignInAsSessionStart;
 }
 
-- (BOOL)isSsoLoginFail {
-  return _tag == DBTEAMLOGEventTypeSsoLoginFail;
+- (BOOL)isSsoError {
+  return _tag == DBTEAMLOGEventTypeSsoError;
 }
 
 - (BOOL)isMemberAddName {
@@ -23228,10 +23250,10 @@
     return @"DBTEAMLOGEventTypeFileSaveCopyReference";
   case DBTEAMLOGEventTypeFileRequestAddDeadline:
     return @"DBTEAMLOGEventTypeFileRequestAddDeadline";
+  case DBTEAMLOGEventTypeFileRequestChange:
+    return @"DBTEAMLOGEventTypeFileRequestChange";
   case DBTEAMLOGEventTypeFileRequestChangeFolder:
     return @"DBTEAMLOGEventTypeFileRequestChangeFolder";
-  case DBTEAMLOGEventTypeFileRequestChangeTitle:
-    return @"DBTEAMLOGEventTypeFileRequestChangeTitle";
   case DBTEAMLOGEventTypeFileRequestClose:
     return @"DBTEAMLOGEventTypeFileRequestClose";
   case DBTEAMLOGEventTypeFileRequestCreate:
@@ -23264,14 +23286,14 @@
     return @"DBTEAMLOGEventTypeGroupRemoveMember";
   case DBTEAMLOGEventTypeGroupRename:
     return @"DBTEAMLOGEventTypeGroupRename";
-  case DBTEAMLOGEventTypeEmmLoginSuccess:
-    return @"DBTEAMLOGEventTypeEmmLoginSuccess";
+  case DBTEAMLOGEventTypeEmmError:
+    return @"DBTEAMLOGEventTypeEmmError";
+  case DBTEAMLOGEventTypeLoginFail:
+    return @"DBTEAMLOGEventTypeLoginFail";
+  case DBTEAMLOGEventTypeLoginSuccess:
+    return @"DBTEAMLOGEventTypeLoginSuccess";
   case DBTEAMLOGEventTypeLogout:
     return @"DBTEAMLOGEventTypeLogout";
-  case DBTEAMLOGEventTypePasswordLoginFail:
-    return @"DBTEAMLOGEventTypePasswordLoginFail";
-  case DBTEAMLOGEventTypePasswordLoginSuccess:
-    return @"DBTEAMLOGEventTypePasswordLoginSuccess";
   case DBTEAMLOGEventTypeResellerSupportSessionEnd:
     return @"DBTEAMLOGEventTypeResellerSupportSessionEnd";
   case DBTEAMLOGEventTypeResellerSupportSessionStart:
@@ -23280,8 +23302,8 @@
     return @"DBTEAMLOGEventTypeSignInAsSessionEnd";
   case DBTEAMLOGEventTypeSignInAsSessionStart:
     return @"DBTEAMLOGEventTypeSignInAsSessionStart";
-  case DBTEAMLOGEventTypeSsoLoginFail:
-    return @"DBTEAMLOGEventTypeSsoLoginFail";
+  case DBTEAMLOGEventTypeSsoError:
+    return @"DBTEAMLOGEventTypeSsoError";
   case DBTEAMLOGEventTypeMemberAddName:
     return @"DBTEAMLOGEventTypeMemberAddName";
   case DBTEAMLOGEventTypeMemberChangeAdminRole:
@@ -23806,9 +23828,9 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeFileRequestAddDeadline:
     result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGEventTypeFileRequestChangeFolder:
+  case DBTEAMLOGEventTypeFileRequestChange:
     result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGEventTypeFileRequestChangeTitle:
+  case DBTEAMLOGEventTypeFileRequestChangeFolder:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeFileRequestClose:
     result = prime * result + [[self tagName] hash];
@@ -23842,13 +23864,13 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeGroupRename:
     result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGEventTypeEmmLoginSuccess:
+  case DBTEAMLOGEventTypeEmmError:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventTypeLoginFail:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventTypeLoginSuccess:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeLogout:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGEventTypePasswordLoginFail:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGEventTypePasswordLoginSuccess:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeResellerSupportSessionEnd:
     result = prime * result + [[self tagName] hash];
@@ -23858,7 +23880,7 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeSignInAsSessionStart:
     result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGEventTypeSsoLoginFail:
+  case DBTEAMLOGEventTypeSsoError:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventTypeMemberAddName:
     result = prime * result + [[self tagName] hash];
@@ -24373,9 +24395,9 @@
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeFileRequestAddDeadline:
     return [[self tagName] isEqual:[anEventType tagName]];
-  case DBTEAMLOGEventTypeFileRequestChangeFolder:
+  case DBTEAMLOGEventTypeFileRequestChange:
     return [[self tagName] isEqual:[anEventType tagName]];
-  case DBTEAMLOGEventTypeFileRequestChangeTitle:
+  case DBTEAMLOGEventTypeFileRequestChangeFolder:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeFileRequestClose:
     return [[self tagName] isEqual:[anEventType tagName]];
@@ -24409,13 +24431,13 @@
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeGroupRename:
     return [[self tagName] isEqual:[anEventType tagName]];
-  case DBTEAMLOGEventTypeEmmLoginSuccess:
+  case DBTEAMLOGEventTypeEmmError:
+    return [[self tagName] isEqual:[anEventType tagName]];
+  case DBTEAMLOGEventTypeLoginFail:
+    return [[self tagName] isEqual:[anEventType tagName]];
+  case DBTEAMLOGEventTypeLoginSuccess:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeLogout:
-    return [[self tagName] isEqual:[anEventType tagName]];
-  case DBTEAMLOGEventTypePasswordLoginFail:
-    return [[self tagName] isEqual:[anEventType tagName]];
-  case DBTEAMLOGEventTypePasswordLoginSuccess:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeResellerSupportSessionEnd:
     return [[self tagName] isEqual:[anEventType tagName]];
@@ -24425,7 +24447,7 @@
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeSignInAsSessionStart:
     return [[self tagName] isEqual:[anEventType tagName]];
-  case DBTEAMLOGEventTypeSsoLoginFail:
+  case DBTEAMLOGEventTypeSsoError:
     return [[self tagName] isEqual:[anEventType tagName]];
   case DBTEAMLOGEventTypeMemberAddName:
     return [[self tagName] isEqual:[anEventType tagName]];
@@ -24928,10 +24950,10 @@
     jsonDict[@".tag"] = @"file_save_copy_reference";
   } else if ([valueObj isFileRequestAddDeadline]) {
     jsonDict[@".tag"] = @"file_request_add_deadline";
+  } else if ([valueObj isFileRequestChange]) {
+    jsonDict[@".tag"] = @"file_request_change";
   } else if ([valueObj isFileRequestChangeFolder]) {
     jsonDict[@".tag"] = @"file_request_change_folder";
-  } else if ([valueObj isFileRequestChangeTitle]) {
-    jsonDict[@".tag"] = @"file_request_change_title";
   } else if ([valueObj isFileRequestClose]) {
     jsonDict[@".tag"] = @"file_request_close";
   } else if ([valueObj isFileRequestCreate]) {
@@ -24964,14 +24986,14 @@
     jsonDict[@".tag"] = @"group_remove_member";
   } else if ([valueObj isGroupRename]) {
     jsonDict[@".tag"] = @"group_rename";
-  } else if ([valueObj isEmmLoginSuccess]) {
-    jsonDict[@".tag"] = @"emm_login_success";
+  } else if ([valueObj isEmmError]) {
+    jsonDict[@".tag"] = @"emm_error";
+  } else if ([valueObj isLoginFail]) {
+    jsonDict[@".tag"] = @"login_fail";
+  } else if ([valueObj isLoginSuccess]) {
+    jsonDict[@".tag"] = @"login_success";
   } else if ([valueObj isLogout]) {
     jsonDict[@".tag"] = @"logout";
-  } else if ([valueObj isPasswordLoginFail]) {
-    jsonDict[@".tag"] = @"password_login_fail";
-  } else if ([valueObj isPasswordLoginSuccess]) {
-    jsonDict[@".tag"] = @"password_login_success";
   } else if ([valueObj isResellerSupportSessionEnd]) {
     jsonDict[@".tag"] = @"reseller_support_session_end";
   } else if ([valueObj isResellerSupportSessionStart]) {
@@ -24980,8 +25002,8 @@
     jsonDict[@".tag"] = @"sign_in_as_session_end";
   } else if ([valueObj isSignInAsSessionStart]) {
     jsonDict[@".tag"] = @"sign_in_as_session_start";
-  } else if ([valueObj isSsoLoginFail]) {
-    jsonDict[@".tag"] = @"sso_login_fail";
+  } else if ([valueObj isSsoError]) {
+    jsonDict[@".tag"] = @"sso_error";
   } else if ([valueObj isMemberAddName]) {
     jsonDict[@".tag"] = @"member_add_name";
   } else if ([valueObj isMemberChangeAdminRole]) {
@@ -25480,10 +25502,10 @@
     return [[DBTEAMLOGEventType alloc] initWithFileSaveCopyReference];
   } else if ([tag isEqualToString:@"file_request_add_deadline"]) {
     return [[DBTEAMLOGEventType alloc] initWithFileRequestAddDeadline];
+  } else if ([tag isEqualToString:@"file_request_change"]) {
+    return [[DBTEAMLOGEventType alloc] initWithFileRequestChange];
   } else if ([tag isEqualToString:@"file_request_change_folder"]) {
     return [[DBTEAMLOGEventType alloc] initWithFileRequestChangeFolder];
-  } else if ([tag isEqualToString:@"file_request_change_title"]) {
-    return [[DBTEAMLOGEventType alloc] initWithFileRequestChangeTitle];
   } else if ([tag isEqualToString:@"file_request_close"]) {
     return [[DBTEAMLOGEventType alloc] initWithFileRequestClose];
   } else if ([tag isEqualToString:@"file_request_create"]) {
@@ -25516,14 +25538,14 @@
     return [[DBTEAMLOGEventType alloc] initWithGroupRemoveMember];
   } else if ([tag isEqualToString:@"group_rename"]) {
     return [[DBTEAMLOGEventType alloc] initWithGroupRename];
-  } else if ([tag isEqualToString:@"emm_login_success"]) {
-    return [[DBTEAMLOGEventType alloc] initWithEmmLoginSuccess];
+  } else if ([tag isEqualToString:@"emm_error"]) {
+    return [[DBTEAMLOGEventType alloc] initWithEmmError];
+  } else if ([tag isEqualToString:@"login_fail"]) {
+    return [[DBTEAMLOGEventType alloc] initWithLoginFail];
+  } else if ([tag isEqualToString:@"login_success"]) {
+    return [[DBTEAMLOGEventType alloc] initWithLoginSuccess];
   } else if ([tag isEqualToString:@"logout"]) {
     return [[DBTEAMLOGEventType alloc] initWithLogout];
-  } else if ([tag isEqualToString:@"password_login_fail"]) {
-    return [[DBTEAMLOGEventType alloc] initWithPasswordLoginFail];
-  } else if ([tag isEqualToString:@"password_login_success"]) {
-    return [[DBTEAMLOGEventType alloc] initWithPasswordLoginSuccess];
   } else if ([tag isEqualToString:@"reseller_support_session_end"]) {
     return [[DBTEAMLOGEventType alloc] initWithResellerSupportSessionEnd];
   } else if ([tag isEqualToString:@"reseller_support_session_start"]) {
@@ -25532,8 +25554,8 @@
     return [[DBTEAMLOGEventType alloc] initWithSignInAsSessionEnd];
   } else if ([tag isEqualToString:@"sign_in_as_session_start"]) {
     return [[DBTEAMLOGEventType alloc] initWithSignInAsSessionStart];
-  } else if ([tag isEqualToString:@"sso_login_fail"]) {
-    return [[DBTEAMLOGEventType alloc] initWithSsoLoginFail];
+  } else if ([tag isEqualToString:@"sso_error"]) {
+    return [[DBTEAMLOGEventType alloc] initWithSsoError];
   } else if ([tag isEqualToString:@"member_add_name"]) {
     return [[DBTEAMLOGEventType alloc] initWithMemberAddName];
   } else if ([tag isEqualToString:@"member_change_admin_role"]) {
@@ -26351,19 +26373,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
-  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+- (instancetype)initWithCommentText:(NSString *)commentText {
 
   self = [super init];
   if (self) {
-    _targetAssetIndex = targetAssetIndex;
     _commentText = commentText;
   }
   return self;
 }
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
-  return [self initWithTargetAssetIndex:targetAssetIndex commentText:nil];
+- (instancetype)initDefault {
+  return [self initWithCommentText:nil];
 }
 
 #pragma mark - Serialization methods
@@ -26396,7 +26416,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.targetAssetIndex hash];
   if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
@@ -26420,9 +26439,6 @@
   if (self == aFileAddCommentDetails) {
     return YES;
   }
-  if (![self.targetAssetIndex isEqual:aFileAddCommentDetails.targetAssetIndex]) {
-    return NO;
-  }
   if (self.commentText) {
     if (![self.commentText isEqual:aFileAddCommentDetails.commentText]) {
       return NO;
@@ -26440,7 +26456,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileAddCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
   if (valueObj.commentText) {
     jsonDict[@"comment_text"] = valueObj.commentText;
   }
@@ -26449,10 +26464,9 @@
 }
 
 + (DBTEAMLOGFileAddCommentDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
-  return [[DBTEAMLOGFileAddCommentDetails alloc] initWithTargetAssetIndex:targetAssetIndex commentText:commentText];
+  return [[DBTEAMLOGFileAddCommentDetails alloc] initWithCommentText:commentText];
 }
 
 @end
@@ -26559,24 +26573,20 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                               dNewValue:(DBTEAMLOGFileCommentNotificationPolicy *)dNewValue
-                           previousValue:(DBTEAMLOGFileCommentNotificationPolicy *)previousValue {
-  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+- (instancetype)initWithDNewValue:(DBTEAMLOGFileCommentNotificationPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGFileCommentNotificationPolicy *)previousValue {
   [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
   if (self) {
-    _targetAssetIndex = targetAssetIndex;
     _dNewValue = dNewValue;
     _previousValue = previousValue;
   }
   return self;
 }
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                               dNewValue:(DBTEAMLOGFileCommentNotificationPolicy *)dNewValue {
-  return [self initWithTargetAssetIndex:targetAssetIndex dNewValue:dNewValue previousValue:nil];
+- (instancetype)initWithDNewValue:(DBTEAMLOGFileCommentNotificationPolicy *)dNewValue {
+  return [self initWithDNewValue:dNewValue previousValue:nil];
 }
 
 #pragma mark - Serialization methods
@@ -26609,7 +26619,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.targetAssetIndex hash];
   result = prime * result + [self.dNewValue hash];
   if (self.previousValue != nil) {
     result = prime * result + [self.previousValue hash];
@@ -26635,9 +26644,6 @@
   if (self == aFileChangeCommentSubscriptionDetails) {
     return YES;
   }
-  if (![self.targetAssetIndex isEqual:aFileChangeCommentSubscriptionDetails.targetAssetIndex]) {
-    return NO;
-  }
   if (![self.dNewValue isEqual:aFileChangeCommentSubscriptionDetails.dNewValue]) {
     return NO;
   }
@@ -26658,7 +26664,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileChangeCommentSubscriptionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
   jsonDict[@"new_value"] = [DBTEAMLOGFileCommentNotificationPolicySerializer serialize:valueObj.dNewValue];
   if (valueObj.previousValue) {
     jsonDict[@"previous_value"] = [DBTEAMLOGFileCommentNotificationPolicySerializer serialize:valueObj.previousValue];
@@ -26668,7 +26673,6 @@
 }
 
 + (DBTEAMLOGFileChangeCommentSubscriptionDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   DBTEAMLOGFileCommentNotificationPolicy *dNewValue =
       [DBTEAMLOGFileCommentNotificationPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGFileCommentNotificationPolicy *previousValue =
@@ -26676,9 +26680,8 @@
           ? [DBTEAMLOGFileCommentNotificationPolicySerializer deserialize:valueDict[@"previous_value"]]
           : nil;
 
-  return [[DBTEAMLOGFileChangeCommentSubscriptionDetails alloc] initWithTargetAssetIndex:targetAssetIndex
-                                                                               dNewValue:dNewValue
-                                                                           previousValue:previousValue];
+  return
+      [[DBTEAMLOGFileChangeCommentSubscriptionDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
 }
 
 @end
@@ -27273,19 +27276,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
-  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+- (instancetype)initWithCommentText:(NSString *)commentText {
 
   self = [super init];
   if (self) {
-    _targetAssetIndex = targetAssetIndex;
     _commentText = commentText;
   }
   return self;
 }
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
-  return [self initWithTargetAssetIndex:targetAssetIndex commentText:nil];
+- (instancetype)initDefault {
+  return [self initWithCommentText:nil];
 }
 
 #pragma mark - Serialization methods
@@ -27318,7 +27319,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.targetAssetIndex hash];
   if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
@@ -27342,9 +27342,6 @@
   if (self == aFileDeleteCommentDetails) {
     return YES;
   }
-  if (![self.targetAssetIndex isEqual:aFileDeleteCommentDetails.targetAssetIndex]) {
-    return NO;
-  }
   if (self.commentText) {
     if (![self.commentText isEqual:aFileDeleteCommentDetails.commentText]) {
       return NO;
@@ -27362,7 +27359,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileDeleteCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
   if (valueObj.commentText) {
     jsonDict[@"comment_text"] = valueObj.commentText;
   }
@@ -27371,10 +27367,9 @@
 }
 
 + (DBTEAMLOGFileDeleteCommentDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
-  return [[DBTEAMLOGFileDeleteCommentDetails alloc] initWithTargetAssetIndex:targetAssetIndex commentText:commentText];
+  return [[DBTEAMLOGFileDeleteCommentDetails alloc] initWithCommentText:commentText];
 }
 
 @end
@@ -27753,19 +27748,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
-  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+- (instancetype)initWithCommentText:(NSString *)commentText {
 
   self = [super init];
   if (self) {
-    _targetAssetIndex = targetAssetIndex;
     _commentText = commentText;
   }
   return self;
 }
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
-  return [self initWithTargetAssetIndex:targetAssetIndex commentText:nil];
+- (instancetype)initDefault {
+  return [self initWithCommentText:nil];
 }
 
 #pragma mark - Serialization methods
@@ -27798,7 +27791,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.targetAssetIndex hash];
   if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
@@ -27822,9 +27814,6 @@
   if (self == aFileLikeCommentDetails) {
     return YES;
   }
-  if (![self.targetAssetIndex isEqual:aFileLikeCommentDetails.targetAssetIndex]) {
-    return NO;
-  }
   if (self.commentText) {
     if (![self.commentText isEqual:aFileLikeCommentDetails.commentText]) {
       return NO;
@@ -27842,7 +27831,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileLikeCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
   if (valueObj.commentText) {
     jsonDict[@"comment_text"] = valueObj.commentText;
   }
@@ -27851,10 +27839,9 @@
 }
 
 + (DBTEAMLOGFileLikeCommentDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
-  return [[DBTEAMLOGFileLikeCommentDetails alloc] initWithTargetAssetIndex:targetAssetIndex commentText:commentText];
+  return [[DBTEAMLOGFileLikeCommentDetails alloc] initWithCommentText:commentText];
 }
 
 @end
@@ -28537,17 +28524,20 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRequestTitle:(NSString *)requestTitle {
+- (instancetype)initWithFileRequestId:(NSString *)fileRequestId requestTitle:(NSString *)requestTitle {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
 
   self = [super init];
   if (self) {
+    _fileRequestId = fileRequestId;
     _requestTitle = requestTitle;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithRequestTitle:nil];
+  return [self initWithFileRequestId:nil requestTitle:nil];
 }
 
 #pragma mark - Serialization methods
@@ -28580,6 +28570,9 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
   if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
@@ -28604,6 +28597,11 @@
   if (self == aFileRequestAddDeadlineDetails) {
     return YES;
   }
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestAddDeadlineDetails.fileRequestId]) {
+      return NO;
+    }
+  }
   if (self.requestTitle) {
     if (![self.requestTitle isEqual:aFileRequestAddDeadlineDetails.requestTitle]) {
       return NO;
@@ -28621,6 +28619,9 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileRequestAddDeadlineDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
   if (valueObj.requestTitle) {
     jsonDict[@"request_title"] = valueObj.requestTitle;
   }
@@ -28629,9 +28630,150 @@
 }
 
 + (DBTEAMLOGFileRequestAddDeadlineDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
   NSString *requestTitle = valueDict[@"request_title"] ?: nil;
 
-  return [[DBTEAMLOGFileRequestAddDeadlineDetails alloc] initWithRequestTitle:requestTitle];
+  return [[DBTEAMLOGFileRequestAddDeadlineDetails alloc] initWithFileRequestId:fileRequestId requestTitle:requestTitle];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGFileRequestChangeDetails.h"
+#import "DBTEAMLOGFileRequestDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGFileRequestChangeDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewDetails:(DBTEAMLOGFileRequestDetails *)dNewDetails
+                      fileRequestId:(NSString *)fileRequestId
+                    previousDetails:(DBTEAMLOGFileRequestDetails *)previousDetails {
+  [DBStoneValidators nonnullValidator:nil](dNewDetails);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
+
+  self = [super init];
+  if (self) {
+    _fileRequestId = fileRequestId;
+    _previousDetails = previousDetails;
+    _dNewDetails = dNewDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithDNewDetails:(DBTEAMLOGFileRequestDetails *)dNewDetails {
+  return [self initWithDNewDetails:dNewDetails fileRequestId:nil previousDetails:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGFileRequestChangeDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGFileRequestChangeDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGFileRequestChangeDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewDetails hash];
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
+  if (self.previousDetails != nil) {
+    result = prime * result + [self.previousDetails hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToFileRequestChangeDetails:other];
+}
+
+- (BOOL)isEqualToFileRequestChangeDetails:(DBTEAMLOGFileRequestChangeDetails *)aFileRequestChangeDetails {
+  if (self == aFileRequestChangeDetails) {
+    return YES;
+  }
+  if (![self.dNewDetails isEqual:aFileRequestChangeDetails.dNewDetails]) {
+    return NO;
+  }
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestChangeDetails.fileRequestId]) {
+      return NO;
+    }
+  }
+  if (self.previousDetails) {
+    if (![self.previousDetails isEqual:aFileRequestChangeDetails.previousDetails]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGFileRequestChangeDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGFileRequestChangeDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_details"] = [DBTEAMLOGFileRequestDetailsSerializer serialize:valueObj.dNewDetails];
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
+  if (valueObj.previousDetails) {
+    jsonDict[@"previous_details"] = [DBTEAMLOGFileRequestDetailsSerializer serialize:valueObj.previousDetails];
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGFileRequestChangeDetails *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMLOGFileRequestDetails *dNewDetails =
+      [DBTEAMLOGFileRequestDetailsSerializer deserialize:valueDict[@"new_details"]];
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
+  DBTEAMLOGFileRequestDetails *previousDetails =
+      valueDict[@"previous_details"]
+          ? [DBTEAMLOGFileRequestDetailsSerializer deserialize:valueDict[@"previous_details"]]
+          : nil;
+
+  return [[DBTEAMLOGFileRequestChangeDetails alloc] initWithDNewDetails:dNewDetails
+                                                          fileRequestId:fileRequestId
+                                                        previousDetails:previousDetails];
 }
 
 @end
@@ -28646,17 +28788,20 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRequestTitle:(NSString *)requestTitle {
+- (instancetype)initWithFileRequestId:(NSString *)fileRequestId requestTitle:(NSString *)requestTitle {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
 
   self = [super init];
   if (self) {
+    _fileRequestId = fileRequestId;
     _requestTitle = requestTitle;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithRequestTitle:nil];
+  return [self initWithFileRequestId:nil requestTitle:nil];
 }
 
 #pragma mark - Serialization methods
@@ -28689,6 +28834,9 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
   if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
@@ -28713,6 +28861,11 @@
   if (self == aFileRequestChangeFolderDetails) {
     return YES;
   }
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestChangeFolderDetails.fileRequestId]) {
+      return NO;
+    }
+  }
   if (self.requestTitle) {
     if (![self.requestTitle isEqual:aFileRequestChangeFolderDetails.requestTitle]) {
       return NO;
@@ -28730,6 +28883,9 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileRequestChangeFolderDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
   if (valueObj.requestTitle) {
     jsonDict[@"request_title"] = valueObj.requestTitle;
   }
@@ -28738,118 +28894,11 @@
 }
 
 + (DBTEAMLOGFileRequestChangeFolderDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
   NSString *requestTitle = valueDict[@"request_title"] ?: nil;
 
-  return [[DBTEAMLOGFileRequestChangeFolderDetails alloc] initWithRequestTitle:requestTitle];
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLOGFileRequestChangeTitleDetails.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGFileRequestChangeTitleDetails
-
-#pragma mark - Constructors
-
-- (instancetype)initWithRequestTitle:(NSString *)requestTitle {
-
-  self = [super init];
-  if (self) {
-    _requestTitle = requestTitle;
-  }
-  return self;
-}
-
-- (instancetype)initDefault {
-  return [self initWithRequestTitle:nil];
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGFileRequestChangeTitleDetailsSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGFileRequestChangeTitleDetailsSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGFileRequestChangeTitleDetailsSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  if (self.requestTitle != nil) {
-    result = prime * result + [self.requestTitle hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToFileRequestChangeTitleDetails:other];
-}
-
-- (BOOL)isEqualToFileRequestChangeTitleDetails:
-    (DBTEAMLOGFileRequestChangeTitleDetails *)aFileRequestChangeTitleDetails {
-  if (self == aFileRequestChangeTitleDetails) {
-    return YES;
-  }
-  if (self.requestTitle) {
-    if (![self.requestTitle isEqual:aFileRequestChangeTitleDetails.requestTitle]) {
-      return NO;
-    }
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGFileRequestChangeTitleDetailsSerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestChangeTitleDetails *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if (valueObj.requestTitle) {
-    jsonDict[@"request_title"] = valueObj.requestTitle;
-  }
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGFileRequestChangeTitleDetails *)deserialize:(NSDictionary *)valueDict {
-  NSString *requestTitle = valueDict[@"request_title"] ?: nil;
-
-  return [[DBTEAMLOGFileRequestChangeTitleDetails alloc] initWithRequestTitle:requestTitle];
+  return
+      [[DBTEAMLOGFileRequestChangeFolderDetails alloc] initWithFileRequestId:fileRequestId requestTitle:requestTitle];
 }
 
 @end
@@ -28857,6 +28906,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGFileRequestCloseDetails.h"
+#import "DBTEAMLOGFileRequestDetails.h"
 
 #pragma mark - API Object
 
@@ -28864,17 +28914,21 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRequestTitle:(NSString *)requestTitle {
+- (instancetype)initWithFileRequestId:(NSString *)fileRequestId
+                      previousDetails:(DBTEAMLOGFileRequestDetails *)previousDetails {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
 
   self = [super init];
   if (self) {
-    _requestTitle = requestTitle;
+    _fileRequestId = fileRequestId;
+    _previousDetails = previousDetails;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithRequestTitle:nil];
+  return [self initWithFileRequestId:nil previousDetails:nil];
 }
 
 #pragma mark - Serialization methods
@@ -28907,8 +28961,11 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle != nil) {
-    result = prime * result + [self.requestTitle hash];
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
+  if (self.previousDetails != nil) {
+    result = prime * result + [self.previousDetails hash];
   }
 
   return prime * result;
@@ -28930,8 +28987,13 @@
   if (self == aFileRequestCloseDetails) {
     return YES;
   }
-  if (self.requestTitle) {
-    if (![self.requestTitle isEqual:aFileRequestCloseDetails.requestTitle]) {
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestCloseDetails.fileRequestId]) {
+      return NO;
+    }
+  }
+  if (self.previousDetails) {
+    if (![self.previousDetails isEqual:aFileRequestCloseDetails.previousDetails]) {
       return NO;
     }
   }
@@ -28947,17 +29009,24 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileRequestCloseDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.requestTitle) {
-    jsonDict[@"request_title"] = valueObj.requestTitle;
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
+  if (valueObj.previousDetails) {
+    jsonDict[@"previous_details"] = [DBTEAMLOGFileRequestDetailsSerializer serialize:valueObj.previousDetails];
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGFileRequestCloseDetails *)deserialize:(NSDictionary *)valueDict {
-  NSString *requestTitle = valueDict[@"request_title"] ?: nil;
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
+  DBTEAMLOGFileRequestDetails *previousDetails =
+      valueDict[@"previous_details"]
+          ? [DBTEAMLOGFileRequestDetailsSerializer deserialize:valueDict[@"previous_details"]]
+          : nil;
 
-  return [[DBTEAMLOGFileRequestCloseDetails alloc] initWithRequestTitle:requestTitle];
+  return [[DBTEAMLOGFileRequestCloseDetails alloc] initWithFileRequestId:fileRequestId previousDetails:previousDetails];
 }
 
 @end
@@ -28965,6 +29034,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGFileRequestCreateDetails.h"
+#import "DBTEAMLOGFileRequestDetails.h"
 
 #pragma mark - API Object
 
@@ -28972,17 +29042,21 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRequestTitle:(NSString *)requestTitle {
+- (instancetype)initWithFileRequestId:(NSString *)fileRequestId
+                       requestDetails:(DBTEAMLOGFileRequestDetails *)requestDetails {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
 
   self = [super init];
   if (self) {
-    _requestTitle = requestTitle;
+    _fileRequestId = fileRequestId;
+    _requestDetails = requestDetails;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithRequestTitle:nil];
+  return [self initWithFileRequestId:nil requestDetails:nil];
 }
 
 #pragma mark - Serialization methods
@@ -29015,8 +29089,11 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestTitle != nil) {
-    result = prime * result + [self.requestTitle hash];
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
+  if (self.requestDetails != nil) {
+    result = prime * result + [self.requestDetails hash];
   }
 
   return prime * result;
@@ -29038,8 +29115,13 @@
   if (self == aFileRequestCreateDetails) {
     return YES;
   }
-  if (self.requestTitle) {
-    if (![self.requestTitle isEqual:aFileRequestCreateDetails.requestTitle]) {
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestCreateDetails.fileRequestId]) {
+      return NO;
+    }
+  }
+  if (self.requestDetails) {
+    if (![self.requestDetails isEqual:aFileRequestCreateDetails.requestDetails]) {
       return NO;
     }
   }
@@ -29055,17 +29137,157 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileRequestCreateDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.requestTitle) {
-    jsonDict[@"request_title"] = valueObj.requestTitle;
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
+  if (valueObj.requestDetails) {
+    jsonDict[@"request_details"] = [DBTEAMLOGFileRequestDetailsSerializer serialize:valueObj.requestDetails];
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGFileRequestCreateDetails *)deserialize:(NSDictionary *)valueDict {
-  NSString *requestTitle = valueDict[@"request_title"] ?: nil;
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
+  DBTEAMLOGFileRequestDetails *requestDetails =
+      valueDict[@"request_details"] ? [DBTEAMLOGFileRequestDetailsSerializer deserialize:valueDict[@"request_details"]]
+                                    : nil;
 
-  return [[DBTEAMLOGFileRequestCreateDetails alloc] initWithRequestTitle:requestTitle];
+  return [[DBTEAMLOGFileRequestCreateDetails alloc] initWithFileRequestId:fileRequestId requestDetails:requestDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGFileRequestDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGFileRequestDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAssetIndex:(NSNumber *)assetIndex
+                      requestTitle:(NSString *)requestTitle
+                          deadline:(NSDate *)deadline {
+  [DBStoneValidators nonnullValidator:nil](assetIndex);
+
+  self = [super init];
+  if (self) {
+    _requestTitle = requestTitle;
+    _assetIndex = assetIndex;
+    _deadline = deadline;
+  }
+  return self;
+}
+
+- (instancetype)initWithAssetIndex:(NSNumber *)assetIndex {
+  return [self initWithAssetIndex:assetIndex requestTitle:nil deadline:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGFileRequestDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGFileRequestDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGFileRequestDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.assetIndex hash];
+  if (self.requestTitle != nil) {
+    result = prime * result + [self.requestTitle hash];
+  }
+  if (self.deadline != nil) {
+    result = prime * result + [self.deadline hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToFileRequestDetails:other];
+}
+
+- (BOOL)isEqualToFileRequestDetails:(DBTEAMLOGFileRequestDetails *)aFileRequestDetails {
+  if (self == aFileRequestDetails) {
+    return YES;
+  }
+  if (![self.assetIndex isEqual:aFileRequestDetails.assetIndex]) {
+    return NO;
+  }
+  if (self.requestTitle) {
+    if (![self.requestTitle isEqual:aFileRequestDetails.requestTitle]) {
+      return NO;
+    }
+  }
+  if (self.deadline) {
+    if (![self.deadline isEqual:aFileRequestDetails.deadline]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGFileRequestDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGFileRequestDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"asset_index"] = valueObj.assetIndex;
+  if (valueObj.requestTitle) {
+    jsonDict[@"request_title"] = valueObj.requestTitle;
+  }
+  if (valueObj.deadline) {
+    jsonDict[@"deadline"] = [DBNSDateSerializer serialize:valueObj.deadline dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGFileRequestDetails *)deserialize:(NSDictionary *)valueDict {
+  NSNumber *assetIndex = valueDict[@"asset_index"];
+  NSString *requestTitle = valueDict[@"request_title"] ?: nil;
+  NSDate *deadline = valueDict[@"deadline"]
+                         ? [DBNSDateSerializer deserialize:valueDict[@"deadline"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                         : nil;
+
+  return
+      [[DBTEAMLOGFileRequestDetails alloc] initWithAssetIndex:assetIndex requestTitle:requestTitle deadline:deadline];
 }
 
 @end
@@ -29081,14 +29303,18 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithSubmittedFileNames:(NSArray<NSString *> *)submittedFileNames
+                             fileRequestId:(NSString *)fileRequestId
                               requestTitle:(NSString *)requestTitle {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](submittedFileNames);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
 
   self = [super init];
   if (self) {
+    _fileRequestId = fileRequestId;
     _requestTitle = requestTitle;
     _submittedFileNames = submittedFileNames;
   }
@@ -29096,7 +29322,7 @@
 }
 
 - (instancetype)initWithSubmittedFileNames:(NSArray<NSString *> *)submittedFileNames {
-  return [self initWithSubmittedFileNames:submittedFileNames requestTitle:nil];
+  return [self initWithSubmittedFileNames:submittedFileNames fileRequestId:nil requestTitle:nil];
 }
 
 #pragma mark - Serialization methods
@@ -29130,6 +29356,9 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.submittedFileNames hash];
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
   if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
@@ -29157,6 +29386,11 @@
   if (![self.submittedFileNames isEqual:aFileRequestReceiveFileDetails.submittedFileNames]) {
     return NO;
   }
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestReceiveFileDetails.fileRequestId]) {
+      return NO;
+    }
+  }
   if (self.requestTitle) {
     if (![self.requestTitle isEqual:aFileRequestReceiveFileDetails.requestTitle]) {
       return NO;
@@ -29178,6 +29412,9 @@
                                                          withBlock:^id(id elem0) {
                                                            return elem0;
                                                          }];
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
   if (valueObj.requestTitle) {
     jsonDict[@"request_title"] = valueObj.requestTitle;
   }
@@ -29190,9 +29427,11 @@
                                                                  withBlock:^id(id elem0) {
                                                                    return elem0;
                                                                  }];
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
   NSString *requestTitle = valueDict[@"request_title"] ?: nil;
 
   return [[DBTEAMLOGFileRequestReceiveFileDetails alloc] initWithSubmittedFileNames:submittedFileNames
+                                                                      fileRequestId:fileRequestId
                                                                        requestTitle:requestTitle];
 }
 
@@ -29208,17 +29447,20 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRequestTitle:(NSString *)requestTitle {
+- (instancetype)initWithFileRequestId:(NSString *)fileRequestId requestTitle:(NSString *)requestTitle {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
 
   self = [super init];
   if (self) {
+    _fileRequestId = fileRequestId;
     _requestTitle = requestTitle;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithRequestTitle:nil];
+  return [self initWithFileRequestId:nil requestTitle:nil];
 }
 
 #pragma mark - Serialization methods
@@ -29251,6 +29493,9 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
   if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
@@ -29275,6 +29520,11 @@
   if (self == aFileRequestRemoveDeadlineDetails) {
     return YES;
   }
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestRemoveDeadlineDetails.fileRequestId]) {
+      return NO;
+    }
+  }
   if (self.requestTitle) {
     if (![self.requestTitle isEqual:aFileRequestRemoveDeadlineDetails.requestTitle]) {
       return NO;
@@ -29292,6 +29542,9 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileRequestRemoveDeadlineDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
   if (valueObj.requestTitle) {
     jsonDict[@"request_title"] = valueObj.requestTitle;
   }
@@ -29300,9 +29553,11 @@
 }
 
 + (DBTEAMLOGFileRequestRemoveDeadlineDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
   NSString *requestTitle = valueDict[@"request_title"] ?: nil;
 
-  return [[DBTEAMLOGFileRequestRemoveDeadlineDetails alloc] initWithRequestTitle:requestTitle];
+  return
+      [[DBTEAMLOGFileRequestRemoveDeadlineDetails alloc] initWithFileRequestId:fileRequestId requestTitle:requestTitle];
 }
 
 @end
@@ -29317,17 +29572,20 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRequestTitle:(NSString *)requestTitle {
+- (instancetype)initWithFileRequestId:(NSString *)fileRequestId requestTitle:(NSString *)requestTitle {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
 
   self = [super init];
   if (self) {
+    _fileRequestId = fileRequestId;
     _requestTitle = requestTitle;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithRequestTitle:nil];
+  return [self initWithFileRequestId:nil requestTitle:nil];
 }
 
 #pragma mark - Serialization methods
@@ -29360,6 +29618,9 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
   if (self.requestTitle != nil) {
     result = prime * result + [self.requestTitle hash];
   }
@@ -29383,6 +29644,11 @@
   if (self == aFileRequestSendDetails) {
     return YES;
   }
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestSendDetails.fileRequestId]) {
+      return NO;
+    }
+  }
   if (self.requestTitle) {
     if (![self.requestTitle isEqual:aFileRequestSendDetails.requestTitle]) {
       return NO;
@@ -29400,6 +29666,9 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileRequestSendDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
   if (valueObj.requestTitle) {
     jsonDict[@"request_title"] = valueObj.requestTitle;
   }
@@ -29408,9 +29677,10 @@
 }
 
 + (DBTEAMLOGFileRequestSendDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
   NSString *requestTitle = valueDict[@"request_title"] ?: nil;
 
-  return [[DBTEAMLOGFileRequestSendDetails alloc] initWithRequestTitle:requestTitle];
+  return [[DBTEAMLOGFileRequestSendDetails alloc] initWithFileRequestId:fileRequestId requestTitle:requestTitle];
 }
 
 @end
@@ -29903,19 +30173,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
-  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+- (instancetype)initWithCommentText:(NSString *)commentText {
 
   self = [super init];
   if (self) {
-    _targetAssetIndex = targetAssetIndex;
     _commentText = commentText;
   }
   return self;
 }
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
-  return [self initWithTargetAssetIndex:targetAssetIndex commentText:nil];
+- (instancetype)initDefault {
+  return [self initWithCommentText:nil];
 }
 
 #pragma mark - Serialization methods
@@ -29948,7 +30216,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.targetAssetIndex hash];
   if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
@@ -29972,9 +30239,6 @@
   if (self == aFileResolveCommentDetails) {
     return YES;
   }
-  if (![self.targetAssetIndex isEqual:aFileResolveCommentDetails.targetAssetIndex]) {
-    return NO;
-  }
   if (self.commentText) {
     if (![self.commentText isEqual:aFileResolveCommentDetails.commentText]) {
       return NO;
@@ -29992,7 +30256,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileResolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
   if (valueObj.commentText) {
     jsonDict[@"comment_text"] = valueObj.commentText;
   }
@@ -30001,10 +30264,9 @@
 }
 
 + (DBTEAMLOGFileResolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
-  return [[DBTEAMLOGFileResolveCommentDetails alloc] initWithTargetAssetIndex:targetAssetIndex commentText:commentText];
+  return [[DBTEAMLOGFileResolveCommentDetails alloc] initWithCommentText:commentText];
 }
 
 @end
@@ -30404,19 +30666,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
-  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+- (instancetype)initWithCommentText:(NSString *)commentText {
 
   self = [super init];
   if (self) {
-    _targetAssetIndex = targetAssetIndex;
     _commentText = commentText;
   }
   return self;
 }
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
-  return [self initWithTargetAssetIndex:targetAssetIndex commentText:nil];
+- (instancetype)initDefault {
+  return [self initWithCommentText:nil];
 }
 
 #pragma mark - Serialization methods
@@ -30449,7 +30709,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.targetAssetIndex hash];
   if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
@@ -30473,9 +30732,6 @@
   if (self == aFileUnlikeCommentDetails) {
     return YES;
   }
-  if (![self.targetAssetIndex isEqual:aFileUnlikeCommentDetails.targetAssetIndex]) {
-    return NO;
-  }
   if (self.commentText) {
     if (![self.commentText isEqual:aFileUnlikeCommentDetails.commentText]) {
       return NO;
@@ -30493,7 +30749,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileUnlikeCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
   if (valueObj.commentText) {
     jsonDict[@"comment_text"] = valueObj.commentText;
   }
@@ -30502,10 +30757,9 @@
 }
 
 + (DBTEAMLOGFileUnlikeCommentDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
-  return [[DBTEAMLOGFileUnlikeCommentDetails alloc] initWithTargetAssetIndex:targetAssetIndex commentText:commentText];
+  return [[DBTEAMLOGFileUnlikeCommentDetails alloc] initWithCommentText:commentText];
 }
 
 @end
@@ -30520,19 +30774,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex commentText:(NSString *)commentText {
-  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+- (instancetype)initWithCommentText:(NSString *)commentText {
 
   self = [super init];
   if (self) {
-    _targetAssetIndex = targetAssetIndex;
     _commentText = commentText;
   }
   return self;
 }
 
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex {
-  return [self initWithTargetAssetIndex:targetAssetIndex commentText:nil];
+- (instancetype)initDefault {
+  return [self initWithCommentText:nil];
 }
 
 #pragma mark - Serialization methods
@@ -30565,7 +30817,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.targetAssetIndex hash];
   if (self.commentText != nil) {
     result = prime * result + [self.commentText hash];
   }
@@ -30589,9 +30840,6 @@
   if (self == aFileUnresolveCommentDetails) {
     return YES;
   }
-  if (![self.targetAssetIndex isEqual:aFileUnresolveCommentDetails.targetAssetIndex]) {
-    return NO;
-  }
   if (self.commentText) {
     if (![self.commentText isEqual:aFileUnresolveCommentDetails.commentText]) {
       return NO;
@@ -30609,7 +30857,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGFileUnresolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
   if (valueObj.commentText) {
     jsonDict[@"comment_text"] = valueObj.commentText;
   }
@@ -30618,11 +30865,9 @@
 }
 
 + (DBTEAMLOGFileUnresolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
-  return
-      [[DBTEAMLOGFileUnresolveCommentDetails alloc] initWithTargetAssetIndex:targetAssetIndex commentText:commentText];
+  return [[DBTEAMLOGFileUnresolveCommentDetails alloc] initWithCommentText:commentText];
 }
 
 @end
@@ -33344,7 +33589,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGGroupUserManagementChangePolicyDetails.h"
-#import "DBTEAMLOGGroupUserManagementPolicy.h"
+#import "DBTEAMPOLICIESGroupCreation.h"
 
 #pragma mark - API Object
 
@@ -33352,8 +33597,8 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithDNewValue:(DBTEAMLOGGroupUserManagementPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGGroupUserManagementPolicy *)previousValue {
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESGroupCreation *)dNewValue
+                    previousValue:(DBTEAMPOLICIESGroupCreation *)previousValue {
   [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
@@ -33364,7 +33609,7 @@
   return self;
 }
 
-- (instancetype)initWithDNewValue:(DBTEAMLOGGroupUserManagementPolicy *)dNewValue {
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESGroupCreation *)dNewValue {
   return [self initWithDNewValue:dNewValue previousValue:nil];
 }
 
@@ -33443,318 +33688,22 @@
 + (NSDictionary *)serialize:(DBTEAMLOGGroupUserManagementChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"new_value"] = [DBTEAMLOGGroupUserManagementPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"new_value"] = [DBTEAMPOLICIESGroupCreationSerializer serialize:valueObj.dNewValue];
   if (valueObj.previousValue) {
-    jsonDict[@"previous_value"] = [DBTEAMLOGGroupUserManagementPolicySerializer serialize:valueObj.previousValue];
+    jsonDict[@"previous_value"] = [DBTEAMPOLICIESGroupCreationSerializer serialize:valueObj.previousValue];
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGGroupUserManagementChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
-  DBTEAMLOGGroupUserManagementPolicy *dNewValue =
-      [DBTEAMLOGGroupUserManagementPolicySerializer deserialize:valueDict[@"new_value"]];
-  DBTEAMLOGGroupUserManagementPolicy *previousValue =
-      valueDict[@"previous_value"]
-          ? [DBTEAMLOGGroupUserManagementPolicySerializer deserialize:valueDict[@"previous_value"]]
-          : nil;
+  DBTEAMPOLICIESGroupCreation *dNewValue = [DBTEAMPOLICIESGroupCreationSerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMPOLICIESGroupCreation *previousValue =
+      valueDict[@"previous_value"] ? [DBTEAMPOLICIESGroupCreationSerializer deserialize:valueDict[@"previous_value"]]
+                                   : nil;
 
   return
       [[DBTEAMLOGGroupUserManagementChangePolicyDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLOGGroupUserManagementPolicy.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGGroupUserManagementPolicy
-
-#pragma mark - Constructors
-
-- (instancetype)initWithAdminsOnly {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGGroupUserManagementPolicyAdminsOnly;
-  }
-  return self;
-}
-
-- (instancetype)initWithAllUsers {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGGroupUserManagementPolicyAllUsers;
-  }
-  return self;
-}
-
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGGroupUserManagementPolicyOther;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isAdminsOnly {
-  return _tag == DBTEAMLOGGroupUserManagementPolicyAdminsOnly;
-}
-
-- (BOOL)isAllUsers {
-  return _tag == DBTEAMLOGGroupUserManagementPolicyAllUsers;
-}
-
-- (BOOL)isOther {
-  return _tag == DBTEAMLOGGroupUserManagementPolicyOther;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBTEAMLOGGroupUserManagementPolicyAdminsOnly:
-    return @"DBTEAMLOGGroupUserManagementPolicyAdminsOnly";
-  case DBTEAMLOGGroupUserManagementPolicyAllUsers:
-    return @"DBTEAMLOGGroupUserManagementPolicyAllUsers";
-  case DBTEAMLOGGroupUserManagementPolicyOther:
-    return @"DBTEAMLOGGroupUserManagementPolicyOther";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGGroupUserManagementPolicySerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGGroupUserManagementPolicySerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGGroupUserManagementPolicySerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBTEAMLOGGroupUserManagementPolicyAdminsOnly:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGGroupUserManagementPolicyAllUsers:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGGroupUserManagementPolicyOther:
-    result = prime * result + [[self tagName] hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGroupUserManagementPolicy:other];
-}
-
-- (BOOL)isEqualToGroupUserManagementPolicy:(DBTEAMLOGGroupUserManagementPolicy *)aGroupUserManagementPolicy {
-  if (self == aGroupUserManagementPolicy) {
-    return YES;
-  }
-  if (self.tag != aGroupUserManagementPolicy.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBTEAMLOGGroupUserManagementPolicyAdminsOnly:
-    return [[self tagName] isEqual:[aGroupUserManagementPolicy tagName]];
-  case DBTEAMLOGGroupUserManagementPolicyAllUsers:
-    return [[self tagName] isEqual:[aGroupUserManagementPolicy tagName]];
-  case DBTEAMLOGGroupUserManagementPolicyOther:
-    return [[self tagName] isEqual:[aGroupUserManagementPolicy tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGGroupUserManagementPolicySerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupUserManagementPolicy *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isAdminsOnly]) {
-    jsonDict[@".tag"] = @"admins_only";
-  } else if ([valueObj isAllUsers]) {
-    jsonDict[@".tag"] = @"all_users";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGGroupUserManagementPolicy *)deserialize:(NSDictionary *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"admins_only"]) {
-    return [[DBTEAMLOGGroupUserManagementPolicy alloc] initWithAdminsOnly];
-  } else if ([tag isEqualToString:@"all_users"]) {
-    return [[DBTEAMLOGGroupUserManagementPolicy alloc] initWithAllUsers];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMLOGGroupUserManagementPolicy alloc] initWithOther];
-  } else {
-    return [[DBTEAMLOGGroupUserManagementPolicy alloc] initWithOther];
-  }
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLOGHostLogInfo.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGHostLogInfo
-
-#pragma mark - Constructors
-
-- (instancetype)initWithHostId:(NSNumber *)hostId hostName:(NSString *)hostName {
-
-  self = [super init];
-  if (self) {
-    _hostId = hostId;
-    _hostName = hostName;
-  }
-  return self;
-}
-
-- (instancetype)initDefault {
-  return [self initWithHostId:nil hostName:nil];
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGHostLogInfoSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGHostLogInfoSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGHostLogInfoSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  if (self.hostId != nil) {
-    result = prime * result + [self.hostId hash];
-  }
-  if (self.hostName != nil) {
-    result = prime * result + [self.hostName hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToHostLogInfo:other];
-}
-
-- (BOOL)isEqualToHostLogInfo:(DBTEAMLOGHostLogInfo *)aHostLogInfo {
-  if (self == aHostLogInfo) {
-    return YES;
-  }
-  if (self.hostId) {
-    if (![self.hostId isEqual:aHostLogInfo.hostId]) {
-      return NO;
-    }
-  }
-  if (self.hostName) {
-    if (![self.hostName isEqual:aHostLogInfo.hostName]) {
-      return NO;
-    }
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGHostLogInfoSerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGHostLogInfo *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if (valueObj.hostId) {
-    jsonDict[@"host_id"] = valueObj.hostId;
-  }
-  if (valueObj.hostName) {
-    jsonDict[@"host_name"] = valueObj.hostName;
-  }
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGHostLogInfo *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *hostId = valueDict[@"host_id"] ?: nil;
-  NSString *hostName = valueDict[@"host_name"] ?: nil;
-
-  return [[DBTEAMLOGHostLogInfo alloc] initWithHostId:hostId hostName:hostName];
 }
 
 @end
@@ -34102,6 +34051,450 @@
   } else {
     return [[DBTEAMLOGLinkAudience alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGFailureDetailsLogInfo.h"
+#import "DBTEAMLOGLoginFailDetails.h"
+#import "DBTEAMLOGLoginMethod.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGLoginFailDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithLoginMethod:(DBTEAMLOGLoginMethod *)loginMethod
+                       errorDetails:(DBTEAMLOGFailureDetailsLogInfo *)errorDetails
+                       isEmmManaged:(NSNumber *)isEmmManaged {
+  [DBStoneValidators nonnullValidator:nil](loginMethod);
+  [DBStoneValidators nonnullValidator:nil](errorDetails);
+
+  self = [super init];
+  if (self) {
+    _isEmmManaged = isEmmManaged;
+    _loginMethod = loginMethod;
+    _errorDetails = errorDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithLoginMethod:(DBTEAMLOGLoginMethod *)loginMethod
+                       errorDetails:(DBTEAMLOGFailureDetailsLogInfo *)errorDetails {
+  return [self initWithLoginMethod:loginMethod errorDetails:errorDetails isEmmManaged:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGLoginFailDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGLoginFailDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGLoginFailDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.loginMethod hash];
+  result = prime * result + [self.errorDetails hash];
+  if (self.isEmmManaged != nil) {
+    result = prime * result + [self.isEmmManaged hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToLoginFailDetails:other];
+}
+
+- (BOOL)isEqualToLoginFailDetails:(DBTEAMLOGLoginFailDetails *)aLoginFailDetails {
+  if (self == aLoginFailDetails) {
+    return YES;
+  }
+  if (![self.loginMethod isEqual:aLoginFailDetails.loginMethod]) {
+    return NO;
+  }
+  if (![self.errorDetails isEqual:aLoginFailDetails.errorDetails]) {
+    return NO;
+  }
+  if (self.isEmmManaged) {
+    if (![self.isEmmManaged isEqual:aLoginFailDetails.isEmmManaged]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGLoginFailDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGLoginFailDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"login_method"] = [DBTEAMLOGLoginMethodSerializer serialize:valueObj.loginMethod];
+  jsonDict[@"error_details"] = [DBTEAMLOGFailureDetailsLogInfoSerializer serialize:valueObj.errorDetails];
+  if (valueObj.isEmmManaged) {
+    jsonDict[@"is_emm_managed"] = valueObj.isEmmManaged;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGLoginFailDetails *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMLOGLoginMethod *loginMethod = [DBTEAMLOGLoginMethodSerializer deserialize:valueDict[@"login_method"]];
+  DBTEAMLOGFailureDetailsLogInfo *errorDetails =
+      [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
+  NSNumber *isEmmManaged = valueDict[@"is_emm_managed"] ?: nil;
+
+  return [[DBTEAMLOGLoginFailDetails alloc] initWithLoginMethod:loginMethod
+                                                   errorDetails:errorDetails
+                                                   isEmmManaged:isEmmManaged];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGLoginMethod.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGLoginMethod
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPassword {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLoginMethodPassword;
+  }
+  return self;
+}
+
+- (instancetype)initWithTwoFactorAuthentication {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLoginMethodTwoFactorAuthentication;
+  }
+  return self;
+}
+
+- (instancetype)initWithSaml {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLoginMethodSaml;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLoginMethodOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPassword {
+  return _tag == DBTEAMLOGLoginMethodPassword;
+}
+
+- (BOOL)isTwoFactorAuthentication {
+  return _tag == DBTEAMLOGLoginMethodTwoFactorAuthentication;
+}
+
+- (BOOL)isSaml {
+  return _tag == DBTEAMLOGLoginMethodSaml;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGLoginMethodOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGLoginMethodPassword:
+    return @"DBTEAMLOGLoginMethodPassword";
+  case DBTEAMLOGLoginMethodTwoFactorAuthentication:
+    return @"DBTEAMLOGLoginMethodTwoFactorAuthentication";
+  case DBTEAMLOGLoginMethodSaml:
+    return @"DBTEAMLOGLoginMethodSaml";
+  case DBTEAMLOGLoginMethodOther:
+    return @"DBTEAMLOGLoginMethodOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGLoginMethodSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGLoginMethodSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGLoginMethodSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGLoginMethodPassword:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGLoginMethodTwoFactorAuthentication:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGLoginMethodSaml:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGLoginMethodOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToLoginMethod:other];
+}
+
+- (BOOL)isEqualToLoginMethod:(DBTEAMLOGLoginMethod *)aLoginMethod {
+  if (self == aLoginMethod) {
+    return YES;
+  }
+  if (self.tag != aLoginMethod.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGLoginMethodPassword:
+    return [[self tagName] isEqual:[aLoginMethod tagName]];
+  case DBTEAMLOGLoginMethodTwoFactorAuthentication:
+    return [[self tagName] isEqual:[aLoginMethod tagName]];
+  case DBTEAMLOGLoginMethodSaml:
+    return [[self tagName] isEqual:[aLoginMethod tagName]];
+  case DBTEAMLOGLoginMethodOther:
+    return [[self tagName] isEqual:[aLoginMethod tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGLoginMethodSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGLoginMethod *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPassword]) {
+    jsonDict[@".tag"] = @"password";
+  } else if ([valueObj isTwoFactorAuthentication]) {
+    jsonDict[@".tag"] = @"two_factor_authentication";
+  } else if ([valueObj isSaml]) {
+    jsonDict[@".tag"] = @"saml";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGLoginMethod *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"password"]) {
+    return [[DBTEAMLOGLoginMethod alloc] initWithPassword];
+  } else if ([tag isEqualToString:@"two_factor_authentication"]) {
+    return [[DBTEAMLOGLoginMethod alloc] initWithTwoFactorAuthentication];
+  } else if ([tag isEqualToString:@"saml"]) {
+    return [[DBTEAMLOGLoginMethod alloc] initWithSaml];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGLoginMethod alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGLoginMethod alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGLoginMethod.h"
+#import "DBTEAMLOGLoginSuccessDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGLoginSuccessDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithLoginMethod:(DBTEAMLOGLoginMethod *)loginMethod isEmmManaged:(NSNumber *)isEmmManaged {
+  [DBStoneValidators nonnullValidator:nil](loginMethod);
+
+  self = [super init];
+  if (self) {
+    _isEmmManaged = isEmmManaged;
+    _loginMethod = loginMethod;
+  }
+  return self;
+}
+
+- (instancetype)initWithLoginMethod:(DBTEAMLOGLoginMethod *)loginMethod {
+  return [self initWithLoginMethod:loginMethod isEmmManaged:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGLoginSuccessDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGLoginSuccessDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGLoginSuccessDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.loginMethod hash];
+  if (self.isEmmManaged != nil) {
+    result = prime * result + [self.isEmmManaged hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToLoginSuccessDetails:other];
+}
+
+- (BOOL)isEqualToLoginSuccessDetails:(DBTEAMLOGLoginSuccessDetails *)aLoginSuccessDetails {
+  if (self == aLoginSuccessDetails) {
+    return YES;
+  }
+  if (![self.loginMethod isEqual:aLoginSuccessDetails.loginMethod]) {
+    return NO;
+  }
+  if (self.isEmmManaged) {
+    if (![self.isEmmManaged isEqual:aLoginSuccessDetails.isEmmManaged]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGLoginSuccessDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGLoginSuccessDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"login_method"] = [DBTEAMLOGLoginMethodSerializer serialize:valueObj.loginMethod];
+  if (valueObj.isEmmManaged) {
+    jsonDict[@"is_emm_managed"] = valueObj.isEmmManaged;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGLoginSuccessDetails *)deserialize:(NSDictionary *)valueDict {
+  DBTEAMLOGLoginMethod *loginMethod = [DBTEAMLOGLoginMethodSerializer deserialize:valueDict[@"login_method"]];
+  NSNumber *isEmmManaged = valueDict[@"is_emm_managed"] ?: nil;
+
+  return [[DBTEAMLOGLoginSuccessDetails alloc] initWithLoginMethod:loginMethod isEmmManaged:isEmmManaged];
 }
 
 @end
@@ -35417,7 +35810,6 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGMemberSpaceLimitsChangePolicyDetails.h"
-#import "DBTEAMLOGSpaceLimitsLevel.h"
 
 #pragma mark - API Object
 
@@ -35425,10 +35817,7 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithPreviousValue:(DBTEAMLOGSpaceLimitsLevel *)previousValue
-                            dNewValue:(DBTEAMLOGSpaceLimitsLevel *)dNewValue {
-  [DBStoneValidators nonnullValidator:nil](previousValue);
-  [DBStoneValidators nonnullValidator:nil](dNewValue);
+- (instancetype)initWithPreviousValue:(NSNumber *)previousValue dNewValue:(NSNumber *)dNewValue {
 
   self = [super init];
   if (self) {
@@ -35436,6 +35825,10 @@
     _dNewValue = dNewValue;
   }
   return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithPreviousValue:nil dNewValue:nil];
 }
 
 #pragma mark - Serialization methods
@@ -35468,8 +35861,12 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.previousValue hash];
-  result = prime * result + [self.dNewValue hash];
+  if (self.previousValue != nil) {
+    result = prime * result + [self.previousValue hash];
+  }
+  if (self.dNewValue != nil) {
+    result = prime * result + [self.dNewValue hash];
+  }
 
   return prime * result;
 }
@@ -35491,11 +35888,15 @@
   if (self == aMemberSpaceLimitsChangePolicyDetails) {
     return YES;
   }
-  if (![self.previousValue isEqual:aMemberSpaceLimitsChangePolicyDetails.previousValue]) {
-    return NO;
+  if (self.previousValue) {
+    if (![self.previousValue isEqual:aMemberSpaceLimitsChangePolicyDetails.previousValue]) {
+      return NO;
+    }
   }
-  if (![self.dNewValue isEqual:aMemberSpaceLimitsChangePolicyDetails.dNewValue]) {
-    return NO;
+  if (self.dNewValue) {
+    if (![self.dNewValue isEqual:aMemberSpaceLimitsChangePolicyDetails.dNewValue]) {
+      return NO;
+    }
   }
   return YES;
 }
@@ -35509,16 +35910,19 @@
 + (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"previous_value"] = [DBTEAMLOGSpaceLimitsLevelSerializer serialize:valueObj.previousValue];
-  jsonDict[@"new_value"] = [DBTEAMLOGSpaceLimitsLevelSerializer serialize:valueObj.dNewValue];
+  if (valueObj.previousValue) {
+    jsonDict[@"previous_value"] = valueObj.previousValue;
+  }
+  if (valueObj.dNewValue) {
+    jsonDict[@"new_value"] = valueObj.dNewValue;
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGMemberSpaceLimitsChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
-  DBTEAMLOGSpaceLimitsLevel *previousValue =
-      [DBTEAMLOGSpaceLimitsLevelSerializer deserialize:valueDict[@"previous_value"]];
-  DBTEAMLOGSpaceLimitsLevel *dNewValue = [DBTEAMLOGSpaceLimitsLevelSerializer deserialize:valueDict[@"new_value"]];
+  NSNumber *previousValue = valueDict[@"previous_value"] ?: nil;
+  NSNumber *dNewValue = valueDict[@"new_value"] ?: nil;
 
   return
       [[DBTEAMLOGMemberSpaceLimitsChangePolicyDetails alloc] initWithPreviousValue:previousValue dNewValue:dNewValue];
@@ -36976,8 +37380,6 @@
 - (instancetype)initWithNsId:(NSString *)nsId relativePath:(NSString *)relativePath {
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](nsId);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](relativePath);
 
   self = [super init];
   if (self) {
@@ -38239,7 +38641,6 @@
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGAccessMethodLogInfo.h"
 #import "DBTEAMLOGGeoLocationLogInfo.h"
-#import "DBTEAMLOGHostLogInfo.h"
 #import "DBTEAMLOGOriginLogInfo.h"
 
 #pragma mark - API Object
@@ -38249,21 +38650,19 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithAccessMethod:(DBTEAMLOGAccessMethodLogInfo *)accessMethod
-                         geoLocation:(DBTEAMLOGGeoLocationLogInfo *)geoLocation
-                                host:(DBTEAMLOGHostLogInfo *)host {
+                         geoLocation:(DBTEAMLOGGeoLocationLogInfo *)geoLocation {
   [DBStoneValidators nonnullValidator:nil](accessMethod);
 
   self = [super init];
   if (self) {
     _geoLocation = geoLocation;
-    _host = host;
     _accessMethod = accessMethod;
   }
   return self;
 }
 
 - (instancetype)initWithAccessMethod:(DBTEAMLOGAccessMethodLogInfo *)accessMethod {
-  return [self initWithAccessMethod:accessMethod geoLocation:nil host:nil];
+  return [self initWithAccessMethod:accessMethod geoLocation:nil];
 }
 
 #pragma mark - Serialization methods
@@ -38300,9 +38699,6 @@
   if (self.geoLocation != nil) {
     result = prime * result + [self.geoLocation hash];
   }
-  if (self.host != nil) {
-    result = prime * result + [self.host hash];
-  }
 
   return prime * result;
 }
@@ -38331,11 +38727,6 @@
       return NO;
     }
   }
-  if (self.host) {
-    if (![self.host isEqual:anOriginLogInfo.host]) {
-      return NO;
-    }
-  }
   return YES;
 }
 
@@ -38352,9 +38743,6 @@
   if (valueObj.geoLocation) {
     jsonDict[@"geo_location"] = [DBTEAMLOGGeoLocationLogInfoSerializer serialize:valueObj.geoLocation];
   }
-  if (valueObj.host) {
-    jsonDict[@"host"] = [DBTEAMLOGHostLogInfoSerializer serialize:valueObj.host];
-  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -38364,10 +38752,8 @@
       [DBTEAMLOGAccessMethodLogInfoSerializer deserialize:valueDict[@"access_method"]];
   DBTEAMLOGGeoLocationLogInfo *geoLocation =
       valueDict[@"geo_location"] ? [DBTEAMLOGGeoLocationLogInfoSerializer deserialize:valueDict[@"geo_location"]] : nil;
-  DBTEAMLOGHostLogInfo *host =
-      valueDict[@"host"] ? [DBTEAMLOGHostLogInfoSerializer deserialize:valueDict[@"host"]] : nil;
 
-  return [[DBTEAMLOGOriginLogInfo alloc] initWithAccessMethod:accessMethod geoLocation:geoLocation host:host];
+  return [[DBTEAMLOGOriginLogInfo alloc] initWithAccessMethod:accessMethod geoLocation:geoLocation];
 }
 
 @end
@@ -43976,198 +44362,6 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBTEAMLOGFailureDetailsLogInfo.h"
-#import "DBTEAMLOGPasswordLoginFailDetails.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGPasswordLoginFailDetails
-
-#pragma mark - Constructors
-
-- (instancetype)initWithErrorDetails:(DBTEAMLOGFailureDetailsLogInfo *)errorDetails {
-  [DBStoneValidators nonnullValidator:nil](errorDetails);
-
-  self = [super init];
-  if (self) {
-    _errorDetails = errorDetails;
-  }
-  return self;
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGPasswordLoginFailDetailsSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGPasswordLoginFailDetailsSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGPasswordLoginFailDetailsSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  result = prime * result + [self.errorDetails hash];
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPasswordLoginFailDetails:other];
-}
-
-- (BOOL)isEqualToPasswordLoginFailDetails:(DBTEAMLOGPasswordLoginFailDetails *)aPasswordLoginFailDetails {
-  if (self == aPasswordLoginFailDetails) {
-    return YES;
-  }
-  if (![self.errorDetails isEqual:aPasswordLoginFailDetails.errorDetails]) {
-    return NO;
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGPasswordLoginFailDetailsSerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordLoginFailDetails *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  jsonDict[@"error_details"] = [DBTEAMLOGFailureDetailsLogInfoSerializer serialize:valueObj.errorDetails];
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGPasswordLoginFailDetails *)deserialize:(NSDictionary *)valueDict {
-  DBTEAMLOGFailureDetailsLogInfo *errorDetails =
-      [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
-
-  return [[DBTEAMLOGPasswordLoginFailDetails alloc] initWithErrorDetails:errorDetails];
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLOGPasswordLoginSuccessDetails.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGPasswordLoginSuccessDetails
-
-#pragma mark - Constructors
-
-- (instancetype)initDefault {
-
-  self = [super init];
-  if (self) {
-  }
-  return self;
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGPasswordLoginSuccessDetailsSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGPasswordLoginSuccessDetailsSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGPasswordLoginSuccessDetailsSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPasswordLoginSuccessDetails:other];
-}
-
-- (BOOL)isEqualToPasswordLoginSuccessDetails:(DBTEAMLOGPasswordLoginSuccessDetails *)aPasswordLoginSuccessDetails {
-  if (self == aPasswordLoginSuccessDetails) {
-    return YES;
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGPasswordLoginSuccessDetailsSerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordLoginSuccessDetails *)valueObj {
-#pragma unused(valueObj)
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGPasswordLoginSuccessDetails *)deserialize:(NSDictionary *)valueDict {
-#pragma unused(valueDict)
-
-  return [[DBTEAMLOGPasswordLoginSuccessDetails alloc] initDefault];
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
 #import "DBTEAMLOGPasswordResetAllDetails.h"
 
 #pragma mark - API Object
@@ -44362,8 +44556,6 @@
 - (instancetype)initWithNamespaceRelative:(DBTEAMLOGNamespaceRelativePathLogInfo *)namespaceRelative
                                contextual:(NSString *)contextual {
   [DBStoneValidators nonnullValidator:nil](namespaceRelative);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](contextual);
 
   self = [super init];
   if (self) {
@@ -44885,14 +45077,17 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithResellerName:(NSString *)resellerName resellerId:(NSString *)resellerId {
+- (instancetype)initWithResellerName:(NSString *)resellerName resellerEmail:(NSString *)resellerEmail {
   [DBStoneValidators nonnullValidator:nil](resellerName);
-  [DBStoneValidators nonnullValidator:nil](resellerId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
+                                                               maxLength:@(255)
+                                                                 pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9."
+                                                                         @"-]*.[A-Za-z]{2,15}$"]](resellerEmail);
 
   self = [super init];
   if (self) {
     _resellerName = resellerName;
-    _resellerId = resellerId;
+    _resellerEmail = resellerEmail;
   }
   return self;
 }
@@ -44928,7 +45123,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.resellerName hash];
-  result = prime * result + [self.resellerId hash];
+  result = prime * result + [self.resellerEmail hash];
 
   return prime * result;
 }
@@ -44952,7 +45147,7 @@
   if (![self.resellerName isEqual:aResellerLogInfo.resellerName]) {
     return NO;
   }
-  if (![self.resellerId isEqual:aResellerLogInfo.resellerId]) {
+  if (![self.resellerEmail isEqual:aResellerLogInfo.resellerEmail]) {
     return NO;
   }
   return YES;
@@ -44968,16 +45163,16 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"reseller_name"] = valueObj.resellerName;
-  jsonDict[@"reseller_id"] = valueObj.resellerId;
+  jsonDict[@"reseller_email"] = valueObj.resellerEmail;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGResellerLogInfo *)deserialize:(NSDictionary *)valueDict {
   NSString *resellerName = valueDict[@"reseller_name"];
-  NSString *resellerId = valueDict[@"reseller_id"];
+  NSString *resellerEmail = valueDict[@"reseller_email"];
 
-  return [[DBTEAMLOGResellerLogInfo alloc] initWithResellerName:resellerName resellerId:resellerId];
+  return [[DBTEAMLOGResellerLogInfo alloc] initWithResellerName:resellerName resellerEmail:resellerEmail];
 }
 
 @end
@@ -54329,7 +54524,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGSmartSyncChangePolicyDetails.h"
-#import "DBTEAMLOGSmartSyncPolicy.h"
+#import "DBTEAMPOLICIESSmartSyncPolicy.h"
 
 #pragma mark - API Object
 
@@ -54337,8 +54532,8 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithDNewValue:(DBTEAMLOGSmartSyncPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGSmartSyncPolicy *)previousValue {
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESSmartSyncPolicy *)dNewValue
+                    previousValue:(DBTEAMPOLICIESSmartSyncPolicy *)previousValue {
   [DBStoneValidators nonnullValidator:nil](dNewValue);
 
   self = [super init];
@@ -54349,7 +54544,7 @@
   return self;
 }
 
-- (instancetype)initWithDNewValue:(DBTEAMLOGSmartSyncPolicy *)dNewValue {
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESSmartSyncPolicy *)dNewValue {
   return [self initWithDNewValue:dNewValue previousValue:nil];
 }
 
@@ -54427,18 +54622,19 @@
 + (NSDictionary *)serialize:(DBTEAMLOGSmartSyncChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"new_value"] = [DBTEAMLOGSmartSyncPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"new_value"] = [DBTEAMPOLICIESSmartSyncPolicySerializer serialize:valueObj.dNewValue];
   if (valueObj.previousValue) {
-    jsonDict[@"previous_value"] = [DBTEAMLOGSmartSyncPolicySerializer serialize:valueObj.previousValue];
+    jsonDict[@"previous_value"] = [DBTEAMPOLICIESSmartSyncPolicySerializer serialize:valueObj.previousValue];
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGSmartSyncChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
-  DBTEAMLOGSmartSyncPolicy *dNewValue = [DBTEAMLOGSmartSyncPolicySerializer deserialize:valueDict[@"new_value"]];
-  DBTEAMLOGSmartSyncPolicy *previousValue =
-      valueDict[@"previous_value"] ? [DBTEAMLOGSmartSyncPolicySerializer deserialize:valueDict[@"previous_value"]]
+  DBTEAMPOLICIESSmartSyncPolicy *dNewValue =
+      [DBTEAMPOLICIESSmartSyncPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMPOLICIESSmartSyncPolicy *previousValue =
+      valueDict[@"previous_value"] ? [DBTEAMPOLICIESSmartSyncPolicySerializer deserialize:valueDict[@"previous_value"]]
                                    : nil;
 
   return [[DBTEAMLOGSmartSyncChangePolicyDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
@@ -54928,396 +55124,6 @@
     return [[DBTEAMLOGSmartSyncOptOutPolicy alloc] initWithOther];
   } else {
     return [[DBTEAMLOGSmartSyncOptOutPolicy alloc] initWithOther];
-  }
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLOGSmartSyncPolicy.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGSmartSyncPolicy
-
-#pragma mark - Constructors
-
-- (instancetype)initWithLocalOnly {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSmartSyncPolicyLocalOnly;
-  }
-  return self;
-}
-
-- (instancetype)initWithSynced {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSmartSyncPolicySynced;
-  }
-  return self;
-}
-
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSmartSyncPolicyOther;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isLocalOnly {
-  return _tag == DBTEAMLOGSmartSyncPolicyLocalOnly;
-}
-
-- (BOOL)isSynced {
-  return _tag == DBTEAMLOGSmartSyncPolicySynced;
-}
-
-- (BOOL)isOther {
-  return _tag == DBTEAMLOGSmartSyncPolicyOther;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBTEAMLOGSmartSyncPolicyLocalOnly:
-    return @"DBTEAMLOGSmartSyncPolicyLocalOnly";
-  case DBTEAMLOGSmartSyncPolicySynced:
-    return @"DBTEAMLOGSmartSyncPolicySynced";
-  case DBTEAMLOGSmartSyncPolicyOther:
-    return @"DBTEAMLOGSmartSyncPolicyOther";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGSmartSyncPolicySerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGSmartSyncPolicySerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGSmartSyncPolicySerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBTEAMLOGSmartSyncPolicyLocalOnly:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGSmartSyncPolicySynced:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGSmartSyncPolicyOther:
-    result = prime * result + [[self tagName] hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToSmartSyncPolicy:other];
-}
-
-- (BOOL)isEqualToSmartSyncPolicy:(DBTEAMLOGSmartSyncPolicy *)aSmartSyncPolicy {
-  if (self == aSmartSyncPolicy) {
-    return YES;
-  }
-  if (self.tag != aSmartSyncPolicy.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBTEAMLOGSmartSyncPolicyLocalOnly:
-    return [[self tagName] isEqual:[aSmartSyncPolicy tagName]];
-  case DBTEAMLOGSmartSyncPolicySynced:
-    return [[self tagName] isEqual:[aSmartSyncPolicy tagName]];
-  case DBTEAMLOGSmartSyncPolicyOther:
-    return [[self tagName] isEqual:[aSmartSyncPolicy tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGSmartSyncPolicySerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncPolicy *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isLocalOnly]) {
-    jsonDict[@".tag"] = @"local_only";
-  } else if ([valueObj isSynced]) {
-    jsonDict[@".tag"] = @"synced";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGSmartSyncPolicy *)deserialize:(NSDictionary *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"local_only"]) {
-    return [[DBTEAMLOGSmartSyncPolicy alloc] initWithLocalOnly];
-  } else if ([tag isEqualToString:@"synced"]) {
-    return [[DBTEAMLOGSmartSyncPolicy alloc] initWithSynced];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMLOGSmartSyncPolicy alloc] initWithOther];
-  } else {
-    return [[DBTEAMLOGSmartSyncPolicy alloc] initWithOther];
-  }
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLOGSpaceLimitsLevel.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMLOGSpaceLimitsLevel
-
-#pragma mark - Constructors
-
-- (instancetype)initWithGenerous {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSpaceLimitsLevelGenerous;
-  }
-  return self;
-}
-
-- (instancetype)initWithModerate {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSpaceLimitsLevelModerate;
-  }
-  return self;
-}
-
-- (instancetype)initWithNoLimit {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSpaceLimitsLevelNoLimit;
-  }
-  return self;
-}
-
-- (instancetype)initWithStrict {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSpaceLimitsLevelStrict;
-  }
-  return self;
-}
-
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSpaceLimitsLevelOther;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isGenerous {
-  return _tag == DBTEAMLOGSpaceLimitsLevelGenerous;
-}
-
-- (BOOL)isModerate {
-  return _tag == DBTEAMLOGSpaceLimitsLevelModerate;
-}
-
-- (BOOL)isNoLimit {
-  return _tag == DBTEAMLOGSpaceLimitsLevelNoLimit;
-}
-
-- (BOOL)isStrict {
-  return _tag == DBTEAMLOGSpaceLimitsLevelStrict;
-}
-
-- (BOOL)isOther {
-  return _tag == DBTEAMLOGSpaceLimitsLevelOther;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBTEAMLOGSpaceLimitsLevelGenerous:
-    return @"DBTEAMLOGSpaceLimitsLevelGenerous";
-  case DBTEAMLOGSpaceLimitsLevelModerate:
-    return @"DBTEAMLOGSpaceLimitsLevelModerate";
-  case DBTEAMLOGSpaceLimitsLevelNoLimit:
-    return @"DBTEAMLOGSpaceLimitsLevelNoLimit";
-  case DBTEAMLOGSpaceLimitsLevelStrict:
-    return @"DBTEAMLOGSpaceLimitsLevelStrict";
-  case DBTEAMLOGSpaceLimitsLevelOther:
-    return @"DBTEAMLOGSpaceLimitsLevelOther";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGSpaceLimitsLevelSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGSpaceLimitsLevelSerializer deserialize:dict];
-}
-
-#pragma mark - Description method
-
-- (NSString *)description {
-  return [[DBTEAMLOGSpaceLimitsLevelSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBTEAMLOGSpaceLimitsLevelGenerous:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGSpaceLimitsLevelModerate:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGSpaceLimitsLevelNoLimit:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGSpaceLimitsLevelStrict:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGSpaceLimitsLevelOther:
-    result = prime * result + [[self tagName] hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToSpaceLimitsLevel:other];
-}
-
-- (BOOL)isEqualToSpaceLimitsLevel:(DBTEAMLOGSpaceLimitsLevel *)aSpaceLimitsLevel {
-  if (self == aSpaceLimitsLevel) {
-    return YES;
-  }
-  if (self.tag != aSpaceLimitsLevel.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBTEAMLOGSpaceLimitsLevelGenerous:
-    return [[self tagName] isEqual:[aSpaceLimitsLevel tagName]];
-  case DBTEAMLOGSpaceLimitsLevelModerate:
-    return [[self tagName] isEqual:[aSpaceLimitsLevel tagName]];
-  case DBTEAMLOGSpaceLimitsLevelNoLimit:
-    return [[self tagName] isEqual:[aSpaceLimitsLevel tagName]];
-  case DBTEAMLOGSpaceLimitsLevelStrict:
-    return [[self tagName] isEqual:[aSpaceLimitsLevel tagName]];
-  case DBTEAMLOGSpaceLimitsLevelOther:
-    return [[self tagName] isEqual:[aSpaceLimitsLevel tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMLOGSpaceLimitsLevelSerializer
-
-+ (NSDictionary *)serialize:(DBTEAMLOGSpaceLimitsLevel *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isGenerous]) {
-    jsonDict[@".tag"] = @"generous";
-  } else if ([valueObj isModerate]) {
-    jsonDict[@".tag"] = @"moderate";
-  } else if ([valueObj isNoLimit]) {
-    jsonDict[@".tag"] = @"no_limit";
-  } else if ([valueObj isStrict]) {
-    jsonDict[@".tag"] = @"strict";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
-
-  return [jsonDict count] > 0 ? jsonDict : nil;
-}
-
-+ (DBTEAMLOGSpaceLimitsLevel *)deserialize:(NSDictionary *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"generous"]) {
-    return [[DBTEAMLOGSpaceLimitsLevel alloc] initWithGenerous];
-  } else if ([tag isEqualToString:@"moderate"]) {
-    return [[DBTEAMLOGSpaceLimitsLevel alloc] initWithModerate];
-  } else if ([tag isEqualToString:@"no_limit"]) {
-    return [[DBTEAMLOGSpaceLimitsLevel alloc] initWithNoLimit];
-  } else if ([tag isEqualToString:@"strict"]) {
-    return [[DBTEAMLOGSpaceLimitsLevel alloc] initWithStrict];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMLOGSpaceLimitsLevel alloc] initWithOther];
-  } else {
-    return [[DBTEAMLOGSpaceLimitsLevel alloc] initWithOther];
   }
 }
 
@@ -56408,11 +56214,11 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGFailureDetailsLogInfo.h"
-#import "DBTEAMLOGSsoLoginFailDetails.h"
+#import "DBTEAMLOGSsoErrorDetails.h"
 
 #pragma mark - API Object
 
-@implementation DBTEAMLOGSsoLoginFailDetails
+@implementation DBTEAMLOGSsoErrorDetails
 
 #pragma mark - Constructors
 
@@ -56429,17 +56235,17 @@
 #pragma mark - Serialization methods
 
 + (nullable NSDictionary *)serialize:(id)instance {
-  return [DBTEAMLOGSsoLoginFailDetailsSerializer serialize:instance];
+  return [DBTEAMLOGSsoErrorDetailsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {
-  return [DBTEAMLOGSsoLoginFailDetailsSerializer deserialize:dict];
+  return [DBTEAMLOGSsoErrorDetailsSerializer deserialize:dict];
 }
 
 #pragma mark - Description method
 
 - (NSString *)description {
-  return [[DBTEAMLOGSsoLoginFailDetailsSerializer serialize:self] description];
+  return [[DBTEAMLOGSsoErrorDetailsSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
@@ -56470,14 +56276,14 @@
   if (!other || ![other isKindOfClass:[self class]]) {
     return NO;
   }
-  return [self isEqualToSsoLoginFailDetails:other];
+  return [self isEqualToSsoErrorDetails:other];
 }
 
-- (BOOL)isEqualToSsoLoginFailDetails:(DBTEAMLOGSsoLoginFailDetails *)aSsoLoginFailDetails {
-  if (self == aSsoLoginFailDetails) {
+- (BOOL)isEqualToSsoErrorDetails:(DBTEAMLOGSsoErrorDetails *)aSsoErrorDetails {
+  if (self == aSsoErrorDetails) {
     return YES;
   }
-  if (![self.errorDetails isEqual:aSsoLoginFailDetails.errorDetails]) {
+  if (![self.errorDetails isEqual:aSsoErrorDetails.errorDetails]) {
     return NO;
   }
   return YES;
@@ -56487,9 +56293,9 @@
 
 #pragma mark - Serializer Object
 
-@implementation DBTEAMLOGSsoLoginFailDetailsSerializer
+@implementation DBTEAMLOGSsoErrorDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoLoginFailDetails *)valueObj {
++ (NSDictionary *)serialize:(DBTEAMLOGSsoErrorDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"error_details"] = [DBTEAMLOGFailureDetailsLogInfoSerializer serialize:valueObj.errorDetails];
@@ -56497,11 +56303,11 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoLoginFailDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoErrorDetails *)deserialize:(NSDictionary *)valueDict {
   DBTEAMLOGFailureDetailsLogInfo *errorDetails =
       [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
 
-  return [[DBTEAMLOGSsoLoginFailDetails alloc] initWithErrorDetails:errorDetails];
+  return [[DBTEAMLOGSsoErrorDetails alloc] initWithErrorDetails:errorDetails];
 }
 
 @end

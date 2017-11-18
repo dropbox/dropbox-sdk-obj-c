@@ -30,7 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGEventTypeTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGEventType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
-  /// Changed the membership type (limited vs full) for team member.
+  /// Changed the membership type (limited vs full) for team member. This
+  /// event is deprecated and will not be logged going forward as the
+  /// associated product functionality no longer exists.
   DBTEAMLOGEventTypeMemberChangeMembershipType,
 
   /// Permanently deleted contents of a removed team member account.
@@ -249,14 +251,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// Save a file or folder using a copy reference.
   DBTEAMLOGEventTypeFileSaveCopyReference,
 
-  /// Added a deadline to a file request.
+  /// Added a deadline to a file request. This event is replaced by
+  /// file_request_change and will not be logged going forward.
   DBTEAMLOGEventTypeFileRequestAddDeadline,
 
-  /// Changed the file request folder.
-  DBTEAMLOGEventTypeFileRequestChangeFolder,
+  /// Change a file request.
+  DBTEAMLOGEventTypeFileRequestChange,
 
-  /// Change the file request title.
-  DBTEAMLOGEventTypeFileRequestChangeTitle,
+  /// Changed the file request folder. This event is replaced by
+  /// file_request_change and will not be logged going forward.
+  DBTEAMLOGEventTypeFileRequestChangeFolder,
 
   /// Closed a file request.
   DBTEAMLOGEventTypeFileRequestClose,
@@ -267,10 +271,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// Received files for a file request.
   DBTEAMLOGEventTypeFileRequestReceiveFile,
 
-  /// Removed the file request deadline.
+  /// Removed the file request deadline. This event is replaced by
+  /// file_request_change and will not be logged going forward.
   DBTEAMLOGEventTypeFileRequestRemoveDeadline,
 
-  /// Sent file request to users via email.
+  /// Sent file request to users via email. This event is replaced by
+  /// file_request_change and will not be logged going forward.
   DBTEAMLOGEventTypeFileRequestSend,
 
   /// Added an external ID for group.
@@ -307,17 +313,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// Renamed a group.
   DBTEAMLOGEventTypeGroupRename,
 
-  /// Signed in using the Dropbox EMM app.
-  DBTEAMLOGEventTypeEmmLoginSuccess,
+  /// Failed to sign in via EMM. This event is replaced by login_fail and will
+  /// not be logged going forward.
+  DBTEAMLOGEventTypeEmmError,
+
+  /// Failed to sign in.
+  DBTEAMLOGEventTypeLoginFail,
+
+  /// Signed in.
+  DBTEAMLOGEventTypeLoginSuccess,
 
   /// Signed out.
   DBTEAMLOGEventTypeLogout,
-
-  /// Failed to sign in using a password.
-  DBTEAMLOGEventTypePasswordLoginFail,
-
-  /// Signed in using a password.
-  DBTEAMLOGEventTypePasswordLoginSuccess,
 
   /// Ended reseller support session.
   DBTEAMLOGEventTypeResellerSupportSessionEnd,
@@ -331,8 +338,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// Started admin sign-in-as session.
   DBTEAMLOGEventTypeSignInAsSessionStart,
 
-  /// Failed to sign in using SSO.
-  DBTEAMLOGEventTypeSsoLoginFail,
+  /// Failed to sign in via SSO. This event is replaced by login_fail and will
+  /// not be logged going forward.
+  DBTEAMLOGEventTypeSsoError,
 
   /// Set team member name when joining team.
   DBTEAMLOGEventTypeMemberAddName,
@@ -829,7 +837,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// imposed by policy.
   DBTEAMLOGEventTypeMemberSpaceLimitsAddException,
 
-  /// Changed the storage limits applied to team members by policy.
+  /// Changed the team default limit level.
   DBTEAMLOGEventTypeMemberSpaceLimitsChangePolicy,
 
   /// Removed an exception for one or more team members to bypass space limits
@@ -958,7 +966,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "member_change_membership_type".
 ///
 /// Description of the "member_change_membership_type" tag state: Changed the
-/// membership type (limited vs full) for team member.
+/// membership type (limited vs full) for team member. This event is deprecated
+/// and will not be logged going forward as the associated product functionality
+/// no longer exists.
 ///
 /// @return An initialized instance.
 ///
@@ -1623,31 +1633,32 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_request_add_deadline".
 ///
 /// Description of the "file_request_add_deadline" tag state: Added a deadline
-/// to a file request.
+/// to a file request. This event is replaced by file_request_change and will
+/// not be logged going forward.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFileRequestAddDeadline;
 
 ///
+/// Initializes union class with tag state of "file_request_change".
+///
+/// Description of the "file_request_change" tag state: Change a file request.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFileRequestChange;
+
+///
 /// Initializes union class with tag state of "file_request_change_folder".
 ///
 /// Description of the "file_request_change_folder" tag state: Changed the file
-/// request folder.
+/// request folder. This event is replaced by file_request_change and will not
+/// be logged going forward.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFileRequestChangeFolder;
-
-///
-/// Initializes union class with tag state of "file_request_change_title".
-///
-/// Description of the "file_request_change_title" tag state: Change the file
-/// request title.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithFileRequestChangeTitle;
 
 ///
 /// Initializes union class with tag state of "file_request_close".
@@ -1681,7 +1692,8 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_request_remove_deadline".
 ///
 /// Description of the "file_request_remove_deadline" tag state: Removed the
-/// file request deadline.
+/// file request deadline. This event is replaced by file_request_change and
+/// will not be logged going forward.
 ///
 /// @return An initialized instance.
 ///
@@ -1691,7 +1703,8 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_request_send".
 ///
 /// Description of the "file_request_send" tag state: Sent file request to users
-/// via email.
+/// via email. This event is replaced by file_request_change and will not be
+/// logged going forward.
 ///
 /// @return An initialized instance.
 ///
@@ -1806,14 +1819,32 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithGroupRename;
 
 ///
-/// Initializes union class with tag state of "emm_login_success".
+/// Initializes union class with tag state of "emm_error".
 ///
-/// Description of the "emm_login_success" tag state: Signed in using the
-/// Dropbox EMM app.
+/// Description of the "emm_error" tag state: Failed to sign in via EMM. This
+/// event is replaced by login_fail and will not be logged going forward.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithEmmLoginSuccess;
+- (instancetype)initWithEmmError;
+
+///
+/// Initializes union class with tag state of "login_fail".
+///
+/// Description of the "login_fail" tag state: Failed to sign in.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithLoginFail;
+
+///
+/// Initializes union class with tag state of "login_success".
+///
+/// Description of the "login_success" tag state: Signed in.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithLoginSuccess;
 
 ///
 /// Initializes union class with tag state of "logout".
@@ -1823,26 +1854,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithLogout;
-
-///
-/// Initializes union class with tag state of "password_login_fail".
-///
-/// Description of the "password_login_fail" tag state: Failed to sign in using
-/// a password.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithPasswordLoginFail;
-
-///
-/// Initializes union class with tag state of "password_login_success".
-///
-/// Description of the "password_login_success" tag state: Signed in using a
-/// password.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithPasswordLoginSuccess;
 
 ///
 /// Initializes union class with tag state of "reseller_support_session_end".
@@ -1885,13 +1896,14 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithSignInAsSessionStart;
 
 ///
-/// Initializes union class with tag state of "sso_login_fail".
+/// Initializes union class with tag state of "sso_error".
 ///
-/// Description of the "sso_login_fail" tag state: Failed to sign in using SSO.
+/// Description of the "sso_error" tag state: Failed to sign in via SSO. This
+/// event is replaced by login_fail and will not be logged going forward.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithSsoLoginFail;
+- (instancetype)initWithSsoError;
 
 ///
 /// Initializes union class with tag state of "member_add_name".
@@ -3410,7 +3422,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_change_policy".
 ///
 /// Description of the "member_space_limits_change_policy" tag state: Changed
-/// the storage limits applied to team members by policy.
+/// the team default limit level.
 ///
 /// @return An initialized instance.
 ///
@@ -4315,21 +4327,21 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "file_request_change".
+///
+/// @return Whether the union's current tag state has value
+/// "file_request_change".
+///
+- (BOOL)isFileRequestChange;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "file_request_change_folder".
 ///
 /// @return Whether the union's current tag state has value
 /// "file_request_change_folder".
 ///
 - (BOOL)isFileRequestChangeFolder;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "file_request_change_title".
-///
-/// @return Whether the union's current tag state has value
-/// "file_request_change_title".
-///
-- (BOOL)isFileRequestChangeTitle;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -4466,12 +4478,25 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (BOOL)isGroupRename;
 
 ///
-/// Retrieves whether the union's current tag state has value
-/// "emm_login_success".
+/// Retrieves whether the union's current tag state has value "emm_error".
 ///
-/// @return Whether the union's current tag state has value "emm_login_success".
+/// @return Whether the union's current tag state has value "emm_error".
 ///
-- (BOOL)isEmmLoginSuccess;
+- (BOOL)isEmmError;
+
+///
+/// Retrieves whether the union's current tag state has value "login_fail".
+///
+/// @return Whether the union's current tag state has value "login_fail".
+///
+- (BOOL)isLoginFail;
+
+///
+/// Retrieves whether the union's current tag state has value "login_success".
+///
+/// @return Whether the union's current tag state has value "login_success".
+///
+- (BOOL)isLoginSuccess;
 
 ///
 /// Retrieves whether the union's current tag state has value "logout".
@@ -4479,24 +4504,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return Whether the union's current tag state has value "logout".
 ///
 - (BOOL)isLogout;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "password_login_fail".
-///
-/// @return Whether the union's current tag state has value
-/// "password_login_fail".
-///
-- (BOOL)isPasswordLoginFail;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "password_login_success".
-///
-/// @return Whether the union's current tag state has value
-/// "password_login_success".
-///
-- (BOOL)isPasswordLoginSuccess;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -4535,11 +4542,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (BOOL)isSignInAsSessionStart;
 
 ///
-/// Retrieves whether the union's current tag state has value "sso_login_fail".
+/// Retrieves whether the union's current tag state has value "sso_error".
 ///
-/// @return Whether the union's current tag state has value "sso_login_fail".
+/// @return Whether the union's current tag state has value "sso_error".
 ///
-- (BOOL)isSsoLoginFail;
+- (BOOL)isSsoError;
 
 ///
 /// Retrieves whether the union's current tag state has value "member_add_name".

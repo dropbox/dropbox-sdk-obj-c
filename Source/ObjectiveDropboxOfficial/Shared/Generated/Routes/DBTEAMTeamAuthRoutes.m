@@ -39,6 +39,15 @@
 #import "DBTEAMDesktopClientSession.h"
 #import "DBTEAMDeviceSessionArg.h"
 #import "DBTEAMDevicesActive.h"
+#import "DBTEAMExcludedUsersListArg.h"
+#import "DBTEAMExcludedUsersListContinueArg.h"
+#import "DBTEAMExcludedUsersListContinueError.h"
+#import "DBTEAMExcludedUsersListError.h"
+#import "DBTEAMExcludedUsersListResult.h"
+#import "DBTEAMExcludedUsersUpdateArg.h"
+#import "DBTEAMExcludedUsersUpdateError.h"
+#import "DBTEAMExcludedUsersUpdateResult.h"
+#import "DBTEAMExcludedUsersUpdateStatus.h"
 #import "DBTEAMFeature.h"
 #import "DBTEAMFeatureValue.h"
 #import "DBTEAMFeaturesGetValuesBatchArg.h"
@@ -105,6 +114,7 @@
 #import "DBTEAMMemberAddResult.h"
 #import "DBTEAMMemberDevices.h"
 #import "DBTEAMMemberLinkedApps.h"
+#import "DBTEAMMemberProfile.h"
 #import "DBTEAMMemberSelectorError.h"
 #import "DBTEAMMembersAddArg.h"
 #import "DBTEAMMembersAddJobStatus.h"
@@ -151,6 +161,7 @@
 #import "DBTEAMRevokeLinkedAppStatus.h"
 #import "DBTEAMRouteObjects.h"
 #import "DBTEAMSetCustomQuotaArg.h"
+#import "DBTEAMSetCustomQuotaError.h"
 #import "DBTEAMStorageBucket.h"
 #import "DBTEAMTeamFolderAccessError.h"
 #import "DBTEAMTeamFolderActivateError.h"
@@ -469,6 +480,48 @@
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsRevokeLinkedAppBatch;
   DBTEAMRevokeLinkedApiAppBatchArg *arg =
       [[DBTEAMRevokeLinkedApiAppBatchArg alloc] initWithRevokeLinkedApp:revokeLinkedApp];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsExcludedUsersAdd {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsExcludedUsersAdd;
+  DBTEAMExcludedUsersUpdateArg *arg = [[DBTEAMExcludedUsersUpdateArg alloc] initDefault];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsExcludedUsersAdd:(NSArray<DBTEAMUserSelectorArg *> *)users {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsExcludedUsersAdd;
+  DBTEAMExcludedUsersUpdateArg *arg = [[DBTEAMExcludedUsersUpdateArg alloc] initWithUsers:users];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsExcludedUsersList {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsExcludedUsersList;
+  DBTEAMExcludedUsersListArg *arg = [[DBTEAMExcludedUsersListArg alloc] initDefault];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsExcludedUsersList:(NSNumber *)limit {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsExcludedUsersList;
+  DBTEAMExcludedUsersListArg *arg = [[DBTEAMExcludedUsersListArg alloc] initWithLimit:limit];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsExcludedUsersListContinue:(NSString *)cursor {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsExcludedUsersListContinue;
+  DBTEAMExcludedUsersListContinueArg *arg = [[DBTEAMExcludedUsersListContinueArg alloc] initWithCursor:cursor];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsExcludedUsersRemove {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsExcludedUsersRemove;
+  DBTEAMExcludedUsersUpdateArg *arg = [[DBTEAMExcludedUsersUpdateArg alloc] initDefault];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)memberSpaceLimitsExcludedUsersRemove:(NSArray<DBTEAMUserSelectorArg *> *)users {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMemberSpaceLimitsExcludedUsersRemove;
+  DBTEAMExcludedUsersUpdateArg *arg = [[DBTEAMExcludedUsersUpdateArg alloc] initWithUsers:users];
   return [self.client requestRpc:route arg:arg];
 }
 

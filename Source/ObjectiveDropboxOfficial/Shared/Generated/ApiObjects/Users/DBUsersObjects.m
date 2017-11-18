@@ -370,6 +370,7 @@
 
 @end
 
+#import "DBCOMMONRootInfo.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBUSERSAccount.h"
@@ -393,6 +394,7 @@
                      referralLink:(NSString *)referralLink
                          isPaired:(NSNumber *)isPaired
                       accountType:(DBUSERSCOMMONAccountType *)accountType
+                         rootInfo:(DBCOMMONRootInfo *)rootInfo
                   profilePhotoUrl:(NSString *)profilePhotoUrl
                           country:(NSString *)country
                              team:(DBUSERSFullTeam *)team
@@ -406,6 +408,7 @@
   [DBStoneValidators nonnullValidator:nil](referralLink);
   [DBStoneValidators nonnullValidator:nil](isPaired);
   [DBStoneValidators nonnullValidator:nil](accountType);
+  [DBStoneValidators nonnullValidator:nil](rootInfo);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(2) maxLength:@(2) pattern:nil]](country);
 
   self = [super initWithAccountId:accountId
@@ -422,6 +425,7 @@
     _teamMemberId = teamMemberId;
     _isPaired = isPaired;
     _accountType = accountType;
+    _rootInfo = rootInfo;
   }
   return self;
 }
@@ -434,7 +438,8 @@
                            locale:(NSString *)locale
                      referralLink:(NSString *)referralLink
                          isPaired:(NSNumber *)isPaired
-                      accountType:(DBUSERSCOMMONAccountType *)accountType {
+                      accountType:(DBUSERSCOMMONAccountType *)accountType
+                         rootInfo:(DBCOMMONRootInfo *)rootInfo {
   return [self initWithAccountId:accountId
                             name:name
                            email:email
@@ -444,6 +449,7 @@
                     referralLink:referralLink
                         isPaired:isPaired
                      accountType:accountType
+                        rootInfo:rootInfo
                  profilePhotoUrl:nil
                          country:nil
                             team:nil
@@ -489,6 +495,7 @@
   result = prime * result + [self.referralLink hash];
   result = prime * result + [self.isPaired hash];
   result = prime * result + [self.accountType hash];
+  result = prime * result + [self.rootInfo hash];
   if (self.profilePhotoUrl != nil) {
     result = prime * result + [self.profilePhotoUrl hash];
   }
@@ -548,6 +555,9 @@
   if (![self.accountType isEqual:aFullAccount.accountType]) {
     return NO;
   }
+  if (![self.rootInfo isEqual:aFullAccount.rootInfo]) {
+    return NO;
+  }
   if (self.profilePhotoUrl) {
     if (![self.profilePhotoUrl isEqual:aFullAccount.profilePhotoUrl]) {
       return NO;
@@ -589,6 +599,7 @@
   jsonDict[@"referral_link"] = valueObj.referralLink;
   jsonDict[@"is_paired"] = valueObj.isPaired;
   jsonDict[@"account_type"] = [DBUSERSCOMMONAccountTypeSerializer serialize:valueObj.accountType];
+  jsonDict[@"root_info"] = [DBCOMMONRootInfoSerializer serialize:valueObj.rootInfo];
   if (valueObj.profilePhotoUrl) {
     jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
   }
@@ -615,6 +626,7 @@
   NSString *referralLink = valueDict[@"referral_link"];
   NSNumber *isPaired = valueDict[@"is_paired"];
   DBUSERSCOMMONAccountType *accountType = [DBUSERSCOMMONAccountTypeSerializer deserialize:valueDict[@"account_type"]];
+  DBCOMMONRootInfo *rootInfo = [DBCOMMONRootInfoSerializer deserialize:valueDict[@"root_info"]];
   NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] ?: nil;
   NSString *country = valueDict[@"country"] ?: nil;
   DBUSERSFullTeam *team = valueDict[@"team"] ? [DBUSERSFullTeamSerializer deserialize:valueDict[@"team"]] : nil;
@@ -629,6 +641,7 @@
                                           referralLink:referralLink
                                               isPaired:isPaired
                                            accountType:accountType
+                                              rootInfo:rootInfo
                                        profilePhotoUrl:profilePhotoUrl
                                                country:country
                                                   team:team

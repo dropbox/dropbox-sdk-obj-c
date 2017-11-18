@@ -26,6 +26,7 @@
 #import "DBFILEPROPERTIESRemovePropertiesArg.h"
 #import "DBFILEPROPERTIESRemovePropertiesError.h"
 #import "DBFILEPROPERTIESTemplateError.h"
+#import "DBFILEPROPERTIESTemplateFilterBase.h"
 #import "DBFILEPROPERTIESUpdatePropertiesArg.h"
 #import "DBFILEPROPERTIESUpdatePropertiesError.h"
 #import "DBFILESAlphaGetMetadataArg.h"
@@ -151,12 +152,14 @@
                    includeMediaInfo:(NSNumber *)includeMediaInfo
                      includeDeleted:(NSNumber *)includeDeleted
     includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
            includePropertyTemplates:(NSArray<NSString *> *)includePropertyTemplates {
   DBRoute *route = DBFILESRouteObjects.DBFILESAlphaGetMetadata;
   DBFILESAlphaGetMetadataArg *arg = [[DBFILESAlphaGetMetadataArg alloc] initWithPath:path
                                                                     includeMediaInfo:includeMediaInfo
                                                                       includeDeleted:includeDeleted
                                                      includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
+                                                               includePropertyGroups:includePropertyGroups
                                                             includePropertyTemplates:includePropertyTemplates];
   return [self.client requestRpc:route arg:arg];
 }
@@ -439,12 +442,14 @@
 - (DBRpcTask *)getMetadata:(NSString *)path
                    includeMediaInfo:(NSNumber *)includeMediaInfo
                      includeDeleted:(NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers {
+    includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetMetadata;
   DBFILESGetMetadataArg *arg = [[DBFILESGetMetadataArg alloc] initWithPath:path
                                                           includeMediaInfo:includeMediaInfo
                                                             includeDeleted:includeDeleted
-                                           includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
+                                           includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
+                                                     includePropertyGroups:includePropertyGroups];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -628,7 +633,8 @@
     includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
               includeMountedFolders:(NSNumber *)includeMountedFolders
                               limit:(NSNumber *)limit
-                         sharedLink:(DBFILESSharedLink *)sharedLink {
+                         sharedLink:(DBFILESSharedLink *)sharedLink
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolder;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
@@ -637,7 +643,8 @@
                                          includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
                                                    includeMountedFolders:includeMountedFolders
                                                                    limit:limit
-                                                              sharedLink:sharedLink];
+                                                              sharedLink:sharedLink
+                                                   includePropertyGroups:includePropertyGroups];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -660,7 +667,8 @@
          includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers
                    includeMountedFolders:(NSNumber *)includeMountedFolders
                                    limit:(NSNumber *)limit
-                              sharedLink:(DBFILESSharedLink *)sharedLink {
+                              sharedLink:(DBFILESSharedLink *)sharedLink
+                   includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolderGetLatestCursor;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
@@ -669,7 +677,8 @@
                                          includeHasExplicitSharedMembers:includeHasExplicitSharedMembers
                                                    includeMountedFolders:includeMountedFolders
                                                                    limit:limit
-                                                              sharedLink:sharedLink];
+                                                              sharedLink:sharedLink
+                                                   includePropertyGroups:includePropertyGroups];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -855,13 +864,15 @@
                  autorename:(NSNumber *)autorename
              clientModified:(NSDate *)clientModified
                        mute:(NSNumber *)mute
+             propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
                    inputUrl:(NSString *)inputUrl {
   DBRoute *route = DBFILESRouteObjects.DBFILESUpload;
   DBFILESCommitInfo *arg = [[DBFILESCommitInfo alloc] initWithPath:path
                                                               mode:mode
                                                         autorename:autorename
                                                     clientModified:clientModified
-                                                              mute:mute];
+                                                              mute:mute
+                                                    propertyGroups:propertyGroups];
   return [self.client requestUpload:route arg:arg inputUrl:inputUrl];
 }
 
@@ -876,13 +887,15 @@
                   autorename:(NSNumber *)autorename
               clientModified:(NSDate *)clientModified
                         mute:(NSNumber *)mute
+              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
                    inputData:(NSData *)inputData {
   DBRoute *route = DBFILESRouteObjects.DBFILESUpload;
   DBFILESCommitInfo *arg = [[DBFILESCommitInfo alloc] initWithPath:path
                                                               mode:mode
                                                         autorename:autorename
                                                     clientModified:clientModified
-                                                              mute:mute];
+                                                              mute:mute
+                                                    propertyGroups:propertyGroups];
   return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
@@ -897,13 +910,15 @@
                     autorename:(NSNumber *)autorename
                 clientModified:(NSDate *)clientModified
                           mute:(NSNumber *)mute
+                propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
                    inputStream:(NSInputStream *)inputStream {
   DBRoute *route = DBFILESRouteObjects.DBFILESUpload;
   DBFILESCommitInfo *arg = [[DBFILESCommitInfo alloc] initWithPath:path
                                                               mode:mode
                                                         autorename:autorename
                                                     clientModified:clientModified
-                                                              mute:mute];
+                                                              mute:mute
+                                                    propertyGroups:propertyGroups];
   return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 

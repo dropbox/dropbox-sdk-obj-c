@@ -9,7 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGSmartSyncChangePolicyDetails;
-@class DBTEAMLOGSmartSyncPolicy;
+@class DBTEAMPOLICIESSmartSyncPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,10 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// New smart sync policy.
-@property (nonatomic, readonly) DBTEAMLOGSmartSyncPolicy *dNewValue;
+@property (nonatomic, readonly) DBTEAMPOLICIESSmartSyncPolicy *dNewValue;
 
-/// Previous smart sync policy. Might be missing due to historical data gap.
-@property (nonatomic, readonly, nullable) DBTEAMLOGSmartSyncPolicy *previousValue;
+/// Previous smart sync policy.
+@property (nonatomic, readonly, nullable) DBTEAMPOLICIESSmartSyncPolicy *previousValue;
 
 #pragma mark - Constructors
 
@@ -40,13 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param dNewValue New smart sync policy.
-/// @param previousValue Previous smart sync policy. Might be missing due to
-/// historical data gap.
+/// @param previousValue Previous smart sync policy.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(DBTEAMLOGSmartSyncPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGSmartSyncPolicy *)previousValue;
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESSmartSyncPolicy *)dNewValue
+                    previousValue:(nullable DBTEAMPOLICIESSmartSyncPolicy *)previousValue;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -56,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(DBTEAMLOGSmartSyncPolicy *)dNewValue;
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESSmartSyncPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 

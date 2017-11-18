@@ -18372,6 +18372,14 @@
   return self;
 }
 
+- (instancetype)initWithTooManyFiles {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGRemoveFolderMemberErrorTooManyFiles;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -18426,6 +18434,10 @@
   return _tag == DBSHARINGRemoveFolderMemberErrorNoPermission;
 }
 
+- (BOOL)isTooManyFiles {
+  return _tag == DBSHARINGRemoveFolderMemberErrorTooManyFiles;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGRemoveFolderMemberErrorOther;
 }
@@ -18444,6 +18456,8 @@
     return @"DBSHARINGRemoveFolderMemberErrorTeamFolder";
   case DBSHARINGRemoveFolderMemberErrorNoPermission:
     return @"DBSHARINGRemoveFolderMemberErrorNoPermission";
+  case DBSHARINGRemoveFolderMemberErrorTooManyFiles:
+    return @"DBSHARINGRemoveFolderMemberErrorTooManyFiles";
   case DBSHARINGRemoveFolderMemberErrorOther:
     return @"DBSHARINGRemoveFolderMemberErrorOther";
   }
@@ -18494,6 +18508,8 @@
     result = prime * result + [[self tagName] hash];
   case DBSHARINGRemoveFolderMemberErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+  case DBSHARINGRemoveFolderMemberErrorTooManyFiles:
+    result = prime * result + [[self tagName] hash];
   case DBSHARINGRemoveFolderMemberErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -18533,6 +18549,8 @@
     return [[self tagName] isEqual:[aRemoveFolderMemberError tagName]];
   case DBSHARINGRemoveFolderMemberErrorNoPermission:
     return [[self tagName] isEqual:[aRemoveFolderMemberError tagName]];
+  case DBSHARINGRemoveFolderMemberErrorTooManyFiles:
+    return [[self tagName] isEqual:[aRemoveFolderMemberError tagName]];
   case DBSHARINGRemoveFolderMemberErrorOther:
     return [[self tagName] isEqual:[aRemoveFolderMemberError tagName]];
   }
@@ -18564,6 +18582,8 @@
     jsonDict[@".tag"] = @"team_folder";
   } else if ([valueObj isNoPermission]) {
     jsonDict[@".tag"] = @"no_permission";
+  } else if ([valueObj isTooManyFiles]) {
+    jsonDict[@".tag"] = @"too_many_files";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -18592,6 +18612,8 @@
     return [[DBSHARINGRemoveFolderMemberError alloc] initWithTeamFolder];
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGRemoveFolderMemberError alloc] initWithNoPermission];
+  } else if ([tag isEqualToString:@"too_many_files"]) {
+    return [[DBSHARINGRemoveFolderMemberError alloc] initWithTooManyFiles];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRemoveFolderMemberError alloc] initWithOther];
   } else {

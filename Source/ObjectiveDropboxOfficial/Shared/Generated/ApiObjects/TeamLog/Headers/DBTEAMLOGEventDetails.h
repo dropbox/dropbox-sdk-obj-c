@@ -50,7 +50,7 @@
 @class DBTEAMLOGEmmChangePolicyDetails;
 @class DBTEAMLOGEmmCreateExceptionsReportDetails;
 @class DBTEAMLOGEmmCreateUsageReportDetails;
-@class DBTEAMLOGEmmLoginSuccessDetails;
+@class DBTEAMLOGEmmErrorDetails;
 @class DBTEAMLOGEmmRefreshAuthTokenDetails;
 @class DBTEAMLOGEmmRemoveExceptionDetails;
 @class DBTEAMLOGEnabledDomainInvitesDetails;
@@ -72,8 +72,8 @@
 @class DBTEAMLOGFilePreviewDetails;
 @class DBTEAMLOGFileRenameDetails;
 @class DBTEAMLOGFileRequestAddDeadlineDetails;
+@class DBTEAMLOGFileRequestChangeDetails;
 @class DBTEAMLOGFileRequestChangeFolderDetails;
-@class DBTEAMLOGFileRequestChangeTitleDetails;
 @class DBTEAMLOGFileRequestCloseDetails;
 @class DBTEAMLOGFileRequestCreateDetails;
 @class DBTEAMLOGFileRequestReceiveFileDetails;
@@ -102,6 +102,8 @@
 @class DBTEAMLOGGroupRemoveMemberDetails;
 @class DBTEAMLOGGroupRenameDetails;
 @class DBTEAMLOGGroupUserManagementChangePolicyDetails;
+@class DBTEAMLOGLoginFailDetails;
+@class DBTEAMLOGLoginSuccessDetails;
 @class DBTEAMLOGLogoutDetails;
 @class DBTEAMLOGMemberAddNameDetails;
 @class DBTEAMLOGMemberChangeAdminRoleDetails;
@@ -171,8 +173,6 @@
 @class DBTEAMLOGPaperFolderFollowedDetails;
 @class DBTEAMLOGPaperFolderTeamInviteDetails;
 @class DBTEAMLOGPasswordChangeDetails;
-@class DBTEAMLOGPasswordLoginFailDetails;
-@class DBTEAMLOGPasswordLoginSuccessDetails;
 @class DBTEAMLOGPasswordResetAllDetails;
 @class DBTEAMLOGPasswordResetDetails;
 @class DBTEAMLOGPermanentDeleteChangePolicyDetails;
@@ -252,7 +252,7 @@
 @class DBTEAMLOGSsoChangeLogoutUrlDetails;
 @class DBTEAMLOGSsoChangePolicyDetails;
 @class DBTEAMLOGSsoChangeSamlIdentityModeDetails;
-@class DBTEAMLOGSsoLoginFailDetails;
+@class DBTEAMLOGSsoErrorDetails;
 @class DBTEAMLOGSsoRemoveCertDetails;
 @class DBTEAMLOGSsoRemoveLoginUrlDetails;
 @class DBTEAMLOGSsoRemoveLogoutUrlDetails;
@@ -502,11 +502,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// Added a deadline to a file request.
   DBTEAMLOGEventDetailsFileRequestAddDeadlineDetails,
 
+  /// Change a file request.
+  DBTEAMLOGEventDetailsFileRequestChangeDetails,
+
   /// Changed the file request folder.
   DBTEAMLOGEventDetailsFileRequestChangeFolderDetails,
-
-  /// Change the file request title.
-  DBTEAMLOGEventDetailsFileRequestChangeTitleDetails,
 
   /// Closed a file request.
   DBTEAMLOGEventDetailsFileRequestCloseDetails,
@@ -556,17 +556,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// Renamed a group.
   DBTEAMLOGEventDetailsGroupRenameDetails,
 
-  /// Signed in using the Dropbox EMM app.
-  DBTEAMLOGEventDetailsEmmLoginSuccessDetails,
+  /// Failed to sign in via EMM.
+  DBTEAMLOGEventDetailsEmmErrorDetails,
+
+  /// Failed to sign in.
+  DBTEAMLOGEventDetailsLoginFailDetails,
+
+  /// Signed in.
+  DBTEAMLOGEventDetailsLoginSuccessDetails,
 
   /// Signed out.
   DBTEAMLOGEventDetailsLogoutDetails,
-
-  /// Failed to sign in using a password.
-  DBTEAMLOGEventDetailsPasswordLoginFailDetails,
-
-  /// Signed in using a password.
-  DBTEAMLOGEventDetailsPasswordLoginSuccessDetails,
 
   /// Ended reseller support session.
   DBTEAMLOGEventDetailsResellerSupportSessionEndDetails,
@@ -580,8 +580,8 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// Started admin sign-in-as session.
   DBTEAMLOGEventDetailsSignInAsSessionStartDetails,
 
-  /// Failed to sign in using SSO.
-  DBTEAMLOGEventDetailsSsoLoginFailDetails,
+  /// Failed to sign in via SSO.
+  DBTEAMLOGEventDetailsSsoErrorDetails,
 
   /// Set team member name when joining team.
   DBTEAMLOGEventDetailsMemberAddNameDetails,
@@ -1032,7 +1032,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   /// imposed by policy.
   DBTEAMLOGEventDetailsMemberSpaceLimitsAddExceptionDetails,
 
-  /// Changed the storage limits applied to team members by policy.
+  /// Changed the team default limit level.
   DBTEAMLOGEventDetailsMemberSpaceLimitsChangePolicyDetails,
 
   /// Removed an exception for one or more team members to bypass space limits
@@ -1477,15 +1477,14 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestAddDeadlineDetails *fileRequestAddDeadlineDetails;
 
+/// Change a file request. @note Ensure the `isFileRequestChangeDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGFileRequestChangeDetails *fileRequestChangeDetails;
+
 /// Changed the file request folder. @note Ensure the
 /// `isFileRequestChangeFolderDetails` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestChangeFolderDetails *fileRequestChangeFolderDetails;
-
-/// Change the file request title. @note Ensure the
-/// `isFileRequestChangeTitleDetails` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMLOGFileRequestChangeTitleDetails *fileRequestChangeTitleDetails;
 
 /// Closed a file request. @note Ensure the `isFileRequestCloseDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -1561,24 +1560,21 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupRenameDetails *groupRenameDetails;
 
-/// Signed in using the Dropbox EMM app. @note Ensure the
-/// `isEmmLoginSuccessDetails` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMLOGEmmLoginSuccessDetails *emmLoginSuccessDetails;
+/// Failed to sign in via EMM. @note Ensure the `isEmmErrorDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGEmmErrorDetails *emmErrorDetails;
+
+/// Failed to sign in. @note Ensure the `isLoginFailDetails` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGLoginFailDetails *loginFailDetails;
+
+/// Signed in. @note Ensure the `isLoginSuccessDetails` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGLoginSuccessDetails *loginSuccessDetails;
 
 /// Signed out. @note Ensure the `isLogoutDetails` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGLogoutDetails *logoutDetails;
-
-/// Failed to sign in using a password. @note Ensure the
-/// `isPasswordLoginFailDetails` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMLOGPasswordLoginFailDetails *passwordLoginFailDetails;
-
-/// Signed in using a password. @note Ensure the `isPasswordLoginSuccessDetails`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
-@property (nonatomic, readonly) DBTEAMLOGPasswordLoginSuccessDetails *passwordLoginSuccessDetails;
 
 /// Ended reseller support session. @note Ensure the
 /// `isResellerSupportSessionEndDetails` method returns true before accessing,
@@ -1600,9 +1596,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSignInAsSessionStartDetails *signInAsSessionStartDetails;
 
-/// Failed to sign in using SSO. @note Ensure the `isSsoLoginFailDetails` method
+/// Failed to sign in via SSO. @note Ensure the `isSsoErrorDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBTEAMLOGSsoLoginFailDetails *ssoLoginFailDetails;
+@property (nonatomic, readonly) DBTEAMLOGSsoErrorDetails *ssoErrorDetails;
 
 /// Set team member name when joining team. @note Ensure the
 /// `isMemberAddNameDetails` method returns true before accessing, otherwise a
@@ -2339,8 +2335,8 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsAddExceptionDetails *memberSpaceLimitsAddExceptionDetails;
 
-/// Changed the storage limits applied to team members by policy. @note Ensure
-/// the `isMemberSpaceLimitsChangePolicyDetails` method returns true before
+/// Changed the team default limit level. @note Ensure the
+/// `isMemberSpaceLimitsChangePolicyDetails` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsChangePolicyDetails *memberSpaceLimitsChangePolicyDetails;
 
@@ -3402,6 +3398,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
     (DBTEAMLOGFileRequestAddDeadlineDetails *)fileRequestAddDeadlineDetails;
 
 ///
+/// Initializes union class with tag state of "file_request_change_details".
+///
+/// Description of the "file_request_change_details" tag state: Change a file
+/// request.
+///
+/// @param fileRequestChangeDetails Change a file request.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFileRequestChangeDetails:(DBTEAMLOGFileRequestChangeDetails *)fileRequestChangeDetails;
+
+///
 /// Initializes union class with tag state of
 /// "file_request_change_folder_details".
 ///
@@ -3414,20 +3422,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithFileRequestChangeFolderDetails:
     (DBTEAMLOGFileRequestChangeFolderDetails *)fileRequestChangeFolderDetails;
-
-///
-/// Initializes union class with tag state of
-/// "file_request_change_title_details".
-///
-/// Description of the "file_request_change_title_details" tag state: Change the
-/// file request title.
-///
-/// @param fileRequestChangeTitleDetails Change the file request title.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithFileRequestChangeTitleDetails:
-    (DBTEAMLOGFileRequestChangeTitleDetails *)fileRequestChangeTitleDetails;
 
 ///
 /// Initializes union class with tag state of "file_request_close_details".
@@ -3631,16 +3625,37 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 - (instancetype)initWithGroupRenameDetails:(DBTEAMLOGGroupRenameDetails *)groupRenameDetails;
 
 ///
-/// Initializes union class with tag state of "emm_login_success_details".
+/// Initializes union class with tag state of "emm_error_details".
 ///
-/// Description of the "emm_login_success_details" tag state: Signed in using
-/// the Dropbox EMM app.
+/// Description of the "emm_error_details" tag state: Failed to sign in via EMM.
 ///
-/// @param emmLoginSuccessDetails Signed in using the Dropbox EMM app.
+/// @param emmErrorDetails Failed to sign in via EMM.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithEmmLoginSuccessDetails:(DBTEAMLOGEmmLoginSuccessDetails *)emmLoginSuccessDetails;
+- (instancetype)initWithEmmErrorDetails:(DBTEAMLOGEmmErrorDetails *)emmErrorDetails;
+
+///
+/// Initializes union class with tag state of "login_fail_details".
+///
+/// Description of the "login_fail_details" tag state: Failed to sign in.
+///
+/// @param loginFailDetails Failed to sign in.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithLoginFailDetails:(DBTEAMLOGLoginFailDetails *)loginFailDetails;
+
+///
+/// Initializes union class with tag state of "login_success_details".
+///
+/// Description of the "login_success_details" tag state: Signed in.
+///
+/// @param loginSuccessDetails Signed in.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithLoginSuccessDetails:(DBTEAMLOGLoginSuccessDetails *)loginSuccessDetails;
 
 ///
 /// Initializes union class with tag state of "logout_details".
@@ -3652,30 +3667,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithLogoutDetails:(DBTEAMLOGLogoutDetails *)logoutDetails;
-
-///
-/// Initializes union class with tag state of "password_login_fail_details".
-///
-/// Description of the "password_login_fail_details" tag state: Failed to sign
-/// in using a password.
-///
-/// @param passwordLoginFailDetails Failed to sign in using a password.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithPasswordLoginFailDetails:(DBTEAMLOGPasswordLoginFailDetails *)passwordLoginFailDetails;
-
-///
-/// Initializes union class with tag state of "password_login_success_details".
-///
-/// Description of the "password_login_success_details" tag state: Signed in
-/// using a password.
-///
-/// @param passwordLoginSuccessDetails Signed in using a password.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithPasswordLoginSuccessDetails:(DBTEAMLOGPasswordLoginSuccessDetails *)passwordLoginSuccessDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -3731,16 +3722,15 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 - (instancetype)initWithSignInAsSessionStartDetails:(DBTEAMLOGSignInAsSessionStartDetails *)signInAsSessionStartDetails;
 
 ///
-/// Initializes union class with tag state of "sso_login_fail_details".
+/// Initializes union class with tag state of "sso_error_details".
 ///
-/// Description of the "sso_login_fail_details" tag state: Failed to sign in
-/// using SSO.
+/// Description of the "sso_error_details" tag state: Failed to sign in via SSO.
 ///
-/// @param ssoLoginFailDetails Failed to sign in using SSO.
+/// @param ssoErrorDetails Failed to sign in via SSO.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithSsoLoginFailDetails:(DBTEAMLOGSsoLoginFailDetails *)ssoLoginFailDetails;
+- (instancetype)initWithSsoErrorDetails:(DBTEAMLOGSsoErrorDetails *)ssoErrorDetails;
 
 ///
 /// Initializes union class with tag state of "member_add_name_details".
@@ -5700,10 +5690,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "member_space_limits_change_policy_details".
 ///
 /// Description of the "member_space_limits_change_policy_details" tag state:
-/// Changed the storage limits applied to team members by policy.
+/// Changed the team default limit level.
 ///
-/// @param memberSpaceLimitsChangePolicyDetails Changed the storage limits
-/// applied to team members by policy.
+/// @param memberSpaceLimitsChangePolicyDetails Changed the team default limit
+/// level.
 ///
 /// @return An initialized instance.
 ///
@@ -7032,6 +7022,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "file_request_change_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `fileRequestChangeDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "file_request_change_details".
+///
+- (BOOL)isFileRequestChangeDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "file_request_change_folder_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -7042,19 +7045,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "file_request_change_folder_details".
 ///
 - (BOOL)isFileRequestChangeFolderDetails;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "file_request_change_title_details".
-///
-/// @note Call this method and ensure it returns true before accessing the
-/// `fileRequestChangeTitleDetails` property, otherwise a runtime exception will
-/// be thrown.
-///
-/// @return Whether the union's current tag state has value
-/// "file_request_change_title_details".
-///
-- (BOOL)isFileRequestChangeTitleDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -7262,16 +7252,39 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
-/// "emm_login_success_details".
+/// "emm_error_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
-/// `emmLoginSuccessDetails` property, otherwise a runtime exception will be
+/// `emmErrorDetails` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "emm_error_details".
+///
+- (BOOL)isEmmErrorDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "login_fail_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `loginFailDetails` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "login_fail_details".
+///
+- (BOOL)isLoginFailDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "login_success_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `loginSuccessDetails` property, otherwise a runtime exception will be
 /// thrown.
 ///
 /// @return Whether the union's current tag state has value
-/// "emm_login_success_details".
+/// "login_success_details".
 ///
-- (BOOL)isEmmLoginSuccessDetails;
+- (BOOL)isLoginSuccessDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value "logout_details".
@@ -7282,32 +7295,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return Whether the union's current tag state has value "logout_details".
 ///
 - (BOOL)isLogoutDetails;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "password_login_fail_details".
-///
-/// @note Call this method and ensure it returns true before accessing the
-/// `passwordLoginFailDetails` property, otherwise a runtime exception will be
-/// thrown.
-///
-/// @return Whether the union's current tag state has value
-/// "password_login_fail_details".
-///
-- (BOOL)isPasswordLoginFailDetails;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "password_login_success_details".
-///
-/// @note Call this method and ensure it returns true before accessing the
-/// `passwordLoginSuccessDetails` property, otherwise a runtime exception will
-/// be thrown.
-///
-/// @return Whether the union's current tag state has value
-/// "password_login_success_details".
-///
-- (BOOL)isPasswordLoginSuccessDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -7363,16 +7350,14 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
-/// "sso_login_fail_details".
+/// "sso_error_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
-/// `ssoLoginFailDetails` property, otherwise a runtime exception will be
-/// thrown.
+/// `ssoErrorDetails` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value
-/// "sso_login_fail_details".
+/// @return Whether the union's current tag state has value "sso_error_details".
 ///
-- (BOOL)isSsoLoginFailDetails;
+- (BOOL)isSsoErrorDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

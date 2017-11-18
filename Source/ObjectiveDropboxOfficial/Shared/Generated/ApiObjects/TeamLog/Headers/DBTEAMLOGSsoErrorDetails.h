@@ -9,26 +9,26 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGFailureDetailsLogInfo;
-@class DBTEAMLOGSsoLoginFailDetails;
+@class DBTEAMLOGSsoErrorDetails;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `SsoLoginFailDetails` struct.
+/// The `SsoErrorDetails` struct.
 ///
-/// Failed to sign in using SSO.
+/// Failed to sign in via SSO.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGSsoLoginFailDetails : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGSsoErrorDetails : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// Login failure details.
+/// Error details.
 @property (nonatomic, readonly) DBTEAMLOGFailureDetailsLogInfo *errorDetails;
 
 #pragma mark - Constructors
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param errorDetails Login failure details.
+/// @param errorDetails Error details.
 ///
 /// @return An initialized instance.
 ///
@@ -49,30 +49,29 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `SsoLoginFailDetails` struct.
+/// The serialization class for the `SsoErrorDetails` struct.
 ///
-@interface DBTEAMLOGSsoLoginFailDetailsSerializer : NSObject
+@interface DBTEAMLOGSsoErrorDetailsSerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGSsoLoginFailDetails` instances.
+/// Serializes `DBTEAMLOGSsoErrorDetails` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGSsoLoginFailDetails` API
-/// object.
+/// @param instance An instance of the `DBTEAMLOGSsoErrorDetails` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGSsoLoginFailDetails` API object.
+/// `DBTEAMLOGSsoErrorDetails` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGSsoLoginFailDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGSsoErrorDetails *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGSsoLoginFailDetails` instances.
+/// Deserializes `DBTEAMLOGSsoErrorDetails` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGSsoLoginFailDetails` API object.
+/// `DBTEAMLOGSsoErrorDetails` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGSsoLoginFailDetails` object.
+/// @return An instantiation of the `DBTEAMLOGSsoErrorDetails` object.
 ///
-+ (DBTEAMLOGSsoLoginFailDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSsoErrorDetails *)deserialize:(NSDictionary *)dict;
 
 @end
 

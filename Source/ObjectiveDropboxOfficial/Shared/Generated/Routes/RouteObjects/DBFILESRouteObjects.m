@@ -142,7 +142,7 @@ static DBRoute *DBFILESUploadSessionStart;
   if (!DBFILESAlphaGetMetadata) {
     DBFILESAlphaGetMetadata = [[DBRoute alloc] init:@"alpha/get_metadata"
                                          namespace_:@"files"
-                                         deprecated:@NO
+                                         deprecated:@YES
                                          resultType:[DBFILESMetadata class]
                                           errorType:[DBFILESAlphaGetMetadataError class]
                                               attrs:@{
@@ -160,7 +160,7 @@ static DBRoute *DBFILESUploadSessionStart;
   if (!DBFILESAlphaUpload) {
     DBFILESAlphaUpload = [[DBRoute alloc] init:@"alpha/upload"
                                     namespace_:@"files"
-                                    deprecated:@NO
+                                    deprecated:@YES
                                     resultType:[DBFILESFileMetadata class]
                                      errorType:[DBFILESUploadErrorWithProperties class]
                                          attrs:@{

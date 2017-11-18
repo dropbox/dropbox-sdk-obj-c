@@ -36,6 +36,9 @@ typedef NS_ENUM(NSInteger, DBTEAMFeatureTag) {
   /// Does this team have a have a company shared dropbox.
   DBTEAMFeatureHasTeamSharedDropbox,
 
+  /// Does this team have file events.
+  DBTEAMFeatureHasTeamFileEvents,
+
   /// (no description).
   DBTEAMFeatureOther,
 
@@ -67,6 +70,16 @@ typedef NS_ENUM(NSInteger, DBTEAMFeatureTag) {
 - (instancetype)initWithHasTeamSharedDropbox;
 
 ///
+/// Initializes union class with tag state of "has_team_file_events".
+///
+/// Description of the "has_team_file_events" tag state: Does this team have
+/// file events.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithHasTeamFileEvents;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -94,6 +107,15 @@ typedef NS_ENUM(NSInteger, DBTEAMFeatureTag) {
 /// "has_team_shared_dropbox".
 ///
 - (BOOL)isHasTeamSharedDropbox;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "has_team_file_events".
+///
+/// @return Whether the union's current tag state has value
+/// "has_team_file_events".
+///
+- (BOOL)isHasTeamFileEvents;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

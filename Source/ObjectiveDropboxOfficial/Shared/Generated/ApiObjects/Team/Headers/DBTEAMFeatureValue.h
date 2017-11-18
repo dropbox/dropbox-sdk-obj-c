@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMFeatureValue;
+@class DBTEAMHasTeamFileEventsValue;
 @class DBTEAMHasTeamSharedDropboxValue;
 @class DBTEAMUploadApiRateLimitValue;
 
@@ -40,6 +41,9 @@ typedef NS_ENUM(NSInteger, DBTEAMFeatureValueTag) {
   DBTEAMFeatureValueHasTeamSharedDropbox,
 
   /// (no description).
+  DBTEAMFeatureValueHasTeamFileEvents,
+
+  /// (no description).
   DBTEAMFeatureValueOther,
 
 };
@@ -54,6 +58,10 @@ typedef NS_ENUM(NSInteger, DBTEAMFeatureValueTag) {
 /// (no description). @note Ensure the `isHasTeamSharedDropbox` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMHasTeamSharedDropboxValue *hasTeamSharedDropbox;
+
+/// (no description). @note Ensure the `isHasTeamFileEvents` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMHasTeamFileEventsValue *hasTeamFileEvents;
 
 #pragma mark - Constructors
 
@@ -74,6 +82,15 @@ typedef NS_ENUM(NSInteger, DBTEAMFeatureValueTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithHasTeamSharedDropbox:(DBTEAMHasTeamSharedDropboxValue *)hasTeamSharedDropbox;
+
+///
+/// Initializes union class with tag state of "has_team_file_events".
+///
+/// @param hasTeamFileEvents (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithHasTeamFileEvents:(DBTEAMHasTeamFileEventsValue *)hasTeamFileEvents;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -110,6 +127,18 @@ typedef NS_ENUM(NSInteger, DBTEAMFeatureValueTag) {
 /// "has_team_shared_dropbox".
 ///
 - (BOOL)isHasTeamSharedDropbox;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "has_team_file_events".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `hasTeamFileEvents` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "has_team_file_events".
+///
+- (BOOL)isHasTeamFileEvents;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

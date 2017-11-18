@@ -21,6 +21,7 @@
 @class DBFILEPROPERTIESPropertyGroupUpdate;
 @class DBFILEPROPERTIESRemovePropertiesError;
 @class DBFILEPROPERTIESTemplateError;
+@class DBFILEPROPERTIESTemplateFilterBase;
 @class DBFILEPROPERTIESUpdatePropertiesError;
 @class DBFILESAlphaGetMetadataError;
 @class DBFILESCommitInfo;
@@ -116,18 +117,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init:(id<DBTransportClient>)client;
 
 ///
-/// Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note:
-/// Metadata for the root folder is unsupported.
+/// DEPRECATED: Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API.
+/// Note: Metadata for the root folder is unsupported.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
 /// `DBFILESAlphaGetMetadataError` object on failure.
 ///
-- (DBRpcTask<DBFILESMetadata *, DBFILESAlphaGetMetadataError *> *)alphaGetMetadata:(NSString *)path;
+- (DBRpcTask<DBFILESMetadata *, DBFILESAlphaGetMetadataError *> *)alphaGetMetadata:(NSString *)path
+    __deprecated_msg("alphaGetMetadata is deprecated. Use getMetadata.");
 
 ///
-/// Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note:
-/// Metadata for the root folder is unsupported.
+/// DEPRECATED: Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API.
+/// Note: Metadata for the root folder is unsupported.
 ///
 /// @param includePropertyTemplates If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
 /// set for files with custom properties.
@@ -140,12 +142,14 @@ NS_ASSUME_NONNULL_BEGIN
                includeMediaInfo:(nullable NSNumber *)includeMediaInfo
                  includeDeleted:(nullable NSNumber *)includeDeleted
 includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
-       includePropertyTemplates:(nullable NSArray<NSString *> *)includePropertyTemplates;
+          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
+       includePropertyTemplates:(nullable NSArray<NSString *> *)includePropertyTemplates
+    __deprecated_msg("alphaGetMetadata is deprecated. Use getMetadata.");
 
 ///
-/// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
-/// an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
+/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
@@ -153,14 +157,14 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 /// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)alphaUploadUrl:(NSString *)path
-                                                                                   inputUrl:(NSString *)inputUrl;
+                                                                                   inputUrl:(NSString *)inputUrl
+    __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
 
 ///
-/// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
-/// an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
+/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
-/// @param propertyGroups List of custom properties to add to file.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -173,12 +177,12 @@ alphaUploadUrl:(NSString *)path
 clientModified:(nullable NSDate *)clientModified
           mute:(nullable NSNumber *)mute
 propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
-      inputUrl:(NSString *)inputUrl;
+      inputUrl:(NSString *)inputUrl __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
 
 ///
-/// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
-/// an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
+/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param inputData The file to upload, as an NSData * object.
 ///
@@ -186,14 +190,14 @@ propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGrou
 /// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)alphaUploadData:(NSString *)path
-                                                                                   inputData:(NSData *)inputData;
+                                                                                   inputData:(NSData *)inputData
+    __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
 
 ///
-/// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
-/// an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
+/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
-/// @param propertyGroups List of custom properties to add to file.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -206,12 +210,12 @@ alphaUploadData:(NSString *)path
  clientModified:(nullable NSDate *)clientModified
            mute:(nullable NSNumber *)mute
  propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
-      inputData:(NSData *)inputData;
+      inputData:(NSData *)inputData __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
 
 ///
-/// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
-/// an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
+/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
@@ -220,14 +224,14 @@ alphaUploadData:(NSString *)path
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)alphaUploadStream:(NSString *)path
                                                                                    inputStream:
-                                                                                       (NSInputStream *)inputStream;
+                                                                                       (NSInputStream *)inputStream
+    __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
 
 ///
-/// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
-/// an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
+/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
-/// @param propertyGroups List of custom properties to add to file.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -240,7 +244,7 @@ alphaUploadStream:(NSString *)path
    clientModified:(nullable NSDate *)clientModified
              mute:(nullable NSNumber *)mute
    propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
-      inputStream:(NSInputStream *)inputStream;
+      inputStream:(NSInputStream *)inputStream __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
 
 ///
 /// DEPRECATED: Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all
@@ -624,15 +628,18 @@ alphaUploadStream:(NSString *)path
 /// `DBFILESLookupError` will be returned.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
+/// @param includePropertyGroups If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
+/// set if there exists property data associated with the file and each of the listed templates.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
 /// `DBFILESGetMetadataError` object on failure.
 ///
-- (DBRpcTask<DBFILESMetadata *, DBFILESGetMetadataError *> *)getMetadata:(NSString *)path
-                                                        includeMediaInfo:(nullable NSNumber *)includeMediaInfo
-                                                          includeDeleted:(nullable NSNumber *)includeDeleted
-                                         includeHasExplicitSharedMembers:
-                                             (nullable NSNumber *)includeHasExplicitSharedMembers;
+- (DBRpcTask<DBFILESMetadata *, DBFILESGetMetadataError *> *)
+                    getMetadata:(NSString *)path
+               includeMediaInfo:(nullable NSNumber *)includeMediaInfo
+                 includeDeleted:(nullable NSNumber *)includeDeleted
+includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
+          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
@@ -1030,6 +1037,8 @@ getThumbnailData:(NSString *)path
 /// @param sharedLink A shared link to list the contents of. If the link is password-protected, the password must be
 /// provided. If this field is present, `path` in `DBFILESListFolderArg` will be relative to root of the shared link.
 /// Only non-recursive mode is supported for shared link.
+/// @param includePropertyGroups If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
+/// set if there exists property data associated with the file and each of the listed templates.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderError` object on failure.
@@ -1042,7 +1051,8 @@ getThumbnailData:(NSString *)path
 includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
           includeMountedFolders:(nullable NSNumber *)includeMountedFolders
                           limit:(nullable NSNumber *)limit
-                     sharedLink:(nullable DBFILESSharedLink *)sharedLink;
+                     sharedLink:(nullable DBFILESSharedLink *)sharedLink
+          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
 
 ///
 /// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to
@@ -1088,6 +1098,8 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 /// @param sharedLink A shared link to list the contents of. If the link is password-protected, the password must be
 /// provided. If this field is present, `path` in `DBFILESListFolderArg` will be relative to root of the shared link.
 /// Only non-recursive mode is supported for shared link.
+/// @param includePropertyGroups If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
+/// set if there exists property data associated with the file and each of the listed templates.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderGetLatestCursorResult` object on
 /// success or a `DBFILESListFolderError` object on failure.
@@ -1100,7 +1112,8 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
           includeMountedFolders:(nullable NSNumber *)includeMountedFolders
                           limit:(nullable NSNumber *)limit
-                     sharedLink:(nullable DBFILESSharedLink *)sharedLink;
+                     sharedLink:(nullable DBFILESSharedLink *)sharedLink
+          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
 
 ///
 /// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you
@@ -1462,17 +1475,20 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// desktop clients, mobile clients, and API apps of when the file was actually created or modified.
 /// @param mute Normally, users are made aware of any file modifications in their Dropbox account via notifications in
 /// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
+/// @param propertyGroups List of custom properties to add to file.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)uploadUrl:(NSString *)path
-                                                                    mode:(nullable DBFILESWriteMode *)mode
-                                                              autorename:(nullable NSNumber *)autorename
-                                                          clientModified:(nullable NSDate *)clientModified
-                                                                    mute:(nullable NSNumber *)mute
-                                                                inputUrl:(NSString *)inputUrl;
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)
+     uploadUrl:(NSString *)path
+          mode:(nullable DBFILESWriteMode *)mode
+    autorename:(nullable NSNumber *)autorename
+clientModified:(nullable NSDate *)clientModified
+          mute:(nullable NSNumber *)mute
+propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+      inputUrl:(NSString *)inputUrl;
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -1500,17 +1516,20 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// desktop clients, mobile clients, and API apps of when the file was actually created or modified.
 /// @param mute Normally, users are made aware of any file modifications in their Dropbox account via notifications in
 /// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
+/// @param propertyGroups List of custom properties to add to file.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)uploadData:(NSString *)path
-                                                                     mode:(nullable DBFILESWriteMode *)mode
-                                                               autorename:(nullable NSNumber *)autorename
-                                                           clientModified:(nullable NSDate *)clientModified
-                                                                     mute:(nullable NSNumber *)mute
-                                                                inputData:(NSData *)inputData;
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)
+    uploadData:(NSString *)path
+          mode:(nullable DBFILESWriteMode *)mode
+    autorename:(nullable NSNumber *)autorename
+clientModified:(nullable NSDate *)clientModified
+          mute:(nullable NSNumber *)mute
+propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+     inputData:(NSData *)inputData;
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -1538,17 +1557,20 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// desktop clients, mobile clients, and API apps of when the file was actually created or modified.
 /// @param mute Normally, users are made aware of any file modifications in their Dropbox account via notifications in
 /// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
+/// @param propertyGroups List of custom properties to add to file.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)uploadStream:(NSString *)path
-                                                                       mode:(nullable DBFILESWriteMode *)mode
-                                                                 autorename:(nullable NSNumber *)autorename
-                                                             clientModified:(nullable NSDate *)clientModified
-                                                                       mute:(nullable NSNumber *)mute
-                                                                inputStream:(NSInputStream *)inputStream;
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)
+  uploadStream:(NSString *)path
+          mode:(nullable DBFILESWriteMode *)mode
+    autorename:(nullable NSNumber *)autorename
+clientModified:(nullable NSDate *)clientModified
+          mute:(nullable NSNumber *)mute
+propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+   inputStream:(NSInputStream *)inputStream;
 
 ///
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB.

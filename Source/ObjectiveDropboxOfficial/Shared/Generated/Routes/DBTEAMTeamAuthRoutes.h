@@ -31,6 +31,12 @@
 @class DBTEAMDesktopClientSession;
 @class DBTEAMDeviceSessionArg;
 @class DBTEAMDevicesActive;
+@class DBTEAMExcludedUsersListContinueError;
+@class DBTEAMExcludedUsersListError;
+@class DBTEAMExcludedUsersListResult;
+@class DBTEAMExcludedUsersUpdateError;
+@class DBTEAMExcludedUsersUpdateResult;
+@class DBTEAMExcludedUsersUpdateStatus;
 @class DBTEAMFeature;
 @class DBTEAMFeatureValue;
 @class DBTEAMFeaturesGetValuesBatchError;
@@ -76,6 +82,7 @@
 @class DBTEAMMemberAddResult;
 @class DBTEAMMemberDevices;
 @class DBTEAMMemberLinkedApps;
+@class DBTEAMMemberProfile;
 @class DBTEAMMembersAddJobStatus;
 @class DBTEAMMembersAddLaunch;
 @class DBTEAMMembersGetInfoError;
@@ -106,6 +113,7 @@
 @class DBTEAMRevokeLinkedAppBatchResult;
 @class DBTEAMRevokeLinkedAppError;
 @class DBTEAMRevokeLinkedAppStatus;
+@class DBTEAMSetCustomQuotaError;
 @class DBTEAMStorageBucket;
 @class DBTEAMTeamFolderAccessError;
 @class DBTEAMTeamFolderActivateError;
@@ -630,6 +638,78 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
     (NSArray<DBTEAMRevokeLinkedApiAppArg *> *)revokeLinkedApp;
 
 ///
+/// Add users to member space limits excluded users list.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)memberSpaceLimitsExcludedUsersAdd;
+
+///
+/// Add users to member space limits excluded users list.
+///
+/// @param users List of users to be added/removed.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)memberSpaceLimitsExcludedUsersAdd:
+    (nullable NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
+/// List member space limits excluded users.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersListResult` object on success
+/// or a `DBTEAMExcludedUsersListError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersListResult *, DBTEAMExcludedUsersListError *> *)memberSpaceLimitsExcludedUsersList;
+
+///
+/// List member space limits excluded users.
+///
+/// @param limit Number of results to return per call.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersListResult` object on success
+/// or a `DBTEAMExcludedUsersListError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersListResult *, DBTEAMExcludedUsersListError *> *)memberSpaceLimitsExcludedUsersList:
+    (nullable NSNumber *)limit;
+
+///
+/// Continue listing member space limits excluded users.
+///
+/// @param cursor Indicates from what point to get the next set of users.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersListResult` object on success
+/// or a `DBTEAMExcludedUsersListContinueError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersListResult *, DBTEAMExcludedUsersListContinueError *> *)
+memberSpaceLimitsExcludedUsersListContinue:(NSString *)cursor;
+
+///
+/// Remove users from member space limits excluded users list.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)
+    memberSpaceLimitsExcludedUsersRemove;
+
+///
+/// Remove users from member space limits excluded users list.
+///
+/// @param users List of users to be added/removed.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)
+memberSpaceLimitsExcludedUsersRemove:(nullable NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
 /// Get users custom quota. Returns none as the custom quota if none was set. A maximum of 1000 members can be specified
 /// in a single call.
 ///
@@ -653,15 +733,15 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
     (NSArray<DBTEAMUserSelectorArg *> *)users;
 
 ///
-/// Set users custom quota. Custom quota has to be at least 25GB. A maximum of 1000 members can be specified in a single
+/// Set users custom quota. Custom quota has to be at least 15GB. A maximum of 1000 members can be specified in a single
 /// call.
 ///
 /// @param usersAndQuotas List of users and their custom quotas.
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBTEAMCustomQuotaResult *>` object on
-/// success or a `DBTEAMCustomQuotaError` object on failure.
+/// success or a `DBTEAMSetCustomQuotaError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBTEAMCustomQuotaResult *> *, DBTEAMCustomQuotaError *> *)memberSpaceLimitsSetCustomQuota:
+- (DBRpcTask<NSArray<DBTEAMCustomQuotaResult *> *, DBTEAMSetCustomQuotaError *> *)memberSpaceLimitsSetCustomQuota:
     (NSArray<DBTEAMUserCustomQuotaArg *> *)usersAndQuotas;
 
 ///

@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// File request id. Might be missing due to historical data gap.
+@property (nonatomic, readonly, copy, nullable) NSString *fileRequestId;
+
 /// File request title.
 @property (nonatomic, readonly, copy, nullable) NSString *requestTitle;
 
@@ -35,11 +38,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
+/// @param fileRequestId File request id. Might be missing due to historical
+/// data gap.
 /// @param requestTitle File request title.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithRequestTitle:(nullable NSString *)requestTitle;
+- (instancetype)initWithFileRequestId:(nullable NSString *)fileRequestId requestTitle:(nullable NSString *)requestTitle;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

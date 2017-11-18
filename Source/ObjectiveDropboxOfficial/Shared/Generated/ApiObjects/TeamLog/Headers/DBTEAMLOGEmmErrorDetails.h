@@ -8,27 +8,27 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBTEAMLOGEmmErrorDetails;
 @class DBTEAMLOGFailureDetailsLogInfo;
-@class DBTEAMLOGPasswordLoginFailDetails;
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
 ///
-/// The `PasswordLoginFailDetails` struct.
+/// The `EmmErrorDetails` struct.
 ///
-/// Failed to sign in using a password.
+/// Failed to sign in via EMM.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMLOGPasswordLoginFailDetails : NSObject <DBSerializable, NSCopying>
+@interface DBTEAMLOGEmmErrorDetails : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
-/// Login failure details.
+/// Error details.
 @property (nonatomic, readonly) DBTEAMLOGFailureDetailsLogInfo *errorDetails;
 
 #pragma mark - Constructors
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param errorDetails Login failure details.
+/// @param errorDetails Error details.
 ///
 /// @return An initialized instance.
 ///
@@ -49,30 +49,29 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `PasswordLoginFailDetails` struct.
+/// The serialization class for the `EmmErrorDetails` struct.
 ///
-@interface DBTEAMLOGPasswordLoginFailDetailsSerializer : NSObject
+@interface DBTEAMLOGEmmErrorDetailsSerializer : NSObject
 
 ///
-/// Serializes `DBTEAMLOGPasswordLoginFailDetails` instances.
+/// Serializes `DBTEAMLOGEmmErrorDetails` instances.
 ///
-/// @param instance An instance of the `DBTEAMLOGPasswordLoginFailDetails` API
-/// object.
+/// @param instance An instance of the `DBTEAMLOGEmmErrorDetails` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBTEAMLOGPasswordLoginFailDetails` API object.
+/// `DBTEAMLOGEmmErrorDetails` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGPasswordLoginFailDetails *)instance;
++ (nullable NSDictionary *)serialize:(DBTEAMLOGEmmErrorDetails *)instance;
 
 ///
-/// Deserializes `DBTEAMLOGPasswordLoginFailDetails` instances.
+/// Deserializes `DBTEAMLOGEmmErrorDetails` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBTEAMLOGPasswordLoginFailDetails` API object.
+/// `DBTEAMLOGEmmErrorDetails` API object.
 ///
-/// @return An instantiation of the `DBTEAMLOGPasswordLoginFailDetails` object.
+/// @return An instantiation of the `DBTEAMLOGEmmErrorDetails` object.
 ///
-+ (DBTEAMLOGPasswordLoginFailDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGEmmErrorDetails *)deserialize:(NSDictionary *)dict;
 
 @end
 
