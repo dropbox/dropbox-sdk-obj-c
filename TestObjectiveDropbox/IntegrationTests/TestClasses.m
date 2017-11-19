@@ -439,7 +439,7 @@ void MyLog(NSString *format, ...) {
                                error:nil];
   
   NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
-  
+
   NSLog(@"\n\nCreating files in: %@\n\n", [workingDirectory path]);
   // create a bunch of fake files
   for (int i = 0; i < 150; i++) {

@@ -18,3 +18,5 @@ BOOL const kSDKDebug = NO;           // Should never be `YES` in production
 NSString *const kSDKDebugHost = nil; // `"dbdev"`, if using EC, or "{user_name}-dbx"`, if dev box.
                                      // Should never be non-`nil` in production.
 // END DEBUG CONSTANTS
+
+NSString *const kCSERFKey = @"kCSERFKeyObjCSDK";
