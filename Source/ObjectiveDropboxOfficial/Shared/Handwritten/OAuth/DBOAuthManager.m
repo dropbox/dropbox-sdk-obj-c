@@ -218,7 +218,8 @@ static DBOAuthManager *s_sharedOAuthManager;
     NSString *storedState = [[NSUserDefaults standardUserDefaults] stringForKey:kCSERFKey];
 
     if (state == nil || storedState == nil || ![state isEqualToString:storedState]) {
-      return [[DBOAuthResult alloc] initWithError:@"inconsistent_state" errorDescription:@"Auth flow failed because of inconsistent state."];
+      return [[DBOAuthResult alloc] initWithError:@"inconsistent_state"
+                                 errorDescription:@"Auth flow failed because of inconsistent state."];
     } else {
       // reset upon success
       [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kCSERFKey];
