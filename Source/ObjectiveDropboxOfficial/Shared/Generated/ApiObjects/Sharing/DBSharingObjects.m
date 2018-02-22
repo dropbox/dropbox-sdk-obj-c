@@ -2410,10 +2410,7 @@
     return [DBSHARINGCollectionLinkMetadataSerializer deserialize:valueDict];
   }
 
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
+  return [DBSHARINGLinkMetadataSerializer deserialize:valueDict];
 }
 
 @end
@@ -4430,10 +4427,7 @@
     return [DBSHARINGFolderLinkMetadataSerializer deserialize:valueDict];
   }
 
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
+  return [DBSHARINGSharedLinkMetadataSerializer deserialize:valueDict];
 }
 
 @end

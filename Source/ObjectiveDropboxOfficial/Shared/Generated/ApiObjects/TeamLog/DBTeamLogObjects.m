@@ -2275,20 +2275,17 @@
 }
 
 + (DBTEAMLOGAppLogInfo *)deserialize:(NSDictionary *)valueDict {
-  if ([valueDict[@".tag"] isEqualToString:@"userOrTeamLinkedApp"]) {
+  if ([valueDict[@".tag"] isEqualToString:@"user_or_team_linked_app"]) {
     return [DBTEAMLOGUserOrTeamLinkedAppLogInfoSerializer deserialize:valueDict];
   }
-  if ([valueDict[@".tag"] isEqualToString:@"userLinkedApp"]) {
+  if ([valueDict[@".tag"] isEqualToString:@"user_linked_app"]) {
     return [DBTEAMLOGUserLinkedAppLogInfoSerializer deserialize:valueDict];
   }
-  if ([valueDict[@".tag"] isEqualToString:@"teamLinkedApp"]) {
+  if ([valueDict[@".tag"] isEqualToString:@"team_linked_app"]) {
     return [DBTEAMLOGTeamLinkedAppLogInfoSerializer deserialize:valueDict];
   }
 
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
+  return [DBTEAMLOGAppLogInfoSerializer deserialize:valueDict];
 }
 
 @end
@@ -4056,10 +4053,7 @@
     return [DBTEAMLOGMobileSessionLogInfoSerializer deserialize:valueDict];
   }
 
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
+  return [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict];
 }
 
 @end
@@ -37936,17 +37930,14 @@
 }
 
 + (DBTEAMLOGUserLogInfo *)deserialize:(NSDictionary *)valueDict {
-  if ([valueDict[@".tag"] isEqualToString:@"teamMember"]) {
+  if ([valueDict[@".tag"] isEqualToString:@"team_member"]) {
     return [DBTEAMLOGTeamMemberLogInfoSerializer deserialize:valueDict];
   }
-  if ([valueDict[@".tag"] isEqualToString:@"nonTeamMember"]) {
+  if ([valueDict[@".tag"] isEqualToString:@"non_team_member"]) {
     return [DBTEAMLOGNonTeamMemberLogInfoSerializer deserialize:valueDict];
   }
 
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
+  return [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict];
 }
 
 @end

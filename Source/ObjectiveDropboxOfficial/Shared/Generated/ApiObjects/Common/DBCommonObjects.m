@@ -537,10 +537,7 @@
     return [DBCOMMONUserRootInfoSerializer deserialize:valueDict];
   }
 
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
+  return [DBCOMMONRootInfoSerializer deserialize:valueDict];
 }
 
 @end
