@@ -2410,7 +2410,13 @@
     return [DBSHARINGCollectionLinkMetadataSerializer deserialize:valueDict];
   }
 
-  return [DBSHARINGLinkMetadataSerializer deserialize:valueDict];
+  NSString *url = valueDict[@"url"];
+  DBSHARINGVisibility *visibility = [DBSHARINGVisibilitySerializer deserialize:valueDict[@"visibility"]];
+  NSDate *expires = valueDict[@"expires"]
+                        ? [DBNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                        : nil;
+
+  return [[DBSHARINGLinkMetadata alloc] initWithUrl:url visibility:visibility expires:expires];
 }
 
 @end
@@ -4427,7 +4433,30 @@
     return [DBSHARINGFolderLinkMetadataSerializer deserialize:valueDict];
   }
 
-  return [DBSHARINGSharedLinkMetadataSerializer deserialize:valueDict];
+  NSString *url = valueDict[@"url"];
+  NSString *name = valueDict[@"name"];
+  DBSHARINGLinkPermissions *linkPermissions =
+      [DBSHARINGLinkPermissionsSerializer deserialize:valueDict[@"link_permissions"]];
+  NSString *id_ = valueDict[@"id"] ?: nil;
+  NSDate *expires = valueDict[@"expires"]
+                        ? [DBNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                        : nil;
+  NSString *pathLower = valueDict[@"path_lower"] ?: nil;
+  DBSHARINGTeamMemberInfo *teamMemberInfo =
+      valueDict[@"team_member_info"] ? [DBSHARINGTeamMemberInfoSerializer deserialize:valueDict[@"team_member_info"]]
+                                     : nil;
+  DBUSERSTeam *contentOwnerTeamInfo = valueDict[@"content_owner_team_info"]
+                                          ? [DBUSERSTeamSerializer deserialize:valueDict[@"content_owner_team_info"]]
+                                          : nil;
+
+  return [[DBSHARINGSharedLinkMetadata alloc] initWithUrl:url
+                                                     name:name
+                                          linkPermissions:linkPermissions
+                                                      id_:id_
+                                                  expires:expires
+                                                pathLower:pathLower
+                                           teamMemberInfo:teamMemberInfo
+                                     contentOwnerTeamInfo:contentOwnerTeamInfo];
 }
 
 @end

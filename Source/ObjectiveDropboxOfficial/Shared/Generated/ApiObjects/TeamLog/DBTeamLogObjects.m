@@ -2285,7 +2285,10 @@
     return [DBTEAMLOGTeamLinkedAppLogInfoSerializer deserialize:valueDict];
   }
 
-  return [DBTEAMLOGAppLogInfoSerializer deserialize:valueDict];
+  NSString *appId = valueDict[@"app_id"] ?: nil;
+  NSString *displayName = valueDict[@"display_name"] ?: nil;
+
+  return [[DBTEAMLOGAppLogInfo alloc] initWithAppId:appId displayName:displayName];
 }
 
 @end
@@ -4053,7 +4056,9 @@
     return [DBTEAMLOGMobileSessionLogInfoSerializer deserialize:valueDict];
   }
 
-  return [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict];
+  NSString *sessionId = valueDict[@"session_id"] ?: nil;
+
+  return [[DBTEAMLOGSessionLogInfo alloc] initWithSessionId:sessionId];
 }
 
 @end
@@ -37937,7 +37942,11 @@
     return [DBTEAMLOGNonTeamMemberLogInfoSerializer deserialize:valueDict];
   }
 
-  return [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict];
+  NSString *accountId = valueDict[@"account_id"] ?: nil;
+  NSString *displayName = valueDict[@"display_name"] ?: nil;
+  NSString *email = valueDict[@"email"] ?: nil;
+
+  return [[DBTEAMLOGUserLogInfo alloc] initWithAccountId:accountId displayName:displayName email:email];
 }
 
 @end

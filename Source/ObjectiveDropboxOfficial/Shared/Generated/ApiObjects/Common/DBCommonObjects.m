@@ -537,7 +537,10 @@
     return [DBCOMMONUserRootInfoSerializer deserialize:valueDict];
   }
 
-  return [DBCOMMONRootInfoSerializer deserialize:valueDict];
+  NSString *rootNamespaceId = valueDict[@"root_namespace_id"];
+  NSString *homeNamespaceId = valueDict[@"home_namespace_id"];
+
+  return [[DBCOMMONRootInfo alloc] initWithRootNamespaceId:rootNamespaceId homeNamespaceId:homeNamespaceId];
 }
 
 @end
