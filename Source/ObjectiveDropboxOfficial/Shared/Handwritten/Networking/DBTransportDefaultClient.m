@@ -261,6 +261,20 @@
                                    forceForegroundSession:_forceForegroundSession];
 }
 
+- (DBTransportDefaultConfig *)duplicateTransportConfigWithPathRoot:(DBCOMMONPathRoot *)pathRoot {
+    return [[DBTransportDefaultConfig alloc] initWithAppKey:self.appKey
+                                                  appSecret:self.appSecret
+                                             hostnameConfig:nil
+                                                redirectURL:nil
+                                                  userAgent:self.userAgent
+                                                 asMemberId:self.asMemberId
+                                                   pathRoot:pathRoot
+                                          additionalHeaders:nil
+                                              delegateQueue:_delegateQueue
+                                     forceForegroundSession:_forceForegroundSession
+                                  sharedContainerIdentifier:nil];
+}
+
 #pragma mark - Session accessors and mutators
 
 - (NSURLSession *)session {
