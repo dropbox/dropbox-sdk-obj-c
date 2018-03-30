@@ -27,34 +27,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset position in the Assets list.
-@property (nonatomic, readonly) NSNumber *targetAssetIndex;
-
-/// Parent namespace ID. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *parentNsId;
+/// Target namespace ID. Might be missing due to historical data gap.
+@property (nonatomic, readonly, copy, nullable) NSString *targetNsId;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetAssetIndex Target asset position in the Assets list.
-/// @param parentNsId Parent namespace ID. Might be missing due to historical
+/// @param targetNsId Target namespace ID. Might be missing due to historical
 /// data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex parentNsId:(nullable NSString *)parentNsId;
+- (instancetype)initWithTargetNsId:(nullable NSString *)targetNsId;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetAssetIndex Target asset position in the Assets list.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex;
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 

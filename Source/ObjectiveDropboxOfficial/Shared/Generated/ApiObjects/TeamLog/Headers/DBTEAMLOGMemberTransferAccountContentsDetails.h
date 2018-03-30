@@ -27,26 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Source participant position in the Participants list.
-@property (nonatomic, readonly) NSNumber *srcParticipantIndex;
-
-/// Destination participant position in the Participants list.
-@property (nonatomic, readonly) NSNumber *destParticipantIndex;
-
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param srcParticipantIndex Source participant position in the Participants
-/// list.
-/// @param destParticipantIndex Destination participant position in the
-/// Participants list.
-///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithSrcParticipantIndex:(NSNumber *)srcParticipantIndex
-                       destParticipantIndex:(NSNumber *)destParticipantIndex;
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 

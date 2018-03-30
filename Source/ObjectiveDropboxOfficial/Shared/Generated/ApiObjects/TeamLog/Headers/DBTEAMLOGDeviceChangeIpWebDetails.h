@@ -9,7 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGDeviceChangeIpWebDetails;
-@class DBTEAMLOGDeviceLogInfo;
+@class DBTEAMLOGDeviceSessionLogInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,8 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Device information. Might be missing due to historical data gap.
-@property (nonatomic, readonly, nullable) DBTEAMLOGDeviceLogInfo *deviceInfo;
+/// Device's session logged information. Might be missing due to historical data
+/// gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo;
 
 /// Web browser name.
 @property (nonatomic, readonly, copy) NSString *userAgent;
@@ -40,12 +41,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param userAgent Web browser name.
-/// @param deviceInfo Device information. Might be missing due to historical
-/// data gap.
+/// @param deviceSessionInfo Device's session logged information. Might be
+/// missing due to historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithUserAgent:(NSString *)userAgent deviceInfo:(nullable DBTEAMLOGDeviceLogInfo *)deviceInfo;
+- (instancetype)initWithUserAgent:(NSString *)userAgent
+                deviceSessionInfo:(nullable DBTEAMLOGDeviceSessionLogInfo *)deviceSessionInfo;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

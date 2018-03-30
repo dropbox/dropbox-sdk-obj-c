@@ -18002,6 +18002,14 @@
   return self;
 }
 
+- (instancetype)initWithCannotKeepInvitedUserAccount {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -18066,6 +18074,10 @@
   return _tag == DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled;
 }
 
+- (BOOL)isCannotKeepInvitedUserAccount {
+  return _tag == DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBTEAMMembersRemoveErrorUserNotFound:
@@ -18098,6 +18110,8 @@
     return @"DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData";
   case DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled:
     return @"DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled";
+  case DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount:
+    return @"DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -18164,6 +18178,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount:
+    result = prime * result + [[self tagName] hash];
   }
 
   return prime * result;
@@ -18219,6 +18235,8 @@
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   }
   return YES;
 }
@@ -18262,6 +18280,8 @@
     jsonDict[@".tag"] = @"cannot_keep_account_and_delete_data";
   } else if ([valueObj isEmailAddressTooLongToBeDisabled]) {
     jsonDict[@".tag"] = @"email_address_too_long_to_be_disabled";
+  } else if ([valueObj isCannotKeepInvitedUserAccount]) {
+    jsonDict[@".tag"] = @"cannot_keep_invited_user_account";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -18302,6 +18322,8 @@
     return [[DBTEAMMembersRemoveError alloc] initWithCannotKeepAccountAndDeleteData];
   } else if ([tag isEqualToString:@"email_address_too_long_to_be_disabled"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithEmailAddressTooLongToBeDisabled];
+  } else if ([tag isEqualToString:@"cannot_keep_invited_user_account"]) {
+    return [[DBTEAMMembersRemoveError alloc] initWithCannotKeepInvitedUserAccount];
   } else {
     return [[DBTEAMMembersRemoveError alloc] initWithOther];
   }

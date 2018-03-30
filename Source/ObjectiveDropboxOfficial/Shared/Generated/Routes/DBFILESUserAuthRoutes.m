@@ -47,6 +47,9 @@
 #import "DBFILESDeletedMetadata.h"
 #import "DBFILESDownloadArg.h"
 #import "DBFILESDownloadError.h"
+#import "DBFILESDownloadZipArg.h"
+#import "DBFILESDownloadZipError.h"
+#import "DBFILESDownloadZipResult.h"
 #import "DBFILESFileMetadata.h"
 #import "DBFILESFileOpsResult.h"
 #import "DBFILESFileSharingInfo.h"
@@ -430,6 +433,41 @@
                        byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESDownload;
   DBFILESDownloadArg *arg = [[DBFILESDownloadArg alloc] initWithPath:path rev:rev];
+  return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadUrlTask *)downloadZipUrl:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL *)destination {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDownloadZip;
+  DBFILESDownloadZipArg *arg = [[DBFILESDownloadZipArg alloc] initWithPath:path];
+  return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
+}
+
+- (DBDownloadUrlTask *)downloadZipUrl:(NSString *)path
+                            overwrite:(BOOL)overwrite
+                          destination:(NSURL *)destination
+                      byteOffsetStart:(NSNumber *)byteOffsetStart
+                        byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDownloadZip;
+  DBFILESDownloadZipArg *arg = [[DBFILESDownloadZipArg alloc] initWithPath:path];
+  return [self.client requestDownload:route
+                                  arg:arg
+                            overwrite:overwrite
+                          destination:destination
+                      byteOffsetStart:byteOffsetStart
+                        byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadDataTask *)downloadZipData:(NSString *)path {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDownloadZip;
+  DBFILESDownloadZipArg *arg = [[DBFILESDownloadZipArg alloc] initWithPath:path];
+  return [self.client requestDownload:route arg:arg];
+}
+
+- (DBDownloadDataTask *)downloadZipData:(NSString *)path
+                        byteOffsetStart:(NSNumber *)byteOffsetStart
+                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDownloadZip;
+  DBFILESDownloadZipArg *arg = [[DBFILESDownloadZipArg alloc] initWithPath:path];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 

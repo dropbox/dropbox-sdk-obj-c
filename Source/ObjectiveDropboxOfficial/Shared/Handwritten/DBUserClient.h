@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// associated with a particular Dropbox account.
 @property (nonatomic, readonly, copy, nullable) NSString *tokenUid;
 
-
 ///
 /// Convenience constructor.
 ///

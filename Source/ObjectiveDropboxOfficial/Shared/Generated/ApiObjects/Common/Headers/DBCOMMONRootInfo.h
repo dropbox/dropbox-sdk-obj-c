@@ -27,12 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The namespace id for user's root namespace. It will be the namespace id of
-/// the shared team root if the user is member of a CDM team. Otherwise it will
-/// be same as `homeNamespaceId` in `DBCOMMONRootInfo`.
+/// The namespace ID for user's root namespace. It will be the namespace ID of
+/// the shared team root if the user is member of a team with a separate team
+/// root. Otherwise it will be same as `homeNamespaceId` in `DBCOMMONRootInfo`.
 @property (nonatomic, readonly, copy) NSString *rootNamespaceId;
 
-/// The namespace id for user's home namespace.
+/// The namespace ID for user's home namespace.
 @property (nonatomic, readonly, copy) NSString *homeNamespaceId;
 
 #pragma mark - Constructors
@@ -40,10 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param rootNamespaceId The namespace id for user's root namespace. It will
-/// be the namespace id of the shared team root if the user is member of a CDM
-/// team. Otherwise it will be same as `homeNamespaceId` in `DBCOMMONRootInfo`.
-/// @param homeNamespaceId The namespace id for user's home namespace.
+/// @param rootNamespaceId The namespace ID for user's root namespace. It will
+/// be the namespace ID of the shared team root if the user is member of a team
+/// with a separate team root. Otherwise it will be same as `homeNamespaceId` in
+/// `DBCOMMONRootInfo`.
+/// @param homeNamespaceId The namespace ID for user's home namespace.
 ///
 /// @return An initialized instance.
 ///

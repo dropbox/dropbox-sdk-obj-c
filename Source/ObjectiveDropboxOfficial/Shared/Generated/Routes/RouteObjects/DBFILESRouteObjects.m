@@ -32,6 +32,8 @@
 #import "DBFILESDeleteResult.h"
 #import "DBFILESDeletedMetadata.h"
 #import "DBFILESDownloadError.h"
+#import "DBFILESDownloadZipError.h"
+#import "DBFILESDownloadZipResult.h"
 #import "DBFILESFileMetadata.h"
 #import "DBFILESFileOpsResult.h"
 #import "DBFILESFileSharingInfo.h"
@@ -105,6 +107,7 @@ static DBRoute *DBFILESDeleteBatch;
 static DBRoute *DBFILESDeleteBatchCheck;
 static DBRoute *DBFILESDeleteV2;
 static DBRoute *DBFILESDownload;
+static DBRoute *DBFILESDownloadZip;
 static DBRoute *DBFILESGetMetadata;
 static DBRoute *DBFILESGetPreview;
 static DBRoute *DBFILESGetTemporaryLink;
@@ -406,6 +409,24 @@ static DBRoute *DBFILESUploadSessionStart;
                     dataStructDeserialBlock:nil];
   }
   return DBFILESDownload;
+}
+
++ (DBRoute *)DBFILESDownloadZip {
+  if (!DBFILESDownloadZip) {
+    DBFILESDownloadZip = [[DBRoute alloc] init:@"download_zip"
+                                    namespace_:@"files"
+                                    deprecated:@NO
+                                    resultType:[DBFILESDownloadZipResult class]
+                                     errorType:[DBFILESDownloadZipError class]
+                                         attrs:@{
+                                           @"auth" : @"user",
+                                           @"host" : @"content",
+                                           @"style" : @"download"
+                                         }
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
+  }
+  return DBFILESDownloadZip;
 }
 
 + (DBRoute *)DBFILESGetMetadata {

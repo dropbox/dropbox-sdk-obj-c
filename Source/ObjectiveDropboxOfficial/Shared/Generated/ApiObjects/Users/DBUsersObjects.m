@@ -1963,6 +1963,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMCOMMONMemberSpaceLimitType.h"
 #import "DBUSERSTeamSpaceAllocation.h"
 
 #pragma mark - API Object
@@ -1971,14 +1972,21 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithUsed:(NSNumber *)used allocated:(NSNumber *)allocated {
+- (instancetype)initWithUsed:(NSNumber *)used
+                       allocated:(NSNumber *)allocated
+    userWithinTeamSpaceAllocated:(NSNumber *)userWithinTeamSpaceAllocated
+    userWithinTeamSpaceLimitType:(DBTEAMCOMMONMemberSpaceLimitType *)userWithinTeamSpaceLimitType {
   [DBStoneValidators nonnullValidator:nil](used);
   [DBStoneValidators nonnullValidator:nil](allocated);
+  [DBStoneValidators nonnullValidator:nil](userWithinTeamSpaceAllocated);
+  [DBStoneValidators nonnullValidator:nil](userWithinTeamSpaceLimitType);
 
   self = [super init];
   if (self) {
     _used = used;
     _allocated = allocated;
+    _userWithinTeamSpaceAllocated = userWithinTeamSpaceAllocated;
+    _userWithinTeamSpaceLimitType = userWithinTeamSpaceLimitType;
   }
   return self;
 }
@@ -2015,6 +2023,8 @@
 
   result = prime * result + [self.used hash];
   result = prime * result + [self.allocated hash];
+  result = prime * result + [self.userWithinTeamSpaceAllocated hash];
+  result = prime * result + [self.userWithinTeamSpaceLimitType hash];
 
   return prime * result;
 }
@@ -2041,6 +2051,12 @@
   if (![self.allocated isEqual:aTeamSpaceAllocation.allocated]) {
     return NO;
   }
+  if (![self.userWithinTeamSpaceAllocated isEqual:aTeamSpaceAllocation.userWithinTeamSpaceAllocated]) {
+    return NO;
+  }
+  if (![self.userWithinTeamSpaceLimitType isEqual:aTeamSpaceAllocation.userWithinTeamSpaceLimitType]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2055,6 +2071,9 @@
 
   jsonDict[@"used"] = valueObj.used;
   jsonDict[@"allocated"] = valueObj.allocated;
+  jsonDict[@"user_within_team_space_allocated"] = valueObj.userWithinTeamSpaceAllocated;
+  jsonDict[@"user_within_team_space_limit_type"] =
+      [DBTEAMCOMMONMemberSpaceLimitTypeSerializer serialize:valueObj.userWithinTeamSpaceLimitType];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -2062,8 +2081,14 @@
 + (DBUSERSTeamSpaceAllocation *)deserialize:(NSDictionary *)valueDict {
   NSNumber *used = valueDict[@"used"];
   NSNumber *allocated = valueDict[@"allocated"];
+  NSNumber *userWithinTeamSpaceAllocated = valueDict[@"user_within_team_space_allocated"];
+  DBTEAMCOMMONMemberSpaceLimitType *userWithinTeamSpaceLimitType =
+      [DBTEAMCOMMONMemberSpaceLimitTypeSerializer deserialize:valueDict[@"user_within_team_space_limit_type"]];
 
-  return [[DBUSERSTeamSpaceAllocation alloc] initWithUsed:used allocated:allocated];
+  return [[DBUSERSTeamSpaceAllocation alloc] initWithUsed:used
+                                                allocated:allocated
+                             userWithinTeamSpaceAllocated:userWithinTeamSpaceAllocated
+                             userWithinTeamSpaceLimitType:userWithinTeamSpaceLimitType];
 }
 
 @end

@@ -62,6 +62,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the download route object.
 + (DBRoute *)DBFILESDownload;
 
+/// Accessor method for the downloadZip route object.
++ (DBRoute *)DBFILESDownloadZip;
+
 /// Accessor method for the getMetadata route object.
 + (DBRoute *)DBFILESGetMetadata;
 

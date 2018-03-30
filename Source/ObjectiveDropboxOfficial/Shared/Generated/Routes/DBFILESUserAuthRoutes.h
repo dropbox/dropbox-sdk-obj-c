@@ -35,6 +35,8 @@
 @class DBFILESDeleteError;
 @class DBFILESDeleteResult;
 @class DBFILESDownloadError;
+@class DBFILESDownloadZipError;
+@class DBFILESDownloadZipResult;
 @class DBFILESFileMetadata;
 @class DBFILESFileSharingInfo;
 @class DBFILESFolderMetadata;
@@ -608,6 +610,75 @@ alphaUploadStream:(NSString *)path
                                                                                 rev:(nullable NSString *)rev
                                                                     byteOffsetStart:(NSNumber *)byteOffsetStart
                                                                       byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+
+///
+/// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer
+/// than 10,000 total files. The input cannot be a single file.
+///
+/// @param path The path of the folder to download.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDownloadZipResult` object on success or a
+/// `DBFILESDownloadZipError` object on failure.
+///
+- (DBDownloadUrlTask<DBFILESDownloadZipResult *, DBFILESDownloadZipError *> *)downloadZipUrl:(NSString *)path
+                                                                                   overwrite:(BOOL)overwrite
+                                                                                 destination:(NSURL *)destination;
+
+///
+/// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer
+/// than 10,000 total files. The input cannot be a single file.
+///
+/// @param path The path of the folder to download.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDownloadZipResult` object on success or a
+/// `DBFILESDownloadZipError` object on failure.
+///
+- (DBDownloadUrlTask<DBFILESDownloadZipResult *, DBFILESDownloadZipError *> *)downloadZipUrl:(NSString *)path
+                                                                                   overwrite:(BOOL)overwrite
+                                                                                 destination:(NSURL *)destination
+                                                                             byteOffsetStart:(NSNumber *)byteOffsetStart
+                                                                               byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+
+///
+/// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer
+/// than 10,000 total files. The input cannot be a single file.
+///
+/// @param path The path of the folder to download.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDownloadZipResult` object on success or a
+/// `DBFILESDownloadZipError` object on failure.
+///
+- (DBDownloadDataTask<DBFILESDownloadZipResult *, DBFILESDownloadZipError *> *)downloadZipData:(NSString *)path;
+
+///
+/// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer
+/// than 10,000 total files. The input cannot be a single file.
+///
+/// @param path The path of the folder to download.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDownloadZipResult` object on success or a
+/// `DBFILESDownloadZipError` object on failure.
+///
+- (DBDownloadDataTask<DBFILESDownloadZipResult *, DBFILESDownloadZipError *> *)
+downloadZipData:(NSString *)path
+byteOffsetStart:(NSNumber *)byteOffsetStart
+  byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.

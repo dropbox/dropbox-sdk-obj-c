@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBTransportBaseHostnameConfig.h"
 #import "DBCOMMONPathRoot.h"
+#import "DBTransportBaseHostnameConfig.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

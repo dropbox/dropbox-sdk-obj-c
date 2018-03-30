@@ -66,7 +66,7 @@
     }
 
     if (_pathRoot) {
-      NSString *pathRootStr = [[self class]serializeStringWithRoute:nil routeArg:_pathRoot];
+      NSString *pathRootStr = [[self class] serializeStringWithRoute:nil routeArg:_pathRoot];
       [headers setObject:pathRootStr forKey:@"Dropbox-Api-Path-Root"];
     }
 

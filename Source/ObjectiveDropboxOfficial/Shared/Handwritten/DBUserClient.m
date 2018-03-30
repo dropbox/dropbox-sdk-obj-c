@@ -30,11 +30,10 @@
 }
 
 - (DBUserClient *)withPathRoot:(DBCOMMONPathRoot *)pathRoot {
-    return [[DBUserClient alloc] initWithAccessToken:_transportClient.accessToken
-                                     transportConfig:[(DBTransportDefaultClient *)_transportClient
-                                                      duplicateTransportConfigWithPathRoot:pathRoot]];
+  return [[DBUserClient alloc]
+      initWithAccessToken:_transportClient.accessToken
+          transportConfig:[(DBTransportDefaultClient *)_transportClient duplicateTransportConfigWithPathRoot:pathRoot]];
 }
-
 
 - (void)updateAccessToken:(NSString *)accessToken {
   _transportClient.accessToken = accessToken;

@@ -8,7 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBTEAMLOGJoinTeamDetails;
+@class DBTEAMLOGActionDetails;
 @class DBTEAMLOGMemberChangeStatusDetails;
 @class DBTEAMLOGMemberStatus;
 
@@ -35,8 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// New member status.
 @property (nonatomic, readonly) DBTEAMLOGMemberStatus *dNewValue;
 
-/// Additional information relevant when a new member joins the team.
-@property (nonatomic, readonly, nullable) DBTEAMLOGJoinTeamDetails *teamJoinDetails;
+/// Additional information indicating the action taken that caused status
+/// change.
+@property (nonatomic, readonly, nullable) DBTEAMLOGActionDetails *action;
 
 #pragma mark - Constructors
 
@@ -46,14 +47,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param dNewValue New member status.
 /// @param previousValue Previous member status. Might be missing due to
 /// historical data gap.
-/// @param teamJoinDetails Additional information relevant when a new member
-/// joins the team.
+/// @param action Additional information indicating the action taken that caused
+/// status change.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithDNewValue:(DBTEAMLOGMemberStatus *)dNewValue
                     previousValue:(nullable DBTEAMLOGMemberStatus *)previousValue
-                  teamJoinDetails:(nullable DBTEAMLOGJoinTeamDetails *)teamJoinDetails;
+                           action:(nullable DBTEAMLOGActionDetails *)action;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

@@ -27,14 +27,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// Event unique identifier.
+@property (nonatomic, readonly, copy) NSString *eventUuid;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
+/// @param eventUuid Event unique identifier.
+///
 /// @return An initialized instance.
 ///
-- (instancetype)initDefault;
+- (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 

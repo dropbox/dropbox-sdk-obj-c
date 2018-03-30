@@ -3754,6 +3754,418 @@
 
 @end
 
+#import "DBFILESDownloadZipArg.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESDownloadZipArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPath:(NSString *)path {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        stringValidator:nil
+                              maxLength:nil
+                                pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"]](path);
+
+  self = [super init];
+  if (self) {
+    _path = path;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBFILESDownloadZipArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBFILESDownloadZipArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESDownloadZipArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.path hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDownloadZipArg:other];
+}
+
+- (BOOL)isEqualToDownloadZipArg:(DBFILESDownloadZipArg *)aDownloadZipArg {
+  if (self == aDownloadZipArg) {
+    return YES;
+  }
+  if (![self.path isEqual:aDownloadZipArg.path]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESDownloadZipArgSerializer
+
++ (NSDictionary *)serialize:(DBFILESDownloadZipArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"path"] = valueObj.path;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESDownloadZipArg *)deserialize:(NSDictionary *)valueDict {
+  NSString *path = valueDict[@"path"];
+
+  return [[DBFILESDownloadZipArg alloc] initWithPath:path];
+}
+
+@end
+
+#import "DBFILESDownloadZipError.h"
+#import "DBFILESLookupError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESDownloadZipError
+
+@synthesize path = _path;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPath:(DBFILESLookupError *)path {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESDownloadZipErrorPath;
+    _path = path;
+  }
+  return self;
+}
+
+- (instancetype)initWithTooLarge {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESDownloadZipErrorTooLarge;
+  }
+  return self;
+}
+
+- (instancetype)initWithTooManyFiles {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESDownloadZipErrorTooManyFiles;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESDownloadZipErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBFILESLookupError *)path {
+  if (![self isPath]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESDownloadZipErrorPath, but was %@.", [self tagName]];
+  }
+  return _path;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPath {
+  return _tag == DBFILESDownloadZipErrorPath;
+}
+
+- (BOOL)isTooLarge {
+  return _tag == DBFILESDownloadZipErrorTooLarge;
+}
+
+- (BOOL)isTooManyFiles {
+  return _tag == DBFILESDownloadZipErrorTooManyFiles;
+}
+
+- (BOOL)isOther {
+  return _tag == DBFILESDownloadZipErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBFILESDownloadZipErrorPath:
+    return @"DBFILESDownloadZipErrorPath";
+  case DBFILESDownloadZipErrorTooLarge:
+    return @"DBFILESDownloadZipErrorTooLarge";
+  case DBFILESDownloadZipErrorTooManyFiles:
+    return @"DBFILESDownloadZipErrorTooManyFiles";
+  case DBFILESDownloadZipErrorOther:
+    return @"DBFILESDownloadZipErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBFILESDownloadZipErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBFILESDownloadZipErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESDownloadZipErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBFILESDownloadZipErrorPath:
+    result = prime * result + [self.path hash];
+  case DBFILESDownloadZipErrorTooLarge:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESDownloadZipErrorTooManyFiles:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESDownloadZipErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDownloadZipError:other];
+}
+
+- (BOOL)isEqualToDownloadZipError:(DBFILESDownloadZipError *)aDownloadZipError {
+  if (self == aDownloadZipError) {
+    return YES;
+  }
+  if (self.tag != aDownloadZipError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBFILESDownloadZipErrorPath:
+    return [self.path isEqual:aDownloadZipError.path];
+  case DBFILESDownloadZipErrorTooLarge:
+    return [[self tagName] isEqual:[aDownloadZipError tagName]];
+  case DBFILESDownloadZipErrorTooManyFiles:
+    return [[self tagName] isEqual:[aDownloadZipError tagName]];
+  case DBFILESDownloadZipErrorOther:
+    return [[self tagName] isEqual:[aDownloadZipError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESDownloadZipErrorSerializer
+
++ (NSDictionary *)serialize:(DBFILESDownloadZipError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPath]) {
+    jsonDict[@"path"] = [[DBFILESLookupErrorSerializer serialize:valueObj.path] mutableCopy];
+    jsonDict[@".tag"] = @"path";
+  } else if ([valueObj isTooLarge]) {
+    jsonDict[@".tag"] = @"too_large";
+  } else if ([valueObj isTooManyFiles]) {
+    jsonDict[@".tag"] = @"too_many_files";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESDownloadZipError *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"path"]) {
+    DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
+    return [[DBFILESDownloadZipError alloc] initWithPath:path];
+  } else if ([tag isEqualToString:@"too_large"]) {
+    return [[DBFILESDownloadZipError alloc] initWithTooLarge];
+  } else if ([tag isEqualToString:@"too_many_files"]) {
+    return [[DBFILESDownloadZipError alloc] initWithTooManyFiles];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESDownloadZipError alloc] initWithOther];
+  } else {
+    return [[DBFILESDownloadZipError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBFILESDownloadZipResult.h"
+#import "DBFILESFolderMetadata.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESDownloadZipResult
+
+#pragma mark - Constructors
+
+- (instancetype)initWithMetadata:(DBFILESFolderMetadata *)metadata {
+  [DBStoneValidators nonnullValidator:nil](metadata);
+
+  self = [super init];
+  if (self) {
+    _metadata = metadata;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBFILESDownloadZipResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBFILESDownloadZipResultSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESDownloadZipResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.metadata hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDownloadZipResult:other];
+}
+
+- (BOOL)isEqualToDownloadZipResult:(DBFILESDownloadZipResult *)aDownloadZipResult {
+  if (self == aDownloadZipResult) {
+    return YES;
+  }
+  if (![self.metadata isEqual:aDownloadZipResult.metadata]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESDownloadZipResultSerializer
+
++ (NSDictionary *)serialize:(DBFILESDownloadZipResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"metadata"] = [DBFILESFolderMetadataSerializer serialize:valueObj.metadata];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESDownloadZipResult *)deserialize:(NSDictionary *)valueDict {
+  DBFILESFolderMetadata *metadata = [DBFILESFolderMetadataSerializer deserialize:valueDict[@"metadata"]];
+
+  return [[DBFILESDownloadZipResult alloc] initWithMetadata:metadata];
+}
+
+@end
+
 #import "DBFILEPROPERTIESPropertyGroup.h"
 #import "DBFILESFileMetadata.h"
 #import "DBFILESFileSharingInfo.h"
@@ -14339,6 +14751,7 @@
 
 @end
 
+#import "DBFILEPROPERTIESInvalidPropertyGroupError.h"
 #import "DBFILESUploadError.h"
 #import "DBFILESUploadWriteFailed.h"
 #import "DBStoneSerializers.h"
@@ -14349,6 +14762,7 @@
 @implementation DBFILESUploadError
 
 @synthesize path = _path;
+@synthesize propertiesError = _propertiesError;
 
 #pragma mark - Constructors
 
@@ -14357,6 +14771,15 @@
   if (self) {
     _tag = DBFILESUploadErrorPath;
     _path = path;
+  }
+  return self;
+}
+
+- (instancetype)initWithPropertiesError:(DBFILEPROPERTIESInvalidPropertyGroupError *)propertiesError {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESUploadErrorPropertiesError;
+    _propertiesError = propertiesError;
   }
   return self;
 }
@@ -14379,10 +14802,22 @@
   return _path;
 }
 
+- (DBFILEPROPERTIESInvalidPropertyGroupError *)propertiesError {
+  if (![self isPropertiesError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESUploadErrorPropertiesError, but was %@.", [self tagName]];
+  }
+  return _propertiesError;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isPath {
   return _tag == DBFILESUploadErrorPath;
+}
+
+- (BOOL)isPropertiesError {
+  return _tag == DBFILESUploadErrorPropertiesError;
 }
 
 - (BOOL)isOther {
@@ -14393,6 +14828,8 @@
   switch (_tag) {
   case DBFILESUploadErrorPath:
     return @"DBFILESUploadErrorPath";
+  case DBFILESUploadErrorPropertiesError:
+    return @"DBFILESUploadErrorPropertiesError";
   case DBFILESUploadErrorOther:
     return @"DBFILESUploadErrorOther";
   }
@@ -14433,6 +14870,8 @@
   switch (_tag) {
   case DBFILESUploadErrorPath:
     result = prime * result + [self.path hash];
+  case DBFILESUploadErrorPropertiesError:
+    result = prime * result + [self.propertiesError hash];
   case DBFILESUploadErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -14462,6 +14901,8 @@
   switch (_tag) {
   case DBFILESUploadErrorPath:
     return [self.path isEqual:anUploadError.path];
+  case DBFILESUploadErrorPropertiesError:
+    return [self.propertiesError isEqual:anUploadError.propertiesError];
   case DBFILESUploadErrorOther:
     return [[self tagName] isEqual:[anUploadError tagName]];
   }
@@ -14480,6 +14921,10 @@
   if ([valueObj isPath]) {
     jsonDict[@"path"] = [[DBFILESUploadWriteFailedSerializer serialize:valueObj.path] mutableCopy];
     jsonDict[@".tag"] = @"path";
+  } else if ([valueObj isPropertiesError]) {
+    jsonDict[@"properties_error"] =
+        [[DBFILEPROPERTIESInvalidPropertyGroupErrorSerializer serialize:valueObj.propertiesError] mutableCopy];
+    jsonDict[@".tag"] = @"properties_error";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -14495,6 +14940,10 @@
   if ([tag isEqualToString:@"path"]) {
     DBFILESUploadWriteFailed *path = [DBFILESUploadWriteFailedSerializer deserialize:valueDict];
     return [[DBFILESUploadError alloc] initWithPath:path];
+  } else if ([tag isEqualToString:@"properties_error"]) {
+    DBFILEPROPERTIESInvalidPropertyGroupError *propertiesError =
+        [DBFILEPROPERTIESInvalidPropertyGroupErrorSerializer deserialize:valueDict[@"properties_error"]];
+    return [[DBFILESUploadError alloc] initWithPropertiesError:propertiesError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESUploadError alloc] initWithOther];
   } else {
@@ -14529,19 +14978,19 @@
   return self;
 }
 
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBFILESUploadErrorWithPropertiesOther;
-  }
-  return self;
-}
-
 - (instancetype)initWithPropertiesError:(DBFILEPROPERTIESInvalidPropertyGroupError *)propertiesError {
   self = [super init];
   if (self) {
     _tag = DBFILESUploadErrorWithPropertiesPropertiesError;
     _propertiesError = propertiesError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESUploadErrorWithPropertiesOther;
   }
   return self;
 }
@@ -14571,22 +15020,22 @@
   return _tag == DBFILESUploadErrorWithPropertiesPath;
 }
 
-- (BOOL)isOther {
-  return _tag == DBFILESUploadErrorWithPropertiesOther;
-}
-
 - (BOOL)isPropertiesError {
   return _tag == DBFILESUploadErrorWithPropertiesPropertiesError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBFILESUploadErrorWithPropertiesOther;
 }
 
 - (NSString *)tagName {
   switch (_tag) {
   case DBFILESUploadErrorWithPropertiesPath:
     return @"DBFILESUploadErrorWithPropertiesPath";
-  case DBFILESUploadErrorWithPropertiesOther:
-    return @"DBFILESUploadErrorWithPropertiesOther";
   case DBFILESUploadErrorWithPropertiesPropertiesError:
     return @"DBFILESUploadErrorWithPropertiesPropertiesError";
+  case DBFILESUploadErrorWithPropertiesOther:
+    return @"DBFILESUploadErrorWithPropertiesOther";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -14625,10 +15074,10 @@
   switch (_tag) {
   case DBFILESUploadErrorWithPropertiesPath:
     result = prime * result + [self.path hash];
-  case DBFILESUploadErrorWithPropertiesOther:
-    result = prime * result + [[self tagName] hash];
   case DBFILESUploadErrorWithPropertiesPropertiesError:
     result = prime * result + [self.propertiesError hash];
+  case DBFILESUploadErrorWithPropertiesOther:
+    result = prime * result + [[self tagName] hash];
   }
 
   return prime * result;
@@ -14656,10 +15105,10 @@
   switch (_tag) {
   case DBFILESUploadErrorWithPropertiesPath:
     return [self.path isEqual:anUploadErrorWithProperties.path];
-  case DBFILESUploadErrorWithPropertiesOther:
-    return [[self tagName] isEqual:[anUploadErrorWithProperties tagName]];
   case DBFILESUploadErrorWithPropertiesPropertiesError:
     return [self.propertiesError isEqual:anUploadErrorWithProperties.propertiesError];
+  case DBFILESUploadErrorWithPropertiesOther:
+    return [[self tagName] isEqual:[anUploadErrorWithProperties tagName]];
   }
   return YES;
 }
@@ -14676,12 +15125,12 @@
   if ([valueObj isPath]) {
     jsonDict[@"path"] = [[DBFILESUploadWriteFailedSerializer serialize:valueObj.path] mutableCopy];
     jsonDict[@".tag"] = @"path";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
   } else if ([valueObj isPropertiesError]) {
     jsonDict[@"properties_error"] =
         [[DBFILEPROPERTIESInvalidPropertyGroupErrorSerializer serialize:valueObj.propertiesError] mutableCopy];
     jsonDict[@".tag"] = @"properties_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -14695,12 +15144,12 @@
   if ([tag isEqualToString:@"path"]) {
     DBFILESUploadWriteFailed *path = [DBFILESUploadWriteFailedSerializer deserialize:valueDict];
     return [[DBFILESUploadErrorWithProperties alloc] initWithPath:path];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBFILESUploadErrorWithProperties alloc] initWithOther];
   } else if ([tag isEqualToString:@"properties_error"]) {
     DBFILEPROPERTIESInvalidPropertyGroupError *propertiesError =
         [DBFILEPROPERTIESInvalidPropertyGroupErrorSerializer deserialize:valueDict[@"properties_error"]];
     return [[DBFILESUploadErrorWithProperties alloc] initWithPropertiesError:propertiesError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESUploadErrorWithProperties alloc] initWithOther];
   } else {
     return [[DBFILESUploadErrorWithProperties alloc] initWithOther];
   }

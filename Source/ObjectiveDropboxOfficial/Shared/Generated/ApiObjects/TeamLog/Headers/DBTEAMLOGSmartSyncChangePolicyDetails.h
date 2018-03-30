@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// New smart sync policy.
-@property (nonatomic, readonly) DBTEAMPOLICIESSmartSyncPolicy *dNewValue;
+@property (nonatomic, readonly, nullable) DBTEAMPOLICIESSmartSyncPolicy *dNewValue;
 
 /// Previous smart sync policy.
 @property (nonatomic, readonly, nullable) DBTEAMPOLICIESSmartSyncPolicy *previousValue;
@@ -44,18 +44,17 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(DBTEAMPOLICIESSmartSyncPolicy *)dNewValue
+- (instancetype)initWithDNewValue:(nullable DBTEAMPOLICIESSmartSyncPolicy *)dNewValue
                     previousValue:(nullable DBTEAMPOLICIESSmartSyncPolicy *)previousValue;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param dNewValue New smart sync policy.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(DBTEAMPOLICIESSmartSyncPolicy *)dNewValue;
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 

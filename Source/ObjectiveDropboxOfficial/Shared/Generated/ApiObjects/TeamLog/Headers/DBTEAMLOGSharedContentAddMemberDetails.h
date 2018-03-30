@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentAddMemberDetails;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -27,46 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset position in the Assets list.
-@property (nonatomic, readonly) NSNumber *targetAssetIndex;
-
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
-/// Sharing permission. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharingPermission;
-
-/// Shared folder type. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharedFolderType;
+/// Shared content access level.
+@property (nonatomic, readonly) DBSHARINGAccessLevel *sharedContentAccessLevel;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetAssetIndex Target asset position in the Assets list.
-/// @param originalFolderName Original shared folder name.
-/// @param sharingPermission Sharing permission. Might be missing due to
-/// historical data gap.
-/// @param sharedFolderType Shared folder type. Might be missing due to
-/// historical data gap.
+/// @param sharedContentAccessLevel Shared content access level.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                      originalFolderName:(nullable NSString *)originalFolderName
-                       sharingPermission:(nullable NSString *)sharingPermission
-                        sharedFolderType:(nullable NSString *)sharedFolderType;
-
-///
-/// Convenience constructor (exposes only non-nullable instance variables with
-/// no default value).
-///
-/// @param targetAssetIndex Target asset position in the Assets list.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex;
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
