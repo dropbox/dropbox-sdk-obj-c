@@ -18,6 +18,9 @@
 #import "DBFILEPROPERTIESPropertyGroupTemplate.h"
 #import "DBFILEPROPERTIESTemplateError.h"
 #import "DBFILEPROPERTIESUpdateTemplateResult.h"
+#import "DBFILESContentSyncSetting.h"
+#import "DBFILESSyncSetting.h"
+#import "DBFILESSyncSettingsError.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTEAMActiveWebSession.h"
@@ -129,6 +132,7 @@
 #import "DBTEAMTeamFolderRenameError.h"
 #import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import "DBTEAMTeamFolderUpdateSyncSettingsError.h"
 #import "DBTEAMTeamGetInfoResult.h"
 #import "DBTEAMTeamMemberInfo.h"
 #import "DBTEAMTeamMemberProfile.h"
@@ -205,6 +209,7 @@ static DBRoute *DBTEAMTeamFolderList;
 static DBRoute *DBTEAMTeamFolderListContinue;
 static DBRoute *DBTEAMTeamFolderPermanentlyDelete;
 static DBRoute *DBTEAMTeamFolderRename;
+static DBRoute *DBTEAMTeamFolderUpdateSyncSettings;
 static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
 
 + (DBRoute *)DBTEAMDevicesListMemberDevices {
@@ -1375,6 +1380,24 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                            dataStructDeserialBlock:nil];
   }
   return DBTEAMTeamFolderRename;
+}
+
++ (DBRoute *)DBTEAMTeamFolderUpdateSyncSettings {
+  if (!DBTEAMTeamFolderUpdateSyncSettings) {
+    DBTEAMTeamFolderUpdateSyncSettings = [[DBRoute alloc] init:@"team_folder/update_sync_settings"
+                                                    namespace_:@"team"
+                                                    deprecated:@NO
+                                                    resultType:[DBTEAMTeamFolderMetadata class]
+                                                     errorType:[DBTEAMTeamFolderUpdateSyncSettingsError class]
+                                                         attrs:@{
+                                                           @"auth" : @"team",
+                                                           @"host" : @"api",
+                                                           @"style" : @"rpc"
+                                                         }
+                                         dataStructSerialBlock:nil
+                                       dataStructDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderUpdateSyncSettings;
 }
 
 + (DBRoute *)DBTEAMTokenGetAuthenticatedAdmin {

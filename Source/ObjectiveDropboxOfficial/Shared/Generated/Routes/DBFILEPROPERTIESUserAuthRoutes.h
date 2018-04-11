@@ -84,8 +84,8 @@ propertiesOverwrite:(NSString *)path
 
 ///
 /// Permanently removes the specified property group from the file. To remove specific property field key value pairs,
-/// see `propertiesUpdate`. To update a template, see `templatesUpdateForUser` or `templatesUpdateForTeam`. Templates
-/// can't be removed once created.
+/// see `propertiesUpdate`. To update a template, see `templatesUpdateForUser` or `templatesUpdateForTeam`. To remove a
+/// template, see `templatesRemoveForUser` or `templatesRemoveForTeam`.
 ///
 /// @param path A unique identifier for the file or folder.
 /// @param propertyTemplateIds A list of identifiers for a template created by `templatesAddForUser` or

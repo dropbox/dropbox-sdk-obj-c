@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentAddMemberDetails` struct.
 ///
-/// Added users and/or groups to the membership of a shared file or folder.
+/// Added users and/or groups to shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

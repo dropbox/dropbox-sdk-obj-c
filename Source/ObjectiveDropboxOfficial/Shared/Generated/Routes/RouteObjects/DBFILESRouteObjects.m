@@ -22,6 +22,10 @@
 #import "DBFILEPROPERTIESTemplateError.h"
 #import "DBFILEPROPERTIESUpdatePropertiesError.h"
 #import "DBFILESAlphaGetMetadataError.h"
+#import "DBFILESCreateFolderBatchError.h"
+#import "DBFILESCreateFolderBatchJobStatus.h"
+#import "DBFILESCreateFolderBatchLaunch.h"
+#import "DBFILESCreateFolderBatchResult.h"
 #import "DBFILESCreateFolderError.h"
 #import "DBFILESCreateFolderResult.h"
 #import "DBFILESDeleteBatchError.h"
@@ -74,6 +78,7 @@
 #import "DBFILESSearchError.h"
 #import "DBFILESSearchMatch.h"
 #import "DBFILESSearchResult.h"
+#import "DBFILESSymlinkInfo.h"
 #import "DBFILESThumbnailError.h"
 #import "DBFILESUploadError.h"
 #import "DBFILESUploadErrorWithProperties.h"
@@ -101,6 +106,8 @@ static DBRoute *DBFILESDCopyReferenceGet;
 static DBRoute *DBFILESDCopyReferenceSave;
 static DBRoute *DBFILESDCopyV2;
 static DBRoute *DBFILESCreateFolder;
+static DBRoute *DBFILESCreateFolderBatch;
+static DBRoute *DBFILESCreateFolderBatchCheck;
 static DBRoute *DBFILESCreateFolderV2;
 static DBRoute *DBFILESDelete_;
 static DBRoute *DBFILESDeleteBatch;
@@ -301,6 +308,42 @@ static DBRoute *DBFILESUploadSessionStart;
                         dataStructDeserialBlock:nil];
   }
   return DBFILESCreateFolder;
+}
+
++ (DBRoute *)DBFILESCreateFolderBatch {
+  if (!DBFILESCreateFolderBatch) {
+    DBFILESCreateFolderBatch = [[DBRoute alloc] init:@"create_folder_batch"
+                                          namespace_:@"files"
+                                          deprecated:@NO
+                                          resultType:[DBFILESCreateFolderBatchLaunch class]
+                                           errorType:nil
+                                               attrs:@{
+                                                 @"auth" : @"user",
+                                                 @"host" : @"api",
+                                                 @"style" : @"rpc"
+                                               }
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
+  }
+  return DBFILESCreateFolderBatch;
+}
+
++ (DBRoute *)DBFILESCreateFolderBatchCheck {
+  if (!DBFILESCreateFolderBatchCheck) {
+    DBFILESCreateFolderBatchCheck = [[DBRoute alloc] init:@"create_folder_batch/check"
+                                               namespace_:@"files"
+                                               deprecated:@NO
+                                               resultType:[DBFILESCreateFolderBatchJobStatus class]
+                                                errorType:[DBASYNCPollError class]
+                                                    attrs:@{
+                                                      @"auth" : @"user",
+                                                      @"host" : @"api",
+                                                      @"style" : @"rpc"
+                                                    }
+                                    dataStructSerialBlock:nil
+                                  dataStructDeserialBlock:nil];
+  }
+  return DBFILESCreateFolderBatchCheck;
 }
 
 + (DBRoute *)DBFILESCreateFolderV2 {

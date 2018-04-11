@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentAddInviteesDetails` struct.
 ///
-/// Sent an email invitation to the membership of a shared file or folder.
+/// Invited user to Dropbox and added them to shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

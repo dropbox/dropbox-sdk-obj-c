@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentUnshareDetails` struct.
 ///
-/// Unshared a shared file or folder by clearing its membership and turning off
-/// its link.
+/// Unshared file/folder by clearing membership and turning off link.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

@@ -10,6 +10,7 @@
 #import "DBTEAMLOGDeviceSessionLogInfo.h"
 
 @class DBTEAMLOGLegacyDeviceSessionLogInfo;
+@class DBTEAMLOGSessionLogInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBTEAMLOGLegacyDeviceSessionLogInfo : DBTEAMLOGDeviceSessionLogInfo <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
+
+/// Session unique id. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGSessionLogInfo *sessionInfo;
 
 /// The device name. Might be missing due to historical data gap.
 @property (nonatomic, readonly, copy, nullable) NSString *displayName;
@@ -61,14 +65,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param sessionId Session unique id. Might be missing due to historical data
-/// gap.
 /// @param ipAddress The IP address of the last activity from this session.
 /// Might be missing due to historical data gap.
 /// @param created The time this session was created. Might be missing due to
 /// historical data gap.
 /// @param updated The time of the last activity from this session. Might be
 /// missing due to historical data gap.
+/// @param sessionInfo Session unique id. Might be missing due to historical
+/// data gap.
 /// @param displayName The device name. Might be missing due to historical data
 /// gap.
 /// @param isEmmManaged Is device managed by emm. Might be missing due to
@@ -88,10 +92,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithSessionId:(nullable NSString *)sessionId
-                        ipAddress:(nullable NSString *)ipAddress
+- (instancetype)initWithIpAddress:(nullable NSString *)ipAddress
                           created:(nullable NSDate *)created
                           updated:(nullable NSDate *)updated
+                      sessionInfo:(nullable DBTEAMLOGSessionLogInfo *)sessionInfo
                       displayName:(nullable NSString *)displayName
                      isEmmManaged:(nullable NSNumber *)isEmmManaged
                          platform:(nullable NSString *)platform

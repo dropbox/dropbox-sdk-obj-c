@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentChangeMemberRoleDetails` struct.
 ///
-/// Changed the access type of a shared file or folder member.
+/// Changed access type of shared file/folder member.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

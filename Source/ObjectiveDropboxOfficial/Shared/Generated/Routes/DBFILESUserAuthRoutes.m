@@ -34,6 +34,11 @@
 #import "DBFILESCommitInfo.h"
 #import "DBFILESCommitInfoWithProperties.h"
 #import "DBFILESCreateFolderArg.h"
+#import "DBFILESCreateFolderBatchArg.h"
+#import "DBFILESCreateFolderBatchError.h"
+#import "DBFILESCreateFolderBatchJobStatus.h"
+#import "DBFILESCreateFolderBatchLaunch.h"
+#import "DBFILESCreateFolderBatchResult.h"
 #import "DBFILESCreateFolderError.h"
 #import "DBFILESCreateFolderResult.h"
 #import "DBFILESDeleteArg.h"
@@ -110,9 +115,11 @@
 #import "DBFILESSearchMode.h"
 #import "DBFILESSearchResult.h"
 #import "DBFILESSharedLink.h"
+#import "DBFILESSymlinkInfo.h"
 #import "DBFILESThumbnailArg.h"
 #import "DBFILESThumbnailError.h"
 #import "DBFILESThumbnailFormat.h"
+#import "DBFILESThumbnailMode.h"
 #import "DBFILESThumbnailSize.h"
 #import "DBFILESUploadError.h"
 #import "DBFILESUploadErrorWithProperties.h"
@@ -325,6 +332,27 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)createFolderBatch:(NSArray<NSString *> *)paths {
+  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderBatch;
+  DBFILESCreateFolderBatchArg *arg = [[DBFILESCreateFolderBatchArg alloc] initWithPaths:paths];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)createFolderBatch:(NSArray<NSString *> *)paths
+                      autorename:(NSNumber *)autorename
+                      forceAsync:(NSNumber *)forceAsync {
+  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderBatch;
+  DBFILESCreateFolderBatchArg *arg =
+      [[DBFILESCreateFolderBatchArg alloc] initWithPaths:paths autorename:autorename forceAsync:forceAsync];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)createFolderBatchCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderBatchCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)createFolderV2:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderV2;
   DBFILESCreateFolderArg *arg = [[DBFILESCreateFolderArg alloc] initWithPath:path];
@@ -343,6 +371,12 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)delete_:(NSString *)path parentRev:(NSString *)parentRev {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDelete_;
+  DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path parentRev:parentRev];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)deleteBatch:(NSArray<DBFILESDeleteArg *> *)entries {
   DBRoute *route = DBFILESRouteObjects.DBFILESDeleteBatch;
   DBFILESDeleteBatchArg *arg = [[DBFILESDeleteBatchArg alloc] initWithEntries:entries];
@@ -358,6 +392,12 @@
 - (DBRpcTask *)deleteV2:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESDeleteV2;
   DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)deleteV2:(NSString *)path parentRev:(NSString *)parentRev {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDeleteV2;
+  DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path parentRev:parentRev];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -581,10 +621,11 @@
 - (DBDownloadUrlTask *)getThumbnailUrl:(NSString *)path
                                 format:(DBFILESThumbnailFormat *)format
                                   size:(DBFILESThumbnailSize *)size
+                                  mode:(DBFILESThumbnailMode *)mode
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnail;
-  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size];
+  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size mode:mode];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
@@ -606,12 +647,13 @@
 - (DBDownloadUrlTask *)getThumbnailUrl:(NSString *)path
                                 format:(DBFILESThumbnailFormat *)format
                                   size:(DBFILESThumbnailSize *)size
+                                  mode:(DBFILESThumbnailMode *)mode
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination
                        byteOffsetStart:(NSNumber *)byteOffsetStart
                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnail;
-  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size];
+  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size mode:mode];
   return [self.client requestDownload:route
                                   arg:arg
                             overwrite:overwrite
@@ -628,9 +670,10 @@
 
 - (DBDownloadDataTask *)getThumbnailData:(NSString *)path
                                   format:(DBFILESThumbnailFormat *)format
-                                    size:(DBFILESThumbnailSize *)size {
+                                    size:(DBFILESThumbnailSize *)size
+                                    mode:(DBFILESThumbnailMode *)mode {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnail;
-  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size];
+  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size mode:mode];
   return [self.client requestDownload:route arg:arg];
 }
 
@@ -645,10 +688,11 @@
 - (DBDownloadDataTask *)getThumbnailData:(NSString *)path
                                   format:(DBFILESThumbnailFormat *)format
                                     size:(DBFILESThumbnailSize *)size
+                                    mode:(DBFILESThumbnailMode *)mode
                          byteOffsetStart:(NSNumber *)byteOffsetStart
                            byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnail;
-  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size];
+  DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size mode:mode];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
@@ -811,6 +855,12 @@
 - (DBRpcTask *)permanentlyDelete:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESPermanentlyDelete;
   DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)permanentlyDelete:(NSString *)path parentRev:(NSString *)parentRev {
+  DBRoute *route = DBFILESRouteObjects.DBFILESPermanentlyDelete;
+  DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path parentRev:parentRev];
   return [self.client requestRpc:route arg:arg];
 }
 

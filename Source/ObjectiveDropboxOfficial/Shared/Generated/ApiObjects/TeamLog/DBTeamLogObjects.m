@@ -3919,6 +3919,7 @@
 #import "DBTEAMLOGFolderLogInfo.h"
 #import "DBTEAMLOGPaperDocumentLogInfo.h"
 #import "DBTEAMLOGPaperFolderLogInfo.h"
+#import "DBTEAMLOGShowcaseDocumentLogInfo.h"
 
 #pragma mark - API Object
 
@@ -3928,6 +3929,7 @@
 @synthesize folder = _folder;
 @synthesize paperDocument = _paperDocument;
 @synthesize paperFolder = _paperFolder;
+@synthesize showcaseDocument = _showcaseDocument;
 
 #pragma mark - Constructors
 
@@ -3963,6 +3965,15 @@
   if (self) {
     _tag = DBTEAMLOGAssetLogInfoPaperFolder;
     _paperFolder = paperFolder;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseDocument:(DBTEAMLOGShowcaseDocumentLogInfo *)showcaseDocument {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGAssetLogInfoShowcaseDocument;
+    _showcaseDocument = showcaseDocument;
   }
   return self;
 }
@@ -4009,6 +4020,14 @@
   return _paperFolder;
 }
 
+- (DBTEAMLOGShowcaseDocumentLogInfo *)showcaseDocument {
+  if (![self isShowcaseDocument]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGAssetLogInfoShowcaseDocument, but was %@.", [self tagName]];
+  }
+  return _showcaseDocument;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isFile {
@@ -4027,6 +4046,10 @@
   return _tag == DBTEAMLOGAssetLogInfoPaperFolder;
 }
 
+- (BOOL)isShowcaseDocument {
+  return _tag == DBTEAMLOGAssetLogInfoShowcaseDocument;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGAssetLogInfoOther;
 }
@@ -4041,6 +4064,8 @@
     return @"DBTEAMLOGAssetLogInfoPaperDocument";
   case DBTEAMLOGAssetLogInfoPaperFolder:
     return @"DBTEAMLOGAssetLogInfoPaperFolder";
+  case DBTEAMLOGAssetLogInfoShowcaseDocument:
+    return @"DBTEAMLOGAssetLogInfoShowcaseDocument";
   case DBTEAMLOGAssetLogInfoOther:
     return @"DBTEAMLOGAssetLogInfoOther";
   }
@@ -4087,6 +4112,8 @@
     result = prime * result + [self.paperDocument hash];
   case DBTEAMLOGAssetLogInfoPaperFolder:
     result = prime * result + [self.paperFolder hash];
+  case DBTEAMLOGAssetLogInfoShowcaseDocument:
+    result = prime * result + [self.showcaseDocument hash];
   case DBTEAMLOGAssetLogInfoOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -4122,6 +4149,8 @@
     return [self.paperDocument isEqual:anAssetLogInfo.paperDocument];
   case DBTEAMLOGAssetLogInfoPaperFolder:
     return [self.paperFolder isEqual:anAssetLogInfo.paperFolder];
+  case DBTEAMLOGAssetLogInfoShowcaseDocument:
+    return [self.showcaseDocument isEqual:anAssetLogInfo.showcaseDocument];
   case DBTEAMLOGAssetLogInfoOther:
     return [[self tagName] isEqual:[anAssetLogInfo tagName]];
   }
@@ -4150,6 +4179,10 @@
   } else if ([valueObj isPaperFolder]) {
     jsonDict[@"paper_folder"] = [[DBTEAMLOGPaperFolderLogInfoSerializer serialize:valueObj.paperFolder] mutableCopy];
     jsonDict[@".tag"] = @"paper_folder";
+  } else if ([valueObj isShowcaseDocument]) {
+    jsonDict[@"showcase_document"] =
+        [[DBTEAMLOGShowcaseDocumentLogInfoSerializer serialize:valueObj.showcaseDocument] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_document";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -4174,6 +4207,10 @@
   } else if ([tag isEqualToString:@"paper_folder"]) {
     DBTEAMLOGPaperFolderLogInfo *paperFolder = [DBTEAMLOGPaperFolderLogInfoSerializer deserialize:valueDict];
     return [[DBTEAMLOGAssetLogInfo alloc] initWithPaperFolder:paperFolder];
+  } else if ([tag isEqualToString:@"showcase_document"]) {
+    DBTEAMLOGShowcaseDocumentLogInfo *showcaseDocument =
+        [DBTEAMLOGShowcaseDocumentLogInfoSerializer deserialize:valueDict];
+    return [[DBTEAMLOGAssetLogInfo alloc] initWithShowcaseDocument:showcaseDocument];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGAssetLogInfo alloc] initWithOther];
   } else {
@@ -5599,14 +5636,10 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithSessionId:(NSString *)sessionId
-                        ipAddress:(NSString *)ipAddress
-                          created:(NSDate *)created
-                          updated:(NSDate *)updated {
+- (instancetype)initWithIpAddress:(NSString *)ipAddress created:(NSDate *)created updated:(NSDate *)updated {
 
   self = [super init];
   if (self) {
-    _sessionId = sessionId;
     _ipAddress = ipAddress;
     _created = created;
     _updated = updated;
@@ -5615,7 +5648,7 @@
 }
 
 - (instancetype)initDefault {
-  return [self initWithSessionId:nil ipAddress:nil created:nil updated:nil];
+  return [self initWithIpAddress:nil created:nil updated:nil];
 }
 
 #pragma mark - Serialization methods
@@ -5648,9 +5681,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
-  }
   if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
@@ -5680,11 +5710,6 @@
   if (self == aDeviceSessionLogInfo) {
     return YES;
   }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aDeviceSessionLogInfo.sessionId]) {
-      return NO;
-    }
-  }
   if (self.ipAddress) {
     if (![self.ipAddress isEqual:aDeviceSessionLogInfo.ipAddress]) {
       return NO;
@@ -5712,9 +5737,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGDeviceSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
-  }
   if (valueObj.ipAddress) {
     jsonDict[@"ip_address"] = valueObj.ipAddress;
   }
@@ -5772,7 +5794,6 @@
     return [DBTEAMLOGLegacyDeviceSessionLogInfoSerializer deserialize:valueDict];
   }
 
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
   NSDate *created = valueDict[@"created"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
@@ -5781,10 +5802,7 @@
                         ? [DBNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                         : nil;
 
-  return [[DBTEAMLOGDeviceSessionLogInfo alloc] initWithSessionId:sessionId
-                                                        ipAddress:ipAddress
-                                                          created:created
-                                                          updated:updated];
+  return [[DBTEAMLOGDeviceSessionLogInfo alloc] initWithIpAddress:ipAddress created:created updated:updated];
 }
 
 @end
@@ -5793,6 +5811,7 @@
 #import "DBStoneValidators.h"
 #import "DBTEAMDesktopPlatform.h"
 #import "DBTEAMLOGDesktopDeviceSessionLogInfo.h"
+#import "DBTEAMLOGDesktopSessionLogInfo.h"
 #import "DBTEAMLOGDeviceSessionLogInfo.h"
 
 #pragma mark - API Object
@@ -5805,18 +5824,19 @@
                       clientType:(DBTEAMDesktopPlatform *)clientType
                         platform:(NSString *)platform
        isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported
-                       sessionId:(NSString *)sessionId
                        ipAddress:(NSString *)ipAddress
                          created:(NSDate *)created
                          updated:(NSDate *)updated
+                     sessionInfo:(DBTEAMLOGDesktopSessionLogInfo *)sessionInfo
                    clientVersion:(NSString *)clientVersion {
   [DBStoneValidators nonnullValidator:nil](hostName);
   [DBStoneValidators nonnullValidator:nil](clientType);
   [DBStoneValidators nonnullValidator:nil](platform);
   [DBStoneValidators nonnullValidator:nil](isDeleteOnUnlinkSupported);
 
-  self = [super initWithSessionId:sessionId ipAddress:ipAddress created:created updated:updated];
+  self = [super initWithIpAddress:ipAddress created:created updated:updated];
   if (self) {
+    _sessionInfo = sessionInfo;
     _hostName = hostName;
     _clientType = clientType;
     _clientVersion = clientVersion;
@@ -5834,10 +5854,10 @@
                      clientType:clientType
                        platform:platform
       isDeleteOnUnlinkSupported:isDeleteOnUnlinkSupported
-                      sessionId:nil
                       ipAddress:nil
                         created:nil
                         updated:nil
+                    sessionInfo:nil
                   clientVersion:nil];
 }
 
@@ -5875,9 +5895,6 @@
   result = prime * result + [self.clientType hash];
   result = prime * result + [self.platform hash];
   result = prime * result + [self.isDeleteOnUnlinkSupported hash];
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
-  }
   if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
@@ -5886,6 +5903,9 @@
   }
   if (self.updated != nil) {
     result = prime * result + [self.updated hash];
+  }
+  if (self.sessionInfo != nil) {
+    result = prime * result + [self.sessionInfo hash];
   }
   if (self.clientVersion != nil) {
     result = prime * result + [self.clientVersion hash];
@@ -5922,11 +5942,6 @@
   if (![self.isDeleteOnUnlinkSupported isEqual:aDesktopDeviceSessionLogInfo.isDeleteOnUnlinkSupported]) {
     return NO;
   }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aDesktopDeviceSessionLogInfo.sessionId]) {
-      return NO;
-    }
-  }
   if (self.ipAddress) {
     if (![self.ipAddress isEqual:aDesktopDeviceSessionLogInfo.ipAddress]) {
       return NO;
@@ -5939,6 +5954,11 @@
   }
   if (self.updated) {
     if (![self.updated isEqual:aDesktopDeviceSessionLogInfo.updated]) {
+      return NO;
+    }
+  }
+  if (self.sessionInfo) {
+    if (![self.sessionInfo isEqual:aDesktopDeviceSessionLogInfo.sessionInfo]) {
       return NO;
     }
   }
@@ -5963,9 +5983,6 @@
   jsonDict[@"client_type"] = [DBTEAMDesktopPlatformSerializer serialize:valueObj.clientType];
   jsonDict[@"platform"] = valueObj.platform;
   jsonDict[@"is_delete_on_unlink_supported"] = valueObj.isDeleteOnUnlinkSupported;
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
-  }
   if (valueObj.ipAddress) {
     jsonDict[@"ip_address"] = valueObj.ipAddress;
   }
@@ -5974,6 +5991,9 @@
   }
   if (valueObj.updated) {
     jsonDict[@"updated"] = [DBNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+  if (valueObj.sessionInfo) {
+    jsonDict[@"session_info"] = [DBTEAMLOGDesktopSessionLogInfoSerializer serialize:valueObj.sessionInfo];
   }
   if (valueObj.clientVersion) {
     jsonDict[@"client_version"] = valueObj.clientVersion;
@@ -5987,7 +6007,6 @@
   DBTEAMDesktopPlatform *clientType = [DBTEAMDesktopPlatformSerializer deserialize:valueDict[@"client_type"]];
   NSString *platform = valueDict[@"platform"];
   NSNumber *isDeleteOnUnlinkSupported = valueDict[@"is_delete_on_unlink_supported"];
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
   NSDate *created = valueDict[@"created"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
@@ -5995,16 +6014,19 @@
   NSDate *updated = valueDict[@"updated"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                         : nil;
+  DBTEAMLOGDesktopSessionLogInfo *sessionInfo =
+      valueDict[@"session_info"] ? [DBTEAMLOGDesktopSessionLogInfoSerializer deserialize:valueDict[@"session_info"]]
+                                 : nil;
   NSString *clientVersion = valueDict[@"client_version"] ?: nil;
 
   return [[DBTEAMLOGDesktopDeviceSessionLogInfo alloc] initWithHostName:hostName
                                                              clientType:clientType
                                                                platform:platform
                                               isDeleteOnUnlinkSupported:isDeleteOnUnlinkSupported
-                                                              sessionId:sessionId
                                                               ipAddress:ipAddress
                                                                 created:created
                                                                 updated:updated
+                                                            sessionInfo:sessionInfo
                                                           clientVersion:clientVersion];
 }
 
@@ -7559,13 +7581,16 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceSessionInfo:(DBTEAMLOGDeviceSessionLogInfo *)deviceSessionInfo {
-  [DBStoneValidators nonnullValidator:nil](deviceSessionInfo);
 
   self = [super init];
   if (self) {
     _deviceSessionInfo = deviceSessionInfo;
   }
   return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithDeviceSessionInfo:nil];
 }
 
 #pragma mark - Serialization methods
@@ -7598,7 +7623,9 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.deviceSessionInfo hash];
+  if (self.deviceSessionInfo != nil) {
+    result = prime * result + [self.deviceSessionInfo hash];
+  }
 
   return prime * result;
 }
@@ -7619,8 +7646,10 @@
   if (self == aDeviceChangeIpMobileDetails) {
     return YES;
   }
-  if (![self.deviceSessionInfo isEqual:aDeviceChangeIpMobileDetails.deviceSessionInfo]) {
-    return NO;
+  if (self.deviceSessionInfo) {
+    if (![self.deviceSessionInfo isEqual:aDeviceChangeIpMobileDetails.deviceSessionInfo]) {
+      return NO;
+    }
   }
   return YES;
 }
@@ -7634,14 +7663,18 @@
 + (NSDictionary *)serialize:(DBTEAMLOGDeviceChangeIpMobileDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"device_session_info"] = [DBTEAMLOGDeviceSessionLogInfoSerializer serialize:valueObj.deviceSessionInfo];
+  if (valueObj.deviceSessionInfo) {
+    jsonDict[@"device_session_info"] = [DBTEAMLOGDeviceSessionLogInfoSerializer serialize:valueObj.deviceSessionInfo];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGDeviceChangeIpMobileDetails *)deserialize:(NSDictionary *)valueDict {
   DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo =
-      [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]];
+      valueDict[@"device_session_info"]
+          ? [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]]
+          : nil;
 
   return [[DBTEAMLOGDeviceChangeIpMobileDetails alloc] initWithDeviceSessionInfo:deviceSessionInfo];
 }
@@ -7750,7 +7783,6 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGDeviceChangeIpWebDetails.h"
-#import "DBTEAMLOGDeviceSessionLogInfo.h"
 
 #pragma mark - API Object
 
@@ -7758,20 +7790,14 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithUserAgent:(NSString *)userAgent
-                deviceSessionInfo:(DBTEAMLOGDeviceSessionLogInfo *)deviceSessionInfo {
+- (instancetype)initWithUserAgent:(NSString *)userAgent {
   [DBStoneValidators nonnullValidator:nil](userAgent);
 
   self = [super init];
   if (self) {
-    _deviceSessionInfo = deviceSessionInfo;
     _userAgent = userAgent;
   }
   return self;
-}
-
-- (instancetype)initWithUserAgent:(NSString *)userAgent {
-  return [self initWithUserAgent:userAgent deviceSessionInfo:nil];
 }
 
 #pragma mark - Serialization methods
@@ -7805,9 +7831,6 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.userAgent hash];
-  if (self.deviceSessionInfo != nil) {
-    result = prime * result + [self.deviceSessionInfo hash];
-  }
 
   return prime * result;
 }
@@ -7831,11 +7854,6 @@
   if (![self.userAgent isEqual:aDeviceChangeIpWebDetails.userAgent]) {
     return NO;
   }
-  if (self.deviceSessionInfo) {
-    if (![self.deviceSessionInfo isEqual:aDeviceChangeIpWebDetails.deviceSessionInfo]) {
-      return NO;
-    }
-  }
   return YES;
 }
 
@@ -7849,21 +7867,14 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"user_agent"] = valueObj.userAgent;
-  if (valueObj.deviceSessionInfo) {
-    jsonDict[@"device_session_info"] = [DBTEAMLOGDeviceSessionLogInfoSerializer serialize:valueObj.deviceSessionInfo];
-  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGDeviceChangeIpWebDetails *)deserialize:(NSDictionary *)valueDict {
   NSString *userAgent = valueDict[@"user_agent"];
-  DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo =
-      valueDict[@"device_session_info"]
-          ? [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]]
-          : nil;
 
-  return [[DBTEAMLOGDeviceChangeIpWebDetails alloc] initWithUserAgent:userAgent deviceSessionInfo:deviceSessionInfo];
+  return [[DBTEAMLOGDeviceChangeIpWebDetails alloc] initWithUserAgent:userAgent];
 }
 
 @end
@@ -7970,6 +7981,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGDeviceDeleteOnUnlinkFailDetails.h"
+#import "DBTEAMLOGSessionLogInfo.h"
 
 #pragma mark - API Object
 
@@ -7978,13 +7990,13 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithNumFailures:(NSNumber *)numFailures
-                          sessionId:(NSString *)sessionId
+                        sessionInfo:(DBTEAMLOGSessionLogInfo *)sessionInfo
                         displayName:(NSString *)displayName {
   [DBStoneValidators nonnullValidator:nil](numFailures);
 
   self = [super init];
   if (self) {
-    _sessionId = sessionId;
+    _sessionInfo = sessionInfo;
     _displayName = displayName;
     _numFailures = numFailures;
   }
@@ -7992,7 +8004,7 @@
 }
 
 - (instancetype)initWithNumFailures:(NSNumber *)numFailures {
-  return [self initWithNumFailures:numFailures sessionId:nil displayName:nil];
+  return [self initWithNumFailures:numFailures sessionInfo:nil displayName:nil];
 }
 
 #pragma mark - Serialization methods
@@ -8026,8 +8038,8 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.numFailures hash];
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
+  if (self.sessionInfo != nil) {
+    result = prime * result + [self.sessionInfo hash];
   }
   if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
@@ -8056,8 +8068,8 @@
   if (![self.numFailures isEqual:aDeviceDeleteOnUnlinkFailDetails.numFailures]) {
     return NO;
   }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aDeviceDeleteOnUnlinkFailDetails.sessionId]) {
+  if (self.sessionInfo) {
+    if (![self.sessionInfo isEqual:aDeviceDeleteOnUnlinkFailDetails.sessionInfo]) {
       return NO;
     }
   }
@@ -8079,8 +8091,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"num_failures"] = valueObj.numFailures;
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
+  if (valueObj.sessionInfo) {
+    jsonDict[@"session_info"] = [DBTEAMLOGSessionLogInfoSerializer serialize:valueObj.sessionInfo];
   }
   if (valueObj.displayName) {
     jsonDict[@"display_name"] = valueObj.displayName;
@@ -8091,11 +8103,12 @@
 
 + (DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)deserialize:(NSDictionary *)valueDict {
   NSNumber *numFailures = valueDict[@"num_failures"];
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
+  DBTEAMLOGSessionLogInfo *sessionInfo =
+      valueDict[@"session_info"] ? [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
 
   return [[DBTEAMLOGDeviceDeleteOnUnlinkFailDetails alloc] initWithNumFailures:numFailures
-                                                                     sessionId:sessionId
+                                                                   sessionInfo:sessionInfo
                                                                    displayName:displayName];
 }
 
@@ -8203,6 +8216,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails.h"
+#import "DBTEAMLOGSessionLogInfo.h"
 
 #pragma mark - API Object
 
@@ -8210,18 +8224,18 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithSessionId:(NSString *)sessionId displayName:(NSString *)displayName {
+- (instancetype)initWithSessionInfo:(DBTEAMLOGSessionLogInfo *)sessionInfo displayName:(NSString *)displayName {
 
   self = [super init];
   if (self) {
-    _sessionId = sessionId;
+    _sessionInfo = sessionInfo;
     _displayName = displayName;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithSessionId:nil displayName:nil];
+  return [self initWithSessionInfo:nil displayName:nil];
 }
 
 #pragma mark - Serialization methods
@@ -8254,8 +8268,8 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
+  if (self.sessionInfo != nil) {
+    result = prime * result + [self.sessionInfo hash];
   }
   if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
@@ -8281,8 +8295,8 @@
   if (self == aDeviceDeleteOnUnlinkSuccessDetails) {
     return YES;
   }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aDeviceDeleteOnUnlinkSuccessDetails.sessionId]) {
+  if (self.sessionInfo) {
+    if (![self.sessionInfo isEqual:aDeviceDeleteOnUnlinkSuccessDetails.sessionInfo]) {
       return NO;
     }
   }
@@ -8303,8 +8317,8 @@
 + (NSDictionary *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
+  if (valueObj.sessionInfo) {
+    jsonDict[@"session_info"] = [DBTEAMLOGSessionLogInfoSerializer serialize:valueObj.sessionInfo];
   }
   if (valueObj.displayName) {
     jsonDict[@"display_name"] = valueObj.displayName;
@@ -8314,10 +8328,11 @@
 }
 
 + (DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails *)deserialize:(NSDictionary *)valueDict {
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
+  DBTEAMLOGSessionLogInfo *sessionInfo =
+      valueDict[@"session_info"] ? [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
 
-  return [[DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails alloc] initWithSessionId:sessionId displayName:displayName];
+  return [[DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails alloc] initWithSessionInfo:sessionInfo displayName:displayName];
 }
 
 @end
@@ -8650,13 +8665,16 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeviceSessionInfo:(DBTEAMLOGDeviceSessionLogInfo *)deviceSessionInfo {
-  [DBStoneValidators nonnullValidator:nil](deviceSessionInfo);
 
   self = [super init];
   if (self) {
     _deviceSessionInfo = deviceSessionInfo;
   }
   return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithDeviceSessionInfo:nil];
 }
 
 #pragma mark - Serialization methods
@@ -8689,7 +8707,9 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.deviceSessionInfo hash];
+  if (self.deviceSessionInfo != nil) {
+    result = prime * result + [self.deviceSessionInfo hash];
+  }
 
   return prime * result;
 }
@@ -8710,8 +8730,10 @@
   if (self == aDeviceLinkSuccessDetails) {
     return YES;
   }
-  if (![self.deviceSessionInfo isEqual:aDeviceLinkSuccessDetails.deviceSessionInfo]) {
-    return NO;
+  if (self.deviceSessionInfo) {
+    if (![self.deviceSessionInfo isEqual:aDeviceLinkSuccessDetails.deviceSessionInfo]) {
+      return NO;
+    }
   }
   return YES;
 }
@@ -8725,14 +8747,18 @@
 + (NSDictionary *)serialize:(DBTEAMLOGDeviceLinkSuccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"device_session_info"] = [DBTEAMLOGDeviceSessionLogInfoSerializer serialize:valueObj.deviceSessionInfo];
+  if (valueObj.deviceSessionInfo) {
+    jsonDict[@"device_session_info"] = [DBTEAMLOGDeviceSessionLogInfoSerializer serialize:valueObj.deviceSessionInfo];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGDeviceLinkSuccessDetails *)deserialize:(NSDictionary *)valueDict {
   DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo =
-      [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]];
+      valueDict[@"device_session_info"]
+          ? [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]]
+          : nil;
 
   return [[DBTEAMLOGDeviceLinkSuccessDetails alloc] initWithDeviceSessionInfo:deviceSessionInfo];
 }
@@ -9396,6 +9422,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGDeviceUnlinkDetails.h"
+#import "DBTEAMLOGSessionLogInfo.h"
 
 #pragma mark - API Object
 
@@ -9404,13 +9431,13 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithDeleteData:(NSNumber *)deleteData
-                         sessionId:(NSString *)sessionId
+                       sessionInfo:(DBTEAMLOGSessionLogInfo *)sessionInfo
                        displayName:(NSString *)displayName {
   [DBStoneValidators nonnullValidator:nil](deleteData);
 
   self = [super init];
   if (self) {
-    _sessionId = sessionId;
+    _sessionInfo = sessionInfo;
     _displayName = displayName;
     _deleteData = deleteData;
   }
@@ -9418,7 +9445,7 @@
 }
 
 - (instancetype)initWithDeleteData:(NSNumber *)deleteData {
-  return [self initWithDeleteData:deleteData sessionId:nil displayName:nil];
+  return [self initWithDeleteData:deleteData sessionInfo:nil displayName:nil];
 }
 
 #pragma mark - Serialization methods
@@ -9452,8 +9479,8 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.deleteData hash];
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
+  if (self.sessionInfo != nil) {
+    result = prime * result + [self.sessionInfo hash];
   }
   if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
@@ -9481,8 +9508,8 @@
   if (![self.deleteData isEqual:aDeviceUnlinkDetails.deleteData]) {
     return NO;
   }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aDeviceUnlinkDetails.sessionId]) {
+  if (self.sessionInfo) {
+    if (![self.sessionInfo isEqual:aDeviceUnlinkDetails.sessionInfo]) {
       return NO;
     }
   }
@@ -9504,8 +9531,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"delete_data"] = valueObj.deleteData;
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
+  if (valueObj.sessionInfo) {
+    jsonDict[@"session_info"] = [DBTEAMLOGSessionLogInfoSerializer serialize:valueObj.sessionInfo];
   }
   if (valueObj.displayName) {
     jsonDict[@"display_name"] = valueObj.displayName;
@@ -9516,11 +9543,13 @@
 
 + (DBTEAMLOGDeviceUnlinkDetails *)deserialize:(NSDictionary *)valueDict {
   NSNumber *deleteData = valueDict[@"delete_data"];
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
+  DBTEAMLOGSessionLogInfo *sessionInfo =
+      valueDict[@"session_info"] ? [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
 
-  return
-      [[DBTEAMLOGDeviceUnlinkDetails alloc] initWithDeleteData:deleteData sessionId:sessionId displayName:displayName];
+  return [[DBTEAMLOGDeviceUnlinkDetails alloc] initWithDeleteData:deleteData
+                                                      sessionInfo:sessionInfo
+                                                      displayName:displayName];
 }
 
 @end
@@ -10381,11 +10410,8 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithDomainName:(NSArray<NSString *> *)domainName numRecipients:(NSNumber *)numRecipients {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil
-                                             maxItems:nil
-                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](domainName);
+- (instancetype)initWithDomainName:(NSString *)domainName numRecipients:(NSNumber *)numRecipients {
+  [DBStoneValidators nonnullValidator:nil](domainName);
   [DBStoneValidators nonnullValidator:nil](numRecipients);
 
   self = [super init];
@@ -10467,20 +10493,14 @@
 + (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"domain_name"] = [DBArraySerializer serialize:valueObj.domainName
-                                                withBlock:^id(id elem0) {
-                                                  return elem0;
-                                                }];
+  jsonDict[@"domain_name"] = valueObj.domainName;
   jsonDict[@"num_recipients"] = valueObj.numRecipients;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)deserialize:(NSDictionary *)valueDict {
-  NSArray<NSString *> *domainName = [DBArraySerializer deserialize:valueDict[@"domain_name"]
-                                                         withBlock:^id(id elem0) {
-                                                           return elem0;
-                                                         }];
+  NSString *domainName = valueDict[@"domain_name"];
   NSNumber *numRecipients = valueDict[@"num_recipients"];
 
   return [[DBTEAMLOGDomainInvitesEmailExistingUsersDetails alloc] initWithDomainName:domainName
@@ -13775,6 +13795,14 @@
   return self;
 }
 
+- (instancetype)initWithShowcase {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventCategoryShowcase;
+  }
+  return self;
+}
+
 - (instancetype)initWithSso {
   self = [super init];
   if (self) {
@@ -13879,6 +13907,10 @@
   return _tag == DBTEAMLOGEventCategorySharing;
 }
 
+- (BOOL)isShowcase {
+  return _tag == DBTEAMLOGEventCategoryShowcase;
+}
+
 - (BOOL)isSso {
   return _tag == DBTEAMLOGEventCategorySso;
 }
@@ -13931,6 +13963,8 @@
     return @"DBTEAMLOGEventCategoryReports";
   case DBTEAMLOGEventCategorySharing:
     return @"DBTEAMLOGEventCategorySharing";
+  case DBTEAMLOGEventCategoryShowcase:
+    return @"DBTEAMLOGEventCategoryShowcase";
   case DBTEAMLOGEventCategorySso:
     return @"DBTEAMLOGEventCategorySso";
   case DBTEAMLOGEventCategoryTeamFolders:
@@ -14005,6 +14039,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventCategorySharing:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventCategoryShowcase:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventCategorySso:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventCategoryTeamFolders:
@@ -14068,6 +14104,8 @@
     return [[self tagName] isEqual:[anEventCategory tagName]];
   case DBTEAMLOGEventCategorySharing:
     return [[self tagName] isEqual:[anEventCategory tagName]];
+  case DBTEAMLOGEventCategoryShowcase:
+    return [[self tagName] isEqual:[anEventCategory tagName]];
   case DBTEAMLOGEventCategorySso:
     return [[self tagName] isEqual:[anEventCategory tagName]];
   case DBTEAMLOGEventCategoryTeamFolders:
@@ -14119,6 +14157,8 @@
     jsonDict[@".tag"] = @"reports";
   } else if ([valueObj isSharing]) {
     jsonDict[@".tag"] = @"sharing";
+  } else if ([valueObj isShowcase]) {
+    jsonDict[@".tag"] = @"showcase";
   } else if ([valueObj isSso]) {
     jsonDict[@".tag"] = @"sso";
   } else if ([valueObj isTeamFolders]) {
@@ -14167,6 +14207,8 @@
     return [[DBTEAMLOGEventCategory alloc] initWithReports];
   } else if ([tag isEqualToString:@"sharing"]) {
     return [[DBTEAMLOGEventCategory alloc] initWithSharing];
+  } else if ([tag isEqualToString:@"showcase"]) {
+    return [[DBTEAMLOGEventCategory alloc] initWithShowcase];
   } else if ([tag isEqualToString:@"sso"]) {
     return [[DBTEAMLOGEventCategory alloc] initWithSso];
   } else if ([tag isEqualToString:@"team_folders"]) {
@@ -14275,6 +14317,8 @@
 #import "DBTEAMLOGGroupChangeMemberRoleDetails.h"
 #import "DBTEAMLOGGroupCreateDetails.h"
 #import "DBTEAMLOGGroupDeleteDetails.h"
+#import "DBTEAMLOGGroupDescriptionUpdatedDetails.h"
+#import "DBTEAMLOGGroupJoinPolicyUpdatedDetails.h"
 #import "DBTEAMLOGGroupMovedDetails.h"
 #import "DBTEAMLOGGroupRemoveExternalIdDetails.h"
 #import "DBTEAMLOGGroupRemoveMemberDetails.h"
@@ -14420,6 +14464,28 @@
 #import "DBTEAMLOGSharingChangeLinkPolicyDetails.h"
 #import "DBTEAMLOGSharingChangeMemberPolicyDetails.h"
 #import "DBTEAMLOGShmodelGroupShareDetails.h"
+#import "DBTEAMLOGShowcaseAccessGrantedDetails.h"
+#import "DBTEAMLOGShowcaseAddMemberDetails.h"
+#import "DBTEAMLOGShowcaseArchivedDetails.h"
+#import "DBTEAMLOGShowcaseCreatedDetails.h"
+#import "DBTEAMLOGShowcaseDeleteCommentDetails.h"
+#import "DBTEAMLOGShowcaseEditCommentDetails.h"
+#import "DBTEAMLOGShowcaseEditedDetails.h"
+#import "DBTEAMLOGShowcaseFileAddedDetails.h"
+#import "DBTEAMLOGShowcaseFileDownloadDetails.h"
+#import "DBTEAMLOGShowcaseFileRemovedDetails.h"
+#import "DBTEAMLOGShowcaseFileViewDetails.h"
+#import "DBTEAMLOGShowcasePermanentlyDeletedDetails.h"
+#import "DBTEAMLOGShowcasePostCommentDetails.h"
+#import "DBTEAMLOGShowcaseRemoveMemberDetails.h"
+#import "DBTEAMLOGShowcaseRenamedDetails.h"
+#import "DBTEAMLOGShowcaseRequestAccessDetails.h"
+#import "DBTEAMLOGShowcaseResolveCommentDetails.h"
+#import "DBTEAMLOGShowcaseRestoredDetails.h"
+#import "DBTEAMLOGShowcaseTrashedDetails.h"
+#import "DBTEAMLOGShowcaseUnresolveCommentDetails.h"
+#import "DBTEAMLOGShowcaseUntrashedDetails.h"
+#import "DBTEAMLOGShowcaseViewDetails.h"
 #import "DBTEAMLOGSignInAsSessionEndDetails.h"
 #import "DBTEAMLOGSignInAsSessionStartDetails.h"
 #import "DBTEAMLOGSmartSyncChangePolicyDetails.h"
@@ -14451,6 +14517,7 @@
 #import "DBTEAMLOGTeamProfileChangeLogoDetails.h"
 #import "DBTEAMLOGTeamProfileChangeNameDetails.h"
 #import "DBTEAMLOGTeamProfileRemoveLogoDetails.h"
+#import "DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails.h"
 #import "DBTEAMLOGTfaAddBackupPhoneDetails.h"
 #import "DBTEAMLOGTfaAddSecurityKeyDetails.h"
 #import "DBTEAMLOGTfaChangeBackupPhoneDetails.h"
@@ -14530,6 +14597,8 @@
 @synthesize groupChangeMemberRoleDetails = _groupChangeMemberRoleDetails;
 @synthesize groupCreateDetails = _groupCreateDetails;
 @synthesize groupDeleteDetails = _groupDeleteDetails;
+@synthesize groupDescriptionUpdatedDetails = _groupDescriptionUpdatedDetails;
+@synthesize groupJoinPolicyUpdatedDetails = _groupJoinPolicyUpdatedDetails;
 @synthesize groupMovedDetails = _groupMovedDetails;
 @synthesize groupRemoveExternalIdDetails = _groupRemoveExternalIdDetails;
 @synthesize groupRemoveMemberDetails = _groupRemoveMemberDetails;
@@ -14665,6 +14734,28 @@
 @synthesize sharedLinkViewDetails = _sharedLinkViewDetails;
 @synthesize sharedNoteOpenedDetails = _sharedNoteOpenedDetails;
 @synthesize shmodelGroupShareDetails = _shmodelGroupShareDetails;
+@synthesize showcaseAccessGrantedDetails = _showcaseAccessGrantedDetails;
+@synthesize showcaseAddMemberDetails = _showcaseAddMemberDetails;
+@synthesize showcaseArchivedDetails = _showcaseArchivedDetails;
+@synthesize showcaseCreatedDetails = _showcaseCreatedDetails;
+@synthesize showcaseDeleteCommentDetails = _showcaseDeleteCommentDetails;
+@synthesize showcaseEditedDetails = _showcaseEditedDetails;
+@synthesize showcaseEditCommentDetails = _showcaseEditCommentDetails;
+@synthesize showcaseFileAddedDetails = _showcaseFileAddedDetails;
+@synthesize showcaseFileDownloadDetails = _showcaseFileDownloadDetails;
+@synthesize showcaseFileRemovedDetails = _showcaseFileRemovedDetails;
+@synthesize showcaseFileViewDetails = _showcaseFileViewDetails;
+@synthesize showcasePermanentlyDeletedDetails = _showcasePermanentlyDeletedDetails;
+@synthesize showcasePostCommentDetails = _showcasePostCommentDetails;
+@synthesize showcaseRemoveMemberDetails = _showcaseRemoveMemberDetails;
+@synthesize showcaseRenamedDetails = _showcaseRenamedDetails;
+@synthesize showcaseRequestAccessDetails = _showcaseRequestAccessDetails;
+@synthesize showcaseResolveCommentDetails = _showcaseResolveCommentDetails;
+@synthesize showcaseRestoredDetails = _showcaseRestoredDetails;
+@synthesize showcaseTrashedDetails = _showcaseTrashedDetails;
+@synthesize showcaseUnresolveCommentDetails = _showcaseUnresolveCommentDetails;
+@synthesize showcaseUntrashedDetails = _showcaseUntrashedDetails;
+@synthesize showcaseViewDetails = _showcaseViewDetails;
 @synthesize ssoAddCertDetails = _ssoAddCertDetails;
 @synthesize ssoAddLoginUrlDetails = _ssoAddLoginUrlDetails;
 @synthesize ssoAddLogoutUrlDetails = _ssoAddLogoutUrlDetails;
@@ -14680,6 +14771,7 @@
 @synthesize teamFolderDowngradeDetails = _teamFolderDowngradeDetails;
 @synthesize teamFolderPermanentlyDeleteDetails = _teamFolderPermanentlyDeleteDetails;
 @synthesize teamFolderRenameDetails = _teamFolderRenameDetails;
+@synthesize teamSelectiveSyncSettingsChangedDetails = _teamSelectiveSyncSettingsChangedDetails;
 @synthesize accountCaptureChangePolicyDetails = _accountCaptureChangePolicyDetails;
 @synthesize allowDownloadDisabledDetails = _allowDownloadDisabledDetails;
 @synthesize allowDownloadEnabledDetails = _allowDownloadEnabledDetails;
@@ -15336,6 +15428,26 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsGroupDeleteDetails;
     _groupDeleteDetails = groupDeleteDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithGroupDescriptionUpdatedDetails:
+    (DBTEAMLOGGroupDescriptionUpdatedDetails *)groupDescriptionUpdatedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails;
+    _groupDescriptionUpdatedDetails = groupDescriptionUpdatedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithGroupJoinPolicyUpdatedDetails:
+    (DBTEAMLOGGroupJoinPolicyUpdatedDetails *)groupJoinPolicyUpdatedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails;
+    _groupJoinPolicyUpdatedDetails = groupJoinPolicyUpdatedDetails;
   }
   return self;
 }
@@ -16623,6 +16735,212 @@
   return self;
 }
 
+- (instancetype)initWithShowcaseAccessGrantedDetails:
+    (DBTEAMLOGShowcaseAccessGrantedDetails *)showcaseAccessGrantedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails;
+    _showcaseAccessGrantedDetails = showcaseAccessGrantedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseAddMemberDetails:(DBTEAMLOGShowcaseAddMemberDetails *)showcaseAddMemberDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseAddMemberDetails;
+    _showcaseAddMemberDetails = showcaseAddMemberDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseArchivedDetails:(DBTEAMLOGShowcaseArchivedDetails *)showcaseArchivedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseArchivedDetails;
+    _showcaseArchivedDetails = showcaseArchivedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseCreatedDetails:(DBTEAMLOGShowcaseCreatedDetails *)showcaseCreatedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseCreatedDetails;
+    _showcaseCreatedDetails = showcaseCreatedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseDeleteCommentDetails:
+    (DBTEAMLOGShowcaseDeleteCommentDetails *)showcaseDeleteCommentDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails;
+    _showcaseDeleteCommentDetails = showcaseDeleteCommentDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseEditedDetails:(DBTEAMLOGShowcaseEditedDetails *)showcaseEditedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseEditedDetails;
+    _showcaseEditedDetails = showcaseEditedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseEditCommentDetails:(DBTEAMLOGShowcaseEditCommentDetails *)showcaseEditCommentDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseEditCommentDetails;
+    _showcaseEditCommentDetails = showcaseEditCommentDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileAddedDetails:(DBTEAMLOGShowcaseFileAddedDetails *)showcaseFileAddedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseFileAddedDetails;
+    _showcaseFileAddedDetails = showcaseFileAddedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileDownloadDetails:
+    (DBTEAMLOGShowcaseFileDownloadDetails *)showcaseFileDownloadDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseFileDownloadDetails;
+    _showcaseFileDownloadDetails = showcaseFileDownloadDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileRemovedDetails:(DBTEAMLOGShowcaseFileRemovedDetails *)showcaseFileRemovedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseFileRemovedDetails;
+    _showcaseFileRemovedDetails = showcaseFileRemovedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileViewDetails:(DBTEAMLOGShowcaseFileViewDetails *)showcaseFileViewDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseFileViewDetails;
+    _showcaseFileViewDetails = showcaseFileViewDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcasePermanentlyDeletedDetails:
+    (DBTEAMLOGShowcasePermanentlyDeletedDetails *)showcasePermanentlyDeletedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails;
+    _showcasePermanentlyDeletedDetails = showcasePermanentlyDeletedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcasePostCommentDetails:(DBTEAMLOGShowcasePostCommentDetails *)showcasePostCommentDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcasePostCommentDetails;
+    _showcasePostCommentDetails = showcasePostCommentDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRemoveMemberDetails:
+    (DBTEAMLOGShowcaseRemoveMemberDetails *)showcaseRemoveMemberDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails;
+    _showcaseRemoveMemberDetails = showcaseRemoveMemberDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRenamedDetails:(DBTEAMLOGShowcaseRenamedDetails *)showcaseRenamedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseRenamedDetails;
+    _showcaseRenamedDetails = showcaseRenamedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRequestAccessDetails:
+    (DBTEAMLOGShowcaseRequestAccessDetails *)showcaseRequestAccessDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseRequestAccessDetails;
+    _showcaseRequestAccessDetails = showcaseRequestAccessDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseResolveCommentDetails:
+    (DBTEAMLOGShowcaseResolveCommentDetails *)showcaseResolveCommentDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseResolveCommentDetails;
+    _showcaseResolveCommentDetails = showcaseResolveCommentDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRestoredDetails:(DBTEAMLOGShowcaseRestoredDetails *)showcaseRestoredDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseRestoredDetails;
+    _showcaseRestoredDetails = showcaseRestoredDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseTrashedDetails:(DBTEAMLOGShowcaseTrashedDetails *)showcaseTrashedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseTrashedDetails;
+    _showcaseTrashedDetails = showcaseTrashedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseUnresolveCommentDetails:
+    (DBTEAMLOGShowcaseUnresolveCommentDetails *)showcaseUnresolveCommentDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails;
+    _showcaseUnresolveCommentDetails = showcaseUnresolveCommentDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseUntrashedDetails:(DBTEAMLOGShowcaseUntrashedDetails *)showcaseUntrashedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseUntrashedDetails;
+    _showcaseUntrashedDetails = showcaseUntrashedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseViewDetails:(DBTEAMLOGShowcaseViewDetails *)showcaseViewDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsShowcaseViewDetails;
+    _showcaseViewDetails = showcaseViewDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithSsoAddCertDetails:(DBTEAMLOGSsoAddCertDetails *)ssoAddCertDetails {
   self = [super init];
   if (self) {
@@ -16757,6 +17075,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsTeamFolderRenameDetails;
     _teamFolderRenameDetails = teamFolderRenameDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamSelectiveSyncSettingsChangedDetails:
+    (DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)teamSelectiveSyncSettingsChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails;
+    _teamSelectiveSyncSettingsChangedDetails = teamSelectiveSyncSettingsChangedDetails;
   }
   return self;
 }
@@ -17912,6 +18240,24 @@
                 format:@"Invalid tag: required DBTEAMLOGEventDetailsGroupDeleteDetails, but was %@.", [self tagName]];
   }
   return _groupDeleteDetails;
+}
+
+- (DBTEAMLOGGroupDescriptionUpdatedDetails *)groupDescriptionUpdatedDetails {
+  if (![self isGroupDescriptionUpdatedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _groupDescriptionUpdatedDetails;
+}
+
+- (DBTEAMLOGGroupJoinPolicyUpdatedDetails *)groupJoinPolicyUpdatedDetails {
+  if (![self isGroupJoinPolicyUpdatedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _groupJoinPolicyUpdatedDetails;
 }
 
 - (DBTEAMLOGGroupMovedDetails *)groupMovedDetails {
@@ -19124,6 +19470,203 @@
   return _shmodelGroupShareDetails;
 }
 
+- (DBTEAMLOGShowcaseAccessGrantedDetails *)showcaseAccessGrantedDetails {
+  if (![self isShowcaseAccessGrantedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseAccessGrantedDetails;
+}
+
+- (DBTEAMLOGShowcaseAddMemberDetails *)showcaseAddMemberDetails {
+  if (![self isShowcaseAddMemberDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseAddMemberDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseAddMemberDetails;
+}
+
+- (DBTEAMLOGShowcaseArchivedDetails *)showcaseArchivedDetails {
+  if (![self isShowcaseArchivedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseArchivedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseArchivedDetails;
+}
+
+- (DBTEAMLOGShowcaseCreatedDetails *)showcaseCreatedDetails {
+  if (![self isShowcaseCreatedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseCreatedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseCreatedDetails;
+}
+
+- (DBTEAMLOGShowcaseDeleteCommentDetails *)showcaseDeleteCommentDetails {
+  if (![self isShowcaseDeleteCommentDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseDeleteCommentDetails;
+}
+
+- (DBTEAMLOGShowcaseEditedDetails *)showcaseEditedDetails {
+  if (![self isShowcaseEditedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseEditedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseEditedDetails;
+}
+
+- (DBTEAMLOGShowcaseEditCommentDetails *)showcaseEditCommentDetails {
+  if (![self isShowcaseEditCommentDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseEditCommentDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseEditCommentDetails;
+}
+
+- (DBTEAMLOGShowcaseFileAddedDetails *)showcaseFileAddedDetails {
+  if (![self isShowcaseFileAddedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseFileAddedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseFileAddedDetails;
+}
+
+- (DBTEAMLOGShowcaseFileDownloadDetails *)showcaseFileDownloadDetails {
+  if (![self isShowcaseFileDownloadDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseFileDownloadDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseFileDownloadDetails;
+}
+
+- (DBTEAMLOGShowcaseFileRemovedDetails *)showcaseFileRemovedDetails {
+  if (![self isShowcaseFileRemovedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseFileRemovedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseFileRemovedDetails;
+}
+
+- (DBTEAMLOGShowcaseFileViewDetails *)showcaseFileViewDetails {
+  if (![self isShowcaseFileViewDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseFileViewDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseFileViewDetails;
+}
+
+- (DBTEAMLOGShowcasePermanentlyDeletedDetails *)showcasePermanentlyDeletedDetails {
+  if (![self isShowcasePermanentlyDeletedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _showcasePermanentlyDeletedDetails;
+}
+
+- (DBTEAMLOGShowcasePostCommentDetails *)showcasePostCommentDetails {
+  if (![self isShowcasePostCommentDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcasePostCommentDetails, but was %@.", [self tagName]];
+  }
+  return _showcasePostCommentDetails;
+}
+
+- (DBTEAMLOGShowcaseRemoveMemberDetails *)showcaseRemoveMemberDetails {
+  if (![self isShowcaseRemoveMemberDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseRemoveMemberDetails;
+}
+
+- (DBTEAMLOGShowcaseRenamedDetails *)showcaseRenamedDetails {
+  if (![self isShowcaseRenamedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseRenamedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseRenamedDetails;
+}
+
+- (DBTEAMLOGShowcaseRequestAccessDetails *)showcaseRequestAccessDetails {
+  if (![self isShowcaseRequestAccessDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseRequestAccessDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseRequestAccessDetails;
+}
+
+- (DBTEAMLOGShowcaseResolveCommentDetails *)showcaseResolveCommentDetails {
+  if (![self isShowcaseResolveCommentDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseResolveCommentDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _showcaseResolveCommentDetails;
+}
+
+- (DBTEAMLOGShowcaseRestoredDetails *)showcaseRestoredDetails {
+  if (![self isShowcaseRestoredDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseRestoredDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseRestoredDetails;
+}
+
+- (DBTEAMLOGShowcaseTrashedDetails *)showcaseTrashedDetails {
+  if (![self isShowcaseTrashedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseTrashedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseTrashedDetails;
+}
+
+- (DBTEAMLOGShowcaseUnresolveCommentDetails *)showcaseUnresolveCommentDetails {
+  if (![self isShowcaseUnresolveCommentDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _showcaseUnresolveCommentDetails;
+}
+
+- (DBTEAMLOGShowcaseUntrashedDetails *)showcaseUntrashedDetails {
+  if (![self isShowcaseUntrashedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseUntrashedDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseUntrashedDetails;
+}
+
+- (DBTEAMLOGShowcaseViewDetails *)showcaseViewDetails {
+  if (![self isShowcaseViewDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsShowcaseViewDetails, but was %@.", [self tagName]];
+  }
+  return _showcaseViewDetails;
+}
+
 - (DBTEAMLOGSsoAddCertDetails *)ssoAddCertDetails {
   if (![self isSsoAddCertDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -19254,6 +19797,16 @@
         format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamFolderRenameDetails, but was %@.", [self tagName]];
   }
   return _teamFolderRenameDetails;
+}
+
+- (DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)teamSelectiveSyncSettingsChangedDetails {
+  if (![self isTeamSelectiveSyncSettingsChangedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails, but was %@.",
+               [self tagName]];
+  }
+  return _teamSelectiveSyncSettingsChangedDetails;
 }
 
 - (DBTEAMLOGAccountCaptureChangePolicyDetails *)accountCaptureChangePolicyDetails {
@@ -20061,6 +20614,14 @@
   return _tag == DBTEAMLOGEventDetailsGroupDeleteDetails;
 }
 
+- (BOOL)isGroupDescriptionUpdatedDetails {
+  return _tag == DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails;
+}
+
+- (BOOL)isGroupJoinPolicyUpdatedDetails {
+  return _tag == DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails;
+}
+
 - (BOOL)isGroupMovedDetails {
   return _tag == DBTEAMLOGEventDetailsGroupMovedDetails;
 }
@@ -20601,6 +21162,94 @@
   return _tag == DBTEAMLOGEventDetailsShmodelGroupShareDetails;
 }
 
+- (BOOL)isShowcaseAccessGrantedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails;
+}
+
+- (BOOL)isShowcaseAddMemberDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseAddMemberDetails;
+}
+
+- (BOOL)isShowcaseArchivedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseArchivedDetails;
+}
+
+- (BOOL)isShowcaseCreatedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseCreatedDetails;
+}
+
+- (BOOL)isShowcaseDeleteCommentDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails;
+}
+
+- (BOOL)isShowcaseEditedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseEditedDetails;
+}
+
+- (BOOL)isShowcaseEditCommentDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseEditCommentDetails;
+}
+
+- (BOOL)isShowcaseFileAddedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseFileAddedDetails;
+}
+
+- (BOOL)isShowcaseFileDownloadDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseFileDownloadDetails;
+}
+
+- (BOOL)isShowcaseFileRemovedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseFileRemovedDetails;
+}
+
+- (BOOL)isShowcaseFileViewDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseFileViewDetails;
+}
+
+- (BOOL)isShowcasePermanentlyDeletedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails;
+}
+
+- (BOOL)isShowcasePostCommentDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcasePostCommentDetails;
+}
+
+- (BOOL)isShowcaseRemoveMemberDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails;
+}
+
+- (BOOL)isShowcaseRenamedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseRenamedDetails;
+}
+
+- (BOOL)isShowcaseRequestAccessDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseRequestAccessDetails;
+}
+
+- (BOOL)isShowcaseResolveCommentDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseResolveCommentDetails;
+}
+
+- (BOOL)isShowcaseRestoredDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseRestoredDetails;
+}
+
+- (BOOL)isShowcaseTrashedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseTrashedDetails;
+}
+
+- (BOOL)isShowcaseUnresolveCommentDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails;
+}
+
+- (BOOL)isShowcaseUntrashedDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseUntrashedDetails;
+}
+
+- (BOOL)isShowcaseViewDetails {
+  return _tag == DBTEAMLOGEventDetailsShowcaseViewDetails;
+}
+
 - (BOOL)isSsoAddCertDetails {
   return _tag == DBTEAMLOGEventDetailsSsoAddCertDetails;
 }
@@ -20659,6 +21308,10 @@
 
 - (BOOL)isTeamFolderRenameDetails {
   return _tag == DBTEAMLOGEventDetailsTeamFolderRenameDetails;
+}
+
+- (BOOL)isTeamSelectiveSyncSettingsChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails;
 }
 
 - (BOOL)isAccountCaptureChangePolicyDetails {
@@ -21033,6 +21686,10 @@
     return @"DBTEAMLOGEventDetailsGroupCreateDetails";
   case DBTEAMLOGEventDetailsGroupDeleteDetails:
     return @"DBTEAMLOGEventDetailsGroupDeleteDetails";
+  case DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails:
+    return @"DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails";
+  case DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails:
+    return @"DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails";
   case DBTEAMLOGEventDetailsGroupMovedDetails:
     return @"DBTEAMLOGEventDetailsGroupMovedDetails";
   case DBTEAMLOGEventDetailsGroupRemoveExternalIdDetails:
@@ -21303,6 +21960,50 @@
     return @"DBTEAMLOGEventDetailsSharedNoteOpenedDetails";
   case DBTEAMLOGEventDetailsShmodelGroupShareDetails:
     return @"DBTEAMLOGEventDetailsShmodelGroupShareDetails";
+  case DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails";
+  case DBTEAMLOGEventDetailsShowcaseAddMemberDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseAddMemberDetails";
+  case DBTEAMLOGEventDetailsShowcaseArchivedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseArchivedDetails";
+  case DBTEAMLOGEventDetailsShowcaseCreatedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseCreatedDetails";
+  case DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails";
+  case DBTEAMLOGEventDetailsShowcaseEditedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseEditedDetails";
+  case DBTEAMLOGEventDetailsShowcaseEditCommentDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseEditCommentDetails";
+  case DBTEAMLOGEventDetailsShowcaseFileAddedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseFileAddedDetails";
+  case DBTEAMLOGEventDetailsShowcaseFileDownloadDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseFileDownloadDetails";
+  case DBTEAMLOGEventDetailsShowcaseFileRemovedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseFileRemovedDetails";
+  case DBTEAMLOGEventDetailsShowcaseFileViewDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseFileViewDetails";
+  case DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails:
+    return @"DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails";
+  case DBTEAMLOGEventDetailsShowcasePostCommentDetails:
+    return @"DBTEAMLOGEventDetailsShowcasePostCommentDetails";
+  case DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails";
+  case DBTEAMLOGEventDetailsShowcaseRenamedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseRenamedDetails";
+  case DBTEAMLOGEventDetailsShowcaseRequestAccessDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseRequestAccessDetails";
+  case DBTEAMLOGEventDetailsShowcaseResolveCommentDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseResolveCommentDetails";
+  case DBTEAMLOGEventDetailsShowcaseRestoredDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseRestoredDetails";
+  case DBTEAMLOGEventDetailsShowcaseTrashedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseTrashedDetails";
+  case DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails";
+  case DBTEAMLOGEventDetailsShowcaseUntrashedDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseUntrashedDetails";
+  case DBTEAMLOGEventDetailsShowcaseViewDetails:
+    return @"DBTEAMLOGEventDetailsShowcaseViewDetails";
   case DBTEAMLOGEventDetailsSsoAddCertDetails:
     return @"DBTEAMLOGEventDetailsSsoAddCertDetails";
   case DBTEAMLOGEventDetailsSsoAddLoginUrlDetails:
@@ -21333,6 +22034,8 @@
     return @"DBTEAMLOGEventDetailsTeamFolderPermanentlyDeleteDetails";
   case DBTEAMLOGEventDetailsTeamFolderRenameDetails:
     return @"DBTEAMLOGEventDetailsTeamFolderRenameDetails";
+  case DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails:
+    return @"DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails";
   case DBTEAMLOGEventDetailsAccountCaptureChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsAccountCaptureChangePolicyDetails";
   case DBTEAMLOGEventDetailsAllowDownloadDisabledDetails:
@@ -21617,6 +22320,10 @@
     result = prime * result + [self.groupCreateDetails hash];
   case DBTEAMLOGEventDetailsGroupDeleteDetails:
     result = prime * result + [self.groupDeleteDetails hash];
+  case DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails:
+    result = prime * result + [self.groupDescriptionUpdatedDetails hash];
+  case DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails:
+    result = prime * result + [self.groupJoinPolicyUpdatedDetails hash];
   case DBTEAMLOGEventDetailsGroupMovedDetails:
     result = prime * result + [self.groupMovedDetails hash];
   case DBTEAMLOGEventDetailsGroupRemoveExternalIdDetails:
@@ -21887,6 +22594,50 @@
     result = prime * result + [self.sharedNoteOpenedDetails hash];
   case DBTEAMLOGEventDetailsShmodelGroupShareDetails:
     result = prime * result + [self.shmodelGroupShareDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails:
+    result = prime * result + [self.showcaseAccessGrantedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseAddMemberDetails:
+    result = prime * result + [self.showcaseAddMemberDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseArchivedDetails:
+    result = prime * result + [self.showcaseArchivedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseCreatedDetails:
+    result = prime * result + [self.showcaseCreatedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails:
+    result = prime * result + [self.showcaseDeleteCommentDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseEditedDetails:
+    result = prime * result + [self.showcaseEditedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseEditCommentDetails:
+    result = prime * result + [self.showcaseEditCommentDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseFileAddedDetails:
+    result = prime * result + [self.showcaseFileAddedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseFileDownloadDetails:
+    result = prime * result + [self.showcaseFileDownloadDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseFileRemovedDetails:
+    result = prime * result + [self.showcaseFileRemovedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseFileViewDetails:
+    result = prime * result + [self.showcaseFileViewDetails hash];
+  case DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails:
+    result = prime * result + [self.showcasePermanentlyDeletedDetails hash];
+  case DBTEAMLOGEventDetailsShowcasePostCommentDetails:
+    result = prime * result + [self.showcasePostCommentDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails:
+    result = prime * result + [self.showcaseRemoveMemberDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseRenamedDetails:
+    result = prime * result + [self.showcaseRenamedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseRequestAccessDetails:
+    result = prime * result + [self.showcaseRequestAccessDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseResolveCommentDetails:
+    result = prime * result + [self.showcaseResolveCommentDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseRestoredDetails:
+    result = prime * result + [self.showcaseRestoredDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseTrashedDetails:
+    result = prime * result + [self.showcaseTrashedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails:
+    result = prime * result + [self.showcaseUnresolveCommentDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseUntrashedDetails:
+    result = prime * result + [self.showcaseUntrashedDetails hash];
+  case DBTEAMLOGEventDetailsShowcaseViewDetails:
+    result = prime * result + [self.showcaseViewDetails hash];
   case DBTEAMLOGEventDetailsSsoAddCertDetails:
     result = prime * result + [self.ssoAddCertDetails hash];
   case DBTEAMLOGEventDetailsSsoAddLoginUrlDetails:
@@ -21917,6 +22668,8 @@
     result = prime * result + [self.teamFolderPermanentlyDeleteDetails hash];
   case DBTEAMLOGEventDetailsTeamFolderRenameDetails:
     result = prime * result + [self.teamFolderRenameDetails hash];
+  case DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails:
+    result = prime * result + [self.teamSelectiveSyncSettingsChangedDetails hash];
   case DBTEAMLOGEventDetailsAccountCaptureChangePolicyDetails:
     result = prime * result + [self.accountCaptureChangePolicyDetails hash];
   case DBTEAMLOGEventDetailsAllowDownloadDisabledDetails:
@@ -22197,6 +22950,10 @@
     return [self.groupCreateDetails isEqual:anEventDetails.groupCreateDetails];
   case DBTEAMLOGEventDetailsGroupDeleteDetails:
     return [self.groupDeleteDetails isEqual:anEventDetails.groupDeleteDetails];
+  case DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails:
+    return [self.groupDescriptionUpdatedDetails isEqual:anEventDetails.groupDescriptionUpdatedDetails];
+  case DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails:
+    return [self.groupJoinPolicyUpdatedDetails isEqual:anEventDetails.groupJoinPolicyUpdatedDetails];
   case DBTEAMLOGEventDetailsGroupMovedDetails:
     return [self.groupMovedDetails isEqual:anEventDetails.groupMovedDetails];
   case DBTEAMLOGEventDetailsGroupRemoveExternalIdDetails:
@@ -22477,6 +23234,50 @@
     return [self.sharedNoteOpenedDetails isEqual:anEventDetails.sharedNoteOpenedDetails];
   case DBTEAMLOGEventDetailsShmodelGroupShareDetails:
     return [self.shmodelGroupShareDetails isEqual:anEventDetails.shmodelGroupShareDetails];
+  case DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails:
+    return [self.showcaseAccessGrantedDetails isEqual:anEventDetails.showcaseAccessGrantedDetails];
+  case DBTEAMLOGEventDetailsShowcaseAddMemberDetails:
+    return [self.showcaseAddMemberDetails isEqual:anEventDetails.showcaseAddMemberDetails];
+  case DBTEAMLOGEventDetailsShowcaseArchivedDetails:
+    return [self.showcaseArchivedDetails isEqual:anEventDetails.showcaseArchivedDetails];
+  case DBTEAMLOGEventDetailsShowcaseCreatedDetails:
+    return [self.showcaseCreatedDetails isEqual:anEventDetails.showcaseCreatedDetails];
+  case DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails:
+    return [self.showcaseDeleteCommentDetails isEqual:anEventDetails.showcaseDeleteCommentDetails];
+  case DBTEAMLOGEventDetailsShowcaseEditedDetails:
+    return [self.showcaseEditedDetails isEqual:anEventDetails.showcaseEditedDetails];
+  case DBTEAMLOGEventDetailsShowcaseEditCommentDetails:
+    return [self.showcaseEditCommentDetails isEqual:anEventDetails.showcaseEditCommentDetails];
+  case DBTEAMLOGEventDetailsShowcaseFileAddedDetails:
+    return [self.showcaseFileAddedDetails isEqual:anEventDetails.showcaseFileAddedDetails];
+  case DBTEAMLOGEventDetailsShowcaseFileDownloadDetails:
+    return [self.showcaseFileDownloadDetails isEqual:anEventDetails.showcaseFileDownloadDetails];
+  case DBTEAMLOGEventDetailsShowcaseFileRemovedDetails:
+    return [self.showcaseFileRemovedDetails isEqual:anEventDetails.showcaseFileRemovedDetails];
+  case DBTEAMLOGEventDetailsShowcaseFileViewDetails:
+    return [self.showcaseFileViewDetails isEqual:anEventDetails.showcaseFileViewDetails];
+  case DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails:
+    return [self.showcasePermanentlyDeletedDetails isEqual:anEventDetails.showcasePermanentlyDeletedDetails];
+  case DBTEAMLOGEventDetailsShowcasePostCommentDetails:
+    return [self.showcasePostCommentDetails isEqual:anEventDetails.showcasePostCommentDetails];
+  case DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails:
+    return [self.showcaseRemoveMemberDetails isEqual:anEventDetails.showcaseRemoveMemberDetails];
+  case DBTEAMLOGEventDetailsShowcaseRenamedDetails:
+    return [self.showcaseRenamedDetails isEqual:anEventDetails.showcaseRenamedDetails];
+  case DBTEAMLOGEventDetailsShowcaseRequestAccessDetails:
+    return [self.showcaseRequestAccessDetails isEqual:anEventDetails.showcaseRequestAccessDetails];
+  case DBTEAMLOGEventDetailsShowcaseResolveCommentDetails:
+    return [self.showcaseResolveCommentDetails isEqual:anEventDetails.showcaseResolveCommentDetails];
+  case DBTEAMLOGEventDetailsShowcaseRestoredDetails:
+    return [self.showcaseRestoredDetails isEqual:anEventDetails.showcaseRestoredDetails];
+  case DBTEAMLOGEventDetailsShowcaseTrashedDetails:
+    return [self.showcaseTrashedDetails isEqual:anEventDetails.showcaseTrashedDetails];
+  case DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails:
+    return [self.showcaseUnresolveCommentDetails isEqual:anEventDetails.showcaseUnresolveCommentDetails];
+  case DBTEAMLOGEventDetailsShowcaseUntrashedDetails:
+    return [self.showcaseUntrashedDetails isEqual:anEventDetails.showcaseUntrashedDetails];
+  case DBTEAMLOGEventDetailsShowcaseViewDetails:
+    return [self.showcaseViewDetails isEqual:anEventDetails.showcaseViewDetails];
   case DBTEAMLOGEventDetailsSsoAddCertDetails:
     return [self.ssoAddCertDetails isEqual:anEventDetails.ssoAddCertDetails];
   case DBTEAMLOGEventDetailsSsoAddLoginUrlDetails:
@@ -22507,6 +23308,9 @@
     return [self.teamFolderPermanentlyDeleteDetails isEqual:anEventDetails.teamFolderPermanentlyDeleteDetails];
   case DBTEAMLOGEventDetailsTeamFolderRenameDetails:
     return [self.teamFolderRenameDetails isEqual:anEventDetails.teamFolderRenameDetails];
+  case DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails:
+    return
+        [self.teamSelectiveSyncSettingsChangedDetails isEqual:anEventDetails.teamSelectiveSyncSettingsChangedDetails];
   case DBTEAMLOGEventDetailsAccountCaptureChangePolicyDetails:
     return [self.accountCaptureChangePolicyDetails isEqual:anEventDetails.accountCaptureChangePolicyDetails];
   case DBTEAMLOGEventDetailsAllowDownloadDisabledDetails:
@@ -22918,6 +23722,14 @@
     jsonDict[@"group_delete_details"] =
         [[DBTEAMLOGGroupDeleteDetailsSerializer serialize:valueObj.groupDeleteDetails] mutableCopy];
     jsonDict[@".tag"] = @"group_delete_details";
+  } else if ([valueObj isGroupDescriptionUpdatedDetails]) {
+    jsonDict[@"group_description_updated_details"] = [[DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer
+        serialize:valueObj.groupDescriptionUpdatedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"group_description_updated_details";
+  } else if ([valueObj isGroupJoinPolicyUpdatedDetails]) {
+    jsonDict[@"group_join_policy_updated_details"] = [[DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer
+        serialize:valueObj.groupJoinPolicyUpdatedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"group_join_policy_updated_details";
   } else if ([valueObj isGroupMovedDetails]) {
     jsonDict[@"group_moved_details"] =
         [[DBTEAMLOGGroupMovedDetailsSerializer serialize:valueObj.groupMovedDetails] mutableCopy];
@@ -23472,6 +24284,94 @@
     jsonDict[@"shmodel_group_share_details"] =
         [[DBTEAMLOGShmodelGroupShareDetailsSerializer serialize:valueObj.shmodelGroupShareDetails] mutableCopy];
     jsonDict[@".tag"] = @"shmodel_group_share_details";
+  } else if ([valueObj isShowcaseAccessGrantedDetails]) {
+    jsonDict[@"showcase_access_granted_details"] =
+        [[DBTEAMLOGShowcaseAccessGrantedDetailsSerializer serialize:valueObj.showcaseAccessGrantedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_access_granted_details";
+  } else if ([valueObj isShowcaseAddMemberDetails]) {
+    jsonDict[@"showcase_add_member_details"] =
+        [[DBTEAMLOGShowcaseAddMemberDetailsSerializer serialize:valueObj.showcaseAddMemberDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_add_member_details";
+  } else if ([valueObj isShowcaseArchivedDetails]) {
+    jsonDict[@"showcase_archived_details"] =
+        [[DBTEAMLOGShowcaseArchivedDetailsSerializer serialize:valueObj.showcaseArchivedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_archived_details";
+  } else if ([valueObj isShowcaseCreatedDetails]) {
+    jsonDict[@"showcase_created_details"] =
+        [[DBTEAMLOGShowcaseCreatedDetailsSerializer serialize:valueObj.showcaseCreatedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_created_details";
+  } else if ([valueObj isShowcaseDeleteCommentDetails]) {
+    jsonDict[@"showcase_delete_comment_details"] =
+        [[DBTEAMLOGShowcaseDeleteCommentDetailsSerializer serialize:valueObj.showcaseDeleteCommentDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_delete_comment_details";
+  } else if ([valueObj isShowcaseEditedDetails]) {
+    jsonDict[@"showcase_edited_details"] =
+        [[DBTEAMLOGShowcaseEditedDetailsSerializer serialize:valueObj.showcaseEditedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_edited_details";
+  } else if ([valueObj isShowcaseEditCommentDetails]) {
+    jsonDict[@"showcase_edit_comment_details"] =
+        [[DBTEAMLOGShowcaseEditCommentDetailsSerializer serialize:valueObj.showcaseEditCommentDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_edit_comment_details";
+  } else if ([valueObj isShowcaseFileAddedDetails]) {
+    jsonDict[@"showcase_file_added_details"] =
+        [[DBTEAMLOGShowcaseFileAddedDetailsSerializer serialize:valueObj.showcaseFileAddedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_added_details";
+  } else if ([valueObj isShowcaseFileDownloadDetails]) {
+    jsonDict[@"showcase_file_download_details"] =
+        [[DBTEAMLOGShowcaseFileDownloadDetailsSerializer serialize:valueObj.showcaseFileDownloadDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_download_details";
+  } else if ([valueObj isShowcaseFileRemovedDetails]) {
+    jsonDict[@"showcase_file_removed_details"] =
+        [[DBTEAMLOGShowcaseFileRemovedDetailsSerializer serialize:valueObj.showcaseFileRemovedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_removed_details";
+  } else if ([valueObj isShowcaseFileViewDetails]) {
+    jsonDict[@"showcase_file_view_details"] =
+        [[DBTEAMLOGShowcaseFileViewDetailsSerializer serialize:valueObj.showcaseFileViewDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_view_details";
+  } else if ([valueObj isShowcasePermanentlyDeletedDetails]) {
+    jsonDict[@"showcase_permanently_deleted_details"] = [[DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer
+        serialize:valueObj.showcasePermanentlyDeletedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_permanently_deleted_details";
+  } else if ([valueObj isShowcasePostCommentDetails]) {
+    jsonDict[@"showcase_post_comment_details"] =
+        [[DBTEAMLOGShowcasePostCommentDetailsSerializer serialize:valueObj.showcasePostCommentDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_post_comment_details";
+  } else if ([valueObj isShowcaseRemoveMemberDetails]) {
+    jsonDict[@"showcase_remove_member_details"] =
+        [[DBTEAMLOGShowcaseRemoveMemberDetailsSerializer serialize:valueObj.showcaseRemoveMemberDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_remove_member_details";
+  } else if ([valueObj isShowcaseRenamedDetails]) {
+    jsonDict[@"showcase_renamed_details"] =
+        [[DBTEAMLOGShowcaseRenamedDetailsSerializer serialize:valueObj.showcaseRenamedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_renamed_details";
+  } else if ([valueObj isShowcaseRequestAccessDetails]) {
+    jsonDict[@"showcase_request_access_details"] =
+        [[DBTEAMLOGShowcaseRequestAccessDetailsSerializer serialize:valueObj.showcaseRequestAccessDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_request_access_details";
+  } else if ([valueObj isShowcaseResolveCommentDetails]) {
+    jsonDict[@"showcase_resolve_comment_details"] = [[DBTEAMLOGShowcaseResolveCommentDetailsSerializer
+        serialize:valueObj.showcaseResolveCommentDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_resolve_comment_details";
+  } else if ([valueObj isShowcaseRestoredDetails]) {
+    jsonDict[@"showcase_restored_details"] =
+        [[DBTEAMLOGShowcaseRestoredDetailsSerializer serialize:valueObj.showcaseRestoredDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_restored_details";
+  } else if ([valueObj isShowcaseTrashedDetails]) {
+    jsonDict[@"showcase_trashed_details"] =
+        [[DBTEAMLOGShowcaseTrashedDetailsSerializer serialize:valueObj.showcaseTrashedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_trashed_details";
+  } else if ([valueObj isShowcaseUnresolveCommentDetails]) {
+    jsonDict[@"showcase_unresolve_comment_details"] = [[DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer
+        serialize:valueObj.showcaseUnresolveCommentDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_unresolve_comment_details";
+  } else if ([valueObj isShowcaseUntrashedDetails]) {
+    jsonDict[@"showcase_untrashed_details"] =
+        [[DBTEAMLOGShowcaseUntrashedDetailsSerializer serialize:valueObj.showcaseUntrashedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_untrashed_details";
+  } else if ([valueObj isShowcaseViewDetails]) {
+    jsonDict[@"showcase_view_details"] =
+        [[DBTEAMLOGShowcaseViewDetailsSerializer serialize:valueObj.showcaseViewDetails] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_view_details";
   } else if ([valueObj isSsoAddCertDetails]) {
     jsonDict[@"sso_add_cert_details"] =
         [[DBTEAMLOGSsoAddCertDetailsSerializer serialize:valueObj.ssoAddCertDetails] mutableCopy];
@@ -23532,6 +24432,11 @@
     jsonDict[@"team_folder_rename_details"] =
         [[DBTEAMLOGTeamFolderRenameDetailsSerializer serialize:valueObj.teamFolderRenameDetails] mutableCopy];
     jsonDict[@".tag"] = @"team_folder_rename_details";
+  } else if ([valueObj isTeamSelectiveSyncSettingsChangedDetails]) {
+    jsonDict[@"team_selective_sync_settings_changed_details"] =
+        [[DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer
+            serialize:valueObj.teamSelectiveSyncSettingsChangedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_selective_sync_settings_changed_details";
   } else if ([valueObj isAccountCaptureChangePolicyDetails]) {
     jsonDict[@"account_capture_change_policy_details"] = [[DBTEAMLOGAccountCaptureChangePolicyDetailsSerializer
         serialize:valueObj.accountCaptureChangePolicyDetails] mutableCopy];
@@ -24049,6 +24954,14 @@
   } else if ([tag isEqualToString:@"group_delete_details"]) {
     DBTEAMLOGGroupDeleteDetails *groupDeleteDetails = [DBTEAMLOGGroupDeleteDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithGroupDeleteDetails:groupDeleteDetails];
+  } else if ([tag isEqualToString:@"group_description_updated_details"]) {
+    DBTEAMLOGGroupDescriptionUpdatedDetails *groupDescriptionUpdatedDetails =
+        [DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithGroupDescriptionUpdatedDetails:groupDescriptionUpdatedDetails];
+  } else if ([tag isEqualToString:@"group_join_policy_updated_details"]) {
+    DBTEAMLOGGroupJoinPolicyUpdatedDetails *groupJoinPolicyUpdatedDetails =
+        [DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithGroupJoinPolicyUpdatedDetails:groupJoinPolicyUpdatedDetails];
   } else if ([tag isEqualToString:@"group_moved_details"]) {
     DBTEAMLOGGroupMovedDetails *groupMovedDetails = [DBTEAMLOGGroupMovedDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithGroupMovedDetails:groupMovedDetails];
@@ -24606,6 +25519,93 @@
     DBTEAMLOGShmodelGroupShareDetails *shmodelGroupShareDetails =
         [DBTEAMLOGShmodelGroupShareDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithShmodelGroupShareDetails:shmodelGroupShareDetails];
+  } else if ([tag isEqualToString:@"showcase_access_granted_details"]) {
+    DBTEAMLOGShowcaseAccessGrantedDetails *showcaseAccessGrantedDetails =
+        [DBTEAMLOGShowcaseAccessGrantedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseAccessGrantedDetails:showcaseAccessGrantedDetails];
+  } else if ([tag isEqualToString:@"showcase_add_member_details"]) {
+    DBTEAMLOGShowcaseAddMemberDetails *showcaseAddMemberDetails =
+        [DBTEAMLOGShowcaseAddMemberDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseAddMemberDetails:showcaseAddMemberDetails];
+  } else if ([tag isEqualToString:@"showcase_archived_details"]) {
+    DBTEAMLOGShowcaseArchivedDetails *showcaseArchivedDetails =
+        [DBTEAMLOGShowcaseArchivedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseArchivedDetails:showcaseArchivedDetails];
+  } else if ([tag isEqualToString:@"showcase_created_details"]) {
+    DBTEAMLOGShowcaseCreatedDetails *showcaseCreatedDetails =
+        [DBTEAMLOGShowcaseCreatedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseCreatedDetails:showcaseCreatedDetails];
+  } else if ([tag isEqualToString:@"showcase_delete_comment_details"]) {
+    DBTEAMLOGShowcaseDeleteCommentDetails *showcaseDeleteCommentDetails =
+        [DBTEAMLOGShowcaseDeleteCommentDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseDeleteCommentDetails:showcaseDeleteCommentDetails];
+  } else if ([tag isEqualToString:@"showcase_edited_details"]) {
+    DBTEAMLOGShowcaseEditedDetails *showcaseEditedDetails =
+        [DBTEAMLOGShowcaseEditedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseEditedDetails:showcaseEditedDetails];
+  } else if ([tag isEqualToString:@"showcase_edit_comment_details"]) {
+    DBTEAMLOGShowcaseEditCommentDetails *showcaseEditCommentDetails =
+        [DBTEAMLOGShowcaseEditCommentDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseEditCommentDetails:showcaseEditCommentDetails];
+  } else if ([tag isEqualToString:@"showcase_file_added_details"]) {
+    DBTEAMLOGShowcaseFileAddedDetails *showcaseFileAddedDetails =
+        [DBTEAMLOGShowcaseFileAddedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseFileAddedDetails:showcaseFileAddedDetails];
+  } else if ([tag isEqualToString:@"showcase_file_download_details"]) {
+    DBTEAMLOGShowcaseFileDownloadDetails *showcaseFileDownloadDetails =
+        [DBTEAMLOGShowcaseFileDownloadDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseFileDownloadDetails:showcaseFileDownloadDetails];
+  } else if ([tag isEqualToString:@"showcase_file_removed_details"]) {
+    DBTEAMLOGShowcaseFileRemovedDetails *showcaseFileRemovedDetails =
+        [DBTEAMLOGShowcaseFileRemovedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseFileRemovedDetails:showcaseFileRemovedDetails];
+  } else if ([tag isEqualToString:@"showcase_file_view_details"]) {
+    DBTEAMLOGShowcaseFileViewDetails *showcaseFileViewDetails =
+        [DBTEAMLOGShowcaseFileViewDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseFileViewDetails:showcaseFileViewDetails];
+  } else if ([tag isEqualToString:@"showcase_permanently_deleted_details"]) {
+    DBTEAMLOGShowcasePermanentlyDeletedDetails *showcasePermanentlyDeletedDetails =
+        [DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcasePermanentlyDeletedDetails:showcasePermanentlyDeletedDetails];
+  } else if ([tag isEqualToString:@"showcase_post_comment_details"]) {
+    DBTEAMLOGShowcasePostCommentDetails *showcasePostCommentDetails =
+        [DBTEAMLOGShowcasePostCommentDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcasePostCommentDetails:showcasePostCommentDetails];
+  } else if ([tag isEqualToString:@"showcase_remove_member_details"]) {
+    DBTEAMLOGShowcaseRemoveMemberDetails *showcaseRemoveMemberDetails =
+        [DBTEAMLOGShowcaseRemoveMemberDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseRemoveMemberDetails:showcaseRemoveMemberDetails];
+  } else if ([tag isEqualToString:@"showcase_renamed_details"]) {
+    DBTEAMLOGShowcaseRenamedDetails *showcaseRenamedDetails =
+        [DBTEAMLOGShowcaseRenamedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseRenamedDetails:showcaseRenamedDetails];
+  } else if ([tag isEqualToString:@"showcase_request_access_details"]) {
+    DBTEAMLOGShowcaseRequestAccessDetails *showcaseRequestAccessDetails =
+        [DBTEAMLOGShowcaseRequestAccessDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseRequestAccessDetails:showcaseRequestAccessDetails];
+  } else if ([tag isEqualToString:@"showcase_resolve_comment_details"]) {
+    DBTEAMLOGShowcaseResolveCommentDetails *showcaseResolveCommentDetails =
+        [DBTEAMLOGShowcaseResolveCommentDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseResolveCommentDetails:showcaseResolveCommentDetails];
+  } else if ([tag isEqualToString:@"showcase_restored_details"]) {
+    DBTEAMLOGShowcaseRestoredDetails *showcaseRestoredDetails =
+        [DBTEAMLOGShowcaseRestoredDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseRestoredDetails:showcaseRestoredDetails];
+  } else if ([tag isEqualToString:@"showcase_trashed_details"]) {
+    DBTEAMLOGShowcaseTrashedDetails *showcaseTrashedDetails =
+        [DBTEAMLOGShowcaseTrashedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseTrashedDetails:showcaseTrashedDetails];
+  } else if ([tag isEqualToString:@"showcase_unresolve_comment_details"]) {
+    DBTEAMLOGShowcaseUnresolveCommentDetails *showcaseUnresolveCommentDetails =
+        [DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseUnresolveCommentDetails:showcaseUnresolveCommentDetails];
+  } else if ([tag isEqualToString:@"showcase_untrashed_details"]) {
+    DBTEAMLOGShowcaseUntrashedDetails *showcaseUntrashedDetails =
+        [DBTEAMLOGShowcaseUntrashedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseUntrashedDetails:showcaseUntrashedDetails];
+  } else if ([tag isEqualToString:@"showcase_view_details"]) {
+    DBTEAMLOGShowcaseViewDetails *showcaseViewDetails = [DBTEAMLOGShowcaseViewDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithShowcaseViewDetails:showcaseViewDetails];
   } else if ([tag isEqualToString:@"sso_add_cert_details"]) {
     DBTEAMLOGSsoAddCertDetails *ssoAddCertDetails = [DBTEAMLOGSsoAddCertDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithSsoAddCertDetails:ssoAddCertDetails];
@@ -24666,6 +25666,11 @@
     DBTEAMLOGTeamFolderRenameDetails *teamFolderRenameDetails =
         [DBTEAMLOGTeamFolderRenameDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithTeamFolderRenameDetails:teamFolderRenameDetails];
+  } else if ([tag isEqualToString:@"team_selective_sync_settings_changed_details"]) {
+    DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *teamSelectiveSyncSettingsChangedDetails =
+        [DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamSelectiveSyncSettingsChangedDetails:teamSelectiveSyncSettingsChangedDetails];
   } else if ([tag isEqualToString:@"account_capture_change_policy_details"]) {
     DBTEAMLOGAccountCaptureChangePolicyDetails *accountCaptureChangePolicyDetails =
         [DBTEAMLOGAccountCaptureChangePolicyDetailsSerializer deserialize:valueDict];
@@ -25025,6 +26030,8 @@
 #import "DBTEAMLOGGroupChangeMemberRoleType.h"
 #import "DBTEAMLOGGroupCreateType.h"
 #import "DBTEAMLOGGroupDeleteType.h"
+#import "DBTEAMLOGGroupDescriptionUpdatedType.h"
+#import "DBTEAMLOGGroupJoinPolicyUpdatedType.h"
 #import "DBTEAMLOGGroupMovedType.h"
 #import "DBTEAMLOGGroupRemoveExternalIdType.h"
 #import "DBTEAMLOGGroupRemoveMemberType.h"
@@ -25169,6 +26176,28 @@
 #import "DBTEAMLOGSharingChangeLinkPolicyType.h"
 #import "DBTEAMLOGSharingChangeMemberPolicyType.h"
 #import "DBTEAMLOGShmodelGroupShareType.h"
+#import "DBTEAMLOGShowcaseAccessGrantedType.h"
+#import "DBTEAMLOGShowcaseAddMemberType.h"
+#import "DBTEAMLOGShowcaseArchivedType.h"
+#import "DBTEAMLOGShowcaseCreatedType.h"
+#import "DBTEAMLOGShowcaseDeleteCommentType.h"
+#import "DBTEAMLOGShowcaseEditCommentType.h"
+#import "DBTEAMLOGShowcaseEditedType.h"
+#import "DBTEAMLOGShowcaseFileAddedType.h"
+#import "DBTEAMLOGShowcaseFileDownloadType.h"
+#import "DBTEAMLOGShowcaseFileRemovedType.h"
+#import "DBTEAMLOGShowcaseFileViewType.h"
+#import "DBTEAMLOGShowcasePermanentlyDeletedType.h"
+#import "DBTEAMLOGShowcasePostCommentType.h"
+#import "DBTEAMLOGShowcaseRemoveMemberType.h"
+#import "DBTEAMLOGShowcaseRenamedType.h"
+#import "DBTEAMLOGShowcaseRequestAccessType.h"
+#import "DBTEAMLOGShowcaseResolveCommentType.h"
+#import "DBTEAMLOGShowcaseRestoredType.h"
+#import "DBTEAMLOGShowcaseTrashedType.h"
+#import "DBTEAMLOGShowcaseUnresolveCommentType.h"
+#import "DBTEAMLOGShowcaseUntrashedType.h"
+#import "DBTEAMLOGShowcaseViewType.h"
 #import "DBTEAMLOGSignInAsSessionEndType.h"
 #import "DBTEAMLOGSignInAsSessionStartType.h"
 #import "DBTEAMLOGSmartSyncChangePolicyType.h"
@@ -25200,6 +26229,7 @@
 #import "DBTEAMLOGTeamProfileChangeLogoType.h"
 #import "DBTEAMLOGTeamProfileChangeNameType.h"
 #import "DBTEAMLOGTeamProfileRemoveLogoType.h"
+#import "DBTEAMLOGTeamSelectiveSyncSettingsChangedType.h"
 #import "DBTEAMLOGTfaAddBackupPhoneType.h"
 #import "DBTEAMLOGTfaAddSecurityKeyType.h"
 #import "DBTEAMLOGTfaChangeBackupPhoneType.h"
@@ -25279,6 +26309,8 @@
 @synthesize groupChangeMemberRole = _groupChangeMemberRole;
 @synthesize groupCreate = _groupCreate;
 @synthesize groupDelete = _groupDelete;
+@synthesize groupDescriptionUpdated = _groupDescriptionUpdated;
+@synthesize groupJoinPolicyUpdated = _groupJoinPolicyUpdated;
 @synthesize groupMoved = _groupMoved;
 @synthesize groupRemoveExternalId = _groupRemoveExternalId;
 @synthesize groupRemoveMember = _groupRemoveMember;
@@ -25414,6 +26446,28 @@
 @synthesize sharedLinkView = _sharedLinkView;
 @synthesize sharedNoteOpened = _sharedNoteOpened;
 @synthesize shmodelGroupShare = _shmodelGroupShare;
+@synthesize showcaseAccessGranted = _showcaseAccessGranted;
+@synthesize showcaseAddMember = _showcaseAddMember;
+@synthesize showcaseArchived = _showcaseArchived;
+@synthesize showcaseCreated = _showcaseCreated;
+@synthesize showcaseDeleteComment = _showcaseDeleteComment;
+@synthesize showcaseEdited = _showcaseEdited;
+@synthesize showcaseEditComment = _showcaseEditComment;
+@synthesize showcaseFileAdded = _showcaseFileAdded;
+@synthesize showcaseFileDownload = _showcaseFileDownload;
+@synthesize showcaseFileRemoved = _showcaseFileRemoved;
+@synthesize showcaseFileView = _showcaseFileView;
+@synthesize showcasePermanentlyDeleted = _showcasePermanentlyDeleted;
+@synthesize showcasePostComment = _showcasePostComment;
+@synthesize showcaseRemoveMember = _showcaseRemoveMember;
+@synthesize showcaseRenamed = _showcaseRenamed;
+@synthesize showcaseRequestAccess = _showcaseRequestAccess;
+@synthesize showcaseResolveComment = _showcaseResolveComment;
+@synthesize showcaseRestored = _showcaseRestored;
+@synthesize showcaseTrashed = _showcaseTrashed;
+@synthesize showcaseUnresolveComment = _showcaseUnresolveComment;
+@synthesize showcaseUntrashed = _showcaseUntrashed;
+@synthesize showcaseView = _showcaseView;
 @synthesize ssoAddCert = _ssoAddCert;
 @synthesize ssoAddLoginUrl = _ssoAddLoginUrl;
 @synthesize ssoAddLogoutUrl = _ssoAddLogoutUrl;
@@ -25429,6 +26483,7 @@
 @synthesize teamFolderDowngrade = _teamFolderDowngrade;
 @synthesize teamFolderPermanentlyDelete = _teamFolderPermanentlyDelete;
 @synthesize teamFolderRename = _teamFolderRename;
+@synthesize teamSelectiveSyncSettingsChanged = _teamSelectiveSyncSettingsChanged;
 @synthesize accountCaptureChangePolicy = _accountCaptureChangePolicy;
 @synthesize allowDownloadDisabled = _allowDownloadDisabled;
 @synthesize allowDownloadEnabled = _allowDownloadEnabled;
@@ -26069,6 +27124,24 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeGroupDelete;
     _groupDelete = groupDelete;
+  }
+  return self;
+}
+
+- (instancetype)initWithGroupDescriptionUpdated:(DBTEAMLOGGroupDescriptionUpdatedType *)groupDescriptionUpdated {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeGroupDescriptionUpdated;
+    _groupDescriptionUpdated = groupDescriptionUpdated;
+  }
+  return self;
+}
+
+- (instancetype)initWithGroupJoinPolicyUpdated:(DBTEAMLOGGroupJoinPolicyUpdatedType *)groupJoinPolicyUpdated {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeGroupJoinPolicyUpdated;
+    _groupJoinPolicyUpdated = groupJoinPolicyUpdated;
   }
   return self;
 }
@@ -27326,6 +28399,205 @@
   return self;
 }
 
+- (instancetype)initWithShowcaseAccessGranted:(DBTEAMLOGShowcaseAccessGrantedType *)showcaseAccessGranted {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseAccessGranted;
+    _showcaseAccessGranted = showcaseAccessGranted;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseAddMember:(DBTEAMLOGShowcaseAddMemberType *)showcaseAddMember {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseAddMember;
+    _showcaseAddMember = showcaseAddMember;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseArchived:(DBTEAMLOGShowcaseArchivedType *)showcaseArchived {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseArchived;
+    _showcaseArchived = showcaseArchived;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseCreated:(DBTEAMLOGShowcaseCreatedType *)showcaseCreated {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseCreated;
+    _showcaseCreated = showcaseCreated;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseDeleteComment:(DBTEAMLOGShowcaseDeleteCommentType *)showcaseDeleteComment {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseDeleteComment;
+    _showcaseDeleteComment = showcaseDeleteComment;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseEdited:(DBTEAMLOGShowcaseEditedType *)showcaseEdited {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseEdited;
+    _showcaseEdited = showcaseEdited;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseEditComment:(DBTEAMLOGShowcaseEditCommentType *)showcaseEditComment {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseEditComment;
+    _showcaseEditComment = showcaseEditComment;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileAdded:(DBTEAMLOGShowcaseFileAddedType *)showcaseFileAdded {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseFileAdded;
+    _showcaseFileAdded = showcaseFileAdded;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileDownload:(DBTEAMLOGShowcaseFileDownloadType *)showcaseFileDownload {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseFileDownload;
+    _showcaseFileDownload = showcaseFileDownload;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileRemoved:(DBTEAMLOGShowcaseFileRemovedType *)showcaseFileRemoved {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseFileRemoved;
+    _showcaseFileRemoved = showcaseFileRemoved;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseFileView:(DBTEAMLOGShowcaseFileViewType *)showcaseFileView {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseFileView;
+    _showcaseFileView = showcaseFileView;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcasePermanentlyDeleted:
+    (DBTEAMLOGShowcasePermanentlyDeletedType *)showcasePermanentlyDeleted {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcasePermanentlyDeleted;
+    _showcasePermanentlyDeleted = showcasePermanentlyDeleted;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcasePostComment:(DBTEAMLOGShowcasePostCommentType *)showcasePostComment {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcasePostComment;
+    _showcasePostComment = showcasePostComment;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRemoveMember:(DBTEAMLOGShowcaseRemoveMemberType *)showcaseRemoveMember {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseRemoveMember;
+    _showcaseRemoveMember = showcaseRemoveMember;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRenamed:(DBTEAMLOGShowcaseRenamedType *)showcaseRenamed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseRenamed;
+    _showcaseRenamed = showcaseRenamed;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRequestAccess:(DBTEAMLOGShowcaseRequestAccessType *)showcaseRequestAccess {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseRequestAccess;
+    _showcaseRequestAccess = showcaseRequestAccess;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseResolveComment:(DBTEAMLOGShowcaseResolveCommentType *)showcaseResolveComment {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseResolveComment;
+    _showcaseResolveComment = showcaseResolveComment;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseRestored:(DBTEAMLOGShowcaseRestoredType *)showcaseRestored {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseRestored;
+    _showcaseRestored = showcaseRestored;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseTrashed:(DBTEAMLOGShowcaseTrashedType *)showcaseTrashed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseTrashed;
+    _showcaseTrashed = showcaseTrashed;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseUnresolveComment:(DBTEAMLOGShowcaseUnresolveCommentType *)showcaseUnresolveComment {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseUnresolveComment;
+    _showcaseUnresolveComment = showcaseUnresolveComment;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseUntrashed:(DBTEAMLOGShowcaseUntrashedType *)showcaseUntrashed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseUntrashed;
+    _showcaseUntrashed = showcaseUntrashed;
+  }
+  return self;
+}
+
+- (instancetype)initWithShowcaseView:(DBTEAMLOGShowcaseViewType *)showcaseView {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeShowcaseView;
+    _showcaseView = showcaseView;
+  }
+  return self;
+}
+
 - (instancetype)initWithSsoAddCert:(DBTEAMLOGSsoAddCertType *)ssoAddCert {
   self = [super init];
   if (self) {
@@ -27458,6 +28730,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeTeamFolderRename;
     _teamFolderRename = teamFolderRename;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamSelectiveSyncSettingsChanged:
+    (DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)teamSelectiveSyncSettingsChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged;
+    _teamSelectiveSyncSettingsChanged = teamSelectiveSyncSettingsChanged;
   }
   return self;
 }
@@ -28550,6 +29832,22 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypeGroupDelete, but was %@.", [self tagName]];
   }
   return _groupDelete;
+}
+
+- (DBTEAMLOGGroupDescriptionUpdatedType *)groupDescriptionUpdated {
+  if (![self isGroupDescriptionUpdated]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeGroupDescriptionUpdated, but was %@.", [self tagName]];
+  }
+  return _groupDescriptionUpdated;
+}
+
+- (DBTEAMLOGGroupJoinPolicyUpdatedType *)groupJoinPolicyUpdated {
+  if (![self isGroupJoinPolicyUpdated]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeGroupJoinPolicyUpdated, but was %@.", [self tagName]];
+  }
+  return _groupJoinPolicyUpdated;
 }
 
 - (DBTEAMLOGGroupMovedType *)groupMoved {
@@ -29680,6 +30978,184 @@
   return _shmodelGroupShare;
 }
 
+- (DBTEAMLOGShowcaseAccessGrantedType *)showcaseAccessGranted {
+  if (![self isShowcaseAccessGranted]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseAccessGranted, but was %@.", [self tagName]];
+  }
+  return _showcaseAccessGranted;
+}
+
+- (DBTEAMLOGShowcaseAddMemberType *)showcaseAddMember {
+  if (![self isShowcaseAddMember]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseAddMember, but was %@.", [self tagName]];
+  }
+  return _showcaseAddMember;
+}
+
+- (DBTEAMLOGShowcaseArchivedType *)showcaseArchived {
+  if (![self isShowcaseArchived]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseArchived, but was %@.", [self tagName]];
+  }
+  return _showcaseArchived;
+}
+
+- (DBTEAMLOGShowcaseCreatedType *)showcaseCreated {
+  if (![self isShowcaseCreated]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseCreated, but was %@.", [self tagName]];
+  }
+  return _showcaseCreated;
+}
+
+- (DBTEAMLOGShowcaseDeleteCommentType *)showcaseDeleteComment {
+  if (![self isShowcaseDeleteComment]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseDeleteComment, but was %@.", [self tagName]];
+  }
+  return _showcaseDeleteComment;
+}
+
+- (DBTEAMLOGShowcaseEditedType *)showcaseEdited {
+  if (![self isShowcaseEdited]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseEdited, but was %@.", [self tagName]];
+  }
+  return _showcaseEdited;
+}
+
+- (DBTEAMLOGShowcaseEditCommentType *)showcaseEditComment {
+  if (![self isShowcaseEditComment]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseEditComment, but was %@.", [self tagName]];
+  }
+  return _showcaseEditComment;
+}
+
+- (DBTEAMLOGShowcaseFileAddedType *)showcaseFileAdded {
+  if (![self isShowcaseFileAdded]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseFileAdded, but was %@.", [self tagName]];
+  }
+  return _showcaseFileAdded;
+}
+
+- (DBTEAMLOGShowcaseFileDownloadType *)showcaseFileDownload {
+  if (![self isShowcaseFileDownload]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseFileDownload, but was %@.", [self tagName]];
+  }
+  return _showcaseFileDownload;
+}
+
+- (DBTEAMLOGShowcaseFileRemovedType *)showcaseFileRemoved {
+  if (![self isShowcaseFileRemoved]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseFileRemoved, but was %@.", [self tagName]];
+  }
+  return _showcaseFileRemoved;
+}
+
+- (DBTEAMLOGShowcaseFileViewType *)showcaseFileView {
+  if (![self isShowcaseFileView]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseFileView, but was %@.", [self tagName]];
+  }
+  return _showcaseFileView;
+}
+
+- (DBTEAMLOGShowcasePermanentlyDeletedType *)showcasePermanentlyDeleted {
+  if (![self isShowcasePermanentlyDeleted]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeShowcasePermanentlyDeleted, but was %@.", [self tagName]];
+  }
+  return _showcasePermanentlyDeleted;
+}
+
+- (DBTEAMLOGShowcasePostCommentType *)showcasePostComment {
+  if (![self isShowcasePostComment]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcasePostComment, but was %@.", [self tagName]];
+  }
+  return _showcasePostComment;
+}
+
+- (DBTEAMLOGShowcaseRemoveMemberType *)showcaseRemoveMember {
+  if (![self isShowcaseRemoveMember]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseRemoveMember, but was %@.", [self tagName]];
+  }
+  return _showcaseRemoveMember;
+}
+
+- (DBTEAMLOGShowcaseRenamedType *)showcaseRenamed {
+  if (![self isShowcaseRenamed]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseRenamed, but was %@.", [self tagName]];
+  }
+  return _showcaseRenamed;
+}
+
+- (DBTEAMLOGShowcaseRequestAccessType *)showcaseRequestAccess {
+  if (![self isShowcaseRequestAccess]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseRequestAccess, but was %@.", [self tagName]];
+  }
+  return _showcaseRequestAccess;
+}
+
+- (DBTEAMLOGShowcaseResolveCommentType *)showcaseResolveComment {
+  if (![self isShowcaseResolveComment]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseResolveComment, but was %@.", [self tagName]];
+  }
+  return _showcaseResolveComment;
+}
+
+- (DBTEAMLOGShowcaseRestoredType *)showcaseRestored {
+  if (![self isShowcaseRestored]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseRestored, but was %@.", [self tagName]];
+  }
+  return _showcaseRestored;
+}
+
+- (DBTEAMLOGShowcaseTrashedType *)showcaseTrashed {
+  if (![self isShowcaseTrashed]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseTrashed, but was %@.", [self tagName]];
+  }
+  return _showcaseTrashed;
+}
+
+- (DBTEAMLOGShowcaseUnresolveCommentType *)showcaseUnresolveComment {
+  if (![self isShowcaseUnresolveComment]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseUnresolveComment, but was %@.", [self tagName]];
+  }
+  return _showcaseUnresolveComment;
+}
+
+- (DBTEAMLOGShowcaseUntrashedType *)showcaseUntrashed {
+  if (![self isShowcaseUntrashed]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseUntrashed, but was %@.", [self tagName]];
+  }
+  return _showcaseUntrashed;
+}
+
+- (DBTEAMLOGShowcaseViewType *)showcaseView {
+  if (![self isShowcaseView]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeShowcaseView, but was %@.", [self tagName]];
+  }
+  return _showcaseView;
+}
+
 - (DBTEAMLOGSsoAddCertType *)ssoAddCert {
   if (![self isSsoAddCert]) {
     [NSException raise:@"IllegalStateException"
@@ -29800,6 +31276,15 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypeTeamFolderRename, but was %@.", [self tagName]];
   }
   return _teamFolderRename;
+}
+
+- (DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)teamSelectiveSyncSettingsChanged {
+  if (![self isTeamSelectiveSyncSettingsChanged]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged, but was %@.",
+                       [self tagName]];
+  }
+  return _teamSelectiveSyncSettingsChanged;
 }
 
 - (DBTEAMLOGAccountCaptureChangePolicyType *)accountCaptureChangePolicy {
@@ -30559,6 +32044,14 @@
   return _tag == DBTEAMLOGEventTypeGroupDelete;
 }
 
+- (BOOL)isGroupDescriptionUpdated {
+  return _tag == DBTEAMLOGEventTypeGroupDescriptionUpdated;
+}
+
+- (BOOL)isGroupJoinPolicyUpdated {
+  return _tag == DBTEAMLOGEventTypeGroupJoinPolicyUpdated;
+}
+
 - (BOOL)isGroupMoved {
   return _tag == DBTEAMLOGEventTypeGroupMoved;
 }
@@ -31099,6 +32592,94 @@
   return _tag == DBTEAMLOGEventTypeShmodelGroupShare;
 }
 
+- (BOOL)isShowcaseAccessGranted {
+  return _tag == DBTEAMLOGEventTypeShowcaseAccessGranted;
+}
+
+- (BOOL)isShowcaseAddMember {
+  return _tag == DBTEAMLOGEventTypeShowcaseAddMember;
+}
+
+- (BOOL)isShowcaseArchived {
+  return _tag == DBTEAMLOGEventTypeShowcaseArchived;
+}
+
+- (BOOL)isShowcaseCreated {
+  return _tag == DBTEAMLOGEventTypeShowcaseCreated;
+}
+
+- (BOOL)isShowcaseDeleteComment {
+  return _tag == DBTEAMLOGEventTypeShowcaseDeleteComment;
+}
+
+- (BOOL)isShowcaseEdited {
+  return _tag == DBTEAMLOGEventTypeShowcaseEdited;
+}
+
+- (BOOL)isShowcaseEditComment {
+  return _tag == DBTEAMLOGEventTypeShowcaseEditComment;
+}
+
+- (BOOL)isShowcaseFileAdded {
+  return _tag == DBTEAMLOGEventTypeShowcaseFileAdded;
+}
+
+- (BOOL)isShowcaseFileDownload {
+  return _tag == DBTEAMLOGEventTypeShowcaseFileDownload;
+}
+
+- (BOOL)isShowcaseFileRemoved {
+  return _tag == DBTEAMLOGEventTypeShowcaseFileRemoved;
+}
+
+- (BOOL)isShowcaseFileView {
+  return _tag == DBTEAMLOGEventTypeShowcaseFileView;
+}
+
+- (BOOL)isShowcasePermanentlyDeleted {
+  return _tag == DBTEAMLOGEventTypeShowcasePermanentlyDeleted;
+}
+
+- (BOOL)isShowcasePostComment {
+  return _tag == DBTEAMLOGEventTypeShowcasePostComment;
+}
+
+- (BOOL)isShowcaseRemoveMember {
+  return _tag == DBTEAMLOGEventTypeShowcaseRemoveMember;
+}
+
+- (BOOL)isShowcaseRenamed {
+  return _tag == DBTEAMLOGEventTypeShowcaseRenamed;
+}
+
+- (BOOL)isShowcaseRequestAccess {
+  return _tag == DBTEAMLOGEventTypeShowcaseRequestAccess;
+}
+
+- (BOOL)isShowcaseResolveComment {
+  return _tag == DBTEAMLOGEventTypeShowcaseResolveComment;
+}
+
+- (BOOL)isShowcaseRestored {
+  return _tag == DBTEAMLOGEventTypeShowcaseRestored;
+}
+
+- (BOOL)isShowcaseTrashed {
+  return _tag == DBTEAMLOGEventTypeShowcaseTrashed;
+}
+
+- (BOOL)isShowcaseUnresolveComment {
+  return _tag == DBTEAMLOGEventTypeShowcaseUnresolveComment;
+}
+
+- (BOOL)isShowcaseUntrashed {
+  return _tag == DBTEAMLOGEventTypeShowcaseUntrashed;
+}
+
+- (BOOL)isShowcaseView {
+  return _tag == DBTEAMLOGEventTypeShowcaseView;
+}
+
 - (BOOL)isSsoAddCert {
   return _tag == DBTEAMLOGEventTypeSsoAddCert;
 }
@@ -31157,6 +32738,10 @@
 
 - (BOOL)isTeamFolderRename {
   return _tag == DBTEAMLOGEventTypeTeamFolderRename;
+}
+
+- (BOOL)isTeamSelectiveSyncSettingsChanged {
+  return _tag == DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged;
 }
 
 - (BOOL)isAccountCaptureChangePolicy {
@@ -31527,6 +33112,10 @@
     return @"DBTEAMLOGEventTypeGroupCreate";
   case DBTEAMLOGEventTypeGroupDelete:
     return @"DBTEAMLOGEventTypeGroupDelete";
+  case DBTEAMLOGEventTypeGroupDescriptionUpdated:
+    return @"DBTEAMLOGEventTypeGroupDescriptionUpdated";
+  case DBTEAMLOGEventTypeGroupJoinPolicyUpdated:
+    return @"DBTEAMLOGEventTypeGroupJoinPolicyUpdated";
   case DBTEAMLOGEventTypeGroupMoved:
     return @"DBTEAMLOGEventTypeGroupMoved";
   case DBTEAMLOGEventTypeGroupRemoveExternalId:
@@ -31797,6 +33386,50 @@
     return @"DBTEAMLOGEventTypeSharedNoteOpened";
   case DBTEAMLOGEventTypeShmodelGroupShare:
     return @"DBTEAMLOGEventTypeShmodelGroupShare";
+  case DBTEAMLOGEventTypeShowcaseAccessGranted:
+    return @"DBTEAMLOGEventTypeShowcaseAccessGranted";
+  case DBTEAMLOGEventTypeShowcaseAddMember:
+    return @"DBTEAMLOGEventTypeShowcaseAddMember";
+  case DBTEAMLOGEventTypeShowcaseArchived:
+    return @"DBTEAMLOGEventTypeShowcaseArchived";
+  case DBTEAMLOGEventTypeShowcaseCreated:
+    return @"DBTEAMLOGEventTypeShowcaseCreated";
+  case DBTEAMLOGEventTypeShowcaseDeleteComment:
+    return @"DBTEAMLOGEventTypeShowcaseDeleteComment";
+  case DBTEAMLOGEventTypeShowcaseEdited:
+    return @"DBTEAMLOGEventTypeShowcaseEdited";
+  case DBTEAMLOGEventTypeShowcaseEditComment:
+    return @"DBTEAMLOGEventTypeShowcaseEditComment";
+  case DBTEAMLOGEventTypeShowcaseFileAdded:
+    return @"DBTEAMLOGEventTypeShowcaseFileAdded";
+  case DBTEAMLOGEventTypeShowcaseFileDownload:
+    return @"DBTEAMLOGEventTypeShowcaseFileDownload";
+  case DBTEAMLOGEventTypeShowcaseFileRemoved:
+    return @"DBTEAMLOGEventTypeShowcaseFileRemoved";
+  case DBTEAMLOGEventTypeShowcaseFileView:
+    return @"DBTEAMLOGEventTypeShowcaseFileView";
+  case DBTEAMLOGEventTypeShowcasePermanentlyDeleted:
+    return @"DBTEAMLOGEventTypeShowcasePermanentlyDeleted";
+  case DBTEAMLOGEventTypeShowcasePostComment:
+    return @"DBTEAMLOGEventTypeShowcasePostComment";
+  case DBTEAMLOGEventTypeShowcaseRemoveMember:
+    return @"DBTEAMLOGEventTypeShowcaseRemoveMember";
+  case DBTEAMLOGEventTypeShowcaseRenamed:
+    return @"DBTEAMLOGEventTypeShowcaseRenamed";
+  case DBTEAMLOGEventTypeShowcaseRequestAccess:
+    return @"DBTEAMLOGEventTypeShowcaseRequestAccess";
+  case DBTEAMLOGEventTypeShowcaseResolveComment:
+    return @"DBTEAMLOGEventTypeShowcaseResolveComment";
+  case DBTEAMLOGEventTypeShowcaseRestored:
+    return @"DBTEAMLOGEventTypeShowcaseRestored";
+  case DBTEAMLOGEventTypeShowcaseTrashed:
+    return @"DBTEAMLOGEventTypeShowcaseTrashed";
+  case DBTEAMLOGEventTypeShowcaseUnresolveComment:
+    return @"DBTEAMLOGEventTypeShowcaseUnresolveComment";
+  case DBTEAMLOGEventTypeShowcaseUntrashed:
+    return @"DBTEAMLOGEventTypeShowcaseUntrashed";
+  case DBTEAMLOGEventTypeShowcaseView:
+    return @"DBTEAMLOGEventTypeShowcaseView";
   case DBTEAMLOGEventTypeSsoAddCert:
     return @"DBTEAMLOGEventTypeSsoAddCert";
   case DBTEAMLOGEventTypeSsoAddLoginUrl:
@@ -31827,6 +33460,8 @@
     return @"DBTEAMLOGEventTypeTeamFolderPermanentlyDelete";
   case DBTEAMLOGEventTypeTeamFolderRename:
     return @"DBTEAMLOGEventTypeTeamFolderRename";
+  case DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged:
+    return @"DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged";
   case DBTEAMLOGEventTypeAccountCaptureChangePolicy:
     return @"DBTEAMLOGEventTypeAccountCaptureChangePolicy";
   case DBTEAMLOGEventTypeAllowDownloadDisabled:
@@ -32109,6 +33744,10 @@
     result = prime * result + [self.groupCreate hash];
   case DBTEAMLOGEventTypeGroupDelete:
     result = prime * result + [self.groupDelete hash];
+  case DBTEAMLOGEventTypeGroupDescriptionUpdated:
+    result = prime * result + [self.groupDescriptionUpdated hash];
+  case DBTEAMLOGEventTypeGroupJoinPolicyUpdated:
+    result = prime * result + [self.groupJoinPolicyUpdated hash];
   case DBTEAMLOGEventTypeGroupMoved:
     result = prime * result + [self.groupMoved hash];
   case DBTEAMLOGEventTypeGroupRemoveExternalId:
@@ -32379,6 +34018,50 @@
     result = prime * result + [self.sharedNoteOpened hash];
   case DBTEAMLOGEventTypeShmodelGroupShare:
     result = prime * result + [self.shmodelGroupShare hash];
+  case DBTEAMLOGEventTypeShowcaseAccessGranted:
+    result = prime * result + [self.showcaseAccessGranted hash];
+  case DBTEAMLOGEventTypeShowcaseAddMember:
+    result = prime * result + [self.showcaseAddMember hash];
+  case DBTEAMLOGEventTypeShowcaseArchived:
+    result = prime * result + [self.showcaseArchived hash];
+  case DBTEAMLOGEventTypeShowcaseCreated:
+    result = prime * result + [self.showcaseCreated hash];
+  case DBTEAMLOGEventTypeShowcaseDeleteComment:
+    result = prime * result + [self.showcaseDeleteComment hash];
+  case DBTEAMLOGEventTypeShowcaseEdited:
+    result = prime * result + [self.showcaseEdited hash];
+  case DBTEAMLOGEventTypeShowcaseEditComment:
+    result = prime * result + [self.showcaseEditComment hash];
+  case DBTEAMLOGEventTypeShowcaseFileAdded:
+    result = prime * result + [self.showcaseFileAdded hash];
+  case DBTEAMLOGEventTypeShowcaseFileDownload:
+    result = prime * result + [self.showcaseFileDownload hash];
+  case DBTEAMLOGEventTypeShowcaseFileRemoved:
+    result = prime * result + [self.showcaseFileRemoved hash];
+  case DBTEAMLOGEventTypeShowcaseFileView:
+    result = prime * result + [self.showcaseFileView hash];
+  case DBTEAMLOGEventTypeShowcasePermanentlyDeleted:
+    result = prime * result + [self.showcasePermanentlyDeleted hash];
+  case DBTEAMLOGEventTypeShowcasePostComment:
+    result = prime * result + [self.showcasePostComment hash];
+  case DBTEAMLOGEventTypeShowcaseRemoveMember:
+    result = prime * result + [self.showcaseRemoveMember hash];
+  case DBTEAMLOGEventTypeShowcaseRenamed:
+    result = prime * result + [self.showcaseRenamed hash];
+  case DBTEAMLOGEventTypeShowcaseRequestAccess:
+    result = prime * result + [self.showcaseRequestAccess hash];
+  case DBTEAMLOGEventTypeShowcaseResolveComment:
+    result = prime * result + [self.showcaseResolveComment hash];
+  case DBTEAMLOGEventTypeShowcaseRestored:
+    result = prime * result + [self.showcaseRestored hash];
+  case DBTEAMLOGEventTypeShowcaseTrashed:
+    result = prime * result + [self.showcaseTrashed hash];
+  case DBTEAMLOGEventTypeShowcaseUnresolveComment:
+    result = prime * result + [self.showcaseUnresolveComment hash];
+  case DBTEAMLOGEventTypeShowcaseUntrashed:
+    result = prime * result + [self.showcaseUntrashed hash];
+  case DBTEAMLOGEventTypeShowcaseView:
+    result = prime * result + [self.showcaseView hash];
   case DBTEAMLOGEventTypeSsoAddCert:
     result = prime * result + [self.ssoAddCert hash];
   case DBTEAMLOGEventTypeSsoAddLoginUrl:
@@ -32409,6 +34092,8 @@
     result = prime * result + [self.teamFolderPermanentlyDelete hash];
   case DBTEAMLOGEventTypeTeamFolderRename:
     result = prime * result + [self.teamFolderRename hash];
+  case DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged:
+    result = prime * result + [self.teamSelectiveSyncSettingsChanged hash];
   case DBTEAMLOGEventTypeAccountCaptureChangePolicy:
     result = prime * result + [self.accountCaptureChangePolicy hash];
   case DBTEAMLOGEventTypeAllowDownloadDisabled:
@@ -32680,6 +34365,10 @@
     return [self.groupCreate isEqual:anEventType.groupCreate];
   case DBTEAMLOGEventTypeGroupDelete:
     return [self.groupDelete isEqual:anEventType.groupDelete];
+  case DBTEAMLOGEventTypeGroupDescriptionUpdated:
+    return [self.groupDescriptionUpdated isEqual:anEventType.groupDescriptionUpdated];
+  case DBTEAMLOGEventTypeGroupJoinPolicyUpdated:
+    return [self.groupJoinPolicyUpdated isEqual:anEventType.groupJoinPolicyUpdated];
   case DBTEAMLOGEventTypeGroupMoved:
     return [self.groupMoved isEqual:anEventType.groupMoved];
   case DBTEAMLOGEventTypeGroupRemoveExternalId:
@@ -32952,6 +34641,50 @@
     return [self.sharedNoteOpened isEqual:anEventType.sharedNoteOpened];
   case DBTEAMLOGEventTypeShmodelGroupShare:
     return [self.shmodelGroupShare isEqual:anEventType.shmodelGroupShare];
+  case DBTEAMLOGEventTypeShowcaseAccessGranted:
+    return [self.showcaseAccessGranted isEqual:anEventType.showcaseAccessGranted];
+  case DBTEAMLOGEventTypeShowcaseAddMember:
+    return [self.showcaseAddMember isEqual:anEventType.showcaseAddMember];
+  case DBTEAMLOGEventTypeShowcaseArchived:
+    return [self.showcaseArchived isEqual:anEventType.showcaseArchived];
+  case DBTEAMLOGEventTypeShowcaseCreated:
+    return [self.showcaseCreated isEqual:anEventType.showcaseCreated];
+  case DBTEAMLOGEventTypeShowcaseDeleteComment:
+    return [self.showcaseDeleteComment isEqual:anEventType.showcaseDeleteComment];
+  case DBTEAMLOGEventTypeShowcaseEdited:
+    return [self.showcaseEdited isEqual:anEventType.showcaseEdited];
+  case DBTEAMLOGEventTypeShowcaseEditComment:
+    return [self.showcaseEditComment isEqual:anEventType.showcaseEditComment];
+  case DBTEAMLOGEventTypeShowcaseFileAdded:
+    return [self.showcaseFileAdded isEqual:anEventType.showcaseFileAdded];
+  case DBTEAMLOGEventTypeShowcaseFileDownload:
+    return [self.showcaseFileDownload isEqual:anEventType.showcaseFileDownload];
+  case DBTEAMLOGEventTypeShowcaseFileRemoved:
+    return [self.showcaseFileRemoved isEqual:anEventType.showcaseFileRemoved];
+  case DBTEAMLOGEventTypeShowcaseFileView:
+    return [self.showcaseFileView isEqual:anEventType.showcaseFileView];
+  case DBTEAMLOGEventTypeShowcasePermanentlyDeleted:
+    return [self.showcasePermanentlyDeleted isEqual:anEventType.showcasePermanentlyDeleted];
+  case DBTEAMLOGEventTypeShowcasePostComment:
+    return [self.showcasePostComment isEqual:anEventType.showcasePostComment];
+  case DBTEAMLOGEventTypeShowcaseRemoveMember:
+    return [self.showcaseRemoveMember isEqual:anEventType.showcaseRemoveMember];
+  case DBTEAMLOGEventTypeShowcaseRenamed:
+    return [self.showcaseRenamed isEqual:anEventType.showcaseRenamed];
+  case DBTEAMLOGEventTypeShowcaseRequestAccess:
+    return [self.showcaseRequestAccess isEqual:anEventType.showcaseRequestAccess];
+  case DBTEAMLOGEventTypeShowcaseResolveComment:
+    return [self.showcaseResolveComment isEqual:anEventType.showcaseResolveComment];
+  case DBTEAMLOGEventTypeShowcaseRestored:
+    return [self.showcaseRestored isEqual:anEventType.showcaseRestored];
+  case DBTEAMLOGEventTypeShowcaseTrashed:
+    return [self.showcaseTrashed isEqual:anEventType.showcaseTrashed];
+  case DBTEAMLOGEventTypeShowcaseUnresolveComment:
+    return [self.showcaseUnresolveComment isEqual:anEventType.showcaseUnresolveComment];
+  case DBTEAMLOGEventTypeShowcaseUntrashed:
+    return [self.showcaseUntrashed isEqual:anEventType.showcaseUntrashed];
+  case DBTEAMLOGEventTypeShowcaseView:
+    return [self.showcaseView isEqual:anEventType.showcaseView];
   case DBTEAMLOGEventTypeSsoAddCert:
     return [self.ssoAddCert isEqual:anEventType.ssoAddCert];
   case DBTEAMLOGEventTypeSsoAddLoginUrl:
@@ -32982,6 +34715,8 @@
     return [self.teamFolderPermanentlyDelete isEqual:anEventType.teamFolderPermanentlyDelete];
   case DBTEAMLOGEventTypeTeamFolderRename:
     return [self.teamFolderRename isEqual:anEventType.teamFolderRename];
+  case DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged:
+    return [self.teamSelectiveSyncSettingsChanged isEqual:anEventType.teamSelectiveSyncSettingsChanged];
   case DBTEAMLOGEventTypeAccountCaptureChangePolicy:
     return [self.accountCaptureChangePolicy isEqual:anEventType.accountCaptureChangePolicy];
   case DBTEAMLOGEventTypeAllowDownloadDisabled:
@@ -33356,6 +35091,14 @@
   } else if ([valueObj isGroupDelete]) {
     jsonDict[@"group_delete"] = [[DBTEAMLOGGroupDeleteTypeSerializer serialize:valueObj.groupDelete] mutableCopy];
     jsonDict[@".tag"] = @"group_delete";
+  } else if ([valueObj isGroupDescriptionUpdated]) {
+    jsonDict[@"group_description_updated"] =
+        [[DBTEAMLOGGroupDescriptionUpdatedTypeSerializer serialize:valueObj.groupDescriptionUpdated] mutableCopy];
+    jsonDict[@".tag"] = @"group_description_updated";
+  } else if ([valueObj isGroupJoinPolicyUpdated]) {
+    jsonDict[@"group_join_policy_updated"] =
+        [[DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer serialize:valueObj.groupJoinPolicyUpdated] mutableCopy];
+    jsonDict[@".tag"] = @"group_join_policy_updated";
   } else if ([valueObj isGroupMoved]) {
     jsonDict[@"group_moved"] = [[DBTEAMLOGGroupMovedTypeSerializer serialize:valueObj.groupMoved] mutableCopy];
     jsonDict[@".tag"] = @"group_moved";
@@ -33881,6 +35624,93 @@
     jsonDict[@"shmodel_group_share"] =
         [[DBTEAMLOGShmodelGroupShareTypeSerializer serialize:valueObj.shmodelGroupShare] mutableCopy];
     jsonDict[@".tag"] = @"shmodel_group_share";
+  } else if ([valueObj isShowcaseAccessGranted]) {
+    jsonDict[@"showcase_access_granted"] =
+        [[DBTEAMLOGShowcaseAccessGrantedTypeSerializer serialize:valueObj.showcaseAccessGranted] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_access_granted";
+  } else if ([valueObj isShowcaseAddMember]) {
+    jsonDict[@"showcase_add_member"] =
+        [[DBTEAMLOGShowcaseAddMemberTypeSerializer serialize:valueObj.showcaseAddMember] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_add_member";
+  } else if ([valueObj isShowcaseArchived]) {
+    jsonDict[@"showcase_archived"] =
+        [[DBTEAMLOGShowcaseArchivedTypeSerializer serialize:valueObj.showcaseArchived] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_archived";
+  } else if ([valueObj isShowcaseCreated]) {
+    jsonDict[@"showcase_created"] =
+        [[DBTEAMLOGShowcaseCreatedTypeSerializer serialize:valueObj.showcaseCreated] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_created";
+  } else if ([valueObj isShowcaseDeleteComment]) {
+    jsonDict[@"showcase_delete_comment"] =
+        [[DBTEAMLOGShowcaseDeleteCommentTypeSerializer serialize:valueObj.showcaseDeleteComment] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_delete_comment";
+  } else if ([valueObj isShowcaseEdited]) {
+    jsonDict[@"showcase_edited"] =
+        [[DBTEAMLOGShowcaseEditedTypeSerializer serialize:valueObj.showcaseEdited] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_edited";
+  } else if ([valueObj isShowcaseEditComment]) {
+    jsonDict[@"showcase_edit_comment"] =
+        [[DBTEAMLOGShowcaseEditCommentTypeSerializer serialize:valueObj.showcaseEditComment] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_edit_comment";
+  } else if ([valueObj isShowcaseFileAdded]) {
+    jsonDict[@"showcase_file_added"] =
+        [[DBTEAMLOGShowcaseFileAddedTypeSerializer serialize:valueObj.showcaseFileAdded] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_added";
+  } else if ([valueObj isShowcaseFileDownload]) {
+    jsonDict[@"showcase_file_download"] =
+        [[DBTEAMLOGShowcaseFileDownloadTypeSerializer serialize:valueObj.showcaseFileDownload] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_download";
+  } else if ([valueObj isShowcaseFileRemoved]) {
+    jsonDict[@"showcase_file_removed"] =
+        [[DBTEAMLOGShowcaseFileRemovedTypeSerializer serialize:valueObj.showcaseFileRemoved] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_removed";
+  } else if ([valueObj isShowcaseFileView]) {
+    jsonDict[@"showcase_file_view"] =
+        [[DBTEAMLOGShowcaseFileViewTypeSerializer serialize:valueObj.showcaseFileView] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_file_view";
+  } else if ([valueObj isShowcasePermanentlyDeleted]) {
+    jsonDict[@"showcase_permanently_deleted"] =
+        [[DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer serialize:valueObj.showcasePermanentlyDeleted] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_permanently_deleted";
+  } else if ([valueObj isShowcasePostComment]) {
+    jsonDict[@"showcase_post_comment"] =
+        [[DBTEAMLOGShowcasePostCommentTypeSerializer serialize:valueObj.showcasePostComment] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_post_comment";
+  } else if ([valueObj isShowcaseRemoveMember]) {
+    jsonDict[@"showcase_remove_member"] =
+        [[DBTEAMLOGShowcaseRemoveMemberTypeSerializer serialize:valueObj.showcaseRemoveMember] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_remove_member";
+  } else if ([valueObj isShowcaseRenamed]) {
+    jsonDict[@"showcase_renamed"] =
+        [[DBTEAMLOGShowcaseRenamedTypeSerializer serialize:valueObj.showcaseRenamed] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_renamed";
+  } else if ([valueObj isShowcaseRequestAccess]) {
+    jsonDict[@"showcase_request_access"] =
+        [[DBTEAMLOGShowcaseRequestAccessTypeSerializer serialize:valueObj.showcaseRequestAccess] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_request_access";
+  } else if ([valueObj isShowcaseResolveComment]) {
+    jsonDict[@"showcase_resolve_comment"] =
+        [[DBTEAMLOGShowcaseResolveCommentTypeSerializer serialize:valueObj.showcaseResolveComment] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_resolve_comment";
+  } else if ([valueObj isShowcaseRestored]) {
+    jsonDict[@"showcase_restored"] =
+        [[DBTEAMLOGShowcaseRestoredTypeSerializer serialize:valueObj.showcaseRestored] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_restored";
+  } else if ([valueObj isShowcaseTrashed]) {
+    jsonDict[@"showcase_trashed"] =
+        [[DBTEAMLOGShowcaseTrashedTypeSerializer serialize:valueObj.showcaseTrashed] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_trashed";
+  } else if ([valueObj isShowcaseUnresolveComment]) {
+    jsonDict[@"showcase_unresolve_comment"] =
+        [[DBTEAMLOGShowcaseUnresolveCommentTypeSerializer serialize:valueObj.showcaseUnresolveComment] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_unresolve_comment";
+  } else if ([valueObj isShowcaseUntrashed]) {
+    jsonDict[@"showcase_untrashed"] =
+        [[DBTEAMLOGShowcaseUntrashedTypeSerializer serialize:valueObj.showcaseUntrashed] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_untrashed";
+  } else if ([valueObj isShowcaseView]) {
+    jsonDict[@"showcase_view"] = [[DBTEAMLOGShowcaseViewTypeSerializer serialize:valueObj.showcaseView] mutableCopy];
+    jsonDict[@".tag"] = @"showcase_view";
   } else if ([valueObj isSsoAddCert]) {
     jsonDict[@"sso_add_cert"] = [[DBTEAMLOGSsoAddCertTypeSerializer serialize:valueObj.ssoAddCert] mutableCopy];
     jsonDict[@".tag"] = @"sso_add_cert";
@@ -33940,6 +35770,10 @@
     jsonDict[@"team_folder_rename"] =
         [[DBTEAMLOGTeamFolderRenameTypeSerializer serialize:valueObj.teamFolderRename] mutableCopy];
     jsonDict[@".tag"] = @"team_folder_rename";
+  } else if ([valueObj isTeamSelectiveSyncSettingsChanged]) {
+    jsonDict[@"team_selective_sync_settings_changed"] = [[DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer
+        serialize:valueObj.teamSelectiveSyncSettingsChanged] mutableCopy];
+    jsonDict[@".tag"] = @"team_selective_sync_settings_changed";
   } else if ([valueObj isAccountCaptureChangePolicy]) {
     jsonDict[@"account_capture_change_policy"] =
         [[DBTEAMLOGAccountCaptureChangePolicyTypeSerializer serialize:valueObj.accountCaptureChangePolicy] mutableCopy];
@@ -34424,6 +36258,14 @@
   } else if ([tag isEqualToString:@"group_delete"]) {
     DBTEAMLOGGroupDeleteType *groupDelete = [DBTEAMLOGGroupDeleteTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithGroupDelete:groupDelete];
+  } else if ([tag isEqualToString:@"group_description_updated"]) {
+    DBTEAMLOGGroupDescriptionUpdatedType *groupDescriptionUpdated =
+        [DBTEAMLOGGroupDescriptionUpdatedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithGroupDescriptionUpdated:groupDescriptionUpdated];
+  } else if ([tag isEqualToString:@"group_join_policy_updated"]) {
+    DBTEAMLOGGroupJoinPolicyUpdatedType *groupJoinPolicyUpdated =
+        [DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithGroupJoinPolicyUpdated:groupJoinPolicyUpdated];
   } else if ([tag isEqualToString:@"group_moved"]) {
     DBTEAMLOGGroupMovedType *groupMoved = [DBTEAMLOGGroupMovedTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithGroupMoved:groupMoved];
@@ -34927,6 +36769,86 @@
     DBTEAMLOGShmodelGroupShareType *shmodelGroupShare =
         [DBTEAMLOGShmodelGroupShareTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithShmodelGroupShare:shmodelGroupShare];
+  } else if ([tag isEqualToString:@"showcase_access_granted"]) {
+    DBTEAMLOGShowcaseAccessGrantedType *showcaseAccessGranted =
+        [DBTEAMLOGShowcaseAccessGrantedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseAccessGranted:showcaseAccessGranted];
+  } else if ([tag isEqualToString:@"showcase_add_member"]) {
+    DBTEAMLOGShowcaseAddMemberType *showcaseAddMember =
+        [DBTEAMLOGShowcaseAddMemberTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseAddMember:showcaseAddMember];
+  } else if ([tag isEqualToString:@"showcase_archived"]) {
+    DBTEAMLOGShowcaseArchivedType *showcaseArchived = [DBTEAMLOGShowcaseArchivedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseArchived:showcaseArchived];
+  } else if ([tag isEqualToString:@"showcase_created"]) {
+    DBTEAMLOGShowcaseCreatedType *showcaseCreated = [DBTEAMLOGShowcaseCreatedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseCreated:showcaseCreated];
+  } else if ([tag isEqualToString:@"showcase_delete_comment"]) {
+    DBTEAMLOGShowcaseDeleteCommentType *showcaseDeleteComment =
+        [DBTEAMLOGShowcaseDeleteCommentTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseDeleteComment:showcaseDeleteComment];
+  } else if ([tag isEqualToString:@"showcase_edited"]) {
+    DBTEAMLOGShowcaseEditedType *showcaseEdited = [DBTEAMLOGShowcaseEditedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseEdited:showcaseEdited];
+  } else if ([tag isEqualToString:@"showcase_edit_comment"]) {
+    DBTEAMLOGShowcaseEditCommentType *showcaseEditComment =
+        [DBTEAMLOGShowcaseEditCommentTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseEditComment:showcaseEditComment];
+  } else if ([tag isEqualToString:@"showcase_file_added"]) {
+    DBTEAMLOGShowcaseFileAddedType *showcaseFileAdded =
+        [DBTEAMLOGShowcaseFileAddedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseFileAdded:showcaseFileAdded];
+  } else if ([tag isEqualToString:@"showcase_file_download"]) {
+    DBTEAMLOGShowcaseFileDownloadType *showcaseFileDownload =
+        [DBTEAMLOGShowcaseFileDownloadTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseFileDownload:showcaseFileDownload];
+  } else if ([tag isEqualToString:@"showcase_file_removed"]) {
+    DBTEAMLOGShowcaseFileRemovedType *showcaseFileRemoved =
+        [DBTEAMLOGShowcaseFileRemovedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseFileRemoved:showcaseFileRemoved];
+  } else if ([tag isEqualToString:@"showcase_file_view"]) {
+    DBTEAMLOGShowcaseFileViewType *showcaseFileView = [DBTEAMLOGShowcaseFileViewTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseFileView:showcaseFileView];
+  } else if ([tag isEqualToString:@"showcase_permanently_deleted"]) {
+    DBTEAMLOGShowcasePermanentlyDeletedType *showcasePermanentlyDeleted =
+        [DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcasePermanentlyDeleted:showcasePermanentlyDeleted];
+  } else if ([tag isEqualToString:@"showcase_post_comment"]) {
+    DBTEAMLOGShowcasePostCommentType *showcasePostComment =
+        [DBTEAMLOGShowcasePostCommentTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcasePostComment:showcasePostComment];
+  } else if ([tag isEqualToString:@"showcase_remove_member"]) {
+    DBTEAMLOGShowcaseRemoveMemberType *showcaseRemoveMember =
+        [DBTEAMLOGShowcaseRemoveMemberTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseRemoveMember:showcaseRemoveMember];
+  } else if ([tag isEqualToString:@"showcase_renamed"]) {
+    DBTEAMLOGShowcaseRenamedType *showcaseRenamed = [DBTEAMLOGShowcaseRenamedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseRenamed:showcaseRenamed];
+  } else if ([tag isEqualToString:@"showcase_request_access"]) {
+    DBTEAMLOGShowcaseRequestAccessType *showcaseRequestAccess =
+        [DBTEAMLOGShowcaseRequestAccessTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseRequestAccess:showcaseRequestAccess];
+  } else if ([tag isEqualToString:@"showcase_resolve_comment"]) {
+    DBTEAMLOGShowcaseResolveCommentType *showcaseResolveComment =
+        [DBTEAMLOGShowcaseResolveCommentTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseResolveComment:showcaseResolveComment];
+  } else if ([tag isEqualToString:@"showcase_restored"]) {
+    DBTEAMLOGShowcaseRestoredType *showcaseRestored = [DBTEAMLOGShowcaseRestoredTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseRestored:showcaseRestored];
+  } else if ([tag isEqualToString:@"showcase_trashed"]) {
+    DBTEAMLOGShowcaseTrashedType *showcaseTrashed = [DBTEAMLOGShowcaseTrashedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseTrashed:showcaseTrashed];
+  } else if ([tag isEqualToString:@"showcase_unresolve_comment"]) {
+    DBTEAMLOGShowcaseUnresolveCommentType *showcaseUnresolveComment =
+        [DBTEAMLOGShowcaseUnresolveCommentTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseUnresolveComment:showcaseUnresolveComment];
+  } else if ([tag isEqualToString:@"showcase_untrashed"]) {
+    DBTEAMLOGShowcaseUntrashedType *showcaseUntrashed =
+        [DBTEAMLOGShowcaseUntrashedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseUntrashed:showcaseUntrashed];
+  } else if ([tag isEqualToString:@"showcase_view"]) {
+    DBTEAMLOGShowcaseViewType *showcaseView = [DBTEAMLOGShowcaseViewTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithShowcaseView:showcaseView];
   } else if ([tag isEqualToString:@"sso_add_cert"]) {
     DBTEAMLOGSsoAddCertType *ssoAddCert = [DBTEAMLOGSsoAddCertTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithSsoAddCert:ssoAddCert];
@@ -34980,6 +36902,10 @@
   } else if ([tag isEqualToString:@"team_folder_rename"]) {
     DBTEAMLOGTeamFolderRenameType *teamFolderRename = [DBTEAMLOGTeamFolderRenameTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithTeamFolderRename:teamFolderRename];
+  } else if ([tag isEqualToString:@"team_selective_sync_settings_changed"]) {
+    DBTEAMLOGTeamSelectiveSyncSettingsChangedType *teamSelectiveSyncSettingsChanged =
+        [DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamSelectiveSyncSettingsChanged:teamSelectiveSyncSettingsChanged];
   } else if ([tag isEqualToString:@"account_capture_change_policy"]) {
     DBTEAMLOGAccountCaptureChangePolicyType *accountCaptureChangePolicy =
         [DBTEAMLOGAccountCaptureChangePolicyTypeSerializer deserialize:valueDict];
@@ -35668,6 +37594,14 @@
   return self;
 }
 
+- (instancetype)initWithImplicitlyUnlimited {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyUnlimited;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -35692,6 +37626,10 @@
   return _tag == DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyLimited;
 }
 
+- (BOOL)isImplicitlyUnlimited {
+  return _tag == DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyUnlimited;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGExtendedVersionHistoryPolicyOther;
 }
@@ -35704,6 +37642,8 @@
     return @"DBTEAMLOGExtendedVersionHistoryPolicyExplicitlyUnlimited";
   case DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyLimited:
     return @"DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyLimited";
+  case DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyUnlimited:
+    return @"DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyUnlimited";
   case DBTEAMLOGExtendedVersionHistoryPolicyOther:
     return @"DBTEAMLOGExtendedVersionHistoryPolicyOther";
   }
@@ -35748,6 +37688,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyLimited:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyUnlimited:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGExtendedVersionHistoryPolicyOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -35781,6 +37723,8 @@
     return [[self tagName] isEqual:[anExtendedVersionHistoryPolicy tagName]];
   case DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyLimited:
     return [[self tagName] isEqual:[anExtendedVersionHistoryPolicy tagName]];
+  case DBTEAMLOGExtendedVersionHistoryPolicyImplicitlyUnlimited:
+    return [[self tagName] isEqual:[anExtendedVersionHistoryPolicy tagName]];
   case DBTEAMLOGExtendedVersionHistoryPolicyOther:
     return [[self tagName] isEqual:[anExtendedVersionHistoryPolicy tagName]];
   }
@@ -35802,6 +37746,8 @@
     jsonDict[@".tag"] = @"explicitly_unlimited";
   } else if ([valueObj isImplicitlyLimited]) {
     jsonDict[@".tag"] = @"implicitly_limited";
+  } else if ([valueObj isImplicitlyUnlimited]) {
+    jsonDict[@".tag"] = @"implicitly_unlimited";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -35820,6 +37766,8 @@
     return [[DBTEAMLOGExtendedVersionHistoryPolicy alloc] initWithExplicitlyUnlimited];
   } else if ([tag isEqualToString:@"implicitly_limited"]) {
     return [[DBTEAMLOGExtendedVersionHistoryPolicy alloc] initWithImplicitlyLimited];
+  } else if ([tag isEqualToString:@"implicitly_unlimited"]) {
+    return [[DBTEAMLOGExtendedVersionHistoryPolicy alloc] initWithImplicitlyUnlimited];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGExtendedVersionHistoryPolicy alloc] initWithOther];
   } else {
@@ -45499,9 +47447,8 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithJoinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy
-                  isCompanyManaged:(NSNumber *)isCompanyManaged {
-  [DBStoneValidators nonnullValidator:nil](joinPolicy);
+- (instancetype)initWithIsCompanyManaged:(NSNumber *)isCompanyManaged
+                              joinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy {
 
   self = [super init];
   if (self) {
@@ -45511,8 +47458,8 @@
   return self;
 }
 
-- (instancetype)initWithJoinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy {
-  return [self initWithJoinPolicy:joinPolicy isCompanyManaged:nil];
+- (instancetype)initDefault {
+  return [self initWithIsCompanyManaged:nil joinPolicy:nil];
 }
 
 #pragma mark - Serialization methods
@@ -45545,9 +47492,11 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.joinPolicy hash];
   if (self.isCompanyManaged != nil) {
     result = prime * result + [self.isCompanyManaged hash];
+  }
+  if (self.joinPolicy != nil) {
+    result = prime * result + [self.joinPolicy hash];
   }
 
   return prime * result;
@@ -45569,11 +47518,13 @@
   if (self == aGroupCreateDetails) {
     return YES;
   }
-  if (![self.joinPolicy isEqual:aGroupCreateDetails.joinPolicy]) {
-    return NO;
-  }
   if (self.isCompanyManaged) {
     if (![self.isCompanyManaged isEqual:aGroupCreateDetails.isCompanyManaged]) {
+      return NO;
+    }
+  }
+  if (self.joinPolicy) {
+    if (![self.joinPolicy isEqual:aGroupCreateDetails.joinPolicy]) {
       return NO;
     }
   }
@@ -45589,19 +47540,22 @@
 + (NSDictionary *)serialize:(DBTEAMLOGGroupCreateDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"join_policy"] = [DBTEAMLOGGroupJoinPolicySerializer serialize:valueObj.joinPolicy];
   if (valueObj.isCompanyManaged) {
     jsonDict[@"is_company_managed"] = valueObj.isCompanyManaged;
+  }
+  if (valueObj.joinPolicy) {
+    jsonDict[@"join_policy"] = [DBTEAMLOGGroupJoinPolicySerializer serialize:valueObj.joinPolicy];
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGGroupCreateDetails *)deserialize:(NSDictionary *)valueDict {
-  DBTEAMLOGGroupJoinPolicy *joinPolicy = [DBTEAMLOGGroupJoinPolicySerializer deserialize:valueDict[@"join_policy"]];
   NSNumber *isCompanyManaged = valueDict[@"is_company_managed"] ?: nil;
+  DBTEAMLOGGroupJoinPolicy *joinPolicy =
+      valueDict[@"join_policy"] ? [DBTEAMLOGGroupJoinPolicySerializer deserialize:valueDict[@"join_policy"]] : nil;
 
-  return [[DBTEAMLOGGroupCreateDetails alloc] initWithJoinPolicy:joinPolicy isCompanyManaged:isCompanyManaged];
+  return [[DBTEAMLOGGroupCreateDetails alloc] initWithIsCompanyManaged:isCompanyManaged joinPolicy:joinPolicy];
 }
 
 @end
@@ -45914,6 +47868,197 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGGroupDescriptionUpdatedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGroupDescriptionUpdatedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initDefault {
+
+  self = [super init];
+  if (self) {
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupDescriptionUpdatedDetails:other];
+}
+
+- (BOOL)isEqualToGroupDescriptionUpdatedDetails:
+    (DBTEAMLOGGroupDescriptionUpdatedDetails *)aGroupDescriptionUpdatedDetails {
+  if (self == aGroupDescriptionUpdatedDetails) {
+    return YES;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGGroupDescriptionUpdatedDetails *)valueObj {
+#pragma unused(valueObj)
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGroupDescriptionUpdatedDetails *)deserialize:(NSDictionary *)valueDict {
+#pragma unused(valueDict)
+
+  return [[DBTEAMLOGGroupDescriptionUpdatedDetails alloc] initDefault];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGroupDescriptionUpdatedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGroupDescriptionUpdatedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGGroupDescriptionUpdatedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGGroupDescriptionUpdatedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGroupDescriptionUpdatedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupDescriptionUpdatedType:other];
+}
+
+- (BOOL)isEqualToGroupDescriptionUpdatedType:(DBTEAMLOGGroupDescriptionUpdatedType *)aGroupDescriptionUpdatedType {
+  if (self == aGroupDescriptionUpdatedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aGroupDescriptionUpdatedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGroupDescriptionUpdatedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGGroupDescriptionUpdatedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGroupDescriptionUpdatedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGGroupDescriptionUpdatedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGGroupJoinPolicy.h"
 
 #pragma mark - API Object
@@ -46081,6 +48226,231 @@
   } else {
     return [[DBTEAMLOGGroupJoinPolicy alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGroupJoinPolicy.h"
+#import "DBTEAMLOGGroupJoinPolicyUpdatedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGroupJoinPolicyUpdatedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithIsCompanyManaged:(NSNumber *)isCompanyManaged
+                              joinPolicy:(DBTEAMLOGGroupJoinPolicy *)joinPolicy {
+
+  self = [super init];
+  if (self) {
+    _isCompanyManaged = isCompanyManaged;
+    _joinPolicy = joinPolicy;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithIsCompanyManaged:nil joinPolicy:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.isCompanyManaged != nil) {
+    result = prime * result + [self.isCompanyManaged hash];
+  }
+  if (self.joinPolicy != nil) {
+    result = prime * result + [self.joinPolicy hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupJoinPolicyUpdatedDetails:other];
+}
+
+- (BOOL)isEqualToGroupJoinPolicyUpdatedDetails:
+    (DBTEAMLOGGroupJoinPolicyUpdatedDetails *)aGroupJoinPolicyUpdatedDetails {
+  if (self == aGroupJoinPolicyUpdatedDetails) {
+    return YES;
+  }
+  if (self.isCompanyManaged) {
+    if (![self.isCompanyManaged isEqual:aGroupJoinPolicyUpdatedDetails.isCompanyManaged]) {
+      return NO;
+    }
+  }
+  if (self.joinPolicy) {
+    if (![self.joinPolicy isEqual:aGroupJoinPolicyUpdatedDetails.joinPolicy]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGGroupJoinPolicyUpdatedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.isCompanyManaged) {
+    jsonDict[@"is_company_managed"] = valueObj.isCompanyManaged;
+  }
+  if (valueObj.joinPolicy) {
+    jsonDict[@"join_policy"] = [DBTEAMLOGGroupJoinPolicySerializer serialize:valueObj.joinPolicy];
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGroupJoinPolicyUpdatedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSNumber *isCompanyManaged = valueDict[@"is_company_managed"] ?: nil;
+  DBTEAMLOGGroupJoinPolicy *joinPolicy =
+      valueDict[@"join_policy"] ? [DBTEAMLOGGroupJoinPolicySerializer deserialize:valueDict[@"join_policy"]] : nil;
+
+  return
+      [[DBTEAMLOGGroupJoinPolicyUpdatedDetails alloc] initWithIsCompanyManaged:isCompanyManaged joinPolicy:joinPolicy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGroupJoinPolicyUpdatedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGroupJoinPolicyUpdatedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupJoinPolicyUpdatedType:other];
+}
+
+- (BOOL)isEqualToGroupJoinPolicyUpdatedType:(DBTEAMLOGGroupJoinPolicyUpdatedType *)aGroupJoinPolicyUpdatedType {
+  if (self == aGroupJoinPolicyUpdatedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aGroupJoinPolicyUpdatedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGGroupJoinPolicyUpdatedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGroupJoinPolicyUpdatedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGGroupJoinPolicyUpdatedType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -47397,10 +49767,10 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBTEAMLOGAppLogInfo.h"
 #import "DBTEAMLOGFolderLogInfo.h"
 #import "DBTEAMLOGJoinTeamDetails.h"
 #import "DBTEAMLOGLinkedDeviceLogInfo.h"
+#import "DBTEAMLOGUserLinkedAppLogInfo.h"
 
 #pragma mark - API Object
 
@@ -47408,7 +49778,7 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithLinkedApps:(NSArray<DBTEAMLOGAppLogInfo *> *)linkedApps
+- (instancetype)initWithLinkedApps:(NSArray<DBTEAMLOGUserLinkedAppLogInfo *> *)linkedApps
                      linkedDevices:(NSArray<DBTEAMLOGLinkedDeviceLogInfo *> *)linkedDevices
                linkedSharedFolders:(NSArray<DBTEAMLOGFolderLogInfo *> *)linkedSharedFolders {
   [DBStoneValidators
@@ -47509,7 +49879,7 @@
 
   jsonDict[@"linked_apps"] = [DBArraySerializer serialize:valueObj.linkedApps
                                                 withBlock:^id(id elem0) {
-                                                  return [DBTEAMLOGAppLogInfoSerializer serialize:elem0];
+                                                  return [DBTEAMLOGUserLinkedAppLogInfoSerializer serialize:elem0];
                                                 }];
   jsonDict[@"linked_devices"] = [DBArraySerializer serialize:valueObj.linkedDevices
                                                    withBlock:^id(id elem0) {
@@ -47524,10 +49894,10 @@
 }
 
 + (DBTEAMLOGJoinTeamDetails *)deserialize:(NSDictionary *)valueDict {
-  NSArray<DBTEAMLOGAppLogInfo *> *linkedApps =
+  NSArray<DBTEAMLOGUserLinkedAppLogInfo *> *linkedApps =
       [DBArraySerializer deserialize:valueDict[@"linked_apps"]
                            withBlock:^id(id elem0) {
-                             return [DBTEAMLOGAppLogInfoSerializer deserialize:elem0];
+                             return [DBTEAMLOGUserLinkedAppLogInfoSerializer deserialize:elem0];
                            }];
   NSArray<DBTEAMLOGLinkedDeviceLogInfo *> *linkedDevices =
       [DBArraySerializer deserialize:valueDict[@"linked_devices"]
@@ -47551,6 +49921,7 @@
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGDeviceSessionLogInfo.h"
 #import "DBTEAMLOGLegacyDeviceSessionLogInfo.h"
+#import "DBTEAMLOGSessionLogInfo.h"
 
 #pragma mark - API Object
 
@@ -47558,10 +49929,10 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithSessionId:(NSString *)sessionId
-                        ipAddress:(NSString *)ipAddress
+- (instancetype)initWithIpAddress:(NSString *)ipAddress
                           created:(NSDate *)created
                           updated:(NSDate *)updated
+                      sessionInfo:(DBTEAMLOGSessionLogInfo *)sessionInfo
                       displayName:(NSString *)displayName
                      isEmmManaged:(NSNumber *)isEmmManaged
                          platform:(NSString *)platform
@@ -47571,8 +49942,9 @@
                     clientVersion:(NSString *)clientVersion
                      legacyUniqId:(NSString *)legacyUniqId {
 
-  self = [super initWithSessionId:sessionId ipAddress:ipAddress created:created updated:updated];
+  self = [super initWithIpAddress:ipAddress created:created updated:updated];
   if (self) {
+    _sessionInfo = sessionInfo;
     _displayName = displayName;
     _isEmmManaged = isEmmManaged;
     _platform = platform;
@@ -47586,10 +49958,10 @@
 }
 
 - (instancetype)initDefault {
-  return [self initWithSessionId:nil
-                       ipAddress:nil
+  return [self initWithIpAddress:nil
                          created:nil
                          updated:nil
+                     sessionInfo:nil
                      displayName:nil
                     isEmmManaged:nil
                         platform:nil
@@ -47630,9 +50002,6 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
-  }
   if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
@@ -47641,6 +50010,9 @@
   }
   if (self.updated != nil) {
     result = prime * result + [self.updated hash];
+  }
+  if (self.sessionInfo != nil) {
+    result = prime * result + [self.sessionInfo hash];
   }
   if (self.displayName != nil) {
     result = prime * result + [self.displayName hash];
@@ -47686,11 +50058,6 @@
   if (self == aLegacyDeviceSessionLogInfo) {
     return YES;
   }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aLegacyDeviceSessionLogInfo.sessionId]) {
-      return NO;
-    }
-  }
   if (self.ipAddress) {
     if (![self.ipAddress isEqual:aLegacyDeviceSessionLogInfo.ipAddress]) {
       return NO;
@@ -47703,6 +50070,11 @@
   }
   if (self.updated) {
     if (![self.updated isEqual:aLegacyDeviceSessionLogInfo.updated]) {
+      return NO;
+    }
+  }
+  if (self.sessionInfo) {
+    if (![self.sessionInfo isEqual:aLegacyDeviceSessionLogInfo.sessionInfo]) {
       return NO;
     }
   }
@@ -47758,9 +50130,6 @@
 + (NSDictionary *)serialize:(DBTEAMLOGLegacyDeviceSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
-  }
   if (valueObj.ipAddress) {
     jsonDict[@"ip_address"] = valueObj.ipAddress;
   }
@@ -47769,6 +50138,9 @@
   }
   if (valueObj.updated) {
     jsonDict[@"updated"] = [DBNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+  if (valueObj.sessionInfo) {
+    jsonDict[@"session_info"] = [DBTEAMLOGSessionLogInfoSerializer serialize:valueObj.sessionInfo];
   }
   if (valueObj.displayName) {
     jsonDict[@"display_name"] = valueObj.displayName;
@@ -47799,7 +50171,6 @@
 }
 
 + (DBTEAMLOGLegacyDeviceSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
   NSDate *created = valueDict[@"created"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
@@ -47807,6 +50178,8 @@
   NSDate *updated = valueDict[@"updated"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                         : nil;
+  DBTEAMLOGSessionLogInfo *sessionInfo =
+      valueDict[@"session_info"] ? [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
   NSNumber *isEmmManaged = valueDict[@"is_emm_managed"] ?: nil;
   NSString *platform = valueDict[@"platform"] ?: nil;
@@ -47816,10 +50189,10 @@
   NSString *clientVersion = valueDict[@"client_version"] ?: nil;
   NSString *legacyUniqId = valueDict[@"legacy_uniq_id"] ?: nil;
 
-  return [[DBTEAMLOGLegacyDeviceSessionLogInfo alloc] initWithSessionId:sessionId
-                                                              ipAddress:ipAddress
+  return [[DBTEAMLOGLegacyDeviceSessionLogInfo alloc] initWithIpAddress:ipAddress
                                                                 created:created
                                                                 updated:updated
+                                                            sessionInfo:sessionInfo
                                                             displayName:displayName
                                                            isEmmManaged:isEmmManaged
                                                                platform:platform
@@ -47834,34 +50207,142 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGDesktopDeviceSessionLogInfo.h"
+#import "DBTEAMLOGLegacyDeviceSessionLogInfo.h"
 #import "DBTEAMLOGLinkedDeviceLogInfo.h"
+#import "DBTEAMLOGMobileDeviceSessionLogInfo.h"
+#import "DBTEAMLOGWebDeviceSessionLogInfo.h"
 
 #pragma mark - API Object
 
 @implementation DBTEAMLOGLinkedDeviceLogInfo
 
+@synthesize mobileDeviceSession = _mobileDeviceSession;
+@synthesize desktopDeviceSession = _desktopDeviceSession;
+@synthesize webDeviceSession = _webDeviceSession;
+@synthesize legacyDeviceSession = _legacyDeviceSession;
+
 #pragma mark - Constructors
 
-- (instancetype)initWithDeviceType:(NSString *)deviceType
-                       displayName:(NSString *)displayName
-                         ipAddress:(NSString *)ipAddress
-                      lastActivity:(NSString *)lastActivity
-                          platform:(NSString *)platform {
-  [DBStoneValidators nonnullValidator:nil](deviceType);
-
+- (instancetype)initWithMobileDeviceSession:(DBTEAMLOGMobileDeviceSessionLogInfo *)mobileDeviceSession {
   self = [super init];
   if (self) {
-    _deviceType = deviceType;
-    _displayName = displayName;
-    _ipAddress = ipAddress;
-    _lastActivity = lastActivity;
-    _platform = platform;
+    _tag = DBTEAMLOGLinkedDeviceLogInfoMobileDeviceSession;
+    _mobileDeviceSession = mobileDeviceSession;
   }
   return self;
 }
 
-- (instancetype)initWithDeviceType:(NSString *)deviceType {
-  return [self initWithDeviceType:deviceType displayName:nil ipAddress:nil lastActivity:nil platform:nil];
+- (instancetype)initWithDesktopDeviceSession:(DBTEAMLOGDesktopDeviceSessionLogInfo *)desktopDeviceSession {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLinkedDeviceLogInfoDesktopDeviceSession;
+    _desktopDeviceSession = desktopDeviceSession;
+  }
+  return self;
+}
+
+- (instancetype)initWithWebDeviceSession:(DBTEAMLOGWebDeviceSessionLogInfo *)webDeviceSession {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLinkedDeviceLogInfoWebDeviceSession;
+    _webDeviceSession = webDeviceSession;
+  }
+  return self;
+}
+
+- (instancetype)initWithLegacyDeviceSession:(DBTEAMLOGLegacyDeviceSessionLogInfo *)legacyDeviceSession {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLinkedDeviceLogInfoLegacyDeviceSession;
+    _legacyDeviceSession = legacyDeviceSession;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLinkedDeviceLogInfoOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMLOGMobileDeviceSessionLogInfo *)mobileDeviceSession {
+  if (![self isMobileDeviceSession]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGLinkedDeviceLogInfoMobileDeviceSession, but was %@.", [self tagName]];
+  }
+  return _mobileDeviceSession;
+}
+
+- (DBTEAMLOGDesktopDeviceSessionLogInfo *)desktopDeviceSession {
+  if (![self isDesktopDeviceSession]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGLinkedDeviceLogInfoDesktopDeviceSession, but was %@.", [self tagName]];
+  }
+  return _desktopDeviceSession;
+}
+
+- (DBTEAMLOGWebDeviceSessionLogInfo *)webDeviceSession {
+  if (![self isWebDeviceSession]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGLinkedDeviceLogInfoWebDeviceSession, but was %@.", [self tagName]];
+  }
+  return _webDeviceSession;
+}
+
+- (DBTEAMLOGLegacyDeviceSessionLogInfo *)legacyDeviceSession {
+  if (![self isLegacyDeviceSession]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGLinkedDeviceLogInfoLegacyDeviceSession, but was %@.", [self tagName]];
+  }
+  return _legacyDeviceSession;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isMobileDeviceSession {
+  return _tag == DBTEAMLOGLinkedDeviceLogInfoMobileDeviceSession;
+}
+
+- (BOOL)isDesktopDeviceSession {
+  return _tag == DBTEAMLOGLinkedDeviceLogInfoDesktopDeviceSession;
+}
+
+- (BOOL)isWebDeviceSession {
+  return _tag == DBTEAMLOGLinkedDeviceLogInfoWebDeviceSession;
+}
+
+- (BOOL)isLegacyDeviceSession {
+  return _tag == DBTEAMLOGLinkedDeviceLogInfoLegacyDeviceSession;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGLinkedDeviceLogInfoOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGLinkedDeviceLogInfoMobileDeviceSession:
+    return @"DBTEAMLOGLinkedDeviceLogInfoMobileDeviceSession";
+  case DBTEAMLOGLinkedDeviceLogInfoDesktopDeviceSession:
+    return @"DBTEAMLOGLinkedDeviceLogInfoDesktopDeviceSession";
+  case DBTEAMLOGLinkedDeviceLogInfoWebDeviceSession:
+    return @"DBTEAMLOGLinkedDeviceLogInfoWebDeviceSession";
+  case DBTEAMLOGLinkedDeviceLogInfoLegacyDeviceSession:
+    return @"DBTEAMLOGLinkedDeviceLogInfoLegacyDeviceSession";
+  case DBTEAMLOGLinkedDeviceLogInfoOther:
+    return @"DBTEAMLOGLinkedDeviceLogInfoOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
@@ -47894,18 +50375,17 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  result = prime * result + [self.deviceType hash];
-  if (self.displayName != nil) {
-    result = prime * result + [self.displayName hash];
-  }
-  if (self.ipAddress != nil) {
-    result = prime * result + [self.ipAddress hash];
-  }
-  if (self.lastActivity != nil) {
-    result = prime * result + [self.lastActivity hash];
-  }
-  if (self.platform != nil) {
-    result = prime * result + [self.platform hash];
+  switch (_tag) {
+  case DBTEAMLOGLinkedDeviceLogInfoMobileDeviceSession:
+    result = prime * result + [self.mobileDeviceSession hash];
+  case DBTEAMLOGLinkedDeviceLogInfoDesktopDeviceSession:
+    result = prime * result + [self.desktopDeviceSession hash];
+  case DBTEAMLOGLinkedDeviceLogInfoWebDeviceSession:
+    result = prime * result + [self.webDeviceSession hash];
+  case DBTEAMLOGLinkedDeviceLogInfoLegacyDeviceSession:
+    result = prime * result + [self.legacyDeviceSession hash];
+  case DBTEAMLOGLinkedDeviceLogInfoOther:
+    result = prime * result + [[self tagName] hash];
   }
 
   return prime * result;
@@ -47927,28 +50407,20 @@
   if (self == aLinkedDeviceLogInfo) {
     return YES;
   }
-  if (![self.deviceType isEqual:aLinkedDeviceLogInfo.deviceType]) {
+  if (self.tag != aLinkedDeviceLogInfo.tag) {
     return NO;
   }
-  if (self.displayName) {
-    if (![self.displayName isEqual:aLinkedDeviceLogInfo.displayName]) {
-      return NO;
-    }
-  }
-  if (self.ipAddress) {
-    if (![self.ipAddress isEqual:aLinkedDeviceLogInfo.ipAddress]) {
-      return NO;
-    }
-  }
-  if (self.lastActivity) {
-    if (![self.lastActivity isEqual:aLinkedDeviceLogInfo.lastActivity]) {
-      return NO;
-    }
-  }
-  if (self.platform) {
-    if (![self.platform isEqual:aLinkedDeviceLogInfo.platform]) {
-      return NO;
-    }
+  switch (_tag) {
+  case DBTEAMLOGLinkedDeviceLogInfoMobileDeviceSession:
+    return [self.mobileDeviceSession isEqual:aLinkedDeviceLogInfo.mobileDeviceSession];
+  case DBTEAMLOGLinkedDeviceLogInfoDesktopDeviceSession:
+    return [self.desktopDeviceSession isEqual:aLinkedDeviceLogInfo.desktopDeviceSession];
+  case DBTEAMLOGLinkedDeviceLogInfoWebDeviceSession:
+    return [self.webDeviceSession isEqual:aLinkedDeviceLogInfo.webDeviceSession];
+  case DBTEAMLOGLinkedDeviceLogInfoLegacyDeviceSession:
+    return [self.legacyDeviceSession isEqual:aLinkedDeviceLogInfo.legacyDeviceSession];
+  case DBTEAMLOGLinkedDeviceLogInfoOther:
+    return [[self tagName] isEqual:[aLinkedDeviceLogInfo tagName]];
   }
   return YES;
 }
@@ -47962,35 +50434,55 @@
 + (NSDictionary *)serialize:(DBTEAMLOGLinkedDeviceLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"device_type"] = valueObj.deviceType;
-  if (valueObj.displayName) {
-    jsonDict[@"display_name"] = valueObj.displayName;
-  }
-  if (valueObj.ipAddress) {
-    jsonDict[@"ip_address"] = valueObj.ipAddress;
-  }
-  if (valueObj.lastActivity) {
-    jsonDict[@"last_activity"] = valueObj.lastActivity;
-  }
-  if (valueObj.platform) {
-    jsonDict[@"platform"] = valueObj.platform;
+  if ([valueObj isMobileDeviceSession]) {
+    jsonDict[@"mobile_device_session"] =
+        [[DBTEAMLOGMobileDeviceSessionLogInfoSerializer serialize:valueObj.mobileDeviceSession] mutableCopy];
+    jsonDict[@".tag"] = @"mobile_device_session";
+  } else if ([valueObj isDesktopDeviceSession]) {
+    jsonDict[@"desktop_device_session"] =
+        [[DBTEAMLOGDesktopDeviceSessionLogInfoSerializer serialize:valueObj.desktopDeviceSession] mutableCopy];
+    jsonDict[@".tag"] = @"desktop_device_session";
+  } else if ([valueObj isWebDeviceSession]) {
+    jsonDict[@"web_device_session"] =
+        [[DBTEAMLOGWebDeviceSessionLogInfoSerializer serialize:valueObj.webDeviceSession] mutableCopy];
+    jsonDict[@".tag"] = @"web_device_session";
+  } else if ([valueObj isLegacyDeviceSession]) {
+    jsonDict[@"legacy_device_session"] =
+        [[DBTEAMLOGLegacyDeviceSessionLogInfoSerializer serialize:valueObj.legacyDeviceSession] mutableCopy];
+    jsonDict[@".tag"] = @"legacy_device_session";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGLinkedDeviceLogInfo *)deserialize:(NSDictionary *)valueDict {
-  NSString *deviceType = valueDict[@"device_type"];
-  NSString *displayName = valueDict[@"display_name"] ?: nil;
-  NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
-  NSString *lastActivity = valueDict[@"last_activity"] ?: nil;
-  NSString *platform = valueDict[@"platform"] ?: nil;
+  NSString *tag = valueDict[@".tag"];
 
-  return [[DBTEAMLOGLinkedDeviceLogInfo alloc] initWithDeviceType:deviceType
-                                                      displayName:displayName
-                                                        ipAddress:ipAddress
-                                                     lastActivity:lastActivity
-                                                         platform:platform];
+  if ([tag isEqualToString:@"mobile_device_session"]) {
+    DBTEAMLOGMobileDeviceSessionLogInfo *mobileDeviceSession =
+        [DBTEAMLOGMobileDeviceSessionLogInfoSerializer deserialize:valueDict];
+    return [[DBTEAMLOGLinkedDeviceLogInfo alloc] initWithMobileDeviceSession:mobileDeviceSession];
+  } else if ([tag isEqualToString:@"desktop_device_session"]) {
+    DBTEAMLOGDesktopDeviceSessionLogInfo *desktopDeviceSession =
+        [DBTEAMLOGDesktopDeviceSessionLogInfoSerializer deserialize:valueDict];
+    return [[DBTEAMLOGLinkedDeviceLogInfo alloc] initWithDesktopDeviceSession:desktopDeviceSession];
+  } else if ([tag isEqualToString:@"web_device_session"]) {
+    DBTEAMLOGWebDeviceSessionLogInfo *webDeviceSession =
+        [DBTEAMLOGWebDeviceSessionLogInfoSerializer deserialize:valueDict];
+    return [[DBTEAMLOGLinkedDeviceLogInfo alloc] initWithWebDeviceSession:webDeviceSession];
+  } else if ([tag isEqualToString:@"legacy_device_session"]) {
+    DBTEAMLOGLegacyDeviceSessionLogInfo *legacyDeviceSession =
+        [DBTEAMLOGLegacyDeviceSessionLogInfoSerializer deserialize:valueDict];
+    return [[DBTEAMLOGLinkedDeviceLogInfo alloc] initWithLegacyDeviceSession:legacyDeviceSession];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGLinkedDeviceLogInfo alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGLinkedDeviceLogInfo alloc] initWithOther];
+  }
 }
 
 @end
@@ -54114,6 +56606,7 @@
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGDeviceSessionLogInfo.h"
 #import "DBTEAMLOGMobileDeviceSessionLogInfo.h"
+#import "DBTEAMLOGMobileSessionLogInfo.h"
 #import "DBTEAMMobileClientPlatform.h"
 
 #pragma mark - API Object
@@ -54124,20 +56617,19 @@
 
 - (instancetype)initWithDeviceName:(NSString *)deviceName
                         clientType:(DBTEAMMobileClientPlatform *)clientType
-                     clientVersion:(NSString *)clientVersion
-                       lastCarrier:(NSString *)lastCarrier
-                         sessionId:(NSString *)sessionId
                          ipAddress:(NSString *)ipAddress
                            created:(NSDate *)created
                            updated:(NSDate *)updated
-                         osVersion:(NSString *)osVersion {
+                       sessionInfo:(DBTEAMLOGMobileSessionLogInfo *)sessionInfo
+                     clientVersion:(NSString *)clientVersion
+                         osVersion:(NSString *)osVersion
+                       lastCarrier:(NSString *)lastCarrier {
   [DBStoneValidators nonnullValidator:nil](deviceName);
   [DBStoneValidators nonnullValidator:nil](clientType);
-  [DBStoneValidators nonnullValidator:nil](clientVersion);
-  [DBStoneValidators nonnullValidator:nil](lastCarrier);
 
-  self = [super initWithSessionId:sessionId ipAddress:ipAddress created:created updated:updated];
+  self = [super initWithIpAddress:ipAddress created:created updated:updated];
   if (self) {
+    _sessionInfo = sessionInfo;
     _deviceName = deviceName;
     _clientType = clientType;
     _clientVersion = clientVersion;
@@ -54147,19 +56639,16 @@
   return self;
 }
 
-- (instancetype)initWithDeviceName:(NSString *)deviceName
-                        clientType:(DBTEAMMobileClientPlatform *)clientType
-                     clientVersion:(NSString *)clientVersion
-                       lastCarrier:(NSString *)lastCarrier {
+- (instancetype)initWithDeviceName:(NSString *)deviceName clientType:(DBTEAMMobileClientPlatform *)clientType {
   return [self initWithDeviceName:deviceName
                        clientType:clientType
-                    clientVersion:clientVersion
-                      lastCarrier:lastCarrier
-                        sessionId:nil
                         ipAddress:nil
                           created:nil
                           updated:nil
-                        osVersion:nil];
+                      sessionInfo:nil
+                    clientVersion:nil
+                        osVersion:nil
+                      lastCarrier:nil];
 }
 
 #pragma mark - Serialization methods
@@ -54194,11 +56683,6 @@
 
   result = prime * result + [self.deviceName hash];
   result = prime * result + [self.clientType hash];
-  result = prime * result + [self.clientVersion hash];
-  result = prime * result + [self.lastCarrier hash];
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
-  }
   if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
@@ -54208,8 +56692,17 @@
   if (self.updated != nil) {
     result = prime * result + [self.updated hash];
   }
+  if (self.sessionInfo != nil) {
+    result = prime * result + [self.sessionInfo hash];
+  }
+  if (self.clientVersion != nil) {
+    result = prime * result + [self.clientVersion hash];
+  }
   if (self.osVersion != nil) {
     result = prime * result + [self.osVersion hash];
+  }
+  if (self.lastCarrier != nil) {
+    result = prime * result + [self.lastCarrier hash];
   }
 
   return prime * result;
@@ -54237,17 +56730,6 @@
   if (![self.clientType isEqual:aMobileDeviceSessionLogInfo.clientType]) {
     return NO;
   }
-  if (![self.clientVersion isEqual:aMobileDeviceSessionLogInfo.clientVersion]) {
-    return NO;
-  }
-  if (![self.lastCarrier isEqual:aMobileDeviceSessionLogInfo.lastCarrier]) {
-    return NO;
-  }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aMobileDeviceSessionLogInfo.sessionId]) {
-      return NO;
-    }
-  }
   if (self.ipAddress) {
     if (![self.ipAddress isEqual:aMobileDeviceSessionLogInfo.ipAddress]) {
       return NO;
@@ -54263,8 +56745,23 @@
       return NO;
     }
   }
+  if (self.sessionInfo) {
+    if (![self.sessionInfo isEqual:aMobileDeviceSessionLogInfo.sessionInfo]) {
+      return NO;
+    }
+  }
+  if (self.clientVersion) {
+    if (![self.clientVersion isEqual:aMobileDeviceSessionLogInfo.clientVersion]) {
+      return NO;
+    }
+  }
   if (self.osVersion) {
     if (![self.osVersion isEqual:aMobileDeviceSessionLogInfo.osVersion]) {
+      return NO;
+    }
+  }
+  if (self.lastCarrier) {
+    if (![self.lastCarrier isEqual:aMobileDeviceSessionLogInfo.lastCarrier]) {
       return NO;
     }
   }
@@ -54282,11 +56779,6 @@
 
   jsonDict[@"device_name"] = valueObj.deviceName;
   jsonDict[@"client_type"] = [DBTEAMMobileClientPlatformSerializer serialize:valueObj.clientType];
-  jsonDict[@"client_version"] = valueObj.clientVersion;
-  jsonDict[@"last_carrier"] = valueObj.lastCarrier;
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
-  }
   if (valueObj.ipAddress) {
     jsonDict[@"ip_address"] = valueObj.ipAddress;
   }
@@ -54296,8 +56788,17 @@
   if (valueObj.updated) {
     jsonDict[@"updated"] = [DBNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
+  if (valueObj.sessionInfo) {
+    jsonDict[@"session_info"] = [DBTEAMLOGMobileSessionLogInfoSerializer serialize:valueObj.sessionInfo];
+  }
+  if (valueObj.clientVersion) {
+    jsonDict[@"client_version"] = valueObj.clientVersion;
+  }
   if (valueObj.osVersion) {
     jsonDict[@"os_version"] = valueObj.osVersion;
+  }
+  if (valueObj.lastCarrier) {
+    jsonDict[@"last_carrier"] = valueObj.lastCarrier;
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
@@ -54306,9 +56807,6 @@
 + (DBTEAMLOGMobileDeviceSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
   NSString *deviceName = valueDict[@"device_name"];
   DBTEAMMobileClientPlatform *clientType = [DBTEAMMobileClientPlatformSerializer deserialize:valueDict[@"client_type"]];
-  NSString *clientVersion = valueDict[@"client_version"];
-  NSString *lastCarrier = valueDict[@"last_carrier"];
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
   NSDate *created = valueDict[@"created"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
@@ -54316,17 +56814,22 @@
   NSDate *updated = valueDict[@"updated"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                         : nil;
+  DBTEAMLOGMobileSessionLogInfo *sessionInfo =
+      valueDict[@"session_info"] ? [DBTEAMLOGMobileSessionLogInfoSerializer deserialize:valueDict[@"session_info"]]
+                                 : nil;
+  NSString *clientVersion = valueDict[@"client_version"] ?: nil;
   NSString *osVersion = valueDict[@"os_version"] ?: nil;
+  NSString *lastCarrier = valueDict[@"last_carrier"] ?: nil;
 
   return [[DBTEAMLOGMobileDeviceSessionLogInfo alloc] initWithDeviceName:deviceName
                                                               clientType:clientType
-                                                           clientVersion:clientVersion
-                                                             lastCarrier:lastCarrier
-                                                               sessionId:sessionId
                                                                ipAddress:ipAddress
                                                                  created:created
                                                                  updated:updated
-                                                               osVersion:osVersion];
+                                                             sessionInfo:sessionInfo
+                                                           clientVersion:clientVersion
+                                                               osVersion:osVersion
+                                                             lastCarrier:lastCarrier];
 }
 
 @end
@@ -58788,12 +61291,18 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+- (instancetype)initWithEventUuid:(NSString *)eventUuid
+                 targetAssetIndex:(NSNumber *)targetAssetIndex
+                 parentAssetIndex:(NSNumber *)parentAssetIndex {
   [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators nonnullValidator:nil](targetAssetIndex);
+  [DBStoneValidators nonnullValidator:nil](parentAssetIndex);
 
   self = [super init];
   if (self) {
     _eventUuid = eventUuid;
+    _targetAssetIndex = targetAssetIndex;
+    _parentAssetIndex = parentAssetIndex;
   }
   return self;
 }
@@ -58829,6 +61338,8 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.eventUuid hash];
+  result = prime * result + [self.targetAssetIndex hash];
+  result = prime * result + [self.parentAssetIndex hash];
 
   return prime * result;
 }
@@ -58853,6 +61364,12 @@
   if (![self.eventUuid isEqual:aPaperContentRemoveFromFolderDetails.eventUuid]) {
     return NO;
   }
+  if (![self.targetAssetIndex isEqual:aPaperContentRemoveFromFolderDetails.targetAssetIndex]) {
+    return NO;
+  }
+  if (![self.parentAssetIndex isEqual:aPaperContentRemoveFromFolderDetails.parentAssetIndex]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -58866,14 +61383,20 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
+  jsonDict[@"parent_asset_index"] = valueObj.parentAssetIndex;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMLOGPaperContentRemoveFromFolderDetails *)deserialize:(NSDictionary *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
+  NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
+  NSNumber *parentAssetIndex = valueDict[@"parent_asset_index"];
 
-  return [[DBTEAMLOGPaperContentRemoveFromFolderDetails alloc] initWithEventUuid:eventUuid];
+  return [[DBTEAMLOGPaperContentRemoveFromFolderDetails alloc] initWithEventUuid:eventUuid
+                                                                targetAssetIndex:targetAssetIndex
+                                                                parentAssetIndex:parentAssetIndex];
 }
 
 @end
@@ -82082,6 +84605,4566 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseAccessGrantedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseAccessGrantedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseAccessGrantedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseAccessGrantedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseAccessGrantedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseAccessGrantedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseAccessGrantedDetails:(DBTEAMLOGShowcaseAccessGrantedDetails *)aShowcaseAccessGrantedDetails {
+  if (self == aShowcaseAccessGrantedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseAccessGrantedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseAccessGrantedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAccessGrantedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseAccessGrantedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseAccessGrantedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseAccessGrantedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseAccessGrantedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseAccessGrantedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseAccessGrantedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseAccessGrantedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseAccessGrantedType:other];
+}
+
+- (BOOL)isEqualToShowcaseAccessGrantedType:(DBTEAMLOGShowcaseAccessGrantedType *)aShowcaseAccessGrantedType {
+  if (self == aShowcaseAccessGrantedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseAccessGrantedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseAccessGrantedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAccessGrantedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseAccessGrantedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseAccessGrantedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseAddMemberDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseAddMemberDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseAddMemberDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseAddMemberDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseAddMemberDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseAddMemberDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseAddMemberDetails:(DBTEAMLOGShowcaseAddMemberDetails *)aShowcaseAddMemberDetails {
+  if (self == aShowcaseAddMemberDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseAddMemberDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseAddMemberDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAddMemberDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseAddMemberDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseAddMemberDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseAddMemberType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseAddMemberType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseAddMemberTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseAddMemberTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseAddMemberTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseAddMemberType:other];
+}
+
+- (BOOL)isEqualToShowcaseAddMemberType:(DBTEAMLOGShowcaseAddMemberType *)aShowcaseAddMemberType {
+  if (self == aShowcaseAddMemberType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseAddMemberType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseAddMemberTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAddMemberType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseAddMemberType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseAddMemberType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseArchivedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseArchivedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseArchivedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseArchivedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseArchivedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseArchivedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseArchivedDetails:(DBTEAMLOGShowcaseArchivedDetails *)aShowcaseArchivedDetails {
+  if (self == aShowcaseArchivedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseArchivedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseArchivedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseArchivedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseArchivedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseArchivedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseArchivedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseArchivedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseArchivedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseArchivedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseArchivedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseArchivedType:other];
+}
+
+- (BOOL)isEqualToShowcaseArchivedType:(DBTEAMLOGShowcaseArchivedType *)aShowcaseArchivedType {
+  if (self == aShowcaseArchivedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseArchivedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseArchivedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseArchivedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseArchivedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseArchivedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseCreatedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseCreatedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseCreatedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseCreatedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseCreatedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseCreatedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseCreatedDetails:(DBTEAMLOGShowcaseCreatedDetails *)aShowcaseCreatedDetails {
+  if (self == aShowcaseCreatedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseCreatedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseCreatedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseCreatedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseCreatedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseCreatedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseCreatedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseCreatedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseCreatedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseCreatedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseCreatedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseCreatedType:other];
+}
+
+- (BOOL)isEqualToShowcaseCreatedType:(DBTEAMLOGShowcaseCreatedType *)aShowcaseCreatedType {
+  if (self == aShowcaseCreatedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseCreatedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseCreatedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseCreatedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseCreatedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseCreatedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseDeleteCommentDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseDeleteCommentDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+    _commentText = commentText;
+  }
+  return self;
+}
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  return [self initWithEventUuid:eventUuid commentText:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseDeleteCommentDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseDeleteCommentDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseDeleteCommentDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+  if (self.commentText != nil) {
+    result = prime * result + [self.commentText hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseDeleteCommentDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseDeleteCommentDetails:(DBTEAMLOGShowcaseDeleteCommentDetails *)aShowcaseDeleteCommentDetails {
+  if (self == aShowcaseDeleteCommentDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseDeleteCommentDetails.eventUuid]) {
+    return NO;
+  }
+  if (self.commentText) {
+    if (![self.commentText isEqual:aShowcaseDeleteCommentDetails.commentText]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseDeleteCommentDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseDeleteCommentDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  if (valueObj.commentText) {
+    jsonDict[@"comment_text"] = valueObj.commentText;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseDeleteCommentDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+  NSString *commentText = valueDict[@"comment_text"] ?: nil;
+
+  return [[DBTEAMLOGShowcaseDeleteCommentDetails alloc] initWithEventUuid:eventUuid commentText:commentText];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseDeleteCommentType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseDeleteCommentType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseDeleteCommentTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseDeleteCommentTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseDeleteCommentTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseDeleteCommentType:other];
+}
+
+- (BOOL)isEqualToShowcaseDeleteCommentType:(DBTEAMLOGShowcaseDeleteCommentType *)aShowcaseDeleteCommentType {
+  if (self == aShowcaseDeleteCommentType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseDeleteCommentType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseDeleteCommentTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseDeleteCommentType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseDeleteCommentType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseDeleteCommentType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseDocumentLogInfo.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseDocumentLogInfo
+
+#pragma mark - Constructors
+
+- (instancetype)initWithShowcaseId:(NSString *)showcaseId showcaseTitle:(NSString *)showcaseTitle {
+  [DBStoneValidators nonnullValidator:nil](showcaseId);
+  [DBStoneValidators nonnullValidator:nil](showcaseTitle);
+
+  self = [super init];
+  if (self) {
+    _showcaseId = showcaseId;
+    _showcaseTitle = showcaseTitle;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseDocumentLogInfoSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseDocumentLogInfoSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseDocumentLogInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.showcaseId hash];
+  result = prime * result + [self.showcaseTitle hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseDocumentLogInfo:other];
+}
+
+- (BOOL)isEqualToShowcaseDocumentLogInfo:(DBTEAMLOGShowcaseDocumentLogInfo *)aShowcaseDocumentLogInfo {
+  if (self == aShowcaseDocumentLogInfo) {
+    return YES;
+  }
+  if (![self.showcaseId isEqual:aShowcaseDocumentLogInfo.showcaseId]) {
+    return NO;
+  }
+  if (![self.showcaseTitle isEqual:aShowcaseDocumentLogInfo.showcaseTitle]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseDocumentLogInfoSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseDocumentLogInfo *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"showcase_id"] = valueObj.showcaseId;
+  jsonDict[@"showcase_title"] = valueObj.showcaseTitle;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseDocumentLogInfo *)deserialize:(NSDictionary *)valueDict {
+  NSString *showcaseId = valueDict[@"showcase_id"];
+  NSString *showcaseTitle = valueDict[@"showcase_title"];
+
+  return [[DBTEAMLOGShowcaseDocumentLogInfo alloc] initWithShowcaseId:showcaseId showcaseTitle:showcaseTitle];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseEditCommentDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseEditCommentDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+    _commentText = commentText;
+  }
+  return self;
+}
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  return [self initWithEventUuid:eventUuid commentText:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseEditCommentDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseEditCommentDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseEditCommentDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+  if (self.commentText != nil) {
+    result = prime * result + [self.commentText hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseEditCommentDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseEditCommentDetails:(DBTEAMLOGShowcaseEditCommentDetails *)aShowcaseEditCommentDetails {
+  if (self == aShowcaseEditCommentDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseEditCommentDetails.eventUuid]) {
+    return NO;
+  }
+  if (self.commentText) {
+    if (![self.commentText isEqual:aShowcaseEditCommentDetails.commentText]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseEditCommentDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditCommentDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  if (valueObj.commentText) {
+    jsonDict[@"comment_text"] = valueObj.commentText;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseEditCommentDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+  NSString *commentText = valueDict[@"comment_text"] ?: nil;
+
+  return [[DBTEAMLOGShowcaseEditCommentDetails alloc] initWithEventUuid:eventUuid commentText:commentText];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseEditCommentType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseEditCommentType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseEditCommentTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseEditCommentTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseEditCommentTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseEditCommentType:other];
+}
+
+- (BOOL)isEqualToShowcaseEditCommentType:(DBTEAMLOGShowcaseEditCommentType *)aShowcaseEditCommentType {
+  if (self == aShowcaseEditCommentType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseEditCommentType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseEditCommentTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditCommentType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseEditCommentType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseEditCommentType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseEditedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseEditedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseEditedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseEditedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseEditedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseEditedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseEditedDetails:(DBTEAMLOGShowcaseEditedDetails *)aShowcaseEditedDetails {
+  if (self == aShowcaseEditedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseEditedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseEditedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseEditedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseEditedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseEditedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseEditedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseEditedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseEditedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseEditedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseEditedType:other];
+}
+
+- (BOOL)isEqualToShowcaseEditedType:(DBTEAMLOGShowcaseEditedType *)aShowcaseEditedType {
+  if (self == aShowcaseEditedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseEditedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseEditedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseEditedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseEditedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileAddedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileAddedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileAddedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileAddedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileAddedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileAddedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseFileAddedDetails:(DBTEAMLOGShowcaseFileAddedDetails *)aShowcaseFileAddedDetails {
+  if (self == aShowcaseFileAddedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseFileAddedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileAddedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileAddedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileAddedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseFileAddedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileAddedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileAddedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileAddedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileAddedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileAddedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileAddedType:other];
+}
+
+- (BOOL)isEqualToShowcaseFileAddedType:(DBTEAMLOGShowcaseFileAddedType *)aShowcaseFileAddedType {
+  if (self == aShowcaseFileAddedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseFileAddedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileAddedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileAddedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileAddedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseFileAddedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileDownloadDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileDownloadDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid downloadType:(NSString *)downloadType {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators nonnullValidator:nil](downloadType);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+    _downloadType = downloadType;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileDownloadDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileDownloadDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileDownloadDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+  result = prime * result + [self.downloadType hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileDownloadDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseFileDownloadDetails:(DBTEAMLOGShowcaseFileDownloadDetails *)aShowcaseFileDownloadDetails {
+  if (self == aShowcaseFileDownloadDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseFileDownloadDetails.eventUuid]) {
+    return NO;
+  }
+  if (![self.downloadType isEqual:aShowcaseFileDownloadDetails.downloadType]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileDownloadDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileDownloadDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  jsonDict[@"download_type"] = valueObj.downloadType;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileDownloadDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+  NSString *downloadType = valueDict[@"download_type"];
+
+  return [[DBTEAMLOGShowcaseFileDownloadDetails alloc] initWithEventUuid:eventUuid downloadType:downloadType];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileDownloadType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileDownloadType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileDownloadTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileDownloadTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileDownloadTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileDownloadType:other];
+}
+
+- (BOOL)isEqualToShowcaseFileDownloadType:(DBTEAMLOGShowcaseFileDownloadType *)aShowcaseFileDownloadType {
+  if (self == aShowcaseFileDownloadType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseFileDownloadType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileDownloadTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileDownloadType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileDownloadType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseFileDownloadType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileRemovedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileRemovedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileRemovedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileRemovedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileRemovedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileRemovedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseFileRemovedDetails:(DBTEAMLOGShowcaseFileRemovedDetails *)aShowcaseFileRemovedDetails {
+  if (self == aShowcaseFileRemovedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseFileRemovedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileRemovedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileRemovedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileRemovedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseFileRemovedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileRemovedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileRemovedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileRemovedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileRemovedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileRemovedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileRemovedType:other];
+}
+
+- (BOOL)isEqualToShowcaseFileRemovedType:(DBTEAMLOGShowcaseFileRemovedType *)aShowcaseFileRemovedType {
+  if (self == aShowcaseFileRemovedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseFileRemovedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileRemovedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileRemovedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileRemovedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseFileRemovedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileViewDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileViewDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileViewDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileViewDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileViewDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileViewDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseFileViewDetails:(DBTEAMLOGShowcaseFileViewDetails *)aShowcaseFileViewDetails {
+  if (self == aShowcaseFileViewDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseFileViewDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileViewDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileViewDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileViewDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseFileViewDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseFileViewType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseFileViewType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseFileViewTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseFileViewTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseFileViewTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseFileViewType:other];
+}
+
+- (BOOL)isEqualToShowcaseFileViewType:(DBTEAMLOGShowcaseFileViewType *)aShowcaseFileViewType {
+  if (self == aShowcaseFileViewType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseFileViewType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseFileViewTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileViewType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseFileViewType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseFileViewType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcasePermanentlyDeletedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcasePermanentlyDeletedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcasePermanentlyDeletedDetails:other];
+}
+
+- (BOOL)isEqualToShowcasePermanentlyDeletedDetails:
+    (DBTEAMLOGShowcasePermanentlyDeletedDetails *)aShowcasePermanentlyDeletedDetails {
+  if (self == aShowcasePermanentlyDeletedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcasePermanentlyDeletedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcasePermanentlyDeletedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcasePermanentlyDeletedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcasePermanentlyDeletedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcasePermanentlyDeletedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcasePermanentlyDeletedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcasePermanentlyDeletedType:other];
+}
+
+- (BOOL)isEqualToShowcasePermanentlyDeletedType:
+    (DBTEAMLOGShowcasePermanentlyDeletedType *)aShowcasePermanentlyDeletedType {
+  if (self == aShowcasePermanentlyDeletedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcasePermanentlyDeletedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcasePermanentlyDeletedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcasePermanentlyDeletedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcasePermanentlyDeletedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcasePostCommentDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcasePostCommentDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+    _commentText = commentText;
+  }
+  return self;
+}
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  return [self initWithEventUuid:eventUuid commentText:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcasePostCommentDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcasePostCommentDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcasePostCommentDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+  if (self.commentText != nil) {
+    result = prime * result + [self.commentText hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcasePostCommentDetails:other];
+}
+
+- (BOOL)isEqualToShowcasePostCommentDetails:(DBTEAMLOGShowcasePostCommentDetails *)aShowcasePostCommentDetails {
+  if (self == aShowcasePostCommentDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcasePostCommentDetails.eventUuid]) {
+    return NO;
+  }
+  if (self.commentText) {
+    if (![self.commentText isEqual:aShowcasePostCommentDetails.commentText]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcasePostCommentDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcasePostCommentDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  if (valueObj.commentText) {
+    jsonDict[@"comment_text"] = valueObj.commentText;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcasePostCommentDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+  NSString *commentText = valueDict[@"comment_text"] ?: nil;
+
+  return [[DBTEAMLOGShowcasePostCommentDetails alloc] initWithEventUuid:eventUuid commentText:commentText];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcasePostCommentType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcasePostCommentType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcasePostCommentTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcasePostCommentTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcasePostCommentTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcasePostCommentType:other];
+}
+
+- (BOOL)isEqualToShowcasePostCommentType:(DBTEAMLOGShowcasePostCommentType *)aShowcasePostCommentType {
+  if (self == aShowcasePostCommentType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcasePostCommentType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcasePostCommentTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcasePostCommentType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcasePostCommentType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcasePostCommentType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRemoveMemberDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRemoveMemberDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRemoveMemberDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRemoveMemberDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRemoveMemberDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRemoveMemberDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseRemoveMemberDetails:(DBTEAMLOGShowcaseRemoveMemberDetails *)aShowcaseRemoveMemberDetails {
+  if (self == aShowcaseRemoveMemberDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseRemoveMemberDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRemoveMemberDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRemoveMemberDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRemoveMemberDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseRemoveMemberDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRemoveMemberType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRemoveMemberType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRemoveMemberTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRemoveMemberTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRemoveMemberTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRemoveMemberType:other];
+}
+
+- (BOOL)isEqualToShowcaseRemoveMemberType:(DBTEAMLOGShowcaseRemoveMemberType *)aShowcaseRemoveMemberType {
+  if (self == aShowcaseRemoveMemberType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseRemoveMemberType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRemoveMemberTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRemoveMemberType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRemoveMemberType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseRemoveMemberType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRenamedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRenamedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRenamedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRenamedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRenamedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRenamedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseRenamedDetails:(DBTEAMLOGShowcaseRenamedDetails *)aShowcaseRenamedDetails {
+  if (self == aShowcaseRenamedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseRenamedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRenamedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRenamedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRenamedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseRenamedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRenamedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRenamedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRenamedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRenamedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRenamedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRenamedType:other];
+}
+
+- (BOOL)isEqualToShowcaseRenamedType:(DBTEAMLOGShowcaseRenamedType *)aShowcaseRenamedType {
+  if (self == aShowcaseRenamedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseRenamedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRenamedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRenamedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRenamedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseRenamedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRequestAccessDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRequestAccessDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRequestAccessDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRequestAccessDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRequestAccessDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRequestAccessDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseRequestAccessDetails:(DBTEAMLOGShowcaseRequestAccessDetails *)aShowcaseRequestAccessDetails {
+  if (self == aShowcaseRequestAccessDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseRequestAccessDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRequestAccessDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRequestAccessDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRequestAccessDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseRequestAccessDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRequestAccessType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRequestAccessType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRequestAccessTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRequestAccessTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRequestAccessTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRequestAccessType:other];
+}
+
+- (BOOL)isEqualToShowcaseRequestAccessType:(DBTEAMLOGShowcaseRequestAccessType *)aShowcaseRequestAccessType {
+  if (self == aShowcaseRequestAccessType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseRequestAccessType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRequestAccessTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRequestAccessType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRequestAccessType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseRequestAccessType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseResolveCommentDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseResolveCommentDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+    _commentText = commentText;
+  }
+  return self;
+}
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  return [self initWithEventUuid:eventUuid commentText:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseResolveCommentDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseResolveCommentDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseResolveCommentDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+  if (self.commentText != nil) {
+    result = prime * result + [self.commentText hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseResolveCommentDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseResolveCommentDetails:
+    (DBTEAMLOGShowcaseResolveCommentDetails *)aShowcaseResolveCommentDetails {
+  if (self == aShowcaseResolveCommentDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseResolveCommentDetails.eventUuid]) {
+    return NO;
+  }
+  if (self.commentText) {
+    if (![self.commentText isEqual:aShowcaseResolveCommentDetails.commentText]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseResolveCommentDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseResolveCommentDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  if (valueObj.commentText) {
+    jsonDict[@"comment_text"] = valueObj.commentText;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseResolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+  NSString *commentText = valueDict[@"comment_text"] ?: nil;
+
+  return [[DBTEAMLOGShowcaseResolveCommentDetails alloc] initWithEventUuid:eventUuid commentText:commentText];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseResolveCommentType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseResolveCommentType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseResolveCommentTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseResolveCommentTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseResolveCommentTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseResolveCommentType:other];
+}
+
+- (BOOL)isEqualToShowcaseResolveCommentType:(DBTEAMLOGShowcaseResolveCommentType *)aShowcaseResolveCommentType {
+  if (self == aShowcaseResolveCommentType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseResolveCommentType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseResolveCommentTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseResolveCommentType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseResolveCommentType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseResolveCommentType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRestoredDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRestoredDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRestoredDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRestoredDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRestoredDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRestoredDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseRestoredDetails:(DBTEAMLOGShowcaseRestoredDetails *)aShowcaseRestoredDetails {
+  if (self == aShowcaseRestoredDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseRestoredDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRestoredDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRestoredDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRestoredDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseRestoredDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseRestoredType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseRestoredType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseRestoredTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseRestoredTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseRestoredTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseRestoredType:other];
+}
+
+- (BOOL)isEqualToShowcaseRestoredType:(DBTEAMLOGShowcaseRestoredType *)aShowcaseRestoredType {
+  if (self == aShowcaseRestoredType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseRestoredType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseRestoredTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRestoredType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseRestoredType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseRestoredType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseTrashedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseTrashedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseTrashedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseTrashedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseTrashedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseTrashedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseTrashedDetails:(DBTEAMLOGShowcaseTrashedDetails *)aShowcaseTrashedDetails {
+  if (self == aShowcaseTrashedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseTrashedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseTrashedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseTrashedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseTrashedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseTrashedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseTrashedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseTrashedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseTrashedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseTrashedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseTrashedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseTrashedType:other];
+}
+
+- (BOOL)isEqualToShowcaseTrashedType:(DBTEAMLOGShowcaseTrashedType *)aShowcaseTrashedType {
+  if (self == aShowcaseTrashedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseTrashedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseTrashedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseTrashedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseTrashedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseTrashedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseUnresolveCommentDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseUnresolveCommentDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+    _commentText = commentText;
+  }
+  return self;
+}
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  return [self initWithEventUuid:eventUuid commentText:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+  if (self.commentText != nil) {
+    result = prime * result + [self.commentText hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseUnresolveCommentDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseUnresolveCommentDetails:
+    (DBTEAMLOGShowcaseUnresolveCommentDetails *)aShowcaseUnresolveCommentDetails {
+  if (self == aShowcaseUnresolveCommentDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseUnresolveCommentDetails.eventUuid]) {
+    return NO;
+  }
+  if (self.commentText) {
+    if (![self.commentText isEqual:aShowcaseUnresolveCommentDetails.commentText]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUnresolveCommentDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  if (valueObj.commentText) {
+    jsonDict[@"comment_text"] = valueObj.commentText;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseUnresolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+  NSString *commentText = valueDict[@"comment_text"] ?: nil;
+
+  return [[DBTEAMLOGShowcaseUnresolveCommentDetails alloc] initWithEventUuid:eventUuid commentText:commentText];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseUnresolveCommentType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseUnresolveCommentType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseUnresolveCommentTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseUnresolveCommentTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseUnresolveCommentTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseUnresolveCommentType:other];
+}
+
+- (BOOL)isEqualToShowcaseUnresolveCommentType:(DBTEAMLOGShowcaseUnresolveCommentType *)aShowcaseUnresolveCommentType {
+  if (self == aShowcaseUnresolveCommentType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseUnresolveCommentType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseUnresolveCommentTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUnresolveCommentType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseUnresolveCommentType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseUnresolveCommentType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseUntrashedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseUntrashedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseUntrashedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseUntrashedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseUntrashedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseUntrashedDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseUntrashedDetails:(DBTEAMLOGShowcaseUntrashedDetails *)aShowcaseUntrashedDetails {
+  if (self == aShowcaseUntrashedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseUntrashedDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseUntrashedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUntrashedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseUntrashedDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseUntrashedDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseUntrashedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseUntrashedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseUntrashedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseUntrashedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseUntrashedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseUntrashedType:other];
+}
+
+- (BOOL)isEqualToShowcaseUntrashedType:(DBTEAMLOGShowcaseUntrashedType *)aShowcaseUntrashedType {
+  if (self == aShowcaseUntrashedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseUntrashedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseUntrashedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUntrashedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseUntrashedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseUntrashedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseViewDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseViewDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseViewDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseViewDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseViewDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseViewDetails:other];
+}
+
+- (BOOL)isEqualToShowcaseViewDetails:(DBTEAMLOGShowcaseViewDetails *)aShowcaseViewDetails {
+  if (self == aShowcaseViewDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aShowcaseViewDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseViewDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseViewDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseViewDetails *)deserialize:(NSDictionary *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGShowcaseViewDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGShowcaseViewType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGShowcaseViewType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGShowcaseViewTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGShowcaseViewTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGShowcaseViewTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToShowcaseViewType:other];
+}
+
+- (BOOL)isEqualToShowcaseViewType:(DBTEAMLOGShowcaseViewType *)aShowcaseViewType {
+  if (self == aShowcaseViewType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aShowcaseViewType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGShowcaseViewTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGShowcaseViewType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGShowcaseViewType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGShowcaseViewType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGSignInAsSessionEndDetails.h"
 
 #pragma mark - API Object
@@ -89775,6 +96858,216 @@
 
 @end
 
+#import "DBFILESSyncSetting.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPreviousValue:(DBFILESSyncSetting *)previousValue dNewValue:(DBFILESSyncSetting *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+
+  self = [super init];
+  if (self) {
+    _previousValue = previousValue;
+    _dNewValue = dNewValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.previousValue hash];
+  result = prime * result + [self.dNewValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamSelectiveSyncSettingsChangedDetails:other];
+}
+
+- (BOOL)isEqualToTeamSelectiveSyncSettingsChangedDetails:
+    (DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)aTeamSelectiveSyncSettingsChangedDetails {
+  if (self == aTeamSelectiveSyncSettingsChangedDetails) {
+    return YES;
+  }
+  if (![self.previousValue isEqual:aTeamSelectiveSyncSettingsChangedDetails.previousValue]) {
+    return NO;
+  }
+  if (![self.dNewValue isEqual:aTeamSelectiveSyncSettingsChangedDetails.dNewValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"previous_value"] = [DBFILESSyncSettingSerializer serialize:valueObj.previousValue];
+  jsonDict[@"new_value"] = [DBFILESSyncSettingSerializer serialize:valueObj.dNewValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)deserialize:(NSDictionary *)valueDict {
+  DBFILESSyncSetting *previousValue = [DBFILESSyncSettingSerializer deserialize:valueDict[@"previous_value"]];
+  DBFILESSyncSetting *dNewValue = [DBFILESSyncSettingSerializer deserialize:valueDict[@"new_value"]];
+
+  return [[DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails alloc] initWithPreviousValue:previousValue
+                                                                               dNewValue:dNewValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamSelectiveSyncSettingsChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncSettingsChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary *)serialize:(id)instance {
+  return [DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamSelectiveSyncSettingsChangedType:other];
+}
+
+- (BOOL)isEqualToTeamSelectiveSyncSettingsChangedType:
+    (DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)aTeamSelectiveSyncSettingsChangedType {
+  if (self == aTeamSelectiveSyncSettingsChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamSelectiveSyncSettingsChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)deserialize:(NSDictionary *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamSelectiveSyncSettingsChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGTfaAddBackupPhoneDetails.h"
@@ -92654,6 +99947,7 @@
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGDeviceSessionLogInfo.h"
 #import "DBTEAMLOGWebDeviceSessionLogInfo.h"
+#import "DBTEAMLOGWebSessionLogInfo.h"
 
 #pragma mark - API Object
 
@@ -92664,16 +99958,17 @@
 - (instancetype)initWithUserAgent:(NSString *)userAgent
                                os:(NSString *)os
                           browser:(NSString *)browser
-                        sessionId:(NSString *)sessionId
                         ipAddress:(NSString *)ipAddress
                           created:(NSDate *)created
-                          updated:(NSDate *)updated {
+                          updated:(NSDate *)updated
+                      sessionInfo:(DBTEAMLOGWebSessionLogInfo *)sessionInfo {
   [DBStoneValidators nonnullValidator:nil](userAgent);
   [DBStoneValidators nonnullValidator:nil](os);
   [DBStoneValidators nonnullValidator:nil](browser);
 
-  self = [super initWithSessionId:sessionId ipAddress:ipAddress created:created updated:updated];
+  self = [super initWithIpAddress:ipAddress created:created updated:updated];
   if (self) {
+    _sessionInfo = sessionInfo;
     _userAgent = userAgent;
     _os = os;
     _browser = browser;
@@ -92682,7 +99977,7 @@
 }
 
 - (instancetype)initWithUserAgent:(NSString *)userAgent os:(NSString *)os browser:(NSString *)browser {
-  return [self initWithUserAgent:userAgent os:os browser:browser sessionId:nil ipAddress:nil created:nil updated:nil];
+  return [self initWithUserAgent:userAgent os:os browser:browser ipAddress:nil created:nil updated:nil sessionInfo:nil];
 }
 
 #pragma mark - Serialization methods
@@ -92718,9 +100013,6 @@
   result = prime * result + [self.userAgent hash];
   result = prime * result + [self.os hash];
   result = prime * result + [self.browser hash];
-  if (self.sessionId != nil) {
-    result = prime * result + [self.sessionId hash];
-  }
   if (self.ipAddress != nil) {
     result = prime * result + [self.ipAddress hash];
   }
@@ -92729,6 +100021,9 @@
   }
   if (self.updated != nil) {
     result = prime * result + [self.updated hash];
+  }
+  if (self.sessionInfo != nil) {
+    result = prime * result + [self.sessionInfo hash];
   }
 
   return prime * result;
@@ -92759,11 +100054,6 @@
   if (![self.browser isEqual:aWebDeviceSessionLogInfo.browser]) {
     return NO;
   }
-  if (self.sessionId) {
-    if (![self.sessionId isEqual:aWebDeviceSessionLogInfo.sessionId]) {
-      return NO;
-    }
-  }
   if (self.ipAddress) {
     if (![self.ipAddress isEqual:aWebDeviceSessionLogInfo.ipAddress]) {
       return NO;
@@ -92776,6 +100066,11 @@
   }
   if (self.updated) {
     if (![self.updated isEqual:aWebDeviceSessionLogInfo.updated]) {
+      return NO;
+    }
+  }
+  if (self.sessionInfo) {
+    if (![self.sessionInfo isEqual:aWebDeviceSessionLogInfo.sessionInfo]) {
       return NO;
     }
   }
@@ -92794,9 +100089,6 @@
   jsonDict[@"user_agent"] = valueObj.userAgent;
   jsonDict[@"os"] = valueObj.os;
   jsonDict[@"browser"] = valueObj.browser;
-  if (valueObj.sessionId) {
-    jsonDict[@"session_id"] = valueObj.sessionId;
-  }
   if (valueObj.ipAddress) {
     jsonDict[@"ip_address"] = valueObj.ipAddress;
   }
@@ -92806,6 +100098,9 @@
   if (valueObj.updated) {
     jsonDict[@"updated"] = [DBNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
+  if (valueObj.sessionInfo) {
+    jsonDict[@"session_info"] = [DBTEAMLOGWebSessionLogInfoSerializer serialize:valueObj.sessionInfo];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -92814,7 +100109,6 @@
   NSString *userAgent = valueDict[@"user_agent"];
   NSString *os = valueDict[@"os"];
   NSString *browser = valueDict[@"browser"];
-  NSString *sessionId = valueDict[@"session_id"] ?: nil;
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
   NSDate *created = valueDict[@"created"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
@@ -92822,14 +100116,16 @@
   NSDate *updated = valueDict[@"updated"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                         : nil;
+  DBTEAMLOGWebSessionLogInfo *sessionInfo =
+      valueDict[@"session_info"] ? [DBTEAMLOGWebSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
 
   return [[DBTEAMLOGWebDeviceSessionLogInfo alloc] initWithUserAgent:userAgent
                                                                   os:os
                                                              browser:browser
-                                                           sessionId:sessionId
                                                            ipAddress:ipAddress
                                                              created:created
-                                                             updated:updated];
+                                                             updated:updated
+                                                         sessionInfo:sessionInfo];
 }
 
 @end

@@ -25,6 +25,10 @@
 @class DBFILEPROPERTIESUpdatePropertiesError;
 @class DBFILESAlphaGetMetadataError;
 @class DBFILESCommitInfo;
+@class DBFILESCreateFolderBatchError;
+@class DBFILESCreateFolderBatchJobStatus;
+@class DBFILESCreateFolderBatchLaunch;
+@class DBFILESCreateFolderBatchResult;
 @class DBFILESCreateFolderError;
 @class DBFILESCreateFolderResult;
 @class DBFILESDeleteArg;
@@ -80,9 +84,11 @@
 @class DBFILESSearchMode;
 @class DBFILESSearchResult;
 @class DBFILESSharedLink;
+@class DBFILESSymlinkInfo;
 @class DBFILESThumbnailArg;
 @class DBFILESThumbnailError;
 @class DBFILESThumbnailFormat;
+@class DBFILESThumbnailMode;
 @class DBFILESThumbnailSize;
 @class DBFILESUploadError;
 @class DBFILESUploadErrorWithProperties;
@@ -408,6 +414,50 @@ alphaUploadStream:(NSString *)path
     __deprecated_msg("createFolder is deprecated. Use createFolderV2.");
 
 ///
+/// Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately
+/// and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously
+/// for smaller inputs. You can force asynchronous behaviour by using the `forceAsync` in `DBFILESCreateFolderBatchArg`
+/// flag.  Use `createFolderBatchCheck` to check the job status.
+///
+/// @param paths List of paths to be created in the user's Dropbox. Duplicate path arguments in the batch are considered
+/// only once.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESCreateFolderBatchLaunch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESCreateFolderBatchLaunch *, DBNilObject *> *)createFolderBatch:(NSArray<NSString *> *)paths;
+
+///
+/// Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately
+/// and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously
+/// for smaller inputs. You can force asynchronous behaviour by using the `forceAsync` in `DBFILESCreateFolderBatchArg`
+/// flag.  Use `createFolderBatchCheck` to check the job status.
+///
+/// @param paths List of paths to be created in the user's Dropbox. Duplicate path arguments in the batch are considered
+/// only once.
+/// @param autorename If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict.
+/// @param forceAsync Whether to force the create to happen asynchronously.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESCreateFolderBatchLaunch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESCreateFolderBatchLaunch *, DBNilObject *> *)createFolderBatch:(NSArray<NSString *> *)paths
+                                                                       autorename:(nullable NSNumber *)autorename
+                                                                       forceAsync:(nullable NSNumber *)forceAsync;
+
+///
+/// Returns the status of an asynchronous job for `createFolderBatch`. If success, it returns list of result for each
+/// entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESCreateFolderBatchJobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESCreateFolderBatchJobStatus *, DBASYNCPollError *> *)createFolderBatchCheck:(NSString *)asyncJobId;
+
+///
 /// Create a folder at a given path.
 ///
 /// @param path Path in the user's Dropbox to create.
@@ -443,6 +493,22 @@ alphaUploadStream:(NSString *)path
     __deprecated_msg("delete_ is deprecated. Use deleteV2.");
 
 ///
+/// DEPRECATED: Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted
+/// too. A successful response indicates that the file or folder was deleted. The returned metadata will be the
+/// corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+///
+/// @param path Path in the user's Dropbox to delete.
+/// @param parentRev Perform delete if given "rev" matches the existing file's latest "rev". This field does not support
+/// deleting a folder.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESDeleteError` object on failure.
+///
+- (DBRpcTask<DBFILESMetadata *, DBFILESDeleteError *> *)delete_:(NSString *)path
+                                                      parentRev:(nullable NSString *)parentRev
+    __deprecated_msg("delete_ is deprecated. Use deleteV2.");
+
+///
 /// Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the
 /// delete batch asynchronously. Use `deleteBatchCheck` to check the job status.
 ///
@@ -474,6 +540,21 @@ alphaUploadStream:(NSString *)path
 /// `DBFILESDeleteError` object on failure.
 ///
 - (DBRpcTask<DBFILESDeleteResult *, DBFILESDeleteError *> *)deleteV2:(NSString *)path;
+
+///
+/// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
+/// successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding
+/// FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+///
+/// @param path Path in the user's Dropbox to delete.
+/// @param parentRev Perform delete if given "rev" matches the existing file's latest "rev". This field does not support
+/// deleting a folder.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDeleteResult` object on success or a
+/// `DBFILESDeleteError` object on failure.
+///
+- (DBRpcTask<DBFILESDeleteResult *, DBFILESDeleteError *> *)deleteV2:(NSString *)path
+                                                           parentRev:(nullable NSString *)parentRev;
 
 ///
 /// Download a file from a user's Dropbox.
@@ -908,6 +989,7 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 /// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
 /// preferred, while png is  better for screenshots and digital arts.
 /// @param size The size for the thumbnail image.
+/// @param mode How to resize and crop the image to achieve the desired size.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -920,6 +1002,7 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 getThumbnailUrl:(NSString *)path
          format:(nullable DBFILESThumbnailFormat *)format
            size:(nullable DBFILESThumbnailSize *)size
+           mode:(nullable DBFILESThumbnailMode *)mode
       overwrite:(BOOL)overwrite
     destination:(NSURL *)destination;
 
@@ -954,6 +1037,7 @@ getThumbnailUrl:(NSString *)path
 /// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
 /// preferred, while png is  better for screenshots and digital arts.
 /// @param size The size for the thumbnail image.
+/// @param mode How to resize and crop the image to achieve the desired size.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -970,6 +1054,7 @@ getThumbnailUrl:(NSString *)path
 getThumbnailUrl:(NSString *)path
          format:(nullable DBFILESThumbnailFormat *)format
            size:(nullable DBFILESThumbnailSize *)size
+           mode:(nullable DBFILESThumbnailMode *)mode
       overwrite:(BOOL)overwrite
     destination:(NSURL *)destination
 byteOffsetStart:(NSNumber *)byteOffsetStart
@@ -994,6 +1079,7 @@ byteOffsetStart:(NSNumber *)byteOffsetStart
 /// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
 /// preferred, while png is  better for screenshots and digital arts.
 /// @param size The size for the thumbnail image.
+/// @param mode How to resize and crop the image to achieve the desired size.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESThumbnailError` object on failure.
@@ -1001,7 +1087,8 @@ byteOffsetStart:(NSNumber *)byteOffsetStart
 - (DBDownloadDataTask<DBFILESFileMetadata *, DBFILESThumbnailError *> *)
 getThumbnailData:(NSString *)path
           format:(nullable DBFILESThumbnailFormat *)format
-            size:(nullable DBFILESThumbnailSize *)size;
+            size:(nullable DBFILESThumbnailSize *)size
+            mode:(nullable DBFILESThumbnailMode *)mode;
 
 ///
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -1028,6 +1115,7 @@ getThumbnailData:(NSString *)path
 /// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
 /// preferred, while png is  better for screenshots and digital arts.
 /// @param size The size for the thumbnail image.
+/// @param mode How to resize and crop the image to achieve the desired size.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
@@ -1040,6 +1128,7 @@ getThumbnailData:(NSString *)path
 getThumbnailData:(NSString *)path
           format:(nullable DBFILESThumbnailFormat *)format
             size:(nullable DBFILESThumbnailSize *)size
+            mode:(nullable DBFILESThumbnailMode *)mode
  byteOffsetStart:(NSNumber *)byteOffsetStart
    byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
@@ -1374,6 +1463,20 @@ listRevisions:(NSString *)path
 /// object on failure.
 ///
 - (DBRpcTask<DBNilObject *, DBFILESDeleteError *> *)permanentlyDelete:(NSString *)path;
+
+///
+/// Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). Note: This endpoint
+/// is only available for Dropbox Business apps.
+///
+/// @param path Path in the user's Dropbox to delete.
+/// @param parentRev Perform delete if given "rev" matches the existing file's latest "rev". This field does not support
+/// deleting a folder.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a `DBFILESDeleteError`
+/// object on failure.
+///
+- (DBRpcTask<DBNilObject *, DBFILESDeleteError *> *)permanentlyDelete:(NSString *)path
+                                                            parentRev:(nullable NSString *)parentRev;
 
 ///
 /// DEPRECATED: The propertiesAdd route

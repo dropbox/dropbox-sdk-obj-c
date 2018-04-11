@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentCopyDetails` struct.
 ///
-/// Copied the shared file or folder to own Dropbox.
+/// Copied shared file/folder to own Dropbox.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SfFbInviteDetails` struct.
 ///
-/// Invited Facebook users to a shared folder.
+/// Invited Facebook users to shared folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

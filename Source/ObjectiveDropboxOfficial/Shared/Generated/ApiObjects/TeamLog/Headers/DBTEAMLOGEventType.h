@@ -95,6 +95,8 @@
 @class DBTEAMLOGGroupChangeMemberRoleType;
 @class DBTEAMLOGGroupCreateType;
 @class DBTEAMLOGGroupDeleteType;
+@class DBTEAMLOGGroupDescriptionUpdatedType;
+@class DBTEAMLOGGroupJoinPolicyUpdatedType;
 @class DBTEAMLOGGroupMovedType;
 @class DBTEAMLOGGroupRemoveExternalIdType;
 @class DBTEAMLOGGroupRemoveMemberType;
@@ -239,6 +241,28 @@
 @class DBTEAMLOGSharingChangeLinkPolicyType;
 @class DBTEAMLOGSharingChangeMemberPolicyType;
 @class DBTEAMLOGShmodelGroupShareType;
+@class DBTEAMLOGShowcaseAccessGrantedType;
+@class DBTEAMLOGShowcaseAddMemberType;
+@class DBTEAMLOGShowcaseArchivedType;
+@class DBTEAMLOGShowcaseCreatedType;
+@class DBTEAMLOGShowcaseDeleteCommentType;
+@class DBTEAMLOGShowcaseEditCommentType;
+@class DBTEAMLOGShowcaseEditedType;
+@class DBTEAMLOGShowcaseFileAddedType;
+@class DBTEAMLOGShowcaseFileDownloadType;
+@class DBTEAMLOGShowcaseFileRemovedType;
+@class DBTEAMLOGShowcaseFileViewType;
+@class DBTEAMLOGShowcasePermanentlyDeletedType;
+@class DBTEAMLOGShowcasePostCommentType;
+@class DBTEAMLOGShowcaseRemoveMemberType;
+@class DBTEAMLOGShowcaseRenamedType;
+@class DBTEAMLOGShowcaseRequestAccessType;
+@class DBTEAMLOGShowcaseResolveCommentType;
+@class DBTEAMLOGShowcaseRestoredType;
+@class DBTEAMLOGShowcaseTrashedType;
+@class DBTEAMLOGShowcaseUnresolveCommentType;
+@class DBTEAMLOGShowcaseUntrashedType;
+@class DBTEAMLOGShowcaseViewType;
 @class DBTEAMLOGSignInAsSessionEndType;
 @class DBTEAMLOGSignInAsSessionStartType;
 @class DBTEAMLOGSmartSyncChangePolicyType;
@@ -270,6 +294,7 @@
 @class DBTEAMLOGTeamProfileChangeLogoType;
 @class DBTEAMLOGTeamProfileChangeNameType;
 @class DBTEAMLOGTeamProfileRemoveLogoType;
+@class DBTEAMLOGTeamSelectiveSyncSettingsChangedType;
 @class DBTEAMLOGTfaAddBackupPhoneType;
 @class DBTEAMLOGTfaAddSecurityKeyType;
 @class DBTEAMLOGTfaChangeBackupPhoneType;
@@ -302,963 +327,946 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGEventTypeTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGEventType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
-  /// (apps) Linked an app for team.
+  /// (apps) Linked app for team
   DBTEAMLOGEventTypeAppLinkTeam,
 
-  /// (apps) Linked an app for team member.
+  /// (apps) Linked app for member
   DBTEAMLOGEventTypeAppLinkUser,
 
-  /// (apps) Unlinked an app for team.
+  /// (apps) Unlinked app for team
   DBTEAMLOGEventTypeAppUnlinkTeam,
 
-  /// (apps) Unlinked an app for team member.
+  /// (apps) Unlinked app for member
   DBTEAMLOGEventTypeAppUnlinkUser,
 
-  /// (comments) Added a file comment.
+  /// (comments) Added file comment
   DBTEAMLOGEventTypeFileAddComment,
 
   /// (comments) Subscribed to or unsubscribed from comment notifications for
-  /// file.
+  /// file
   DBTEAMLOGEventTypeFileChangeCommentSubscription,
 
-  /// (comments) Deleted a file comment.
+  /// (comments) Deleted file comment
   DBTEAMLOGEventTypeFileDeleteComment,
 
-  /// (comments) Liked a file comment. This event is deprecated and will not
-  /// be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (comments) Liked file comment (deprecated, no longer logged)
   DBTEAMLOGEventTypeFileLikeComment,
 
-  /// (comments) Resolved a file comment.
+  /// (comments) Resolved file comment
   DBTEAMLOGEventTypeFileResolveComment,
 
-  /// (comments) Unliked a file comment. This event is deprecated and will not
-  /// be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (comments) Unliked file comment (deprecated, no longer logged)
   DBTEAMLOGEventTypeFileUnlikeComment,
 
-  /// (comments) Unresolved a file comment.
+  /// (comments) Unresolved file comment
   DBTEAMLOGEventTypeFileUnresolveComment,
 
-  /// (devices) IP address associated with active desktop session changed.
+  /// (devices) Changed IP address associated with active desktop session
   DBTEAMLOGEventTypeDeviceChangeIpDesktop,
 
-  /// (devices) IP address associated with active mobile session changed.
+  /// (devices) Changed IP address associated with active mobile session
   DBTEAMLOGEventTypeDeviceChangeIpMobile,
 
-  /// (devices) IP address associated with active Web session changed.
+  /// (devices) Changed IP address associated with active web session
   DBTEAMLOGEventTypeDeviceChangeIpWeb,
 
-  /// (devices) Failed to delete all files from an unlinked device.
+  /// (devices) Failed to delete all files from unlinked device
   DBTEAMLOGEventTypeDeviceDeleteOnUnlinkFail,
 
-  /// (devices) Deleted all files from an unlinked device.
+  /// (devices) Deleted all files from unlinked device
   DBTEAMLOGEventTypeDeviceDeleteOnUnlinkSuccess,
 
-  /// (devices) Failed to link a device.
+  /// (devices) Failed to link device
   DBTEAMLOGEventTypeDeviceLinkFail,
 
-  /// (devices) Linked a device.
+  /// (devices) Linked device
   DBTEAMLOGEventTypeDeviceLinkSuccess,
 
-  /// (devices) Disable Device Management. This event is deprecated and will
-  /// not be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (devices) Disabled device management (deprecated, no longer logged)
   DBTEAMLOGEventTypeDeviceManagementDisabled,
 
-  /// (devices) Enable Device Management. This event is deprecated and will
-  /// not be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (devices) Enabled device management (deprecated, no longer logged)
   DBTEAMLOGEventTypeDeviceManagementEnabled,
 
-  /// (devices) Disconnected a device.
+  /// (devices) Disconnected device
   DBTEAMLOGEventTypeDeviceUnlink,
 
-  /// (devices) Refreshed the auth token used for setting up enterprise
-  /// mobility management.
+  /// (devices) Refreshed auth token used for setting up enterprise mobility
+  /// management
   DBTEAMLOGEventTypeEmmRefreshAuthToken,
 
-  /// (domains) Granted or revoked the option to enable account capture on
-  /// domains belonging to the team.
+  /// (domains) Granted/revoked option to enable account capture on team
+  /// domains
   DBTEAMLOGEventTypeAccountCaptureChangeAvailability,
 
-  /// (domains) Account captured user migrated their account to the team.
+  /// (domains) Account-captured user migrated account to team
   DBTEAMLOGEventTypeAccountCaptureMigrateAccount,
 
-  /// (domains) Proactive account capture email sent to all unmanaged members.
+  /// (domains) Sent proactive account capture email to all unmanaged members
   DBTEAMLOGEventTypeAccountCaptureNotificationEmailsSent,
 
-  /// (domains) Account captured user relinquished their account by changing
-  /// the email address associated with it.
+  /// (domains) Account-captured user changed account email to personal email
   DBTEAMLOGEventTypeAccountCaptureRelinquishAccount,
 
-  /// (domains) Disabled domain invites. This event is deprecated and will not
-  /// be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (domains) Disabled domain invites (deprecated, no longer logged)
   DBTEAMLOGEventTypeDisabledDomainInvites,
 
-  /// (domains) Approved a member's request to join the team.
+  /// (domains) Approved user's request to join team
   DBTEAMLOGEventTypeDomainInvitesApproveRequestToJoinTeam,
 
-  /// (domains) Declined a user's request to join the team.
+  /// (domains) Declined user's request to join team
   DBTEAMLOGEventTypeDomainInvitesDeclineRequestToJoinTeam,
 
-  /// (domains) Sent domain invites to existing domain accounts.
+  /// (domains) Sent domain invites to existing domain accounts
   DBTEAMLOGEventTypeDomainInvitesEmailExistingUsers,
 
-  /// (domains) Asked to join the team.
+  /// (domains) Requested to join team
   DBTEAMLOGEventTypeDomainInvitesRequestToJoinTeam,
 
-  /// (domains) Turned off u201cAutomatically invite new usersu201d. This
-  /// event is deprecated and will not be logged going forward as the
-  /// associated product functionality no longer exists.
+  /// (domains) Disabled "Automatically invite new users" (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeDomainInvitesSetInviteNewUserPrefToNo,
 
-  /// (domains) Turned on u201cAutomatically invite new usersu201d. This event
-  /// is deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (domains) Enabled "Automatically invite new users" (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeDomainInvitesSetInviteNewUserPrefToYes,
 
-  /// (domains) Failed to verify a domain belonging to the team.
+  /// (domains) Failed to verify team domain
   DBTEAMLOGEventTypeDomainVerificationAddDomainFail,
 
-  /// (domains) Verified a domain belonging to the team.
+  /// (domains) Verified team domain
   DBTEAMLOGEventTypeDomainVerificationAddDomainSuccess,
 
-  /// (domains) Removed a domain from the list of verified domains belonging
-  /// to the team.
+  /// (domains) Removed domain from list of verified team domains
   DBTEAMLOGEventTypeDomainVerificationRemoveDomain,
 
-  /// (domains) Enabled domain invites. This event is deprecated and will not
-  /// be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (domains) Enabled domain invites (deprecated, no longer logged)
   DBTEAMLOGEventTypeEnabledDomainInvites,
 
-  /// (file_operations) Created folders. This event is deprecated and will not
-  /// be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (file_operations) Created folders (deprecated, no longer logged)
   DBTEAMLOGEventTypeCreateFolder,
 
-  /// (file_operations) Added files and/or folders.
+  /// (file_operations) Added files and/or folders
   DBTEAMLOGEventTypeFileAdd,
 
-  /// (file_operations) Copied files and/or folders.
+  /// (file_operations) Copied files and/or folders
   DBTEAMLOGEventTypeFileCopy,
 
-  /// (file_operations) Deleted files and/or folders.
+  /// (file_operations) Deleted files and/or folders
   DBTEAMLOGEventTypeFileDelete,
 
-  /// (file_operations) Downloaded files and/or folders.
+  /// (file_operations) Downloaded files and/or folders
   DBTEAMLOGEventTypeFileDownload,
 
-  /// (file_operations) Edited files.
+  /// (file_operations) Edited files
   DBTEAMLOGEventTypeFileEdit,
 
-  /// (file_operations) Create a copy reference to a file or folder.
+  /// (file_operations) Created copy reference to file/folder
   DBTEAMLOGEventTypeFileGetCopyReference,
 
-  /// (file_operations) Moved files and/or folders.
+  /// (file_operations) Moved files and/or folders
   DBTEAMLOGEventTypeFileMove,
 
-  /// (file_operations) Permanently deleted files and/or folders.
+  /// (file_operations) Permanently deleted files and/or folders
   DBTEAMLOGEventTypeFilePermanentlyDelete,
 
-  /// (file_operations) Previewed files and/or folders.
+  /// (file_operations) Previewed files and/or folders
   DBTEAMLOGEventTypeFilePreview,
 
-  /// (file_operations) Renamed files and/or folders.
+  /// (file_operations) Renamed files and/or folders
   DBTEAMLOGEventTypeFileRename,
 
-  /// (file_operations) Restored deleted files and/or folders.
+  /// (file_operations) Restored deleted files and/or folders
   DBTEAMLOGEventTypeFileRestore,
 
-  /// (file_operations) Reverted files to a previous version.
+  /// (file_operations) Reverted files to previous version
   DBTEAMLOGEventTypeFileRevert,
 
-  /// (file_operations) Rolled back file change location changes.
+  /// (file_operations) Rolled back file actions
   DBTEAMLOGEventTypeFileRollbackChanges,
 
-  /// (file_operations) Save a file or folder using a copy reference.
+  /// (file_operations) Saved file/folder using copy reference
   DBTEAMLOGEventTypeFileSaveCopyReference,
 
-  /// (file_requests) Change a file request.
+  /// (file_requests) Changed file request
   DBTEAMLOGEventTypeFileRequestChange,
 
-  /// (file_requests) Closed a file request.
+  /// (file_requests) Closed file request
   DBTEAMLOGEventTypeFileRequestClose,
 
-  /// (file_requests) Created a file request.
+  /// (file_requests) Created file request
   DBTEAMLOGEventTypeFileRequestCreate,
 
-  /// (file_requests) Received files for a file request.
+  /// (file_requests) Received files for file request
   DBTEAMLOGEventTypeFileRequestReceiveFile,
 
-  /// (groups) Added an external ID for group.
+  /// (groups) Added external ID for group
   DBTEAMLOGEventTypeGroupAddExternalId,
 
-  /// (groups) Added team members to a group.
+  /// (groups) Added team members to group
   DBTEAMLOGEventTypeGroupAddMember,
 
-  /// (groups) Changed the external ID for group.
+  /// (groups) Changed external ID for group
   DBTEAMLOGEventTypeGroupChangeExternalId,
 
-  /// (groups) Changed group management type.
+  /// (groups) Changed group management type
   DBTEAMLOGEventTypeGroupChangeManagementType,
 
-  /// (groups) Changed the manager permissions belonging to a group member.
+  /// (groups) Changed manager permissions of group member
   DBTEAMLOGEventTypeGroupChangeMemberRole,
 
-  /// (groups) Created a group.
+  /// (groups) Created group
   DBTEAMLOGEventTypeGroupCreate,
 
-  /// (groups) Deleted a group.
+  /// (groups) Deleted group
   DBTEAMLOGEventTypeGroupDelete,
 
-  /// (groups) Moved a group. This event is deprecated and will not be logged
-  /// going forward as the associated product functionality no longer exists.
+  /// (groups) Updated group (deprecated, no longer logged)
+  DBTEAMLOGEventTypeGroupDescriptionUpdated,
+
+  /// (groups) Updated group join policy (deprecated, no longer logged)
+  DBTEAMLOGEventTypeGroupJoinPolicyUpdated,
+
+  /// (groups) Moved group (deprecated, no longer logged)
   DBTEAMLOGEventTypeGroupMoved,
 
-  /// (groups) Removed the external ID for group.
+  /// (groups) Removed external ID for group
   DBTEAMLOGEventTypeGroupRemoveExternalId,
 
-  /// (groups) Removed team members from a group.
+  /// (groups) Removed team members from group
   DBTEAMLOGEventTypeGroupRemoveMember,
 
-  /// (groups) Renamed a group.
+  /// (groups) Renamed group
   DBTEAMLOGEventTypeGroupRename,
 
-  /// (logins) Failed to sign in via EMM. This event is replaced by login_fail
-  /// and will not be logged going forward.
+  /// (logins) Failed to sign in via EMM (deprecated, replaced by 'Failed to
+  /// sign in')
   DBTEAMLOGEventTypeEmmError,
 
-  /// (logins) Failed to sign in.
+  /// (logins) Failed to sign in
   DBTEAMLOGEventTypeLoginFail,
 
-  /// (logins) Signed in.
+  /// (logins) Signed in
   DBTEAMLOGEventTypeLoginSuccess,
 
-  /// (logins) Signed out.
+  /// (logins) Signed out
   DBTEAMLOGEventTypeLogout,
 
-  /// (logins) Ended reseller support session.
+  /// (logins) Ended reseller support session
   DBTEAMLOGEventTypeResellerSupportSessionEnd,
 
-  /// (logins) Started reseller support session.
+  /// (logins) Started reseller support session
   DBTEAMLOGEventTypeResellerSupportSessionStart,
 
-  /// (logins) Ended admin sign-in-as session.
+  /// (logins) Ended admin sign-in-as session
   DBTEAMLOGEventTypeSignInAsSessionEnd,
 
-  /// (logins) Started admin sign-in-as session.
+  /// (logins) Started admin sign-in-as session
   DBTEAMLOGEventTypeSignInAsSessionStart,
 
-  /// (logins) Failed to sign in via SSO. This event is replaced by login_fail
-  /// and will not be logged going forward.
+  /// (logins) Failed to sign in via SSO (deprecated, replaced by 'Failed to
+  /// sign in')
   DBTEAMLOGEventTypeSsoError,
 
-  /// (members) Specify team member name.
+  /// (members) Added team member name
   DBTEAMLOGEventTypeMemberAddName,
 
-  /// (members) Change the admin role belonging to team member.
+  /// (members) Changed team member admin role
   DBTEAMLOGEventTypeMemberChangeAdminRole,
 
-  /// (members) Changed team member email address.
+  /// (members) Changed team member email
   DBTEAMLOGEventTypeMemberChangeEmail,
 
-  /// (members) Changed the membership type (limited vs full) for team member.
-  /// This event is deprecated and will not be logged going forward as the
-  /// associated product functionality no longer exists.
+  /// (members) Changed membership type (limited/full) of member (deprecated,
+  /// no longer logged)
   DBTEAMLOGEventTypeMemberChangeMembershipType,
 
-  /// (members) Changed team member name.
+  /// (members) Changed team member name
   DBTEAMLOGEventTypeMemberChangeName,
 
-  /// (members) Changed the membership status of a team member.
+  /// (members) Changed membership status of team member
   DBTEAMLOGEventTypeMemberChangeStatus,
 
-  /// (members) Permanently deleted contents of a removed team member account.
+  /// (members) Permanently deleted contents of deleted team member account
   DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents,
 
-  /// (members) Set custom member space limit.
+  /// (members) Set custom member space limit
   DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota,
 
-  /// (members) Changed custom member space limit.
+  /// (members) Changed custom member space limit
   DBTEAMLOGEventTypeMemberSpaceLimitsChangeCustomQuota,
 
-  /// (members) Changed the status with respect to whether the team member is
-  /// under or over storage quota specified by policy.
+  /// (members) Changed space limit status
   DBTEAMLOGEventTypeMemberSpaceLimitsChangeStatus,
 
-  /// (members) Removed custom member space limit.
+  /// (members) Removed custom member space limit
   DBTEAMLOGEventTypeMemberSpaceLimitsRemoveCustomQuota,
 
-  /// (members) Suggested a new team member to be added to the team.
+  /// (members) Suggested person to add to team
   DBTEAMLOGEventTypeMemberSuggest,
 
-  /// (members) Transferred contents of a removed team member account to
-  /// another member.
+  /// (members) Transferred contents of deleted member account to another
+  /// member
   DBTEAMLOGEventTypeMemberTransferAccountContents,
 
-  /// (paper) Added users to the membership of a Paper doc or folder.
+  /// (paper) Added team member to Paper doc/folder
   DBTEAMLOGEventTypePaperContentAddMember,
 
-  /// (paper) Added Paper doc or folder to a folder.
+  /// (paper) Added Paper doc/folder to folder
   DBTEAMLOGEventTypePaperContentAddToFolder,
 
-  /// (paper) Archived Paper doc or folder.
+  /// (paper) Archived Paper doc/folder
   DBTEAMLOGEventTypePaperContentArchive,
 
-  /// (paper) Created a Paper doc or folder.
+  /// (paper) Created Paper doc/folder
   DBTEAMLOGEventTypePaperContentCreate,
 
-  /// (paper) Permanently deleted a Paper doc or folder.
+  /// (paper) Permanently deleted Paper doc/folder
   DBTEAMLOGEventTypePaperContentPermanentlyDelete,
 
-  /// (paper) Removed Paper doc or folder from a folder.
+  /// (paper) Removed Paper doc/folder from folder
   DBTEAMLOGEventTypePaperContentRemoveFromFolder,
 
-  /// (paper) Removed a user from the membership of a Paper doc or folder.
+  /// (paper) Removed team member from Paper doc/folder
   DBTEAMLOGEventTypePaperContentRemoveMember,
 
-  /// (paper) Renamed Paper doc or folder.
+  /// (paper) Renamed Paper doc/folder
   DBTEAMLOGEventTypePaperContentRename,
 
-  /// (paper) Restored an archived Paper doc or folder.
+  /// (paper) Restored archived Paper doc/folder
   DBTEAMLOGEventTypePaperContentRestore,
 
-  /// (paper) Added a Paper doc comment.
+  /// (paper) Added Paper doc comment
   DBTEAMLOGEventTypePaperDocAddComment,
 
-  /// (paper) Changed the access type of a Paper doc member.
+  /// (paper) Changed team member permissions for Paper doc
   DBTEAMLOGEventTypePaperDocChangeMemberRole,
 
-  /// (paper) Changed the sharing policy for Paper doc.
+  /// (paper) Changed sharing setting for Paper doc
   DBTEAMLOGEventTypePaperDocChangeSharingPolicy,
 
-  /// (paper) Followed or unfollowed a Paper doc.
+  /// (paper) Followed/unfollowed Paper doc
   DBTEAMLOGEventTypePaperDocChangeSubscription,
 
-  /// (paper) Paper doc archived. This event is deprecated and will not be
-  /// logged going forward as the associated product functionality no longer
-  /// exists.
+  /// (paper) Archived Paper doc (deprecated, no longer logged)
   DBTEAMLOGEventTypePaperDocDeleted,
 
-  /// (paper) Deleted a Paper doc comment.
+  /// (paper) Deleted Paper doc comment
   DBTEAMLOGEventTypePaperDocDeleteComment,
 
-  /// (paper) Downloaded a Paper doc in a particular output format.
+  /// (paper) Downloaded Paper doc in specific format
   DBTEAMLOGEventTypePaperDocDownload,
 
-  /// (paper) Edited a Paper doc.
+  /// (paper) Edited Paper doc
   DBTEAMLOGEventTypePaperDocEdit,
 
-  /// (paper) Edited a Paper doc comment.
+  /// (paper) Edited Paper doc comment
   DBTEAMLOGEventTypePaperDocEditComment,
 
-  /// (paper) Followed a Paper doc. This event is replaced by
-  /// paper_doc_change_subscription and will not be logged going forward.
+  /// (paper) Followed Paper doc (deprecated, replaced by 'Followed/unfollowed
+  /// Paper doc')
   DBTEAMLOGEventTypePaperDocFollowed,
 
-  /// (paper) Mentioned a member in a Paper doc.
+  /// (paper) Mentioned team member in Paper doc
   DBTEAMLOGEventTypePaperDocMention,
 
-  /// (paper) Requested to be a member on a Paper doc.
+  /// (paper) Requested access to Paper doc
   DBTEAMLOGEventTypePaperDocRequestAccess,
 
-  /// (paper) Paper doc comment resolved.
+  /// (paper) Resolved Paper doc comment
   DBTEAMLOGEventTypePaperDocResolveComment,
 
-  /// (paper) Restored a Paper doc to previous revision.
+  /// (paper) Restored Paper doc to previous version
   DBTEAMLOGEventTypePaperDocRevert,
 
-  /// (paper) Paper doc link shared via slack.
+  /// (paper) Shared Paper doc via Slack
   DBTEAMLOGEventTypePaperDocSlackShare,
 
-  /// (paper) Paper doc shared with team member. This event is deprecated and
-  /// will not be logged going forward as the associated product functionality
-  /// no longer exists.
+  /// (paper) Shared Paper doc with team member (deprecated, no longer logged)
   DBTEAMLOGEventTypePaperDocTeamInvite,
 
-  /// (paper) Paper doc trashed.
+  /// (paper) Deleted Paper doc
   DBTEAMLOGEventTypePaperDocTrashed,
 
-  /// (paper) Unresolved a Paper doc comment.
+  /// (paper) Unresolved Paper doc comment
   DBTEAMLOGEventTypePaperDocUnresolveComment,
 
-  /// (paper) Paper doc untrashed.
+  /// (paper) Restored Paper doc
   DBTEAMLOGEventTypePaperDocUntrashed,
 
-  /// (paper) Viewed Paper doc.
+  /// (paper) Viewed Paper doc
   DBTEAMLOGEventTypePaperDocView,
 
-  /// (paper) Paper external sharing policy changed: anyone. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (paper) Changed Paper external sharing setting to anyone (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypePaperExternalViewAllow,
 
-  /// (paper) Paper external sharing policy changed: default team. This event
-  /// is deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (paper) Changed Paper external sharing setting to default team
+  /// (deprecated, no longer logged)
   DBTEAMLOGEventTypePaperExternalViewDefaultTeam,
 
-  /// (paper) Paper external sharing policy changed: team-only. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (paper) Changed Paper external sharing setting to team-only (deprecated,
+  /// no longer logged)
   DBTEAMLOGEventTypePaperExternalViewForbid,
 
-  /// (paper) Followed or unfollowed a Paper folder.
+  /// (paper) Followed/unfollowed Paper folder
   DBTEAMLOGEventTypePaperFolderChangeSubscription,
 
-  /// (paper) Paper folder archived. This event is deprecated and will not be
-  /// logged going forward as the associated product functionality no longer
-  /// exists.
+  /// (paper) Archived Paper folder (deprecated, no longer logged)
   DBTEAMLOGEventTypePaperFolderDeleted,
 
-  /// (paper) Followed a Paper folder. This event is replaced by
-  /// paper_folder_change_subscription and will not be logged going forward.
+  /// (paper) Followed Paper folder (deprecated, replaced by
+  /// 'Followed/unfollowed Paper folder')
   DBTEAMLOGEventTypePaperFolderFollowed,
 
-  /// (paper) Paper folder shared with team member. This event is deprecated
-  /// and will not be logged going forward as the associated product
-  /// functionality no longer exists.
+  /// (paper) Shared Paper folder with member (deprecated, no longer logged)
   DBTEAMLOGEventTypePaperFolderTeamInvite,
 
-  /// (passwords) Changed password.
+  /// (passwords) Changed password
   DBTEAMLOGEventTypePasswordChange,
 
-  /// (passwords) Reset password.
+  /// (passwords) Reset password
   DBTEAMLOGEventTypePasswordReset,
 
-  /// (passwords) Reset all team member passwords.
+  /// (passwords) Reset all team member passwords
   DBTEAMLOGEventTypePasswordResetAll,
 
-  /// (reports) EMM excluded users report created.
+  /// (reports) Created EMM-excluded users report
   DBTEAMLOGEventTypeEmmCreateExceptionsReport,
 
-  /// (reports) EMM mobile app usage report created.
+  /// (reports) Created EMM mobile app usage report
   DBTEAMLOGEventTypeEmmCreateUsageReport,
 
-  /// (reports) Member data report created.
+  /// (reports) Created member data report
   DBTEAMLOGEventTypeExportMembersReport,
 
-  /// (reports) Exported all Paper documents in the team.
+  /// (reports) Exported all team Paper docs
   DBTEAMLOGEventTypePaperAdminExportStart,
 
-  /// (reports) Smart Sync non-admin devices report created.
+  /// (reports) Created Smart Sync non-admin devices report
   DBTEAMLOGEventTypeSmartSyncCreateAdminPrivilegeReport,
 
-  /// (reports) Created a team activity report.
+  /// (reports) Created team activity report
   DBTEAMLOGEventTypeTeamActivityCreateReport,
 
-  /// (sharing) Shared an album.
+  /// (sharing) Shared album
   DBTEAMLOGEventTypeCollectionShare,
 
-  /// (sharing) Changed a Paper document to be invite-only. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (sharing) Changed Paper doc to invite-only (deprecated, no longer
+  /// logged)
   DBTEAMLOGEventTypeNoteAclInviteOnly,
 
-  /// (sharing) Changed a Paper document to be link accessible. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (sharing) Changed Paper doc to link-accessible (deprecated, no longer
+  /// logged)
   DBTEAMLOGEventTypeNoteAclLink,
 
-  /// (sharing) Changed a Paper document to be link accessible for the team.
-  /// This event is deprecated and will not be logged going forward as the
-  /// associated product functionality no longer exists.
+  /// (sharing) Changed Paper doc to link-accessible for team (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeNoteAclTeamLink,
 
-  /// (sharing) Shared a Paper doc. This event is deprecated and will not be
-  /// logged going forward as the associated product functionality no longer
-  /// exists.
+  /// (sharing) Shared Paper doc (deprecated, no longer logged)
   DBTEAMLOGEventTypeNoteShared,
 
-  /// (sharing) Shared Paper document received. This event is deprecated and
-  /// will not be logged going forward as the associated product functionality
-  /// no longer exists.
+  /// (sharing) Shared received Paper doc (deprecated, no longer logged)
   DBTEAMLOGEventTypeNoteShareReceive,
 
-  /// (sharing) Opened a shared Paper doc. This event is deprecated and will
-  /// not be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (sharing) Opened shared Paper doc (deprecated, no longer logged)
   DBTEAMLOGEventTypeOpenNoteShared,
 
-  /// (sharing) Added the team to a shared folder. This event is deprecated
-  /// and will not be logged going forward as the associated product
-  /// functionality no longer exists.
+  /// (sharing) Added team to shared folder (deprecated, no longer logged)
   DBTEAMLOGEventTypeSfAddGroup,
 
-  /// (sharing) Allowed non collaborators to view links to files in a shared
-  /// folder. This event is deprecated and will not be logged going forward as
-  /// the associated product functionality no longer exists.
+  /// (sharing) Allowed non-collaborators to view links to files in shared
+  /// folder (deprecated, no longer logged)
   DBTEAMLOGEventTypeSfAllowNonMembersToViewSharedLinks,
 
-  /// (sharing) Admin settings: team members see a warning before sharing
-  /// folders outside the team (DEPRECATED FEATURE). This event is deprecated
-  /// and will not be logged going forward as the associated product
-  /// functionality no longer exists.
+  /// (sharing) Set team members to see warning before sharing folders outside
+  /// team (deprecated, no longer logged)
   DBTEAMLOGEventTypeSfExternalInviteWarn,
 
-  /// (sharing) Invited Facebook users to a shared folder. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (sharing) Invited Facebook users to shared folder (deprecated, no longer
+  /// logged)
   DBTEAMLOGEventTypeSfFbInvite,
 
-  /// (sharing) Changed a Facebook user's role in a shared folder. This event
-  /// is deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (sharing) Changed Facebook user's role in shared folder (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeSfFbInviteChangeRole,
 
-  /// (sharing) Uninvited a Facebook user from a shared folder. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (sharing) Uninvited Facebook user from shared folder (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeSfFbUninvite,
 
-  /// (sharing) Invited a group to a shared folder. This event is deprecated
-  /// and will not be logged going forward as the associated product
-  /// functionality no longer exists.
+  /// (sharing) Invited group to shared folder (deprecated, no longer logged)
   DBTEAMLOGEventTypeSfInviteGroup,
 
-  /// (sharing) Granted access to a shared folder. This event is deprecated
-  /// and will not be logged going forward as the associated product
-  /// functionality no longer exists.
+  /// (sharing) Granted access to shared folder (deprecated, no longer logged)
   DBTEAMLOGEventTypeSfTeamGrantAccess,
 
-  /// (sharing) Invited team members to a shared folder. This event is
-  /// replaced by shared_content_add_invitees and will not be logged going
-  /// forward.
+  /// (sharing) Invited team members to shared folder (deprecated, replaced by
+  /// 'Invited user to Dropbox and added them to shared file/folder')
   DBTEAMLOGEventTypeSfTeamInvite,
 
-  /// (sharing) Changed a team member's role in a shared folder. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (sharing) Changed team member's role in shared folder (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeSfTeamInviteChangeRole,
 
-  /// (sharing) Joined a team member's shared folder. This event is deprecated
-  /// and will not be logged going forward as the associated product
-  /// functionality no longer exists.
+  /// (sharing) Joined team member's shared folder (deprecated, no longer
+  /// logged)
   DBTEAMLOGEventTypeSfTeamJoin,
 
-  /// (sharing) Joined a team member's shared folder from a link. This event
-  /// is deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (sharing) Joined team member's shared folder from link (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeSfTeamJoinFromOobLink,
 
-  /// (sharing) Unshared a folder with a team member. This event is replaced
-  /// by shared_content_remove_invitees and will not be logged going forward.
+  /// (sharing) Unshared folder with team member (deprecated, replaced by
+  /// 'Removed invitee from shared file/folder before invite accepted')
   DBTEAMLOGEventTypeSfTeamUninvite,
 
-  /// (sharing) Sent an email invitation to the membership of a shared file or
-  /// folder.
+  /// (sharing) Invited user to Dropbox and added them to shared file/folder
   DBTEAMLOGEventTypeSharedContentAddInvitees,
 
-  /// (sharing) Added an expiry to the link for the shared file or folder.
+  /// (sharing) Added expiration date to link for shared file/folder
   DBTEAMLOGEventTypeSharedContentAddLinkExpiry,
 
-  /// (sharing) Added a password to the link for the shared file or folder.
+  /// (sharing) Added password to link for shared file/folder
   DBTEAMLOGEventTypeSharedContentAddLinkPassword,
 
-  /// (sharing) Added users and/or groups to the membership of a shared file
-  /// or folder.
+  /// (sharing) Added users and/or groups to shared file/folder
   DBTEAMLOGEventTypeSharedContentAddMember,
 
-  /// (sharing) Changed whether members can download the shared file or
-  /// folder.
+  /// (sharing) Changed whether members can download shared file/folder
   DBTEAMLOGEventTypeSharedContentChangeDownloadsPolicy,
 
-  /// (sharing) Changed the access type of an invitee to a shared file or
-  /// folder before the invitation was claimed.
+  /// (sharing) Changed access type of invitee to shared file/folder before
+  /// invite accepted
   DBTEAMLOGEventTypeSharedContentChangeInviteeRole,
 
-  /// (sharing) Changed the audience of the link for a shared file or folder.
+  /// (sharing) Changed link audience of shared file/folder
   DBTEAMLOGEventTypeSharedContentChangeLinkAudience,
 
-  /// (sharing) Changed the expiry of the link for the shared file or folder.
+  /// (sharing) Changed link expiration of shared file/folder
   DBTEAMLOGEventTypeSharedContentChangeLinkExpiry,
 
-  /// (sharing) Changed the password on the link for the shared file or
-  /// folder.
+  /// (sharing) Changed link password of shared file/folder
   DBTEAMLOGEventTypeSharedContentChangeLinkPassword,
 
-  /// (sharing) Changed the access type of a shared file or folder member.
+  /// (sharing) Changed access type of shared file/folder member
   DBTEAMLOGEventTypeSharedContentChangeMemberRole,
 
-  /// (sharing) Changed whether members can see who viewed the shared file or
-  /// folder.
+  /// (sharing) Changed whether members can see who viewed shared file/folder
   DBTEAMLOGEventTypeSharedContentChangeViewerInfoPolicy,
 
-  /// (sharing) Acquired membership on a shared file or folder by claiming an
-  /// invitation.
+  /// (sharing) Acquired membership of shared file/folder by accepting invite
   DBTEAMLOGEventTypeSharedContentClaimInvitation,
 
-  /// (sharing) Copied the shared file or folder to own Dropbox.
+  /// (sharing) Copied shared file/folder to own Dropbox
   DBTEAMLOGEventTypeSharedContentCopy,
 
-  /// (sharing) Downloaded the shared file or folder.
+  /// (sharing) Downloaded shared file/folder
   DBTEAMLOGEventTypeSharedContentDownload,
 
-  /// (sharing) Left the membership of a shared file or folder.
+  /// (sharing) Left shared file/folder
   DBTEAMLOGEventTypeSharedContentRelinquishMembership,
 
-  /// (sharing) Removed an invitee from the membership of a shared file or
-  /// folder before it was claimed.
+  /// (sharing) Removed invitee from shared file/folder before invite accepted
   DBTEAMLOGEventTypeSharedContentRemoveInvitees,
 
-  /// (sharing) Removed the expiry of the link for the shared file or folder.
+  /// (sharing) Removed link expiration date of shared file/folder
   DBTEAMLOGEventTypeSharedContentRemoveLinkExpiry,
 
-  /// (sharing) Removed the password on the link for the shared file or
-  /// folder.
+  /// (sharing) Removed link password of shared file/folder
   DBTEAMLOGEventTypeSharedContentRemoveLinkPassword,
 
-  /// (sharing) Removed a user or a group from the membership of a shared file
-  /// or folder.
+  /// (sharing) Removed user/group from shared file/folder
   DBTEAMLOGEventTypeSharedContentRemoveMember,
 
-  /// (sharing) Requested to be on the membership of a shared file or folder.
+  /// (sharing) Requested access to shared file/folder
   DBTEAMLOGEventTypeSharedContentRequestAccess,
 
-  /// (sharing) Unshared a shared file or folder by clearing its membership
-  /// and turning off its link.
+  /// (sharing) Unshared file/folder by clearing membership and turning off
+  /// link
   DBTEAMLOGEventTypeSharedContentUnshare,
 
-  /// (sharing) Previewed the shared file or folder.
+  /// (sharing) Previewed shared file/folder
   DBTEAMLOGEventTypeSharedContentView,
 
-  /// (sharing) Changed who can access the shared folder via a link.
+  /// (sharing) Changed who can access shared folder via link
   DBTEAMLOGEventTypeSharedFolderChangeLinkPolicy,
 
-  /// (sharing) Specify if the shared folder inherits its members from the
-  /// parent folder.
+  /// (sharing) Changed whether shared folder inherits members from parent
+  /// folder
   DBTEAMLOGEventTypeSharedFolderChangeMembersInheritancePolicy,
 
-  /// (sharing) Changed who can add or remove members of a shared folder.
+  /// (sharing) Changed who can add/remove members of shared folder
   DBTEAMLOGEventTypeSharedFolderChangeMembersManagementPolicy,
 
-  /// (sharing) Changed who can become a member of the shared folder.
+  /// (sharing) Changed who can become member of shared folder
   DBTEAMLOGEventTypeSharedFolderChangeMembersPolicy,
 
-  /// (sharing) Created a shared folder.
+  /// (sharing) Created shared folder
   DBTEAMLOGEventTypeSharedFolderCreate,
 
-  /// (sharing) Declined a team member's invitation to a shared folder.
+  /// (sharing) Declined team member's invite to shared folder
   DBTEAMLOGEventTypeSharedFolderDeclineInvitation,
 
-  /// (sharing) Added a shared folder to own Dropbox.
+  /// (sharing) Added shared folder to own Dropbox
   DBTEAMLOGEventTypeSharedFolderMount,
 
-  /// (sharing) Changed the parent of a shared folder.
+  /// (sharing) Changed parent of shared folder
   DBTEAMLOGEventTypeSharedFolderNest,
 
-  /// (sharing) Transferred the ownership of a shared folder to another
-  /// member.
+  /// (sharing) Transferred ownership of shared folder to another member
   DBTEAMLOGEventTypeSharedFolderTransferOwnership,
 
-  /// (sharing) Deleted a shared folder from Dropbox.
+  /// (sharing) Deleted shared folder from Dropbox
   DBTEAMLOGEventTypeSharedFolderUnmount,
 
-  /// (sharing) Added a shared link expiration date.
+  /// (sharing) Added shared link expiration date
   DBTEAMLOGEventTypeSharedLinkAddExpiry,
 
-  /// (sharing) Changed the shared link expiration date.
+  /// (sharing) Changed shared link expiration date
   DBTEAMLOGEventTypeSharedLinkChangeExpiry,
 
-  /// (sharing) Changed the visibility of a shared link.
+  /// (sharing) Changed visibility of shared link
   DBTEAMLOGEventTypeSharedLinkChangeVisibility,
 
-  /// (sharing) Added a file/folder to their Dropbox from a shared link.
+  /// (sharing) Added file/folder to Dropbox from shared link
   DBTEAMLOGEventTypeSharedLinkCopy,
 
-  /// (sharing) Created a new shared link.
+  /// (sharing) Created shared link
   DBTEAMLOGEventTypeSharedLinkCreate,
 
-  /// (sharing) Removed a shared link.
+  /// (sharing) Removed shared link
   DBTEAMLOGEventTypeSharedLinkDisable,
 
-  /// (sharing) Downloaded a file/folder from a shared link.
+  /// (sharing) Downloaded file/folder from shared link
   DBTEAMLOGEventTypeSharedLinkDownload,
 
-  /// (sharing) Removed a shared link expiration date.
+  /// (sharing) Removed shared link expiration date
   DBTEAMLOGEventTypeSharedLinkRemoveExpiry,
 
-  /// (sharing) Added new members as the audience of a shared link.
+  /// (sharing) Added members as audience of shared link
   DBTEAMLOGEventTypeSharedLinkShare,
 
-  /// (sharing) Opened a shared link.
+  /// (sharing) Opened shared link
   DBTEAMLOGEventTypeSharedLinkView,
 
-  /// (sharing) Shared Paper document was opened. This event is deprecated and
-  /// will not be logged going forward as the associated product functionality
-  /// no longer exists.
+  /// (sharing) Opened shared Paper doc (deprecated, no longer logged)
   DBTEAMLOGEventTypeSharedNoteOpened,
 
-  /// (sharing) Shared a link with a group. This event is deprecated and will
-  /// not be logged going forward as the associated product functionality no
-  /// longer exists.
+  /// (sharing) Shared link with group (deprecated, no longer logged)
   DBTEAMLOGEventTypeShmodelGroupShare,
 
-  /// (sso) Added the X.509 certificate for SSO.
+  /// (showcase) Granted access to showcase
+  DBTEAMLOGEventTypeShowcaseAccessGranted,
+
+  /// (showcase) Added member to showcase
+  DBTEAMLOGEventTypeShowcaseAddMember,
+
+  /// (showcase) Archived showcase
+  DBTEAMLOGEventTypeShowcaseArchived,
+
+  /// (showcase) Created showcase
+  DBTEAMLOGEventTypeShowcaseCreated,
+
+  /// (showcase) Deleted showcase comment
+  DBTEAMLOGEventTypeShowcaseDeleteComment,
+
+  /// (showcase) Edited showcase
+  DBTEAMLOGEventTypeShowcaseEdited,
+
+  /// (showcase) Edited showcase comment
+  DBTEAMLOGEventTypeShowcaseEditComment,
+
+  /// (showcase) Added file to showcase
+  DBTEAMLOGEventTypeShowcaseFileAdded,
+
+  /// (showcase) Downloaded file from showcase
+  DBTEAMLOGEventTypeShowcaseFileDownload,
+
+  /// (showcase) Removed file from showcase
+  DBTEAMLOGEventTypeShowcaseFileRemoved,
+
+  /// (showcase) Viewed file in showcase
+  DBTEAMLOGEventTypeShowcaseFileView,
+
+  /// (showcase) Permanently deleted showcase
+  DBTEAMLOGEventTypeShowcasePermanentlyDeleted,
+
+  /// (showcase) Added showcase comment
+  DBTEAMLOGEventTypeShowcasePostComment,
+
+  /// (showcase) Removed member from showcase
+  DBTEAMLOGEventTypeShowcaseRemoveMember,
+
+  /// (showcase) Renamed showcase
+  DBTEAMLOGEventTypeShowcaseRenamed,
+
+  /// (showcase) Requested access to showcase
+  DBTEAMLOGEventTypeShowcaseRequestAccess,
+
+  /// (showcase) Resolved showcase comment
+  DBTEAMLOGEventTypeShowcaseResolveComment,
+
+  /// (showcase) Unarchived showcase
+  DBTEAMLOGEventTypeShowcaseRestored,
+
+  /// (showcase) Deleted showcase
+  DBTEAMLOGEventTypeShowcaseTrashed,
+
+  /// (showcase) Unresolved showcase comment
+  DBTEAMLOGEventTypeShowcaseUnresolveComment,
+
+  /// (showcase) Restored showcase
+  DBTEAMLOGEventTypeShowcaseUntrashed,
+
+  /// (showcase) Viewed showcase
+  DBTEAMLOGEventTypeShowcaseView,
+
+  /// (sso) Added X.509 certificate for SSO
   DBTEAMLOGEventTypeSsoAddCert,
 
-  /// (sso) Added sign-in URL for SSO.
+  /// (sso) Added sign-in URL for SSO
   DBTEAMLOGEventTypeSsoAddLoginUrl,
 
-  /// (sso) Added sign-out URL for SSO.
+  /// (sso) Added sign-out URL for SSO
   DBTEAMLOGEventTypeSsoAddLogoutUrl,
 
-  /// (sso) Changed the X.509 certificate for SSO.
+  /// (sso) Changed X.509 certificate for SSO
   DBTEAMLOGEventTypeSsoChangeCert,
 
-  /// (sso) Changed the sign-in URL for SSO.
+  /// (sso) Changed sign-in URL for SSO
   DBTEAMLOGEventTypeSsoChangeLoginUrl,
 
-  /// (sso) Changed the sign-out URL for SSO.
+  /// (sso) Changed sign-out URL for SSO
   DBTEAMLOGEventTypeSsoChangeLogoutUrl,
 
-  /// (sso) Changed the SAML identity mode for SSO.
+  /// (sso) Changed SAML identity mode for SSO
   DBTEAMLOGEventTypeSsoChangeSamlIdentityMode,
 
-  /// (sso) Removed the X.509 certificate for SSO.
+  /// (sso) Removed X.509 certificate for SSO
   DBTEAMLOGEventTypeSsoRemoveCert,
 
-  /// (sso) Removed the sign-in URL for SSO.
+  /// (sso) Removed sign-in URL for SSO
   DBTEAMLOGEventTypeSsoRemoveLoginUrl,
 
-  /// (sso) Removed single sign-on logout URL.
+  /// (sso) Removed sign-out URL for SSO
   DBTEAMLOGEventTypeSsoRemoveLogoutUrl,
 
-  /// (team_folders) Changed the archival status of a team folder.
+  /// (team_folders) Changed archival status of team folder
   DBTEAMLOGEventTypeTeamFolderChangeStatus,
 
-  /// (team_folders) Created a new team folder in active status.
+  /// (team_folders) Created team folder in active status
   DBTEAMLOGEventTypeTeamFolderCreate,
 
-  /// (team_folders) Downgraded a team folder to a regular shared folder.
+  /// (team_folders) Downgraded team folder to regular shared folder
   DBTEAMLOGEventTypeTeamFolderDowngrade,
 
-  /// (team_folders) Permanently deleted an archived team folder.
+  /// (team_folders) Permanently deleted archived team folder
   DBTEAMLOGEventTypeTeamFolderPermanentlyDelete,
 
-  /// (team_folders) Renamed an active or archived team folder.
+  /// (team_folders) Renamed active/archived team folder
   DBTEAMLOGEventTypeTeamFolderRename,
 
-  /// (team_policies) Changed the account capture policy on a domain belonging
-  /// to the team.
+  /// (team_folders) Changed sync default
+  DBTEAMLOGEventTypeTeamSelectiveSyncSettingsChanged,
+
+  /// (team_policies) Changed account capture setting on team domain
   DBTEAMLOGEventTypeAccountCaptureChangePolicy,
 
-  /// (team_policies) Disabled allow downloads. This event is deprecated and
-  /// will not be logged going forward as the associated product functionality
-  /// no longer exists.
+  /// (team_policies) Disabled downloads (deprecated, no longer logged)
   DBTEAMLOGEventTypeAllowDownloadDisabled,
 
-  /// (team_policies) Enabled allow downloads. This event is deprecated and
-  /// will not be logged going forward as the associated product functionality
-  /// no longer exists.
+  /// (team_policies) Enabled downloads (deprecated, no longer logged)
   DBTEAMLOGEventTypeAllowDownloadEnabled,
 
-  /// (team_policies) Set a restriction policy regarding the location of data
-  /// centers where team data resides.
+  /// (team_policies) Set restrictions on data center locations where team
+  /// data resides
   DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy,
 
-  /// (team_policies) Satisfied a previously set restriction policy regarding
-  /// the location of data centers where team data resides (i.e. all data have
-  /// been migrated according to the restriction placed).
+  /// (team_policies) Completed restrictions on data center locations where
+  /// team data resides
   DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy,
 
-  /// (team_policies) Set or removed a limit on the number of computers each
-  /// team member can link to their work Dropbox account.
+  /// (team_policies) Set/removed limit on number of computers member can link
+  /// to team Dropbox account
   DBTEAMLOGEventTypeDeviceApprovalsChangeDesktopPolicy,
 
-  /// (team_policies) Set or removed a limit on the number of mobiles devices
-  /// each team member can link to their work Dropbox account.
+  /// (team_policies) Set/removed limit on number of mobile devices member can
+  /// link to team Dropbox account
   DBTEAMLOGEventTypeDeviceApprovalsChangeMobilePolicy,
 
-  /// (team_policies) Changed the action taken when a team member is already
-  /// over the limits (e.g when they join the team, an admin lowers limits,
-  /// etc.).
+  /// (team_policies) Changed device approvals setting when member is over
+  /// limit
   DBTEAMLOGEventTypeDeviceApprovalsChangeOverageAction,
 
-  /// (team_policies) Changed the action taken with respect to approval limits
-  /// when a team member unlinks an approved device.
+  /// (team_policies) Changed device approvals setting when member unlinks
+  /// approved device
   DBTEAMLOGEventTypeDeviceApprovalsChangeUnlinkAction,
 
-  /// (team_policies) Added an exception for one or more team members to
-  /// optionally use the regular Dropbox app when EMM is enabled.
+  /// (team_policies) Added members to EMM exception list
   DBTEAMLOGEventTypeEmmAddException,
 
-  /// (team_policies) Enabled or disabled enterprise mobility management for
-  /// team members.
+  /// (team_policies) Enabled/disabled enterprise mobility management for
+  /// members
   DBTEAMLOGEventTypeEmmChangePolicy,
 
-  /// (team_policies) Removed an exception for one or more team members to
-  /// optionally use the regular Dropbox app when EMM is enabled.
+  /// (team_policies) Removed members from EMM exception list
   DBTEAMLOGEventTypeEmmRemoveException,
 
-  /// (team_policies) Accepted or opted out of extended version history.
+  /// (team_policies) Accepted/opted out of extended version history
   DBTEAMLOGEventTypeExtendedVersionHistoryChangePolicy,
 
-  /// (team_policies) Enabled or disabled commenting on team files.
+  /// (team_policies) Enabled/disabled commenting on team files
   DBTEAMLOGEventTypeFileCommentsChangePolicy,
 
-  /// (team_policies) Enabled or disabled file requests.
+  /// (team_policies) Enabled/disabled file requests
   DBTEAMLOGEventTypeFileRequestsChangePolicy,
 
-  /// (team_policies) Enabled file request emails for everyone. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (team_policies) Enabled file request emails for everyone (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeFileRequestsEmailsEnabled,
 
-  /// (team_policies) Allowed file request emails for the team. This event is
-  /// deprecated and will not be logged going forward as the associated
-  /// product functionality no longer exists.
+  /// (team_policies) Enabled file request emails for team (deprecated, no
+  /// longer logged)
   DBTEAMLOGEventTypeFileRequestsEmailsRestrictedToTeamOnly,
 
-  /// (team_policies) Enabled or disabled Google single sign-on for the team.
+  /// (team_policies) Enabled/disabled Google single sign-on for team
   DBTEAMLOGEventTypeGoogleSsoChangePolicy,
 
-  /// (team_policies) Changed who can create groups.
+  /// (team_policies) Changed who can create groups
   DBTEAMLOGEventTypeGroupUserManagementChangePolicy,
 
-  /// (team_policies) Changed whether users can find the team when not
-  /// invited.
+  /// (team_policies) Changed whether users can find team when not invited
   DBTEAMLOGEventTypeMemberRequestsChangePolicy,
 
-  /// (team_policies) Added an exception for one or more team members to
-  /// bypass space limits imposed by policy.
+  /// (team_policies) Added members to member space limit exception list
   DBTEAMLOGEventTypeMemberSpaceLimitsAddException,
 
-  /// (team_policies) Change the member space limit type for the team.
+  /// (team_policies) Changed member space limit type for team
   DBTEAMLOGEventTypeMemberSpaceLimitsChangeCapsTypePolicy,
 
-  /// (team_policies) Changed the team default limit level.
+  /// (team_policies) Changed team default member space limit
   DBTEAMLOGEventTypeMemberSpaceLimitsChangePolicy,
 
-  /// (team_policies) Removed an exception for one or more team members to
-  /// bypass space limits imposed by policy.
+  /// (team_policies) Removed members from member space limit exception list
   DBTEAMLOGEventTypeMemberSpaceLimitsRemoveException,
 
-  /// (team_policies) Enabled or disabled the option for team members to
-  /// suggest new members to add to the team.
+  /// (team_policies) Enabled/disabled option for team members to suggest
+  /// people to add to team
   DBTEAMLOGEventTypeMemberSuggestionsChangePolicy,
 
-  /// (team_policies) Enabled or disabled the Microsoft Office add-in, which
-  /// lets team members save files to Dropbox directly from Microsoft Office.
+  /// (team_policies) Enabled/disabled Microsoft Office add-in
   DBTEAMLOGEventTypeMicrosoftOfficeAddinChangePolicy,
 
-  /// (team_policies) Enabled or disabled network control.
+  /// (team_policies) Enabled/disabled network control
   DBTEAMLOGEventTypeNetworkControlChangePolicy,
 
   /// (team_policies) Changed whether Dropbox Paper, when enabled, is deployed
-  /// to all teams or to specific members of the team.
+  /// to all members or to specific members
   DBTEAMLOGEventTypePaperChangeDeploymentPolicy,
 
-  /// (team_policies) Changed whether non team members can view Paper
-  /// documents using a link. This event is deprecated and will not be logged
-  /// going forward as the associated product functionality no longer exists.
+  /// (team_policies) Changed whether non-members can view Paper docs with
+  /// link (deprecated, no longer logged)
   DBTEAMLOGEventTypePaperChangeMemberLinkPolicy,
 
-  /// (team_policies) Changed whether team members can share Paper documents
-  /// externally (i.e. outside the team), and if so, whether they should be
-  /// accessible only by team members or anyone by default.
+  /// (team_policies) Changed whether members can share Paper docs outside
+  /// team, and if docs are accessible only by team members or anyone by
+  /// default
   DBTEAMLOGEventTypePaperChangeMemberPolicy,
 
-  /// (team_policies) Enabled or disabled Dropbox Paper for the team.
+  /// (team_policies) Enabled/disabled Dropbox Paper for team
   DBTEAMLOGEventTypePaperChangePolicy,
 
-  /// (team_policies) Users added to Paper enabled users list.
+  /// (team_policies) Added users to Paper-enabled users list
   DBTEAMLOGEventTypePaperEnabledUsersGroupAddition,
 
-  /// (team_policies) Users removed from Paper enabled users list.
+  /// (team_policies) Removed users from Paper-enabled users list
   DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval,
 
-  /// (team_policies) Enabled or disabled the ability of team members to
-  /// permanently delete content.
+  /// (team_policies) Enabled/disabled ability of team members to permanently
+  /// delete content
   DBTEAMLOGEventTypePermanentDeleteChangePolicy,
 
   /// (team_policies) Changed whether team members can join shared folders
-  /// owned externally (i.e. outside the team).
+  /// owned outside team
   DBTEAMLOGEventTypeSharingChangeFolderJoinPolicy,
 
-  /// (team_policies) Changed whether team members can share links externally
-  /// (i.e. outside the team), and if so, whether links should be accessible
-  /// only by team members or anyone by default.
+  /// (team_policies) Changed whether members can share links outside team,
+  /// and if links are accessible only by team members or anyone by default
   DBTEAMLOGEventTypeSharingChangeLinkPolicy,
 
-  /// (team_policies) Changed whether team members can share files and folders
-  /// externally (i.e. outside the team).
+  /// (team_policies) Changed whether members can share files/folders outside
+  /// team
   DBTEAMLOGEventTypeSharingChangeMemberPolicy,
 
-  /// (team_policies) Changed the default Smart Sync policy for team members.
+  /// (team_policies) Changed default Smart Sync setting for team members
   DBTEAMLOGEventTypeSmartSyncChangePolicy,
 
-  /// (team_policies) Opted team into Smart Sync.
+  /// (team_policies) Opted team into Smart Sync
   DBTEAMLOGEventTypeSmartSyncNotOptOut,
 
-  /// (team_policies) Opted team out of Smart Sync.
+  /// (team_policies) Opted team out of Smart Sync
   DBTEAMLOGEventTypeSmartSyncOptOut,
 
-  /// (team_policies) Change the single sign-on policy for the team.
+  /// (team_policies) Changed single sign-on setting for team
   DBTEAMLOGEventTypeSsoChangePolicy,
 
-  /// (team_policies) Change two-step verification policy for the team.
+  /// (team_policies) Changed two-step verification setting for team
   DBTEAMLOGEventTypeTfaChangePolicy,
 
-  /// (team_policies) Enabled or disabled the option for team members to link
-  /// a personal Dropbox account in addition to their work account to the same
-  /// computer.
+  /// (team_policies) Enabled/disabled option for members to link personal
+  /// Dropbox account and team account to same computer
   DBTEAMLOGEventTypeTwoAccountChangePolicy,
 
-  /// (team_policies) Changed how long team members can stay signed in to
-  /// Dropbox on the web.
+  /// (team_policies) Changed how long members can stay signed in to
+  /// Dropbox.com
   DBTEAMLOGEventTypeWebSessionsChangeFixedLengthPolicy,
 
   /// (team_policies) Changed how long team members can be idle while signed
-  /// in to Dropbox on the web.
+  /// in to Dropbox.com
   DBTEAMLOGEventTypeWebSessionsChangeIdleLengthPolicy,
 
-  /// (team_profile) Merged another team into this team.
+  /// (team_profile) Merged another team into this team
   DBTEAMLOGEventTypeTeamMergeFrom,
 
-  /// (team_profile) Merged this team into another team.
+  /// (team_profile) Merged this team into another team
   DBTEAMLOGEventTypeTeamMergeTo,
 
-  /// (team_profile) Added a team logo to be displayed on shared link headers.
+  /// (team_profile) Added team logo to display on shared link headers
   DBTEAMLOGEventTypeTeamProfileAddLogo,
 
-  /// (team_profile) Changed the default language for the team.
+  /// (team_profile) Changed default language for team
   DBTEAMLOGEventTypeTeamProfileChangeDefaultLanguage,
 
-  /// (team_profile) Changed the team logo to be displayed on shared link
-  /// headers.
+  /// (team_profile) Changed team logo displayed on shared link headers
   DBTEAMLOGEventTypeTeamProfileChangeLogo,
 
-  /// (team_profile) Changed the team name.
+  /// (team_profile) Changed team name
   DBTEAMLOGEventTypeTeamProfileChangeName,
 
-  /// (team_profile) Removed the team logo to be displayed on shared link
-  /// headers.
+  /// (team_profile) Removed team logo displayed on shared link headers
   DBTEAMLOGEventTypeTeamProfileRemoveLogo,
 
-  /// (tfa) Added a backup phone for two-step verification.
+  /// (tfa) Added backup phone for two-step verification
   DBTEAMLOGEventTypeTfaAddBackupPhone,
 
-  /// (tfa) Added a security key for two-step verification.
+  /// (tfa) Added security key for two-step verification
   DBTEAMLOGEventTypeTfaAddSecurityKey,
 
-  /// (tfa) Changed the backup phone for two-step verification.
+  /// (tfa) Changed backup phone for two-step verification
   DBTEAMLOGEventTypeTfaChangeBackupPhone,
 
-  /// (tfa) Enabled, disabled or changed the configuration for two-step
-  /// verification.
+  /// (tfa) Enabled/disabled/changed two-step verification setting
   DBTEAMLOGEventTypeTfaChangeStatus,
 
-  /// (tfa) Removed the backup phone for two-step verification.
+  /// (tfa) Removed backup phone for two-step verification
   DBTEAMLOGEventTypeTfaRemoveBackupPhone,
 
-  /// (tfa) Removed a security key for two-step verification.
+  /// (tfa) Removed security key for two-step verification
   DBTEAMLOGEventTypeTfaRemoveSecurityKey,
 
-  /// (tfa) Reset two-step verification for team member.
+  /// (tfa) Reset two-step verification for team member
   DBTEAMLOGEventTypeTfaReset,
 
   /// (no description).
@@ -1269,1442 +1277,1473 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBTEAMLOGEventTypeTag tag;
 
-/// (apps) Linked an app for team. @note Ensure the `isAppLinkTeam` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (apps) Linked app for team @note Ensure the `isAppLinkTeam` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAppLinkTeamType *appLinkTeam;
 
-/// (apps) Linked an app for team member. @note Ensure the `isAppLinkUser`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (apps) Linked app for member @note Ensure the `isAppLinkUser` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAppLinkUserType *appLinkUser;
 
-/// (apps) Unlinked an app for team. @note Ensure the `isAppUnlinkTeam` method
+/// (apps) Unlinked app for team @note Ensure the `isAppUnlinkTeam` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAppUnlinkTeamType *appUnlinkTeam;
 
-/// (apps) Unlinked an app for team member. @note Ensure the `isAppUnlinkUser`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (apps) Unlinked app for member @note Ensure the `isAppUnlinkUser` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAppUnlinkUserType *appUnlinkUser;
 
-/// (comments) Added a file comment. @note Ensure the `isFileAddComment` method
+/// (comments) Added file comment @note Ensure the `isFileAddComment` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileAddCommentType *fileAddComment;
 
-/// (comments) Subscribed to or unsubscribed from comment notifications for
-/// file. @note Ensure the `isFileChangeCommentSubscription` method returns true
+/// (comments) Subscribed to or unsubscribed from comment notifications for file
+/// @note Ensure the `isFileChangeCommentSubscription` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileChangeCommentSubscriptionType *fileChangeCommentSubscription;
 
-/// (comments) Deleted a file comment. @note Ensure the `isFileDeleteComment`
+/// (comments) Deleted file comment @note Ensure the `isFileDeleteComment`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileDeleteCommentType *fileDeleteComment;
 
-/// (comments) Liked a file comment. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isFileLikeComment` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (comments) Liked file comment (deprecated, no longer logged) @note Ensure
+/// the `isFileLikeComment` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileLikeCommentType *fileLikeComment;
 
-/// (comments) Resolved a file comment. @note Ensure the `isFileResolveComment`
+/// (comments) Resolved file comment @note Ensure the `isFileResolveComment`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileResolveCommentType *fileResolveComment;
 
-/// (comments) Unliked a file comment. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isFileUnlikeComment` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (comments) Unliked file comment (deprecated, no longer logged) @note Ensure
+/// the `isFileUnlikeComment` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileUnlikeCommentType *fileUnlikeComment;
 
-/// (comments) Unresolved a file comment. @note Ensure the
-/// `isFileUnresolveComment` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (comments) Unresolved file comment @note Ensure the `isFileUnresolveComment`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileUnresolveCommentType *fileUnresolveComment;
 
-/// (devices) IP address associated with active desktop session changed. @note
+/// (devices) Changed IP address associated with active desktop session @note
 /// Ensure the `isDeviceChangeIpDesktop` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceChangeIpDesktopType *deviceChangeIpDesktop;
 
-/// (devices) IP address associated with active mobile session changed. @note
+/// (devices) Changed IP address associated with active mobile session @note
 /// Ensure the `isDeviceChangeIpMobile` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceChangeIpMobileType *deviceChangeIpMobile;
 
-/// (devices) IP address associated with active Web session changed. @note
-/// Ensure the `isDeviceChangeIpWeb` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (devices) Changed IP address associated with active web session @note Ensure
+/// the `isDeviceChangeIpWeb` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceChangeIpWebType *deviceChangeIpWeb;
 
-/// (devices) Failed to delete all files from an unlinked device. @note Ensure
-/// the `isDeviceDeleteOnUnlinkFail` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (devices) Failed to delete all files from unlinked device @note Ensure the
+/// `isDeviceDeleteOnUnlinkFail` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceDeleteOnUnlinkFailType *deviceDeleteOnUnlinkFail;
 
-/// (devices) Deleted all files from an unlinked device. @note Ensure the
+/// (devices) Deleted all files from unlinked device @note Ensure the
 /// `isDeviceDeleteOnUnlinkSuccess` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceDeleteOnUnlinkSuccessType *deviceDeleteOnUnlinkSuccess;
 
-/// (devices) Failed to link a device. @note Ensure the `isDeviceLinkFail`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (devices) Failed to link device @note Ensure the `isDeviceLinkFail` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceLinkFailType *deviceLinkFail;
 
-/// (devices) Linked a device. @note Ensure the `isDeviceLinkSuccess` method
+/// (devices) Linked device @note Ensure the `isDeviceLinkSuccess` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceLinkSuccessType *deviceLinkSuccess;
 
-/// (devices) Disable Device Management. This event is deprecated and will not
-/// be logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isDeviceManagementDisabled` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (devices) Disabled device management (deprecated, no longer logged) @note
+/// Ensure the `isDeviceManagementDisabled` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceManagementDisabledType *deviceManagementDisabled;
 
-/// (devices) Enable Device Management. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isDeviceManagementEnabled` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (devices) Enabled device management (deprecated, no longer logged) @note
+/// Ensure the `isDeviceManagementEnabled` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceManagementEnabledType *deviceManagementEnabled;
 
-/// (devices) Disconnected a device. @note Ensure the `isDeviceUnlink` method
+/// (devices) Disconnected device @note Ensure the `isDeviceUnlink` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceUnlinkType *deviceUnlink;
 
-/// (devices) Refreshed the auth token used for setting up enterprise mobility
-/// management. @note Ensure the `isEmmRefreshAuthToken` method returns true
+/// (devices) Refreshed auth token used for setting up enterprise mobility
+/// management @note Ensure the `isEmmRefreshAuthToken` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmRefreshAuthTokenType *emmRefreshAuthToken;
 
-/// (domains) Granted or revoked the option to enable account capture on domains
-/// belonging to the team. @note Ensure the `isAccountCaptureChangeAvailability`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (domains) Granted/revoked option to enable account capture on team domains
+/// @note Ensure the `isAccountCaptureChangeAvailability` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAccountCaptureChangeAvailabilityType *accountCaptureChangeAvailability;
 
-/// (domains) Account captured user migrated their account to the team. @note
-/// Ensure the `isAccountCaptureMigrateAccount` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (domains) Account-captured user migrated account to team @note Ensure the
+/// `isAccountCaptureMigrateAccount` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAccountCaptureMigrateAccountType *accountCaptureMigrateAccount;
 
-/// (domains) Proactive account capture email sent to all unmanaged members.
+/// (domains) Sent proactive account capture email to all unmanaged members
 /// @note Ensure the `isAccountCaptureNotificationEmailsSent` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAccountCaptureNotificationEmailsSentType *accountCaptureNotificationEmailsSent;
 
-/// (domains) Account captured user relinquished their account by changing the
-/// email address associated with it. @note Ensure the
-/// `isAccountCaptureRelinquishAccount` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (domains) Account-captured user changed account email to personal email
+/// @note Ensure the `isAccountCaptureRelinquishAccount` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAccountCaptureRelinquishAccountType *accountCaptureRelinquishAccount;
 
-/// (domains) Disabled domain invites. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isDisabledDomainInvites` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (domains) Disabled domain invites (deprecated, no longer logged) @note
+/// Ensure the `isDisabledDomainInvites` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDisabledDomainInvitesType *disabledDomainInvites;
 
-/// (domains) Approved a member's request to join the team. @note Ensure the
+/// (domains) Approved user's request to join team @note Ensure the
 /// `isDomainInvitesApproveRequestToJoinTeam` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGDomainInvitesApproveRequestToJoinTeamType *domainInvitesApproveRequestToJoinTeam;
 
-/// (domains) Declined a user's request to join the team. @note Ensure the
+/// (domains) Declined user's request to join team @note Ensure the
 /// `isDomainInvitesDeclineRequestToJoinTeam` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *domainInvitesDeclineRequestToJoinTeam;
 
-/// (domains) Sent domain invites to existing domain accounts. @note Ensure the
+/// (domains) Sent domain invites to existing domain accounts @note Ensure the
 /// `isDomainInvitesEmailExistingUsers` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDomainInvitesEmailExistingUsersType *domainInvitesEmailExistingUsers;
 
-/// (domains) Asked to join the team. @note Ensure the
+/// (domains) Requested to join team @note Ensure the
 /// `isDomainInvitesRequestToJoinTeam` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDomainInvitesRequestToJoinTeamType *domainInvitesRequestToJoinTeam;
 
-/// (domains) Turned off u201cAutomatically invite new usersu201d. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the
-/// `isDomainInvitesSetInviteNewUserPrefToNo` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (domains) Disabled "Automatically invite new users" (deprecated, no longer
+/// logged) @note Ensure the `isDomainInvitesSetInviteNewUserPrefToNo` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoType *domainInvitesSetInviteNewUserPrefToNo;
 
-/// (domains) Turned on u201cAutomatically invite new usersu201d. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the
-/// `isDomainInvitesSetInviteNewUserPrefToYes` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (domains) Enabled "Automatically invite new users" (deprecated, no longer
+/// logged) @note Ensure the `isDomainInvitesSetInviteNewUserPrefToYes` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesType *domainInvitesSetInviteNewUserPrefToYes;
 
-/// (domains) Failed to verify a domain belonging to the team. @note Ensure the
+/// (domains) Failed to verify team domain @note Ensure the
 /// `isDomainVerificationAddDomainFail` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDomainVerificationAddDomainFailType *domainVerificationAddDomainFail;
 
-/// (domains) Verified a domain belonging to the team. @note Ensure the
+/// (domains) Verified team domain @note Ensure the
 /// `isDomainVerificationAddDomainSuccess` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDomainVerificationAddDomainSuccessType *domainVerificationAddDomainSuccess;
 
-/// (domains) Removed a domain from the list of verified domains belonging to
-/// the team. @note Ensure the `isDomainVerificationRemoveDomain` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (domains) Removed domain from list of verified team domains @note Ensure the
+/// `isDomainVerificationRemoveDomain` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDomainVerificationRemoveDomainType *domainVerificationRemoveDomain;
 
-/// (domains) Enabled domain invites. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isEnabledDomainInvites` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (domains) Enabled domain invites (deprecated, no longer logged) @note Ensure
+/// the `isEnabledDomainInvites` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEnabledDomainInvitesType *enabledDomainInvites;
 
-/// (file_operations) Created folders. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isCreateFolder` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (file_operations) Created folders (deprecated, no longer logged) @note
+/// Ensure the `isCreateFolder` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGCreateFolderType *createFolder;
 
-/// (file_operations) Added files and/or folders. @note Ensure the `isFileAdd`
+/// (file_operations) Added files and/or folders @note Ensure the `isFileAdd`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileAddType *fileAdd;
 
-/// (file_operations) Copied files and/or folders. @note Ensure the `isFileCopy`
+/// (file_operations) Copied files and/or folders @note Ensure the `isFileCopy`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileCopyType *fileCopy;
 
-/// (file_operations) Deleted files and/or folders. @note Ensure the
+/// (file_operations) Deleted files and/or folders @note Ensure the
 /// `isFileDelete` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileDeleteType *fileDelete;
 
-/// (file_operations) Downloaded files and/or folders. @note Ensure the
+/// (file_operations) Downloaded files and/or folders @note Ensure the
 /// `isFileDownload` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileDownloadType *fileDownload;
 
-/// (file_operations) Edited files. @note Ensure the `isFileEdit` method returns
+/// (file_operations) Edited files @note Ensure the `isFileEdit` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileEditType *fileEdit;
 
-/// (file_operations) Create a copy reference to a file or folder. @note Ensure
-/// the `isFileGetCopyReference` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (file_operations) Created copy reference to file/folder @note Ensure the
+/// `isFileGetCopyReference` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileGetCopyReferenceType *fileGetCopyReference;
 
-/// (file_operations) Moved files and/or folders. @note Ensure the `isFileMove`
+/// (file_operations) Moved files and/or folders @note Ensure the `isFileMove`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileMoveType *fileMove;
 
-/// (file_operations) Permanently deleted files and/or folders. @note Ensure the
+/// (file_operations) Permanently deleted files and/or folders @note Ensure the
 /// `isFilePermanentlyDelete` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFilePermanentlyDeleteType *filePermanentlyDelete;
 
-/// (file_operations) Previewed files and/or folders. @note Ensure the
+/// (file_operations) Previewed files and/or folders @note Ensure the
 /// `isFilePreview` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFilePreviewType *filePreview;
 
-/// (file_operations) Renamed files and/or folders. @note Ensure the
+/// (file_operations) Renamed files and/or folders @note Ensure the
 /// `isFileRename` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRenameType *fileRename;
 
-/// (file_operations) Restored deleted files and/or folders. @note Ensure the
+/// (file_operations) Restored deleted files and/or folders @note Ensure the
 /// `isFileRestore` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRestoreType *fileRestore;
 
-/// (file_operations) Reverted files to a previous version. @note Ensure the
+/// (file_operations) Reverted files to previous version @note Ensure the
 /// `isFileRevert` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRevertType *fileRevert;
 
-/// (file_operations) Rolled back file change location changes. @note Ensure the
+/// (file_operations) Rolled back file actions @note Ensure the
 /// `isFileRollbackChanges` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRollbackChangesType *fileRollbackChanges;
 
-/// (file_operations) Save a file or folder using a copy reference. @note Ensure
-/// the `isFileSaveCopyReference` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (file_operations) Saved file/folder using copy reference @note Ensure the
+/// `isFileSaveCopyReference` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileSaveCopyReferenceType *fileSaveCopyReference;
 
-/// (file_requests) Change a file request. @note Ensure the
-/// `isFileRequestChange` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (file_requests) Changed file request @note Ensure the `isFileRequestChange`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestChangeType *fileRequestChange;
 
-/// (file_requests) Closed a file request. @note Ensure the `isFileRequestClose`
+/// (file_requests) Closed file request @note Ensure the `isFileRequestClose`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestCloseType *fileRequestClose;
 
-/// (file_requests) Created a file request. @note Ensure the
-/// `isFileRequestCreate` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (file_requests) Created file request @note Ensure the `isFileRequestCreate`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestCreateType *fileRequestCreate;
 
-/// (file_requests) Received files for a file request. @note Ensure the
+/// (file_requests) Received files for file request @note Ensure the
 /// `isFileRequestReceiveFile` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestReceiveFileType *fileRequestReceiveFile;
 
-/// (groups) Added an external ID for group. @note Ensure the
-/// `isGroupAddExternalId` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (groups) Added external ID for group @note Ensure the `isGroupAddExternalId`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupAddExternalIdType *groupAddExternalId;
 
-/// (groups) Added team members to a group. @note Ensure the `isGroupAddMember`
+/// (groups) Added team members to group @note Ensure the `isGroupAddMember`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupAddMemberType *groupAddMember;
 
-/// (groups) Changed the external ID for group. @note Ensure the
+/// (groups) Changed external ID for group @note Ensure the
 /// `isGroupChangeExternalId` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupChangeExternalIdType *groupChangeExternalId;
 
-/// (groups) Changed group management type. @note Ensure the
+/// (groups) Changed group management type @note Ensure the
 /// `isGroupChangeManagementType` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupChangeManagementTypeType *groupChangeManagementType;
 
-/// (groups) Changed the manager permissions belonging to a group member. @note
-/// Ensure the `isGroupChangeMemberRole` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (groups) Changed manager permissions of group member @note Ensure the
+/// `isGroupChangeMemberRole` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupChangeMemberRoleType *groupChangeMemberRole;
 
-/// (groups) Created a group. @note Ensure the `isGroupCreate` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (groups) Created group @note Ensure the `isGroupCreate` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupCreateType *groupCreate;
 
-/// (groups) Deleted a group. @note Ensure the `isGroupDelete` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (groups) Deleted group @note Ensure the `isGroupDelete` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupDeleteType *groupDelete;
 
-/// (groups) Moved a group. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
-/// @note Ensure the `isGroupMoved` method returns true before accessing,
+/// (groups) Updated group (deprecated, no longer logged) @note Ensure the
+/// `isGroupDescriptionUpdated` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGroupDescriptionUpdatedType *groupDescriptionUpdated;
+
+/// (groups) Updated group join policy (deprecated, no longer logged) @note
+/// Ensure the `isGroupJoinPolicyUpdated` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGroupJoinPolicyUpdatedType *groupJoinPolicyUpdated;
+
+/// (groups) Moved group (deprecated, no longer logged) @note Ensure the
+/// `isGroupMoved` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupMovedType *groupMoved;
 
-/// (groups) Removed the external ID for group. @note Ensure the
+/// (groups) Removed external ID for group @note Ensure the
 /// `isGroupRemoveExternalId` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupRemoveExternalIdType *groupRemoveExternalId;
 
-/// (groups) Removed team members from a group. @note Ensure the
+/// (groups) Removed team members from group @note Ensure the
 /// `isGroupRemoveMember` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupRemoveMemberType *groupRemoveMember;
 
-/// (groups) Renamed a group. @note Ensure the `isGroupRename` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (groups) Renamed group @note Ensure the `isGroupRename` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupRenameType *groupRename;
 
-/// (logins) Failed to sign in via EMM. This event is replaced by login_fail and
-/// will not be logged going forward. @note Ensure the `isEmmError` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (logins) Failed to sign in via EMM (deprecated, replaced by 'Failed to sign
+/// in') @note Ensure the `isEmmError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmErrorType *emmError;
 
-/// (logins) Failed to sign in. @note Ensure the `isLoginFail` method returns
+/// (logins) Failed to sign in @note Ensure the `isLoginFail` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGLoginFailType *loginFail;
 
-/// (logins) Signed in. @note Ensure the `isLoginSuccess` method returns true
+/// (logins) Signed in @note Ensure the `isLoginSuccess` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGLoginSuccessType *loginSuccess;
 
-/// (logins) Signed out. @note Ensure the `isLogout` method returns true before
+/// (logins) Signed out @note Ensure the `isLogout` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGLogoutType *logout;
 
-/// (logins) Ended reseller support session. @note Ensure the
+/// (logins) Ended reseller support session @note Ensure the
 /// `isResellerSupportSessionEnd` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGResellerSupportSessionEndType *resellerSupportSessionEnd;
 
-/// (logins) Started reseller support session. @note Ensure the
+/// (logins) Started reseller support session @note Ensure the
 /// `isResellerSupportSessionStart` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGResellerSupportSessionStartType *resellerSupportSessionStart;
 
-/// (logins) Ended admin sign-in-as session. @note Ensure the
+/// (logins) Ended admin sign-in-as session @note Ensure the
 /// `isSignInAsSessionEnd` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSignInAsSessionEndType *signInAsSessionEnd;
 
-/// (logins) Started admin sign-in-as session. @note Ensure the
+/// (logins) Started admin sign-in-as session @note Ensure the
 /// `isSignInAsSessionStart` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSignInAsSessionStartType *signInAsSessionStart;
 
-/// (logins) Failed to sign in via SSO. This event is replaced by login_fail and
-/// will not be logged going forward. @note Ensure the `isSsoError` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (logins) Failed to sign in via SSO (deprecated, replaced by 'Failed to sign
+/// in') @note Ensure the `isSsoError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoErrorType *ssoError;
 
-/// (members) Specify team member name. @note Ensure the `isMemberAddName`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (members) Added team member name @note Ensure the `isMemberAddName` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberAddNameType *memberAddName;
 
-/// (members) Change the admin role belonging to team member. @note Ensure the
+/// (members) Changed team member admin role @note Ensure the
 /// `isMemberChangeAdminRole` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeAdminRoleType *memberChangeAdminRole;
 
-/// (members) Changed team member email address. @note Ensure the
-/// `isMemberChangeEmail` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (members) Changed team member email @note Ensure the `isMemberChangeEmail`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeEmailType *memberChangeEmail;
 
-/// (members) Changed the membership type (limited vs full) for team member.
-/// This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists. @note Ensure the
-/// `isMemberChangeMembershipType` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (members) Changed membership type (limited/full) of member (deprecated, no
+/// longer logged) @note Ensure the `isMemberChangeMembershipType` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeMembershipTypeType *memberChangeMembershipType;
 
-/// (members) Changed team member name. @note Ensure the `isMemberChangeName`
+/// (members) Changed team member name @note Ensure the `isMemberChangeName`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeNameType *memberChangeName;
 
-/// (members) Changed the membership status of a team member. @note Ensure the
+/// (members) Changed membership status of team member @note Ensure the
 /// `isMemberChangeStatus` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeStatusType *memberChangeStatus;
 
-/// (members) Permanently deleted contents of a removed team member account.
-/// @note Ensure the `isMemberPermanentlyDeleteAccountContents` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (members) Permanently deleted contents of deleted team member account @note
+/// Ensure the `isMemberPermanentlyDeleteAccountContents` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *memberPermanentlyDeleteAccountContents;
 
-/// (members) Set custom member space limit. @note Ensure the
+/// (members) Set custom member space limit @note Ensure the
 /// `isMemberSpaceLimitsAddCustomQuota` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType *memberSpaceLimitsAddCustomQuota;
 
-/// (members) Changed custom member space limit. @note Ensure the
+/// (members) Changed custom member space limit @note Ensure the
 /// `isMemberSpaceLimitsChangeCustomQuota` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaType *memberSpaceLimitsChangeCustomQuota;
 
-/// (members) Changed the status with respect to whether the team member is
-/// under or over storage quota specified by policy. @note Ensure the
+/// (members) Changed space limit status @note Ensure the
 /// `isMemberSpaceLimitsChangeStatus` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsChangeStatusType *memberSpaceLimitsChangeStatus;
 
-/// (members) Removed custom member space limit. @note Ensure the
+/// (members) Removed custom member space limit @note Ensure the
 /// `isMemberSpaceLimitsRemoveCustomQuota` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaType *memberSpaceLimitsRemoveCustomQuota;
 
-/// (members) Suggested a new team member to be added to the team. @note Ensure
-/// the `isMemberSuggest` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (members) Suggested person to add to team @note Ensure the `isMemberSuggest`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSuggestType *memberSuggest;
 
-/// (members) Transferred contents of a removed team member account to another
-/// member. @note Ensure the `isMemberTransferAccountContents` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (members) Transferred contents of deleted member account to another member
+/// @note Ensure the `isMemberTransferAccountContents` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberTransferAccountContentsType *memberTransferAccountContents;
 
-/// (paper) Added users to the membership of a Paper doc or folder. @note Ensure
-/// the `isPaperContentAddMember` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (paper) Added team member to Paper doc/folder @note Ensure the
+/// `isPaperContentAddMember` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentAddMemberType *paperContentAddMember;
 
-/// (paper) Added Paper doc or folder to a folder. @note Ensure the
+/// (paper) Added Paper doc/folder to folder @note Ensure the
 /// `isPaperContentAddToFolder` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentAddToFolderType *paperContentAddToFolder;
 
-/// (paper) Archived Paper doc or folder. @note Ensure the
-/// `isPaperContentArchive` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (paper) Archived Paper doc/folder @note Ensure the `isPaperContentArchive`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentArchiveType *paperContentArchive;
 
-/// (paper) Created a Paper doc or folder. @note Ensure the
-/// `isPaperContentCreate` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (paper) Created Paper doc/folder @note Ensure the `isPaperContentCreate`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentCreateType *paperContentCreate;
 
-/// (paper) Permanently deleted a Paper doc or folder. @note Ensure the
+/// (paper) Permanently deleted Paper doc/folder @note Ensure the
 /// `isPaperContentPermanentlyDelete` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentPermanentlyDeleteType *paperContentPermanentlyDelete;
 
-/// (paper) Removed Paper doc or folder from a folder. @note Ensure the
+/// (paper) Removed Paper doc/folder from folder @note Ensure the
 /// `isPaperContentRemoveFromFolder` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentRemoveFromFolderType *paperContentRemoveFromFolder;
 
-/// (paper) Removed a user from the membership of a Paper doc or folder. @note
-/// Ensure the `isPaperContentRemoveMember` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (paper) Removed team member from Paper doc/folder @note Ensure the
+/// `isPaperContentRemoveMember` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentRemoveMemberType *paperContentRemoveMember;
 
-/// (paper) Renamed Paper doc or folder. @note Ensure the `isPaperContentRename`
+/// (paper) Renamed Paper doc/folder @note Ensure the `isPaperContentRename`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentRenameType *paperContentRename;
 
-/// (paper) Restored an archived Paper doc or folder. @note Ensure the
+/// (paper) Restored archived Paper doc/folder @note Ensure the
 /// `isPaperContentRestore` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperContentRestoreType *paperContentRestore;
 
-/// (paper) Added a Paper doc comment. @note Ensure the `isPaperDocAddComment`
+/// (paper) Added Paper doc comment @note Ensure the `isPaperDocAddComment`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocAddCommentType *paperDocAddComment;
 
-/// (paper) Changed the access type of a Paper doc member. @note Ensure the
+/// (paper) Changed team member permissions for Paper doc @note Ensure the
 /// `isPaperDocChangeMemberRole` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocChangeMemberRoleType *paperDocChangeMemberRole;
 
-/// (paper) Changed the sharing policy for Paper doc. @note Ensure the
+/// (paper) Changed sharing setting for Paper doc @note Ensure the
 /// `isPaperDocChangeSharingPolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocChangeSharingPolicyType *paperDocChangeSharingPolicy;
 
-/// (paper) Followed or unfollowed a Paper doc. @note Ensure the
+/// (paper) Followed/unfollowed Paper doc @note Ensure the
 /// `isPaperDocChangeSubscription` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocChangeSubscriptionType *paperDocChangeSubscription;
 
-/// (paper) Paper doc archived. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
-/// @note Ensure the `isPaperDocDeleted` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (paper) Archived Paper doc (deprecated, no longer logged) @note Ensure the
+/// `isPaperDocDeleted` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocDeletedType *paperDocDeleted;
 
-/// (paper) Deleted a Paper doc comment. @note Ensure the
-/// `isPaperDocDeleteComment` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (paper) Deleted Paper doc comment @note Ensure the `isPaperDocDeleteComment`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocDeleteCommentType *paperDocDeleteComment;
 
-/// (paper) Downloaded a Paper doc in a particular output format. @note Ensure
-/// the `isPaperDocDownload` method returns true before accessing, otherwise a
+/// (paper) Downloaded Paper doc in specific format @note Ensure the
+/// `isPaperDocDownload` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocDownloadType *paperDocDownload;
 
-/// (paper) Edited a Paper doc. @note Ensure the `isPaperDocEdit` method returns
+/// (paper) Edited Paper doc @note Ensure the `isPaperDocEdit` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocEditType *paperDocEdit;
 
-/// (paper) Edited a Paper doc comment. @note Ensure the `isPaperDocEditComment`
+/// (paper) Edited Paper doc comment @note Ensure the `isPaperDocEditComment`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocEditCommentType *paperDocEditComment;
 
-/// (paper) Followed a Paper doc. This event is replaced by
-/// paper_doc_change_subscription and will not be logged going forward. @note
-/// Ensure the `isPaperDocFollowed` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (paper) Followed Paper doc (deprecated, replaced by 'Followed/unfollowed
+/// Paper doc') @note Ensure the `isPaperDocFollowed` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocFollowedType *paperDocFollowed;
 
-/// (paper) Mentioned a member in a Paper doc. @note Ensure the
+/// (paper) Mentioned team member in Paper doc @note Ensure the
 /// `isPaperDocMention` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocMentionType *paperDocMention;
 
-/// (paper) Requested to be a member on a Paper doc. @note Ensure the
+/// (paper) Requested access to Paper doc @note Ensure the
 /// `isPaperDocRequestAccess` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocRequestAccessType *paperDocRequestAccess;
 
-/// (paper) Paper doc comment resolved. @note Ensure the
+/// (paper) Resolved Paper doc comment @note Ensure the
 /// `isPaperDocResolveComment` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocResolveCommentType *paperDocResolveComment;
 
-/// (paper) Restored a Paper doc to previous revision. @note Ensure the
+/// (paper) Restored Paper doc to previous version @note Ensure the
 /// `isPaperDocRevert` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocRevertType *paperDocRevert;
 
-/// (paper) Paper doc link shared via slack. @note Ensure the
-/// `isPaperDocSlackShare` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (paper) Shared Paper doc via Slack @note Ensure the `isPaperDocSlackShare`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocSlackShareType *paperDocSlackShare;
 
-/// (paper) Paper doc shared with team member. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isPaperDocTeamInvite` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (paper) Shared Paper doc with team member (deprecated, no longer logged)
+/// @note Ensure the `isPaperDocTeamInvite` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocTeamInviteType *paperDocTeamInvite;
 
-/// (paper) Paper doc trashed. @note Ensure the `isPaperDocTrashed` method
+/// (paper) Deleted Paper doc @note Ensure the `isPaperDocTrashed` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocTrashedType *paperDocTrashed;
 
-/// (paper) Unresolved a Paper doc comment. @note Ensure the
+/// (paper) Unresolved Paper doc comment @note Ensure the
 /// `isPaperDocUnresolveComment` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocUnresolveCommentType *paperDocUnresolveComment;
 
-/// (paper) Paper doc untrashed. @note Ensure the `isPaperDocUntrashed` method
+/// (paper) Restored Paper doc @note Ensure the `isPaperDocUntrashed` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocUntrashedType *paperDocUntrashed;
 
-/// (paper) Viewed Paper doc. @note Ensure the `isPaperDocView` method returns
+/// (paper) Viewed Paper doc @note Ensure the `isPaperDocView` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocViewType *paperDocView;
 
-/// (paper) Paper external sharing policy changed: anyone. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isPaperExternalViewAllow`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (paper) Changed Paper external sharing setting to anyone (deprecated, no
+/// longer logged) @note Ensure the `isPaperExternalViewAllow` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperExternalViewAllowType *paperExternalViewAllow;
 
-/// (paper) Paper external sharing policy changed: default team. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the
-/// `isPaperExternalViewDefaultTeam` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (paper) Changed Paper external sharing setting to default team (deprecated,
+/// no longer logged) @note Ensure the `isPaperExternalViewDefaultTeam` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperExternalViewDefaultTeamType *paperExternalViewDefaultTeam;
 
-/// (paper) Paper external sharing policy changed: team-only. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isPaperExternalViewForbid`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (paper) Changed Paper external sharing setting to team-only (deprecated, no
+/// longer logged) @note Ensure the `isPaperExternalViewForbid` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperExternalViewForbidType *paperExternalViewForbid;
 
-/// (paper) Followed or unfollowed a Paper folder. @note Ensure the
+/// (paper) Followed/unfollowed Paper folder @note Ensure the
 /// `isPaperFolderChangeSubscription` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperFolderChangeSubscriptionType *paperFolderChangeSubscription;
 
-/// (paper) Paper folder archived. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isPaperFolderDeleted` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (paper) Archived Paper folder (deprecated, no longer logged) @note Ensure
+/// the `isPaperFolderDeleted` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperFolderDeletedType *paperFolderDeleted;
 
-/// (paper) Followed a Paper folder. This event is replaced by
-/// paper_folder_change_subscription and will not be logged going forward. @note
-/// Ensure the `isPaperFolderFollowed` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (paper) Followed Paper folder (deprecated, replaced by 'Followed/unfollowed
+/// Paper folder') @note Ensure the `isPaperFolderFollowed` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperFolderFollowedType *paperFolderFollowed;
 
-/// (paper) Paper folder shared with team member. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isPaperFolderTeamInvite` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (paper) Shared Paper folder with member (deprecated, no longer logged) @note
+/// Ensure the `isPaperFolderTeamInvite` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperFolderTeamInviteType *paperFolderTeamInvite;
 
-/// (passwords) Changed password. @note Ensure the `isPasswordChange` method
+/// (passwords) Changed password @note Ensure the `isPasswordChange` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPasswordChangeType *passwordChange;
 
-/// (passwords) Reset password. @note Ensure the `isPasswordReset` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (passwords) Reset password @note Ensure the `isPasswordReset` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPasswordResetType *passwordReset;
 
-/// (passwords) Reset all team member passwords. @note Ensure the
+/// (passwords) Reset all team member passwords @note Ensure the
 /// `isPasswordResetAll` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPasswordResetAllType *passwordResetAll;
 
-/// (reports) EMM excluded users report created. @note Ensure the
+/// (reports) Created EMM-excluded users report @note Ensure the
 /// `isEmmCreateExceptionsReport` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmCreateExceptionsReportType *emmCreateExceptionsReport;
 
-/// (reports) EMM mobile app usage report created. @note Ensure the
+/// (reports) Created EMM mobile app usage report @note Ensure the
 /// `isEmmCreateUsageReport` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmCreateUsageReportType *emmCreateUsageReport;
 
-/// (reports) Member data report created. @note Ensure the
+/// (reports) Created member data report @note Ensure the
 /// `isExportMembersReport` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGExportMembersReportType *exportMembersReport;
 
-/// (reports) Exported all Paper documents in the team. @note Ensure the
+/// (reports) Exported all team Paper docs @note Ensure the
 /// `isPaperAdminExportStart` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperAdminExportStartType *paperAdminExportStart;
 
-/// (reports) Smart Sync non-admin devices report created. @note Ensure the
+/// (reports) Created Smart Sync non-admin devices report @note Ensure the
 /// `isSmartSyncCreateAdminPrivilegeReport` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSmartSyncCreateAdminPrivilegeReportType *smartSyncCreateAdminPrivilegeReport;
 
-/// (reports) Created a team activity report. @note Ensure the
+/// (reports) Created team activity report @note Ensure the
 /// `isTeamActivityCreateReport` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamActivityCreateReportType *teamActivityCreateReport;
 
-/// (sharing) Shared an album. @note Ensure the `isCollectionShare` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Shared album @note Ensure the `isCollectionShare` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGCollectionShareType *collectionShare;
 
-/// (sharing) Changed a Paper document to be invite-only. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isNoteAclInviteOnly`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Changed Paper doc to invite-only (deprecated, no longer logged)
+/// @note Ensure the `isNoteAclInviteOnly` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNoteAclInviteOnlyType *noteAclInviteOnly;
 
-/// (sharing) Changed a Paper document to be link accessible. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isNoteAclLink` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed Paper doc to link-accessible (deprecated, no longer
+/// logged) @note Ensure the `isNoteAclLink` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNoteAclLinkType *noteAclLink;
 
-/// (sharing) Changed a Paper document to be link accessible for the team. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists. @note Ensure the `isNoteAclTeamLink`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Changed Paper doc to link-accessible for team (deprecated, no
+/// longer logged) @note Ensure the `isNoteAclTeamLink` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNoteAclTeamLinkType *noteAclTeamLink;
 
-/// (sharing) Shared a Paper doc. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isNoteShared` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Shared Paper doc (deprecated, no longer logged) @note Ensure the
+/// `isNoteShared` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNoteSharedType *noteShared;
 
-/// (sharing) Shared Paper document received. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isNoteShareReceive` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Shared received Paper doc (deprecated, no longer logged) @note
+/// Ensure the `isNoteShareReceive` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNoteShareReceiveType *noteShareReceive;
 
-/// (sharing) Opened a shared Paper doc. This event is deprecated and will not
-/// be logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isOpenNoteShared` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Opened shared Paper doc (deprecated, no longer logged) @note
+/// Ensure the `isOpenNoteShared` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGOpenNoteSharedType *openNoteShared;
 
-/// (sharing) Added the team to a shared folder. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isSfAddGroup` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Added team to shared folder (deprecated, no longer logged) @note
+/// Ensure the `isSfAddGroup` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfAddGroupType *sfAddGroup;
 
-/// (sharing) Allowed non collaborators to view links to files in a shared
-/// folder. This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists. @note Ensure the
+/// (sharing) Allowed non-collaborators to view links to files in shared folder
+/// (deprecated, no longer logged) @note Ensure the
 /// `isSfAllowNonMembersToViewSharedLinks` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfAllowNonMembersToViewSharedLinksType *sfAllowNonMembersToViewSharedLinks;
 
-/// (sharing) Admin settings: team members see a warning before sharing folders
-/// outside the team (DEPRECATED FEATURE). This event is deprecated and will not
-/// be logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isSfExternalInviteWarn` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Set team members to see warning before sharing folders outside
+/// team (deprecated, no longer logged) @note Ensure the
+/// `isSfExternalInviteWarn` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfExternalInviteWarnType *sfExternalInviteWarn;
 
-/// (sharing) Invited Facebook users to a shared folder. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isSfFbInvite` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Invited Facebook users to shared folder (deprecated, no longer
+/// logged) @note Ensure the `isSfFbInvite` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfFbInviteType *sfFbInvite;
 
-/// (sharing) Changed a Facebook user's role in a shared folder. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isSfFbInviteChangeRole`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Changed Facebook user's role in shared folder (deprecated, no
+/// longer logged) @note Ensure the `isSfFbInviteChangeRole` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfFbInviteChangeRoleType *sfFbInviteChangeRole;
 
-/// (sharing) Uninvited a Facebook user from a shared folder. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isSfFbUninvite` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Uninvited Facebook user from shared folder (deprecated, no longer
+/// logged) @note Ensure the `isSfFbUninvite` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfFbUninviteType *sfFbUninvite;
 
-/// (sharing) Invited a group to a shared folder. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isSfInviteGroup` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Invited group to shared folder (deprecated, no longer logged)
+/// @note Ensure the `isSfInviteGroup` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfInviteGroupType *sfInviteGroup;
 
-/// (sharing) Granted access to a shared folder. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isSfTeamGrantAccess` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Granted access to shared folder (deprecated, no longer logged)
+/// @note Ensure the `isSfTeamGrantAccess` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfTeamGrantAccessType *sfTeamGrantAccess;
 
-/// (sharing) Invited team members to a shared folder. This event is replaced by
-/// shared_content_add_invitees and will not be logged going forward. @note
-/// Ensure the `isSfTeamInvite` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (sharing) Invited team members to shared folder (deprecated, replaced by
+/// 'Invited user to Dropbox and added them to shared file/folder') @note Ensure
+/// the `isSfTeamInvite` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfTeamInviteType *sfTeamInvite;
 
-/// (sharing) Changed a team member's role in a shared folder. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isSfTeamInviteChangeRole`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Changed team member's role in shared folder (deprecated, no longer
+/// logged) @note Ensure the `isSfTeamInviteChangeRole` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfTeamInviteChangeRoleType *sfTeamInviteChangeRole;
 
-/// (sharing) Joined a team member's shared folder. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isSfTeamJoin` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Joined team member's shared folder (deprecated, no longer logged)
+/// @note Ensure the `isSfTeamJoin` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfTeamJoinType *sfTeamJoin;
 
-/// (sharing) Joined a team member's shared folder from a link. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the `isSfTeamJoinFromOobLink`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Joined team member's shared folder from link (deprecated, no
+/// longer logged) @note Ensure the `isSfTeamJoinFromOobLink` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfTeamJoinFromOobLinkType *sfTeamJoinFromOobLink;
 
-/// (sharing) Unshared a folder with a team member. This event is replaced by
-/// shared_content_remove_invitees and will not be logged going forward. @note
-/// Ensure the `isSfTeamUninvite` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (sharing) Unshared folder with team member (deprecated, replaced by 'Removed
+/// invitee from shared file/folder before invite accepted') @note Ensure the
+/// `isSfTeamUninvite` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSfTeamUninviteType *sfTeamUninvite;
 
-/// (sharing) Sent an email invitation to the membership of a shared file or
-/// folder. @note Ensure the `isSharedContentAddInvitees` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Invited user to Dropbox and added them to shared file/folder @note
+/// Ensure the `isSharedContentAddInvitees` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentAddInviteesType *sharedContentAddInvitees;
 
-/// (sharing) Added an expiry to the link for the shared file or folder. @note
-/// Ensure the `isSharedContentAddLinkExpiry` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Added expiration date to link for shared file/folder @note Ensure
+/// the `isSharedContentAddLinkExpiry` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentAddLinkExpiryType *sharedContentAddLinkExpiry;
 
-/// (sharing) Added a password to the link for the shared file or folder. @note
-/// Ensure the `isSharedContentAddLinkPassword` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Added password to link for shared file/folder @note Ensure the
+/// `isSharedContentAddLinkPassword` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentAddLinkPasswordType *sharedContentAddLinkPassword;
 
-/// (sharing) Added users and/or groups to the membership of a shared file or
-/// folder. @note Ensure the `isSharedContentAddMember` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Added users and/or groups to shared file/folder @note Ensure the
+/// `isSharedContentAddMember` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentAddMemberType *sharedContentAddMember;
 
-/// (sharing) Changed whether members can download the shared file or folder.
-/// @note Ensure the `isSharedContentChangeDownloadsPolicy` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed whether members can download shared file/folder @note
+/// Ensure the `isSharedContentChangeDownloadsPolicy` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentChangeDownloadsPolicyType *sharedContentChangeDownloadsPolicy;
 
-/// (sharing) Changed the access type of an invitee to a shared file or folder
-/// before the invitation was claimed. @note Ensure the
-/// `isSharedContentChangeInviteeRole` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (sharing) Changed access type of invitee to shared file/folder before invite
+/// accepted @note Ensure the `isSharedContentChangeInviteeRole` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentChangeInviteeRoleType *sharedContentChangeInviteeRole;
 
-/// (sharing) Changed the audience of the link for a shared file or folder.
-/// @note Ensure the `isSharedContentChangeLinkAudience` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed link audience of shared file/folder @note Ensure the
+/// `isSharedContentChangeLinkAudience` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentChangeLinkAudienceType *sharedContentChangeLinkAudience;
 
-/// (sharing) Changed the expiry of the link for the shared file or folder.
-/// @note Ensure the `isSharedContentChangeLinkExpiry` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed link expiration of shared file/folder @note Ensure the
+/// `isSharedContentChangeLinkExpiry` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentChangeLinkExpiryType *sharedContentChangeLinkExpiry;
 
-/// (sharing) Changed the password on the link for the shared file or folder.
-/// @note Ensure the `isSharedContentChangeLinkPassword` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed link password of shared file/folder @note Ensure the
+/// `isSharedContentChangeLinkPassword` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentChangeLinkPasswordType *sharedContentChangeLinkPassword;
 
-/// (sharing) Changed the access type of a shared file or folder member. @note
-/// Ensure the `isSharedContentChangeMemberRole` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed access type of shared file/folder member @note Ensure the
+/// `isSharedContentChangeMemberRole` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentChangeMemberRoleType *sharedContentChangeMemberRole;
 
-/// (sharing) Changed whether members can see who viewed the shared file or
-/// folder. @note Ensure the `isSharedContentChangeViewerInfoPolicy` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed whether members can see who viewed shared file/folder
+/// @note Ensure the `isSharedContentChangeViewerInfoPolicy` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentChangeViewerInfoPolicyType *sharedContentChangeViewerInfoPolicy;
 
-/// (sharing) Acquired membership on a shared file or folder by claiming an
-/// invitation. @note Ensure the `isSharedContentClaimInvitation` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Acquired membership of shared file/folder by accepting invite
+/// @note Ensure the `isSharedContentClaimInvitation` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentClaimInvitationType *sharedContentClaimInvitation;
 
-/// (sharing) Copied the shared file or folder to own Dropbox. @note Ensure the
+/// (sharing) Copied shared file/folder to own Dropbox @note Ensure the
 /// `isSharedContentCopy` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentCopyType *sharedContentCopy;
 
-/// (sharing) Downloaded the shared file or folder. @note Ensure the
+/// (sharing) Downloaded shared file/folder @note Ensure the
 /// `isSharedContentDownload` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentDownloadType *sharedContentDownload;
 
-/// (sharing) Left the membership of a shared file or folder. @note Ensure the
+/// (sharing) Left shared file/folder @note Ensure the
 /// `isSharedContentRelinquishMembership` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentRelinquishMembershipType *sharedContentRelinquishMembership;
 
-/// (sharing) Removed an invitee from the membership of a shared file or folder
-/// before it was claimed. @note Ensure the `isSharedContentRemoveInvitees`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Removed invitee from shared file/folder before invite accepted
+/// @note Ensure the `isSharedContentRemoveInvitees` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentRemoveInviteesType *sharedContentRemoveInvitees;
 
-/// (sharing) Removed the expiry of the link for the shared file or folder.
-/// @note Ensure the `isSharedContentRemoveLinkExpiry` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Removed link expiration date of shared file/folder @note Ensure
+/// the `isSharedContentRemoveLinkExpiry` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentRemoveLinkExpiryType *sharedContentRemoveLinkExpiry;
 
-/// (sharing) Removed the password on the link for the shared file or folder.
-/// @note Ensure the `isSharedContentRemoveLinkPassword` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Removed link password of shared file/folder @note Ensure the
+/// `isSharedContentRemoveLinkPassword` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentRemoveLinkPasswordType *sharedContentRemoveLinkPassword;
 
-/// (sharing) Removed a user or a group from the membership of a shared file or
-/// folder. @note Ensure the `isSharedContentRemoveMember` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Removed user/group from shared file/folder @note Ensure the
+/// `isSharedContentRemoveMember` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentRemoveMemberType *sharedContentRemoveMember;
 
-/// (sharing) Requested to be on the membership of a shared file or folder.
-/// @note Ensure the `isSharedContentRequestAccess` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Requested access to shared file/folder @note Ensure the
+/// `isSharedContentRequestAccess` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentRequestAccessType *sharedContentRequestAccess;
 
-/// (sharing) Unshared a shared file or folder by clearing its membership and
-/// turning off its link. @note Ensure the `isSharedContentUnshare` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Unshared file/folder by clearing membership and turning off link
+/// @note Ensure the `isSharedContentUnshare` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentUnshareType *sharedContentUnshare;
 
-/// (sharing) Previewed the shared file or folder. @note Ensure the
+/// (sharing) Previewed shared file/folder @note Ensure the
 /// `isSharedContentView` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedContentViewType *sharedContentView;
 
-/// (sharing) Changed who can access the shared folder via a link. @note Ensure
-/// the `isSharedFolderChangeLinkPolicy` method returns true before accessing,
+/// (sharing) Changed who can access shared folder via link @note Ensure the
+/// `isSharedFolderChangeLinkPolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderChangeLinkPolicyType *sharedFolderChangeLinkPolicy;
 
-/// (sharing) Specify if the shared folder inherits its members from the parent
-/// folder. @note Ensure the `isSharedFolderChangeMembersInheritancePolicy`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Changed whether shared folder inherits members from parent folder
+/// @note Ensure the `isSharedFolderChangeMembersInheritancePolicy` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGSharedFolderChangeMembersInheritancePolicyType *sharedFolderChangeMembersInheritancePolicy;
 
-/// (sharing) Changed who can add or remove members of a shared folder. @note
-/// Ensure the `isSharedFolderChangeMembersManagementPolicy` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed who can add/remove members of shared folder @note Ensure
+/// the `isSharedFolderChangeMembersManagementPolicy` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGSharedFolderChangeMembersManagementPolicyType *sharedFolderChangeMembersManagementPolicy;
 
-/// (sharing) Changed who can become a member of the shared folder. @note Ensure
-/// the `isSharedFolderChangeMembersPolicy` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Changed who can become member of shared folder @note Ensure the
+/// `isSharedFolderChangeMembersPolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderChangeMembersPolicyType *sharedFolderChangeMembersPolicy;
 
-/// (sharing) Created a shared folder. @note Ensure the `isSharedFolderCreate`
+/// (sharing) Created shared folder @note Ensure the `isSharedFolderCreate`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderCreateType *sharedFolderCreate;
 
-/// (sharing) Declined a team member's invitation to a shared folder. @note
-/// Ensure the `isSharedFolderDeclineInvitation` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Declined team member's invite to shared folder @note Ensure the
+/// `isSharedFolderDeclineInvitation` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderDeclineInvitationType *sharedFolderDeclineInvitation;
 
-/// (sharing) Added a shared folder to own Dropbox. @note Ensure the
+/// (sharing) Added shared folder to own Dropbox @note Ensure the
 /// `isSharedFolderMount` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderMountType *sharedFolderMount;
 
-/// (sharing) Changed the parent of a shared folder. @note Ensure the
+/// (sharing) Changed parent of shared folder @note Ensure the
 /// `isSharedFolderNest` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderNestType *sharedFolderNest;
 
-/// (sharing) Transferred the ownership of a shared folder to another member.
-/// @note Ensure the `isSharedFolderTransferOwnership` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Transferred ownership of shared folder to another member @note
+/// Ensure the `isSharedFolderTransferOwnership` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderTransferOwnershipType *sharedFolderTransferOwnership;
 
-/// (sharing) Deleted a shared folder from Dropbox. @note Ensure the
+/// (sharing) Deleted shared folder from Dropbox @note Ensure the
 /// `isSharedFolderUnmount` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderUnmountType *sharedFolderUnmount;
 
-/// (sharing) Added a shared link expiration date. @note Ensure the
+/// (sharing) Added shared link expiration date @note Ensure the
 /// `isSharedLinkAddExpiry` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkAddExpiryType *sharedLinkAddExpiry;
 
-/// (sharing) Changed the shared link expiration date. @note Ensure the
+/// (sharing) Changed shared link expiration date @note Ensure the
 /// `isSharedLinkChangeExpiry` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkChangeExpiryType *sharedLinkChangeExpiry;
 
-/// (sharing) Changed the visibility of a shared link. @note Ensure the
+/// (sharing) Changed visibility of shared link @note Ensure the
 /// `isSharedLinkChangeVisibility` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkChangeVisibilityType *sharedLinkChangeVisibility;
 
-/// (sharing) Added a file/folder to their Dropbox from a shared link. @note
-/// Ensure the `isSharedLinkCopy` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (sharing) Added file/folder to Dropbox from shared link @note Ensure the
+/// `isSharedLinkCopy` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkCopyType *sharedLinkCopy;
 
-/// (sharing) Created a new shared link. @note Ensure the `isSharedLinkCreate`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Created shared link @note Ensure the `isSharedLinkCreate` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkCreateType *sharedLinkCreate;
 
-/// (sharing) Removed a shared link. @note Ensure the `isSharedLinkDisable`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sharing) Removed shared link @note Ensure the `isSharedLinkDisable` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkDisableType *sharedLinkDisable;
 
-/// (sharing) Downloaded a file/folder from a shared link. @note Ensure the
+/// (sharing) Downloaded file/folder from shared link @note Ensure the
 /// `isSharedLinkDownload` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkDownloadType *sharedLinkDownload;
 
-/// (sharing) Removed a shared link expiration date. @note Ensure the
+/// (sharing) Removed shared link expiration date @note Ensure the
 /// `isSharedLinkRemoveExpiry` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkRemoveExpiryType *sharedLinkRemoveExpiry;
 
-/// (sharing) Added new members as the audience of a shared link. @note Ensure
-/// the `isSharedLinkShare` method returns true before accessing, otherwise a
+/// (sharing) Added members as audience of shared link @note Ensure the
+/// `isSharedLinkShare` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkShareType *sharedLinkShare;
 
-/// (sharing) Opened a shared link. @note Ensure the `isSharedLinkView` method
+/// (sharing) Opened shared link @note Ensure the `isSharedLinkView` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedLinkViewType *sharedLinkView;
 
-/// (sharing) Shared Paper document was opened. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isSharedNoteOpened` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (sharing) Opened shared Paper doc (deprecated, no longer logged) @note
+/// Ensure the `isSharedNoteOpened` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedNoteOpenedType *sharedNoteOpened;
 
-/// (sharing) Shared a link with a group. This event is deprecated and will not
-/// be logged going forward as the associated product functionality no longer
-/// exists. @note Ensure the `isShmodelGroupShare` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (sharing) Shared link with group (deprecated, no longer logged) @note Ensure
+/// the `isShmodelGroupShare` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGShmodelGroupShareType *shmodelGroupShare;
 
-/// (sso) Added the X.509 certificate for SSO. @note Ensure the `isSsoAddCert`
+/// (showcase) Granted access to showcase @note Ensure the
+/// `isShowcaseAccessGranted` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseAccessGrantedType *showcaseAccessGranted;
+
+/// (showcase) Added member to showcase @note Ensure the `isShowcaseAddMember`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseAddMemberType *showcaseAddMember;
+
+/// (showcase) Archived showcase @note Ensure the `isShowcaseArchived` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseArchivedType *showcaseArchived;
+
+/// (showcase) Created showcase @note Ensure the `isShowcaseCreated` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseCreatedType *showcaseCreated;
+
+/// (showcase) Deleted showcase comment @note Ensure the
+/// `isShowcaseDeleteComment` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseDeleteCommentType *showcaseDeleteComment;
+
+/// (showcase) Edited showcase @note Ensure the `isShowcaseEdited` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseEditedType *showcaseEdited;
+
+/// (showcase) Edited showcase comment @note Ensure the `isShowcaseEditComment`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseEditCommentType *showcaseEditComment;
+
+/// (showcase) Added file to showcase @note Ensure the `isShowcaseFileAdded`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseFileAddedType *showcaseFileAdded;
+
+/// (showcase) Downloaded file from showcase @note Ensure the
+/// `isShowcaseFileDownload` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseFileDownloadType *showcaseFileDownload;
+
+/// (showcase) Removed file from showcase @note Ensure the
+/// `isShowcaseFileRemoved` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseFileRemovedType *showcaseFileRemoved;
+
+/// (showcase) Viewed file in showcase @note Ensure the `isShowcaseFileView`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseFileViewType *showcaseFileView;
+
+/// (showcase) Permanently deleted showcase @note Ensure the
+/// `isShowcasePermanentlyDeleted` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcasePermanentlyDeletedType *showcasePermanentlyDeleted;
+
+/// (showcase) Added showcase comment @note Ensure the `isShowcasePostComment`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcasePostCommentType *showcasePostComment;
+
+/// (showcase) Removed member from showcase @note Ensure the
+/// `isShowcaseRemoveMember` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseRemoveMemberType *showcaseRemoveMember;
+
+/// (showcase) Renamed showcase @note Ensure the `isShowcaseRenamed` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseRenamedType *showcaseRenamed;
+
+/// (showcase) Requested access to showcase @note Ensure the
+/// `isShowcaseRequestAccess` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseRequestAccessType *showcaseRequestAccess;
+
+/// (showcase) Resolved showcase comment @note Ensure the
+/// `isShowcaseResolveComment` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseResolveCommentType *showcaseResolveComment;
+
+/// (showcase) Unarchived showcase @note Ensure the `isShowcaseRestored` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseRestoredType *showcaseRestored;
+
+/// (showcase) Deleted showcase @note Ensure the `isShowcaseTrashed` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseTrashedType *showcaseTrashed;
+
+/// (showcase) Unresolved showcase comment @note Ensure the
+/// `isShowcaseUnresolveComment` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseUnresolveCommentType *showcaseUnresolveComment;
+
+/// (showcase) Restored showcase @note Ensure the `isShowcaseUntrashed` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseUntrashedType *showcaseUntrashed;
+
+/// (showcase) Viewed showcase @note Ensure the `isShowcaseView` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGShowcaseViewType *showcaseView;
+
+/// (sso) Added X.509 certificate for SSO @note Ensure the `isSsoAddCert` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoAddCertType *ssoAddCert;
 
-/// (sso) Added sign-in URL for SSO. @note Ensure the `isSsoAddLoginUrl` method
+/// (sso) Added sign-in URL for SSO @note Ensure the `isSsoAddLoginUrl` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoAddLoginUrlType *ssoAddLoginUrl;
 
-/// (sso) Added sign-out URL for SSO. @note Ensure the `isSsoAddLogoutUrl`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (sso) Added sign-out URL for SSO @note Ensure the `isSsoAddLogoutUrl` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoAddLogoutUrlType *ssoAddLogoutUrl;
 
-/// (sso) Changed the X.509 certificate for SSO. @note Ensure the
-/// `isSsoChangeCert` method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (sso) Changed X.509 certificate for SSO @note Ensure the `isSsoChangeCert`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangeCertType *ssoChangeCert;
 
-/// (sso) Changed the sign-in URL for SSO. @note Ensure the
-/// `isSsoChangeLoginUrl` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (sso) Changed sign-in URL for SSO @note Ensure the `isSsoChangeLoginUrl`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangeLoginUrlType *ssoChangeLoginUrl;
 
-/// (sso) Changed the sign-out URL for SSO. @note Ensure the
-/// `isSsoChangeLogoutUrl` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (sso) Changed sign-out URL for SSO @note Ensure the `isSsoChangeLogoutUrl`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangeLogoutUrlType *ssoChangeLogoutUrl;
 
-/// (sso) Changed the SAML identity mode for SSO. @note Ensure the
+/// (sso) Changed SAML identity mode for SSO @note Ensure the
 /// `isSsoChangeSamlIdentityMode` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangeSamlIdentityModeType *ssoChangeSamlIdentityMode;
 
-/// (sso) Removed the X.509 certificate for SSO. @note Ensure the
-/// `isSsoRemoveCert` method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (sso) Removed X.509 certificate for SSO @note Ensure the `isSsoRemoveCert`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoRemoveCertType *ssoRemoveCert;
 
-/// (sso) Removed the sign-in URL for SSO. @note Ensure the
-/// `isSsoRemoveLoginUrl` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (sso) Removed sign-in URL for SSO @note Ensure the `isSsoRemoveLoginUrl`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoRemoveLoginUrlType *ssoRemoveLoginUrl;
 
-/// (sso) Removed single sign-on logout URL. @note Ensure the
-/// `isSsoRemoveLogoutUrl` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (sso) Removed sign-out URL for SSO @note Ensure the `isSsoRemoveLogoutUrl`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoRemoveLogoutUrlType *ssoRemoveLogoutUrl;
 
-/// (team_folders) Changed the archival status of a team folder. @note Ensure
-/// the `isTeamFolderChangeStatus` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_folders) Changed archival status of team folder @note Ensure the
+/// `isTeamFolderChangeStatus` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamFolderChangeStatusType *teamFolderChangeStatus;
 
-/// (team_folders) Created a new team folder in active status. @note Ensure the
+/// (team_folders) Created team folder in active status @note Ensure the
 /// `isTeamFolderCreate` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamFolderCreateType *teamFolderCreate;
 
-/// (team_folders) Downgraded a team folder to a regular shared folder. @note
-/// Ensure the `isTeamFolderDowngrade` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_folders) Downgraded team folder to regular shared folder @note Ensure
+/// the `isTeamFolderDowngrade` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamFolderDowngradeType *teamFolderDowngrade;
 
-/// (team_folders) Permanently deleted an archived team folder. @note Ensure the
+/// (team_folders) Permanently deleted archived team folder @note Ensure the
 /// `isTeamFolderPermanentlyDelete` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamFolderPermanentlyDeleteType *teamFolderPermanentlyDelete;
 
-/// (team_folders) Renamed an active or archived team folder. @note Ensure the
+/// (team_folders) Renamed active/archived team folder @note Ensure the
 /// `isTeamFolderRename` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamFolderRenameType *teamFolderRename;
 
-/// (team_policies) Changed the account capture policy on a domain belonging to
-/// the team. @note Ensure the `isAccountCaptureChangePolicy` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (team_folders) Changed sync default @note Ensure the
+/// `isTeamSelectiveSyncSettingsChanged` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGTeamSelectiveSyncSettingsChangedType *teamSelectiveSyncSettingsChanged;
+
+/// (team_policies) Changed account capture setting on team domain @note Ensure
+/// the `isAccountCaptureChangePolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAccountCaptureChangePolicyType *accountCaptureChangePolicy;
 
-/// (team_policies) Disabled allow downloads. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isAllowDownloadDisabled` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Disabled downloads (deprecated, no longer logged) @note
+/// Ensure the `isAllowDownloadDisabled` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAllowDownloadDisabledType *allowDownloadDisabled;
 
-/// (team_policies) Enabled allow downloads. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists. @note Ensure the `isAllowDownloadEnabled` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Enabled downloads (deprecated, no longer logged) @note
+/// Ensure the `isAllowDownloadEnabled` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAllowDownloadEnabledType *allowDownloadEnabled;
 
-/// (team_policies) Set a restriction policy regarding the location of data
-/// centers where team data resides. @note Ensure the
-/// `isDataPlacementRestrictionChangePolicy` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Set restrictions on data center locations where team data
+/// resides @note Ensure the `isDataPlacementRestrictionChangePolicy` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDataPlacementRestrictionChangePolicyType *dataPlacementRestrictionChangePolicy;
 
-/// (team_policies) Satisfied a previously set restriction policy regarding the
-/// location of data centers where team data resides (i.e. all data have been
-/// migrated according to the restriction placed). @note Ensure the
-/// `isDataPlacementRestrictionSatisfyPolicy` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Completed restrictions on data center locations where team
+/// data resides @note Ensure the `isDataPlacementRestrictionSatisfyPolicy`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly)
     DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType *dataPlacementRestrictionSatisfyPolicy;
 
-/// (team_policies) Set or removed a limit on the number of computers each team
-/// member can link to their work Dropbox account. @note Ensure the
-/// `isDeviceApprovalsChangeDesktopPolicy` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Set/removed limit on number of computers member can link to
+/// team Dropbox account @note Ensure the `isDeviceApprovalsChangeDesktopPolicy`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType *deviceApprovalsChangeDesktopPolicy;
 
-/// (team_policies) Set or removed a limit on the number of mobiles devices each
-/// team member can link to their work Dropbox account. @note Ensure the
+/// (team_policies) Set/removed limit on number of mobile devices member can
+/// link to team Dropbox account @note Ensure the
 /// `isDeviceApprovalsChangeMobilePolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceApprovalsChangeMobilePolicyType *deviceApprovalsChangeMobilePolicy;
 
-/// (team_policies) Changed the action taken when a team member is already over
-/// the limits (e.g when they join the team, an admin lowers limits, etc.).
+/// (team_policies) Changed device approvals setting when member is over limit
 /// @note Ensure the `isDeviceApprovalsChangeOverageAction` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceApprovalsChangeOverageActionType *deviceApprovalsChangeOverageAction;
 
-/// (team_policies) Changed the action taken with respect to approval limits
-/// when a team member unlinks an approved device. @note Ensure the
-/// `isDeviceApprovalsChangeUnlinkAction` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Changed device approvals setting when member unlinks
+/// approved device @note Ensure the `isDeviceApprovalsChangeUnlinkAction`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGDeviceApprovalsChangeUnlinkActionType *deviceApprovalsChangeUnlinkAction;
 
-/// (team_policies) Added an exception for one or more team members to
-/// optionally use the regular Dropbox app when EMM is enabled. @note Ensure the
+/// (team_policies) Added members to EMM exception list @note Ensure the
 /// `isEmmAddException` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmAddExceptionType *emmAddException;
 
-/// (team_policies) Enabled or disabled enterprise mobility management for team
-/// members. @note Ensure the `isEmmChangePolicy` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Enabled/disabled enterprise mobility management for members
+/// @note Ensure the `isEmmChangePolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmChangePolicyType *emmChangePolicy;
 
-/// (team_policies) Removed an exception for one or more team members to
-/// optionally use the regular Dropbox app when EMM is enabled. @note Ensure the
+/// (team_policies) Removed members from EMM exception list @note Ensure the
 /// `isEmmRemoveException` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmRemoveExceptionType *emmRemoveException;
 
-/// (team_policies) Accepted or opted out of extended version history. @note
-/// Ensure the `isExtendedVersionHistoryChangePolicy` method returns true before
+/// (team_policies) Accepted/opted out of extended version history @note Ensure
+/// the `isExtendedVersionHistoryChangePolicy` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGExtendedVersionHistoryChangePolicyType *extendedVersionHistoryChangePolicy;
 
-/// (team_policies) Enabled or disabled commenting on team files. @note Ensure
-/// the `isFileCommentsChangePolicy` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Enabled/disabled commenting on team files @note Ensure the
+/// `isFileCommentsChangePolicy` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileCommentsChangePolicyType *fileCommentsChangePolicy;
 
-/// (team_policies) Enabled or disabled file requests. @note Ensure the
+/// (team_policies) Enabled/disabled file requests @note Ensure the
 /// `isFileRequestsChangePolicy` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestsChangePolicyType *fileRequestsChangePolicy;
 
-/// (team_policies) Enabled file request emails for everyone. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the
-/// `isFileRequestsEmailsEnabled` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Enabled file request emails for everyone (deprecated, no
+/// longer logged) @note Ensure the `isFileRequestsEmailsEnabled` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileRequestsEmailsEnabledType *fileRequestsEmailsEnabled;
 
-/// (team_policies) Allowed file request emails for the team. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists. @note Ensure the
-/// `isFileRequestsEmailsRestrictedToTeamOnly` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Enabled file request emails for team (deprecated, no longer
+/// logged) @note Ensure the `isFileRequestsEmailsRestrictedToTeamOnly` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyType *fileRequestsEmailsRestrictedToTeamOnly;
 
-/// (team_policies) Enabled or disabled Google single sign-on for the team.
-/// @note Ensure the `isGoogleSsoChangePolicy` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Enabled/disabled Google single sign-on for team @note Ensure
+/// the `isGoogleSsoChangePolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGoogleSsoChangePolicyType *googleSsoChangePolicy;
 
-/// (team_policies) Changed who can create groups. @note Ensure the
+/// (team_policies) Changed who can create groups @note Ensure the
 /// `isGroupUserManagementChangePolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGroupUserManagementChangePolicyType *groupUserManagementChangePolicy;
 
-/// (team_policies) Changed whether users can find the team when not invited.
-/// @note Ensure the `isMemberRequestsChangePolicy` method returns true before
+/// (team_policies) Changed whether users can find team when not invited @note
+/// Ensure the `isMemberRequestsChangePolicy` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberRequestsChangePolicyType *memberRequestsChangePolicy;
 
-/// (team_policies) Added an exception for one or more team members to bypass
-/// space limits imposed by policy. @note Ensure the
-/// `isMemberSpaceLimitsAddException` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Added members to member space limit exception list @note
+/// Ensure the `isMemberSpaceLimitsAddException` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsAddExceptionType *memberSpaceLimitsAddException;
 
-/// (team_policies) Change the member space limit type for the team. @note
-/// Ensure the `isMemberSpaceLimitsChangeCapsTypePolicy` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Changed member space limit type for team @note Ensure the
+/// `isMemberSpaceLimitsChangeCapsTypePolicy` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyType *memberSpaceLimitsChangeCapsTypePolicy;
 
-/// (team_policies) Changed the team default limit level. @note Ensure the
+/// (team_policies) Changed team default member space limit @note Ensure the
 /// `isMemberSpaceLimitsChangePolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsChangePolicyType *memberSpaceLimitsChangePolicy;
 
-/// (team_policies) Removed an exception for one or more team members to bypass
-/// space limits imposed by policy. @note Ensure the
-/// `isMemberSpaceLimitsRemoveException` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Removed members from member space limit exception list @note
+/// Ensure the `isMemberSpaceLimitsRemoveException` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSpaceLimitsRemoveExceptionType *memberSpaceLimitsRemoveException;
 
-/// (team_policies) Enabled or disabled the option for team members to suggest
-/// new members to add to the team. @note Ensure the
-/// `isMemberSuggestionsChangePolicy` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Enabled/disabled option for team members to suggest people
+/// to add to team @note Ensure the `isMemberSuggestionsChangePolicy` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberSuggestionsChangePolicyType *memberSuggestionsChangePolicy;
 
-/// (team_policies) Enabled or disabled the Microsoft Office add-in, which lets
-/// team members save files to Dropbox directly from Microsoft Office. @note
-/// Ensure the `isMicrosoftOfficeAddinChangePolicy` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Enabled/disabled Microsoft Office add-in @note Ensure the
+/// `isMicrosoftOfficeAddinChangePolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *microsoftOfficeAddinChangePolicy;
 
-/// (team_policies) Enabled or disabled network control. @note Ensure the
+/// (team_policies) Enabled/disabled network control @note Ensure the
 /// `isNetworkControlChangePolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNetworkControlChangePolicyType *networkControlChangePolicy;
 
 /// (team_policies) Changed whether Dropbox Paper, when enabled, is deployed to
-/// all teams or to specific members of the team. @note Ensure the
+/// all members or to specific members @note Ensure the
 /// `isPaperChangeDeploymentPolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperChangeDeploymentPolicyType *paperChangeDeploymentPolicy;
 
-/// (team_policies) Changed whether non team members can view Paper documents
-/// using a link. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists. @note Ensure the
+/// (team_policies) Changed whether non-members can view Paper docs with link
+/// (deprecated, no longer logged) @note Ensure the
 /// `isPaperChangeMemberLinkPolicy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperChangeMemberLinkPolicyType *paperChangeMemberLinkPolicy;
 
-/// (team_policies) Changed whether team members can share Paper documents
-/// externally (i.e. outside the team), and if so, whether they should be
-/// accessible only by team members or anyone by default. @note Ensure the
-/// `isPaperChangeMemberPolicy` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (team_policies) Changed whether members can share Paper docs outside team,
+/// and if docs are accessible only by team members or anyone by default @note
+/// Ensure the `isPaperChangeMemberPolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperChangeMemberPolicyType *paperChangeMemberPolicy;
 
-/// (team_policies) Enabled or disabled Dropbox Paper for the team. @note Ensure
-/// the `isPaperChangePolicy` method returns true before accessing, otherwise a
+/// (team_policies) Enabled/disabled Dropbox Paper for team @note Ensure the
+/// `isPaperChangePolicy` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperChangePolicyType *paperChangePolicy;
 
-/// (team_policies) Users added to Paper enabled users list. @note Ensure the
+/// (team_policies) Added users to Paper-enabled users list @note Ensure the
 /// `isPaperEnabledUsersGroupAddition` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperEnabledUsersGroupAdditionType *paperEnabledUsersGroupAddition;
 
-/// (team_policies) Users removed from Paper enabled users list. @note Ensure
-/// the `isPaperEnabledUsersGroupRemoval` method returns true before accessing,
+/// (team_policies) Removed users from Paper-enabled users list @note Ensure the
+/// `isPaperEnabledUsersGroupRemoval` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperEnabledUsersGroupRemovalType *paperEnabledUsersGroupRemoval;
 
-/// (team_policies) Enabled or disabled the ability of team members to
-/// permanently delete content. @note Ensure the `isPermanentDeleteChangePolicy`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// (team_policies) Enabled/disabled ability of team members to permanently
+/// delete content @note Ensure the `isPermanentDeleteChangePolicy` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPermanentDeleteChangePolicyType *permanentDeleteChangePolicy;
 
 /// (team_policies) Changed whether team members can join shared folders owned
-/// externally (i.e. outside the team). @note Ensure the
-/// `isSharingChangeFolderJoinPolicy` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// outside team @note Ensure the `isSharingChangeFolderJoinPolicy` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharingChangeFolderJoinPolicyType *sharingChangeFolderJoinPolicy;
 
-/// (team_policies) Changed whether team members can share links externally
-/// (i.e. outside the team), and if so, whether links should be accessible only
-/// by team members or anyone by default. @note Ensure the
-/// `isSharingChangeLinkPolicy` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (team_policies) Changed whether members can share links outside team, and if
+/// links are accessible only by team members or anyone by default @note Ensure
+/// the `isSharingChangeLinkPolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharingChangeLinkPolicyType *sharingChangeLinkPolicy;
 
-/// (team_policies) Changed whether team members can share files and folders
-/// externally (i.e. outside the team). @note Ensure the
-/// `isSharingChangeMemberPolicy` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Changed whether members can share files/folders outside team
+/// @note Ensure the `isSharingChangeMemberPolicy` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharingChangeMemberPolicyType *sharingChangeMemberPolicy;
 
-/// (team_policies) Changed the default Smart Sync policy for team members.
-/// @note Ensure the `isSmartSyncChangePolicy` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Changed default Smart Sync setting for team members @note
+/// Ensure the `isSmartSyncChangePolicy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSmartSyncChangePolicyType *smartSyncChangePolicy;
 
-/// (team_policies) Opted team into Smart Sync. @note Ensure the
+/// (team_policies) Opted team into Smart Sync @note Ensure the
 /// `isSmartSyncNotOptOut` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSmartSyncNotOptOutType *smartSyncNotOptOut;
 
-/// (team_policies) Opted team out of Smart Sync. @note Ensure the
+/// (team_policies) Opted team out of Smart Sync @note Ensure the
 /// `isSmartSyncOptOut` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSmartSyncOptOutType *smartSyncOptOut;
 
-/// (team_policies) Change the single sign-on policy for the team. @note Ensure
-/// the `isSsoChangePolicy` method returns true before accessing, otherwise a
+/// (team_policies) Changed single sign-on setting for team @note Ensure the
+/// `isSsoChangePolicy` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangePolicyType *ssoChangePolicy;
 
-/// (team_policies) Change two-step verification policy for the team. @note
-/// Ensure the `isTfaChangePolicy` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (team_policies) Changed two-step verification setting for team @note Ensure
+/// the `isTfaChangePolicy` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaChangePolicyType *tfaChangePolicy;
 
-/// (team_policies) Enabled or disabled the option for team members to link a
-/// personal Dropbox account in addition to their work account to the same
-/// computer. @note Ensure the `isTwoAccountChangePolicy` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Enabled/disabled option for members to link personal Dropbox
+/// account and team account to same computer @note Ensure the
+/// `isTwoAccountChangePolicy` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTwoAccountChangePolicyType *twoAccountChangePolicy;
 
-/// (team_policies) Changed how long team members can stay signed in to Dropbox
-/// on the web. @note Ensure the `isWebSessionsChangeFixedLengthPolicy` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Changed how long members can stay signed in to Dropbox.com
+/// @note Ensure the `isWebSessionsChangeFixedLengthPolicy` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGWebSessionsChangeFixedLengthPolicyType *webSessionsChangeFixedLengthPolicy;
 
 /// (team_policies) Changed how long team members can be idle while signed in to
-/// Dropbox on the web. @note Ensure the `isWebSessionsChangeIdleLengthPolicy`
-/// method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// Dropbox.com @note Ensure the `isWebSessionsChangeIdleLengthPolicy` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGWebSessionsChangeIdleLengthPolicyType *webSessionsChangeIdleLengthPolicy;
 
-/// (team_profile) Merged another team into this team. @note Ensure the
+/// (team_profile) Merged another team into this team @note Ensure the
 /// `isTeamMergeFrom` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamMergeFromType *teamMergeFrom;
 
-/// (team_profile) Merged this team into another team. @note Ensure the
+/// (team_profile) Merged this team into another team @note Ensure the
 /// `isTeamMergeTo` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamMergeToType *teamMergeTo;
 
-/// (team_profile) Added a team logo to be displayed on shared link headers.
-/// @note Ensure the `isTeamProfileAddLogo` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_profile) Added team logo to display on shared link headers @note
+/// Ensure the `isTeamProfileAddLogo` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamProfileAddLogoType *teamProfileAddLogo;
 
-/// (team_profile) Changed the default language for the team. @note Ensure the
+/// (team_profile) Changed default language for team @note Ensure the
 /// `isTeamProfileChangeDefaultLanguage` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamProfileChangeDefaultLanguageType *teamProfileChangeDefaultLanguage;
 
-/// (team_profile) Changed the team logo to be displayed on shared link headers.
-/// @note Ensure the `isTeamProfileChangeLogo` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_profile) Changed team logo displayed on shared link headers @note
+/// Ensure the `isTeamProfileChangeLogo` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamProfileChangeLogoType *teamProfileChangeLogo;
 
-/// (team_profile) Changed the team name. @note Ensure the
-/// `isTeamProfileChangeName` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (team_profile) Changed team name @note Ensure the `isTeamProfileChangeName`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamProfileChangeNameType *teamProfileChangeName;
 
-/// (team_profile) Removed the team logo to be displayed on shared link headers.
-/// @note Ensure the `isTeamProfileRemoveLogo` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// (team_profile) Removed team logo displayed on shared link headers @note
+/// Ensure the `isTeamProfileRemoveLogo` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamProfileRemoveLogoType *teamProfileRemoveLogo;
 
-/// (tfa) Added a backup phone for two-step verification. @note Ensure the
+/// (tfa) Added backup phone for two-step verification @note Ensure the
 /// `isTfaAddBackupPhone` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaAddBackupPhoneType *tfaAddBackupPhone;
 
-/// (tfa) Added a security key for two-step verification. @note Ensure the
+/// (tfa) Added security key for two-step verification @note Ensure the
 /// `isTfaAddSecurityKey` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaAddSecurityKeyType *tfaAddSecurityKey;
 
-/// (tfa) Changed the backup phone for two-step verification. @note Ensure the
+/// (tfa) Changed backup phone for two-step verification @note Ensure the
 /// `isTfaChangeBackupPhone` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaChangeBackupPhoneType *tfaChangeBackupPhone;
 
-/// (tfa) Enabled, disabled or changed the configuration for two-step
-/// verification. @note Ensure the `isTfaChangeStatus` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (tfa) Enabled/disabled/changed two-step verification setting @note Ensure
+/// the `isTfaChangeStatus` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaChangeStatusType *tfaChangeStatus;
 
-/// (tfa) Removed the backup phone for two-step verification. @note Ensure the
+/// (tfa) Removed backup phone for two-step verification @note Ensure the
 /// `isTfaRemoveBackupPhone` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaRemoveBackupPhoneType *tfaRemoveBackupPhone;
 
-/// (tfa) Removed a security key for two-step verification. @note Ensure the
+/// (tfa) Removed security key for two-step verification @note Ensure the
 /// `isTfaRemoveSecurityKey` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaRemoveSecurityKeyType *tfaRemoveSecurityKey;
 
-/// (tfa) Reset two-step verification for team member. @note Ensure the
+/// (tfa) Reset two-step verification for team member @note Ensure the
 /// `isTfaReset` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaResetType *tfaReset;
@@ -2714,9 +2753,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "app_link_team".
 ///
-/// Description of the "app_link_team" tag state: (apps) Linked an app for team.
+/// Description of the "app_link_team" tag state: (apps) Linked app for team
 ///
-/// @param appLinkTeam (apps) Linked an app for team.
+/// @param appLinkTeam (apps) Linked app for team
 ///
 /// @return An initialized instance.
 ///
@@ -2725,10 +2764,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "app_link_user".
 ///
-/// Description of the "app_link_user" tag state: (apps) Linked an app for team
-/// member.
+/// Description of the "app_link_user" tag state: (apps) Linked app for member
 ///
-/// @param appLinkUser (apps) Linked an app for team member.
+/// @param appLinkUser (apps) Linked app for member
 ///
 /// @return An initialized instance.
 ///
@@ -2737,10 +2775,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "app_unlink_team".
 ///
-/// Description of the "app_unlink_team" tag state: (apps) Unlinked an app for
-/// team.
+/// Description of the "app_unlink_team" tag state: (apps) Unlinked app for team
 ///
-/// @param appUnlinkTeam (apps) Unlinked an app for team.
+/// @param appUnlinkTeam (apps) Unlinked app for team
 ///
 /// @return An initialized instance.
 ///
@@ -2749,10 +2786,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "app_unlink_user".
 ///
-/// Description of the "app_unlink_user" tag state: (apps) Unlinked an app for
-/// team member.
+/// Description of the "app_unlink_user" tag state: (apps) Unlinked app for
+/// member
 ///
-/// @param appUnlinkUser (apps) Unlinked an app for team member.
+/// @param appUnlinkUser (apps) Unlinked app for member
 ///
 /// @return An initialized instance.
 ///
@@ -2761,10 +2798,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_add_comment".
 ///
-/// Description of the "file_add_comment" tag state: (comments) Added a file
-/// comment.
+/// Description of the "file_add_comment" tag state: (comments) Added file
+/// comment
 ///
-/// @param fileAddComment (comments) Added a file comment.
+/// @param fileAddComment (comments) Added file comment
 ///
 /// @return An initialized instance.
 ///
@@ -2775,10 +2812,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "file_change_comment_subscription".
 ///
 /// Description of the "file_change_comment_subscription" tag state: (comments)
-/// Subscribed to or unsubscribed from comment notifications for file.
+/// Subscribed to or unsubscribed from comment notifications for file
 ///
 /// @param fileChangeCommentSubscription (comments) Subscribed to or
-/// unsubscribed from comment notifications for file.
+/// unsubscribed from comment notifications for file
 ///
 /// @return An initialized instance.
 ///
@@ -2788,10 +2825,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_delete_comment".
 ///
-/// Description of the "file_delete_comment" tag state: (comments) Deleted a
-/// file comment.
+/// Description of the "file_delete_comment" tag state: (comments) Deleted file
+/// comment
 ///
-/// @param fileDeleteComment (comments) Deleted a file comment.
+/// @param fileDeleteComment (comments) Deleted file comment
 ///
 /// @return An initialized instance.
 ///
@@ -2800,13 +2837,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_like_comment".
 ///
-/// Description of the "file_like_comment" tag state: (comments) Liked a file
-/// comment. This event is deprecated and will not be logged going forward as
-/// the associated product functionality no longer exists.
+/// Description of the "file_like_comment" tag state: (comments) Liked file
+/// comment (deprecated, no longer logged)
 ///
-/// @param fileLikeComment (comments) Liked a file comment. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param fileLikeComment (comments) Liked file comment (deprecated, no longer
+/// logged)
 ///
 /// @return An initialized instance.
 ///
@@ -2815,10 +2850,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_resolve_comment".
 ///
-/// Description of the "file_resolve_comment" tag state: (comments) Resolved a
-/// file comment.
+/// Description of the "file_resolve_comment" tag state: (comments) Resolved
+/// file comment
 ///
-/// @param fileResolveComment (comments) Resolved a file comment.
+/// @param fileResolveComment (comments) Resolved file comment
 ///
 /// @return An initialized instance.
 ///
@@ -2827,13 +2862,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_unlike_comment".
 ///
-/// Description of the "file_unlike_comment" tag state: (comments) Unliked a
-/// file comment. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// Description of the "file_unlike_comment" tag state: (comments) Unliked file
+/// comment (deprecated, no longer logged)
 ///
-/// @param fileUnlikeComment (comments) Unliked a file comment. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param fileUnlikeComment (comments) Unliked file comment (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -2843,9 +2876,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_unresolve_comment".
 ///
 /// Description of the "file_unresolve_comment" tag state: (comments) Unresolved
-/// a file comment.
+/// file comment
 ///
-/// @param fileUnresolveComment (comments) Unresolved a file comment.
+/// @param fileUnresolveComment (comments) Unresolved file comment
 ///
 /// @return An initialized instance.
 ///
@@ -2854,11 +2887,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_change_ip_desktop".
 ///
-/// Description of the "device_change_ip_desktop" tag state: (devices) IP
-/// address associated with active desktop session changed.
+/// Description of the "device_change_ip_desktop" tag state: (devices) Changed
+/// IP address associated with active desktop session
 ///
-/// @param deviceChangeIpDesktop (devices) IP address associated with active
-/// desktop session changed.
+/// @param deviceChangeIpDesktop (devices) Changed IP address associated with
+/// active desktop session
 ///
 /// @return An initialized instance.
 ///
@@ -2867,11 +2900,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_change_ip_mobile".
 ///
-/// Description of the "device_change_ip_mobile" tag state: (devices) IP address
-/// associated with active mobile session changed.
+/// Description of the "device_change_ip_mobile" tag state: (devices) Changed IP
+/// address associated with active mobile session
 ///
-/// @param deviceChangeIpMobile (devices) IP address associated with active
-/// mobile session changed.
+/// @param deviceChangeIpMobile (devices) Changed IP address associated with
+/// active mobile session
 ///
 /// @return An initialized instance.
 ///
@@ -2880,11 +2913,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_change_ip_web".
 ///
-/// Description of the "device_change_ip_web" tag state: (devices) IP address
-/// associated with active Web session changed.
+/// Description of the "device_change_ip_web" tag state: (devices) Changed IP
+/// address associated with active web session
 ///
-/// @param deviceChangeIpWeb (devices) IP address associated with active Web
-/// session changed.
+/// @param deviceChangeIpWeb (devices) Changed IP address associated with active
+/// web session
 ///
 /// @return An initialized instance.
 ///
@@ -2894,10 +2927,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "device_delete_on_unlink_fail".
 ///
 /// Description of the "device_delete_on_unlink_fail" tag state: (devices)
-/// Failed to delete all files from an unlinked device.
+/// Failed to delete all files from unlinked device
 ///
-/// @param deviceDeleteOnUnlinkFail (devices) Failed to delete all files from an
-/// unlinked device.
+/// @param deviceDeleteOnUnlinkFail (devices) Failed to delete all files from
+/// unlinked device
 ///
 /// @return An initialized instance.
 ///
@@ -2907,10 +2940,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "device_delete_on_unlink_success".
 ///
 /// Description of the "device_delete_on_unlink_success" tag state: (devices)
-/// Deleted all files from an unlinked device.
+/// Deleted all files from unlinked device
 ///
-/// @param deviceDeleteOnUnlinkSuccess (devices) Deleted all files from an
-/// unlinked device.
+/// @param deviceDeleteOnUnlinkSuccess (devices) Deleted all files from unlinked
+/// device
 ///
 /// @return An initialized instance.
 ///
@@ -2920,10 +2953,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_link_fail".
 ///
-/// Description of the "device_link_fail" tag state: (devices) Failed to link a
-/// device.
+/// Description of the "device_link_fail" tag state: (devices) Failed to link
+/// device
 ///
-/// @param deviceLinkFail (devices) Failed to link a device.
+/// @param deviceLinkFail (devices) Failed to link device
 ///
 /// @return An initialized instance.
 ///
@@ -2932,10 +2965,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_link_success".
 ///
-/// Description of the "device_link_success" tag state: (devices) Linked a
-/// device.
+/// Description of the "device_link_success" tag state: (devices) Linked device
 ///
-/// @param deviceLinkSuccess (devices) Linked a device.
+/// @param deviceLinkSuccess (devices) Linked device
 ///
 /// @return An initialized instance.
 ///
@@ -2944,13 +2976,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_management_disabled".
 ///
-/// Description of the "device_management_disabled" tag state: (devices) Disable
-/// Device Management. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// Description of the "device_management_disabled" tag state: (devices)
+/// Disabled device management (deprecated, no longer logged)
 ///
-/// @param deviceManagementDisabled (devices) Disable Device Management. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param deviceManagementDisabled (devices) Disabled device management
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -2959,13 +2989,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_management_enabled".
 ///
-/// Description of the "device_management_enabled" tag state: (devices) Enable
-/// Device Management. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// Description of the "device_management_enabled" tag state: (devices) Enabled
+/// device management (deprecated, no longer logged)
 ///
-/// @param deviceManagementEnabled (devices) Enable Device Management. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param deviceManagementEnabled (devices) Enabled device management
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -2974,10 +3002,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "device_unlink".
 ///
-/// Description of the "device_unlink" tag state: (devices) Disconnected a
-/// device.
+/// Description of the "device_unlink" tag state: (devices) Disconnected device
 ///
-/// @param deviceUnlink (devices) Disconnected a device.
+/// @param deviceUnlink (devices) Disconnected device
 ///
 /// @return An initialized instance.
 ///
@@ -2987,10 +3014,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "emm_refresh_auth_token".
 ///
 /// Description of the "emm_refresh_auth_token" tag state: (devices) Refreshed
-/// the auth token used for setting up enterprise mobility management.
+/// auth token used for setting up enterprise mobility management
 ///
-/// @param emmRefreshAuthToken (devices) Refreshed the auth token used for
-/// setting up enterprise mobility management.
+/// @param emmRefreshAuthToken (devices) Refreshed auth token used for setting
+/// up enterprise mobility management
 ///
 /// @return An initialized instance.
 ///
@@ -3001,11 +3028,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "account_capture_change_availability".
 ///
 /// Description of the "account_capture_change_availability" tag state:
-/// (domains) Granted or revoked the option to enable account capture on domains
-/// belonging to the team.
+/// (domains) Granted/revoked option to enable account capture on team domains
 ///
-/// @param accountCaptureChangeAvailability (domains) Granted or revoked the
-/// option to enable account capture on domains belonging to the team.
+/// @param accountCaptureChangeAvailability (domains) Granted/revoked option to
+/// enable account capture on team domains
 ///
 /// @return An initialized instance.
 ///
@@ -3016,10 +3042,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "account_capture_migrate_account".
 ///
 /// Description of the "account_capture_migrate_account" tag state: (domains)
-/// Account captured user migrated their account to the team.
+/// Account-captured user migrated account to team
 ///
-/// @param accountCaptureMigrateAccount (domains) Account captured user migrated
-/// their account to the team.
+/// @param accountCaptureMigrateAccount (domains) Account-captured user migrated
+/// account to team
 ///
 /// @return An initialized instance.
 ///
@@ -3031,10 +3057,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "account_capture_notification_emails_sent".
 ///
 /// Description of the "account_capture_notification_emails_sent" tag state:
-/// (domains) Proactive account capture email sent to all unmanaged members.
+/// (domains) Sent proactive account capture email to all unmanaged members
 ///
-/// @param accountCaptureNotificationEmailsSent (domains) Proactive account
-/// capture email sent to all unmanaged members.
+/// @param accountCaptureNotificationEmailsSent (domains) Sent proactive account
+/// capture email to all unmanaged members
 ///
 /// @return An initialized instance.
 ///
@@ -3046,11 +3072,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "account_capture_relinquish_account".
 ///
 /// Description of the "account_capture_relinquish_account" tag state: (domains)
-/// Account captured user relinquished their account by changing the email
-/// address associated with it.
+/// Account-captured user changed account email to personal email
 ///
-/// @param accountCaptureRelinquishAccount (domains) Account captured user
-/// relinquished their account by changing the email address associated with it.
+/// @param accountCaptureRelinquishAccount (domains) Account-captured user
+/// changed account email to personal email
 ///
 /// @return An initialized instance.
 ///
@@ -3061,12 +3086,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "disabled_domain_invites".
 ///
 /// Description of the "disabled_domain_invites" tag state: (domains) Disabled
-/// domain invites. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// domain invites (deprecated, no longer logged)
 ///
-/// @param disabledDomainInvites (domains) Disabled domain invites. This event
-/// is deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param disabledDomainInvites (domains) Disabled domain invites (deprecated,
+/// no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -3077,10 +3100,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_invites_approve_request_to_join_team".
 ///
 /// Description of the "domain_invites_approve_request_to_join_team" tag state:
-/// (domains) Approved a member's request to join the team.
+/// (domains) Approved user's request to join team
 ///
-/// @param domainInvitesApproveRequestToJoinTeam (domains) Approved a member's
-/// request to join the team.
+/// @param domainInvitesApproveRequestToJoinTeam (domains) Approved user's
+/// request to join team
 ///
 /// @return An initialized instance.
 ///
@@ -3092,10 +3115,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_invites_decline_request_to_join_team".
 ///
 /// Description of the "domain_invites_decline_request_to_join_team" tag state:
-/// (domains) Declined a user's request to join the team.
+/// (domains) Declined user's request to join team
 ///
-/// @param domainInvitesDeclineRequestToJoinTeam (domains) Declined a user's
-/// request to join the team.
+/// @param domainInvitesDeclineRequestToJoinTeam (domains) Declined user's
+/// request to join team
 ///
 /// @return An initialized instance.
 ///
@@ -3107,10 +3130,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_invites_email_existing_users".
 ///
 /// Description of the "domain_invites_email_existing_users" tag state:
-/// (domains) Sent domain invites to existing domain accounts.
+/// (domains) Sent domain invites to existing domain accounts
 ///
 /// @param domainInvitesEmailExistingUsers (domains) Sent domain invites to
-/// existing domain accounts.
+/// existing domain accounts
 ///
 /// @return An initialized instance.
 ///
@@ -3122,9 +3145,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_invites_request_to_join_team".
 ///
 /// Description of the "domain_invites_request_to_join_team" tag state:
-/// (domains) Asked to join the team.
+/// (domains) Requested to join team
 ///
-/// @param domainInvitesRequestToJoinTeam (domains) Asked to join the team.
+/// @param domainInvitesRequestToJoinTeam (domains) Requested to join team
 ///
 /// @return An initialized instance.
 ///
@@ -3136,14 +3159,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_invites_set_invite_new_user_pref_to_no".
 ///
 /// Description of the "domain_invites_set_invite_new_user_pref_to_no" tag
-/// state: (domains) Turned off u201cAutomatically invite new usersu201d. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// state: (domains) Disabled "Automatically invite new users" (deprecated, no
+/// longer logged)
 ///
-/// @param domainInvitesSetInviteNewUserPrefToNo (domains) Turned off
-/// u201cAutomatically invite new usersu201d. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// @param domainInvitesSetInviteNewUserPrefToNo (domains) Disabled
+/// "Automatically invite new users" (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -3155,14 +3175,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_invites_set_invite_new_user_pref_to_yes".
 ///
 /// Description of the "domain_invites_set_invite_new_user_pref_to_yes" tag
-/// state: (domains) Turned on u201cAutomatically invite new usersu201d. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// state: (domains) Enabled "Automatically invite new users" (deprecated, no
+/// longer logged)
 ///
-/// @param domainInvitesSetInviteNewUserPrefToYes (domains) Turned on
-/// u201cAutomatically invite new usersu201d. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// @param domainInvitesSetInviteNewUserPrefToYes (domains) Enabled
+/// "Automatically invite new users" (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -3174,10 +3191,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_verification_add_domain_fail".
 ///
 /// Description of the "domain_verification_add_domain_fail" tag state:
-/// (domains) Failed to verify a domain belonging to the team.
+/// (domains) Failed to verify team domain
 ///
-/// @param domainVerificationAddDomainFail (domains) Failed to verify a domain
-/// belonging to the team.
+/// @param domainVerificationAddDomainFail (domains) Failed to verify team
+/// domain
 ///
 /// @return An initialized instance.
 ///
@@ -3189,10 +3206,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_verification_add_domain_success".
 ///
 /// Description of the "domain_verification_add_domain_success" tag state:
-/// (domains) Verified a domain belonging to the team.
+/// (domains) Verified team domain
 ///
-/// @param domainVerificationAddDomainSuccess (domains) Verified a domain
-/// belonging to the team.
+/// @param domainVerificationAddDomainSuccess (domains) Verified team domain
 ///
 /// @return An initialized instance.
 ///
@@ -3204,10 +3220,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "domain_verification_remove_domain".
 ///
 /// Description of the "domain_verification_remove_domain" tag state: (domains)
-/// Removed a domain from the list of verified domains belonging to the team.
+/// Removed domain from list of verified team domains
 ///
-/// @param domainVerificationRemoveDomain (domains) Removed a domain from the
-/// list of verified domains belonging to the team.
+/// @param domainVerificationRemoveDomain (domains) Removed domain from list of
+/// verified team domains
 ///
 /// @return An initialized instance.
 ///
@@ -3218,12 +3234,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "enabled_domain_invites".
 ///
 /// Description of the "enabled_domain_invites" tag state: (domains) Enabled
-/// domain invites. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// domain invites (deprecated, no longer logged)
 ///
-/// @param enabledDomainInvites (domains) Enabled domain invites. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param enabledDomainInvites (domains) Enabled domain invites (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -3233,12 +3247,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "create_folder".
 ///
 /// Description of the "create_folder" tag state: (file_operations) Created
-/// folders. This event is deprecated and will not be logged going forward as
-/// the associated product functionality no longer exists.
+/// folders (deprecated, no longer logged)
 ///
-/// @param createFolder (file_operations) Created folders. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param createFolder (file_operations) Created folders (deprecated, no longer
+/// logged)
 ///
 /// @return An initialized instance.
 ///
@@ -3248,9 +3260,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_add".
 ///
 /// Description of the "file_add" tag state: (file_operations) Added files
-/// and/or folders.
+/// and/or folders
 ///
-/// @param fileAdd (file_operations) Added files and/or folders.
+/// @param fileAdd (file_operations) Added files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3260,9 +3272,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_copy".
 ///
 /// Description of the "file_copy" tag state: (file_operations) Copied files
-/// and/or folders.
+/// and/or folders
 ///
-/// @param fileCopy (file_operations) Copied files and/or folders.
+/// @param fileCopy (file_operations) Copied files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3272,9 +3284,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_delete".
 ///
 /// Description of the "file_delete" tag state: (file_operations) Deleted files
-/// and/or folders.
+/// and/or folders
 ///
-/// @param fileDelete (file_operations) Deleted files and/or folders.
+/// @param fileDelete (file_operations) Deleted files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3284,9 +3296,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_download".
 ///
 /// Description of the "file_download" tag state: (file_operations) Downloaded
-/// files and/or folders.
+/// files and/or folders
 ///
-/// @param fileDownload (file_operations) Downloaded files and/or folders.
+/// @param fileDownload (file_operations) Downloaded files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3295,9 +3307,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_edit".
 ///
-/// Description of the "file_edit" tag state: (file_operations) Edited files.
+/// Description of the "file_edit" tag state: (file_operations) Edited files
 ///
-/// @param fileEdit (file_operations) Edited files.
+/// @param fileEdit (file_operations) Edited files
 ///
 /// @return An initialized instance.
 ///
@@ -3307,10 +3319,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_get_copy_reference".
 ///
 /// Description of the "file_get_copy_reference" tag state: (file_operations)
-/// Create a copy reference to a file or folder.
+/// Created copy reference to file/folder
 ///
-/// @param fileGetCopyReference (file_operations) Create a copy reference to a
-/// file or folder.
+/// @param fileGetCopyReference (file_operations) Created copy reference to
+/// file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -3320,9 +3332,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_move".
 ///
 /// Description of the "file_move" tag state: (file_operations) Moved files
-/// and/or folders.
+/// and/or folders
 ///
-/// @param fileMove (file_operations) Moved files and/or folders.
+/// @param fileMove (file_operations) Moved files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3332,10 +3344,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_permanently_delete".
 ///
 /// Description of the "file_permanently_delete" tag state: (file_operations)
-/// Permanently deleted files and/or folders.
+/// Permanently deleted files and/or folders
 ///
 /// @param filePermanentlyDelete (file_operations) Permanently deleted files
-/// and/or folders.
+/// and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3345,9 +3357,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_preview".
 ///
 /// Description of the "file_preview" tag state: (file_operations) Previewed
-/// files and/or folders.
+/// files and/or folders
 ///
-/// @param filePreview (file_operations) Previewed files and/or folders.
+/// @param filePreview (file_operations) Previewed files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3357,9 +3369,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_rename".
 ///
 /// Description of the "file_rename" tag state: (file_operations) Renamed files
-/// and/or folders.
+/// and/or folders
 ///
-/// @param fileRename (file_operations) Renamed files and/or folders.
+/// @param fileRename (file_operations) Renamed files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3369,9 +3381,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_restore".
 ///
 /// Description of the "file_restore" tag state: (file_operations) Restored
-/// deleted files and/or folders.
+/// deleted files and/or folders
 ///
-/// @param fileRestore (file_operations) Restored deleted files and/or folders.
+/// @param fileRestore (file_operations) Restored deleted files and/or folders
 ///
 /// @return An initialized instance.
 ///
@@ -3381,9 +3393,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_revert".
 ///
 /// Description of the "file_revert" tag state: (file_operations) Reverted files
-/// to a previous version.
+/// to previous version
 ///
-/// @param fileRevert (file_operations) Reverted files to a previous version.
+/// @param fileRevert (file_operations) Reverted files to previous version
 ///
 /// @return An initialized instance.
 ///
@@ -3393,10 +3405,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_rollback_changes".
 ///
 /// Description of the "file_rollback_changes" tag state: (file_operations)
-/// Rolled back file change location changes.
+/// Rolled back file actions
 ///
-/// @param fileRollbackChanges (file_operations) Rolled back file change
-/// location changes.
+/// @param fileRollbackChanges (file_operations) Rolled back file actions
 ///
 /// @return An initialized instance.
 ///
@@ -3406,10 +3417,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_save_copy_reference".
 ///
 /// Description of the "file_save_copy_reference" tag state: (file_operations)
-/// Save a file or folder using a copy reference.
+/// Saved file/folder using copy reference
 ///
-/// @param fileSaveCopyReference (file_operations) Save a file or folder using a
-/// copy reference.
+/// @param fileSaveCopyReference (file_operations) Saved file/folder using copy
+/// reference
 ///
 /// @return An initialized instance.
 ///
@@ -3418,10 +3429,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_request_change".
 ///
-/// Description of the "file_request_change" tag state: (file_requests) Change a
-/// file request.
+/// Description of the "file_request_change" tag state: (file_requests) Changed
+/// file request
 ///
-/// @param fileRequestChange (file_requests) Change a file request.
+/// @param fileRequestChange (file_requests) Changed file request
 ///
 /// @return An initialized instance.
 ///
@@ -3430,10 +3441,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "file_request_close".
 ///
-/// Description of the "file_request_close" tag state: (file_requests) Closed a
-/// file request.
+/// Description of the "file_request_close" tag state: (file_requests) Closed
+/// file request
 ///
-/// @param fileRequestClose (file_requests) Closed a file request.
+/// @param fileRequestClose (file_requests) Closed file request
 ///
 /// @return An initialized instance.
 ///
@@ -3443,9 +3454,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_request_create".
 ///
 /// Description of the "file_request_create" tag state: (file_requests) Created
-/// a file request.
+/// file request
 ///
-/// @param fileRequestCreate (file_requests) Created a file request.
+/// @param fileRequestCreate (file_requests) Created file request
 ///
 /// @return An initialized instance.
 ///
@@ -3455,10 +3466,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_request_receive_file".
 ///
 /// Description of the "file_request_receive_file" tag state: (file_requests)
-/// Received files for a file request.
+/// Received files for file request
 ///
-/// @param fileRequestReceiveFile (file_requests) Received files for a file
-/// request.
+/// @param fileRequestReceiveFile (file_requests) Received files for file
+/// request
 ///
 /// @return An initialized instance.
 ///
@@ -3467,10 +3478,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "group_add_external_id".
 ///
-/// Description of the "group_add_external_id" tag state: (groups) Added an
-/// external ID for group.
+/// Description of the "group_add_external_id" tag state: (groups) Added
+/// external ID for group
 ///
-/// @param groupAddExternalId (groups) Added an external ID for group.
+/// @param groupAddExternalId (groups) Added external ID for group
 ///
 /// @return An initialized instance.
 ///
@@ -3480,9 +3491,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "group_add_member".
 ///
 /// Description of the "group_add_member" tag state: (groups) Added team members
-/// to a group.
+/// to group
 ///
-/// @param groupAddMember (groups) Added team members to a group.
+/// @param groupAddMember (groups) Added team members to group
 ///
 /// @return An initialized instance.
 ///
@@ -3492,9 +3503,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "group_change_external_id".
 ///
 /// Description of the "group_change_external_id" tag state: (groups) Changed
-/// the external ID for group.
+/// external ID for group
 ///
-/// @param groupChangeExternalId (groups) Changed the external ID for group.
+/// @param groupChangeExternalId (groups) Changed external ID for group
 ///
 /// @return An initialized instance.
 ///
@@ -3504,9 +3515,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "group_change_management_type".
 ///
 /// Description of the "group_change_management_type" tag state: (groups)
-/// Changed group management type.
+/// Changed group management type
 ///
-/// @param groupChangeManagementType (groups) Changed group management type.
+/// @param groupChangeManagementType (groups) Changed group management type
 ///
 /// @return An initialized instance.
 ///
@@ -3516,10 +3527,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "group_change_member_role".
 ///
 /// Description of the "group_change_member_role" tag state: (groups) Changed
-/// the manager permissions belonging to a group member.
+/// manager permissions of group member
 ///
-/// @param groupChangeMemberRole (groups) Changed the manager permissions
-/// belonging to a group member.
+/// @param groupChangeMemberRole (groups) Changed manager permissions of group
+/// member
 ///
 /// @return An initialized instance.
 ///
@@ -3528,9 +3539,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "group_create".
 ///
-/// Description of the "group_create" tag state: (groups) Created a group.
+/// Description of the "group_create" tag state: (groups) Created group
 ///
-/// @param groupCreate (groups) Created a group.
+/// @param groupCreate (groups) Created group
 ///
 /// @return An initialized instance.
 ///
@@ -3539,24 +3550,47 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "group_delete".
 ///
-/// Description of the "group_delete" tag state: (groups) Deleted a group.
+/// Description of the "group_delete" tag state: (groups) Deleted group
 ///
-/// @param groupDelete (groups) Deleted a group.
+/// @param groupDelete (groups) Deleted group
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithGroupDelete:(DBTEAMLOGGroupDeleteType *)groupDelete;
 
 ///
+/// Initializes union class with tag state of "group_description_updated".
+///
+/// Description of the "group_description_updated" tag state: (groups) Updated
+/// group (deprecated, no longer logged)
+///
+/// @param groupDescriptionUpdated (groups) Updated group (deprecated, no longer
+/// logged)
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGroupDescriptionUpdated:(DBTEAMLOGGroupDescriptionUpdatedType *)groupDescriptionUpdated;
+
+///
+/// Initializes union class with tag state of "group_join_policy_updated".
+///
+/// Description of the "group_join_policy_updated" tag state: (groups) Updated
+/// group join policy (deprecated, no longer logged)
+///
+/// @param groupJoinPolicyUpdated (groups) Updated group join policy
+/// (deprecated, no longer logged)
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGroupJoinPolicyUpdated:(DBTEAMLOGGroupJoinPolicyUpdatedType *)groupJoinPolicyUpdated;
+
+///
 /// Initializes union class with tag state of "group_moved".
 ///
-/// Description of the "group_moved" tag state: (groups) Moved a group. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// Description of the "group_moved" tag state: (groups) Moved group
+/// (deprecated, no longer logged)
 ///
-/// @param groupMoved (groups) Moved a group. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// @param groupMoved (groups) Moved group (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -3566,9 +3600,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "group_remove_external_id".
 ///
 /// Description of the "group_remove_external_id" tag state: (groups) Removed
-/// the external ID for group.
+/// external ID for group
 ///
-/// @param groupRemoveExternalId (groups) Removed the external ID for group.
+/// @param groupRemoveExternalId (groups) Removed external ID for group
 ///
 /// @return An initialized instance.
 ///
@@ -3578,9 +3612,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "group_remove_member".
 ///
 /// Description of the "group_remove_member" tag state: (groups) Removed team
-/// members from a group.
+/// members from group
 ///
-/// @param groupRemoveMember (groups) Removed team members from a group.
+/// @param groupRemoveMember (groups) Removed team members from group
 ///
 /// @return An initialized instance.
 ///
@@ -3589,9 +3623,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "group_rename".
 ///
-/// Description of the "group_rename" tag state: (groups) Renamed a group.
+/// Description of the "group_rename" tag state: (groups) Renamed group
 ///
-/// @param groupRename (groups) Renamed a group.
+/// @param groupRename (groups) Renamed group
 ///
 /// @return An initialized instance.
 ///
@@ -3600,12 +3634,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "emm_error".
 ///
-/// Description of the "emm_error" tag state: (logins) Failed to sign in via
-/// EMM. This event is replaced by login_fail and will not be logged going
-/// forward.
+/// Description of the "emm_error" tag state: (logins) Failed to sign in via EMM
+/// (deprecated, replaced by 'Failed to sign in')
 ///
-/// @param emmError (logins) Failed to sign in via EMM. This event is replaced
-/// by login_fail and will not be logged going forward.
+/// @param emmError (logins) Failed to sign in via EMM (deprecated, replaced by
+/// 'Failed to sign in')
 ///
 /// @return An initialized instance.
 ///
@@ -3614,9 +3647,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "login_fail".
 ///
-/// Description of the "login_fail" tag state: (logins) Failed to sign in.
+/// Description of the "login_fail" tag state: (logins) Failed to sign in
 ///
-/// @param loginFail (logins) Failed to sign in.
+/// @param loginFail (logins) Failed to sign in
 ///
 /// @return An initialized instance.
 ///
@@ -3625,9 +3658,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "login_success".
 ///
-/// Description of the "login_success" tag state: (logins) Signed in.
+/// Description of the "login_success" tag state: (logins) Signed in
 ///
-/// @param loginSuccess (logins) Signed in.
+/// @param loginSuccess (logins) Signed in
 ///
 /// @return An initialized instance.
 ///
@@ -3636,9 +3669,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "logout".
 ///
-/// Description of the "logout" tag state: (logins) Signed out.
+/// Description of the "logout" tag state: (logins) Signed out
 ///
-/// @param logout (logins) Signed out.
+/// @param logout (logins) Signed out
 ///
 /// @return An initialized instance.
 ///
@@ -3648,9 +3681,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "reseller_support_session_end".
 ///
 /// Description of the "reseller_support_session_end" tag state: (logins) Ended
-/// reseller support session.
+/// reseller support session
 ///
-/// @param resellerSupportSessionEnd (logins) Ended reseller support session.
+/// @param resellerSupportSessionEnd (logins) Ended reseller support session
 ///
 /// @return An initialized instance.
 ///
@@ -3660,10 +3693,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "reseller_support_session_start".
 ///
 /// Description of the "reseller_support_session_start" tag state: (logins)
-/// Started reseller support session.
+/// Started reseller support session
 ///
-/// @param resellerSupportSessionStart (logins) Started reseller support
-/// session.
+/// @param resellerSupportSessionStart (logins) Started reseller support session
 ///
 /// @return An initialized instance.
 ///
@@ -3674,9 +3706,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sign_in_as_session_end".
 ///
 /// Description of the "sign_in_as_session_end" tag state: (logins) Ended admin
-/// sign-in-as session.
+/// sign-in-as session
 ///
-/// @param signInAsSessionEnd (logins) Ended admin sign-in-as session.
+/// @param signInAsSessionEnd (logins) Ended admin sign-in-as session
 ///
 /// @return An initialized instance.
 ///
@@ -3686,9 +3718,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sign_in_as_session_start".
 ///
 /// Description of the "sign_in_as_session_start" tag state: (logins) Started
-/// admin sign-in-as session.
+/// admin sign-in-as session
 ///
-/// @param signInAsSessionStart (logins) Started admin sign-in-as session.
+/// @param signInAsSessionStart (logins) Started admin sign-in-as session
 ///
 /// @return An initialized instance.
 ///
@@ -3697,12 +3729,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_error".
 ///
-/// Description of the "sso_error" tag state: (logins) Failed to sign in via
-/// SSO. This event is replaced by login_fail and will not be logged going
-/// forward.
+/// Description of the "sso_error" tag state: (logins) Failed to sign in via SSO
+/// (deprecated, replaced by 'Failed to sign in')
 ///
-/// @param ssoError (logins) Failed to sign in via SSO. This event is replaced
-/// by login_fail and will not be logged going forward.
+/// @param ssoError (logins) Failed to sign in via SSO (deprecated, replaced by
+/// 'Failed to sign in')
 ///
 /// @return An initialized instance.
 ///
@@ -3711,10 +3742,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "member_add_name".
 ///
-/// Description of the "member_add_name" tag state: (members) Specify team
-/// member name.
+/// Description of the "member_add_name" tag state: (members) Added team member
+/// name
 ///
-/// @param memberAddName (members) Specify team member name.
+/// @param memberAddName (members) Added team member name
 ///
 /// @return An initialized instance.
 ///
@@ -3723,11 +3754,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "member_change_admin_role".
 ///
-/// Description of the "member_change_admin_role" tag state: (members) Change
-/// the admin role belonging to team member.
+/// Description of the "member_change_admin_role" tag state: (members) Changed
+/// team member admin role
 ///
-/// @param memberChangeAdminRole (members) Change the admin role belonging to
-/// team member.
+/// @param memberChangeAdminRole (members) Changed team member admin role
 ///
 /// @return An initialized instance.
 ///
@@ -3737,9 +3767,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "member_change_email".
 ///
 /// Description of the "member_change_email" tag state: (members) Changed team
-/// member email address.
+/// member email
 ///
-/// @param memberChangeEmail (members) Changed team member email address.
+/// @param memberChangeEmail (members) Changed team member email
 ///
 /// @return An initialized instance.
 ///
@@ -3749,14 +3779,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "member_change_membership_type".
 ///
 /// Description of the "member_change_membership_type" tag state: (members)
-/// Changed the membership type (limited vs full) for team member. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// Changed membership type (limited/full) of member (deprecated, no longer
+/// logged)
 ///
-/// @param memberChangeMembershipType (members) Changed the membership type
-/// (limited vs full) for team member. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists.
+/// @param memberChangeMembershipType (members) Changed membership type
+/// (limited/full) of member (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -3767,9 +3794,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "member_change_name".
 ///
 /// Description of the "member_change_name" tag state: (members) Changed team
-/// member name.
+/// member name
 ///
-/// @param memberChangeName (members) Changed team member name.
+/// @param memberChangeName (members) Changed team member name
 ///
 /// @return An initialized instance.
 ///
@@ -3778,11 +3805,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "member_change_status".
 ///
-/// Description of the "member_change_status" tag state: (members) Changed the
-/// membership status of a team member.
+/// Description of the "member_change_status" tag state: (members) Changed
+/// membership status of team member
 ///
-/// @param memberChangeStatus (members) Changed the membership status of a team
-/// member.
+/// @param memberChangeStatus (members) Changed membership status of team member
 ///
 /// @return An initialized instance.
 ///
@@ -3793,10 +3819,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_permanently_delete_account_contents".
 ///
 /// Description of the "member_permanently_delete_account_contents" tag state:
-/// (members) Permanently deleted contents of a removed team member account.
+/// (members) Permanently deleted contents of deleted team member account
 ///
 /// @param memberPermanentlyDeleteAccountContents (members) Permanently deleted
-/// contents of a removed team member account.
+/// contents of deleted team member account
 ///
 /// @return An initialized instance.
 ///
@@ -3808,10 +3834,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_add_custom_quota".
 ///
 /// Description of the "member_space_limits_add_custom_quota" tag state:
-/// (members) Set custom member space limit.
+/// (members) Set custom member space limit
 ///
 /// @param memberSpaceLimitsAddCustomQuota (members) Set custom member space
-/// limit.
+/// limit
 ///
 /// @return An initialized instance.
 ///
@@ -3823,10 +3849,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_change_custom_quota".
 ///
 /// Description of the "member_space_limits_change_custom_quota" tag state:
-/// (members) Changed custom member space limit.
+/// (members) Changed custom member space limit
 ///
 /// @param memberSpaceLimitsChangeCustomQuota (members) Changed custom member
-/// space limit.
+/// space limit
 ///
 /// @return An initialized instance.
 ///
@@ -3838,12 +3864,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_change_status".
 ///
 /// Description of the "member_space_limits_change_status" tag state: (members)
-/// Changed the status with respect to whether the team member is under or over
-/// storage quota specified by policy.
+/// Changed space limit status
 ///
-/// @param memberSpaceLimitsChangeStatus (members) Changed the status with
-/// respect to whether the team member is under or over storage quota specified
-/// by policy.
+/// @param memberSpaceLimitsChangeStatus (members) Changed space limit status
 ///
 /// @return An initialized instance.
 ///
@@ -3855,10 +3878,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_remove_custom_quota".
 ///
 /// Description of the "member_space_limits_remove_custom_quota" tag state:
-/// (members) Removed custom member space limit.
+/// (members) Removed custom member space limit
 ///
 /// @param memberSpaceLimitsRemoveCustomQuota (members) Removed custom member
-/// space limit.
+/// space limit
 ///
 /// @return An initialized instance.
 ///
@@ -3868,11 +3891,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "member_suggest".
 ///
-/// Description of the "member_suggest" tag state: (members) Suggested a new
-/// team member to be added to the team.
+/// Description of the "member_suggest" tag state: (members) Suggested person to
+/// add to team
 ///
-/// @param memberSuggest (members) Suggested a new team member to be added to
-/// the team.
+/// @param memberSuggest (members) Suggested person to add to team
 ///
 /// @return An initialized instance.
 ///
@@ -3883,10 +3905,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_transfer_account_contents".
 ///
 /// Description of the "member_transfer_account_contents" tag state: (members)
-/// Transferred contents of a removed team member account to another member.
+/// Transferred contents of deleted member account to another member
 ///
-/// @param memberTransferAccountContents (members) Transferred contents of a
-/// removed team member account to another member.
+/// @param memberTransferAccountContents (members) Transferred contents of
+/// deleted member account to another member
 ///
 /// @return An initialized instance.
 ///
@@ -3896,11 +3918,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_content_add_member".
 ///
-/// Description of the "paper_content_add_member" tag state: (paper) Added users
-/// to the membership of a Paper doc or folder.
+/// Description of the "paper_content_add_member" tag state: (paper) Added team
+/// member to Paper doc/folder
 ///
-/// @param paperContentAddMember (paper) Added users to the membership of a
-/// Paper doc or folder.
+/// @param paperContentAddMember (paper) Added team member to Paper doc/folder
 ///
 /// @return An initialized instance.
 ///
@@ -3910,10 +3931,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_content_add_to_folder".
 ///
 /// Description of the "paper_content_add_to_folder" tag state: (paper) Added
-/// Paper doc or folder to a folder.
+/// Paper doc/folder to folder
 ///
-/// @param paperContentAddToFolder (paper) Added Paper doc or folder to a
-/// folder.
+/// @param paperContentAddToFolder (paper) Added Paper doc/folder to folder
 ///
 /// @return An initialized instance.
 ///
@@ -3923,9 +3943,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_content_archive".
 ///
 /// Description of the "paper_content_archive" tag state: (paper) Archived Paper
-/// doc or folder.
+/// doc/folder
 ///
-/// @param paperContentArchive (paper) Archived Paper doc or folder.
+/// @param paperContentArchive (paper) Archived Paper doc/folder
 ///
 /// @return An initialized instance.
 ///
@@ -3934,10 +3954,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_content_create".
 ///
-/// Description of the "paper_content_create" tag state: (paper) Created a Paper
-/// doc or folder.
+/// Description of the "paper_content_create" tag state: (paper) Created Paper
+/// doc/folder
 ///
-/// @param paperContentCreate (paper) Created a Paper doc or folder.
+/// @param paperContentCreate (paper) Created Paper doc/folder
 ///
 /// @return An initialized instance.
 ///
@@ -3948,10 +3968,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "paper_content_permanently_delete".
 ///
 /// Description of the "paper_content_permanently_delete" tag state: (paper)
-/// Permanently deleted a Paper doc or folder.
+/// Permanently deleted Paper doc/folder
 ///
-/// @param paperContentPermanentlyDelete (paper) Permanently deleted a Paper doc
-/// or folder.
+/// @param paperContentPermanentlyDelete (paper) Permanently deleted Paper
+/// doc/folder
 ///
 /// @return An initialized instance.
 ///
@@ -3963,10 +3983,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "paper_content_remove_from_folder".
 ///
 /// Description of the "paper_content_remove_from_folder" tag state: (paper)
-/// Removed Paper doc or folder from a folder.
+/// Removed Paper doc/folder from folder
 ///
-/// @param paperContentRemoveFromFolder (paper) Removed Paper doc or folder from
-/// a folder.
+/// @param paperContentRemoveFromFolder (paper) Removed Paper doc/folder from
+/// folder
 ///
 /// @return An initialized instance.
 ///
@@ -3977,10 +3997,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_content_remove_member".
 ///
 /// Description of the "paper_content_remove_member" tag state: (paper) Removed
-/// a user from the membership of a Paper doc or folder.
+/// team member from Paper doc/folder
 ///
-/// @param paperContentRemoveMember (paper) Removed a user from the membership
-/// of a Paper doc or folder.
+/// @param paperContentRemoveMember (paper) Removed team member from Paper
+/// doc/folder
 ///
 /// @return An initialized instance.
 ///
@@ -3990,9 +4010,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_content_rename".
 ///
 /// Description of the "paper_content_rename" tag state: (paper) Renamed Paper
-/// doc or folder.
+/// doc/folder
 ///
-/// @param paperContentRename (paper) Renamed Paper doc or folder.
+/// @param paperContentRename (paper) Renamed Paper doc/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4001,10 +4021,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_content_restore".
 ///
-/// Description of the "paper_content_restore" tag state: (paper) Restored an
-/// archived Paper doc or folder.
+/// Description of the "paper_content_restore" tag state: (paper) Restored
+/// archived Paper doc/folder
 ///
-/// @param paperContentRestore (paper) Restored an archived Paper doc or folder.
+/// @param paperContentRestore (paper) Restored archived Paper doc/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4013,10 +4033,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_add_comment".
 ///
-/// Description of the "paper_doc_add_comment" tag state: (paper) Added a Paper
-/// doc comment.
+/// Description of the "paper_doc_add_comment" tag state: (paper) Added Paper
+/// doc comment
 ///
-/// @param paperDocAddComment (paper) Added a Paper doc comment.
+/// @param paperDocAddComment (paper) Added Paper doc comment
 ///
 /// @return An initialized instance.
 ///
@@ -4026,10 +4046,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_doc_change_member_role".
 ///
 /// Description of the "paper_doc_change_member_role" tag state: (paper) Changed
-/// the access type of a Paper doc member.
+/// team member permissions for Paper doc
 ///
-/// @param paperDocChangeMemberRole (paper) Changed the access type of a Paper
-/// doc member.
+/// @param paperDocChangeMemberRole (paper) Changed team member permissions for
+/// Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4039,10 +4059,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_doc_change_sharing_policy".
 ///
 /// Description of the "paper_doc_change_sharing_policy" tag state: (paper)
-/// Changed the sharing policy for Paper doc.
+/// Changed sharing setting for Paper doc
 ///
-/// @param paperDocChangeSharingPolicy (paper) Changed the sharing policy for
-/// Paper doc.
+/// @param paperDocChangeSharingPolicy (paper) Changed sharing setting for Paper
+/// doc
 ///
 /// @return An initialized instance.
 ///
@@ -4053,10 +4073,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_doc_change_subscription".
 ///
 /// Description of the "paper_doc_change_subscription" tag state: (paper)
-/// Followed or unfollowed a Paper doc.
+/// Followed/unfollowed Paper doc
 ///
-/// @param paperDocChangeSubscription (paper) Followed or unfollowed a Paper
-/// doc.
+/// @param paperDocChangeSubscription (paper) Followed/unfollowed Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4066,13 +4085,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_deleted".
 ///
-/// Description of the "paper_doc_deleted" tag state: (paper) Paper doc
-/// archived. This event is deprecated and will not be logged going forward as
-/// the associated product functionality no longer exists.
+/// Description of the "paper_doc_deleted" tag state: (paper) Archived Paper doc
+/// (deprecated, no longer logged)
 ///
-/// @param paperDocDeleted (paper) Paper doc archived. This event is deprecated
-/// and will not be logged going forward as the associated product functionality
-/// no longer exists.
+/// @param paperDocDeleted (paper) Archived Paper doc (deprecated, no longer
+/// logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4081,10 +4098,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_delete_comment".
 ///
-/// Description of the "paper_doc_delete_comment" tag state: (paper) Deleted a
-/// Paper doc comment.
+/// Description of the "paper_doc_delete_comment" tag state: (paper) Deleted
+/// Paper doc comment
 ///
-/// @param paperDocDeleteComment (paper) Deleted a Paper doc comment.
+/// @param paperDocDeleteComment (paper) Deleted Paper doc comment
 ///
 /// @return An initialized instance.
 ///
@@ -4093,11 +4110,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_download".
 ///
-/// Description of the "paper_doc_download" tag state: (paper) Downloaded a
-/// Paper doc in a particular output format.
+/// Description of the "paper_doc_download" tag state: (paper) Downloaded Paper
+/// doc in specific format
 ///
-/// @param paperDocDownload (paper) Downloaded a Paper doc in a particular
-/// output format.
+/// @param paperDocDownload (paper) Downloaded Paper doc in specific format
 ///
 /// @return An initialized instance.
 ///
@@ -4106,9 +4122,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_edit".
 ///
-/// Description of the "paper_doc_edit" tag state: (paper) Edited a Paper doc.
+/// Description of the "paper_doc_edit" tag state: (paper) Edited Paper doc
 ///
-/// @param paperDocEdit (paper) Edited a Paper doc.
+/// @param paperDocEdit (paper) Edited Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4117,10 +4133,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_edit_comment".
 ///
-/// Description of the "paper_doc_edit_comment" tag state: (paper) Edited a
-/// Paper doc comment.
+/// Description of the "paper_doc_edit_comment" tag state: (paper) Edited Paper
+/// doc comment
 ///
-/// @param paperDocEditComment (paper) Edited a Paper doc comment.
+/// @param paperDocEditComment (paper) Edited Paper doc comment
 ///
 /// @return An initialized instance.
 ///
@@ -4129,12 +4145,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_followed".
 ///
-/// Description of the "paper_doc_followed" tag state: (paper) Followed a Paper
-/// doc. This event is replaced by paper_doc_change_subscription and will not be
-/// logged going forward.
+/// Description of the "paper_doc_followed" tag state: (paper) Followed Paper
+/// doc (deprecated, replaced by 'Followed/unfollowed Paper doc')
 ///
-/// @param paperDocFollowed (paper) Followed a Paper doc. This event is replaced
-/// by paper_doc_change_subscription and will not be logged going forward.
+/// @param paperDocFollowed (paper) Followed Paper doc (deprecated, replaced by
+/// 'Followed/unfollowed Paper doc')
 ///
 /// @return An initialized instance.
 ///
@@ -4143,10 +4158,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_mention".
 ///
-/// Description of the "paper_doc_mention" tag state: (paper) Mentioned a member
-/// in a Paper doc.
+/// Description of the "paper_doc_mention" tag state: (paper) Mentioned team
+/// member in Paper doc
 ///
-/// @param paperDocMention (paper) Mentioned a member in a Paper doc.
+/// @param paperDocMention (paper) Mentioned team member in Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4156,10 +4171,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_doc_request_access".
 ///
 /// Description of the "paper_doc_request_access" tag state: (paper) Requested
-/// to be a member on a Paper doc.
+/// access to Paper doc
 ///
-/// @param paperDocRequestAccess (paper) Requested to be a member on a Paper
-/// doc.
+/// @param paperDocRequestAccess (paper) Requested access to Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4168,10 +4182,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_resolve_comment".
 ///
-/// Description of the "paper_doc_resolve_comment" tag state: (paper) Paper doc
-/// comment resolved.
+/// Description of the "paper_doc_resolve_comment" tag state: (paper) Resolved
+/// Paper doc comment
 ///
-/// @param paperDocResolveComment (paper) Paper doc comment resolved.
+/// @param paperDocResolveComment (paper) Resolved Paper doc comment
 ///
 /// @return An initialized instance.
 ///
@@ -4180,10 +4194,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_revert".
 ///
-/// Description of the "paper_doc_revert" tag state: (paper) Restored a Paper
-/// doc to previous revision.
+/// Description of the "paper_doc_revert" tag state: (paper) Restored Paper doc
+/// to previous version
 ///
-/// @param paperDocRevert (paper) Restored a Paper doc to previous revision.
+/// @param paperDocRevert (paper) Restored Paper doc to previous version
 ///
 /// @return An initialized instance.
 ///
@@ -4192,10 +4206,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_slack_share".
 ///
-/// Description of the "paper_doc_slack_share" tag state: (paper) Paper doc link
-/// shared via slack.
+/// Description of the "paper_doc_slack_share" tag state: (paper) Shared Paper
+/// doc via Slack
 ///
-/// @param paperDocSlackShare (paper) Paper doc link shared via slack.
+/// @param paperDocSlackShare (paper) Shared Paper doc via Slack
 ///
 /// @return An initialized instance.
 ///
@@ -4204,13 +4218,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_team_invite".
 ///
-/// Description of the "paper_doc_team_invite" tag state: (paper) Paper doc
-/// shared with team member. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// Description of the "paper_doc_team_invite" tag state: (paper) Shared Paper
+/// doc with team member (deprecated, no longer logged)
 ///
-/// @param paperDocTeamInvite (paper) Paper doc shared with team member. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param paperDocTeamInvite (paper) Shared Paper doc with team member
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4219,9 +4231,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_trashed".
 ///
-/// Description of the "paper_doc_trashed" tag state: (paper) Paper doc trashed.
+/// Description of the "paper_doc_trashed" tag state: (paper) Deleted Paper doc
 ///
-/// @param paperDocTrashed (paper) Paper doc trashed.
+/// @param paperDocTrashed (paper) Deleted Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4231,9 +4243,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_doc_unresolve_comment".
 ///
 /// Description of the "paper_doc_unresolve_comment" tag state: (paper)
-/// Unresolved a Paper doc comment.
+/// Unresolved Paper doc comment
 ///
-/// @param paperDocUnresolveComment (paper) Unresolved a Paper doc comment.
+/// @param paperDocUnresolveComment (paper) Unresolved Paper doc comment
 ///
 /// @return An initialized instance.
 ///
@@ -4242,10 +4254,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_untrashed".
 ///
-/// Description of the "paper_doc_untrashed" tag state: (paper) Paper doc
-/// untrashed.
+/// Description of the "paper_doc_untrashed" tag state: (paper) Restored Paper
+/// doc
 ///
-/// @param paperDocUntrashed (paper) Paper doc untrashed.
+/// @param paperDocUntrashed (paper) Restored Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4254,9 +4266,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_doc_view".
 ///
-/// Description of the "paper_doc_view" tag state: (paper) Viewed Paper doc.
+/// Description of the "paper_doc_view" tag state: (paper) Viewed Paper doc
 ///
-/// @param paperDocView (paper) Viewed Paper doc.
+/// @param paperDocView (paper) Viewed Paper doc
 ///
 /// @return An initialized instance.
 ///
@@ -4265,14 +4277,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_external_view_allow".
 ///
-/// Description of the "paper_external_view_allow" tag state: (paper) Paper
-/// external sharing policy changed: anyone. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// Description of the "paper_external_view_allow" tag state: (paper) Changed
+/// Paper external sharing setting to anyone (deprecated, no longer logged)
 ///
-/// @param paperExternalViewAllow (paper) Paper external sharing policy changed:
-/// anyone. This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists.
+/// @param paperExternalViewAllow (paper) Changed Paper external sharing setting
+/// to anyone (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4283,13 +4292,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "paper_external_view_default_team".
 ///
 /// Description of the "paper_external_view_default_team" tag state: (paper)
-/// Paper external sharing policy changed: default team. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// Changed Paper external sharing setting to default team (deprecated, no
+/// longer logged)
 ///
-/// @param paperExternalViewDefaultTeam (paper) Paper external sharing policy
-/// changed: default team. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// @param paperExternalViewDefaultTeam (paper) Changed Paper external sharing
+/// setting to default team (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4299,14 +4306,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_external_view_forbid".
 ///
-/// Description of the "paper_external_view_forbid" tag state: (paper) Paper
-/// external sharing policy changed: team-only. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists.
+/// Description of the "paper_external_view_forbid" tag state: (paper) Changed
+/// Paper external sharing setting to team-only (deprecated, no longer logged)
 ///
-/// @param paperExternalViewForbid (paper) Paper external sharing policy
-/// changed: team-only. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// @param paperExternalViewForbid (paper) Changed Paper external sharing
+/// setting to team-only (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4317,10 +4321,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "paper_folder_change_subscription".
 ///
 /// Description of the "paper_folder_change_subscription" tag state: (paper)
-/// Followed or unfollowed a Paper folder.
+/// Followed/unfollowed Paper folder
 ///
-/// @param paperFolderChangeSubscription (paper) Followed or unfollowed a Paper
-/// folder.
+/// @param paperFolderChangeSubscription (paper) Followed/unfollowed Paper
+/// folder
 ///
 /// @return An initialized instance.
 ///
@@ -4330,13 +4334,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_folder_deleted".
 ///
-/// Description of the "paper_folder_deleted" tag state: (paper) Paper folder
-/// archived. This event is deprecated and will not be logged going forward as
-/// the associated product functionality no longer exists.
+/// Description of the "paper_folder_deleted" tag state: (paper) Archived Paper
+/// folder (deprecated, no longer logged)
 ///
-/// @param paperFolderDeleted (paper) Paper folder archived. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param paperFolderDeleted (paper) Archived Paper folder (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4345,13 +4347,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_folder_followed".
 ///
-/// Description of the "paper_folder_followed" tag state: (paper) Followed a
-/// Paper folder. This event is replaced by paper_folder_change_subscription and
-/// will not be logged going forward.
+/// Description of the "paper_folder_followed" tag state: (paper) Followed Paper
+/// folder (deprecated, replaced by 'Followed/unfollowed Paper folder')
 ///
-/// @param paperFolderFollowed (paper) Followed a Paper folder. This event is
-/// replaced by paper_folder_change_subscription and will not be logged going
-/// forward.
+/// @param paperFolderFollowed (paper) Followed Paper folder (deprecated,
+/// replaced by 'Followed/unfollowed Paper folder')
 ///
 /// @return An initialized instance.
 ///
@@ -4360,14 +4360,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_folder_team_invite".
 ///
-/// Description of the "paper_folder_team_invite" tag state: (paper) Paper
-/// folder shared with team member. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists.
+/// Description of the "paper_folder_team_invite" tag state: (paper) Shared
+/// Paper folder with member (deprecated, no longer logged)
 ///
-/// @param paperFolderTeamInvite (paper) Paper folder shared with team member.
-/// This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists.
+/// @param paperFolderTeamInvite (paper) Shared Paper folder with member
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4376,10 +4373,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "password_change".
 ///
-/// Description of the "password_change" tag state: (passwords) Changed
-/// password.
+/// Description of the "password_change" tag state: (passwords) Changed password
 ///
-/// @param passwordChange (passwords) Changed password.
+/// @param passwordChange (passwords) Changed password
 ///
 /// @return An initialized instance.
 ///
@@ -4388,9 +4384,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "password_reset".
 ///
-/// Description of the "password_reset" tag state: (passwords) Reset password.
+/// Description of the "password_reset" tag state: (passwords) Reset password
 ///
-/// @param passwordReset (passwords) Reset password.
+/// @param passwordReset (passwords) Reset password
 ///
 /// @return An initialized instance.
 ///
@@ -4400,9 +4396,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "password_reset_all".
 ///
 /// Description of the "password_reset_all" tag state: (passwords) Reset all
-/// team member passwords.
+/// team member passwords
 ///
-/// @param passwordResetAll (passwords) Reset all team member passwords.
+/// @param passwordResetAll (passwords) Reset all team member passwords
 ///
 /// @return An initialized instance.
 ///
@@ -4411,11 +4407,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "emm_create_exceptions_report".
 ///
-/// Description of the "emm_create_exceptions_report" tag state: (reports) EMM
-/// excluded users report created.
+/// Description of the "emm_create_exceptions_report" tag state: (reports)
+/// Created EMM-excluded users report
 ///
-/// @param emmCreateExceptionsReport (reports) EMM excluded users report
-/// created.
+/// @param emmCreateExceptionsReport (reports) Created EMM-excluded users report
 ///
 /// @return An initialized instance.
 ///
@@ -4424,10 +4419,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "emm_create_usage_report".
 ///
-/// Description of the "emm_create_usage_report" tag state: (reports) EMM mobile
-/// app usage report created.
+/// Description of the "emm_create_usage_report" tag state: (reports) Created
+/// EMM mobile app usage report
 ///
-/// @param emmCreateUsageReport (reports) EMM mobile app usage report created.
+/// @param emmCreateUsageReport (reports) Created EMM mobile app usage report
 ///
 /// @return An initialized instance.
 ///
@@ -4436,10 +4431,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "export_members_report".
 ///
-/// Description of the "export_members_report" tag state: (reports) Member data
-/// report created.
+/// Description of the "export_members_report" tag state: (reports) Created
+/// member data report
 ///
-/// @param exportMembersReport (reports) Member data report created.
+/// @param exportMembersReport (reports) Created member data report
 ///
 /// @return An initialized instance.
 ///
@@ -4449,10 +4444,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_admin_export_start".
 ///
 /// Description of the "paper_admin_export_start" tag state: (reports) Exported
-/// all Paper documents in the team.
+/// all team Paper docs
 ///
-/// @param paperAdminExportStart (reports) Exported all Paper documents in the
-/// team.
+/// @param paperAdminExportStart (reports) Exported all team Paper docs
 ///
 /// @return An initialized instance.
 ///
@@ -4463,10 +4457,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "smart_sync_create_admin_privilege_report".
 ///
 /// Description of the "smart_sync_create_admin_privilege_report" tag state:
-/// (reports) Smart Sync non-admin devices report created.
+/// (reports) Created Smart Sync non-admin devices report
 ///
-/// @param smartSyncCreateAdminPrivilegeReport (reports) Smart Sync non-admin
-/// devices report created.
+/// @param smartSyncCreateAdminPrivilegeReport (reports) Created Smart Sync
+/// non-admin devices report
 ///
 /// @return An initialized instance.
 ///
@@ -4477,9 +4471,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_activity_create_report".
 ///
 /// Description of the "team_activity_create_report" tag state: (reports)
-/// Created a team activity report.
+/// Created team activity report
 ///
-/// @param teamActivityCreateReport (reports) Created a team activity report.
+/// @param teamActivityCreateReport (reports) Created team activity report
 ///
 /// @return An initialized instance.
 ///
@@ -4488,9 +4482,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "collection_share".
 ///
-/// Description of the "collection_share" tag state: (sharing) Shared an album.
+/// Description of the "collection_share" tag state: (sharing) Shared album
 ///
-/// @param collectionShare (sharing) Shared an album.
+/// @param collectionShare (sharing) Shared album
 ///
 /// @return An initialized instance.
 ///
@@ -4499,14 +4493,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "note_acl_invite_only".
 ///
-/// Description of the "note_acl_invite_only" tag state: (sharing) Changed a
-/// Paper document to be invite-only. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists.
+/// Description of the "note_acl_invite_only" tag state: (sharing) Changed Paper
+/// doc to invite-only (deprecated, no longer logged)
 ///
-/// @param noteAclInviteOnly (sharing) Changed a Paper document to be
-/// invite-only. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// @param noteAclInviteOnly (sharing) Changed Paper doc to invite-only
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4515,14 +4506,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "note_acl_link".
 ///
-/// Description of the "note_acl_link" tag state: (sharing) Changed a Paper
-/// document to be link accessible. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists.
+/// Description of the "note_acl_link" tag state: (sharing) Changed Paper doc to
+/// link-accessible (deprecated, no longer logged)
 ///
-/// @param noteAclLink (sharing) Changed a Paper document to be link accessible.
-/// This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists.
+/// @param noteAclLink (sharing) Changed Paper doc to link-accessible
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4531,14 +4519,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "note_acl_team_link".
 ///
-/// Description of the "note_acl_team_link" tag state: (sharing) Changed a Paper
-/// document to be link accessible for the team. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists.
+/// Description of the "note_acl_team_link" tag state: (sharing) Changed Paper
+/// doc to link-accessible for team (deprecated, no longer logged)
 ///
-/// @param noteAclTeamLink (sharing) Changed a Paper document to be link
-/// accessible for the team. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// @param noteAclTeamLink (sharing) Changed Paper doc to link-accessible for
+/// team (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4547,13 +4532,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "note_shared".
 ///
-/// Description of the "note_shared" tag state: (sharing) Shared a Paper doc.
-/// This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists.
+/// Description of the "note_shared" tag state: (sharing) Shared Paper doc
+/// (deprecated, no longer logged)
 ///
-/// @param noteShared (sharing) Shared a Paper doc. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists.
+/// @param noteShared (sharing) Shared Paper doc (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4562,13 +4544,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "note_share_receive".
 ///
-/// Description of the "note_share_receive" tag state: (sharing) Shared Paper
-/// document received. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// Description of the "note_share_receive" tag state: (sharing) Shared received
+/// Paper doc (deprecated, no longer logged)
 ///
-/// @param noteShareReceive (sharing) Shared Paper document received. This event
-/// is deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param noteShareReceive (sharing) Shared received Paper doc (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4577,13 +4557,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "open_note_shared".
 ///
-/// Description of the "open_note_shared" tag state: (sharing) Opened a shared
-/// Paper doc. This event is deprecated and will not be logged going forward as
-/// the associated product functionality no longer exists.
+/// Description of the "open_note_shared" tag state: (sharing) Opened shared
+/// Paper doc (deprecated, no longer logged)
 ///
-/// @param openNoteShared (sharing) Opened a shared Paper doc. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param openNoteShared (sharing) Opened shared Paper doc (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4592,13 +4570,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sf_add_group".
 ///
-/// Description of the "sf_add_group" tag state: (sharing) Added the team to a
-/// shared folder. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// Description of the "sf_add_group" tag state: (sharing) Added team to shared
+/// folder (deprecated, no longer logged)
 ///
-/// @param sfAddGroup (sharing) Added the team to a shared folder. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param sfAddGroup (sharing) Added team to shared folder (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4609,14 +4585,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "sf_allow_non_members_to_view_shared_links".
 ///
 /// Description of the "sf_allow_non_members_to_view_shared_links" tag state:
-/// (sharing) Allowed non collaborators to view links to files in a shared
-/// folder. This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists.
+/// (sharing) Allowed non-collaborators to view links to files in shared folder
+/// (deprecated, no longer logged)
 ///
-/// @param sfAllowNonMembersToViewSharedLinks (sharing) Allowed non
-/// collaborators to view links to files in a shared folder. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param sfAllowNonMembersToViewSharedLinks (sharing) Allowed
+/// non-collaborators to view links to files in shared folder (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4626,15 +4600,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sf_external_invite_warn".
 ///
-/// Description of the "sf_external_invite_warn" tag state: (sharing) Admin
-/// settings: team members see a warning before sharing folders outside the team
-/// (DEPRECATED FEATURE). This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// Description of the "sf_external_invite_warn" tag state: (sharing) Set team
+/// members to see warning before sharing folders outside team (deprecated, no
+/// longer logged)
 ///
-/// @param sfExternalInviteWarn (sharing) Admin settings: team members see a
-/// warning before sharing folders outside the team (DEPRECATED FEATURE). This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param sfExternalInviteWarn (sharing) Set team members to see warning before
+/// sharing folders outside team (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4644,12 +4615,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sf_fb_invite".
 ///
 /// Description of the "sf_fb_invite" tag state: (sharing) Invited Facebook
-/// users to a shared folder. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// users to shared folder (deprecated, no longer logged)
 ///
-/// @param sfFbInvite (sharing) Invited Facebook users to a shared folder. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param sfFbInvite (sharing) Invited Facebook users to shared folder
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4658,14 +4627,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sf_fb_invite_change_role".
 ///
-/// Description of the "sf_fb_invite_change_role" tag state: (sharing) Changed a
-/// Facebook user's role in a shared folder. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// Description of the "sf_fb_invite_change_role" tag state: (sharing) Changed
+/// Facebook user's role in shared folder (deprecated, no longer logged)
 ///
-/// @param sfFbInviteChangeRole (sharing) Changed a Facebook user's role in a
-/// shared folder. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// @param sfFbInviteChangeRole (sharing) Changed Facebook user's role in shared
+/// folder (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4674,14 +4640,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sf_fb_uninvite".
 ///
-/// Description of the "sf_fb_uninvite" tag state: (sharing) Uninvited a
-/// Facebook user from a shared folder. This event is deprecated and will not be
-/// logged going forward as the associated product functionality no longer
-/// exists.
+/// Description of the "sf_fb_uninvite" tag state: (sharing) Uninvited Facebook
+/// user from shared folder (deprecated, no longer logged)
 ///
-/// @param sfFbUninvite (sharing) Uninvited a Facebook user from a shared
-/// folder. This event is deprecated and will not be logged going forward as the
-/// associated product functionality no longer exists.
+/// @param sfFbUninvite (sharing) Uninvited Facebook user from shared folder
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4690,13 +4653,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sf_invite_group".
 ///
-/// Description of the "sf_invite_group" tag state: (sharing) Invited a group to
-/// a shared folder. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// Description of the "sf_invite_group" tag state: (sharing) Invited group to
+/// shared folder (deprecated, no longer logged)
 ///
-/// @param sfInviteGroup (sharing) Invited a group to a shared folder. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param sfInviteGroup (sharing) Invited group to shared folder (deprecated,
+/// no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4706,12 +4667,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sf_team_grant_access".
 ///
 /// Description of the "sf_team_grant_access" tag state: (sharing) Granted
-/// access to a shared folder. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// access to shared folder (deprecated, no longer logged)
 ///
-/// @param sfTeamGrantAccess (sharing) Granted access to a shared folder. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param sfTeamGrantAccess (sharing) Granted access to shared folder
+/// (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4721,12 +4680,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sf_team_invite".
 ///
 /// Description of the "sf_team_invite" tag state: (sharing) Invited team
-/// members to a shared folder. This event is replaced by
-/// shared_content_add_invitees and will not be logged going forward.
+/// members to shared folder (deprecated, replaced by 'Invited user to Dropbox
+/// and added them to shared file/folder')
 ///
-/// @param sfTeamInvite (sharing) Invited team members to a shared folder. This
-/// event is replaced by shared_content_add_invitees and will not be logged
-/// going forward.
+/// @param sfTeamInvite (sharing) Invited team members to shared folder
+/// (deprecated, replaced by 'Invited user to Dropbox and added them to shared
+/// file/folder')
 ///
 /// @return An initialized instance.
 ///
@@ -4736,13 +4695,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sf_team_invite_change_role".
 ///
 /// Description of the "sf_team_invite_change_role" tag state: (sharing) Changed
-/// a team member's role in a shared folder. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// team member's role in shared folder (deprecated, no longer logged)
 ///
-/// @param sfTeamInviteChangeRole (sharing) Changed a team member's role in a
-/// shared folder. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// @param sfTeamInviteChangeRole (sharing) Changed team member's role in shared
+/// folder (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4751,13 +4707,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sf_team_join".
 ///
-/// Description of the "sf_team_join" tag state: (sharing) Joined a team
-/// member's shared folder. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// Description of the "sf_team_join" tag state: (sharing) Joined team member's
+/// shared folder (deprecated, no longer logged)
 ///
-/// @param sfTeamJoin (sharing) Joined a team member's shared folder. This event
-/// is deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param sfTeamJoin (sharing) Joined team member's shared folder (deprecated,
+/// no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4767,13 +4721,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sf_team_join_from_oob_link".
 ///
 /// Description of the "sf_team_join_from_oob_link" tag state: (sharing) Joined
-/// a team member's shared folder from a link. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// team member's shared folder from link (deprecated, no longer logged)
 ///
-/// @param sfTeamJoinFromOobLink (sharing) Joined a team member's shared folder
-/// from a link. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// @param sfTeamJoinFromOobLink (sharing) Joined team member's shared folder
+/// from link (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -4782,13 +4733,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sf_team_uninvite".
 ///
-/// Description of the "sf_team_uninvite" tag state: (sharing) Unshared a folder
-/// with a team member. This event is replaced by shared_content_remove_invitees
-/// and will not be logged going forward.
+/// Description of the "sf_team_uninvite" tag state: (sharing) Unshared folder
+/// with team member (deprecated, replaced by 'Removed invitee from shared
+/// file/folder before invite accepted')
 ///
-/// @param sfTeamUninvite (sharing) Unshared a folder with a team member. This
-/// event is replaced by shared_content_remove_invitees and will not be logged
-/// going forward.
+/// @param sfTeamUninvite (sharing) Unshared folder with team member
+/// (deprecated, replaced by 'Removed invitee from shared file/folder before
+/// invite accepted')
 ///
 /// @return An initialized instance.
 ///
@@ -4797,11 +4748,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_content_add_invitees".
 ///
-/// Description of the "shared_content_add_invitees" tag state: (sharing) Sent
-/// an email invitation to the membership of a shared file or folder.
+/// Description of the "shared_content_add_invitees" tag state: (sharing)
+/// Invited user to Dropbox and added them to shared file/folder
 ///
-/// @param sharedContentAddInvitees (sharing) Sent an email invitation to the
-/// membership of a shared file or folder.
+/// @param sharedContentAddInvitees (sharing) Invited user to Dropbox and added
+/// them to shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4811,10 +4762,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_content_add_link_expiry".
 ///
 /// Description of the "shared_content_add_link_expiry" tag state: (sharing)
-/// Added an expiry to the link for the shared file or folder.
+/// Added expiration date to link for shared file/folder
 ///
-/// @param sharedContentAddLinkExpiry (sharing) Added an expiry to the link for
-/// the shared file or folder.
+/// @param sharedContentAddLinkExpiry (sharing) Added expiration date to link
+/// for shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4826,10 +4777,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_add_link_password".
 ///
 /// Description of the "shared_content_add_link_password" tag state: (sharing)
-/// Added a password to the link for the shared file or folder.
+/// Added password to link for shared file/folder
 ///
-/// @param sharedContentAddLinkPassword (sharing) Added a password to the link
-/// for the shared file or folder.
+/// @param sharedContentAddLinkPassword (sharing) Added password to link for
+/// shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4840,10 +4791,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_content_add_member".
 ///
 /// Description of the "shared_content_add_member" tag state: (sharing) Added
-/// users and/or groups to the membership of a shared file or folder.
+/// users and/or groups to shared file/folder
 ///
-/// @param sharedContentAddMember (sharing) Added users and/or groups to the
-/// membership of a shared file or folder.
+/// @param sharedContentAddMember (sharing) Added users and/or groups to shared
+/// file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4854,10 +4805,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_change_downloads_policy".
 ///
 /// Description of the "shared_content_change_downloads_policy" tag state:
-/// (sharing) Changed whether members can download the shared file or folder.
+/// (sharing) Changed whether members can download shared file/folder
 ///
 /// @param sharedContentChangeDownloadsPolicy (sharing) Changed whether members
-/// can download the shared file or folder.
+/// can download shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4869,11 +4820,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_change_invitee_role".
 ///
 /// Description of the "shared_content_change_invitee_role" tag state: (sharing)
-/// Changed the access type of an invitee to a shared file or folder before the
-/// invitation was claimed.
+/// Changed access type of invitee to shared file/folder before invite accepted
 ///
-/// @param sharedContentChangeInviteeRole (sharing) Changed the access type of
-/// an invitee to a shared file or folder before the invitation was claimed.
+/// @param sharedContentChangeInviteeRole (sharing) Changed access type of
+/// invitee to shared file/folder before invite accepted
 ///
 /// @return An initialized instance.
 ///
@@ -4885,10 +4835,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_change_link_audience".
 ///
 /// Description of the "shared_content_change_link_audience" tag state:
-/// (sharing) Changed the audience of the link for a shared file or folder.
+/// (sharing) Changed link audience of shared file/folder
 ///
-/// @param sharedContentChangeLinkAudience (sharing) Changed the audience of the
-/// link for a shared file or folder.
+/// @param sharedContentChangeLinkAudience (sharing) Changed link audience of
+/// shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4900,10 +4850,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_change_link_expiry".
 ///
 /// Description of the "shared_content_change_link_expiry" tag state: (sharing)
-/// Changed the expiry of the link for the shared file or folder.
+/// Changed link expiration of shared file/folder
 ///
-/// @param sharedContentChangeLinkExpiry (sharing) Changed the expiry of the
-/// link for the shared file or folder.
+/// @param sharedContentChangeLinkExpiry (sharing) Changed link expiration of
+/// shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4915,10 +4865,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_change_link_password".
 ///
 /// Description of the "shared_content_change_link_password" tag state:
-/// (sharing) Changed the password on the link for the shared file or folder.
+/// (sharing) Changed link password of shared file/folder
 ///
-/// @param sharedContentChangeLinkPassword (sharing) Changed the password on the
-/// link for the shared file or folder.
+/// @param sharedContentChangeLinkPassword (sharing) Changed link password of
+/// shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4930,10 +4880,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_change_member_role".
 ///
 /// Description of the "shared_content_change_member_role" tag state: (sharing)
-/// Changed the access type of a shared file or folder member.
+/// Changed access type of shared file/folder member
 ///
-/// @param sharedContentChangeMemberRole (sharing) Changed the access type of a
-/// shared file or folder member.
+/// @param sharedContentChangeMemberRole (sharing) Changed access type of shared
+/// file/folder member
 ///
 /// @return An initialized instance.
 ///
@@ -4945,11 +4895,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_change_viewer_info_policy".
 ///
 /// Description of the "shared_content_change_viewer_info_policy" tag state:
-/// (sharing) Changed whether members can see who viewed the shared file or
-/// folder.
+/// (sharing) Changed whether members can see who viewed shared file/folder
 ///
 /// @param sharedContentChangeViewerInfoPolicy (sharing) Changed whether members
-/// can see who viewed the shared file or folder.
+/// can see who viewed shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -4960,10 +4909,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_content_claim_invitation".
 ///
 /// Description of the "shared_content_claim_invitation" tag state: (sharing)
-/// Acquired membership on a shared file or folder by claiming an invitation.
+/// Acquired membership of shared file/folder by accepting invite
 ///
-/// @param sharedContentClaimInvitation (sharing) Acquired membership on a
-/// shared file or folder by claiming an invitation.
+/// @param sharedContentClaimInvitation (sharing) Acquired membership of shared
+/// file/folder by accepting invite
 ///
 /// @return An initialized instance.
 ///
@@ -4973,11 +4922,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_content_copy".
 ///
-/// Description of the "shared_content_copy" tag state: (sharing) Copied the
-/// shared file or folder to own Dropbox.
+/// Description of the "shared_content_copy" tag state: (sharing) Copied shared
+/// file/folder to own Dropbox
 ///
-/// @param sharedContentCopy (sharing) Copied the shared file or folder to own
-/// Dropbox.
+/// @param sharedContentCopy (sharing) Copied shared file/folder to own Dropbox
 ///
 /// @return An initialized instance.
 ///
@@ -4987,9 +4935,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_content_download".
 ///
 /// Description of the "shared_content_download" tag state: (sharing) Downloaded
-/// the shared file or folder.
+/// shared file/folder
 ///
-/// @param sharedContentDownload (sharing) Downloaded the shared file or folder.
+/// @param sharedContentDownload (sharing) Downloaded shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -5000,10 +4948,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_relinquish_membership".
 ///
 /// Description of the "shared_content_relinquish_membership" tag state:
-/// (sharing) Left the membership of a shared file or folder.
+/// (sharing) Left shared file/folder
 ///
-/// @param sharedContentRelinquishMembership (sharing) Left the membership of a
-/// shared file or folder.
+/// @param sharedContentRelinquishMembership (sharing) Left shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -5014,11 +4961,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_content_remove_invitees".
 ///
 /// Description of the "shared_content_remove_invitees" tag state: (sharing)
-/// Removed an invitee from the membership of a shared file or folder before it
-/// was claimed.
+/// Removed invitee from shared file/folder before invite accepted
 ///
-/// @param sharedContentRemoveInvitees (sharing) Removed an invitee from the
-/// membership of a shared file or folder before it was claimed.
+/// @param sharedContentRemoveInvitees (sharing) Removed invitee from shared
+/// file/folder before invite accepted
 ///
 /// @return An initialized instance.
 ///
@@ -5030,10 +4976,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_remove_link_expiry".
 ///
 /// Description of the "shared_content_remove_link_expiry" tag state: (sharing)
-/// Removed the expiry of the link for the shared file or folder.
+/// Removed link expiration date of shared file/folder
 ///
-/// @param sharedContentRemoveLinkExpiry (sharing) Removed the expiry of the
-/// link for the shared file or folder.
+/// @param sharedContentRemoveLinkExpiry (sharing) Removed link expiration date
+/// of shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -5045,10 +4991,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_content_remove_link_password".
 ///
 /// Description of the "shared_content_remove_link_password" tag state:
-/// (sharing) Removed the password on the link for the shared file or folder.
+/// (sharing) Removed link password of shared file/folder
 ///
-/// @param sharedContentRemoveLinkPassword (sharing) Removed the password on the
-/// link for the shared file or folder.
+/// @param sharedContentRemoveLinkPassword (sharing) Removed link password of
+/// shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -5059,10 +5005,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_content_remove_member".
 ///
 /// Description of the "shared_content_remove_member" tag state: (sharing)
-/// Removed a user or a group from the membership of a shared file or folder.
+/// Removed user/group from shared file/folder
 ///
-/// @param sharedContentRemoveMember (sharing) Removed a user or a group from
-/// the membership of a shared file or folder.
+/// @param sharedContentRemoveMember (sharing) Removed user/group from shared
+/// file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -5072,10 +5018,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_content_request_access".
 ///
 /// Description of the "shared_content_request_access" tag state: (sharing)
-/// Requested to be on the membership of a shared file or folder.
+/// Requested access to shared file/folder
 ///
-/// @param sharedContentRequestAccess (sharing) Requested to be on the
-/// membership of a shared file or folder.
+/// @param sharedContentRequestAccess (sharing) Requested access to shared
+/// file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -5085,11 +5031,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_content_unshare".
 ///
-/// Description of the "shared_content_unshare" tag state: (sharing) Unshared a
-/// shared file or folder by clearing its membership and turning off its link.
+/// Description of the "shared_content_unshare" tag state: (sharing) Unshared
+/// file/folder by clearing membership and turning off link
 ///
-/// @param sharedContentUnshare (sharing) Unshared a shared file or folder by
-/// clearing its membership and turning off its link.
+/// @param sharedContentUnshare (sharing) Unshared file/folder by clearing
+/// membership and turning off link
 ///
 /// @return An initialized instance.
 ///
@@ -5098,10 +5044,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_content_view".
 ///
-/// Description of the "shared_content_view" tag state: (sharing) Previewed the
-/// shared file or folder.
+/// Description of the "shared_content_view" tag state: (sharing) Previewed
+/// shared file/folder
 ///
-/// @param sharedContentView (sharing) Previewed the shared file or folder.
+/// @param sharedContentView (sharing) Previewed shared file/folder
 ///
 /// @return An initialized instance.
 ///
@@ -5112,10 +5058,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_folder_change_link_policy".
 ///
 /// Description of the "shared_folder_change_link_policy" tag state: (sharing)
-/// Changed who can access the shared folder via a link.
+/// Changed who can access shared folder via link
 ///
-/// @param sharedFolderChangeLinkPolicy (sharing) Changed who can access the
-/// shared folder via a link.
+/// @param sharedFolderChangeLinkPolicy (sharing) Changed who can access shared
+/// folder via link
 ///
 /// @return An initialized instance.
 ///
@@ -5127,11 +5073,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_folder_change_members_inheritance_policy".
 ///
 /// Description of the "shared_folder_change_members_inheritance_policy" tag
-/// state: (sharing) Specify if the shared folder inherits its members from the
-/// parent folder.
+/// state: (sharing) Changed whether shared folder inherits members from parent
+/// folder
 ///
-/// @param sharedFolderChangeMembersInheritancePolicy (sharing) Specify if the
-/// shared folder inherits its members from the parent folder.
+/// @param sharedFolderChangeMembersInheritancePolicy (sharing) Changed whether
+/// shared folder inherits members from parent folder
 ///
 /// @return An initialized instance.
 ///
@@ -5143,10 +5089,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_folder_change_members_management_policy".
 ///
 /// Description of the "shared_folder_change_members_management_policy" tag
-/// state: (sharing) Changed who can add or remove members of a shared folder.
+/// state: (sharing) Changed who can add/remove members of shared folder
 ///
 /// @param sharedFolderChangeMembersManagementPolicy (sharing) Changed who can
-/// add or remove members of a shared folder.
+/// add/remove members of shared folder
 ///
 /// @return An initialized instance.
 ///
@@ -5158,10 +5104,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_folder_change_members_policy".
 ///
 /// Description of the "shared_folder_change_members_policy" tag state:
-/// (sharing) Changed who can become a member of the shared folder.
+/// (sharing) Changed who can become member of shared folder
 ///
-/// @param sharedFolderChangeMembersPolicy (sharing) Changed who can become a
-/// member of the shared folder.
+/// @param sharedFolderChangeMembersPolicy (sharing) Changed who can become
+/// member of shared folder
 ///
 /// @return An initialized instance.
 ///
@@ -5171,10 +5117,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_folder_create".
 ///
-/// Description of the "shared_folder_create" tag state: (sharing) Created a
-/// shared folder.
+/// Description of the "shared_folder_create" tag state: (sharing) Created
+/// shared folder
 ///
-/// @param sharedFolderCreate (sharing) Created a shared folder.
+/// @param sharedFolderCreate (sharing) Created shared folder
 ///
 /// @return An initialized instance.
 ///
@@ -5185,10 +5131,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_folder_decline_invitation".
 ///
 /// Description of the "shared_folder_decline_invitation" tag state: (sharing)
-/// Declined a team member's invitation to a shared folder.
+/// Declined team member's invite to shared folder
 ///
-/// @param sharedFolderDeclineInvitation (sharing) Declined a team member's
-/// invitation to a shared folder.
+/// @param sharedFolderDeclineInvitation (sharing) Declined team member's invite
+/// to shared folder
 ///
 /// @return An initialized instance.
 ///
@@ -5198,10 +5144,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_folder_mount".
 ///
-/// Description of the "shared_folder_mount" tag state: (sharing) Added a shared
-/// folder to own Dropbox.
+/// Description of the "shared_folder_mount" tag state: (sharing) Added shared
+/// folder to own Dropbox
 ///
-/// @param sharedFolderMount (sharing) Added a shared folder to own Dropbox.
+/// @param sharedFolderMount (sharing) Added shared folder to own Dropbox
 ///
 /// @return An initialized instance.
 ///
@@ -5210,10 +5156,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_folder_nest".
 ///
-/// Description of the "shared_folder_nest" tag state: (sharing) Changed the
-/// parent of a shared folder.
+/// Description of the "shared_folder_nest" tag state: (sharing) Changed parent
+/// of shared folder
 ///
-/// @param sharedFolderNest (sharing) Changed the parent of a shared folder.
+/// @param sharedFolderNest (sharing) Changed parent of shared folder
 ///
 /// @return An initialized instance.
 ///
@@ -5224,10 +5170,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_folder_transfer_ownership".
 ///
 /// Description of the "shared_folder_transfer_ownership" tag state: (sharing)
-/// Transferred the ownership of a shared folder to another member.
+/// Transferred ownership of shared folder to another member
 ///
-/// @param sharedFolderTransferOwnership (sharing) Transferred the ownership of
-/// a shared folder to another member.
+/// @param sharedFolderTransferOwnership (sharing) Transferred ownership of
+/// shared folder to another member
 ///
 /// @return An initialized instance.
 ///
@@ -5237,10 +5183,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_folder_unmount".
 ///
-/// Description of the "shared_folder_unmount" tag state: (sharing) Deleted a
-/// shared folder from Dropbox.
+/// Description of the "shared_folder_unmount" tag state: (sharing) Deleted
+/// shared folder from Dropbox
 ///
-/// @param sharedFolderUnmount (sharing) Deleted a shared folder from Dropbox.
+/// @param sharedFolderUnmount (sharing) Deleted shared folder from Dropbox
 ///
 /// @return An initialized instance.
 ///
@@ -5249,10 +5195,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_link_add_expiry".
 ///
-/// Description of the "shared_link_add_expiry" tag state: (sharing) Added a
-/// shared link expiration date.
+/// Description of the "shared_link_add_expiry" tag state: (sharing) Added
+/// shared link expiration date
 ///
-/// @param sharedLinkAddExpiry (sharing) Added a shared link expiration date.
+/// @param sharedLinkAddExpiry (sharing) Added shared link expiration date
 ///
 /// @return An initialized instance.
 ///
@@ -5262,10 +5208,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_link_change_expiry".
 ///
 /// Description of the "shared_link_change_expiry" tag state: (sharing) Changed
-/// the shared link expiration date.
+/// shared link expiration date
 ///
-/// @param sharedLinkChangeExpiry (sharing) Changed the shared link expiration
-/// date.
+/// @param sharedLinkChangeExpiry (sharing) Changed shared link expiration date
 ///
 /// @return An initialized instance.
 ///
@@ -5275,10 +5220,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_link_change_visibility".
 ///
 /// Description of the "shared_link_change_visibility" tag state: (sharing)
-/// Changed the visibility of a shared link.
+/// Changed visibility of shared link
 ///
-/// @param sharedLinkChangeVisibility (sharing) Changed the visibility of a
-/// shared link.
+/// @param sharedLinkChangeVisibility (sharing) Changed visibility of shared
+/// link
 ///
 /// @return An initialized instance.
 ///
@@ -5288,11 +5233,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_link_copy".
 ///
-/// Description of the "shared_link_copy" tag state: (sharing) Added a
-/// file/folder to their Dropbox from a shared link.
+/// Description of the "shared_link_copy" tag state: (sharing) Added file/folder
+/// to Dropbox from shared link
 ///
-/// @param sharedLinkCopy (sharing) Added a file/folder to their Dropbox from a
-/// shared link.
+/// @param sharedLinkCopy (sharing) Added file/folder to Dropbox from shared
+/// link
 ///
 /// @return An initialized instance.
 ///
@@ -5301,10 +5246,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_link_create".
 ///
-/// Description of the "shared_link_create" tag state: (sharing) Created a new
-/// shared link.
+/// Description of the "shared_link_create" tag state: (sharing) Created shared
+/// link
 ///
-/// @param sharedLinkCreate (sharing) Created a new shared link.
+/// @param sharedLinkCreate (sharing) Created shared link
 ///
 /// @return An initialized instance.
 ///
@@ -5313,10 +5258,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_link_disable".
 ///
-/// Description of the "shared_link_disable" tag state: (sharing) Removed a
-/// shared link.
+/// Description of the "shared_link_disable" tag state: (sharing) Removed shared
+/// link
 ///
-/// @param sharedLinkDisable (sharing) Removed a shared link.
+/// @param sharedLinkDisable (sharing) Removed shared link
 ///
 /// @return An initialized instance.
 ///
@@ -5325,11 +5270,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_link_download".
 ///
-/// Description of the "shared_link_download" tag state: (sharing) Downloaded a
-/// file/folder from a shared link.
+/// Description of the "shared_link_download" tag state: (sharing) Downloaded
+/// file/folder from shared link
 ///
-/// @param sharedLinkDownload (sharing) Downloaded a file/folder from a shared
-/// link.
+/// @param sharedLinkDownload (sharing) Downloaded file/folder from shared link
 ///
 /// @return An initialized instance.
 ///
@@ -5339,10 +5283,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "shared_link_remove_expiry".
 ///
 /// Description of the "shared_link_remove_expiry" tag state: (sharing) Removed
-/// a shared link expiration date.
+/// shared link expiration date
 ///
-/// @param sharedLinkRemoveExpiry (sharing) Removed a shared link expiration
-/// date.
+/// @param sharedLinkRemoveExpiry (sharing) Removed shared link expiration date
 ///
 /// @return An initialized instance.
 ///
@@ -5351,11 +5294,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_link_share".
 ///
-/// Description of the "shared_link_share" tag state: (sharing) Added new
-/// members as the audience of a shared link.
+/// Description of the "shared_link_share" tag state: (sharing) Added members as
+/// audience of shared link
 ///
-/// @param sharedLinkShare (sharing) Added new members as the audience of a
-/// shared link.
+/// @param sharedLinkShare (sharing) Added members as audience of shared link
 ///
 /// @return An initialized instance.
 ///
@@ -5364,10 +5306,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_link_view".
 ///
-/// Description of the "shared_link_view" tag state: (sharing) Opened a shared
-/// link.
+/// Description of the "shared_link_view" tag state: (sharing) Opened shared
+/// link
 ///
-/// @param sharedLinkView (sharing) Opened a shared link.
+/// @param sharedLinkView (sharing) Opened shared link
 ///
 /// @return An initialized instance.
 ///
@@ -5376,13 +5318,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shared_note_opened".
 ///
-/// Description of the "shared_note_opened" tag state: (sharing) Shared Paper
-/// document was opened. This event is deprecated and will not be logged going
-/// forward as the associated product functionality no longer exists.
+/// Description of the "shared_note_opened" tag state: (sharing) Opened shared
+/// Paper doc (deprecated, no longer logged)
 ///
-/// @param sharedNoteOpened (sharing) Shared Paper document was opened. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param sharedNoteOpened (sharing) Opened shared Paper doc (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -5391,25 +5331,283 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "shmodel_group_share".
 ///
-/// Description of the "shmodel_group_share" tag state: (sharing) Shared a link
-/// with a group. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// Description of the "shmodel_group_share" tag state: (sharing) Shared link
+/// with group (deprecated, no longer logged)
 ///
-/// @param shmodelGroupShare (sharing) Shared a link with a group. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// @param shmodelGroupShare (sharing) Shared link with group (deprecated, no
+/// longer logged)
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithShmodelGroupShare:(DBTEAMLOGShmodelGroupShareType *)shmodelGroupShare;
 
 ///
+/// Initializes union class with tag state of "showcase_access_granted".
+///
+/// Description of the "showcase_access_granted" tag state: (showcase) Granted
+/// access to showcase
+///
+/// @param showcaseAccessGranted (showcase) Granted access to showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseAccessGranted:(DBTEAMLOGShowcaseAccessGrantedType *)showcaseAccessGranted;
+
+///
+/// Initializes union class with tag state of "showcase_add_member".
+///
+/// Description of the "showcase_add_member" tag state: (showcase) Added member
+/// to showcase
+///
+/// @param showcaseAddMember (showcase) Added member to showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseAddMember:(DBTEAMLOGShowcaseAddMemberType *)showcaseAddMember;
+
+///
+/// Initializes union class with tag state of "showcase_archived".
+///
+/// Description of the "showcase_archived" tag state: (showcase) Archived
+/// showcase
+///
+/// @param showcaseArchived (showcase) Archived showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseArchived:(DBTEAMLOGShowcaseArchivedType *)showcaseArchived;
+
+///
+/// Initializes union class with tag state of "showcase_created".
+///
+/// Description of the "showcase_created" tag state: (showcase) Created showcase
+///
+/// @param showcaseCreated (showcase) Created showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseCreated:(DBTEAMLOGShowcaseCreatedType *)showcaseCreated;
+
+///
+/// Initializes union class with tag state of "showcase_delete_comment".
+///
+/// Description of the "showcase_delete_comment" tag state: (showcase) Deleted
+/// showcase comment
+///
+/// @param showcaseDeleteComment (showcase) Deleted showcase comment
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseDeleteComment:(DBTEAMLOGShowcaseDeleteCommentType *)showcaseDeleteComment;
+
+///
+/// Initializes union class with tag state of "showcase_edited".
+///
+/// Description of the "showcase_edited" tag state: (showcase) Edited showcase
+///
+/// @param showcaseEdited (showcase) Edited showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseEdited:(DBTEAMLOGShowcaseEditedType *)showcaseEdited;
+
+///
+/// Initializes union class with tag state of "showcase_edit_comment".
+///
+/// Description of the "showcase_edit_comment" tag state: (showcase) Edited
+/// showcase comment
+///
+/// @param showcaseEditComment (showcase) Edited showcase comment
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseEditComment:(DBTEAMLOGShowcaseEditCommentType *)showcaseEditComment;
+
+///
+/// Initializes union class with tag state of "showcase_file_added".
+///
+/// Description of the "showcase_file_added" tag state: (showcase) Added file to
+/// showcase
+///
+/// @param showcaseFileAdded (showcase) Added file to showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseFileAdded:(DBTEAMLOGShowcaseFileAddedType *)showcaseFileAdded;
+
+///
+/// Initializes union class with tag state of "showcase_file_download".
+///
+/// Description of the "showcase_file_download" tag state: (showcase) Downloaded
+/// file from showcase
+///
+/// @param showcaseFileDownload (showcase) Downloaded file from showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseFileDownload:(DBTEAMLOGShowcaseFileDownloadType *)showcaseFileDownload;
+
+///
+/// Initializes union class with tag state of "showcase_file_removed".
+///
+/// Description of the "showcase_file_removed" tag state: (showcase) Removed
+/// file from showcase
+///
+/// @param showcaseFileRemoved (showcase) Removed file from showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseFileRemoved:(DBTEAMLOGShowcaseFileRemovedType *)showcaseFileRemoved;
+
+///
+/// Initializes union class with tag state of "showcase_file_view".
+///
+/// Description of the "showcase_file_view" tag state: (showcase) Viewed file in
+/// showcase
+///
+/// @param showcaseFileView (showcase) Viewed file in showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseFileView:(DBTEAMLOGShowcaseFileViewType *)showcaseFileView;
+
+///
+/// Initializes union class with tag state of "showcase_permanently_deleted".
+///
+/// Description of the "showcase_permanently_deleted" tag state: (showcase)
+/// Permanently deleted showcase
+///
+/// @param showcasePermanentlyDeleted (showcase) Permanently deleted showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcasePermanentlyDeleted:
+    (DBTEAMLOGShowcasePermanentlyDeletedType *)showcasePermanentlyDeleted;
+
+///
+/// Initializes union class with tag state of "showcase_post_comment".
+///
+/// Description of the "showcase_post_comment" tag state: (showcase) Added
+/// showcase comment
+///
+/// @param showcasePostComment (showcase) Added showcase comment
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcasePostComment:(DBTEAMLOGShowcasePostCommentType *)showcasePostComment;
+
+///
+/// Initializes union class with tag state of "showcase_remove_member".
+///
+/// Description of the "showcase_remove_member" tag state: (showcase) Removed
+/// member from showcase
+///
+/// @param showcaseRemoveMember (showcase) Removed member from showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseRemoveMember:(DBTEAMLOGShowcaseRemoveMemberType *)showcaseRemoveMember;
+
+///
+/// Initializes union class with tag state of "showcase_renamed".
+///
+/// Description of the "showcase_renamed" tag state: (showcase) Renamed showcase
+///
+/// @param showcaseRenamed (showcase) Renamed showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseRenamed:(DBTEAMLOGShowcaseRenamedType *)showcaseRenamed;
+
+///
+/// Initializes union class with tag state of "showcase_request_access".
+///
+/// Description of the "showcase_request_access" tag state: (showcase) Requested
+/// access to showcase
+///
+/// @param showcaseRequestAccess (showcase) Requested access to showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseRequestAccess:(DBTEAMLOGShowcaseRequestAccessType *)showcaseRequestAccess;
+
+///
+/// Initializes union class with tag state of "showcase_resolve_comment".
+///
+/// Description of the "showcase_resolve_comment" tag state: (showcase) Resolved
+/// showcase comment
+///
+/// @param showcaseResolveComment (showcase) Resolved showcase comment
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseResolveComment:(DBTEAMLOGShowcaseResolveCommentType *)showcaseResolveComment;
+
+///
+/// Initializes union class with tag state of "showcase_restored".
+///
+/// Description of the "showcase_restored" tag state: (showcase) Unarchived
+/// showcase
+///
+/// @param showcaseRestored (showcase) Unarchived showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseRestored:(DBTEAMLOGShowcaseRestoredType *)showcaseRestored;
+
+///
+/// Initializes union class with tag state of "showcase_trashed".
+///
+/// Description of the "showcase_trashed" tag state: (showcase) Deleted showcase
+///
+/// @param showcaseTrashed (showcase) Deleted showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseTrashed:(DBTEAMLOGShowcaseTrashedType *)showcaseTrashed;
+
+///
+/// Initializes union class with tag state of "showcase_unresolve_comment".
+///
+/// Description of the "showcase_unresolve_comment" tag state: (showcase)
+/// Unresolved showcase comment
+///
+/// @param showcaseUnresolveComment (showcase) Unresolved showcase comment
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseUnresolveComment:(DBTEAMLOGShowcaseUnresolveCommentType *)showcaseUnresolveComment;
+
+///
+/// Initializes union class with tag state of "showcase_untrashed".
+///
+/// Description of the "showcase_untrashed" tag state: (showcase) Restored
+/// showcase
+///
+/// @param showcaseUntrashed (showcase) Restored showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseUntrashed:(DBTEAMLOGShowcaseUntrashedType *)showcaseUntrashed;
+
+///
+/// Initializes union class with tag state of "showcase_view".
+///
+/// Description of the "showcase_view" tag state: (showcase) Viewed showcase
+///
+/// @param showcaseView (showcase) Viewed showcase
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcaseView:(DBTEAMLOGShowcaseViewType *)showcaseView;
+
+///
 /// Initializes union class with tag state of "sso_add_cert".
 ///
-/// Description of the "sso_add_cert" tag state: (sso) Added the X.509
-/// certificate for SSO.
+/// Description of the "sso_add_cert" tag state: (sso) Added X.509 certificate
+/// for SSO
 ///
-/// @param ssoAddCert (sso) Added the X.509 certificate for SSO.
+/// @param ssoAddCert (sso) Added X.509 certificate for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5419,9 +5617,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sso_add_login_url".
 ///
 /// Description of the "sso_add_login_url" tag state: (sso) Added sign-in URL
-/// for SSO.
+/// for SSO
 ///
-/// @param ssoAddLoginUrl (sso) Added sign-in URL for SSO.
+/// @param ssoAddLoginUrl (sso) Added sign-in URL for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5431,9 +5629,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sso_add_logout_url".
 ///
 /// Description of the "sso_add_logout_url" tag state: (sso) Added sign-out URL
-/// for SSO.
+/// for SSO
 ///
-/// @param ssoAddLogoutUrl (sso) Added sign-out URL for SSO.
+/// @param ssoAddLogoutUrl (sso) Added sign-out URL for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5442,10 +5640,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_change_cert".
 ///
-/// Description of the "sso_change_cert" tag state: (sso) Changed the X.509
-/// certificate for SSO.
+/// Description of the "sso_change_cert" tag state: (sso) Changed X.509
+/// certificate for SSO
 ///
-/// @param ssoChangeCert (sso) Changed the X.509 certificate for SSO.
+/// @param ssoChangeCert (sso) Changed X.509 certificate for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5454,10 +5652,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_change_login_url".
 ///
-/// Description of the "sso_change_login_url" tag state: (sso) Changed the
-/// sign-in URL for SSO.
+/// Description of the "sso_change_login_url" tag state: (sso) Changed sign-in
+/// URL for SSO
 ///
-/// @param ssoChangeLoginUrl (sso) Changed the sign-in URL for SSO.
+/// @param ssoChangeLoginUrl (sso) Changed sign-in URL for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5466,10 +5664,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_change_logout_url".
 ///
-/// Description of the "sso_change_logout_url" tag state: (sso) Changed the
-/// sign-out URL for SSO.
+/// Description of the "sso_change_logout_url" tag state: (sso) Changed sign-out
+/// URL for SSO
 ///
-/// @param ssoChangeLogoutUrl (sso) Changed the sign-out URL for SSO.
+/// @param ssoChangeLogoutUrl (sso) Changed sign-out URL for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5479,10 +5677,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sso_change_saml_identity_mode".
 ///
 /// Description of the "sso_change_saml_identity_mode" tag state: (sso) Changed
-/// the SAML identity mode for SSO.
+/// SAML identity mode for SSO
 ///
-/// @param ssoChangeSamlIdentityMode (sso) Changed the SAML identity mode for
-/// SSO.
+/// @param ssoChangeSamlIdentityMode (sso) Changed SAML identity mode for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5491,10 +5688,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_remove_cert".
 ///
-/// Description of the "sso_remove_cert" tag state: (sso) Removed the X.509
-/// certificate for SSO.
+/// Description of the "sso_remove_cert" tag state: (sso) Removed X.509
+/// certificate for SSO
 ///
-/// @param ssoRemoveCert (sso) Removed the X.509 certificate for SSO.
+/// @param ssoRemoveCert (sso) Removed X.509 certificate for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5503,10 +5700,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_remove_login_url".
 ///
-/// Description of the "sso_remove_login_url" tag state: (sso) Removed the
-/// sign-in URL for SSO.
+/// Description of the "sso_remove_login_url" tag state: (sso) Removed sign-in
+/// URL for SSO
 ///
-/// @param ssoRemoveLoginUrl (sso) Removed the sign-in URL for SSO.
+/// @param ssoRemoveLoginUrl (sso) Removed sign-in URL for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5515,10 +5712,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_remove_logout_url".
 ///
-/// Description of the "sso_remove_logout_url" tag state: (sso) Removed single
-/// sign-on logout URL.
+/// Description of the "sso_remove_logout_url" tag state: (sso) Removed sign-out
+/// URL for SSO
 ///
-/// @param ssoRemoveLogoutUrl (sso) Removed single sign-on logout URL.
+/// @param ssoRemoveLogoutUrl (sso) Removed sign-out URL for SSO
 ///
 /// @return An initialized instance.
 ///
@@ -5528,10 +5725,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_folder_change_status".
 ///
 /// Description of the "team_folder_change_status" tag state: (team_folders)
-/// Changed the archival status of a team folder.
+/// Changed archival status of team folder
 ///
-/// @param teamFolderChangeStatus (team_folders) Changed the archival status of
-/// a team folder.
+/// @param teamFolderChangeStatus (team_folders) Changed archival status of team
+/// folder
 ///
 /// @return An initialized instance.
 ///
@@ -5540,11 +5737,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "team_folder_create".
 ///
-/// Description of the "team_folder_create" tag state: (team_folders) Created a
-/// new team folder in active status.
+/// Description of the "team_folder_create" tag state: (team_folders) Created
+/// team folder in active status
 ///
-/// @param teamFolderCreate (team_folders) Created a new team folder in active
-/// status.
+/// @param teamFolderCreate (team_folders) Created team folder in active status
 ///
 /// @return An initialized instance.
 ///
@@ -5554,10 +5750,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_folder_downgrade".
 ///
 /// Description of the "team_folder_downgrade" tag state: (team_folders)
-/// Downgraded a team folder to a regular shared folder.
+/// Downgraded team folder to regular shared folder
 ///
-/// @param teamFolderDowngrade (team_folders) Downgraded a team folder to a
-/// regular shared folder.
+/// @param teamFolderDowngrade (team_folders) Downgraded team folder to regular
+/// shared folder
 ///
 /// @return An initialized instance.
 ///
@@ -5567,10 +5763,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_folder_permanently_delete".
 ///
 /// Description of the "team_folder_permanently_delete" tag state:
-/// (team_folders) Permanently deleted an archived team folder.
+/// (team_folders) Permanently deleted archived team folder
 ///
-/// @param teamFolderPermanentlyDelete (team_folders) Permanently deleted an
-/// archived team folder.
+/// @param teamFolderPermanentlyDelete (team_folders) Permanently deleted
+/// archived team folder
 ///
 /// @return An initialized instance.
 ///
@@ -5580,25 +5776,37 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "team_folder_rename".
 ///
-/// Description of the "team_folder_rename" tag state: (team_folders) Renamed an
-/// active or archived team folder.
+/// Description of the "team_folder_rename" tag state: (team_folders) Renamed
+/// active/archived team folder
 ///
-/// @param teamFolderRename (team_folders) Renamed an active or archived team
-/// folder.
+/// @param teamFolderRename (team_folders) Renamed active/archived team folder
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTeamFolderRename:(DBTEAMLOGTeamFolderRenameType *)teamFolderRename;
 
 ///
+/// Initializes union class with tag state of
+/// "team_selective_sync_settings_changed".
+///
+/// Description of the "team_selective_sync_settings_changed" tag state:
+/// (team_folders) Changed sync default
+///
+/// @param teamSelectiveSyncSettingsChanged (team_folders) Changed sync default
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamSelectiveSyncSettingsChanged:
+    (DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)teamSelectiveSyncSettingsChanged;
+
+///
 /// Initializes union class with tag state of "account_capture_change_policy".
 ///
 /// Description of the "account_capture_change_policy" tag state:
-/// (team_policies) Changed the account capture policy on a domain belonging to
-/// the team.
+/// (team_policies) Changed account capture setting on team domain
 ///
-/// @param accountCaptureChangePolicy (team_policies) Changed the account
-/// capture policy on a domain belonging to the team.
+/// @param accountCaptureChangePolicy (team_policies) Changed account capture
+/// setting on team domain
 ///
 /// @return An initialized instance.
 ///
@@ -5609,12 +5817,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "allow_download_disabled".
 ///
 /// Description of the "allow_download_disabled" tag state: (team_policies)
-/// Disabled allow downloads. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// Disabled downloads (deprecated, no longer logged)
 ///
-/// @param allowDownloadDisabled (team_policies) Disabled allow downloads. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param allowDownloadDisabled (team_policies) Disabled downloads (deprecated,
+/// no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -5624,12 +5830,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "allow_download_enabled".
 ///
 /// Description of the "allow_download_enabled" tag state: (team_policies)
-/// Enabled allow downloads. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// Enabled downloads (deprecated, no longer logged)
 ///
-/// @param allowDownloadEnabled (team_policies) Enabled allow downloads. This
-/// event is deprecated and will not be logged going forward as the associated
-/// product functionality no longer exists.
+/// @param allowDownloadEnabled (team_policies) Enabled downloads (deprecated,
+/// no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -5640,12 +5844,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "data_placement_restriction_change_policy".
 ///
 /// Description of the "data_placement_restriction_change_policy" tag state:
-/// (team_policies) Set a restriction policy regarding the location of data
-/// centers where team data resides.
+/// (team_policies) Set restrictions on data center locations where team data
+/// resides
 ///
-/// @param dataPlacementRestrictionChangePolicy (team_policies) Set a
-/// restriction policy regarding the location of data centers where team data
-/// resides.
+/// @param dataPlacementRestrictionChangePolicy (team_policies) Set restrictions
+/// on data center locations where team data resides
 ///
 /// @return An initialized instance.
 ///
@@ -5657,14 +5860,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "data_placement_restriction_satisfy_policy".
 ///
 /// Description of the "data_placement_restriction_satisfy_policy" tag state:
-/// (team_policies) Satisfied a previously set restriction policy regarding the
-/// location of data centers where team data resides (i.e. all data have been
-/// migrated according to the restriction placed).
+/// (team_policies) Completed restrictions on data center locations where team
+/// data resides
 ///
-/// @param dataPlacementRestrictionSatisfyPolicy (team_policies) Satisfied a
-/// previously set restriction policy regarding the location of data centers
-/// where team data resides (i.e. all data have been migrated according to the
-/// restriction placed).
+/// @param dataPlacementRestrictionSatisfyPolicy (team_policies) Completed
+/// restrictions on data center locations where team data resides
 ///
 /// @return An initialized instance.
 ///
@@ -5676,12 +5876,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "device_approvals_change_desktop_policy".
 ///
 /// Description of the "device_approvals_change_desktop_policy" tag state:
-/// (team_policies) Set or removed a limit on the number of computers each team
-/// member can link to their work Dropbox account.
+/// (team_policies) Set/removed limit on number of computers member can link to
+/// team Dropbox account
 ///
-/// @param deviceApprovalsChangeDesktopPolicy (team_policies) Set or removed a
-/// limit on the number of computers each team member can link to their work
-/// Dropbox account.
+/// @param deviceApprovalsChangeDesktopPolicy (team_policies) Set/removed limit
+/// on number of computers member can link to team Dropbox account
 ///
 /// @return An initialized instance.
 ///
@@ -5693,12 +5892,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "device_approvals_change_mobile_policy".
 ///
 /// Description of the "device_approvals_change_mobile_policy" tag state:
-/// (team_policies) Set or removed a limit on the number of mobiles devices each
-/// team member can link to their work Dropbox account.
+/// (team_policies) Set/removed limit on number of mobile devices member can
+/// link to team Dropbox account
 ///
-/// @param deviceApprovalsChangeMobilePolicy (team_policies) Set or removed a
-/// limit on the number of mobiles devices each team member can link to their
-/// work Dropbox account.
+/// @param deviceApprovalsChangeMobilePolicy (team_policies) Set/removed limit
+/// on number of mobile devices member can link to team Dropbox account
 ///
 /// @return An initialized instance.
 ///
@@ -5710,12 +5908,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "device_approvals_change_overage_action".
 ///
 /// Description of the "device_approvals_change_overage_action" tag state:
-/// (team_policies) Changed the action taken when a team member is already over
-/// the limits (e.g when they join the team, an admin lowers limits, etc.).
+/// (team_policies) Changed device approvals setting when member is over limit
 ///
-/// @param deviceApprovalsChangeOverageAction (team_policies) Changed the action
-/// taken when a team member is already over the limits (e.g when they join the
-/// team, an admin lowers limits, etc.).
+/// @param deviceApprovalsChangeOverageAction (team_policies) Changed device
+/// approvals setting when member is over limit
 ///
 /// @return An initialized instance.
 ///
@@ -5727,12 +5923,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "device_approvals_change_unlink_action".
 ///
 /// Description of the "device_approvals_change_unlink_action" tag state:
-/// (team_policies) Changed the action taken with respect to approval limits
-/// when a team member unlinks an approved device.
+/// (team_policies) Changed device approvals setting when member unlinks
+/// approved device
 ///
-/// @param deviceApprovalsChangeUnlinkAction (team_policies) Changed the action
-/// taken with respect to approval limits when a team member unlinks an approved
-/// device.
+/// @param deviceApprovalsChangeUnlinkAction (team_policies) Changed device
+/// approvals setting when member unlinks approved device
 ///
 /// @return An initialized instance.
 ///
@@ -5742,12 +5937,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "emm_add_exception".
 ///
-/// Description of the "emm_add_exception" tag state: (team_policies) Added an
-/// exception for one or more team members to optionally use the regular Dropbox
-/// app when EMM is enabled.
+/// Description of the "emm_add_exception" tag state: (team_policies) Added
+/// members to EMM exception list
 ///
-/// @param emmAddException (team_policies) Added an exception for one or more
-/// team members to optionally use the regular Dropbox app when EMM is enabled.
+/// @param emmAddException (team_policies) Added members to EMM exception list
 ///
 /// @return An initialized instance.
 ///
@@ -5756,11 +5949,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "emm_change_policy".
 ///
-/// Description of the "emm_change_policy" tag state: (team_policies) Enabled or
-/// disabled enterprise mobility management for team members.
+/// Description of the "emm_change_policy" tag state: (team_policies)
+/// Enabled/disabled enterprise mobility management for members
 ///
-/// @param emmChangePolicy (team_policies) Enabled or disabled enterprise
-/// mobility management for team members.
+/// @param emmChangePolicy (team_policies) Enabled/disabled enterprise mobility
+/// management for members
 ///
 /// @return An initialized instance.
 ///
@@ -5770,12 +5963,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "emm_remove_exception".
 ///
 /// Description of the "emm_remove_exception" tag state: (team_policies) Removed
-/// an exception for one or more team members to optionally use the regular
-/// Dropbox app when EMM is enabled.
+/// members from EMM exception list
 ///
-/// @param emmRemoveException (team_policies) Removed an exception for one or
-/// more team members to optionally use the regular Dropbox app when EMM is
-/// enabled.
+/// @param emmRemoveException (team_policies) Removed members from EMM exception
+/// list
 ///
 /// @return An initialized instance.
 ///
@@ -5786,10 +5977,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "extended_version_history_change_policy".
 ///
 /// Description of the "extended_version_history_change_policy" tag state:
-/// (team_policies) Accepted or opted out of extended version history.
+/// (team_policies) Accepted/opted out of extended version history
 ///
-/// @param extendedVersionHistoryChangePolicy (team_policies) Accepted or opted
-/// out of extended version history.
+/// @param extendedVersionHistoryChangePolicy (team_policies) Accepted/opted out
+/// of extended version history
 ///
 /// @return An initialized instance.
 ///
@@ -5800,10 +5991,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_comments_change_policy".
 ///
 /// Description of the "file_comments_change_policy" tag state: (team_policies)
-/// Enabled or disabled commenting on team files.
+/// Enabled/disabled commenting on team files
 ///
-/// @param fileCommentsChangePolicy (team_policies) Enabled or disabled
-/// commenting on team files.
+/// @param fileCommentsChangePolicy (team_policies) Enabled/disabled commenting
+/// on team files
 ///
 /// @return An initialized instance.
 ///
@@ -5813,10 +6004,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_requests_change_policy".
 ///
 /// Description of the "file_requests_change_policy" tag state: (team_policies)
-/// Enabled or disabled file requests.
+/// Enabled/disabled file requests
 ///
-/// @param fileRequestsChangePolicy (team_policies) Enabled or disabled file
-/// requests.
+/// @param fileRequestsChangePolicy (team_policies) Enabled/disabled file
+/// requests
 ///
 /// @return An initialized instance.
 ///
@@ -5826,13 +6017,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "file_requests_emails_enabled".
 ///
 /// Description of the "file_requests_emails_enabled" tag state: (team_policies)
-/// Enabled file request emails for everyone. This event is deprecated and will
-/// not be logged going forward as the associated product functionality no
-/// longer exists.
+/// Enabled file request emails for everyone (deprecated, no longer logged)
 ///
 /// @param fileRequestsEmailsEnabled (team_policies) Enabled file request emails
-/// for everyone. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// for everyone (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -5843,13 +6031,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "file_requests_emails_restricted_to_team_only".
 ///
 /// Description of the "file_requests_emails_restricted_to_team_only" tag state:
-/// (team_policies) Allowed file request emails for the team. This event is
-/// deprecated and will not be logged going forward as the associated product
-/// functionality no longer exists.
+/// (team_policies) Enabled file request emails for team (deprecated, no longer
+/// logged)
 ///
-/// @param fileRequestsEmailsRestrictedToTeamOnly (team_policies) Allowed file
-/// request emails for the team. This event is deprecated and will not be logged
-/// going forward as the associated product functionality no longer exists.
+/// @param fileRequestsEmailsRestrictedToTeamOnly (team_policies) Enabled file
+/// request emails for team (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -5860,10 +6046,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "google_sso_change_policy".
 ///
 /// Description of the "google_sso_change_policy" tag state: (team_policies)
-/// Enabled or disabled Google single sign-on for the team.
+/// Enabled/disabled Google single sign-on for team
 ///
-/// @param googleSsoChangePolicy (team_policies) Enabled or disabled Google
-/// single sign-on for the team.
+/// @param googleSsoChangePolicy (team_policies) Enabled/disabled Google single
+/// sign-on for team
 ///
 /// @return An initialized instance.
 ///
@@ -5874,10 +6060,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "group_user_management_change_policy".
 ///
 /// Description of the "group_user_management_change_policy" tag state:
-/// (team_policies) Changed who can create groups.
+/// (team_policies) Changed who can create groups
 ///
 /// @param groupUserManagementChangePolicy (team_policies) Changed who can
-/// create groups.
+/// create groups
 ///
 /// @return An initialized instance.
 ///
@@ -5888,10 +6074,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "member_requests_change_policy".
 ///
 /// Description of the "member_requests_change_policy" tag state:
-/// (team_policies) Changed whether users can find the team when not invited.
+/// (team_policies) Changed whether users can find team when not invited
 ///
 /// @param memberRequestsChangePolicy (team_policies) Changed whether users can
-/// find the team when not invited.
+/// find team when not invited
 ///
 /// @return An initialized instance.
 ///
@@ -5903,11 +6089,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_add_exception".
 ///
 /// Description of the "member_space_limits_add_exception" tag state:
-/// (team_policies) Added an exception for one or more team members to bypass
-/// space limits imposed by policy.
+/// (team_policies) Added members to member space limit exception list
 ///
-/// @param memberSpaceLimitsAddException (team_policies) Added an exception for
-/// one or more team members to bypass space limits imposed by policy.
+/// @param memberSpaceLimitsAddException (team_policies) Added members to member
+/// space limit exception list
 ///
 /// @return An initialized instance.
 ///
@@ -5919,10 +6104,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_change_caps_type_policy".
 ///
 /// Description of the "member_space_limits_change_caps_type_policy" tag state:
-/// (team_policies) Change the member space limit type for the team.
+/// (team_policies) Changed member space limit type for team
 ///
-/// @param memberSpaceLimitsChangeCapsTypePolicy (team_policies) Change the
-/// member space limit type for the team.
+/// @param memberSpaceLimitsChangeCapsTypePolicy (team_policies) Changed member
+/// space limit type for team
 ///
 /// @return An initialized instance.
 ///
@@ -5934,10 +6119,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_change_policy".
 ///
 /// Description of the "member_space_limits_change_policy" tag state:
-/// (team_policies) Changed the team default limit level.
+/// (team_policies) Changed team default member space limit
 ///
-/// @param memberSpaceLimitsChangePolicy (team_policies) Changed the team
-/// default limit level.
+/// @param memberSpaceLimitsChangePolicy (team_policies) Changed team default
+/// member space limit
 ///
 /// @return An initialized instance.
 ///
@@ -5949,11 +6134,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_space_limits_remove_exception".
 ///
 /// Description of the "member_space_limits_remove_exception" tag state:
-/// (team_policies) Removed an exception for one or more team members to bypass
-/// space limits imposed by policy.
+/// (team_policies) Removed members from member space limit exception list
 ///
-/// @param memberSpaceLimitsRemoveException (team_policies) Removed an exception
-/// for one or more team members to bypass space limits imposed by policy.
+/// @param memberSpaceLimitsRemoveException (team_policies) Removed members from
+/// member space limit exception list
 ///
 /// @return An initialized instance.
 ///
@@ -5965,11 +6149,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "member_suggestions_change_policy".
 ///
 /// Description of the "member_suggestions_change_policy" tag state:
-/// (team_policies) Enabled or disabled the option for team members to suggest
-/// new members to add to the team.
+/// (team_policies) Enabled/disabled option for team members to suggest people
+/// to add to team
 ///
-/// @param memberSuggestionsChangePolicy (team_policies) Enabled or disabled the
-/// option for team members to suggest new members to add to the team.
+/// @param memberSuggestionsChangePolicy (team_policies) Enabled/disabled option
+/// for team members to suggest people to add to team
 ///
 /// @return An initialized instance.
 ///
@@ -5981,12 +6165,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "microsoft_office_addin_change_policy".
 ///
 /// Description of the "microsoft_office_addin_change_policy" tag state:
-/// (team_policies) Enabled or disabled the Microsoft Office add-in, which lets
-/// team members save files to Dropbox directly from Microsoft Office.
+/// (team_policies) Enabled/disabled Microsoft Office add-in
 ///
-/// @param microsoftOfficeAddinChangePolicy (team_policies) Enabled or disabled
-/// the Microsoft Office add-in, which lets team members save files to Dropbox
-/// directly from Microsoft Office.
+/// @param microsoftOfficeAddinChangePolicy (team_policies) Enabled/disabled
+/// Microsoft Office add-in
 ///
 /// @return An initialized instance.
 ///
@@ -5997,10 +6179,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "network_control_change_policy".
 ///
 /// Description of the "network_control_change_policy" tag state:
-/// (team_policies) Enabled or disabled network control.
+/// (team_policies) Enabled/disabled network control
 ///
-/// @param networkControlChangePolicy (team_policies) Enabled or disabled
-/// network control.
+/// @param networkControlChangePolicy (team_policies) Enabled/disabled network
+/// control
 ///
 /// @return An initialized instance.
 ///
@@ -6012,11 +6194,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Description of the "paper_change_deployment_policy" tag state:
 /// (team_policies) Changed whether Dropbox Paper, when enabled, is deployed to
-/// all teams or to specific members of the team.
+/// all members or to specific members
 ///
 /// @param paperChangeDeploymentPolicy (team_policies) Changed whether Dropbox
-/// Paper, when enabled, is deployed to all teams or to specific members of the
-/// team.
+/// Paper, when enabled, is deployed to all members or to specific members
 ///
 /// @return An initialized instance.
 ///
@@ -6027,14 +6208,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_change_member_link_policy".
 ///
 /// Description of the "paper_change_member_link_policy" tag state:
-/// (team_policies) Changed whether non team members can view Paper documents
-/// using a link. This event is deprecated and will not be logged going forward
-/// as the associated product functionality no longer exists.
+/// (team_policies) Changed whether non-members can view Paper docs with link
+/// (deprecated, no longer logged)
 ///
-/// @param paperChangeMemberLinkPolicy (team_policies) Changed whether non team
-/// members can view Paper documents using a link. This event is deprecated and
-/// will not be logged going forward as the associated product functionality no
-/// longer exists.
+/// @param paperChangeMemberLinkPolicy (team_policies) Changed whether
+/// non-members can view Paper docs with link (deprecated, no longer logged)
 ///
 /// @return An initialized instance.
 ///
@@ -6045,13 +6223,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "paper_change_member_policy".
 ///
 /// Description of the "paper_change_member_policy" tag state: (team_policies)
-/// Changed whether team members can share Paper documents externally (i.e.
-/// outside the team), and if so, whether they should be accessible only by team
-/// members or anyone by default.
+/// Changed whether members can share Paper docs outside team, and if docs are
+/// accessible only by team members or anyone by default
 ///
-/// @param paperChangeMemberPolicy (team_policies) Changed whether team members
-/// can share Paper documents externally (i.e. outside the team), and if so,
-/// whether they should be accessible only by team members or anyone by default.
+/// @param paperChangeMemberPolicy (team_policies) Changed whether members can
+/// share Paper docs outside team, and if docs are accessible only by team
+/// members or anyone by default
 ///
 /// @return An initialized instance.
 ///
@@ -6060,11 +6237,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "paper_change_policy".
 ///
-/// Description of the "paper_change_policy" tag state: (team_policies) Enabled
-/// or disabled Dropbox Paper for the team.
+/// Description of the "paper_change_policy" tag state: (team_policies)
+/// Enabled/disabled Dropbox Paper for team
 ///
-/// @param paperChangePolicy (team_policies) Enabled or disabled Dropbox Paper
-/// for the team.
+/// @param paperChangePolicy (team_policies) Enabled/disabled Dropbox Paper for
+/// team
 ///
 /// @return An initialized instance.
 ///
@@ -6075,10 +6252,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "paper_enabled_users_group_addition".
 ///
 /// Description of the "paper_enabled_users_group_addition" tag state:
-/// (team_policies) Users added to Paper enabled users list.
+/// (team_policies) Added users to Paper-enabled users list
 ///
-/// @param paperEnabledUsersGroupAddition (team_policies) Users added to Paper
-/// enabled users list.
+/// @param paperEnabledUsersGroupAddition (team_policies) Added users to
+/// Paper-enabled users list
 ///
 /// @return An initialized instance.
 ///
@@ -6090,10 +6267,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "paper_enabled_users_group_removal".
 ///
 /// Description of the "paper_enabled_users_group_removal" tag state:
-/// (team_policies) Users removed from Paper enabled users list.
+/// (team_policies) Removed users from Paper-enabled users list
 ///
-/// @param paperEnabledUsersGroupRemoval (team_policies) Users removed from
-/// Paper enabled users list.
+/// @param paperEnabledUsersGroupRemoval (team_policies) Removed users from
+/// Paper-enabled users list
 ///
 /// @return An initialized instance.
 ///
@@ -6104,11 +6281,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "permanent_delete_change_policy".
 ///
 /// Description of the "permanent_delete_change_policy" tag state:
-/// (team_policies) Enabled or disabled the ability of team members to
-/// permanently delete content.
+/// (team_policies) Enabled/disabled ability of team members to permanently
+/// delete content
 ///
-/// @param permanentDeleteChangePolicy (team_policies) Enabled or disabled the
-/// ability of team members to permanently delete content.
+/// @param permanentDeleteChangePolicy (team_policies) Enabled/disabled ability
+/// of team members to permanently delete content
 ///
 /// @return An initialized instance.
 ///
@@ -6121,10 +6298,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Description of the "sharing_change_folder_join_policy" tag state:
 /// (team_policies) Changed whether team members can join shared folders owned
-/// externally (i.e. outside the team).
+/// outside team
 ///
 /// @param sharingChangeFolderJoinPolicy (team_policies) Changed whether team
-/// members can join shared folders owned externally (i.e. outside the team).
+/// members can join shared folders owned outside team
 ///
 /// @return An initialized instance.
 ///
@@ -6135,13 +6312,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sharing_change_link_policy".
 ///
 /// Description of the "sharing_change_link_policy" tag state: (team_policies)
-/// Changed whether team members can share links externally (i.e. outside the
-/// team), and if so, whether links should be accessible only by team members or
-/// anyone by default.
+/// Changed whether members can share links outside team, and if links are
+/// accessible only by team members or anyone by default
 ///
-/// @param sharingChangeLinkPolicy (team_policies) Changed whether team members
-/// can share links externally (i.e. outside the team), and if so, whether links
-/// should be accessible only by team members or anyone by default.
+/// @param sharingChangeLinkPolicy (team_policies) Changed whether members can
+/// share links outside team, and if links are accessible only by team members
+/// or anyone by default
 ///
 /// @return An initialized instance.
 ///
@@ -6151,11 +6327,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "sharing_change_member_policy".
 ///
 /// Description of the "sharing_change_member_policy" tag state: (team_policies)
-/// Changed whether team members can share files and folders externally (i.e.
-/// outside the team).
+/// Changed whether members can share files/folders outside team
 ///
-/// @param sharingChangeMemberPolicy (team_policies) Changed whether team
-/// members can share files and folders externally (i.e. outside the team).
+/// @param sharingChangeMemberPolicy (team_policies) Changed whether members can
+/// share files/folders outside team
 ///
 /// @return An initialized instance.
 ///
@@ -6165,10 +6340,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "smart_sync_change_policy".
 ///
 /// Description of the "smart_sync_change_policy" tag state: (team_policies)
-/// Changed the default Smart Sync policy for team members.
+/// Changed default Smart Sync setting for team members
 ///
-/// @param smartSyncChangePolicy (team_policies) Changed the default Smart Sync
-/// policy for team members.
+/// @param smartSyncChangePolicy (team_policies) Changed default Smart Sync
+/// setting for team members
 ///
 /// @return An initialized instance.
 ///
@@ -6178,9 +6353,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "smart_sync_not_opt_out".
 ///
 /// Description of the "smart_sync_not_opt_out" tag state: (team_policies) Opted
-/// team into Smart Sync.
+/// team into Smart Sync
 ///
-/// @param smartSyncNotOptOut (team_policies) Opted team into Smart Sync.
+/// @param smartSyncNotOptOut (team_policies) Opted team into Smart Sync
 ///
 /// @return An initialized instance.
 ///
@@ -6190,9 +6365,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "smart_sync_opt_out".
 ///
 /// Description of the "smart_sync_opt_out" tag state: (team_policies) Opted
-/// team out of Smart Sync.
+/// team out of Smart Sync
 ///
-/// @param smartSyncOptOut (team_policies) Opted team out of Smart Sync.
+/// @param smartSyncOptOut (team_policies) Opted team out of Smart Sync
 ///
 /// @return An initialized instance.
 ///
@@ -6201,11 +6376,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "sso_change_policy".
 ///
-/// Description of the "sso_change_policy" tag state: (team_policies) Change the
-/// single sign-on policy for the team.
+/// Description of the "sso_change_policy" tag state: (team_policies) Changed
+/// single sign-on setting for team
 ///
-/// @param ssoChangePolicy (team_policies) Change the single sign-on policy for
-/// the team.
+/// @param ssoChangePolicy (team_policies) Changed single sign-on setting for
+/// team
 ///
 /// @return An initialized instance.
 ///
@@ -6214,11 +6389,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "tfa_change_policy".
 ///
-/// Description of the "tfa_change_policy" tag state: (team_policies) Change
-/// two-step verification policy for the team.
+/// Description of the "tfa_change_policy" tag state: (team_policies) Changed
+/// two-step verification setting for team
 ///
-/// @param tfaChangePolicy (team_policies) Change two-step verification policy
-/// for the team.
+/// @param tfaChangePolicy (team_policies) Changed two-step verification setting
+/// for team
 ///
 /// @return An initialized instance.
 ///
@@ -6228,12 +6403,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "two_account_change_policy".
 ///
 /// Description of the "two_account_change_policy" tag state: (team_policies)
-/// Enabled or disabled the option for team members to link a personal Dropbox
-/// account in addition to their work account to the same computer.
+/// Enabled/disabled option for members to link personal Dropbox account and
+/// team account to same computer
 ///
-/// @param twoAccountChangePolicy (team_policies) Enabled or disabled the option
-/// for team members to link a personal Dropbox account in addition to their
-/// work account to the same computer.
+/// @param twoAccountChangePolicy (team_policies) Enabled/disabled option for
+/// members to link personal Dropbox account and team account to same computer
 ///
 /// @return An initialized instance.
 ///
@@ -6244,11 +6418,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "web_sessions_change_fixed_length_policy".
 ///
 /// Description of the "web_sessions_change_fixed_length_policy" tag state:
-/// (team_policies) Changed how long team members can stay signed in to Dropbox
-/// on the web.
+/// (team_policies) Changed how long members can stay signed in to Dropbox.com
 ///
 /// @param webSessionsChangeFixedLengthPolicy (team_policies) Changed how long
-/// team members can stay signed in to Dropbox on the web.
+/// members can stay signed in to Dropbox.com
 ///
 /// @return An initialized instance.
 ///
@@ -6261,10 +6434,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Description of the "web_sessions_change_idle_length_policy" tag state:
 /// (team_policies) Changed how long team members can be idle while signed in to
-/// Dropbox on the web.
+/// Dropbox.com
 ///
 /// @param webSessionsChangeIdleLengthPolicy (team_policies) Changed how long
-/// team members can be idle while signed in to Dropbox on the web.
+/// team members can be idle while signed in to Dropbox.com
 ///
 /// @return An initialized instance.
 ///
@@ -6275,9 +6448,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_merge_from".
 ///
 /// Description of the "team_merge_from" tag state: (team_profile) Merged
-/// another team into this team.
+/// another team into this team
 ///
-/// @param teamMergeFrom (team_profile) Merged another team into this team.
+/// @param teamMergeFrom (team_profile) Merged another team into this team
 ///
 /// @return An initialized instance.
 ///
@@ -6287,9 +6460,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_merge_to".
 ///
 /// Description of the "team_merge_to" tag state: (team_profile) Merged this
-/// team into another team.
+/// team into another team
 ///
-/// @param teamMergeTo (team_profile) Merged this team into another team.
+/// @param teamMergeTo (team_profile) Merged this team into another team
 ///
 /// @return An initialized instance.
 ///
@@ -6298,11 +6471,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "team_profile_add_logo".
 ///
-/// Description of the "team_profile_add_logo" tag state: (team_profile) Added a
-/// team logo to be displayed on shared link headers.
+/// Description of the "team_profile_add_logo" tag state: (team_profile) Added
+/// team logo to display on shared link headers
 ///
-/// @param teamProfileAddLogo (team_profile) Added a team logo to be displayed
-/// on shared link headers.
+/// @param teamProfileAddLogo (team_profile) Added team logo to display on
+/// shared link headers
 ///
 /// @return An initialized instance.
 ///
@@ -6313,10 +6486,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "team_profile_change_default_language".
 ///
 /// Description of the "team_profile_change_default_language" tag state:
-/// (team_profile) Changed the default language for the team.
+/// (team_profile) Changed default language for team
 ///
-/// @param teamProfileChangeDefaultLanguage (team_profile) Changed the default
-/// language for the team.
+/// @param teamProfileChangeDefaultLanguage (team_profile) Changed default
+/// language for team
 ///
 /// @return An initialized instance.
 ///
@@ -6327,10 +6500,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_profile_change_logo".
 ///
 /// Description of the "team_profile_change_logo" tag state: (team_profile)
-/// Changed the team logo to be displayed on shared link headers.
+/// Changed team logo displayed on shared link headers
 ///
-/// @param teamProfileChangeLogo (team_profile) Changed the team logo to be
-/// displayed on shared link headers.
+/// @param teamProfileChangeLogo (team_profile) Changed team logo displayed on
+/// shared link headers
 ///
 /// @return An initialized instance.
 ///
@@ -6340,9 +6513,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_profile_change_name".
 ///
 /// Description of the "team_profile_change_name" tag state: (team_profile)
-/// Changed the team name.
+/// Changed team name
 ///
-/// @param teamProfileChangeName (team_profile) Changed the team name.
+/// @param teamProfileChangeName (team_profile) Changed team name
 ///
 /// @return An initialized instance.
 ///
@@ -6352,10 +6525,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "team_profile_remove_logo".
 ///
 /// Description of the "team_profile_remove_logo" tag state: (team_profile)
-/// Removed the team logo to be displayed on shared link headers.
+/// Removed team logo displayed on shared link headers
 ///
-/// @param teamProfileRemoveLogo (team_profile) Removed the team logo to be
-/// displayed on shared link headers.
+/// @param teamProfileRemoveLogo (team_profile) Removed team logo displayed on
+/// shared link headers
 ///
 /// @return An initialized instance.
 ///
@@ -6364,11 +6537,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "tfa_add_backup_phone".
 ///
-/// Description of the "tfa_add_backup_phone" tag state: (tfa) Added a backup
-/// phone for two-step verification.
+/// Description of the "tfa_add_backup_phone" tag state: (tfa) Added backup
+/// phone for two-step verification
 ///
-/// @param tfaAddBackupPhone (tfa) Added a backup phone for two-step
-/// verification.
+/// @param tfaAddBackupPhone (tfa) Added backup phone for two-step verification
 ///
 /// @return An initialized instance.
 ///
@@ -6377,11 +6549,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "tfa_add_security_key".
 ///
-/// Description of the "tfa_add_security_key" tag state: (tfa) Added a security
-/// key for two-step verification.
+/// Description of the "tfa_add_security_key" tag state: (tfa) Added security
+/// key for two-step verification
 ///
-/// @param tfaAddSecurityKey (tfa) Added a security key for two-step
-/// verification.
+/// @param tfaAddSecurityKey (tfa) Added security key for two-step verification
 ///
 /// @return An initialized instance.
 ///
@@ -6390,11 +6561,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "tfa_change_backup_phone".
 ///
-/// Description of the "tfa_change_backup_phone" tag state: (tfa) Changed the
-/// backup phone for two-step verification.
+/// Description of the "tfa_change_backup_phone" tag state: (tfa) Changed backup
+/// phone for two-step verification
 ///
-/// @param tfaChangeBackupPhone (tfa) Changed the backup phone for two-step
-/// verification.
+/// @param tfaChangeBackupPhone (tfa) Changed backup phone for two-step
+/// verification
 ///
 /// @return An initialized instance.
 ///
@@ -6403,11 +6574,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "tfa_change_status".
 ///
-/// Description of the "tfa_change_status" tag state: (tfa) Enabled, disabled or
-/// changed the configuration for two-step verification.
+/// Description of the "tfa_change_status" tag state: (tfa)
+/// Enabled/disabled/changed two-step verification setting
 ///
-/// @param tfaChangeStatus (tfa) Enabled, disabled or changed the configuration
-/// for two-step verification.
+/// @param tfaChangeStatus (tfa) Enabled/disabled/changed two-step verification
+/// setting
 ///
 /// @return An initialized instance.
 ///
@@ -6416,11 +6587,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "tfa_remove_backup_phone".
 ///
-/// Description of the "tfa_remove_backup_phone" tag state: (tfa) Removed the
-/// backup phone for two-step verification.
+/// Description of the "tfa_remove_backup_phone" tag state: (tfa) Removed backup
+/// phone for two-step verification
 ///
-/// @param tfaRemoveBackupPhone (tfa) Removed the backup phone for two-step
-/// verification.
+/// @param tfaRemoveBackupPhone (tfa) Removed backup phone for two-step
+/// verification
 ///
 /// @return An initialized instance.
 ///
@@ -6429,11 +6600,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 /// Initializes union class with tag state of "tfa_remove_security_key".
 ///
-/// Description of the "tfa_remove_security_key" tag state: (tfa) Removed a
-/// security key for two-step verification.
+/// Description of the "tfa_remove_security_key" tag state: (tfa) Removed
+/// security key for two-step verification
 ///
-/// @param tfaRemoveSecurityKey (tfa) Removed a security key for two-step
-/// verification.
+/// @param tfaRemoveSecurityKey (tfa) Removed security key for two-step
+/// verification
 ///
 /// @return An initialized instance.
 ///
@@ -6443,9 +6614,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "tfa_reset".
 ///
 /// Description of the "tfa_reset" tag state: (tfa) Reset two-step verification
-/// for team member.
+/// for team member
 ///
-/// @param tfaReset (tfa) Reset two-step verification for team member.
+/// @param tfaReset (tfa) Reset two-step verification for team member
 ///
 /// @return An initialized instance.
 ///
@@ -7209,6 +7380,32 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return Whether the union's current tag state has value "group_delete".
 ///
 - (BOOL)isGroupDelete;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "group_description_updated".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `groupDescriptionUpdated` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "group_description_updated".
+///
+- (BOOL)isGroupDescriptionUpdated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "group_join_policy_updated".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `groupJoinPolicyUpdated` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "group_join_policy_updated".
+///
+- (BOOL)isGroupJoinPolicyUpdated;
 
 ///
 /// Retrieves whether the union's current tag state has value "group_moved".
@@ -8854,6 +9051,272 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (BOOL)isShmodelGroupShare;
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_access_granted".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseAccessGranted` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_access_granted".
+///
+- (BOOL)isShowcaseAccessGranted;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_add_member".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseAddMember` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_add_member".
+///
+- (BOOL)isShowcaseAddMember;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_archived".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseArchived` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "showcase_archived".
+///
+- (BOOL)isShowcaseArchived;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_created".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseCreated` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "showcase_created".
+///
+- (BOOL)isShowcaseCreated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_delete_comment".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseDeleteComment` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_delete_comment".
+///
+- (BOOL)isShowcaseDeleteComment;
+
+///
+/// Retrieves whether the union's current tag state has value "showcase_edited".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseEdited` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "showcase_edited".
+///
+- (BOOL)isShowcaseEdited;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_edit_comment".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseEditComment` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_edit_comment".
+///
+- (BOOL)isShowcaseEditComment;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_file_added".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseFileAdded` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_file_added".
+///
+- (BOOL)isShowcaseFileAdded;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_file_download".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseFileDownload` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_file_download".
+///
+- (BOOL)isShowcaseFileDownload;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_file_removed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseFileRemoved` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_file_removed".
+///
+- (BOOL)isShowcaseFileRemoved;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_file_view".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseFileView` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_file_view".
+///
+- (BOOL)isShowcaseFileView;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_permanently_deleted".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcasePermanentlyDeleted` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_permanently_deleted".
+///
+- (BOOL)isShowcasePermanentlyDeleted;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_post_comment".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcasePostComment` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_post_comment".
+///
+- (BOOL)isShowcasePostComment;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_remove_member".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseRemoveMember` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_remove_member".
+///
+- (BOOL)isShowcaseRemoveMember;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_renamed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseRenamed` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "showcase_renamed".
+///
+- (BOOL)isShowcaseRenamed;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_request_access".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseRequestAccess` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_request_access".
+///
+- (BOOL)isShowcaseRequestAccess;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_resolve_comment".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseResolveComment` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_resolve_comment".
+///
+- (BOOL)isShowcaseResolveComment;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_restored".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseRestored` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "showcase_restored".
+///
+- (BOOL)isShowcaseRestored;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_trashed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseTrashed` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "showcase_trashed".
+///
+- (BOOL)isShowcaseTrashed;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_unresolve_comment".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseUnresolveComment` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_unresolve_comment".
+///
+- (BOOL)isShowcaseUnresolveComment;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "showcase_untrashed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseUntrashed` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "showcase_untrashed".
+///
+- (BOOL)isShowcaseUntrashed;
+
+///
+/// Retrieves whether the union's current tag state has value "showcase_view".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `showcaseView` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "showcase_view".
+///
+- (BOOL)isShowcaseView;
+
+///
 /// Retrieves whether the union's current tag state has value "sso_add_cert".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -9029,6 +9492,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "team_folder_rename".
 ///
 - (BOOL)isTeamFolderRename;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_selective_sync_settings_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamSelectiveSyncSettingsChanged` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_selective_sync_settings_changed".
+///
+- (BOOL)isTeamSelectiveSyncSettingsChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

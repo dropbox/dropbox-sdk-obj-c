@@ -11,6 +11,7 @@
 
 @class DBTEAMDesktopPlatform;
 @class DBTEAMLOGDesktopDeviceSessionLogInfo;
+@class DBTEAMLOGDesktopSessionLogInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBTEAMLOGDesktopDeviceSessionLogInfo : DBTEAMLOGDeviceSessionLogInfo <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
+
+/// Desktop session unique id. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGDesktopSessionLogInfo *sessionInfo;
 
 /// Name of the hosting desktop.
 @property (nonatomic, readonly, copy) NSString *hostName;
@@ -54,14 +58,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param platform Information on the hosting platform.
 /// @param isDeleteOnUnlinkSupported Whether itu2019s possible to delete all of
 /// the account files upon unlinking.
-/// @param sessionId Session unique id. Might be missing due to historical data
-/// gap.
 /// @param ipAddress The IP address of the last activity from this session.
 /// Might be missing due to historical data gap.
 /// @param created The time this session was created. Might be missing due to
 /// historical data gap.
 /// @param updated The time of the last activity from this session. Might be
 /// missing due to historical data gap.
+/// @param sessionInfo Desktop session unique id. Might be missing due to
+/// historical data gap.
 /// @param clientVersion The Dropbox client version.
 ///
 /// @return An initialized instance.
@@ -70,10 +74,10 @@ NS_ASSUME_NONNULL_BEGIN
                       clientType:(DBTEAMDesktopPlatform *)clientType
                         platform:(NSString *)platform
        isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported
-                       sessionId:(nullable NSString *)sessionId
                        ipAddress:(nullable NSString *)ipAddress
                          created:(nullable NSDate *)created
                          updated:(nullable NSDate *)updated
+                     sessionInfo:(nullable DBTEAMLOGDesktopSessionLogInfo *)sessionInfo
                    clientVersion:(nullable NSString *)clientVersion;
 
 ///

@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedFolderChangeLinkPolicyDetails` struct.
 ///
-/// Changed who can access the shared folder via a link.
+/// Changed who can access shared folder via link.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

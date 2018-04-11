@@ -22,6 +22,11 @@
 #import "DBFILEPROPERTIESTemplateError.h"
 #import "DBFILEPROPERTIESUpdateTemplateArg.h"
 #import "DBFILEPROPERTIESUpdateTemplateResult.h"
+#import "DBFILESContentSyncSetting.h"
+#import "DBFILESContentSyncSettingArg.h"
+#import "DBFILESSyncSetting.h"
+#import "DBFILESSyncSettingArg.h"
+#import "DBFILESSyncSettingsError.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTEAMActiveWebSession.h"
@@ -186,6 +191,8 @@
 #import "DBTEAMTeamFolderRenameError.h"
 #import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import "DBTEAMTeamFolderUpdateSyncSettingsArg.h"
+#import "DBTEAMTeamFolderUpdateSyncSettingsError.h"
 #import "DBTEAMTeamGetInfoResult.h"
 #import "DBTEAMTeamMemberInfo.h"
 #import "DBTEAMTeamMemberProfile.h"
@@ -804,6 +811,12 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)teamFolderCreate:(NSString *)name syncSetting:(DBFILESSyncSettingArg *)syncSetting {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderCreate;
+  DBTEAMTeamFolderCreateArg *arg = [[DBTEAMTeamFolderCreateArg alloc] initWithName:name syncSetting:syncSetting];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)teamFolderGetInfo:(NSArray<NSString *> *)teamFolderIds {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderGetInfo;
   DBTEAMTeamFolderIdListArg *arg = [[DBTEAMTeamFolderIdListArg alloc] initWithTeamFolderIds:teamFolderIds];
@@ -837,6 +850,24 @@
 - (DBRpcTask *)teamFolderRename:(NSString *)teamFolderId name:(NSString *)name {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderRename;
   DBTEAMTeamFolderRenameArg *arg = [[DBTEAMTeamFolderRenameArg alloc] initWithTeamFolderId:teamFolderId name:name];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderUpdateSyncSettings:(NSString *)teamFolderId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderUpdateSyncSettings;
+  DBTEAMTeamFolderUpdateSyncSettingsArg *arg =
+      [[DBTEAMTeamFolderUpdateSyncSettingsArg alloc] initWithTeamFolderId:teamFolderId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderUpdateSyncSettings:(NSString *)teamFolderId
+                                syncSetting:(DBFILESSyncSettingArg *)syncSetting
+                        contentSyncSettings:(NSArray<DBFILESContentSyncSettingArg *> *)contentSyncSettings {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderUpdateSyncSettings;
+  DBTEAMTeamFolderUpdateSyncSettingsArg *arg =
+      [[DBTEAMTeamFolderUpdateSyncSettingsArg alloc] initWithTeamFolderId:teamFolderId
+                                                              syncSetting:syncSetting
+                                                      contentSyncSettings:contentSyncSettings];
   return [self.client requestRpc:route arg:arg];
 }
 

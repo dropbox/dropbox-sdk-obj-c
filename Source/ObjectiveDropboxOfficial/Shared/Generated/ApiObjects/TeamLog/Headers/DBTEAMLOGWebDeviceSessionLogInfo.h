@@ -10,6 +10,7 @@
 #import "DBTEAMLOGDeviceSessionLogInfo.h"
 
 @class DBTEAMLOGWebDeviceSessionLogInfo;
+@class DBTEAMLOGWebSessionLogInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// Web session unique id. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGWebSessionLogInfo *sessionInfo;
+
 /// Information on the hosting device.
 @property (nonatomic, readonly, copy) NSString *userAgent;
 
@@ -45,24 +49,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param userAgent Information on the hosting device.
 /// @param os Information on the hosting operating system.
 /// @param browser Information on the browser used for this web session.
-/// @param sessionId Session unique id. Might be missing due to historical data
-/// gap.
 /// @param ipAddress The IP address of the last activity from this session.
 /// Might be missing due to historical data gap.
 /// @param created The time this session was created. Might be missing due to
 /// historical data gap.
 /// @param updated The time of the last activity from this session. Might be
 /// missing due to historical data gap.
+/// @param sessionInfo Web session unique id. Might be missing due to historical
+/// data gap.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUserAgent:(NSString *)userAgent
                                os:(NSString *)os
                           browser:(NSString *)browser
-                        sessionId:(nullable NSString *)sessionId
                         ipAddress:(nullable NSString *)ipAddress
                           created:(nullable NSDate *)created
-                          updated:(nullable NSDate *)updated;
+                          updated:(nullable NSDate *)updated
+                      sessionInfo:(nullable DBTEAMLOGWebSessionLogInfo *)sessionInfo;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

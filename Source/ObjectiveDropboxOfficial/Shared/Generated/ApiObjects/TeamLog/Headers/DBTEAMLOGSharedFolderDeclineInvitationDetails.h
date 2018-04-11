@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedFolderDeclineInvitationDetails` struct.
 ///
-/// Declined a team member's invitation to a shared folder.
+/// Declined team member's invite to shared folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

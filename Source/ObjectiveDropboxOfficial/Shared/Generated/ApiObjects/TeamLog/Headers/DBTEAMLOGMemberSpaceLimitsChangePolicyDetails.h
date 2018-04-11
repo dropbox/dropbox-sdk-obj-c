@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MemberSpaceLimitsChangePolicyDetails` struct.
 ///
-/// Changed the team default limit level.
+/// Changed team default member space limit.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

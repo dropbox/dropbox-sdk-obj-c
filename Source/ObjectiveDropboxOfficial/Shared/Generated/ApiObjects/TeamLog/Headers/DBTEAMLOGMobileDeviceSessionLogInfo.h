@@ -10,6 +10,7 @@
 #import "DBTEAMLOGDeviceSessionLogInfo.h"
 
 @class DBTEAMLOGMobileDeviceSessionLogInfo;
+@class DBTEAMLOGMobileSessionLogInfo;
 @class DBTEAMMobileClientPlatform;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -29,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// Mobile session unique id. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGMobileSessionLogInfo *sessionInfo;
+
 /// The device name.
 @property (nonatomic, readonly, copy) NSString *deviceName;
 
@@ -36,13 +40,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) DBTEAMMobileClientPlatform *clientType;
 
 /// The Dropbox client version.
-@property (nonatomic, readonly, copy) NSString *clientVersion;
+@property (nonatomic, readonly, copy, nullable) NSString *clientVersion;
 
 /// The hosting OS version.
 @property (nonatomic, readonly, copy, nullable) NSString *osVersion;
 
 /// last carrier used by the device.
-@property (nonatomic, readonly, copy) NSString *lastCarrier;
+@property (nonatomic, readonly, copy, nullable) NSString *lastCarrier;
 
 #pragma mark - Constructors
 
@@ -51,29 +55,29 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param deviceName The device name.
 /// @param clientType The mobile application type.
-/// @param clientVersion The Dropbox client version.
-/// @param lastCarrier last carrier used by the device.
-/// @param sessionId Session unique id. Might be missing due to historical data
-/// gap.
 /// @param ipAddress The IP address of the last activity from this session.
 /// Might be missing due to historical data gap.
 /// @param created The time this session was created. Might be missing due to
 /// historical data gap.
 /// @param updated The time of the last activity from this session. Might be
 /// missing due to historical data gap.
+/// @param sessionInfo Mobile session unique id. Might be missing due to
+/// historical data gap.
+/// @param clientVersion The Dropbox client version.
 /// @param osVersion The hosting OS version.
+/// @param lastCarrier last carrier used by the device.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithDeviceName:(NSString *)deviceName
                         clientType:(DBTEAMMobileClientPlatform *)clientType
-                     clientVersion:(NSString *)clientVersion
-                       lastCarrier:(NSString *)lastCarrier
-                         sessionId:(nullable NSString *)sessionId
                          ipAddress:(nullable NSString *)ipAddress
                            created:(nullable NSDate *)created
                            updated:(nullable NSDate *)updated
-                         osVersion:(nullable NSString *)osVersion;
+                       sessionInfo:(nullable DBTEAMLOGMobileSessionLogInfo *)sessionInfo
+                     clientVersion:(nullable NSString *)clientVersion
+                         osVersion:(nullable NSString *)osVersion
+                       lastCarrier:(nullable NSString *)lastCarrier;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -81,15 +85,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param deviceName The device name.
 /// @param clientType The mobile application type.
-/// @param clientVersion The Dropbox client version.
-/// @param lastCarrier last carrier used by the device.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDeviceName:(NSString *)deviceName
-                        clientType:(DBTEAMMobileClientPlatform *)clientType
-                     clientVersion:(NSString *)clientVersion
-                       lastCarrier:(NSString *)lastCarrier;
+- (instancetype)initWithDeviceName:(NSString *)deviceName clientType:(DBTEAMMobileClientPlatform *)clientType;
 
 @end
 

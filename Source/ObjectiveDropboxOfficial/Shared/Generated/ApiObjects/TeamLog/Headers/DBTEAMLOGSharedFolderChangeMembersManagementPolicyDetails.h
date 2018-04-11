@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedFolderChangeMembersManagementPolicyDetails` struct.
 ///
-/// Changed who can add or remove members of a shared folder.
+/// Changed who can add/remove members of shared folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

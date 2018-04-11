@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGDeviceDeleteOnUnlinkFailDetails;
+@class DBTEAMLOGSessionLogInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DeviceDeleteOnUnlinkFailDetails` struct.
 ///
-/// Failed to delete all files from an unlinked device.
+/// Failed to delete all files from unlinked device.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -28,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Session unique id. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sessionId;
+@property (nonatomic, readonly, nullable) DBTEAMLOGSessionLogInfo *sessionInfo;
 
 /// The device name. Might be missing due to historical data gap.
 @property (nonatomic, readonly, copy, nullable) NSString *displayName;
@@ -42,15 +43,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param numFailures The number of times that remote file deletion failed.
-/// @param sessionId Session unique id. Might be missing due to historical data
-/// gap.
+/// @param sessionInfo Session unique id. Might be missing due to historical
+/// data gap.
 /// @param displayName The device name. Might be missing due to historical data
 /// gap.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithNumFailures:(NSNumber *)numFailures
-                          sessionId:(nullable NSString *)sessionId
+                        sessionInfo:(nullable DBTEAMLOGSessionLogInfo *)sessionInfo
                         displayName:(nullable NSString *)displayName;
 
 ///

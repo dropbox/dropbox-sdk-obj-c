@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MemberSuggestDetails` struct.
 ///
-/// Suggested a new team member to be added to the team.
+/// Suggested person to add to team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

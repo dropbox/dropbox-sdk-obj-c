@@ -73,6 +73,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventCategoryTag) {
   /// Events that apply to all types of sharing and collaboration.
   DBTEAMLOGEventCategorySharing,
 
+  /// Events that apply to Dropbox Showcase.
+  DBTEAMLOGEventCategoryShowcase,
+
   /// Events that involve using or configuring single sign-on as well as
   /// administrative policies concerning single sign-on.
   DBTEAMLOGEventCategorySso,
@@ -230,6 +233,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventCategoryTag) {
 - (instancetype)initWithSharing;
 
 ///
+/// Initializes union class with tag state of "showcase".
+///
+/// Description of the "showcase" tag state: Events that apply to Dropbox
+/// Showcase.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithShowcase;
+
+///
 /// Initializes union class with tag state of "sso".
 ///
 /// Description of the "sso" tag state: Events that involve using or configuring
@@ -381,6 +394,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventCategoryTag) {
 /// @return Whether the union's current tag state has value "sharing".
 ///
 - (BOOL)isSharing;
+
+///
+/// Retrieves whether the union's current tag state has value "showcase".
+///
+/// @return Whether the union's current tag state has value "showcase".
+///
+- (BOOL)isShowcase;
 
 ///
 /// Retrieves whether the union's current tag state has value "sso".

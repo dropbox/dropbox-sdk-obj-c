@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentAddLinkPasswordDetails` struct.
 ///
-/// Added a password to the link for the shared file or folder.
+/// Added password to link for shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

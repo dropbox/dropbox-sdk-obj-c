@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DeviceChangeIpMobileDetails` struct.
 ///
-/// IP address associated with active mobile session changed.
+/// Changed IP address associated with active mobile session.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Device's session logged information.
-@property (nonatomic, readonly) DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo;
+@property (nonatomic, readonly, nullable) DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo;
 
 #pragma mark - Constructors
 
@@ -40,7 +40,16 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDeviceSessionInfo:(DBTEAMLOGDeviceSessionLogInfo *)deviceSessionInfo;
+- (instancetype)initWithDeviceSessionInfo:(nullable DBTEAMLOGDeviceSessionLogInfo *)deviceSessionInfo;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
+///
+/// @return An initialized instance.
+///
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 

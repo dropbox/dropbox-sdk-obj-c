@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentChangeViewerInfoPolicyDetails` struct.
 ///
-/// Changed whether members can see who viewed the shared file or folder.
+/// Changed whether members can see who viewed shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

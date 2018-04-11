@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedFolderChangeMembersInheritancePolicyDetails` struct.
 ///
-/// Specify if the shared folder inherits its members from the parent folder.
+/// Changed whether shared folder inherits members from parent folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

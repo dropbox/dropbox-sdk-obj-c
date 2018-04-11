@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGDeviceUnlinkDetails;
+@class DBTEAMLOGSessionLogInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DeviceUnlinkDetails` struct.
 ///
-/// Disconnected a device.
+/// Disconnected device.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Session unique id. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sessionId;
+/// Session unique id.
+@property (nonatomic, readonly, nullable) DBTEAMLOGSessionLogInfo *sessionInfo;
 
 /// The device name. Might be missing due to historical data gap.
 @property (nonatomic, readonly, copy, nullable) NSString *displayName;
@@ -44,15 +45,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param deleteData True if the user requested to delete data after device
 /// unlink, false otherwise.
-/// @param sessionId Session unique id. Might be missing due to historical data
-/// gap.
+/// @param sessionInfo Session unique id.
 /// @param displayName The device name. Might be missing due to historical data
 /// gap.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithDeleteData:(NSNumber *)deleteData
-                         sessionId:(nullable NSString *)sessionId
+                       sessionInfo:(nullable DBTEAMLOGSessionLogInfo *)sessionInfo
                        displayName:(nullable NSString *)displayName;
 
 ///

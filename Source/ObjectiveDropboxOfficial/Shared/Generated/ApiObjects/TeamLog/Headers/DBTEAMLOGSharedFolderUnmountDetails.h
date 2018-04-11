@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedFolderUnmountDetails` struct.
 ///
-/// Deleted a shared folder from Dropbox.
+/// Deleted shared folder from Dropbox.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

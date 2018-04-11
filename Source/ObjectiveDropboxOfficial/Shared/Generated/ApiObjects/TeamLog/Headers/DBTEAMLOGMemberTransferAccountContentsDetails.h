@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MemberTransferAccountContentsDetails` struct.
 ///
-/// Transferred contents of a removed team member account to another member.
+/// Transferred contents of deleted member account to another member.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
