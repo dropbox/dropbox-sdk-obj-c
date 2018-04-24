@@ -4,6 +4,25 @@
 
 #import "DBTransportBaseHostnameConfig.h"
 #import "DBSDKConstants.h"
+#import "DBStoneBase.h"
+
+@implementation DBRoute (DropboxHost)
+
+- (DBRouteHost)host {
+  NSString *routeHost = self.attrs[@"host"];
+  if ([routeHost isEqualToString:@"api"]) {
+    return DBRouteHostApi;
+  }
+  if ([routeHost isEqualToString:@"content"]) {
+    return DBRouteHostContent;
+  }
+  if ([routeHost isEqualToString:@"notify"]) {
+    return DBRouteHostNotify;
+  }
+  return DBRouteHostUnknown;
+}
+
+@end
 
 @implementation DBTransportBaseHostnameConfig
 
@@ -35,15 +54,16 @@
   return self;
 }
 
-- (nullable NSString *)apiV2PrefixWithRouteType:(NSString *)routeType {
-  if ([routeType isEqualToString:@"api"]) {
-    return [NSString stringWithFormat:@"https://%@/2", _api];
-  } else if ([routeType isEqualToString:@"content"]) {
-    return [NSString stringWithFormat:@"https://%@/2", _content];
-  } else if ([routeType isEqualToString:@"notify"]) {
-    return [NSString stringWithFormat:@"https://%@/2", _notify];
-  } else {
-    return nil;
+- (nullable NSString *)apiV2PrefixWithRoute:(DBRoute *)route {
+  switch (route.host) {
+    case DBRouteHostApi:
+      return [NSString stringWithFormat:@"https://%@/2", _api];
+    case DBRouteHostContent:
+      return [NSString stringWithFormat:@"https://%@/2", _content];
+    case DBRouteHostNotify:
+      return [NSString stringWithFormat:@"https://%@/2", _notify];
+    case DBRouteHostUnknown:
+      return nil;
   }
 }
 
