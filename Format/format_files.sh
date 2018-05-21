@@ -1,5 +1,5 @@
-#!/bin/sh
-# e.g. `sh reformat_files.sh <srcs_path>`
+#!/bin/bash
+# e.g. `format_files.sh <srcs_path>`
 #
 
 srcs_path=$1

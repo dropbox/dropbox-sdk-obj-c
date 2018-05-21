@@ -154,7 +154,7 @@ def main():
     if verbose:
         print('Formatting source files')
 
-    cmd = ['sh', 'format_files.sh', dropbox_format_output_path]
+    cmd = ['format_files.sh', dropbox_format_output_path]
     o = subprocess.check_output(cmd, cwd=dropbox_format_script_path)
     if o:
         print('Output:', o)
