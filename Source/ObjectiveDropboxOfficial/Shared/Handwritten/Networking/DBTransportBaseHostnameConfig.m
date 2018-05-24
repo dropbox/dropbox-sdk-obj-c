@@ -56,14 +56,14 @@
 
 - (nullable NSString *)apiV2PrefixWithRoute:(DBRoute *)route {
   switch (route.host) {
-    case DBRouteHostApi:
-      return [NSString stringWithFormat:@"https://%@/2", _api];
-    case DBRouteHostContent:
-      return [NSString stringWithFormat:@"https://%@/2", _content];
-    case DBRouteHostNotify:
-      return [NSString stringWithFormat:@"https://%@/2", _notify];
-    case DBRouteHostUnknown:
-      return nil;
+  case DBRouteHostApi:
+    return [NSString stringWithFormat:@"https://%@/2", _api];
+  case DBRouteHostContent:
+    return [NSString stringWithFormat:@"https://%@/2", _content];
+  case DBRouteHostNotify:
+    return [NSString stringWithFormat:@"https://%@/2", _notify];
+  case DBRouteHostUnknown:
+    return nil;
   }
 }
 
