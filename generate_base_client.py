@@ -99,7 +99,13 @@ def main():
     if verbose:
         print('Generating Obj-C types')
 
-    stone_cmd_prefix = ['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth']
+    stone_cmd_prefix = [
+        sys.executable,
+        '-m', 'stone.cli',
+        '-a', 'host',
+        '-a', 'style',
+        '-a', 'auth',
+    ]
     if args.route_whitelist_filter:
         stone_cmd_prefix += ['-r', args.route_whitelist_filter]
 
