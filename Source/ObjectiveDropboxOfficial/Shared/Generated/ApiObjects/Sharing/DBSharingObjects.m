@@ -5117,8 +5117,7 @@
         [[DBSHARINGSharingFileAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
     jsonDict[@".tag"] = @"access_error";
   } else if ([valueObj isNoExplicitAccess]) {
-    jsonDict[@"no_explicit_access"] =
-        [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
+    jsonDict = [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
     jsonDict[@".tag"] = @"no_explicit_access";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
@@ -5311,7 +5310,7 @@
 
   if ([valueObj isSuccess]) {
     if (valueObj.success) {
-      jsonDict = [[DBSHARINGAccessLevelSerializer serialize:valueObj.success] mutableCopy];
+      jsonDict[@"success"] = [[DBSHARINGAccessLevelSerializer serialize:valueObj.success] mutableCopy];
     }
     jsonDict[@".tag"] = @"success";
   } else if ([valueObj isMemberError]) {
@@ -5628,7 +5627,7 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isSuccess]) {
-    jsonDict[@"success"] = [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.success] mutableCopy];
+    jsonDict = [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.success] mutableCopy];
     jsonDict[@".tag"] = @"success";
   } else if ([valueObj isMemberError]) {
     jsonDict[@"member_error"] = [[DBSHARINGFileMemberActionErrorSerializer serialize:valueObj.memberError] mutableCopy];
@@ -7512,7 +7511,7 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isMetadata]) {
-    jsonDict[@"metadata"] = [[DBSHARINGSharedFileMetadataSerializer serialize:valueObj.metadata] mutableCopy];
+    jsonDict = [[DBSHARINGSharedFileMetadataSerializer serialize:valueObj.metadata] mutableCopy];
     jsonDict[@".tag"] = @"metadata";
   } else if ([valueObj isAccessError]) {
     jsonDict[@"access_error"] =
@@ -12628,7 +12627,7 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isResult]) {
-    jsonDict[@"result"] = [[DBSHARINGListFileMembersCountResultSerializer serialize:valueObj.result] mutableCopy];
+    jsonDict = [[DBSHARINGListFileMembersCountResultSerializer serialize:valueObj.result] mutableCopy];
     jsonDict[@".tag"] = @"result";
   } else if ([valueObj isAccessError]) {
     jsonDict[@"access_error"] =
@@ -16371,8 +16370,7 @@
   } else if ([valueObj isInsideSharedFolder]) {
     jsonDict[@".tag"] = @"inside_shared_folder";
   } else if ([valueObj isInsufficientQuota]) {
-    jsonDict[@"insufficient_quota"] =
-        [[DBSHARINGInsufficientQuotaAmountsSerializer serialize:valueObj.insufficientQuota] mutableCopy];
+    jsonDict = [[DBSHARINGInsufficientQuotaAmountsSerializer serialize:valueObj.insufficientQuota] mutableCopy];
     jsonDict[@".tag"] = @"insufficient_quota";
   } else if ([valueObj isAlreadyMounted]) {
     jsonDict[@".tag"] = @"already_mounted";
@@ -17270,8 +17268,7 @@
   } else if ([valueObj isRestrictedByParentFolder]) {
     jsonDict[@".tag"] = @"restricted_by_parent_folder";
   } else if ([valueObj isInsufficientPlan]) {
-    jsonDict[@"insufficient_plan"] =
-        [[DBSHARINGInsufficientPlanSerializer serialize:valueObj.insufficientPlan] mutableCopy];
+    jsonDict = [[DBSHARINGInsufficientPlanSerializer serialize:valueObj.insufficientPlan] mutableCopy];
     jsonDict[@".tag"] = @"insufficient_plan";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
@@ -18369,8 +18366,7 @@
         [[DBSHARINGSharingFileAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
     jsonDict[@".tag"] = @"access_error";
   } else if ([valueObj isNoExplicitAccess]) {
-    jsonDict[@"no_explicit_access"] =
-        [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
+    jsonDict = [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
     jsonDict[@".tag"] = @"no_explicit_access";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
@@ -19012,7 +19008,7 @@
   if ([valueObj isInProgress]) {
     jsonDict[@".tag"] = @"in_progress";
   } else if ([valueObj isComplete]) {
-    jsonDict[@"complete"] = [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.complete] mutableCopy];
+    jsonDict = [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.complete] mutableCopy];
     jsonDict[@".tag"] = @"complete";
   } else if ([valueObj isFailed]) {
     jsonDict[@"failed"] = [[DBSHARINGRemoveFolderMemberErrorSerializer serialize:valueObj.failed] mutableCopy];
@@ -21177,7 +21173,7 @@
   if ([valueObj isInProgress]) {
     jsonDict[@".tag"] = @"in_progress";
   } else if ([valueObj isComplete]) {
-    jsonDict[@"complete"] = [[DBSHARINGSharedFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
+    jsonDict = [[DBSHARINGSharedFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
     jsonDict[@".tag"] = @"complete";
   } else if ([valueObj isFailed]) {
     jsonDict[@"failed"] = [[DBSHARINGShareFolderErrorSerializer serialize:valueObj.failed] mutableCopy];
@@ -21365,7 +21361,7 @@
     jsonDict[@"async_job_id"] = valueObj.asyncJobId;
     jsonDict[@".tag"] = @"async_job_id";
   } else if ([valueObj isComplete]) {
-    jsonDict[@"complete"] = [[DBSHARINGSharedFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
+    jsonDict = [[DBSHARINGSharedFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
     jsonDict[@".tag"] = @"complete";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
@@ -21768,8 +21764,7 @@
   } else if ([valueObj isInsidePublicFolder]) {
     jsonDict[@".tag"] = @"inside_public_folder";
   } else if ([valueObj isAlreadyShared]) {
-    jsonDict[@"already_shared"] =
-        [[DBSHARINGSharedFolderMetadataSerializer serialize:valueObj.alreadyShared] mutableCopy];
+    jsonDict = [[DBSHARINGSharedFolderMetadataSerializer serialize:valueObj.alreadyShared] mutableCopy];
     jsonDict[@".tag"] = @"already_shared";
   } else if ([valueObj isInvalidPath]) {
     jsonDict[@".tag"] = @"invalid_path";
@@ -22986,8 +22981,7 @@
   } else if ([valueObj isNotAMember]) {
     jsonDict[@".tag"] = @"not_a_member";
   } else if ([valueObj isNoExplicitAccess]) {
-    jsonDict[@"no_explicit_access"] =
-        [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
+    jsonDict = [[DBSHARINGMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
     jsonDict[@".tag"] = @"no_explicit_access";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";

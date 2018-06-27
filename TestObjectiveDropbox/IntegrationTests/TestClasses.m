@@ -2204,7 +2204,8 @@ void MyLog(NSString *format, ...) {
                      dNewExternalId:nil
                       dNewGivenName:@"NewFirstName"
                         dNewSurname:nil
-                   dNewPersistentId:nil]
+                   dNewPersistentId:nil
+          dNewIsDirectoryRestricted:nil]
       setResponseBlock:^(DBTEAMTeamMemberInfo *result, DBTEAMMembersSetProfileError *routeError, DBRequestError *error) {
         if (!error) {
           MyLog(@"%@\n", result);

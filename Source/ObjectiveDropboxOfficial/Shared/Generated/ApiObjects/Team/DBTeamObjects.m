@@ -1423,7 +1423,7 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isSuccess]) {
-    jsonDict[@"success"] = [[DBTEAMUserCustomQuotaResultSerializer serialize:valueObj.success] mutableCopy];
+    jsonDict = [[DBTEAMUserCustomQuotaResultSerializer serialize:valueObj.success] mutableCopy];
     jsonDict[@".tag"] = @"success";
   } else if ([valueObj isInvalidUser]) {
     jsonDict[@"invalid_user"] = [[DBTEAMUserSelectorArgSerializer serialize:valueObj.invalidUser] mutableCopy];
@@ -9800,7 +9800,7 @@
     jsonDict[@"id_not_found"] = valueObj.idNotFound;
     jsonDict[@".tag"] = @"id_not_found";
   } else if ([valueObj isGroupInfo]) {
-    jsonDict[@"group_info"] = [[DBTEAMGroupFullInfoSerializer serialize:valueObj.groupInfo] mutableCopy];
+    jsonDict = [[DBTEAMGroupFullInfoSerializer serialize:valueObj.groupInfo] mutableCopy];
     jsonDict[@".tag"] = @"group_info";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
@@ -14874,7 +14874,7 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isSuccess]) {
-    jsonDict[@"success"] = [[DBTEAMTeamMemberInfoSerializer serialize:valueObj.success] mutableCopy];
+    jsonDict = [[DBTEAMTeamMemberInfoSerializer serialize:valueObj.success] mutableCopy];
     jsonDict[@".tag"] = @"success";
   } else if ([valueObj isTeamLicenseLimit]) {
     jsonDict[@"team_license_limit"] = valueObj.teamLicenseLimit;
@@ -17008,7 +17008,7 @@
     jsonDict[@"id_not_found"] = valueObj.idNotFound;
     jsonDict[@".tag"] = @"id_not_found";
   } else if ([valueObj isMemberInfo]) {
-    jsonDict[@"member_info"] = [[DBTEAMTeamMemberInfoSerializer serialize:valueObj.memberInfo] mutableCopy];
+    jsonDict = [[DBTEAMTeamMemberInfoSerializer serialize:valueObj.memberInfo] mutableCopy];
     jsonDict[@".tag"] = @"member_info";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
@@ -21793,14 +21793,13 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isWebSession]) {
-    jsonDict[@"web_session"] = [[DBTEAMDeviceSessionArgSerializer serialize:valueObj.webSession] mutableCopy];
+    jsonDict = [[DBTEAMDeviceSessionArgSerializer serialize:valueObj.webSession] mutableCopy];
     jsonDict[@".tag"] = @"web_session";
   } else if ([valueObj isDesktopClient]) {
-    jsonDict[@"desktop_client"] =
-        [[DBTEAMRevokeDesktopClientArgSerializer serialize:valueObj.desktopClient] mutableCopy];
+    jsonDict = [[DBTEAMRevokeDesktopClientArgSerializer serialize:valueObj.desktopClient] mutableCopy];
     jsonDict[@".tag"] = @"desktop_client";
   } else if ([valueObj isMobileClient]) {
-    jsonDict[@"mobile_client"] = [[DBTEAMDeviceSessionArgSerializer serialize:valueObj.mobileClient] mutableCopy];
+    jsonDict = [[DBTEAMDeviceSessionArgSerializer serialize:valueObj.mobileClient] mutableCopy];
     jsonDict[@".tag"] = @"mobile_client";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
@@ -24667,7 +24666,7 @@
   if ([valueObj isInProgress]) {
     jsonDict[@".tag"] = @"in_progress";
   } else if ([valueObj isComplete]) {
-    jsonDict[@"complete"] = [[DBTEAMTeamFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
+    jsonDict = [[DBTEAMTeamFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
     jsonDict[@".tag"] = @"complete";
   } else if ([valueObj isFailed]) {
     jsonDict[@"failed"] = [[DBTEAMTeamFolderArchiveErrorSerializer serialize:valueObj.failed] mutableCopy];
@@ -24855,7 +24854,7 @@
     jsonDict[@"async_job_id"] = valueObj.asyncJobId;
     jsonDict[@".tag"] = @"async_job_id";
   } else if ([valueObj isComplete]) {
-    jsonDict[@"complete"] = [[DBTEAMTeamFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
+    jsonDict = [[DBTEAMTeamFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
     jsonDict[@".tag"] = @"complete";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
@@ -25390,8 +25389,7 @@
     jsonDict[@"id_not_found"] = valueObj.idNotFound;
     jsonDict[@".tag"] = @"id_not_found";
   } else if ([valueObj isTeamFolderMetadata]) {
-    jsonDict[@"team_folder_metadata"] =
-        [[DBTEAMTeamFolderMetadataSerializer serialize:valueObj.teamFolderMetadata] mutableCopy];
+    jsonDict = [[DBTEAMTeamFolderMetadataSerializer serialize:valueObj.teamFolderMetadata] mutableCopy];
     jsonDict[@".tag"] = @"team_folder_metadata";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
@@ -28635,7 +28633,7 @@
   } else if ([valueObj isSuspended]) {
     jsonDict[@".tag"] = @"suspended";
   } else if ([valueObj isRemoved]) {
-    jsonDict[@"removed"] = [[DBTEAMRemovedStatusSerializer serialize:valueObj.removed] mutableCopy];
+    jsonDict = [[DBTEAMRemovedStatusSerializer serialize:valueObj.removed] mutableCopy];
     jsonDict[@".tag"] = @"removed";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
