@@ -207,7 +207,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionLookupError` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILESUploadSessionLookupError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionLookupError *)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionLookupError` instances.
@@ -217,7 +217,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESUploadSessionLookupError` object.
 ///
-+ (DBFILESUploadSessionLookupError *)deserialize:(NSDictionary *)dict;
++ (DBFILESUploadSessionLookupError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

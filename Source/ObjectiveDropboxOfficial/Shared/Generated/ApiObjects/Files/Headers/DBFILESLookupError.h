@@ -192,7 +192,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESLookupError` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILESLookupError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESLookupError *)instance;
 
 ///
 /// Deserializes `DBFILESLookupError` instances.
@@ -202,7 +202,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESLookupError` object.
 ///
-+ (DBFILESLookupError *)deserialize:(NSDictionary *)dict;
++ (DBFILESLookupError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

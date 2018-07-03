@@ -168,11 +168,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccessMethodLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccessMethodLogInfoSerializer deserialize:dict];
 }
 
@@ -256,7 +256,7 @@
 
 @implementation DBTEAMLOGAccessMethodLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccessMethodLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccessMethodLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isEndUser]) {
@@ -283,7 +283,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccessMethodLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccessMethodLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"end_user"]) {
@@ -375,11 +375,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureAvailabilitySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureAvailabilitySerializer deserialize:dict];
 }
 
@@ -451,7 +451,7 @@
 
 @implementation DBTEAMLOGAccountCaptureAvailabilitySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureAvailability *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureAvailability *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isUnavailable]) {
@@ -467,7 +467,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureAvailability *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureAvailability *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"unavailable"]) {
@@ -512,11 +512,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureChangeAvailabilityDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureChangeAvailabilityDetailsSerializer deserialize:dict];
 }
 
@@ -582,7 +582,7 @@
 
 @implementation DBTEAMLOGAccountCaptureChangeAvailabilityDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGAccountCaptureAvailabilitySerializer serialize:valueObj.dNewValue];
@@ -593,7 +593,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAccountCaptureAvailability *dNewValue =
       [DBTEAMLOGAccountCaptureAvailabilitySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGAccountCaptureAvailability *previousValue =
@@ -629,11 +629,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureChangeAvailabilityTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureChangeAvailabilityTypeSerializer deserialize:dict];
 }
 
@@ -691,7 +691,7 @@
 
 @implementation DBTEAMLOGAccountCaptureChangeAvailabilityTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureChangeAvailabilityType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureChangeAvailabilityType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -699,7 +699,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureChangeAvailabilityType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureChangeAvailabilityType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAccountCaptureChangeAvailabilityType alloc] initWithDescription_:description_];
@@ -736,11 +736,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -806,7 +806,7 @@
 
 @implementation DBTEAMLOGAccountCaptureChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGAccountCapturePolicySerializer serialize:valueObj.dNewValue];
@@ -817,7 +817,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAccountCapturePolicy *dNewValue =
       [DBTEAMLOGAccountCapturePolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGAccountCapturePolicy *previousValue =
@@ -851,11 +851,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -913,7 +913,7 @@
 
 @implementation DBTEAMLOGAccountCaptureChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -921,7 +921,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAccountCaptureChangePolicyType alloc] initWithDescription_:description_];
@@ -951,11 +951,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureMigrateAccountDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureMigrateAccountDetailsSerializer deserialize:dict];
 }
 
@@ -1013,7 +1013,7 @@
 
 @implementation DBTEAMLOGAccountCaptureMigrateAccountDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureMigrateAccountDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureMigrateAccountDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"domain_name"] = valueObj.domainName;
@@ -1021,7 +1021,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureMigrateAccountDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureMigrateAccountDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *domainName = valueDict[@"domain_name"];
 
   return [[DBTEAMLOGAccountCaptureMigrateAccountDetails alloc] initWithDomainName:domainName];
@@ -1051,11 +1051,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureMigrateAccountTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureMigrateAccountTypeSerializer deserialize:dict];
 }
 
@@ -1113,7 +1113,7 @@
 
 @implementation DBTEAMLOGAccountCaptureMigrateAccountTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureMigrateAccountType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureMigrateAccountType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -1121,7 +1121,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureMigrateAccountType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureMigrateAccountType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAccountCaptureMigrateAccountType alloc] initWithDescription_:description_];
@@ -1151,11 +1151,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureNotificationEmailsSentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureNotificationEmailsSentDetailsSerializer deserialize:dict];
 }
 
@@ -1213,7 +1213,7 @@
 
 @implementation DBTEAMLOGAccountCaptureNotificationEmailsSentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureNotificationEmailsSentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureNotificationEmailsSentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"domain_name"] = valueObj.domainName;
@@ -1221,7 +1221,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureNotificationEmailsSentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureNotificationEmailsSentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *domainName = valueDict[@"domain_name"];
 
   return [[DBTEAMLOGAccountCaptureNotificationEmailsSentDetails alloc] initWithDomainName:domainName];
@@ -1251,11 +1251,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureNotificationEmailsSentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureNotificationEmailsSentTypeSerializer deserialize:dict];
 }
 
@@ -1313,7 +1313,7 @@
 
 @implementation DBTEAMLOGAccountCaptureNotificationEmailsSentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureNotificationEmailsSentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureNotificationEmailsSentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -1321,7 +1321,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureNotificationEmailsSentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureNotificationEmailsSentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAccountCaptureNotificationEmailsSentType alloc] initWithDescription_:description_];
@@ -1408,11 +1408,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCapturePolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCapturePolicySerializer deserialize:dict];
 }
 
@@ -1488,7 +1488,7 @@
 
 @implementation DBTEAMLOGAccountCapturePolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCapturePolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCapturePolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -1506,7 +1506,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCapturePolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCapturePolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -1546,11 +1546,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureRelinquishAccountDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureRelinquishAccountDetailsSerializer deserialize:dict];
 }
 
@@ -1608,7 +1608,7 @@
 
 @implementation DBTEAMLOGAccountCaptureRelinquishAccountDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"domain_name"] = valueObj.domainName;
@@ -1616,7 +1616,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureRelinquishAccountDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureRelinquishAccountDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *domainName = valueDict[@"domain_name"];
 
   return [[DBTEAMLOGAccountCaptureRelinquishAccountDetails alloc] initWithDomainName:domainName];
@@ -1646,11 +1646,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAccountCaptureRelinquishAccountTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAccountCaptureRelinquishAccountTypeSerializer deserialize:dict];
 }
 
@@ -1708,7 +1708,7 @@
 
 @implementation DBTEAMLOGAccountCaptureRelinquishAccountTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -1716,7 +1716,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAccountCaptureRelinquishAccountType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAccountCaptureRelinquishAccountType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAccountCaptureRelinquishAccountType alloc] initWithDescription_:description_];
@@ -1812,11 +1812,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGActionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGActionDetailsSerializer deserialize:dict];
 }
 
@@ -1888,7 +1888,7 @@
 
 @implementation DBTEAMLOGActionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGActionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGActionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isTeamJoinDetails]) {
@@ -1907,7 +1907,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGActionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGActionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"team_join_details"]) {
@@ -2091,11 +2091,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGActorLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGActorLogInfoSerializer deserialize:dict];
 }
 
@@ -2183,7 +2183,7 @@
 
 @implementation DBTEAMLOGActorLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGActorLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGActorLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isUser]) {
@@ -2211,7 +2211,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGActorLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGActorLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"user"]) {
@@ -2346,11 +2346,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAdminRoleSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAdminRoleSerializer deserialize:dict];
 }
 
@@ -2434,7 +2434,7 @@
 
 @implementation DBTEAMLOGAdminRoleSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAdminRole *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAdminRole *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isTeamAdmin]) {
@@ -2456,7 +2456,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAdminRole *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAdminRole *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"team_admin"]) {
@@ -2498,11 +2498,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAllowDownloadDisabledDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAllowDownloadDisabledDetailsSerializer deserialize:dict];
 }
 
@@ -2554,14 +2554,14 @@
 
 @implementation DBTEAMLOGAllowDownloadDisabledDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAllowDownloadDisabledDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAllowDownloadDisabledDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAllowDownloadDisabledDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAllowDownloadDisabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGAllowDownloadDisabledDetails alloc] initDefault];
@@ -2591,11 +2591,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAllowDownloadDisabledTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAllowDownloadDisabledTypeSerializer deserialize:dict];
 }
 
@@ -2652,7 +2652,7 @@
 
 @implementation DBTEAMLOGAllowDownloadDisabledTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAllowDownloadDisabledType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAllowDownloadDisabledType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -2660,7 +2660,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAllowDownloadDisabledType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAllowDownloadDisabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAllowDownloadDisabledType alloc] initWithDescription_:description_];
@@ -2688,11 +2688,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAllowDownloadEnabledDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAllowDownloadEnabledDetailsSerializer deserialize:dict];
 }
 
@@ -2744,14 +2744,14 @@
 
 @implementation DBTEAMLOGAllowDownloadEnabledDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAllowDownloadEnabledDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAllowDownloadEnabledDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAllowDownloadEnabledDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAllowDownloadEnabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGAllowDownloadEnabledDetails alloc] initDefault];
@@ -2781,11 +2781,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAllowDownloadEnabledTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAllowDownloadEnabledTypeSerializer deserialize:dict];
 }
 
@@ -2842,7 +2842,7 @@
 
 @implementation DBTEAMLOGAllowDownloadEnabledTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAllowDownloadEnabledType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAllowDownloadEnabledType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -2850,7 +2850,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAllowDownloadEnabledType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAllowDownloadEnabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAllowDownloadEnabledType alloc] initWithDescription_:description_];
@@ -2880,11 +2880,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGApiSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGApiSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -2941,7 +2941,7 @@
 
 @implementation DBTEAMLOGApiSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGApiSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGApiSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"request_id"] = valueObj.requestId;
@@ -2949,7 +2949,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGApiSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGApiSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *requestId = valueDict[@"request_id"];
 
   return [[DBTEAMLOGApiSessionLogInfo alloc] initWithRequestId:requestId];
@@ -2980,11 +2980,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppLinkTeamDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppLinkTeamDetailsSerializer deserialize:dict];
 }
 
@@ -3041,7 +3041,7 @@
 
 @implementation DBTEAMLOGAppLinkTeamDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppLinkTeamDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppLinkTeamDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"app_info"] = [DBTEAMLOGAppLogInfoSerializer serialize:valueObj.appInfo];
@@ -3049,7 +3049,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppLinkTeamDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppLinkTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAppLogInfo *appInfo = [DBTEAMLOGAppLogInfoSerializer deserialize:valueDict[@"app_info"]];
 
   return [[DBTEAMLOGAppLinkTeamDetails alloc] initWithAppInfo:appInfo];
@@ -3079,11 +3079,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppLinkTeamTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppLinkTeamTypeSerializer deserialize:dict];
 }
 
@@ -3140,7 +3140,7 @@
 
 @implementation DBTEAMLOGAppLinkTeamTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppLinkTeamType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppLinkTeamType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -3148,7 +3148,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppLinkTeamType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppLinkTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAppLinkTeamType alloc] initWithDescription_:description_];
@@ -3179,11 +3179,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppLinkUserDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppLinkUserDetailsSerializer deserialize:dict];
 }
 
@@ -3240,7 +3240,7 @@
 
 @implementation DBTEAMLOGAppLinkUserDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppLinkUserDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppLinkUserDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"app_info"] = [DBTEAMLOGAppLogInfoSerializer serialize:valueObj.appInfo];
@@ -3248,7 +3248,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppLinkUserDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppLinkUserDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAppLogInfo *appInfo = [DBTEAMLOGAppLogInfoSerializer deserialize:valueDict[@"app_info"]];
 
   return [[DBTEAMLOGAppLinkUserDetails alloc] initWithAppInfo:appInfo];
@@ -3278,11 +3278,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppLinkUserTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppLinkUserTypeSerializer deserialize:dict];
 }
 
@@ -3339,7 +3339,7 @@
 
 @implementation DBTEAMLOGAppLinkUserTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppLinkUserType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppLinkUserType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -3347,7 +3347,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppLinkUserType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppLinkUserType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAppLinkUserType alloc] initWithDescription_:description_];
@@ -3384,11 +3384,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppLogInfoSerializer deserialize:dict];
 }
 
@@ -3457,7 +3457,7 @@
 
 @implementation DBTEAMLOGAppLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.appId) {
@@ -3493,7 +3493,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   if ([valueDict[@".tag"] isEqualToString:@"user_or_team_linked_app"]) {
     return [DBTEAMLOGUserOrTeamLinkedAppLogInfoSerializer deserialize:valueDict];
   }
@@ -3535,11 +3535,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppUnlinkTeamDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppUnlinkTeamDetailsSerializer deserialize:dict];
 }
 
@@ -3596,7 +3596,7 @@
 
 @implementation DBTEAMLOGAppUnlinkTeamDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppUnlinkTeamDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppUnlinkTeamDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"app_info"] = [DBTEAMLOGAppLogInfoSerializer serialize:valueObj.appInfo];
@@ -3604,7 +3604,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppUnlinkTeamDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppUnlinkTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAppLogInfo *appInfo = [DBTEAMLOGAppLogInfoSerializer deserialize:valueDict[@"app_info"]];
 
   return [[DBTEAMLOGAppUnlinkTeamDetails alloc] initWithAppInfo:appInfo];
@@ -3634,11 +3634,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppUnlinkTeamTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppUnlinkTeamTypeSerializer deserialize:dict];
 }
 
@@ -3695,7 +3695,7 @@
 
 @implementation DBTEAMLOGAppUnlinkTeamTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppUnlinkTeamType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppUnlinkTeamType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -3703,7 +3703,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppUnlinkTeamType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppUnlinkTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAppUnlinkTeamType alloc] initWithDescription_:description_];
@@ -3734,11 +3734,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppUnlinkUserDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppUnlinkUserDetailsSerializer deserialize:dict];
 }
 
@@ -3795,7 +3795,7 @@
 
 @implementation DBTEAMLOGAppUnlinkUserDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppUnlinkUserDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppUnlinkUserDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"app_info"] = [DBTEAMLOGAppLogInfoSerializer serialize:valueObj.appInfo];
@@ -3803,7 +3803,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppUnlinkUserDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppUnlinkUserDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAppLogInfo *appInfo = [DBTEAMLOGAppLogInfoSerializer deserialize:valueDict[@"app_info"]];
 
   return [[DBTEAMLOGAppUnlinkUserDetails alloc] initWithAppInfo:appInfo];
@@ -3833,11 +3833,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAppUnlinkUserTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAppUnlinkUserTypeSerializer deserialize:dict];
 }
 
@@ -3894,7 +3894,7 @@
 
 @implementation DBTEAMLOGAppUnlinkUserTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAppUnlinkUserType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppUnlinkUserType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -3902,7 +3902,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAppUnlinkUserType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAppUnlinkUserType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGAppUnlinkUserType alloc] initWithDescription_:description_];
@@ -4073,11 +4073,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGAssetLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGAssetLogInfoSerializer deserialize:dict];
 }
 
@@ -4161,7 +4161,7 @@
 
 @implementation DBTEAMLOGAssetLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGAssetLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAssetLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isFile]) {
@@ -4188,7 +4188,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGAssetLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGAssetLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"file"]) {
@@ -4270,11 +4270,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGCertificateSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGCertificateSerializer deserialize:dict];
 }
 
@@ -4359,7 +4359,7 @@
 
 @implementation DBTEAMLOGCertificateSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGCertificate *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCertificate *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"subject"] = valueObj.subject;
@@ -4375,7 +4375,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGCertificate *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGCertificate *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *subject = valueDict[@"subject"];
   NSString *issuer = valueDict[@"issuer"];
   NSString *issueDate = valueDict[@"issue_date"];
@@ -4417,11 +4417,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGCollectionShareDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGCollectionShareDetailsSerializer deserialize:dict];
 }
 
@@ -4478,7 +4478,7 @@
 
 @implementation DBTEAMLOGCollectionShareDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGCollectionShareDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCollectionShareDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"album_name"] = valueObj.albumName;
@@ -4486,7 +4486,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGCollectionShareDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGCollectionShareDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *albumName = valueDict[@"album_name"];
 
   return [[DBTEAMLOGCollectionShareDetails alloc] initWithAlbumName:albumName];
@@ -4516,11 +4516,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGCollectionShareTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGCollectionShareTypeSerializer deserialize:dict];
 }
 
@@ -4577,7 +4577,7 @@
 
 @implementation DBTEAMLOGCollectionShareTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGCollectionShareType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCollectionShareType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -4585,7 +4585,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGCollectionShareType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGCollectionShareType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGCollectionShareType alloc] initWithDescription_:description_];
@@ -4658,11 +4658,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGContentPermanentDeletePolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGContentPermanentDeletePolicySerializer deserialize:dict];
 }
 
@@ -4734,7 +4734,7 @@
 
 @implementation DBTEAMLOGContentPermanentDeletePolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGContentPermanentDeletePolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGContentPermanentDeletePolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -4750,7 +4750,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGContentPermanentDeletePolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGContentPermanentDeletePolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -4882,11 +4882,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGContextLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGContextLogInfoSerializer deserialize:dict];
 }
 
@@ -4966,7 +4966,7 @@
 
 @implementation DBTEAMLOGContextLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGContextLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGContextLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isTeamMember]) {
@@ -4988,7 +4988,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGContextLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGContextLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"team_member"]) {
@@ -5030,11 +5030,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGCreateFolderDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGCreateFolderDetailsSerializer deserialize:dict];
 }
 
@@ -5086,14 +5086,14 @@
 
 @implementation DBTEAMLOGCreateFolderDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGCreateFolderDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCreateFolderDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGCreateFolderDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGCreateFolderDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGCreateFolderDetails alloc] initDefault];
@@ -5123,11 +5123,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGCreateFolderTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGCreateFolderTypeSerializer deserialize:dict];
 }
 
@@ -5184,7 +5184,7 @@
 
 @implementation DBTEAMLOGCreateFolderTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGCreateFolderType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCreateFolderType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -5192,7 +5192,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGCreateFolderType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGCreateFolderType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGCreateFolderType alloc] initWithDescription_:description_];
@@ -5226,11 +5226,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDataPlacementRestrictionChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDataPlacementRestrictionChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -5292,7 +5292,7 @@
 
 @implementation DBTEAMLOGDataPlacementRestrictionChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = [DBTEAMLOGPlacementRestrictionSerializer serialize:valueObj.previousValue];
@@ -5301,7 +5301,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGPlacementRestriction *previousValue =
       [DBTEAMLOGPlacementRestrictionSerializer deserialize:valueDict[@"previous_value"]];
   DBTEAMLOGPlacementRestriction *dNewValue =
@@ -5335,11 +5335,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDataPlacementRestrictionChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDataPlacementRestrictionChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -5397,7 +5397,7 @@
 
 @implementation DBTEAMLOGDataPlacementRestrictionChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDataPlacementRestrictionChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDataPlacementRestrictionChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -5405,7 +5405,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDataPlacementRestrictionChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDataPlacementRestrictionChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDataPlacementRestrictionChangePolicyType alloc] initWithDescription_:description_];
@@ -5436,11 +5436,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -5498,7 +5498,7 @@
 
 @implementation DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"placement_restriction"] =
@@ -5507,7 +5507,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGPlacementRestriction *placementRestriction =
       [DBTEAMLOGPlacementRestrictionSerializer deserialize:valueDict[@"placement_restriction"]];
 
@@ -5539,11 +5539,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDataPlacementRestrictionSatisfyPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDataPlacementRestrictionSatisfyPolicyTypeSerializer deserialize:dict];
 }
 
@@ -5601,7 +5601,7 @@
 
 @implementation DBTEAMLOGDataPlacementRestrictionSatisfyPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -5609,7 +5609,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType alloc] initWithDescription_:description_];
@@ -5648,11 +5648,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -5729,7 +5729,7 @@
 
 @implementation DBTEAMLOGDeviceSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.ipAddress) {
@@ -5775,7 +5775,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   if ([valueDict[@".tag"] isEqualToString:@"desktop_device_session"]) {
     return [DBTEAMLOGDesktopDeviceSessionLogInfoSerializer deserialize:valueDict];
   }
@@ -5858,11 +5858,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDesktopDeviceSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDesktopDeviceSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -5971,7 +5971,7 @@
 
 @implementation DBTEAMLOGDesktopDeviceSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDesktopDeviceSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDesktopDeviceSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"host_name"] = valueObj.hostName;
@@ -5997,7 +5997,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDesktopDeviceSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDesktopDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *hostName = valueDict[@"host_name"];
   DBTEAMDesktopPlatform *clientType = [DBTEAMDesktopPlatformSerializer deserialize:valueDict[@"client_type"]];
   NSString *platform = valueDict[@"platform"];
@@ -6055,11 +6055,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -6120,7 +6120,7 @@
 
 @implementation DBTEAMLOGSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sessionId) {
@@ -6153,7 +6153,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   if ([valueDict[@".tag"] isEqualToString:@"web"]) {
     return [DBTEAMLOGWebSessionLogInfoSerializer deserialize:valueDict];
   }
@@ -6196,11 +6196,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDesktopSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDesktopSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -6261,7 +6261,7 @@
 
 @implementation DBTEAMLOGDesktopSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDesktopSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDesktopSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sessionId) {
@@ -6271,7 +6271,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDesktopSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDesktopSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sessionId = valueDict[@"session_id"] ?: nil;
 
   return [[DBTEAMLOGDesktopSessionLogInfo alloc] initWithSessionId:sessionId];
@@ -6307,11 +6307,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -6381,7 +6381,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -6394,7 +6394,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDeviceApprovalsPolicy *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMLOGDeviceApprovalsPolicySerializer deserialize:valueDict[@"new_value"]] : nil;
   DBTEAMLOGDeviceApprovalsPolicy *previousValue =
@@ -6429,11 +6429,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeDesktopPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeDesktopPolicyTypeSerializer deserialize:dict];
 }
 
@@ -6491,7 +6491,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeDesktopPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -6499,7 +6499,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType alloc] initWithDescription_:description_];
@@ -6535,11 +6535,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -6609,7 +6609,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -6622,7 +6622,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeMobilePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDeviceApprovalsPolicy *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMLOGDeviceApprovalsPolicySerializer deserialize:valueDict[@"new_value"]] : nil;
   DBTEAMLOGDeviceApprovalsPolicy *previousValue =
@@ -6657,11 +6657,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeMobilePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeMobilePolicyTypeSerializer deserialize:dict];
 }
 
@@ -6719,7 +6719,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeMobilePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeMobilePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeMobilePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -6727,7 +6727,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeMobilePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeMobilePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceApprovalsChangeMobilePolicyType alloc] initWithDescription_:description_];
@@ -6763,11 +6763,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeOverageActionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeOverageActionDetailsSerializer deserialize:dict];
 }
 
@@ -6837,7 +6837,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeOverageActionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeOverageActionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeOverageActionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -6850,7 +6850,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeOverageActionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeOverageActionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESRolloutMethod *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMPOLICIESRolloutMethodSerializer deserialize:valueDict[@"new_value"]] : nil;
   DBTEAMPOLICIESRolloutMethod *previousValue =
@@ -6885,11 +6885,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeOverageActionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeOverageActionTypeSerializer deserialize:dict];
 }
 
@@ -6947,7 +6947,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeOverageActionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeOverageActionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeOverageActionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -6955,7 +6955,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeOverageActionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeOverageActionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceApprovalsChangeOverageActionType alloc] initWithDescription_:description_];
@@ -6991,11 +6991,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetailsSerializer deserialize:dict];
 }
 
@@ -7065,7 +7065,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -7078,7 +7078,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDeviceUnlinkPolicy *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMLOGDeviceUnlinkPolicySerializer deserialize:valueDict[@"new_value"]] : nil;
   DBTEAMLOGDeviceUnlinkPolicy *previousValue =
@@ -7113,11 +7113,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsChangeUnlinkActionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsChangeUnlinkActionTypeSerializer deserialize:dict];
 }
 
@@ -7175,7 +7175,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsChangeUnlinkActionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeUnlinkActionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeUnlinkActionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -7183,7 +7183,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsChangeUnlinkActionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsChangeUnlinkActionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceApprovalsChangeUnlinkActionType alloc] initWithDescription_:description_];
@@ -7256,11 +7256,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceApprovalsPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceApprovalsPolicySerializer deserialize:dict];
 }
 
@@ -7332,7 +7332,7 @@
 
 @implementation DBTEAMLOGDeviceApprovalsPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isUnlimited]) {
@@ -7348,7 +7348,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceApprovalsPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceApprovalsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"unlimited"]) {
@@ -7387,11 +7387,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceChangeIpDesktopDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceChangeIpDesktopDetailsSerializer deserialize:dict];
 }
 
@@ -7448,7 +7448,7 @@
 
 @implementation DBTEAMLOGDeviceChangeIpDesktopDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceChangeIpDesktopDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceChangeIpDesktopDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"device_session_info"] = [DBTEAMLOGDeviceSessionLogInfoSerializer serialize:valueObj.deviceSessionInfo];
@@ -7456,7 +7456,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceChangeIpDesktopDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceChangeIpDesktopDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo =
       [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]];
 
@@ -7487,11 +7487,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceChangeIpDesktopTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceChangeIpDesktopTypeSerializer deserialize:dict];
 }
 
@@ -7548,7 +7548,7 @@
 
 @implementation DBTEAMLOGDeviceChangeIpDesktopTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceChangeIpDesktopType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceChangeIpDesktopType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -7556,7 +7556,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceChangeIpDesktopType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceChangeIpDesktopType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceChangeIpDesktopType alloc] initWithDescription_:description_];
@@ -7590,11 +7590,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceChangeIpMobileDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceChangeIpMobileDetailsSerializer deserialize:dict];
 }
 
@@ -7655,7 +7655,7 @@
 
 @implementation DBTEAMLOGDeviceChangeIpMobileDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceChangeIpMobileDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceChangeIpMobileDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.deviceSessionInfo) {
@@ -7665,7 +7665,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceChangeIpMobileDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceChangeIpMobileDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo =
       valueDict[@"device_session_info"]
           ? [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]]
@@ -7698,11 +7698,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceChangeIpMobileTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceChangeIpMobileTypeSerializer deserialize:dict];
 }
 
@@ -7759,7 +7759,7 @@
 
 @implementation DBTEAMLOGDeviceChangeIpMobileTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceChangeIpMobileType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceChangeIpMobileType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -7767,7 +7767,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceChangeIpMobileType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceChangeIpMobileType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceChangeIpMobileType alloc] initWithDescription_:description_];
@@ -7797,11 +7797,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceChangeIpWebDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceChangeIpWebDetailsSerializer deserialize:dict];
 }
 
@@ -7858,7 +7858,7 @@
 
 @implementation DBTEAMLOGDeviceChangeIpWebDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceChangeIpWebDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceChangeIpWebDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"user_agent"] = valueObj.userAgent;
@@ -7866,7 +7866,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceChangeIpWebDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceChangeIpWebDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *userAgent = valueDict[@"user_agent"];
 
   return [[DBTEAMLOGDeviceChangeIpWebDetails alloc] initWithUserAgent:userAgent];
@@ -7896,11 +7896,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceChangeIpWebTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceChangeIpWebTypeSerializer deserialize:dict];
 }
 
@@ -7957,7 +7957,7 @@
 
 @implementation DBTEAMLOGDeviceChangeIpWebTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceChangeIpWebType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceChangeIpWebType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -7965,7 +7965,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceChangeIpWebType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceChangeIpWebType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceChangeIpWebType alloc] initWithDescription_:description_];
@@ -8004,11 +8004,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceDeleteOnUnlinkFailDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceDeleteOnUnlinkFailDetailsSerializer deserialize:dict];
 }
 
@@ -8082,7 +8082,7 @@
 
 @implementation DBTEAMLOGDeviceDeleteOnUnlinkFailDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"num_failures"] = valueObj.numFailures;
@@ -8096,7 +8096,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *numFailures = valueDict[@"num_failures"];
   DBTEAMLOGSessionLogInfo *sessionInfo =
       valueDict[@"session_info"] ? [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
@@ -8131,11 +8131,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceDeleteOnUnlinkFailTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceDeleteOnUnlinkFailTypeSerializer deserialize:dict];
 }
 
@@ -8192,7 +8192,7 @@
 
 @implementation DBTEAMLOGDeviceDeleteOnUnlinkFailTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkFailType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkFailType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -8200,7 +8200,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceDeleteOnUnlinkFailType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceDeleteOnUnlinkFailType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceDeleteOnUnlinkFailType alloc] initWithDescription_:description_];
@@ -8235,11 +8235,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetailsSerializer deserialize:dict];
 }
 
@@ -8309,7 +8309,7 @@
 
 @implementation DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sessionInfo) {
@@ -8322,7 +8322,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceDeleteOnUnlinkSuccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSessionLogInfo *sessionInfo =
       valueDict[@"session_info"] ? [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
@@ -8354,11 +8354,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceDeleteOnUnlinkSuccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceDeleteOnUnlinkSuccessTypeSerializer deserialize:dict];
 }
 
@@ -8416,7 +8416,7 @@
 
 @implementation DBTEAMLOGDeviceDeleteOnUnlinkSuccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkSuccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkSuccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -8424,7 +8424,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceDeleteOnUnlinkSuccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceDeleteOnUnlinkSuccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceDeleteOnUnlinkSuccessType alloc] initWithDescription_:description_];
@@ -8460,11 +8460,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceLinkFailDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceLinkFailDetailsSerializer deserialize:dict];
 }
 
@@ -8529,7 +8529,7 @@
 
 @implementation DBTEAMLOGDeviceLinkFailDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceLinkFailDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceLinkFailDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"device_type"] = [DBTEAMLOGDeviceTypeSerializer serialize:valueObj.deviceType];
@@ -8540,7 +8540,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceLinkFailDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceLinkFailDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDeviceType *deviceType = [DBTEAMLOGDeviceTypeSerializer deserialize:valueDict[@"device_type"]];
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
 
@@ -8571,11 +8571,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceLinkFailTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceLinkFailTypeSerializer deserialize:dict];
 }
 
@@ -8632,7 +8632,7 @@
 
 @implementation DBTEAMLOGDeviceLinkFailTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceLinkFailType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceLinkFailType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -8640,7 +8640,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceLinkFailType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceLinkFailType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceLinkFailType alloc] initWithDescription_:description_];
@@ -8674,11 +8674,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceLinkSuccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceLinkSuccessDetailsSerializer deserialize:dict];
 }
 
@@ -8739,7 +8739,7 @@
 
 @implementation DBTEAMLOGDeviceLinkSuccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceLinkSuccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceLinkSuccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.deviceSessionInfo) {
@@ -8749,7 +8749,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceLinkSuccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceLinkSuccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDeviceSessionLogInfo *deviceSessionInfo =
       valueDict[@"device_session_info"]
           ? [DBTEAMLOGDeviceSessionLogInfoSerializer deserialize:valueDict[@"device_session_info"]]
@@ -8782,11 +8782,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceLinkSuccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceLinkSuccessTypeSerializer deserialize:dict];
 }
 
@@ -8843,7 +8843,7 @@
 
 @implementation DBTEAMLOGDeviceLinkSuccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceLinkSuccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceLinkSuccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -8851,7 +8851,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceLinkSuccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceLinkSuccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceLinkSuccessType alloc] initWithDescription_:description_];
@@ -8879,11 +8879,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceManagementDisabledDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceManagementDisabledDetailsSerializer deserialize:dict];
 }
 
@@ -8936,14 +8936,14 @@
 
 @implementation DBTEAMLOGDeviceManagementDisabledDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceManagementDisabledDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceManagementDisabledDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceManagementDisabledDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceManagementDisabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDeviceManagementDisabledDetails alloc] initDefault];
@@ -8973,11 +8973,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceManagementDisabledTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceManagementDisabledTypeSerializer deserialize:dict];
 }
 
@@ -9034,7 +9034,7 @@
 
 @implementation DBTEAMLOGDeviceManagementDisabledTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceManagementDisabledType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceManagementDisabledType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -9042,7 +9042,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceManagementDisabledType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceManagementDisabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceManagementDisabledType alloc] initWithDescription_:description_];
@@ -9070,11 +9070,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceManagementEnabledDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceManagementEnabledDetailsSerializer deserialize:dict];
 }
 
@@ -9127,14 +9127,14 @@
 
 @implementation DBTEAMLOGDeviceManagementEnabledDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceManagementEnabledDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceManagementEnabledDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceManagementEnabledDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceManagementEnabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDeviceManagementEnabledDetails alloc] initDefault];
@@ -9164,11 +9164,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceManagementEnabledTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceManagementEnabledTypeSerializer deserialize:dict];
 }
 
@@ -9225,7 +9225,7 @@
 
 @implementation DBTEAMLOGDeviceManagementEnabledTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceManagementEnabledType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceManagementEnabledType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -9233,7 +9233,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceManagementEnabledType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceManagementEnabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceManagementEnabledType alloc] initWithDescription_:description_];
@@ -9306,11 +9306,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceTypeSerializer deserialize:dict];
 }
 
@@ -9382,7 +9382,7 @@
 
 @implementation DBTEAMLOGDeviceTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDesktop]) {
@@ -9398,7 +9398,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"desktop"]) {
@@ -9445,11 +9445,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceUnlinkDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceUnlinkDetailsSerializer deserialize:dict];
 }
 
@@ -9522,7 +9522,7 @@
 
 @implementation DBTEAMLOGDeviceUnlinkDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceUnlinkDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceUnlinkDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"delete_data"] = valueObj.deleteData;
@@ -9536,7 +9536,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceUnlinkDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceUnlinkDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *deleteData = valueDict[@"delete_data"];
   DBTEAMLOGSessionLogInfo *sessionInfo =
       valueDict[@"session_info"] ? [DBTEAMLOGSessionLogInfoSerializer deserialize:valueDict[@"session_info"]] : nil;
@@ -9614,11 +9614,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceUnlinkPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceUnlinkPolicySerializer deserialize:dict];
 }
 
@@ -9690,7 +9690,7 @@
 
 @implementation DBTEAMLOGDeviceUnlinkPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceUnlinkPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceUnlinkPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isRemove]) {
@@ -9706,7 +9706,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceUnlinkPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceUnlinkPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"remove"]) {
@@ -9744,11 +9744,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDeviceUnlinkTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDeviceUnlinkTypeSerializer deserialize:dict];
 }
 
@@ -9805,7 +9805,7 @@
 
 @implementation DBTEAMLOGDeviceUnlinkTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceUnlinkType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceUnlinkType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -9813,7 +9813,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDeviceUnlinkType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDeviceUnlinkType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDeviceUnlinkType alloc] initWithDescription_:description_];
@@ -9841,11 +9841,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDirectoryRestrictionsAddMembersDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDirectoryRestrictionsAddMembersDetailsSerializer deserialize:dict];
 }
 
@@ -9898,14 +9898,14 @@
 
 @implementation DBTEAMLOGDirectoryRestrictionsAddMembersDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDirectoryRestrictionsAddMembersDetails alloc] initDefault];
@@ -9935,11 +9935,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDirectoryRestrictionsAddMembersTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDirectoryRestrictionsAddMembersTypeSerializer deserialize:dict];
 }
 
@@ -9997,7 +9997,7 @@
 
 @implementation DBTEAMLOGDirectoryRestrictionsAddMembersTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDirectoryRestrictionsAddMembersType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDirectoryRestrictionsAddMembersType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -10005,7 +10005,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDirectoryRestrictionsAddMembersType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDirectoryRestrictionsAddMembersType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDirectoryRestrictionsAddMembersType alloc] initWithDescription_:description_];
@@ -10033,11 +10033,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDirectoryRestrictionsRemoveMembersDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDirectoryRestrictionsRemoveMembersDetailsSerializer deserialize:dict];
 }
 
@@ -10090,14 +10090,14 @@
 
 @implementation DBTEAMLOGDirectoryRestrictionsRemoveMembersDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails alloc] initDefault];
@@ -10127,11 +10127,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDirectoryRestrictionsRemoveMembersTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDirectoryRestrictionsRemoveMembersTypeSerializer deserialize:dict];
 }
 
@@ -10189,7 +10189,7 @@
 
 @implementation DBTEAMLOGDirectoryRestrictionsRemoveMembersTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDirectoryRestrictionsRemoveMembersType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDirectoryRestrictionsRemoveMembersType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -10197,7 +10197,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDirectoryRestrictionsRemoveMembersType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDirectoryRestrictionsRemoveMembersType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDirectoryRestrictionsRemoveMembersType alloc] initWithDescription_:description_];
@@ -10225,11 +10225,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDisabledDomainInvitesDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDisabledDomainInvitesDetailsSerializer deserialize:dict];
 }
 
@@ -10281,14 +10281,14 @@
 
 @implementation DBTEAMLOGDisabledDomainInvitesDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDisabledDomainInvitesDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDisabledDomainInvitesDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDisabledDomainInvitesDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDisabledDomainInvitesDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDisabledDomainInvitesDetails alloc] initDefault];
@@ -10318,11 +10318,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDisabledDomainInvitesTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDisabledDomainInvitesTypeSerializer deserialize:dict];
 }
 
@@ -10379,7 +10379,7 @@
 
 @implementation DBTEAMLOGDisabledDomainInvitesTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDisabledDomainInvitesType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDisabledDomainInvitesType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -10387,7 +10387,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDisabledDomainInvitesType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDisabledDomainInvitesType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDisabledDomainInvitesType alloc] initWithDescription_:description_];
@@ -10415,11 +10415,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetailsSerializer deserialize:dict];
 }
 
@@ -10472,14 +10472,14 @@
 
 @implementation DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDomainInvitesApproveRequestToJoinTeamDetails alloc] initDefault];
@@ -10509,11 +10509,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesApproveRequestToJoinTeamTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesApproveRequestToJoinTeamTypeSerializer deserialize:dict];
 }
 
@@ -10571,7 +10571,7 @@
 
 @implementation DBTEAMLOGDomainInvitesApproveRequestToJoinTeamTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesApproveRequestToJoinTeamType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesApproveRequestToJoinTeamType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -10579,7 +10579,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesApproveRequestToJoinTeamType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesApproveRequestToJoinTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainInvitesApproveRequestToJoinTeamType alloc] initWithDescription_:description_];
@@ -10607,11 +10607,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetailsSerializer deserialize:dict];
 }
 
@@ -10664,14 +10664,14 @@
 
 @implementation DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails alloc] initDefault];
@@ -10701,11 +10701,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamTypeSerializer deserialize:dict];
 }
 
@@ -10763,7 +10763,7 @@
 
 @implementation DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -10771,7 +10771,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType alloc] initWithDescription_:description_];
@@ -10803,11 +10803,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesEmailExistingUsersDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesEmailExistingUsersDetailsSerializer deserialize:dict];
 }
 
@@ -10869,7 +10869,7 @@
 
 @implementation DBTEAMLOGDomainInvitesEmailExistingUsersDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"domain_name"] = valueObj.domainName;
@@ -10878,7 +10878,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *domainName = valueDict[@"domain_name"];
   NSNumber *numRecipients = valueDict[@"num_recipients"];
 
@@ -10910,11 +10910,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesEmailExistingUsersTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesEmailExistingUsersTypeSerializer deserialize:dict];
 }
 
@@ -10972,7 +10972,7 @@
 
 @implementation DBTEAMLOGDomainInvitesEmailExistingUsersTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesEmailExistingUsersType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesEmailExistingUsersType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -10980,7 +10980,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesEmailExistingUsersType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesEmailExistingUsersType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainInvitesEmailExistingUsersType alloc] initWithDescription_:description_];
@@ -11008,11 +11008,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesRequestToJoinTeamDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesRequestToJoinTeamDetailsSerializer deserialize:dict];
 }
 
@@ -11065,14 +11065,14 @@
 
 @implementation DBTEAMLOGDomainInvitesRequestToJoinTeamDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesRequestToJoinTeamDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesRequestToJoinTeamDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesRequestToJoinTeamDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesRequestToJoinTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDomainInvitesRequestToJoinTeamDetails alloc] initDefault];
@@ -11102,11 +11102,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesRequestToJoinTeamTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesRequestToJoinTeamTypeSerializer deserialize:dict];
 }
 
@@ -11164,7 +11164,7 @@
 
 @implementation DBTEAMLOGDomainInvitesRequestToJoinTeamTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesRequestToJoinTeamType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesRequestToJoinTeamType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -11172,7 +11172,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesRequestToJoinTeamType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesRequestToJoinTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainInvitesRequestToJoinTeamType alloc] initWithDescription_:description_];
@@ -11200,11 +11200,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetailsSerializer deserialize:dict];
 }
 
@@ -11257,14 +11257,14 @@
 
 @implementation DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoDetails alloc] initDefault];
@@ -11294,11 +11294,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoTypeSerializer deserialize:dict];
 }
 
@@ -11356,7 +11356,7 @@
 
 @implementation DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -11364,7 +11364,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainInvitesSetInviteNewUserPrefToNoType alloc] initWithDescription_:description_];
@@ -11392,11 +11392,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetailsSerializer deserialize:dict];
 }
 
@@ -11449,14 +11449,14 @@
 
 @implementation DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails alloc] initDefault];
@@ -11486,11 +11486,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesTypeSerializer deserialize:dict];
 }
 
@@ -11548,7 +11548,7 @@
 
 @implementation DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -11556,7 +11556,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesType alloc] initWithDescription_:description_];
@@ -11591,11 +11591,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainVerificationAddDomainFailDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainVerificationAddDomainFailDetailsSerializer deserialize:dict];
 }
 
@@ -11661,7 +11661,7 @@
 
 @implementation DBTEAMLOGDomainVerificationAddDomainFailDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainVerificationAddDomainFailDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainVerificationAddDomainFailDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"domain_name"] = valueObj.domainName;
@@ -11672,7 +11672,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainVerificationAddDomainFailDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainVerificationAddDomainFailDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *domainName = valueDict[@"domain_name"];
   NSString *verificationMethod = valueDict[@"verification_method"] ?: nil;
 
@@ -11704,11 +11704,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainVerificationAddDomainFailTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainVerificationAddDomainFailTypeSerializer deserialize:dict];
 }
 
@@ -11766,7 +11766,7 @@
 
 @implementation DBTEAMLOGDomainVerificationAddDomainFailTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainVerificationAddDomainFailType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainVerificationAddDomainFailType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -11774,7 +11774,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainVerificationAddDomainFailType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainVerificationAddDomainFailType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainVerificationAddDomainFailType alloc] initWithDescription_:description_];
@@ -11813,11 +11813,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainVerificationAddDomainSuccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainVerificationAddDomainSuccessDetailsSerializer deserialize:dict];
 }
 
@@ -11883,7 +11883,7 @@
 
 @implementation DBTEAMLOGDomainVerificationAddDomainSuccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainVerificationAddDomainSuccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainVerificationAddDomainSuccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"domain_names"] = [DBArraySerializer serialize:valueObj.domainNames
@@ -11897,7 +11897,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainVerificationAddDomainSuccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainVerificationAddDomainSuccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<NSString *> *domainNames = [DBArraySerializer deserialize:valueDict[@"domain_names"]
                                                           withBlock:^id(id elem0) {
                                                             return elem0;
@@ -11932,11 +11932,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainVerificationAddDomainSuccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainVerificationAddDomainSuccessTypeSerializer deserialize:dict];
 }
 
@@ -11994,7 +11994,7 @@
 
 @implementation DBTEAMLOGDomainVerificationAddDomainSuccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainVerificationAddDomainSuccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainVerificationAddDomainSuccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -12002,7 +12002,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainVerificationAddDomainSuccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainVerificationAddDomainSuccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainVerificationAddDomainSuccessType alloc] initWithDescription_:description_];
@@ -12035,11 +12035,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainVerificationRemoveDomainDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainVerificationRemoveDomainDetailsSerializer deserialize:dict];
 }
 
@@ -12097,7 +12097,7 @@
 
 @implementation DBTEAMLOGDomainVerificationRemoveDomainDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainVerificationRemoveDomainDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainVerificationRemoveDomainDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"domain_names"] = [DBArraySerializer serialize:valueObj.domainNames
@@ -12108,7 +12108,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainVerificationRemoveDomainDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainVerificationRemoveDomainDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<NSString *> *domainNames = [DBArraySerializer deserialize:valueDict[@"domain_names"]
                                                           withBlock:^id(id elem0) {
                                                             return elem0;
@@ -12141,11 +12141,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDomainVerificationRemoveDomainTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDomainVerificationRemoveDomainTypeSerializer deserialize:dict];
 }
 
@@ -12203,7 +12203,7 @@
 
 @implementation DBTEAMLOGDomainVerificationRemoveDomainTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainVerificationRemoveDomainType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainVerificationRemoveDomainType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -12211,7 +12211,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDomainVerificationRemoveDomainType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDomainVerificationRemoveDomainType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGDomainVerificationRemoveDomainType alloc] initWithDescription_:description_];
@@ -12284,11 +12284,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDownloadPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDownloadPolicyTypeSerializer deserialize:dict];
 }
 
@@ -12360,7 +12360,7 @@
 
 @implementation DBTEAMLOGDownloadPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDownloadPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDownloadPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAllow]) {
@@ -12376,7 +12376,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDownloadPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDownloadPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"allow"]) {
@@ -12417,11 +12417,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGDurationLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGDurationLogInfoSerializer deserialize:dict];
 }
 
@@ -12482,7 +12482,7 @@
 
 @implementation DBTEAMLOGDurationLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGDurationLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDurationLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"unit"] = [DBTEAMLOGTimeUnitSerializer serialize:valueObj.unit];
@@ -12491,7 +12491,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGDurationLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGDurationLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGTimeUnit *unit = [DBTEAMLOGTimeUnitSerializer deserialize:valueDict[@"unit"]];
   NSNumber *amount = valueDict[@"amount"];
 
@@ -12520,11 +12520,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmAddExceptionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmAddExceptionDetailsSerializer deserialize:dict];
 }
 
@@ -12576,14 +12576,14 @@
 
 @implementation DBTEAMLOGEmmAddExceptionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmAddExceptionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmAddExceptionDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmAddExceptionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmAddExceptionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGEmmAddExceptionDetails alloc] initDefault];
@@ -12613,11 +12613,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmAddExceptionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmAddExceptionTypeSerializer deserialize:dict];
 }
 
@@ -12674,7 +12674,7 @@
 
 @implementation DBTEAMLOGEmmAddExceptionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmAddExceptionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmAddExceptionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -12682,7 +12682,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmAddExceptionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmAddExceptionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEmmAddExceptionType alloc] initWithDescription_:description_];
@@ -12719,11 +12719,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -12788,7 +12788,7 @@
 
 @implementation DBTEAMLOGEmmChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMPOLICIESEmmStateSerializer serialize:valueObj.dNewValue];
@@ -12799,7 +12799,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESEmmState *dNewValue = [DBTEAMPOLICIESEmmStateSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMPOLICIESEmmState *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMPOLICIESEmmStateSerializer deserialize:valueDict[@"previous_value"]] : nil;
@@ -12831,11 +12831,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -12892,7 +12892,7 @@
 
 @implementation DBTEAMLOGEmmChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -12900,7 +12900,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEmmChangePolicyType alloc] initWithDescription_:description_];
@@ -12928,11 +12928,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmCreateExceptionsReportDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmCreateExceptionsReportDetailsSerializer deserialize:dict];
 }
 
@@ -12985,14 +12985,14 @@
 
 @implementation DBTEAMLOGEmmCreateExceptionsReportDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmCreateExceptionsReportDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmCreateExceptionsReportDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmCreateExceptionsReportDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmCreateExceptionsReportDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGEmmCreateExceptionsReportDetails alloc] initDefault];
@@ -13022,11 +13022,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmCreateExceptionsReportTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmCreateExceptionsReportTypeSerializer deserialize:dict];
 }
 
@@ -13084,7 +13084,7 @@
 
 @implementation DBTEAMLOGEmmCreateExceptionsReportTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmCreateExceptionsReportType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmCreateExceptionsReportType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -13092,7 +13092,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmCreateExceptionsReportType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmCreateExceptionsReportType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEmmCreateExceptionsReportType alloc] initWithDescription_:description_];
@@ -13120,11 +13120,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmCreateUsageReportDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmCreateUsageReportDetailsSerializer deserialize:dict];
 }
 
@@ -13176,14 +13176,14 @@
 
 @implementation DBTEAMLOGEmmCreateUsageReportDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmCreateUsageReportDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmCreateUsageReportDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmCreateUsageReportDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmCreateUsageReportDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGEmmCreateUsageReportDetails alloc] initDefault];
@@ -13213,11 +13213,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmCreateUsageReportTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmCreateUsageReportTypeSerializer deserialize:dict];
 }
 
@@ -13274,7 +13274,7 @@
 
 @implementation DBTEAMLOGEmmCreateUsageReportTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmCreateUsageReportType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmCreateUsageReportType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -13282,7 +13282,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmCreateUsageReportType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmCreateUsageReportType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEmmCreateUsageReportType alloc] initWithDescription_:description_];
@@ -13313,11 +13313,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmErrorDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmErrorDetailsSerializer deserialize:dict];
 }
 
@@ -13374,7 +13374,7 @@
 
 @implementation DBTEAMLOGEmmErrorDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmErrorDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmErrorDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"error_details"] = [DBTEAMLOGFailureDetailsLogInfoSerializer serialize:valueObj.errorDetails];
@@ -13382,7 +13382,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmErrorDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmErrorDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGFailureDetailsLogInfo *errorDetails =
       [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
 
@@ -13413,11 +13413,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmErrorTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmErrorTypeSerializer deserialize:dict];
 }
 
@@ -13474,7 +13474,7 @@
 
 @implementation DBTEAMLOGEmmErrorTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmErrorType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmErrorType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -13482,7 +13482,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmErrorType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmErrorType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEmmErrorType alloc] initWithDescription_:description_];
@@ -13510,11 +13510,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmRefreshAuthTokenDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmRefreshAuthTokenDetailsSerializer deserialize:dict];
 }
 
@@ -13566,14 +13566,14 @@
 
 @implementation DBTEAMLOGEmmRefreshAuthTokenDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmRefreshAuthTokenDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmRefreshAuthTokenDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmRefreshAuthTokenDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmRefreshAuthTokenDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGEmmRefreshAuthTokenDetails alloc] initDefault];
@@ -13603,11 +13603,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmRefreshAuthTokenTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmRefreshAuthTokenTypeSerializer deserialize:dict];
 }
 
@@ -13664,7 +13664,7 @@
 
 @implementation DBTEAMLOGEmmRefreshAuthTokenTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmRefreshAuthTokenType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmRefreshAuthTokenType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -13672,7 +13672,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmRefreshAuthTokenType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmRefreshAuthTokenType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEmmRefreshAuthTokenType alloc] initWithDescription_:description_];
@@ -13700,11 +13700,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmRemoveExceptionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmRemoveExceptionDetailsSerializer deserialize:dict];
 }
 
@@ -13756,14 +13756,14 @@
 
 @implementation DBTEAMLOGEmmRemoveExceptionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmRemoveExceptionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmRemoveExceptionDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmRemoveExceptionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmRemoveExceptionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGEmmRemoveExceptionDetails alloc] initDefault];
@@ -13793,11 +13793,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEmmRemoveExceptionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEmmRemoveExceptionTypeSerializer deserialize:dict];
 }
 
@@ -13854,7 +13854,7 @@
 
 @implementation DBTEAMLOGEmmRemoveExceptionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmRemoveExceptionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmRemoveExceptionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -13862,7 +13862,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEmmRemoveExceptionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEmmRemoveExceptionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEmmRemoveExceptionType alloc] initWithDescription_:description_];
@@ -13890,11 +13890,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEnabledDomainInvitesDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEnabledDomainInvitesDetailsSerializer deserialize:dict];
 }
 
@@ -13946,14 +13946,14 @@
 
 @implementation DBTEAMLOGEnabledDomainInvitesDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEnabledDomainInvitesDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEnabledDomainInvitesDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEnabledDomainInvitesDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEnabledDomainInvitesDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGEnabledDomainInvitesDetails alloc] initDefault];
@@ -13983,11 +13983,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEnabledDomainInvitesTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEnabledDomainInvitesTypeSerializer deserialize:dict];
 }
 
@@ -14044,7 +14044,7 @@
 
 @implementation DBTEAMLOGEnabledDomainInvitesTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEnabledDomainInvitesType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEnabledDomainInvitesType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -14052,7 +14052,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEnabledDomainInvitesType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEnabledDomainInvitesType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGEnabledDomainInvitesType alloc] initWithDescription_:description_];
@@ -14363,11 +14363,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEventCategorySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEventCategorySerializer deserialize:dict];
 }
 
@@ -14507,7 +14507,7 @@
 
 @implementation DBTEAMLOGEventCategorySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEventCategory *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEventCategory *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isApps]) {
@@ -14557,7 +14557,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEventCategory *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEventCategory *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"apps"]) {
@@ -22763,11 +22763,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEventDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEventDetailsSerializer deserialize:dict];
 }
 
@@ -24089,7 +24089,7 @@
 
 @implementation DBTEAMLOGEventDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEventDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEventDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAppLinkTeamDetails]) {
@@ -25213,7 +25213,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEventDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEventDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"app_link_team_details"]) {
@@ -34356,11 +34356,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGEventTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGEventTypeSerializer deserialize:dict];
 }
 
@@ -35646,7 +35646,7 @@
 
 @implementation DBTEAMLOGEventTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGEventType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEventType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAppLinkTeam]) {
@@ -36687,7 +36687,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGEventType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGEventType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"app_link_team"]) {
@@ -37864,11 +37864,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGExportMembersReportDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGExportMembersReportDetailsSerializer deserialize:dict];
 }
 
@@ -37920,14 +37920,14 @@
 
 @implementation DBTEAMLOGExportMembersReportDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGExportMembersReportDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExportMembersReportDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGExportMembersReportDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGExportMembersReportDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGExportMembersReportDetails alloc] initDefault];
@@ -37957,11 +37957,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGExportMembersReportTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGExportMembersReportTypeSerializer deserialize:dict];
 }
 
@@ -38018,7 +38018,7 @@
 
 @implementation DBTEAMLOGExportMembersReportTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGExportMembersReportType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExportMembersReportType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -38026,7 +38026,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGExportMembersReportType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGExportMembersReportType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGExportMembersReportType alloc] initWithDescription_:description_];
@@ -38063,11 +38063,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGExtendedVersionHistoryChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGExtendedVersionHistoryChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -38133,7 +38133,7 @@
 
 @implementation DBTEAMLOGExtendedVersionHistoryChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGExtendedVersionHistoryPolicySerializer serialize:valueObj.dNewValue];
@@ -38144,7 +38144,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGExtendedVersionHistoryPolicy *dNewValue =
       [DBTEAMLOGExtendedVersionHistoryPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGExtendedVersionHistoryPolicy *previousValue =
@@ -38180,11 +38180,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGExtendedVersionHistoryChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGExtendedVersionHistoryChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -38242,7 +38242,7 @@
 
 @implementation DBTEAMLOGExtendedVersionHistoryChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGExtendedVersionHistoryChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExtendedVersionHistoryChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -38250,7 +38250,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGExtendedVersionHistoryChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGExtendedVersionHistoryChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGExtendedVersionHistoryChangePolicyType alloc] initWithDescription_:description_];
@@ -38351,11 +38351,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGExtendedVersionHistoryPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGExtendedVersionHistoryPolicySerializer deserialize:dict];
 }
 
@@ -38435,7 +38435,7 @@
 
 @implementation DBTEAMLOGExtendedVersionHistoryPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGExtendedVersionHistoryPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExtendedVersionHistoryPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isExplicitlyLimited]) {
@@ -38455,7 +38455,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGExtendedVersionHistoryPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGExtendedVersionHistoryPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"explicitly_limited"]) {
@@ -38501,11 +38501,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGExternalUserLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGExternalUserLogInfoSerializer deserialize:dict];
 }
 
@@ -38566,7 +38566,7 @@
 
 @implementation DBTEAMLOGExternalUserLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGExternalUserLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExternalUserLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"user_identifier"] = valueObj.userIdentifier;
@@ -38575,7 +38575,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGExternalUserLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGExternalUserLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *userIdentifier = valueDict[@"user_identifier"];
   DBTEAMLOGIdentifierType *identifierType =
       [DBTEAMLOGIdentifierTypeSerializer deserialize:valueDict[@"identifier_type"]];
@@ -38612,11 +38612,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFailureDetailsLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:dict];
 }
 
@@ -38685,7 +38685,7 @@
 
 @implementation DBTEAMLOGFailureDetailsLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFailureDetailsLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFailureDetailsLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.userFriendlyMessage) {
@@ -38698,7 +38698,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFailureDetailsLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFailureDetailsLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *userFriendlyMessage = valueDict[@"user_friendly_message"] ?: nil;
   NSString *technicalErrorMessage = valueDict[@"technical_error_message"] ?: nil;
 
@@ -38733,11 +38733,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileAddCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileAddCommentDetailsSerializer deserialize:dict];
 }
 
@@ -38798,7 +38798,7 @@
 
 @implementation DBTEAMLOGFileAddCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileAddCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileAddCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.commentText) {
@@ -38808,7 +38808,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileAddCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileAddCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
   return [[DBTEAMLOGFileAddCommentDetails alloc] initWithCommentText:commentText];
@@ -38838,11 +38838,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileAddCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileAddCommentTypeSerializer deserialize:dict];
 }
 
@@ -38899,7 +38899,7 @@
 
 @implementation DBTEAMLOGFileAddCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileAddCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileAddCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -38907,7 +38907,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileAddCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileAddCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileAddCommentType alloc] initWithDescription_:description_];
@@ -38935,11 +38935,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileAddDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileAddDetailsSerializer deserialize:dict];
 }
 
@@ -38991,14 +38991,14 @@
 
 @implementation DBTEAMLOGFileAddDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileAddDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileAddDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileAddDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileAddDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileAddDetails alloc] initDefault];
@@ -39028,11 +39028,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileAddTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileAddTypeSerializer deserialize:dict];
 }
 
@@ -39089,7 +39089,7 @@
 
 @implementation DBTEAMLOGFileAddTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileAddType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileAddType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -39097,7 +39097,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileAddType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileAddType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileAddType alloc] initWithDescription_:description_];
@@ -39134,11 +39134,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileChangeCommentSubscriptionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileChangeCommentSubscriptionDetailsSerializer deserialize:dict];
 }
 
@@ -39204,7 +39204,7 @@
 
 @implementation DBTEAMLOGFileChangeCommentSubscriptionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileChangeCommentSubscriptionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileChangeCommentSubscriptionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGFileCommentNotificationPolicySerializer serialize:valueObj.dNewValue];
@@ -39215,7 +39215,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileChangeCommentSubscriptionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileChangeCommentSubscriptionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGFileCommentNotificationPolicy *dNewValue =
       [DBTEAMLOGFileCommentNotificationPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGFileCommentNotificationPolicy *previousValue =
@@ -39251,11 +39251,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileChangeCommentSubscriptionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileChangeCommentSubscriptionTypeSerializer deserialize:dict];
 }
 
@@ -39313,7 +39313,7 @@
 
 @implementation DBTEAMLOGFileChangeCommentSubscriptionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileChangeCommentSubscriptionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileChangeCommentSubscriptionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -39321,7 +39321,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileChangeCommentSubscriptionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileChangeCommentSubscriptionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileChangeCommentSubscriptionType alloc] initWithDescription_:description_];
@@ -39394,11 +39394,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileCommentNotificationPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileCommentNotificationPolicySerializer deserialize:dict];
 }
 
@@ -39471,7 +39471,7 @@
 
 @implementation DBTEAMLOGFileCommentNotificationPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileCommentNotificationPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileCommentNotificationPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -39487,7 +39487,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileCommentNotificationPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileCommentNotificationPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -39532,11 +39532,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileCommentsChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileCommentsChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -39602,7 +39602,7 @@
 
 @implementation DBTEAMLOGFileCommentsChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileCommentsChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileCommentsChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGFileCommentsPolicySerializer serialize:valueObj.dNewValue];
@@ -39613,7 +39613,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileCommentsChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileCommentsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGFileCommentsPolicy *dNewValue = [DBTEAMLOGFileCommentsPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGFileCommentsPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGFileCommentsPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -39646,11 +39646,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileCommentsChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileCommentsChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -39707,7 +39707,7 @@
 
 @implementation DBTEAMLOGFileCommentsChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileCommentsChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileCommentsChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -39715,7 +39715,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileCommentsChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileCommentsChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileCommentsChangePolicyType alloc] initWithDescription_:description_];
@@ -39788,11 +39788,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileCommentsPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileCommentsPolicySerializer deserialize:dict];
 }
 
@@ -39864,7 +39864,7 @@
 
 @implementation DBTEAMLOGFileCommentsPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileCommentsPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileCommentsPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -39880,7 +39880,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileCommentsPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileCommentsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -39923,11 +39923,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileCopyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileCopyDetailsSerializer deserialize:dict];
 }
 
@@ -39984,7 +39984,7 @@
 
 @implementation DBTEAMLOGFileCopyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileCopyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileCopyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"relocate_action_details"] =
@@ -39996,7 +39996,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileCopyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileCopyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *relocateActionDetails =
       [DBArraySerializer deserialize:valueDict[@"relocate_action_details"]
                            withBlock:^id(id elem0) {
@@ -40030,11 +40030,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileCopyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileCopyTypeSerializer deserialize:dict];
 }
 
@@ -40091,7 +40091,7 @@
 
 @implementation DBTEAMLOGFileCopyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileCopyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileCopyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -40099,7 +40099,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileCopyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileCopyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileCopyType alloc] initWithDescription_:description_];
@@ -40132,11 +40132,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileDeleteCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileDeleteCommentDetailsSerializer deserialize:dict];
 }
 
@@ -40197,7 +40197,7 @@
 
 @implementation DBTEAMLOGFileDeleteCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileDeleteCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileDeleteCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.commentText) {
@@ -40207,7 +40207,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileDeleteCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileDeleteCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
   return [[DBTEAMLOGFileDeleteCommentDetails alloc] initWithCommentText:commentText];
@@ -40237,11 +40237,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileDeleteCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileDeleteCommentTypeSerializer deserialize:dict];
 }
 
@@ -40298,7 +40298,7 @@
 
 @implementation DBTEAMLOGFileDeleteCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileDeleteCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileDeleteCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -40306,7 +40306,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileDeleteCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileDeleteCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileDeleteCommentType alloc] initWithDescription_:description_];
@@ -40334,11 +40334,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileDeleteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileDeleteDetailsSerializer deserialize:dict];
 }
 
@@ -40390,14 +40390,14 @@
 
 @implementation DBTEAMLOGFileDeleteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileDeleteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileDeleteDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileDeleteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileDeleteDetails alloc] initDefault];
@@ -40427,11 +40427,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileDeleteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileDeleteTypeSerializer deserialize:dict];
 }
 
@@ -40488,7 +40488,7 @@
 
 @implementation DBTEAMLOGFileDeleteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileDeleteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileDeleteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -40496,7 +40496,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileDeleteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileDeleteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileDeleteType alloc] initWithDescription_:description_];
@@ -40524,11 +40524,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileDownloadDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileDownloadDetailsSerializer deserialize:dict];
 }
 
@@ -40580,14 +40580,14 @@
 
 @implementation DBTEAMLOGFileDownloadDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileDownloadDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileDownloadDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileDownloadDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileDownloadDetails alloc] initDefault];
@@ -40617,11 +40617,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileDownloadTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileDownloadTypeSerializer deserialize:dict];
 }
 
@@ -40678,7 +40678,7 @@
 
 @implementation DBTEAMLOGFileDownloadTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileDownloadType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileDownloadType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -40686,7 +40686,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileDownloadType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileDownloadType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileDownloadType alloc] initWithDescription_:description_];
@@ -40714,11 +40714,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileEditDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileEditDetailsSerializer deserialize:dict];
 }
 
@@ -40770,14 +40770,14 @@
 
 @implementation DBTEAMLOGFileEditDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileEditDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileEditDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileEditDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileEditDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileEditDetails alloc] initDefault];
@@ -40807,11 +40807,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileEditTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileEditTypeSerializer deserialize:dict];
 }
 
@@ -40868,7 +40868,7 @@
 
 @implementation DBTEAMLOGFileEditTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileEditType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileEditType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -40876,7 +40876,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileEditType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileEditType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileEditType alloc] initWithDescription_:description_];
@@ -40904,11 +40904,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileGetCopyReferenceDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileGetCopyReferenceDetailsSerializer deserialize:dict];
 }
 
@@ -40960,14 +40960,14 @@
 
 @implementation DBTEAMLOGFileGetCopyReferenceDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileGetCopyReferenceDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileGetCopyReferenceDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileGetCopyReferenceDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileGetCopyReferenceDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileGetCopyReferenceDetails alloc] initDefault];
@@ -40997,11 +40997,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileGetCopyReferenceTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileGetCopyReferenceTypeSerializer deserialize:dict];
 }
 
@@ -41058,7 +41058,7 @@
 
 @implementation DBTEAMLOGFileGetCopyReferenceTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileGetCopyReferenceType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileGetCopyReferenceType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -41066,7 +41066,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileGetCopyReferenceType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileGetCopyReferenceType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileGetCopyReferenceType alloc] initWithDescription_:description_];
@@ -41099,11 +41099,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileLikeCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileLikeCommentDetailsSerializer deserialize:dict];
 }
 
@@ -41164,7 +41164,7 @@
 
 @implementation DBTEAMLOGFileLikeCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileLikeCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileLikeCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.commentText) {
@@ -41174,7 +41174,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileLikeCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileLikeCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
   return [[DBTEAMLOGFileLikeCommentDetails alloc] initWithCommentText:commentText];
@@ -41204,11 +41204,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileLikeCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileLikeCommentTypeSerializer deserialize:dict];
 }
 
@@ -41265,7 +41265,7 @@
 
 @implementation DBTEAMLOGFileLikeCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileLikeCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileLikeCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -41273,7 +41273,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileLikeCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileLikeCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileLikeCommentType alloc] initWithDescription_:description_];
@@ -41312,11 +41312,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileOrFolderLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileOrFolderLogInfoSerializer deserialize:dict];
 }
 
@@ -41389,7 +41389,7 @@
 
 @implementation DBTEAMLOGFileOrFolderLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileOrFolderLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileOrFolderLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"path"] = [DBTEAMLOGPathLogInfoSerializer serialize:valueObj.path];
@@ -41403,7 +41403,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileOrFolderLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileOrFolderLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGPathLogInfo *path = [DBTEAMLOGPathLogInfoSerializer deserialize:valueDict[@"path"]];
   NSString *displayName = valueDict[@"display_name"] ?: nil;
   NSString *fileId = valueDict[@"file_id"] ?: nil;
@@ -41442,11 +41442,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileLogInfoSerializer deserialize:dict];
 }
 
@@ -41519,7 +41519,7 @@
 
 @implementation DBTEAMLOGFileLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"path"] = [DBTEAMLOGPathLogInfoSerializer serialize:valueObj.path];
@@ -41533,7 +41533,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGPathLogInfo *path = [DBTEAMLOGPathLogInfoSerializer deserialize:valueDict[@"path"]];
   NSString *displayName = valueDict[@"display_name"] ?: nil;
   NSString *fileId = valueDict[@"file_id"] ?: nil;
@@ -41570,11 +41570,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileMoveDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileMoveDetailsSerializer deserialize:dict];
 }
 
@@ -41631,7 +41631,7 @@
 
 @implementation DBTEAMLOGFileMoveDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileMoveDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileMoveDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"relocate_action_details"] =
@@ -41643,7 +41643,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileMoveDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileMoveDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *relocateActionDetails =
       [DBArraySerializer deserialize:valueDict[@"relocate_action_details"]
                            withBlock:^id(id elem0) {
@@ -41677,11 +41677,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileMoveTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileMoveTypeSerializer deserialize:dict];
 }
 
@@ -41738,7 +41738,7 @@
 
 @implementation DBTEAMLOGFileMoveTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileMoveType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileMoveType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -41746,7 +41746,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileMoveType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileMoveType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileMoveType alloc] initWithDescription_:description_];
@@ -41774,11 +41774,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFilePermanentlyDeleteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFilePermanentlyDeleteDetailsSerializer deserialize:dict];
 }
 
@@ -41830,14 +41830,14 @@
 
 @implementation DBTEAMLOGFilePermanentlyDeleteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFilePermanentlyDeleteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFilePermanentlyDeleteDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFilePermanentlyDeleteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFilePermanentlyDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFilePermanentlyDeleteDetails alloc] initDefault];
@@ -41867,11 +41867,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFilePermanentlyDeleteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFilePermanentlyDeleteTypeSerializer deserialize:dict];
 }
 
@@ -41928,7 +41928,7 @@
 
 @implementation DBTEAMLOGFilePermanentlyDeleteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFilePermanentlyDeleteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFilePermanentlyDeleteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -41936,7 +41936,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFilePermanentlyDeleteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFilePermanentlyDeleteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFilePermanentlyDeleteType alloc] initWithDescription_:description_];
@@ -41964,11 +41964,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFilePreviewDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFilePreviewDetailsSerializer deserialize:dict];
 }
 
@@ -42020,14 +42020,14 @@
 
 @implementation DBTEAMLOGFilePreviewDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFilePreviewDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFilePreviewDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFilePreviewDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFilePreviewDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFilePreviewDetails alloc] initDefault];
@@ -42057,11 +42057,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFilePreviewTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFilePreviewTypeSerializer deserialize:dict];
 }
 
@@ -42118,7 +42118,7 @@
 
 @implementation DBTEAMLOGFilePreviewTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFilePreviewType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFilePreviewType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -42126,7 +42126,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFilePreviewType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFilePreviewType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFilePreviewType alloc] initWithDescription_:description_];
@@ -42161,11 +42161,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRenameDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRenameDetailsSerializer deserialize:dict];
 }
 
@@ -42222,7 +42222,7 @@
 
 @implementation DBTEAMLOGFileRenameDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRenameDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRenameDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"relocate_action_details"] =
@@ -42234,7 +42234,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRenameDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRenameDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *relocateActionDetails =
       [DBArraySerializer deserialize:valueDict[@"relocate_action_details"]
                            withBlock:^id(id elem0) {
@@ -42268,11 +42268,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRenameTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRenameTypeSerializer deserialize:dict];
 }
 
@@ -42329,7 +42329,7 @@
 
 @implementation DBTEAMLOGFileRenameTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRenameType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRenameType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -42337,7 +42337,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRenameType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRenameType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRenameType alloc] initWithDescription_:description_];
@@ -42378,11 +42378,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestChangeDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestChangeDetailsSerializer deserialize:dict];
 }
 
@@ -42455,7 +42455,7 @@
 
 @implementation DBTEAMLOGFileRequestChangeDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestChangeDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestChangeDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_details"] = [DBTEAMLOGFileRequestDetailsSerializer serialize:valueObj.dNewDetails];
@@ -42469,7 +42469,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestChangeDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestChangeDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGFileRequestDetails *dNewDetails =
       [DBTEAMLOGFileRequestDetailsSerializer deserialize:valueDict[@"new_details"]];
   NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
@@ -42507,11 +42507,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestChangeTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestChangeTypeSerializer deserialize:dict];
 }
 
@@ -42568,7 +42568,7 @@
 
 @implementation DBTEAMLOGFileRequestChangeTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestChangeType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestChangeType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -42576,7 +42576,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestChangeType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestChangeType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRequestChangeType alloc] initWithDescription_:description_];
@@ -42614,11 +42614,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestCloseDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestCloseDetailsSerializer deserialize:dict];
 }
 
@@ -42687,7 +42687,7 @@
 
 @implementation DBTEAMLOGFileRequestCloseDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestCloseDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestCloseDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.fileRequestId) {
@@ -42700,7 +42700,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestCloseDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestCloseDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
   DBTEAMLOGFileRequestDetails *previousDetails =
       valueDict[@"previous_details"]
@@ -42734,11 +42734,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestCloseTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestCloseTypeSerializer deserialize:dict];
 }
 
@@ -42795,7 +42795,7 @@
 
 @implementation DBTEAMLOGFileRequestCloseTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestCloseType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestCloseType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -42803,7 +42803,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestCloseType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestCloseType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRequestCloseType alloc] initWithDescription_:description_];
@@ -42841,11 +42841,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestCreateDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestCreateDetailsSerializer deserialize:dict];
 }
 
@@ -42914,7 +42914,7 @@
 
 @implementation DBTEAMLOGFileRequestCreateDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestCreateDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestCreateDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.fileRequestId) {
@@ -42927,7 +42927,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestCreateDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
   DBTEAMLOGFileRequestDetails *requestDetails =
       valueDict[@"request_details"] ? [DBTEAMLOGFileRequestDetailsSerializer deserialize:valueDict[@"request_details"]]
@@ -42960,11 +42960,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestCreateTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestCreateTypeSerializer deserialize:dict];
 }
 
@@ -43021,7 +43021,7 @@
 
 @implementation DBTEAMLOGFileRequestCreateTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestCreateType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestCreateType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -43029,7 +43029,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestCreateType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestCreateType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRequestCreateType alloc] initWithDescription_:description_];
@@ -43063,11 +43063,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestDeadlineSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestDeadlineSerializer deserialize:dict];
 }
 
@@ -43136,7 +43136,7 @@
 
 @implementation DBTEAMLOGFileRequestDeadlineSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestDeadline *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestDeadline *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.deadline) {
@@ -43149,7 +43149,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestDeadline *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestDeadline *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *deadline = valueDict[@"deadline"]
                          ? [DBNSDateSerializer deserialize:valueDict[@"deadline"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                          : nil;
@@ -43188,11 +43188,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestDetailsSerializer deserialize:dict];
 }
 
@@ -43257,7 +43257,7 @@
 
 @implementation DBTEAMLOGFileRequestDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"asset_index"] = valueObj.assetIndex;
@@ -43268,7 +43268,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *assetIndex = valueDict[@"asset_index"];
   DBTEAMLOGFileRequestDeadline *deadline =
       valueDict[@"deadline"] ? [DBTEAMLOGFileRequestDeadlineSerializer deserialize:valueDict[@"deadline"]] : nil;
@@ -43326,11 +43326,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestReceiveFileDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestReceiveFileDetailsSerializer deserialize:dict];
 }
 
@@ -43420,7 +43420,7 @@
 
 @implementation DBTEAMLOGFileRequestReceiveFileDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestReceiveFileDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestReceiveFileDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"submitted_file_names"] = [DBArraySerializer serialize:valueObj.submittedFileNames
@@ -43443,7 +43443,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestReceiveFileDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestReceiveFileDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<NSString *> *submittedFileNames = [DBArraySerializer deserialize:valueDict[@"submitted_file_names"]
                                                                  withBlock:^id(id elem0) {
                                                                    return elem0;
@@ -43487,11 +43487,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestReceiveFileTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestReceiveFileTypeSerializer deserialize:dict];
 }
 
@@ -43548,7 +43548,7 @@
 
 @implementation DBTEAMLOGFileRequestReceiveFileTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestReceiveFileType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestReceiveFileType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -43556,7 +43556,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestReceiveFileType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestReceiveFileType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRequestReceiveFileType alloc] initWithDescription_:description_];
@@ -43593,11 +43593,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestsChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestsChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -43663,7 +43663,7 @@
 
 @implementation DBTEAMLOGFileRequestsChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestsChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestsChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGFileRequestsPolicySerializer serialize:valueObj.dNewValue];
@@ -43674,7 +43674,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestsChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGFileRequestsPolicy *dNewValue = [DBTEAMLOGFileRequestsPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGFileRequestsPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGFileRequestsPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -43707,11 +43707,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestsChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestsChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -43768,7 +43768,7 @@
 
 @implementation DBTEAMLOGFileRequestsChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestsChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestsChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -43776,7 +43776,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestsChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestsChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRequestsChangePolicyType alloc] initWithDescription_:description_];
@@ -43804,11 +43804,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestsEmailsEnabledDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestsEmailsEnabledDetailsSerializer deserialize:dict];
 }
 
@@ -43861,14 +43861,14 @@
 
 @implementation DBTEAMLOGFileRequestsEmailsEnabledDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestsEmailsEnabledDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestsEmailsEnabledDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestsEmailsEnabledDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestsEmailsEnabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileRequestsEmailsEnabledDetails alloc] initDefault];
@@ -43898,11 +43898,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestsEmailsEnabledTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestsEmailsEnabledTypeSerializer deserialize:dict];
 }
 
@@ -43960,7 +43960,7 @@
 
 @implementation DBTEAMLOGFileRequestsEmailsEnabledTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestsEmailsEnabledType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestsEmailsEnabledType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -43968,7 +43968,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestsEmailsEnabledType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestsEmailsEnabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRequestsEmailsEnabledType alloc] initWithDescription_:description_];
@@ -43996,11 +43996,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetailsSerializer deserialize:dict];
 }
 
@@ -44053,14 +44053,14 @@
 
 @implementation DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyDetails alloc] initDefault];
@@ -44090,11 +44090,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyTypeSerializer deserialize:dict];
 }
 
@@ -44152,7 +44152,7 @@
 
 @implementation DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -44160,7 +44160,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRequestsEmailsRestrictedToTeamOnlyType alloc] initWithDescription_:description_];
@@ -44233,11 +44233,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRequestsPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRequestsPolicySerializer deserialize:dict];
 }
 
@@ -44309,7 +44309,7 @@
 
 @implementation DBTEAMLOGFileRequestsPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRequestsPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestsPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -44325,7 +44325,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRequestsPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRequestsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -44366,11 +44366,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileResolveCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileResolveCommentDetailsSerializer deserialize:dict];
 }
 
@@ -44431,7 +44431,7 @@
 
 @implementation DBTEAMLOGFileResolveCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileResolveCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileResolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.commentText) {
@@ -44441,7 +44441,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileResolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileResolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
   return [[DBTEAMLOGFileResolveCommentDetails alloc] initWithCommentText:commentText];
@@ -44471,11 +44471,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileResolveCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileResolveCommentTypeSerializer deserialize:dict];
 }
 
@@ -44532,7 +44532,7 @@
 
 @implementation DBTEAMLOGFileResolveCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileResolveCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileResolveCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -44540,7 +44540,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileResolveCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileResolveCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileResolveCommentType alloc] initWithDescription_:description_];
@@ -44568,11 +44568,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRestoreDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRestoreDetailsSerializer deserialize:dict];
 }
 
@@ -44624,14 +44624,14 @@
 
 @implementation DBTEAMLOGFileRestoreDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRestoreDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRestoreDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRestoreDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRestoreDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileRestoreDetails alloc] initDefault];
@@ -44661,11 +44661,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRestoreTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRestoreTypeSerializer deserialize:dict];
 }
 
@@ -44722,7 +44722,7 @@
 
 @implementation DBTEAMLOGFileRestoreTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRestoreType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRestoreType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -44730,7 +44730,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRestoreType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRestoreType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRestoreType alloc] initWithDescription_:description_];
@@ -44758,11 +44758,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRevertDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRevertDetailsSerializer deserialize:dict];
 }
 
@@ -44814,14 +44814,14 @@
 
 @implementation DBTEAMLOGFileRevertDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRevertDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRevertDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRevertDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRevertDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileRevertDetails alloc] initDefault];
@@ -44851,11 +44851,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRevertTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRevertTypeSerializer deserialize:dict];
 }
 
@@ -44912,7 +44912,7 @@
 
 @implementation DBTEAMLOGFileRevertTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRevertType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRevertType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -44920,7 +44920,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRevertType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRevertType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRevertType alloc] initWithDescription_:description_];
@@ -44948,11 +44948,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRollbackChangesDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRollbackChangesDetailsSerializer deserialize:dict];
 }
 
@@ -45004,14 +45004,14 @@
 
 @implementation DBTEAMLOGFileRollbackChangesDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRollbackChangesDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRollbackChangesDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRollbackChangesDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRollbackChangesDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGFileRollbackChangesDetails alloc] initDefault];
@@ -45041,11 +45041,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileRollbackChangesTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileRollbackChangesTypeSerializer deserialize:dict];
 }
 
@@ -45102,7 +45102,7 @@
 
 @implementation DBTEAMLOGFileRollbackChangesTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRollbackChangesType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRollbackChangesType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -45110,7 +45110,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileRollbackChangesType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileRollbackChangesType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileRollbackChangesType alloc] initWithDescription_:description_];
@@ -45145,11 +45145,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileSaveCopyReferenceDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileSaveCopyReferenceDetailsSerializer deserialize:dict];
 }
 
@@ -45206,7 +45206,7 @@
 
 @implementation DBTEAMLOGFileSaveCopyReferenceDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileSaveCopyReferenceDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileSaveCopyReferenceDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"relocate_action_details"] =
@@ -45218,7 +45218,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileSaveCopyReferenceDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileSaveCopyReferenceDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *relocateActionDetails =
       [DBArraySerializer deserialize:valueDict[@"relocate_action_details"]
                            withBlock:^id(id elem0) {
@@ -45252,11 +45252,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileSaveCopyReferenceTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileSaveCopyReferenceTypeSerializer deserialize:dict];
 }
 
@@ -45313,7 +45313,7 @@
 
 @implementation DBTEAMLOGFileSaveCopyReferenceTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileSaveCopyReferenceType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileSaveCopyReferenceType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -45321,7 +45321,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileSaveCopyReferenceType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileSaveCopyReferenceType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileSaveCopyReferenceType alloc] initWithDescription_:description_];
@@ -45354,11 +45354,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileUnlikeCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileUnlikeCommentDetailsSerializer deserialize:dict];
 }
 
@@ -45419,7 +45419,7 @@
 
 @implementation DBTEAMLOGFileUnlikeCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileUnlikeCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileUnlikeCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.commentText) {
@@ -45429,7 +45429,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileUnlikeCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileUnlikeCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
   return [[DBTEAMLOGFileUnlikeCommentDetails alloc] initWithCommentText:commentText];
@@ -45459,11 +45459,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileUnlikeCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileUnlikeCommentTypeSerializer deserialize:dict];
 }
 
@@ -45520,7 +45520,7 @@
 
 @implementation DBTEAMLOGFileUnlikeCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileUnlikeCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileUnlikeCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -45528,7 +45528,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileUnlikeCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileUnlikeCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileUnlikeCommentType alloc] initWithDescription_:description_];
@@ -45561,11 +45561,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileUnresolveCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileUnresolveCommentDetailsSerializer deserialize:dict];
 }
 
@@ -45626,7 +45626,7 @@
 
 @implementation DBTEAMLOGFileUnresolveCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileUnresolveCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileUnresolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.commentText) {
@@ -45636,7 +45636,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileUnresolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileUnresolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
   return [[DBTEAMLOGFileUnresolveCommentDetails alloc] initWithCommentText:commentText];
@@ -45666,11 +45666,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFileUnresolveCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFileUnresolveCommentTypeSerializer deserialize:dict];
 }
 
@@ -45727,7 +45727,7 @@
 
 @implementation DBTEAMLOGFileUnresolveCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFileUnresolveCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileUnresolveCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -45735,7 +45735,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFileUnresolveCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFileUnresolveCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGFileUnresolveCommentType alloc] initWithDescription_:description_];
@@ -45772,11 +45772,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGFolderLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGFolderLogInfoSerializer deserialize:dict];
 }
 
@@ -45849,7 +45849,7 @@
 
 @implementation DBTEAMLOGFolderLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGFolderLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFolderLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"path"] = [DBTEAMLOGPathLogInfoSerializer serialize:valueObj.path];
@@ -45863,7 +45863,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGFolderLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGFolderLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGPathLogInfo *path = [DBTEAMLOGPathLogInfoSerializer deserialize:valueDict[@"path"]];
   NSString *displayName = valueDict[@"display_name"] ?: nil;
   NSString *fileId = valueDict[@"file_id"] ?: nil;
@@ -45905,11 +45905,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGeoLocationLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGeoLocationLogInfoSerializer deserialize:dict];
 }
 
@@ -45990,7 +45990,7 @@
 
 @implementation DBTEAMLOGGeoLocationLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGeoLocationLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGeoLocationLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"ip_address"] = valueObj.ipAddress;
@@ -46007,7 +46007,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGeoLocationLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGeoLocationLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *ipAddress = valueDict[@"ip_address"];
   NSString *city = valueDict[@"city"] ?: nil;
   NSString *region = valueDict[@"region"] ?: nil;
@@ -46053,11 +46053,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGetTeamEventsArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGetTeamEventsArgSerializer deserialize:dict];
 }
 
@@ -46138,7 +46138,7 @@
 
 @implementation DBTEAMLOGGetTeamEventsArgSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGetTeamEventsArg *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsArg *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"limit"] = valueObj.limit;
@@ -46155,7 +46155,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGetTeamEventsArg *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGetTeamEventsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *limit = valueDict[@"limit"] ?: @(1000);
   NSString *accountId = valueDict[@"account_id"] ?: nil;
   DBTEAMCOMMONTimeRange *time =
@@ -46190,11 +46190,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGetTeamEventsContinueArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGetTeamEventsContinueArgSerializer deserialize:dict];
 }
 
@@ -46251,7 +46251,7 @@
 
 @implementation DBTEAMLOGGetTeamEventsContinueArgSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGetTeamEventsContinueArg *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsContinueArg *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"cursor"] = valueObj.cursor;
@@ -46259,7 +46259,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGetTeamEventsContinueArg *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGetTeamEventsContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *cursor = valueDict[@"cursor"];
 
   return [[DBTEAMLOGGetTeamEventsContinueArg alloc] initWithCursor:cursor];
@@ -46318,11 +46318,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGetTeamEventsContinueErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGetTeamEventsContinueErrorSerializer deserialize:dict];
 }
 
@@ -46390,7 +46390,7 @@
 
 @implementation DBTEAMLOGGetTeamEventsContinueErrorSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGetTeamEventsContinueError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsContinueError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isBadCursor]) {
@@ -46404,7 +46404,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGetTeamEventsContinueError *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGetTeamEventsContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"bad_cursor"]) {
@@ -46483,11 +46483,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGetTeamEventsErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGetTeamEventsErrorSerializer deserialize:dict];
 }
 
@@ -46559,7 +46559,7 @@
 
 @implementation DBTEAMLOGGetTeamEventsErrorSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGetTeamEventsError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAccountIdNotFound]) {
@@ -46575,7 +46575,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGetTeamEventsError *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGetTeamEventsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"account_id_not_found"]) {
@@ -46623,11 +46623,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGetTeamEventsResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGetTeamEventsResultSerializer deserialize:dict];
 }
 
@@ -46692,7 +46692,7 @@
 
 @implementation DBTEAMLOGGetTeamEventsResultSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGetTeamEventsResult *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsResult *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"events"] = [DBArraySerializer serialize:valueObj.events
@@ -46705,7 +46705,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGetTeamEventsResult *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGetTeamEventsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<DBTEAMLOGTeamEvent *> *events =
       [DBArraySerializer deserialize:valueDict[@"events"]
                            withBlock:^id(id elem0) {
@@ -46748,11 +46748,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGoogleSsoChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGoogleSsoChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -46817,7 +46817,7 @@
 
 @implementation DBTEAMLOGGoogleSsoChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGoogleSsoChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGoogleSsoChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGGoogleSsoPolicySerializer serialize:valueObj.dNewValue];
@@ -46828,7 +46828,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGoogleSsoChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGoogleSsoChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGGoogleSsoPolicy *dNewValue = [DBTEAMLOGGoogleSsoPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGGoogleSsoPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGGoogleSsoPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -46861,11 +46861,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGoogleSsoChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGoogleSsoChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -46922,7 +46922,7 @@
 
 @implementation DBTEAMLOGGoogleSsoChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGoogleSsoChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGoogleSsoChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -46930,7 +46930,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGoogleSsoChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGoogleSsoChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGoogleSsoChangePolicyType alloc] initWithDescription_:description_];
@@ -47003,11 +47003,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGoogleSsoPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGoogleSsoPolicySerializer deserialize:dict];
 }
 
@@ -47079,7 +47079,7 @@
 
 @implementation DBTEAMLOGGoogleSsoPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGoogleSsoPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGoogleSsoPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -47095,7 +47095,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGoogleSsoPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGoogleSsoPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -47133,11 +47133,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupAddExternalIdDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupAddExternalIdDetailsSerializer deserialize:dict];
 }
 
@@ -47194,7 +47194,7 @@
 
 @implementation DBTEAMLOGGroupAddExternalIdDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupAddExternalIdDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupAddExternalIdDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = valueObj.dNewValue;
@@ -47202,7 +47202,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupAddExternalIdDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupAddExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *dNewValue = valueDict[@"new_value"];
 
   return [[DBTEAMLOGGroupAddExternalIdDetails alloc] initWithDNewValue:dNewValue];
@@ -47232,11 +47232,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupAddExternalIdTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupAddExternalIdTypeSerializer deserialize:dict];
 }
 
@@ -47293,7 +47293,7 @@
 
 @implementation DBTEAMLOGGroupAddExternalIdTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupAddExternalIdType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupAddExternalIdType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -47301,7 +47301,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupAddExternalIdType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupAddExternalIdType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupAddExternalIdType alloc] initWithDescription_:description_];
@@ -47331,11 +47331,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupAddMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupAddMemberDetailsSerializer deserialize:dict];
 }
 
@@ -47392,7 +47392,7 @@
 
 @implementation DBTEAMLOGGroupAddMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupAddMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupAddMemberDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"is_group_owner"] = valueObj.isGroupOwner;
@@ -47400,7 +47400,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupAddMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupAddMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *isGroupOwner = valueDict[@"is_group_owner"];
 
   return [[DBTEAMLOGGroupAddMemberDetails alloc] initWithIsGroupOwner:isGroupOwner];
@@ -47430,11 +47430,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupAddMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupAddMemberTypeSerializer deserialize:dict];
 }
 
@@ -47491,7 +47491,7 @@
 
 @implementation DBTEAMLOGGroupAddMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupAddMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupAddMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -47499,7 +47499,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupAddMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupAddMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupAddMemberType alloc] initWithDescription_:description_];
@@ -47531,11 +47531,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupChangeExternalIdDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupChangeExternalIdDetailsSerializer deserialize:dict];
 }
 
@@ -47596,7 +47596,7 @@
 
 @implementation DBTEAMLOGGroupChangeExternalIdDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupChangeExternalIdDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeExternalIdDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = valueObj.dNewValue;
@@ -47605,7 +47605,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupChangeExternalIdDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupChangeExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *dNewValue = valueDict[@"new_value"];
   NSString *previousValue = valueDict[@"previous_value"];
 
@@ -47636,11 +47636,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupChangeExternalIdTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupChangeExternalIdTypeSerializer deserialize:dict];
 }
 
@@ -47697,7 +47697,7 @@
 
 @implementation DBTEAMLOGGroupChangeExternalIdTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupChangeExternalIdType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeExternalIdType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -47705,7 +47705,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupChangeExternalIdType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupChangeExternalIdType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupChangeExternalIdType alloc] initWithDescription_:description_];
@@ -47742,11 +47742,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupChangeManagementTypeDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupChangeManagementTypeDetailsSerializer deserialize:dict];
 }
 
@@ -47812,7 +47812,7 @@
 
 @implementation DBTEAMLOGGroupChangeManagementTypeDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupChangeManagementTypeDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeManagementTypeDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMCOMMONGroupManagementTypeSerializer serialize:valueObj.dNewValue];
@@ -47823,7 +47823,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupChangeManagementTypeDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupChangeManagementTypeDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMCOMMONGroupManagementType *dNewValue =
       [DBTEAMCOMMONGroupManagementTypeSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMCOMMONGroupManagementType *previousValue =
@@ -47858,11 +47858,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupChangeManagementTypeTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupChangeManagementTypeTypeSerializer deserialize:dict];
 }
 
@@ -47920,7 +47920,7 @@
 
 @implementation DBTEAMLOGGroupChangeManagementTypeTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupChangeManagementTypeType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeManagementTypeType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -47928,7 +47928,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupChangeManagementTypeType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupChangeManagementTypeType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupChangeManagementTypeType alloc] initWithDescription_:description_];
@@ -47958,11 +47958,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupChangeMemberRoleDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupChangeMemberRoleDetailsSerializer deserialize:dict];
 }
 
@@ -48019,7 +48019,7 @@
 
 @implementation DBTEAMLOGGroupChangeMemberRoleDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupChangeMemberRoleDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeMemberRoleDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"is_group_owner"] = valueObj.isGroupOwner;
@@ -48027,7 +48027,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupChangeMemberRoleDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupChangeMemberRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *isGroupOwner = valueDict[@"is_group_owner"];
 
   return [[DBTEAMLOGGroupChangeMemberRoleDetails alloc] initWithIsGroupOwner:isGroupOwner];
@@ -48057,11 +48057,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupChangeMemberRoleTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupChangeMemberRoleTypeSerializer deserialize:dict];
 }
 
@@ -48118,7 +48118,7 @@
 
 @implementation DBTEAMLOGGroupChangeMemberRoleTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupChangeMemberRoleType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeMemberRoleType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -48126,7 +48126,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupChangeMemberRoleType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupChangeMemberRoleType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupChangeMemberRoleType alloc] initWithDescription_:description_];
@@ -48162,11 +48162,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupCreateDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupCreateDetailsSerializer deserialize:dict];
 }
 
@@ -48235,7 +48235,7 @@
 
 @implementation DBTEAMLOGGroupCreateDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupCreateDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupCreateDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.isCompanyManaged) {
@@ -48248,7 +48248,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupCreateDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *isCompanyManaged = valueDict[@"is_company_managed"] ?: nil;
   DBTEAMLOGGroupJoinPolicy *joinPolicy =
       valueDict[@"join_policy"] ? [DBTEAMLOGGroupJoinPolicySerializer deserialize:valueDict[@"join_policy"]] : nil;
@@ -48280,11 +48280,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupCreateTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupCreateTypeSerializer deserialize:dict];
 }
 
@@ -48341,7 +48341,7 @@
 
 @implementation DBTEAMLOGGroupCreateTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupCreateType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupCreateType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -48349,7 +48349,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupCreateType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupCreateType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupCreateType alloc] initWithDescription_:description_];
@@ -48382,11 +48382,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupDeleteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupDeleteDetailsSerializer deserialize:dict];
 }
 
@@ -48447,7 +48447,7 @@
 
 @implementation DBTEAMLOGGroupDeleteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupDeleteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupDeleteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.isCompanyManaged) {
@@ -48457,7 +48457,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupDeleteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *isCompanyManaged = valueDict[@"is_company_managed"] ?: nil;
 
   return [[DBTEAMLOGGroupDeleteDetails alloc] initWithIsCompanyManaged:isCompanyManaged];
@@ -48487,11 +48487,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupDeleteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupDeleteTypeSerializer deserialize:dict];
 }
 
@@ -48548,7 +48548,7 @@
 
 @implementation DBTEAMLOGGroupDeleteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupDeleteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupDeleteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -48556,7 +48556,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupDeleteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupDeleteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupDeleteType alloc] initWithDescription_:description_];
@@ -48584,11 +48584,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer deserialize:dict];
 }
 
@@ -48641,14 +48641,14 @@
 
 @implementation DBTEAMLOGGroupDescriptionUpdatedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupDescriptionUpdatedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupDescriptionUpdatedDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupDescriptionUpdatedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupDescriptionUpdatedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGGroupDescriptionUpdatedDetails alloc] initDefault];
@@ -48678,11 +48678,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupDescriptionUpdatedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupDescriptionUpdatedTypeSerializer deserialize:dict];
 }
 
@@ -48739,7 +48739,7 @@
 
 @implementation DBTEAMLOGGroupDescriptionUpdatedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupDescriptionUpdatedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupDescriptionUpdatedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -48747,7 +48747,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupDescriptionUpdatedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupDescriptionUpdatedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupDescriptionUpdatedType alloc] initWithDescription_:description_];
@@ -48820,11 +48820,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupJoinPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupJoinPolicySerializer deserialize:dict];
 }
 
@@ -48896,7 +48896,7 @@
 
 @implementation DBTEAMLOGGroupJoinPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupJoinPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupJoinPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isOpen]) {
@@ -48912,7 +48912,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupJoinPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupJoinPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"open"]) {
@@ -48956,11 +48956,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer deserialize:dict];
 }
 
@@ -49030,7 +49030,7 @@
 
 @implementation DBTEAMLOGGroupJoinPolicyUpdatedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupJoinPolicyUpdatedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupJoinPolicyUpdatedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.isCompanyManaged) {
@@ -49043,7 +49043,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupJoinPolicyUpdatedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupJoinPolicyUpdatedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *isCompanyManaged = valueDict[@"is_company_managed"] ?: nil;
   DBTEAMLOGGroupJoinPolicy *joinPolicy =
       valueDict[@"join_policy"] ? [DBTEAMLOGGroupJoinPolicySerializer deserialize:valueDict[@"join_policy"]] : nil;
@@ -49076,11 +49076,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer deserialize:dict];
 }
 
@@ -49137,7 +49137,7 @@
 
 @implementation DBTEAMLOGGroupJoinPolicyUpdatedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupJoinPolicyUpdatedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupJoinPolicyUpdatedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -49145,7 +49145,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupJoinPolicyUpdatedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupJoinPolicyUpdatedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupJoinPolicyUpdatedType alloc] initWithDescription_:description_];
@@ -49183,11 +49183,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupLogInfoSerializer deserialize:dict];
 }
 
@@ -49260,7 +49260,7 @@
 
 @implementation DBTEAMLOGGroupLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"display_name"] = valueObj.displayName;
@@ -49274,7 +49274,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *displayName = valueDict[@"display_name"];
   NSString *groupId = valueDict[@"group_id"] ?: nil;
   NSString *externalId = valueDict[@"external_id"] ?: nil;
@@ -49304,11 +49304,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupMovedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupMovedDetailsSerializer deserialize:dict];
 }
 
@@ -49360,14 +49360,14 @@
 
 @implementation DBTEAMLOGGroupMovedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupMovedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupMovedDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupMovedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupMovedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGGroupMovedDetails alloc] initDefault];
@@ -49397,11 +49397,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupMovedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupMovedTypeSerializer deserialize:dict];
 }
 
@@ -49458,7 +49458,7 @@
 
 @implementation DBTEAMLOGGroupMovedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupMovedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupMovedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -49466,7 +49466,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupMovedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupMovedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupMovedType alloc] initWithDescription_:description_];
@@ -49496,11 +49496,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupRemoveExternalIdDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupRemoveExternalIdDetailsSerializer deserialize:dict];
 }
 
@@ -49557,7 +49557,7 @@
 
 @implementation DBTEAMLOGGroupRemoveExternalIdDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupRemoveExternalIdDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupRemoveExternalIdDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = valueObj.previousValue;
@@ -49565,7 +49565,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupRemoveExternalIdDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupRemoveExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousValue = valueDict[@"previous_value"];
 
   return [[DBTEAMLOGGroupRemoveExternalIdDetails alloc] initWithPreviousValue:previousValue];
@@ -49595,11 +49595,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupRemoveExternalIdTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupRemoveExternalIdTypeSerializer deserialize:dict];
 }
 
@@ -49656,7 +49656,7 @@
 
 @implementation DBTEAMLOGGroupRemoveExternalIdTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupRemoveExternalIdType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupRemoveExternalIdType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -49664,7 +49664,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupRemoveExternalIdType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupRemoveExternalIdType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupRemoveExternalIdType alloc] initWithDescription_:description_];
@@ -49692,11 +49692,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupRemoveMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupRemoveMemberDetailsSerializer deserialize:dict];
 }
 
@@ -49748,14 +49748,14 @@
 
 @implementation DBTEAMLOGGroupRemoveMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupRemoveMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupRemoveMemberDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupRemoveMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGGroupRemoveMemberDetails alloc] initDefault];
@@ -49785,11 +49785,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupRemoveMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupRemoveMemberTypeSerializer deserialize:dict];
 }
 
@@ -49846,7 +49846,7 @@
 
 @implementation DBTEAMLOGGroupRemoveMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupRemoveMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupRemoveMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -49854,7 +49854,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupRemoveMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupRemoveMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupRemoveMemberType alloc] initWithDescription_:description_];
@@ -49886,11 +49886,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupRenameDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupRenameDetailsSerializer deserialize:dict];
 }
 
@@ -49951,7 +49951,7 @@
 
 @implementation DBTEAMLOGGroupRenameDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupRenameDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupRenameDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = valueObj.previousValue;
@@ -49960,7 +49960,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupRenameDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupRenameDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousValue = valueDict[@"previous_value"];
   NSString *dNewValue = valueDict[@"new_value"];
 
@@ -49991,11 +49991,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupRenameTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupRenameTypeSerializer deserialize:dict];
 }
 
@@ -50052,7 +50052,7 @@
 
 @implementation DBTEAMLOGGroupRenameTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupRenameType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupRenameType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -50060,7 +50060,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupRenameType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupRenameType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupRenameType alloc] initWithDescription_:description_];
@@ -50097,11 +50097,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupUserManagementChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupUserManagementChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -50167,7 +50167,7 @@
 
 @implementation DBTEAMLOGGroupUserManagementChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupUserManagementChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupUserManagementChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMPOLICIESGroupCreationSerializer serialize:valueObj.dNewValue];
@@ -50178,7 +50178,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupUserManagementChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupUserManagementChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESGroupCreation *dNewValue = [DBTEAMPOLICIESGroupCreationSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMPOLICIESGroupCreation *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMPOLICIESGroupCreationSerializer deserialize:valueDict[@"previous_value"]]
@@ -50212,11 +50212,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGGroupUserManagementChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGGroupUserManagementChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -50274,7 +50274,7 @@
 
 @implementation DBTEAMLOGGroupUserManagementChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupUserManagementChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupUserManagementChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -50282,7 +50282,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGGroupUserManagementChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGGroupUserManagementChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGGroupUserManagementChangePolicyType alloc] initWithDescription_:description_];
@@ -50355,11 +50355,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGIdentifierTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGIdentifierTypeSerializer deserialize:dict];
 }
 
@@ -50431,7 +50431,7 @@
 
 @implementation DBTEAMLOGIdentifierTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGIdentifierType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIdentifierType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isEmail]) {
@@ -50447,7 +50447,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGIdentifierType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGIdentifierType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"email"]) {
@@ -50503,11 +50503,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGJoinTeamDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGJoinTeamDetailsSerializer deserialize:dict];
 }
 
@@ -50572,7 +50572,7 @@
 
 @implementation DBTEAMLOGJoinTeamDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGJoinTeamDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGJoinTeamDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"linked_apps"] = [DBArraySerializer serialize:valueObj.linkedApps
@@ -50591,7 +50591,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGJoinTeamDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGJoinTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<DBTEAMLOGUserLinkedAppLogInfo *> *linkedApps =
       [DBArraySerializer deserialize:valueDict[@"linked_apps"]
                            withBlock:^id(id elem0) {
@@ -50672,11 +50672,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLegacyDeviceSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLegacyDeviceSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -50825,7 +50825,7 @@
 
 @implementation DBTEAMLOGLegacyDeviceSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLegacyDeviceSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLegacyDeviceSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.ipAddress) {
@@ -50868,7 +50868,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLegacyDeviceSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLegacyDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
   NSDate *created = valueDict[@"created"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
@@ -51045,11 +51045,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLinkedDeviceLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLinkedDeviceLogInfoSerializer deserialize:dict];
 }
 
@@ -51129,7 +51129,7 @@
 
 @implementation DBTEAMLOGLinkedDeviceLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLinkedDeviceLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLinkedDeviceLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isMobileDeviceSession]) {
@@ -51153,7 +51153,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLinkedDeviceLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLinkedDeviceLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"mobile_device_session"]) {
@@ -51215,11 +51215,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLoginFailDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLoginFailDetailsSerializer deserialize:dict];
 }
 
@@ -51288,7 +51288,7 @@
 
 @implementation DBTEAMLOGLoginFailDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLoginFailDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLoginFailDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"login_method"] = [DBTEAMLOGLoginMethodSerializer serialize:valueObj.loginMethod];
@@ -51300,7 +51300,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLoginFailDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLoginFailDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGLoginMethod *loginMethod = [DBTEAMLOGLoginMethodSerializer deserialize:valueDict[@"login_method"]];
   DBTEAMLOGFailureDetailsLogInfo *errorDetails =
       [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
@@ -51335,11 +51335,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLoginFailTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLoginFailTypeSerializer deserialize:dict];
 }
 
@@ -51396,7 +51396,7 @@
 
 @implementation DBTEAMLOGLoginFailTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLoginFailType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLoginFailType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -51404,7 +51404,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLoginFailType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLoginFailType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGLoginFailType alloc] initWithDescription_:description_];
@@ -51491,11 +51491,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLoginMethodSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLoginMethodSerializer deserialize:dict];
 }
 
@@ -51571,7 +51571,7 @@
 
 @implementation DBTEAMLOGLoginMethodSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLoginMethod *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLoginMethod *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isPassword]) {
@@ -51589,7 +51589,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLoginMethod *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLoginMethod *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"password"]) {
@@ -51635,11 +51635,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLoginSuccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLoginSuccessDetailsSerializer deserialize:dict];
 }
 
@@ -51704,7 +51704,7 @@
 
 @implementation DBTEAMLOGLoginSuccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLoginSuccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLoginSuccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"login_method"] = [DBTEAMLOGLoginMethodSerializer serialize:valueObj.loginMethod];
@@ -51715,7 +51715,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLoginSuccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLoginSuccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGLoginMethod *loginMethod = [DBTEAMLOGLoginMethodSerializer deserialize:valueDict[@"login_method"]];
   NSNumber *isEmmManaged = valueDict[@"is_emm_managed"] ?: nil;
 
@@ -51746,11 +51746,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLoginSuccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLoginSuccessTypeSerializer deserialize:dict];
 }
 
@@ -51807,7 +51807,7 @@
 
 @implementation DBTEAMLOGLoginSuccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLoginSuccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLoginSuccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -51815,7 +51815,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLoginSuccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLoginSuccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGLoginSuccessType alloc] initWithDescription_:description_];
@@ -51843,11 +51843,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLogoutDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLogoutDetailsSerializer deserialize:dict];
 }
 
@@ -51899,14 +51899,14 @@
 
 @implementation DBTEAMLOGLogoutDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLogoutDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLogoutDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLogoutDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLogoutDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGLogoutDetails alloc] initDefault];
@@ -51936,11 +51936,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGLogoutTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGLogoutTypeSerializer deserialize:dict];
 }
 
@@ -51997,7 +51997,7 @@
 
 @implementation DBTEAMLOGLogoutTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGLogoutType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLogoutType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -52005,7 +52005,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGLogoutType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGLogoutType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGLogoutType alloc] initWithDescription_:description_];
@@ -52036,11 +52036,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberAddNameDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberAddNameDetailsSerializer deserialize:dict];
 }
 
@@ -52097,7 +52097,7 @@
 
 @implementation DBTEAMLOGMemberAddNameDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberAddNameDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberAddNameDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGUserNameLogInfoSerializer serialize:valueObj.dNewValue];
@@ -52105,7 +52105,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberAddNameDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberAddNameDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGUserNameLogInfo *dNewValue = [DBTEAMLOGUserNameLogInfoSerializer deserialize:valueDict[@"new_value"]];
 
   return [[DBTEAMLOGMemberAddNameDetails alloc] initWithDNewValue:dNewValue];
@@ -52135,11 +52135,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberAddNameTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberAddNameTypeSerializer deserialize:dict];
 }
 
@@ -52196,7 +52196,7 @@
 
 @implementation DBTEAMLOGMemberAddNameTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberAddNameType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberAddNameType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -52204,7 +52204,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberAddNameType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberAddNameType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberAddNameType alloc] initWithDescription_:description_];
@@ -52239,11 +52239,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeAdminRoleDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeAdminRoleDetailsSerializer deserialize:dict];
 }
 
@@ -52312,7 +52312,7 @@
 
 @implementation DBTEAMLOGMemberChangeAdminRoleDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeAdminRoleDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeAdminRoleDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -52325,7 +52325,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeAdminRoleDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeAdminRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAdminRole *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMLOGAdminRoleSerializer deserialize:valueDict[@"new_value"]] : nil;
   DBTEAMLOGAdminRole *previousValue =
@@ -52358,11 +52358,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeAdminRoleTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeAdminRoleTypeSerializer deserialize:dict];
 }
 
@@ -52419,7 +52419,7 @@
 
 @implementation DBTEAMLOGMemberChangeAdminRoleTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeAdminRoleType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeAdminRoleType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -52427,7 +52427,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeAdminRoleType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeAdminRoleType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberChangeAdminRoleType alloc] initWithDescription_:description_];
@@ -52464,11 +52464,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeEmailDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeEmailDetailsSerializer deserialize:dict];
 }
 
@@ -52533,7 +52533,7 @@
 
 @implementation DBTEAMLOGMemberChangeEmailDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeEmailDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeEmailDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = valueObj.dNewValue;
@@ -52544,7 +52544,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeEmailDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeEmailDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *dNewValue = valueDict[@"new_value"];
   NSString *previousValue = valueDict[@"previous_value"] ?: nil;
 
@@ -52575,11 +52575,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeEmailTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeEmailTypeSerializer deserialize:dict];
 }
 
@@ -52636,7 +52636,7 @@
 
 @implementation DBTEAMLOGMemberChangeEmailTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeEmailType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeEmailType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -52644,7 +52644,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeEmailType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeEmailType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberChangeEmailType alloc] initWithDescription_:description_];
@@ -52678,11 +52678,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeMembershipTypeDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeMembershipTypeDetailsSerializer deserialize:dict];
 }
 
@@ -52744,7 +52744,7 @@
 
 @implementation DBTEAMLOGMemberChangeMembershipTypeDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeMembershipTypeDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeMembershipTypeDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"prev_value"] = [DBTEAMLOGTeamMembershipTypeSerializer serialize:valueObj.prevValue];
@@ -52753,7 +52753,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeMembershipTypeDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeMembershipTypeDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGTeamMembershipType *prevValue = [DBTEAMLOGTeamMembershipTypeSerializer deserialize:valueDict[@"prev_value"]];
   DBTEAMLOGTeamMembershipType *dNewValue = [DBTEAMLOGTeamMembershipTypeSerializer deserialize:valueDict[@"new_value"]];
 
@@ -52784,11 +52784,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeMembershipTypeTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeMembershipTypeTypeSerializer deserialize:dict];
 }
 
@@ -52846,7 +52846,7 @@
 
 @implementation DBTEAMLOGMemberChangeMembershipTypeTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeMembershipTypeType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeMembershipTypeType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -52854,7 +52854,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeMembershipTypeType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeMembershipTypeType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberChangeMembershipTypeType alloc] initWithDescription_:description_];
@@ -52891,11 +52891,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeNameDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeNameDetailsSerializer deserialize:dict];
 }
 
@@ -52960,7 +52960,7 @@
 
 @implementation DBTEAMLOGMemberChangeNameDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeNameDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeNameDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGUserNameLogInfoSerializer serialize:valueObj.dNewValue];
@@ -52971,7 +52971,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeNameDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeNameDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGUserNameLogInfo *dNewValue = [DBTEAMLOGUserNameLogInfoSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGUserNameLogInfo *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGUserNameLogInfoSerializer deserialize:valueDict[@"previous_value"]]
@@ -53004,11 +53004,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeNameTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeNameTypeSerializer deserialize:dict];
 }
 
@@ -53065,7 +53065,7 @@
 
 @implementation DBTEAMLOGMemberChangeNameTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeNameType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeNameType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -53073,7 +53073,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeNameType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeNameType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberChangeNameType alloc] initWithDescription_:description_];
@@ -53113,11 +53113,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeStatusDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeStatusDetailsSerializer deserialize:dict];
 }
 
@@ -53190,7 +53190,7 @@
 
 @implementation DBTEAMLOGMemberChangeStatusDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeStatusDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeStatusDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGMemberStatusSerializer serialize:valueObj.dNewValue];
@@ -53204,7 +53204,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeStatusDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGMemberStatus *dNewValue = [DBTEAMLOGMemberStatusSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGMemberStatus *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGMemberStatusSerializer deserialize:valueDict[@"previous_value"]] : nil;
@@ -53240,11 +53240,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberChangeStatusTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberChangeStatusTypeSerializer deserialize:dict];
 }
 
@@ -53301,7 +53301,7 @@
 
 @implementation DBTEAMLOGMemberChangeStatusTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeStatusType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeStatusType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -53309,7 +53309,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberChangeStatusType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberChangeStatusType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberChangeStatusType alloc] initWithDescription_:description_];
@@ -53337,11 +53337,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer deserialize:dict];
 }
 
@@ -53394,14 +53394,14 @@
 
 @implementation DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails alloc] initDefault];
@@ -53431,11 +53431,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberPermanentlyDeleteAccountContentsTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberPermanentlyDeleteAccountContentsTypeSerializer deserialize:dict];
 }
 
@@ -53493,7 +53493,7 @@
 
 @implementation DBTEAMLOGMemberPermanentlyDeleteAccountContentsTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -53501,7 +53501,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberPermanentlyDeleteAccountContentsType alloc] initWithDescription_:description_];
@@ -53588,11 +53588,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberRemoveActionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberRemoveActionTypeSerializer deserialize:dict];
 }
 
@@ -53668,7 +53668,7 @@
 
 @implementation DBTEAMLOGMemberRemoveActionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberRemoveActionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRemoveActionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDelete_]) {
@@ -53686,7 +53686,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberRemoveActionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberRemoveActionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"delete"]) {
@@ -53733,11 +53733,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberRequestsChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberRequestsChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -53803,7 +53803,7 @@
 
 @implementation DBTEAMLOGMemberRequestsChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberRequestsChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRequestsChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGMemberRequestsPolicySerializer serialize:valueObj.dNewValue];
@@ -53814,7 +53814,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberRequestsChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberRequestsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGMemberRequestsPolicy *dNewValue =
       [DBTEAMLOGMemberRequestsPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGMemberRequestsPolicy *previousValue =
@@ -53848,11 +53848,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberRequestsChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberRequestsChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -53910,7 +53910,7 @@
 
 @implementation DBTEAMLOGMemberRequestsChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberRequestsChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRequestsChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -53918,7 +53918,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberRequestsChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberRequestsChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberRequestsChangePolicyType alloc] initWithDescription_:description_];
@@ -54005,11 +54005,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberRequestsPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberRequestsPolicySerializer deserialize:dict];
 }
 
@@ -54085,7 +54085,7 @@
 
 @implementation DBTEAMLOGMemberRequestsPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberRequestsPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRequestsPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAutoAccept]) {
@@ -54103,7 +54103,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberRequestsPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberRequestsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"auto_accept"]) {
@@ -54143,11 +54143,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetailsSerializer deserialize:dict];
 }
 
@@ -54205,7 +54205,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = valueObj.dNewValue;
@@ -54213,7 +54213,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *dNewValue = valueDict[@"new_value"];
 
   return [[DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails alloc] initWithDNewValue:dNewValue];
@@ -54243,11 +54243,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsAddCustomQuotaTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsAddCustomQuotaTypeSerializer deserialize:dict];
 }
 
@@ -54305,7 +54305,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsAddCustomQuotaTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -54313,7 +54313,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType alloc] initWithDescription_:description_];
@@ -54341,11 +54341,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsAddExceptionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsAddExceptionDetailsSerializer deserialize:dict];
 }
 
@@ -54398,14 +54398,14 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsAddExceptionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsAddExceptionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsAddExceptionDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsAddExceptionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsAddExceptionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGMemberSpaceLimitsAddExceptionDetails alloc] initDefault];
@@ -54435,11 +54435,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsAddExceptionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsAddExceptionTypeSerializer deserialize:dict];
 }
 
@@ -54497,7 +54497,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsAddExceptionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsAddExceptionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsAddExceptionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -54505,7 +54505,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsAddExceptionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsAddExceptionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsAddExceptionType alloc] initWithDescription_:description_];
@@ -54539,11 +54539,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -54605,7 +54605,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = [DBTEAMLOGSpaceCapsTypeSerializer serialize:valueObj.previousValue];
@@ -54614,7 +54614,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSpaceCapsType *previousValue = [DBTEAMLOGSpaceCapsTypeSerializer deserialize:valueDict[@"previous_value"]];
   DBTEAMLOGSpaceCapsType *dNewValue = [DBTEAMLOGSpaceCapsTypeSerializer deserialize:valueDict[@"new_value"]];
 
@@ -54646,11 +54646,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyTypeSerializer deserialize:dict];
 }
 
@@ -54708,7 +54708,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -54716,7 +54716,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyType alloc] initWithDescription_:description_];
@@ -54748,11 +54748,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetailsSerializer deserialize:dict];
 }
 
@@ -54814,7 +54814,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = valueObj.previousValue;
@@ -54823,7 +54823,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *previousValue = valueDict[@"previous_value"];
   NSNumber *dNewValue = valueDict[@"new_value"];
 
@@ -54855,11 +54855,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaTypeSerializer deserialize:dict];
 }
 
@@ -54917,7 +54917,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -54925,7 +54925,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaType alloc] initWithDescription_:description_];
@@ -54959,11 +54959,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -55033,7 +55033,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.previousValue) {
@@ -55046,7 +55046,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *previousValue = valueDict[@"previous_value"] ?: nil;
   NSNumber *dNewValue = valueDict[@"new_value"] ?: nil;
 
@@ -55078,11 +55078,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -55140,7 +55140,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -55148,7 +55148,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsChangePolicyType alloc] initWithDescription_:description_];
@@ -55182,11 +55182,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangeStatusDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangeStatusDetailsSerializer deserialize:dict];
 }
 
@@ -55248,7 +55248,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangeStatusDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = [DBTEAMLOGSpaceLimitsStatusSerializer serialize:valueObj.previousValue];
@@ -55257,7 +55257,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSpaceLimitsStatus *previousValue =
       [DBTEAMLOGSpaceLimitsStatusSerializer deserialize:valueDict[@"previous_value"]];
   DBTEAMLOGSpaceLimitsStatus *dNewValue = [DBTEAMLOGSpaceLimitsStatusSerializer deserialize:valueDict[@"new_value"]];
@@ -55290,11 +55290,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsChangeStatusTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsChangeStatusTypeSerializer deserialize:dict];
 }
 
@@ -55352,7 +55352,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsChangeStatusTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -55360,7 +55360,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsChangeStatusType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsChangeStatusType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsChangeStatusType alloc] initWithDescription_:description_];
@@ -55388,11 +55388,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetailsSerializer deserialize:dict];
 }
 
@@ -55445,14 +55445,14 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaDetails alloc] initDefault];
@@ -55482,11 +55482,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaTypeSerializer deserialize:dict];
 }
 
@@ -55544,7 +55544,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -55552,7 +55552,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsRemoveCustomQuotaType alloc] initWithDescription_:description_];
@@ -55580,11 +55580,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetailsSerializer deserialize:dict];
 }
 
@@ -55637,14 +55637,14 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGMemberSpaceLimitsRemoveExceptionDetails alloc] initDefault];
@@ -55674,11 +55674,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSpaceLimitsRemoveExceptionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSpaceLimitsRemoveExceptionTypeSerializer deserialize:dict];
 }
 
@@ -55736,7 +55736,7 @@
 
 @implementation DBTEAMLOGMemberSpaceLimitsRemoveExceptionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveExceptionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsRemoveExceptionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -55744,7 +55744,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSpaceLimitsRemoveExceptionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSpaceLimitsRemoveExceptionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSpaceLimitsRemoveExceptionType alloc] initWithDescription_:description_];
@@ -55859,11 +55859,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberStatusSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberStatusSerializer deserialize:dict];
 }
 
@@ -55947,7 +55947,7 @@
 
 @implementation DBTEAMLOGMemberStatusSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberStatus *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberStatus *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isNotJoined]) {
@@ -55969,7 +55969,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberStatus *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"not_joined"]) {
@@ -56020,11 +56020,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSuggestDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSuggestDetailsSerializer deserialize:dict];
 }
 
@@ -56081,7 +56081,7 @@
 
 @implementation DBTEAMLOGMemberSuggestDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSuggestDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSuggestDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"suggested_members"] = [DBArraySerializer serialize:valueObj.suggestedMembers
@@ -56092,7 +56092,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSuggestDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSuggestDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<NSString *> *suggestedMembers = [DBArraySerializer deserialize:valueDict[@"suggested_members"]
                                                                withBlock:^id(id elem0) {
                                                                  return elem0;
@@ -56125,11 +56125,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSuggestTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSuggestTypeSerializer deserialize:dict];
 }
 
@@ -56186,7 +56186,7 @@
 
 @implementation DBTEAMLOGMemberSuggestTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSuggestType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSuggestType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -56194,7 +56194,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSuggestType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSuggestType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSuggestType alloc] initWithDescription_:description_];
@@ -56231,11 +56231,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSuggestionsChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSuggestionsChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -56301,7 +56301,7 @@
 
 @implementation DBTEAMLOGMemberSuggestionsChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSuggestionsChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSuggestionsChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGMemberSuggestionsPolicySerializer serialize:valueObj.dNewValue];
@@ -56312,7 +56312,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSuggestionsChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSuggestionsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGMemberSuggestionsPolicy *dNewValue =
       [DBTEAMLOGMemberSuggestionsPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGMemberSuggestionsPolicy *previousValue =
@@ -56348,11 +56348,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSuggestionsChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSuggestionsChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -56410,7 +56410,7 @@
 
 @implementation DBTEAMLOGMemberSuggestionsChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSuggestionsChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSuggestionsChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -56418,7 +56418,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSuggestionsChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSuggestionsChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberSuggestionsChangePolicyType alloc] initWithDescription_:description_];
@@ -56491,11 +56491,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberSuggestionsPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberSuggestionsPolicySerializer deserialize:dict];
 }
 
@@ -56567,7 +56567,7 @@
 
 @implementation DBTEAMLOGMemberSuggestionsPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSuggestionsPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSuggestionsPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -56583,7 +56583,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberSuggestionsPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberSuggestionsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -56619,11 +56619,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberTransferAccountContentsDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberTransferAccountContentsDetailsSerializer deserialize:dict];
 }
 
@@ -56676,14 +56676,14 @@
 
 @implementation DBTEAMLOGMemberTransferAccountContentsDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberTransferAccountContentsDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberTransferAccountContentsDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberTransferAccountContentsDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberTransferAccountContentsDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGMemberTransferAccountContentsDetails alloc] initDefault];
@@ -56713,11 +56713,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMemberTransferAccountContentsTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMemberTransferAccountContentsTypeSerializer deserialize:dict];
 }
 
@@ -56775,7 +56775,7 @@
 
 @implementation DBTEAMLOGMemberTransferAccountContentsTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberTransferAccountContentsType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberTransferAccountContentsType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -56783,7 +56783,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMemberTransferAccountContentsType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMemberTransferAccountContentsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberTransferAccountContentsType alloc] initWithDescription_:description_];
@@ -56820,11 +56820,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -56890,7 +56890,7 @@
 
 @implementation DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGMicrosoftOfficeAddinPolicySerializer serialize:valueObj.dNewValue];
@@ -56901,7 +56901,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGMicrosoftOfficeAddinPolicy *dNewValue =
       [DBTEAMLOGMicrosoftOfficeAddinPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGMicrosoftOfficeAddinPolicy *previousValue =
@@ -56937,11 +56937,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMicrosoftOfficeAddinChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMicrosoftOfficeAddinChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -56999,7 +56999,7 @@
 
 @implementation DBTEAMLOGMicrosoftOfficeAddinChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -57007,7 +57007,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMicrosoftOfficeAddinChangePolicyType alloc] initWithDescription_:description_];
@@ -57080,11 +57080,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMicrosoftOfficeAddinPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMicrosoftOfficeAddinPolicySerializer deserialize:dict];
 }
 
@@ -57156,7 +57156,7 @@
 
 @implementation DBTEAMLOGMicrosoftOfficeAddinPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMicrosoftOfficeAddinPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMicrosoftOfficeAddinPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -57172,7 +57172,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMicrosoftOfficeAddinPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMicrosoftOfficeAddinPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -57213,11 +57213,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMissingDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMissingDetailsSerializer deserialize:dict];
 }
 
@@ -57278,7 +57278,7 @@
 
 @implementation DBTEAMLOGMissingDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMissingDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMissingDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sourceEventFields) {
@@ -57288,7 +57288,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMissingDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMissingDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sourceEventFields = valueDict[@"source_event_fields"] ?: nil;
 
   return [[DBTEAMLOGMissingDetails alloc] initWithSourceEventFields:sourceEventFields];
@@ -57347,11 +57347,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMobileDeviceSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMobileDeviceSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -57468,7 +57468,7 @@
 
 @implementation DBTEAMLOGMobileDeviceSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMobileDeviceSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMobileDeviceSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"device_name"] = valueObj.deviceName;
@@ -57498,7 +57498,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMobileDeviceSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMobileDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *deviceName = valueDict[@"device_name"];
   DBTEAMMobileClientPlatform *clientType = [DBTEAMMobileClientPlatformSerializer deserialize:valueDict[@"client_type"]];
   NSString *ipAddress = valueDict[@"ip_address"] ?: nil;
@@ -57553,11 +57553,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGMobileSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGMobileSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -57618,7 +57618,7 @@
 
 @implementation DBTEAMLOGMobileSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGMobileSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMobileSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sessionId) {
@@ -57628,7 +57628,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGMobileSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGMobileSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sessionId = valueDict[@"session_id"] ?: nil;
 
   return [[DBTEAMLOGMobileSessionLogInfo alloc] initWithSessionId:sessionId];
@@ -57662,11 +57662,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNamespaceRelativePathLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNamespaceRelativePathLogInfoSerializer deserialize:dict];
 }
 
@@ -57735,7 +57735,7 @@
 
 @implementation DBTEAMLOGNamespaceRelativePathLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNamespaceRelativePathLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNamespaceRelativePathLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.nsId) {
@@ -57748,7 +57748,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNamespaceRelativePathLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNamespaceRelativePathLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *nsId = valueDict[@"ns_id"] ?: nil;
   NSString *relativePath = valueDict[@"relative_path"] ?: nil;
 
@@ -57786,11 +57786,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNetworkControlChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNetworkControlChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -57856,7 +57856,7 @@
 
 @implementation DBTEAMLOGNetworkControlChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNetworkControlChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNetworkControlChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGNetworkControlPolicySerializer serialize:valueObj.dNewValue];
@@ -57867,7 +57867,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNetworkControlChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNetworkControlChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGNetworkControlPolicy *dNewValue =
       [DBTEAMLOGNetworkControlPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGNetworkControlPolicy *previousValue =
@@ -57901,11 +57901,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNetworkControlChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNetworkControlChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -57963,7 +57963,7 @@
 
 @implementation DBTEAMLOGNetworkControlChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNetworkControlChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNetworkControlChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -57971,7 +57971,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNetworkControlChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNetworkControlChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGNetworkControlChangePolicyType alloc] initWithDescription_:description_];
@@ -58044,11 +58044,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNetworkControlPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNetworkControlPolicySerializer deserialize:dict];
 }
 
@@ -58120,7 +58120,7 @@
 
 @implementation DBTEAMLOGNetworkControlPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNetworkControlPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNetworkControlPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -58136,7 +58136,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNetworkControlPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNetworkControlPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -58185,11 +58185,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGUserLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGUserLogInfoSerializer deserialize:dict];
 }
 
@@ -58266,7 +58266,7 @@
 
 @implementation DBTEAMLOGUserLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGUserLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGUserLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.accountId) {
@@ -58298,7 +58298,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGUserLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGUserLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   if ([valueDict[@".tag"] isEqualToString:@"team_member"]) {
     return [DBTEAMLOGTeamMemberLogInfoSerializer deserialize:valueDict];
   }
@@ -58344,11 +58344,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNonTeamMemberLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNonTeamMemberLogInfoSerializer deserialize:dict];
 }
 
@@ -58425,7 +58425,7 @@
 
 @implementation DBTEAMLOGNonTeamMemberLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNonTeamMemberLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNonTeamMemberLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.accountId) {
@@ -58441,7 +58441,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNonTeamMemberLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNonTeamMemberLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *accountId = valueDict[@"account_id"] ?: nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
   NSString *email = valueDict[@"email"] ?: nil;
@@ -58471,11 +58471,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteAclInviteOnlyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteAclInviteOnlyDetailsSerializer deserialize:dict];
 }
 
@@ -58527,14 +58527,14 @@
 
 @implementation DBTEAMLOGNoteAclInviteOnlyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteAclInviteOnlyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclInviteOnlyDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteAclInviteOnlyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteAclInviteOnlyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGNoteAclInviteOnlyDetails alloc] initDefault];
@@ -58564,11 +58564,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteAclInviteOnlyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteAclInviteOnlyTypeSerializer deserialize:dict];
 }
 
@@ -58625,7 +58625,7 @@
 
 @implementation DBTEAMLOGNoteAclInviteOnlyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteAclInviteOnlyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclInviteOnlyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -58633,7 +58633,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteAclInviteOnlyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteAclInviteOnlyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGNoteAclInviteOnlyType alloc] initWithDescription_:description_];
@@ -58661,11 +58661,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteAclLinkDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteAclLinkDetailsSerializer deserialize:dict];
 }
 
@@ -58717,14 +58717,14 @@
 
 @implementation DBTEAMLOGNoteAclLinkDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteAclLinkDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclLinkDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteAclLinkDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteAclLinkDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGNoteAclLinkDetails alloc] initDefault];
@@ -58754,11 +58754,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteAclLinkTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteAclLinkTypeSerializer deserialize:dict];
 }
 
@@ -58815,7 +58815,7 @@
 
 @implementation DBTEAMLOGNoteAclLinkTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteAclLinkType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclLinkType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -58823,7 +58823,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteAclLinkType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteAclLinkType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGNoteAclLinkType alloc] initWithDescription_:description_];
@@ -58851,11 +58851,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteAclTeamLinkDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteAclTeamLinkDetailsSerializer deserialize:dict];
 }
 
@@ -58907,14 +58907,14 @@
 
 @implementation DBTEAMLOGNoteAclTeamLinkDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteAclTeamLinkDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclTeamLinkDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteAclTeamLinkDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteAclTeamLinkDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGNoteAclTeamLinkDetails alloc] initDefault];
@@ -58944,11 +58944,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteAclTeamLinkTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteAclTeamLinkTypeSerializer deserialize:dict];
 }
 
@@ -59005,7 +59005,7 @@
 
 @implementation DBTEAMLOGNoteAclTeamLinkTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteAclTeamLinkType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclTeamLinkType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -59013,7 +59013,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteAclTeamLinkType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteAclTeamLinkType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGNoteAclTeamLinkType alloc] initWithDescription_:description_];
@@ -59041,11 +59041,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteShareReceiveDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteShareReceiveDetailsSerializer deserialize:dict];
 }
 
@@ -59097,14 +59097,14 @@
 
 @implementation DBTEAMLOGNoteShareReceiveDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteShareReceiveDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteShareReceiveDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteShareReceiveDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteShareReceiveDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGNoteShareReceiveDetails alloc] initDefault];
@@ -59134,11 +59134,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteShareReceiveTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteShareReceiveTypeSerializer deserialize:dict];
 }
 
@@ -59195,7 +59195,7 @@
 
 @implementation DBTEAMLOGNoteShareReceiveTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteShareReceiveType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteShareReceiveType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -59203,7 +59203,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteShareReceiveType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteShareReceiveType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGNoteShareReceiveType alloc] initWithDescription_:description_];
@@ -59231,11 +59231,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteSharedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteSharedDetailsSerializer deserialize:dict];
 }
 
@@ -59287,14 +59287,14 @@
 
 @implementation DBTEAMLOGNoteSharedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteSharedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteSharedDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteSharedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteSharedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGNoteSharedDetails alloc] initDefault];
@@ -59324,11 +59324,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGNoteSharedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGNoteSharedTypeSerializer deserialize:dict];
 }
 
@@ -59385,7 +59385,7 @@
 
 @implementation DBTEAMLOGNoteSharedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteSharedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteSharedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -59393,7 +59393,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGNoteSharedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGNoteSharedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGNoteSharedType alloc] initWithDescription_:description_];
@@ -59421,11 +59421,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGOpenNoteSharedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGOpenNoteSharedDetailsSerializer deserialize:dict];
 }
 
@@ -59477,14 +59477,14 @@
 
 @implementation DBTEAMLOGOpenNoteSharedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGOpenNoteSharedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGOpenNoteSharedDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGOpenNoteSharedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGOpenNoteSharedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGOpenNoteSharedDetails alloc] initDefault];
@@ -59514,11 +59514,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGOpenNoteSharedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGOpenNoteSharedTypeSerializer deserialize:dict];
 }
 
@@ -59575,7 +59575,7 @@
 
 @implementation DBTEAMLOGOpenNoteSharedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGOpenNoteSharedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGOpenNoteSharedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -59583,7 +59583,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGOpenNoteSharedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGOpenNoteSharedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGOpenNoteSharedType alloc] initWithDescription_:description_];
@@ -59621,11 +59621,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGOriginLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGOriginLogInfoSerializer deserialize:dict];
 }
 
@@ -59690,7 +59690,7 @@
 
 @implementation DBTEAMLOGOriginLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGOriginLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGOriginLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"access_method"] = [DBTEAMLOGAccessMethodLogInfoSerializer serialize:valueObj.accessMethod];
@@ -59701,7 +59701,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGOriginLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGOriginLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGAccessMethodLogInfo *accessMethod =
       [DBTEAMLOGAccessMethodLogInfoSerializer deserialize:valueDict[@"access_method"]];
   DBTEAMLOGGeoLocationLogInfo *geoLocation =
@@ -59791,11 +59791,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperAccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperAccessTypeSerializer deserialize:dict];
 }
 
@@ -59871,7 +59871,7 @@
 
 @implementation DBTEAMLOGPaperAccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperAccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperAccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isViewer]) {
@@ -59889,7 +59889,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperAccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperAccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"viewer"]) {
@@ -59927,11 +59927,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperAdminExportStartDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperAdminExportStartDetailsSerializer deserialize:dict];
 }
 
@@ -59983,14 +59983,14 @@
 
 @implementation DBTEAMLOGPaperAdminExportStartDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperAdminExportStartDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperAdminExportStartDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperAdminExportStartDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperAdminExportStartDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGPaperAdminExportStartDetails alloc] initDefault];
@@ -60020,11 +60020,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperAdminExportStartTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperAdminExportStartTypeSerializer deserialize:dict];
 }
 
@@ -60081,7 +60081,7 @@
 
 @implementation DBTEAMLOGPaperAdminExportStartTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperAdminExportStartType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperAdminExportStartType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -60089,7 +60089,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperAdminExportStartType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperAdminExportStartType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperAdminExportStartType alloc] initWithDescription_:description_];
@@ -60126,11 +60126,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangeDeploymentPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangeDeploymentPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -60196,7 +60196,7 @@
 
 @implementation DBTEAMLOGPaperChangeDeploymentPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangeDeploymentPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeDeploymentPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMPOLICIESPaperDeploymentPolicySerializer serialize:valueObj.dNewValue];
@@ -60207,7 +60207,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangeDeploymentPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangeDeploymentPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESPaperDeploymentPolicy *dNewValue =
       [DBTEAMPOLICIESPaperDeploymentPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMPOLICIESPaperDeploymentPolicy *previousValue =
@@ -60242,11 +60242,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangeDeploymentPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangeDeploymentPolicyTypeSerializer deserialize:dict];
 }
 
@@ -60304,7 +60304,7 @@
 
 @implementation DBTEAMLOGPaperChangeDeploymentPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangeDeploymentPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeDeploymentPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -60312,7 +60312,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangeDeploymentPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangeDeploymentPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperChangeDeploymentPolicyType alloc] initWithDescription_:description_];
@@ -60343,11 +60343,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -60405,7 +60405,7 @@
 
 @implementation DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGPaperMemberPolicySerializer serialize:valueObj.dNewValue];
@@ -60413,7 +60413,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGPaperMemberPolicy *dNewValue = [DBTEAMLOGPaperMemberPolicySerializer deserialize:valueDict[@"new_value"]];
 
   return [[DBTEAMLOGPaperChangeMemberLinkPolicyDetails alloc] initWithDNewValue:dNewValue];
@@ -60443,11 +60443,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangeMemberLinkPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangeMemberLinkPolicyTypeSerializer deserialize:dict];
 }
 
@@ -60505,7 +60505,7 @@
 
 @implementation DBTEAMLOGPaperChangeMemberLinkPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangeMemberLinkPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeMemberLinkPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -60513,7 +60513,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangeMemberLinkPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangeMemberLinkPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperChangeMemberLinkPolicyType alloc] initWithDescription_:description_];
@@ -60550,11 +60550,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangeMemberPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangeMemberPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -60620,7 +60620,7 @@
 
 @implementation DBTEAMLOGPaperChangeMemberPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangeMemberPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeMemberPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGPaperMemberPolicySerializer serialize:valueObj.dNewValue];
@@ -60631,7 +60631,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangeMemberPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangeMemberPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGPaperMemberPolicy *dNewValue = [DBTEAMLOGPaperMemberPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGPaperMemberPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGPaperMemberPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -60664,11 +60664,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangeMemberPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangeMemberPolicyTypeSerializer deserialize:dict];
 }
 
@@ -60725,7 +60725,7 @@
 
 @implementation DBTEAMLOGPaperChangeMemberPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangeMemberPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeMemberPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -60733,7 +60733,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangeMemberPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangeMemberPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperChangeMemberPolicyType alloc] initWithDescription_:description_];
@@ -60770,11 +60770,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -60839,7 +60839,7 @@
 
 @implementation DBTEAMLOGPaperChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMPOLICIESPaperEnabledPolicySerializer serialize:valueObj.dNewValue];
@@ -60850,7 +60850,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESPaperEnabledPolicy *dNewValue =
       [DBTEAMPOLICIESPaperEnabledPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMPOLICIESPaperEnabledPolicy *previousValue =
@@ -60885,11 +60885,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -60946,7 +60946,7 @@
 
 @implementation DBTEAMLOGPaperChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -60954,7 +60954,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperChangePolicyType alloc] initWithDescription_:description_];
@@ -60984,11 +60984,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentAddMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentAddMemberDetailsSerializer deserialize:dict];
 }
 
@@ -61045,7 +61045,7 @@
 
 @implementation DBTEAMLOGPaperContentAddMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentAddMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentAddMemberDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -61053,7 +61053,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentAddMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentAddMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperContentAddMemberDetails alloc] initWithEventUuid:eventUuid];
@@ -61083,11 +61083,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentAddMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentAddMemberTypeSerializer deserialize:dict];
 }
 
@@ -61144,7 +61144,7 @@
 
 @implementation DBTEAMLOGPaperContentAddMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentAddMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentAddMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -61152,7 +61152,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentAddMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentAddMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentAddMemberType alloc] initWithDescription_:description_];
@@ -61188,11 +61188,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentAddToFolderDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentAddToFolderDetailsSerializer deserialize:dict];
 }
 
@@ -61258,7 +61258,7 @@
 
 @implementation DBTEAMLOGPaperContentAddToFolderDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentAddToFolderDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentAddToFolderDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -61268,7 +61268,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentAddToFolderDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentAddToFolderDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSNumber *parentAssetIndex = valueDict[@"parent_asset_index"];
@@ -61302,11 +61302,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentAddToFolderTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentAddToFolderTypeSerializer deserialize:dict];
 }
 
@@ -61363,7 +61363,7 @@
 
 @implementation DBTEAMLOGPaperContentAddToFolderTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentAddToFolderType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentAddToFolderType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -61371,7 +61371,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentAddToFolderType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentAddToFolderType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentAddToFolderType alloc] initWithDescription_:description_];
@@ -61401,11 +61401,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentArchiveDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentArchiveDetailsSerializer deserialize:dict];
 }
 
@@ -61462,7 +61462,7 @@
 
 @implementation DBTEAMLOGPaperContentArchiveDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentArchiveDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentArchiveDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -61470,7 +61470,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentArchiveDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentArchiveDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperContentArchiveDetails alloc] initWithEventUuid:eventUuid];
@@ -61500,11 +61500,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentArchiveTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentArchiveTypeSerializer deserialize:dict];
 }
 
@@ -61561,7 +61561,7 @@
 
 @implementation DBTEAMLOGPaperContentArchiveTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentArchiveType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentArchiveType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -61569,7 +61569,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentArchiveType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentArchiveType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentArchiveType alloc] initWithDescription_:description_];
@@ -61599,11 +61599,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentCreateDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentCreateDetailsSerializer deserialize:dict];
 }
 
@@ -61660,7 +61660,7 @@
 
 @implementation DBTEAMLOGPaperContentCreateDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentCreateDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentCreateDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -61668,7 +61668,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentCreateDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperContentCreateDetails alloc] initWithEventUuid:eventUuid];
@@ -61698,11 +61698,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentCreateTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentCreateTypeSerializer deserialize:dict];
 }
 
@@ -61759,7 +61759,7 @@
 
 @implementation DBTEAMLOGPaperContentCreateTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentCreateType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentCreateType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -61767,7 +61767,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentCreateType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentCreateType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentCreateType alloc] initWithDescription_:description_];
@@ -61797,11 +61797,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentPermanentlyDeleteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentPermanentlyDeleteDetailsSerializer deserialize:dict];
 }
 
@@ -61859,7 +61859,7 @@
 
 @implementation DBTEAMLOGPaperContentPermanentlyDeleteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentPermanentlyDeleteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentPermanentlyDeleteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -61867,7 +61867,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentPermanentlyDeleteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentPermanentlyDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperContentPermanentlyDeleteDetails alloc] initWithEventUuid:eventUuid];
@@ -61897,11 +61897,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentPermanentlyDeleteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentPermanentlyDeleteTypeSerializer deserialize:dict];
 }
 
@@ -61959,7 +61959,7 @@
 
 @implementation DBTEAMLOGPaperContentPermanentlyDeleteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentPermanentlyDeleteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentPermanentlyDeleteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -61967,7 +61967,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentPermanentlyDeleteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentPermanentlyDeleteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentPermanentlyDeleteType alloc] initWithDescription_:description_];
@@ -62003,11 +62003,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRemoveFromFolderDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRemoveFromFolderDetailsSerializer deserialize:dict];
 }
 
@@ -62073,7 +62073,7 @@
 
 @implementation DBTEAMLOGPaperContentRemoveFromFolderDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRemoveFromFolderDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRemoveFromFolderDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -62083,7 +62083,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRemoveFromFolderDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRemoveFromFolderDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSNumber *parentAssetIndex = valueDict[@"parent_asset_index"];
@@ -62117,11 +62117,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRemoveFromFolderTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRemoveFromFolderTypeSerializer deserialize:dict];
 }
 
@@ -62179,7 +62179,7 @@
 
 @implementation DBTEAMLOGPaperContentRemoveFromFolderTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRemoveFromFolderType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRemoveFromFolderType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -62187,7 +62187,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRemoveFromFolderType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRemoveFromFolderType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentRemoveFromFolderType alloc] initWithDescription_:description_];
@@ -62217,11 +62217,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRemoveMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRemoveMemberDetailsSerializer deserialize:dict];
 }
 
@@ -62279,7 +62279,7 @@
 
 @implementation DBTEAMLOGPaperContentRemoveMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRemoveMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRemoveMemberDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -62287,7 +62287,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRemoveMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperContentRemoveMemberDetails alloc] initWithEventUuid:eventUuid];
@@ -62317,11 +62317,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRemoveMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRemoveMemberTypeSerializer deserialize:dict];
 }
 
@@ -62378,7 +62378,7 @@
 
 @implementation DBTEAMLOGPaperContentRemoveMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRemoveMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRemoveMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -62386,7 +62386,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRemoveMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRemoveMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentRemoveMemberType alloc] initWithDescription_:description_];
@@ -62416,11 +62416,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRenameDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRenameDetailsSerializer deserialize:dict];
 }
 
@@ -62477,7 +62477,7 @@
 
 @implementation DBTEAMLOGPaperContentRenameDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRenameDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRenameDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -62485,7 +62485,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRenameDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRenameDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperContentRenameDetails alloc] initWithEventUuid:eventUuid];
@@ -62515,11 +62515,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRenameTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRenameTypeSerializer deserialize:dict];
 }
 
@@ -62576,7 +62576,7 @@
 
 @implementation DBTEAMLOGPaperContentRenameTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRenameType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRenameType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -62584,7 +62584,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRenameType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRenameType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentRenameType alloc] initWithDescription_:description_];
@@ -62614,11 +62614,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRestoreDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRestoreDetailsSerializer deserialize:dict];
 }
 
@@ -62675,7 +62675,7 @@
 
 @implementation DBTEAMLOGPaperContentRestoreDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRestoreDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRestoreDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -62683,7 +62683,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRestoreDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRestoreDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperContentRestoreDetails alloc] initWithEventUuid:eventUuid];
@@ -62713,11 +62713,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperContentRestoreTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperContentRestoreTypeSerializer deserialize:dict];
 }
 
@@ -62774,7 +62774,7 @@
 
 @implementation DBTEAMLOGPaperContentRestoreTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentRestoreType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRestoreType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -62782,7 +62782,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperContentRestoreType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperContentRestoreType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperContentRestoreType alloc] initWithDescription_:description_];
@@ -62817,11 +62817,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocAddCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocAddCommentDetailsSerializer deserialize:dict];
 }
 
@@ -62886,7 +62886,7 @@
 
 @implementation DBTEAMLOGPaperDocAddCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocAddCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocAddCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -62897,7 +62897,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocAddCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocAddCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -62928,11 +62928,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocAddCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocAddCommentTypeSerializer deserialize:dict];
 }
 
@@ -62989,7 +62989,7 @@
 
 @implementation DBTEAMLOGPaperDocAddCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocAddCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocAddCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -62997,7 +62997,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocAddCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocAddCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocAddCommentType alloc] initWithDescription_:description_];
@@ -63030,11 +63030,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocChangeMemberRoleDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocChangeMemberRoleDetailsSerializer deserialize:dict];
 }
 
@@ -63096,7 +63096,7 @@
 
 @implementation DBTEAMLOGPaperDocChangeMemberRoleDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -63105,7 +63105,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocChangeMemberRoleDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocChangeMemberRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   DBTEAMLOGPaperAccessType *accessType = [DBTEAMLOGPaperAccessTypeSerializer deserialize:valueDict[@"access_type"]];
 
@@ -63136,11 +63136,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocChangeMemberRoleTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocChangeMemberRoleTypeSerializer deserialize:dict];
 }
 
@@ -63197,7 +63197,7 @@
 
 @implementation DBTEAMLOGPaperDocChangeMemberRoleTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -63205,7 +63205,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocChangeMemberRoleType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocChangeMemberRoleType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocChangeMemberRoleType alloc] initWithDescription_:description_];
@@ -63243,11 +63243,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocChangeSharingPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocChangeSharingPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -63321,7 +63321,7 @@
 
 @implementation DBTEAMLOGPaperDocChangeSharingPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeSharingPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeSharingPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -63335,7 +63335,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocChangeSharingPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocChangeSharingPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *publicSharingPolicy = valueDict[@"public_sharing_policy"] ?: nil;
   NSString *teamSharingPolicy = valueDict[@"team_sharing_policy"] ?: nil;
@@ -63369,11 +63369,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocChangeSharingPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocChangeSharingPolicyTypeSerializer deserialize:dict];
 }
 
@@ -63431,7 +63431,7 @@
 
 @implementation DBTEAMLOGPaperDocChangeSharingPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeSharingPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeSharingPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -63439,7 +63439,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocChangeSharingPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocChangeSharingPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocChangeSharingPolicyType alloc] initWithDescription_:description_];
@@ -63478,11 +63478,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocChangeSubscriptionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocChangeSubscriptionDetailsSerializer deserialize:dict];
 }
 
@@ -63552,7 +63552,7 @@
 
 @implementation DBTEAMLOGPaperDocChangeSubscriptionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeSubscriptionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeSubscriptionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -63564,7 +63564,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocChangeSubscriptionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocChangeSubscriptionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *dNewSubscriptionLevel = valueDict[@"new_subscription_level"];
   NSString *previousSubscriptionLevel = valueDict[@"previous_subscription_level"] ?: nil;
@@ -63598,11 +63598,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocChangeSubscriptionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocChangeSubscriptionTypeSerializer deserialize:dict];
 }
 
@@ -63660,7 +63660,7 @@
 
 @implementation DBTEAMLOGPaperDocChangeSubscriptionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeSubscriptionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeSubscriptionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -63668,7 +63668,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocChangeSubscriptionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocChangeSubscriptionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocChangeSubscriptionType alloc] initWithDescription_:description_];
@@ -63703,11 +63703,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocDeleteCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocDeleteCommentDetailsSerializer deserialize:dict];
 }
 
@@ -63772,7 +63772,7 @@
 
 @implementation DBTEAMLOGPaperDocDeleteCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocDeleteCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDeleteCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -63783,7 +63783,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocDeleteCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocDeleteCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -63814,11 +63814,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocDeleteCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocDeleteCommentTypeSerializer deserialize:dict];
 }
 
@@ -63875,7 +63875,7 @@
 
 @implementation DBTEAMLOGPaperDocDeleteCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocDeleteCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDeleteCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -63883,7 +63883,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocDeleteCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocDeleteCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocDeleteCommentType alloc] initWithDescription_:description_];
@@ -63913,11 +63913,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocDeletedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocDeletedDetailsSerializer deserialize:dict];
 }
 
@@ -63974,7 +63974,7 @@
 
 @implementation DBTEAMLOGPaperDocDeletedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocDeletedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDeletedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -63982,7 +63982,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocDeletedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocDeletedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocDeletedDetails alloc] initWithEventUuid:eventUuid];
@@ -64012,11 +64012,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocDeletedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocDeletedTypeSerializer deserialize:dict];
 }
 
@@ -64073,7 +64073,7 @@
 
 @implementation DBTEAMLOGPaperDocDeletedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocDeletedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDeletedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -64081,7 +64081,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocDeletedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocDeletedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocDeletedType alloc] initWithDescription_:description_];
@@ -64115,11 +64115,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocDownloadDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocDownloadDetailsSerializer deserialize:dict];
 }
 
@@ -64180,7 +64180,7 @@
 
 @implementation DBTEAMLOGPaperDocDownloadDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocDownloadDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDownloadDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -64189,7 +64189,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocDownloadDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   DBTEAMLOGPaperDownloadFormat *exportFileFormat =
       [DBTEAMLOGPaperDownloadFormatSerializer deserialize:valueDict[@"export_file_format"]];
@@ -64221,11 +64221,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocDownloadTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocDownloadTypeSerializer deserialize:dict];
 }
 
@@ -64282,7 +64282,7 @@
 
 @implementation DBTEAMLOGPaperDocDownloadTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocDownloadType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDownloadType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -64290,7 +64290,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocDownloadType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocDownloadType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocDownloadType alloc] initWithDescription_:description_];
@@ -64325,11 +64325,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocEditCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocEditCommentDetailsSerializer deserialize:dict];
 }
 
@@ -64394,7 +64394,7 @@
 
 @implementation DBTEAMLOGPaperDocEditCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocEditCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocEditCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -64405,7 +64405,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocEditCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocEditCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -64436,11 +64436,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocEditCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocEditCommentTypeSerializer deserialize:dict];
 }
 
@@ -64497,7 +64497,7 @@
 
 @implementation DBTEAMLOGPaperDocEditCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocEditCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocEditCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -64505,7 +64505,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocEditCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocEditCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocEditCommentType alloc] initWithDescription_:description_];
@@ -64535,11 +64535,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocEditDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocEditDetailsSerializer deserialize:dict];
 }
 
@@ -64596,7 +64596,7 @@
 
 @implementation DBTEAMLOGPaperDocEditDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocEditDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocEditDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -64604,7 +64604,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocEditDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocEditDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocEditDetails alloc] initWithEventUuid:eventUuid];
@@ -64634,11 +64634,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocEditTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocEditTypeSerializer deserialize:dict];
 }
 
@@ -64695,7 +64695,7 @@
 
 @implementation DBTEAMLOGPaperDocEditTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocEditType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocEditType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -64703,7 +64703,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocEditType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocEditType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocEditType alloc] initWithDescription_:description_];
@@ -64733,11 +64733,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocFollowedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocFollowedDetailsSerializer deserialize:dict];
 }
 
@@ -64794,7 +64794,7 @@
 
 @implementation DBTEAMLOGPaperDocFollowedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocFollowedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocFollowedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -64802,7 +64802,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocFollowedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocFollowedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocFollowedDetails alloc] initWithEventUuid:eventUuid];
@@ -64832,11 +64832,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocFollowedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocFollowedTypeSerializer deserialize:dict];
 }
 
@@ -64893,7 +64893,7 @@
 
 @implementation DBTEAMLOGPaperDocFollowedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocFollowedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocFollowedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -64901,7 +64901,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocFollowedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocFollowedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocFollowedType alloc] initWithDescription_:description_];
@@ -64931,11 +64931,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocMentionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocMentionDetailsSerializer deserialize:dict];
 }
 
@@ -64992,7 +64992,7 @@
 
 @implementation DBTEAMLOGPaperDocMentionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocMentionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocMentionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -65000,7 +65000,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocMentionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocMentionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocMentionDetails alloc] initWithEventUuid:eventUuid];
@@ -65030,11 +65030,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocMentionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocMentionTypeSerializer deserialize:dict];
 }
 
@@ -65091,7 +65091,7 @@
 
 @implementation DBTEAMLOGPaperDocMentionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocMentionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocMentionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -65099,7 +65099,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocMentionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocMentionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocMentionType alloc] initWithDescription_:description_];
@@ -65129,11 +65129,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocRequestAccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocRequestAccessDetailsSerializer deserialize:dict];
 }
 
@@ -65190,7 +65190,7 @@
 
 @implementation DBTEAMLOGPaperDocRequestAccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocRequestAccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocRequestAccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -65198,7 +65198,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocRequestAccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocRequestAccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocRequestAccessDetails alloc] initWithEventUuid:eventUuid];
@@ -65228,11 +65228,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocRequestAccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocRequestAccessTypeSerializer deserialize:dict];
 }
 
@@ -65289,7 +65289,7 @@
 
 @implementation DBTEAMLOGPaperDocRequestAccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocRequestAccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocRequestAccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -65297,7 +65297,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocRequestAccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocRequestAccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocRequestAccessType alloc] initWithDescription_:description_];
@@ -65332,11 +65332,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocResolveCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocResolveCommentDetailsSerializer deserialize:dict];
 }
 
@@ -65402,7 +65402,7 @@
 
 @implementation DBTEAMLOGPaperDocResolveCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocResolveCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocResolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -65413,7 +65413,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocResolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocResolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -65444,11 +65444,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocResolveCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocResolveCommentTypeSerializer deserialize:dict];
 }
 
@@ -65505,7 +65505,7 @@
 
 @implementation DBTEAMLOGPaperDocResolveCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocResolveCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocResolveCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -65513,7 +65513,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocResolveCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocResolveCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocResolveCommentType alloc] initWithDescription_:description_];
@@ -65543,11 +65543,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocRevertDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocRevertDetailsSerializer deserialize:dict];
 }
 
@@ -65604,7 +65604,7 @@
 
 @implementation DBTEAMLOGPaperDocRevertDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocRevertDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocRevertDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -65612,7 +65612,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocRevertDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocRevertDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocRevertDetails alloc] initWithEventUuid:eventUuid];
@@ -65642,11 +65642,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocRevertTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocRevertTypeSerializer deserialize:dict];
 }
 
@@ -65703,7 +65703,7 @@
 
 @implementation DBTEAMLOGPaperDocRevertTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocRevertType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocRevertType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -65711,7 +65711,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocRevertType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocRevertType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocRevertType alloc] initWithDescription_:description_];
@@ -65741,11 +65741,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocSlackShareDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocSlackShareDetailsSerializer deserialize:dict];
 }
 
@@ -65802,7 +65802,7 @@
 
 @implementation DBTEAMLOGPaperDocSlackShareDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocSlackShareDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocSlackShareDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -65810,7 +65810,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocSlackShareDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocSlackShareDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocSlackShareDetails alloc] initWithEventUuid:eventUuid];
@@ -65840,11 +65840,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocSlackShareTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocSlackShareTypeSerializer deserialize:dict];
 }
 
@@ -65901,7 +65901,7 @@
 
 @implementation DBTEAMLOGPaperDocSlackShareTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocSlackShareType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocSlackShareType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -65909,7 +65909,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocSlackShareType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocSlackShareType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocSlackShareType alloc] initWithDescription_:description_];
@@ -65939,11 +65939,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocTeamInviteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocTeamInviteDetailsSerializer deserialize:dict];
 }
 
@@ -66000,7 +66000,7 @@
 
 @implementation DBTEAMLOGPaperDocTeamInviteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocTeamInviteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocTeamInviteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -66008,7 +66008,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocTeamInviteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocTeamInviteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocTeamInviteDetails alloc] initWithEventUuid:eventUuid];
@@ -66038,11 +66038,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocTeamInviteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocTeamInviteTypeSerializer deserialize:dict];
 }
 
@@ -66099,7 +66099,7 @@
 
 @implementation DBTEAMLOGPaperDocTeamInviteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocTeamInviteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocTeamInviteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -66107,7 +66107,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocTeamInviteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocTeamInviteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocTeamInviteType alloc] initWithDescription_:description_];
@@ -66137,11 +66137,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocTrashedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocTrashedDetailsSerializer deserialize:dict];
 }
 
@@ -66198,7 +66198,7 @@
 
 @implementation DBTEAMLOGPaperDocTrashedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocTrashedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocTrashedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -66206,7 +66206,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocTrashedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocTrashedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocTrashedDetails alloc] initWithEventUuid:eventUuid];
@@ -66236,11 +66236,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocTrashedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocTrashedTypeSerializer deserialize:dict];
 }
 
@@ -66297,7 +66297,7 @@
 
 @implementation DBTEAMLOGPaperDocTrashedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocTrashedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocTrashedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -66305,7 +66305,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocTrashedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocTrashedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocTrashedType alloc] initWithDescription_:description_];
@@ -66340,11 +66340,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocUnresolveCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocUnresolveCommentDetailsSerializer deserialize:dict];
 }
 
@@ -66410,7 +66410,7 @@
 
 @implementation DBTEAMLOGPaperDocUnresolveCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocUnresolveCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocUnresolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -66421,7 +66421,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocUnresolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocUnresolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -66452,11 +66452,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocUnresolveCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocUnresolveCommentTypeSerializer deserialize:dict];
 }
 
@@ -66513,7 +66513,7 @@
 
 @implementation DBTEAMLOGPaperDocUnresolveCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocUnresolveCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocUnresolveCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -66521,7 +66521,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocUnresolveCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocUnresolveCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocUnresolveCommentType alloc] initWithDescription_:description_];
@@ -66551,11 +66551,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocUntrashedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocUntrashedDetailsSerializer deserialize:dict];
 }
 
@@ -66612,7 +66612,7 @@
 
 @implementation DBTEAMLOGPaperDocUntrashedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocUntrashedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocUntrashedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -66620,7 +66620,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocUntrashedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocUntrashedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocUntrashedDetails alloc] initWithEventUuid:eventUuid];
@@ -66650,11 +66650,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocUntrashedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocUntrashedTypeSerializer deserialize:dict];
 }
 
@@ -66711,7 +66711,7 @@
 
 @implementation DBTEAMLOGPaperDocUntrashedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocUntrashedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocUntrashedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -66719,7 +66719,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocUntrashedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocUntrashedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocUntrashedType alloc] initWithDescription_:description_];
@@ -66749,11 +66749,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocViewDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocViewDetailsSerializer deserialize:dict];
 }
 
@@ -66810,7 +66810,7 @@
 
 @implementation DBTEAMLOGPaperDocViewDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocViewDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocViewDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -66818,7 +66818,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocViewDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocViewDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperDocViewDetails alloc] initWithEventUuid:eventUuid];
@@ -66848,11 +66848,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocViewTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocViewTypeSerializer deserialize:dict];
 }
 
@@ -66909,7 +66909,7 @@
 
 @implementation DBTEAMLOGPaperDocViewTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocViewType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocViewType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -66917,7 +66917,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocViewType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocViewType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperDocViewType alloc] initWithDescription_:description_];
@@ -66949,11 +66949,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDocumentLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDocumentLogInfoSerializer deserialize:dict];
 }
 
@@ -67014,7 +67014,7 @@
 
 @implementation DBTEAMLOGPaperDocumentLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocumentLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocumentLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"doc_id"] = valueObj.docId;
@@ -67023,7 +67023,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDocumentLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDocumentLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *docId = valueDict[@"doc_id"];
   NSString *docTitle = valueDict[@"doc_title"];
 
@@ -67111,11 +67111,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperDownloadFormatSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperDownloadFormatSerializer deserialize:dict];
 }
 
@@ -67191,7 +67191,7 @@
 
 @implementation DBTEAMLOGPaperDownloadFormatSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDownloadFormat *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDownloadFormat *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDocx]) {
@@ -67209,7 +67209,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperDownloadFormat *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperDownloadFormat *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"docx"]) {
@@ -67247,11 +67247,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperEnabledUsersGroupAdditionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperEnabledUsersGroupAdditionDetailsSerializer deserialize:dict];
 }
 
@@ -67304,14 +67304,14 @@
 
 @implementation DBTEAMLOGPaperEnabledUsersGroupAdditionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperEnabledUsersGroupAdditionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperEnabledUsersGroupAdditionDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperEnabledUsersGroupAdditionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperEnabledUsersGroupAdditionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGPaperEnabledUsersGroupAdditionDetails alloc] initDefault];
@@ -67341,11 +67341,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperEnabledUsersGroupAdditionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperEnabledUsersGroupAdditionTypeSerializer deserialize:dict];
 }
 
@@ -67403,7 +67403,7 @@
 
 @implementation DBTEAMLOGPaperEnabledUsersGroupAdditionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperEnabledUsersGroupAdditionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperEnabledUsersGroupAdditionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -67411,7 +67411,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperEnabledUsersGroupAdditionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperEnabledUsersGroupAdditionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperEnabledUsersGroupAdditionType alloc] initWithDescription_:description_];
@@ -67439,11 +67439,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperEnabledUsersGroupRemovalDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperEnabledUsersGroupRemovalDetailsSerializer deserialize:dict];
 }
 
@@ -67496,14 +67496,14 @@
 
 @implementation DBTEAMLOGPaperEnabledUsersGroupRemovalDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperEnabledUsersGroupRemovalDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperEnabledUsersGroupRemovalDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperEnabledUsersGroupRemovalDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperEnabledUsersGroupRemovalDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGPaperEnabledUsersGroupRemovalDetails alloc] initDefault];
@@ -67533,11 +67533,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperEnabledUsersGroupRemovalTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperEnabledUsersGroupRemovalTypeSerializer deserialize:dict];
 }
 
@@ -67595,7 +67595,7 @@
 
 @implementation DBTEAMLOGPaperEnabledUsersGroupRemovalTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperEnabledUsersGroupRemovalType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperEnabledUsersGroupRemovalType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -67603,7 +67603,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperEnabledUsersGroupRemovalType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperEnabledUsersGroupRemovalType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperEnabledUsersGroupRemovalType alloc] initWithDescription_:description_];
@@ -67633,11 +67633,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperExternalViewAllowDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperExternalViewAllowDetailsSerializer deserialize:dict];
 }
 
@@ -67695,7 +67695,7 @@
 
 @implementation DBTEAMLOGPaperExternalViewAllowDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperExternalViewAllowDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewAllowDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -67703,7 +67703,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperExternalViewAllowDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperExternalViewAllowDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperExternalViewAllowDetails alloc] initWithEventUuid:eventUuid];
@@ -67733,11 +67733,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperExternalViewAllowTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperExternalViewAllowTypeSerializer deserialize:dict];
 }
 
@@ -67794,7 +67794,7 @@
 
 @implementation DBTEAMLOGPaperExternalViewAllowTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperExternalViewAllowType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewAllowType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -67802,7 +67802,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperExternalViewAllowType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperExternalViewAllowType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperExternalViewAllowType alloc] initWithDescription_:description_];
@@ -67832,11 +67832,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperExternalViewDefaultTeamDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperExternalViewDefaultTeamDetailsSerializer deserialize:dict];
 }
 
@@ -67894,7 +67894,7 @@
 
 @implementation DBTEAMLOGPaperExternalViewDefaultTeamDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperExternalViewDefaultTeamDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewDefaultTeamDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -67902,7 +67902,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperExternalViewDefaultTeamDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperExternalViewDefaultTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperExternalViewDefaultTeamDetails alloc] initWithEventUuid:eventUuid];
@@ -67932,11 +67932,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperExternalViewDefaultTeamTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperExternalViewDefaultTeamTypeSerializer deserialize:dict];
 }
 
@@ -67994,7 +67994,7 @@
 
 @implementation DBTEAMLOGPaperExternalViewDefaultTeamTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperExternalViewDefaultTeamType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewDefaultTeamType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -68002,7 +68002,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperExternalViewDefaultTeamType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperExternalViewDefaultTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperExternalViewDefaultTeamType alloc] initWithDescription_:description_];
@@ -68032,11 +68032,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperExternalViewForbidDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperExternalViewForbidDetailsSerializer deserialize:dict];
 }
 
@@ -68094,7 +68094,7 @@
 
 @implementation DBTEAMLOGPaperExternalViewForbidDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperExternalViewForbidDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewForbidDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -68102,7 +68102,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperExternalViewForbidDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperExternalViewForbidDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperExternalViewForbidDetails alloc] initWithEventUuid:eventUuid];
@@ -68132,11 +68132,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperExternalViewForbidTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperExternalViewForbidTypeSerializer deserialize:dict];
 }
 
@@ -68193,7 +68193,7 @@
 
 @implementation DBTEAMLOGPaperExternalViewForbidTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperExternalViewForbidType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewForbidType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -68201,7 +68201,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperExternalViewForbidType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperExternalViewForbidType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperExternalViewForbidType alloc] initWithDescription_:description_];
@@ -68240,11 +68240,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderChangeSubscriptionDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderChangeSubscriptionDetailsSerializer deserialize:dict];
 }
 
@@ -68314,7 +68314,7 @@
 
 @implementation DBTEAMLOGPaperFolderChangeSubscriptionDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderChangeSubscriptionDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderChangeSubscriptionDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -68326,7 +68326,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderChangeSubscriptionDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderChangeSubscriptionDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *dNewSubscriptionLevel = valueDict[@"new_subscription_level"];
   NSString *previousSubscriptionLevel = valueDict[@"previous_subscription_level"] ?: nil;
@@ -68360,11 +68360,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderChangeSubscriptionTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderChangeSubscriptionTypeSerializer deserialize:dict];
 }
 
@@ -68422,7 +68422,7 @@
 
 @implementation DBTEAMLOGPaperFolderChangeSubscriptionTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderChangeSubscriptionType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderChangeSubscriptionType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -68430,7 +68430,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderChangeSubscriptionType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderChangeSubscriptionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperFolderChangeSubscriptionType alloc] initWithDescription_:description_];
@@ -68460,11 +68460,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderDeletedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderDeletedDetailsSerializer deserialize:dict];
 }
 
@@ -68521,7 +68521,7 @@
 
 @implementation DBTEAMLOGPaperFolderDeletedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderDeletedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderDeletedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -68529,7 +68529,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderDeletedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderDeletedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperFolderDeletedDetails alloc] initWithEventUuid:eventUuid];
@@ -68559,11 +68559,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderDeletedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderDeletedTypeSerializer deserialize:dict];
 }
 
@@ -68620,7 +68620,7 @@
 
 @implementation DBTEAMLOGPaperFolderDeletedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderDeletedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderDeletedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -68628,7 +68628,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderDeletedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderDeletedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperFolderDeletedType alloc] initWithDescription_:description_];
@@ -68658,11 +68658,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderFollowedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderFollowedDetailsSerializer deserialize:dict];
 }
 
@@ -68719,7 +68719,7 @@
 
 @implementation DBTEAMLOGPaperFolderFollowedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderFollowedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderFollowedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -68727,7 +68727,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderFollowedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderFollowedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperFolderFollowedDetails alloc] initWithEventUuid:eventUuid];
@@ -68757,11 +68757,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderFollowedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderFollowedTypeSerializer deserialize:dict];
 }
 
@@ -68818,7 +68818,7 @@
 
 @implementation DBTEAMLOGPaperFolderFollowedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderFollowedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderFollowedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -68826,7 +68826,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderFollowedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderFollowedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperFolderFollowedType alloc] initWithDescription_:description_];
@@ -68858,11 +68858,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderLogInfoSerializer deserialize:dict];
 }
 
@@ -68923,7 +68923,7 @@
 
 @implementation DBTEAMLOGPaperFolderLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"folder_id"] = valueObj.folderId;
@@ -68932,7 +68932,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *folderId = valueDict[@"folder_id"];
   NSString *folderName = valueDict[@"folder_name"];
 
@@ -68963,11 +68963,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderTeamInviteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderTeamInviteDetailsSerializer deserialize:dict];
 }
 
@@ -69024,7 +69024,7 @@
 
 @implementation DBTEAMLOGPaperFolderTeamInviteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderTeamInviteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderTeamInviteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -69032,7 +69032,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderTeamInviteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderTeamInviteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGPaperFolderTeamInviteDetails alloc] initWithEventUuid:eventUuid];
@@ -69062,11 +69062,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperFolderTeamInviteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperFolderTeamInviteTypeSerializer deserialize:dict];
 }
 
@@ -69123,7 +69123,7 @@
 
 @implementation DBTEAMLOGPaperFolderTeamInviteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperFolderTeamInviteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderTeamInviteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -69131,7 +69131,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperFolderTeamInviteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperFolderTeamInviteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPaperFolderTeamInviteType alloc] initWithDescription_:description_];
@@ -69218,11 +69218,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPaperMemberPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPaperMemberPolicySerializer deserialize:dict];
 }
 
@@ -69298,7 +69298,7 @@
 
 @implementation DBTEAMLOGPaperMemberPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperMemberPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperMemberPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAnyoneWithLink]) {
@@ -69316,7 +69316,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPaperMemberPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPaperMemberPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"anyone_with_link"]) {
@@ -69422,11 +69422,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGParticipantLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGParticipantLogInfoSerializer deserialize:dict];
 }
 
@@ -69498,7 +69498,7 @@
 
 @implementation DBTEAMLOGParticipantLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGParticipantLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGParticipantLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isUser]) {
@@ -69516,7 +69516,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGParticipantLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGParticipantLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"user"]) {
@@ -69554,11 +69554,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPasswordChangeDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPasswordChangeDetailsSerializer deserialize:dict];
 }
 
@@ -69610,14 +69610,14 @@
 
 @implementation DBTEAMLOGPasswordChangeDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordChangeDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasswordChangeDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPasswordChangeDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPasswordChangeDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGPasswordChangeDetails alloc] initDefault];
@@ -69647,11 +69647,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPasswordChangeTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPasswordChangeTypeSerializer deserialize:dict];
 }
 
@@ -69708,7 +69708,7 @@
 
 @implementation DBTEAMLOGPasswordChangeTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordChangeType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasswordChangeType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -69716,7 +69716,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPasswordChangeType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPasswordChangeType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPasswordChangeType alloc] initWithDescription_:description_];
@@ -69744,11 +69744,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPasswordResetAllDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPasswordResetAllDetailsSerializer deserialize:dict];
 }
 
@@ -69800,14 +69800,14 @@
 
 @implementation DBTEAMLOGPasswordResetAllDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordResetAllDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasswordResetAllDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPasswordResetAllDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPasswordResetAllDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGPasswordResetAllDetails alloc] initDefault];
@@ -69837,11 +69837,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPasswordResetAllTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPasswordResetAllTypeSerializer deserialize:dict];
 }
 
@@ -69898,7 +69898,7 @@
 
 @implementation DBTEAMLOGPasswordResetAllTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordResetAllType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasswordResetAllType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -69906,7 +69906,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPasswordResetAllType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPasswordResetAllType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPasswordResetAllType alloc] initWithDescription_:description_];
@@ -69934,11 +69934,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPasswordResetDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPasswordResetDetailsSerializer deserialize:dict];
 }
 
@@ -69990,14 +69990,14 @@
 
 @implementation DBTEAMLOGPasswordResetDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordResetDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasswordResetDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPasswordResetDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPasswordResetDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGPasswordResetDetails alloc] initDefault];
@@ -70027,11 +70027,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPasswordResetTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPasswordResetTypeSerializer deserialize:dict];
 }
 
@@ -70088,7 +70088,7 @@
 
 @implementation DBTEAMLOGPasswordResetTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPasswordResetType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasswordResetType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -70096,7 +70096,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPasswordResetType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPasswordResetType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPasswordResetType alloc] initWithDescription_:description_];
@@ -70133,11 +70133,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPathLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPathLogInfoSerializer deserialize:dict];
 }
 
@@ -70202,7 +70202,7 @@
 
 @implementation DBTEAMLOGPathLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPathLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPathLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"namespace_relative"] =
@@ -70214,7 +70214,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPathLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPathLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGNamespaceRelativePathLogInfo *namespaceRelative =
       [DBTEAMLOGNamespaceRelativePathLogInfoSerializer deserialize:valueDict[@"namespace_relative"]];
   NSString *contextual = valueDict[@"contextual"] ?: nil;
@@ -70253,11 +70253,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPermanentDeleteChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPermanentDeleteChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -70323,7 +70323,7 @@
 
 @implementation DBTEAMLOGPermanentDeleteChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPermanentDeleteChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPermanentDeleteChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGContentPermanentDeletePolicySerializer serialize:valueObj.dNewValue];
@@ -70334,7 +70334,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPermanentDeleteChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPermanentDeleteChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGContentPermanentDeletePolicy *dNewValue =
       [DBTEAMLOGContentPermanentDeletePolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGContentPermanentDeletePolicy *previousValue =
@@ -70369,11 +70369,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPermanentDeleteChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPermanentDeleteChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -70431,7 +70431,7 @@
 
 @implementation DBTEAMLOGPermanentDeleteChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPermanentDeleteChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPermanentDeleteChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -70439,7 +70439,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPermanentDeleteChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPermanentDeleteChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGPermanentDeleteChangePolicyType alloc] initWithDescription_:description_];
@@ -70512,11 +70512,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGPlacementRestrictionSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGPlacementRestrictionSerializer deserialize:dict];
 }
 
@@ -70588,7 +70588,7 @@
 
 @implementation DBTEAMLOGPlacementRestrictionSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGPlacementRestriction *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPlacementRestriction *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isEuropeOnly]) {
@@ -70604,7 +70604,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGPlacementRestriction *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGPlacementRestriction *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"europe_only"]) {
@@ -70644,11 +70644,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGRelocateAssetReferencesLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGRelocateAssetReferencesLogInfoSerializer deserialize:dict];
 }
 
@@ -70710,7 +70710,7 @@
 
 @implementation DBTEAMLOGRelocateAssetReferencesLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGRelocateAssetReferencesLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGRelocateAssetReferencesLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"src_asset_index"] = valueObj.srcAssetIndex;
@@ -70719,7 +70719,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGRelocateAssetReferencesLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGRelocateAssetReferencesLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *srcAssetIndex = valueDict[@"src_asset_index"];
   NSNumber *destAssetIndex = valueDict[@"dest_asset_index"];
 
@@ -70754,11 +70754,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGResellerLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGResellerLogInfoSerializer deserialize:dict];
 }
 
@@ -70819,7 +70819,7 @@
 
 @implementation DBTEAMLOGResellerLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGResellerLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"reseller_name"] = valueObj.resellerName;
@@ -70828,7 +70828,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGResellerLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGResellerLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *resellerName = valueDict[@"reseller_name"];
   NSString *resellerEmail = valueDict[@"reseller_email"];
 
@@ -70857,11 +70857,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGResellerSupportSessionEndDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGResellerSupportSessionEndDetailsSerializer deserialize:dict];
 }
 
@@ -70914,14 +70914,14 @@
 
 @implementation DBTEAMLOGResellerSupportSessionEndDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGResellerSupportSessionEndDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerSupportSessionEndDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGResellerSupportSessionEndDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGResellerSupportSessionEndDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGResellerSupportSessionEndDetails alloc] initDefault];
@@ -70951,11 +70951,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGResellerSupportSessionEndTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGResellerSupportSessionEndTypeSerializer deserialize:dict];
 }
 
@@ -71013,7 +71013,7 @@
 
 @implementation DBTEAMLOGResellerSupportSessionEndTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGResellerSupportSessionEndType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerSupportSessionEndType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -71021,7 +71021,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGResellerSupportSessionEndType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGResellerSupportSessionEndType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGResellerSupportSessionEndType alloc] initWithDescription_:description_];
@@ -71049,11 +71049,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGResellerSupportSessionStartDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGResellerSupportSessionStartDetailsSerializer deserialize:dict];
 }
 
@@ -71106,14 +71106,14 @@
 
 @implementation DBTEAMLOGResellerSupportSessionStartDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGResellerSupportSessionStartDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerSupportSessionStartDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGResellerSupportSessionStartDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGResellerSupportSessionStartDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGResellerSupportSessionStartDetails alloc] initDefault];
@@ -71143,11 +71143,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGResellerSupportSessionStartTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGResellerSupportSessionStartTypeSerializer deserialize:dict];
 }
 
@@ -71205,7 +71205,7 @@
 
 @implementation DBTEAMLOGResellerSupportSessionStartTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGResellerSupportSessionStartType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerSupportSessionStartType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -71213,7 +71213,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGResellerSupportSessionStartType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGResellerSupportSessionStartType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGResellerSupportSessionStartType alloc] initWithDescription_:description_];
@@ -71286,11 +71286,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSecondaryMailsPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSecondaryMailsPolicySerializer deserialize:dict];
 }
 
@@ -71362,7 +71362,7 @@
 
 @implementation DBTEAMLOGSecondaryMailsPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSecondaryMailsPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryMailsPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -71378,7 +71378,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSecondaryMailsPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSecondaryMailsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -71420,11 +71420,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSecondaryMailsPolicyChangedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSecondaryMailsPolicyChangedDetailsSerializer deserialize:dict];
 }
 
@@ -71486,7 +71486,7 @@
 
 @implementation DBTEAMLOGSecondaryMailsPolicyChangedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSecondaryMailsPolicyChangedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryMailsPolicyChangedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = [DBTEAMLOGSecondaryMailsPolicySerializer serialize:valueObj.previousValue];
@@ -71495,7 +71495,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSecondaryMailsPolicyChangedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSecondaryMailsPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSecondaryMailsPolicy *previousValue =
       [DBTEAMLOGSecondaryMailsPolicySerializer deserialize:valueDict[@"previous_value"]];
   DBTEAMLOGSecondaryMailsPolicy *dNewValue =
@@ -71528,11 +71528,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSecondaryMailsPolicyChangedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSecondaryMailsPolicyChangedTypeSerializer deserialize:dict];
 }
 
@@ -71590,7 +71590,7 @@
 
 @implementation DBTEAMLOGSecondaryMailsPolicyChangedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSecondaryMailsPolicyChangedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryMailsPolicyChangedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -71598,7 +71598,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSecondaryMailsPolicyChangedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSecondaryMailsPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSecondaryMailsPolicyChangedType alloc] initWithDescription_:description_];
@@ -71645,11 +71645,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfAddGroupDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfAddGroupDetailsSerializer deserialize:dict];
 }
 
@@ -71722,7 +71722,7 @@
 
 @implementation DBTEAMLOGSfAddGroupDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfAddGroupDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfAddGroupDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -71735,7 +71735,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfAddGroupDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfAddGroupDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *teamName = valueDict[@"team_name"];
@@ -71771,11 +71771,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfAddGroupTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfAddGroupTypeSerializer deserialize:dict];
 }
 
@@ -71832,7 +71832,7 @@
 
 @implementation DBTEAMLOGSfAddGroupTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfAddGroupType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfAddGroupType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -71840,7 +71840,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfAddGroupType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfAddGroupType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfAddGroupType alloc] initWithDescription_:description_];
@@ -71880,11 +71880,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetailsSerializer deserialize:dict];
 }
 
@@ -71954,7 +71954,7 @@
 
 @implementation DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -71966,7 +71966,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfAllowNonMembersToViewSharedLinksDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *sharedFolderType = valueDict[@"shared_folder_type"] ?: nil;
@@ -72000,11 +72000,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfAllowNonMembersToViewSharedLinksTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfAllowNonMembersToViewSharedLinksTypeSerializer deserialize:dict];
 }
 
@@ -72062,7 +72062,7 @@
 
 @implementation DBTEAMLOGSfAllowNonMembersToViewSharedLinksTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfAllowNonMembersToViewSharedLinksType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfAllowNonMembersToViewSharedLinksType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -72070,7 +72070,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfAllowNonMembersToViewSharedLinksType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfAllowNonMembersToViewSharedLinksType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfAllowNonMembersToViewSharedLinksType alloc] initWithDescription_:description_];
@@ -72115,11 +72115,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfExternalInviteWarnDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfExternalInviteWarnDetailsSerializer deserialize:dict];
 }
 
@@ -72196,7 +72196,7 @@
 
 @implementation DBTEAMLOGSfExternalInviteWarnDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfExternalInviteWarnDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfExternalInviteWarnDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -72211,7 +72211,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfExternalInviteWarnDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfExternalInviteWarnDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *dNewSharingPermission = valueDict[@"new_sharing_permission"] ?: nil;
@@ -72247,11 +72247,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfExternalInviteWarnTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfExternalInviteWarnTypeSerializer deserialize:dict];
 }
 
@@ -72308,7 +72308,7 @@
 
 @implementation DBTEAMLOGSfExternalInviteWarnTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfExternalInviteWarnType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfExternalInviteWarnType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -72316,7 +72316,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfExternalInviteWarnType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfExternalInviteWarnType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfExternalInviteWarnType alloc] initWithDescription_:description_];
@@ -72361,11 +72361,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfFbInviteChangeRoleDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfFbInviteChangeRoleDetailsSerializer deserialize:dict];
 }
 
@@ -72442,7 +72442,7 @@
 
 @implementation DBTEAMLOGSfFbInviteChangeRoleDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfFbInviteChangeRoleDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbInviteChangeRoleDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -72457,7 +72457,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfFbInviteChangeRoleDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfFbInviteChangeRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *previousSharingPermission = valueDict[@"previous_sharing_permission"] ?: nil;
@@ -72493,11 +72493,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfFbInviteChangeRoleTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfFbInviteChangeRoleTypeSerializer deserialize:dict];
 }
 
@@ -72554,7 +72554,7 @@
 
 @implementation DBTEAMLOGSfFbInviteChangeRoleTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfFbInviteChangeRoleType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbInviteChangeRoleType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -72562,7 +72562,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfFbInviteChangeRoleType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfFbInviteChangeRoleType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfFbInviteChangeRoleType alloc] initWithDescription_:description_];
@@ -72602,11 +72602,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfFbInviteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfFbInviteDetailsSerializer deserialize:dict];
 }
 
@@ -72675,7 +72675,7 @@
 
 @implementation DBTEAMLOGSfFbInviteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfFbInviteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbInviteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -72687,7 +72687,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfFbInviteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfFbInviteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *sharingPermission = valueDict[@"sharing_permission"] ?: nil;
@@ -72721,11 +72721,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfFbInviteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfFbInviteTypeSerializer deserialize:dict];
 }
 
@@ -72782,7 +72782,7 @@
 
 @implementation DBTEAMLOGSfFbInviteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfFbInviteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbInviteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -72790,7 +72790,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfFbInviteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfFbInviteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfFbInviteType alloc] initWithDescription_:description_];
@@ -72823,11 +72823,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfFbUninviteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfFbUninviteDetailsSerializer deserialize:dict];
 }
 
@@ -72888,7 +72888,7 @@
 
 @implementation DBTEAMLOGSfFbUninviteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfFbUninviteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbUninviteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -72897,7 +72897,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfFbUninviteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfFbUninviteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
 
@@ -72929,11 +72929,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfFbUninviteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfFbUninviteTypeSerializer deserialize:dict];
 }
 
@@ -72990,7 +72990,7 @@
 
 @implementation DBTEAMLOGSfFbUninviteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfFbUninviteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbUninviteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -72998,7 +72998,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfFbUninviteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfFbUninviteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfFbUninviteType alloc] initWithDescription_:description_];
@@ -73028,11 +73028,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfInviteGroupDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfInviteGroupDetailsSerializer deserialize:dict];
 }
 
@@ -73089,7 +73089,7 @@
 
 @implementation DBTEAMLOGSfInviteGroupDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfInviteGroupDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfInviteGroupDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -73097,7 +73097,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfInviteGroupDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfInviteGroupDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
 
   return [[DBTEAMLOGSfInviteGroupDetails alloc] initWithTargetAssetIndex:targetAssetIndex];
@@ -73127,11 +73127,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfInviteGroupTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfInviteGroupTypeSerializer deserialize:dict];
 }
 
@@ -73188,7 +73188,7 @@
 
 @implementation DBTEAMLOGSfInviteGroupTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfInviteGroupType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfInviteGroupType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -73196,7 +73196,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfInviteGroupType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfInviteGroupType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfInviteGroupType alloc] initWithDescription_:description_];
@@ -73229,11 +73229,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamGrantAccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamGrantAccessDetailsSerializer deserialize:dict];
 }
 
@@ -73294,7 +73294,7 @@
 
 @implementation DBTEAMLOGSfTeamGrantAccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamGrantAccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamGrantAccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -73303,7 +73303,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamGrantAccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamGrantAccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
 
@@ -73335,11 +73335,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamGrantAccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamGrantAccessTypeSerializer deserialize:dict];
 }
 
@@ -73396,7 +73396,7 @@
 
 @implementation DBTEAMLOGSfTeamGrantAccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamGrantAccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamGrantAccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -73404,7 +73404,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamGrantAccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamGrantAccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfTeamGrantAccessType alloc] initWithDescription_:description_];
@@ -73449,11 +73449,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamInviteChangeRoleDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamInviteChangeRoleDetailsSerializer deserialize:dict];
 }
 
@@ -73531,7 +73531,7 @@
 
 @implementation DBTEAMLOGSfTeamInviteChangeRoleDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamInviteChangeRoleDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamInviteChangeRoleDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -73546,7 +73546,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamInviteChangeRoleDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamInviteChangeRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *dNewSharingPermission = valueDict[@"new_sharing_permission"] ?: nil;
@@ -73582,11 +73582,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamInviteChangeRoleTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamInviteChangeRoleTypeSerializer deserialize:dict];
 }
 
@@ -73643,7 +73643,7 @@
 
 @implementation DBTEAMLOGSfTeamInviteChangeRoleTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamInviteChangeRoleType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamInviteChangeRoleType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -73651,7 +73651,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamInviteChangeRoleType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamInviteChangeRoleType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfTeamInviteChangeRoleType alloc] initWithDescription_:description_];
@@ -73691,11 +73691,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamInviteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamInviteDetailsSerializer deserialize:dict];
 }
 
@@ -73764,7 +73764,7 @@
 
 @implementation DBTEAMLOGSfTeamInviteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamInviteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamInviteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -73776,7 +73776,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamInviteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamInviteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *sharingPermission = valueDict[@"sharing_permission"] ?: nil;
@@ -73810,11 +73810,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamInviteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamInviteTypeSerializer deserialize:dict];
 }
 
@@ -73871,7 +73871,7 @@
 
 @implementation DBTEAMLOGSfTeamInviteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamInviteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamInviteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -73879,7 +73879,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamInviteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamInviteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfTeamInviteType alloc] initWithDescription_:description_];
@@ -73912,11 +73912,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamJoinDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamJoinDetailsSerializer deserialize:dict];
 }
 
@@ -73977,7 +73977,7 @@
 
 @implementation DBTEAMLOGSfTeamJoinDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamJoinDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamJoinDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -73986,7 +73986,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamJoinDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamJoinDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
 
@@ -74033,11 +74033,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamJoinFromOobLinkDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamJoinFromOobLinkDetailsSerializer deserialize:dict];
 }
 
@@ -74114,7 +74114,7 @@
 
 @implementation DBTEAMLOGSfTeamJoinFromOobLinkDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamJoinFromOobLinkDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamJoinFromOobLinkDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -74129,7 +74129,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamJoinFromOobLinkDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamJoinFromOobLinkDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
   NSString *tokenKey = valueDict[@"token_key"] ?: nil;
@@ -74165,11 +74165,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamJoinFromOobLinkTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamJoinFromOobLinkTypeSerializer deserialize:dict];
 }
 
@@ -74226,7 +74226,7 @@
 
 @implementation DBTEAMLOGSfTeamJoinFromOobLinkTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamJoinFromOobLinkType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamJoinFromOobLinkType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -74234,7 +74234,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamJoinFromOobLinkType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamJoinFromOobLinkType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfTeamJoinFromOobLinkType alloc] initWithDescription_:description_];
@@ -74264,11 +74264,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamJoinTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamJoinTypeSerializer deserialize:dict];
 }
 
@@ -74325,7 +74325,7 @@
 
 @implementation DBTEAMLOGSfTeamJoinTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamJoinType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamJoinType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -74333,7 +74333,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamJoinType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamJoinType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfTeamJoinType alloc] initWithDescription_:description_];
@@ -74366,11 +74366,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamUninviteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamUninviteDetailsSerializer deserialize:dict];
 }
 
@@ -74431,7 +74431,7 @@
 
 @implementation DBTEAMLOGSfTeamUninviteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamUninviteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamUninviteDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -74440,7 +74440,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamUninviteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamUninviteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
   NSString *originalFolderName = valueDict[@"original_folder_name"];
 
@@ -74472,11 +74472,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSfTeamUninviteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSfTeamUninviteTypeSerializer deserialize:dict];
 }
 
@@ -74533,7 +74533,7 @@
 
 @implementation DBTEAMLOGSfTeamUninviteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSfTeamUninviteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamUninviteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -74541,7 +74541,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSfTeamUninviteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSfTeamUninviteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSfTeamUninviteType alloc] initWithDescription_:description_];
@@ -74582,11 +74582,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddInviteesDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddInviteesDetailsSerializer deserialize:dict];
 }
 
@@ -74648,7 +74648,7 @@
 
 @implementation DBTEAMLOGSharedContentAddInviteesDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddInviteesDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddInviteesDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"shared_content_access_level"] =
@@ -74661,7 +74661,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddInviteesDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddInviteesDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGAccessLevel *sharedContentAccessLevel =
       [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"shared_content_access_level"]];
   NSArray<NSString *> *invitees = [DBArraySerializer deserialize:valueDict[@"invitees"]
@@ -74697,11 +74697,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddInviteesTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddInviteesTypeSerializer deserialize:dict];
 }
 
@@ -74758,7 +74758,7 @@
 
 @implementation DBTEAMLOGSharedContentAddInviteesTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddInviteesType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddInviteesType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -74766,7 +74766,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddInviteesType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddInviteesType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentAddInviteesType alloc] initWithDescription_:description_];
@@ -74799,11 +74799,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddLinkExpiryDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddLinkExpiryDetailsSerializer deserialize:dict];
 }
 
@@ -74865,7 +74865,7 @@
 
 @implementation DBTEAMLOGSharedContentAddLinkExpiryDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddLinkExpiryDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddLinkExpiryDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -74875,7 +74875,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddLinkExpiryDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddLinkExpiryDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *dNewValue = valueDict[@"new_value"]
                           ? [DBNSDateSerializer deserialize:valueDict[@"new_value"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                           : nil;
@@ -74907,11 +74907,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddLinkExpiryTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddLinkExpiryTypeSerializer deserialize:dict];
 }
 
@@ -74969,7 +74969,7 @@
 
 @implementation DBTEAMLOGSharedContentAddLinkExpiryTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddLinkExpiryType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddLinkExpiryType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -74977,7 +74977,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddLinkExpiryType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddLinkExpiryType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentAddLinkExpiryType alloc] initWithDescription_:description_];
@@ -75005,11 +75005,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddLinkPasswordDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddLinkPasswordDetailsSerializer deserialize:dict];
 }
 
@@ -75062,14 +75062,14 @@
 
 @implementation DBTEAMLOGSharedContentAddLinkPasswordDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddLinkPasswordDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddLinkPasswordDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedContentAddLinkPasswordDetails alloc] initDefault];
@@ -75099,11 +75099,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddLinkPasswordTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddLinkPasswordTypeSerializer deserialize:dict];
 }
 
@@ -75161,7 +75161,7 @@
 
 @implementation DBTEAMLOGSharedContentAddLinkPasswordTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -75169,7 +75169,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddLinkPasswordType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddLinkPasswordType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentAddLinkPasswordType alloc] initWithDescription_:description_];
@@ -75200,11 +75200,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddMemberDetailsSerializer deserialize:dict];
 }
 
@@ -75262,7 +75262,7 @@
 
 @implementation DBTEAMLOGSharedContentAddMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddMemberDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"shared_content_access_level"] =
@@ -75271,7 +75271,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGAccessLevel *sharedContentAccessLevel =
       [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"shared_content_access_level"]];
 
@@ -75302,11 +75302,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentAddMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentAddMemberTypeSerializer deserialize:dict];
 }
 
@@ -75363,7 +75363,7 @@
 
 @implementation DBTEAMLOGSharedContentAddMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -75371,7 +75371,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentAddMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentAddMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentAddMemberType alloc] initWithDescription_:description_];
@@ -75408,11 +75408,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeDownloadsPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeDownloadsPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -75478,7 +75478,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeDownloadsPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGDownloadPolicyTypeSerializer serialize:valueObj.dNewValue];
@@ -75489,7 +75489,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGDownloadPolicyType *dNewValue = [DBTEAMLOGDownloadPolicyTypeSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGDownloadPolicyType *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGDownloadPolicyTypeSerializer deserialize:valueDict[@"previous_value"]]
@@ -75523,11 +75523,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeDownloadsPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeDownloadsPolicyTypeSerializer deserialize:dict];
 }
 
@@ -75585,7 +75585,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeDownloadsPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeDownloadsPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeDownloadsPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -75593,7 +75593,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeDownloadsPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeDownloadsPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentChangeDownloadsPolicyType alloc] initWithDescription_:description_];
@@ -75633,11 +75633,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeInviteeRoleDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeInviteeRoleDetailsSerializer deserialize:dict];
 }
 
@@ -75707,7 +75707,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeInviteeRoleDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.dNewAccessLevel];
@@ -75719,7 +75719,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeInviteeRoleDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeInviteeRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGAccessLevel *dNewAccessLevel = [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"new_access_level"]];
   NSString *invitee = valueDict[@"invitee"];
   DBSHARINGAccessLevel *previousAccessLevel =
@@ -75756,11 +75756,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeInviteeRoleTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeInviteeRoleTypeSerializer deserialize:dict];
 }
 
@@ -75818,7 +75818,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeInviteeRoleTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -75826,7 +75826,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeInviteeRoleType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeInviteeRoleType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentChangeInviteeRoleType alloc] initWithDescription_:description_];
@@ -75863,11 +75863,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeLinkAudienceDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeLinkAudienceDetailsSerializer deserialize:dict];
 }
 
@@ -75933,7 +75933,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeLinkAudienceDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkAudienceDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeLinkAudienceDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBSHARINGLinkAudienceSerializer serialize:valueObj.dNewValue];
@@ -75944,7 +75944,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeLinkAudienceDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeLinkAudienceDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGLinkAudience *dNewValue = [DBSHARINGLinkAudienceSerializer deserialize:valueDict[@"new_value"]];
   DBSHARINGLinkAudience *previousValue =
       valueDict[@"previous_value"] ? [DBSHARINGLinkAudienceSerializer deserialize:valueDict[@"previous_value"]] : nil;
@@ -75977,11 +75977,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeLinkAudienceTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeLinkAudienceTypeSerializer deserialize:dict];
 }
 
@@ -76039,7 +76039,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeLinkAudienceTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkAudienceType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeLinkAudienceType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -76047,7 +76047,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeLinkAudienceType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeLinkAudienceType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentChangeLinkAudienceType alloc] initWithDescription_:description_];
@@ -76081,11 +76081,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeLinkExpiryDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeLinkExpiryDetailsSerializer deserialize:dict];
 }
 
@@ -76155,7 +76155,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeLinkExpiryDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkExpiryDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeLinkExpiryDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -76169,7 +76169,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeLinkExpiryDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeLinkExpiryDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *dNewValue = valueDict[@"new_value"]
                           ? [DBNSDateSerializer deserialize:valueDict[@"new_value"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                           : nil;
@@ -76205,11 +76205,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeLinkExpiryTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeLinkExpiryTypeSerializer deserialize:dict];
 }
 
@@ -76267,7 +76267,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeLinkExpiryTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkExpiryType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeLinkExpiryType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -76275,7 +76275,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeLinkExpiryType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeLinkExpiryType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentChangeLinkExpiryType alloc] initWithDescription_:description_];
@@ -76303,11 +76303,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeLinkPasswordDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeLinkPasswordDetailsSerializer deserialize:dict];
 }
 
@@ -76360,14 +76360,14 @@
 
 @implementation DBTEAMLOGSharedContentChangeLinkPasswordDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkPasswordDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeLinkPasswordDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeLinkPasswordDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeLinkPasswordDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedContentChangeLinkPasswordDetails alloc] initDefault];
@@ -76397,11 +76397,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeLinkPasswordTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeLinkPasswordTypeSerializer deserialize:dict];
 }
 
@@ -76459,7 +76459,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeLinkPasswordTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeLinkPasswordType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeLinkPasswordType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -76467,7 +76467,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeLinkPasswordType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeLinkPasswordType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentChangeLinkPasswordType alloc] initWithDescription_:description_];
@@ -76504,11 +76504,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeMemberRoleDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeMemberRoleDetailsSerializer deserialize:dict];
 }
 
@@ -76574,7 +76574,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeMemberRoleDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeMemberRoleDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeMemberRoleDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.dNewAccessLevel];
@@ -76585,7 +76585,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeMemberRoleDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeMemberRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGAccessLevel *dNewAccessLevel = [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"new_access_level"]];
   DBSHARINGAccessLevel *previousAccessLevel =
       valueDict[@"previous_access_level"]
@@ -76620,11 +76620,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeMemberRoleTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeMemberRoleTypeSerializer deserialize:dict];
 }
 
@@ -76682,7 +76682,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeMemberRoleTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeMemberRoleType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeMemberRoleType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -76690,7 +76690,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeMemberRoleType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeMemberRoleType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentChangeMemberRoleType alloc] initWithDescription_:description_];
@@ -76727,11 +76727,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeViewerInfoPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeViewerInfoPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -76797,7 +76797,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeViewerInfoPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBSHARINGViewerInfoPolicySerializer serialize:valueObj.dNewValue];
@@ -76808,7 +76808,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGViewerInfoPolicy *dNewValue = [DBSHARINGViewerInfoPolicySerializer deserialize:valueDict[@"new_value"]];
   DBSHARINGViewerInfoPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBSHARINGViewerInfoPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -76842,11 +76842,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentChangeViewerInfoPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentChangeViewerInfoPolicyTypeSerializer deserialize:dict];
 }
 
@@ -76904,7 +76904,7 @@
 
 @implementation DBTEAMLOGSharedContentChangeViewerInfoPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeViewerInfoPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeViewerInfoPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -76912,7 +76912,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentChangeViewerInfoPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentChangeViewerInfoPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentChangeViewerInfoPolicyType alloc] initWithDescription_:description_];
@@ -76945,11 +76945,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentClaimInvitationDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentClaimInvitationDetailsSerializer deserialize:dict];
 }
 
@@ -77011,7 +77011,7 @@
 
 @implementation DBTEAMLOGSharedContentClaimInvitationDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentClaimInvitationDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentClaimInvitationDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedContentLink) {
@@ -77021,7 +77021,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentClaimInvitationDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentClaimInvitationDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sharedContentLink = valueDict[@"shared_content_link"] ?: nil;
 
   return [[DBTEAMLOGSharedContentClaimInvitationDetails alloc] initWithSharedContentLink:sharedContentLink];
@@ -77051,11 +77051,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentClaimInvitationTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentClaimInvitationTypeSerializer deserialize:dict];
 }
 
@@ -77113,7 +77113,7 @@
 
 @implementation DBTEAMLOGSharedContentClaimInvitationTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentClaimInvitationType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentClaimInvitationType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -77121,7 +77121,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentClaimInvitationType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentClaimInvitationType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentClaimInvitationType alloc] initWithDescription_:description_];
@@ -77170,11 +77170,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentCopyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentCopyDetailsSerializer deserialize:dict];
 }
 
@@ -77247,7 +77247,7 @@
 
 @implementation DBTEAMLOGSharedContentCopyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentCopyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentCopyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"shared_content_link"] = valueObj.sharedContentLink;
@@ -77261,7 +77261,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentCopyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentCopyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sharedContentLink = valueDict[@"shared_content_link"];
   DBSHARINGAccessLevel *sharedContentAccessLevel =
       [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"shared_content_access_level"]];
@@ -77301,11 +77301,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentCopyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentCopyTypeSerializer deserialize:dict];
 }
 
@@ -77362,7 +77362,7 @@
 
 @implementation DBTEAMLOGSharedContentCopyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentCopyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentCopyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -77370,7 +77370,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentCopyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentCopyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentCopyType alloc] initWithDescription_:description_];
@@ -77414,11 +77414,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentDownloadDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentDownloadDetailsSerializer deserialize:dict];
 }
 
@@ -77487,7 +77487,7 @@
 
 @implementation DBTEAMLOGSharedContentDownloadDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentDownloadDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentDownloadDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"shared_content_link"] = valueObj.sharedContentLink;
@@ -77500,7 +77500,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentDownloadDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sharedContentLink = valueDict[@"shared_content_link"];
   DBSHARINGAccessLevel *sharedContentAccessLevel =
       [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"shared_content_access_level"]];
@@ -77538,11 +77538,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentDownloadTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentDownloadTypeSerializer deserialize:dict];
 }
 
@@ -77599,7 +77599,7 @@
 
 @implementation DBTEAMLOGSharedContentDownloadTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentDownloadType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentDownloadType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -77607,7 +77607,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentDownloadType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentDownloadType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentDownloadType alloc] initWithDescription_:description_];
@@ -77635,11 +77635,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRelinquishMembershipDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRelinquishMembershipDetailsSerializer deserialize:dict];
 }
 
@@ -77692,14 +77692,14 @@
 
 @implementation DBTEAMLOGSharedContentRelinquishMembershipDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRelinquishMembershipDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRelinquishMembershipDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRelinquishMembershipDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRelinquishMembershipDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedContentRelinquishMembershipDetails alloc] initDefault];
@@ -77729,11 +77729,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRelinquishMembershipTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRelinquishMembershipTypeSerializer deserialize:dict];
 }
 
@@ -77791,7 +77791,7 @@
 
 @implementation DBTEAMLOGSharedContentRelinquishMembershipTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRelinquishMembershipType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRelinquishMembershipType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -77799,7 +77799,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRelinquishMembershipType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRelinquishMembershipType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentRelinquishMembershipType alloc] initWithDescription_:description_];
@@ -77836,11 +77836,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveInviteesDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveInviteesDetailsSerializer deserialize:dict];
 }
 
@@ -77898,7 +77898,7 @@
 
 @implementation DBTEAMLOGSharedContentRemoveInviteesDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveInviteesDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveInviteesDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"invitees"] = [DBArraySerializer serialize:valueObj.invitees
@@ -77909,7 +77909,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveInviteesDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveInviteesDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<NSString *> *invitees = [DBArraySerializer deserialize:valueDict[@"invitees"]
                                                        withBlock:^id(id elem0) {
                                                          return elem0;
@@ -77942,11 +77942,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveInviteesTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveInviteesTypeSerializer deserialize:dict];
 }
 
@@ -78004,7 +78004,7 @@
 
 @implementation DBTEAMLOGSharedContentRemoveInviteesTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveInviteesType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveInviteesType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -78012,7 +78012,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveInviteesType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveInviteesType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentRemoveInviteesType alloc] initWithDescription_:description_];
@@ -78045,11 +78045,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveLinkExpiryDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveLinkExpiryDetailsSerializer deserialize:dict];
 }
 
@@ -78111,7 +78111,7 @@
 
 @implementation DBTEAMLOGSharedContentRemoveLinkExpiryDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.previousValue) {
@@ -78122,7 +78122,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *previousValue = valueDict[@"previous_value"] ? [DBNSDateSerializer deserialize:valueDict[@"previous_value"]
                                                                               dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                                                        : nil;
@@ -78154,11 +78154,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveLinkExpiryTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveLinkExpiryTypeSerializer deserialize:dict];
 }
 
@@ -78216,7 +78216,7 @@
 
 @implementation DBTEAMLOGSharedContentRemoveLinkExpiryTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -78224,7 +78224,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveLinkExpiryType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveLinkExpiryType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentRemoveLinkExpiryType alloc] initWithDescription_:description_];
@@ -78252,11 +78252,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveLinkPasswordDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveLinkPasswordDetailsSerializer deserialize:dict];
 }
 
@@ -78309,14 +78309,14 @@
 
 @implementation DBTEAMLOGSharedContentRemoveLinkPasswordDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveLinkPasswordDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveLinkPasswordDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveLinkPasswordDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveLinkPasswordDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedContentRemoveLinkPasswordDetails alloc] initDefault];
@@ -78346,11 +78346,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveLinkPasswordTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveLinkPasswordTypeSerializer deserialize:dict];
 }
 
@@ -78408,7 +78408,7 @@
 
 @implementation DBTEAMLOGSharedContentRemoveLinkPasswordTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveLinkPasswordType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveLinkPasswordType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -78416,7 +78416,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveLinkPasswordType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveLinkPasswordType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentRemoveLinkPasswordType alloc] initWithDescription_:description_];
@@ -78450,11 +78450,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveMemberDetailsSerializer deserialize:dict];
 }
 
@@ -78516,7 +78516,7 @@
 
 @implementation DBTEAMLOGSharedContentRemoveMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveMemberDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedContentAccessLevel) {
@@ -78527,7 +78527,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGAccessLevel *sharedContentAccessLevel =
       valueDict[@"shared_content_access_level"]
           ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"shared_content_access_level"]]
@@ -78560,11 +78560,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRemoveMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRemoveMemberTypeSerializer deserialize:dict];
 }
 
@@ -78622,7 +78622,7 @@
 
 @implementation DBTEAMLOGSharedContentRemoveMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -78630,7 +78630,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRemoveMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRemoveMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentRemoveMemberType alloc] initWithDescription_:description_];
@@ -78663,11 +78663,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRequestAccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRequestAccessDetailsSerializer deserialize:dict];
 }
 
@@ -78729,7 +78729,7 @@
 
 @implementation DBTEAMLOGSharedContentRequestAccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRequestAccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRequestAccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedContentLink) {
@@ -78739,7 +78739,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRequestAccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRequestAccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sharedContentLink = valueDict[@"shared_content_link"] ?: nil;
 
   return [[DBTEAMLOGSharedContentRequestAccessDetails alloc] initWithSharedContentLink:sharedContentLink];
@@ -78769,11 +78769,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentRequestAccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentRequestAccessTypeSerializer deserialize:dict];
 }
 
@@ -78831,7 +78831,7 @@
 
 @implementation DBTEAMLOGSharedContentRequestAccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRequestAccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRequestAccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -78839,7 +78839,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentRequestAccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentRequestAccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentRequestAccessType alloc] initWithDescription_:description_];
@@ -78867,11 +78867,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentUnshareDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentUnshareDetailsSerializer deserialize:dict];
 }
 
@@ -78923,14 +78923,14 @@
 
 @implementation DBTEAMLOGSharedContentUnshareDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentUnshareDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentUnshareDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentUnshareDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentUnshareDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedContentUnshareDetails alloc] initDefault];
@@ -78960,11 +78960,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentUnshareTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentUnshareTypeSerializer deserialize:dict];
 }
 
@@ -79021,7 +79021,7 @@
 
 @implementation DBTEAMLOGSharedContentUnshareTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentUnshareType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentUnshareType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -79029,7 +79029,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentUnshareType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentUnshareType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentUnshareType alloc] initWithDescription_:description_];
@@ -79073,11 +79073,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentViewDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentViewDetailsSerializer deserialize:dict];
 }
 
@@ -79146,7 +79146,7 @@
 
 @implementation DBTEAMLOGSharedContentViewDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentViewDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentViewDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"shared_content_link"] = valueObj.sharedContentLink;
@@ -79159,7 +79159,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentViewDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentViewDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sharedContentLink = valueDict[@"shared_content_link"];
   DBSHARINGAccessLevel *sharedContentAccessLevel =
       [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"shared_content_access_level"]];
@@ -79197,11 +79197,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedContentViewTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedContentViewTypeSerializer deserialize:dict];
 }
 
@@ -79258,7 +79258,7 @@
 
 @implementation DBTEAMLOGSharedContentViewTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentViewType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentViewType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -79266,7 +79266,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedContentViewType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedContentViewType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedContentViewType alloc] initWithDescription_:description_];
@@ -79303,11 +79303,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeLinkPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeLinkPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -79373,7 +79373,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeLinkPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBSHARINGSharedLinkPolicySerializer serialize:valueObj.dNewValue];
@@ -79384,7 +79384,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGSharedLinkPolicy *dNewValue = [DBSHARINGSharedLinkPolicySerializer deserialize:valueDict[@"new_value"]];
   DBSHARINGSharedLinkPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBSHARINGSharedLinkPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -79417,11 +79417,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeLinkPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeLinkPolicyTypeSerializer deserialize:dict];
 }
 
@@ -79479,7 +79479,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeLinkPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeLinkPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeLinkPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -79487,7 +79487,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeLinkPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeLinkPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderChangeLinkPolicyType alloc] initWithDescription_:description_];
@@ -79524,11 +79524,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeMembersInheritancePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeMembersInheritancePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -79594,7 +79594,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeMembersInheritancePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMembersInheritancePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeMembersInheritancePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGSharedFolderMembersInheritancePolicySerializer serialize:valueObj.dNewValue];
@@ -79606,7 +79606,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeMembersInheritancePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeMembersInheritancePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSharedFolderMembersInheritancePolicy *dNewValue =
       [DBTEAMLOGSharedFolderMembersInheritancePolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGSharedFolderMembersInheritancePolicy *previousValue =
@@ -79642,11 +79642,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeMembersInheritancePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeMembersInheritancePolicyTypeSerializer deserialize:dict];
 }
 
@@ -79704,7 +79704,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeMembersInheritancePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMembersInheritancePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeMembersInheritancePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -79712,7 +79712,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeMembersInheritancePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeMembersInheritancePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderChangeMembersInheritancePolicyType alloc] initWithDescription_:description_];
@@ -79749,11 +79749,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeMembersManagementPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeMembersManagementPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -79819,7 +79819,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeMembersManagementPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMembersManagementPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeMembersManagementPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBSHARINGAclUpdatePolicySerializer serialize:valueObj.dNewValue];
@@ -79830,7 +79830,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeMembersManagementPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeMembersManagementPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGAclUpdatePolicy *dNewValue = [DBSHARINGAclUpdatePolicySerializer deserialize:valueDict[@"new_value"]];
   DBSHARINGAclUpdatePolicy *previousValue =
       valueDict[@"previous_value"] ? [DBSHARINGAclUpdatePolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -79864,11 +79864,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeMembersManagementPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeMembersManagementPolicyTypeSerializer deserialize:dict];
 }
 
@@ -79926,7 +79926,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeMembersManagementPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMembersManagementPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeMembersManagementPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -79934,7 +79934,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeMembersManagementPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeMembersManagementPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderChangeMembersManagementPolicyType alloc] initWithDescription_:description_];
@@ -79971,11 +79971,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeMembersPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeMembersPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -80041,7 +80041,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeMembersPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMembersPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeMembersPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBSHARINGMemberPolicySerializer serialize:valueObj.dNewValue];
@@ -80052,7 +80052,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeMembersPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeMembersPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBSHARINGMemberPolicy *dNewValue = [DBSHARINGMemberPolicySerializer deserialize:valueDict[@"new_value"]];
   DBSHARINGMemberPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBSHARINGMemberPolicySerializer deserialize:valueDict[@"previous_value"]] : nil;
@@ -80085,11 +80085,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderChangeMembersPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderChangeMembersPolicyTypeSerializer deserialize:dict];
 }
 
@@ -80147,7 +80147,7 @@
 
 @implementation DBTEAMLOGSharedFolderChangeMembersPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeMembersPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeMembersPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -80155,7 +80155,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderChangeMembersPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderChangeMembersPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderChangeMembersPolicyType alloc] initWithDescription_:description_];
@@ -80188,11 +80188,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderCreateDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderCreateDetailsSerializer deserialize:dict];
 }
 
@@ -80253,7 +80253,7 @@
 
 @implementation DBTEAMLOGSharedFolderCreateDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderCreateDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderCreateDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.targetNsId) {
@@ -80263,7 +80263,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderCreateDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *targetNsId = valueDict[@"target_ns_id"] ?: nil;
 
   return [[DBTEAMLOGSharedFolderCreateDetails alloc] initWithTargetNsId:targetNsId];
@@ -80293,11 +80293,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderCreateTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderCreateTypeSerializer deserialize:dict];
 }
 
@@ -80354,7 +80354,7 @@
 
 @implementation DBTEAMLOGSharedFolderCreateTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderCreateType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderCreateType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -80362,7 +80362,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderCreateType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderCreateType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderCreateType alloc] initWithDescription_:description_];
@@ -80390,11 +80390,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderDeclineInvitationDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderDeclineInvitationDetailsSerializer deserialize:dict];
 }
 
@@ -80447,14 +80447,14 @@
 
 @implementation DBTEAMLOGSharedFolderDeclineInvitationDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderDeclineInvitationDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderDeclineInvitationDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderDeclineInvitationDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderDeclineInvitationDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedFolderDeclineInvitationDetails alloc] initDefault];
@@ -80484,11 +80484,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderDeclineInvitationTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderDeclineInvitationTypeSerializer deserialize:dict];
 }
 
@@ -80546,7 +80546,7 @@
 
 @implementation DBTEAMLOGSharedFolderDeclineInvitationTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderDeclineInvitationType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderDeclineInvitationType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -80554,7 +80554,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderDeclineInvitationType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderDeclineInvitationType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderDeclineInvitationType alloc] initWithDescription_:description_];
@@ -80627,11 +80627,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderMembersInheritancePolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderMembersInheritancePolicySerializer deserialize:dict];
 }
 
@@ -80704,7 +80704,7 @@
 
 @implementation DBTEAMLOGSharedFolderMembersInheritancePolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderMembersInheritancePolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderMembersInheritancePolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isInheritMembers]) {
@@ -80720,7 +80720,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderMembersInheritancePolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderMembersInheritancePolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"inherit_members"]) {
@@ -80756,11 +80756,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderMountDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderMountDetailsSerializer deserialize:dict];
 }
 
@@ -80812,14 +80812,14 @@
 
 @implementation DBTEAMLOGSharedFolderMountDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderMountDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderMountDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderMountDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderMountDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedFolderMountDetails alloc] initDefault];
@@ -80849,11 +80849,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderMountTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderMountTypeSerializer deserialize:dict];
 }
 
@@ -80910,7 +80910,7 @@
 
 @implementation DBTEAMLOGSharedFolderMountTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderMountType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderMountType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -80918,7 +80918,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderMountType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderMountType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderMountType alloc] initWithDescription_:description_];
@@ -80952,11 +80952,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderNestDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderNestDetailsSerializer deserialize:dict];
 }
 
@@ -81025,7 +81025,7 @@
 
 @implementation DBTEAMLOGSharedFolderNestDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderNestDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderNestDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.previousParentNsId) {
@@ -81038,7 +81038,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderNestDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderNestDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousParentNsId = valueDict[@"previous_parent_ns_id"] ?: nil;
   NSString *dNewParentNsId = valueDict[@"new_parent_ns_id"] ?: nil;
 
@@ -81070,11 +81070,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderNestTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderNestTypeSerializer deserialize:dict];
 }
 
@@ -81131,7 +81131,7 @@
 
 @implementation DBTEAMLOGSharedFolderNestTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderNestType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderNestType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -81139,7 +81139,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderNestType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderNestType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderNestType alloc] initWithDescription_:description_];
@@ -81177,11 +81177,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderTransferOwnershipDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderTransferOwnershipDetailsSerializer deserialize:dict];
 }
 
@@ -81247,7 +81247,7 @@
 
 @implementation DBTEAMLOGSharedFolderTransferOwnershipDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_owner_email"] = valueObj.dNewOwnerEmail;
@@ -81258,7 +81258,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderTransferOwnershipDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderTransferOwnershipDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *dNewOwnerEmail = valueDict[@"new_owner_email"];
   NSString *previousOwnerEmail = valueDict[@"previous_owner_email"] ?: nil;
 
@@ -81290,11 +81290,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderTransferOwnershipTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderTransferOwnershipTypeSerializer deserialize:dict];
 }
 
@@ -81352,7 +81352,7 @@
 
 @implementation DBTEAMLOGSharedFolderTransferOwnershipTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -81360,7 +81360,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderTransferOwnershipType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderTransferOwnershipType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderTransferOwnershipType alloc] initWithDescription_:description_];
@@ -81388,11 +81388,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderUnmountDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderUnmountDetailsSerializer deserialize:dict];
 }
 
@@ -81444,14 +81444,14 @@
 
 @implementation DBTEAMLOGSharedFolderUnmountDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderUnmountDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderUnmountDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderUnmountDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderUnmountDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedFolderUnmountDetails alloc] initDefault];
@@ -81481,11 +81481,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedFolderUnmountTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedFolderUnmountTypeSerializer deserialize:dict];
 }
 
@@ -81542,7 +81542,7 @@
 
 @implementation DBTEAMLOGSharedFolderUnmountTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderUnmountType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderUnmountType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -81550,7 +81550,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedFolderUnmountType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedFolderUnmountType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderUnmountType alloc] initWithDescription_:description_];
@@ -81637,11 +81637,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkAccessLevelSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkAccessLevelSerializer deserialize:dict];
 }
 
@@ -81717,7 +81717,7 @@
 
 @implementation DBTEAMLOGSharedLinkAccessLevelSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkAccessLevel *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkAccessLevel *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isNone]) {
@@ -81735,7 +81735,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkAccessLevel *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkAccessLevel *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"none"]) {
@@ -81775,11 +81775,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkAddExpiryDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkAddExpiryDetailsSerializer deserialize:dict];
 }
 
@@ -81836,7 +81836,7 @@
 
 @implementation DBTEAMLOGSharedLinkAddExpiryDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkAddExpiryDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkAddExpiryDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBNSDateSerializer serialize:valueObj.dNewValue dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -81844,7 +81844,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkAddExpiryDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkAddExpiryDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *dNewValue = [DBNSDateSerializer deserialize:valueDict[@"new_value"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
 
   return [[DBTEAMLOGSharedLinkAddExpiryDetails alloc] initWithDNewValue:dNewValue];
@@ -81874,11 +81874,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkAddExpiryTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkAddExpiryTypeSerializer deserialize:dict];
 }
 
@@ -81935,7 +81935,7 @@
 
 @implementation DBTEAMLOGSharedLinkAddExpiryTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkAddExpiryType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkAddExpiryType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -81943,7 +81943,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkAddExpiryType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkAddExpiryType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkAddExpiryType alloc] initWithDescription_:description_];
@@ -81977,11 +81977,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkChangeExpiryDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkChangeExpiryDetailsSerializer deserialize:dict];
 }
 
@@ -82051,7 +82051,7 @@
 
 @implementation DBTEAMLOGSharedLinkChangeExpiryDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkChangeExpiryDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkChangeExpiryDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -82065,7 +82065,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkChangeExpiryDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkChangeExpiryDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *dNewValue = valueDict[@"new_value"]
                           ? [DBNSDateSerializer deserialize:valueDict[@"new_value"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                           : nil;
@@ -82100,11 +82100,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkChangeExpiryTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkChangeExpiryTypeSerializer deserialize:dict];
 }
 
@@ -82161,7 +82161,7 @@
 
 @implementation DBTEAMLOGSharedLinkChangeExpiryTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkChangeExpiryType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkChangeExpiryType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -82169,7 +82169,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkChangeExpiryType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkChangeExpiryType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkChangeExpiryType alloc] initWithDescription_:description_];
@@ -82206,11 +82206,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkChangeVisibilityDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkChangeVisibilityDetailsSerializer deserialize:dict];
 }
 
@@ -82276,7 +82276,7 @@
 
 @implementation DBTEAMLOGSharedLinkChangeVisibilityDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkChangeVisibilityDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkChangeVisibilityDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGSharedLinkVisibilitySerializer serialize:valueObj.dNewValue];
@@ -82287,7 +82287,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkChangeVisibilityDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkChangeVisibilityDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSharedLinkVisibility *dNewValue =
       [DBTEAMLOGSharedLinkVisibilitySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGSharedLinkVisibility *previousValue =
@@ -82321,11 +82321,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkChangeVisibilityTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkChangeVisibilityTypeSerializer deserialize:dict];
 }
 
@@ -82383,7 +82383,7 @@
 
 @implementation DBTEAMLOGSharedLinkChangeVisibilityTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkChangeVisibilityType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkChangeVisibilityType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -82391,7 +82391,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkChangeVisibilityType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkChangeVisibilityType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkChangeVisibilityType alloc] initWithDescription_:description_];
@@ -82425,11 +82425,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkCopyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkCopyDetailsSerializer deserialize:dict];
 }
 
@@ -82490,7 +82490,7 @@
 
 @implementation DBTEAMLOGSharedLinkCopyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkCopyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkCopyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedLinkOwner) {
@@ -82500,7 +82500,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkCopyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkCopyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGUserLogInfo *sharedLinkOwner =
       valueDict[@"shared_link_owner"] ? [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict[@"shared_link_owner"]]
                                       : nil;
@@ -82532,11 +82532,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkCopyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkCopyTypeSerializer deserialize:dict];
 }
 
@@ -82593,7 +82593,7 @@
 
 @implementation DBTEAMLOGSharedLinkCopyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkCopyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkCopyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -82601,7 +82601,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkCopyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkCopyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkCopyType alloc] initWithDescription_:description_];
@@ -82635,11 +82635,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkCreateDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkCreateDetailsSerializer deserialize:dict];
 }
 
@@ -82700,7 +82700,7 @@
 
 @implementation DBTEAMLOGSharedLinkCreateDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkCreateDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkCreateDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedLinkAccessLevel) {
@@ -82711,7 +82711,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkCreateDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSharedLinkAccessLevel *sharedLinkAccessLevel =
       valueDict[@"shared_link_access_level"]
           ? [DBTEAMLOGSharedLinkAccessLevelSerializer deserialize:valueDict[@"shared_link_access_level"]]
@@ -82744,11 +82744,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkCreateTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkCreateTypeSerializer deserialize:dict];
 }
 
@@ -82805,7 +82805,7 @@
 
 @implementation DBTEAMLOGSharedLinkCreateTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkCreateType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkCreateType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -82813,7 +82813,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkCreateType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkCreateType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkCreateType alloc] initWithDescription_:description_];
@@ -82847,11 +82847,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkDisableDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkDisableDetailsSerializer deserialize:dict];
 }
 
@@ -82912,7 +82912,7 @@
 
 @implementation DBTEAMLOGSharedLinkDisableDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkDisableDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkDisableDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedLinkOwner) {
@@ -82922,7 +82922,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkDisableDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkDisableDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGUserLogInfo *sharedLinkOwner =
       valueDict[@"shared_link_owner"] ? [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict[@"shared_link_owner"]]
                                       : nil;
@@ -82954,11 +82954,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkDisableTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkDisableTypeSerializer deserialize:dict];
 }
 
@@ -83015,7 +83015,7 @@
 
 @implementation DBTEAMLOGSharedLinkDisableTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkDisableType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkDisableType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -83023,7 +83023,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkDisableType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkDisableType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkDisableType alloc] initWithDescription_:description_];
@@ -83057,11 +83057,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkDownloadDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkDownloadDetailsSerializer deserialize:dict];
 }
 
@@ -83122,7 +83122,7 @@
 
 @implementation DBTEAMLOGSharedLinkDownloadDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkDownloadDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkDownloadDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedLinkOwner) {
@@ -83132,7 +83132,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkDownloadDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGUserLogInfo *sharedLinkOwner =
       valueDict[@"shared_link_owner"] ? [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict[@"shared_link_owner"]]
                                       : nil;
@@ -83164,11 +83164,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkDownloadTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkDownloadTypeSerializer deserialize:dict];
 }
 
@@ -83225,7 +83225,7 @@
 
 @implementation DBTEAMLOGSharedLinkDownloadTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkDownloadType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkDownloadType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -83233,7 +83233,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkDownloadType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkDownloadType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkDownloadType alloc] initWithDescription_:description_];
@@ -83266,11 +83266,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkRemoveExpiryDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkRemoveExpiryDetailsSerializer deserialize:dict];
 }
 
@@ -83332,7 +83332,7 @@
 
 @implementation DBTEAMLOGSharedLinkRemoveExpiryDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkRemoveExpiryDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkRemoveExpiryDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.previousValue) {
@@ -83343,7 +83343,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkRemoveExpiryDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkRemoveExpiryDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *previousValue = valueDict[@"previous_value"] ? [DBNSDateSerializer deserialize:valueDict[@"previous_value"]
                                                                               dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                                                        : nil;
@@ -83375,11 +83375,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkRemoveExpiryTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkRemoveExpiryTypeSerializer deserialize:dict];
 }
 
@@ -83436,7 +83436,7 @@
 
 @implementation DBTEAMLOGSharedLinkRemoveExpiryTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkRemoveExpiryType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkRemoveExpiryType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -83444,7 +83444,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkRemoveExpiryType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkRemoveExpiryType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkRemoveExpiryType alloc] initWithDescription_:description_];
@@ -83485,11 +83485,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkShareDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkShareDetailsSerializer deserialize:dict];
 }
 
@@ -83558,7 +83558,7 @@
 
 @implementation DBTEAMLOGSharedLinkShareDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkShareDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkShareDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedLinkOwner) {
@@ -83574,7 +83574,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkShareDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkShareDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGUserLogInfo *sharedLinkOwner =
       valueDict[@"shared_link_owner"] ? [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict[@"shared_link_owner"]]
                                       : nil;
@@ -83613,11 +83613,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkShareTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkShareTypeSerializer deserialize:dict];
 }
 
@@ -83674,7 +83674,7 @@
 
 @implementation DBTEAMLOGSharedLinkShareTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkShareType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkShareType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -83682,7 +83682,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkShareType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkShareType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkShareType alloc] initWithDescription_:description_];
@@ -83716,11 +83716,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkViewDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkViewDetailsSerializer deserialize:dict];
 }
 
@@ -83781,7 +83781,7 @@
 
 @implementation DBTEAMLOGSharedLinkViewDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkViewDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkViewDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sharedLinkOwner) {
@@ -83791,7 +83791,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkViewDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkViewDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGUserLogInfo *sharedLinkOwner =
       valueDict[@"shared_link_owner"] ? [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict[@"shared_link_owner"]]
                                       : nil;
@@ -83823,11 +83823,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkViewTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkViewTypeSerializer deserialize:dict];
 }
 
@@ -83884,7 +83884,7 @@
 
 @implementation DBTEAMLOGSharedLinkViewTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkViewType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkViewType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -83892,7 +83892,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkViewType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkViewType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedLinkViewType alloc] initWithDescription_:description_];
@@ -83979,11 +83979,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedLinkVisibilitySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedLinkVisibilitySerializer deserialize:dict];
 }
 
@@ -84059,7 +84059,7 @@
 
 @implementation DBTEAMLOGSharedLinkVisibilitySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedLinkVisibility *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkVisibility *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isPassword]) {
@@ -84077,7 +84077,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedLinkVisibility *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedLinkVisibility *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"password"]) {
@@ -84115,11 +84115,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedNoteOpenedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedNoteOpenedDetailsSerializer deserialize:dict];
 }
 
@@ -84171,14 +84171,14 @@
 
 @implementation DBTEAMLOGSharedNoteOpenedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedNoteOpenedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedNoteOpenedDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedNoteOpenedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedNoteOpenedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSharedNoteOpenedDetails alloc] initDefault];
@@ -84208,11 +84208,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharedNoteOpenedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharedNoteOpenedTypeSerializer deserialize:dict];
 }
 
@@ -84269,7 +84269,7 @@
 
 @implementation DBTEAMLOGSharedNoteOpenedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedNoteOpenedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedNoteOpenedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -84277,7 +84277,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharedNoteOpenedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharedNoteOpenedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedNoteOpenedType alloc] initWithDescription_:description_];
@@ -84314,11 +84314,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingChangeFolderJoinPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingChangeFolderJoinPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -84384,7 +84384,7 @@
 
 @implementation DBTEAMLOGSharingChangeFolderJoinPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGSharingFolderJoinPolicySerializer serialize:valueObj.dNewValue];
@@ -84395,7 +84395,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSharingFolderJoinPolicy *dNewValue =
       [DBTEAMLOGSharingFolderJoinPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGSharingFolderJoinPolicy *previousValue =
@@ -84431,11 +84431,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingChangeFolderJoinPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingChangeFolderJoinPolicyTypeSerializer deserialize:dict];
 }
 
@@ -84493,7 +84493,7 @@
 
 @implementation DBTEAMLOGSharingChangeFolderJoinPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -84501,7 +84501,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingChangeFolderJoinPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingChangeFolderJoinPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharingChangeFolderJoinPolicyType alloc] initWithDescription_:description_];
@@ -84538,11 +84538,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingChangeLinkPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingChangeLinkPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -84608,7 +84608,7 @@
 
 @implementation DBTEAMLOGSharingChangeLinkPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeLinkPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeLinkPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGSharingLinkPolicySerializer serialize:valueObj.dNewValue];
@@ -84619,7 +84619,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingChangeLinkPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingChangeLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSharingLinkPolicy *dNewValue = [DBTEAMLOGSharingLinkPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGSharingLinkPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGSharingLinkPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -84652,11 +84652,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingChangeLinkPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingChangeLinkPolicyTypeSerializer deserialize:dict];
 }
 
@@ -84713,7 +84713,7 @@
 
 @implementation DBTEAMLOGSharingChangeLinkPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeLinkPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeLinkPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -84721,7 +84721,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingChangeLinkPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingChangeLinkPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharingChangeLinkPolicyType alloc] initWithDescription_:description_];
@@ -84758,11 +84758,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingChangeMemberPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingChangeMemberPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -84828,7 +84828,7 @@
 
 @implementation DBTEAMLOGSharingChangeMemberPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeMemberPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeMemberPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGSharingMemberPolicySerializer serialize:valueObj.dNewValue];
@@ -84839,7 +84839,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingChangeMemberPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingChangeMemberPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSharingMemberPolicy *dNewValue =
       [DBTEAMLOGSharingMemberPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGSharingMemberPolicy *previousValue =
@@ -84873,11 +84873,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingChangeMemberPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingChangeMemberPolicyTypeSerializer deserialize:dict];
 }
 
@@ -84935,7 +84935,7 @@
 
 @implementation DBTEAMLOGSharingChangeMemberPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeMemberPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeMemberPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -84943,7 +84943,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingChangeMemberPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingChangeMemberPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharingChangeMemberPolicyType alloc] initWithDescription_:description_];
@@ -85016,11 +85016,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingFolderJoinPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingFolderJoinPolicySerializer deserialize:dict];
 }
 
@@ -85092,7 +85092,7 @@
 
 @implementation DBTEAMLOGSharingFolderJoinPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingFolderJoinPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingFolderJoinPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isFromAnyone]) {
@@ -85108,7 +85108,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingFolderJoinPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingFolderJoinPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"from_anyone"]) {
@@ -85203,11 +85203,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingLinkPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingLinkPolicySerializer deserialize:dict];
 }
 
@@ -85283,7 +85283,7 @@
 
 @implementation DBTEAMLOGSharingLinkPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingLinkPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingLinkPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDefaultPrivate]) {
@@ -85301,7 +85301,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingLinkPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingLinkPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"default_private"]) {
@@ -85384,11 +85384,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSharingMemberPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSharingMemberPolicySerializer deserialize:dict];
 }
 
@@ -85460,7 +85460,7 @@
 
 @implementation DBTEAMLOGSharingMemberPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingMemberPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingMemberPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAllow]) {
@@ -85476,7 +85476,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSharingMemberPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSharingMemberPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"allow"]) {
@@ -85512,11 +85512,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShmodelGroupShareDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShmodelGroupShareDetailsSerializer deserialize:dict];
 }
 
@@ -85568,14 +85568,14 @@
 
 @implementation DBTEAMLOGShmodelGroupShareDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShmodelGroupShareDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShmodelGroupShareDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShmodelGroupShareDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShmodelGroupShareDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGShmodelGroupShareDetails alloc] initDefault];
@@ -85605,11 +85605,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShmodelGroupShareTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShmodelGroupShareTypeSerializer deserialize:dict];
 }
 
@@ -85666,7 +85666,7 @@
 
 @implementation DBTEAMLOGShmodelGroupShareTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShmodelGroupShareType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShmodelGroupShareType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -85674,7 +85674,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShmodelGroupShareType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShmodelGroupShareType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShmodelGroupShareType alloc] initWithDescription_:description_];
@@ -85704,11 +85704,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseAccessGrantedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseAccessGrantedDetailsSerializer deserialize:dict];
 }
 
@@ -85765,7 +85765,7 @@
 
 @implementation DBTEAMLOGShowcaseAccessGrantedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAccessGrantedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseAccessGrantedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -85773,7 +85773,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseAccessGrantedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseAccessGrantedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseAccessGrantedDetails alloc] initWithEventUuid:eventUuid];
@@ -85803,11 +85803,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseAccessGrantedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseAccessGrantedTypeSerializer deserialize:dict];
 }
 
@@ -85864,7 +85864,7 @@
 
 @implementation DBTEAMLOGShowcaseAccessGrantedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAccessGrantedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseAccessGrantedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -85872,7 +85872,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseAccessGrantedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseAccessGrantedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseAccessGrantedType alloc] initWithDescription_:description_];
@@ -85902,11 +85902,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseAddMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseAddMemberDetailsSerializer deserialize:dict];
 }
 
@@ -85963,7 +85963,7 @@
 
 @implementation DBTEAMLOGShowcaseAddMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAddMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseAddMemberDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -85971,7 +85971,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseAddMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseAddMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseAddMemberDetails alloc] initWithEventUuid:eventUuid];
@@ -86001,11 +86001,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseAddMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseAddMemberTypeSerializer deserialize:dict];
 }
 
@@ -86062,7 +86062,7 @@
 
 @implementation DBTEAMLOGShowcaseAddMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseAddMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseAddMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -86070,7 +86070,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseAddMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseAddMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseAddMemberType alloc] initWithDescription_:description_];
@@ -86100,11 +86100,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseArchivedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseArchivedDetailsSerializer deserialize:dict];
 }
 
@@ -86161,7 +86161,7 @@
 
 @implementation DBTEAMLOGShowcaseArchivedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseArchivedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseArchivedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -86169,7 +86169,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseArchivedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseArchivedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseArchivedDetails alloc] initWithEventUuid:eventUuid];
@@ -86199,11 +86199,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseArchivedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseArchivedTypeSerializer deserialize:dict];
 }
 
@@ -86260,7 +86260,7 @@
 
 @implementation DBTEAMLOGShowcaseArchivedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseArchivedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseArchivedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -86268,7 +86268,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseArchivedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseArchivedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseArchivedType alloc] initWithDescription_:description_];
@@ -86302,11 +86302,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseChangeDownloadPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseChangeDownloadPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -86368,7 +86368,7 @@
 
 @implementation DBTEAMLOGShowcaseChangeDownloadPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseChangeDownloadPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeDownloadPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGShowcaseDownloadPolicySerializer serialize:valueObj.dNewValue];
@@ -86377,7 +86377,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseChangeDownloadPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseChangeDownloadPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGShowcaseDownloadPolicy *dNewValue =
       [DBTEAMLOGShowcaseDownloadPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGShowcaseDownloadPolicy *previousValue =
@@ -86410,11 +86410,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseChangeDownloadPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseChangeDownloadPolicyTypeSerializer deserialize:dict];
 }
 
@@ -86472,7 +86472,7 @@
 
 @implementation DBTEAMLOGShowcaseChangeDownloadPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseChangeDownloadPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeDownloadPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -86480,7 +86480,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseChangeDownloadPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseChangeDownloadPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseChangeDownloadPolicyType alloc] initWithDescription_:description_];
@@ -86514,11 +86514,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseChangeEnabledPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseChangeEnabledPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -86580,7 +86580,7 @@
 
 @implementation DBTEAMLOGShowcaseChangeEnabledPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGShowcaseEnabledPolicySerializer serialize:valueObj.dNewValue];
@@ -86589,7 +86589,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGShowcaseEnabledPolicy *dNewValue =
       [DBTEAMLOGShowcaseEnabledPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGShowcaseEnabledPolicy *previousValue =
@@ -86622,11 +86622,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseChangeEnabledPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseChangeEnabledPolicyTypeSerializer deserialize:dict];
 }
 
@@ -86684,7 +86684,7 @@
 
 @implementation DBTEAMLOGShowcaseChangeEnabledPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -86692,7 +86692,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseChangeEnabledPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseChangeEnabledPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseChangeEnabledPolicyType alloc] initWithDescription_:description_];
@@ -86726,11 +86726,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseChangeExternalSharingPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseChangeExternalSharingPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -86792,7 +86792,7 @@
 
 @implementation DBTEAMLOGShowcaseChangeExternalSharingPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGShowcaseExternalSharingPolicySerializer serialize:valueObj.dNewValue];
@@ -86801,7 +86801,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGShowcaseExternalSharingPolicy *dNewValue =
       [DBTEAMLOGShowcaseExternalSharingPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGShowcaseExternalSharingPolicy *previousValue =
@@ -86835,11 +86835,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseChangeExternalSharingPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseChangeExternalSharingPolicyTypeSerializer deserialize:dict];
 }
 
@@ -86897,7 +86897,7 @@
 
 @implementation DBTEAMLOGShowcaseChangeExternalSharingPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseChangeExternalSharingPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeExternalSharingPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -86905,7 +86905,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseChangeExternalSharingPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseChangeExternalSharingPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseChangeExternalSharingPolicyType alloc] initWithDescription_:description_];
@@ -86935,11 +86935,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseCreatedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseCreatedDetailsSerializer deserialize:dict];
 }
 
@@ -86996,7 +86996,7 @@
 
 @implementation DBTEAMLOGShowcaseCreatedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseCreatedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseCreatedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -87004,7 +87004,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseCreatedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseCreatedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseCreatedDetails alloc] initWithEventUuid:eventUuid];
@@ -87034,11 +87034,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseCreatedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseCreatedTypeSerializer deserialize:dict];
 }
 
@@ -87095,7 +87095,7 @@
 
 @implementation DBTEAMLOGShowcaseCreatedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseCreatedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseCreatedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -87103,7 +87103,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseCreatedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseCreatedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseCreatedType alloc] initWithDescription_:description_];
@@ -87138,11 +87138,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseDeleteCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseDeleteCommentDetailsSerializer deserialize:dict];
 }
 
@@ -87207,7 +87207,7 @@
 
 @implementation DBTEAMLOGShowcaseDeleteCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseDeleteCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseDeleteCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -87218,7 +87218,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseDeleteCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseDeleteCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -87249,11 +87249,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseDeleteCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseDeleteCommentTypeSerializer deserialize:dict];
 }
 
@@ -87310,7 +87310,7 @@
 
 @implementation DBTEAMLOGShowcaseDeleteCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseDeleteCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseDeleteCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -87318,7 +87318,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseDeleteCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseDeleteCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseDeleteCommentType alloc] initWithDescription_:description_];
@@ -87350,11 +87350,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseDocumentLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseDocumentLogInfoSerializer deserialize:dict];
 }
 
@@ -87415,7 +87415,7 @@
 
 @implementation DBTEAMLOGShowcaseDocumentLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseDocumentLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseDocumentLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"showcase_id"] = valueObj.showcaseId;
@@ -87424,7 +87424,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseDocumentLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseDocumentLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *showcaseId = valueDict[@"showcase_id"];
   NSString *showcaseTitle = valueDict[@"showcase_title"];
 
@@ -87498,11 +87498,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseDownloadPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseDownloadPolicySerializer deserialize:dict];
 }
 
@@ -87574,7 +87574,7 @@
 
 @implementation DBTEAMLOGShowcaseDownloadPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseDownloadPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseDownloadPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -87590,7 +87590,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseDownloadPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseDownloadPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -87633,11 +87633,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseEditCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseEditCommentDetailsSerializer deserialize:dict];
 }
 
@@ -87702,7 +87702,7 @@
 
 @implementation DBTEAMLOGShowcaseEditCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseEditCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -87713,7 +87713,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseEditCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseEditCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -87744,11 +87744,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseEditCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseEditCommentTypeSerializer deserialize:dict];
 }
 
@@ -87805,7 +87805,7 @@
 
 @implementation DBTEAMLOGShowcaseEditCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseEditCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -87813,7 +87813,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseEditCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseEditCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseEditCommentType alloc] initWithDescription_:description_];
@@ -87843,11 +87843,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseEditedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseEditedDetailsSerializer deserialize:dict];
 }
 
@@ -87904,7 +87904,7 @@
 
 @implementation DBTEAMLOGShowcaseEditedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseEditedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -87912,7 +87912,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseEditedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseEditedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseEditedDetails alloc] initWithEventUuid:eventUuid];
@@ -87942,11 +87942,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseEditedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseEditedTypeSerializer deserialize:dict];
 }
 
@@ -88003,7 +88003,7 @@
 
 @implementation DBTEAMLOGShowcaseEditedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEditedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseEditedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -88011,7 +88011,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseEditedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseEditedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseEditedType alloc] initWithDescription_:description_];
@@ -88084,11 +88084,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseEnabledPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseEnabledPolicySerializer deserialize:dict];
 }
 
@@ -88160,7 +88160,7 @@
 
 @implementation DBTEAMLOGShowcaseEnabledPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseEnabledPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseEnabledPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -88176,7 +88176,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseEnabledPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseEnabledPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -88257,11 +88257,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseExternalSharingPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseExternalSharingPolicySerializer deserialize:dict];
 }
 
@@ -88334,7 +88334,7 @@
 
 @implementation DBTEAMLOGShowcaseExternalSharingPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseExternalSharingPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseExternalSharingPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -88350,7 +88350,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseExternalSharingPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseExternalSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -88388,11 +88388,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileAddedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileAddedDetailsSerializer deserialize:dict];
 }
 
@@ -88449,7 +88449,7 @@
 
 @implementation DBTEAMLOGShowcaseFileAddedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileAddedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileAddedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -88457,7 +88457,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileAddedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileAddedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseFileAddedDetails alloc] initWithEventUuid:eventUuid];
@@ -88487,11 +88487,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileAddedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileAddedTypeSerializer deserialize:dict];
 }
 
@@ -88548,7 +88548,7 @@
 
 @implementation DBTEAMLOGShowcaseFileAddedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileAddedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileAddedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -88556,7 +88556,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileAddedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileAddedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseFileAddedType alloc] initWithDescription_:description_];
@@ -88588,11 +88588,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileDownloadDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileDownloadDetailsSerializer deserialize:dict];
 }
 
@@ -88653,7 +88653,7 @@
 
 @implementation DBTEAMLOGShowcaseFileDownloadDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileDownloadDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileDownloadDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -88662,7 +88662,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileDownloadDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *downloadType = valueDict[@"download_type"];
 
@@ -88693,11 +88693,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileDownloadTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileDownloadTypeSerializer deserialize:dict];
 }
 
@@ -88754,7 +88754,7 @@
 
 @implementation DBTEAMLOGShowcaseFileDownloadTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileDownloadType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileDownloadType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -88762,7 +88762,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileDownloadType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileDownloadType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseFileDownloadType alloc] initWithDescription_:description_];
@@ -88792,11 +88792,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileRemovedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileRemovedDetailsSerializer deserialize:dict];
 }
 
@@ -88853,7 +88853,7 @@
 
 @implementation DBTEAMLOGShowcaseFileRemovedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileRemovedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileRemovedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -88861,7 +88861,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileRemovedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileRemovedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseFileRemovedDetails alloc] initWithEventUuid:eventUuid];
@@ -88891,11 +88891,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileRemovedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileRemovedTypeSerializer deserialize:dict];
 }
 
@@ -88952,7 +88952,7 @@
 
 @implementation DBTEAMLOGShowcaseFileRemovedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileRemovedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileRemovedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -88960,7 +88960,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileRemovedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileRemovedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseFileRemovedType alloc] initWithDescription_:description_];
@@ -88990,11 +88990,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileViewDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileViewDetailsSerializer deserialize:dict];
 }
 
@@ -89051,7 +89051,7 @@
 
 @implementation DBTEAMLOGShowcaseFileViewDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileViewDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileViewDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -89059,7 +89059,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileViewDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileViewDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseFileViewDetails alloc] initWithEventUuid:eventUuid];
@@ -89089,11 +89089,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseFileViewTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseFileViewTypeSerializer deserialize:dict];
 }
 
@@ -89150,7 +89150,7 @@
 
 @implementation DBTEAMLOGShowcaseFileViewTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseFileViewType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileViewType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -89158,7 +89158,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseFileViewType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseFileViewType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseFileViewType alloc] initWithDescription_:description_];
@@ -89188,11 +89188,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer deserialize:dict];
 }
 
@@ -89250,7 +89250,7 @@
 
 @implementation DBTEAMLOGShowcasePermanentlyDeletedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcasePermanentlyDeletedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcasePermanentlyDeletedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -89258,7 +89258,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcasePermanentlyDeletedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcasePermanentlyDeletedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcasePermanentlyDeletedDetails alloc] initWithEventUuid:eventUuid];
@@ -89288,11 +89288,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer deserialize:dict];
 }
 
@@ -89350,7 +89350,7 @@
 
 @implementation DBTEAMLOGShowcasePermanentlyDeletedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcasePermanentlyDeletedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcasePermanentlyDeletedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -89358,7 +89358,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcasePermanentlyDeletedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcasePermanentlyDeletedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcasePermanentlyDeletedType alloc] initWithDescription_:description_];
@@ -89393,11 +89393,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcasePostCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcasePostCommentDetailsSerializer deserialize:dict];
 }
 
@@ -89462,7 +89462,7 @@
 
 @implementation DBTEAMLOGShowcasePostCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcasePostCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcasePostCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -89473,7 +89473,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcasePostCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcasePostCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -89504,11 +89504,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcasePostCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcasePostCommentTypeSerializer deserialize:dict];
 }
 
@@ -89565,7 +89565,7 @@
 
 @implementation DBTEAMLOGShowcasePostCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcasePostCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcasePostCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -89573,7 +89573,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcasePostCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcasePostCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcasePostCommentType alloc] initWithDescription_:description_];
@@ -89603,11 +89603,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRemoveMemberDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRemoveMemberDetailsSerializer deserialize:dict];
 }
 
@@ -89664,7 +89664,7 @@
 
 @implementation DBTEAMLOGShowcaseRemoveMemberDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRemoveMemberDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRemoveMemberDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -89672,7 +89672,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRemoveMemberDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseRemoveMemberDetails alloc] initWithEventUuid:eventUuid];
@@ -89702,11 +89702,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRemoveMemberTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRemoveMemberTypeSerializer deserialize:dict];
 }
 
@@ -89763,7 +89763,7 @@
 
 @implementation DBTEAMLOGShowcaseRemoveMemberTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRemoveMemberType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRemoveMemberType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -89771,7 +89771,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRemoveMemberType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRemoveMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseRemoveMemberType alloc] initWithDescription_:description_];
@@ -89801,11 +89801,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRenamedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRenamedDetailsSerializer deserialize:dict];
 }
 
@@ -89862,7 +89862,7 @@
 
 @implementation DBTEAMLOGShowcaseRenamedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRenamedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRenamedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -89870,7 +89870,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRenamedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRenamedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseRenamedDetails alloc] initWithEventUuid:eventUuid];
@@ -89900,11 +89900,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRenamedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRenamedTypeSerializer deserialize:dict];
 }
 
@@ -89961,7 +89961,7 @@
 
 @implementation DBTEAMLOGShowcaseRenamedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRenamedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRenamedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -89969,7 +89969,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRenamedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRenamedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseRenamedType alloc] initWithDescription_:description_];
@@ -89999,11 +89999,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRequestAccessDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRequestAccessDetailsSerializer deserialize:dict];
 }
 
@@ -90060,7 +90060,7 @@
 
 @implementation DBTEAMLOGShowcaseRequestAccessDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRequestAccessDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRequestAccessDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -90068,7 +90068,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRequestAccessDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRequestAccessDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseRequestAccessDetails alloc] initWithEventUuid:eventUuid];
@@ -90098,11 +90098,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRequestAccessTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRequestAccessTypeSerializer deserialize:dict];
 }
 
@@ -90159,7 +90159,7 @@
 
 @implementation DBTEAMLOGShowcaseRequestAccessTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRequestAccessType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRequestAccessType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -90167,7 +90167,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRequestAccessType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRequestAccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseRequestAccessType alloc] initWithDescription_:description_];
@@ -90202,11 +90202,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseResolveCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseResolveCommentDetailsSerializer deserialize:dict];
 }
 
@@ -90272,7 +90272,7 @@
 
 @implementation DBTEAMLOGShowcaseResolveCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseResolveCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseResolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -90283,7 +90283,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseResolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseResolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -90314,11 +90314,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseResolveCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseResolveCommentTypeSerializer deserialize:dict];
 }
 
@@ -90375,7 +90375,7 @@
 
 @implementation DBTEAMLOGShowcaseResolveCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseResolveCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseResolveCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -90383,7 +90383,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseResolveCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseResolveCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseResolveCommentType alloc] initWithDescription_:description_];
@@ -90413,11 +90413,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRestoredDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRestoredDetailsSerializer deserialize:dict];
 }
 
@@ -90474,7 +90474,7 @@
 
 @implementation DBTEAMLOGShowcaseRestoredDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRestoredDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRestoredDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -90482,7 +90482,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRestoredDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRestoredDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseRestoredDetails alloc] initWithEventUuid:eventUuid];
@@ -90512,11 +90512,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseRestoredTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseRestoredTypeSerializer deserialize:dict];
 }
 
@@ -90573,7 +90573,7 @@
 
 @implementation DBTEAMLOGShowcaseRestoredTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseRestoredType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRestoredType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -90581,7 +90581,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseRestoredType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseRestoredType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseRestoredType alloc] initWithDescription_:description_];
@@ -90611,11 +90611,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseTrashedDeprecatedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseTrashedDeprecatedDetailsSerializer deserialize:dict];
 }
 
@@ -90673,7 +90673,7 @@
 
 @implementation DBTEAMLOGShowcaseTrashedDeprecatedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseTrashedDeprecatedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseTrashedDeprecatedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -90681,7 +90681,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseTrashedDeprecatedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseTrashedDeprecatedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseTrashedDeprecatedDetails alloc] initWithEventUuid:eventUuid];
@@ -90711,11 +90711,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseTrashedDeprecatedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseTrashedDeprecatedTypeSerializer deserialize:dict];
 }
 
@@ -90773,7 +90773,7 @@
 
 @implementation DBTEAMLOGShowcaseTrashedDeprecatedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseTrashedDeprecatedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseTrashedDeprecatedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -90781,7 +90781,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseTrashedDeprecatedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseTrashedDeprecatedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseTrashedDeprecatedType alloc] initWithDescription_:description_];
@@ -90811,11 +90811,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseTrashedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseTrashedDetailsSerializer deserialize:dict];
 }
 
@@ -90872,7 +90872,7 @@
 
 @implementation DBTEAMLOGShowcaseTrashedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseTrashedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseTrashedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -90880,7 +90880,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseTrashedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseTrashedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseTrashedDetails alloc] initWithEventUuid:eventUuid];
@@ -90910,11 +90910,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseTrashedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseTrashedTypeSerializer deserialize:dict];
 }
 
@@ -90971,7 +90971,7 @@
 
 @implementation DBTEAMLOGShowcaseTrashedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseTrashedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseTrashedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -90979,7 +90979,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseTrashedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseTrashedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseTrashedType alloc] initWithDescription_:description_];
@@ -91014,11 +91014,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer deserialize:dict];
 }
 
@@ -91084,7 +91084,7 @@
 
 @implementation DBTEAMLOGShowcaseUnresolveCommentDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUnresolveCommentDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseUnresolveCommentDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -91095,7 +91095,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseUnresolveCommentDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseUnresolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
   NSString *commentText = valueDict[@"comment_text"] ?: nil;
 
@@ -91126,11 +91126,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseUnresolveCommentTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseUnresolveCommentTypeSerializer deserialize:dict];
 }
 
@@ -91187,7 +91187,7 @@
 
 @implementation DBTEAMLOGShowcaseUnresolveCommentTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUnresolveCommentType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseUnresolveCommentType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -91195,7 +91195,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseUnresolveCommentType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseUnresolveCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseUnresolveCommentType alloc] initWithDescription_:description_];
@@ -91225,11 +91225,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseUntrashedDeprecatedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseUntrashedDeprecatedDetailsSerializer deserialize:dict];
 }
 
@@ -91287,7 +91287,7 @@
 
 @implementation DBTEAMLOGShowcaseUntrashedDeprecatedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUntrashedDeprecatedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseUntrashedDeprecatedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -91295,7 +91295,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseUntrashedDeprecatedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseUntrashedDeprecatedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseUntrashedDeprecatedDetails alloc] initWithEventUuid:eventUuid];
@@ -91325,11 +91325,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseUntrashedDeprecatedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseUntrashedDeprecatedTypeSerializer deserialize:dict];
 }
 
@@ -91387,7 +91387,7 @@
 
 @implementation DBTEAMLOGShowcaseUntrashedDeprecatedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUntrashedDeprecatedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseUntrashedDeprecatedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -91395,7 +91395,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseUntrashedDeprecatedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseUntrashedDeprecatedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseUntrashedDeprecatedType alloc] initWithDescription_:description_];
@@ -91425,11 +91425,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseUntrashedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseUntrashedDetailsSerializer deserialize:dict];
 }
 
@@ -91486,7 +91486,7 @@
 
 @implementation DBTEAMLOGShowcaseUntrashedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUntrashedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseUntrashedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -91494,7 +91494,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseUntrashedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseUntrashedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseUntrashedDetails alloc] initWithEventUuid:eventUuid];
@@ -91524,11 +91524,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseUntrashedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseUntrashedTypeSerializer deserialize:dict];
 }
 
@@ -91585,7 +91585,7 @@
 
 @implementation DBTEAMLOGShowcaseUntrashedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseUntrashedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseUntrashedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -91593,7 +91593,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseUntrashedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseUntrashedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseUntrashedType alloc] initWithDescription_:description_];
@@ -91623,11 +91623,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseViewDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseViewDetailsSerializer deserialize:dict];
 }
 
@@ -91684,7 +91684,7 @@
 
 @implementation DBTEAMLOGShowcaseViewDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseViewDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseViewDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"event_uuid"] = valueObj.eventUuid;
@@ -91692,7 +91692,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseViewDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseViewDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *eventUuid = valueDict[@"event_uuid"];
 
   return [[DBTEAMLOGShowcaseViewDetails alloc] initWithEventUuid:eventUuid];
@@ -91722,11 +91722,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGShowcaseViewTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGShowcaseViewTypeSerializer deserialize:dict];
 }
 
@@ -91783,7 +91783,7 @@
 
 @implementation DBTEAMLOGShowcaseViewTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGShowcaseViewType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseViewType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -91791,7 +91791,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGShowcaseViewType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGShowcaseViewType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGShowcaseViewType alloc] initWithDescription_:description_];
@@ -91819,11 +91819,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSignInAsSessionEndDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSignInAsSessionEndDetailsSerializer deserialize:dict];
 }
 
@@ -91875,14 +91875,14 @@
 
 @implementation DBTEAMLOGSignInAsSessionEndDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSignInAsSessionEndDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignInAsSessionEndDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSignInAsSessionEndDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSignInAsSessionEndDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSignInAsSessionEndDetails alloc] initDefault];
@@ -91912,11 +91912,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSignInAsSessionEndTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSignInAsSessionEndTypeSerializer deserialize:dict];
 }
 
@@ -91973,7 +91973,7 @@
 
 @implementation DBTEAMLOGSignInAsSessionEndTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSignInAsSessionEndType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignInAsSessionEndType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -91981,7 +91981,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSignInAsSessionEndType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSignInAsSessionEndType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSignInAsSessionEndType alloc] initWithDescription_:description_];
@@ -92009,11 +92009,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSignInAsSessionStartDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSignInAsSessionStartDetailsSerializer deserialize:dict];
 }
 
@@ -92065,14 +92065,14 @@
 
 @implementation DBTEAMLOGSignInAsSessionStartDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSignInAsSessionStartDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignInAsSessionStartDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSignInAsSessionStartDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSignInAsSessionStartDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSignInAsSessionStartDetails alloc] initDefault];
@@ -92102,11 +92102,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSignInAsSessionStartTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSignInAsSessionStartTypeSerializer deserialize:dict];
 }
 
@@ -92163,7 +92163,7 @@
 
 @implementation DBTEAMLOGSignInAsSessionStartTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSignInAsSessionStartType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignInAsSessionStartType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -92171,7 +92171,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSignInAsSessionStartType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSignInAsSessionStartType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSignInAsSessionStartType alloc] initWithDescription_:description_];
@@ -92207,11 +92207,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -92280,7 +92280,7 @@
 
 @implementation DBTEAMLOGSmartSyncChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -92293,7 +92293,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESSmartSyncPolicy *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMPOLICIESSmartSyncPolicySerializer deserialize:valueDict[@"new_value"]] : nil;
   DBTEAMPOLICIESSmartSyncPolicy *previousValue =
@@ -92327,11 +92327,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -92388,7 +92388,7 @@
 
 @implementation DBTEAMLOGSmartSyncChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -92396,7 +92396,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSmartSyncChangePolicyType alloc] initWithDescription_:description_];
@@ -92424,11 +92424,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetailsSerializer deserialize:dict];
 }
 
@@ -92481,14 +92481,14 @@
 
 @implementation DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails alloc] initDefault];
@@ -92518,11 +92518,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncCreateAdminPrivilegeReportTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncCreateAdminPrivilegeReportTypeSerializer deserialize:dict];
 }
 
@@ -92580,7 +92580,7 @@
 
 @implementation DBTEAMLOGSmartSyncCreateAdminPrivilegeReportTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncCreateAdminPrivilegeReportType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncCreateAdminPrivilegeReportType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -92588,7 +92588,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncCreateAdminPrivilegeReportType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncCreateAdminPrivilegeReportType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSmartSyncCreateAdminPrivilegeReportType alloc] initWithDescription_:description_];
@@ -92622,11 +92622,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncNotOptOutDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncNotOptOutDetailsSerializer deserialize:dict];
 }
 
@@ -92687,7 +92687,7 @@
 
 @implementation DBTEAMLOGSmartSyncNotOptOutDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncNotOptOutDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncNotOptOutDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = [DBTEAMLOGSmartSyncOptOutPolicySerializer serialize:valueObj.previousValue];
@@ -92696,7 +92696,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncNotOptOutDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncNotOptOutDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSmartSyncOptOutPolicy *previousValue =
       [DBTEAMLOGSmartSyncOptOutPolicySerializer deserialize:valueDict[@"previous_value"]];
   DBTEAMLOGSmartSyncOptOutPolicy *dNewValue =
@@ -92729,11 +92729,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncNotOptOutTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncNotOptOutTypeSerializer deserialize:dict];
 }
 
@@ -92790,7 +92790,7 @@
 
 @implementation DBTEAMLOGSmartSyncNotOptOutTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncNotOptOutType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncNotOptOutType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -92798,7 +92798,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncNotOptOutType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncNotOptOutType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSmartSyncNotOptOutType alloc] initWithDescription_:description_];
@@ -92832,11 +92832,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncOptOutDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncOptOutDetailsSerializer deserialize:dict];
 }
 
@@ -92897,7 +92897,7 @@
 
 @implementation DBTEAMLOGSmartSyncOptOutDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncOptOutDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncOptOutDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = [DBTEAMLOGSmartSyncOptOutPolicySerializer serialize:valueObj.previousValue];
@@ -92906,7 +92906,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncOptOutDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncOptOutDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGSmartSyncOptOutPolicy *previousValue =
       [DBTEAMLOGSmartSyncOptOutPolicySerializer deserialize:valueDict[@"previous_value"]];
   DBTEAMLOGSmartSyncOptOutPolicy *dNewValue =
@@ -92982,11 +92982,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncOptOutPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncOptOutPolicySerializer deserialize:dict];
 }
 
@@ -93058,7 +93058,7 @@
 
 @implementation DBTEAMLOGSmartSyncOptOutPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncOptOutPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncOptOutPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDefault_]) {
@@ -93074,7 +93074,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncOptOutPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncOptOutPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"default"]) {
@@ -93112,11 +93112,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSmartSyncOptOutTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSmartSyncOptOutTypeSerializer deserialize:dict];
 }
 
@@ -93173,7 +93173,7 @@
 
 @implementation DBTEAMLOGSmartSyncOptOutTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncOptOutType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncOptOutType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -93181,7 +93181,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSmartSyncOptOutType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSmartSyncOptOutType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSmartSyncOptOutType alloc] initWithDescription_:description_];
@@ -93268,11 +93268,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSpaceCapsTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSpaceCapsTypeSerializer deserialize:dict];
 }
 
@@ -93348,7 +93348,7 @@
 
 @implementation DBTEAMLOGSpaceCapsTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSpaceCapsType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSpaceCapsType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isHard]) {
@@ -93366,7 +93366,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSpaceCapsType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSpaceCapsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"hard"]) {
@@ -93463,11 +93463,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSpaceLimitsStatusSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSpaceLimitsStatusSerializer deserialize:dict];
 }
 
@@ -93543,7 +93543,7 @@
 
 @implementation DBTEAMLOGSpaceLimitsStatusSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSpaceLimitsStatus *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSpaceLimitsStatus *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isWithinQuota]) {
@@ -93561,7 +93561,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSpaceLimitsStatus *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSpaceLimitsStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"within_quota"]) {
@@ -93602,11 +93602,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoAddCertDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoAddCertDetailsSerializer deserialize:dict];
 }
 
@@ -93663,7 +93663,7 @@
 
 @implementation DBTEAMLOGSsoAddCertDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoAddCertDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddCertDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"certificate_details"] = [DBTEAMLOGCertificateSerializer serialize:valueObj.certificateDetails];
@@ -93671,7 +93671,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoAddCertDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoAddCertDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGCertificate *certificateDetails =
       [DBTEAMLOGCertificateSerializer deserialize:valueDict[@"certificate_details"]];
 
@@ -93702,11 +93702,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoAddCertTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoAddCertTypeSerializer deserialize:dict];
 }
 
@@ -93763,7 +93763,7 @@
 
 @implementation DBTEAMLOGSsoAddCertTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoAddCertType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddCertType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -93771,7 +93771,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoAddCertType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoAddCertType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoAddCertType alloc] initWithDescription_:description_];
@@ -93801,11 +93801,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoAddLoginUrlDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoAddLoginUrlDetailsSerializer deserialize:dict];
 }
 
@@ -93862,7 +93862,7 @@
 
 @implementation DBTEAMLOGSsoAddLoginUrlDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoAddLoginUrlDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddLoginUrlDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = valueObj.dNewValue;
@@ -93870,7 +93870,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoAddLoginUrlDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoAddLoginUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *dNewValue = valueDict[@"new_value"];
 
   return [[DBTEAMLOGSsoAddLoginUrlDetails alloc] initWithDNewValue:dNewValue];
@@ -93900,11 +93900,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoAddLoginUrlTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoAddLoginUrlTypeSerializer deserialize:dict];
 }
 
@@ -93961,7 +93961,7 @@
 
 @implementation DBTEAMLOGSsoAddLoginUrlTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoAddLoginUrlType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddLoginUrlType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -93969,7 +93969,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoAddLoginUrlType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoAddLoginUrlType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoAddLoginUrlType alloc] initWithDescription_:description_];
@@ -94002,11 +94002,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoAddLogoutUrlDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoAddLogoutUrlDetailsSerializer deserialize:dict];
 }
 
@@ -94067,7 +94067,7 @@
 
 @implementation DBTEAMLOGSsoAddLogoutUrlDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoAddLogoutUrlDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddLogoutUrlDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -94077,7 +94077,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoAddLogoutUrlDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoAddLogoutUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *dNewValue = valueDict[@"new_value"] ?: nil;
 
   return [[DBTEAMLOGSsoAddLogoutUrlDetails alloc] initWithDNewValue:dNewValue];
@@ -94107,11 +94107,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoAddLogoutUrlTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoAddLogoutUrlTypeSerializer deserialize:dict];
 }
 
@@ -94168,7 +94168,7 @@
 
 @implementation DBTEAMLOGSsoAddLogoutUrlTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoAddLogoutUrlType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddLogoutUrlType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -94176,7 +94176,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoAddLogoutUrlType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoAddLogoutUrlType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoAddLogoutUrlType alloc] initWithDescription_:description_];
@@ -94213,11 +94213,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeCertDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeCertDetailsSerializer deserialize:dict];
 }
 
@@ -94282,7 +94282,7 @@
 
 @implementation DBTEAMLOGSsoChangeCertDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeCertDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeCertDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_certificate_details"] = [DBTEAMLOGCertificateSerializer serialize:valueObj.dNewCertificateDetails];
@@ -94294,7 +94294,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeCertDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeCertDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGCertificate *dNewCertificateDetails =
       [DBTEAMLOGCertificateSerializer deserialize:valueDict[@"new_certificate_details"]];
   DBTEAMLOGCertificate *previousCertificateDetails =
@@ -94330,11 +94330,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeCertTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeCertTypeSerializer deserialize:dict];
 }
 
@@ -94391,7 +94391,7 @@
 
 @implementation DBTEAMLOGSsoChangeCertTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeCertType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeCertType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -94399,7 +94399,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeCertType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeCertType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoChangeCertType alloc] initWithDescription_:description_];
@@ -94431,11 +94431,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeLoginUrlDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeLoginUrlDetailsSerializer deserialize:dict];
 }
 
@@ -94496,7 +94496,7 @@
 
 @implementation DBTEAMLOGSsoChangeLoginUrlDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeLoginUrlDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeLoginUrlDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = valueObj.previousValue;
@@ -94505,7 +94505,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeLoginUrlDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeLoginUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousValue = valueDict[@"previous_value"];
   NSString *dNewValue = valueDict[@"new_value"];
 
@@ -94536,11 +94536,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeLoginUrlTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeLoginUrlTypeSerializer deserialize:dict];
 }
 
@@ -94597,7 +94597,7 @@
 
 @implementation DBTEAMLOGSsoChangeLoginUrlTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeLoginUrlType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeLoginUrlType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -94605,7 +94605,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeLoginUrlType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeLoginUrlType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoChangeLoginUrlType alloc] initWithDescription_:description_];
@@ -94639,11 +94639,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeLogoutUrlDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeLogoutUrlDetailsSerializer deserialize:dict];
 }
 
@@ -94712,7 +94712,7 @@
 
 @implementation DBTEAMLOGSsoChangeLogoutUrlDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeLogoutUrlDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeLogoutUrlDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.previousValue) {
@@ -94725,7 +94725,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeLogoutUrlDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeLogoutUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousValue = valueDict[@"previous_value"] ?: nil;
   NSString *dNewValue = valueDict[@"new_value"] ?: nil;
 
@@ -94756,11 +94756,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeLogoutUrlTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeLogoutUrlTypeSerializer deserialize:dict];
 }
 
@@ -94817,7 +94817,7 @@
 
 @implementation DBTEAMLOGSsoChangeLogoutUrlTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeLogoutUrlType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeLogoutUrlType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -94825,7 +94825,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeLogoutUrlType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeLogoutUrlType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoChangeLogoutUrlType alloc] initWithDescription_:description_];
@@ -94862,11 +94862,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -94931,7 +94931,7 @@
 
 @implementation DBTEAMLOGSsoChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMPOLICIESSsoPolicySerializer serialize:valueObj.dNewValue];
@@ -94942,7 +94942,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESSsoPolicy *dNewValue = [DBTEAMPOLICIESSsoPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMPOLICIESSsoPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMPOLICIESSsoPolicySerializer deserialize:valueDict[@"previous_value"]] : nil;
@@ -94974,11 +94974,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -95035,7 +95035,7 @@
 
 @implementation DBTEAMLOGSsoChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -95043,7 +95043,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoChangePolicyType alloc] initWithDescription_:description_];
@@ -95075,11 +95075,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeSamlIdentityModeDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeSamlIdentityModeDetailsSerializer deserialize:dict];
 }
 
@@ -95141,7 +95141,7 @@
 
 @implementation DBTEAMLOGSsoChangeSamlIdentityModeDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeSamlIdentityModeDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeSamlIdentityModeDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = valueObj.previousValue;
@@ -95150,7 +95150,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeSamlIdentityModeDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeSamlIdentityModeDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *previousValue = valueDict[@"previous_value"];
   NSNumber *dNewValue = valueDict[@"new_value"];
 
@@ -95181,11 +95181,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoChangeSamlIdentityModeTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoChangeSamlIdentityModeTypeSerializer deserialize:dict];
 }
 
@@ -95243,7 +95243,7 @@
 
 @implementation DBTEAMLOGSsoChangeSamlIdentityModeTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeSamlIdentityModeType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeSamlIdentityModeType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -95251,7 +95251,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoChangeSamlIdentityModeType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoChangeSamlIdentityModeType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoChangeSamlIdentityModeType alloc] initWithDescription_:description_];
@@ -95282,11 +95282,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoErrorDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoErrorDetailsSerializer deserialize:dict];
 }
 
@@ -95343,7 +95343,7 @@
 
 @implementation DBTEAMLOGSsoErrorDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoErrorDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoErrorDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"error_details"] = [DBTEAMLOGFailureDetailsLogInfoSerializer serialize:valueObj.errorDetails];
@@ -95351,7 +95351,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoErrorDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoErrorDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGFailureDetailsLogInfo *errorDetails =
       [DBTEAMLOGFailureDetailsLogInfoSerializer deserialize:valueDict[@"error_details"]];
 
@@ -95382,11 +95382,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoErrorTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoErrorTypeSerializer deserialize:dict];
 }
 
@@ -95443,7 +95443,7 @@
 
 @implementation DBTEAMLOGSsoErrorTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoErrorType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoErrorType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -95451,7 +95451,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoErrorType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoErrorType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoErrorType alloc] initWithDescription_:description_];
@@ -95479,11 +95479,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoRemoveCertDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoRemoveCertDetailsSerializer deserialize:dict];
 }
 
@@ -95535,14 +95535,14 @@
 
 @implementation DBTEAMLOGSsoRemoveCertDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoRemoveCertDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoRemoveCertDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoRemoveCertDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoRemoveCertDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGSsoRemoveCertDetails alloc] initDefault];
@@ -95572,11 +95572,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoRemoveCertTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoRemoveCertTypeSerializer deserialize:dict];
 }
 
@@ -95633,7 +95633,7 @@
 
 @implementation DBTEAMLOGSsoRemoveCertTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoRemoveCertType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoRemoveCertType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -95641,7 +95641,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoRemoveCertType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoRemoveCertType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoRemoveCertType alloc] initWithDescription_:description_];
@@ -95671,11 +95671,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoRemoveLoginUrlDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoRemoveLoginUrlDetailsSerializer deserialize:dict];
 }
 
@@ -95732,7 +95732,7 @@
 
 @implementation DBTEAMLOGSsoRemoveLoginUrlDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoRemoveLoginUrlDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoRemoveLoginUrlDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = valueObj.previousValue;
@@ -95740,7 +95740,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoRemoveLoginUrlDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoRemoveLoginUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousValue = valueDict[@"previous_value"];
 
   return [[DBTEAMLOGSsoRemoveLoginUrlDetails alloc] initWithPreviousValue:previousValue];
@@ -95770,11 +95770,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoRemoveLoginUrlTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoRemoveLoginUrlTypeSerializer deserialize:dict];
 }
 
@@ -95831,7 +95831,7 @@
 
 @implementation DBTEAMLOGSsoRemoveLoginUrlTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoRemoveLoginUrlType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoRemoveLoginUrlType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -95839,7 +95839,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoRemoveLoginUrlType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoRemoveLoginUrlType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoRemoveLoginUrlType alloc] initWithDescription_:description_];
@@ -95869,11 +95869,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoRemoveLogoutUrlDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoRemoveLogoutUrlDetailsSerializer deserialize:dict];
 }
 
@@ -95930,7 +95930,7 @@
 
 @implementation DBTEAMLOGSsoRemoveLogoutUrlDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoRemoveLogoutUrlDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoRemoveLogoutUrlDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = valueObj.previousValue;
@@ -95938,7 +95938,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoRemoveLogoutUrlDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoRemoveLogoutUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousValue = valueDict[@"previous_value"];
 
   return [[DBTEAMLOGSsoRemoveLogoutUrlDetails alloc] initWithPreviousValue:previousValue];
@@ -95968,11 +95968,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGSsoRemoveLogoutUrlTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGSsoRemoveLogoutUrlTypeSerializer deserialize:dict];
 }
 
@@ -96029,7 +96029,7 @@
 
 @implementation DBTEAMLOGSsoRemoveLogoutUrlTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoRemoveLogoutUrlType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoRemoveLogoutUrlType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -96037,7 +96037,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGSsoRemoveLogoutUrlType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGSsoRemoveLogoutUrlType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSsoRemoveLogoutUrlType alloc] initWithDescription_:description_];
@@ -96069,11 +96069,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamActivityCreateReportDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamActivityCreateReportDetailsSerializer deserialize:dict];
 }
 
@@ -96135,7 +96135,7 @@
 
 @implementation DBTEAMLOGTeamActivityCreateReportDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamActivityCreateReportDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamActivityCreateReportDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"start_date"] = [DBNSDateSerializer serialize:valueObj.startDate dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -96144,7 +96144,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamActivityCreateReportDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamActivityCreateReportDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *startDate = [DBNSDateSerializer deserialize:valueDict[@"start_date"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   NSDate *endDate = [DBNSDateSerializer deserialize:valueDict[@"end_date"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
 
@@ -96175,11 +96175,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamActivityCreateReportTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamActivityCreateReportTypeSerializer deserialize:dict];
 }
 
@@ -96236,7 +96236,7 @@
 
 @implementation DBTEAMLOGTeamActivityCreateReportTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamActivityCreateReportType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamActivityCreateReportType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -96244,7 +96244,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamActivityCreateReportType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamActivityCreateReportType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamActivityCreateReportType alloc] initWithDescription_:description_];
@@ -96327,11 +96327,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamEventSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamEventSerializer deserialize:dict];
 }
 
@@ -96448,7 +96448,7 @@
 
 @implementation DBTEAMLOGTeamEventSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamEvent *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamEvent *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"timestamp"] = [DBNSDateSerializer serialize:valueObj.timestamp dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -96483,7 +96483,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamEvent *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamEvent *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *timestamp = [DBNSDateSerializer deserialize:valueDict[@"timestamp"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   DBTEAMLOGEventCategory *eventCategory = [DBTEAMLOGEventCategorySerializer deserialize:valueDict[@"event_category"]];
   DBTEAMLOGEventType *eventType = [DBTEAMLOGEventTypeSerializer deserialize:valueDict[@"event_type"]];
@@ -96552,11 +96552,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderChangeStatusDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderChangeStatusDetailsSerializer deserialize:dict];
 }
 
@@ -96622,7 +96622,7 @@
 
 @implementation DBTEAMLOGTeamFolderChangeStatusDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderChangeStatusDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderChangeStatusDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMTeamFolderStatusSerializer serialize:valueObj.dNewValue];
@@ -96633,7 +96633,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderChangeStatusDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMTeamFolderStatus *dNewValue = [DBTEAMTeamFolderStatusSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMTeamFolderStatus *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMTeamFolderStatusSerializer deserialize:valueDict[@"previous_value"]] : nil;
@@ -96665,11 +96665,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderChangeStatusTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderChangeStatusTypeSerializer deserialize:dict];
 }
 
@@ -96726,7 +96726,7 @@
 
 @implementation DBTEAMLOGTeamFolderChangeStatusTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderChangeStatusType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderChangeStatusType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -96734,7 +96734,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderChangeStatusType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderChangeStatusType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamFolderChangeStatusType alloc] initWithDescription_:description_];
@@ -96762,11 +96762,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderCreateDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderCreateDetailsSerializer deserialize:dict];
 }
 
@@ -96818,14 +96818,14 @@
 
 @implementation DBTEAMLOGTeamFolderCreateDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderCreateDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderCreateDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderCreateDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTeamFolderCreateDetails alloc] initDefault];
@@ -96855,11 +96855,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderCreateTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderCreateTypeSerializer deserialize:dict];
 }
 
@@ -96916,7 +96916,7 @@
 
 @implementation DBTEAMLOGTeamFolderCreateTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderCreateType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderCreateType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -96924,7 +96924,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderCreateType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderCreateType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamFolderCreateType alloc] initWithDescription_:description_];
@@ -96954,11 +96954,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderDowngradeDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderDowngradeDetailsSerializer deserialize:dict];
 }
 
@@ -97015,7 +97015,7 @@
 
 @implementation DBTEAMLOGTeamFolderDowngradeDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderDowngradeDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderDowngradeDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"target_asset_index"] = valueObj.targetAssetIndex;
@@ -97023,7 +97023,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderDowngradeDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderDowngradeDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *targetAssetIndex = valueDict[@"target_asset_index"];
 
   return [[DBTEAMLOGTeamFolderDowngradeDetails alloc] initWithTargetAssetIndex:targetAssetIndex];
@@ -97053,11 +97053,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderDowngradeTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderDowngradeTypeSerializer deserialize:dict];
 }
 
@@ -97114,7 +97114,7 @@
 
 @implementation DBTEAMLOGTeamFolderDowngradeTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderDowngradeType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderDowngradeType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -97122,7 +97122,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderDowngradeType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderDowngradeType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamFolderDowngradeType alloc] initWithDescription_:description_];
@@ -97150,11 +97150,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderPermanentlyDeleteDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderPermanentlyDeleteDetailsSerializer deserialize:dict];
 }
 
@@ -97207,14 +97207,14 @@
 
 @implementation DBTEAMLOGTeamFolderPermanentlyDeleteDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderPermanentlyDeleteDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderPermanentlyDeleteDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderPermanentlyDeleteDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderPermanentlyDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTeamFolderPermanentlyDeleteDetails alloc] initDefault];
@@ -97244,11 +97244,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderPermanentlyDeleteTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderPermanentlyDeleteTypeSerializer deserialize:dict];
 }
 
@@ -97306,7 +97306,7 @@
 
 @implementation DBTEAMLOGTeamFolderPermanentlyDeleteTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderPermanentlyDeleteType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderPermanentlyDeleteType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -97314,7 +97314,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderPermanentlyDeleteType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderPermanentlyDeleteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamFolderPermanentlyDeleteType alloc] initWithDescription_:description_];
@@ -97346,11 +97346,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderRenameDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderRenameDetailsSerializer deserialize:dict];
 }
 
@@ -97411,7 +97411,7 @@
 
 @implementation DBTEAMLOGTeamFolderRenameDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderRenameDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderRenameDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_folder_name"] = valueObj.previousFolderName;
@@ -97420,7 +97420,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderRenameDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderRenameDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousFolderName = valueDict[@"previous_folder_name"];
   NSString *dNewFolderName = valueDict[@"new_folder_name"];
 
@@ -97452,11 +97452,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamFolderRenameTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamFolderRenameTypeSerializer deserialize:dict];
 }
 
@@ -97513,7 +97513,7 @@
 
 @implementation DBTEAMLOGTeamFolderRenameTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderRenameType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderRenameType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -97521,7 +97521,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamFolderRenameType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamFolderRenameType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamFolderRenameType alloc] initWithDescription_:description_];
@@ -97554,11 +97554,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamLinkedAppLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamLinkedAppLogInfoSerializer deserialize:dict];
 }
 
@@ -97627,7 +97627,7 @@
 
 @implementation DBTEAMLOGTeamLinkedAppLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamLinkedAppLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamLinkedAppLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.appId) {
@@ -97640,7 +97640,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamLinkedAppLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamLinkedAppLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *appId = valueDict[@"app_id"] ?: nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
 
@@ -97686,11 +97686,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamMemberLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamMemberLogInfoSerializer deserialize:dict];
 }
 
@@ -97783,7 +97783,7 @@
 
 @implementation DBTEAMLOGTeamMemberLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamMemberLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMemberLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.accountId) {
@@ -97805,7 +97805,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamMemberLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamMemberLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *accountId = valueDict[@"account_id"] ?: nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
   NSString *email = valueDict[@"email"] ?: nil;
@@ -97886,11 +97886,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamMembershipTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamMembershipTypeSerializer deserialize:dict];
 }
 
@@ -97962,7 +97962,7 @@
 
 @implementation DBTEAMLOGTeamMembershipTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamMembershipType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMembershipType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isFree]) {
@@ -97978,7 +97978,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamMembershipType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamMembershipType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"free"]) {
@@ -98016,11 +98016,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamMergeFromDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamMergeFromDetailsSerializer deserialize:dict];
 }
 
@@ -98077,7 +98077,7 @@
 
 @implementation DBTEAMLOGTeamMergeFromDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamMergeFromDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeFromDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"team_name"] = valueObj.teamName;
@@ -98085,7 +98085,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamMergeFromDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamMergeFromDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *teamName = valueDict[@"team_name"];
 
   return [[DBTEAMLOGTeamMergeFromDetails alloc] initWithTeamName:teamName];
@@ -98115,11 +98115,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamMergeFromTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamMergeFromTypeSerializer deserialize:dict];
 }
 
@@ -98176,7 +98176,7 @@
 
 @implementation DBTEAMLOGTeamMergeFromTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamMergeFromType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeFromType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -98184,7 +98184,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamMergeFromType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamMergeFromType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamMergeFromType alloc] initWithDescription_:description_];
@@ -98214,11 +98214,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamMergeToDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamMergeToDetailsSerializer deserialize:dict];
 }
 
@@ -98275,7 +98275,7 @@
 
 @implementation DBTEAMLOGTeamMergeToDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamMergeToDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeToDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"team_name"] = valueObj.teamName;
@@ -98283,7 +98283,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamMergeToDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamMergeToDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *teamName = valueDict[@"team_name"];
 
   return [[DBTEAMLOGTeamMergeToDetails alloc] initWithTeamName:teamName];
@@ -98313,11 +98313,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamMergeToTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamMergeToTypeSerializer deserialize:dict];
 }
 
@@ -98374,7 +98374,7 @@
 
 @implementation DBTEAMLOGTeamMergeToTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamMergeToType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeToType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -98382,7 +98382,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamMergeToType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamMergeToType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamMergeToType alloc] initWithDescription_:description_];
@@ -98414,11 +98414,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamNameSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamNameSerializer deserialize:dict];
 }
 
@@ -98479,7 +98479,7 @@
 
 @implementation DBTEAMLOGTeamNameSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamName *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamName *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"team_display_name"] = valueObj.teamDisplayName;
@@ -98488,7 +98488,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamName *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamName *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *teamDisplayName = valueDict[@"team_display_name"];
   NSString *teamLegalName = valueDict[@"team_legal_name"];
 
@@ -98517,11 +98517,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileAddLogoDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileAddLogoDetailsSerializer deserialize:dict];
 }
 
@@ -98573,14 +98573,14 @@
 
 @implementation DBTEAMLOGTeamProfileAddLogoDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileAddLogoDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileAddLogoDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileAddLogoDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileAddLogoDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTeamProfileAddLogoDetails alloc] initDefault];
@@ -98610,11 +98610,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileAddLogoTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileAddLogoTypeSerializer deserialize:dict];
 }
 
@@ -98671,7 +98671,7 @@
 
 @implementation DBTEAMLOGTeamProfileAddLogoTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileAddLogoType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileAddLogoType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -98679,7 +98679,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileAddLogoType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileAddLogoType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamProfileAddLogoType alloc] initWithDescription_:description_];
@@ -98712,11 +98712,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer deserialize:dict];
 }
 
@@ -98778,7 +98778,7 @@
 
 @implementation DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = valueObj.dNewValue;
@@ -98787,7 +98787,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *dNewValue = valueDict[@"new_value"];
   NSString *previousValue = valueDict[@"previous_value"];
 
@@ -98819,11 +98819,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileChangeDefaultLanguageTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileChangeDefaultLanguageTypeSerializer deserialize:dict];
 }
 
@@ -98881,7 +98881,7 @@
 
 @implementation DBTEAMLOGTeamProfileChangeDefaultLanguageTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeDefaultLanguageType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeDefaultLanguageType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -98889,7 +98889,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileChangeDefaultLanguageType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileChangeDefaultLanguageType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamProfileChangeDefaultLanguageType alloc] initWithDescription_:description_];
@@ -98917,11 +98917,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileChangeLogoDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileChangeLogoDetailsSerializer deserialize:dict];
 }
 
@@ -98973,14 +98973,14 @@
 
 @implementation DBTEAMLOGTeamProfileChangeLogoDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeLogoDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeLogoDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileChangeLogoDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileChangeLogoDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTeamProfileChangeLogoDetails alloc] initDefault];
@@ -99010,11 +99010,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileChangeLogoTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileChangeLogoTypeSerializer deserialize:dict];
 }
 
@@ -99071,7 +99071,7 @@
 
 @implementation DBTEAMLOGTeamProfileChangeLogoTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeLogoType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeLogoType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -99079,7 +99079,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileChangeLogoType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileChangeLogoType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamProfileChangeLogoType alloc] initWithDescription_:description_];
@@ -99115,11 +99115,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileChangeNameDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileChangeNameDetailsSerializer deserialize:dict];
 }
 
@@ -99184,7 +99184,7 @@
 
 @implementation DBTEAMLOGTeamProfileChangeNameDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeNameDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeNameDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGTeamNameSerializer serialize:valueObj.dNewValue];
@@ -99195,7 +99195,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileChangeNameDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileChangeNameDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGTeamName *dNewValue = [DBTEAMLOGTeamNameSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGTeamName *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGTeamNameSerializer deserialize:valueDict[@"previous_value"]] : nil;
@@ -99227,11 +99227,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileChangeNameTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileChangeNameTypeSerializer deserialize:dict];
 }
 
@@ -99288,7 +99288,7 @@
 
 @implementation DBTEAMLOGTeamProfileChangeNameTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeNameType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeNameType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -99296,7 +99296,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileChangeNameType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileChangeNameType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamProfileChangeNameType alloc] initWithDescription_:description_];
@@ -99324,11 +99324,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileRemoveLogoDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileRemoveLogoDetailsSerializer deserialize:dict];
 }
 
@@ -99380,14 +99380,14 @@
 
 @implementation DBTEAMLOGTeamProfileRemoveLogoDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileRemoveLogoDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileRemoveLogoDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileRemoveLogoDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileRemoveLogoDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTeamProfileRemoveLogoDetails alloc] initDefault];
@@ -99417,11 +99417,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamProfileRemoveLogoTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamProfileRemoveLogoTypeSerializer deserialize:dict];
 }
 
@@ -99478,7 +99478,7 @@
 
 @implementation DBTEAMLOGTeamProfileRemoveLogoTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileRemoveLogoType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileRemoveLogoType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -99486,7 +99486,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamProfileRemoveLogoType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamProfileRemoveLogoType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamProfileRemoveLogoType alloc] initWithDescription_:description_];
@@ -99519,11 +99519,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer deserialize:dict];
 }
 
@@ -99585,7 +99585,7 @@
 
 @implementation DBTEAMLOGTeamSelectiveSyncSettingsChangedDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"previous_value"] = [DBFILESSyncSettingSerializer serialize:valueObj.previousValue];
@@ -99594,7 +99594,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBFILESSyncSetting *previousValue = [DBFILESSyncSettingSerializer deserialize:valueDict[@"previous_value"]];
   DBFILESSyncSetting *dNewValue = [DBFILESSyncSettingSerializer deserialize:valueDict[@"new_value"]];
 
@@ -99626,11 +99626,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer deserialize:dict];
 }
 
@@ -99688,7 +99688,7 @@
 
 @implementation DBTEAMLOGTeamSelectiveSyncSettingsChangedTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -99696,7 +99696,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTeamSelectiveSyncSettingsChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamSelectiveSyncSettingsChangedType alloc] initWithDescription_:description_];
@@ -99724,11 +99724,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaAddBackupPhoneDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaAddBackupPhoneDetailsSerializer deserialize:dict];
 }
 
@@ -99780,14 +99780,14 @@
 
 @implementation DBTEAMLOGTfaAddBackupPhoneDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaAddBackupPhoneDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaAddBackupPhoneDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaAddBackupPhoneDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaAddBackupPhoneDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTfaAddBackupPhoneDetails alloc] initDefault];
@@ -99817,11 +99817,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaAddBackupPhoneTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaAddBackupPhoneTypeSerializer deserialize:dict];
 }
 
@@ -99878,7 +99878,7 @@
 
 @implementation DBTEAMLOGTfaAddBackupPhoneTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaAddBackupPhoneType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaAddBackupPhoneType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -99886,7 +99886,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaAddBackupPhoneType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaAddBackupPhoneType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaAddBackupPhoneType alloc] initWithDescription_:description_];
@@ -99914,11 +99914,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaAddSecurityKeyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaAddSecurityKeyDetailsSerializer deserialize:dict];
 }
 
@@ -99970,14 +99970,14 @@
 
 @implementation DBTEAMLOGTfaAddSecurityKeyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaAddSecurityKeyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaAddSecurityKeyDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaAddSecurityKeyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaAddSecurityKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTfaAddSecurityKeyDetails alloc] initDefault];
@@ -100007,11 +100007,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaAddSecurityKeyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaAddSecurityKeyTypeSerializer deserialize:dict];
 }
 
@@ -100068,7 +100068,7 @@
 
 @implementation DBTEAMLOGTfaAddSecurityKeyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaAddSecurityKeyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaAddSecurityKeyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -100076,7 +100076,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaAddSecurityKeyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaAddSecurityKeyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaAddSecurityKeyType alloc] initWithDescription_:description_];
@@ -100104,11 +100104,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaChangeBackupPhoneDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaChangeBackupPhoneDetailsSerializer deserialize:dict];
 }
 
@@ -100160,14 +100160,14 @@
 
 @implementation DBTEAMLOGTfaChangeBackupPhoneDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaChangeBackupPhoneDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangeBackupPhoneDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaChangeBackupPhoneDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaChangeBackupPhoneDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTfaChangeBackupPhoneDetails alloc] initDefault];
@@ -100197,11 +100197,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaChangeBackupPhoneTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaChangeBackupPhoneTypeSerializer deserialize:dict];
 }
 
@@ -100258,7 +100258,7 @@
 
 @implementation DBTEAMLOGTfaChangeBackupPhoneTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaChangeBackupPhoneType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangeBackupPhoneType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -100266,7 +100266,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaChangeBackupPhoneType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaChangeBackupPhoneType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaChangeBackupPhoneType alloc] initWithDescription_:description_];
@@ -100303,11 +100303,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -100372,7 +100372,7 @@
 
 @implementation DBTEAMLOGTfaChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMPOLICIESTwoStepVerificationPolicySerializer serialize:valueObj.dNewValue];
@@ -100383,7 +100383,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESTwoStepVerificationPolicy *dNewValue =
       [DBTEAMPOLICIESTwoStepVerificationPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMPOLICIESTwoStepVerificationPolicy *previousValue =
@@ -100418,11 +100418,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -100479,7 +100479,7 @@
 
 @implementation DBTEAMLOGTfaChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -100487,7 +100487,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaChangePolicyType alloc] initWithDescription_:description_];
@@ -100526,11 +100526,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaChangeStatusDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaChangeStatusDetailsSerializer deserialize:dict];
 }
 
@@ -100603,7 +100603,7 @@
 
 @implementation DBTEAMLOGTfaChangeStatusDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaChangeStatusDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangeStatusDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGTfaConfigurationSerializer serialize:valueObj.dNewValue];
@@ -100617,7 +100617,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaChangeStatusDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGTfaConfiguration *dNewValue = [DBTEAMLOGTfaConfigurationSerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGTfaConfiguration *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGTfaConfigurationSerializer deserialize:valueDict[@"previous_value"]]
@@ -100653,11 +100653,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaChangeStatusTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaChangeStatusTypeSerializer deserialize:dict];
 }
 
@@ -100714,7 +100714,7 @@
 
 @implementation DBTEAMLOGTfaChangeStatusTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaChangeStatusType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangeStatusType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -100722,7 +100722,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaChangeStatusType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaChangeStatusType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaChangeStatusType alloc] initWithDescription_:description_];
@@ -100823,11 +100823,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaConfigurationSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaConfigurationSerializer deserialize:dict];
 }
 
@@ -100907,7 +100907,7 @@
 
 @implementation DBTEAMLOGTfaConfigurationSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaConfiguration *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaConfiguration *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -100927,7 +100927,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaConfiguration *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaConfiguration *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -100967,11 +100967,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaRemoveBackupPhoneDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaRemoveBackupPhoneDetailsSerializer deserialize:dict];
 }
 
@@ -101023,14 +101023,14 @@
 
 @implementation DBTEAMLOGTfaRemoveBackupPhoneDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaRemoveBackupPhoneDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaRemoveBackupPhoneDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaRemoveBackupPhoneDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaRemoveBackupPhoneDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTfaRemoveBackupPhoneDetails alloc] initDefault];
@@ -101060,11 +101060,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaRemoveBackupPhoneTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaRemoveBackupPhoneTypeSerializer deserialize:dict];
 }
 
@@ -101121,7 +101121,7 @@
 
 @implementation DBTEAMLOGTfaRemoveBackupPhoneTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaRemoveBackupPhoneType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaRemoveBackupPhoneType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -101129,7 +101129,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaRemoveBackupPhoneType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaRemoveBackupPhoneType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaRemoveBackupPhoneType alloc] initWithDescription_:description_];
@@ -101157,11 +101157,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaRemoveSecurityKeyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaRemoveSecurityKeyDetailsSerializer deserialize:dict];
 }
 
@@ -101213,14 +101213,14 @@
 
 @implementation DBTEAMLOGTfaRemoveSecurityKeyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaRemoveSecurityKeyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaRemoveSecurityKeyDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaRemoveSecurityKeyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaRemoveSecurityKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTfaRemoveSecurityKeyDetails alloc] initDefault];
@@ -101250,11 +101250,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaRemoveSecurityKeyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaRemoveSecurityKeyTypeSerializer deserialize:dict];
 }
 
@@ -101311,7 +101311,7 @@
 
 @implementation DBTEAMLOGTfaRemoveSecurityKeyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaRemoveSecurityKeyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaRemoveSecurityKeyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -101319,7 +101319,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaRemoveSecurityKeyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaRemoveSecurityKeyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaRemoveSecurityKeyType alloc] initWithDescription_:description_];
@@ -101347,11 +101347,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaResetDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaResetDetailsSerializer deserialize:dict];
 }
 
@@ -101403,14 +101403,14 @@
 
 @implementation DBTEAMLOGTfaResetDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaResetDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaResetDetails *)valueObj {
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaResetDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaResetDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
 #pragma unused(valueDict)
 
   return [[DBTEAMLOGTfaResetDetails alloc] initDefault];
@@ -101440,11 +101440,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTfaResetTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTfaResetTypeSerializer deserialize:dict];
 }
 
@@ -101501,7 +101501,7 @@
 
 @implementation DBTEAMLOGTfaResetTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaResetType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaResetType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -101509,7 +101509,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTfaResetType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTfaResetType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTfaResetType alloc] initWithDescription_:description_];
@@ -101666,11 +101666,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTimeUnitSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTimeUnitSerializer deserialize:dict];
 }
 
@@ -101766,7 +101766,7 @@
 
 @implementation DBTEAMLOGTimeUnitSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTimeUnit *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTimeUnit *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isMilliseconds]) {
@@ -101794,7 +101794,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTimeUnit *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTimeUnit *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"milliseconds"]) {
@@ -101851,11 +101851,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTwoAccountChangePolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTwoAccountChangePolicyDetailsSerializer deserialize:dict];
 }
 
@@ -101921,7 +101921,7 @@
 
 @implementation DBTEAMLOGTwoAccountChangePolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTwoAccountChangePolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTwoAccountChangePolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_value"] = [DBTEAMLOGTwoAccountPolicySerializer serialize:valueObj.dNewValue];
@@ -101932,7 +101932,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTwoAccountChangePolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTwoAccountChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGTwoAccountPolicy *dNewValue = [DBTEAMLOGTwoAccountPolicySerializer deserialize:valueDict[@"new_value"]];
   DBTEAMLOGTwoAccountPolicy *previousValue =
       valueDict[@"previous_value"] ? [DBTEAMLOGTwoAccountPolicySerializer deserialize:valueDict[@"previous_value"]]
@@ -101965,11 +101965,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTwoAccountChangePolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTwoAccountChangePolicyTypeSerializer deserialize:dict];
 }
 
@@ -102026,7 +102026,7 @@
 
 @implementation DBTEAMLOGTwoAccountChangePolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTwoAccountChangePolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTwoAccountChangePolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -102034,7 +102034,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTwoAccountChangePolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTwoAccountChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTwoAccountChangePolicyType alloc] initWithDescription_:description_];
@@ -102107,11 +102107,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGTwoAccountPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGTwoAccountPolicySerializer deserialize:dict];
 }
 
@@ -102183,7 +102183,7 @@
 
 @implementation DBTEAMLOGTwoAccountPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGTwoAccountPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTwoAccountPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -102199,7 +102199,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGTwoAccountPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGTwoAccountPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -102240,11 +102240,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGUserLinkedAppLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGUserLinkedAppLogInfoSerializer deserialize:dict];
 }
 
@@ -102313,7 +102313,7 @@
 
 @implementation DBTEAMLOGUserLinkedAppLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGUserLinkedAppLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGUserLinkedAppLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.appId) {
@@ -102326,7 +102326,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGUserLinkedAppLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGUserLinkedAppLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *appId = valueDict[@"app_id"] ?: nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
 
@@ -102364,11 +102364,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGUserNameLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGUserNameLogInfoSerializer deserialize:dict];
 }
 
@@ -102437,7 +102437,7 @@
 
 @implementation DBTEAMLOGUserNameLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGUserNameLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGUserNameLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"given_name"] = valueObj.givenName;
@@ -102449,7 +102449,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGUserNameLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGUserNameLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *givenName = valueDict[@"given_name"];
   NSString *surname = valueDict[@"surname"];
   NSString *locale = valueDict[@"locale"] ?: nil;
@@ -102484,11 +102484,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGUserOrTeamLinkedAppLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGUserOrTeamLinkedAppLogInfoSerializer deserialize:dict];
 }
 
@@ -102557,7 +102557,7 @@
 
 @implementation DBTEAMLOGUserOrTeamLinkedAppLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGUserOrTeamLinkedAppLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGUserOrTeamLinkedAppLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.appId) {
@@ -102570,7 +102570,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGUserOrTeamLinkedAppLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGUserOrTeamLinkedAppLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *appId = valueDict[@"app_id"] ?: nil;
   NSString *displayName = valueDict[@"display_name"] ?: nil;
 
@@ -102618,11 +102618,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebDeviceSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebDeviceSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -102719,7 +102719,7 @@
 
 @implementation DBTEAMLOGWebDeviceSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebDeviceSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebDeviceSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"user_agent"] = valueObj.userAgent;
@@ -102741,7 +102741,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebDeviceSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *userAgent = valueDict[@"user_agent"];
   NSString *os = valueDict[@"os"];
   NSString *browser = valueDict[@"browser"];
@@ -102791,11 +102791,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebSessionLogInfoSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebSessionLogInfoSerializer deserialize:dict];
 }
 
@@ -102856,7 +102856,7 @@
 
 @implementation DBTEAMLOGWebSessionLogInfoSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionLogInfo *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionLogInfo *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.sessionId) {
@@ -102866,7 +102866,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebSessionLogInfo *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *sessionId = valueDict[@"session_id"] ?: nil;
 
   return [[DBTEAMLOGWebSessionLogInfo alloc] initWithSessionId:sessionId];
@@ -102902,11 +102902,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -102976,7 +102976,7 @@
 
 @implementation DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -102989,7 +102989,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGWebSessionsFixedLengthPolicy *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMLOGWebSessionsFixedLengthPolicySerializer deserialize:valueDict[@"new_value"]]
                               : nil;
@@ -103026,11 +103026,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebSessionsChangeFixedLengthPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebSessionsChangeFixedLengthPolicyTypeSerializer deserialize:dict];
 }
 
@@ -103088,7 +103088,7 @@
 
 @implementation DBTEAMLOGWebSessionsChangeFixedLengthPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -103096,7 +103096,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebSessionsChangeFixedLengthPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebSessionsChangeFixedLengthPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGWebSessionsChangeFixedLengthPolicyType alloc] initWithDescription_:description_];
@@ -103132,11 +103132,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetailsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetailsSerializer deserialize:dict];
 }
 
@@ -103206,7 +103206,7 @@
 
 @implementation DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetailsSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if (valueObj.dNewValue) {
@@ -103219,7 +103219,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGWebSessionsIdleLengthPolicy *dNewValue =
       valueDict[@"new_value"] ? [DBTEAMLOGWebSessionsIdleLengthPolicySerializer deserialize:valueDict[@"new_value"]]
                               : nil;
@@ -103256,11 +103256,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebSessionsChangeIdleLengthPolicyTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebSessionsChangeIdleLengthPolicyTypeSerializer deserialize:dict];
 }
 
@@ -103318,7 +103318,7 @@
 
 @implementation DBTEAMLOGWebSessionsChangeIdleLengthPolicyTypeSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeIdleLengthPolicyType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsChangeIdleLengthPolicyType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"description"] = valueObj.description_;
@@ -103326,7 +103326,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebSessionsChangeIdleLengthPolicyType *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebSessionsChangeIdleLengthPolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGWebSessionsChangeIdleLengthPolicyType alloc] initWithDescription_:description_];
@@ -103412,11 +103412,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebSessionsFixedLengthPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebSessionsFixedLengthPolicySerializer deserialize:dict];
 }
 
@@ -103488,7 +103488,7 @@
 
 @implementation DBTEAMLOGWebSessionsFixedLengthPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsFixedLengthPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsFixedLengthPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDefined]) {
@@ -103505,7 +103505,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebSessionsFixedLengthPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebSessionsFixedLengthPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"defined"]) {
@@ -103600,11 +103600,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMLOGWebSessionsIdleLengthPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMLOGWebSessionsIdleLengthPolicySerializer deserialize:dict];
 }
 
@@ -103676,7 +103676,7 @@
 
 @implementation DBTEAMLOGWebSessionsIdleLengthPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsIdleLengthPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsIdleLengthPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDefined]) {
@@ -103693,7 +103693,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMLOGWebSessionsIdleLengthPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMLOGWebSessionsIdleLengthPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"defined"]) {

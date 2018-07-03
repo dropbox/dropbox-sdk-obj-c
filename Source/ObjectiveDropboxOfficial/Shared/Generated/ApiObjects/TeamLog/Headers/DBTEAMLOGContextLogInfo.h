@@ -182,7 +182,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGContextLogInfo` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGContextLogInfo *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGContextLogInfo *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGContextLogInfo` instances.
@@ -192,7 +192,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 ///
 /// @return An instantiation of the `DBTEAMLOGContextLogInfo` object.
 ///
-+ (DBTEAMLOGContextLogInfo *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGContextLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -133,7 +133,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGLoginMethod` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGLoginMethod *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLoginMethod *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGLoginMethod` instances.
@@ -143,7 +143,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
 ///
 /// @return An instantiation of the `DBTEAMLOGLoginMethod` object.
 ///
-+ (DBTEAMLOGLoginMethod *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGLoginMethod *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -99,11 +99,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBSEENSTATEPlatformTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBSEENSTATEPlatformTypeSerializer deserialize:dict];
 }
 
@@ -183,7 +183,7 @@
 
 @implementation DBSEENSTATEPlatformTypeSerializer
 
-+ (NSDictionary *)serialize:(DBSEENSTATEPlatformType *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBSEENSTATEPlatformType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isWeb]) {
@@ -203,7 +203,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBSEENSTATEPlatformType *)deserialize:(NSDictionary *)valueDict {
++ (DBSEENSTATEPlatformType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"web"]) {

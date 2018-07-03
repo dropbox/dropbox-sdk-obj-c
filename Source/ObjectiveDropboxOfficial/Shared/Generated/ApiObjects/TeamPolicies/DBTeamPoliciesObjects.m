@@ -85,11 +85,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESEmmStateSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESEmmStateSerializer deserialize:dict];
 }
 
@@ -165,7 +165,7 @@
 
 @implementation DBTEAMPOLICIESEmmStateSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESEmmState *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESEmmState *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -183,7 +183,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESEmmState *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESEmmState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -252,11 +252,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESGroupCreationSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESGroupCreationSerializer deserialize:dict];
 }
 
@@ -324,7 +324,7 @@
 
 @implementation DBTEAMPOLICIESGroupCreationSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESGroupCreation *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESGroupCreation *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isAdminsAndMembers]) {
@@ -340,7 +340,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESGroupCreation *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESGroupCreation *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"admins_and_members"]) {
@@ -422,11 +422,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESOfficeAddInPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESOfficeAddInPolicySerializer deserialize:dict];
 }
 
@@ -498,7 +498,7 @@
 
 @implementation DBTEAMPOLICIESOfficeAddInPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESOfficeAddInPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESOfficeAddInPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -514,7 +514,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESOfficeAddInPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESOfficeAddInPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -595,11 +595,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESPaperDeploymentPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESPaperDeploymentPolicySerializer deserialize:dict];
 }
 
@@ -671,7 +671,7 @@
 
 @implementation DBTEAMPOLICIESPaperDeploymentPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESPaperDeploymentPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESPaperDeploymentPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isFull]) {
@@ -687,7 +687,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESPaperDeploymentPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESPaperDeploymentPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"full"]) {
@@ -782,11 +782,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESPaperEnabledPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESPaperEnabledPolicySerializer deserialize:dict];
 }
 
@@ -862,7 +862,7 @@
 
 @implementation DBTEAMPOLICIESPaperEnabledPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESPaperEnabledPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESPaperEnabledPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -880,7 +880,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESPaperEnabledPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESPaperEnabledPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -977,11 +977,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESPasswordStrengthPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESPasswordStrengthPolicySerializer deserialize:dict];
 }
 
@@ -1057,7 +1057,7 @@
 
 @implementation DBTEAMPOLICIESPasswordStrengthPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESPasswordStrengthPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESPasswordStrengthPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isMinimalRequirements]) {
@@ -1075,7 +1075,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESPasswordStrengthPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESPasswordStrengthPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"minimal_requirements"]) {
@@ -1158,11 +1158,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESRolloutMethodSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESRolloutMethodSerializer deserialize:dict];
 }
 
@@ -1234,7 +1234,7 @@
 
 @implementation DBTEAMPOLICIESRolloutMethodSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESRolloutMethod *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESRolloutMethod *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isUnlinkAll]) {
@@ -1252,7 +1252,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESRolloutMethod *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESRolloutMethod *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"unlink_all"]) {
@@ -1336,11 +1336,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESSharedFolderJoinPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESSharedFolderJoinPolicySerializer deserialize:dict];
 }
 
@@ -1412,7 +1412,7 @@
 
 @implementation DBTEAMPOLICIESSharedFolderJoinPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESSharedFolderJoinPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESSharedFolderJoinPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isFromTeamOnly]) {
@@ -1428,7 +1428,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESSharedFolderJoinPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESSharedFolderJoinPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"from_team_only"]) {
@@ -1509,11 +1509,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESSharedFolderMemberPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESSharedFolderMemberPolicySerializer deserialize:dict];
 }
 
@@ -1585,7 +1585,7 @@
 
 @implementation DBTEAMPOLICIESSharedFolderMemberPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESSharedFolderMemberPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESSharedFolderMemberPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isTeam]) {
@@ -1601,7 +1601,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESSharedFolderMemberPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESSharedFolderMemberPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"team"]) {
@@ -1696,11 +1696,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESSharedLinkCreatePolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESSharedLinkCreatePolicySerializer deserialize:dict];
 }
 
@@ -1776,7 +1776,7 @@
 
 @implementation DBTEAMPOLICIESSharedLinkCreatePolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESSharedLinkCreatePolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESSharedLinkCreatePolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDefaultPublic]) {
@@ -1794,7 +1794,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESSharedLinkCreatePolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESSharedLinkCreatePolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"default_public"]) {
@@ -1877,11 +1877,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESShowcaseDownloadPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESShowcaseDownloadPolicySerializer deserialize:dict];
 }
 
@@ -1953,7 +1953,7 @@
 
 @implementation DBTEAMPOLICIESShowcaseDownloadPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESShowcaseDownloadPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESShowcaseDownloadPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -1969,7 +1969,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESShowcaseDownloadPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESShowcaseDownloadPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -2050,11 +2050,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESShowcaseEnabledPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESShowcaseEnabledPolicySerializer deserialize:dict];
 }
 
@@ -2126,7 +2126,7 @@
 
 @implementation DBTEAMPOLICIESShowcaseEnabledPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESShowcaseEnabledPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESShowcaseEnabledPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -2142,7 +2142,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESShowcaseEnabledPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESShowcaseEnabledPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -2223,11 +2223,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESShowcaseExternalSharingPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESShowcaseExternalSharingPolicySerializer deserialize:dict];
 }
 
@@ -2300,7 +2300,7 @@
 
 @implementation DBTEAMPOLICIESShowcaseExternalSharingPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESShowcaseExternalSharingPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESShowcaseExternalSharingPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -2316,7 +2316,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESShowcaseExternalSharingPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESShowcaseExternalSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -2397,11 +2397,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESSmartSyncPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESSmartSyncPolicySerializer deserialize:dict];
 }
 
@@ -2473,7 +2473,7 @@
 
 @implementation DBTEAMPOLICIESSmartSyncPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESSmartSyncPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESSmartSyncPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isLocal]) {
@@ -2489,7 +2489,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESSmartSyncPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESSmartSyncPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"local"]) {
@@ -2584,11 +2584,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESSsoPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESSsoPolicySerializer deserialize:dict];
 }
 
@@ -2664,7 +2664,7 @@
 
 @implementation DBTEAMPOLICIESSsoPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESSsoPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESSsoPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabled]) {
@@ -2682,7 +2682,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESSsoPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESSsoPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled"]) {
@@ -2731,11 +2731,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESTeamMemberPoliciesSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESTeamMemberPoliciesSerializer deserialize:dict];
 }
 
@@ -2800,7 +2800,7 @@
 
 @implementation DBTEAMPOLICIESTeamMemberPoliciesSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESTeamMemberPolicies *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESTeamMemberPolicies *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"sharing"] = [DBTEAMPOLICIESTeamSharingPoliciesSerializer serialize:valueObj.sharing];
@@ -2810,7 +2810,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESTeamMemberPolicies *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESTeamMemberPolicies *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESTeamSharingPolicies *sharing =
       [DBTEAMPOLICIESTeamSharingPoliciesSerializer deserialize:valueDict[@"sharing"]];
   DBTEAMPOLICIESEmmState *emmState = [DBTEAMPOLICIESEmmStateSerializer deserialize:valueDict[@"emm_state"]];
@@ -2853,11 +2853,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESTeamSharingPoliciesSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESTeamSharingPoliciesSerializer deserialize:dict];
 }
 
@@ -2922,7 +2922,7 @@
 
 @implementation DBTEAMPOLICIESTeamSharingPoliciesSerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESTeamSharingPolicies *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESTeamSharingPolicies *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"shared_folder_member_policy"] =
@@ -2935,7 +2935,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESTeamSharingPolicies *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESTeamSharingPolicies *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMPOLICIESSharedFolderMemberPolicy *sharedFolderMemberPolicy =
       [DBTEAMPOLICIESSharedFolderMemberPolicySerializer deserialize:valueDict[@"shared_folder_member_policy"]];
   DBTEAMPOLICIESSharedFolderJoinPolicy *sharedFolderJoinPolicy =
@@ -3015,11 +3015,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBTEAMPOLICIESTwoStepVerificationPolicySerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBTEAMPOLICIESTwoStepVerificationPolicySerializer deserialize:dict];
 }
 
@@ -3091,7 +3091,7 @@
 
 @implementation DBTEAMPOLICIESTwoStepVerificationPolicySerializer
 
-+ (NSDictionary *)serialize:(DBTEAMPOLICIESTwoStepVerificationPolicy *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESTwoStepVerificationPolicy *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isRequireTfaEnable]) {
@@ -3107,7 +3107,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBTEAMPOLICIESTwoStepVerificationPolicy *)deserialize:(NSDictionary *)valueDict {
++ (DBTEAMPOLICIESTwoStepVerificationPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"require_tfa_enable"]) {

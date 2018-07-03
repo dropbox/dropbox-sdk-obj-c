@@ -246,7 +246,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESWriteError` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILESWriteError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESWriteError *)instance;
 
 ///
 /// Deserializes `DBFILESWriteError` instances.
@@ -256,7 +256,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESWriteError` object.
 ///
-+ (DBFILESWriteError *)deserialize:(NSDictionary *)dict;
++ (DBFILESWriteError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

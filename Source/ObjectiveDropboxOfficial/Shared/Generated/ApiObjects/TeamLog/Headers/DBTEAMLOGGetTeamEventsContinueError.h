@@ -103,7 +103,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGGetTeamEventsContinueErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGetTeamEventsContinueError` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGGetTeamEventsContinueError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsContinueError *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGetTeamEventsContinueError` instances.
@@ -114,7 +114,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGGetTeamEventsContinueErrorTag) {
 /// @return An instantiation of the `DBTEAMLOGGetTeamEventsContinueError`
 /// object.
 ///
-+ (DBTEAMLOGGetTeamEventsContinueError *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGGetTeamEventsContinueError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

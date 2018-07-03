@@ -99,7 +99,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSCreateFileRequestArgs` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILEREQUESTSCreateFileRequestArgs *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSCreateFileRequestArgs *)instance;
 
 ///
 /// Deserializes `DBFILEREQUESTSCreateFileRequestArgs` instances.
@@ -110,7 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBFILEREQUESTSCreateFileRequestArgs`
 /// object.
 ///
-+ (DBFILEREQUESTSCreateFileRequestArgs *)deserialize:(NSDictionary *)dict;
++ (DBFILEREQUESTSCreateFileRequestArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

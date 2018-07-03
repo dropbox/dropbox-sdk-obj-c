@@ -107,7 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGShareFolderArgBase` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBSHARINGShareFolderArgBase *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGShareFolderArgBase *)instance;
 
 ///
 /// Deserializes `DBSHARINGShareFolderArgBase` instances.
@@ -117,7 +117,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBSHARINGShareFolderArgBase` object.
 ///
-+ (DBSHARINGShareFolderArgBase *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGShareFolderArgBase *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

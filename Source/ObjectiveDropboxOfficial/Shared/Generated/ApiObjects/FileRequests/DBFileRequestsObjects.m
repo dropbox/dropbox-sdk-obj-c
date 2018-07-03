@@ -41,11 +41,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSCreateFileRequestArgsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSCreateFileRequestArgsSerializer deserialize:dict];
 }
 
@@ -118,7 +118,7 @@
 
 @implementation DBFILEREQUESTSCreateFileRequestArgsSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSCreateFileRequestArgs *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSCreateFileRequestArgs *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"title"] = valueObj.title;
@@ -131,7 +131,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSCreateFileRequestArgs *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSCreateFileRequestArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *title = valueDict[@"title"];
   NSString *destination = valueDict[@"destination"];
   DBFILEREQUESTSFileRequestDeadline *deadline =
@@ -197,11 +197,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSGeneralFileRequestsErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSGeneralFileRequestsErrorSerializer deserialize:dict];
 }
 
@@ -269,7 +269,7 @@
 
 @implementation DBFILEREQUESTSGeneralFileRequestsErrorSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSGeneralFileRequestsError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSGeneralFileRequestsError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabledForTeam]) {
@@ -283,7 +283,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSGeneralFileRequestsError *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSGeneralFileRequestsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled_for_team"]) {
@@ -433,11 +433,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSFileRequestErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSFileRequestErrorSerializer deserialize:dict];
 }
 
@@ -529,7 +529,7 @@
 
 @implementation DBFILEREQUESTSFileRequestErrorSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSFileRequestError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSFileRequestError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabledForTeam]) {
@@ -555,7 +555,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSFileRequestError *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSFileRequestError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled_for_team"]) {
@@ -745,11 +745,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSCreateFileRequestErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSCreateFileRequestErrorSerializer deserialize:dict];
 }
 
@@ -849,7 +849,7 @@
 
 @implementation DBFILEREQUESTSCreateFileRequestErrorSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSCreateFileRequestError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSCreateFileRequestError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabledForTeam]) {
@@ -879,7 +879,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSCreateFileRequestError *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSCreateFileRequestError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled_for_team"]) {
@@ -970,11 +970,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSFileRequestSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSFileRequestSerializer deserialize:dict];
 }
 
@@ -1067,7 +1067,7 @@
 
 @implementation DBFILEREQUESTSFileRequestSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSFileRequest *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSFileRequest *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"id"] = valueObj.id_;
@@ -1086,7 +1086,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSFileRequest *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSFileRequest *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *id_ = valueDict[@"id"];
   NSString *url = valueDict[@"url"];
   NSString *title = valueDict[@"title"];
@@ -1137,11 +1137,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSFileRequestDeadlineSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSFileRequestDeadlineSerializer deserialize:dict];
 }
 
@@ -1206,7 +1206,7 @@
 
 @implementation DBFILEREQUESTSFileRequestDeadlineSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSFileRequestDeadline *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSFileRequestDeadline *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"deadline"] = [DBNSDateSerializer serialize:valueObj.deadline dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -1217,7 +1217,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSFileRequestDeadline *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSFileRequestDeadline *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSDate *deadline = [DBNSDateSerializer deserialize:valueDict[@"deadline"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   DBFILEREQUESTSGracePeriod *allowLateUploads =
       valueDict[@"allow_late_uploads"]
@@ -1252,11 +1252,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSGetFileRequestArgsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSGetFileRequestArgsSerializer deserialize:dict];
 }
 
@@ -1313,7 +1313,7 @@
 
 @implementation DBFILEREQUESTSGetFileRequestArgsSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSGetFileRequestArgs *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSGetFileRequestArgs *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"id"] = valueObj.id_;
@@ -1321,7 +1321,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSGetFileRequestArgs *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSGetFileRequestArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *id_ = valueDict[@"id"];
 
   return [[DBFILEREQUESTSGetFileRequestArgs alloc] initWithId_:id_];
@@ -1465,11 +1465,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSGetFileRequestErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSGetFileRequestErrorSerializer deserialize:dict];
 }
 
@@ -1561,7 +1561,7 @@
 
 @implementation DBFILEREQUESTSGetFileRequestErrorSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSGetFileRequestError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSGetFileRequestError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabledForTeam]) {
@@ -1587,7 +1587,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSGetFileRequestError *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSGetFileRequestError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled_for_team"]) {
@@ -1720,11 +1720,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSGracePeriodSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSGracePeriodSerializer deserialize:dict];
 }
 
@@ -1808,7 +1808,7 @@
 
 @implementation DBFILEREQUESTSGracePeriodSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSGracePeriod *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSGracePeriod *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isOneDay]) {
@@ -1830,7 +1830,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSGracePeriod *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSGracePeriod *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"one_day"]) {
@@ -1904,11 +1904,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSListFileRequestsErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSListFileRequestsErrorSerializer deserialize:dict];
 }
 
@@ -1976,7 +1976,7 @@
 
 @implementation DBFILEREQUESTSListFileRequestsErrorSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSListFileRequestsError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSListFileRequestsError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabledForTeam]) {
@@ -1990,7 +1990,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSListFileRequestsError *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSListFileRequestsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled_for_team"]) {
@@ -2030,11 +2030,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSListFileRequestsResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSListFileRequestsResultSerializer deserialize:dict];
 }
 
@@ -2091,7 +2091,7 @@
 
 @implementation DBFILEREQUESTSListFileRequestsResultSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSListFileRequestsResult *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSListFileRequestsResult *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"file_requests"] = [DBArraySerializer serialize:valueObj.fileRequests
@@ -2102,7 +2102,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSListFileRequestsResult *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSListFileRequestsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSArray<DBFILEREQUESTSFileRequest *> *fileRequests =
       [DBArraySerializer deserialize:valueDict[@"file_requests"]
                            withBlock:^id(id elem0) {
@@ -2153,11 +2153,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSUpdateFileRequestArgsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSUpdateFileRequestArgsSerializer deserialize:dict];
 }
 
@@ -2242,7 +2242,7 @@
 
 @implementation DBFILEREQUESTSUpdateFileRequestArgsSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSUpdateFileRequestArgs *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSUpdateFileRequestArgs *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"id"] = valueObj.id_;
@@ -2260,7 +2260,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSUpdateFileRequestArgs *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSUpdateFileRequestArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *id_ = valueDict[@"id"];
   NSString *title = valueDict[@"title"] ?: nil;
   NSString *destination = valueDict[@"destination"] ?: nil;
@@ -2356,11 +2356,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSUpdateFileRequestDeadlineSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSUpdateFileRequestDeadlineSerializer deserialize:dict];
 }
 
@@ -2436,7 +2436,7 @@
 
 @implementation DBFILEREQUESTSUpdateFileRequestDeadlineSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSUpdateFileRequestDeadline *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSUpdateFileRequestDeadline *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isNoUpdate]) {
@@ -2455,7 +2455,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSUpdateFileRequestDeadline *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSUpdateFileRequestDeadline *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"no_update"]) {
@@ -2609,11 +2609,11 @@
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary *)serialize:(id)instance {
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
   return [DBFILEREQUESTSUpdateFileRequestErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary *)dict {
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
   return [DBFILEREQUESTSUpdateFileRequestErrorSerializer deserialize:dict];
 }
 
@@ -2705,7 +2705,7 @@
 
 @implementation DBFILEREQUESTSUpdateFileRequestErrorSerializer
 
-+ (NSDictionary *)serialize:(DBFILEREQUESTSUpdateFileRequestError *)valueObj {
++ (NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSUpdateFileRequestError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   if ([valueObj isDisabledForTeam]) {
@@ -2731,7 +2731,7 @@
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
-+ (DBFILEREQUESTSUpdateFileRequestError *)deserialize:(NSDictionary *)valueDict {
++ (DBFILEREQUESTSUpdateFileRequestError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"disabled_for_team"]) {
