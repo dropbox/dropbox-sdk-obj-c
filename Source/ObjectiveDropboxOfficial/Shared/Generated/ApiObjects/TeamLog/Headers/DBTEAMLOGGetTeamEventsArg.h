@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGetTeamEventsArg` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGGetTeamEventsArg *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsArg *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGetTeamEventsArg` instances.
@@ -96,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGGetTeamEventsArg` object.
 ///
-+ (DBTEAMLOGGetTeamEventsArg *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGGetTeamEventsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

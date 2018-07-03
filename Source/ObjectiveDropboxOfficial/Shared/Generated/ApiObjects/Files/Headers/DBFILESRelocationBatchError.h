@@ -341,7 +341,7 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationBatchError` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILESRelocationBatchError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchError *)instance;
 
 ///
 /// Deserializes `DBFILESRelocationBatchError` instances.
@@ -351,7 +351,7 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESRelocationBatchError` object.
 ///
-+ (DBFILESRelocationBatchError *)deserialize:(NSDictionary *)dict;
++ (DBFILESRelocationBatchError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

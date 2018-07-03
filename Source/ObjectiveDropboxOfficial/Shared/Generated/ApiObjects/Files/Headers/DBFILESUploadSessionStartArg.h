@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionStartArg` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILESUploadSessionStartArg *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionStartArg *)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionStartArg` instances.
@@ -81,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBFILESUploadSessionStartArg` object.
 ///
-+ (DBFILESUploadSessionStartArg *)deserialize:(NSDictionary *)dict;
++ (DBFILESUploadSessionStartArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

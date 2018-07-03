@@ -161,7 +161,7 @@ typedef NS_ENUM(NSInteger, DBSEENSTATEPlatformTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSEENSTATEPlatformType` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBSEENSTATEPlatformType *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSEENSTATEPlatformType *)instance;
 
 ///
 /// Deserializes `DBSEENSTATEPlatformType` instances.
@@ -171,7 +171,7 @@ typedef NS_ENUM(NSInteger, DBSEENSTATEPlatformTypeTag) {
 ///
 /// @return An instantiation of the `DBSEENSTATEPlatformType` object.
 ///
-+ (DBSEENSTATEPlatformType *)deserialize:(NSDictionary *)dict;
++ (DBSEENSTATEPlatformType *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -318,7 +318,7 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationError` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILESRelocationError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationError *)instance;
 
 ///
 /// Deserializes `DBFILESRelocationError` instances.
@@ -328,7 +328,7 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESRelocationError` object.
 ///
-+ (DBFILESRelocationError *)deserialize:(NSDictionary *)dict;
++ (DBFILESRelocationError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

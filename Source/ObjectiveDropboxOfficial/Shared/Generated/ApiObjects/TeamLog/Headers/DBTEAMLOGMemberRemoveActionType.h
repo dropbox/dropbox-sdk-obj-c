@@ -132,7 +132,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGMemberRemoveActionTypeTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberRemoveActionType` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBTEAMLOGMemberRemoveActionType *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRemoveActionType *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGMemberRemoveActionType` instances.
@@ -142,7 +142,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGMemberRemoveActionTypeTag) {
 ///
 /// @return An instantiation of the `DBTEAMLOGMemberRemoveActionType` object.
 ///
-+ (DBTEAMLOGMemberRemoveActionType *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGMemberRemoveActionType *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

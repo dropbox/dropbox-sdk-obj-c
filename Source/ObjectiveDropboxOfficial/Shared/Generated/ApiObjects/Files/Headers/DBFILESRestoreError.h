@@ -164,7 +164,7 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRestoreError` API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBFILESRestoreError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRestoreError *)instance;
 
 ///
 /// Deserializes `DBFILESRestoreError` instances.
@@ -174,7 +174,7 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESRestoreError` object.
 ///
-+ (DBFILESRestoreError *)deserialize:(NSDictionary *)dict;
++ (DBFILESRestoreError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

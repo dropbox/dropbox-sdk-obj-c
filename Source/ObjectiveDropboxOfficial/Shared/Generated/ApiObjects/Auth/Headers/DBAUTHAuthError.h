@@ -169,7 +169,7 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 /// @return A json-compatible dictionary representation of the `DBAUTHAuthError`
 /// API object.
 ///
-+ (nullable NSDictionary *)serialize:(DBAUTHAuthError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBAUTHAuthError *)instance;
 
 ///
 /// Deserializes `DBAUTHAuthError` instances.
@@ -179,7 +179,7 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 ///
 /// @return An instantiation of the `DBAUTHAuthError` object.
 ///
-+ (DBAUTHAuthError *)deserialize:(NSDictionary *)dict;
++ (DBAUTHAuthError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 
