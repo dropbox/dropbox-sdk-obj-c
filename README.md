@@ -612,6 +612,7 @@ DBFILESWriteMode *mode = [[DBFILESWriteMode alloc] initWithOverwrite];
                       autorename:@(YES)
                   clientModified:nil
                             mute:@(NO)
+                  propertyGroups:nil
                        inputData:fileData]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
       if (result) {
