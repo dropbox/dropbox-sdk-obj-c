@@ -352,9 +352,10 @@
       if (fileMoveErrorOverwrite) {
         networkError = [[DBRequestError alloc] initAsClientError:fileMoveErrorOverwrite];
       } else {
-        NSError *fileMoveErrorToDestination;
-
-        [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveErrorToDestination];
+        NSError *fileMoveErrorToDestination = nil;
+        if (destinationPath) {
+          [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveErrorToDestination];
+        }
 
         if (fileMoveErrorToDestination) {
           networkError = [[DBRequestError alloc] initAsClientError:fileMoveErrorToDestination];
