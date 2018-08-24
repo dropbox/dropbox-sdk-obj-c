@@ -378,7 +378,7 @@
       }
     }
 
-    responseBlock(result, routeError, networkError, destination);
+    responseBlock(result, routeError, networkError, destination ?: location);
     cleanupBlock();
 
     return successful;
