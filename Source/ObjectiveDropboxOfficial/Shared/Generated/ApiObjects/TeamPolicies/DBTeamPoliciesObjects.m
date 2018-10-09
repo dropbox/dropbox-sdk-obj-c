@@ -8,6 +8,179 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMPOLICIESCameraUploadsPolicyState.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMPOLICIESCameraUploadsPolicyState
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESCameraUploadsPolicyStateDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESCameraUploadsPolicyStateEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESCameraUploadsPolicyStateOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMPOLICIESCameraUploadsPolicyStateDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMPOLICIESCameraUploadsPolicyStateEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMPOLICIESCameraUploadsPolicyStateOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMPOLICIESCameraUploadsPolicyStateDisabled:
+    return @"DBTEAMPOLICIESCameraUploadsPolicyStateDisabled";
+  case DBTEAMPOLICIESCameraUploadsPolicyStateEnabled:
+    return @"DBTEAMPOLICIESCameraUploadsPolicyStateEnabled";
+  case DBTEAMPOLICIESCameraUploadsPolicyStateOther:
+    return @"DBTEAMPOLICIESCameraUploadsPolicyStateOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMPOLICIESCameraUploadsPolicyStateSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMPOLICIESCameraUploadsPolicyStateSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMPOLICIESCameraUploadsPolicyStateSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESCameraUploadsPolicyStateDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESCameraUploadsPolicyStateEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESCameraUploadsPolicyStateOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToCameraUploadsPolicyState:other];
+}
+
+- (BOOL)isEqualToCameraUploadsPolicyState:(DBTEAMPOLICIESCameraUploadsPolicyState *)aCameraUploadsPolicyState {
+  if (self == aCameraUploadsPolicyState) {
+    return YES;
+  }
+  if (self.tag != aCameraUploadsPolicyState.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESCameraUploadsPolicyStateDisabled:
+    return [[self tagName] isEqual:[aCameraUploadsPolicyState tagName]];
+  case DBTEAMPOLICIESCameraUploadsPolicyStateEnabled:
+    return [[self tagName] isEqual:[aCameraUploadsPolicyState tagName]];
+  case DBTEAMPOLICIESCameraUploadsPolicyStateOther:
+    return [[self tagName] isEqual:[aCameraUploadsPolicyState tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMPOLICIESCameraUploadsPolicyStateSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESCameraUploadsPolicyState *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMPOLICIESCameraUploadsPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMPOLICIESCameraUploadsPolicyState alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMPOLICIESCameraUploadsPolicyState alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMPOLICIESCameraUploadsPolicyState alloc] initWithOther];
+  } else {
+    return [[DBTEAMPOLICIESCameraUploadsPolicyState alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMPOLICIESEmmState.h"
 
 #pragma mark - API Object

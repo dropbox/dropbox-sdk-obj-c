@@ -52,6 +52,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// List of custom properties to add to file.
 @property (nonatomic, readonly, nullable) NSArray<DBFILEPROPERTIESPropertyGroup *> *propertyGroups;
 
+/// Be more strict about how each WriteMode detects conflict. For example,
+/// always return a conflict error when mode = `update` in `DBFILESWriteMode`
+/// and the given "rev" doesn't match the existing file's "rev", even if the
+/// existing file has been deleted.
+@property (nonatomic, readonly) NSNumber *strictConflict;
+
 #pragma mark - Constructors
 
 ///
@@ -71,6 +77,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// this tells the clients that this modification shouldn't result in a user
 /// notification.
 /// @param propertyGroups List of custom properties to add to file.
+/// @param strictConflict Be more strict about how each WriteMode detects
+/// conflict. For example, always return a conflict error when mode = `update`
+/// in `DBFILESWriteMode` and the given "rev" doesn't match the existing file's
+/// "rev", even if the existing file has been deleted.
 ///
 /// @return An initialized instance.
 ///
@@ -79,7 +89,8 @@ NS_ASSUME_NONNULL_BEGIN
                   autorename:(nullable NSNumber *)autorename
               clientModified:(nullable NSDate *)clientModified
                         mute:(nullable NSNumber *)mute
-              propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups;
+              propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+              strictConflict:(nullable NSNumber *)strictConflict;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

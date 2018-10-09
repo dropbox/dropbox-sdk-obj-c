@@ -45,6 +45,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
   /// Add a member with view permissions but no comment permissions.
   DBSHARINGFileActionInviteViewerNoComment,
 
+  /// Add a member with edit permissions.
+  DBSHARINGFileActionInviteEditor,
+
   /// Stop sharing this file.
   DBSHARINGFileActionUnshare,
 
@@ -116,6 +119,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithInviteViewerNoComment;
+
+///
+/// Initializes union class with tag state of "invite_editor".
+///
+/// Description of the "invite_editor" tag state: Add a member with edit
+/// permissions.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInviteEditor;
 
 ///
 /// Initializes union class with tag state of "unshare".
@@ -206,6 +219,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 /// "invite_viewer_no_comment".
 ///
 - (BOOL)isInviteViewerNoComment;
+
+///
+/// Retrieves whether the union's current tag state has value "invite_editor".
+///
+/// @return Whether the union's current tag state has value "invite_editor".
+///
+- (BOOL)isInviteEditor;
 
 ///
 /// Retrieves whether the union's current tag state has value "unshare".

@@ -3881,6 +3881,14 @@
   return self;
 }
 
+- (instancetype)initWithInviteEditor {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGFileActionInviteEditor;
+  }
+  return self;
+}
+
 - (instancetype)initWithUnshare {
   self = [super init];
   if (self) {
@@ -3945,6 +3953,10 @@
   return _tag == DBSHARINGFileActionInviteViewerNoComment;
 }
 
+- (BOOL)isInviteEditor {
+  return _tag == DBSHARINGFileActionInviteEditor;
+}
+
 - (BOOL)isUnshare {
   return _tag == DBSHARINGFileActionUnshare;
 }
@@ -3977,6 +3989,8 @@
     return @"DBSHARINGFileActionInviteViewer";
   case DBSHARINGFileActionInviteViewerNoComment:
     return @"DBSHARINGFileActionInviteViewerNoComment";
+  case DBSHARINGFileActionInviteEditor:
+    return @"DBSHARINGFileActionInviteEditor";
   case DBSHARINGFileActionUnshare:
     return @"DBSHARINGFileActionUnshare";
   case DBSHARINGFileActionRelinquishMembership:
@@ -4033,6 +4047,8 @@
     result = prime * result + [[self tagName] hash];
   case DBSHARINGFileActionInviteViewerNoComment:
     result = prime * result + [[self tagName] hash];
+  case DBSHARINGFileActionInviteEditor:
+    result = prime * result + [[self tagName] hash];
   case DBSHARINGFileActionUnshare:
     result = prime * result + [[self tagName] hash];
   case DBSHARINGFileActionRelinquishMembership:
@@ -4078,6 +4094,8 @@
     return [[self tagName] isEqual:[aFileAction tagName]];
   case DBSHARINGFileActionInviteViewerNoComment:
     return [[self tagName] isEqual:[aFileAction tagName]];
+  case DBSHARINGFileActionInviteEditor:
+    return [[self tagName] isEqual:[aFileAction tagName]];
   case DBSHARINGFileActionUnshare:
     return [[self tagName] isEqual:[aFileAction tagName]];
   case DBSHARINGFileActionRelinquishMembership:
@@ -4111,6 +4129,8 @@
     jsonDict[@".tag"] = @"invite_viewer";
   } else if ([valueObj isInviteViewerNoComment]) {
     jsonDict[@".tag"] = @"invite_viewer_no_comment";
+  } else if ([valueObj isInviteEditor]) {
+    jsonDict[@".tag"] = @"invite_editor";
   } else if ([valueObj isUnshare]) {
     jsonDict[@".tag"] = @"unshare";
   } else if ([valueObj isRelinquishMembership]) {
@@ -4141,6 +4161,8 @@
     return [[DBSHARINGFileAction alloc] initWithInviteViewer];
   } else if ([tag isEqualToString:@"invite_viewer_no_comment"]) {
     return [[DBSHARINGFileAction alloc] initWithInviteViewerNoComment];
+  } else if ([tag isEqualToString:@"invite_editor"]) {
+    return [[DBSHARINGFileAction alloc] initWithInviteEditor];
   } else if ([tag isEqualToString:@"unshare"]) {
     return [[DBSHARINGFileAction alloc] initWithUnshare];
   } else if ([tag isEqualToString:@"relinquish_membership"]) {
@@ -20086,6 +20108,7 @@
 
 @end
 
+#import "DBSHARINGAccessInheritance.h"
 #import "DBSHARINGAclUpdatePolicy.h"
 #import "DBSHARINGMemberPolicy.h"
 #import "DBSHARINGShareFolderArgBase.h"
@@ -20105,7 +20128,8 @@
                   forceAsync:(NSNumber *)forceAsync
                 memberPolicy:(DBSHARINGMemberPolicy *)memberPolicy
             sharedLinkPolicy:(DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
-            viewerInfoPolicy:(DBSHARINGViewerInfoPolicy *)viewerInfoPolicy {
+            viewerInfoPolicy:(DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
+           accessInheritance:(DBSHARINGAccessInheritance *)accessInheritance {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
                                                                maxLength:nil
                                                                  pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"]](path);
@@ -20118,6 +20142,7 @@
     _path = path;
     _sharedLinkPolicy = sharedLinkPolicy;
     _viewerInfoPolicy = viewerInfoPolicy;
+    _accessInheritance = accessInheritance ?: [[DBSHARINGAccessInheritance alloc] initWithInherit];
   }
   return self;
 }
@@ -20128,7 +20153,8 @@
                  forceAsync:nil
                memberPolicy:nil
            sharedLinkPolicy:nil
-           viewerInfoPolicy:nil];
+           viewerInfoPolicy:nil
+          accessInheritance:nil];
 }
 
 #pragma mark - Serialization methods
@@ -20175,6 +20201,7 @@
   if (self.viewerInfoPolicy != nil) {
     result = prime * result + [self.viewerInfoPolicy hash];
   }
+  result = prime * result + [self.accessInheritance hash];
 
   return prime * result;
 }
@@ -20221,6 +20248,9 @@
       return NO;
     }
   }
+  if (![self.accessInheritance isEqual:aShareFolderArgBase.accessInheritance]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -20247,6 +20277,7 @@
   if (valueObj.viewerInfoPolicy) {
     jsonDict[@"viewer_info_policy"] = [DBSHARINGViewerInfoPolicySerializer serialize:valueObj.viewerInfoPolicy];
   }
+  jsonDict[@"access_inheritance"] = [DBSHARINGAccessInheritanceSerializer serialize:valueObj.accessInheritance];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -20267,17 +20298,23 @@
       valueDict[@"viewer_info_policy"]
           ? [DBSHARINGViewerInfoPolicySerializer deserialize:valueDict[@"viewer_info_policy"]]
           : nil;
+  DBSHARINGAccessInheritance *accessInheritance =
+      valueDict[@"access_inheritance"]
+          ? [DBSHARINGAccessInheritanceSerializer deserialize:valueDict[@"access_inheritance"]]
+          : [[DBSHARINGAccessInheritance alloc] initWithInherit];
 
   return [[DBSHARINGShareFolderArgBase alloc] initWithPath:path
                                            aclUpdatePolicy:aclUpdatePolicy
                                                 forceAsync:forceAsync
                                               memberPolicy:memberPolicy
                                           sharedLinkPolicy:sharedLinkPolicy
-                                          viewerInfoPolicy:viewerInfoPolicy];
+                                          viewerInfoPolicy:viewerInfoPolicy
+                                         accessInheritance:accessInheritance];
 }
 
 @end
 
+#import "DBSHARINGAccessInheritance.h"
 #import "DBSHARINGAclUpdatePolicy.h"
 #import "DBSHARINGFolderAction.h"
 #import "DBSHARINGLinkSettings.h"
@@ -20301,6 +20338,7 @@
                 memberPolicy:(DBSHARINGMemberPolicy *)memberPolicy
             sharedLinkPolicy:(DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
             viewerInfoPolicy:(DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
+           accessInheritance:(DBSHARINGAccessInheritance *)accessInheritance
                      actions:(NSArray<DBSHARINGFolderAction *> *)actions
                 linkSettings:(DBSHARINGLinkSettings *)linkSettings {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
@@ -20316,7 +20354,8 @@
                   forceAsync:forceAsync
                 memberPolicy:memberPolicy
             sharedLinkPolicy:sharedLinkPolicy
-            viewerInfoPolicy:viewerInfoPolicy];
+            viewerInfoPolicy:viewerInfoPolicy
+           accessInheritance:accessInheritance];
   if (self) {
     _actions = actions;
     _linkSettings = linkSettings;
@@ -20331,6 +20370,7 @@
                memberPolicy:nil
            sharedLinkPolicy:nil
            viewerInfoPolicy:nil
+          accessInheritance:nil
                     actions:nil
                linkSettings:nil];
 }
@@ -20379,6 +20419,7 @@
   if (self.viewerInfoPolicy != nil) {
     result = prime * result + [self.viewerInfoPolicy hash];
   }
+  result = prime * result + [self.accessInheritance hash];
   if (self.actions != nil) {
     result = prime * result + [self.actions hash];
   }
@@ -20431,6 +20472,9 @@
       return NO;
     }
   }
+  if (![self.accessInheritance isEqual:aShareFolderArg.accessInheritance]) {
+    return NO;
+  }
   if (self.actions) {
     if (![self.actions isEqual:aShareFolderArg.actions]) {
       return NO;
@@ -20467,6 +20511,7 @@
   if (valueObj.viewerInfoPolicy) {
     jsonDict[@"viewer_info_policy"] = [DBSHARINGViewerInfoPolicySerializer serialize:valueObj.viewerInfoPolicy];
   }
+  jsonDict[@"access_inheritance"] = [DBSHARINGAccessInheritanceSerializer serialize:valueObj.accessInheritance];
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
                                               withBlock:^id(id elem0) {
@@ -20496,6 +20541,10 @@
       valueDict[@"viewer_info_policy"]
           ? [DBSHARINGViewerInfoPolicySerializer deserialize:valueDict[@"viewer_info_policy"]]
           : nil;
+  DBSHARINGAccessInheritance *accessInheritance =
+      valueDict[@"access_inheritance"]
+          ? [DBSHARINGAccessInheritanceSerializer deserialize:valueDict[@"access_inheritance"]]
+          : [[DBSHARINGAccessInheritance alloc] initWithInherit];
   NSArray<DBSHARINGFolderAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
                                                    withBlock:^id(id elem0) {
@@ -20511,6 +20560,7 @@
                                           memberPolicy:memberPolicy
                                       sharedLinkPolicy:sharedLinkPolicy
                                       viewerInfoPolicy:viewerInfoPolicy
+                                     accessInheritance:accessInheritance
                                                actions:actions
                                           linkSettings:linkSettings];
 }

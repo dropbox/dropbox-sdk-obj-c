@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// If true, the current session will be closed, at which point you won't be
-/// able to call `uploadSessionAppendV2` anymore with the current session.
+/// able to call `uploadSessionAppend` anymore with the current session.
 @property (nonatomic, readonly) NSNumber *close;
 
 #pragma mark - Constructors
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param close If true, the current session will be closed, at which point you
-/// won't be able to call `uploadSessionAppendV2` anymore with the current
+/// won't be able to call `uploadSessionAppend` anymore with the current
 /// session.
 ///
 /// @return An initialized instance.

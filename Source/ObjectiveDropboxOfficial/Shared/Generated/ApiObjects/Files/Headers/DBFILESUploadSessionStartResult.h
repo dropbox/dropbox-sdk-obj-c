@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// A unique identifier for the upload session. Pass this to
-/// `uploadSessionAppendV2` and `uploadSessionFinish`.
+/// `uploadSessionAppend` and `uploadSessionFinish`.
 @property (nonatomic, readonly, copy) NSString *sessionId;
 
 #pragma mark - Constructors
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sessionId A unique identifier for the upload session. Pass this to
-/// `uploadSessionAppendV2` and `uploadSessionFinish`.
+/// `uploadSessionAppend` and `uploadSessionFinish`.
 ///
 /// @return An initialized instance.
 ///

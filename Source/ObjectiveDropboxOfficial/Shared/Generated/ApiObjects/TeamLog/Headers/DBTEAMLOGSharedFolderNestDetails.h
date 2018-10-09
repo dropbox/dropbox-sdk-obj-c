@@ -33,6 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// New parent namespace ID. Might be missing due to historical data gap.
 @property (nonatomic, readonly, copy, nullable) NSString *dNewParentNsId;
 
+/// Previous namespace path. Might be missing due to historical data gap.
+@property (nonatomic, readonly, copy, nullable) NSString *previousNsPath;
+
+/// New namespace path. Might be missing due to historical data gap.
+@property (nonatomic, readonly, copy, nullable) NSString *dNewNsPath;
+
 #pragma mark - Constructors
 
 ///
@@ -42,11 +48,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// to historical data gap.
 /// @param dNewParentNsId New parent namespace ID. Might be missing due to
 /// historical data gap.
+/// @param previousNsPath Previous namespace path. Might be missing due to
+/// historical data gap.
+/// @param dNewNsPath New namespace path. Might be missing due to historical
+/// data gap.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPreviousParentNsId:(nullable NSString *)previousParentNsId
-                            dNewParentNsId:(nullable NSString *)dNewParentNsId;
+                            dNewParentNsId:(nullable NSString *)dNewParentNsId
+                            previousNsPath:(nullable NSString *)previousNsPath
+                                dNewNsPath:(nullable NSString *)dNewNsPath;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

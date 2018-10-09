@@ -68,6 +68,8 @@
 #import "DBFILESGetTemporaryLinkArg.h"
 #import "DBFILESGetTemporaryLinkError.h"
 #import "DBFILESGetTemporaryLinkResult.h"
+#import "DBFILESGetTemporaryUploadLinkArg.h"
+#import "DBFILESGetTemporaryUploadLinkResult.h"
 #import "DBFILESGetThumbnailBatchArg.h"
 #import "DBFILESGetThumbnailBatchError.h"
 #import "DBFILESGetThumbnailBatchResult.h"
@@ -186,6 +188,7 @@
                   clientModified:(NSDate *)clientModified
                             mute:(NSNumber *)mute
                   propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+                  strictConflict:(NSNumber *)strictConflict
                         inputUrl:(NSString *)inputUrl {
   DBRoute *route = DBFILESRouteObjects.DBFILESAlphaUpload;
   DBFILESCommitInfoWithProperties *arg = [[DBFILESCommitInfoWithProperties alloc] initWithPath:path
@@ -193,7 +196,8 @@
                                                                                     autorename:autorename
                                                                                 clientModified:clientModified
                                                                                           mute:mute
-                                                                                propertyGroups:propertyGroups];
+                                                                                propertyGroups:propertyGroups
+                                                                                strictConflict:strictConflict];
   return [self.client requestUpload:route arg:arg inputUrl:inputUrl];
 }
 
@@ -209,6 +213,7 @@
                    clientModified:(NSDate *)clientModified
                              mute:(NSNumber *)mute
                    propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+                   strictConflict:(NSNumber *)strictConflict
                         inputData:(NSData *)inputData {
   DBRoute *route = DBFILESRouteObjects.DBFILESAlphaUpload;
   DBFILESCommitInfoWithProperties *arg = [[DBFILESCommitInfoWithProperties alloc] initWithPath:path
@@ -216,7 +221,8 @@
                                                                                     autorename:autorename
                                                                                 clientModified:clientModified
                                                                                           mute:mute
-                                                                                propertyGroups:propertyGroups];
+                                                                                propertyGroups:propertyGroups
+                                                                                strictConflict:strictConflict];
   return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
@@ -232,6 +238,7 @@
                      clientModified:(NSDate *)clientModified
                                mute:(NSNumber *)mute
                      propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+                     strictConflict:(NSNumber *)strictConflict
                         inputStream:(NSInputStream *)inputStream {
   DBRoute *route = DBFILESRouteObjects.DBFILESAlphaUpload;
   DBFILESCommitInfoWithProperties *arg = [[DBFILESCommitInfoWithProperties alloc] initWithPath:path
@@ -239,8 +246,29 @@
                                                                                     autorename:autorename
                                                                                 clientModified:clientModified
                                                                                           mute:mute
-                                                                                propertyGroups:propertyGroups];
+                                                                                propertyGroups:propertyGroups
+                                                                                strictConflict:strictConflict];
   return [self.client requestUpload:route arg:arg inputStream:inputStream];
+}
+
+- (DBRpcTask *)dCopyV2:(NSString *)fromPath toPath:(NSString *)toPath {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyV2;
+  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)dCopyV2:(NSString *)fromPath
+                    toPath:(NSString *)toPath
+         allowSharedFolder:(NSNumber *)allowSharedFolder
+                autorename:(NSNumber *)autorename
+    allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyV2;
+  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath
+                                                                      toPath:toPath
+                                                           allowSharedFolder:allowSharedFolder
+                                                                  autorename:autorename
+                                                      allowOwnershipTransfer:allowOwnershipTransfer];
+  return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)dCopy:(NSString *)fromPath toPath:(NSString *)toPath {
@@ -300,23 +328,15 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)dCopyV2:(NSString *)fromPath toPath:(NSString *)toPath {
-  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyV2;
-  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
+- (DBRpcTask *)createFolderV2:(NSString *)path {
+  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderV2;
+  DBFILESCreateFolderArg *arg = [[DBFILESCreateFolderArg alloc] initWithPath:path];
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)dCopyV2:(NSString *)fromPath
-                    toPath:(NSString *)toPath
-         allowSharedFolder:(NSNumber *)allowSharedFolder
-                autorename:(NSNumber *)autorename
-    allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
-  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyV2;
-  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath
-                                                                      toPath:toPath
-                                                           allowSharedFolder:allowSharedFolder
-                                                                  autorename:autorename
-                                                      allowOwnershipTransfer:allowOwnershipTransfer];
+- (DBRpcTask *)createFolderV2:(NSString *)path autorename:(NSNumber *)autorename {
+  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderV2;
+  DBFILESCreateFolderArg *arg = [[DBFILESCreateFolderArg alloc] initWithPath:path autorename:autorename];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -353,15 +373,15 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)createFolderV2:(NSString *)path {
-  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderV2;
-  DBFILESCreateFolderArg *arg = [[DBFILESCreateFolderArg alloc] initWithPath:path];
+- (DBRpcTask *)delete_V2:(NSString *)path {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDelete_V2;
+  DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path];
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)createFolderV2:(NSString *)path autorename:(NSNumber *)autorename {
-  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolderV2;
-  DBFILESCreateFolderArg *arg = [[DBFILESCreateFolderArg alloc] initWithPath:path autorename:autorename];
+- (DBRpcTask *)delete_V2:(NSString *)path parentRev:(NSString *)parentRev {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDelete_V2;
+  DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path parentRev:parentRev];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -386,18 +406,6 @@
 - (DBRpcTask *)deleteBatchCheck:(NSString *)asyncJobId {
   DBRoute *route = DBFILESRouteObjects.DBFILESDeleteBatchCheck;
   DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)deleteV2:(NSString *)path {
-  DBRoute *route = DBFILESRouteObjects.DBFILESDeleteV2;
-  DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)deleteV2:(NSString *)path parentRev:(NSString *)parentRev {
-  DBRoute *route = DBFILESRouteObjects.DBFILESDeleteV2;
-  DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path parentRev:parentRev];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -612,6 +620,19 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)getTemporaryUploadLink:(DBFILESCommitInfo *)commitInfo {
+  DBRoute *route = DBFILESRouteObjects.DBFILESGetTemporaryUploadLink;
+  DBFILESGetTemporaryUploadLinkArg *arg = [[DBFILESGetTemporaryUploadLinkArg alloc] initWithCommitInfo:commitInfo];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getTemporaryUploadLink:(DBFILESCommitInfo *)commitInfo duration:(NSNumber *)duration {
+  DBRoute *route = DBFILESRouteObjects.DBFILESGetTemporaryUploadLink;
+  DBFILESGetTemporaryUploadLinkArg *arg =
+      [[DBFILESGetTemporaryUploadLinkArg alloc] initWithCommitInfo:commitInfo duration:duration];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBDownloadUrlTask *)getThumbnailUrl:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL *)destination {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnail;
   DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path];
@@ -788,6 +809,26 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)moveV2:(NSString *)fromPath toPath:(NSString *)toPath {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveV2;
+  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)moveV2:(NSString *)fromPath
+                    toPath:(NSString *)toPath
+         allowSharedFolder:(NSNumber *)allowSharedFolder
+                autorename:(NSNumber *)autorename
+    allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveV2;
+  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath
+                                                                      toPath:toPath
+                                                           allowSharedFolder:allowSharedFolder
+                                                                  autorename:autorename
+                                                      allowOwnershipTransfer:allowOwnershipTransfer];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)move:(NSString *)fromPath toPath:(NSString *)toPath {
   DBRoute *route = DBFILESRouteObjects.DBFILESMove;
   DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
@@ -829,26 +870,6 @@
 - (DBRpcTask *)moveBatchCheck:(NSString *)asyncJobId {
   DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatchCheck;
   DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)moveV2:(NSString *)fromPath toPath:(NSString *)toPath {
-  DBRoute *route = DBFILESRouteObjects.DBFILESMoveV2;
-  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)moveV2:(NSString *)fromPath
-                    toPath:(NSString *)toPath
-         allowSharedFolder:(NSNumber *)allowSharedFolder
-                autorename:(NSNumber *)autorename
-    allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
-  DBRoute *route = DBFILESRouteObjects.DBFILESMoveV2;
-  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath
-                                                                      toPath:toPath
-                                                           allowSharedFolder:allowSharedFolder
-                                                                  autorename:autorename
-                                                      allowOwnershipTransfer:allowOwnershipTransfer];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -953,6 +974,7 @@
              clientModified:(NSDate *)clientModified
                        mute:(NSNumber *)mute
              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+             strictConflict:(NSNumber *)strictConflict
                    inputUrl:(NSString *)inputUrl {
   DBRoute *route = DBFILESRouteObjects.DBFILESUpload;
   DBFILESCommitInfo *arg = [[DBFILESCommitInfo alloc] initWithPath:path
@@ -960,7 +982,8 @@
                                                         autorename:autorename
                                                     clientModified:clientModified
                                                               mute:mute
-                                                    propertyGroups:propertyGroups];
+                                                    propertyGroups:propertyGroups
+                                                    strictConflict:strictConflict];
   return [self.client requestUpload:route arg:arg inputUrl:inputUrl];
 }
 
@@ -976,6 +999,7 @@
               clientModified:(NSDate *)clientModified
                         mute:(NSNumber *)mute
               propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+              strictConflict:(NSNumber *)strictConflict
                    inputData:(NSData *)inputData {
   DBRoute *route = DBFILESRouteObjects.DBFILESUpload;
   DBFILESCommitInfo *arg = [[DBFILESCommitInfo alloc] initWithPath:path
@@ -983,7 +1007,8 @@
                                                         autorename:autorename
                                                     clientModified:clientModified
                                                               mute:mute
-                                                    propertyGroups:propertyGroups];
+                                                    propertyGroups:propertyGroups
+                                                    strictConflict:strictConflict];
   return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
@@ -999,6 +1024,7 @@
                 clientModified:(NSDate *)clientModified
                           mute:(NSNumber *)mute
                 propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+                strictConflict:(NSNumber *)strictConflict
                    inputStream:(NSInputStream *)inputStream {
   DBRoute *route = DBFILESRouteObjects.DBFILESUpload;
   DBFILESCommitInfo *arg = [[DBFILESCommitInfo alloc] initWithPath:path
@@ -1006,29 +1032,8 @@
                                                         autorename:autorename
                                                     clientModified:clientModified
                                                               mute:mute
-                                                    propertyGroups:propertyGroups];
-  return [self.client requestUpload:route arg:arg inputStream:inputStream];
-}
-
-- (DBUploadTask *)uploadSessionAppendUrl:(NSString *)sessionId offset:(NSNumber *)offset inputUrl:(NSString *)inputUrl {
-  DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionAppend;
-  DBFILESUploadSessionCursor *arg = [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
-  return [self.client requestUpload:route arg:arg inputUrl:inputUrl];
-}
-
-- (DBUploadTask *)uploadSessionAppendData:(NSString *)sessionId
-                                   offset:(NSNumber *)offset
-                                inputData:(NSData *)inputData {
-  DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionAppend;
-  DBFILESUploadSessionCursor *arg = [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
-  return [self.client requestUpload:route arg:arg inputData:inputData];
-}
-
-- (DBUploadTask *)uploadSessionAppendStream:(NSString *)sessionId
-                                     offset:(NSNumber *)offset
-                                inputStream:(NSInputStream *)inputStream {
-  DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionAppend;
-  DBFILESUploadSessionCursor *arg = [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
+                                                    propertyGroups:propertyGroups
+                                                    strictConflict:strictConflict];
   return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
@@ -1072,6 +1077,28 @@
                                   inputStream:(NSInputStream *)inputStream {
   DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionAppendV2;
   DBFILESUploadSessionAppendArg *arg = [[DBFILESUploadSessionAppendArg alloc] initWithCursor:cursor close:close];
+  return [self.client requestUpload:route arg:arg inputStream:inputStream];
+}
+
+- (DBUploadTask *)uploadSessionAppendUrl:(NSString *)sessionId offset:(NSNumber *)offset inputUrl:(NSString *)inputUrl {
+  DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionAppend;
+  DBFILESUploadSessionCursor *arg = [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
+  return [self.client requestUpload:route arg:arg inputUrl:inputUrl];
+}
+
+- (DBUploadTask *)uploadSessionAppendData:(NSString *)sessionId
+                                   offset:(NSNumber *)offset
+                                inputData:(NSData *)inputData {
+  DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionAppend;
+  DBFILESUploadSessionCursor *arg = [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
+  return [self.client requestUpload:route arg:arg inputData:inputData];
+}
+
+- (DBUploadTask *)uploadSessionAppendStream:(NSString *)sessionId
+                                     offset:(NSNumber *)offset
+                                inputStream:(NSInputStream *)inputStream {
+  DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionAppend;
+  DBFILESUploadSessionCursor *arg = [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
   return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 

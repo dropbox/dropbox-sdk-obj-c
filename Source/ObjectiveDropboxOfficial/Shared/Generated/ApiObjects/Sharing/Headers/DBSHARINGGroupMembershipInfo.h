@@ -39,7 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param accessType The access type for this member.
+/// @param accessType The access type for this member. It contains inherited
+/// access type from parent folder, and acquired access type from this folder.
 /// @param group The information about the membership group.
 /// @param permissions The permissions that requesting user has on this member.
 /// The set of permissions corresponds to the MemberActions in the request.
@@ -58,7 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param accessType The access type for this member.
+/// @param accessType The access type for this member. It contains inherited
+/// access type from parent folder, and acquired access type from this folder.
 /// @param group The information about the membership group.
 ///
 /// @return An initialized instance.

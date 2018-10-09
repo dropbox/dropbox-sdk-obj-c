@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, DBFILESDownloadZipErrorTag) {
   /// (no description).
   DBFILESDownloadZipErrorPath,
 
-  /// The folder is too large to download.
+  /// The folder or a file is too large to download.
   DBFILESDownloadZipErrorTooLarge,
 
   /// The folder has too many files to download.
@@ -64,8 +64,8 @@ typedef NS_ENUM(NSInteger, DBFILESDownloadZipErrorTag) {
 ///
 /// Initializes union class with tag state of "too_large".
 ///
-/// Description of the "too_large" tag state: The folder is too large to
-/// download.
+/// Description of the "too_large" tag state: The folder or a file is too large
+/// to download.
 ///
 /// @return An initialized instance.
 ///

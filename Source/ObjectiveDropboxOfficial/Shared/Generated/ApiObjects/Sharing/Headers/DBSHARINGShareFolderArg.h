@@ -9,6 +9,7 @@
 #import "DBSHARINGShareFolderArgBase.h"
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessInheritance;
 @class DBSHARINGAclUpdatePolicy;
 @class DBSHARINGFolderAction;
 @class DBSHARINGLinkSettings;
@@ -57,6 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param viewerInfoPolicy Who can enable/disable viewer info for this shared
 /// folder.
+/// @param accessInheritance The access inheritance settings for the folder.
 /// @param actions A list of `FolderAction`s corresponding to
 /// `FolderPermission`s that should appear in the  response's `permissions` in
 /// `DBSHARINGSharedFolderMetadata` field describing the actions the
@@ -71,6 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
                 memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy
             sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
             viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
+           accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance
                      actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions
                 linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings;
 

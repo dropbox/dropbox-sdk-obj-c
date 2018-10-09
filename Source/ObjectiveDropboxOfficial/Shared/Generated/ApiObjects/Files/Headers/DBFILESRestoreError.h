@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
   /// An error occurs when trying to restore the file to that path.
   DBFILESRestoreErrorPathWrite,
 
-  /// The revision is invalid. It may point to a different file.
+  /// The revision is invalid. It may not exist.
   DBFILESRestoreErrorInvalidRevision,
 
   /// (no description).
@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 /// Initializes union class with tag state of "invalid_revision".
 ///
 /// Description of the "invalid_revision" tag state: The revision is invalid. It
-/// may point to a different file.
+/// may not exist.
 ///
 /// @return An initialized instance.
 ///

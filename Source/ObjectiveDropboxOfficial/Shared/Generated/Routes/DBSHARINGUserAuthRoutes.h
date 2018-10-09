@@ -1047,14 +1047,15 @@ setAccessInheritance:(NSString *)sharedFolderId
 /// `DBSHARINGShareFolderError` object on failure.
 ///
 - (DBRpcTask<DBSHARINGShareFolderLaunch *, DBSHARINGShareFolderError *> *)
-     shareFolder:(NSString *)path
- aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
-      forceAsync:(nullable NSNumber *)forceAsync
-    memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy
-sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
-viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
-         actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions
-    linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings;
+      shareFolder:(NSString *)path
+  aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
+       forceAsync:(nullable NSNumber *)forceAsync
+     memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy
+ sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
+ viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
+accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance
+          actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions
+     linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings;
 
 ///
 /// Transfer ownership of a shared folder to a member of the shared folder. User must have `owner` in

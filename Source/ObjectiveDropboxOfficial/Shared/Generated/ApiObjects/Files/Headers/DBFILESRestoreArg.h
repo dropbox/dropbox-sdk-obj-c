@@ -25,10 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The path to the file you want to restore.
+/// The path to save the restored file.
 @property (nonatomic, readonly, copy) NSString *path;
 
-/// The revision to restore for the file.
+/// The revision to restore.
 @property (nonatomic, readonly, copy) NSString *rev;
 
 #pragma mark - Constructors
@@ -36,8 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param path The path to the file you want to restore.
-/// @param rev The revision to restore for the file.
+/// @param path The path to save the restored file.
+/// @param rev The revision to restore.
 ///
 /// @return An initialized instance.
 ///

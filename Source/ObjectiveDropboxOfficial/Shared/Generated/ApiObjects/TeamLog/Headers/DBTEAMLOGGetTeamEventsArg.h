@@ -27,7 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Number of results to return per call.
+/// The maximal number of results to return per call. Note that some calls may
+/// not return limit number of events, and may even return no events, even with
+/// `has_more` set to true. In this case, callers should fetch again using
+/// `getEventsContinue`.
 @property (nonatomic, readonly) NSNumber *limit;
 
 /// Filter the events by account ID. Return ony events with this account_id as
@@ -45,7 +48,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param limit Number of results to return per call.
+/// @param limit The maximal number of results to return per call. Note that
+/// some calls may not return limit number of events, and may even return no
+/// events, even with `has_more` set to true. In this case, callers should fetch
+/// again using `getEventsContinue`.
 /// @param accountId Filter the events by account ID. Return ony events with
 /// this account_id as either Actor, Context, or Participants.
 /// @param time Filter by time range.

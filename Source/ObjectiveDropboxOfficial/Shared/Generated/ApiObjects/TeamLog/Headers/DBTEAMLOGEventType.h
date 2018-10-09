@@ -113,6 +113,7 @@
 @class DBTEAMLOGMemberChangeMembershipTypeType;
 @class DBTEAMLOGMemberChangeNameType;
 @class DBTEAMLOGMemberChangeStatusType;
+@class DBTEAMLOGMemberDeleteManualContactsType;
 @class DBTEAMLOGMemberPermanentlyDeleteAccountContentsType;
 @class DBTEAMLOGMemberRequestsChangePolicyType;
 @class DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType;
@@ -159,6 +160,7 @@
 @class DBTEAMLOGPaperDocEditType;
 @class DBTEAMLOGPaperDocFollowedType;
 @class DBTEAMLOGPaperDocMentionType;
+@class DBTEAMLOGPaperDocOwnershipChangedType;
 @class DBTEAMLOGPaperDocRequestAccessType;
 @class DBTEAMLOGPaperDocResolveCommentType;
 @class DBTEAMLOGPaperDocRevertType;
@@ -302,6 +304,7 @@
 @class DBTEAMLOGTeamProfileChangeLogoType;
 @class DBTEAMLOGTeamProfileChangeNameType;
 @class DBTEAMLOGTeamProfileRemoveLogoType;
+@class DBTEAMLOGTeamSelectiveSyncPolicyChangedType;
 @class DBTEAMLOGTeamSelectiveSyncSettingsChangedType;
 @class DBTEAMLOGTfaAddBackupPhoneType;
 @class DBTEAMLOGTfaAddSecurityKeyType;
@@ -312,6 +315,7 @@
 @class DBTEAMLOGTfaRemoveSecurityKeyType;
 @class DBTEAMLOGTfaResetType;
 @class DBTEAMLOGTwoAccountChangePolicyType;
+@class DBTEAMLOGViewerInfoPolicyChangedType;
 @class DBTEAMLOGWebSessionsChangeFixedLengthPolicyType;
 @class DBTEAMLOGWebSessionsChangeIdleLengthPolicyType;
 
@@ -596,6 +600,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (members) Changed member status (invited, joined, suspended, etc.)
   DBTEAMLOGEventTypeMemberChangeStatus,
 
+  /// (members) Cleared saved contacts
+  DBTEAMLOGEventTypeMemberDeleteManualContacts,
+
   /// (members) Permanently deleted contents of deleted team member account
   DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents,
 
@@ -681,6 +688,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (paper) Mentioned team member in Paper doc
   DBTEAMLOGEventTypePaperDocMention,
+
+  /// (paper) Transferred ownership of Paper doc
+  DBTEAMLOGEventTypePaperDocOwnershipChanged,
 
   /// (paper) Requested access to Paper doc
   DBTEAMLOGEventTypePaperDocRequestAccess,
@@ -1250,12 +1260,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (team_policies) Changed single sign-on setting for team
   DBTEAMLOGEventTypeSsoChangePolicy,
 
+  /// (team_policies) Enabled/disabled Team Selective Sync for team
+  DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged,
+
   /// (team_policies) Changed two-step verification setting for team
   DBTEAMLOGEventTypeTfaChangePolicy,
 
   /// (team_policies) Enabled/disabled option for members to link personal
   /// Dropbox account and team account to same computer
   DBTEAMLOGEventTypeTwoAccountChangePolicy,
+
+  /// (team_policies) Changed team policy for viewer info
+  DBTEAMLOGEventTypeViewerInfoPolicyChanged,
 
   /// (team_policies) Changed how long members can stay signed in to
   /// Dropbox.com
@@ -1723,6 +1739,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeStatusType *memberChangeStatus;
 
+/// (members) Cleared saved contacts @note Ensure the
+/// `isMemberDeleteManualContacts` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGMemberDeleteManualContactsType *memberDeleteManualContacts;
+
 /// (members) Permanently deleted contents of deleted team member account @note
 /// Ensure the `isMemberPermanentlyDeleteAccountContents` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
@@ -1862,6 +1883,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isPaperDocMention` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocMentionType *paperDocMention;
+
+/// (paper) Transferred ownership of Paper doc @note Ensure the
+/// `isPaperDocOwnershipChanged` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperDocOwnershipChangedType *paperDocOwnershipChanged;
 
 /// (paper) Requested access to Paper doc @note Ensure the
 /// `isPaperDocRequestAccess` method returns true before accessing, otherwise a
@@ -2735,6 +2761,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangePolicyType *ssoChangePolicy;
 
+/// (team_policies) Enabled/disabled Team Selective Sync for team @note Ensure
+/// the `isTeamSelectiveSyncPolicyChanged` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGTeamSelectiveSyncPolicyChangedType *teamSelectiveSyncPolicyChanged;
+
 /// (team_policies) Changed two-step verification setting for team @note Ensure
 /// the `isTfaChangePolicy` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
@@ -2745,6 +2776,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isTwoAccountChangePolicy` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTwoAccountChangePolicyType *twoAccountChangePolicy;
+
+/// (team_policies) Changed team policy for viewer info @note Ensure the
+/// `isViewerInfoPolicyChanged` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGViewerInfoPolicyChangedType *viewerInfoPolicyChanged;
 
 /// (team_policies) Changed how long members can stay signed in to Dropbox.com
 /// @note Ensure the `isWebSessionsChangeFixedLengthPolicy` method returns true
@@ -3895,6 +3931,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithMemberChangeStatus:(DBTEAMLOGMemberChangeStatusType *)memberChangeStatus;
 
 ///
+/// Initializes union class with tag state of "member_delete_manual_contacts".
+///
+/// Description of the "member_delete_manual_contacts" tag state: (members)
+/// Cleared saved contacts
+///
+/// @param memberDeleteManualContacts (members) Cleared saved contacts
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberDeleteManualContacts:
+    (DBTEAMLOGMemberDeleteManualContactsType *)memberDeleteManualContacts;
+
+///
 /// Initializes union class with tag state of
 /// "member_permanently_delete_account_contents".
 ///
@@ -4259,6 +4308,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPaperDocMention:(DBTEAMLOGPaperDocMentionType *)paperDocMention;
+
+///
+/// Initializes union class with tag state of "paper_doc_ownership_changed".
+///
+/// Description of the "paper_doc_ownership_changed" tag state: (paper)
+/// Transferred ownership of Paper doc
+///
+/// @param paperDocOwnershipChanged (paper) Transferred ownership of Paper doc
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperDocOwnershipChanged:(DBTEAMLOGPaperDocOwnershipChangedType *)paperDocOwnershipChanged;
 
 ///
 /// Initializes union class with tag state of "paper_doc_request_access".
@@ -6584,6 +6645,21 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithSsoChangePolicy:(DBTEAMLOGSsoChangePolicyType *)ssoChangePolicy;
 
 ///
+/// Initializes union class with tag state of
+/// "team_selective_sync_policy_changed".
+///
+/// Description of the "team_selective_sync_policy_changed" tag state:
+/// (team_policies) Enabled/disabled Team Selective Sync for team
+///
+/// @param teamSelectiveSyncPolicyChanged (team_policies) Enabled/disabled Team
+/// Selective Sync for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamSelectiveSyncPolicyChanged:
+    (DBTEAMLOGTeamSelectiveSyncPolicyChangedType *)teamSelectiveSyncPolicyChanged;
+
+///
 /// Initializes union class with tag state of "tfa_change_policy".
 ///
 /// Description of the "tfa_change_policy" tag state: (team_policies) Changed
@@ -6609,6 +6685,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTwoAccountChangePolicy:(DBTEAMLOGTwoAccountChangePolicyType *)twoAccountChangePolicy;
+
+///
+/// Initializes union class with tag state of "viewer_info_policy_changed".
+///
+/// Description of the "viewer_info_policy_changed" tag state: (team_policies)
+/// Changed team policy for viewer info
+///
+/// @param viewerInfoPolicyChanged (team_policies) Changed team policy for
+/// viewer info
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithViewerInfoPolicyChanged:(DBTEAMLOGViewerInfoPolicyChangedType *)viewerInfoPolicyChanged;
 
 ///
 /// Initializes union class with tag state of
@@ -7824,6 +7913,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "member_delete_manual_contacts".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `memberDeleteManualContacts` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "member_delete_manual_contacts".
+///
+- (BOOL)isMemberDeleteManualContacts;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "member_permanently_delete_account_contents".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -8170,6 +8272,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return Whether the union's current tag state has value "paper_doc_mention".
 ///
 - (BOOL)isPaperDocMention;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "paper_doc_ownership_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperDocOwnershipChanged` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_doc_ownership_changed".
+///
+- (BOOL)isPaperDocOwnershipChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -10332,6 +10447,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "team_selective_sync_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamSelectiveSyncPolicyChanged` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_selective_sync_policy_changed".
+///
+- (BOOL)isTeamSelectiveSyncPolicyChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "tfa_change_policy".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -10353,6 +10481,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "two_account_change_policy".
 ///
 - (BOOL)isTwoAccountChangePolicy;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "viewer_info_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `viewerInfoPolicyChanged` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "viewer_info_policy_changed".
+///
+- (BOOL)isViewerInfoPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

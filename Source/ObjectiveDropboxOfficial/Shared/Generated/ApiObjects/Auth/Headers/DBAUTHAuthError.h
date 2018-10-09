@@ -44,6 +44,9 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
   /// The user has been suspended.
   DBAUTHAuthErrorUserSuspended,
 
+  /// The access token has expired.
+  DBAUTHAuthErrorExpiredAccessToken,
+
   /// (no description).
   DBAUTHAuthErrorOther,
 
@@ -94,6 +97,16 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 - (instancetype)initWithUserSuspended;
 
 ///
+/// Initializes union class with tag state of "expired_access_token".
+///
+/// Description of the "expired_access_token" tag state: The access token has
+/// expired.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithExpiredAccessToken;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -137,6 +150,15 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 /// @return Whether the union's current tag state has value "user_suspended".
 ///
 - (BOOL)isUserSuspended;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "expired_access_token".
+///
+/// @return Whether the union's current tag state has value
+/// "expired_access_token".
+///
+- (BOOL)isExpiredAccessToken;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

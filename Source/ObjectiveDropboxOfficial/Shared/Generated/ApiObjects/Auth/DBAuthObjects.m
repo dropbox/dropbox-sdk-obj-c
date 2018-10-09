@@ -252,6 +252,14 @@
   return self;
 }
 
+- (instancetype)initWithExpiredAccessToken {
+  self = [super init];
+  if (self) {
+    _tag = DBAUTHAuthErrorExpiredAccessToken;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -280,6 +288,10 @@
   return _tag == DBAUTHAuthErrorUserSuspended;
 }
 
+- (BOOL)isExpiredAccessToken {
+  return _tag == DBAUTHAuthErrorExpiredAccessToken;
+}
+
 - (BOOL)isOther {
   return _tag == DBAUTHAuthErrorOther;
 }
@@ -294,6 +306,8 @@
     return @"DBAUTHAuthErrorInvalidSelectAdmin";
   case DBAUTHAuthErrorUserSuspended:
     return @"DBAUTHAuthErrorUserSuspended";
+  case DBAUTHAuthErrorExpiredAccessToken:
+    return @"DBAUTHAuthErrorExpiredAccessToken";
   case DBAUTHAuthErrorOther:
     return @"DBAUTHAuthErrorOther";
   }
@@ -340,6 +354,8 @@
     result = prime * result + [[self tagName] hash];
   case DBAUTHAuthErrorUserSuspended:
     result = prime * result + [[self tagName] hash];
+  case DBAUTHAuthErrorExpiredAccessToken:
+    result = prime * result + [[self tagName] hash];
   case DBAUTHAuthErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -375,6 +391,8 @@
     return [[self tagName] isEqual:[anAuthError tagName]];
   case DBAUTHAuthErrorUserSuspended:
     return [[self tagName] isEqual:[anAuthError tagName]];
+  case DBAUTHAuthErrorExpiredAccessToken:
+    return [[self tagName] isEqual:[anAuthError tagName]];
   case DBAUTHAuthErrorOther:
     return [[self tagName] isEqual:[anAuthError tagName]];
   }
@@ -398,6 +416,8 @@
     jsonDict[@".tag"] = @"invalid_select_admin";
   } else if ([valueObj isUserSuspended]) {
     jsonDict[@".tag"] = @"user_suspended";
+  } else if ([valueObj isExpiredAccessToken]) {
+    jsonDict[@".tag"] = @"expired_access_token";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -418,6 +438,8 @@
     return [[DBAUTHAuthError alloc] initWithInvalidSelectAdmin];
   } else if ([tag isEqualToString:@"user_suspended"]) {
     return [[DBAUTHAuthError alloc] initWithUserSuspended];
+  } else if ([tag isEqualToString:@"expired_access_token"]) {
+    return [[DBAUTHAuthError alloc] initWithExpiredAccessToken];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHAuthError alloc] initWithOther];
   } else {

@@ -707,7 +707,8 @@
                   autorename:(NSNumber *)autorename
               clientModified:(NSDate *)clientModified
                         mute:(NSNumber *)mute
-              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
+              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+              strictConflict:(NSNumber *)strictConflict {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
@@ -725,12 +726,19 @@
     _clientModified = clientModified;
     _mute = mute ?: @NO;
     _propertyGroups = propertyGroups;
+    _strictConflict = strictConflict ?: @NO;
   }
   return self;
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-  return [self initWithPath:path mode:nil autorename:nil clientModified:nil mute:nil propertyGroups:nil];
+  return [self initWithPath:path
+                       mode:nil
+                 autorename:nil
+             clientModified:nil
+                       mute:nil
+             propertyGroups:nil
+             strictConflict:nil];
 }
 
 #pragma mark - Serialization methods
@@ -773,6 +781,7 @@
   if (self.propertyGroups != nil) {
     result = prime * result + [self.propertyGroups hash];
   }
+  result = prime * result + [self.strictConflict hash];
 
   return prime * result;
 }
@@ -815,6 +824,9 @@
       return NO;
     }
   }
+  if (![self.strictConflict isEqual:aCommitInfo.strictConflict]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -842,6 +854,7 @@
                              return [DBFILEPROPERTIESPropertyGroupSerializer serialize:elem0];
                            }];
   }
+  jsonDict[@"strict_conflict"] = valueObj.strictConflict;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -862,13 +875,15 @@
                                    return [DBFILEPROPERTIESPropertyGroupSerializer deserialize:elem0];
                                  }]
           : nil;
+  NSNumber *strictConflict = valueDict[@"strict_conflict"] ?: @NO;
 
   return [[DBFILESCommitInfo alloc] initWithPath:path
                                             mode:mode
                                       autorename:autorename
                                   clientModified:clientModified
                                             mute:mute
-                                  propertyGroups:propertyGroups];
+                                  propertyGroups:propertyGroups
+                                  strictConflict:strictConflict];
 }
 
 @end
@@ -891,7 +906,8 @@
                   autorename:(NSNumber *)autorename
               clientModified:(NSDate *)clientModified
                         mute:(NSNumber *)mute
-              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
+              propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+              strictConflict:(NSNumber *)strictConflict {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
@@ -906,14 +922,21 @@
                   autorename:autorename
               clientModified:clientModified
                         mute:mute
-              propertyGroups:propertyGroups];
+              propertyGroups:propertyGroups
+              strictConflict:strictConflict];
   if (self) {
   }
   return self;
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-  return [self initWithPath:path mode:nil autorename:nil clientModified:nil mute:nil propertyGroups:nil];
+  return [self initWithPath:path
+                       mode:nil
+                 autorename:nil
+             clientModified:nil
+                       mute:nil
+             propertyGroups:nil
+             strictConflict:nil];
 }
 
 #pragma mark - Serialization methods
@@ -956,6 +979,7 @@
   if (self.propertyGroups != nil) {
     result = prime * result + [self.propertyGroups hash];
   }
+  result = prime * result + [self.strictConflict hash];
 
   return prime * result;
 }
@@ -998,6 +1022,9 @@
       return NO;
     }
   }
+  if (![self.strictConflict isEqual:aCommitInfoWithProperties.strictConflict]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1025,6 +1052,7 @@
                              return [DBFILEPROPERTIESPropertyGroupSerializer serialize:elem0];
                            }];
   }
+  jsonDict[@"strict_conflict"] = valueObj.strictConflict;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -1045,13 +1073,15 @@
                                    return [DBFILEPROPERTIESPropertyGroupSerializer deserialize:elem0];
                                  }]
           : nil;
+  NSNumber *strictConflict = valueDict[@"strict_conflict"] ?: @NO;
 
   return [[DBFILESCommitInfoWithProperties alloc] initWithPath:path
                                                           mode:mode
                                                     autorename:autorename
                                                 clientModified:clientModified
                                                           mute:mute
-                                                propertyGroups:propertyGroups];
+                                                propertyGroups:propertyGroups
+                                                strictConflict:strictConflict];
 }
 
 @end
@@ -7381,6 +7411,216 @@
   NSString *link = valueDict[@"link"];
 
   return [[DBFILESGetTemporaryLinkResult alloc] initWithMetadata:metadata link:link];
+}
+
+@end
+
+#import "DBFILESCommitInfo.h"
+#import "DBFILESGetTemporaryUploadLinkArg.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESGetTemporaryUploadLinkArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCommitInfo:(DBFILESCommitInfo *)commitInfo duration:(NSNumber *)duration {
+  [DBStoneValidators nonnullValidator:nil](commitInfo);
+
+  self = [super init];
+  if (self) {
+    _commitInfo = commitInfo;
+    _duration = duration ?: @(14400.0);
+  }
+  return self;
+}
+
+- (instancetype)initWithCommitInfo:(DBFILESCommitInfo *)commitInfo {
+  return [self initWithCommitInfo:commitInfo duration:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESGetTemporaryUploadLinkArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESGetTemporaryUploadLinkArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESGetTemporaryUploadLinkArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.commitInfo hash];
+  result = prime * result + [self.duration hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetTemporaryUploadLinkArg:other];
+}
+
+- (BOOL)isEqualToGetTemporaryUploadLinkArg:(DBFILESGetTemporaryUploadLinkArg *)aGetTemporaryUploadLinkArg {
+  if (self == aGetTemporaryUploadLinkArg) {
+    return YES;
+  }
+  if (![self.commitInfo isEqual:aGetTemporaryUploadLinkArg.commitInfo]) {
+    return NO;
+  }
+  if (![self.duration isEqual:aGetTemporaryUploadLinkArg.duration]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESGetTemporaryUploadLinkArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESGetTemporaryUploadLinkArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"commit_info"] = [DBFILESCommitInfoSerializer serialize:valueObj.commitInfo];
+  jsonDict[@"duration"] = valueObj.duration;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESGetTemporaryUploadLinkArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBFILESCommitInfo *commitInfo = [DBFILESCommitInfoSerializer deserialize:valueDict[@"commit_info"]];
+  NSNumber *duration = valueDict[@"duration"] ?: @(14400.0);
+
+  return [[DBFILESGetTemporaryUploadLinkArg alloc] initWithCommitInfo:commitInfo duration:duration];
+}
+
+@end
+
+#import "DBFILESGetTemporaryUploadLinkResult.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESGetTemporaryUploadLinkResult
+
+#pragma mark - Constructors
+
+- (instancetype)initWithLink:(NSString *)link {
+  [DBStoneValidators nonnullValidator:nil](link);
+
+  self = [super init];
+  if (self) {
+    _link = link;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESGetTemporaryUploadLinkResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESGetTemporaryUploadLinkResultSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESGetTemporaryUploadLinkResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.link hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetTemporaryUploadLinkResult:other];
+}
+
+- (BOOL)isEqualToGetTemporaryUploadLinkResult:(DBFILESGetTemporaryUploadLinkResult *)aGetTemporaryUploadLinkResult {
+  if (self == aGetTemporaryUploadLinkResult) {
+    return YES;
+  }
+  if (![self.link isEqual:aGetTemporaryUploadLinkResult.link]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESGetTemporaryUploadLinkResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESGetTemporaryUploadLinkResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"link"] = valueObj.link;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESGetTemporaryUploadLinkResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *link = valueDict[@"link"];
+
+  return [[DBFILESGetTemporaryUploadLinkResult alloc] initWithLink:link];
 }
 
 @end

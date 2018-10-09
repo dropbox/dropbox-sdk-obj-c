@@ -102,6 +102,7 @@
 @class DBTEAMMembersSetPermissionsResult;
 @class DBTEAMMembersSetProfileError;
 @class DBTEAMMembersSuspendError;
+@class DBTEAMMembersTransferFormerMembersFilesError;
 @class DBTEAMMembersUnsuspendError;
 @class DBTEAMMobileClientSession;
 @class DBTEAMNamespaceMetadata;
@@ -841,6 +842,35 @@ memberSpaceLimitsExcludedUsersRemove:(nullable NSArray<DBTEAMUserSelectorArg *> 
 - (DBRpcTask<DBTEAMMembersListResult *, DBTEAMMembersListContinueError *> *)membersListContinue:(NSString *)cursor;
 
 ///
+/// Moves removed member's files to a different member. This endpoint initiates an asynchronous job. To obtain the final
+/// result of the job, the client should periodically poll `membersMoveFormerMemberFilesJobStatusCheck`. Permission :
+/// Team member management.
+///
+/// @param transferDestId Files from the deleted member account will be transferred to this user.
+/// @param transferAdminId Errors during the transfer process will be sent via email to this user.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `DBTEAMMembersTransferFormerMembersFilesError` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBTEAMMembersTransferFormerMembersFilesError *> *)
+membersMoveFormerMemberFiles:(DBTEAMUserSelectorArg *)user
+              transferDestId:(DBTEAMUserSelectorArg *)transferDestId
+             transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId;
+
+///
+/// Once an async_job_id is returned from `membersMoveFormerMemberFiles` , use this to poll the status of the
+/// asynchronous request. Permission : Team member management.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCPollEmptyResult` object on success or a
+/// `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBASYNCPollEmptyResult *, DBASYNCPollError *> *)membersMoveFormerMemberFilesJobStatusCheck:
+    (NSString *)asyncJobId;
+
+///
 /// Recover a deleted member. Permission : Team member management Exactly one of team_member_id, email, or external_id
 /// must be provided to identify the user account.
 ///
@@ -969,7 +999,6 @@ dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
 /// Suspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
 /// external_id must be provided to identify the user account.
 ///
-/// @param user Identity of user to remove/suspend.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBTEAMMembersSuspendError` object on failure.
@@ -980,7 +1009,6 @@ dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
 /// Suspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
 /// external_id must be provided to identify the user account.
 ///
-/// @param user Identity of user to remove/suspend.
 /// @param wipeData If provided, controls if the user's data will be deleted on their linked devices.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a

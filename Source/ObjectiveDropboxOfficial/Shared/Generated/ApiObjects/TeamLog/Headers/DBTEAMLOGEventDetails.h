@@ -113,6 +113,7 @@
 @class DBTEAMLOGMemberChangeMembershipTypeDetails;
 @class DBTEAMLOGMemberChangeNameDetails;
 @class DBTEAMLOGMemberChangeStatusDetails;
+@class DBTEAMLOGMemberDeleteManualContactsDetails;
 @class DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails;
 @class DBTEAMLOGMemberRequestsChangePolicyDetails;
 @class DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails;
@@ -160,6 +161,7 @@
 @class DBTEAMLOGPaperDocEditDetails;
 @class DBTEAMLOGPaperDocFollowedDetails;
 @class DBTEAMLOGPaperDocMentionDetails;
+@class DBTEAMLOGPaperDocOwnershipChangedDetails;
 @class DBTEAMLOGPaperDocRequestAccessDetails;
 @class DBTEAMLOGPaperDocResolveCommentDetails;
 @class DBTEAMLOGPaperDocRevertDetails;
@@ -303,6 +305,7 @@
 @class DBTEAMLOGTeamProfileChangeLogoDetails;
 @class DBTEAMLOGTeamProfileChangeNameDetails;
 @class DBTEAMLOGTeamProfileRemoveLogoDetails;
+@class DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails;
 @class DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails;
 @class DBTEAMLOGTfaAddBackupPhoneDetails;
 @class DBTEAMLOGTfaAddSecurityKeyDetails;
@@ -313,6 +316,7 @@
 @class DBTEAMLOGTfaRemoveSecurityKeyDetails;
 @class DBTEAMLOGTfaResetDetails;
 @class DBTEAMLOGTwoAccountChangePolicyDetails;
+@class DBTEAMLOGViewerInfoPolicyChangedDetails;
 @class DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails;
 @class DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails;
 
@@ -589,6 +593,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   DBTEAMLOGEventDetailsMemberChangeStatusDetails,
 
   /// (no description).
+  DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails,
+
+  /// (no description).
   DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails,
 
   /// (no description).
@@ -671,6 +678,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsPaperDocMentionDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsPaperDocRequestAccessDetails,
@@ -1198,10 +1208,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   DBTEAMLOGEventDetailsSsoChangePolicyDetails,
 
   /// (no description).
+  DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails,
+
+  /// (no description).
   DBTEAMLOGEventDetailsTfaChangePolicyDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsWebSessionsChangeFixedLengthPolicyDetails,
@@ -1627,6 +1643,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeStatusDetails *memberChangeStatusDetails;
 
+/// (no description). @note Ensure the `isMemberDeleteManualContactsDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGMemberDeleteManualContactsDetails *memberDeleteManualContactsDetails;
+
 /// (no description). @note Ensure the
 /// `isMemberPermanentlyDeleteAccountContentsDetails` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
@@ -1754,6 +1775,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// (no description). @note Ensure the `isPaperDocMentionDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocMentionDetails *paperDocMentionDetails;
+
+/// (no description). @note Ensure the `isPaperDocOwnershipChangedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperDocOwnershipChangedDetails *paperDocOwnershipChangedDetails;
 
 /// (no description). @note Ensure the `isPaperDocRequestAccessDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -2547,6 +2573,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSsoChangePolicyDetails *ssoChangePolicyDetails;
 
+/// (no description). @note Ensure the `isTeamSelectiveSyncPolicyChangedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *teamSelectiveSyncPolicyChangedDetails;
+
 /// (no description). @note Ensure the `isTfaChangePolicyDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTfaChangePolicyDetails *tfaChangePolicyDetails;
@@ -2554,6 +2585,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// (no description). @note Ensure the `isTwoAccountChangePolicyDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTwoAccountChangePolicyDetails *twoAccountChangePolicyDetails;
+
+/// (no description). @note Ensure the `isViewerInfoPolicyChangedDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGViewerInfoPolicyChangedDetails *viewerInfoPolicyChangedDetails;
 
 /// (no description). @note Ensure the
 /// `isWebSessionsChangeFixedLengthPolicyDetails` method returns true before
@@ -3455,6 +3490,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Initializes union class with tag state of
+/// "member_delete_manual_contacts_details".
+///
+/// @param memberDeleteManualContactsDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberDeleteManualContactsDetails:
+    (DBTEAMLOGMemberDeleteManualContactsDetails *)memberDeleteManualContactsDetails;
+
+///
+/// Initializes union class with tag state of
 /// "member_permanently_delete_account_contents_details".
 ///
 /// @param memberPermanentlyDeleteAccountContentsDetails (no description).
@@ -3736,6 +3782,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPaperDocMentionDetails:(DBTEAMLOGPaperDocMentionDetails *)paperDocMentionDetails;
+
+///
+/// Initializes union class with tag state of
+/// "paper_doc_ownership_changed_details".
+///
+/// @param paperDocOwnershipChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperDocOwnershipChangedDetails:
+    (DBTEAMLOGPaperDocOwnershipChangedDetails *)paperDocOwnershipChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -5495,6 +5552,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 - (instancetype)initWithSsoChangePolicyDetails:(DBTEAMLOGSsoChangePolicyDetails *)ssoChangePolicyDetails;
 
 ///
+/// Initializes union class with tag state of
+/// "team_selective_sync_policy_changed_details".
+///
+/// @param teamSelectiveSyncPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamSelectiveSyncPolicyChangedDetails:
+    (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)teamSelectiveSyncPolicyChangedDetails;
+
+///
 /// Initializes union class with tag state of "tfa_change_policy_details".
 ///
 /// @param tfaChangePolicyDetails (no description).
@@ -5513,6 +5581,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithTwoAccountChangePolicyDetails:
     (DBTEAMLOGTwoAccountChangePolicyDetails *)twoAccountChangePolicyDetails;
+
+///
+/// Initializes union class with tag state of
+/// "viewer_info_policy_changed_details".
+///
+/// @param viewerInfoPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithViewerInfoPolicyChangedDetails:
+    (DBTEAMLOGViewerInfoPolicyChangedDetails *)viewerInfoPolicyChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -6761,6 +6840,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "member_delete_manual_contacts_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `memberDeleteManualContactsDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "member_delete_manual_contacts_details".
+///
+- (BOOL)isMemberDeleteManualContactsDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "member_permanently_delete_account_contents_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -7122,6 +7214,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "paper_doc_mention_details".
 ///
 - (BOOL)isPaperDocMentionDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "paper_doc_ownership_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperDocOwnershipChangedDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_doc_ownership_changed_details".
+///
+- (BOOL)isPaperDocOwnershipChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -9394,6 +9499,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "team_selective_sync_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamSelectiveSyncPolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_selective_sync_policy_changed_details".
+///
+- (BOOL)isTeamSelectiveSyncPolicyChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "tfa_change_policy_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -9417,6 +9535,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "two_account_change_policy_details".
 ///
 - (BOOL)isTwoAccountChangePolicyDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "viewer_info_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `viewerInfoPolicyChangedDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "viewer_info_policy_changed_details".
+///
+- (BOOL)isViewerInfoPolicyChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

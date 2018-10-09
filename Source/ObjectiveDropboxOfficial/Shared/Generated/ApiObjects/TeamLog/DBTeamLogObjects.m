@@ -14714,6 +14714,7 @@
 #import "DBTEAMLOGMemberChangeMembershipTypeDetails.h"
 #import "DBTEAMLOGMemberChangeNameDetails.h"
 #import "DBTEAMLOGMemberChangeStatusDetails.h"
+#import "DBTEAMLOGMemberDeleteManualContactsDetails.h"
 #import "DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h"
 #import "DBTEAMLOGMemberRequestsChangePolicyDetails.h"
 #import "DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails.h"
@@ -14761,6 +14762,7 @@
 #import "DBTEAMLOGPaperDocEditDetails.h"
 #import "DBTEAMLOGPaperDocFollowedDetails.h"
 #import "DBTEAMLOGPaperDocMentionDetails.h"
+#import "DBTEAMLOGPaperDocOwnershipChangedDetails.h"
 #import "DBTEAMLOGPaperDocRequestAccessDetails.h"
 #import "DBTEAMLOGPaperDocResolveCommentDetails.h"
 #import "DBTEAMLOGPaperDocRevertDetails.h"
@@ -14904,6 +14906,7 @@
 #import "DBTEAMLOGTeamProfileChangeLogoDetails.h"
 #import "DBTEAMLOGTeamProfileChangeNameDetails.h"
 #import "DBTEAMLOGTeamProfileRemoveLogoDetails.h"
+#import "DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails.h"
 #import "DBTEAMLOGTeamSelectiveSyncSettingsChangedDetails.h"
 #import "DBTEAMLOGTfaAddBackupPhoneDetails.h"
 #import "DBTEAMLOGTfaAddSecurityKeyDetails.h"
@@ -14914,6 +14917,7 @@
 #import "DBTEAMLOGTfaRemoveSecurityKeyDetails.h"
 #import "DBTEAMLOGTfaResetDetails.h"
 #import "DBTEAMLOGTwoAccountChangePolicyDetails.h"
+#import "DBTEAMLOGViewerInfoPolicyChangedDetails.h"
 #import "DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails.h"
 #import "DBTEAMLOGWebSessionsChangeIdleLengthPolicyDetails.h"
 
@@ -15005,6 +15009,7 @@
 @synthesize memberChangeMembershipTypeDetails = _memberChangeMembershipTypeDetails;
 @synthesize memberChangeNameDetails = _memberChangeNameDetails;
 @synthesize memberChangeStatusDetails = _memberChangeStatusDetails;
+@synthesize memberDeleteManualContactsDetails = _memberDeleteManualContactsDetails;
 @synthesize memberPermanentlyDeleteAccountContentsDetails = _memberPermanentlyDeleteAccountContentsDetails;
 @synthesize memberSpaceLimitsAddCustomQuotaDetails = _memberSpaceLimitsAddCustomQuotaDetails;
 @synthesize memberSpaceLimitsChangeCustomQuotaDetails = _memberSpaceLimitsChangeCustomQuotaDetails;
@@ -15033,6 +15038,7 @@
 @synthesize paperDocEditCommentDetails = _paperDocEditCommentDetails;
 @synthesize paperDocFollowedDetails = _paperDocFollowedDetails;
 @synthesize paperDocMentionDetails = _paperDocMentionDetails;
+@synthesize paperDocOwnershipChangedDetails = _paperDocOwnershipChangedDetails;
 @synthesize paperDocRequestAccessDetails = _paperDocRequestAccessDetails;
 @synthesize paperDocResolveCommentDetails = _paperDocResolveCommentDetails;
 @synthesize paperDocRevertDetails = _paperDocRevertDetails;
@@ -15208,8 +15214,10 @@
 @synthesize smartSyncNotOptOutDetails = _smartSyncNotOptOutDetails;
 @synthesize smartSyncOptOutDetails = _smartSyncOptOutDetails;
 @synthesize ssoChangePolicyDetails = _ssoChangePolicyDetails;
+@synthesize teamSelectiveSyncPolicyChangedDetails = _teamSelectiveSyncPolicyChangedDetails;
 @synthesize tfaChangePolicyDetails = _tfaChangePolicyDetails;
 @synthesize twoAccountChangePolicyDetails = _twoAccountChangePolicyDetails;
+@synthesize viewerInfoPolicyChangedDetails = _viewerInfoPolicyChangedDetails;
 @synthesize webSessionsChangeFixedLengthPolicyDetails = _webSessionsChangeFixedLengthPolicyDetails;
 @synthesize webSessionsChangeIdleLengthPolicyDetails = _webSessionsChangeIdleLengthPolicyDetails;
 @synthesize teamMergeFromDetails = _teamMergeFromDetails;
@@ -16024,6 +16032,16 @@
   return self;
 }
 
+- (instancetype)initWithMemberDeleteManualContactsDetails:
+    (DBTEAMLOGMemberDeleteManualContactsDetails *)memberDeleteManualContactsDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails;
+    _memberDeleteManualContactsDetails = memberDeleteManualContactsDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithMemberPermanentlyDeleteAccountContentsDetails:
     (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)memberPermanentlyDeleteAccountContentsDetails {
   self = [super init];
@@ -16288,6 +16306,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsPaperDocMentionDetails;
     _paperDocMentionDetails = paperDocMentionDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperDocOwnershipChangedDetails:
+    (DBTEAMLOGPaperDocOwnershipChangedDetails *)paperDocOwnershipChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails;
+    _paperDocOwnershipChangedDetails = paperDocOwnershipChangedDetails;
   }
   return self;
 }
@@ -17967,6 +17995,16 @@
   return self;
 }
 
+- (instancetype)initWithTeamSelectiveSyncPolicyChangedDetails:
+    (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)teamSelectiveSyncPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails;
+    _teamSelectiveSyncPolicyChangedDetails = teamSelectiveSyncPolicyChangedDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithTfaChangePolicyDetails:(DBTEAMLOGTfaChangePolicyDetails *)tfaChangePolicyDetails {
   self = [super init];
   if (self) {
@@ -17982,6 +18020,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails;
     _twoAccountChangePolicyDetails = twoAccountChangePolicyDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithViewerInfoPolicyChangedDetails:
+    (DBTEAMLOGViewerInfoPolicyChangedDetails *)viewerInfoPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails;
+    _viewerInfoPolicyChangedDetails = viewerInfoPolicyChangedDetails;
   }
   return self;
 }
@@ -18898,6 +18946,15 @@
   return _memberChangeStatusDetails;
 }
 
+- (DBTEAMLOGMemberDeleteManualContactsDetails *)memberDeleteManualContactsDetails {
+  if (![self isMemberDeleteManualContactsDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _memberDeleteManualContactsDetails;
+}
+
 - (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)memberPermanentlyDeleteAccountContentsDetails {
   if (![self isMemberPermanentlyDeleteAccountContentsDetails]) {
     [NSException
@@ -19150,6 +19207,15 @@
         format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperDocMentionDetails, but was %@.", [self tagName]];
   }
   return _paperDocMentionDetails;
+}
+
+- (DBTEAMLOGPaperDocOwnershipChangedDetails *)paperDocOwnershipChangedDetails {
+  if (![self isPaperDocOwnershipChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _paperDocOwnershipChangedDetails;
 }
 
 - (DBTEAMLOGPaperDocRequestAccessDetails *)paperDocRequestAccessDetails {
@@ -20740,6 +20806,15 @@
   return _ssoChangePolicyDetails;
 }
 
+- (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)teamSelectiveSyncPolicyChangedDetails {
+  if (![self isTeamSelectiveSyncPolicyChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamSelectiveSyncPolicyChangedDetails;
+}
+
 - (DBTEAMLOGTfaChangePolicyDetails *)tfaChangePolicyDetails {
   if (![self isTfaChangePolicyDetails]) {
     [NSException
@@ -20756,6 +20831,15 @@
                        [self tagName]];
   }
   return _twoAccountChangePolicyDetails;
+}
+
+- (DBTEAMLOGViewerInfoPolicyChangedDetails *)viewerInfoPolicyChangedDetails {
+  if (![self isViewerInfoPolicyChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _viewerInfoPolicyChangedDetails;
 }
 
 - (DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)webSessionsChangeFixedLengthPolicyDetails {
@@ -21248,6 +21332,10 @@
   return _tag == DBTEAMLOGEventDetailsMemberChangeStatusDetails;
 }
 
+- (BOOL)isMemberDeleteManualContactsDetails {
+  return _tag == DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails;
+}
+
 - (BOOL)isMemberPermanentlyDeleteAccountContentsDetails {
   return _tag == DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails;
 }
@@ -21358,6 +21446,10 @@
 
 - (BOOL)isPaperDocMentionDetails {
   return _tag == DBTEAMLOGEventDetailsPaperDocMentionDetails;
+}
+
+- (BOOL)isPaperDocOwnershipChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails;
 }
 
 - (BOOL)isPaperDocRequestAccessDetails {
@@ -22060,12 +22152,20 @@
   return _tag == DBTEAMLOGEventDetailsSsoChangePolicyDetails;
 }
 
+- (BOOL)isTeamSelectiveSyncPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails;
+}
+
 - (BOOL)isTfaChangePolicyDetails {
   return _tag == DBTEAMLOGEventDetailsTfaChangePolicyDetails;
 }
 
 - (BOOL)isTwoAccountChangePolicyDetails {
   return _tag == DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails;
+}
+
+- (BOOL)isViewerInfoPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails;
 }
 
 - (BOOL)isWebSessionsChangeFixedLengthPolicyDetails {
@@ -22310,6 +22410,8 @@
     return @"DBTEAMLOGEventDetailsMemberChangeNameDetails";
   case DBTEAMLOGEventDetailsMemberChangeStatusDetails:
     return @"DBTEAMLOGEventDetailsMemberChangeStatusDetails";
+  case DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails:
+    return @"DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails";
   case DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails:
     return @"DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails";
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails:
@@ -22366,6 +22468,8 @@
     return @"DBTEAMLOGEventDetailsPaperDocFollowedDetails";
   case DBTEAMLOGEventDetailsPaperDocMentionDetails:
     return @"DBTEAMLOGEventDetailsPaperDocMentionDetails";
+  case DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails:
+    return @"DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails";
   case DBTEAMLOGEventDetailsPaperDocRequestAccessDetails:
     return @"DBTEAMLOGEventDetailsPaperDocRequestAccessDetails";
   case DBTEAMLOGEventDetailsPaperDocResolveCommentDetails:
@@ -22716,10 +22820,14 @@
     return @"DBTEAMLOGEventDetailsSmartSyncOptOutDetails";
   case DBTEAMLOGEventDetailsSsoChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsSsoChangePolicyDetails";
+  case DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails";
   case DBTEAMLOGEventDetailsTfaChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsTfaChangePolicyDetails";
   case DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails";
+  case DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails";
   case DBTEAMLOGEventDetailsWebSessionsChangeFixedLengthPolicyDetails:
     return @"DBTEAMLOGEventDetailsWebSessionsChangeFixedLengthPolicyDetails";
   case DBTEAMLOGEventDetailsWebSessionsChangeIdleLengthPolicyDetails:
@@ -22960,6 +23068,8 @@
     result = prime * result + [self.memberChangeNameDetails hash];
   case DBTEAMLOGEventDetailsMemberChangeStatusDetails:
     result = prime * result + [self.memberChangeStatusDetails hash];
+  case DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails:
+    result = prime * result + [self.memberDeleteManualContactsDetails hash];
   case DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails:
     result = prime * result + [self.memberPermanentlyDeleteAccountContentsDetails hash];
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails:
@@ -23016,6 +23126,8 @@
     result = prime * result + [self.paperDocFollowedDetails hash];
   case DBTEAMLOGEventDetailsPaperDocMentionDetails:
     result = prime * result + [self.paperDocMentionDetails hash];
+  case DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails:
+    result = prime * result + [self.paperDocOwnershipChangedDetails hash];
   case DBTEAMLOGEventDetailsPaperDocRequestAccessDetails:
     result = prime * result + [self.paperDocRequestAccessDetails hash];
   case DBTEAMLOGEventDetailsPaperDocResolveCommentDetails:
@@ -23366,10 +23478,14 @@
     result = prime * result + [self.smartSyncOptOutDetails hash];
   case DBTEAMLOGEventDetailsSsoChangePolicyDetails:
     result = prime * result + [self.ssoChangePolicyDetails hash];
+  case DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails:
+    result = prime * result + [self.teamSelectiveSyncPolicyChangedDetails hash];
   case DBTEAMLOGEventDetailsTfaChangePolicyDetails:
     result = prime * result + [self.tfaChangePolicyDetails hash];
   case DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails:
     result = prime * result + [self.twoAccountChangePolicyDetails hash];
+  case DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails:
+    result = prime * result + [self.viewerInfoPolicyChangedDetails hash];
   case DBTEAMLOGEventDetailsWebSessionsChangeFixedLengthPolicyDetails:
     result = prime * result + [self.webSessionsChangeFixedLengthPolicyDetails hash];
   case DBTEAMLOGEventDetailsWebSessionsChangeIdleLengthPolicyDetails:
@@ -23606,6 +23722,8 @@
     return [self.memberChangeNameDetails isEqual:anEventDetails.memberChangeNameDetails];
   case DBTEAMLOGEventDetailsMemberChangeStatusDetails:
     return [self.memberChangeStatusDetails isEqual:anEventDetails.memberChangeStatusDetails];
+  case DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails:
+    return [self.memberDeleteManualContactsDetails isEqual:anEventDetails.memberDeleteManualContactsDetails];
   case DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails:
     return [self.memberPermanentlyDeleteAccountContentsDetails
         isEqual:anEventDetails.memberPermanentlyDeleteAccountContentsDetails];
@@ -23665,6 +23783,8 @@
     return [self.paperDocFollowedDetails isEqual:anEventDetails.paperDocFollowedDetails];
   case DBTEAMLOGEventDetailsPaperDocMentionDetails:
     return [self.paperDocMentionDetails isEqual:anEventDetails.paperDocMentionDetails];
+  case DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails:
+    return [self.paperDocOwnershipChangedDetails isEqual:anEventDetails.paperDocOwnershipChangedDetails];
   case DBTEAMLOGEventDetailsPaperDocRequestAccessDetails:
     return [self.paperDocRequestAccessDetails isEqual:anEventDetails.paperDocRequestAccessDetails];
   case DBTEAMLOGEventDetailsPaperDocResolveCommentDetails:
@@ -24036,10 +24156,14 @@
     return [self.smartSyncOptOutDetails isEqual:anEventDetails.smartSyncOptOutDetails];
   case DBTEAMLOGEventDetailsSsoChangePolicyDetails:
     return [self.ssoChangePolicyDetails isEqual:anEventDetails.ssoChangePolicyDetails];
+  case DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails:
+    return [self.teamSelectiveSyncPolicyChangedDetails isEqual:anEventDetails.teamSelectiveSyncPolicyChangedDetails];
   case DBTEAMLOGEventDetailsTfaChangePolicyDetails:
     return [self.tfaChangePolicyDetails isEqual:anEventDetails.tfaChangePolicyDetails];
   case DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails:
     return [self.twoAccountChangePolicyDetails isEqual:anEventDetails.twoAccountChangePolicyDetails];
+  case DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails:
+    return [self.viewerInfoPolicyChangedDetails isEqual:anEventDetails.viewerInfoPolicyChangedDetails];
   case DBTEAMLOGEventDetailsWebSessionsChangeFixedLengthPolicyDetails:
     return [self.webSessionsChangeFixedLengthPolicyDetails
         isEqual:anEventDetails.webSessionsChangeFixedLengthPolicyDetails];
@@ -24388,6 +24512,10 @@
     jsonDict =
         [[DBTEAMLOGMemberChangeStatusDetailsSerializer serialize:valueObj.memberChangeStatusDetails] mutableCopy];
     jsonDict[@".tag"] = @"member_change_status_details";
+  } else if ([valueObj isMemberDeleteManualContactsDetails]) {
+    jsonDict = [[DBTEAMLOGMemberDeleteManualContactsDetailsSerializer
+        serialize:valueObj.memberDeleteManualContactsDetails] mutableCopy];
+    jsonDict[@".tag"] = @"member_delete_manual_contacts_details";
   } else if ([valueObj isMemberPermanentlyDeleteAccountContentsDetails]) {
     jsonDict = [[DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer
         serialize:valueObj.memberPermanentlyDeleteAccountContentsDetails] mutableCopy];
@@ -24494,6 +24622,10 @@
   } else if ([valueObj isPaperDocMentionDetails]) {
     jsonDict = [[DBTEAMLOGPaperDocMentionDetailsSerializer serialize:valueObj.paperDocMentionDetails] mutableCopy];
     jsonDict[@".tag"] = @"paper_doc_mention_details";
+  } else if ([valueObj isPaperDocOwnershipChangedDetails]) {
+    jsonDict = [[DBTEAMLOGPaperDocOwnershipChangedDetailsSerializer serialize:valueObj.paperDocOwnershipChangedDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"paper_doc_ownership_changed_details";
   } else if ([valueObj isPaperDocRequestAccessDetails]) {
     jsonDict =
         [[DBTEAMLOGPaperDocRequestAccessDetailsSerializer serialize:valueObj.paperDocRequestAccessDetails] mutableCopy];
@@ -25136,6 +25268,10 @@
   } else if ([valueObj isSsoChangePolicyDetails]) {
     jsonDict = [[DBTEAMLOGSsoChangePolicyDetailsSerializer serialize:valueObj.ssoChangePolicyDetails] mutableCopy];
     jsonDict[@".tag"] = @"sso_change_policy_details";
+  } else if ([valueObj isTeamSelectiveSyncPolicyChangedDetails]) {
+    jsonDict = [[DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer
+        serialize:valueObj.teamSelectiveSyncPolicyChangedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_selective_sync_policy_changed_details";
   } else if ([valueObj isTfaChangePolicyDetails]) {
     jsonDict = [[DBTEAMLOGTfaChangePolicyDetailsSerializer serialize:valueObj.tfaChangePolicyDetails] mutableCopy];
     jsonDict[@".tag"] = @"tfa_change_policy_details";
@@ -25143,6 +25279,10 @@
     jsonDict = [[DBTEAMLOGTwoAccountChangePolicyDetailsSerializer serialize:valueObj.twoAccountChangePolicyDetails]
         mutableCopy];
     jsonDict[@".tag"] = @"two_account_change_policy_details";
+  } else if ([valueObj isViewerInfoPolicyChangedDetails]) {
+    jsonDict = [[DBTEAMLOGViewerInfoPolicyChangedDetailsSerializer serialize:valueObj.viewerInfoPolicyChangedDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"viewer_info_policy_changed_details";
   } else if ([valueObj isWebSessionsChangeFixedLengthPolicyDetails]) {
     jsonDict = [[DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetailsSerializer
         serialize:valueObj.webSessionsChangeFixedLengthPolicyDetails] mutableCopy];
@@ -25545,6 +25685,10 @@
     DBTEAMLOGMemberChangeStatusDetails *memberChangeStatusDetails =
         [DBTEAMLOGMemberChangeStatusDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithMemberChangeStatusDetails:memberChangeStatusDetails];
+  } else if ([tag isEqualToString:@"member_delete_manual_contacts_details"]) {
+    DBTEAMLOGMemberDeleteManualContactsDetails *memberDeleteManualContactsDetails =
+        [DBTEAMLOGMemberDeleteManualContactsDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithMemberDeleteManualContactsDetails:memberDeleteManualContactsDetails];
   } else if ([tag isEqualToString:@"member_permanently_delete_account_contents_details"]) {
     DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *memberPermanentlyDeleteAccountContentsDetails =
         [DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer deserialize:valueDict];
@@ -25666,6 +25810,10 @@
     DBTEAMLOGPaperDocMentionDetails *paperDocMentionDetails =
         [DBTEAMLOGPaperDocMentionDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithPaperDocMentionDetails:paperDocMentionDetails];
+  } else if ([tag isEqualToString:@"paper_doc_ownership_changed_details"]) {
+    DBTEAMLOGPaperDocOwnershipChangedDetails *paperDocOwnershipChangedDetails =
+        [DBTEAMLOGPaperDocOwnershipChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithPaperDocOwnershipChangedDetails:paperDocOwnershipChangedDetails];
   } else if ([tag isEqualToString:@"paper_doc_request_access_details"]) {
     DBTEAMLOGPaperDocRequestAccessDetails *paperDocRequestAccessDetails =
         [DBTEAMLOGPaperDocRequestAccessDetailsSerializer deserialize:valueDict];
@@ -26408,6 +26556,11 @@
     DBTEAMLOGSsoChangePolicyDetails *ssoChangePolicyDetails =
         [DBTEAMLOGSsoChangePolicyDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithSsoChangePolicyDetails:ssoChangePolicyDetails];
+  } else if ([tag isEqualToString:@"team_selective_sync_policy_changed_details"]) {
+    DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *teamSelectiveSyncPolicyChangedDetails =
+        [DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamSelectiveSyncPolicyChangedDetails:teamSelectiveSyncPolicyChangedDetails];
   } else if ([tag isEqualToString:@"tfa_change_policy_details"]) {
     DBTEAMLOGTfaChangePolicyDetails *tfaChangePolicyDetails =
         [DBTEAMLOGTfaChangePolicyDetailsSerializer deserialize:valueDict];
@@ -26416,6 +26569,10 @@
     DBTEAMLOGTwoAccountChangePolicyDetails *twoAccountChangePolicyDetails =
         [DBTEAMLOGTwoAccountChangePolicyDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithTwoAccountChangePolicyDetails:twoAccountChangePolicyDetails];
+  } else if ([tag isEqualToString:@"viewer_info_policy_changed_details"]) {
+    DBTEAMLOGViewerInfoPolicyChangedDetails *viewerInfoPolicyChangedDetails =
+        [DBTEAMLOGViewerInfoPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithViewerInfoPolicyChangedDetails:viewerInfoPolicyChangedDetails];
   } else if ([tag isEqualToString:@"web_sessions_change_fixed_length_policy_details"]) {
     DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *webSessionsChangeFixedLengthPolicyDetails =
         [DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetailsSerializer deserialize:valueDict];
@@ -26600,6 +26757,7 @@
 #import "DBTEAMLOGMemberChangeMembershipTypeType.h"
 #import "DBTEAMLOGMemberChangeNameType.h"
 #import "DBTEAMLOGMemberChangeStatusType.h"
+#import "DBTEAMLOGMemberDeleteManualContactsType.h"
 #import "DBTEAMLOGMemberPermanentlyDeleteAccountContentsType.h"
 #import "DBTEAMLOGMemberRequestsChangePolicyType.h"
 #import "DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType.h"
@@ -26646,6 +26804,7 @@
 #import "DBTEAMLOGPaperDocEditType.h"
 #import "DBTEAMLOGPaperDocFollowedType.h"
 #import "DBTEAMLOGPaperDocMentionType.h"
+#import "DBTEAMLOGPaperDocOwnershipChangedType.h"
 #import "DBTEAMLOGPaperDocRequestAccessType.h"
 #import "DBTEAMLOGPaperDocResolveCommentType.h"
 #import "DBTEAMLOGPaperDocRevertType.h"
@@ -26789,6 +26948,7 @@
 #import "DBTEAMLOGTeamProfileChangeLogoType.h"
 #import "DBTEAMLOGTeamProfileChangeNameType.h"
 #import "DBTEAMLOGTeamProfileRemoveLogoType.h"
+#import "DBTEAMLOGTeamSelectiveSyncPolicyChangedType.h"
 #import "DBTEAMLOGTeamSelectiveSyncSettingsChangedType.h"
 #import "DBTEAMLOGTfaAddBackupPhoneType.h"
 #import "DBTEAMLOGTfaAddSecurityKeyType.h"
@@ -26799,6 +26959,7 @@
 #import "DBTEAMLOGTfaRemoveSecurityKeyType.h"
 #import "DBTEAMLOGTfaResetType.h"
 #import "DBTEAMLOGTwoAccountChangePolicyType.h"
+#import "DBTEAMLOGViewerInfoPolicyChangedType.h"
 #import "DBTEAMLOGWebSessionsChangeFixedLengthPolicyType.h"
 #import "DBTEAMLOGWebSessionsChangeIdleLengthPolicyType.h"
 
@@ -26890,6 +27051,7 @@
 @synthesize memberChangeMembershipType = _memberChangeMembershipType;
 @synthesize memberChangeName = _memberChangeName;
 @synthesize memberChangeStatus = _memberChangeStatus;
+@synthesize memberDeleteManualContacts = _memberDeleteManualContacts;
 @synthesize memberPermanentlyDeleteAccountContents = _memberPermanentlyDeleteAccountContents;
 @synthesize memberSpaceLimitsAddCustomQuota = _memberSpaceLimitsAddCustomQuota;
 @synthesize memberSpaceLimitsChangeCustomQuota = _memberSpaceLimitsChangeCustomQuota;
@@ -26918,6 +27080,7 @@
 @synthesize paperDocEditComment = _paperDocEditComment;
 @synthesize paperDocFollowed = _paperDocFollowed;
 @synthesize paperDocMention = _paperDocMention;
+@synthesize paperDocOwnershipChanged = _paperDocOwnershipChanged;
 @synthesize paperDocRequestAccess = _paperDocRequestAccess;
 @synthesize paperDocResolveComment = _paperDocResolveComment;
 @synthesize paperDocRevert = _paperDocRevert;
@@ -27093,8 +27256,10 @@
 @synthesize smartSyncNotOptOut = _smartSyncNotOptOut;
 @synthesize smartSyncOptOut = _smartSyncOptOut;
 @synthesize ssoChangePolicy = _ssoChangePolicy;
+@synthesize teamSelectiveSyncPolicyChanged = _teamSelectiveSyncPolicyChanged;
 @synthesize tfaChangePolicy = _tfaChangePolicy;
 @synthesize twoAccountChangePolicy = _twoAccountChangePolicy;
+@synthesize viewerInfoPolicyChanged = _viewerInfoPolicyChanged;
 @synthesize webSessionsChangeFixedLengthPolicy = _webSessionsChangeFixedLengthPolicy;
 @synthesize webSessionsChangeIdleLengthPolicy = _webSessionsChangeIdleLengthPolicy;
 @synthesize teamMergeFrom = _teamMergeFrom;
@@ -27887,6 +28052,16 @@
   return self;
 }
 
+- (instancetype)initWithMemberDeleteManualContacts:
+    (DBTEAMLOGMemberDeleteManualContactsType *)memberDeleteManualContacts {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeMemberDeleteManualContacts;
+    _memberDeleteManualContacts = memberDeleteManualContacts;
+  }
+  return self;
+}
+
 - (instancetype)initWithMemberPermanentlyDeleteAccountContents:
     (DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *)memberPermanentlyDeleteAccountContents {
   self = [super init];
@@ -28146,6 +28321,15 @@
   if (self) {
     _tag = DBTEAMLOGEventTypePaperDocMention;
     _paperDocMention = paperDocMention;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperDocOwnershipChanged:(DBTEAMLOGPaperDocOwnershipChangedType *)paperDocOwnershipChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperDocOwnershipChanged;
+    _paperDocOwnershipChanged = paperDocOwnershipChanged;
   }
   return self;
 }
@@ -29784,6 +29968,16 @@
   return self;
 }
 
+- (instancetype)initWithTeamSelectiveSyncPolicyChanged:
+    (DBTEAMLOGTeamSelectiveSyncPolicyChangedType *)teamSelectiveSyncPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged;
+    _teamSelectiveSyncPolicyChanged = teamSelectiveSyncPolicyChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithTfaChangePolicy:(DBTEAMLOGTfaChangePolicyType *)tfaChangePolicy {
   self = [super init];
   if (self) {
@@ -29798,6 +29992,15 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeTwoAccountChangePolicy;
     _twoAccountChangePolicy = twoAccountChangePolicy;
+  }
+  return self;
+}
+
+- (instancetype)initWithViewerInfoPolicyChanged:(DBTEAMLOGViewerInfoPolicyChangedType *)viewerInfoPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeViewerInfoPolicyChanged;
+    _viewerInfoPolicyChanged = viewerInfoPolicyChanged;
   }
   return self;
 }
@@ -30652,6 +30855,15 @@
   return _memberChangeStatus;
 }
 
+- (DBTEAMLOGMemberDeleteManualContactsType *)memberDeleteManualContacts {
+  if (![self isMemberDeleteManualContacts]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeMemberDeleteManualContacts, but was %@.", [self tagName]];
+  }
+  return _memberDeleteManualContacts;
+}
+
 - (DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *)memberPermanentlyDeleteAccountContents {
   if (![self isMemberPermanentlyDeleteAccountContents]) {
     [NSException raise:@"IllegalStateException"
@@ -30887,6 +31099,15 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypePaperDocMention, but was %@.", [self tagName]];
   }
   return _paperDocMention;
+}
+
+- (DBTEAMLOGPaperDocOwnershipChangedType *)paperDocOwnershipChanged {
+  if (![self isPaperDocOwnershipChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypePaperDocOwnershipChanged, but was %@.", [self tagName]];
+  }
+  return _paperDocOwnershipChanged;
 }
 
 - (DBTEAMLOGPaperDocRequestAccessType *)paperDocRequestAccess {
@@ -32362,6 +32583,15 @@
   return _ssoChangePolicy;
 }
 
+- (DBTEAMLOGTeamSelectiveSyncPolicyChangedType *)teamSelectiveSyncPolicyChanged {
+  if (![self isTeamSelectiveSyncPolicyChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged, but was %@.", [self tagName]];
+  }
+  return _teamSelectiveSyncPolicyChanged;
+}
+
 - (DBTEAMLOGTfaChangePolicyType *)tfaChangePolicy {
   if (![self isTfaChangePolicy]) {
     [NSException raise:@"IllegalStateException"
@@ -32376,6 +32606,14 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypeTwoAccountChangePolicy, but was %@.", [self tagName]];
   }
   return _twoAccountChangePolicy;
+}
+
+- (DBTEAMLOGViewerInfoPolicyChangedType *)viewerInfoPolicyChanged {
+  if (![self isViewerInfoPolicyChanged]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeViewerInfoPolicyChanged, but was %@.", [self tagName]];
+  }
+  return _viewerInfoPolicyChanged;
 }
 
 - (DBTEAMLOGWebSessionsChangeFixedLengthPolicyType *)webSessionsChangeFixedLengthPolicy {
@@ -32847,6 +33085,10 @@
   return _tag == DBTEAMLOGEventTypeMemberChangeStatus;
 }
 
+- (BOOL)isMemberDeleteManualContacts {
+  return _tag == DBTEAMLOGEventTypeMemberDeleteManualContacts;
+}
+
 - (BOOL)isMemberPermanentlyDeleteAccountContents {
   return _tag == DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents;
 }
@@ -32957,6 +33199,10 @@
 
 - (BOOL)isPaperDocMention {
   return _tag == DBTEAMLOGEventTypePaperDocMention;
+}
+
+- (BOOL)isPaperDocOwnershipChanged {
+  return _tag == DBTEAMLOGEventTypePaperDocOwnershipChanged;
 }
 
 - (BOOL)isPaperDocRequestAccess {
@@ -33659,12 +33905,20 @@
   return _tag == DBTEAMLOGEventTypeSsoChangePolicy;
 }
 
+- (BOOL)isTeamSelectiveSyncPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged;
+}
+
 - (BOOL)isTfaChangePolicy {
   return _tag == DBTEAMLOGEventTypeTfaChangePolicy;
 }
 
 - (BOOL)isTwoAccountChangePolicy {
   return _tag == DBTEAMLOGEventTypeTwoAccountChangePolicy;
+}
+
+- (BOOL)isViewerInfoPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeViewerInfoPolicyChanged;
 }
 
 - (BOOL)isWebSessionsChangeFixedLengthPolicy {
@@ -33905,6 +34159,8 @@
     return @"DBTEAMLOGEventTypeMemberChangeName";
   case DBTEAMLOGEventTypeMemberChangeStatus:
     return @"DBTEAMLOGEventTypeMemberChangeStatus";
+  case DBTEAMLOGEventTypeMemberDeleteManualContacts:
+    return @"DBTEAMLOGEventTypeMemberDeleteManualContacts";
   case DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents:
     return @"DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents";
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota:
@@ -33961,6 +34217,8 @@
     return @"DBTEAMLOGEventTypePaperDocFollowed";
   case DBTEAMLOGEventTypePaperDocMention:
     return @"DBTEAMLOGEventTypePaperDocMention";
+  case DBTEAMLOGEventTypePaperDocOwnershipChanged:
+    return @"DBTEAMLOGEventTypePaperDocOwnershipChanged";
   case DBTEAMLOGEventTypePaperDocRequestAccess:
     return @"DBTEAMLOGEventTypePaperDocRequestAccess";
   case DBTEAMLOGEventTypePaperDocResolveComment:
@@ -34311,10 +34569,14 @@
     return @"DBTEAMLOGEventTypeSmartSyncOptOut";
   case DBTEAMLOGEventTypeSsoChangePolicy:
     return @"DBTEAMLOGEventTypeSsoChangePolicy";
+  case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
+    return @"DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged";
   case DBTEAMLOGEventTypeTfaChangePolicy:
     return @"DBTEAMLOGEventTypeTfaChangePolicy";
   case DBTEAMLOGEventTypeTwoAccountChangePolicy:
     return @"DBTEAMLOGEventTypeTwoAccountChangePolicy";
+  case DBTEAMLOGEventTypeViewerInfoPolicyChanged:
+    return @"DBTEAMLOGEventTypeViewerInfoPolicyChanged";
   case DBTEAMLOGEventTypeWebSessionsChangeFixedLengthPolicy:
     return @"DBTEAMLOGEventTypeWebSessionsChangeFixedLengthPolicy";
   case DBTEAMLOGEventTypeWebSessionsChangeIdleLengthPolicy:
@@ -34553,6 +34815,8 @@
     result = prime * result + [self.memberChangeName hash];
   case DBTEAMLOGEventTypeMemberChangeStatus:
     result = prime * result + [self.memberChangeStatus hash];
+  case DBTEAMLOGEventTypeMemberDeleteManualContacts:
+    result = prime * result + [self.memberDeleteManualContacts hash];
   case DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents:
     result = prime * result + [self.memberPermanentlyDeleteAccountContents hash];
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota:
@@ -34609,6 +34873,8 @@
     result = prime * result + [self.paperDocFollowed hash];
   case DBTEAMLOGEventTypePaperDocMention:
     result = prime * result + [self.paperDocMention hash];
+  case DBTEAMLOGEventTypePaperDocOwnershipChanged:
+    result = prime * result + [self.paperDocOwnershipChanged hash];
   case DBTEAMLOGEventTypePaperDocRequestAccess:
     result = prime * result + [self.paperDocRequestAccess hash];
   case DBTEAMLOGEventTypePaperDocResolveComment:
@@ -34959,10 +35225,14 @@
     result = prime * result + [self.smartSyncOptOut hash];
   case DBTEAMLOGEventTypeSsoChangePolicy:
     result = prime * result + [self.ssoChangePolicy hash];
+  case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
+    result = prime * result + [self.teamSelectiveSyncPolicyChanged hash];
   case DBTEAMLOGEventTypeTfaChangePolicy:
     result = prime * result + [self.tfaChangePolicy hash];
   case DBTEAMLOGEventTypeTwoAccountChangePolicy:
     result = prime * result + [self.twoAccountChangePolicy hash];
+  case DBTEAMLOGEventTypeViewerInfoPolicyChanged:
+    result = prime * result + [self.viewerInfoPolicyChanged hash];
   case DBTEAMLOGEventTypeWebSessionsChangeFixedLengthPolicy:
     result = prime * result + [self.webSessionsChangeFixedLengthPolicy hash];
   case DBTEAMLOGEventTypeWebSessionsChangeIdleLengthPolicy:
@@ -35190,6 +35460,8 @@
     return [self.memberChangeName isEqual:anEventType.memberChangeName];
   case DBTEAMLOGEventTypeMemberChangeStatus:
     return [self.memberChangeStatus isEqual:anEventType.memberChangeStatus];
+  case DBTEAMLOGEventTypeMemberDeleteManualContacts:
+    return [self.memberDeleteManualContacts isEqual:anEventType.memberDeleteManualContacts];
   case DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents:
     return [self.memberPermanentlyDeleteAccountContents isEqual:anEventType.memberPermanentlyDeleteAccountContents];
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota:
@@ -35246,6 +35518,8 @@
     return [self.paperDocFollowed isEqual:anEventType.paperDocFollowed];
   case DBTEAMLOGEventTypePaperDocMention:
     return [self.paperDocMention isEqual:anEventType.paperDocMention];
+  case DBTEAMLOGEventTypePaperDocOwnershipChanged:
+    return [self.paperDocOwnershipChanged isEqual:anEventType.paperDocOwnershipChanged];
   case DBTEAMLOGEventTypePaperDocRequestAccess:
     return [self.paperDocRequestAccess isEqual:anEventType.paperDocRequestAccess];
   case DBTEAMLOGEventTypePaperDocResolveComment:
@@ -35598,10 +35872,14 @@
     return [self.smartSyncOptOut isEqual:anEventType.smartSyncOptOut];
   case DBTEAMLOGEventTypeSsoChangePolicy:
     return [self.ssoChangePolicy isEqual:anEventType.ssoChangePolicy];
+  case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
+    return [self.teamSelectiveSyncPolicyChanged isEqual:anEventType.teamSelectiveSyncPolicyChanged];
   case DBTEAMLOGEventTypeTfaChangePolicy:
     return [self.tfaChangePolicy isEqual:anEventType.tfaChangePolicy];
   case DBTEAMLOGEventTypeTwoAccountChangePolicy:
     return [self.twoAccountChangePolicy isEqual:anEventType.twoAccountChangePolicy];
+  case DBTEAMLOGEventTypeViewerInfoPolicyChanged:
+    return [self.viewerInfoPolicyChanged isEqual:anEventType.viewerInfoPolicyChanged];
   case DBTEAMLOGEventTypeWebSessionsChangeFixedLengthPolicy:
     return [self.webSessionsChangeFixedLengthPolicy isEqual:anEventType.webSessionsChangeFixedLengthPolicy];
   case DBTEAMLOGEventTypeWebSessionsChangeIdleLengthPolicy:
@@ -35924,6 +36202,10 @@
   } else if ([valueObj isMemberChangeStatus]) {
     jsonDict = [[DBTEAMLOGMemberChangeStatusTypeSerializer serialize:valueObj.memberChangeStatus] mutableCopy];
     jsonDict[@".tag"] = @"member_change_status";
+  } else if ([valueObj isMemberDeleteManualContacts]) {
+    jsonDict =
+        [[DBTEAMLOGMemberDeleteManualContactsTypeSerializer serialize:valueObj.memberDeleteManualContacts] mutableCopy];
+    jsonDict[@".tag"] = @"member_delete_manual_contacts";
   } else if ([valueObj isMemberPermanentlyDeleteAccountContents]) {
     jsonDict = [[DBTEAMLOGMemberPermanentlyDeleteAccountContentsTypeSerializer
         serialize:valueObj.memberPermanentlyDeleteAccountContents] mutableCopy];
@@ -36022,6 +36304,10 @@
   } else if ([valueObj isPaperDocMention]) {
     jsonDict = [[DBTEAMLOGPaperDocMentionTypeSerializer serialize:valueObj.paperDocMention] mutableCopy];
     jsonDict[@".tag"] = @"paper_doc_mention";
+  } else if ([valueObj isPaperDocOwnershipChanged]) {
+    jsonDict =
+        [[DBTEAMLOGPaperDocOwnershipChangedTypeSerializer serialize:valueObj.paperDocOwnershipChanged] mutableCopy];
+    jsonDict[@".tag"] = @"paper_doc_ownership_changed";
   } else if ([valueObj isPaperDocRequestAccess]) {
     jsonDict = [[DBTEAMLOGPaperDocRequestAccessTypeSerializer serialize:valueObj.paperDocRequestAccess] mutableCopy];
     jsonDict[@".tag"] = @"paper_doc_request_access";
@@ -36621,12 +36907,20 @@
   } else if ([valueObj isSsoChangePolicy]) {
     jsonDict = [[DBTEAMLOGSsoChangePolicyTypeSerializer serialize:valueObj.ssoChangePolicy] mutableCopy];
     jsonDict[@".tag"] = @"sso_change_policy";
+  } else if ([valueObj isTeamSelectiveSyncPolicyChanged]) {
+    jsonDict = [[DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer
+        serialize:valueObj.teamSelectiveSyncPolicyChanged] mutableCopy];
+    jsonDict[@".tag"] = @"team_selective_sync_policy_changed";
   } else if ([valueObj isTfaChangePolicy]) {
     jsonDict = [[DBTEAMLOGTfaChangePolicyTypeSerializer serialize:valueObj.tfaChangePolicy] mutableCopy];
     jsonDict[@".tag"] = @"tfa_change_policy";
   } else if ([valueObj isTwoAccountChangePolicy]) {
     jsonDict = [[DBTEAMLOGTwoAccountChangePolicyTypeSerializer serialize:valueObj.twoAccountChangePolicy] mutableCopy];
     jsonDict[@".tag"] = @"two_account_change_policy";
+  } else if ([valueObj isViewerInfoPolicyChanged]) {
+    jsonDict =
+        [[DBTEAMLOGViewerInfoPolicyChangedTypeSerializer serialize:valueObj.viewerInfoPolicyChanged] mutableCopy];
+    jsonDict[@".tag"] = @"viewer_info_policy_changed";
   } else if ([valueObj isWebSessionsChangeFixedLengthPolicy]) {
     jsonDict = [[DBTEAMLOGWebSessionsChangeFixedLengthPolicyTypeSerializer
         serialize:valueObj.webSessionsChangeFixedLengthPolicy] mutableCopy];
@@ -36999,6 +37293,10 @@
     DBTEAMLOGMemberChangeStatusType *memberChangeStatus =
         [DBTEAMLOGMemberChangeStatusTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithMemberChangeStatus:memberChangeStatus];
+  } else if ([tag isEqualToString:@"member_delete_manual_contacts"]) {
+    DBTEAMLOGMemberDeleteManualContactsType *memberDeleteManualContacts =
+        [DBTEAMLOGMemberDeleteManualContactsTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithMemberDeleteManualContacts:memberDeleteManualContacts];
   } else if ([tag isEqualToString:@"member_permanently_delete_account_contents"]) {
     DBTEAMLOGMemberPermanentlyDeleteAccountContentsType *memberPermanentlyDeleteAccountContents =
         [DBTEAMLOGMemberPermanentlyDeleteAccountContentsTypeSerializer deserialize:valueDict];
@@ -37106,6 +37404,10 @@
   } else if ([tag isEqualToString:@"paper_doc_mention"]) {
     DBTEAMLOGPaperDocMentionType *paperDocMention = [DBTEAMLOGPaperDocMentionTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithPaperDocMention:paperDocMention];
+  } else if ([tag isEqualToString:@"paper_doc_ownership_changed"]) {
+    DBTEAMLOGPaperDocOwnershipChangedType *paperDocOwnershipChanged =
+        [DBTEAMLOGPaperDocOwnershipChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithPaperDocOwnershipChanged:paperDocOwnershipChanged];
   } else if ([tag isEqualToString:@"paper_doc_request_access"]) {
     DBTEAMLOGPaperDocRequestAccessType *paperDocRequestAccess =
         [DBTEAMLOGPaperDocRequestAccessTypeSerializer deserialize:valueDict];
@@ -37768,6 +38070,10 @@
   } else if ([tag isEqualToString:@"sso_change_policy"]) {
     DBTEAMLOGSsoChangePolicyType *ssoChangePolicy = [DBTEAMLOGSsoChangePolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithSsoChangePolicy:ssoChangePolicy];
+  } else if ([tag isEqualToString:@"team_selective_sync_policy_changed"]) {
+    DBTEAMLOGTeamSelectiveSyncPolicyChangedType *teamSelectiveSyncPolicyChanged =
+        [DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamSelectiveSyncPolicyChanged:teamSelectiveSyncPolicyChanged];
   } else if ([tag isEqualToString:@"tfa_change_policy"]) {
     DBTEAMLOGTfaChangePolicyType *tfaChangePolicy = [DBTEAMLOGTfaChangePolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithTfaChangePolicy:tfaChangePolicy];
@@ -37775,6 +38081,10 @@
     DBTEAMLOGTwoAccountChangePolicyType *twoAccountChangePolicy =
         [DBTEAMLOGTwoAccountChangePolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithTwoAccountChangePolicy:twoAccountChangePolicy];
+  } else if ([tag isEqualToString:@"viewer_info_policy_changed"]) {
+    DBTEAMLOGViewerInfoPolicyChangedType *viewerInfoPolicyChanged =
+        [DBTEAMLOGViewerInfoPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithViewerInfoPolicyChanged:viewerInfoPolicyChanged];
   } else if ([tag isEqualToString:@"web_sessions_change_fixed_length_policy"]) {
     DBTEAMLOGWebSessionsChangeFixedLengthPolicyType *webSessionsChangeFixedLengthPolicy =
         [DBTEAMLOGWebSessionsChangeFixedLengthPolicyTypeSerializer deserialize:valueDict];
@@ -46275,12 +46585,23 @@
 
 @implementation DBTEAMLOGGetTeamEventsContinueError
 
+@synthesize reset = _reset;
+
 #pragma mark - Constructors
 
 - (instancetype)initWithBadCursor {
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGGetTeamEventsContinueErrorBadCursor;
+  }
+  return self;
+}
+
+- (instancetype)initWithReset:(NSDate *)reset {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGGetTeamEventsContinueErrorReset;
+    _reset = reset;
   }
   return self;
 }
@@ -46295,10 +46616,22 @@
 
 #pragma mark - Instance field accessors
 
+- (NSDate *)reset {
+  if (![self isReset]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGGetTeamEventsContinueErrorReset, but was %@.", [self tagName]];
+  }
+  return _reset;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isBadCursor {
   return _tag == DBTEAMLOGGetTeamEventsContinueErrorBadCursor;
+}
+
+- (BOOL)isReset {
+  return _tag == DBTEAMLOGGetTeamEventsContinueErrorReset;
 }
 
 - (BOOL)isOther {
@@ -46309,6 +46642,8 @@
   switch (_tag) {
   case DBTEAMLOGGetTeamEventsContinueErrorBadCursor:
     return @"DBTEAMLOGGetTeamEventsContinueErrorBadCursor";
+  case DBTEAMLOGGetTeamEventsContinueErrorReset:
+    return @"DBTEAMLOGGetTeamEventsContinueErrorReset";
   case DBTEAMLOGGetTeamEventsContinueErrorOther:
     return @"DBTEAMLOGGetTeamEventsContinueErrorOther";
   }
@@ -46349,6 +46684,8 @@
   switch (_tag) {
   case DBTEAMLOGGetTeamEventsContinueErrorBadCursor:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGGetTeamEventsContinueErrorReset:
+    result = prime * result + [self.reset hash];
   case DBTEAMLOGGetTeamEventsContinueErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -46378,6 +46715,8 @@
   switch (_tag) {
   case DBTEAMLOGGetTeamEventsContinueErrorBadCursor:
     return [[self tagName] isEqual:[aGetTeamEventsContinueError tagName]];
+  case DBTEAMLOGGetTeamEventsContinueErrorReset:
+    return [self.reset isEqual:aGetTeamEventsContinueError.reset];
   case DBTEAMLOGGetTeamEventsContinueErrorOther:
     return [[self tagName] isEqual:[aGetTeamEventsContinueError tagName]];
   }
@@ -46395,6 +46734,9 @@
 
   if ([valueObj isBadCursor]) {
     jsonDict[@".tag"] = @"bad_cursor";
+  } else if ([valueObj isReset]) {
+    jsonDict[@"reset"] = [DBNSDateSerializer serialize:valueObj.reset dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+    jsonDict[@".tag"] = @"reset";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -46409,6 +46751,9 @@
 
   if ([tag isEqualToString:@"bad_cursor"]) {
     return [[DBTEAMLOGGetTeamEventsContinueError alloc] initWithBadCursor];
+  } else if ([tag isEqualToString:@"reset"]) {
+    NSDate *reset = [DBNSDateSerializer deserialize:valueDict[@"reset"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+    return [[DBTEAMLOGGetTeamEventsContinueError alloc] initWithReset:reset];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGGetTeamEventsContinueError alloc] initWithOther];
   } else {
@@ -53313,6 +53658,198 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberChangeStatusType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberDeleteManualContactsDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberDeleteManualContactsDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initDefault {
+
+  self = [super init];
+  if (self) {
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberDeleteManualContactsDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberDeleteManualContactsDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberDeleteManualContactsDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberDeleteManualContactsDetails:other];
+}
+
+- (BOOL)isEqualToMemberDeleteManualContactsDetails:
+    (DBTEAMLOGMemberDeleteManualContactsDetails *)aMemberDeleteManualContactsDetails {
+  if (self == aMemberDeleteManualContactsDetails) {
+    return YES;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberDeleteManualContactsDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberDeleteManualContactsDetails *)valueObj {
+#pragma unused(valueObj)
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberDeleteManualContactsDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+#pragma unused(valueDict)
+
+  return [[DBTEAMLOGMemberDeleteManualContactsDetails alloc] initDefault];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberDeleteManualContactsType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberDeleteManualContactsType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberDeleteManualContactsTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberDeleteManualContactsTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberDeleteManualContactsTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberDeleteManualContactsType:other];
+}
+
+- (BOOL)isEqualToMemberDeleteManualContactsType:
+    (DBTEAMLOGMemberDeleteManualContactsType *)aMemberDeleteManualContactsType {
+  if (self == aMemberDeleteManualContactsType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aMemberDeleteManualContactsType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberDeleteManualContactsTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberDeleteManualContactsType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberDeleteManualContactsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGMemberDeleteManualContactsType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -65109,6 +65646,237 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDocOwnershipChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDocOwnershipChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid
+                  dNewOwnerUserId:(NSString *)dNewOwnerUserId
+                   oldOwnerUserId:(NSString *)oldOwnerUserId {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](dNewOwnerUserId);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](oldOwnerUserId);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+    _oldOwnerUserId = oldOwnerUserId;
+    _dNewOwnerUserId = dNewOwnerUserId;
+  }
+  return self;
+}
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid dNewOwnerUserId:(NSString *)dNewOwnerUserId {
+  return [self initWithEventUuid:eventUuid dNewOwnerUserId:dNewOwnerUserId oldOwnerUserId:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDocOwnershipChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDocOwnershipChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDocOwnershipChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+  result = prime * result + [self.dNewOwnerUserId hash];
+  if (self.oldOwnerUserId != nil) {
+    result = prime * result + [self.oldOwnerUserId hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDocOwnershipChangedDetails:other];
+}
+
+- (BOOL)isEqualToPaperDocOwnershipChangedDetails:
+    (DBTEAMLOGPaperDocOwnershipChangedDetails *)aPaperDocOwnershipChangedDetails {
+  if (self == aPaperDocOwnershipChangedDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aPaperDocOwnershipChangedDetails.eventUuid]) {
+    return NO;
+  }
+  if (![self.dNewOwnerUserId isEqual:aPaperDocOwnershipChangedDetails.dNewOwnerUserId]) {
+    return NO;
+  }
+  if (self.oldOwnerUserId) {
+    if (![self.oldOwnerUserId isEqual:aPaperDocOwnershipChangedDetails.oldOwnerUserId]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDocOwnershipChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocOwnershipChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+  jsonDict[@"new_owner_user_id"] = valueObj.dNewOwnerUserId;
+  if (valueObj.oldOwnerUserId) {
+    jsonDict[@"old_owner_user_id"] = valueObj.oldOwnerUserId;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDocOwnershipChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+  NSString *dNewOwnerUserId = valueDict[@"new_owner_user_id"];
+  NSString *oldOwnerUserId = valueDict[@"old_owner_user_id"] ?: nil;
+
+  return [[DBTEAMLOGPaperDocOwnershipChangedDetails alloc] initWithEventUuid:eventUuid
+                                                             dNewOwnerUserId:dNewOwnerUserId
+                                                              oldOwnerUserId:oldOwnerUserId];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDocOwnershipChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDocOwnershipChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDocOwnershipChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDocOwnershipChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDocOwnershipChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDocOwnershipChangedType:other];
+}
+
+- (BOOL)isEqualToPaperDocOwnershipChangedType:(DBTEAMLOGPaperDocOwnershipChangedType *)aPaperDocOwnershipChangedType {
+  if (self == aPaperDocOwnershipChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aPaperDocOwnershipChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDocOwnershipChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocOwnershipChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDocOwnershipChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGPaperDocOwnershipChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGPaperDocRequestAccessDetails.h"
 
 #pragma mark - API Object
@@ -69536,6 +70304,201 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGPassPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPassPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPassPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithAllow {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPassPolicyAllow;
+  }
+  return self;
+}
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPassPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPassPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGPassPolicyEnabled;
+}
+
+- (BOOL)isAllow {
+  return _tag == DBTEAMLOGPassPolicyAllow;
+}
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGPassPolicyDisabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGPassPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGPassPolicyEnabled:
+    return @"DBTEAMLOGPassPolicyEnabled";
+  case DBTEAMLOGPassPolicyAllow:
+    return @"DBTEAMLOGPassPolicyAllow";
+  case DBTEAMLOGPassPolicyDisabled:
+    return @"DBTEAMLOGPassPolicyDisabled";
+  case DBTEAMLOGPassPolicyOther:
+    return @"DBTEAMLOGPassPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPassPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPassPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPassPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGPassPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPassPolicyAllow:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPassPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPassPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPassPolicy:other];
+}
+
+- (BOOL)isEqualToPassPolicy:(DBTEAMLOGPassPolicy *)aPassPolicy {
+  if (self == aPassPolicy) {
+    return YES;
+  }
+  if (self.tag != aPassPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGPassPolicyEnabled:
+    return [[self tagName] isEqual:[aPassPolicy tagName]];
+  case DBTEAMLOGPassPolicyAllow:
+    return [[self tagName] isEqual:[aPassPolicy tagName]];
+  case DBTEAMLOGPassPolicyDisabled:
+    return [[self tagName] isEqual:[aPassPolicy tagName]];
+  case DBTEAMLOGPassPolicyOther:
+    return [[self tagName] isEqual:[aPassPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPassPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPassPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isAllow]) {
+    jsonDict[@".tag"] = @"allow";
+  } else if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPassPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGPassPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"allow"]) {
+    return [[DBTEAMLOGPassPolicy alloc] initWithAllow];
+  } else if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGPassPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGPassPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGPassPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGPasswordChangeDetails.h"
 
 #pragma mark - API Object
@@ -70615,6 +71578,157 @@
     return [[DBTEAMLOGPlacementRestriction alloc] initWithOther];
   } else {
     return [[DBTEAMLOGPlacementRestriction alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGQuickActionType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGQuickActionType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDeleteSharedLink {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGQuickActionTypeDeleteSharedLink;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGQuickActionTypeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDeleteSharedLink {
+  return _tag == DBTEAMLOGQuickActionTypeDeleteSharedLink;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGQuickActionTypeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGQuickActionTypeDeleteSharedLink:
+    return @"DBTEAMLOGQuickActionTypeDeleteSharedLink";
+  case DBTEAMLOGQuickActionTypeOther:
+    return @"DBTEAMLOGQuickActionTypeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGQuickActionTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGQuickActionTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGQuickActionTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGQuickActionTypeDeleteSharedLink:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGQuickActionTypeOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToQuickActionType:other];
+}
+
+- (BOOL)isEqualToQuickActionType:(DBTEAMLOGQuickActionType *)aQuickActionType {
+  if (self == aQuickActionType) {
+    return YES;
+  }
+  if (self.tag != aQuickActionType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGQuickActionTypeDeleteSharedLink:
+    return [[self tagName] isEqual:[aQuickActionType tagName]];
+  case DBTEAMLOGQuickActionTypeOther:
+    return [[self tagName] isEqual:[aQuickActionType tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGQuickActionTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGQuickActionType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDeleteSharedLink]) {
+    jsonDict[@".tag"] = @"delete_shared_link";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGQuickActionType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"delete_shared_link"]) {
+    return [[DBTEAMLOGQuickActionType alloc] initWithDeleteSharedLink];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGQuickActionType alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGQuickActionType alloc] initWithOther];
   }
 }
 
@@ -80936,18 +82050,23 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithPreviousParentNsId:(NSString *)previousParentNsId dNewParentNsId:(NSString *)dNewParentNsId {
+- (instancetype)initWithPreviousParentNsId:(NSString *)previousParentNsId
+                            dNewParentNsId:(NSString *)dNewParentNsId
+                            previousNsPath:(NSString *)previousNsPath
+                                dNewNsPath:(NSString *)dNewNsPath {
 
   self = [super init];
   if (self) {
     _previousParentNsId = previousParentNsId;
     _dNewParentNsId = dNewParentNsId;
+    _previousNsPath = previousNsPath;
+    _dNewNsPath = dNewNsPath;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithPreviousParentNsId:nil dNewParentNsId:nil];
+  return [self initWithPreviousParentNsId:nil dNewParentNsId:nil previousNsPath:nil dNewNsPath:nil];
 }
 
 #pragma mark - Serialization methods
@@ -80986,6 +82105,12 @@
   if (self.dNewParentNsId != nil) {
     result = prime * result + [self.dNewParentNsId hash];
   }
+  if (self.previousNsPath != nil) {
+    result = prime * result + [self.previousNsPath hash];
+  }
+  if (self.dNewNsPath != nil) {
+    result = prime * result + [self.dNewNsPath hash];
+  }
 
   return prime * result;
 }
@@ -81016,6 +82141,16 @@
       return NO;
     }
   }
+  if (self.previousNsPath) {
+    if (![self.previousNsPath isEqual:aSharedFolderNestDetails.previousNsPath]) {
+      return NO;
+    }
+  }
+  if (self.dNewNsPath) {
+    if (![self.dNewNsPath isEqual:aSharedFolderNestDetails.dNewNsPath]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -81034,6 +82169,12 @@
   if (valueObj.dNewParentNsId) {
     jsonDict[@"new_parent_ns_id"] = valueObj.dNewParentNsId;
   }
+  if (valueObj.previousNsPath) {
+    jsonDict[@"previous_ns_path"] = valueObj.previousNsPath;
+  }
+  if (valueObj.dNewNsPath) {
+    jsonDict[@"new_ns_path"] = valueObj.dNewNsPath;
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -81041,9 +82182,13 @@
 + (DBTEAMLOGSharedFolderNestDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *previousParentNsId = valueDict[@"previous_parent_ns_id"] ?: nil;
   NSString *dNewParentNsId = valueDict[@"new_parent_ns_id"] ?: nil;
+  NSString *previousNsPath = valueDict[@"previous_ns_path"] ?: nil;
+  NSString *dNewNsPath = valueDict[@"new_ns_path"] ?: nil;
 
   return [[DBTEAMLOGSharedFolderNestDetails alloc] initWithPreviousParentNsId:previousParentNsId
-                                                               dNewParentNsId:dNewParentNsId];
+                                                               dNewParentNsId:dNewParentNsId
+                                                               previousNsPath:previousNsPath
+                                                                   dNewNsPath:dNewNsPath];
 }
 
 @end
@@ -85345,6 +86490,14 @@
   return self;
 }
 
+- (instancetype)initWithTeamMembersAndWhitelist {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -85365,6 +86518,10 @@
   return _tag == DBTEAMLOGSharingMemberPolicyForbid;
 }
 
+- (BOOL)isTeamMembersAndWhitelist {
+  return _tag == DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGSharingMemberPolicyOther;
 }
@@ -85375,6 +86532,8 @@
     return @"DBTEAMLOGSharingMemberPolicyAllow";
   case DBTEAMLOGSharingMemberPolicyForbid:
     return @"DBTEAMLOGSharingMemberPolicyForbid";
+  case DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist:
+    return @"DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist";
   case DBTEAMLOGSharingMemberPolicyOther:
     return @"DBTEAMLOGSharingMemberPolicyOther";
   }
@@ -85417,6 +86576,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGSharingMemberPolicyForbid:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGSharingMemberPolicyOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -85448,6 +86609,8 @@
     return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
   case DBTEAMLOGSharingMemberPolicyForbid:
     return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
+  case DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist:
+    return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
   case DBTEAMLOGSharingMemberPolicyOther:
     return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
   }
@@ -85467,6 +86630,8 @@
     jsonDict[@".tag"] = @"allow";
   } else if ([valueObj isForbid]) {
     jsonDict[@".tag"] = @"forbid";
+  } else if ([valueObj isTeamMembersAndWhitelist]) {
+    jsonDict[@".tag"] = @"team_members_and_whitelist";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -85483,6 +86648,8 @@
     return [[DBTEAMLOGSharingMemberPolicy alloc] initWithAllow];
   } else if ([tag isEqualToString:@"forbid"]) {
     return [[DBTEAMLOGSharingMemberPolicy alloc] initWithForbid];
+  } else if ([tag isEqualToString:@"team_members_and_whitelist"]) {
+    return [[DBTEAMLOGSharingMemberPolicy alloc] initWithTeamMembersAndWhitelist];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGSharingMemberPolicy alloc] initWithOther];
   } else {
@@ -99494,6 +100661,392 @@
 
 @end
 
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamSelectiveSyncPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamSelectiveSyncPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamSelectiveSyncPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamSelectiveSyncPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGTeamSelectiveSyncPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGTeamSelectiveSyncPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTeamSelectiveSyncPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTeamSelectiveSyncPolicyDisabled:
+    return @"DBTEAMLOGTeamSelectiveSyncPolicyDisabled";
+  case DBTEAMLOGTeamSelectiveSyncPolicyEnabled:
+    return @"DBTEAMLOGTeamSelectiveSyncPolicyEnabled";
+  case DBTEAMLOGTeamSelectiveSyncPolicyOther:
+    return @"DBTEAMLOGTeamSelectiveSyncPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamSelectiveSyncPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamSelectiveSyncPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamSelectiveSyncPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTeamSelectiveSyncPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTeamSelectiveSyncPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTeamSelectiveSyncPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamSelectiveSyncPolicy:other];
+}
+
+- (BOOL)isEqualToTeamSelectiveSyncPolicy:(DBTEAMLOGTeamSelectiveSyncPolicy *)aTeamSelectiveSyncPolicy {
+  if (self == aTeamSelectiveSyncPolicy) {
+    return YES;
+  }
+  if (self.tag != aTeamSelectiveSyncPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTeamSelectiveSyncPolicyDisabled:
+    return [[self tagName] isEqual:[aTeamSelectiveSyncPolicy tagName]];
+  case DBTEAMLOGTeamSelectiveSyncPolicyEnabled:
+    return [[self tagName] isEqual:[aTeamSelectiveSyncPolicy tagName]];
+  case DBTEAMLOGTeamSelectiveSyncPolicyOther:
+    return [[self tagName] isEqual:[aTeamSelectiveSyncPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamSelectiveSyncPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamSelectiveSyncPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGTeamSelectiveSyncPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGTeamSelectiveSyncPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTeamSelectiveSyncPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTeamSelectiveSyncPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamSelectiveSyncPolicy.h"
+#import "DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGTeamSelectiveSyncPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGTeamSelectiveSyncPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamSelectiveSyncPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToTeamSelectiveSyncPolicyChangedDetails:
+    (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)aTeamSelectiveSyncPolicyChangedDetails {
+  if (self == aTeamSelectiveSyncPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aTeamSelectiveSyncPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aTeamSelectiveSyncPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGTeamSelectiveSyncPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGTeamSelectiveSyncPolicySerializer serialize:valueObj.previousValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGTeamSelectiveSyncPolicy *dNewValue =
+      [DBTEAMLOGTeamSelectiveSyncPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGTeamSelectiveSyncPolicy *previousValue =
+      [DBTEAMLOGTeamSelectiveSyncPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return
+      [[DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamSelectiveSyncPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamSelectiveSyncPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToTeamSelectiveSyncPolicyChangedType:
+    (DBTEAMLOGTeamSelectiveSyncPolicyChangedType *)aTeamSelectiveSyncPolicyChangedType {
+  if (self == aTeamSelectiveSyncPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamSelectiveSyncPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamSelectiveSyncPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamSelectiveSyncPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamSelectiveSyncPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
 #import "DBFILESSyncSetting.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -102575,6 +104128,214 @@
   NSString *displayName = valueDict[@"display_name"] ?: nil;
 
   return [[DBTEAMLOGUserOrTeamLinkedAppLogInfo alloc] initWithAppId:appId displayName:displayName];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPassPolicy.h"
+#import "DBTEAMLOGViewerInfoPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGViewerInfoPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPreviousValue:(DBTEAMLOGPassPolicy *)previousValue dNewValue:(DBTEAMLOGPassPolicy *)dNewValue {
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+
+  self = [super init];
+  if (self) {
+    _previousValue = previousValue;
+    _dNewValue = dNewValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGViewerInfoPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGViewerInfoPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGViewerInfoPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.previousValue hash];
+  result = prime * result + [self.dNewValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToViewerInfoPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToViewerInfoPolicyChangedDetails:
+    (DBTEAMLOGViewerInfoPolicyChangedDetails *)aViewerInfoPolicyChangedDetails {
+  if (self == aViewerInfoPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.previousValue isEqual:aViewerInfoPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  if (![self.dNewValue isEqual:aViewerInfoPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGViewerInfoPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGViewerInfoPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"previous_value"] = [DBTEAMLOGPassPolicySerializer serialize:valueObj.previousValue];
+  jsonDict[@"new_value"] = [DBTEAMLOGPassPolicySerializer serialize:valueObj.dNewValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGViewerInfoPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGPassPolicy *previousValue = [DBTEAMLOGPassPolicySerializer deserialize:valueDict[@"previous_value"]];
+  DBTEAMLOGPassPolicy *dNewValue = [DBTEAMLOGPassPolicySerializer deserialize:valueDict[@"new_value"]];
+
+  return [[DBTEAMLOGViewerInfoPolicyChangedDetails alloc] initWithPreviousValue:previousValue dNewValue:dNewValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGViewerInfoPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGViewerInfoPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGViewerInfoPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGViewerInfoPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGViewerInfoPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToViewerInfoPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToViewerInfoPolicyChangedType:(DBTEAMLOGViewerInfoPolicyChangedType *)aViewerInfoPolicyChangedType {
+  if (self == aViewerInfoPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aViewerInfoPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGViewerInfoPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGViewerInfoPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGViewerInfoPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGViewerInfoPolicyChangedType alloc] initWithDescription_:description_];
 }
 
 @end

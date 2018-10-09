@@ -72,8 +72,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable) NSNumber *hasExplicitSharedMembers;
 
 /// A hash of the file content. This field can be used to verify data integrity.
-/// For more information see our Content hash /developers/reference/content-hash
-/// page.
+/// For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 @property (nonatomic, readonly, copy, nullable) NSString *contentHash;
 
 #pragma mark - Constructors
@@ -119,7 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// contained within  a shared folder.
 /// @param contentHash A hash of the file content. This field can be used to
 /// verify data integrity. For more information see our Content hash
-/// /developers/reference/content-hash page.
+/// https://www.dropbox.com/developers/reference/content-hash page.
 ///
 /// @return An initialized instance.
 ///

@@ -16334,7 +16334,229 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMMembersDeactivateBaseArg.h"
+#import "DBTEAMUserSelectorArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMMembersDeactivateBaseArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user {
+  [DBStoneValidators nonnullValidator:nil](user);
+
+  self = [super init];
+  if (self) {
+    _user = user;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMMembersDeactivateBaseArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMMembersDeactivateBaseArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMMembersDeactivateBaseArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersDeactivateBaseArg:other];
+}
+
+- (BOOL)isEqualToMembersDeactivateBaseArg:(DBTEAMMembersDeactivateBaseArg *)aMembersDeactivateBaseArg {
+  if (self == aMembersDeactivateBaseArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersDeactivateBaseArg.user]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMMembersDeactivateBaseArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersDeactivateBaseArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMMembersDeactivateBaseArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMUserSelectorArg *user = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"user"]];
+
+  return [[DBTEAMMembersDeactivateBaseArg alloc] initWithUser:user];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMMembersDataTransferArg.h"
+#import "DBTEAMMembersDeactivateBaseArg.h"
+#import "DBTEAMUserSelectorArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMMembersDataTransferArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user
+              transferDestId:(DBTEAMUserSelectorArg *)transferDestId
+             transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId {
+  [DBStoneValidators nonnullValidator:nil](user);
+  [DBStoneValidators nonnullValidator:nil](transferDestId);
+  [DBStoneValidators nonnullValidator:nil](transferAdminId);
+
+  self = [super initWithUser:user];
+  if (self) {
+    _transferDestId = transferDestId;
+    _transferAdminId = transferAdminId;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMMembersDataTransferArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMMembersDataTransferArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMMembersDataTransferArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  result = prime * result + [self.transferDestId hash];
+  result = prime * result + [self.transferAdminId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersDataTransferArg:other];
+}
+
+- (BOOL)isEqualToMembersDataTransferArg:(DBTEAMMembersDataTransferArg *)aMembersDataTransferArg {
+  if (self == aMembersDataTransferArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersDataTransferArg.user]) {
+    return NO;
+  }
+  if (![self.transferDestId isEqual:aMembersDataTransferArg.transferDestId]) {
+    return NO;
+  }
+  if (![self.transferAdminId isEqual:aMembersDataTransferArg.transferAdminId]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMMembersDataTransferArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersDataTransferArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
+  jsonDict[@"transfer_dest_id"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.transferDestId];
+  jsonDict[@"transfer_admin_id"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.transferAdminId];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMMembersDataTransferArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMUserSelectorArg *user = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"user"]];
+  DBTEAMUserSelectorArg *transferDestId = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"transfer_dest_id"]];
+  DBTEAMUserSelectorArg *transferAdminId =
+      [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"transfer_admin_id"]];
+
+  return [[DBTEAMMembersDataTransferArg alloc] initWithUser:user
+                                             transferDestId:transferDestId
+                                            transferAdminId:transferAdminId];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMMembersDeactivateArg.h"
+#import "DBTEAMMembersDeactivateBaseArg.h"
 #import "DBTEAMUserSelectorArg.h"
 
 #pragma mark - API Object
@@ -16346,9 +16568,8 @@
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user wipeData:(NSNumber *)wipeData {
   [DBStoneValidators nonnullValidator:nil](user);
 
-  self = [super init];
+  self = [super initWithUser:user];
   if (self) {
-    _user = user;
     _wipeData = wipeData ?: @YES;
   }
   return self;
@@ -18130,7 +18351,379 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMMembersDeactivateError.h"
+#import "DBTEAMMembersTransferFilesError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMMembersTransferFilesError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithRemovedAndTransferDestShouldDiffer {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer;
+  }
+  return self;
+}
+
+- (instancetype)initWithRemovedAndTransferAdminShouldDiffer {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferDestUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorTransferDestUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferDestUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferAdminUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferAdminUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnspecifiedTransferAdminId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferAdminIsNotAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithRecipientNotVerified {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFilesErrorRecipientNotVerified;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUserNotFound {
+  return _tag == DBTEAMMembersTransferFilesErrorUserNotFound;
+}
+
+- (BOOL)isUserNotInTeam {
+  return _tag == DBTEAMMembersTransferFilesErrorUserNotInTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMMembersTransferFilesErrorOther;
+}
+
+- (BOOL)isRemovedAndTransferDestShouldDiffer {
+  return _tag == DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer;
+}
+
+- (BOOL)isRemovedAndTransferAdminShouldDiffer {
+  return _tag == DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer;
+}
+
+- (BOOL)isTransferDestUserNotFound {
+  return _tag == DBTEAMMembersTransferFilesErrorTransferDestUserNotFound;
+}
+
+- (BOOL)isTransferDestUserNotInTeam {
+  return _tag == DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam;
+}
+
+- (BOOL)isTransferAdminUserNotInTeam {
+  return _tag == DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam;
+}
+
+- (BOOL)isTransferAdminUserNotFound {
+  return _tag == DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound;
+}
+
+- (BOOL)isUnspecifiedTransferAdminId {
+  return _tag == DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId;
+}
+
+- (BOOL)isTransferAdminIsNotAdmin {
+  return _tag == DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin;
+}
+
+- (BOOL)isRecipientNotVerified {
+  return _tag == DBTEAMMembersTransferFilesErrorRecipientNotVerified;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMMembersTransferFilesErrorUserNotFound:
+    return @"DBTEAMMembersTransferFilesErrorUserNotFound";
+  case DBTEAMMembersTransferFilesErrorUserNotInTeam:
+    return @"DBTEAMMembersTransferFilesErrorUserNotInTeam";
+  case DBTEAMMembersTransferFilesErrorOther:
+    return @"DBTEAMMembersTransferFilesErrorOther";
+  case DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer:
+    return @"DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer";
+  case DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer:
+    return @"DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer";
+  case DBTEAMMembersTransferFilesErrorTransferDestUserNotFound:
+    return @"DBTEAMMembersTransferFilesErrorTransferDestUserNotFound";
+  case DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam:
+    return @"DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam";
+  case DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam:
+    return @"DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam";
+  case DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound:
+    return @"DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound";
+  case DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId:
+    return @"DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId";
+  case DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin:
+    return @"DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin";
+  case DBTEAMMembersTransferFilesErrorRecipientNotVerified:
+    return @"DBTEAMMembersTransferFilesErrorRecipientNotVerified";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMMembersTransferFilesErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMMembersTransferFilesErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMMembersTransferFilesErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersTransferFilesErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorTransferDestUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFilesErrorRecipientNotVerified:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersTransferFilesError:other];
+}
+
+- (BOOL)isEqualToMembersTransferFilesError:(DBTEAMMembersTransferFilesError *)aMembersTransferFilesError {
+  if (self == aMembersTransferFilesError) {
+    return YES;
+  }
+  if (self.tag != aMembersTransferFilesError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersTransferFilesErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorOther:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorTransferDestUserNotFound:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  case DBTEAMMembersTransferFilesErrorRecipientNotVerified:
+    return [[self tagName] isEqual:[aMembersTransferFilesError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMMembersTransferFilesErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersTransferFilesError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUserNotFound]) {
+    jsonDict[@".tag"] = @"user_not_found";
+  } else if ([valueObj isUserNotInTeam]) {
+    jsonDict[@".tag"] = @"user_not_in_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isRemovedAndTransferDestShouldDiffer]) {
+    jsonDict[@".tag"] = @"removed_and_transfer_dest_should_differ";
+  } else if ([valueObj isRemovedAndTransferAdminShouldDiffer]) {
+    jsonDict[@".tag"] = @"removed_and_transfer_admin_should_differ";
+  } else if ([valueObj isTransferDestUserNotFound]) {
+    jsonDict[@".tag"] = @"transfer_dest_user_not_found";
+  } else if ([valueObj isTransferDestUserNotInTeam]) {
+    jsonDict[@".tag"] = @"transfer_dest_user_not_in_team";
+  } else if ([valueObj isTransferAdminUserNotInTeam]) {
+    jsonDict[@".tag"] = @"transfer_admin_user_not_in_team";
+  } else if ([valueObj isTransferAdminUserNotFound]) {
+    jsonDict[@".tag"] = @"transfer_admin_user_not_found";
+  } else if ([valueObj isUnspecifiedTransferAdminId]) {
+    jsonDict[@".tag"] = @"unspecified_transfer_admin_id";
+  } else if ([valueObj isTransferAdminIsNotAdmin]) {
+    jsonDict[@".tag"] = @"transfer_admin_is_not_admin";
+  } else if ([valueObj isRecipientNotVerified]) {
+    jsonDict[@".tag"] = @"recipient_not_verified";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMMembersTransferFilesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"user_not_found"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithUserNotFound];
+  } else if ([tag isEqualToString:@"user_not_in_team"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithUserNotInTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"removed_and_transfer_dest_should_differ"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithRemovedAndTransferDestShouldDiffer];
+  } else if ([tag isEqualToString:@"removed_and_transfer_admin_should_differ"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithRemovedAndTransferAdminShouldDiffer];
+  } else if ([tag isEqualToString:@"transfer_dest_user_not_found"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithTransferDestUserNotFound];
+  } else if ([tag isEqualToString:@"transfer_dest_user_not_in_team"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithTransferDestUserNotInTeam];
+  } else if ([tag isEqualToString:@"transfer_admin_user_not_in_team"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithTransferAdminUserNotInTeam];
+  } else if ([tag isEqualToString:@"transfer_admin_user_not_found"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithTransferAdminUserNotFound];
+  } else if ([tag isEqualToString:@"unspecified_transfer_admin_id"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithUnspecifiedTransferAdminId];
+  } else if ([tag isEqualToString:@"transfer_admin_is_not_admin"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithTransferAdminIsNotAdmin];
+  } else if ([tag isEqualToString:@"recipient_not_verified"]) {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithRecipientNotVerified];
+  } else {
+    return [[DBTEAMMembersTransferFilesError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMMembersRemoveError.h"
+#import "DBTEAMMembersTransferFilesError.h"
 
 #pragma mark - API Object
 
@@ -18158,14 +18751,6 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMMembersRemoveErrorOther;
-  }
-  return self;
-}
-
-- (instancetype)initWithRemoveLastAdmin {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersRemoveErrorRemoveLastAdmin;
   }
   return self;
 }
@@ -18202,18 +18787,18 @@
   return self;
 }
 
-- (instancetype)initWithTransferAdminUserNotFound {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersRemoveErrorTransferAdminUserNotFound;
-  }
-  return self;
-}
-
 - (instancetype)initWithTransferAdminUserNotInTeam {
   self = [super init];
   if (self) {
     _tag = DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferAdminUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersRemoveErrorTransferAdminUserNotFound;
   }
   return self;
 }
@@ -18230,6 +18815,22 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithRecipientNotVerified {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersRemoveErrorRecipientNotVerified;
+  }
+  return self;
+}
+
+- (instancetype)initWithRemoveLastAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersRemoveErrorRemoveLastAdmin;
   }
   return self;
 }
@@ -18282,10 +18883,6 @@
   return _tag == DBTEAMMembersRemoveErrorOther;
 }
 
-- (BOOL)isRemoveLastAdmin {
-  return _tag == DBTEAMMembersRemoveErrorRemoveLastAdmin;
-}
-
 - (BOOL)isRemovedAndTransferDestShouldDiffer {
   return _tag == DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer;
 }
@@ -18302,12 +18899,12 @@
   return _tag == DBTEAMMembersRemoveErrorTransferDestUserNotInTeam;
 }
 
-- (BOOL)isTransferAdminUserNotFound {
-  return _tag == DBTEAMMembersRemoveErrorTransferAdminUserNotFound;
-}
-
 - (BOOL)isTransferAdminUserNotInTeam {
   return _tag == DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam;
+}
+
+- (BOOL)isTransferAdminUserNotFound {
+  return _tag == DBTEAMMembersRemoveErrorTransferAdminUserNotFound;
 }
 
 - (BOOL)isUnspecifiedTransferAdminId {
@@ -18316,6 +18913,14 @@
 
 - (BOOL)isTransferAdminIsNotAdmin {
   return _tag == DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin;
+}
+
+- (BOOL)isRecipientNotVerified {
+  return _tag == DBTEAMMembersRemoveErrorRecipientNotVerified;
+}
+
+- (BOOL)isRemoveLastAdmin {
+  return _tag == DBTEAMMembersRemoveErrorRemoveLastAdmin;
 }
 
 - (BOOL)isCannotKeepAccountAndTransfer {
@@ -18342,8 +18947,6 @@
     return @"DBTEAMMembersRemoveErrorUserNotInTeam";
   case DBTEAMMembersRemoveErrorOther:
     return @"DBTEAMMembersRemoveErrorOther";
-  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
-    return @"DBTEAMMembersRemoveErrorRemoveLastAdmin";
   case DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer:
     return @"DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer";
   case DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer:
@@ -18352,14 +18955,18 @@
     return @"DBTEAMMembersRemoveErrorTransferDestUserNotFound";
   case DBTEAMMembersRemoveErrorTransferDestUserNotInTeam:
     return @"DBTEAMMembersRemoveErrorTransferDestUserNotInTeam";
-  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
-    return @"DBTEAMMembersRemoveErrorTransferAdminUserNotFound";
   case DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam:
     return @"DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam";
+  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
+    return @"DBTEAMMembersRemoveErrorTransferAdminUserNotFound";
   case DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId:
     return @"DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId";
   case DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin:
     return @"DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin";
+  case DBTEAMMembersRemoveErrorRecipientNotVerified:
+    return @"DBTEAMMembersRemoveErrorRecipientNotVerified";
+  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
+    return @"DBTEAMMembersRemoveErrorRemoveLastAdmin";
   case DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer:
     return @"DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer";
   case DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData:
@@ -18410,8 +19017,6 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorOther:
     result = prime * result + [[self tagName] hash];
-  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
-    result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer:
     result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer:
@@ -18420,13 +19025,17 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorTransferDestUserNotInTeam:
     result = prime * result + [[self tagName] hash];
-  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
-    result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
     result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId:
     result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorRecipientNotVerified:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
     result = prime * result + [[self tagName] hash];
   case DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer:
     result = prime * result + [[self tagName] hash];
@@ -18467,8 +19076,6 @@
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorOther:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
-  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
-    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer:
@@ -18477,13 +19084,17 @@
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorTransferDestUserNotInTeam:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
-  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
-    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorRecipientNotVerified:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
   case DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer:
     return [[self tagName] isEqual:[aMembersRemoveError tagName]];
@@ -18512,8 +19123,6 @@
     jsonDict[@".tag"] = @"user_not_in_team";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
-  } else if ([valueObj isRemoveLastAdmin]) {
-    jsonDict[@".tag"] = @"remove_last_admin";
   } else if ([valueObj isRemovedAndTransferDestShouldDiffer]) {
     jsonDict[@".tag"] = @"removed_and_transfer_dest_should_differ";
   } else if ([valueObj isRemovedAndTransferAdminShouldDiffer]) {
@@ -18522,14 +19131,18 @@
     jsonDict[@".tag"] = @"transfer_dest_user_not_found";
   } else if ([valueObj isTransferDestUserNotInTeam]) {
     jsonDict[@".tag"] = @"transfer_dest_user_not_in_team";
-  } else if ([valueObj isTransferAdminUserNotFound]) {
-    jsonDict[@".tag"] = @"transfer_admin_user_not_found";
   } else if ([valueObj isTransferAdminUserNotInTeam]) {
     jsonDict[@".tag"] = @"transfer_admin_user_not_in_team";
+  } else if ([valueObj isTransferAdminUserNotFound]) {
+    jsonDict[@".tag"] = @"transfer_admin_user_not_found";
   } else if ([valueObj isUnspecifiedTransferAdminId]) {
     jsonDict[@".tag"] = @"unspecified_transfer_admin_id";
   } else if ([valueObj isTransferAdminIsNotAdmin]) {
     jsonDict[@".tag"] = @"transfer_admin_is_not_admin";
+  } else if ([valueObj isRecipientNotVerified]) {
+    jsonDict[@".tag"] = @"recipient_not_verified";
+  } else if ([valueObj isRemoveLastAdmin]) {
+    jsonDict[@".tag"] = @"remove_last_admin";
   } else if ([valueObj isCannotKeepAccountAndTransfer]) {
     jsonDict[@".tag"] = @"cannot_keep_account_and_transfer";
   } else if ([valueObj isCannotKeepAccountAndDeleteData]) {
@@ -18554,8 +19167,6 @@
     return [[DBTEAMMembersRemoveError alloc] initWithUserNotInTeam];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithOther];
-  } else if ([tag isEqualToString:@"remove_last_admin"]) {
-    return [[DBTEAMMembersRemoveError alloc] initWithRemoveLastAdmin];
   } else if ([tag isEqualToString:@"removed_and_transfer_dest_should_differ"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithRemovedAndTransferDestShouldDiffer];
   } else if ([tag isEqualToString:@"removed_and_transfer_admin_should_differ"]) {
@@ -18564,14 +19175,18 @@
     return [[DBTEAMMembersRemoveError alloc] initWithTransferDestUserNotFound];
   } else if ([tag isEqualToString:@"transfer_dest_user_not_in_team"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithTransferDestUserNotInTeam];
-  } else if ([tag isEqualToString:@"transfer_admin_user_not_found"]) {
-    return [[DBTEAMMembersRemoveError alloc] initWithTransferAdminUserNotFound];
   } else if ([tag isEqualToString:@"transfer_admin_user_not_in_team"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithTransferAdminUserNotInTeam];
+  } else if ([tag isEqualToString:@"transfer_admin_user_not_found"]) {
+    return [[DBTEAMMembersRemoveError alloc] initWithTransferAdminUserNotFound];
   } else if ([tag isEqualToString:@"unspecified_transfer_admin_id"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithUnspecifiedTransferAdminId];
   } else if ([tag isEqualToString:@"transfer_admin_is_not_admin"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithTransferAdminIsNotAdmin];
+  } else if ([tag isEqualToString:@"recipient_not_verified"]) {
+    return [[DBTEAMMembersRemoveError alloc] initWithRecipientNotVerified];
+  } else if ([tag isEqualToString:@"remove_last_admin"]) {
+    return [[DBTEAMMembersRemoveError alloc] initWithRemoveLastAdmin];
   } else if ([tag isEqualToString:@"cannot_keep_account_and_transfer"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithCannotKeepAccountAndTransfer];
   } else if ([tag isEqualToString:@"cannot_keep_account_and_delete_data"]) {
@@ -20035,6 +20650,467 @@
     return [[DBTEAMMembersSuspendError alloc] initWithTeamLicenseLimit];
   } else {
     return [[DBTEAMMembersSuspendError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMMembersTransferFilesError.h"
+#import "DBTEAMMembersTransferFormerMembersFilesError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMMembersTransferFormerMembersFilesError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithRemovedAndTransferDestShouldDiffer {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferDestShouldDiffer;
+  }
+  return self;
+}
+
+- (instancetype)initWithRemovedAndTransferAdminShouldDiffer {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferAdminShouldDiffer;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferDestUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferDestUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferAdminUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferAdminUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnspecifiedTransferAdminId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorUnspecifiedTransferAdminId;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransferAdminIsNotAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminIsNotAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithRecipientNotVerified {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorRecipientNotVerified;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserDataIsBeingTransferred {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorUserDataIsBeingTransferred;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserNotRemoved {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorUserNotRemoved;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserDataCannotBeTransferred {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorUserDataCannotBeTransferred;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserDataAlreadyTransferred {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersTransferFormerMembersFilesErrorUserDataAlreadyTransferred;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUserNotFound {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorUserNotFound;
+}
+
+- (BOOL)isUserNotInTeam {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorUserNotInTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorOther;
+}
+
+- (BOOL)isRemovedAndTransferDestShouldDiffer {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferDestShouldDiffer;
+}
+
+- (BOOL)isRemovedAndTransferAdminShouldDiffer {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferAdminShouldDiffer;
+}
+
+- (BOOL)isTransferDestUserNotFound {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotFound;
+}
+
+- (BOOL)isTransferDestUserNotInTeam {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotInTeam;
+}
+
+- (BOOL)isTransferAdminUserNotInTeam {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotInTeam;
+}
+
+- (BOOL)isTransferAdminUserNotFound {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotFound;
+}
+
+- (BOOL)isUnspecifiedTransferAdminId {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorUnspecifiedTransferAdminId;
+}
+
+- (BOOL)isTransferAdminIsNotAdmin {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminIsNotAdmin;
+}
+
+- (BOOL)isRecipientNotVerified {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorRecipientNotVerified;
+}
+
+- (BOOL)isUserDataIsBeingTransferred {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorUserDataIsBeingTransferred;
+}
+
+- (BOOL)isUserNotRemoved {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorUserNotRemoved;
+}
+
+- (BOOL)isUserDataCannotBeTransferred {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorUserDataCannotBeTransferred;
+}
+
+- (BOOL)isUserDataAlreadyTransferred {
+  return _tag == DBTEAMMembersTransferFormerMembersFilesErrorUserDataAlreadyTransferred;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotFound:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorUserNotFound";
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotInTeam:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorUserNotInTeam";
+  case DBTEAMMembersTransferFormerMembersFilesErrorOther:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorOther";
+  case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferDestShouldDiffer:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferDestShouldDiffer";
+  case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferAdminShouldDiffer:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferAdminShouldDiffer";
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotFound:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotFound";
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotInTeam:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotInTeam";
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotInTeam:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotInTeam";
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotFound:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotFound";
+  case DBTEAMMembersTransferFormerMembersFilesErrorUnspecifiedTransferAdminId:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorUnspecifiedTransferAdminId";
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminIsNotAdmin:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminIsNotAdmin";
+  case DBTEAMMembersTransferFormerMembersFilesErrorRecipientNotVerified:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorRecipientNotVerified";
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataIsBeingTransferred:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorUserDataIsBeingTransferred";
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotRemoved:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorUserNotRemoved";
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataCannotBeTransferred:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorUserDataCannotBeTransferred";
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataAlreadyTransferred:
+    return @"DBTEAMMembersTransferFormerMembersFilesErrorUserDataAlreadyTransferred";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMMembersTransferFormerMembersFilesErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMMembersTransferFormerMembersFilesErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMMembersTransferFormerMembersFilesErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferDestShouldDiffer:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferAdminShouldDiffer:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUnspecifiedTransferAdminId:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminIsNotAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorRecipientNotVerified:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataIsBeingTransferred:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotRemoved:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataCannotBeTransferred:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataAlreadyTransferred:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersTransferFormerMembersFilesError:other];
+}
+
+- (BOOL)isEqualToMembersTransferFormerMembersFilesError:
+    (DBTEAMMembersTransferFormerMembersFilesError *)aMembersTransferFormerMembersFilesError {
+  if (self == aMembersTransferFormerMembersFilesError) {
+    return YES;
+  }
+  if (self.tag != aMembersTransferFormerMembersFilesError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorOther:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferDestShouldDiffer:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferAdminShouldDiffer:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotFound:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotFound:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUnspecifiedTransferAdminId:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminIsNotAdmin:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorRecipientNotVerified:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataIsBeingTransferred:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserNotRemoved:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataCannotBeTransferred:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  case DBTEAMMembersTransferFormerMembersFilesErrorUserDataAlreadyTransferred:
+    return [[self tagName] isEqual:[aMembersTransferFormerMembersFilesError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMMembersTransferFormerMembersFilesErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersTransferFormerMembersFilesError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUserNotFound]) {
+    jsonDict[@".tag"] = @"user_not_found";
+  } else if ([valueObj isUserNotInTeam]) {
+    jsonDict[@".tag"] = @"user_not_in_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isRemovedAndTransferDestShouldDiffer]) {
+    jsonDict[@".tag"] = @"removed_and_transfer_dest_should_differ";
+  } else if ([valueObj isRemovedAndTransferAdminShouldDiffer]) {
+    jsonDict[@".tag"] = @"removed_and_transfer_admin_should_differ";
+  } else if ([valueObj isTransferDestUserNotFound]) {
+    jsonDict[@".tag"] = @"transfer_dest_user_not_found";
+  } else if ([valueObj isTransferDestUserNotInTeam]) {
+    jsonDict[@".tag"] = @"transfer_dest_user_not_in_team";
+  } else if ([valueObj isTransferAdminUserNotInTeam]) {
+    jsonDict[@".tag"] = @"transfer_admin_user_not_in_team";
+  } else if ([valueObj isTransferAdminUserNotFound]) {
+    jsonDict[@".tag"] = @"transfer_admin_user_not_found";
+  } else if ([valueObj isUnspecifiedTransferAdminId]) {
+    jsonDict[@".tag"] = @"unspecified_transfer_admin_id";
+  } else if ([valueObj isTransferAdminIsNotAdmin]) {
+    jsonDict[@".tag"] = @"transfer_admin_is_not_admin";
+  } else if ([valueObj isRecipientNotVerified]) {
+    jsonDict[@".tag"] = @"recipient_not_verified";
+  } else if ([valueObj isUserDataIsBeingTransferred]) {
+    jsonDict[@".tag"] = @"user_data_is_being_transferred";
+  } else if ([valueObj isUserNotRemoved]) {
+    jsonDict[@".tag"] = @"user_not_removed";
+  } else if ([valueObj isUserDataCannotBeTransferred]) {
+    jsonDict[@".tag"] = @"user_data_cannot_be_transferred";
+  } else if ([valueObj isUserDataAlreadyTransferred]) {
+    jsonDict[@".tag"] = @"user_data_already_transferred";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMMembersTransferFormerMembersFilesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"user_not_found"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithUserNotFound];
+  } else if ([tag isEqualToString:@"user_not_in_team"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithUserNotInTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"removed_and_transfer_dest_should_differ"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithRemovedAndTransferDestShouldDiffer];
+  } else if ([tag isEqualToString:@"removed_and_transfer_admin_should_differ"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithRemovedAndTransferAdminShouldDiffer];
+  } else if ([tag isEqualToString:@"transfer_dest_user_not_found"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithTransferDestUserNotFound];
+  } else if ([tag isEqualToString:@"transfer_dest_user_not_in_team"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithTransferDestUserNotInTeam];
+  } else if ([tag isEqualToString:@"transfer_admin_user_not_in_team"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithTransferAdminUserNotInTeam];
+  } else if ([tag isEqualToString:@"transfer_admin_user_not_found"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithTransferAdminUserNotFound];
+  } else if ([tag isEqualToString:@"unspecified_transfer_admin_id"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithUnspecifiedTransferAdminId];
+  } else if ([tag isEqualToString:@"transfer_admin_is_not_admin"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithTransferAdminIsNotAdmin];
+  } else if ([tag isEqualToString:@"recipient_not_verified"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithRecipientNotVerified];
+  } else if ([tag isEqualToString:@"user_data_is_being_transferred"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithUserDataIsBeingTransferred];
+  } else if ([tag isEqualToString:@"user_not_removed"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithUserNotRemoved];
+  } else if ([tag isEqualToString:@"user_data_cannot_be_transferred"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithUserDataCannotBeTransferred];
+  } else if ([tag isEqualToString:@"user_data_already_transferred"]) {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithUserDataAlreadyTransferred];
+  } else {
+    return [[DBTEAMMembersTransferFormerMembersFilesError alloc] initWithOther];
   }
 }
 

@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) DBFILESUploadSessionCursor *cursor;
 
 /// If true, the current session will be closed, at which point you won't be
-/// able to call `uploadSessionAppendV2` anymore with the current session.
+/// able to call `uploadSessionAppend` anymore with the current session.
 @property (nonatomic, readonly) NSNumber *close;
 
 #pragma mark - Constructors
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you
-/// won't be able to call `uploadSessionAppendV2` anymore with the current
+/// won't be able to call `uploadSessionAppend` anymore with the current
 /// session.
 ///
 /// @return An initialized instance.

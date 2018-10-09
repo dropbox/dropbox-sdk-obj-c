@@ -625,6 +625,7 @@
               memberPolicy:(DBSHARINGMemberPolicy *)memberPolicy
           sharedLinkPolicy:(DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
           viewerInfoPolicy:(DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
+         accessInheritance:(DBSHARINGAccessInheritance *)accessInheritance
                    actions:(NSArray<DBSHARINGFolderAction *> *)actions
               linkSettings:(DBSHARINGLinkSettings *)linkSettings {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGShareFolder;
@@ -634,6 +635,7 @@
                                                                   memberPolicy:memberPolicy
                                                               sharedLinkPolicy:sharedLinkPolicy
                                                               viewerInfoPolicy:viewerInfoPolicy
+                                                             accessInheritance:accessInheritance
                                                                        actions:actions
                                                                   linkSettings:linkSettings];
   return [self.client requestRpc:route arg:arg];
