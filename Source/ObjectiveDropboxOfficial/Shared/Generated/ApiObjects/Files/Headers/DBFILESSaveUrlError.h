@@ -166,7 +166,7 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSaveUrlError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESSaveUrlError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESSaveUrlError *)instance;
 
 ///
 /// Deserializes `DBFILESSaveUrlError` instances.
@@ -176,7 +176,7 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESSaveUrlError` object.
 ///
-+ (DBFILESSaveUrlError *)deserialize:(NSDictionary *)dict;
++ (DBFILESSaveUrlError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

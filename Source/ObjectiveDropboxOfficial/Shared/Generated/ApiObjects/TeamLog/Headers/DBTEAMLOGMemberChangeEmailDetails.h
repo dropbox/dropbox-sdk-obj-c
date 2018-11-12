@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MemberChangeEmailDetails` struct.
 ///
-/// Changed team member email address.
+/// Changed team member email.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeEmailDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberChangeEmailDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeEmailDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGMemberChangeEmailDetails` instances.
@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGMemberChangeEmailDetails` object.
 ///
-+ (DBTEAMLOGMemberChangeEmailDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGMemberChangeEmailDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

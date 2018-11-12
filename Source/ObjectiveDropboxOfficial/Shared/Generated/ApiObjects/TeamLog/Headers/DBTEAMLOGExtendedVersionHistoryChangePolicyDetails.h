@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `ExtendedVersionHistoryChangePolicyDetails` struct.
 ///
-/// Accepted or opted out of extended version history.
+/// Accepted/opted out of extended version history.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -80,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGExtendedVersionHistoryChangePolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGExtendedVersionHistoryChangePolicyDetails` instances.
@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGExtendedVersionHistoryChangePolicyDetails` object.
 ///
-+ (DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TeamActivityCreateReportDetails` struct.
 ///
-/// Created a team activity report.
+/// Created team activity report.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamActivityCreateReportDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamActivityCreateReportDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamActivityCreateReportDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGTeamActivityCreateReportDetails` instances.
@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGTeamActivityCreateReportDetails`
 /// object.
 ///
-+ (DBTEAMLOGTeamActivityCreateReportDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGTeamActivityCreateReportDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

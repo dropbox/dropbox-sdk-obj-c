@@ -28,26 +28,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBCOMMONPathRootTag` enum type represents the possible tag states with
 /// which the `DBCOMMONPathRoot` union can exist.
 typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
-  /// Paths are relative to the authenticating user's home directory, whether
+  /// Paths are relative to the authenticating user's home namespace, whether
   /// or not that user belongs to a team.
   DBCOMMONPathRootHome,
 
-  /// Paths are relative to the authenticating team member's home directory.
-  /// (This results in :field:`PathRootError.invalid' if the user does not
-  /// belong to a team.)
-  DBCOMMONPathRootMemberHome,
-
-  /// Paths are relative to the given team directory. (This results in
-  /// `invalid` in `DBCOMMONPathRootError` if the user is not a member of the
-  /// team associated with that path root id.)
-  DBCOMMONPathRootTeam,
-
-  /// Paths are relative to the user's home directory. (This results in
-  /// `invalid` in `DBCOMMONPathRootError` if the belongs to a team.)
-  DBCOMMONPathRootUserHome,
+  /// Paths are relative to the authenticating user's root namespace (This
+  /// results in `invalidRoot` in `DBCOMMONPathRootError` if the user's root
+  /// namespace has changed.).
+  DBCOMMONPathRootRoot,
 
   /// Paths are relative to given namespace id (This results in `noPermission`
-  /// in `DBCOMMONPathRootError` if you don't have access to this namespace.)
+  /// in `DBCOMMONPathRootError` if you don't have access to this namespace.).
   DBCOMMONPathRootNamespaceId,
 
   /// (no description).
@@ -58,14 +49,14 @@ typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBCOMMONPathRootTag tag;
 
-/// Paths are relative to the given team directory. (This results in `invalid`
-/// in `DBCOMMONPathRootError` if the user is not a member of the team
-/// associated with that path root id.) @note Ensure the `isTeam` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly, copy) NSString *team;
+/// Paths are relative to the authenticating user's root namespace (This results
+/// in `invalidRoot` in `DBCOMMONPathRootError` if the user's root namespace has
+/// changed.). @note Ensure the `isRoot` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly, copy) NSString *root;
 
 /// Paths are relative to given namespace id (This results in `noPermission` in
-/// `DBCOMMONPathRootError` if you don't have access to this namespace.) @note
+/// `DBCOMMONPathRootError` if you don't have access to this namespace.). @note
 /// Ensure the `isNamespaceId` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *namespaceId;
@@ -76,7 +67,7 @@ typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
 /// Initializes union class with tag state of "home".
 ///
 /// Description of the "home" tag state: Paths are relative to the
-/// authenticating user's home directory, whether or not that user belongs to a
+/// authenticating user's home namespace, whether or not that user belongs to a
 /// team.
 ///
 /// @return An initialized instance.
@@ -84,52 +75,30 @@ typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
 - (instancetype)initWithHome;
 
 ///
-/// Initializes union class with tag state of "member_home".
+/// Initializes union class with tag state of "root".
 ///
-/// Description of the "member_home" tag state: Paths are relative to the
-/// authenticating team member's home directory. (This results in
-/// :field:`PathRootError.invalid' if the user does not belong to a team.)
+/// Description of the "root" tag state: Paths are relative to the
+/// authenticating user's root namespace (This results in `invalidRoot` in
+/// `DBCOMMONPathRootError` if the user's root namespace has changed.).
 ///
-/// @return An initialized instance.
-///
-- (instancetype)initWithMemberHome;
-
-///
-/// Initializes union class with tag state of "team".
-///
-/// Description of the "team" tag state: Paths are relative to the given team
-/// directory. (This results in `invalid` in `DBCOMMONPathRootError` if the user
-/// is not a member of the team associated with that path root id.)
-///
-/// @param team Paths are relative to the given team directory. (This results in
-/// `invalid` in `DBCOMMONPathRootError` if the user is not a member of the team
-/// associated with that path root id.)
+/// @param root Paths are relative to the authenticating user's root namespace
+/// (This results in `invalidRoot` in `DBCOMMONPathRootError` if the user's root
+/// namespace has changed.).
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTeam:(NSString *)team;
-
-///
-/// Initializes union class with tag state of "user_home".
-///
-/// Description of the "user_home" tag state: Paths are relative to the user's
-/// home directory. (This results in `invalid` in `DBCOMMONPathRootError` if the
-/// belongs to a team.)
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithUserHome;
+- (instancetype)initWithRoot:(NSString *)root;
 
 ///
 /// Initializes union class with tag state of "namespace_id".
 ///
 /// Description of the "namespace_id" tag state: Paths are relative to given
 /// namespace id (This results in `noPermission` in `DBCOMMONPathRootError` if
-/// you don't have access to this namespace.)
+/// you don't have access to this namespace.).
 ///
 /// @param namespaceId Paths are relative to given namespace id (This results in
 /// `noPermission` in `DBCOMMONPathRootError` if you don't have access to this
-/// namespace.)
+/// namespace.).
 ///
 /// @return An initialized instance.
 ///
@@ -154,28 +123,14 @@ typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
 - (BOOL)isHome;
 
 ///
-/// Retrieves whether the union's current tag state has value "member_home".
-///
-/// @return Whether the union's current tag state has value "member_home".
-///
-- (BOOL)isMemberHome;
-
-///
-/// Retrieves whether the union's current tag state has value "team".
+/// Retrieves whether the union's current tag state has value "root".
 ///
 /// @note Call this method and ensure it returns true before accessing the
-/// `team` property, otherwise a runtime exception will be thrown.
+/// `root` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value "team".
+/// @return Whether the union's current tag state has value "root".
 ///
-- (BOOL)isTeam;
-
-///
-/// Retrieves whether the union's current tag state has value "user_home".
-///
-/// @return Whether the union's current tag state has value "user_home".
-///
-- (BOOL)isUserHome;
+- (BOOL)isRoot;
 
 ///
 /// Retrieves whether the union's current tag state has value "namespace_id".
@@ -218,7 +173,7 @@ typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBCOMMONPathRoot` API object.
 ///
-+ (NSDictionary *)serialize:(DBCOMMONPathRoot *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBCOMMONPathRoot *)instance;
 
 ///
 /// Deserializes `DBCOMMONPathRoot` instances.
@@ -228,7 +183,7 @@ typedef NS_ENUM(NSInteger, DBCOMMONPathRootTag) {
 ///
 /// @return An instantiation of the `DBCOMMONPathRoot` object.
 ///
-+ (DBCOMMONPathRoot *)deserialize:(NSDictionary *)dict;
++ (DBCOMMONPathRoot *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

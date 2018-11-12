@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `FileLikeCommentDetails` struct.
 ///
-/// Liked a file comment.
+/// Liked file comment.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,9 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
-
 /// Comment text. Might be missing due to historical data gap.
 @property (nonatomic, readonly, copy, nullable) NSString *commentText;
 
@@ -38,23 +35,21 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
 /// @param commentText Comment text. Might be missing due to historical data
 /// gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex commentText:(nullable NSString *)commentText;
+- (instancetype)initWithCommentText:(nullable NSString *)commentText;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetIndex Target asset index.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex;
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -76,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileLikeCommentDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGFileLikeCommentDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileLikeCommentDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGFileLikeCommentDetails` instances.
@@ -86,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGFileLikeCommentDetails` object.
 ///
-+ (DBTEAMLOGFileLikeCommentDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGFileLikeCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

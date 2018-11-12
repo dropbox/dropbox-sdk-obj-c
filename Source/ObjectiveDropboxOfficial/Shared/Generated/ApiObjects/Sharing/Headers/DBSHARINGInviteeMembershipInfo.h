@@ -43,11 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param accessType The access type for this member.
+/// @param accessType The access type for this member. It contains inherited
+/// access type from parent folder, and acquired access type from this folder.
 /// @param invitee Recipient of the invitation.
 /// @param permissions The permissions that requesting user has on this member.
 /// The set of permissions corresponds to the MemberActions in the request.
-/// @param initials Suggested name initials for a member.
+/// @param initials Never set.
 /// @param isInherited True if the member has access from a parent folder.
 /// @param user The user this invitation is tied to, if available.
 ///
@@ -64,7 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param accessType The access type for this member.
+/// @param accessType The access type for this member. It contains inherited
+/// access type from parent folder, and acquired access type from this folder.
 /// @param invitee Recipient of the invitation.
 ///
 /// @return An initialized instance.
@@ -89,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGInviteeMembershipInfo` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGInviteeMembershipInfo *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGInviteeMembershipInfo *)instance;
 
 ///
 /// Deserializes `DBSHARINGInviteeMembershipInfo` instances.
@@ -99,7 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBSHARINGInviteeMembershipInfo` object.
 ///
-+ (DBSHARINGInviteeMembershipInfo *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGInviteeMembershipInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

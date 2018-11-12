@@ -11,23 +11,37 @@
 @class DBASYNCLaunchEmptyResult;
 @class DBASYNCPollEmptyResult;
 @class DBASYNCPollError;
+@class DBFILEPROPERTIESAddTemplateResult;
+@class DBFILEPROPERTIESGetTemplateResult;
+@class DBFILEPROPERTIESListTemplateResult;
+@class DBFILEPROPERTIESModifyTemplateError;
+@class DBFILEPROPERTIESPropertyFieldTemplate;
+@class DBFILEPROPERTIESPropertyType;
+@class DBFILEPROPERTIESTemplateError;
+@class DBFILEPROPERTIESUpdateTemplateResult;
+@class DBFILESContentSyncSetting;
+@class DBFILESContentSyncSettingArg;
+@class DBFILESSyncSetting;
+@class DBFILESSyncSettingArg;
+@class DBFILESSyncSettingsError;
 @class DBNilObject;
-@class DBPROPERTIESGetPropertyTemplateResult;
-@class DBPROPERTIESListPropertyTemplateIds;
-@class DBPROPERTIESModifyPropertyTemplateError;
-@class DBPROPERTIESPropertyFieldTemplate;
-@class DBPROPERTIESPropertyTemplateError;
-@class DBPROPERTIESPropertyType;
 @class DBTEAMActiveWebSession;
-@class DBTEAMAddPropertyTemplateResult;
 @class DBTEAMAdminTier;
 @class DBTEAMApiApp;
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMCOMMONGroupSummary;
+@class DBTEAMCustomQuotaError;
+@class DBTEAMCustomQuotaResult;
 @class DBTEAMDateRangeError;
 @class DBTEAMDesktopClientSession;
 @class DBTEAMDeviceSessionArg;
 @class DBTEAMDevicesActive;
+@class DBTEAMExcludedUsersListContinueError;
+@class DBTEAMExcludedUsersListError;
+@class DBTEAMExcludedUsersListResult;
+@class DBTEAMExcludedUsersUpdateError;
+@class DBTEAMExcludedUsersUpdateResult;
+@class DBTEAMExcludedUsersUpdateStatus;
 @class DBTEAMFeature;
 @class DBTEAMFeatureValue;
 @class DBTEAMFeaturesGetValuesBatchError;
@@ -73,6 +87,7 @@
 @class DBTEAMMemberAddResult;
 @class DBTEAMMemberDevices;
 @class DBTEAMMemberLinkedApps;
+@class DBTEAMMemberProfile;
 @class DBTEAMMembersAddJobStatus;
 @class DBTEAMMembersAddLaunch;
 @class DBTEAMMembersGetInfoError;
@@ -87,10 +102,12 @@
 @class DBTEAMMembersSetPermissionsResult;
 @class DBTEAMMembersSetProfileError;
 @class DBTEAMMembersSuspendError;
+@class DBTEAMMembersTransferFormerMembersFilesError;
 @class DBTEAMMembersUnsuspendError;
 @class DBTEAMMobileClientSession;
 @class DBTEAMNamespaceMetadata;
 @class DBTEAMPOLICIESTeamMemberPolicies;
+@class DBTEAMRemoveCustomQuotaResult;
 @class DBTEAMRevokeDesktopClientArg;
 @class DBTEAMRevokeDeviceSessionArg;
 @class DBTEAMRevokeDeviceSessionBatchError;
@@ -102,6 +119,7 @@
 @class DBTEAMRevokeLinkedAppBatchResult;
 @class DBTEAMRevokeLinkedAppError;
 @class DBTEAMRevokeLinkedAppStatus;
+@class DBTEAMSetCustomQuotaError;
 @class DBTEAMStorageBucket;
 @class DBTEAMTeamFolderAccessError;
 @class DBTEAMTeamFolderActivateError;
@@ -119,6 +137,7 @@
 @class DBTEAMTeamFolderRenameError;
 @class DBTEAMTeamFolderStatus;
 @class DBTEAMTeamFolderTeamSharedDropboxError;
+@class DBTEAMTeamFolderUpdateSyncSettingsError;
 @class DBTEAMTeamGetInfoResult;
 @class DBTEAMTeamMemberInfo;
 @class DBTEAMTeamMemberProfile;
@@ -126,7 +145,8 @@
 @class DBTEAMTeamNamespacesListResult;
 @class DBTEAMTokenGetAuthenticatedAdminError;
 @class DBTEAMTokenGetAuthenticatedAdminResult;
-@class DBTEAMUpdatePropertyTemplateResult;
+@class DBTEAMUserCustomQuotaArg;
+@class DBTEAMUserCustomQuotaResult;
 @class DBTEAMUserSelectorArg;
 
 @protocol DBTransportClient;
@@ -150,7 +170,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// List all device sessions of a team's member.
 ///
-/// @param teamMemberId The team's member id
+/// @param teamMemberId The team's member id.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMemberDevicesResult` object on success
 /// or a `DBTEAMListMemberDevicesError` object on failure.
@@ -161,10 +181,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// List all device sessions of a team's member.
 ///
-/// @param teamMemberId The team's member id
-/// @param includeWebSessions Whether to list web sessions of the team's member
-/// @param includeDesktopClients Whether to list linked desktop devices of the team's member
-/// @param includeMobileClients Whether to list linked mobile devices of the team's member
+/// @param teamMemberId The team's member id.
+/// @param includeWebSessions Whether to list web sessions of the team's member.
+/// @param includeDesktopClients Whether to list linked desktop devices of the team's member.
+/// @param includeMobileClients Whether to list linked mobile devices of the team's member.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMemberDevicesResult` object on success
 /// or a `DBTEAMListMemberDevicesError` object on failure.
@@ -189,10 +209,10 @@ devicesListMemberDevices:(NSString *)teamMemberId
 ///
 /// @param cursor At the first call to the `devicesListMembersDevices` the cursor shouldn't be passed. Then, if the
 /// result of the call includes a cursor, the following requests should include the received cursors in order to receive
-/// the next sub list of team devices
-/// @param includeWebSessions Whether to list web sessions of the team members
-/// @param includeDesktopClients Whether to list desktop clients of the team members
-/// @param includeMobileClients Whether to list mobile clients of the team members
+/// the next sub list of team devices.
+/// @param includeWebSessions Whether to list web sessions of the team members.
+/// @param includeDesktopClients Whether to list desktop clients of the team members.
+/// @param includeMobileClients Whether to list mobile clients of the team members.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMembersDevicesResult` object on success
 /// or a `DBTEAMListMembersDevicesError` object on failure.
@@ -211,17 +231,17 @@ devicesListMembersDevices:(nullable NSString *)cursor
 /// a `DBTEAMListTeamDevicesError` object on failure.
 ///
 - (DBRpcTask<DBTEAMListTeamDevicesResult *, DBTEAMListTeamDevicesError *> *)devicesListTeamDevices
-    __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
+    __deprecated_msg("devicesListTeamDevices is deprecated. Use devicesListMembersDevices.");
 
 ///
 /// DEPRECATED: List all device sessions of a team.
 ///
 /// @param cursor At the first call to the `devicesListTeamDevices` the cursor shouldn't be passed. Then, if the result
 /// of the call includes a cursor, the following requests should include the received cursors in order to receive the
-/// next sub list of team devices
-/// @param includeWebSessions Whether to list web sessions of the team members
-/// @param includeDesktopClients Whether to list desktop clients of the team members
-/// @param includeMobileClients Whether to list mobile clients of the team members
+/// next sub list of team devices.
+/// @param includeWebSessions Whether to list web sessions of the team members.
+/// @param includeDesktopClients Whether to list desktop clients of the team members.
+/// @param includeMobileClients Whether to list mobile clients of the team members.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListTeamDevicesResult` object on success or
 /// a `DBTEAMListTeamDevicesError` object on failure.
@@ -231,10 +251,10 @@ devicesListTeamDevices:(nullable NSString *)cursor
     includeWebSessions:(nullable NSNumber *)includeWebSessions
  includeDesktopClients:(nullable NSNumber *)includeDesktopClients
   includeMobileClients:(nullable NSNumber *)includeMobileClients
-    __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
+    __deprecated_msg("devicesListTeamDevices is deprecated. Use devicesListMembersDevices.");
 
 ///
-/// Revoke a device session of a team's member
+/// Revoke a device session of a team's member.
 ///
 /// @param revokeDeviceSessionArg The RevokeDeviceSessionArg union
 ///
@@ -245,7 +265,7 @@ devicesListTeamDevices:(nullable NSString *)cursor
     (DBTEAMRevokeDeviceSessionArg *)revokeDeviceSessionArg;
 
 ///
-/// Revoke a list of device sessions of team members
+/// Revoke a list of device sessions of team members.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMRevokeDeviceSessionBatchResult` object on
@@ -529,7 +549,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 /// List all linked applications of the team member. Note, this endpoint does not list any team-linked applications.
 ///
-/// @param teamMemberId The team member id
+/// @param teamMemberId The team member id.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMemberAppsResult` object on success or a
 /// `DBTEAMListMemberAppsError` object on failure.
@@ -553,7 +573,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 /// @param cursor At the first call to the `linkedAppsListMembersLinkedApps` the cursor shouldn't be passed. Then, if
 /// the result of the call includes a cursor, the following requests should include the received cursors in order to
-/// receive the next sub list of the team applications
+/// receive the next sub list of the team applications.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListMembersAppsResult` object on success or
 /// a `DBTEAMListMembersAppsError` object on failure.
@@ -570,7 +590,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 /// `DBTEAMListTeamAppsError` object on failure.
 ///
 - (DBRpcTask<DBTEAMListTeamAppsResult *, DBTEAMListTeamAppsError *> *)linkedAppsListTeamLinkedApps
-    __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
+    __deprecated_msg("linkedAppsListTeamLinkedApps is deprecated. Use linkedAppsListMembersLinkedApps.");
 
 ///
 /// DEPRECATED: List all applications linked to the team members' accounts. Note, this endpoint doesn't list any
@@ -578,20 +598,20 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 /// @param cursor At the first call to the `linkedAppsListTeamLinkedApps` the cursor shouldn't be passed. Then, if the
 /// result of the call includes a cursor, the following requests should include the received cursors in order to receive
-/// the next sub list of the team applications
+/// the next sub list of the team applications.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMListTeamAppsResult` object on success or a
 /// `DBTEAMListTeamAppsError` object on failure.
 ///
 - (DBRpcTask<DBTEAMListTeamAppsResult *, DBTEAMListTeamAppsError *> *)linkedAppsListTeamLinkedApps:
     (nullable NSString *)cursor
-    __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
+    __deprecated_msg("linkedAppsListTeamLinkedApps is deprecated. Use linkedAppsListMembersLinkedApps.");
 
 ///
-/// Revoke a linked application of the team member
+/// Revoke a linked application of the team member.
 ///
-/// @param appId The application's unique id
-/// @param teamMemberId The unique id of the member owning the device
+/// @param appId The application's unique id.
+/// @param teamMemberId The unique id of the member owning the device.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBTEAMRevokeLinkedAppError` object on failure.
@@ -600,11 +620,11 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
                                                                          teamMemberId:(NSString *)teamMemberId;
 
 ///
-/// Revoke a linked application of the team member
+/// Revoke a linked application of the team member.
 ///
-/// @param appId The application's unique id
-/// @param teamMemberId The unique id of the member owning the device
-/// @param keepAppFolder Whether to keep the application dedicated folder (in case the application uses  one)
+/// @param appId The application's unique id.
+/// @param teamMemberId The unique id of the member owning the device.
+/// @param keepAppFolder Whether to keep the application dedicated folder (in case the application uses  one).
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBTEAMRevokeLinkedAppError` object on failure.
@@ -615,7 +635,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
                                                                             (nullable NSNumber *)keepAppFolder;
 
 ///
-/// Revoke a list of linked applications of the team members
+/// Revoke a list of linked applications of the team members.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMRevokeLinkedAppBatchResult` object on
@@ -623,6 +643,113 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 ///
 - (DBRpcTask<DBTEAMRevokeLinkedAppBatchResult *, DBTEAMRevokeLinkedAppBatchError *> *)linkedAppsRevokeLinkedAppBatch:
     (NSArray<DBTEAMRevokeLinkedApiAppArg *> *)revokeLinkedApp;
+
+///
+/// Add users to member space limits excluded users list.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)memberSpaceLimitsExcludedUsersAdd;
+
+///
+/// Add users to member space limits excluded users list.
+///
+/// @param users List of users to be added/removed.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)memberSpaceLimitsExcludedUsersAdd:
+    (nullable NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
+/// List member space limits excluded users.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersListResult` object on success
+/// or a `DBTEAMExcludedUsersListError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersListResult *, DBTEAMExcludedUsersListError *> *)memberSpaceLimitsExcludedUsersList;
+
+///
+/// List member space limits excluded users.
+///
+/// @param limit Number of results to return per call.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersListResult` object on success
+/// or a `DBTEAMExcludedUsersListError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersListResult *, DBTEAMExcludedUsersListError *> *)memberSpaceLimitsExcludedUsersList:
+    (nullable NSNumber *)limit;
+
+///
+/// Continue listing member space limits excluded users.
+///
+/// @param cursor Indicates from what point to get the next set of users.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersListResult` object on success
+/// or a `DBTEAMExcludedUsersListContinueError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersListResult *, DBTEAMExcludedUsersListContinueError *> *)
+memberSpaceLimitsExcludedUsersListContinue:(NSString *)cursor;
+
+///
+/// Remove users from member space limits excluded users list.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)
+    memberSpaceLimitsExcludedUsersRemove;
+
+///
+/// Remove users from member space limits excluded users list.
+///
+/// @param users List of users to be added/removed.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMExcludedUsersUpdateResult` object on success
+/// or a `DBTEAMExcludedUsersUpdateError` object on failure.
+///
+- (DBRpcTask<DBTEAMExcludedUsersUpdateResult *, DBTEAMExcludedUsersUpdateError *> *)
+memberSpaceLimitsExcludedUsersRemove:(nullable NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
+/// Get users custom quota. Returns none as the custom quota if none was set. A maximum of 1000 members can be specified
+/// in a single call.
+///
+/// @param users List of users.
+///
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMCustomQuotaResult *>` object on
+/// success or a `DBTEAMCustomQuotaError` object on failure.
+///
+- (DBRpcTask<NSArray<DBTEAMCustomQuotaResult *> *, DBTEAMCustomQuotaError *> *)memberSpaceLimitsGetCustomQuota:
+    (NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
+/// Remove users custom quota. A maximum of 1000 members can be specified in a single call.
+///
+/// @param users List of users.
+///
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMRemoveCustomQuotaResult *>` object
+/// on success or a `DBTEAMCustomQuotaError` object on failure.
+///
+- (DBRpcTask<NSArray<DBTEAMRemoveCustomQuotaResult *> *, DBTEAMCustomQuotaError *> *)memberSpaceLimitsRemoveCustomQuota:
+    (NSArray<DBTEAMUserSelectorArg *> *)users;
+
+///
+/// Set users custom quota. Custom quota has to be at least 15GB. A maximum of 1000 members can be specified in a single
+/// call.
+///
+/// @param usersAndQuotas List of users and their custom quotas.
+///
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMCustomQuotaResult *>` object on
+/// success or a `DBTEAMSetCustomQuotaError` object on failure.
+///
+- (DBRpcTask<NSArray<DBTEAMCustomQuotaResult *> *, DBTEAMSetCustomQuotaError *> *)memberSpaceLimitsSetCustomQuota:
+    (NSArray<DBTEAMUserCustomQuotaArg *> *)usersAndQuotas;
 
 ///
 /// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
@@ -660,7 +787,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 
 ///
 /// Once an async_job_id is returned from `membersAdd` , use this to poll the status of the asynchronous request.
-/// Permission : Team member management
+/// Permission : Team member management.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -683,7 +810,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
     (NSArray<DBTEAMUserSelectorArg *> *)members;
 
 ///
-/// Lists members of a team. Permission : Team information
+/// Lists members of a team. Permission : Team information.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMMembersListResult` object on success or a
@@ -692,7 +819,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 - (DBRpcTask<DBTEAMMembersListResult *, DBTEAMMembersListError *> *)membersList;
 
 ///
-/// Lists members of a team. Permission : Team information
+/// Lists members of a team. Permission : Team information.
 ///
 /// @param limit Number of results to return per call.
 /// @param includeRemoved Whether to return removed members.
@@ -705,7 +832,7 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 
 ///
 /// Once a cursor has been retrieved from `membersList`, use this to paginate through all team members. Permission :
-/// Team information
+/// Team information.
 ///
 /// @param cursor Indicates from what point to get the next set of members.
 ///
@@ -713,6 +840,35 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 /// `DBTEAMMembersListContinueError` object on failure.
 ///
 - (DBRpcTask<DBTEAMMembersListResult *, DBTEAMMembersListContinueError *> *)membersListContinue:(NSString *)cursor;
+
+///
+/// Moves removed member's files to a different member. This endpoint initiates an asynchronous job. To obtain the final
+/// result of the job, the client should periodically poll `membersMoveFormerMemberFilesJobStatusCheck`. Permission :
+/// Team member management.
+///
+/// @param transferDestId Files from the deleted member account will be transferred to this user.
+/// @param transferAdminId Errors during the transfer process will be sent via email to this user.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `DBTEAMMembersTransferFormerMembersFilesError` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBTEAMMembersTransferFormerMembersFilesError *> *)
+membersMoveFormerMemberFiles:(DBTEAMUserSelectorArg *)user
+              transferDestId:(DBTEAMUserSelectorArg *)transferDestId
+             transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId;
+
+///
+/// Once an async_job_id is returned from `membersMoveFormerMemberFiles` , use this to poll the status of the
+/// asynchronous request. Permission : Team member management.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCPollEmptyResult` object on success or a
+/// `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBASYNCPollEmptyResult *, DBASYNCPollError *> *)membersMoveFormerMemberFilesJobStatusCheck:
+    (NSString *)asyncJobId;
 
 ///
 /// Recover a deleted member. Permission : Team member management Exactly one of team_member_id, email, or external_id
@@ -730,8 +886,10 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 /// external_id must be provided to identify the user account. Accounts can be recovered via `membersRecover` for a 7
 /// day period or until the account has been permanently deleted or transferred to another account (whichever comes
 /// first). Calling `membersAdd` while a user is still recoverable on your team will return with `userAlreadyOnTeam` in
-/// `DBTEAMMemberAddResult`. This endpoint may initiate an asynchronous job. To obtain the final result of the job, the
-/// client should periodically poll `membersRemoveJobStatusGet`.
+/// `DBTEAMMemberAddResult`. Accounts can have their files transferred via the admin console for a limited time, based
+/// on the version history length associated with the team (120 days for most teams). This endpoint may initiate an
+/// asynchronous job. To obtain the final result of the job, the client should periodically poll
+/// `membersRemoveJobStatusGet`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
@@ -744,8 +902,10 @@ dNewGroupManagementType:(nullable DBTEAMCOMMONGroupManagementType *)dNewGroupMan
 /// external_id must be provided to identify the user account. Accounts can be recovered via `membersRecover` for a 7
 /// day period or until the account has been permanently deleted or transferred to another account (whichever comes
 /// first). Calling `membersAdd` while a user is still recoverable on your team will return with `userAlreadyOnTeam` in
-/// `DBTEAMMemberAddResult`. This endpoint may initiate an asynchronous job. To obtain the final result of the job, the
-/// client should periodically poll `membersRemoveJobStatusGet`.
+/// `DBTEAMMemberAddResult`. Accounts can have their files transferred via the admin console for a limited time, based
+/// on the version history length associated with the team (120 days for most teams). This endpoint may initiate an
+/// asynchronous job. To obtain the final result of the job, the client should periodically poll
+/// `membersRemoveJobStatusGet`.
 ///
 /// @param transferDestId If provided, files from the deleted member account will be transferred to this user.
 /// @param transferAdminId If provided, errors during the transfer process will be sent via email to this user. If the
@@ -766,7 +926,7 @@ transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
 
 ///
 /// Once an async_job_id is returned from `membersRemove` , use this to poll the status of the asynchronous request.
-/// Permission : Team member management
+/// Permission : Team member management.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -789,7 +949,7 @@ transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
     (DBTEAMUserSelectorArg *)userSelectorArg;
 
 ///
-/// Updates a team member's permissions. Permission : Team member management
+/// Updates a team member's permissions. Permission : Team member management.
 ///
 /// @param user Identity of user whose role will be set.
 /// @param dNewRole The new role of the member.
@@ -802,7 +962,7 @@ membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user
                   dNewRole:(DBTEAMAdminTier *)dNewRole;
 
 ///
-/// Updates a team member's profile. Permission : Team member management
+/// Updates a team member's profile. Permission : Team member management.
 ///
 /// @param user Identity of user whose profile will be set.
 ///
@@ -812,7 +972,7 @@ membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user
 - (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfileError *> *)membersSetProfile:(DBTEAMUserSelectorArg *)user;
 
 ///
-/// Updates a team member's profile. Permission : Team member management
+/// Updates a team member's profile. Permission : Team member management.
 ///
 /// @param user Identity of user whose profile will be set.
 /// @param dNewEmail New email for member.
@@ -821,23 +981,24 @@ membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user
 /// @param dNewSurname New surname for member.
 /// @param dNewPersistentId New persistent ID. This field only available to teams using persistent ID SAML
 /// configuration.
+/// @param dNewIsDirectoryRestricted New value for whether the user is a directory restricted user.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
 /// `DBTEAMMembersSetProfileError` object on failure.
 ///
 - (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfileError *> *)
-membersSetProfile:(DBTEAMUserSelectorArg *)user
-        dNewEmail:(nullable NSString *)dNewEmail
-   dNewExternalId:(nullable NSString *)dNewExternalId
-    dNewGivenName:(nullable NSString *)dNewGivenName
-      dNewSurname:(nullable NSString *)dNewSurname
- dNewPersistentId:(nullable NSString *)dNewPersistentId;
+        membersSetProfile:(DBTEAMUserSelectorArg *)user
+                dNewEmail:(nullable NSString *)dNewEmail
+           dNewExternalId:(nullable NSString *)dNewExternalId
+            dNewGivenName:(nullable NSString *)dNewGivenName
+              dNewSurname:(nullable NSString *)dNewSurname
+         dNewPersistentId:(nullable NSString *)dNewPersistentId
+dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
 
 ///
 /// Suspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
 /// external_id must be provided to identify the user account.
 ///
-/// @param user Identity of user to remove/suspend.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBTEAMMembersSuspendError` object on failure.
@@ -848,7 +1009,6 @@ membersSetProfile:(DBTEAMUserSelectorArg *)user
 /// Suspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
 /// external_id must be provided to identify the user account.
 ///
-/// @param user Identity of user to remove/suspend.
 /// @param wipeData If provided, controls if the user's data will be deleted on their linked devices.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
@@ -886,7 +1046,7 @@ membersSetProfile:(DBTEAMUserSelectorArg *)user
 /// owned by this team or members of the team, but shared folders may be owned by other users or other teams. Duplicates
 /// may occur in the list.
 ///
-/// @param limit The approximate maximum number of results to return per request. This limit may be exceeded.
+/// @param limit Specifying a value here has no effect.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMTeamNamespacesListResult` object on success
 /// or a `void` object on failure.
@@ -906,67 +1066,68 @@ membersSetProfile:(DBTEAMUserSelectorArg *)user
     (NSString *)cursor;
 
 ///
-/// Add a property template. See route files/properties/add to add properties to a file.
+/// DEPRECATED: The propertiesTemplateAdd route
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMAddPropertyTemplateResult` object on success
-/// or a `DBPROPERTIESModifyPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESAddTemplateResult` object on
+/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
 ///
-- (DBRpcTask<DBTEAMAddPropertyTemplateResult *, DBPROPERTIESModifyPropertyTemplateError *> *)
+- (DBRpcTask<DBFILEPROPERTIESAddTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)
 propertiesTemplateAdd:(NSString *)name
          description_:(NSString *)description_
-               fields:(NSArray<DBPROPERTIESPropertyFieldTemplate *> *)fields;
+               fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields
+    __deprecated_msg("propertiesTemplateAdd is deprecated.");
 
 ///
-/// Get the schema for a specified template.
+/// DEPRECATED: The propertiesTemplateGet route
 ///
-/// @param templateId An identifier for property template added by route properties/template/add.
+/// @param templateId An identifier for template added by route  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
-/// @return Through the response callback, the caller will receive a `DBPROPERTIESGetPropertyTemplateResult` object on
-/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESGetTemplateResult` object on
+/// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
-- (DBRpcTask<DBPROPERTIESGetPropertyTemplateResult *, DBPROPERTIESPropertyTemplateError *> *)propertiesTemplateGet:
-    (NSString *)templateId;
+- (DBRpcTask<DBFILEPROPERTIESGetTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateGet:
+    (NSString *)templateId __deprecated_msg("propertiesTemplateGet is deprecated.");
 
 ///
-/// Get the property template identifiers for a team. To get the schema of each template use `propertiesTemplateGet`.
+/// DEPRECATED: The propertiesTemplateList route
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBPROPERTIESListPropertyTemplateIds` object on
-/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESListTemplateResult` object on
+/// success or a `DBFILEPROPERTIESTemplateError` object on failure.
 ///
-- (DBRpcTask<DBPROPERTIESListPropertyTemplateIds *, DBPROPERTIESPropertyTemplateError *> *)propertiesTemplateList;
+- (DBRpcTask<DBFILEPROPERTIESListTemplateResult *, DBFILEPROPERTIESTemplateError *> *)propertiesTemplateList
+    __deprecated_msg("propertiesTemplateList is deprecated.");
 
 ///
-/// Update a property template. This route can update the template name, the template description and add optional
-/// properties to templates.
+/// DEPRECATED: The propertiesTemplateUpdate route
 ///
-/// @param templateId An identifier for property template added by `propertiesTemplateAdd`.
+/// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMUpdatePropertyTemplateResult` object on
-/// success or a `DBPROPERTIESModifyPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESUpdateTemplateResult` object on
+/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
 ///
-- (DBRpcTask<DBTEAMUpdatePropertyTemplateResult *, DBPROPERTIESModifyPropertyTemplateError *> *)
-propertiesTemplateUpdate:(NSString *)templateId;
+- (DBRpcTask<DBFILEPROPERTIESUpdateTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)propertiesTemplateUpdate:
+    (NSString *)templateId __deprecated_msg("propertiesTemplateUpdate is deprecated.");
 
 ///
-/// Update a property template. This route can update the template name, the template description and add optional
-/// properties to templates.
+/// DEPRECATED: The propertiesTemplateUpdate route
 ///
-/// @param templateId An identifier for property template added by `propertiesTemplateAdd`.
-/// @param name A display name for the property template. Property template names can be up to 256 bytes.
-/// @param description_ Description for new property template. Property template descriptions can be up to 1024 bytes.
-/// @param addFields This is a list of custom properties to add to the property template. There can be up to 64
-/// properties in a single property template.
+/// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
+/// @param name A display name for the template. template names can be up to 256 bytes.
+/// @param description_ Description for the new template. Template descriptions can be up to 1024 bytes.
+/// @param addFields Property field templates to be added to the group template. There can be up to 32 properties in a
+/// single template.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMUpdatePropertyTemplateResult` object on
-/// success or a `DBPROPERTIESModifyPropertyTemplateError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESUpdateTemplateResult` object on
+/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
 ///
-- (DBRpcTask<DBTEAMUpdatePropertyTemplateResult *, DBPROPERTIESModifyPropertyTemplateError *> *)
+- (DBRpcTask<DBFILEPROPERTIESUpdateTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)
 propertiesTemplateUpdate:(NSString *)templateId
                     name:(nullable NSString *)name
             description_:(nullable NSString *)description_
-               addFields:(nullable NSArray<DBPROPERTIESPropertyFieldTemplate *> *)addFields;
+               addFields:(nullable NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)addFields
+    __deprecated_msg("propertiesTemplateUpdate is deprecated.");
 
 ///
 /// Retrieves reporting data about a team's user activity.
@@ -980,8 +1141,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's user activity.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetActivityReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.
@@ -1001,8 +1162,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's linked devices.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetDevicesReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.
@@ -1022,8 +1183,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's membership.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetMembershipReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.
@@ -1043,8 +1204,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 ///
 /// Retrieves reporting data about a team's storage usage.
 ///
-/// @param startDate Optional starting date (inclusive)
-/// @param endDate Optional ending date (exclusive)
+/// @param startDate Optional starting date (inclusive).
+/// @param endDate Optional ending date (exclusive).
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetStorageReport` object on success or a
 /// `DBTEAMDateRangeError` object on failure.
@@ -1098,7 +1259,7 @@ teamFolderArchive:(NSString *)teamFolderId
 - (DBRpcTask<DBTEAMTeamFolderArchiveJobStatus *, DBASYNCPollError *> *)teamFolderArchiveCheck:(NSString *)asyncJobId;
 
 ///
-/// Creates a new, active, team folder. Permission : Team member file access.
+/// Creates a new, active, team folder with no members. Permission : Team member file access.
 ///
 /// @param name Name for the new team folder.
 ///
@@ -1106,6 +1267,20 @@ teamFolderArchive:(NSString *)teamFolderId
 /// `DBTEAMTeamFolderCreateError` object on failure.
 ///
 - (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderCreateError *> *)teamFolderCreate:(NSString *)name;
+
+///
+/// Creates a new, active, team folder with no members. Permission : Team member file access.
+///
+/// @param name Name for the new team folder.
+/// @param syncSetting The sync setting to apply to this team folder. Only permitted if the team has team selective sync
+/// enabled.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderMetadata` object on success or a
+/// `DBTEAMTeamFolderCreateError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderCreateError *> *)
+teamFolderCreate:(NSString *)name
+     syncSetting:(nullable DBFILESSyncSettingArg *)syncSetting;
 
 ///
 /// Retrieves metadata for team folders. Permission : Team member file access.
@@ -1170,6 +1345,33 @@ teamFolderArchive:(NSString *)teamFolderId
 ///
 - (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderRenameError *> *)teamFolderRename:(NSString *)teamFolderId
                                                                                       name:(NSString *)name;
+
+///
+/// Updates the sync settings on a team folder or its contents.  Use of this endpoint requires that the team has team
+/// selective sync enabled.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderMetadata` object on success or a
+/// `DBTEAMTeamFolderUpdateSyncSettingsError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderUpdateSyncSettingsError *> *)teamFolderUpdateSyncSettings:
+    (NSString *)teamFolderId;
+
+///
+/// Updates the sync settings on a team folder or its contents.  Use of this endpoint requires that the team has team
+/// selective sync enabled.
+///
+/// @param syncSetting Sync setting to apply to the team folder itself. Only meaningful if the team folder is not a
+/// shared team root.
+/// @param contentSyncSettings Sync settings to apply to contents of this team folder.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderMetadata` object on success or a
+/// `DBTEAMTeamFolderUpdateSyncSettingsError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderUpdateSyncSettingsError *> *)
+teamFolderUpdateSyncSettings:(NSString *)teamFolderId
+                 syncSetting:(nullable DBFILESSyncSettingArg *)syncSetting
+         contentSyncSettings:(nullable NSArray<DBFILESContentSyncSettingArg *> *)contentSyncSettings;
 
 ///
 /// Returns the member profile of the admin who generated the team access token used to make the call.

@@ -50,6 +50,10 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFolderMemberErrorTag) {
   /// The current user does not have permission to perform this action.
   DBSHARINGRemoveFolderMemberErrorNoPermission,
 
+  /// This shared folder has too many files for leaving a copy. You can still
+  /// remove this user without leaving a copy.
+  DBSHARINGRemoveFolderMemberErrorTooManyFiles,
+
   /// (no description).
   DBSHARINGRemoveFolderMemberErrorOther,
 
@@ -128,6 +132,17 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFolderMemberErrorTag) {
 - (instancetype)initWithNoPermission;
 
 ///
+/// Initializes union class with tag state of "too_many_files".
+///
+/// Description of the "too_many_files" tag state: This shared folder has too
+/// many files for leaving a copy. You can still remove this user without
+/// leaving a copy.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTooManyFiles;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -187,6 +202,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFolderMemberErrorTag) {
 - (BOOL)isNoPermission;
 
 ///
+/// Retrieves whether the union's current tag state has value "too_many_files".
+///
+/// @return Whether the union's current tag state has value "too_many_files".
+///
+- (BOOL)isTooManyFiles;
+
+///
 /// Retrieves whether the union's current tag state has value "other".
 ///
 /// @return Whether the union's current tag state has value "other".
@@ -218,7 +240,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFolderMemberErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRemoveFolderMemberError` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGRemoveFolderMemberError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGRemoveFolderMemberError *)instance;
 
 ///
 /// Deserializes `DBSHARINGRemoveFolderMemberError` instances.
@@ -228,7 +250,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFolderMemberErrorTag) {
 ///
 /// @return An instantiation of the `DBSHARINGRemoveFolderMemberError` object.
 ///
-+ (DBSHARINGRemoveFolderMemberError *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGRemoveFolderMemberError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

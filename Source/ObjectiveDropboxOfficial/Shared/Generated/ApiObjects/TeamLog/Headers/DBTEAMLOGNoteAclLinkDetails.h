@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `NoteAclLinkDetails` struct.
 ///
-/// Changed a Paper document to be link accessible.
+/// Changed Paper doc to link-accessible.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoteAclLinkDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGNoteAclLinkDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclLinkDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGNoteAclLinkDetails` instances.
@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGNoteAclLinkDetails` object.
 ///
-+ (DBTEAMLOGNoteAclLinkDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGNoteAclLinkDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

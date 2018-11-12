@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DomainInvitesDeclineRequestToJoinTeamDetails` struct.
 ///
-/// Declined a user's request to join the team.
+/// Declined user's request to join team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails`
@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails` object.
 ///
-+ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

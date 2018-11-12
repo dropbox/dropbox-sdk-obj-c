@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DomainVerificationRemoveDomainDetails` struct.
 ///
-/// Removed a domain from the list of verified domains belonging to the team.
+/// Removed domain from list of verified team domains.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -30,27 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Domain names.
 @property (nonatomic, readonly) NSArray<NSString *> *domainNames;
 
-/// Domain name verification method. Might be missing due to historical data
-/// gap.
-@property (nonatomic, readonly, copy, nullable) NSString *verificationMethod;
-
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
-///
-/// @param domainNames Domain names.
-/// @param verificationMethod Domain name verification method. Might be missing
-/// due to historical data gap.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithDomainNames:(NSArray<NSString *> *)domainNames
-                 verificationMethod:(nullable NSString *)verificationMethod;
-
-///
-/// Convenience constructor (exposes only non-nullable instance variables with
-/// no default value).
 ///
 /// @param domainNames Domain names.
 ///
@@ -79,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDomainVerificationRemoveDomainDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainVerificationRemoveDomainDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainVerificationRemoveDomainDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDomainVerificationRemoveDomainDetails` instances.
@@ -90,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGDomainVerificationRemoveDomainDetails` object.
 ///
-+ (DBTEAMLOGDomainVerificationRemoveDomainDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGDomainVerificationRemoveDomainDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

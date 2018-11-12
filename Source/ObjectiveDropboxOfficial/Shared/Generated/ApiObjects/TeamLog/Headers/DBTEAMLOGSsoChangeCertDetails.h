@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SsoChangeCertDetails` struct.
 ///
-/// Changed the X.509 certificate for SSO.
+/// Changed X.509 certificate for SSO.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -28,19 +28,36 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// SSO certificate details.
-@property (nonatomic, readonly) DBTEAMLOGCertificate *certificateDetails;
+/// Previous SSO certificate details. Might be missing due to historical data
+/// gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGCertificate *previousCertificateDetails;
+
+/// New SSO certificate details.
+@property (nonatomic, readonly) DBTEAMLOGCertificate *dNewCertificateDetails;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param certificateDetails SSO certificate details.
+/// @param dNewCertificateDetails New SSO certificate details.
+/// @param previousCertificateDetails Previous SSO certificate details. Might be
+/// missing due to historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithCertificateDetails:(DBTEAMLOGCertificate *)certificateDetails;
+- (instancetype)initWithDNewCertificateDetails:(DBTEAMLOGCertificate *)dNewCertificateDetails
+                    previousCertificateDetails:(nullable DBTEAMLOGCertificate *)previousCertificateDetails;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
+/// @param dNewCertificateDetails New SSO certificate details.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDNewCertificateDetails:(DBTEAMLOGCertificate *)dNewCertificateDetails;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -62,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoChangeCertDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeCertDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeCertDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSsoChangeCertDetails` instances.
@@ -72,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGSsoChangeCertDetails` object.
 ///
-+ (DBTEAMLOGSsoChangeCertDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSsoChangeCertDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

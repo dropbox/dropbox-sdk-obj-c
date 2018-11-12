@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `EmmRemoveExceptionDetails` struct.
 ///
-/// Removed an exception for one or more team members to optionally use the
-/// regular Dropbox app when EMM is enabled.
+/// Removed members from EMM exception list.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -57,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEmmRemoveExceptionDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmRemoveExceptionDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmRemoveExceptionDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGEmmRemoveExceptionDetails` instances.
@@ -67,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGEmmRemoveExceptionDetails` object.
 ///
-+ (DBTEAMLOGEmmRemoveExceptionDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGEmmRemoveExceptionDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

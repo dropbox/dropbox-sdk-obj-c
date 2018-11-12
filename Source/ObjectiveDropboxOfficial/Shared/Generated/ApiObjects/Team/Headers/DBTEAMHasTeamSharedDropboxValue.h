@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMHasTeamSharedDropboxValueTag` enum type represents the possible
 /// tag states with which the `DBTEAMHasTeamSharedDropboxValue` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMHasTeamSharedDropboxValueTag) {
-  /// Does this team have a team shared dropbox.
+  /// Does this team have a shared team root.
   DBTEAMHasTeamSharedDropboxValueHasTeamSharedDropbox,
 
   /// (no description).
@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, DBTEAMHasTeamSharedDropboxValueTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBTEAMHasTeamSharedDropboxValueTag tag;
 
-/// Does this team have a team shared dropbox. @note Ensure the
+/// Does this team have a shared team root. @note Ensure the
 /// `isHasTeamSharedDropbox` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) NSNumber *hasTeamSharedDropbox;
@@ -52,9 +52,9 @@ typedef NS_ENUM(NSInteger, DBTEAMHasTeamSharedDropboxValueTag) {
 /// Initializes union class with tag state of "has_team_shared_dropbox".
 ///
 /// Description of the "has_team_shared_dropbox" tag state: Does this team have
-/// a team shared dropbox.
+/// a shared team root.
 ///
-/// @param hasTeamSharedDropbox Does this team have a team shared dropbox.
+/// @param hasTeamSharedDropbox Does this team have a shared team root.
 ///
 /// @return An initialized instance.
 ///
@@ -116,7 +116,7 @@ typedef NS_ENUM(NSInteger, DBTEAMHasTeamSharedDropboxValueTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMHasTeamSharedDropboxValue` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMHasTeamSharedDropboxValue *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMHasTeamSharedDropboxValue *)instance;
 
 ///
 /// Deserializes `DBTEAMHasTeamSharedDropboxValue` instances.
@@ -126,7 +126,7 @@ typedef NS_ENUM(NSInteger, DBTEAMHasTeamSharedDropboxValueTag) {
 ///
 /// @return An instantiation of the `DBTEAMHasTeamSharedDropboxValue` object.
 ///
-+ (DBTEAMHasTeamSharedDropboxValue *)deserialize:(NSDictionary *)dict;
++ (DBTEAMHasTeamSharedDropboxValue *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

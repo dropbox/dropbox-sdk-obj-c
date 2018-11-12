@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DomainInvitesSetInviteNewUserPrefToYesDetails` struct.
 ///
-/// Turned on u201cAutomatically invite new usersu201d.
+/// Enabled "Automatically invite new users".
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails`
@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails` object.
 ///
-+ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGDomainInvitesSetInviteNewUserPrefToYesDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -439,7 +439,7 @@ void MyLog(NSString *format, ...) {
                                error:nil];
   
   NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
-  
+
   NSLog(@"\n\nCreating files in: %@\n\n", [workingDirectory path]);
   // create a bunch of fake files
   for (int i = 0; i < 150; i++) {
@@ -2101,7 +2101,7 @@ void MyLog(NSString *format, ...) {
             DBTEAMMemberAddResult *addResult = result.complete[0];
             if ([addResult isSuccess]) {
               _teamMemberId2 = addResult.success.profile.teamMemberId;
-            } else {
+            } else if (![addResult isUserAlreadyOnTeam]) {
               [TestFormat abort:error routeError:routeError];
             }
             [TestFormat printOffset:@"Member added"];
@@ -2120,11 +2120,12 @@ void MyLog(NSString *format, ...) {
 
 - (void)membersGetInfo:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
+  DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithEmail:_tester.testData.teamMemberNewEmail];
   [[[_tester.team membersGetInfo:@[ userSelectArg ]]
       setResponseBlock:^(NSArray<DBTEAMMembersGetInfoItem *> *result, DBTEAMMembersGetInfoError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
+          _teamMemberId2 = result[0].memberInfo.profile.teamMemberId;
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
@@ -2203,7 +2204,8 @@ void MyLog(NSString *format, ...) {
                      dNewExternalId:nil
                       dNewGivenName:@"NewFirstName"
                         dNewSurname:nil
-                   dNewPersistentId:nil]
+                   dNewPersistentId:nil
+          dNewIsDirectoryRestricted:nil]
       setResponseBlock:^(DBTEAMTeamMemberInfo *result, DBTEAMMembersSetProfileError *routeError, DBRequestError *error) {
         if (!error) {
           MyLog(@"%@\n", result);

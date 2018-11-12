@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DeviceManagementDisabledDetails` struct.
 ///
-/// Disable Device Management.
+/// Disabled device management.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceManagementDisabledDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceManagementDisabledDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceManagementDisabledDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDeviceManagementDisabledDetails` instances.
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGDeviceManagementDisabledDetails`
 /// object.
 ///
-+ (DBTEAMLOGDeviceManagementDisabledDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGDeviceManagementDisabledDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

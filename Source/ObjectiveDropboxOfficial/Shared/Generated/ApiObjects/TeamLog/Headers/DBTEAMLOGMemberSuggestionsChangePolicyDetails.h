@@ -18,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MemberSuggestionsChangePolicyDetails` struct.
 ///
-/// Enabled or disabled the option for team members to suggest new members to
-/// add to the team.
+/// Enabled/disabled option for team members to suggest people to add to team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -81,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSuggestionsChangePolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSuggestionsChangePolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSuggestionsChangePolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGMemberSuggestionsChangePolicyDetails` instances.
@@ -92,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberSuggestionsChangePolicyDetails` object.
 ///
-+ (DBTEAMLOGMemberSuggestionsChangePolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGMemberSuggestionsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

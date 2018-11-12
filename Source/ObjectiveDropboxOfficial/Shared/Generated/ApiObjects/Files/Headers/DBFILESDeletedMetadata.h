@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// least the last path component will have the correct casing. Changes to only
 /// the casing of paths won't be returned by `listFolderContinue`. This field
 /// will be null if the file or folder is not mounted.
-/// @param parentSharedFolderId Deprecated. Please use `parentSharedFolderId` in
+/// @param parentSharedFolderId Please use `parentSharedFolderId` in
 /// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
 /// `DBFILESFolderSharingInfo` instead.
 ///
@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESDeletedMetadata` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESDeletedMetadata *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESDeletedMetadata *)instance;
 
 ///
 /// Deserializes `DBFILESDeletedMetadata` instances.
@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBFILESDeletedMetadata` object.
 ///
-+ (DBFILESDeletedMetadata *)deserialize:(NSDictionary *)dict;
++ (DBFILESDeletedMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentRemoveLinkExpiryDetails` struct.
 ///
-/// Removed the expiry of the link for the shared file or folder.
+/// Removed link expiration date of shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,40 +27,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
-
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
-/// Shared folder type. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharedFolderType;
+/// Previous shared content link expiration date. Might be missing due to
+/// historical data gap.
+@property (nonatomic, readonly, nullable) NSDate *previousValue;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
-/// @param sharedFolderType Shared folder type. Might be missing due to
-/// historical data gap.
+/// @param previousValue Previous shared content link expiration date. Might be
+/// missing due to historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(nullable NSString *)originalFolderName
-                   sharedFolderType:(nullable NSString *)sharedFolderType;
+- (instancetype)initWithPreviousValue:(nullable NSDate *)previousValue;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetIndex Target asset index.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex;
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -83,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentRemoveLinkExpiryDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentRemoveLinkExpiryDetails` instances.
@@ -94,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentRemoveLinkExpiryDetails` object.
 ///
-+ (DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentRemoveLinkExpiryDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TeamProfileChangeNameDetails` struct.
 ///
-/// Changed the team name.
+/// Changed team name.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamProfileChangeNameDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileChangeNameDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeNameDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGTeamProfileChangeNameDetails` instances.
@@ -89,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGTeamProfileChangeNameDetails`
 /// object.
 ///
-+ (DBTEAMLOGTeamProfileChangeNameDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGTeamProfileChangeNameDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

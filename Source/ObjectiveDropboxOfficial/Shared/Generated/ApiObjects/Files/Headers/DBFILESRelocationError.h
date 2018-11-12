@@ -61,6 +61,9 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
   /// `DBFILESRelocationArg` to true.
   DBFILESRelocationErrorCantTransferOwnership,
 
+  /// The current user does not have enough space to move or copy the files.
+  DBFILESRelocationErrorInsufficientQuota,
+
   /// (no description).
   DBFILESRelocationErrorOther,
 
@@ -173,6 +176,16 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 - (instancetype)initWithCantTransferOwnership;
 
 ///
+/// Initializes union class with tag state of "insufficient_quota".
+///
+/// Description of the "insufficient_quota" tag state: The current user does not
+/// have enough space to move or copy the files.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInsufficientQuota;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -266,6 +279,15 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 - (BOOL)isCantTransferOwnership;
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "insufficient_quota".
+///
+/// @return Whether the union's current tag state has value
+/// "insufficient_quota".
+///
+- (BOOL)isInsufficientQuota;
+
+///
 /// Retrieves whether the union's current tag state has value "other".
 ///
 /// @return Whether the union's current tag state has value "other".
@@ -296,7 +318,7 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESRelocationError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationError *)instance;
 
 ///
 /// Deserializes `DBFILESRelocationError` instances.
@@ -306,7 +328,7 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESRelocationError` object.
 ///
-+ (DBFILESRelocationError *)deserialize:(NSDictionary *)dict;
++ (DBFILESRelocationError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

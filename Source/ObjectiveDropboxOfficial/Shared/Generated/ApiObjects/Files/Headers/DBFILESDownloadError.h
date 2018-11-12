@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger, DBFILESDownloadErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESDownloadError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESDownloadError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESDownloadError *)instance;
 
 ///
 /// Deserializes `DBFILESDownloadError` instances.
@@ -117,7 +117,7 @@ typedef NS_ENUM(NSInteger, DBFILESDownloadErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESDownloadError` object.
 ///
-+ (DBFILESDownloadError *)deserialize:(NSDictionary *)dict;
++ (DBFILESDownloadError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

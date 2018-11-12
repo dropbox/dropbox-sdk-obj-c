@@ -18,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharingChangeFolderJoinPolicyDetails` struct.
 ///
-/// Changed whether team members can join shared folders owned externally (i.e.
-/// outside the team).
+/// Changed whether team members can join shared folders owned outside team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -80,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeFolderJoinPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharingChangeFolderJoinPolicyDetails` instances.
@@ -91,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharingChangeFolderJoinPolicyDetails` object.
 ///
-+ (DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

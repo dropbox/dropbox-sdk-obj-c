@@ -10,6 +10,7 @@
 
 @class DBFILESThumbnailArg;
 @class DBFILESThumbnailFormat;
+@class DBFILESThumbnailMode;
 @class DBFILESThumbnailSize;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -38,6 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The size for the thumbnail image.
 @property (nonatomic, readonly) DBFILESThumbnailSize *size;
 
+/// How to resize and crop the image to achieve the desired size.
+@property (nonatomic, readonly) DBFILESThumbnailMode *mode;
+
 #pragma mark - Constructors
 
 ///
@@ -48,12 +52,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// images that are photos, jpeg should be preferred, while png is  better for
 /// screenshots and digital arts.
 /// @param size The size for the thumbnail image.
+/// @param mode How to resize and crop the image to achieve the desired size.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPath:(NSString *)path
                       format:(nullable DBFILESThumbnailFormat *)format
-                        size:(nullable DBFILESThumbnailSize *)size;
+                        size:(nullable DBFILESThumbnailSize *)size
+                        mode:(nullable DBFILESThumbnailMode *)mode;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -84,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESThumbnailArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESThumbnailArg *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESThumbnailArg *)instance;
 
 ///
 /// Deserializes `DBFILESThumbnailArg` instances.
@@ -94,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBFILESThumbnailArg` object.
 ///
-+ (DBFILESThumbnailArg *)deserialize:(NSDictionary *)dict;
++ (DBFILESThumbnailArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

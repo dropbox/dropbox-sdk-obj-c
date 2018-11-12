@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBFILEPROPERTIESPropertyGroup;
 @class DBFILESCommitInfo;
 @class DBFILESWriteMode;
 
@@ -48,6 +49,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// clients that this modification shouldn't result in a user notification.
 @property (nonatomic, readonly) NSNumber *mute;
 
+/// List of custom properties to add to file.
+@property (nonatomic, readonly, nullable) NSArray<DBFILEPROPERTIESPropertyGroup *> *propertyGroups;
+
+/// Be more strict about how each WriteMode detects conflict. For example,
+/// always return a conflict error when mode = `update` in `DBFILESWriteMode`
+/// and the given "rev" doesn't match the existing file's "rev", even if the
+/// existing file has been deleted.
+@property (nonatomic, readonly) NSNumber *strictConflict;
+
 #pragma mark - Constructors
 
 ///
@@ -66,6 +76,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// their Dropbox account via notifications in the client software. If true,
 /// this tells the clients that this modification shouldn't result in a user
 /// notification.
+/// @param propertyGroups List of custom properties to add to file.
+/// @param strictConflict Be more strict about how each WriteMode detects
+/// conflict. For example, always return a conflict error when mode = `update`
+/// in `DBFILESWriteMode` and the given "rev" doesn't match the existing file's
+/// "rev", even if the existing file has been deleted.
 ///
 /// @return An initialized instance.
 ///
@@ -73,7 +88,9 @@ NS_ASSUME_NONNULL_BEGIN
                         mode:(nullable DBFILESWriteMode *)mode
                   autorename:(nullable NSNumber *)autorename
               clientModified:(nullable NSDate *)clientModified
-                        mute:(nullable NSNumber *)mute;
+                        mute:(nullable NSNumber *)mute
+              propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
+              strictConflict:(nullable NSNumber *)strictConflict;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -104,7 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESCommitInfo` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESCommitInfo *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESCommitInfo *)instance;
 
 ///
 /// Deserializes `DBFILESCommitInfo` instances.
@@ -114,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBFILESCommitInfo` object.
 ///
-+ (DBFILESCommitInfo *)deserialize:(NSDictionary *)dict;
++ (DBFILESCommitInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

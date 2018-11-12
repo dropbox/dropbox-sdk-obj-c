@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The team member id
+/// The team member id.
 @property (nonatomic, readonly, copy) NSString *teamMemberId;
 
 #pragma mark - Constructors
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param teamMemberId The team member id
+/// @param teamMemberId The team member id.
 ///
 /// @return An initialized instance.
 ///
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListMemberAppsArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMListMemberAppsArg *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMListMemberAppsArg *)instance;
 
 ///
 /// Deserializes `DBTEAMListMemberAppsArg` instances.
@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMListMemberAppsArg` object.
 ///
-+ (DBTEAMListMemberAppsArg *)deserialize:(NSDictionary *)dict;
++ (DBTEAMListMemberAppsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

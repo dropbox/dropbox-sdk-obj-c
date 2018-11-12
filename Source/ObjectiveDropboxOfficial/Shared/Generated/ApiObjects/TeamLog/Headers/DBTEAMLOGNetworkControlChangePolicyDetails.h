@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `NetworkControlChangePolicyDetails` struct.
 ///
-/// Enabled or disabled network control.
+/// Enabled/disabled network control.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNetworkControlChangePolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGNetworkControlChangePolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNetworkControlChangePolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGNetworkControlChangePolicyDetails` instances.
@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGNetworkControlChangePolicyDetails`
 /// object.
 ///
-+ (DBTEAMLOGNetworkControlChangePolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGNetworkControlChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

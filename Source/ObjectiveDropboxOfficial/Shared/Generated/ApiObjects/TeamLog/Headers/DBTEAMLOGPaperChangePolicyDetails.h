@@ -9,7 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGPaperChangePolicyDetails;
-@class DBTEAMLOGPaperPolicy;
+@class DBTEAMPOLICIESPaperEnabledPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `PaperChangePolicyDetails` struct.
 ///
-/// Enabled or disabled Dropbox Paper for the team.
+/// Enabled/disabled Dropbox Paper for team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -29,10 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// New Dropbox Paper policy.
-@property (nonatomic, readonly) DBTEAMLOGPaperPolicy *dNewValue;
+@property (nonatomic, readonly) DBTEAMPOLICIESPaperEnabledPolicy *dNewValue;
 
 /// Previous Dropbox Paper policy. Might be missing due to historical data gap.
-@property (nonatomic, readonly, nullable) DBTEAMLOGPaperPolicy *previousValue;
+@property (nonatomic, readonly, nullable) DBTEAMPOLICIESPaperEnabledPolicy *previousValue;
 
 #pragma mark - Constructors
 
@@ -45,8 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(DBTEAMLOGPaperPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGPaperPolicy *)previousValue;
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESPaperEnabledPolicy *)dNewValue
+                    previousValue:(nullable DBTEAMPOLICIESPaperEnabledPolicy *)previousValue;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(DBTEAMLOGPaperPolicy *)dNewValue;
+- (instancetype)initWithDNewValue:(DBTEAMPOLICIESPaperEnabledPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperChangePolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperChangePolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangePolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGPaperChangePolicyDetails` instances.
@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGPaperChangePolicyDetails` object.
 ///
-+ (DBTEAMLOGPaperChangePolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGPaperChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `FileRollbackChangesDetails` struct.
 ///
-/// Rolled back file change location changes.
+/// Rolled back file actions.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRollbackChangesDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRollbackChangesDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRollbackChangesDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGFileRollbackChangesDetails` instances.
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGFileRollbackChangesDetails`
 /// object.
 ///
-+ (DBTEAMLOGFileRollbackChangesDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGFileRollbackChangesDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

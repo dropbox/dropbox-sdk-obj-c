@@ -29,14 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The access type for this member.
+/// The access type for this member. It contains inherited access type from
+/// parent folder, and acquired access type from this folder.
 @property (nonatomic, readonly) DBSHARINGAccessLevel *accessType;
 
 /// The permissions that requesting user has on this member. The set of
 /// permissions corresponds to the MemberActions in the request.
 @property (nonatomic, readonly, nullable) NSArray<DBSHARINGMemberPermission *> *permissions;
 
-/// Suggested name initials for a member.
+/// Never set.
 @property (nonatomic, readonly, copy, nullable) NSString *initials;
 
 /// True if the member has access from a parent folder.
@@ -47,10 +48,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param accessType The access type for this member.
+/// @param accessType The access type for this member. It contains inherited
+/// access type from parent folder, and acquired access type from this folder.
 /// @param permissions The permissions that requesting user has on this member.
 /// The set of permissions corresponds to the MemberActions in the request.
-/// @param initials Suggested name initials for a member.
+/// @param initials Never set.
 /// @param isInherited True if the member has access from a parent folder.
 ///
 /// @return An initialized instance.
@@ -64,7 +66,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param accessType The access type for this member.
+/// @param accessType The access type for this member. It contains inherited
+/// access type from parent folder, and acquired access type from this folder.
 ///
 /// @return An initialized instance.
 ///
@@ -89,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGMembershipInfo` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGMembershipInfo *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGMembershipInfo *)instance;
 
 ///
 /// Deserializes `DBSHARINGMembershipInfo` instances.
@@ -99,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBSHARINGMembershipInfo` object.
 ///
-+ (DBSHARINGMembershipInfo *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGMembershipInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TfaRemoveBackupPhoneDetails` struct.
 ///
-/// Removed the backup phone for two-step verification.
+/// Removed backup phone for two-step verification.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaRemoveBackupPhoneDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaRemoveBackupPhoneDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaRemoveBackupPhoneDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGTfaRemoveBackupPhoneDetails` instances.
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGTfaRemoveBackupPhoneDetails`
 /// object.
 ///
-+ (DBTEAMLOGTfaRemoveBackupPhoneDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGTfaRemoveBackupPhoneDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

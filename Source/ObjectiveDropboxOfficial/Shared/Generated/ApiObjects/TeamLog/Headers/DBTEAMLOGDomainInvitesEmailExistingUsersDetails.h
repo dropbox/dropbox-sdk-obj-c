@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Domain names.
-@property (nonatomic, readonly) NSArray<NSString *> *domainName;
+@property (nonatomic, readonly, copy) NSString *domainName;
 
 /// Number of recipients.
 @property (nonatomic, readonly) NSNumber *numRecipients;
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDomainName:(NSArray<NSString *> *)domainName numRecipients:(NSNumber *)numRecipients;
+- (instancetype)initWithDomainName:(NSString *)domainName numRecipients:(NSNumber *)numRecipients;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDomainInvitesEmailExistingUsersDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDomainInvitesEmailExistingUsersDetails` instances.
@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGDomainInvitesEmailExistingUsersDetails` object.
 ///
-+ (DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGDomainInvitesEmailExistingUsersDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

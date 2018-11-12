@@ -8,8 +8,8 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGSharedLinkPolicy;
 @class DBTEAMLOGSharedFolderChangeLinkPolicyDetails;
-@class DBTEAMLOGSharedFolderLinkPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedFolderChangeLinkPolicyDetails` struct.
 ///
-/// Changed who can access the shared folder via a link.
+/// Changed who can access shared folder via link.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -28,56 +28,36 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
-
-/// Original shared folder name.
-@property (nonatomic, readonly, copy) NSString *originalFolderName;
-
-/// Shared folder type. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharedFolderType;
-
 /// New shared folder link policy.
-@property (nonatomic, readonly) DBTEAMLOGSharedFolderLinkPolicy *dNewValue;
+@property (nonatomic, readonly) DBSHARINGSharedLinkPolicy *dNewValue;
 
 /// Previous shared folder link policy. Might be missing due to historical data
 /// gap.
-@property (nonatomic, readonly, nullable) DBTEAMLOGSharedFolderLinkPolicy *previousValue;
+@property (nonatomic, readonly, nullable) DBSHARINGSharedLinkPolicy *previousValue;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
 /// @param dNewValue New shared folder link policy.
-/// @param sharedFolderType Shared folder type. Might be missing due to
-/// historical data gap.
 /// @param previousValue Previous shared folder link policy. Might be missing
 /// due to historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(NSString *)originalFolderName
-                          dNewValue:(DBTEAMLOGSharedFolderLinkPolicy *)dNewValue
-                   sharedFolderType:(nullable NSString *)sharedFolderType
-                      previousValue:(nullable DBTEAMLOGSharedFolderLinkPolicy *)previousValue;
+- (instancetype)initWithDNewValue:(DBSHARINGSharedLinkPolicy *)dNewValue
+                    previousValue:(nullable DBSHARINGSharedLinkPolicy *)previousValue;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
 /// @param dNewValue New shared folder link policy.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(NSString *)originalFolderName
-                          dNewValue:(DBTEAMLOGSharedFolderLinkPolicy *)dNewValue;
+- (instancetype)initWithDNewValue:(DBSHARINGSharedLinkPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -100,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderChangeLinkPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedFolderChangeLinkPolicyDetails` instances.
@@ -111,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedFolderChangeLinkPolicyDetails` object.
 ///
-+ (DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedFolderChangeLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedLinkSettings` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGSharedLinkSettings *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedLinkSettings *)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedLinkSettings` instances.
@@ -92,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBSHARINGSharedLinkSettings` object.
 ///
-+ (DBSHARINGSharedLinkSettings *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGSharedLinkSettings *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

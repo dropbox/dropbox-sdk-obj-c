@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GoogleSsoChangePolicyDetails` struct.
 ///
-/// Enabled or disabled Google single sign-on for the team.
+/// Enabled/disabled Google single sign-on for team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGoogleSsoChangePolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGGoogleSsoChangePolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGoogleSsoChangePolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGoogleSsoChangePolicyDetails` instances.
@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGGoogleSsoChangePolicyDetails`
 /// object.
 ///
-+ (DBTEAMLOGGoogleSsoChangePolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGGoogleSsoChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

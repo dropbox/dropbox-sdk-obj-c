@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `PaperDocDownloadDetails` struct.
 ///
-/// Downloaded a Paper doc in a particular output format.
+/// Downloaded Paper doc in specific format.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocDownloadDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocDownloadDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDownloadDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGPaperDocDownloadDetails` instances.
@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGPaperDocDownloadDetails` object.
 ///
-+ (DBTEAMLOGPaperDocDownloadDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGPaperDocDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

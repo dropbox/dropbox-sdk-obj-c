@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DeviceApprovalsChangeDesktopPolicyDetails` struct.
 ///
-/// Set or removed a limit on the number of computers each team member can link
-/// to their work Dropbox account.
+/// Set/removed limit on number of computers member can link to team Dropbox
+/// account.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` instances.
@@ -93,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` object.
 ///
-+ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

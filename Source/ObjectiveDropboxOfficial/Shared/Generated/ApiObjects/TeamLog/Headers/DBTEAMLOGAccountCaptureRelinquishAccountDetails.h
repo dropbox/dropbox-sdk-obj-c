@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `AccountCaptureRelinquishAccountDetails` struct.
 ///
-/// Account captured user relinquished their account by changing the email
-/// address associated with it.
+/// Account-captured user changed account email to personal email.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -63,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCaptureRelinquishAccountDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGAccountCaptureRelinquishAccountDetails` instances.
@@ -74,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGAccountCaptureRelinquishAccountDetails` object.
 ///
-+ (DBTEAMLOGAccountCaptureRelinquishAccountDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGAccountCaptureRelinquishAccountDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

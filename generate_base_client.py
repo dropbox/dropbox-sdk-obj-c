@@ -7,6 +7,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 
 cmdline_desc = """\
 Runs Stone to generate Obj-C types and client for the Dropbox client.
@@ -45,18 +46,23 @@ _cmdline_parser.add_argument(
     help='Path to generation output.',
 )
 _cmdline_parser.add_argument(
-    '-c',
-    '--clang-format-path',
-    type=str,
-    help='Path clang-format tool for formatting code.',
-)
-_cmdline_parser.add_argument(
     '-f',
     '--format-output-path',
     type=str,
     help='Path to format output.',
 )
-
+_cmdline_parser.add_argument(
+    '-e',
+    '--exclude-from-analysis',
+    action='store_true',
+    help='Sets whether generated code should marked for exclusion from analysis.',
+)
+_cmdline_parser.add_argument(
+    '-r',
+    '--route-whitelist-filter',
+    type=str,
+    help='Path to route whitelist filter used by Stone. See stone -r for detailed instructions.',
+)
 
 def main():
     """The entry point for the program."""
@@ -94,11 +100,25 @@ def main():
     if verbose:
         print('Generating Obj-C types')
 
-    types_cmd = (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style',
-                 '-a', 'auth', 'obj_c_types', dropbox_pkg_path] + specs)
+    stone_cmd_prefix = [
+        sys.executable,
+        '-m', 'stone.cli',
+        '-a', 'host',
+        '-a', 'style',
+        '-a', 'auth',
+    ]
+    if args.route_whitelist_filter:
+        stone_cmd_prefix += ['-r', args.route_whitelist_filter]
 
-    if args.documentation:
-        types_cmd += ['--', '-d', 'true']
+    types_cmd = stone_cmd_prefix + ['obj_c_types', dropbox_pkg_path] + specs
+
+    if args.documentation or args.exclude_from_analysis:
+        types_cmd += ['--']
+        if args.documentation:
+            types_cmd += ['-d']
+        if args.exclude_from_analysis:
+            types_cmd += ['-e']
+
     o = subprocess.check_output(
         (types_cmd),
         cwd=stone_path)
@@ -111,21 +131,21 @@ def main():
     if verbose:
         print('Generating Obj-C user and team clients')
     o = subprocess.check_output(
-        (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
+        (stone_cmd_prefix + ['obj_c_client', dropbox_pkg_path] +
          specs + ['--', '-w', 'user', '-m', 'DBUserBaseClient', '-c', 'DBUserBaseClient',
          '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:
         print('Output:', o)
     o = subprocess.check_output(
-        (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
+        (stone_cmd_prefix + ['obj_c_client', dropbox_pkg_path] +
          specs + ['--', '-w', 'team', '-m', 'DBTeamBaseClient', '-c', 'DBTeamBaseClient',
          '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:
         print('Output:', o)
     o = subprocess.check_output(
-        (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
+        (stone_cmd_prefix + ['obj_c_client', dropbox_pkg_path] +
          specs + ['--', '-w', 'app', '-m', 'DBAppBaseClient', '-c', 'DBAppBaseClient',
          '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
@@ -135,9 +155,7 @@ def main():
     if verbose:
         print('Formatting source files')
 
-    cmd = ['sh', 'format_files.sh', dropbox_format_output_path]
-    if args.clang_format_path:
-        cmd.append(args.clang_format_path)
+    cmd = ['./format_files.sh', dropbox_format_output_path]
     o = subprocess.check_output(cmd, cwd=dropbox_format_script_path)
     if o:
         print('Output:', o)

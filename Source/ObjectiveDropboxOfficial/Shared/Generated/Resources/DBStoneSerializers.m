@@ -3,23 +3,38 @@
 ///
 
 #import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 
 @implementation DBNSDateSerializer
 
 + (NSString *)serialize:(NSDate *)value dateFormat:(NSString *)dateFormat {
-  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-  [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-  [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
-  [formatter setDateFormat:[self convertFormat:dateFormat]];
+  if (value == nil) {
+    [DBStoneValidators raiseIllegalStateErrorWithMessage:@"Value must not be `nil`"];
+  }
+  static NSDateFormatter *formatter;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+    [formatter setDateFormat:[self convertFormat:dateFormat]];
+  });
 
   return [formatter stringFromDate:value];
 }
 
 + (NSDate *)deserialize:(NSString *)value dateFormat:(NSString *)dateFormat {
-  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-  [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-  [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
-  [formatter setDateFormat:[self convertFormat:dateFormat]];
+  if (value == nil) {
+    [DBStoneValidators raiseIllegalStateErrorWithMessage:@"Value must not be `nil`"];
+  }
+  static NSDateFormatter *formatter;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+    [formatter setDateFormat:[self convertFormat:dateFormat]];
+  });
 
   return [formatter dateFromString:value];
 }
@@ -140,6 +155,9 @@
 @implementation DBArraySerializer
 
 + (NSArray *)serialize:(NSArray *)value withBlock:(id (^)(id))serializeBlock {
+  if (value == nil) {
+    [DBStoneValidators raiseIllegalStateErrorWithMessage:@"Value must not be `nil`"];
+  }
   NSMutableArray *resultArray = [[NSMutableArray alloc] init];
 
   for (id element in value) {
@@ -150,6 +168,9 @@
 }
 
 + (NSArray *)deserialize:(NSArray *)value withBlock:(id (^)(id))deserializeBlock {
+  if (value == nil) {
+    [DBStoneValidators raiseIllegalStateErrorWithMessage:@"Value must not be `nil`"];
+  }
   NSMutableArray *resultArray = [[NSMutableArray alloc] init];
 
   for (id element in value) {
@@ -164,6 +185,9 @@
 @implementation DBMapSerializer
 
 + (NSDictionary *)serialize:(NSDictionary *)value withBlock:(id (^)(id))serializeBlock {
+  if (value == nil) {
+    [DBStoneValidators raiseIllegalStateErrorWithMessage:@"Value must not be `nil`"];
+  }
   NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
 
   for (id key in value) {
@@ -174,6 +198,9 @@
 }
 
 + (NSDictionary *)deserialize:(NSDictionary *)value withBlock:(id (^)(id))deserializeBlock {
+  if (value == nil) {
+    [DBStoneValidators raiseIllegalStateErrorWithMessage:@"Value must not be `nil`"];
+  }
   NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
 
   for (id key in value) {

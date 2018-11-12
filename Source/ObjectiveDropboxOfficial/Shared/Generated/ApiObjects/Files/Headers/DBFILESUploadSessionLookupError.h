@@ -46,6 +46,10 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
   /// The session must be closed before calling upload_session/finish_batch.
   DBFILESUploadSessionLookupErrorNotClosed,
 
+  /// You can not append to the upload session because the size of a file
+  /// should not reach the max file size limit (i.e. 350GB).
+  DBFILESUploadSessionLookupErrorTooLarge,
+
   /// (no description).
   DBFILESUploadSessionLookupErrorOther,
 
@@ -111,6 +115,17 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 - (instancetype)initWithNotClosed;
 
 ///
+/// Initializes union class with tag state of "too_large".
+///
+/// Description of the "too_large" tag state: You can not append to the upload
+/// session because the size of a file should not reach the max file size limit
+/// (i.e. 350GB).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTooLarge;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -154,6 +169,13 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 - (BOOL)isNotClosed;
 
 ///
+/// Retrieves whether the union's current tag state has value "too_large".
+///
+/// @return Whether the union's current tag state has value "too_large".
+///
+- (BOOL)isTooLarge;
+
+///
 /// Retrieves whether the union's current tag state has value "other".
 ///
 /// @return Whether the union's current tag state has value "other".
@@ -185,7 +207,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionLookupError` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESUploadSessionLookupError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionLookupError *)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionLookupError` instances.
@@ -195,7 +217,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 ///
 /// @return An instantiation of the `DBFILESUploadSessionLookupError` object.
 ///
-+ (DBFILESUploadSessionLookupError *)deserialize:(NSDictionary *)dict;
++ (DBFILESUploadSessionLookupError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

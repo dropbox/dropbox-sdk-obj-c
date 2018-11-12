@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GroupRemoveMemberDetails` struct.
 ///
-/// Removed team members from a group.
+/// Removed team members from group.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupRemoveMemberDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupRemoveMemberDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupRemoveMemberDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGroupRemoveMemberDetails` instances.
@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGGroupRemoveMemberDetails` object.
 ///
-+ (DBTEAMLOGGroupRemoveMemberDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGGroupRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

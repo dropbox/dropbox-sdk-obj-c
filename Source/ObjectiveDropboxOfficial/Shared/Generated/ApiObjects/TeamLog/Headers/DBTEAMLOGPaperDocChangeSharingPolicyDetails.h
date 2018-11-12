@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `PaperDocChangeSharingPolicyDetails` struct.
 ///
-/// Changed the sharing policy for Paper doc.
+/// Changed sharing setting for Paper doc.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocChangeSharingPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeSharingPolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeSharingPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGPaperDocChangeSharingPolicyDetails` instances.
@@ -95,7 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGPaperDocChangeSharingPolicyDetails` object.
 ///
-+ (DBTEAMLOGPaperDocChangeSharingPolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGPaperDocChangeSharingPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

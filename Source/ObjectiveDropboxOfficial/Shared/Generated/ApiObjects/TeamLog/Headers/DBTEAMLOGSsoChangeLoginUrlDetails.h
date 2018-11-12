@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SsoChangeLoginUrlDetails` struct.
 ///
-/// Changed the sign-in URL for SSO.
+/// Changed sign-in URL for SSO.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoChangeLoginUrlDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSsoChangeLoginUrlDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeLoginUrlDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSsoChangeLoginUrlDetails` instances.
@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGSsoChangeLoginUrlDetails` object.
 ///
-+ (DBTEAMLOGSsoChangeLoginUrlDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSsoChangeLoginUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

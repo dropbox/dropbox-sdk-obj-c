@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentChangeMemberRoleDetails;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentChangeMemberRoleDetails` struct.
 ///
-/// Changed the access type of a shared file or folder member.
+/// Changed access type of shared file/folder member.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,52 +28,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
+/// Previous access level. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *previousAccessLevel;
 
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
-/// New sharing permission. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *dNewSharingPermission;
-
-/// Previous sharing permission. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *previousSharingPermission;
-
-/// Shared folder type. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharedFolderType;
+/// New access level.
+@property (nonatomic, readonly) DBSHARINGAccessLevel *dNewAccessLevel;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
-/// @param dNewSharingPermission New sharing permission. Might be missing due to
-/// historical data gap.
-/// @param previousSharingPermission Previous sharing permission. Might be
-/// missing due to historical data gap.
-/// @param sharedFolderType Shared folder type. Might be missing due to
+/// @param dNewAccessLevel New access level.
+/// @param previousAccessLevel Previous access level. Might be missing due to
 /// historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(nullable NSString *)originalFolderName
-              dNewSharingPermission:(nullable NSString *)dNewSharingPermission
-          previousSharingPermission:(nullable NSString *)previousSharingPermission
-                   sharedFolderType:(nullable NSString *)sharedFolderType;
+- (instancetype)initWithDNewAccessLevel:(DBSHARINGAccessLevel *)dNewAccessLevel
+                    previousAccessLevel:(nullable DBSHARINGAccessLevel *)previousAccessLevel;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetIndex Target asset index.
+/// @param dNewAccessLevel New access level.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex;
+- (instancetype)initWithDNewAccessLevel:(DBSHARINGAccessLevel *)dNewAccessLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -95,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeMemberRoleDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeMemberRoleDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeMemberRoleDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentChangeMemberRoleDetails` instances.
@@ -106,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentChangeMemberRoleDetails` object.
 ///
-+ (DBTEAMLOGSharedContentChangeMemberRoleDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentChangeMemberRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

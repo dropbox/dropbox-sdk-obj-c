@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentAddLinkPasswordDetails` struct.
 ///
-/// Added a password to the link for the shared file or folder.
+/// Added password to link for shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,40 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
-
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
-/// Shared folder type. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharedFolderType;
-
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
-/// @param sharedFolderType Shared folder type. Might be missing due to
-/// historical data gap.
-///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(nullable NSString *)originalFolderName
-                   sharedFolderType:(nullable NSString *)sharedFolderType;
-
-///
-/// Convenience constructor (exposes only non-nullable instance variables with
-/// no default value).
-///
-/// @param targetIndex Target asset index.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex;
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -83,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddLinkPasswordDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddLinkPasswordDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentAddLinkPasswordDetails` instances.
@@ -94,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentAddLinkPasswordDetails` object.
 ///
-+ (DBTEAMLOGSharedContentAddLinkPasswordDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentAddLinkPasswordDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

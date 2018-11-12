@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GroupDescriptionUpdatedDetails` struct.
 ///
-/// Updated a group.
+/// Updated group.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupDescriptionUpdatedDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupDescriptionUpdatedDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupDescriptionUpdatedDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGroupDescriptionUpdatedDetails` instances.
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGGroupDescriptionUpdatedDetails`
 /// object.
 ///
-+ (DBTEAMLOGGroupDescriptionUpdatedDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGGroupDescriptionUpdatedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

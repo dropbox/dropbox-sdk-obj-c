@@ -132,7 +132,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDownloadFormatTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDownloadFormat` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDownloadFormat *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDownloadFormat *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGPaperDownloadFormat` instances.
@@ -142,7 +142,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDownloadFormatTag) {
 ///
 /// @return An instantiation of the `DBTEAMLOGPaperDownloadFormat` object.
 ///
-+ (DBTEAMLOGPaperDownloadFormat *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGPaperDownloadFormat *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

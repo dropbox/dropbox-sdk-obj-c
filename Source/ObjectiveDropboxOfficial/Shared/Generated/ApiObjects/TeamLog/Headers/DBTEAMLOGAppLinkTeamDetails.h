@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `AppLinkTeamDetails` struct.
 ///
-/// Linked an app for team.
+/// Linked app for team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppLinkTeamDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGAppLinkTeamDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppLinkTeamDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGAppLinkTeamDetails` instances.
@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGAppLinkTeamDetails` object.
 ///
-+ (DBTEAMLOGAppLinkTeamDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGAppLinkTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

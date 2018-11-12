@@ -18,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `DeviceApprovalsChangeUnlinkActionDetails` struct.
 ///
-/// Changed the action taken with respect to approval limits when a team member
-/// unlinks an approved device.
+/// Changed device approvals setting when member unlinks approved device.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -80,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails` instances.
@@ -91,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails` object.
 ///
-+ (DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGDeviceApprovalsChangeUnlinkActionDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

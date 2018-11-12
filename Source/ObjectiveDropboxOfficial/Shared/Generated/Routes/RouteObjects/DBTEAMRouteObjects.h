@@ -88,6 +88,28 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the linkedAppsRevokeLinkedAppBatch route object.
 + (DBRoute *)DBTEAMLinkedAppsRevokeLinkedAppBatch;
 
+/// Accessor method for the memberSpaceLimitsExcludedUsersAdd route object.
++ (DBRoute *)DBTEAMMemberSpaceLimitsExcludedUsersAdd;
+
+/// Accessor method for the memberSpaceLimitsExcludedUsersList route object.
++ (DBRoute *)DBTEAMMemberSpaceLimitsExcludedUsersList;
+
+/// Accessor method for the memberSpaceLimitsExcludedUsersListContinue route
+/// object.
++ (DBRoute *)DBTEAMMemberSpaceLimitsExcludedUsersListContinue;
+
+/// Accessor method for the memberSpaceLimitsExcludedUsersRemove route object.
++ (DBRoute *)DBTEAMMemberSpaceLimitsExcludedUsersRemove;
+
+/// Accessor method for the memberSpaceLimitsGetCustomQuota route object.
++ (DBRoute *)DBTEAMMemberSpaceLimitsGetCustomQuota;
+
+/// Accessor method for the memberSpaceLimitsRemoveCustomQuota route object.
++ (DBRoute *)DBTEAMMemberSpaceLimitsRemoveCustomQuota;
+
+/// Accessor method for the memberSpaceLimitsSetCustomQuota route object.
++ (DBRoute *)DBTEAMMemberSpaceLimitsSetCustomQuota;
+
 /// Accessor method for the membersAdd route object.
 + (DBRoute *)DBTEAMMembersAdd;
 
@@ -102,6 +124,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the membersListContinue route object.
 + (DBRoute *)DBTEAMMembersListContinue;
+
+/// Accessor method for the membersMoveFormerMemberFiles route object.
++ (DBRoute *)DBTEAMMembersMoveFormerMemberFiles;
+
+/// Accessor method for the membersMoveFormerMemberFilesJobStatusCheck route
+/// object.
++ (DBRoute *)DBTEAMMembersMoveFormerMemberFilesJobStatusCheck;
 
 /// Accessor method for the membersRecover route object.
 + (DBRoute *)DBTEAMMembersRecover;
@@ -183,6 +212,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the teamFolderRename route object.
 + (DBRoute *)DBTEAMTeamFolderRename;
+
+/// Accessor method for the teamFolderUpdateSyncSettings route object.
++ (DBRoute *)DBTEAMTeamFolderUpdateSyncSettings;
 
 /// Accessor method for the tokenGetAuthenticatedAdmin route object.
 + (DBRoute *)DBTEAMTokenGetAuthenticatedAdmin;

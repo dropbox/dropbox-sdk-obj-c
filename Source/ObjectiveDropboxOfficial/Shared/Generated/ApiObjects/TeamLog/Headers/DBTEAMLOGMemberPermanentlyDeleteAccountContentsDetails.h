@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MemberPermanentlyDeleteAccountContentsDetails` struct.
 ///
-/// Permanently deleted contents of a removed team member account.
+/// Permanently deleted contents of deleted team member account.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails`
@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails` object.
 ///
-+ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedFolderTransferOwnershipDetails` struct.
 ///
-/// Transferred the ownership of a shared folder to another member.
+/// Transferred ownership of shared folder to another member.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,23 +27,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
+/// The email address of the previous shared folder owner.
+@property (nonatomic, readonly, copy, nullable) NSString *previousOwnerEmail;
 
-/// Original shared folder name.
-@property (nonatomic, readonly, copy) NSString *originalFolderName;
+/// The email address of the new shared folder owner.
+@property (nonatomic, readonly, copy) NSString *dNewOwnerEmail;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
+/// @param dNewOwnerEmail The email address of the new shared folder owner.
+/// @param previousOwnerEmail The email address of the previous shared folder
+/// owner.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex originalFolderName:(NSString *)originalFolderName;
+- (instancetype)initWithDNewOwnerEmail:(NSString *)dNewOwnerEmail
+                    previousOwnerEmail:(nullable NSString *)previousOwnerEmail;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
+/// @param dNewOwnerEmail The email address of the new shared folder owner.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDNewOwnerEmail:(NSString *)dNewOwnerEmail;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -66,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderTransferOwnershipDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedFolderTransferOwnershipDetails` instances.
@@ -77,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedFolderTransferOwnershipDetails` object.
 ///
-+ (DBTEAMLOGSharedFolderTransferOwnershipDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedFolderTransferOwnershipDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

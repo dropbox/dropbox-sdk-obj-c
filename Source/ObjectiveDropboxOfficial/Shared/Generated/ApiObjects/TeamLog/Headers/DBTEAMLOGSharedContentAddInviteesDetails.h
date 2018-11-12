@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentAddInviteesDetails;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentAddInviteesDetails` struct.
 ///
-/// Sent an email invitation to the membership of a shared file or folder.
+/// Invited user to Dropbox and added them to shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,40 +28,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
+/// Shared content access level.
+@property (nonatomic, readonly) DBSHARINGAccessLevel *sharedContentAccessLevel;
 
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
-/// Sharing permission. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharingPermission;
+/// A list of invitees.
+@property (nonatomic, readonly) NSArray<NSString *> *invitees;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
-/// @param sharingPermission Sharing permission. Might be missing due to
-/// historical data gap.
+/// @param sharedContentAccessLevel Shared content access level.
+/// @param invitees A list of invitees.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(nullable NSString *)originalFolderName
-                  sharingPermission:(nullable NSString *)sharingPermission;
-
-///
-/// Convenience constructor (exposes only non-nullable instance variables with
-/// no default value).
-///
-/// @param targetIndex Target asset index.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex;
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel
+                                        invitees:(NSArray<NSString *> *)invitees;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -82,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddInviteesDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddInviteesDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddInviteesDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentAddInviteesDetails` instances.
@@ -93,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGSharedContentAddInviteesDetails`
 /// object.
 ///
-+ (DBTEAMLOGSharedContentAddInviteesDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentAddInviteesDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

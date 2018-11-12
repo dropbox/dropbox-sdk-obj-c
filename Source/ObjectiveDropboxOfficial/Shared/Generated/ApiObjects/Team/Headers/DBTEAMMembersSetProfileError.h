@@ -35,11 +35,11 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
   /// The user is not a member of the team.
   DBTEAMMembersSetProfileErrorUserNotInTeam,
 
-  /// It is unsafe to use both external_id and new_external_id
+  /// It is unsafe to use both external_id and new_external_id.
   DBTEAMMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe,
 
   /// None of new_email, new_given_name, new_surname, or new_external_id are
-  /// specified
+  /// specified.
   DBTEAMMembersSetProfileErrorNoNewDataSpecified,
 
   /// Email is already reserved for another user.
@@ -60,6 +60,9 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 
   /// The persistent ID is already in use by another team member.
   DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser,
+
+  /// Directory Restrictions option is not available.
+  DBTEAMMembersSetProfileErrorDirectoryRestrictedOff,
 
   /// (no description).
   DBTEAMMembersSetProfileErrorOther,
@@ -96,7 +99,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 /// "external_id_and_new_external_id_unsafe".
 ///
 /// Description of the "external_id_and_new_external_id_unsafe" tag state: It is
-/// unsafe to use both external_id and new_external_id
+/// unsafe to use both external_id and new_external_id.
 ///
 /// @return An initialized instance.
 ///
@@ -106,7 +109,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 /// Initializes union class with tag state of "no_new_data_specified".
 ///
 /// Description of the "no_new_data_specified" tag state: None of new_email,
-/// new_given_name, new_surname, or new_external_id are specified
+/// new_given_name, new_surname, or new_external_id are specified.
 ///
 /// @return An initialized instance.
 ///
@@ -173,6 +176,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPersistentIdUsedByOtherUser;
+
+///
+/// Initializes union class with tag state of "directory_restricted_off".
+///
+/// Description of the "directory_restricted_off" tag state: Directory
+/// Restrictions option is not available.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDirectoryRestrictedOff;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -273,6 +286,15 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 - (BOOL)isPersistentIdUsedByOtherUser;
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "directory_restricted_off".
+///
+/// @return Whether the union's current tag state has value
+/// "directory_restricted_off".
+///
+- (BOOL)isDirectoryRestrictedOff;
+
+///
 /// Retrieves whether the union's current tag state has value "other".
 ///
 /// @return Whether the union's current tag state has value "other".
@@ -304,7 +326,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersSetProfileError` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMMembersSetProfileError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersSetProfileError *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersSetProfileError` instances.
@@ -314,7 +336,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMMembersSetProfileError` object.
 ///
-+ (DBTEAMMembersSetProfileError *)deserialize:(NSDictionary *)dict;
++ (DBTEAMMembersSetProfileError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

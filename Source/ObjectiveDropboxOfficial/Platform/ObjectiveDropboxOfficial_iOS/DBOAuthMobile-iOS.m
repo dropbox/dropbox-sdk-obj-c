@@ -115,6 +115,7 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
         [_controller.presentedViewController isKindOfClass:[DBMobileSafariViewController class]]) {
       [_controller dismissViewControllerAnimated:YES completion:nil];
     }
+    _controller = nil;
   }
 }
 
@@ -147,6 +148,7 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
 #pragma unused(controller)
   _cancelHandler();
+  [[DBMobileSharedApplication mobileSharedApplication] dismissAuthController];
 }
 
 @end

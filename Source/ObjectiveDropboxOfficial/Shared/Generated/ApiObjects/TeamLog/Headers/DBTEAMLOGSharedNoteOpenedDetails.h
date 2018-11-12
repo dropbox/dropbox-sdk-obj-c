@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedNoteOpenedDetails` struct.
 ///
-/// Shared Paper document was opened.
+/// Opened shared Paper doc.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedNoteOpenedDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedNoteOpenedDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedNoteOpenedDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedNoteOpenedDetails` instances.
@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGSharedNoteOpenedDetails` object.
 ///
-+ (DBTEAMLOGSharedNoteOpenedDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedNoteOpenedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

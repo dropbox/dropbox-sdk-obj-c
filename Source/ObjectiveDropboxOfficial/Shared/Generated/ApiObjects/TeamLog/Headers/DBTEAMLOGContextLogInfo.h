@@ -38,6 +38,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
   /// Action was done on behalf of a non team member.
   DBTEAMLOGContextLogInfoNonTeamMember,
 
+  /// Anonymous context.
+  DBTEAMLOGContextLogInfoAnonymous,
+
   /// Action was done on behalf of the team.
   DBTEAMLOGContextLogInfoTeam,
 
@@ -86,6 +89,15 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 - (instancetype)initWithNonTeamMember:(DBTEAMLOGNonTeamMemberLogInfo *)nonTeamMember;
 
 ///
+/// Initializes union class with tag state of "anonymous".
+///
+/// Description of the "anonymous" tag state: Anonymous context.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAnonymous;
+
+///
 /// Initializes union class with tag state of "team".
 ///
 /// Description of the "team" tag state: Action was done on behalf of the team.
@@ -126,6 +138,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 - (BOOL)isNonTeamMember;
 
 ///
+/// Retrieves whether the union's current tag state has value "anonymous".
+///
+/// @return Whether the union's current tag state has value "anonymous".
+///
+- (BOOL)isAnonymous;
+
+///
 /// Retrieves whether the union's current tag state has value "team".
 ///
 /// @return Whether the union's current tag state has value "team".
@@ -163,7 +182,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGContextLogInfo` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGContextLogInfo *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGContextLogInfo *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGContextLogInfo` instances.
@@ -173,7 +192,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 ///
 /// @return An instantiation of the `DBTEAMLOGContextLogInfo` object.
 ///
-+ (DBTEAMLOGContextLogInfo *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGContextLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

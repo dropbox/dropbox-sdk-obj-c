@@ -66,11 +66,14 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
   /// folder.
   DBSHARINGFolderActionLeaveACopy,
 
-  /// This action is deprecated. Use create_link instead.
+  /// Use create_link instead.
   DBSHARINGFolderActionShareLink,
 
   /// Create a shared link for folder.
   DBSHARINGFolderActionCreateLink,
+
+  /// Set whether the folder inherits permissions from its parent.
+  DBSHARINGFolderActionSetAccessInheritance,
 
   /// (no description).
   DBSHARINGFolderActionOther,
@@ -193,8 +196,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "share_link".
 ///
-/// Description of the "share_link" tag state: This action is deprecated. Use
-/// create_link instead.
+/// Description of the "share_link" tag state: Use create_link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -208,6 +210,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithCreateLink;
+
+///
+/// Initializes union class with tag state of "set_access_inheritance".
+///
+/// Description of the "set_access_inheritance" tag state: Set whether the
+/// folder inherits permissions from its parent.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSetAccessInheritance;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -320,6 +332,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 - (BOOL)isCreateLink;
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "set_access_inheritance".
+///
+/// @return Whether the union's current tag state has value
+/// "set_access_inheritance".
+///
+- (BOOL)isSetAccessInheritance;
+
+///
 /// Retrieves whether the union's current tag state has value "other".
 ///
 /// @return Whether the union's current tag state has value "other".
@@ -350,7 +371,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGFolderAction` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGFolderAction *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGFolderAction *)instance;
 
 ///
 /// Deserializes `DBSHARINGFolderAction` instances.
@@ -360,7 +381,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// @return An instantiation of the `DBSHARINGFolderAction` object.
 ///
-+ (DBSHARINGFolderAction *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGFolderAction *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

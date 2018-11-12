@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentAddMemberDetails;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentAddMemberDetails` struct.
 ///
-/// Added users and/or groups to the membership of a shared file or folder.
+/// Added users and/or groups to shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,46 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
-
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
-/// Sharing permission. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharingPermission;
-
-/// Shared folder type. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharedFolderType;
+/// Shared content access level.
+@property (nonatomic, readonly) DBSHARINGAccessLevel *sharedContentAccessLevel;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
-/// @param sharingPermission Sharing permission. Might be missing due to
-/// historical data gap.
-/// @param sharedFolderType Shared folder type. Might be missing due to
-/// historical data gap.
+/// @param sharedContentAccessLevel Shared content access level.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(nullable NSString *)originalFolderName
-                  sharingPermission:(nullable NSString *)sharingPermission
-                   sharedFolderType:(nullable NSString *)sharedFolderType;
-
-///
-/// Convenience constructor (exposes only non-nullable instance variables with
-/// no default value).
-///
-/// @param targetIndex Target asset index.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex;
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -88,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddMemberDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentAddMemberDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddMemberDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentAddMemberDetails` instances.
@@ -99,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGSharedContentAddMemberDetails`
 /// object.
 ///
-+ (DBTEAMLOGSharedContentAddMemberDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentAddMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

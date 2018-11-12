@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TfaRemoveSecurityKeyDetails` struct.
 ///
-/// Removed a security key for two-step verification.
+/// Removed security key for two-step verification.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaRemoveSecurityKeyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaRemoveSecurityKeyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaRemoveSecurityKeyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGTfaRemoveSecurityKeyDetails` instances.
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGTfaRemoveSecurityKeyDetails`
 /// object.
 ///
-+ (DBTEAMLOGTfaRemoveSecurityKeyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGTfaRemoveSecurityKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

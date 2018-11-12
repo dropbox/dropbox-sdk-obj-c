@@ -12,6 +12,7 @@
 #import "DBASYNCPollResultBase.h"
 #import "DBFILESLookupError.h"
 #import "DBRequestErrors.h"
+#import "DBSHARINGAccessInheritance.h"
 #import "DBSHARINGAccessLevel.h"
 #import "DBSHARINGAclUpdatePolicy.h"
 #import "DBSHARINGAddFileMemberArgs.h"
@@ -101,6 +102,8 @@
 #import "DBSHARINGRevokeSharedLinkArg.h"
 #import "DBSHARINGRevokeSharedLinkError.h"
 #import "DBSHARINGRouteObjects.h"
+#import "DBSHARINGSetAccessInheritanceArg.h"
+#import "DBSHARINGSetAccessInheritanceError.h"
 #import "DBSHARINGShareFolderArg.h"
 #import "DBSHARINGShareFolderArgBase.h"
 #import "DBSHARINGShareFolderError.h"
@@ -137,6 +140,7 @@
 #import "DBSHARINGUpdateFolderMemberError.h"
 #import "DBSHARINGUpdateFolderPolicyArg.h"
 #import "DBSHARINGUpdateFolderPolicyError.h"
+#import "DBSHARINGUserFileMembershipInfo.h"
 #import "DBSHARINGUserMembershipInfo.h"
 #import "DBSHARINGViewerInfoPolicy.h"
 #import "DBSHARINGVisibility.h"
@@ -593,6 +597,22 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)setAccessInheritance:(NSString *)sharedFolderId {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGSetAccessInheritance;
+  DBSHARINGSetAccessInheritanceArg *arg =
+      [[DBSHARINGSetAccessInheritanceArg alloc] initWithSharedFolderId:sharedFolderId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)setAccessInheritance:(NSString *)sharedFolderId
+                  accessInheritance:(DBSHARINGAccessInheritance *)accessInheritance {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGSetAccessInheritance;
+  DBSHARINGSetAccessInheritanceArg *arg =
+      [[DBSHARINGSetAccessInheritanceArg alloc] initWithSharedFolderId:sharedFolderId
+                                                     accessInheritance:accessInheritance];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)shareFolder:(NSString *)path {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGShareFolder;
   DBSHARINGShareFolderArg *arg = [[DBSHARINGShareFolderArg alloc] initWithPath:path];
@@ -605,6 +625,7 @@
               memberPolicy:(DBSHARINGMemberPolicy *)memberPolicy
           sharedLinkPolicy:(DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
           viewerInfoPolicy:(DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
+         accessInheritance:(DBSHARINGAccessInheritance *)accessInheritance
                    actions:(NSArray<DBSHARINGFolderAction *> *)actions
               linkSettings:(DBSHARINGLinkSettings *)linkSettings {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGShareFolder;
@@ -614,6 +635,7 @@
                                                                   memberPolicy:memberPolicy
                                                               sharedLinkPolicy:sharedLinkPolicy
                                                               viewerInfoPolicy:viewerInfoPolicy
+                                                             accessInheritance:accessInheritance
                                                                        actions:actions
                                                                   linkSettings:linkSettings];
   return [self.client requestRpc:route arg:arg];

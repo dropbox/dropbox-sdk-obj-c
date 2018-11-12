@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SmartSyncCreateAdminPrivilegeReportDetails` struct.
 ///
-/// Smart Sync non-admin devices report created.
+/// Created Smart Sync non-admin devices report.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails`
@@ -69,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails` object.
 ///
-+ (DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSmartSyncCreateAdminPrivilegeReportDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

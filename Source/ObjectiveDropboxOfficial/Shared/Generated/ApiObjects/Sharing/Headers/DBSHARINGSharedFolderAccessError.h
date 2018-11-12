@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
   /// The user is not a member of the shared folder thus cannot access it.
   DBSHARINGSharedFolderAccessErrorNotAMember,
 
-  /// The current user's e-mail address is unverified.
+  /// Never set.
   DBSHARINGSharedFolderAccessErrorEmailUnverified,
 
   /// The shared folder is unmounted.
@@ -75,8 +75,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
 ///
 /// Initializes union class with tag state of "email_unverified".
 ///
-/// Description of the "email_unverified" tag state: The current user's e-mail
-/// address is unverified.
+/// Description of the "email_unverified" tag state: Never set.
 ///
 /// @return An initialized instance.
 ///
@@ -163,7 +162,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFolderAccessError` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGSharedFolderAccessError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedFolderAccessError *)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedFolderAccessError` instances.
@@ -173,7 +172,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
 ///
 /// @return An instantiation of the `DBSHARINGSharedFolderAccessError` object.
 ///
-+ (DBSHARINGSharedFolderAccessError *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGSharedFolderAccessError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

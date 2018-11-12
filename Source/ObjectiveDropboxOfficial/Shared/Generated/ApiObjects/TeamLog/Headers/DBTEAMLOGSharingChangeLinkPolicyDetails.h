@@ -18,9 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharingChangeLinkPolicyDetails` struct.
 ///
-/// Changed whether team members can share links externally (i.e. outside the
-/// team), and if so, whether links should be accessible only by team members or
-/// anyone by default.
+/// Changed whether members can share links outside team, and if links are
+/// accessible only by team members or anyone by default.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -81,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeLinkPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharingChangeLinkPolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeLinkPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharingChangeLinkPolicyDetails` instances.
@@ -92,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGSharingChangeLinkPolicyDetails`
 /// object.
 ///
-+ (DBTEAMLOGSharingChangeLinkPolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharingChangeLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

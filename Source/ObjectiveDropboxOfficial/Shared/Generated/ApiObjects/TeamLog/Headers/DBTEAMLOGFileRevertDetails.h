@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `FileRevertDetails` struct.
 ///
-/// Reverted files to a previous version.
+/// Reverted files to previous version.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRevertDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGFileRevertDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRevertDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGFileRevertDetails` instances.
@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGFileRevertDetails` object.
 ///
-+ (DBTEAMLOGFileRevertDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGFileRevertDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

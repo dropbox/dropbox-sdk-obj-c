@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `PaperContentPermanentlyDeleteDetails` struct.
 ///
-/// Permanently deleted a Paper doc or folder.
+/// Permanently deleted Paper doc/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperContentPermanentlyDeleteDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperContentPermanentlyDeleteDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentPermanentlyDeleteDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGPaperContentPermanentlyDeleteDetails` instances.
@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGPaperContentPermanentlyDeleteDetails` object.
 ///
-+ (DBTEAMLOGPaperContentPermanentlyDeleteDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGPaperContentPermanentlyDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

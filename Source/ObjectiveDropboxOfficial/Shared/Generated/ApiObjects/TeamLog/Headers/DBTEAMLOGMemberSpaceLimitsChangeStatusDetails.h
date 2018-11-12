@@ -18,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MemberSpaceLimitsChangeStatusDetails` struct.
 ///
-/// Changed the status with respect to whether the team member is under or over
-/// storage quota specified by policy.
+/// Changed space limit status.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -69,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` instances.
@@ -80,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` object.
 ///
-+ (DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

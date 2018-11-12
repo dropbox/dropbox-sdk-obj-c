@@ -8,8 +8,8 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBTEAMLOGDownloadPolicyType;
 @class DBTEAMLOGSharedContentChangeDownloadsPolicyDetails;
-@class DBTEAMLOGSharedContentDownloadsPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentChangeDownloadsPolicyDetails` struct.
 ///
-/// Changed whether members can download the shared file or folder.
+/// Changed whether members can download shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -28,53 +28,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
+/// New downloads policy.
+@property (nonatomic, readonly) DBTEAMLOGDownloadPolicyType *dNewValue;
 
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
-/// Shared folder type. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *sharedFolderType;
-
-/// New downlaod policy.
-@property (nonatomic, readonly) DBTEAMLOGSharedContentDownloadsPolicy *dNewValue;
-
-/// Previous downlaod policy. Might be missing due to historical data gap.
-@property (nonatomic, readonly, nullable) DBTEAMLOGSharedContentDownloadsPolicy *previousValue;
+/// Previous downloads policy. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGDownloadPolicyType *previousValue;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param dNewValue New downlaod policy.
-/// @param originalFolderName Original shared folder name.
-/// @param sharedFolderType Shared folder type. Might be missing due to
-/// historical data gap.
-/// @param previousValue Previous downlaod policy. Might be missing due to
+/// @param dNewValue New downloads policy.
+/// @param previousValue Previous downloads policy. Might be missing due to
 /// historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                          dNewValue:(DBTEAMLOGSharedContentDownloadsPolicy *)dNewValue
-                 originalFolderName:(nullable NSString *)originalFolderName
-                   sharedFolderType:(nullable NSString *)sharedFolderType
-                      previousValue:(nullable DBTEAMLOGSharedContentDownloadsPolicy *)previousValue;
+- (instancetype)initWithDNewValue:(DBTEAMLOGDownloadPolicyType *)dNewValue
+                    previousValue:(nullable DBTEAMLOGDownloadPolicyType *)previousValue;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetIndex Target asset index.
-/// @param dNewValue New downlaod policy.
+/// @param dNewValue New downloads policy.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                          dNewValue:(DBTEAMLOGSharedContentDownloadsPolicy *)dNewValue;
+- (instancetype)initWithDNewValue:(DBTEAMLOGDownloadPolicyType *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -97,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeDownloadsPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentChangeDownloadsPolicyDetails` instances.
@@ -108,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentChangeDownloadsPolicyDetails` object.
 ///
-+ (DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentChangeDownloadsPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentRequestAccessDetails` struct.
 ///
-/// Requested to be on the membership of a shared file or folder.
+/// Requested access to shared file/folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,12 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
-
-/// Original shared folder name.
-@property (nonatomic, readonly, copy, nullable) NSString *originalFolderName;
-
 /// Shared content link.
 @property (nonatomic, readonly, copy, nullable) NSString *sharedContentLink;
 
@@ -41,25 +35,20 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
 /// @param sharedContentLink Shared content link.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(nullable NSString *)originalFolderName
-                  sharedContentLink:(nullable NSString *)sharedContentLink;
+- (instancetype)initWithSharedContentLink:(nullable NSString *)sharedContentLink;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetIndex Target asset index.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex;
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -81,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentRequestAccessDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentRequestAccessDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRequestAccessDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentRequestAccessDetails` instances.
@@ -92,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGSharedContentRequestAccessDetails`
 /// object.
 ///
-+ (DBTEAMLOGSharedContentRequestAccessDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentRequestAccessDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

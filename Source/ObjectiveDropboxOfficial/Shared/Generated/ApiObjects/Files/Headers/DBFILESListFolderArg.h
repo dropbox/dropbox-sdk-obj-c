@@ -8,7 +8,9 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBFILEPROPERTIESTemplateFilterBase;
 @class DBFILESListFolderArg;
+@class DBFILESSharedLink;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,6 +45,26 @@ NS_ASSUME_NONNULL_BEGIN
 /// not  that file has any explicit members.
 @property (nonatomic, readonly) NSNumber *includeHasExplicitSharedMembers;
 
+/// If true, the results will include entries under mounted folders which
+/// includes app folder, shared folder and team folder.
+@property (nonatomic, readonly) NSNumber *includeMountedFolders;
+
+/// The maximum number of results to return per request. Note: This is an
+/// approximate number and there can be slightly more entries returned in some
+/// cases.
+@property (nonatomic, readonly, nullable) NSNumber *limit;
+
+/// A shared link to list the contents of. If the link is password-protected,
+/// the password must be provided. If this field is present, `path` in
+/// `DBFILESListFolderArg` will be relative to root of the shared link. Only
+/// non-recursive mode is supported for shared link.
+@property (nonatomic, readonly, nullable) DBFILESSharedLink *sharedLink;
+
+/// If set to a valid list of template IDs, `propertyGroups` in
+/// `DBFILESFileMetadata` is set if there exists property data associated with
+/// the file and each of the listed templates.
+@property (nonatomic, readonly, nullable) DBFILEPROPERTIESTemplateFilterBase *includePropertyGroups;
+
 #pragma mark - Constructors
 
 ///
@@ -59,6 +81,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param includeHasExplicitSharedMembers If true, the results will include a
 /// flag for each file indicating whether or not  that file has any explicit
 /// members.
+/// @param includeMountedFolders If true, the results will include entries under
+/// mounted folders which includes app folder, shared folder and team folder.
+/// @param limit The maximum number of results to return per request. Note: This
+/// is an approximate number and there can be slightly more entries returned in
+/// some cases.
+/// @param sharedLink A shared link to list the contents of. If the link is
+/// password-protected, the password must be provided. If this field is present,
+/// `path` in `DBFILESListFolderArg` will be relative to root of the shared
+/// link. Only non-recursive mode is supported for shared link.
+/// @param includePropertyGroups If set to a valid list of template IDs,
+/// `propertyGroups` in `DBFILESFileMetadata` is set if there exists property
+/// data associated with the file and each of the listed templates.
 ///
 /// @return An initialized instance.
 ///
@@ -66,7 +100,11 @@ NS_ASSUME_NONNULL_BEGIN
                           recursive:(nullable NSNumber *)recursive
                    includeMediaInfo:(nullable NSNumber *)includeMediaInfo
                      includeDeleted:(nullable NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers;
+    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
+              includeMountedFolders:(nullable NSNumber *)includeMountedFolders
+                              limit:(nullable NSNumber *)limit
+                         sharedLink:(nullable DBFILESSharedLink *)sharedLink
+              includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -97,7 +135,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListFolderArg` API object.
 ///
-+ (NSDictionary *)serialize:(DBFILESListFolderArg *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESListFolderArg *)instance;
 
 ///
 /// Deserializes `DBFILESListFolderArg` instances.
@@ -107,7 +145,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBFILESListFolderArg` object.
 ///
-+ (DBFILESListFolderArg *)deserialize:(NSDictionary *)dict;
++ (DBFILESListFolderArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

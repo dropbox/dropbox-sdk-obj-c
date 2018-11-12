@@ -38,10 +38,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
   /// (no description).
   DBTEAMMembersRemoveErrorOther,
 
-  /// The user is the last admin of the team, so it cannot be removed from it.
-  DBTEAMMembersRemoveErrorRemoveLastAdmin,
-
-  /// Expected removed user and transfer_dest user to be different
+  /// Expected removed user and transfer_dest user to be different.
   DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer,
 
   /// Expected removed user and transfer_admin user to be different.
@@ -53,11 +50,11 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
   /// The provided transfer_dest_id does not exist on this team.
   DBTEAMMembersRemoveErrorTransferDestUserNotInTeam,
 
-  /// No matching user found for the argument transfer_admin_id.
-  DBTEAMMembersRemoveErrorTransferAdminUserNotFound,
-
   /// The provided transfer_admin_id does not exist on this team.
   DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam,
+
+  /// No matching user found for the argument transfer_admin_id.
+  DBTEAMMembersRemoveErrorTransferAdminUserNotFound,
 
   /// The transfer_admin_id argument must be provided when file transfer is
   /// requested.
@@ -65,6 +62,12 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 
   /// Specified transfer_admin user is not a team admin.
   DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin,
+
+  /// The recipient user's email is not verified.
+  DBTEAMMembersRemoveErrorRecipientNotVerified,
+
+  /// The user is the last admin of the team, so it cannot be removed from it.
+  DBTEAMMembersRemoveErrorRemoveLastAdmin,
 
   /// Cannot keep account and transfer the data to another user at the same
   /// time.
@@ -76,6 +79,9 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 
   /// The email address of the user is too long to be disabled.
   DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled,
+
+  /// Cannot keep account of an invited user.
+  DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount,
 
 };
 
@@ -112,21 +118,11 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 - (instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of "remove_last_admin".
-///
-/// Description of the "remove_last_admin" tag state: The user is the last admin
-/// of the team, so it cannot be removed from it.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithRemoveLastAdmin;
-
-///
 /// Initializes union class with tag state of
 /// "removed_and_transfer_dest_should_differ".
 ///
 /// Description of the "removed_and_transfer_dest_should_differ" tag state:
-/// Expected removed user and transfer_dest user to be different
+/// Expected removed user and transfer_dest user to be different.
 ///
 /// @return An initialized instance.
 ///
@@ -164,16 +160,6 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 - (instancetype)initWithTransferDestUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of "transfer_admin_user_not_found".
-///
-/// Description of the "transfer_admin_user_not_found" tag state: No matching
-/// user found for the argument transfer_admin_id.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithTransferAdminUserNotFound;
-
-///
 /// Initializes union class with tag state of "transfer_admin_user_not_in_team".
 ///
 /// Description of the "transfer_admin_user_not_in_team" tag state: The provided
@@ -182,6 +168,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTransferAdminUserNotInTeam;
+
+///
+/// Initializes union class with tag state of "transfer_admin_user_not_found".
+///
+/// Description of the "transfer_admin_user_not_found" tag state: No matching
+/// user found for the argument transfer_admin_id.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTransferAdminUserNotFound;
 
 ///
 /// Initializes union class with tag state of "unspecified_transfer_admin_id".
@@ -202,6 +198,26 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTransferAdminIsNotAdmin;
+
+///
+/// Initializes union class with tag state of "recipient_not_verified".
+///
+/// Description of the "recipient_not_verified" tag state: The recipient user's
+/// email is not verified.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithRecipientNotVerified;
+
+///
+/// Initializes union class with tag state of "remove_last_admin".
+///
+/// Description of the "remove_last_admin" tag state: The user is the last admin
+/// of the team, so it cannot be removed from it.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithRemoveLastAdmin;
 
 ///
 /// Initializes union class with tag state of
@@ -237,6 +253,17 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 ///
 - (instancetype)initWithEmailAddressTooLongToBeDisabled;
 
+///
+/// Initializes union class with tag state of
+/// "cannot_keep_invited_user_account".
+///
+/// Description of the "cannot_keep_invited_user_account" tag state: Cannot keep
+/// account of an invited user.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotKeepInvitedUserAccount;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -262,14 +289,6 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
-
-///
-/// Retrieves whether the union's current tag state has value
-/// "remove_last_admin".
-///
-/// @return Whether the union's current tag state has value "remove_last_admin".
-///
-- (BOOL)isRemoveLastAdmin;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -309,21 +328,21 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
-/// "transfer_admin_user_not_found".
-///
-/// @return Whether the union's current tag state has value
-/// "transfer_admin_user_not_found".
-///
-- (BOOL)isTransferAdminUserNotFound;
-
-///
-/// Retrieves whether the union's current tag state has value
 /// "transfer_admin_user_not_in_team".
 ///
 /// @return Whether the union's current tag state has value
 /// "transfer_admin_user_not_in_team".
 ///
 - (BOOL)isTransferAdminUserNotInTeam;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "transfer_admin_user_not_found".
+///
+/// @return Whether the union's current tag state has value
+/// "transfer_admin_user_not_found".
+///
+- (BOOL)isTransferAdminUserNotFound;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -342,6 +361,23 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// "transfer_admin_is_not_admin".
 ///
 - (BOOL)isTransferAdminIsNotAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "recipient_not_verified".
+///
+/// @return Whether the union's current tag state has value
+/// "recipient_not_verified".
+///
+- (BOOL)isRecipientNotVerified;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "remove_last_admin".
+///
+/// @return Whether the union's current tag state has value "remove_last_admin".
+///
+- (BOOL)isRemoveLastAdmin;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -371,6 +407,15 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 - (BOOL)isEmailAddressTooLongToBeDisabled;
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_keep_invited_user_account".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_keep_invited_user_account".
+///
+- (BOOL)isCannotKeepInvitedUserAccount;
+
+///
 /// Retrieves string value of union's current tag state.
 ///
 /// @return A human-readable string representing the union's current tag state.
@@ -394,7 +439,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersRemoveError` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMMembersRemoveError *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersRemoveError *)instance;
 
 ///
 /// Deserializes `DBTEAMMembersRemoveError` instances.
@@ -404,7 +449,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 ///
 /// @return An instantiation of the `DBTEAMMembersRemoveError` object.
 ///
-+ (DBTEAMMembersRemoveError *)deserialize:(NSDictionary *)dict;
++ (DBTEAMMembersRemoveError *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentChangeInviteeRoleDetails;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharedContentChangeInviteeRoleDetails` struct.
 ///
-/// Changed the access type of an invitee to a shared file or folder before the
-/// invitation was claimed.
+/// Changed access type of invitee to shared file/folder before invite was
+/// accepted.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -28,47 +29,41 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Target asset index.
-@property (nonatomic, readonly) NSNumber *targetIndex;
+/// Previous access level. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *previousAccessLevel;
 
-/// Original shared folder name.
-@property (nonatomic, readonly, copy) NSString *originalFolderName;
+/// New access level.
+@property (nonatomic, readonly) DBSHARINGAccessLevel *dNewAccessLevel;
 
-/// New sharing permission. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *dNewSharingPermission;
-
-/// Previous sharing permission. Might be missing due to historical data gap.
-@property (nonatomic, readonly, copy, nullable) NSString *previousSharingPermission;
+/// The invitee whose role was changed.
+@property (nonatomic, readonly, copy) NSString *invitee;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
-/// @param dNewSharingPermission New sharing permission. Might be missing due to
+/// @param dNewAccessLevel New access level.
+/// @param invitee The invitee whose role was changed.
+/// @param previousAccessLevel Previous access level. Might be missing due to
 /// historical data gap.
-/// @param previousSharingPermission Previous sharing permission. Might be
-/// missing due to historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex
-                 originalFolderName:(NSString *)originalFolderName
-              dNewSharingPermission:(nullable NSString *)dNewSharingPermission
-          previousSharingPermission:(nullable NSString *)previousSharingPermission;
+- (instancetype)initWithDNewAccessLevel:(DBSHARINGAccessLevel *)dNewAccessLevel
+                                invitee:(NSString *)invitee
+                    previousAccessLevel:(nullable DBSHARINGAccessLevel *)previousAccessLevel;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param targetIndex Target asset index.
-/// @param originalFolderName Original shared folder name.
+/// @param dNewAccessLevel New access level.
+/// @param invitee The invitee whose role was changed.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTargetIndex:(NSNumber *)targetIndex originalFolderName:(NSString *)originalFolderName;
+- (instancetype)initWithDNewAccessLevel:(DBSHARINGAccessLevel *)dNewAccessLevel invitee:(NSString *)invitee;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -91,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeInviteeRoleDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGSharedContentChangeInviteeRoleDetails` instances.
@@ -102,7 +97,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentChangeInviteeRoleDetails` object.
 ///
-+ (DBTEAMLOGSharedContentChangeInviteeRoleDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGSharedContentChangeInviteeRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

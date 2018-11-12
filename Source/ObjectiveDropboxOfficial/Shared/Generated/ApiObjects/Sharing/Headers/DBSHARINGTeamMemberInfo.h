@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Information about the member's team
+/// Information about the member's team.
 @property (nonatomic, readonly) DBUSERSTeam *teamInfo;
 
 /// The display name of the user.
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param teamInfo Information about the member's team
+/// @param teamInfo Information about the member's team.
 /// @param displayName The display name of the user.
 /// @param memberId ID of user as a member of a team. This field will only be
 /// present if the member is in the same team as current user.
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param teamInfo Information about the member's team
+/// @param teamInfo Information about the member's team.
 /// @param displayName The display name of the user.
 ///
 /// @return An initialized instance.
@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGTeamMemberInfo` API object.
 ///
-+ (NSDictionary *)serialize:(DBSHARINGTeamMemberInfo *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGTeamMemberInfo *)instance;
 
 ///
 /// Deserializes `DBSHARINGTeamMemberInfo` instances.
@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBSHARINGTeamMemberInfo` object.
 ///
-+ (DBSHARINGTeamMemberInfo *)deserialize:(NSDictionary *)dict;
++ (DBSHARINGTeamMemberInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

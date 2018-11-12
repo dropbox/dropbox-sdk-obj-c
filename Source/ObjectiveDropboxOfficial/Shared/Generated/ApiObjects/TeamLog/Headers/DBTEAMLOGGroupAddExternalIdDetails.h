@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GroupAddExternalIdDetails` struct.
 ///
-/// Added an external ID for group.
+/// Added external ID for group.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupAddExternalIdDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGGroupAddExternalIdDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupAddExternalIdDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGGroupAddExternalIdDetails` instances.
@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGGroupAddExternalIdDetails` object.
 ///
-+ (DBTEAMLOGGroupAddExternalIdDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGGroupAddExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

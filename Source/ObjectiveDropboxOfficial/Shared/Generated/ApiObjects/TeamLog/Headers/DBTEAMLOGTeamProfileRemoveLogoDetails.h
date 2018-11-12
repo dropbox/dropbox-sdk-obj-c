@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TeamProfileRemoveLogoDetails` struct.
 ///
-/// Removed the team logo to be displayed on shared link headers.
+/// Removed team logo displayed on shared link headers.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamProfileRemoveLogoDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamProfileRemoveLogoDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileRemoveLogoDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGTeamProfileRemoveLogoDetails` instances.
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGTeamProfileRemoveLogoDetails`
 /// object.
 ///
-+ (DBTEAMLOGTeamProfileRemoveLogoDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGTeamProfileRemoveLogoDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

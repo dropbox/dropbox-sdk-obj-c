@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TfaChangeStatusDetails` struct.
 ///
-/// Enabled, disabled or changed the configuration for two-step verification.
+/// Enabled/disabled/changed two-step verification setting.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaChangeStatusDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGTfaChangeStatusDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangeStatusDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGTfaChangeStatusDetails` instances.
@@ -96,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGTfaChangeStatusDetails` object.
 ///
-+ (DBTEAMLOGTfaChangeStatusDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGTfaChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

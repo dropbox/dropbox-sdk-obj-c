@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `WebSessionsChangeFixedLengthPolicyDetails` struct.
 ///
-/// Changed how long team members can stay signed in to Dropbox on the web.
+/// Changed how long members can stay signed in to Dropbox.com.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -28,24 +28,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// New session length policy.
-@property (nonatomic, readonly) DBTEAMLOGWebSessionsFixedLengthPolicy *dNewValue;
+/// New session length policy. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGWebSessionsFixedLengthPolicy *dNewValue;
 
-/// Previous session length policy.
-@property (nonatomic, readonly) DBTEAMLOGWebSessionsFixedLengthPolicy *previousValue;
+/// Previous session length policy. Might be missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGWebSessionsFixedLengthPolicy *previousValue;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param dNewValue New session length policy.
-/// @param previousValue Previous session length policy.
+/// @param dNewValue New session length policy. Might be missing due to
+/// historical data gap.
+/// @param previousValue Previous session length policy. Might be missing due to
+/// historical data gap.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(DBTEAMLOGWebSessionsFixedLengthPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGWebSessionsFixedLengthPolicy *)previousValue;
+- (instancetype)initWithDNewValue:(nullable DBTEAMLOGWebSessionsFixedLengthPolicy *)dNewValue
+                    previousValue:(nullable DBTEAMLOGWebSessionsFixedLengthPolicy *)previousValue;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
+///
+/// @return An initialized instance.
+///
+- (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -68,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails` instances.
@@ -79,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the
 /// `DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails` object.
 ///
-+ (DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGWebSessionsChangeFixedLengthPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `EmmCreateExceptionsReportDetails` struct.
 ///
-/// EMM excluded users report created.
+/// Created EMM-excluded users report.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEmmCreateExceptionsReportDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGEmmCreateExceptionsReportDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmCreateExceptionsReportDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGEmmCreateExceptionsReportDetails` instances.
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGEmmCreateExceptionsReportDetails`
 /// object.
 ///
-+ (DBTEAMLOGEmmCreateExceptionsReportDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGEmmCreateExceptionsReportDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

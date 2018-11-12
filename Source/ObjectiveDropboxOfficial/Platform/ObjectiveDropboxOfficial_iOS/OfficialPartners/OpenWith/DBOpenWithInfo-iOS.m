@@ -41,6 +41,10 @@ static NSString *kStorageKeyPrefix = @"dbxOpenWith";
 + (DBOpenWithInfo *)popFromStorageForSession:(NSString *)sessionId {
   NSString *fullKey = [DBOpenWithInfo getStorageKeyFromSession:sessionId];
   NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:fullKey];
+  // nil check because NSUserDefaults can get reset when the device is locked
+  if (data == nil) {
+    return nil;
+  }
   [[NSUserDefaults standardUserDefaults] removeObjectForKey:fullKey];
   [[NSUserDefaults standardUserDefaults] synchronize];
   DBOpenWithInfo *openWithInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];

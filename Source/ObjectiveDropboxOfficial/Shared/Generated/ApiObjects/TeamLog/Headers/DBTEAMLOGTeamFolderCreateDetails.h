@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TeamFolderCreateDetails` struct.
 ///
-/// Created a new team folder in active status.
+/// Created team folder in active status.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderCreateDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGTeamFolderCreateDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderCreateDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGTeamFolderCreateDetails` instances.
@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An instantiation of the `DBTEAMLOGTeamFolderCreateDetails` object.
 ///
-+ (DBTEAMLOGTeamFolderCreateDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGTeamFolderCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `PaperDocChangeMemberRoleDetails` struct.
 ///
-/// Changed the access type of a Paper doc member.
+/// Changed team member permissions for Paper doc.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocChangeMemberRoleDetails` API object.
 ///
-+ (NSDictionary *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleDetails *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleDetails *)instance;
 
 ///
 /// Deserializes `DBTEAMLOGPaperDocChangeMemberRoleDetails` instances.
@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return An instantiation of the `DBTEAMLOGPaperDocChangeMemberRoleDetails`
 /// object.
 ///
-+ (DBTEAMLOGPaperDocChangeMemberRoleDetails *)deserialize:(NSDictionary *)dict;
++ (DBTEAMLOGPaperDocChangeMemberRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 
