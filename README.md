@@ -453,7 +453,7 @@ After the end user signs in with their Dropbox login credentials on mobile, they
 </p>
 
 If they press **Allow** or **Cancel**, the `db-<APP_KEY>` redirect URL will be launched from the view controller, and will be handled in your application
-delegate's `application:handleOpenURL` method, from which the result of the authorization can be parsed.
+delegate's `application:openURL:options:` method, from which the result of the authorization can be parsed.
 
 Now you're ready to begin making API requests!
 
