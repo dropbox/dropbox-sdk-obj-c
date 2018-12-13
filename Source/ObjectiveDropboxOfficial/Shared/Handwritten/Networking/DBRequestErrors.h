@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBLocalizedUserMessage : NSObject
 
 /// Localized, human-readable text.
-@property(nonatomic, readonly, copy) NSString *text;
+@property (nonatomic, readonly, copy) NSString *text;
 //  IETF BCP 47 language tag of text locale.
-@property(nonatomic, readonly, copy) NSString *locale;
+@property (nonatomic, readonly, copy) NSString *locale;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// the value of the "error_summary" key.
 @property (nonatomic, readonly, copy) NSString *errorContent;
 
-/// An object contains human-readable error message that is optionally returned from some API endpoints.
+/// An object containing a localized human-readable error message that is optionally returned from some API endpoints.
 @property (nonatomic, readonly, strong, nullable) DBLocalizedUserMessage *userMessage;
 
 ///
@@ -422,7 +422,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// the value of the "error_summary" key.
 @property (nonatomic, readonly, copy, nullable) NSString *errorContent;
 
-/// An object contains human-readable error message that is optionally returned from some API endpoints.
+/// An object containing a localized human-readable error message that is optionally returned from some API endpoints.
 @property (nonatomic, readonly, strong, nullable) DBLocalizedUserMessage *userMessage;
 
 /// The structured object returned by the Dropbox API in the event of a 401 auth error.
