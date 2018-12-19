@@ -28,16 +28,21 @@ NS_ASSUME_NONNULL_BEGIN
 /// True if the removed team member is recoverable.
 @property (nonatomic, readonly) NSNumber *isRecoverable;
 
+/// True if the team member's account was converted to individual account.
+@property (nonatomic, readonly) NSNumber *isDisconnected;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param isRecoverable True if the removed team member is recoverable.
+/// @param isDisconnected True if the team member's account was converted to
+/// individual account.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithIsRecoverable:(NSNumber *)isRecoverable;
+- (instancetype)initWithIsRecoverable:(NSNumber *)isRecoverable isDisconnected:(NSNumber *)isDisconnected;
 
 - (instancetype)init NS_UNAVAILABLE;
 

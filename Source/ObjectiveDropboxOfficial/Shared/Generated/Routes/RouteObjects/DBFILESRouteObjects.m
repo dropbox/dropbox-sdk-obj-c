@@ -68,6 +68,9 @@
 #import "DBFILESRelocationBatchJobStatus.h"
 #import "DBFILESRelocationBatchLaunch.h"
 #import "DBFILESRelocationBatchResult.h"
+#import "DBFILESRelocationBatchV2JobStatus.h"
+#import "DBFILESRelocationBatchV2Launch.h"
+#import "DBFILESRelocationBatchV2Result.h"
 #import "DBFILESRelocationError.h"
 #import "DBFILESRelocationResult.h"
 #import "DBFILESRestoreError.h"
@@ -102,7 +105,9 @@ static DBRoute *DBFILESAlphaGetMetadata;
 static DBRoute *DBFILESAlphaUpload;
 static DBRoute *DBFILESDCopyV2;
 static DBRoute *DBFILESDCopy;
+static DBRoute *DBFILESDCopyBatchV2;
 static DBRoute *DBFILESDCopyBatch;
+static DBRoute *DBFILESDCopyBatchCheckV2;
 static DBRoute *DBFILESDCopyBatchCheck;
 static DBRoute *DBFILESDCopyReferenceGet;
 static DBRoute *DBFILESDCopyReferenceSave;
@@ -129,7 +134,9 @@ static DBRoute *DBFILESListFolderLongpoll;
 static DBRoute *DBFILESListRevisions;
 static DBRoute *DBFILESMoveV2;
 static DBRoute *DBFILESMove;
+static DBRoute *DBFILESMoveBatchV2;
 static DBRoute *DBFILESMoveBatch;
+static DBRoute *DBFILESMoveBatchCheckV2;
 static DBRoute *DBFILESMoveBatchCheck;
 static DBRoute *DBFILESPermanentlyDelete;
 static DBRoute *DBFILESPropertiesAdd;
@@ -222,11 +229,29 @@ static DBRoute *DBFILESUploadSessionStart;
   return DBFILESDCopy;
 }
 
++ (DBRoute *)DBFILESDCopyBatchV2 {
+  if (!DBFILESDCopyBatchV2) {
+    DBFILESDCopyBatchV2 = [[DBRoute alloc] init:@"copy_batch_v2"
+                                     namespace_:@"files"
+                                     deprecated:@NO
+                                     resultType:[DBFILESRelocationBatchV2Launch class]
+                                      errorType:nil
+                                          attrs:@{
+                                            @"auth" : @"user",
+                                            @"host" : @"api",
+                                            @"style" : @"rpc"
+                                          }
+                          dataStructSerialBlock:nil
+                        dataStructDeserialBlock:nil];
+  }
+  return DBFILESDCopyBatchV2;
+}
+
 + (DBRoute *)DBFILESDCopyBatch {
   if (!DBFILESDCopyBatch) {
     DBFILESDCopyBatch = [[DBRoute alloc] init:@"copy_batch"
                                    namespace_:@"files"
-                                   deprecated:@NO
+                                   deprecated:@YES
                                    resultType:[DBFILESRelocationBatchLaunch class]
                                     errorType:nil
                                         attrs:@{
@@ -240,11 +265,29 @@ static DBRoute *DBFILESUploadSessionStart;
   return DBFILESDCopyBatch;
 }
 
++ (DBRoute *)DBFILESDCopyBatchCheckV2 {
+  if (!DBFILESDCopyBatchCheckV2) {
+    DBFILESDCopyBatchCheckV2 = [[DBRoute alloc] init:@"copy_batch/check_v2"
+                                          namespace_:@"files"
+                                          deprecated:@NO
+                                          resultType:[DBFILESRelocationBatchV2JobStatus class]
+                                           errorType:[DBASYNCPollError class]
+                                               attrs:@{
+                                                 @"auth" : @"user",
+                                                 @"host" : @"api",
+                                                 @"style" : @"rpc"
+                                               }
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
+  }
+  return DBFILESDCopyBatchCheckV2;
+}
+
 + (DBRoute *)DBFILESDCopyBatchCheck {
   if (!DBFILESDCopyBatchCheck) {
     DBFILESDCopyBatchCheck = [[DBRoute alloc] init:@"copy_batch/check"
                                         namespace_:@"files"
-                                        deprecated:@NO
+                                        deprecated:@YES
                                         resultType:[DBFILESRelocationBatchJobStatus class]
                                          errorType:[DBASYNCPollError class]
                                              attrs:@{
@@ -708,6 +751,24 @@ static DBRoute *DBFILESUploadSessionStart;
   return DBFILESMove;
 }
 
++ (DBRoute *)DBFILESMoveBatchV2 {
+  if (!DBFILESMoveBatchV2) {
+    DBFILESMoveBatchV2 = [[DBRoute alloc] init:@"move_batch_v2"
+                                    namespace_:@"files"
+                                    deprecated:@NO
+                                    resultType:[DBFILESRelocationBatchV2Launch class]
+                                     errorType:nil
+                                         attrs:@{
+                                           @"auth" : @"user",
+                                           @"host" : @"api",
+                                           @"style" : @"rpc"
+                                         }
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
+  }
+  return DBFILESMoveBatchV2;
+}
+
 + (DBRoute *)DBFILESMoveBatch {
   if (!DBFILESMoveBatch) {
     DBFILESMoveBatch = [[DBRoute alloc] init:@"move_batch"
@@ -724,6 +785,24 @@ static DBRoute *DBFILESUploadSessionStart;
                      dataStructDeserialBlock:nil];
   }
   return DBFILESMoveBatch;
+}
+
++ (DBRoute *)DBFILESMoveBatchCheckV2 {
+  if (!DBFILESMoveBatchCheckV2) {
+    DBFILESMoveBatchCheckV2 = [[DBRoute alloc] init:@"move_batch/check_v2"
+                                         namespace_:@"files"
+                                         deprecated:@NO
+                                         resultType:[DBFILESRelocationBatchV2JobStatus class]
+                                          errorType:[DBASYNCPollError class]
+                                              attrs:@{
+                                                @"auth" : @"user",
+                                                @"host" : @"api",
+                                                @"style" : @"rpc"
+                                              }
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
+  }
+  return DBFILESMoveBatchCheckV2;
 }
 
 + (DBRoute *)DBFILESMoveBatchCheck {

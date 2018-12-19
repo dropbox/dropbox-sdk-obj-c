@@ -14277,7 +14277,7 @@
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
                                                                maxLength:@(255)
                                                                  pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9."
-                                                                         @"-]*.[A-Za-z]{2,15}$"]](memberEmail);
+                                                                         @"-]*\\.[A-Za-z]{2,15}$"]](memberEmail);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](
       memberGivenName);
@@ -19855,7 +19855,7 @@
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
                                                                 maxLength:@(255)
                                                                   pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
-                                                                          @"9.-]*.[A-Za-z]{2,15}$"]](dNewEmail);
+                                                                          @"9.-]*\\.[A-Za-z]{2,15}$"]](dNewEmail);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](dNewExternalId);
   [DBStoneValidators
@@ -22481,12 +22481,14 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithIsRecoverable:(NSNumber *)isRecoverable {
+- (instancetype)initWithIsRecoverable:(NSNumber *)isRecoverable isDisconnected:(NSNumber *)isDisconnected {
   [DBStoneValidators nonnullValidator:nil](isRecoverable);
+  [DBStoneValidators nonnullValidator:nil](isDisconnected);
 
   self = [super init];
   if (self) {
     _isRecoverable = isRecoverable;
+    _isDisconnected = isDisconnected;
   }
   return self;
 }
@@ -22522,6 +22524,7 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.isRecoverable hash];
+  result = prime * result + [self.isDisconnected hash];
 
   return prime * result;
 }
@@ -22545,6 +22548,9 @@
   if (![self.isRecoverable isEqual:aRemovedStatus.isRecoverable]) {
     return NO;
   }
+  if (![self.isDisconnected isEqual:aRemovedStatus.isDisconnected]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -22558,14 +22564,16 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"is_recoverable"] = valueObj.isRecoverable;
+  jsonDict[@"is_disconnected"] = valueObj.isDisconnected;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBTEAMRemovedStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSNumber *isRecoverable = valueDict[@"is_recoverable"];
+  NSNumber *isDisconnected = valueDict[@"is_disconnected"];
 
-  return [[DBTEAMRemovedStatus alloc] initWithIsRecoverable:isRecoverable];
+  return [[DBTEAMRemovedStatus alloc] initWithIsRecoverable:isRecoverable isDisconnected:isDisconnected];
 }
 
 @end
@@ -30101,7 +30109,159 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMTeamNamespacesListError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamNamespacesListError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInvalidArg {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamNamespacesListErrorInvalidArg;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamNamespacesListErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInvalidArg {
+  return _tag == DBTEAMTeamNamespacesListErrorInvalidArg;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMTeamNamespacesListErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMTeamNamespacesListErrorInvalidArg:
+    return @"DBTEAMTeamNamespacesListErrorInvalidArg";
+  case DBTEAMTeamNamespacesListErrorOther:
+    return @"DBTEAMTeamNamespacesListErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamNamespacesListErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamNamespacesListErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMTeamNamespacesListErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamNamespacesListErrorInvalidArg:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamNamespacesListErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamNamespacesListError:other];
+}
+
+- (BOOL)isEqualToTeamNamespacesListError:(DBTEAMTeamNamespacesListError *)aTeamNamespacesListError {
+  if (self == aTeamNamespacesListError) {
+    return YES;
+  }
+  if (self.tag != aTeamNamespacesListError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamNamespacesListErrorInvalidArg:
+    return [[self tagName] isEqual:[aTeamNamespacesListError tagName]];
+  case DBTEAMTeamNamespacesListErrorOther:
+    return [[self tagName] isEqual:[aTeamNamespacesListError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamNamespacesListErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamNamespacesListError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInvalidArg]) {
+    jsonDict[@".tag"] = @"invalid_arg";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMTeamNamespacesListError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"invalid_arg"]) {
+    return [[DBTEAMTeamNamespacesListError alloc] initWithInvalidArg];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamNamespacesListError alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamNamespacesListError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMTeamNamespacesListContinueError.h"
+#import "DBTEAMTeamNamespacesListError.h"
 
 #pragma mark - API Object
 
@@ -30109,10 +30269,10 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithInvalidCursor {
+- (instancetype)initWithInvalidArg {
   self = [super init];
   if (self) {
-    _tag = DBTEAMTeamNamespacesListContinueErrorInvalidCursor;
+    _tag = DBTEAMTeamNamespacesListContinueErrorInvalidArg;
   }
   return self;
 }
@@ -30125,24 +30285,38 @@
   return self;
 }
 
+- (instancetype)initWithInvalidCursor {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamNamespacesListContinueErrorInvalidCursor;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
 
-- (BOOL)isInvalidCursor {
-  return _tag == DBTEAMTeamNamespacesListContinueErrorInvalidCursor;
+- (BOOL)isInvalidArg {
+  return _tag == DBTEAMTeamNamespacesListContinueErrorInvalidArg;
 }
 
 - (BOOL)isOther {
   return _tag == DBTEAMTeamNamespacesListContinueErrorOther;
 }
 
+- (BOOL)isInvalidCursor {
+  return _tag == DBTEAMTeamNamespacesListContinueErrorInvalidCursor;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
-  case DBTEAMTeamNamespacesListContinueErrorInvalidCursor:
-    return @"DBTEAMTeamNamespacesListContinueErrorInvalidCursor";
+  case DBTEAMTeamNamespacesListContinueErrorInvalidArg:
+    return @"DBTEAMTeamNamespacesListContinueErrorInvalidArg";
   case DBTEAMTeamNamespacesListContinueErrorOther:
     return @"DBTEAMTeamNamespacesListContinueErrorOther";
+  case DBTEAMTeamNamespacesListContinueErrorInvalidCursor:
+    return @"DBTEAMTeamNamespacesListContinueErrorInvalidCursor";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -30179,9 +30353,11 @@
   NSUInteger result = 1;
 
   switch (_tag) {
-  case DBTEAMTeamNamespacesListContinueErrorInvalidCursor:
+  case DBTEAMTeamNamespacesListContinueErrorInvalidArg:
     result = prime * result + [[self tagName] hash];
   case DBTEAMTeamNamespacesListContinueErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamNamespacesListContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
   }
 
@@ -30209,9 +30385,11 @@
     return NO;
   }
   switch (_tag) {
-  case DBTEAMTeamNamespacesListContinueErrorInvalidCursor:
+  case DBTEAMTeamNamespacesListContinueErrorInvalidArg:
     return [[self tagName] isEqual:[aTeamNamespacesListContinueError tagName]];
   case DBTEAMTeamNamespacesListContinueErrorOther:
+    return [[self tagName] isEqual:[aTeamNamespacesListContinueError tagName]];
+  case DBTEAMTeamNamespacesListContinueErrorInvalidCursor:
     return [[self tagName] isEqual:[aTeamNamespacesListContinueError tagName]];
   }
   return YES;
@@ -30226,10 +30404,12 @@
 + (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamNamespacesListContinueError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInvalidCursor]) {
-    jsonDict[@".tag"] = @"invalid_cursor";
+  if ([valueObj isInvalidArg]) {
+    jsonDict[@".tag"] = @"invalid_arg";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isInvalidCursor]) {
+    jsonDict[@".tag"] = @"invalid_cursor";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -30240,10 +30420,12 @@
 + (DBTEAMTeamNamespacesListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"invalid_cursor"]) {
-    return [[DBTEAMTeamNamespacesListContinueError alloc] initWithInvalidCursor];
+  if ([tag isEqualToString:@"invalid_arg"]) {
+    return [[DBTEAMTeamNamespacesListContinueError alloc] initWithInvalidArg];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamNamespacesListContinueError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"invalid_cursor"]) {
+    return [[DBTEAMTeamNamespacesListContinueError alloc] initWithInvalidCursor];
   } else {
     return [[DBTEAMTeamNamespacesListContinueError alloc] initWithOther];
   }

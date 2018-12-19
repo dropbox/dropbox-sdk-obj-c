@@ -10869,6 +10869,258 @@
 
 @end
 
+#import "DBFILESRelocationBatchArgBase.h"
+#import "DBFILESRelocationPath.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESRelocationBatchArgBase
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries autorename:(NSNumber *)autorename {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:@(1)
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
+
+  self = [super init];
+  if (self) {
+    _entries = entries;
+    _autorename = autorename ?: @NO;
+  }
+  return self;
+}
+
+- (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries {
+  return [self initWithEntries:entries autorename:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESRelocationBatchArgBaseSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESRelocationBatchArgBaseSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESRelocationBatchArgBaseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.entries hash];
+  result = prime * result + [self.autorename hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRelocationBatchArgBase:other];
+}
+
+- (BOOL)isEqualToRelocationBatchArgBase:(DBFILESRelocationBatchArgBase *)aRelocationBatchArgBase {
+  if (self == aRelocationBatchArgBase) {
+    return YES;
+  }
+  if (![self.entries isEqual:aRelocationBatchArgBase.entries]) {
+    return NO;
+  }
+  if (![self.autorename isEqual:aRelocationBatchArgBase.autorename]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESRelocationBatchArgBaseSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchArgBase *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESRelocationPathSerializer serialize:elem0];
+                                            }];
+  jsonDict[@"autorename"] = valueObj.autorename;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESRelocationBatchArgBase *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<DBFILESRelocationPath *> *entries =
+      [DBArraySerializer deserialize:valueDict[@"entries"]
+                           withBlock:^id(id elem0) {
+                             return [DBFILESRelocationPathSerializer deserialize:elem0];
+                           }];
+  NSNumber *autorename = valueDict[@"autorename"] ?: @NO;
+
+  return [[DBFILESRelocationBatchArgBase alloc] initWithEntries:entries autorename:autorename];
+}
+
+@end
+
+#import "DBFILESMoveBatchArg.h"
+#import "DBFILESRelocationBatchArgBase.h"
+#import "DBFILESRelocationPath.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESMoveBatchArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries
+                     autorename:(NSNumber *)autorename
+         allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:@(1)
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
+
+  self = [super initWithEntries:entries autorename:autorename];
+  if (self) {
+    _allowOwnershipTransfer = allowOwnershipTransfer ?: @NO;
+  }
+  return self;
+}
+
+- (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries {
+  return [self initWithEntries:entries autorename:nil allowOwnershipTransfer:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESMoveBatchArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESMoveBatchArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESMoveBatchArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.entries hash];
+  result = prime * result + [self.autorename hash];
+  result = prime * result + [self.allowOwnershipTransfer hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMoveBatchArg:other];
+}
+
+- (BOOL)isEqualToMoveBatchArg:(DBFILESMoveBatchArg *)aMoveBatchArg {
+  if (self == aMoveBatchArg) {
+    return YES;
+  }
+  if (![self.entries isEqual:aMoveBatchArg.entries]) {
+    return NO;
+  }
+  if (![self.autorename isEqual:aMoveBatchArg.autorename]) {
+    return NO;
+  }
+  if (![self.allowOwnershipTransfer isEqual:aMoveBatchArg.allowOwnershipTransfer]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESMoveBatchArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESMoveBatchArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESRelocationPathSerializer serialize:elem0];
+                                            }];
+  jsonDict[@"autorename"] = valueObj.autorename;
+  jsonDict[@"allow_ownership_transfer"] = valueObj.allowOwnershipTransfer;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESMoveBatchArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<DBFILESRelocationPath *> *entries =
+      [DBArraySerializer deserialize:valueDict[@"entries"]
+                           withBlock:^id(id elem0) {
+                             return [DBFILESRelocationPathSerializer deserialize:elem0];
+                           }];
+  NSNumber *autorename = valueDict[@"autorename"] ?: @NO;
+  NSNumber *allowOwnershipTransfer = valueDict[@"allow_ownership_transfer"] ?: @NO;
+
+  return [[DBFILESMoveBatchArg alloc] initWithEntries:entries
+                                           autorename:autorename
+                               allowOwnershipTransfer:allowOwnershipTransfer];
+}
+
+@end
+
 #import "DBFILESDimensions.h"
 #import "DBFILESGpsCoordinates.h"
 #import "DBFILESMediaMetadata.h"
@@ -11604,6 +11856,7 @@
 @end
 
 #import "DBFILESRelocationBatchArg.h"
+#import "DBFILESRelocationBatchArgBase.h"
 #import "DBFILESRelocationPath.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -11615,26 +11868,24 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries
-              allowSharedFolder:(NSNumber *)allowSharedFolder
                      autorename:(NSNumber *)autorename
+              allowSharedFolder:(NSNumber *)allowSharedFolder
          allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:@(1)
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
 
-  self = [super init];
+  self = [super initWithEntries:entries autorename:autorename];
   if (self) {
-    _entries = entries;
     _allowSharedFolder = allowSharedFolder ?: @NO;
-    _autorename = autorename ?: @NO;
     _allowOwnershipTransfer = allowOwnershipTransfer ?: @NO;
   }
   return self;
 }
 
 - (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries {
-  return [self initWithEntries:entries allowSharedFolder:nil autorename:nil allowOwnershipTransfer:nil];
+  return [self initWithEntries:entries autorename:nil allowSharedFolder:nil allowOwnershipTransfer:nil];
 }
 
 #pragma mark - Serialization methods
@@ -11668,8 +11919,8 @@
   NSUInteger result = 1;
 
   result = prime * result + [self.entries hash];
-  result = prime * result + [self.allowSharedFolder hash];
   result = prime * result + [self.autorename hash];
+  result = prime * result + [self.allowSharedFolder hash];
   result = prime * result + [self.allowOwnershipTransfer hash];
 
   return prime * result;
@@ -11694,10 +11945,10 @@
   if (![self.entries isEqual:aRelocationBatchArg.entries]) {
     return NO;
   }
-  if (![self.allowSharedFolder isEqual:aRelocationBatchArg.allowSharedFolder]) {
+  if (![self.autorename isEqual:aRelocationBatchArg.autorename]) {
     return NO;
   }
-  if (![self.autorename isEqual:aRelocationBatchArg.autorename]) {
+  if (![self.allowSharedFolder isEqual:aRelocationBatchArg.allowSharedFolder]) {
     return NO;
   }
   if (![self.allowOwnershipTransfer isEqual:aRelocationBatchArg.allowOwnershipTransfer]) {
@@ -11719,8 +11970,8 @@
                                             withBlock:^id(id elem0) {
                                               return [DBFILESRelocationPathSerializer serialize:elem0];
                                             }];
-  jsonDict[@"allow_shared_folder"] = valueObj.allowSharedFolder;
   jsonDict[@"autorename"] = valueObj.autorename;
+  jsonDict[@"allow_shared_folder"] = valueObj.allowSharedFolder;
   jsonDict[@"allow_ownership_transfer"] = valueObj.allowOwnershipTransfer;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
@@ -11732,13 +11983,13 @@
                            withBlock:^id(id elem0) {
                              return [DBFILESRelocationPathSerializer deserialize:elem0];
                            }];
-  NSNumber *allowSharedFolder = valueDict[@"allow_shared_folder"] ?: @NO;
   NSNumber *autorename = valueDict[@"autorename"] ?: @NO;
+  NSNumber *allowSharedFolder = valueDict[@"allow_shared_folder"] ?: @NO;
   NSNumber *allowOwnershipTransfer = valueDict[@"allow_ownership_transfer"] ?: @NO;
 
   return [[DBFILESRelocationBatchArg alloc] initWithEntries:entries
-                                          allowSharedFolder:allowSharedFolder
                                                  autorename:autorename
+                                          allowSharedFolder:allowSharedFolder
                                      allowOwnershipTransfer:allowOwnershipTransfer];
 }
 
@@ -11843,6 +12094,14 @@
   return self;
 }
 
+- (instancetype)initWithInternalError {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationErrorInternalError;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -11919,6 +12178,10 @@
   return _tag == DBFILESRelocationErrorInsufficientQuota;
 }
 
+- (BOOL)isInternalError {
+  return _tag == DBFILESRelocationErrorInternalError;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationErrorOther;
 }
@@ -11945,6 +12208,8 @@
     return @"DBFILESRelocationErrorCantTransferOwnership";
   case DBFILESRelocationErrorInsufficientQuota:
     return @"DBFILESRelocationErrorInsufficientQuota";
+  case DBFILESRelocationErrorInternalError:
+    return @"DBFILESRelocationErrorInternalError";
   case DBFILESRelocationErrorOther:
     return @"DBFILESRelocationErrorOther";
   }
@@ -12003,6 +12268,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationErrorInsufficientQuota:
     result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationErrorInternalError:
+    result = prime * result + [[self tagName] hash];
   case DBFILESRelocationErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -12050,6 +12317,8 @@
     return [[self tagName] isEqual:[aRelocationError tagName]];
   case DBFILESRelocationErrorInsufficientQuota:
     return [[self tagName] isEqual:[aRelocationError tagName]];
+  case DBFILESRelocationErrorInternalError:
+    return [[self tagName] isEqual:[aRelocationError tagName]];
   case DBFILESRelocationErrorOther:
     return [[self tagName] isEqual:[aRelocationError tagName]];
   }
@@ -12088,6 +12357,8 @@
     jsonDict[@".tag"] = @"cant_transfer_ownership";
   } else if ([valueObj isInsufficientQuota]) {
     jsonDict[@".tag"] = @"insufficient_quota";
+  } else if ([valueObj isInternalError]) {
+    jsonDict[@".tag"] = @"internal_error";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -12123,6 +12394,8 @@
     return [[DBFILESRelocationError alloc] initWithCantTransferOwnership];
   } else if ([tag isEqualToString:@"insufficient_quota"]) {
     return [[DBFILESRelocationError alloc] initWithInsufficientQuota];
+  } else if ([tag isEqualToString:@"internal_error"]) {
+    return [[DBFILESRelocationError alloc] initWithInternalError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationError alloc] initWithOther];
   } else {
@@ -12232,6 +12505,14 @@
   return self;
 }
 
+- (instancetype)initWithInternalError {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorInternalError;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -12316,6 +12597,10 @@
   return _tag == DBFILESRelocationBatchErrorInsufficientQuota;
 }
 
+- (BOOL)isInternalError {
+  return _tag == DBFILESRelocationBatchErrorInternalError;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationBatchErrorOther;
 }
@@ -12346,6 +12631,8 @@
     return @"DBFILESRelocationBatchErrorCantTransferOwnership";
   case DBFILESRelocationBatchErrorInsufficientQuota:
     return @"DBFILESRelocationBatchErrorInsufficientQuota";
+  case DBFILESRelocationBatchErrorInternalError:
+    return @"DBFILESRelocationBatchErrorInternalError";
   case DBFILESRelocationBatchErrorOther:
     return @"DBFILESRelocationBatchErrorOther";
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -12406,6 +12693,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorInsufficientQuota:
     result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationBatchErrorInternalError:
+    result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorOther:
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -12455,6 +12744,8 @@
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorInsufficientQuota:
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
+  case DBFILESRelocationBatchErrorInternalError:
+    return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorOther:
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -12495,6 +12786,8 @@
     jsonDict[@".tag"] = @"cant_transfer_ownership";
   } else if ([valueObj isInsufficientQuota]) {
     jsonDict[@".tag"] = @"insufficient_quota";
+  } else if ([valueObj isInternalError]) {
+    jsonDict[@".tag"] = @"internal_error";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isTooManyWriteOperations]) {
@@ -12532,12 +12825,225 @@
     return [[DBFILESRelocationBatchError alloc] initWithCantTransferOwnership];
   } else if ([tag isEqualToString:@"insufficient_quota"]) {
     return [[DBFILESRelocationBatchError alloc] initWithInsufficientQuota];
+  } else if ([tag isEqualToString:@"internal_error"]) {
+    return [[DBFILESRelocationBatchError alloc] initWithInternalError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationBatchError alloc] initWithOther];
   } else if ([tag isEqualToString:@"too_many_write_operations"]) {
     return [[DBFILESRelocationBatchError alloc] initWithTooManyWriteOperations];
   } else {
     return [[DBFILESRelocationBatchError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBFILESRelocationBatchErrorEntry.h"
+#import "DBFILESRelocationError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESRelocationBatchErrorEntry
+
+@synthesize relocationError = _relocationError;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRelocationError:(DBFILESRelocationError *)relocationError {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorEntryRelocationError;
+    _relocationError = relocationError;
+  }
+  return self;
+}
+
+- (instancetype)initWithInternalError {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorEntryInternalError;
+  }
+  return self;
+}
+
+- (instancetype)initWithTooManyWriteOperations {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorEntryTooManyWriteOperations;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorEntryOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBFILESRelocationError *)relocationError {
+  if (![self isRelocationError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBFILESRelocationBatchErrorEntryRelocationError, but was %@.", [self tagName]];
+  }
+  return _relocationError;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isRelocationError {
+  return _tag == DBFILESRelocationBatchErrorEntryRelocationError;
+}
+
+- (BOOL)isInternalError {
+  return _tag == DBFILESRelocationBatchErrorEntryInternalError;
+}
+
+- (BOOL)isTooManyWriteOperations {
+  return _tag == DBFILESRelocationBatchErrorEntryTooManyWriteOperations;
+}
+
+- (BOOL)isOther {
+  return _tag == DBFILESRelocationBatchErrorEntryOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBFILESRelocationBatchErrorEntryRelocationError:
+    return @"DBFILESRelocationBatchErrorEntryRelocationError";
+  case DBFILESRelocationBatchErrorEntryInternalError:
+    return @"DBFILESRelocationBatchErrorEntryInternalError";
+  case DBFILESRelocationBatchErrorEntryTooManyWriteOperations:
+    return @"DBFILESRelocationBatchErrorEntryTooManyWriteOperations";
+  case DBFILESRelocationBatchErrorEntryOther:
+    return @"DBFILESRelocationBatchErrorEntryOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESRelocationBatchErrorEntrySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESRelocationBatchErrorEntrySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESRelocationBatchErrorEntrySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBFILESRelocationBatchErrorEntryRelocationError:
+    result = prime * result + [self.relocationError hash];
+  case DBFILESRelocationBatchErrorEntryInternalError:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationBatchErrorEntryTooManyWriteOperations:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationBatchErrorEntryOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRelocationBatchErrorEntry:other];
+}
+
+- (BOOL)isEqualToRelocationBatchErrorEntry:(DBFILESRelocationBatchErrorEntry *)aRelocationBatchErrorEntry {
+  if (self == aRelocationBatchErrorEntry) {
+    return YES;
+  }
+  if (self.tag != aRelocationBatchErrorEntry.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBFILESRelocationBatchErrorEntryRelocationError:
+    return [self.relocationError isEqual:aRelocationBatchErrorEntry.relocationError];
+  case DBFILESRelocationBatchErrorEntryInternalError:
+    return [[self tagName] isEqual:[aRelocationBatchErrorEntry tagName]];
+  case DBFILESRelocationBatchErrorEntryTooManyWriteOperations:
+    return [[self tagName] isEqual:[aRelocationBatchErrorEntry tagName]];
+  case DBFILESRelocationBatchErrorEntryOther:
+    return [[self tagName] isEqual:[aRelocationBatchErrorEntry tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESRelocationBatchErrorEntrySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchErrorEntry *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isRelocationError]) {
+    jsonDict[@"relocation_error"] = [[DBFILESRelocationErrorSerializer serialize:valueObj.relocationError] mutableCopy];
+    jsonDict[@".tag"] = @"relocation_error";
+  } else if ([valueObj isInternalError]) {
+    jsonDict[@".tag"] = @"internal_error";
+  } else if ([valueObj isTooManyWriteOperations]) {
+    jsonDict[@".tag"] = @"too_many_write_operations";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESRelocationBatchErrorEntry *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"relocation_error"]) {
+    DBFILESRelocationError *relocationError =
+        [DBFILESRelocationErrorSerializer deserialize:valueDict[@"relocation_error"]];
+    return [[DBFILESRelocationBatchErrorEntry alloc] initWithRelocationError:relocationError];
+  } else if ([tag isEqualToString:@"internal_error"]) {
+    return [[DBFILESRelocationBatchErrorEntry alloc] initWithInternalError];
+  } else if ([tag isEqualToString:@"too_many_write_operations"]) {
+    return [[DBFILESRelocationBatchErrorEntry alloc] initWithTooManyWriteOperations];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESRelocationBatchErrorEntry alloc] initWithOther];
+  } else {
+    return [[DBFILESRelocationBatchErrorEntry alloc] initWithOther];
   }
 }
 
@@ -13156,6 +13662,672 @@
   DBFILESMetadata *metadata = [DBFILESMetadataSerializer deserialize:valueDict[@"metadata"]];
 
   return [[DBFILESRelocationBatchResultData alloc] initWithMetadata:metadata];
+}
+
+@end
+
+#import "DBFILESMetadata.h"
+#import "DBFILESRelocationBatchErrorEntry.h"
+#import "DBFILESRelocationBatchResultEntry.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESRelocationBatchResultEntry
+
+@synthesize success = _success;
+@synthesize failure = _failure;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSuccess:(DBFILESMetadata *)success {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchResultEntrySuccess;
+    _success = success;
+  }
+  return self;
+}
+
+- (instancetype)initWithFailure:(DBFILESRelocationBatchErrorEntry *)failure {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchResultEntryFailure;
+    _failure = failure;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchResultEntryOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBFILESMetadata *)success {
+  if (![self isSuccess]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESRelocationBatchResultEntrySuccess, but was %@.", [self tagName]];
+  }
+  return _success;
+}
+
+- (DBFILESRelocationBatchErrorEntry *)failure {
+  if (![self isFailure]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESRelocationBatchResultEntryFailure, but was %@.", [self tagName]];
+  }
+  return _failure;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isSuccess {
+  return _tag == DBFILESRelocationBatchResultEntrySuccess;
+}
+
+- (BOOL)isFailure {
+  return _tag == DBFILESRelocationBatchResultEntryFailure;
+}
+
+- (BOOL)isOther {
+  return _tag == DBFILESRelocationBatchResultEntryOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBFILESRelocationBatchResultEntrySuccess:
+    return @"DBFILESRelocationBatchResultEntrySuccess";
+  case DBFILESRelocationBatchResultEntryFailure:
+    return @"DBFILESRelocationBatchResultEntryFailure";
+  case DBFILESRelocationBatchResultEntryOther:
+    return @"DBFILESRelocationBatchResultEntryOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESRelocationBatchResultEntrySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESRelocationBatchResultEntrySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESRelocationBatchResultEntrySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBFILESRelocationBatchResultEntrySuccess:
+    result = prime * result + [self.success hash];
+  case DBFILESRelocationBatchResultEntryFailure:
+    result = prime * result + [self.failure hash];
+  case DBFILESRelocationBatchResultEntryOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRelocationBatchResultEntry:other];
+}
+
+- (BOOL)isEqualToRelocationBatchResultEntry:(DBFILESRelocationBatchResultEntry *)aRelocationBatchResultEntry {
+  if (self == aRelocationBatchResultEntry) {
+    return YES;
+  }
+  if (self.tag != aRelocationBatchResultEntry.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBFILESRelocationBatchResultEntrySuccess:
+    return [self.success isEqual:aRelocationBatchResultEntry.success];
+  case DBFILESRelocationBatchResultEntryFailure:
+    return [self.failure isEqual:aRelocationBatchResultEntry.failure];
+  case DBFILESRelocationBatchResultEntryOther:
+    return [[self tagName] isEqual:[aRelocationBatchResultEntry tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESRelocationBatchResultEntrySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchResultEntry *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isSuccess]) {
+    jsonDict[@"success"] = [[DBFILESMetadataSerializer serialize:valueObj.success] mutableCopy];
+    jsonDict[@".tag"] = @"success";
+  } else if ([valueObj isFailure]) {
+    jsonDict[@"failure"] = [[DBFILESRelocationBatchErrorEntrySerializer serialize:valueObj.failure] mutableCopy];
+    jsonDict[@".tag"] = @"failure";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESRelocationBatchResultEntry *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"success"]) {
+    DBFILESMetadata *success = [DBFILESMetadataSerializer deserialize:valueDict[@"success"]];
+    return [[DBFILESRelocationBatchResultEntry alloc] initWithSuccess:success];
+  } else if ([tag isEqualToString:@"failure"]) {
+    DBFILESRelocationBatchErrorEntry *failure =
+        [DBFILESRelocationBatchErrorEntrySerializer deserialize:valueDict[@"failure"]];
+    return [[DBFILESRelocationBatchResultEntry alloc] initWithFailure:failure];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESRelocationBatchResultEntry alloc] initWithOther];
+  } else {
+    return [[DBFILESRelocationBatchResultEntry alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBASYNCPollResultBase.h"
+#import "DBFILESRelocationBatchV2JobStatus.h"
+#import "DBFILESRelocationBatchV2Result.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESRelocationBatchV2JobStatus
+
+@synthesize complete = _complete;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInProgress {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchV2JobStatusInProgress;
+  }
+  return self;
+}
+
+- (instancetype)initWithComplete:(DBFILESRelocationBatchV2Result *)complete {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchV2JobStatusComplete;
+    _complete = complete;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBFILESRelocationBatchV2Result *)complete {
+  if (![self isComplete]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESRelocationBatchV2JobStatusComplete, but was %@.", [self tagName]];
+  }
+  return _complete;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInProgress {
+  return _tag == DBFILESRelocationBatchV2JobStatusInProgress;
+}
+
+- (BOOL)isComplete {
+  return _tag == DBFILESRelocationBatchV2JobStatusComplete;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBFILESRelocationBatchV2JobStatusInProgress:
+    return @"DBFILESRelocationBatchV2JobStatusInProgress";
+  case DBFILESRelocationBatchV2JobStatusComplete:
+    return @"DBFILESRelocationBatchV2JobStatusComplete";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESRelocationBatchV2JobStatusSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESRelocationBatchV2JobStatusSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESRelocationBatchV2JobStatusSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBFILESRelocationBatchV2JobStatusInProgress:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationBatchV2JobStatusComplete:
+    result = prime * result + [self.complete hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRelocationBatchV2JobStatus:other];
+}
+
+- (BOOL)isEqualToRelocationBatchV2JobStatus:(DBFILESRelocationBatchV2JobStatus *)aRelocationBatchV2JobStatus {
+  if (self == aRelocationBatchV2JobStatus) {
+    return YES;
+  }
+  if (self.tag != aRelocationBatchV2JobStatus.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBFILESRelocationBatchV2JobStatusInProgress:
+    return [[self tagName] isEqual:[aRelocationBatchV2JobStatus tagName]];
+  case DBFILESRelocationBatchV2JobStatusComplete:
+    return [self.complete isEqual:aRelocationBatchV2JobStatus.complete];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESRelocationBatchV2JobStatusSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchV2JobStatus *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInProgress]) {
+    jsonDict[@".tag"] = @"in_progress";
+  } else if ([valueObj isComplete]) {
+    jsonDict = [[DBFILESRelocationBatchV2ResultSerializer serialize:valueObj.complete] mutableCopy];
+    jsonDict[@".tag"] = @"complete";
+  } else {
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESRelocationBatchV2JobStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"in_progress"]) {
+    return [[DBFILESRelocationBatchV2JobStatus alloc] initWithInProgress];
+  } else if ([tag isEqualToString:@"complete"]) {
+    DBFILESRelocationBatchV2Result *complete = [DBFILESRelocationBatchV2ResultSerializer deserialize:valueDict];
+    return [[DBFILESRelocationBatchV2JobStatus alloc] initWithComplete:complete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
+  }
+}
+
+@end
+
+#import "DBASYNCLaunchResultBase.h"
+#import "DBFILESRelocationBatchV2Launch.h"
+#import "DBFILESRelocationBatchV2Result.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESRelocationBatchV2Launch
+
+@synthesize asyncJobId = _asyncJobId;
+@synthesize complete = _complete;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchV2LaunchAsyncJobId;
+    _asyncJobId = asyncJobId;
+  }
+  return self;
+}
+
+- (instancetype)initWithComplete:(DBFILESRelocationBatchV2Result *)complete {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchV2LaunchComplete;
+    _complete = complete;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSString *)asyncJobId {
+  if (![self isAsyncJobId]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESRelocationBatchV2LaunchAsyncJobId, but was %@.", [self tagName]];
+  }
+  return _asyncJobId;
+}
+
+- (DBFILESRelocationBatchV2Result *)complete {
+  if (![self isComplete]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESRelocationBatchV2LaunchComplete, but was %@.", [self tagName]];
+  }
+  return _complete;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isAsyncJobId {
+  return _tag == DBFILESRelocationBatchV2LaunchAsyncJobId;
+}
+
+- (BOOL)isComplete {
+  return _tag == DBFILESRelocationBatchV2LaunchComplete;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBFILESRelocationBatchV2LaunchAsyncJobId:
+    return @"DBFILESRelocationBatchV2LaunchAsyncJobId";
+  case DBFILESRelocationBatchV2LaunchComplete:
+    return @"DBFILESRelocationBatchV2LaunchComplete";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESRelocationBatchV2LaunchSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESRelocationBatchV2LaunchSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESRelocationBatchV2LaunchSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBFILESRelocationBatchV2LaunchAsyncJobId:
+    result = prime * result + [self.asyncJobId hash];
+  case DBFILESRelocationBatchV2LaunchComplete:
+    result = prime * result + [self.complete hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRelocationBatchV2Launch:other];
+}
+
+- (BOOL)isEqualToRelocationBatchV2Launch:(DBFILESRelocationBatchV2Launch *)aRelocationBatchV2Launch {
+  if (self == aRelocationBatchV2Launch) {
+    return YES;
+  }
+  if (self.tag != aRelocationBatchV2Launch.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBFILESRelocationBatchV2LaunchAsyncJobId:
+    return [self.asyncJobId isEqual:aRelocationBatchV2Launch.asyncJobId];
+  case DBFILESRelocationBatchV2LaunchComplete:
+    return [self.complete isEqual:aRelocationBatchV2Launch.complete];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESRelocationBatchV2LaunchSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchV2Launch *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isAsyncJobId]) {
+    jsonDict[@"async_job_id"] = valueObj.asyncJobId;
+    jsonDict[@".tag"] = @"async_job_id";
+  } else if ([valueObj isComplete]) {
+    jsonDict = [[DBFILESRelocationBatchV2ResultSerializer serialize:valueObj.complete] mutableCopy];
+    jsonDict[@".tag"] = @"complete";
+  } else {
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESRelocationBatchV2Launch *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"async_job_id"]) {
+    NSString *asyncJobId = valueDict[@"async_job_id"];
+    return [[DBFILESRelocationBatchV2Launch alloc] initWithAsyncJobId:asyncJobId];
+  } else if ([tag isEqualToString:@"complete"]) {
+    DBFILESRelocationBatchV2Result *complete = [DBFILESRelocationBatchV2ResultSerializer deserialize:valueDict];
+    return [[DBFILESRelocationBatchV2Launch alloc] initWithComplete:complete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
+  }
+}
+
+@end
+
+#import "DBFILESFileOpsResult.h"
+#import "DBFILESRelocationBatchResultEntry.h"
+#import "DBFILESRelocationBatchV2Result.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESRelocationBatchV2Result
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEntries:(NSArray<DBFILESRelocationBatchResultEntry *> *)entries {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
+
+  self = [super initDefault];
+  if (self) {
+    _entries = entries;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESRelocationBatchV2ResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESRelocationBatchV2ResultSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESRelocationBatchV2ResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.entries hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRelocationBatchV2Result:other];
+}
+
+- (BOOL)isEqualToRelocationBatchV2Result:(DBFILESRelocationBatchV2Result *)aRelocationBatchV2Result {
+  if (self == aRelocationBatchV2Result) {
+    return YES;
+  }
+  if (![self.entries isEqual:aRelocationBatchV2Result.entries]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESRelocationBatchV2ResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchV2Result *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESRelocationBatchResultEntrySerializer serialize:elem0];
+                                            }];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESRelocationBatchV2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<DBFILESRelocationBatchResultEntry *> *entries =
+      [DBArraySerializer deserialize:valueDict[@"entries"]
+                           withBlock:^id(id elem0) {
+                             return [DBFILESRelocationBatchResultEntrySerializer deserialize:elem0];
+                           }];
+
+  return [[DBFILESRelocationBatchV2Result alloc] initWithEntries:entries];
 }
 
 @end

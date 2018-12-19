@@ -29,8 +29,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the dCopy route object.
 + (DBRoute *)DBFILESDCopy;
 
+/// Accessor method for the dCopyBatchV2 route object.
++ (DBRoute *)DBFILESDCopyBatchV2;
+
 /// Accessor method for the dCopyBatch route object.
 + (DBRoute *)DBFILESDCopyBatch;
+
+/// Accessor method for the dCopyBatchCheckV2 route object.
++ (DBRoute *)DBFILESDCopyBatchCheckV2;
 
 /// Accessor method for the dCopyBatchCheck route object.
 + (DBRoute *)DBFILESDCopyBatchCheck;
@@ -110,8 +116,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the move route object.
 + (DBRoute *)DBFILESMove;
 
+/// Accessor method for the moveBatchV2 route object.
++ (DBRoute *)DBFILESMoveBatchV2;
+
 /// Accessor method for the moveBatch route object.
 + (DBRoute *)DBFILESMoveBatch;
+
+/// Accessor method for the moveBatchCheckV2 route object.
++ (DBRoute *)DBFILESMoveBatchCheckV2;
 
 /// Accessor method for the moveBatchCheck route object.
 + (DBRoute *)DBFILESMoveBatchCheck;

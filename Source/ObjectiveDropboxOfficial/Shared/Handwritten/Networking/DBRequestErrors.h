@@ -31,8 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized DBLocalizedUserMessage instance.
 ///
-- (instancetype)initWithText:(NSString *)text
-                      locale:(NSString *)locale;
+- (instancetype)initWithText:(NSString *)text locale:(NSString *)locale;
 
 ///
 /// Description method.

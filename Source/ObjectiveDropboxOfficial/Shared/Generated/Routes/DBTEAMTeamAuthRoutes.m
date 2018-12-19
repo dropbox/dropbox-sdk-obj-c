@@ -203,6 +203,7 @@
 #import "DBTEAMTeamNamespacesListArg.h"
 #import "DBTEAMTeamNamespacesListContinueArg.h"
 #import "DBTEAMTeamNamespacesListContinueError.h"
+#import "DBTEAMTeamNamespacesListError.h"
 #import "DBTEAMTeamNamespacesListResult.h"
 #import "DBTEAMTokenGetAuthenticatedAdminError.h"
 #import "DBTEAMTokenGetAuthenticatedAdminResult.h"

@@ -71,6 +71,9 @@
 @class DBFILESRelocationBatchJobStatus;
 @class DBFILESRelocationBatchLaunch;
 @class DBFILESRelocationBatchResult;
+@class DBFILESRelocationBatchV2JobStatus;
+@class DBFILESRelocationBatchV2Launch;
+@class DBFILESRelocationBatchV2Result;
 @class DBFILESRelocationError;
 @class DBFILESRelocationPath;
 @class DBFILESRelocationResult;
@@ -321,32 +324,59 @@ alphaUploadStream:(NSString *)path
     __deprecated_msg("dCopy is deprecated. Use dCopy.");
 
 ///
-/// Copy multiple files or folders to different locations at once in the user's Dropbox. If `allowSharedFolder` in
-/// `DBFILESRelocationBatchArg` is false, this route is atomic. If one entry fails, the whole transaction will abort. If
-/// `allowSharedFolder` in `DBFILESRelocationBatchArg` is true, atomicity is not guaranteed, but it allows you to copy
-/// the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job
-/// in background. Please use `dCopyBatchCheck` to check the job status.
+/// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
+/// `dCopyBatch`. The main difference is this route will return stutus for each entry, while `dCopyBatch` raises failure
+/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
+/// background. Please use `dCopyBatchCheck` to check the job status.
 ///
 /// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)dCopyBatchV2:
+    (NSArray<DBFILESRelocationPath *> *)entries;
+
+///
+/// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
+/// `dCopyBatch`. The main difference is this route will return stutus for each entry, while `dCopyBatch` raises failure
+/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
+/// background. Please use `dCopyBatchCheck` to check the job status.
+///
+/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
+/// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
+/// the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)dCopyBatchV2:(NSArray<DBFILESRelocationPath *> *)entries
+                                                                  autorename:(nullable NSNumber *)autorename;
+
+///
+/// DEPRECATED: Copy multiple files or folders to different locations at once in the user's Dropbox. If
+/// `allowSharedFolder` in `DBFILESRelocationBatchArg` is false, this route is atomic. If one entry fails, the whole
+/// transaction will abort. If `allowSharedFolder` in `DBFILESRelocationBatchArg` is true, atomicity is not guaranteed,
+/// but it allows you to copy the contents of shared folders to new locations. This route will return job ID immediately
+/// and do the async copy job in background. Please use `dCopyBatchCheck` to check the job status.
+///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchLaunch` object on success or
 /// a `void` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> *)dCopyBatch:(NSArray<DBFILESRelocationPath *> *)entries;
+- (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> *)dCopyBatch:(NSArray<DBFILESRelocationPath *> *)entries
+    __deprecated_msg("dCopyBatch is deprecated. Use dCopyBatch.");
 
 ///
-/// Copy multiple files or folders to different locations at once in the user's Dropbox. If `allowSharedFolder` in
-/// `DBFILESRelocationBatchArg` is false, this route is atomic. If one entry fails, the whole transaction will abort. If
-/// `allowSharedFolder` in `DBFILESRelocationBatchArg` is true, atomicity is not guaranteed, but it allows you to copy
-/// the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job
-/// in background. Please use `dCopyBatchCheck` to check the job status.
+/// DEPRECATED: Copy multiple files or folders to different locations at once in the user's Dropbox. If
+/// `allowSharedFolder` in `DBFILESRelocationBatchArg` is false, this route is atomic. If one entry fails, the whole
+/// transaction will abort. If `allowSharedFolder` in `DBFILESRelocationBatchArg` is true, atomicity is not guaranteed,
+/// but it allows you to copy the contents of shared folders to new locations. This route will return job ID immediately
+/// and do the async copy job in background. Please use `dCopyBatchCheck` to check the job status.
 ///
-/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
 /// @param allowSharedFolder If true, `dCopyBatch` will copy contents in shared folder, otherwise `cantCopySharedFolder`
-/// in `DBFILESRelocationError` will be returned if `fromPath` in `DBFILESRelocationPath` contains shared folder.  This
+/// in `DBFILESRelocationError` will be returned if `fromPath` in `DBFILESRelocationPath` contains shared folder. This
 /// field is always true for `moveBatch`.
-/// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
-/// the conflict.
 /// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
 /// being moved. This does not apply to copies.
 ///
@@ -354,12 +384,25 @@ alphaUploadStream:(NSString *)path
 /// a `void` object on failure.
 ///
 - (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> *)dCopyBatch:(NSArray<DBFILESRelocationPath *> *)entries
-                                                       allowSharedFolder:(nullable NSNumber *)allowSharedFolder
                                                               autorename:(nullable NSNumber *)autorename
-                                                  allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
+                                                       allowSharedFolder:(nullable NSNumber *)allowSharedFolder
+                                                  allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer
+    __deprecated_msg("dCopyBatch is deprecated. Use dCopyBatch.");
 
 ///
-/// Returns the status of an asynchronous job for `dCopyBatch`. If success, it returns list of results for each entry.
+/// Returns the status of an asynchronous job for `dCopyBatch`. It returns list of results for each entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2JobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2JobStatus *, DBASYNCPollError *> *)dCopyBatchCheckV2:(NSString *)asyncJobId;
+
+///
+/// DEPRECATED: Returns the status of an asynchronous job for `dCopyBatch`. If success, it returns list of results for
+/// each entry.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -367,7 +410,8 @@ alphaUploadStream:(NSString *)path
 /// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchJobStatus` object on success
 /// or a `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchJobStatus *, DBASYNCPollError *> *)dCopyBatchCheck:(NSString *)asyncJobId;
+- (DBRpcTask<DBFILESRelocationBatchJobStatus *, DBASYNCPollError *> *)dCopyBatchCheck:(NSString *)asyncJobId
+    __deprecated_msg("dCopyBatchCheck is deprecated. Use dCopyBatchCheck.");
 
 ///
 /// Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another
@@ -1475,11 +1519,38 @@ listRevisions:(NSString *)path
     __deprecated_msg("move is deprecated. Use move.");
 
 ///
+/// Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace
+/// `moveBatch`. The main difference is this route will return stutus for each entry, while `moveBatch` raises failure
+/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in
+/// background. Please use `moveBatchCheck` to check the job status.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries;
+
+///
+/// Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace
+/// `moveBatch`. The main difference is this route will return stutus for each entry, while `moveBatch` raises failure
+/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in
+/// background. Please use `moveBatchCheck` to check the job status.
+///
+/// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
+/// being moved. This does not apply to copies.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries
+                                                                 autorename:(nullable NSNumber *)autorename
+                                                     allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
+
+///
 /// Move multiple files or folders to different locations at once in the user's Dropbox. This route is 'all or nothing',
 /// which means if one entry fails, the whole transaction will abort. This route will return job ID immediately and do
 /// the async moving job in background. Please use `moveBatchCheck` to check the job status.
 ///
-/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchLaunch` object on success or
 /// a `void` object on failure.
@@ -1491,12 +1562,9 @@ listRevisions:(NSString *)path
 /// which means if one entry fails, the whole transaction will abort. This route will return job ID immediately and do
 /// the async moving job in background. Please use `moveBatchCheck` to check the job status.
 ///
-/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
 /// @param allowSharedFolder If true, `dCopyBatch` will copy contents in shared folder, otherwise `cantCopySharedFolder`
-/// in `DBFILESRelocationError` will be returned if `fromPath` in `DBFILESRelocationPath` contains shared folder.  This
+/// in `DBFILESRelocationError` will be returned if `fromPath` in `DBFILESRelocationPath` contains shared folder. This
 /// field is always true for `moveBatch`.
-/// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
-/// the conflict.
 /// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
 /// being moved. This does not apply to copies.
 ///
@@ -1504,9 +1572,20 @@ listRevisions:(NSString *)path
 /// a `void` object on failure.
 ///
 - (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> *)moveBatch:(NSArray<DBFILESRelocationPath *> *)entries
-                                                      allowSharedFolder:(nullable NSNumber *)allowSharedFolder
                                                              autorename:(nullable NSNumber *)autorename
+                                                      allowSharedFolder:(nullable NSNumber *)allowSharedFolder
                                                  allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
+
+///
+/// Returns the status of an asynchronous job for `moveBatch`. It returns list of results for each entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2JobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2JobStatus *, DBASYNCPollError *> *)moveBatchCheckV2:(NSString *)asyncJobId;
 
 ///
 /// Returns the status of an asynchronous job for `moveBatch`. If success, it returns list of results for each entry.
@@ -1634,8 +1713,9 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 - (DBRpcTask<DBFILESFileMetadata *, DBFILESRestoreError *> *)restore:(NSString *)path rev:(NSString *)rev;
 
 ///
-/// Save a specified URL into a file in user's Dropbox. If the given path already exists, the file will be renamed to
-/// avoid the conflict (e.g. myfile (1).txt).
+/// Save the data from a specified URL into a file in user's Dropbox. Note that the transfer from the URL must complete
+/// within 5 minutes, or the operation will time out and the job will fail. If the given path already exists, the file
+/// will be renamed to avoid the conflict (e.g. myfile (1).txt).
 ///
 /// @param path The path in Dropbox where the URL will be saved to.
 /// @param url The URL to be saved.

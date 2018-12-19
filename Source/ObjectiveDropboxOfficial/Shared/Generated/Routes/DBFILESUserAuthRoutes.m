@@ -90,14 +90,19 @@
 #import "DBFILESLookupError.h"
 #import "DBFILESMediaInfo.h"
 #import "DBFILESMetadata.h"
+#import "DBFILESMoveBatchArg.h"
 #import "DBFILESPreviewArg.h"
 #import "DBFILESPreviewError.h"
 #import "DBFILESRelocationArg.h"
 #import "DBFILESRelocationBatchArg.h"
+#import "DBFILESRelocationBatchArgBase.h"
 #import "DBFILESRelocationBatchError.h"
 #import "DBFILESRelocationBatchJobStatus.h"
 #import "DBFILESRelocationBatchLaunch.h"
 #import "DBFILESRelocationBatchResult.h"
+#import "DBFILESRelocationBatchV2JobStatus.h"
+#import "DBFILESRelocationBatchV2Launch.h"
+#import "DBFILESRelocationBatchV2Result.h"
 #import "DBFILESRelocationError.h"
 #import "DBFILESRelocationPath.h"
 #import "DBFILESRelocationResult.h"
@@ -291,6 +296,19 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)dCopyBatchV2:(NSArray<DBFILESRelocationPath *> *)entries {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatchV2;
+  DBFILESRelocationBatchArgBase *arg = [[DBFILESRelocationBatchArgBase alloc] initWithEntries:entries];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)dCopyBatchV2:(NSArray<DBFILESRelocationPath *> *)entries autorename:(NSNumber *)autorename {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatchV2;
+  DBFILESRelocationBatchArgBase *arg =
+      [[DBFILESRelocationBatchArgBase alloc] initWithEntries:entries autorename:autorename];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)dCopyBatch:(NSArray<DBFILESRelocationPath *> *)entries {
   DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatch;
   DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries];
@@ -298,14 +316,20 @@
 }
 
 - (DBRpcTask *)dCopyBatch:(NSArray<DBFILESRelocationPath *> *)entries
-         allowSharedFolder:(NSNumber *)allowSharedFolder
                 autorename:(NSNumber *)autorename
+         allowSharedFolder:(NSNumber *)allowSharedFolder
     allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
   DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatch;
   DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries
-                                                                    allowSharedFolder:allowSharedFolder
                                                                            autorename:autorename
+                                                                    allowSharedFolder:allowSharedFolder
                                                                allowOwnershipTransfer:allowOwnershipTransfer];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)dCopyBatchCheckV2:(NSString *)asyncJobId {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatchCheckV2;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -849,6 +873,22 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatchV2;
+  DBFILESMoveBatchArg *arg = [[DBFILESMoveBatchArg alloc] initWithEntries:entries];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries
+                autorename:(NSNumber *)autorename
+    allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatchV2;
+  DBFILESMoveBatchArg *arg = [[DBFILESMoveBatchArg alloc] initWithEntries:entries
+                                                               autorename:autorename
+                                                   allowOwnershipTransfer:allowOwnershipTransfer];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)moveBatch:(NSArray<DBFILESRelocationPath *> *)entries {
   DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatch;
   DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries];
@@ -856,14 +896,20 @@
 }
 
 - (DBRpcTask *)moveBatch:(NSArray<DBFILESRelocationPath *> *)entries
-         allowSharedFolder:(NSNumber *)allowSharedFolder
                 autorename:(NSNumber *)autorename
+         allowSharedFolder:(NSNumber *)allowSharedFolder
     allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
   DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatch;
   DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries
-                                                                    allowSharedFolder:allowSharedFolder
                                                                            autorename:autorename
+                                                                    allowSharedFolder:allowSharedFolder
                                                                allowOwnershipTransfer:allowOwnershipTransfer];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)moveBatchCheckV2:(NSString *)asyncJobId {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatchCheckV2;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }
 

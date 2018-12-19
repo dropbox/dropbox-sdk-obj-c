@@ -64,6 +64,11 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
   /// The current user does not have enough space to move or copy the files.
   DBFILESRelocationBatchErrorInsufficientQuota,
 
+  /// Something went wrong with the job on Dropbox's end. You'll need to
+  /// verify that the action you were taking succeeded, and if not, try again.
+  /// This should happen very rarely.
+  DBFILESRelocationBatchErrorInternalError,
+
   /// (no description).
   DBFILESRelocationBatchErrorOther,
 
@@ -190,6 +195,17 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 - (instancetype)initWithInsufficientQuota;
 
 ///
+/// Initializes union class with tag state of "internal_error".
+///
+/// Description of the "internal_error" tag state: Something went wrong with the
+/// job on Dropbox's end. You'll need to verify that the action you were taking
+/// succeeded, and if not, try again. This should happen very rarely.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInternalError;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -300,6 +316,13 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// "insufficient_quota".
 ///
 - (BOOL)isInsufficientQuota;
+
+///
+/// Retrieves whether the union's current tag state has value "internal_error".
+///
+/// @return Whether the union's current tag state has value "internal_error".
+///
+- (BOOL)isInternalError;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

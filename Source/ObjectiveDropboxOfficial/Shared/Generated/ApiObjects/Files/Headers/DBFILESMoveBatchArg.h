@@ -9,7 +9,7 @@
 #import "DBFILESRelocationBatchArgBase.h"
 #import "DBSerializableProtocol.h"
 
-@class DBFILESRelocationBatchArg;
+@class DBFILESMoveBatchArg;
 @class DBFILESRelocationPath;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,21 +17,15 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - API Object
 
 ///
-/// The `RelocationBatchArg` struct.
+/// The `MoveBatchArg` struct.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESRelocationBatchArg : DBFILESRelocationBatchArgBase <DBSerializable, NSCopying>
+@interface DBFILESMoveBatchArg : DBFILESRelocationBatchArgBase <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
-
-/// If true, `dCopyBatch` will copy contents in shared folder, otherwise
-/// `cantCopySharedFolder` in `DBFILESRelocationError` will be returned if
-/// `fromPath` in `DBFILESRelocationPath` contains shared folder. This field is
-/// always true for `moveBatch`.
-@property (nonatomic, readonly) NSNumber *allowSharedFolder;
 
 /// Allow moves by owner even if it would result in an ownership transfer for
 /// the content being moved. This does not apply to copies.
@@ -46,10 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// RelocationPath.
 /// @param autorename If there's a conflict with any file, have the Dropbox
 /// server try to autorename that file to avoid the conflict.
-/// @param allowSharedFolder If true, `dCopyBatch` will copy contents in shared
-/// folder, otherwise `cantCopySharedFolder` in `DBFILESRelocationError` will be
-/// returned if `fromPath` in `DBFILESRelocationPath` contains shared folder.
-/// This field is always true for `moveBatch`.
 /// @param allowOwnershipTransfer Allow moves by owner even if it would result
 /// in an ownership transfer for the content being moved. This does not apply to
 /// copies.
@@ -58,7 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries
                      autorename:(nullable NSNumber *)autorename
-              allowSharedFolder:(nullable NSNumber *)allowSharedFolder
          allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
 
 ///
@@ -77,29 +66,29 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `RelocationBatchArg` struct.
+/// The serialization class for the `MoveBatchArg` struct.
 ///
-@interface DBFILESRelocationBatchArgSerializer : NSObject
+@interface DBFILESMoveBatchArgSerializer : NSObject
 
 ///
-/// Serializes `DBFILESRelocationBatchArg` instances.
+/// Serializes `DBFILESMoveBatchArg` instances.
 ///
-/// @param instance An instance of the `DBFILESRelocationBatchArg` API object.
+/// @param instance An instance of the `DBFILESMoveBatchArg` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// `DBFILESRelocationBatchArg` API object.
+/// `DBFILESMoveBatchArg` API object.
 ///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchArg *)instance;
++ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESMoveBatchArg *)instance;
 
 ///
-/// Deserializes `DBFILESRelocationBatchArg` instances.
+/// Deserializes `DBFILESMoveBatchArg` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// `DBFILESRelocationBatchArg` API object.
+/// `DBFILESMoveBatchArg` API object.
 ///
-/// @return An instantiation of the `DBFILESRelocationBatchArg` object.
+/// @return An instantiation of the `DBFILESMoveBatchArg` object.
 ///
-+ (DBFILESRelocationBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
++ (DBFILESMoveBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
 
 @end
 

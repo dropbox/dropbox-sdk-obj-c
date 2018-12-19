@@ -13,20 +13,17 @@
 
 @implementation DBLocalizedUserMessage
 
-- (instancetype)initWithText:(NSString *)text
-                      locale:(NSString *)locale
-{
-    self = [super init];
-    if (self) {
-        _text = [text copy];
-        _locale = [locale copy];
-    }
-    return self;
+- (instancetype)initWithText:(NSString *)text locale:(NSString *)locale {
+  self = [super init];
+  if (self) {
+    _text = [text copy];
+    _locale = [locale copy];
+  }
+  return self;
 }
 
-- (NSString *)description
-{
-    return self.text;
+- (NSString *)description {
+  return self.text;
 }
 
 @end

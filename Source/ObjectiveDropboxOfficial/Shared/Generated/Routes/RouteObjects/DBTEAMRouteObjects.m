@@ -139,6 +139,7 @@
 #import "DBTEAMTeamMemberInfo.h"
 #import "DBTEAMTeamMemberProfile.h"
 #import "DBTEAMTeamNamespacesListContinueError.h"
+#import "DBTEAMTeamNamespacesListError.h"
 #import "DBTEAMTeamNamespacesListResult.h"
 #import "DBTEAMTokenGetAuthenticatedAdminError.h"
 #import "DBTEAMTokenGetAuthenticatedAdminResult.h"
@@ -1082,7 +1083,7 @@ static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
                                       namespace_:@"team"
                                       deprecated:@NO
                                       resultType:[DBTEAMTeamNamespacesListResult class]
-                                       errorType:nil
+                                       errorType:[DBTEAMTeamNamespacesListError class]
                                            attrs:@{
                                              @"auth" : @"team",
                                              @"host" : @"api",

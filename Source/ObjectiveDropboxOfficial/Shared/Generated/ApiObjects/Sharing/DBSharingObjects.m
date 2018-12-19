@@ -10463,6 +10463,14 @@
   return self;
 }
 
+- (instancetype)initWithNoOne {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGLinkAudienceNoOne;
+  }
+  return self;
+}
+
 - (instancetype)initWithMembers {
   self = [super init];
   if (self) {
@@ -10491,6 +10499,10 @@
   return _tag == DBSHARINGLinkAudienceTeam;
 }
 
+- (BOOL)isNoOne {
+  return _tag == DBSHARINGLinkAudienceNoOne;
+}
+
 - (BOOL)isMembers {
   return _tag == DBSHARINGLinkAudienceMembers;
 }
@@ -10505,6 +10517,8 @@
     return @"DBSHARINGLinkAudiencePublic";
   case DBSHARINGLinkAudienceTeam:
     return @"DBSHARINGLinkAudienceTeam";
+  case DBSHARINGLinkAudienceNoOne:
+    return @"DBSHARINGLinkAudienceNoOne";
   case DBSHARINGLinkAudienceMembers:
     return @"DBSHARINGLinkAudienceMembers";
   case DBSHARINGLinkAudienceOther:
@@ -10549,6 +10563,8 @@
     result = prime * result + [[self tagName] hash];
   case DBSHARINGLinkAudienceTeam:
     result = prime * result + [[self tagName] hash];
+  case DBSHARINGLinkAudienceNoOne:
+    result = prime * result + [[self tagName] hash];
   case DBSHARINGLinkAudienceMembers:
     result = prime * result + [[self tagName] hash];
   case DBSHARINGLinkAudienceOther:
@@ -10582,6 +10598,8 @@
     return [[self tagName] isEqual:[aLinkAudience tagName]];
   case DBSHARINGLinkAudienceTeam:
     return [[self tagName] isEqual:[aLinkAudience tagName]];
+  case DBSHARINGLinkAudienceNoOne:
+    return [[self tagName] isEqual:[aLinkAudience tagName]];
   case DBSHARINGLinkAudienceMembers:
     return [[self tagName] isEqual:[aLinkAudience tagName]];
   case DBSHARINGLinkAudienceOther:
@@ -10603,6 +10621,8 @@
     jsonDict[@".tag"] = @"public";
   } else if ([valueObj isTeam]) {
     jsonDict[@".tag"] = @"team";
+  } else if ([valueObj isNoOne]) {
+    jsonDict[@".tag"] = @"no_one";
   } else if ([valueObj isMembers]) {
     jsonDict[@".tag"] = @"members";
   } else if ([valueObj isOther]) {
@@ -10621,6 +10641,8 @@
     return [[DBSHARINGLinkAudience alloc] initWithPublic];
   } else if ([tag isEqualToString:@"team"]) {
     return [[DBSHARINGLinkAudience alloc] initWithTeam];
+  } else if ([tag isEqualToString:@"no_one"]) {
+    return [[DBSHARINGLinkAudience alloc] initWithNoOne];
   } else if ([tag isEqualToString:@"members"]) {
     return [[DBSHARINGLinkAudience alloc] initWithMembers];
   } else if ([tag isEqualToString:@"other"]) {

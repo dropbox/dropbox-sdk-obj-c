@@ -4218,6 +4218,391 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGCameraUploadsPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGCameraUploadsPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGCameraUploadsPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGCameraUploadsPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGCameraUploadsPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGCameraUploadsPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGCameraUploadsPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGCameraUploadsPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGCameraUploadsPolicyDisabled:
+    return @"DBTEAMLOGCameraUploadsPolicyDisabled";
+  case DBTEAMLOGCameraUploadsPolicyEnabled:
+    return @"DBTEAMLOGCameraUploadsPolicyEnabled";
+  case DBTEAMLOGCameraUploadsPolicyOther:
+    return @"DBTEAMLOGCameraUploadsPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGCameraUploadsPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGCameraUploadsPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGCameraUploadsPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGCameraUploadsPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGCameraUploadsPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGCameraUploadsPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToCameraUploadsPolicy:other];
+}
+
+- (BOOL)isEqualToCameraUploadsPolicy:(DBTEAMLOGCameraUploadsPolicy *)aCameraUploadsPolicy {
+  if (self == aCameraUploadsPolicy) {
+    return YES;
+  }
+  if (self.tag != aCameraUploadsPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGCameraUploadsPolicyDisabled:
+    return [[self tagName] isEqual:[aCameraUploadsPolicy tagName]];
+  case DBTEAMLOGCameraUploadsPolicyEnabled:
+    return [[self tagName] isEqual:[aCameraUploadsPolicy tagName]];
+  case DBTEAMLOGCameraUploadsPolicyOther:
+    return [[self tagName] isEqual:[aCameraUploadsPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGCameraUploadsPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCameraUploadsPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGCameraUploadsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGCameraUploadsPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGCameraUploadsPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGCameraUploadsPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGCameraUploadsPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGCameraUploadsPolicy.h"
+#import "DBTEAMLOGCameraUploadsPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGCameraUploadsPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGCameraUploadsPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGCameraUploadsPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToCameraUploadsPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToCameraUploadsPolicyChangedDetails:
+    (DBTEAMLOGCameraUploadsPolicyChangedDetails *)aCameraUploadsPolicyChangedDetails {
+  if (self == aCameraUploadsPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aCameraUploadsPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aCameraUploadsPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCameraUploadsPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGCameraUploadsPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGCameraUploadsPolicySerializer serialize:valueObj.previousValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGCameraUploadsPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGCameraUploadsPolicy *dNewValue =
+      [DBTEAMLOGCameraUploadsPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGCameraUploadsPolicy *previousValue =
+      [DBTEAMLOGCameraUploadsPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return [[DBTEAMLOGCameraUploadsPolicyChangedDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGCameraUploadsPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGCameraUploadsPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGCameraUploadsPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGCameraUploadsPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGCameraUploadsPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToCameraUploadsPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToCameraUploadsPolicyChangedType:
+    (DBTEAMLOGCameraUploadsPolicyChangedType *)aCameraUploadsPolicyChangedType {
+  if (self == aCameraUploadsPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aCameraUploadsPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGCameraUploadsPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCameraUploadsPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGCameraUploadsPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGCameraUploadsPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGCertificate.h"
 
 #pragma mark - API Object
@@ -4771,6 +5156,7 @@
 #import "DBTEAMLOGContextLogInfo.h"
 #import "DBTEAMLOGNonTeamMemberLogInfo.h"
 #import "DBTEAMLOGTeamMemberLogInfo.h"
+#import "DBTEAMLOGTrustedNonTeamMemberLogInfo.h"
 
 #pragma mark - API Object
 
@@ -4778,6 +5164,7 @@
 
 @synthesize teamMember = _teamMember;
 @synthesize nonTeamMember = _nonTeamMember;
+@synthesize trustedNonTeamMember = _trustedNonTeamMember;
 
 #pragma mark - Constructors
 
@@ -4815,6 +5202,15 @@
   return self;
 }
 
+- (instancetype)initWithTrustedNonTeamMember:(DBTEAMLOGTrustedNonTeamMemberLogInfo *)trustedNonTeamMember {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGContextLogInfoTrustedNonTeamMember;
+    _trustedNonTeamMember = trustedNonTeamMember;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -4841,6 +5237,15 @@
   return _nonTeamMember;
 }
 
+- (DBTEAMLOGTrustedNonTeamMemberLogInfo *)trustedNonTeamMember {
+  if (![self isTrustedNonTeamMember]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGContextLogInfoTrustedNonTeamMember, but was %@.", [self tagName]];
+  }
+  return _trustedNonTeamMember;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isTeamMember {
@@ -4859,6 +5264,10 @@
   return _tag == DBTEAMLOGContextLogInfoTeam;
 }
 
+- (BOOL)isTrustedNonTeamMember {
+  return _tag == DBTEAMLOGContextLogInfoTrustedNonTeamMember;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGContextLogInfoOther;
 }
@@ -4873,6 +5282,8 @@
     return @"DBTEAMLOGContextLogInfoAnonymous";
   case DBTEAMLOGContextLogInfoTeam:
     return @"DBTEAMLOGContextLogInfoTeam";
+  case DBTEAMLOGContextLogInfoTrustedNonTeamMember:
+    return @"DBTEAMLOGContextLogInfoTrustedNonTeamMember";
   case DBTEAMLOGContextLogInfoOther:
     return @"DBTEAMLOGContextLogInfoOther";
   }
@@ -4919,6 +5330,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGContextLogInfoTeam:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGContextLogInfoTrustedNonTeamMember:
+    result = prime * result + [self.trustedNonTeamMember hash];
   case DBTEAMLOGContextLogInfoOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -4954,6 +5367,8 @@
     return [[self tagName] isEqual:[aContextLogInfo tagName]];
   case DBTEAMLOGContextLogInfoTeam:
     return [[self tagName] isEqual:[aContextLogInfo tagName]];
+  case DBTEAMLOGContextLogInfoTrustedNonTeamMember:
+    return [self.trustedNonTeamMember isEqual:aContextLogInfo.trustedNonTeamMember];
   case DBTEAMLOGContextLogInfoOther:
     return [[self tagName] isEqual:[aContextLogInfo tagName]];
   }
@@ -4979,6 +5394,9 @@
     jsonDict[@".tag"] = @"anonymous";
   } else if ([valueObj isTeam]) {
     jsonDict[@".tag"] = @"team";
+  } else if ([valueObj isTrustedNonTeamMember]) {
+    jsonDict = [[DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer serialize:valueObj.trustedNonTeamMember] mutableCopy];
+    jsonDict[@".tag"] = @"trusted_non_team_member";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -5001,6 +5419,10 @@
     return [[DBTEAMLOGContextLogInfo alloc] initWithAnonymous];
   } else if ([tag isEqualToString:@"team"]) {
     return [[DBTEAMLOGContextLogInfo alloc] initWithTeam];
+  } else if ([tag isEqualToString:@"trusted_non_team_member"]) {
+    DBTEAMLOGTrustedNonTeamMemberLogInfo *trustedNonTeamMember =
+        [DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer deserialize:valueDict];
+    return [[DBTEAMLOGContextLogInfo alloc] initWithTrustedNonTeamMember:trustedNonTeamMember];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGContextLogInfo alloc] initWithOther];
   } else {
@@ -14620,6 +15042,7 @@
 #import "DBTEAMLOGAppLinkUserDetails.h"
 #import "DBTEAMLOGAppUnlinkTeamDetails.h"
 #import "DBTEAMLOGAppUnlinkUserDetails.h"
+#import "DBTEAMLOGCameraUploadsPolicyChangedDetails.h"
 #import "DBTEAMLOGCollectionShareDetails.h"
 #import "DBTEAMLOGCreateFolderDetails.h"
 #import "DBTEAMLOGDataPlacementRestrictionChangePolicyDetails.h"
@@ -14669,6 +15092,7 @@
 #import "DBTEAMLOGFileDeleteCommentDetails.h"
 #import "DBTEAMLOGFileDeleteDetails.h"
 #import "DBTEAMLOGFileDownloadDetails.h"
+#import "DBTEAMLOGFileEditCommentDetails.h"
 #import "DBTEAMLOGFileEditDetails.h"
 #import "DBTEAMLOGFileGetCopyReferenceDetails.h"
 #import "DBTEAMLOGFileLikeCommentDetails.h"
@@ -14932,6 +15356,7 @@
 @synthesize fileAddCommentDetails = _fileAddCommentDetails;
 @synthesize fileChangeCommentSubscriptionDetails = _fileChangeCommentSubscriptionDetails;
 @synthesize fileDeleteCommentDetails = _fileDeleteCommentDetails;
+@synthesize fileEditCommentDetails = _fileEditCommentDetails;
 @synthesize fileLikeCommentDetails = _fileLikeCommentDetails;
 @synthesize fileResolveCommentDetails = _fileResolveCommentDetails;
 @synthesize fileUnlikeCommentDetails = _fileUnlikeCommentDetails;
@@ -15171,6 +15596,7 @@
 @synthesize accountCaptureChangePolicyDetails = _accountCaptureChangePolicyDetails;
 @synthesize allowDownloadDisabledDetails = _allowDownloadDisabledDetails;
 @synthesize allowDownloadEnabledDetails = _allowDownloadEnabledDetails;
+@synthesize cameraUploadsPolicyChangedDetails = _cameraUploadsPolicyChangedDetails;
 @synthesize dataPlacementRestrictionChangePolicyDetails = _dataPlacementRestrictionChangePolicyDetails;
 @synthesize dataPlacementRestrictionSatisfyPolicyDetails = _dataPlacementRestrictionSatisfyPolicyDetails;
 @synthesize deviceApprovalsChangeDesktopPolicyDetails = _deviceApprovalsChangeDesktopPolicyDetails;
@@ -15298,6 +15724,15 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsFileDeleteCommentDetails;
     _fileDeleteCommentDetails = fileDeleteCommentDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithFileEditCommentDetails:(DBTEAMLOGFileEditCommentDetails *)fileEditCommentDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsFileEditCommentDetails;
+    _fileEditCommentDetails = fileEditCommentDetails;
   }
   return self;
 }
@@ -17572,6 +18007,16 @@
   return self;
 }
 
+- (instancetype)initWithCameraUploadsPolicyChangedDetails:
+    (DBTEAMLOGCameraUploadsPolicyChangedDetails *)cameraUploadsPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails;
+    _cameraUploadsPolicyChangedDetails = cameraUploadsPolicyChangedDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithDataPlacementRestrictionChangePolicyDetails:
     (DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)dataPlacementRestrictionChangePolicyDetails {
   self = [super init];
@@ -18263,6 +18708,15 @@
         format:@"Invalid tag: required DBTEAMLOGEventDetailsFileDeleteCommentDetails, but was %@.", [self tagName]];
   }
   return _fileDeleteCommentDetails;
+}
+
+- (DBTEAMLOGFileEditCommentDetails *)fileEditCommentDetails {
+  if (![self isFileEditCommentDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsFileEditCommentDetails, but was %@.", [self tagName]];
+  }
+  return _fileEditCommentDetails;
 }
 
 - (DBTEAMLOGFileLikeCommentDetails *)fileLikeCommentDetails {
@@ -20404,6 +20858,15 @@
   return _allowDownloadEnabledDetails;
 }
 
+- (DBTEAMLOGCameraUploadsPolicyChangedDetails *)cameraUploadsPolicyChangedDetails {
+  if (![self isCameraUploadsPolicyChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _cameraUploadsPolicyChangedDetails;
+}
+
 - (DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)dataPlacementRestrictionChangePolicyDetails {
   if (![self isDataPlacementRestrictionChangePolicyDetails]) {
     [NSException
@@ -21022,6 +21485,10 @@
 
 - (BOOL)isFileDeleteCommentDetails {
   return _tag == DBTEAMLOGEventDetailsFileDeleteCommentDetails;
+}
+
+- (BOOL)isFileEditCommentDetails {
+  return _tag == DBTEAMLOGEventDetailsFileEditCommentDetails;
 }
 
 - (BOOL)isFileLikeCommentDetails {
@@ -21980,6 +22447,10 @@
   return _tag == DBTEAMLOGEventDetailsAllowDownloadEnabledDetails;
 }
 
+- (BOOL)isCameraUploadsPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails;
+}
+
 - (BOOL)isDataPlacementRestrictionChangePolicyDetails {
   return _tag == DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails;
 }
@@ -22256,6 +22727,8 @@
     return @"DBTEAMLOGEventDetailsFileChangeCommentSubscriptionDetails";
   case DBTEAMLOGEventDetailsFileDeleteCommentDetails:
     return @"DBTEAMLOGEventDetailsFileDeleteCommentDetails";
+  case DBTEAMLOGEventDetailsFileEditCommentDetails:
+    return @"DBTEAMLOGEventDetailsFileEditCommentDetails";
   case DBTEAMLOGEventDetailsFileLikeCommentDetails:
     return @"DBTEAMLOGEventDetailsFileLikeCommentDetails";
   case DBTEAMLOGEventDetailsFileResolveCommentDetails:
@@ -22734,6 +23207,8 @@
     return @"DBTEAMLOGEventDetailsAllowDownloadDisabledDetails";
   case DBTEAMLOGEventDetailsAllowDownloadEnabledDetails:
     return @"DBTEAMLOGEventDetailsAllowDownloadEnabledDetails";
+  case DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails";
   case DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails";
   case DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails:
@@ -22914,6 +23389,8 @@
     result = prime * result + [self.fileChangeCommentSubscriptionDetails hash];
   case DBTEAMLOGEventDetailsFileDeleteCommentDetails:
     result = prime * result + [self.fileDeleteCommentDetails hash];
+  case DBTEAMLOGEventDetailsFileEditCommentDetails:
+    result = prime * result + [self.fileEditCommentDetails hash];
   case DBTEAMLOGEventDetailsFileLikeCommentDetails:
     result = prime * result + [self.fileLikeCommentDetails hash];
   case DBTEAMLOGEventDetailsFileResolveCommentDetails:
@@ -23392,6 +23869,8 @@
     result = prime * result + [self.allowDownloadDisabledDetails hash];
   case DBTEAMLOGEventDetailsAllowDownloadEnabledDetails:
     result = prime * result + [self.allowDownloadEnabledDetails hash];
+  case DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails:
+    result = prime * result + [self.cameraUploadsPolicyChangedDetails hash];
   case DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails:
     result = prime * result + [self.dataPlacementRestrictionChangePolicyDetails hash];
   case DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails:
@@ -23561,6 +24040,8 @@
     return [self.fileChangeCommentSubscriptionDetails isEqual:anEventDetails.fileChangeCommentSubscriptionDetails];
   case DBTEAMLOGEventDetailsFileDeleteCommentDetails:
     return [self.fileDeleteCommentDetails isEqual:anEventDetails.fileDeleteCommentDetails];
+  case DBTEAMLOGEventDetailsFileEditCommentDetails:
+    return [self.fileEditCommentDetails isEqual:anEventDetails.fileEditCommentDetails];
   case DBTEAMLOGEventDetailsFileLikeCommentDetails:
     return [self.fileLikeCommentDetails isEqual:anEventDetails.fileLikeCommentDetails];
   case DBTEAMLOGEventDetailsFileResolveCommentDetails:
@@ -24057,6 +24538,8 @@
     return [self.allowDownloadDisabledDetails isEqual:anEventDetails.allowDownloadDisabledDetails];
   case DBTEAMLOGEventDetailsAllowDownloadEnabledDetails:
     return [self.allowDownloadEnabledDetails isEqual:anEventDetails.allowDownloadEnabledDetails];
+  case DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails:
+    return [self.cameraUploadsPolicyChangedDetails isEqual:anEventDetails.cameraUploadsPolicyChangedDetails];
   case DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails:
     return [self.dataPlacementRestrictionChangePolicyDetails
         isEqual:anEventDetails.dataPlacementRestrictionChangePolicyDetails];
@@ -24238,6 +24721,9 @@
   } else if ([valueObj isFileDeleteCommentDetails]) {
     jsonDict = [[DBTEAMLOGFileDeleteCommentDetailsSerializer serialize:valueObj.fileDeleteCommentDetails] mutableCopy];
     jsonDict[@".tag"] = @"file_delete_comment_details";
+  } else if ([valueObj isFileEditCommentDetails]) {
+    jsonDict = [[DBTEAMLOGFileEditCommentDetailsSerializer serialize:valueObj.fileEditCommentDetails] mutableCopy];
+    jsonDict[@".tag"] = @"file_edit_comment_details";
   } else if ([valueObj isFileLikeCommentDetails]) {
     jsonDict = [[DBTEAMLOGFileLikeCommentDetailsSerializer serialize:valueObj.fileLikeCommentDetails] mutableCopy];
     jsonDict[@".tag"] = @"file_like_comment_details";
@@ -25101,6 +25587,10 @@
     jsonDict =
         [[DBTEAMLOGAllowDownloadEnabledDetailsSerializer serialize:valueObj.allowDownloadEnabledDetails] mutableCopy];
     jsonDict[@".tag"] = @"allow_download_enabled_details";
+  } else if ([valueObj isCameraUploadsPolicyChangedDetails]) {
+    jsonDict = [[DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer
+        serialize:valueObj.cameraUploadsPolicyChangedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"camera_uploads_policy_changed_details";
   } else if ([valueObj isDataPlacementRestrictionChangePolicyDetails]) {
     jsonDict = [[DBTEAMLOGDataPlacementRestrictionChangePolicyDetailsSerializer
         serialize:valueObj.dataPlacementRestrictionChangePolicyDetails] mutableCopy];
@@ -25383,6 +25873,10 @@
     DBTEAMLOGFileDeleteCommentDetails *fileDeleteCommentDetails =
         [DBTEAMLOGFileDeleteCommentDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithFileDeleteCommentDetails:fileDeleteCommentDetails];
+  } else if ([tag isEqualToString:@"file_edit_comment_details"]) {
+    DBTEAMLOGFileEditCommentDetails *fileEditCommentDetails =
+        [DBTEAMLOGFileEditCommentDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithFileEditCommentDetails:fileEditCommentDetails];
   } else if ([tag isEqualToString:@"file_like_comment_details"]) {
     DBTEAMLOGFileLikeCommentDetails *fileLikeCommentDetails =
         [DBTEAMLOGFileLikeCommentDetailsSerializer deserialize:valueDict];
@@ -26358,6 +26852,10 @@
     DBTEAMLOGAllowDownloadEnabledDetails *allowDownloadEnabledDetails =
         [DBTEAMLOGAllowDownloadEnabledDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithAllowDownloadEnabledDetails:allowDownloadEnabledDetails];
+  } else if ([tag isEqualToString:@"camera_uploads_policy_changed_details"]) {
+    DBTEAMLOGCameraUploadsPolicyChangedDetails *cameraUploadsPolicyChangedDetails =
+        [DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithCameraUploadsPolicyChangedDetails:cameraUploadsPolicyChangedDetails];
   } else if ([tag isEqualToString:@"data_placement_restriction_change_policy_details"]) {
     DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *dataPlacementRestrictionChangePolicyDetails =
         [DBTEAMLOGDataPlacementRestrictionChangePolicyDetailsSerializer deserialize:valueDict];
@@ -26663,6 +27161,7 @@
 #import "DBTEAMLOGAppLinkUserType.h"
 #import "DBTEAMLOGAppUnlinkTeamType.h"
 #import "DBTEAMLOGAppUnlinkUserType.h"
+#import "DBTEAMLOGCameraUploadsPolicyChangedType.h"
 #import "DBTEAMLOGCollectionShareType.h"
 #import "DBTEAMLOGCreateFolderType.h"
 #import "DBTEAMLOGDataPlacementRestrictionChangePolicyType.h"
@@ -26712,6 +27211,7 @@
 #import "DBTEAMLOGFileDeleteCommentType.h"
 #import "DBTEAMLOGFileDeleteType.h"
 #import "DBTEAMLOGFileDownloadType.h"
+#import "DBTEAMLOGFileEditCommentType.h"
 #import "DBTEAMLOGFileEditType.h"
 #import "DBTEAMLOGFileGetCopyReferenceType.h"
 #import "DBTEAMLOGFileLikeCommentType.h"
@@ -26974,6 +27474,7 @@
 @synthesize fileAddComment = _fileAddComment;
 @synthesize fileChangeCommentSubscription = _fileChangeCommentSubscription;
 @synthesize fileDeleteComment = _fileDeleteComment;
+@synthesize fileEditComment = _fileEditComment;
 @synthesize fileLikeComment = _fileLikeComment;
 @synthesize fileResolveComment = _fileResolveComment;
 @synthesize fileUnlikeComment = _fileUnlikeComment;
@@ -27213,6 +27714,7 @@
 @synthesize accountCaptureChangePolicy = _accountCaptureChangePolicy;
 @synthesize allowDownloadDisabled = _allowDownloadDisabled;
 @synthesize allowDownloadEnabled = _allowDownloadEnabled;
+@synthesize cameraUploadsPolicyChanged = _cameraUploadsPolicyChanged;
 @synthesize dataPlacementRestrictionChangePolicy = _dataPlacementRestrictionChangePolicy;
 @synthesize dataPlacementRestrictionSatisfyPolicy = _dataPlacementRestrictionSatisfyPolicy;
 @synthesize deviceApprovalsChangeDesktopPolicy = _deviceApprovalsChangeDesktopPolicy;
@@ -27339,6 +27841,15 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeFileDeleteComment;
     _fileDeleteComment = fileDeleteComment;
+  }
+  return self;
+}
+
+- (instancetype)initWithFileEditComment:(DBTEAMLOGFileEditCommentType *)fileEditComment {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeFileEditComment;
+    _fileEditComment = fileEditComment;
   }
   return self;
 }
@@ -29553,6 +30064,16 @@
   return self;
 }
 
+- (instancetype)initWithCameraUploadsPolicyChanged:
+    (DBTEAMLOGCameraUploadsPolicyChangedType *)cameraUploadsPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeCameraUploadsPolicyChanged;
+    _cameraUploadsPolicyChanged = cameraUploadsPolicyChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithDataPlacementRestrictionChangePolicy:
     (DBTEAMLOGDataPlacementRestrictionChangePolicyType *)dataPlacementRestrictionChangePolicy {
   self = [super init];
@@ -30217,6 +30738,14 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypeFileDeleteComment, but was %@.", [self tagName]];
   }
   return _fileDeleteComment;
+}
+
+- (DBTEAMLOGFileEditCommentType *)fileEditComment {
+  if (![self isFileEditComment]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeFileEditComment, but was %@.", [self tagName]];
+  }
+  return _fileEditComment;
 }
 
 - (DBTEAMLOGFileLikeCommentType *)fileLikeComment {
@@ -32207,6 +32736,15 @@
   return _allowDownloadEnabled;
 }
 
+- (DBTEAMLOGCameraUploadsPolicyChangedType *)cameraUploadsPolicyChanged {
+  if (![self isCameraUploadsPolicyChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeCameraUploadsPolicyChanged, but was %@.", [self tagName]];
+  }
+  return _cameraUploadsPolicyChanged;
+}
+
 - (DBTEAMLOGDataPlacementRestrictionChangePolicyType *)dataPlacementRestrictionChangePolicy {
   if (![self isDataPlacementRestrictionChangePolicy]) {
     [NSException raise:@"IllegalStateException"
@@ -32775,6 +33313,10 @@
 
 - (BOOL)isFileDeleteComment {
   return _tag == DBTEAMLOGEventTypeFileDeleteComment;
+}
+
+- (BOOL)isFileEditComment {
+  return _tag == DBTEAMLOGEventTypeFileEditComment;
 }
 
 - (BOOL)isFileLikeComment {
@@ -33733,6 +34275,10 @@
   return _tag == DBTEAMLOGEventTypeAllowDownloadEnabled;
 }
 
+- (BOOL)isCameraUploadsPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeCameraUploadsPolicyChanged;
+}
+
 - (BOOL)isDataPlacementRestrictionChangePolicy {
   return _tag == DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy;
 }
@@ -34005,6 +34551,8 @@
     return @"DBTEAMLOGEventTypeFileChangeCommentSubscription";
   case DBTEAMLOGEventTypeFileDeleteComment:
     return @"DBTEAMLOGEventTypeFileDeleteComment";
+  case DBTEAMLOGEventTypeFileEditComment:
+    return @"DBTEAMLOGEventTypeFileEditComment";
   case DBTEAMLOGEventTypeFileLikeComment:
     return @"DBTEAMLOGEventTypeFileLikeComment";
   case DBTEAMLOGEventTypeFileResolveComment:
@@ -34483,6 +35031,8 @@
     return @"DBTEAMLOGEventTypeAllowDownloadDisabled";
   case DBTEAMLOGEventTypeAllowDownloadEnabled:
     return @"DBTEAMLOGEventTypeAllowDownloadEnabled";
+  case DBTEAMLOGEventTypeCameraUploadsPolicyChanged:
+    return @"DBTEAMLOGEventTypeCameraUploadsPolicyChanged";
   case DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy:
     return @"DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy";
   case DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy:
@@ -34661,6 +35211,8 @@
     result = prime * result + [self.fileChangeCommentSubscription hash];
   case DBTEAMLOGEventTypeFileDeleteComment:
     result = prime * result + [self.fileDeleteComment hash];
+  case DBTEAMLOGEventTypeFileEditComment:
+    result = prime * result + [self.fileEditComment hash];
   case DBTEAMLOGEventTypeFileLikeComment:
     result = prime * result + [self.fileLikeComment hash];
   case DBTEAMLOGEventTypeFileResolveComment:
@@ -35139,6 +35691,8 @@
     result = prime * result + [self.allowDownloadDisabled hash];
   case DBTEAMLOGEventTypeAllowDownloadEnabled:
     result = prime * result + [self.allowDownloadEnabled hash];
+  case DBTEAMLOGEventTypeCameraUploadsPolicyChanged:
+    result = prime * result + [self.cameraUploadsPolicyChanged hash];
   case DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy:
     result = prime * result + [self.dataPlacementRestrictionChangePolicy hash];
   case DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy:
@@ -35306,6 +35860,8 @@
     return [self.fileChangeCommentSubscription isEqual:anEventType.fileChangeCommentSubscription];
   case DBTEAMLOGEventTypeFileDeleteComment:
     return [self.fileDeleteComment isEqual:anEventType.fileDeleteComment];
+  case DBTEAMLOGEventTypeFileEditComment:
+    return [self.fileEditComment isEqual:anEventType.fileEditComment];
   case DBTEAMLOGEventTypeFileLikeComment:
     return [self.fileLikeComment isEqual:anEventType.fileLikeComment];
   case DBTEAMLOGEventTypeFileResolveComment:
@@ -35786,6 +36342,8 @@
     return [self.allowDownloadDisabled isEqual:anEventType.allowDownloadDisabled];
   case DBTEAMLOGEventTypeAllowDownloadEnabled:
     return [self.allowDownloadEnabled isEqual:anEventType.allowDownloadEnabled];
+  case DBTEAMLOGEventTypeCameraUploadsPolicyChanged:
+    return [self.cameraUploadsPolicyChanged isEqual:anEventType.cameraUploadsPolicyChanged];
   case DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy:
     return [self.dataPlacementRestrictionChangePolicy isEqual:anEventType.dataPlacementRestrictionChangePolicy];
   case DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy:
@@ -35949,6 +36507,9 @@
   } else if ([valueObj isFileDeleteComment]) {
     jsonDict = [[DBTEAMLOGFileDeleteCommentTypeSerializer serialize:valueObj.fileDeleteComment] mutableCopy];
     jsonDict[@".tag"] = @"file_delete_comment";
+  } else if ([valueObj isFileEditComment]) {
+    jsonDict = [[DBTEAMLOGFileEditCommentTypeSerializer serialize:valueObj.fileEditComment] mutableCopy];
+    jsonDict[@".tag"] = @"file_edit_comment";
   } else if ([valueObj isFileLikeComment]) {
     jsonDict = [[DBTEAMLOGFileLikeCommentTypeSerializer serialize:valueObj.fileLikeComment] mutableCopy];
     jsonDict[@".tag"] = @"file_like_comment";
@@ -36744,6 +37305,10 @@
   } else if ([valueObj isAllowDownloadEnabled]) {
     jsonDict = [[DBTEAMLOGAllowDownloadEnabledTypeSerializer serialize:valueObj.allowDownloadEnabled] mutableCopy];
     jsonDict[@".tag"] = @"allow_download_enabled";
+  } else if ([valueObj isCameraUploadsPolicyChanged]) {
+    jsonDict =
+        [[DBTEAMLOGCameraUploadsPolicyChangedTypeSerializer serialize:valueObj.cameraUploadsPolicyChanged] mutableCopy];
+    jsonDict[@".tag"] = @"camera_uploads_policy_changed";
   } else if ([valueObj isDataPlacementRestrictionChangePolicy]) {
     jsonDict = [[DBTEAMLOGDataPlacementRestrictionChangePolicyTypeSerializer
         serialize:valueObj.dataPlacementRestrictionChangePolicy] mutableCopy];
@@ -37007,6 +37572,9 @@
     DBTEAMLOGFileDeleteCommentType *fileDeleteComment =
         [DBTEAMLOGFileDeleteCommentTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithFileDeleteComment:fileDeleteComment];
+  } else if ([tag isEqualToString:@"file_edit_comment"]) {
+    DBTEAMLOGFileEditCommentType *fileEditComment = [DBTEAMLOGFileEditCommentTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithFileEditComment:fileEditComment];
   } else if ([tag isEqualToString:@"file_like_comment"]) {
     DBTEAMLOGFileLikeCommentType *fileLikeComment = [DBTEAMLOGFileLikeCommentTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithFileLikeComment:fileLikeComment];
@@ -37898,6 +38466,10 @@
     DBTEAMLOGAllowDownloadEnabledType *allowDownloadEnabled =
         [DBTEAMLOGAllowDownloadEnabledTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithAllowDownloadEnabled:allowDownloadEnabled];
+  } else if ([tag isEqualToString:@"camera_uploads_policy_changed"]) {
+    DBTEAMLOGCameraUploadsPolicyChangedType *cameraUploadsPolicyChanged =
+        [DBTEAMLOGCameraUploadsPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithCameraUploadsPolicyChanged:cameraUploadsPolicyChanged];
   } else if ([tag isEqualToString:@"data_placement_restriction_change_policy"]) {
     DBTEAMLOGDataPlacementRestrictionChangePolicyType *dataPlacementRestrictionChangePolicy =
         [DBTEAMLOGDataPlacementRestrictionChangePolicyTypeSerializer deserialize:valueDict];
@@ -41006,6 +41578,222 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGFileEditCommentDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGFileEditCommentDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPreviousCommentText:(NSString *)previousCommentText commentText:(NSString *)commentText {
+  [DBStoneValidators nonnullValidator:nil](previousCommentText);
+
+  self = [super init];
+  if (self) {
+    _commentText = commentText;
+    _previousCommentText = previousCommentText;
+  }
+  return self;
+}
+
+- (instancetype)initWithPreviousCommentText:(NSString *)previousCommentText {
+  return [self initWithPreviousCommentText:previousCommentText commentText:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGFileEditCommentDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGFileEditCommentDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGFileEditCommentDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.previousCommentText hash];
+  if (self.commentText != nil) {
+    result = prime * result + [self.commentText hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToFileEditCommentDetails:other];
+}
+
+- (BOOL)isEqualToFileEditCommentDetails:(DBTEAMLOGFileEditCommentDetails *)aFileEditCommentDetails {
+  if (self == aFileEditCommentDetails) {
+    return YES;
+  }
+  if (![self.previousCommentText isEqual:aFileEditCommentDetails.previousCommentText]) {
+    return NO;
+  }
+  if (self.commentText) {
+    if (![self.commentText isEqual:aFileEditCommentDetails.commentText]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGFileEditCommentDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileEditCommentDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"previous_comment_text"] = valueObj.previousCommentText;
+  if (valueObj.commentText) {
+    jsonDict[@"comment_text"] = valueObj.commentText;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGFileEditCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *previousCommentText = valueDict[@"previous_comment_text"];
+  NSString *commentText = valueDict[@"comment_text"] ?: nil;
+
+  return
+      [[DBTEAMLOGFileEditCommentDetails alloc] initWithPreviousCommentText:previousCommentText commentText:commentText];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGFileEditCommentType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGFileEditCommentType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGFileEditCommentTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGFileEditCommentTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGFileEditCommentTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToFileEditCommentType:other];
+}
+
+- (BOOL)isEqualToFileEditCommentType:(DBTEAMLOGFileEditCommentType *)aFileEditCommentType {
+  if (self == aFileEditCommentType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aFileEditCommentType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGFileEditCommentTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileEditCommentType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGFileEditCommentType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGFileEditCommentType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGFileEditDetails.h"
 
 #pragma mark - API Object
@@ -43610,8 +44398,6 @@
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](submittedFileNames);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](submitterName);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](submitterEmail);
 
@@ -58693,6 +59479,7 @@
 #import "DBStoneValidators.h"
 #import "DBTEAMLOGNonTeamMemberLogInfo.h"
 #import "DBTEAMLOGTeamMemberLogInfo.h"
+#import "DBTEAMLOGTrustedNonTeamMemberLogInfo.h"
 #import "DBTEAMLOGUserLogInfo.h"
 
 #pragma mark - API Object
@@ -58704,7 +59491,6 @@
 - (instancetype)initWithAccountId:(NSString *)accountId displayName:(NSString *)displayName email:(NSString *)email {
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
-  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](displayName);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](email);
 
   self = [super init];
@@ -58823,6 +59609,13 @@
       jsonDict[key] = subTypeFields[key];
     }
     jsonDict[@".tag"] = @"teamMember";
+  } else if ([valueObj isKindOfClass:[DBTEAMLOGTrustedNonTeamMemberLogInfo class]]) {
+    NSDictionary *subTypeFields =
+        [DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer serialize:(DBTEAMLOGTrustedNonTeamMemberLogInfo *)valueObj];
+    for (NSString *key in subTypeFields) {
+      jsonDict[key] = subTypeFields[key];
+    }
+    jsonDict[@".tag"] = @"trustedNonTeamMember";
   } else if ([valueObj isKindOfClass:[DBTEAMLOGNonTeamMemberLogInfo class]]) {
     NSDictionary *subTypeFields =
         [DBTEAMLOGNonTeamMemberLogInfoSerializer serialize:(DBTEAMLOGNonTeamMemberLogInfo *)valueObj];
@@ -58838,6 +59631,9 @@
 + (DBTEAMLOGUserLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   if ([valueDict[@".tag"] isEqualToString:@"team_member"]) {
     return [DBTEAMLOGTeamMemberLogInfoSerializer deserialize:valueDict];
+  }
+  if ([valueDict[@".tag"] isEqualToString:@"trusted_non_team_member"]) {
+    return [DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer deserialize:valueDict];
   }
   if ([valueDict[@".tag"] isEqualToString:@"non_team_member"]) {
     return [DBTEAMLOGNonTeamMemberLogInfoSerializer deserialize:valueDict];
@@ -58866,7 +59662,6 @@
 - (instancetype)initWithAccountId:(NSString *)accountId displayName:(NSString *)displayName email:(NSString *)email {
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
-  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](displayName);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](email);
 
   self = [super initWithAccountId:accountId displayName:displayName email:email];
@@ -67834,6 +68629,14 @@
   return self;
 }
 
+- (instancetype)initWithPdf {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperDownloadFormatPdf;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -67858,6 +68661,10 @@
   return _tag == DBTEAMLOGPaperDownloadFormatMarkdown;
 }
 
+- (BOOL)isPdf {
+  return _tag == DBTEAMLOGPaperDownloadFormatPdf;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGPaperDownloadFormatOther;
 }
@@ -67870,6 +68677,8 @@
     return @"DBTEAMLOGPaperDownloadFormatHtml";
   case DBTEAMLOGPaperDownloadFormatMarkdown:
     return @"DBTEAMLOGPaperDownloadFormatMarkdown";
+  case DBTEAMLOGPaperDownloadFormatPdf:
+    return @"DBTEAMLOGPaperDownloadFormatPdf";
   case DBTEAMLOGPaperDownloadFormatOther:
     return @"DBTEAMLOGPaperDownloadFormatOther";
   }
@@ -67914,6 +68723,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGPaperDownloadFormatMarkdown:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPaperDownloadFormatPdf:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGPaperDownloadFormatOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -67947,6 +68758,8 @@
     return [[self tagName] isEqual:[aPaperDownloadFormat tagName]];
   case DBTEAMLOGPaperDownloadFormatMarkdown:
     return [[self tagName] isEqual:[aPaperDownloadFormat tagName]];
+  case DBTEAMLOGPaperDownloadFormatPdf:
+    return [[self tagName] isEqual:[aPaperDownloadFormat tagName]];
   case DBTEAMLOGPaperDownloadFormatOther:
     return [[self tagName] isEqual:[aPaperDownloadFormat tagName]];
   }
@@ -67968,6 +68781,8 @@
     jsonDict[@".tag"] = @"html";
   } else if ([valueObj isMarkdown]) {
     jsonDict[@".tag"] = @"markdown";
+  } else if ([valueObj isPdf]) {
+    jsonDict[@".tag"] = @"pdf";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -67986,6 +68801,8 @@
     return [[DBTEAMLOGPaperDownloadFormat alloc] initWithHtml];
   } else if ([tag isEqualToString:@"markdown"]) {
     return [[DBTEAMLOGPaperDownloadFormat alloc] initWithMarkdown];
+  } else if ([tag isEqualToString:@"pdf"]) {
+    return [[DBTEAMLOGPaperDownloadFormat alloc] initWithPdf];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGPaperDownloadFormat alloc] initWithOther];
   } else {
@@ -86490,14 +87307,6 @@
   return self;
 }
 
-- (instancetype)initWithTeamMembersAndWhitelist {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist;
-  }
-  return self;
-}
-
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -86518,10 +87327,6 @@
   return _tag == DBTEAMLOGSharingMemberPolicyForbid;
 }
 
-- (BOOL)isTeamMembersAndWhitelist {
-  return _tag == DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist;
-}
-
 - (BOOL)isOther {
   return _tag == DBTEAMLOGSharingMemberPolicyOther;
 }
@@ -86532,8 +87337,6 @@
     return @"DBTEAMLOGSharingMemberPolicyAllow";
   case DBTEAMLOGSharingMemberPolicyForbid:
     return @"DBTEAMLOGSharingMemberPolicyForbid";
-  case DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist:
-    return @"DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist";
   case DBTEAMLOGSharingMemberPolicyOther:
     return @"DBTEAMLOGSharingMemberPolicyOther";
   }
@@ -86576,8 +87379,6 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGSharingMemberPolicyForbid:
     result = prime * result + [[self tagName] hash];
-  case DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist:
-    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGSharingMemberPolicyOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -86609,8 +87410,6 @@
     return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
   case DBTEAMLOGSharingMemberPolicyForbid:
     return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
-  case DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist:
-    return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
   case DBTEAMLOGSharingMemberPolicyOther:
     return [[self tagName] isEqual:[aSharingMemberPolicy tagName]];
   }
@@ -86630,8 +87429,6 @@
     jsonDict[@".tag"] = @"allow";
   } else if ([valueObj isForbid]) {
     jsonDict[@".tag"] = @"forbid";
-  } else if ([valueObj isTeamMembersAndWhitelist]) {
-    jsonDict[@".tag"] = @"team_members_and_whitelist";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -86648,8 +87445,6 @@
     return [[DBTEAMLOGSharingMemberPolicy alloc] initWithAllow];
   } else if ([tag isEqualToString:@"forbid"]) {
     return [[DBTEAMLOGSharingMemberPolicy alloc] initWithForbid];
-  } else if ([tag isEqualToString:@"team_members_and_whitelist"]) {
-    return [[DBTEAMLOGSharingMemberPolicy alloc] initWithTeamMembersAndWhitelist];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGSharingMemberPolicy alloc] initWithOther];
   } else {
@@ -98834,7 +99629,6 @@
                  memberExternalId:(NSString *)memberExternalId {
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
-  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](displayName);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](email);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
@@ -103370,6 +104164,309 @@
     return [[DBTEAMLOGTimeUnit alloc] initWithOther];
   } else {
     return [[DBTEAMLOGTimeUnit alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTrustedNonTeamMemberLogInfo.h"
+#import "DBTEAMLOGTrustedNonTeamMemberType.h"
+#import "DBTEAMLOGUserLogInfo.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTrustedNonTeamMemberLogInfo
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTrustedNonTeamMemberType:(DBTEAMLOGTrustedNonTeamMemberType *)trustedNonTeamMemberType
+                                       accountId:(NSString *)accountId
+                                     displayName:(NSString *)displayName
+                                           email:(NSString *)email {
+  [DBStoneValidators nonnullValidator:nil](trustedNonTeamMemberType);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](email);
+
+  self = [super initWithAccountId:accountId displayName:displayName email:email];
+  if (self) {
+    _trustedNonTeamMemberType = trustedNonTeamMemberType;
+  }
+  return self;
+}
+
+- (instancetype)initWithTrustedNonTeamMemberType:(DBTEAMLOGTrustedNonTeamMemberType *)trustedNonTeamMemberType {
+  return [self initWithTrustedNonTeamMemberType:trustedNonTeamMemberType accountId:nil displayName:nil email:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.trustedNonTeamMemberType hash];
+  if (self.accountId != nil) {
+    result = prime * result + [self.accountId hash];
+  }
+  if (self.displayName != nil) {
+    result = prime * result + [self.displayName hash];
+  }
+  if (self.email != nil) {
+    result = prime * result + [self.email hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTrustedNonTeamMemberLogInfo:other];
+}
+
+- (BOOL)isEqualToTrustedNonTeamMemberLogInfo:(DBTEAMLOGTrustedNonTeamMemberLogInfo *)aTrustedNonTeamMemberLogInfo {
+  if (self == aTrustedNonTeamMemberLogInfo) {
+    return YES;
+  }
+  if (![self.trustedNonTeamMemberType isEqual:aTrustedNonTeamMemberLogInfo.trustedNonTeamMemberType]) {
+    return NO;
+  }
+  if (self.accountId) {
+    if (![self.accountId isEqual:aTrustedNonTeamMemberLogInfo.accountId]) {
+      return NO;
+    }
+  }
+  if (self.displayName) {
+    if (![self.displayName isEqual:aTrustedNonTeamMemberLogInfo.displayName]) {
+      return NO;
+    }
+  }
+  if (self.email) {
+    if (![self.email isEqual:aTrustedNonTeamMemberLogInfo.email]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTrustedNonTeamMemberLogInfoSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTrustedNonTeamMemberLogInfo *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"trusted_non_team_member_type"] =
+      [DBTEAMLOGTrustedNonTeamMemberTypeSerializer serialize:valueObj.trustedNonTeamMemberType];
+  if (valueObj.accountId) {
+    jsonDict[@"account_id"] = valueObj.accountId;
+  }
+  if (valueObj.displayName) {
+    jsonDict[@"display_name"] = valueObj.displayName;
+  }
+  if (valueObj.email) {
+    jsonDict[@"email"] = valueObj.email;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTrustedNonTeamMemberLogInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGTrustedNonTeamMemberType *trustedNonTeamMemberType =
+      [DBTEAMLOGTrustedNonTeamMemberTypeSerializer deserialize:valueDict[@"trusted_non_team_member_type"]];
+  NSString *accountId = valueDict[@"account_id"] ?: nil;
+  NSString *displayName = valueDict[@"display_name"] ?: nil;
+  NSString *email = valueDict[@"email"] ?: nil;
+
+  return [[DBTEAMLOGTrustedNonTeamMemberLogInfo alloc] initWithTrustedNonTeamMemberType:trustedNonTeamMemberType
+                                                                              accountId:accountId
+                                                                            displayName:displayName
+                                                                                  email:email];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTrustedNonTeamMemberType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTrustedNonTeamMemberType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithMultiInstanceAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedNonTeamMemberTypeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isMultiInstanceAdmin {
+  return _tag == DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTrustedNonTeamMemberTypeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin:
+    return @"DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin";
+  case DBTEAMLOGTrustedNonTeamMemberTypeOther:
+    return @"DBTEAMLOGTrustedNonTeamMemberTypeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTrustedNonTeamMemberTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTrustedNonTeamMemberTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTrustedNonTeamMemberTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedNonTeamMemberTypeOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTrustedNonTeamMemberType:other];
+}
+
+- (BOOL)isEqualToTrustedNonTeamMemberType:(DBTEAMLOGTrustedNonTeamMemberType *)aTrustedNonTeamMemberType {
+  if (self == aTrustedNonTeamMemberType) {
+    return YES;
+  }
+  if (self.tag != aTrustedNonTeamMemberType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin:
+    return [[self tagName] isEqual:[aTrustedNonTeamMemberType tagName]];
+  case DBTEAMLOGTrustedNonTeamMemberTypeOther:
+    return [[self tagName] isEqual:[aTrustedNonTeamMemberType tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTrustedNonTeamMemberTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTrustedNonTeamMemberType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isMultiInstanceAdmin]) {
+    jsonDict[@".tag"] = @"multi_instance_admin";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTrustedNonTeamMemberType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"multi_instance_admin"]) {
+    return [[DBTEAMLOGTrustedNonTeamMemberType alloc] initWithMultiInstanceAdmin];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTrustedNonTeamMemberType alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTrustedNonTeamMemberType alloc] initWithOther];
   }
 }
 

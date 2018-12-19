@@ -19,6 +19,7 @@
 @class DBTEAMLOGAppLinkUserType;
 @class DBTEAMLOGAppUnlinkTeamType;
 @class DBTEAMLOGAppUnlinkUserType;
+@class DBTEAMLOGCameraUploadsPolicyChangedType;
 @class DBTEAMLOGCollectionShareType;
 @class DBTEAMLOGCreateFolderType;
 @class DBTEAMLOGDataPlacementRestrictionChangePolicyType;
@@ -68,6 +69,7 @@
 @class DBTEAMLOGFileDeleteCommentType;
 @class DBTEAMLOGFileDeleteType;
 @class DBTEAMLOGFileDownloadType;
+@class DBTEAMLOGFileEditCommentType;
 @class DBTEAMLOGFileEditType;
 @class DBTEAMLOGFileGetCopyReferenceType;
 @class DBTEAMLOGFileLikeCommentType;
@@ -361,6 +363,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (comments) Deleted file comment
   DBTEAMLOGEventTypeFileDeleteComment,
 
+  /// (comments) Edited file comment
+  DBTEAMLOGEventTypeFileEditComment,
+
   /// (comments) Liked file comment (deprecated, no longer logged)
   DBTEAMLOGEventTypeFileLikeComment,
 
@@ -600,7 +605,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (members) Changed member status (invited, joined, suspended, etc.)
   DBTEAMLOGEventTypeMemberChangeStatus,
 
-  /// (members) Cleared saved contacts
+  /// (members) Cleared manually added contacts
   DBTEAMLOGEventTypeMemberDeleteManualContacts,
 
   /// (members) Permanently deleted contents of deleted team member account
@@ -1111,6 +1116,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (team_policies) Enabled downloads (deprecated, no longer logged)
   DBTEAMLOGEventTypeAllowDownloadEnabled,
 
+  /// (team_policies) Changed camera uploads setting for team
+  DBTEAMLOGEventTypeCameraUploadsPolicyChanged,
+
   /// (team_policies) Set restrictions on data center locations where team
   /// data resides
   DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy,
@@ -1360,6 +1368,10 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileDeleteCommentType *fileDeleteComment;
+
+/// (comments) Edited file comment @note Ensure the `isFileEditComment` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGFileEditCommentType *fileEditComment;
 
 /// (comments) Liked file comment (deprecated, no longer logged) @note Ensure
 /// the `isFileLikeComment` method returns true before accessing, otherwise a
@@ -1739,7 +1751,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberChangeStatusType *memberChangeStatus;
 
-/// (members) Cleared saved contacts @note Ensure the
+/// (members) Cleared manually added contacts @note Ensure the
 /// `isMemberDeleteManualContacts` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberDeleteManualContactsType *memberDeleteManualContacts;
@@ -2535,6 +2547,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAllowDownloadEnabledType *allowDownloadEnabled;
 
+/// (team_policies) Changed camera uploads setting for team @note Ensure the
+/// `isCameraUploadsPolicyChanged` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGCameraUploadsPolicyChangedType *cameraUploadsPolicyChanged;
+
 /// (team_policies) Set restrictions on data center locations where team data
 /// resides @note Ensure the `isDataPlacementRestrictionChangePolicy` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -2947,6 +2964,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFileDeleteComment:(DBTEAMLOGFileDeleteCommentType *)fileDeleteComment;
+
+///
+/// Initializes union class with tag state of "file_edit_comment".
+///
+/// Description of the "file_edit_comment" tag state: (comments) Edited file
+/// comment
+///
+/// @param fileEditComment (comments) Edited file comment
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFileEditComment:(DBTEAMLOGFileEditCommentType *)fileEditComment;
 
 ///
 /// Initializes union class with tag state of "file_like_comment".
@@ -3934,9 +3963,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "member_delete_manual_contacts".
 ///
 /// Description of the "member_delete_manual_contacts" tag state: (members)
-/// Cleared saved contacts
+/// Cleared manually added contacts
 ///
-/// @param memberDeleteManualContacts (members) Cleared saved contacts
+/// @param memberDeleteManualContacts (members) Cleared manually added contacts
 ///
 /// @return An initialized instance.
 ///
@@ -6023,6 +6052,20 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithAllowDownloadEnabled:(DBTEAMLOGAllowDownloadEnabledType *)allowDownloadEnabled;
 
 ///
+/// Initializes union class with tag state of "camera_uploads_policy_changed".
+///
+/// Description of the "camera_uploads_policy_changed" tag state:
+/// (team_policies) Changed camera uploads setting for team
+///
+/// @param cameraUploadsPolicyChanged (team_policies) Changed camera uploads
+/// setting for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCameraUploadsPolicyChanged:
+    (DBTEAMLOGCameraUploadsPolicyChangedType *)cameraUploadsPolicyChanged;
+
+///
 /// Initializes union class with tag state of
 /// "data_placement_restriction_change_policy".
 ///
@@ -6994,6 +7037,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "file_delete_comment".
 ///
 - (BOOL)isFileDeleteComment;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "file_edit_comment".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `fileEditComment` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "file_edit_comment".
+///
+- (BOOL)isFileEditComment;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -9895,6 +9949,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "allow_download_enabled".
 ///
 - (BOOL)isAllowDownloadEnabled;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "camera_uploads_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `cameraUploadsPolicyChanged` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "camera_uploads_policy_changed".
+///
+- (BOOL)isCameraUploadsPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value
