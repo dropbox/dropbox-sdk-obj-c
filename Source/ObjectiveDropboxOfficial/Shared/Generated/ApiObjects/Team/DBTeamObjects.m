@@ -22866,7 +22866,7 @@
 @implementation DBTEAMRevokeDeviceSessionArgSerializer
 
 + (NSDictionary<NSString *, id> *)serialize:(DBTEAMRevokeDeviceSessionArg *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+  NSMutableDictionary *jsonDict = nil;
 
   if ([valueObj isWebSession]) {
     jsonDict = [[DBTEAMDeviceSessionArgSerializer serialize:valueObj.webSession] mutableCopy];
