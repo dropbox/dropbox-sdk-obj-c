@@ -14644,6 +14644,14 @@
   return self;
 }
 
+- (instancetype)initWithTrustedTeams {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventCategoryTrustedTeams;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -14732,6 +14740,10 @@
   return _tag == DBTEAMLOGEventCategoryTfa;
 }
 
+- (BOOL)isTrustedTeams {
+  return _tag == DBTEAMLOGEventCategoryTrustedTeams;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGEventCategoryOther;
 }
@@ -14776,6 +14788,8 @@
     return @"DBTEAMLOGEventCategoryTeamProfile";
   case DBTEAMLOGEventCategoryTfa:
     return @"DBTEAMLOGEventCategoryTfa";
+  case DBTEAMLOGEventCategoryTrustedTeams:
+    return @"DBTEAMLOGEventCategoryTrustedTeams";
   case DBTEAMLOGEventCategoryOther:
     return @"DBTEAMLOGEventCategoryOther";
   }
@@ -14852,6 +14866,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventCategoryTfa:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGEventCategoryTrustedTeams:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGEventCategoryOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -14917,6 +14933,8 @@
     return [[self tagName] isEqual:[anEventCategory tagName]];
   case DBTEAMLOGEventCategoryTfa:
     return [[self tagName] isEqual:[anEventCategory tagName]];
+  case DBTEAMLOGEventCategoryTrustedTeams:
+    return [[self tagName] isEqual:[anEventCategory tagName]];
   case DBTEAMLOGEventCategoryOther:
     return [[self tagName] isEqual:[anEventCategory tagName]];
   }
@@ -14970,6 +14988,8 @@
     jsonDict[@".tag"] = @"team_profile";
   } else if ([valueObj isTfa]) {
     jsonDict[@".tag"] = @"tfa";
+  } else if ([valueObj isTrustedTeams]) {
+    jsonDict[@".tag"] = @"trusted_teams";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -15020,6 +15040,8 @@
     return [[DBTEAMLOGEventCategory alloc] initWithTeamProfile];
   } else if ([tag isEqualToString:@"tfa"]) {
     return [[DBTEAMLOGEventCategory alloc] initWithTfa];
+  } else if ([tag isEqualToString:@"trusted_teams"]) {
+    return [[DBTEAMLOGEventCategory alloc] initWithTrustedTeams];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGEventCategory alloc] initWithOther];
   } else {
@@ -15103,6 +15125,7 @@
 #import "DBTEAMLOGFileRequestChangeDetails.h"
 #import "DBTEAMLOGFileRequestCloseDetails.h"
 #import "DBTEAMLOGFileRequestCreateDetails.h"
+#import "DBTEAMLOGFileRequestDeleteDetails.h"
 #import "DBTEAMLOGFileRequestReceiveFileDetails.h"
 #import "DBTEAMLOGFileRequestsChangePolicyDetails.h"
 #import "DBTEAMLOGFileRequestsEmailsEnabledDetails.h"
@@ -15129,17 +15152,26 @@
 #import "DBTEAMLOGGroupRemoveMemberDetails.h"
 #import "DBTEAMLOGGroupRenameDetails.h"
 #import "DBTEAMLOGGroupUserManagementChangePolicyDetails.h"
+#import "DBTEAMLOGGuestAdminChangeStatusDetails.h"
+#import "DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails.h"
+#import "DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails.h"
+#import "DBTEAMLOGIntegrationConnectedDetails.h"
+#import "DBTEAMLOGIntegrationDisconnectedDetails.h"
+#import "DBTEAMLOGIntegrationPolicyChangedDetails.h"
 #import "DBTEAMLOGLoginFailDetails.h"
 #import "DBTEAMLOGLoginSuccessDetails.h"
 #import "DBTEAMLOGLogoutDetails.h"
+#import "DBTEAMLOGMemberAddExternalIdDetails.h"
 #import "DBTEAMLOGMemberAddNameDetails.h"
 #import "DBTEAMLOGMemberChangeAdminRoleDetails.h"
 #import "DBTEAMLOGMemberChangeEmailDetails.h"
+#import "DBTEAMLOGMemberChangeExternalIdDetails.h"
 #import "DBTEAMLOGMemberChangeMembershipTypeDetails.h"
 #import "DBTEAMLOGMemberChangeNameDetails.h"
 #import "DBTEAMLOGMemberChangeStatusDetails.h"
 #import "DBTEAMLOGMemberDeleteManualContactsDetails.h"
 #import "DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails.h"
+#import "DBTEAMLOGMemberRemoveExternalIdDetails.h"
 #import "DBTEAMLOGMemberRequestsChangePolicyDetails.h"
 #import "DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails.h"
 #import "DBTEAMLOGMemberSpaceLimitsAddExceptionDetails.h"
@@ -15175,6 +15207,8 @@
 #import "DBTEAMLOGPaperContentRemoveMemberDetails.h"
 #import "DBTEAMLOGPaperContentRenameDetails.h"
 #import "DBTEAMLOGPaperContentRestoreDetails.h"
+#import "DBTEAMLOGPaperDefaultFolderPolicyChangedDetails.h"
+#import "DBTEAMLOGPaperDesktopPolicyChangedDetails.h"
 #import "DBTEAMLOGPaperDocAddCommentDetails.h"
 #import "DBTEAMLOGPaperDocChangeMemberRoleDetails.h"
 #import "DBTEAMLOGPaperDocChangeSharingPolicyDetails.h"
@@ -15205,10 +15239,14 @@
 #import "DBTEAMLOGPaperFolderDeletedDetails.h"
 #import "DBTEAMLOGPaperFolderFollowedDetails.h"
 #import "DBTEAMLOGPaperFolderTeamInviteDetails.h"
+#import "DBTEAMLOGPaperPublishedLinkCreateDetails.h"
+#import "DBTEAMLOGPaperPublishedLinkDisabledDetails.h"
+#import "DBTEAMLOGPaperPublishedLinkViewDetails.h"
 #import "DBTEAMLOGPasswordChangeDetails.h"
 #import "DBTEAMLOGPasswordResetAllDetails.h"
 #import "DBTEAMLOGPasswordResetDetails.h"
 #import "DBTEAMLOGPermanentDeleteChangePolicyDetails.h"
+#import "DBTEAMLOGResellerSupportChangePolicyDetails.h"
 #import "DBTEAMLOGResellerSupportSessionEndDetails.h"
 #import "DBTEAMLOGResellerSupportSessionStartDetails.h"
 #import "DBTEAMLOGSecondaryMailsPolicyChangedDetails.h"
@@ -15318,12 +15356,32 @@
 #import "DBTEAMLOGSsoRemoveLoginUrlDetails.h"
 #import "DBTEAMLOGSsoRemoveLogoutUrlDetails.h"
 #import "DBTEAMLOGTeamActivityCreateReportDetails.h"
+#import "DBTEAMLOGTeamActivityCreateReportFailDetails.h"
+#import "DBTEAMLOGTeamExtensionsPolicyChangedDetails.h"
 #import "DBTEAMLOGTeamFolderChangeStatusDetails.h"
 #import "DBTEAMLOGTeamFolderCreateDetails.h"
 #import "DBTEAMLOGTeamFolderDowngradeDetails.h"
 #import "DBTEAMLOGTeamFolderPermanentlyDeleteDetails.h"
 #import "DBTEAMLOGTeamFolderRenameDetails.h"
 #import "DBTEAMLOGTeamMergeFromDetails.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedDetails.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestAutoCanceledDetails.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledDetails.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredDetails.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestReminderDetails.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestRevokedDetails.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails.h"
 #import "DBTEAMLOGTeamMergeToDetails.h"
 #import "DBTEAMLOGTeamProfileAddLogoDetails.h"
 #import "DBTEAMLOGTeamProfileChangeDefaultLanguageDetails.h"
@@ -15353,6 +15411,8 @@
 @synthesize appLinkUserDetails = _appLinkUserDetails;
 @synthesize appUnlinkTeamDetails = _appUnlinkTeamDetails;
 @synthesize appUnlinkUserDetails = _appUnlinkUserDetails;
+@synthesize integrationConnectedDetails = _integrationConnectedDetails;
+@synthesize integrationDisconnectedDetails = _integrationDisconnectedDetails;
 @synthesize fileAddCommentDetails = _fileAddCommentDetails;
 @synthesize fileChangeCommentSubscriptionDetails = _fileChangeCommentSubscriptionDetails;
 @synthesize fileDeleteCommentDetails = _fileDeleteCommentDetails;
@@ -15405,6 +15465,7 @@
 @synthesize fileRequestChangeDetails = _fileRequestChangeDetails;
 @synthesize fileRequestCloseDetails = _fileRequestCloseDetails;
 @synthesize fileRequestCreateDetails = _fileRequestCreateDetails;
+@synthesize fileRequestDeleteDetails = _fileRequestDeleteDetails;
 @synthesize fileRequestReceiveFileDetails = _fileRequestReceiveFileDetails;
 @synthesize groupAddExternalIdDetails = _groupAddExternalIdDetails;
 @synthesize groupAddMemberDetails = _groupAddMemberDetails;
@@ -15420,6 +15481,8 @@
 @synthesize groupRemoveMemberDetails = _groupRemoveMemberDetails;
 @synthesize groupRenameDetails = _groupRenameDetails;
 @synthesize emmErrorDetails = _emmErrorDetails;
+@synthesize guestAdminSignedInViaTrustedTeamsDetails = _guestAdminSignedInViaTrustedTeamsDetails;
+@synthesize guestAdminSignedOutViaTrustedTeamsDetails = _guestAdminSignedOutViaTrustedTeamsDetails;
 @synthesize loginFailDetails = _loginFailDetails;
 @synthesize loginSuccessDetails = _loginSuccessDetails;
 @synthesize logoutDetails = _logoutDetails;
@@ -15428,14 +15491,17 @@
 @synthesize signInAsSessionEndDetails = _signInAsSessionEndDetails;
 @synthesize signInAsSessionStartDetails = _signInAsSessionStartDetails;
 @synthesize ssoErrorDetails = _ssoErrorDetails;
+@synthesize memberAddExternalIdDetails = _memberAddExternalIdDetails;
 @synthesize memberAddNameDetails = _memberAddNameDetails;
 @synthesize memberChangeAdminRoleDetails = _memberChangeAdminRoleDetails;
 @synthesize memberChangeEmailDetails = _memberChangeEmailDetails;
+@synthesize memberChangeExternalIdDetails = _memberChangeExternalIdDetails;
 @synthesize memberChangeMembershipTypeDetails = _memberChangeMembershipTypeDetails;
 @synthesize memberChangeNameDetails = _memberChangeNameDetails;
 @synthesize memberChangeStatusDetails = _memberChangeStatusDetails;
 @synthesize memberDeleteManualContactsDetails = _memberDeleteManualContactsDetails;
 @synthesize memberPermanentlyDeleteAccountContentsDetails = _memberPermanentlyDeleteAccountContentsDetails;
+@synthesize memberRemoveExternalIdDetails = _memberRemoveExternalIdDetails;
 @synthesize memberSpaceLimitsAddCustomQuotaDetails = _memberSpaceLimitsAddCustomQuotaDetails;
 @synthesize memberSpaceLimitsChangeCustomQuotaDetails = _memberSpaceLimitsChangeCustomQuotaDetails;
 @synthesize memberSpaceLimitsChangeStatusDetails = _memberSpaceLimitsChangeStatusDetails;
@@ -15480,6 +15546,9 @@
 @synthesize paperFolderDeletedDetails = _paperFolderDeletedDetails;
 @synthesize paperFolderFollowedDetails = _paperFolderFollowedDetails;
 @synthesize paperFolderTeamInviteDetails = _paperFolderTeamInviteDetails;
+@synthesize paperPublishedLinkCreateDetails = _paperPublishedLinkCreateDetails;
+@synthesize paperPublishedLinkDisabledDetails = _paperPublishedLinkDisabledDetails;
+@synthesize paperPublishedLinkViewDetails = _paperPublishedLinkViewDetails;
 @synthesize passwordChangeDetails = _passwordChangeDetails;
 @synthesize passwordResetDetails = _passwordResetDetails;
 @synthesize passwordResetAllDetails = _passwordResetAllDetails;
@@ -15489,6 +15558,7 @@
 @synthesize paperAdminExportStartDetails = _paperAdminExportStartDetails;
 @synthesize smartSyncCreateAdminPrivilegeReportDetails = _smartSyncCreateAdminPrivilegeReportDetails;
 @synthesize teamActivityCreateReportDetails = _teamActivityCreateReportDetails;
+@synthesize teamActivityCreateReportFailDetails = _teamActivityCreateReportFailDetails;
 @synthesize collectionShareDetails = _collectionShareDetails;
 @synthesize noteAclInviteOnlyDetails = _noteAclInviteOnlyDetails;
 @synthesize noteAclLinkDetails = _noteAclLinkDetails;
@@ -15615,6 +15685,7 @@
 @synthesize fileRequestsEmailsRestrictedToTeamOnlyDetails = _fileRequestsEmailsRestrictedToTeamOnlyDetails;
 @synthesize googleSsoChangePolicyDetails = _googleSsoChangePolicyDetails;
 @synthesize groupUserManagementChangePolicyDetails = _groupUserManagementChangePolicyDetails;
+@synthesize integrationPolicyChangedDetails = _integrationPolicyChangedDetails;
 @synthesize memberRequestsChangePolicyDetails = _memberRequestsChangePolicyDetails;
 @synthesize memberSpaceLimitsAddExceptionDetails = _memberSpaceLimitsAddExceptionDetails;
 @synthesize memberSpaceLimitsChangeCapsTypePolicyDetails = _memberSpaceLimitsChangeCapsTypePolicyDetails;
@@ -15627,9 +15698,12 @@
 @synthesize paperChangeMemberLinkPolicyDetails = _paperChangeMemberLinkPolicyDetails;
 @synthesize paperChangeMemberPolicyDetails = _paperChangeMemberPolicyDetails;
 @synthesize paperChangePolicyDetails = _paperChangePolicyDetails;
+@synthesize paperDefaultFolderPolicyChangedDetails = _paperDefaultFolderPolicyChangedDetails;
+@synthesize paperDesktopPolicyChangedDetails = _paperDesktopPolicyChangedDetails;
 @synthesize paperEnabledUsersGroupAdditionDetails = _paperEnabledUsersGroupAdditionDetails;
 @synthesize paperEnabledUsersGroupRemovalDetails = _paperEnabledUsersGroupRemovalDetails;
 @synthesize permanentDeleteChangePolicyDetails = _permanentDeleteChangePolicyDetails;
+@synthesize resellerSupportChangePolicyDetails = _resellerSupportChangePolicyDetails;
 @synthesize sharingChangeFolderJoinPolicyDetails = _sharingChangeFolderJoinPolicyDetails;
 @synthesize sharingChangeLinkPolicyDetails = _sharingChangeLinkPolicyDetails;
 @synthesize sharingChangeMemberPolicyDetails = _sharingChangeMemberPolicyDetails;
@@ -15640,6 +15714,7 @@
 @synthesize smartSyncNotOptOutDetails = _smartSyncNotOptOutDetails;
 @synthesize smartSyncOptOutDetails = _smartSyncOptOutDetails;
 @synthesize ssoChangePolicyDetails = _ssoChangePolicyDetails;
+@synthesize teamExtensionsPolicyChangedDetails = _teamExtensionsPolicyChangedDetails;
 @synthesize teamSelectiveSyncPolicyChangedDetails = _teamSelectiveSyncPolicyChangedDetails;
 @synthesize tfaChangePolicyDetails = _tfaChangePolicyDetails;
 @synthesize twoAccountChangePolicyDetails = _twoAccountChangePolicyDetails;
@@ -15660,6 +15735,25 @@
 @synthesize tfaRemoveBackupPhoneDetails = _tfaRemoveBackupPhoneDetails;
 @synthesize tfaRemoveSecurityKeyDetails = _tfaRemoveSecurityKeyDetails;
 @synthesize tfaResetDetails = _tfaResetDetails;
+@synthesize guestAdminChangeStatusDetails = _guestAdminChangeStatusDetails;
+@synthesize teamMergeRequestAcceptedDetails = _teamMergeRequestAcceptedDetails;
+@synthesize teamMergeRequestAcceptedShownToPrimaryTeamDetails = _teamMergeRequestAcceptedShownToPrimaryTeamDetails;
+@synthesize teamMergeRequestAcceptedShownToSecondaryTeamDetails = _teamMergeRequestAcceptedShownToSecondaryTeamDetails;
+@synthesize teamMergeRequestAutoCanceledDetails = _teamMergeRequestAutoCanceledDetails;
+@synthesize teamMergeRequestCanceledDetails = _teamMergeRequestCanceledDetails;
+@synthesize teamMergeRequestCanceledShownToPrimaryTeamDetails = _teamMergeRequestCanceledShownToPrimaryTeamDetails;
+@synthesize teamMergeRequestCanceledShownToSecondaryTeamDetails = _teamMergeRequestCanceledShownToSecondaryTeamDetails;
+@synthesize teamMergeRequestExpiredDetails = _teamMergeRequestExpiredDetails;
+@synthesize teamMergeRequestExpiredShownToPrimaryTeamDetails = _teamMergeRequestExpiredShownToPrimaryTeamDetails;
+@synthesize teamMergeRequestExpiredShownToSecondaryTeamDetails = _teamMergeRequestExpiredShownToSecondaryTeamDetails;
+@synthesize teamMergeRequestRejectedShownToPrimaryTeamDetails = _teamMergeRequestRejectedShownToPrimaryTeamDetails;
+@synthesize teamMergeRequestRejectedShownToSecondaryTeamDetails = _teamMergeRequestRejectedShownToSecondaryTeamDetails;
+@synthesize teamMergeRequestReminderDetails = _teamMergeRequestReminderDetails;
+@synthesize teamMergeRequestReminderShownToPrimaryTeamDetails = _teamMergeRequestReminderShownToPrimaryTeamDetails;
+@synthesize teamMergeRequestReminderShownToSecondaryTeamDetails = _teamMergeRequestReminderShownToSecondaryTeamDetails;
+@synthesize teamMergeRequestRevokedDetails = _teamMergeRequestRevokedDetails;
+@synthesize teamMergeRequestSentShownToPrimaryTeamDetails = _teamMergeRequestSentShownToPrimaryTeamDetails;
+@synthesize teamMergeRequestSentShownToSecondaryTeamDetails = _teamMergeRequestSentShownToSecondaryTeamDetails;
 @synthesize missingDetails = _missingDetails;
 
 #pragma mark - Constructors
@@ -15696,6 +15790,26 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsAppUnlinkUserDetails;
     _appUnlinkUserDetails = appUnlinkUserDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithIntegrationConnectedDetails:
+    (DBTEAMLOGIntegrationConnectedDetails *)integrationConnectedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsIntegrationConnectedDetails;
+    _integrationConnectedDetails = integrationConnectedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithIntegrationDisconnectedDetails:
+    (DBTEAMLOGIntegrationDisconnectedDetails *)integrationDisconnectedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsIntegrationDisconnectedDetails;
+    _integrationDisconnectedDetails = integrationDisconnectedDetails;
   }
   return self;
 }
@@ -16194,6 +16308,15 @@
   return self;
 }
 
+- (instancetype)initWithFileRequestDeleteDetails:(DBTEAMLOGFileRequestDeleteDetails *)fileRequestDeleteDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsFileRequestDeleteDetails;
+    _fileRequestDeleteDetails = fileRequestDeleteDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithFileRequestReceiveFileDetails:
     (DBTEAMLOGFileRequestReceiveFileDetails *)fileRequestReceiveFileDetails {
   self = [super init];
@@ -16336,6 +16459,26 @@
   return self;
 }
 
+- (instancetype)initWithGuestAdminSignedInViaTrustedTeamsDetails:
+    (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails *)guestAdminSignedInViaTrustedTeamsDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails;
+    _guestAdminSignedInViaTrustedTeamsDetails = guestAdminSignedInViaTrustedTeamsDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithGuestAdminSignedOutViaTrustedTeamsDetails:
+    (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails *)guestAdminSignedOutViaTrustedTeamsDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails;
+    _guestAdminSignedOutViaTrustedTeamsDetails = guestAdminSignedOutViaTrustedTeamsDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithLoginFailDetails:(DBTEAMLOGLoginFailDetails *)loginFailDetails {
   self = [super init];
   if (self) {
@@ -16411,6 +16554,15 @@
   return self;
 }
 
+- (instancetype)initWithMemberAddExternalIdDetails:(DBTEAMLOGMemberAddExternalIdDetails *)memberAddExternalIdDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsMemberAddExternalIdDetails;
+    _memberAddExternalIdDetails = memberAddExternalIdDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithMemberAddNameDetails:(DBTEAMLOGMemberAddNameDetails *)memberAddNameDetails {
   self = [super init];
   if (self) {
@@ -16435,6 +16587,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsMemberChangeEmailDetails;
     _memberChangeEmailDetails = memberChangeEmailDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithMemberChangeExternalIdDetails:
+    (DBTEAMLOGMemberChangeExternalIdDetails *)memberChangeExternalIdDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsMemberChangeExternalIdDetails;
+    _memberChangeExternalIdDetails = memberChangeExternalIdDetails;
   }
   return self;
 }
@@ -16483,6 +16645,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails;
     _memberPermanentlyDeleteAccountContentsDetails = memberPermanentlyDeleteAccountContentsDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithMemberRemoveExternalIdDetails:
+    (DBTEAMLOGMemberRemoveExternalIdDetails *)memberRemoveExternalIdDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails;
+    _memberRemoveExternalIdDetails = memberRemoveExternalIdDetails;
   }
   return self;
 }
@@ -16907,6 +17079,36 @@
   return self;
 }
 
+- (instancetype)initWithPaperPublishedLinkCreateDetails:
+    (DBTEAMLOGPaperPublishedLinkCreateDetails *)paperPublishedLinkCreateDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails;
+    _paperPublishedLinkCreateDetails = paperPublishedLinkCreateDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperPublishedLinkDisabledDetails:
+    (DBTEAMLOGPaperPublishedLinkDisabledDetails *)paperPublishedLinkDisabledDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails;
+    _paperPublishedLinkDisabledDetails = paperPublishedLinkDisabledDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperPublishedLinkViewDetails:
+    (DBTEAMLOGPaperPublishedLinkViewDetails *)paperPublishedLinkViewDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails;
+    _paperPublishedLinkViewDetails = paperPublishedLinkViewDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithPasswordChangeDetails:(DBTEAMLOGPasswordChangeDetails *)passwordChangeDetails {
   self = [super init];
   if (self) {
@@ -16989,6 +17191,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsTeamActivityCreateReportDetails;
     _teamActivityCreateReportDetails = teamActivityCreateReportDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamActivityCreateReportFailDetails:
+    (DBTEAMLOGTeamActivityCreateReportFailDetails *)teamActivityCreateReportFailDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails;
+    _teamActivityCreateReportFailDetails = teamActivityCreateReportFailDetails;
   }
   return self;
 }
@@ -18194,6 +18406,16 @@
   return self;
 }
 
+- (instancetype)initWithIntegrationPolicyChangedDetails:
+    (DBTEAMLOGIntegrationPolicyChangedDetails *)integrationPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails;
+    _integrationPolicyChangedDetails = integrationPolicyChangedDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithMemberRequestsChangePolicyDetails:
     (DBTEAMLOGMemberRequestsChangePolicyDetails *)memberRequestsChangePolicyDetails {
   self = [super init];
@@ -18313,6 +18535,26 @@
   return self;
 }
 
+- (instancetype)initWithPaperDefaultFolderPolicyChangedDetails:
+    (DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)paperDefaultFolderPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails;
+    _paperDefaultFolderPolicyChangedDetails = paperDefaultFolderPolicyChangedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperDesktopPolicyChangedDetails:
+    (DBTEAMLOGPaperDesktopPolicyChangedDetails *)paperDesktopPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails;
+    _paperDesktopPolicyChangedDetails = paperDesktopPolicyChangedDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithPaperEnabledUsersGroupAdditionDetails:
     (DBTEAMLOGPaperEnabledUsersGroupAdditionDetails *)paperEnabledUsersGroupAdditionDetails {
   self = [super init];
@@ -18339,6 +18581,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails;
     _permanentDeleteChangePolicyDetails = permanentDeleteChangePolicyDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithResellerSupportChangePolicyDetails:
+    (DBTEAMLOGResellerSupportChangePolicyDetails *)resellerSupportChangePolicyDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails;
+    _resellerSupportChangePolicyDetails = resellerSupportChangePolicyDetails;
   }
   return self;
 }
@@ -18436,6 +18688,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsSsoChangePolicyDetails;
     _ssoChangePolicyDetails = ssoChangePolicyDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamExtensionsPolicyChangedDetails:
+    (DBTEAMLOGTeamExtensionsPolicyChangedDetails *)teamExtensionsPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails;
+    _teamExtensionsPolicyChangedDetails = teamExtensionsPolicyChangedDetails;
   }
   return self;
 }
@@ -18632,6 +18894,200 @@
   return self;
 }
 
+- (instancetype)initWithGuestAdminChangeStatusDetails:
+    (DBTEAMLOGGuestAdminChangeStatusDetails *)guestAdminChangeStatusDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails;
+    _guestAdminChangeStatusDetails = guestAdminChangeStatusDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAcceptedDetails:
+    (DBTEAMLOGTeamMergeRequestAcceptedDetails *)teamMergeRequestAcceptedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails;
+    _teamMergeRequestAcceptedDetails = teamMergeRequestAcceptedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAcceptedShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails *)teamMergeRequestAcceptedShownToPrimaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails;
+    _teamMergeRequestAcceptedShownToPrimaryTeamDetails = teamMergeRequestAcceptedShownToPrimaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAcceptedShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails *)
+        teamMergeRequestAcceptedShownToSecondaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails;
+    _teamMergeRequestAcceptedShownToSecondaryTeamDetails = teamMergeRequestAcceptedShownToSecondaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAutoCanceledDetails:
+    (DBTEAMLOGTeamMergeRequestAutoCanceledDetails *)teamMergeRequestAutoCanceledDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails;
+    _teamMergeRequestAutoCanceledDetails = teamMergeRequestAutoCanceledDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestCanceledDetails:
+    (DBTEAMLOGTeamMergeRequestCanceledDetails *)teamMergeRequestCanceledDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails;
+    _teamMergeRequestCanceledDetails = teamMergeRequestCanceledDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestCanceledShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails *)teamMergeRequestCanceledShownToPrimaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails;
+    _teamMergeRequestCanceledShownToPrimaryTeamDetails = teamMergeRequestCanceledShownToPrimaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestCanceledShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)
+        teamMergeRequestCanceledShownToSecondaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails;
+    _teamMergeRequestCanceledShownToSecondaryTeamDetails = teamMergeRequestCanceledShownToSecondaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestExpiredDetails:
+    (DBTEAMLOGTeamMergeRequestExpiredDetails *)teamMergeRequestExpiredDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails;
+    _teamMergeRequestExpiredDetails = teamMergeRequestExpiredDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestExpiredShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails *)teamMergeRequestExpiredShownToPrimaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails;
+    _teamMergeRequestExpiredShownToPrimaryTeamDetails = teamMergeRequestExpiredShownToPrimaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestExpiredShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails *)teamMergeRequestExpiredShownToSecondaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails;
+    _teamMergeRequestExpiredShownToSecondaryTeamDetails = teamMergeRequestExpiredShownToSecondaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestRejectedShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails *)teamMergeRequestRejectedShownToPrimaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails;
+    _teamMergeRequestRejectedShownToPrimaryTeamDetails = teamMergeRequestRejectedShownToPrimaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestRejectedShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails *)
+        teamMergeRequestRejectedShownToSecondaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails;
+    _teamMergeRequestRejectedShownToSecondaryTeamDetails = teamMergeRequestRejectedShownToSecondaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestReminderDetails:
+    (DBTEAMLOGTeamMergeRequestReminderDetails *)teamMergeRequestReminderDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails;
+    _teamMergeRequestReminderDetails = teamMergeRequestReminderDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestReminderShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails *)teamMergeRequestReminderShownToPrimaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails;
+    _teamMergeRequestReminderShownToPrimaryTeamDetails = teamMergeRequestReminderShownToPrimaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestReminderShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails *)
+        teamMergeRequestReminderShownToSecondaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails;
+    _teamMergeRequestReminderShownToSecondaryTeamDetails = teamMergeRequestReminderShownToSecondaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestRevokedDetails:
+    (DBTEAMLOGTeamMergeRequestRevokedDetails *)teamMergeRequestRevokedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails;
+    _teamMergeRequestRevokedDetails = teamMergeRequestRevokedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestSentShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails *)teamMergeRequestSentShownToPrimaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails;
+    _teamMergeRequestSentShownToPrimaryTeamDetails = teamMergeRequestSentShownToPrimaryTeamDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestSentShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails *)teamMergeRequestSentShownToSecondaryTeamDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails;
+    _teamMergeRequestSentShownToSecondaryTeamDetails = teamMergeRequestSentShownToSecondaryTeamDetails;
+  }
+  return self;
+}
+
 - (instancetype)initWithMissingDetails:(DBTEAMLOGMissingDetails *)missingDetails {
   self = [super init];
   if (self) {
@@ -18681,6 +19137,24 @@
                 format:@"Invalid tag: required DBTEAMLOGEventDetailsAppUnlinkUserDetails, but was %@.", [self tagName]];
   }
   return _appUnlinkUserDetails;
+}
+
+- (DBTEAMLOGIntegrationConnectedDetails *)integrationConnectedDetails {
+  if (![self isIntegrationConnectedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsIntegrationConnectedDetails, but was %@.", [self tagName]];
+  }
+  return _integrationConnectedDetails;
+}
+
+- (DBTEAMLOGIntegrationDisconnectedDetails *)integrationDisconnectedDetails {
+  if (![self isIntegrationDisconnectedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsIntegrationDisconnectedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _integrationDisconnectedDetails;
 }
 
 - (DBTEAMLOGFileAddCommentDetails *)fileAddCommentDetails {
@@ -19149,6 +19623,15 @@
   return _fileRequestCreateDetails;
 }
 
+- (DBTEAMLOGFileRequestDeleteDetails *)fileRequestDeleteDetails {
+  if (![self isFileRequestDeleteDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsFileRequestDeleteDetails, but was %@.", [self tagName]];
+  }
+  return _fileRequestDeleteDetails;
+}
+
 - (DBTEAMLOGFileRequestReceiveFileDetails *)fileRequestReceiveFileDetails {
   if (![self isFileRequestReceiveFileDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -19279,6 +19762,26 @@
   return _emmErrorDetails;
 }
 
+- (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails *)guestAdminSignedInViaTrustedTeamsDetails {
+  if (![self isGuestAdminSignedInViaTrustedTeamsDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails, but was %@.",
+               [self tagName]];
+  }
+  return _guestAdminSignedInViaTrustedTeamsDetails;
+}
+
+- (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails *)guestAdminSignedOutViaTrustedTeamsDetails {
+  if (![self isGuestAdminSignedOutViaTrustedTeamsDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails, but was %@.",
+               [self tagName]];
+  }
+  return _guestAdminSignedOutViaTrustedTeamsDetails;
+}
+
 - (DBTEAMLOGLoginFailDetails *)loginFailDetails {
   if (![self isLoginFailDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -19347,6 +19850,15 @@
   return _ssoErrorDetails;
 }
 
+- (DBTEAMLOGMemberAddExternalIdDetails *)memberAddExternalIdDetails {
+  if (![self isMemberAddExternalIdDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsMemberAddExternalIdDetails, but was %@.", [self tagName]];
+  }
+  return _memberAddExternalIdDetails;
+}
+
 - (DBTEAMLOGMemberAddNameDetails *)memberAddNameDetails {
   if (![self isMemberAddNameDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -19371,6 +19883,15 @@
         format:@"Invalid tag: required DBTEAMLOGEventDetailsMemberChangeEmailDetails, but was %@.", [self tagName]];
   }
   return _memberChangeEmailDetails;
+}
+
+- (DBTEAMLOGMemberChangeExternalIdDetails *)memberChangeExternalIdDetails {
+  if (![self isMemberChangeExternalIdDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsMemberChangeExternalIdDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _memberChangeExternalIdDetails;
 }
 
 - (DBTEAMLOGMemberChangeMembershipTypeDetails *)memberChangeMembershipTypeDetails {
@@ -19417,6 +19938,15 @@
                [self tagName]];
   }
   return _memberPermanentlyDeleteAccountContentsDetails;
+}
+
+- (DBTEAMLOGMemberRemoveExternalIdDetails *)memberRemoveExternalIdDetails {
+  if (![self isMemberRemoveExternalIdDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _memberRemoveExternalIdDetails;
 }
 
 - (DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails *)memberSpaceLimitsAddCustomQuotaDetails {
@@ -19815,6 +20345,33 @@
   return _paperFolderTeamInviteDetails;
 }
 
+- (DBTEAMLOGPaperPublishedLinkCreateDetails *)paperPublishedLinkCreateDetails {
+  if (![self isPaperPublishedLinkCreateDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _paperPublishedLinkCreateDetails;
+}
+
+- (DBTEAMLOGPaperPublishedLinkDisabledDetails *)paperPublishedLinkDisabledDetails {
+  if (![self isPaperPublishedLinkDisabledDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _paperPublishedLinkDisabledDetails;
+}
+
+- (DBTEAMLOGPaperPublishedLinkViewDetails *)paperPublishedLinkViewDetails {
+  if (![self isPaperPublishedLinkViewDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _paperPublishedLinkViewDetails;
+}
+
 - (DBTEAMLOGPasswordChangeDetails *)passwordChangeDetails {
   if (![self isPasswordChangeDetails]) {
     [NSException
@@ -19894,6 +20451,15 @@
                        [self tagName]];
   }
   return _teamActivityCreateReportDetails;
+}
+
+- (DBTEAMLOGTeamActivityCreateReportFailDetails *)teamActivityCreateReportFailDetails {
+  if (![self isTeamActivityCreateReportFailDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamActivityCreateReportFailDetails;
 }
 
 - (DBTEAMLOGCollectionShareDetails *)collectionShareDetails {
@@ -21040,6 +21606,15 @@
   return _groupUserManagementChangePolicyDetails;
 }
 
+- (DBTEAMLOGIntegrationPolicyChangedDetails *)integrationPolicyChangedDetails {
+  if (![self isIntegrationPolicyChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _integrationPolicyChangedDetails;
+}
+
 - (DBTEAMLOGMemberRequestsChangePolicyDetails *)memberRequestsChangePolicyDetails {
   if (![self isMemberRequestsChangePolicyDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -21151,6 +21726,25 @@
   return _paperChangePolicyDetails;
 }
 
+- (DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)paperDefaultFolderPolicyChangedDetails {
+  if (![self isPaperDefaultFolderPolicyChangedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails, but was %@.",
+               [self tagName]];
+  }
+  return _paperDefaultFolderPolicyChangedDetails;
+}
+
+- (DBTEAMLOGPaperDesktopPolicyChangedDetails *)paperDesktopPolicyChangedDetails {
+  if (![self isPaperDesktopPolicyChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _paperDesktopPolicyChangedDetails;
+}
+
 - (DBTEAMLOGPaperEnabledUsersGroupAdditionDetails *)paperEnabledUsersGroupAdditionDetails {
   if (![self isPaperEnabledUsersGroupAdditionDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -21176,6 +21770,15 @@
                        [self tagName]];
   }
   return _permanentDeleteChangePolicyDetails;
+}
+
+- (DBTEAMLOGResellerSupportChangePolicyDetails *)resellerSupportChangePolicyDetails {
+  if (![self isResellerSupportChangePolicyDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _resellerSupportChangePolicyDetails;
 }
 
 - (DBTEAMLOGSharingChangeFolderJoinPolicyDetails *)sharingChangeFolderJoinPolicyDetails {
@@ -21267,6 +21870,15 @@
         format:@"Invalid tag: required DBTEAMLOGEventDetailsSsoChangePolicyDetails, but was %@.", [self tagName]];
   }
   return _ssoChangePolicyDetails;
+}
+
+- (DBTEAMLOGTeamExtensionsPolicyChangedDetails *)teamExtensionsPolicyChangedDetails {
+  if (![self isTeamExtensionsPolicyChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamExtensionsPolicyChangedDetails;
 }
 
 - (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)teamSelectiveSyncPolicyChangedDetails {
@@ -21449,6 +22061,189 @@
   return _tfaResetDetails;
 }
 
+- (DBTEAMLOGGuestAdminChangeStatusDetails *)guestAdminChangeStatusDetails {
+  if (![self isGuestAdminChangeStatusDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _guestAdminChangeStatusDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestAcceptedDetails *)teamMergeRequestAcceptedDetails {
+  if (![self isTeamMergeRequestAcceptedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestAcceptedDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails *)teamMergeRequestAcceptedShownToPrimaryTeamDetails {
+  if (![self isTeamMergeRequestAcceptedShownToPrimaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails, "
+                       @"but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestAcceptedShownToPrimaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails *)teamMergeRequestAcceptedShownToSecondaryTeamDetails {
+  if (![self isTeamMergeRequestAcceptedShownToSecondaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required "
+                       @"DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestAcceptedShownToSecondaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestAutoCanceledDetails *)teamMergeRequestAutoCanceledDetails {
+  if (![self isTeamMergeRequestAutoCanceledDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestAutoCanceledDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestCanceledDetails *)teamMergeRequestCanceledDetails {
+  if (![self isTeamMergeRequestCanceledDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestCanceledDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails *)teamMergeRequestCanceledShownToPrimaryTeamDetails {
+  if (![self isTeamMergeRequestCanceledShownToPrimaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails, "
+                       @"but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestCanceledShownToPrimaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)teamMergeRequestCanceledShownToSecondaryTeamDetails {
+  if (![self isTeamMergeRequestCanceledShownToSecondaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required "
+                       @"DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestCanceledShownToSecondaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestExpiredDetails *)teamMergeRequestExpiredDetails {
+  if (![self isTeamMergeRequestExpiredDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestExpiredDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails *)teamMergeRequestExpiredShownToPrimaryTeamDetails {
+  if (![self isTeamMergeRequestExpiredShownToPrimaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails, "
+                       @"but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestExpiredShownToPrimaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails *)teamMergeRequestExpiredShownToSecondaryTeamDetails {
+  if (![self isTeamMergeRequestExpiredShownToSecondaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required "
+                       @"DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestExpiredShownToSecondaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails *)teamMergeRequestRejectedShownToPrimaryTeamDetails {
+  if (![self isTeamMergeRequestRejectedShownToPrimaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails, "
+                       @"but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestRejectedShownToPrimaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails *)teamMergeRequestRejectedShownToSecondaryTeamDetails {
+  if (![self isTeamMergeRequestRejectedShownToSecondaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required "
+                       @"DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestRejectedShownToSecondaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestReminderDetails *)teamMergeRequestReminderDetails {
+  if (![self isTeamMergeRequestReminderDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestReminderDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails *)teamMergeRequestReminderShownToPrimaryTeamDetails {
+  if (![self isTeamMergeRequestReminderShownToPrimaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails, "
+                       @"but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestReminderShownToPrimaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails *)teamMergeRequestReminderShownToSecondaryTeamDetails {
+  if (![self isTeamMergeRequestReminderShownToSecondaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required "
+                       @"DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestReminderShownToSecondaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestRevokedDetails *)teamMergeRequestRevokedDetails {
+  if (![self isTeamMergeRequestRevokedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestRevokedDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails *)teamMergeRequestSentShownToPrimaryTeamDetails {
+  if (![self isTeamMergeRequestSentShownToPrimaryTeamDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestSentShownToPrimaryTeamDetails;
+}
+
+- (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails *)teamMergeRequestSentShownToSecondaryTeamDetails {
+  if (![self isTeamMergeRequestSentShownToSecondaryTeamDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails, "
+                       @"but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestSentShownToSecondaryTeamDetails;
+}
+
 - (DBTEAMLOGMissingDetails *)missingDetails {
   if (![self isMissingDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -21473,6 +22268,14 @@
 
 - (BOOL)isAppUnlinkUserDetails {
   return _tag == DBTEAMLOGEventDetailsAppUnlinkUserDetails;
+}
+
+- (BOOL)isIntegrationConnectedDetails {
+  return _tag == DBTEAMLOGEventDetailsIntegrationConnectedDetails;
+}
+
+- (BOOL)isIntegrationDisconnectedDetails {
+  return _tag == DBTEAMLOGEventDetailsIntegrationDisconnectedDetails;
 }
 
 - (BOOL)isFileAddCommentDetails {
@@ -21683,6 +22486,10 @@
   return _tag == DBTEAMLOGEventDetailsFileRequestCreateDetails;
 }
 
+- (BOOL)isFileRequestDeleteDetails {
+  return _tag == DBTEAMLOGEventDetailsFileRequestDeleteDetails;
+}
+
 - (BOOL)isFileRequestReceiveFileDetails {
   return _tag == DBTEAMLOGEventDetailsFileRequestReceiveFileDetails;
 }
@@ -21743,6 +22550,14 @@
   return _tag == DBTEAMLOGEventDetailsEmmErrorDetails;
 }
 
+- (BOOL)isGuestAdminSignedInViaTrustedTeamsDetails {
+  return _tag == DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails;
+}
+
+- (BOOL)isGuestAdminSignedOutViaTrustedTeamsDetails {
+  return _tag == DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails;
+}
+
 - (BOOL)isLoginFailDetails {
   return _tag == DBTEAMLOGEventDetailsLoginFailDetails;
 }
@@ -21775,6 +22590,10 @@
   return _tag == DBTEAMLOGEventDetailsSsoErrorDetails;
 }
 
+- (BOOL)isMemberAddExternalIdDetails {
+  return _tag == DBTEAMLOGEventDetailsMemberAddExternalIdDetails;
+}
+
 - (BOOL)isMemberAddNameDetails {
   return _tag == DBTEAMLOGEventDetailsMemberAddNameDetails;
 }
@@ -21785,6 +22604,10 @@
 
 - (BOOL)isMemberChangeEmailDetails {
   return _tag == DBTEAMLOGEventDetailsMemberChangeEmailDetails;
+}
+
+- (BOOL)isMemberChangeExternalIdDetails {
+  return _tag == DBTEAMLOGEventDetailsMemberChangeExternalIdDetails;
 }
 
 - (BOOL)isMemberChangeMembershipTypeDetails {
@@ -21805,6 +22628,10 @@
 
 - (BOOL)isMemberPermanentlyDeleteAccountContentsDetails {
   return _tag == DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails;
+}
+
+- (BOOL)isMemberRemoveExternalIdDetails {
+  return _tag == DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails;
 }
 
 - (BOOL)isMemberSpaceLimitsAddCustomQuotaDetails {
@@ -21983,6 +22810,18 @@
   return _tag == DBTEAMLOGEventDetailsPaperFolderTeamInviteDetails;
 }
 
+- (BOOL)isPaperPublishedLinkCreateDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails;
+}
+
+- (BOOL)isPaperPublishedLinkDisabledDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails;
+}
+
+- (BOOL)isPaperPublishedLinkViewDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails;
+}
+
 - (BOOL)isPasswordChangeDetails {
   return _tag == DBTEAMLOGEventDetailsPasswordChangeDetails;
 }
@@ -22017,6 +22856,10 @@
 
 - (BOOL)isTeamActivityCreateReportDetails {
   return _tag == DBTEAMLOGEventDetailsTeamActivityCreateReportDetails;
+}
+
+- (BOOL)isTeamActivityCreateReportFailDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails;
 }
 
 - (BOOL)isCollectionShareDetails {
@@ -22523,6 +23366,10 @@
   return _tag == DBTEAMLOGEventDetailsGroupUserManagementChangePolicyDetails;
 }
 
+- (BOOL)isIntegrationPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails;
+}
+
 - (BOOL)isMemberRequestsChangePolicyDetails {
   return _tag == DBTEAMLOGEventDetailsMemberRequestsChangePolicyDetails;
 }
@@ -22571,6 +23418,14 @@
   return _tag == DBTEAMLOGEventDetailsPaperChangePolicyDetails;
 }
 
+- (BOOL)isPaperDefaultFolderPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails;
+}
+
+- (BOOL)isPaperDesktopPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails;
+}
+
 - (BOOL)isPaperEnabledUsersGroupAdditionDetails {
   return _tag == DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails;
 }
@@ -22581,6 +23436,10 @@
 
 - (BOOL)isPermanentDeleteChangePolicyDetails {
   return _tag == DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails;
+}
+
+- (BOOL)isResellerSupportChangePolicyDetails {
+  return _tag == DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails;
 }
 
 - (BOOL)isSharingChangeFolderJoinPolicyDetails {
@@ -22621,6 +23480,10 @@
 
 - (BOOL)isSsoChangePolicyDetails {
   return _tag == DBTEAMLOGEventDetailsSsoChangePolicyDetails;
+}
+
+- (BOOL)isTeamExtensionsPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails;
 }
 
 - (BOOL)isTeamSelectiveSyncPolicyChangedDetails {
@@ -22703,6 +23566,82 @@
   return _tag == DBTEAMLOGEventDetailsTfaResetDetails;
 }
 
+- (BOOL)isGuestAdminChangeStatusDetails {
+  return _tag == DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails;
+}
+
+- (BOOL)isTeamMergeRequestAcceptedDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails;
+}
+
+- (BOOL)isTeamMergeRequestAcceptedShownToPrimaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestAcceptedShownToSecondaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestAutoCanceledDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails;
+}
+
+- (BOOL)isTeamMergeRequestCanceledDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails;
+}
+
+- (BOOL)isTeamMergeRequestCanceledShownToPrimaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestCanceledShownToSecondaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestExpiredDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails;
+}
+
+- (BOOL)isTeamMergeRequestExpiredShownToPrimaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestExpiredShownToSecondaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestRejectedShownToPrimaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestRejectedShownToSecondaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestReminderDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails;
+}
+
+- (BOOL)isTeamMergeRequestReminderShownToPrimaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestReminderShownToSecondaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestRevokedDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails;
+}
+
+- (BOOL)isTeamMergeRequestSentShownToPrimaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails;
+}
+
+- (BOOL)isTeamMergeRequestSentShownToSecondaryTeamDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails;
+}
+
 - (BOOL)isMissingDetails {
   return _tag == DBTEAMLOGEventDetailsMissingDetails;
 }
@@ -22721,6 +23660,10 @@
     return @"DBTEAMLOGEventDetailsAppUnlinkTeamDetails";
   case DBTEAMLOGEventDetailsAppUnlinkUserDetails:
     return @"DBTEAMLOGEventDetailsAppUnlinkUserDetails";
+  case DBTEAMLOGEventDetailsIntegrationConnectedDetails:
+    return @"DBTEAMLOGEventDetailsIntegrationConnectedDetails";
+  case DBTEAMLOGEventDetailsIntegrationDisconnectedDetails:
+    return @"DBTEAMLOGEventDetailsIntegrationDisconnectedDetails";
   case DBTEAMLOGEventDetailsFileAddCommentDetails:
     return @"DBTEAMLOGEventDetailsFileAddCommentDetails";
   case DBTEAMLOGEventDetailsFileChangeCommentSubscriptionDetails:
@@ -22825,6 +23768,8 @@
     return @"DBTEAMLOGEventDetailsFileRequestCloseDetails";
   case DBTEAMLOGEventDetailsFileRequestCreateDetails:
     return @"DBTEAMLOGEventDetailsFileRequestCreateDetails";
+  case DBTEAMLOGEventDetailsFileRequestDeleteDetails:
+    return @"DBTEAMLOGEventDetailsFileRequestDeleteDetails";
   case DBTEAMLOGEventDetailsFileRequestReceiveFileDetails:
     return @"DBTEAMLOGEventDetailsFileRequestReceiveFileDetails";
   case DBTEAMLOGEventDetailsGroupAddExternalIdDetails:
@@ -22855,6 +23800,10 @@
     return @"DBTEAMLOGEventDetailsGroupRenameDetails";
   case DBTEAMLOGEventDetailsEmmErrorDetails:
     return @"DBTEAMLOGEventDetailsEmmErrorDetails";
+  case DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails:
+    return @"DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails";
+  case DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails:
+    return @"DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails";
   case DBTEAMLOGEventDetailsLoginFailDetails:
     return @"DBTEAMLOGEventDetailsLoginFailDetails";
   case DBTEAMLOGEventDetailsLoginSuccessDetails:
@@ -22871,12 +23820,16 @@
     return @"DBTEAMLOGEventDetailsSignInAsSessionStartDetails";
   case DBTEAMLOGEventDetailsSsoErrorDetails:
     return @"DBTEAMLOGEventDetailsSsoErrorDetails";
+  case DBTEAMLOGEventDetailsMemberAddExternalIdDetails:
+    return @"DBTEAMLOGEventDetailsMemberAddExternalIdDetails";
   case DBTEAMLOGEventDetailsMemberAddNameDetails:
     return @"DBTEAMLOGEventDetailsMemberAddNameDetails";
   case DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails:
     return @"DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails";
   case DBTEAMLOGEventDetailsMemberChangeEmailDetails:
     return @"DBTEAMLOGEventDetailsMemberChangeEmailDetails";
+  case DBTEAMLOGEventDetailsMemberChangeExternalIdDetails:
+    return @"DBTEAMLOGEventDetailsMemberChangeExternalIdDetails";
   case DBTEAMLOGEventDetailsMemberChangeMembershipTypeDetails:
     return @"DBTEAMLOGEventDetailsMemberChangeMembershipTypeDetails";
   case DBTEAMLOGEventDetailsMemberChangeNameDetails:
@@ -22887,6 +23840,8 @@
     return @"DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails";
   case DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails:
     return @"DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails";
+  case DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails:
+    return @"DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails";
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails:
     return @"DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails";
   case DBTEAMLOGEventDetailsMemberSpaceLimitsChangeCustomQuotaDetails:
@@ -22975,6 +23930,12 @@
     return @"DBTEAMLOGEventDetailsPaperFolderFollowedDetails";
   case DBTEAMLOGEventDetailsPaperFolderTeamInviteDetails:
     return @"DBTEAMLOGEventDetailsPaperFolderTeamInviteDetails";
+  case DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails:
+    return @"DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails";
+  case DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails:
+    return @"DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails";
+  case DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails:
+    return @"DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails";
   case DBTEAMLOGEventDetailsPasswordChangeDetails:
     return @"DBTEAMLOGEventDetailsPasswordChangeDetails";
   case DBTEAMLOGEventDetailsPasswordResetDetails:
@@ -22993,6 +23954,8 @@
     return @"DBTEAMLOGEventDetailsSmartSyncCreateAdminPrivilegeReportDetails";
   case DBTEAMLOGEventDetailsTeamActivityCreateReportDetails:
     return @"DBTEAMLOGEventDetailsTeamActivityCreateReportDetails";
+  case DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails:
+    return @"DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails";
   case DBTEAMLOGEventDetailsCollectionShareDetails:
     return @"DBTEAMLOGEventDetailsCollectionShareDetails";
   case DBTEAMLOGEventDetailsNoteAclInviteOnlyDetails:
@@ -23245,6 +24208,8 @@
     return @"DBTEAMLOGEventDetailsGoogleSsoChangePolicyDetails";
   case DBTEAMLOGEventDetailsGroupUserManagementChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsGroupUserManagementChangePolicyDetails";
+  case DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails";
   case DBTEAMLOGEventDetailsMemberRequestsChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsMemberRequestsChangePolicyDetails";
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddExceptionDetails:
@@ -23269,12 +24234,18 @@
     return @"DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails";
   case DBTEAMLOGEventDetailsPaperChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsPaperChangePolicyDetails";
+  case DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails";
+  case DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails";
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails:
     return @"DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails";
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails:
     return @"DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails";
   case DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails";
+  case DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails:
+    return @"DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails";
   case DBTEAMLOGEventDetailsSharingChangeFolderJoinPolicyDetails:
     return @"DBTEAMLOGEventDetailsSharingChangeFolderJoinPolicyDetails";
   case DBTEAMLOGEventDetailsSharingChangeLinkPolicyDetails:
@@ -23295,6 +24266,8 @@
     return @"DBTEAMLOGEventDetailsSmartSyncOptOutDetails";
   case DBTEAMLOGEventDetailsSsoChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsSsoChangePolicyDetails";
+  case DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails";
   case DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails:
     return @"DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails";
   case DBTEAMLOGEventDetailsTfaChangePolicyDetails:
@@ -23335,6 +24308,44 @@
     return @"DBTEAMLOGEventDetailsTfaRemoveSecurityKeyDetails";
   case DBTEAMLOGEventDetailsTfaResetDetails:
     return @"DBTEAMLOGEventDetailsTfaResetDetails";
+  case DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails:
+    return @"DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails";
+  case DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails:
+    return @"DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails";
   case DBTEAMLOGEventDetailsMissingDetails:
     return @"DBTEAMLOGEventDetailsMissingDetails";
   case DBTEAMLOGEventDetailsOther:
@@ -23383,6 +24394,10 @@
     result = prime * result + [self.appUnlinkTeamDetails hash];
   case DBTEAMLOGEventDetailsAppUnlinkUserDetails:
     result = prime * result + [self.appUnlinkUserDetails hash];
+  case DBTEAMLOGEventDetailsIntegrationConnectedDetails:
+    result = prime * result + [self.integrationConnectedDetails hash];
+  case DBTEAMLOGEventDetailsIntegrationDisconnectedDetails:
+    result = prime * result + [self.integrationDisconnectedDetails hash];
   case DBTEAMLOGEventDetailsFileAddCommentDetails:
     result = prime * result + [self.fileAddCommentDetails hash];
   case DBTEAMLOGEventDetailsFileChangeCommentSubscriptionDetails:
@@ -23487,6 +24502,8 @@
     result = prime * result + [self.fileRequestCloseDetails hash];
   case DBTEAMLOGEventDetailsFileRequestCreateDetails:
     result = prime * result + [self.fileRequestCreateDetails hash];
+  case DBTEAMLOGEventDetailsFileRequestDeleteDetails:
+    result = prime * result + [self.fileRequestDeleteDetails hash];
   case DBTEAMLOGEventDetailsFileRequestReceiveFileDetails:
     result = prime * result + [self.fileRequestReceiveFileDetails hash];
   case DBTEAMLOGEventDetailsGroupAddExternalIdDetails:
@@ -23517,6 +24534,10 @@
     result = prime * result + [self.groupRenameDetails hash];
   case DBTEAMLOGEventDetailsEmmErrorDetails:
     result = prime * result + [self.emmErrorDetails hash];
+  case DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails:
+    result = prime * result + [self.guestAdminSignedInViaTrustedTeamsDetails hash];
+  case DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails:
+    result = prime * result + [self.guestAdminSignedOutViaTrustedTeamsDetails hash];
   case DBTEAMLOGEventDetailsLoginFailDetails:
     result = prime * result + [self.loginFailDetails hash];
   case DBTEAMLOGEventDetailsLoginSuccessDetails:
@@ -23533,12 +24554,16 @@
     result = prime * result + [self.signInAsSessionStartDetails hash];
   case DBTEAMLOGEventDetailsSsoErrorDetails:
     result = prime * result + [self.ssoErrorDetails hash];
+  case DBTEAMLOGEventDetailsMemberAddExternalIdDetails:
+    result = prime * result + [self.memberAddExternalIdDetails hash];
   case DBTEAMLOGEventDetailsMemberAddNameDetails:
     result = prime * result + [self.memberAddNameDetails hash];
   case DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails:
     result = prime * result + [self.memberChangeAdminRoleDetails hash];
   case DBTEAMLOGEventDetailsMemberChangeEmailDetails:
     result = prime * result + [self.memberChangeEmailDetails hash];
+  case DBTEAMLOGEventDetailsMemberChangeExternalIdDetails:
+    result = prime * result + [self.memberChangeExternalIdDetails hash];
   case DBTEAMLOGEventDetailsMemberChangeMembershipTypeDetails:
     result = prime * result + [self.memberChangeMembershipTypeDetails hash];
   case DBTEAMLOGEventDetailsMemberChangeNameDetails:
@@ -23549,6 +24574,8 @@
     result = prime * result + [self.memberDeleteManualContactsDetails hash];
   case DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails:
     result = prime * result + [self.memberPermanentlyDeleteAccountContentsDetails hash];
+  case DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails:
+    result = prime * result + [self.memberRemoveExternalIdDetails hash];
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails:
     result = prime * result + [self.memberSpaceLimitsAddCustomQuotaDetails hash];
   case DBTEAMLOGEventDetailsMemberSpaceLimitsChangeCustomQuotaDetails:
@@ -23637,6 +24664,12 @@
     result = prime * result + [self.paperFolderFollowedDetails hash];
   case DBTEAMLOGEventDetailsPaperFolderTeamInviteDetails:
     result = prime * result + [self.paperFolderTeamInviteDetails hash];
+  case DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails:
+    result = prime * result + [self.paperPublishedLinkCreateDetails hash];
+  case DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails:
+    result = prime * result + [self.paperPublishedLinkDisabledDetails hash];
+  case DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails:
+    result = prime * result + [self.paperPublishedLinkViewDetails hash];
   case DBTEAMLOGEventDetailsPasswordChangeDetails:
     result = prime * result + [self.passwordChangeDetails hash];
   case DBTEAMLOGEventDetailsPasswordResetDetails:
@@ -23655,6 +24688,8 @@
     result = prime * result + [self.smartSyncCreateAdminPrivilegeReportDetails hash];
   case DBTEAMLOGEventDetailsTeamActivityCreateReportDetails:
     result = prime * result + [self.teamActivityCreateReportDetails hash];
+  case DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails:
+    result = prime * result + [self.teamActivityCreateReportFailDetails hash];
   case DBTEAMLOGEventDetailsCollectionShareDetails:
     result = prime * result + [self.collectionShareDetails hash];
   case DBTEAMLOGEventDetailsNoteAclInviteOnlyDetails:
@@ -23907,6 +24942,8 @@
     result = prime * result + [self.googleSsoChangePolicyDetails hash];
   case DBTEAMLOGEventDetailsGroupUserManagementChangePolicyDetails:
     result = prime * result + [self.groupUserManagementChangePolicyDetails hash];
+  case DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails:
+    result = prime * result + [self.integrationPolicyChangedDetails hash];
   case DBTEAMLOGEventDetailsMemberRequestsChangePolicyDetails:
     result = prime * result + [self.memberRequestsChangePolicyDetails hash];
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddExceptionDetails:
@@ -23931,12 +24968,18 @@
     result = prime * result + [self.paperChangeMemberPolicyDetails hash];
   case DBTEAMLOGEventDetailsPaperChangePolicyDetails:
     result = prime * result + [self.paperChangePolicyDetails hash];
+  case DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails:
+    result = prime * result + [self.paperDefaultFolderPolicyChangedDetails hash];
+  case DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails:
+    result = prime * result + [self.paperDesktopPolicyChangedDetails hash];
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails:
     result = prime * result + [self.paperEnabledUsersGroupAdditionDetails hash];
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails:
     result = prime * result + [self.paperEnabledUsersGroupRemovalDetails hash];
   case DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails:
     result = prime * result + [self.permanentDeleteChangePolicyDetails hash];
+  case DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails:
+    result = prime * result + [self.resellerSupportChangePolicyDetails hash];
   case DBTEAMLOGEventDetailsSharingChangeFolderJoinPolicyDetails:
     result = prime * result + [self.sharingChangeFolderJoinPolicyDetails hash];
   case DBTEAMLOGEventDetailsSharingChangeLinkPolicyDetails:
@@ -23957,6 +25000,8 @@
     result = prime * result + [self.smartSyncOptOutDetails hash];
   case DBTEAMLOGEventDetailsSsoChangePolicyDetails:
     result = prime * result + [self.ssoChangePolicyDetails hash];
+  case DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails:
+    result = prime * result + [self.teamExtensionsPolicyChangedDetails hash];
   case DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails:
     result = prime * result + [self.teamSelectiveSyncPolicyChangedDetails hash];
   case DBTEAMLOGEventDetailsTfaChangePolicyDetails:
@@ -23997,6 +25042,44 @@
     result = prime * result + [self.tfaRemoveSecurityKeyDetails hash];
   case DBTEAMLOGEventDetailsTfaResetDetails:
     result = prime * result + [self.tfaResetDetails hash];
+  case DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails:
+    result = prime * result + [self.guestAdminChangeStatusDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails:
+    result = prime * result + [self.teamMergeRequestAcceptedDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestAcceptedShownToPrimaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestAcceptedShownToSecondaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails:
+    result = prime * result + [self.teamMergeRequestAutoCanceledDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails:
+    result = prime * result + [self.teamMergeRequestCanceledDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestCanceledShownToPrimaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestCanceledShownToSecondaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails:
+    result = prime * result + [self.teamMergeRequestExpiredDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestExpiredShownToPrimaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestExpiredShownToSecondaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestRejectedShownToPrimaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestRejectedShownToSecondaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails:
+    result = prime * result + [self.teamMergeRequestReminderDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestReminderShownToPrimaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestReminderShownToSecondaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails:
+    result = prime * result + [self.teamMergeRequestRevokedDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestSentShownToPrimaryTeamDetails hash];
+  case DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails:
+    result = prime * result + [self.teamMergeRequestSentShownToSecondaryTeamDetails hash];
   case DBTEAMLOGEventDetailsMissingDetails:
     result = prime * result + [self.missingDetails hash];
   case DBTEAMLOGEventDetailsOther:
@@ -24034,6 +25117,10 @@
     return [self.appUnlinkTeamDetails isEqual:anEventDetails.appUnlinkTeamDetails];
   case DBTEAMLOGEventDetailsAppUnlinkUserDetails:
     return [self.appUnlinkUserDetails isEqual:anEventDetails.appUnlinkUserDetails];
+  case DBTEAMLOGEventDetailsIntegrationConnectedDetails:
+    return [self.integrationConnectedDetails isEqual:anEventDetails.integrationConnectedDetails];
+  case DBTEAMLOGEventDetailsIntegrationDisconnectedDetails:
+    return [self.integrationDisconnectedDetails isEqual:anEventDetails.integrationDisconnectedDetails];
   case DBTEAMLOGEventDetailsFileAddCommentDetails:
     return [self.fileAddCommentDetails isEqual:anEventDetails.fileAddCommentDetails];
   case DBTEAMLOGEventDetailsFileChangeCommentSubscriptionDetails:
@@ -24145,6 +25232,8 @@
     return [self.fileRequestCloseDetails isEqual:anEventDetails.fileRequestCloseDetails];
   case DBTEAMLOGEventDetailsFileRequestCreateDetails:
     return [self.fileRequestCreateDetails isEqual:anEventDetails.fileRequestCreateDetails];
+  case DBTEAMLOGEventDetailsFileRequestDeleteDetails:
+    return [self.fileRequestDeleteDetails isEqual:anEventDetails.fileRequestDeleteDetails];
   case DBTEAMLOGEventDetailsFileRequestReceiveFileDetails:
     return [self.fileRequestReceiveFileDetails isEqual:anEventDetails.fileRequestReceiveFileDetails];
   case DBTEAMLOGEventDetailsGroupAddExternalIdDetails:
@@ -24175,6 +25264,12 @@
     return [self.groupRenameDetails isEqual:anEventDetails.groupRenameDetails];
   case DBTEAMLOGEventDetailsEmmErrorDetails:
     return [self.emmErrorDetails isEqual:anEventDetails.emmErrorDetails];
+  case DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails:
+    return
+        [self.guestAdminSignedInViaTrustedTeamsDetails isEqual:anEventDetails.guestAdminSignedInViaTrustedTeamsDetails];
+  case DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails:
+    return [self.guestAdminSignedOutViaTrustedTeamsDetails
+        isEqual:anEventDetails.guestAdminSignedOutViaTrustedTeamsDetails];
   case DBTEAMLOGEventDetailsLoginFailDetails:
     return [self.loginFailDetails isEqual:anEventDetails.loginFailDetails];
   case DBTEAMLOGEventDetailsLoginSuccessDetails:
@@ -24191,12 +25286,16 @@
     return [self.signInAsSessionStartDetails isEqual:anEventDetails.signInAsSessionStartDetails];
   case DBTEAMLOGEventDetailsSsoErrorDetails:
     return [self.ssoErrorDetails isEqual:anEventDetails.ssoErrorDetails];
+  case DBTEAMLOGEventDetailsMemberAddExternalIdDetails:
+    return [self.memberAddExternalIdDetails isEqual:anEventDetails.memberAddExternalIdDetails];
   case DBTEAMLOGEventDetailsMemberAddNameDetails:
     return [self.memberAddNameDetails isEqual:anEventDetails.memberAddNameDetails];
   case DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails:
     return [self.memberChangeAdminRoleDetails isEqual:anEventDetails.memberChangeAdminRoleDetails];
   case DBTEAMLOGEventDetailsMemberChangeEmailDetails:
     return [self.memberChangeEmailDetails isEqual:anEventDetails.memberChangeEmailDetails];
+  case DBTEAMLOGEventDetailsMemberChangeExternalIdDetails:
+    return [self.memberChangeExternalIdDetails isEqual:anEventDetails.memberChangeExternalIdDetails];
   case DBTEAMLOGEventDetailsMemberChangeMembershipTypeDetails:
     return [self.memberChangeMembershipTypeDetails isEqual:anEventDetails.memberChangeMembershipTypeDetails];
   case DBTEAMLOGEventDetailsMemberChangeNameDetails:
@@ -24208,6 +25307,8 @@
   case DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails:
     return [self.memberPermanentlyDeleteAccountContentsDetails
         isEqual:anEventDetails.memberPermanentlyDeleteAccountContentsDetails];
+  case DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails:
+    return [self.memberRemoveExternalIdDetails isEqual:anEventDetails.memberRemoveExternalIdDetails];
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails:
     return [self.memberSpaceLimitsAddCustomQuotaDetails isEqual:anEventDetails.memberSpaceLimitsAddCustomQuotaDetails];
   case DBTEAMLOGEventDetailsMemberSpaceLimitsChangeCustomQuotaDetails:
@@ -24298,6 +25399,12 @@
     return [self.paperFolderFollowedDetails isEqual:anEventDetails.paperFolderFollowedDetails];
   case DBTEAMLOGEventDetailsPaperFolderTeamInviteDetails:
     return [self.paperFolderTeamInviteDetails isEqual:anEventDetails.paperFolderTeamInviteDetails];
+  case DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails:
+    return [self.paperPublishedLinkCreateDetails isEqual:anEventDetails.paperPublishedLinkCreateDetails];
+  case DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails:
+    return [self.paperPublishedLinkDisabledDetails isEqual:anEventDetails.paperPublishedLinkDisabledDetails];
+  case DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails:
+    return [self.paperPublishedLinkViewDetails isEqual:anEventDetails.paperPublishedLinkViewDetails];
   case DBTEAMLOGEventDetailsPasswordChangeDetails:
     return [self.passwordChangeDetails isEqual:anEventDetails.passwordChangeDetails];
   case DBTEAMLOGEventDetailsPasswordResetDetails:
@@ -24317,6 +25424,8 @@
         isEqual:anEventDetails.smartSyncCreateAdminPrivilegeReportDetails];
   case DBTEAMLOGEventDetailsTeamActivityCreateReportDetails:
     return [self.teamActivityCreateReportDetails isEqual:anEventDetails.teamActivityCreateReportDetails];
+  case DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails:
+    return [self.teamActivityCreateReportFailDetails isEqual:anEventDetails.teamActivityCreateReportFailDetails];
   case DBTEAMLOGEventDetailsCollectionShareDetails:
     return [self.collectionShareDetails isEqual:anEventDetails.collectionShareDetails];
   case DBTEAMLOGEventDetailsNoteAclInviteOnlyDetails:
@@ -24585,6 +25694,8 @@
     return [self.googleSsoChangePolicyDetails isEqual:anEventDetails.googleSsoChangePolicyDetails];
   case DBTEAMLOGEventDetailsGroupUserManagementChangePolicyDetails:
     return [self.groupUserManagementChangePolicyDetails isEqual:anEventDetails.groupUserManagementChangePolicyDetails];
+  case DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails:
+    return [self.integrationPolicyChangedDetails isEqual:anEventDetails.integrationPolicyChangedDetails];
   case DBTEAMLOGEventDetailsMemberRequestsChangePolicyDetails:
     return [self.memberRequestsChangePolicyDetails isEqual:anEventDetails.memberRequestsChangePolicyDetails];
   case DBTEAMLOGEventDetailsMemberSpaceLimitsAddExceptionDetails:
@@ -24612,12 +25723,18 @@
     return [self.paperChangeMemberPolicyDetails isEqual:anEventDetails.paperChangeMemberPolicyDetails];
   case DBTEAMLOGEventDetailsPaperChangePolicyDetails:
     return [self.paperChangePolicyDetails isEqual:anEventDetails.paperChangePolicyDetails];
+  case DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails:
+    return [self.paperDefaultFolderPolicyChangedDetails isEqual:anEventDetails.paperDefaultFolderPolicyChangedDetails];
+  case DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails:
+    return [self.paperDesktopPolicyChangedDetails isEqual:anEventDetails.paperDesktopPolicyChangedDetails];
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails:
     return [self.paperEnabledUsersGroupAdditionDetails isEqual:anEventDetails.paperEnabledUsersGroupAdditionDetails];
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails:
     return [self.paperEnabledUsersGroupRemovalDetails isEqual:anEventDetails.paperEnabledUsersGroupRemovalDetails];
   case DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails:
     return [self.permanentDeleteChangePolicyDetails isEqual:anEventDetails.permanentDeleteChangePolicyDetails];
+  case DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails:
+    return [self.resellerSupportChangePolicyDetails isEqual:anEventDetails.resellerSupportChangePolicyDetails];
   case DBTEAMLOGEventDetailsSharingChangeFolderJoinPolicyDetails:
     return [self.sharingChangeFolderJoinPolicyDetails isEqual:anEventDetails.sharingChangeFolderJoinPolicyDetails];
   case DBTEAMLOGEventDetailsSharingChangeLinkPolicyDetails:
@@ -24639,6 +25756,8 @@
     return [self.smartSyncOptOutDetails isEqual:anEventDetails.smartSyncOptOutDetails];
   case DBTEAMLOGEventDetailsSsoChangePolicyDetails:
     return [self.ssoChangePolicyDetails isEqual:anEventDetails.ssoChangePolicyDetails];
+  case DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails:
+    return [self.teamExtensionsPolicyChangedDetails isEqual:anEventDetails.teamExtensionsPolicyChangedDetails];
   case DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails:
     return [self.teamSelectiveSyncPolicyChangedDetails isEqual:anEventDetails.teamSelectiveSyncPolicyChangedDetails];
   case DBTEAMLOGEventDetailsTfaChangePolicyDetails:
@@ -24682,6 +25801,56 @@
     return [self.tfaRemoveSecurityKeyDetails isEqual:anEventDetails.tfaRemoveSecurityKeyDetails];
   case DBTEAMLOGEventDetailsTfaResetDetails:
     return [self.tfaResetDetails isEqual:anEventDetails.tfaResetDetails];
+  case DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails:
+    return [self.guestAdminChangeStatusDetails isEqual:anEventDetails.guestAdminChangeStatusDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails:
+    return [self.teamMergeRequestAcceptedDetails isEqual:anEventDetails.teamMergeRequestAcceptedDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails:
+    return [self.teamMergeRequestAcceptedShownToPrimaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestAcceptedShownToPrimaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails:
+    return [self.teamMergeRequestAcceptedShownToSecondaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestAcceptedShownToSecondaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails:
+    return [self.teamMergeRequestAutoCanceledDetails isEqual:anEventDetails.teamMergeRequestAutoCanceledDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails:
+    return [self.teamMergeRequestCanceledDetails isEqual:anEventDetails.teamMergeRequestCanceledDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails:
+    return [self.teamMergeRequestCanceledShownToPrimaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestCanceledShownToPrimaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails:
+    return [self.teamMergeRequestCanceledShownToSecondaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestCanceledShownToSecondaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails:
+    return [self.teamMergeRequestExpiredDetails isEqual:anEventDetails.teamMergeRequestExpiredDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails:
+    return [self.teamMergeRequestExpiredShownToPrimaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestExpiredShownToPrimaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails:
+    return [self.teamMergeRequestExpiredShownToSecondaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestExpiredShownToSecondaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails:
+    return [self.teamMergeRequestRejectedShownToPrimaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestRejectedShownToPrimaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails:
+    return [self.teamMergeRequestRejectedShownToSecondaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestRejectedShownToSecondaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails:
+    return [self.teamMergeRequestReminderDetails isEqual:anEventDetails.teamMergeRequestReminderDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails:
+    return [self.teamMergeRequestReminderShownToPrimaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestReminderShownToPrimaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails:
+    return [self.teamMergeRequestReminderShownToSecondaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestReminderShownToSecondaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails:
+    return [self.teamMergeRequestRevokedDetails isEqual:anEventDetails.teamMergeRequestRevokedDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails:
+    return [self.teamMergeRequestSentShownToPrimaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestSentShownToPrimaryTeamDetails];
+  case DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails:
+    return [self.teamMergeRequestSentShownToSecondaryTeamDetails
+        isEqual:anEventDetails.teamMergeRequestSentShownToSecondaryTeamDetails];
   case DBTEAMLOGEventDetailsMissingDetails:
     return [self.missingDetails isEqual:anEventDetails.missingDetails];
   case DBTEAMLOGEventDetailsOther:
@@ -24711,6 +25880,14 @@
   } else if ([valueObj isAppUnlinkUserDetails]) {
     jsonDict = [[DBTEAMLOGAppUnlinkUserDetailsSerializer serialize:valueObj.appUnlinkUserDetails] mutableCopy];
     jsonDict[@".tag"] = @"app_unlink_user_details";
+  } else if ([valueObj isIntegrationConnectedDetails]) {
+    jsonDict =
+        [[DBTEAMLOGIntegrationConnectedDetailsSerializer serialize:valueObj.integrationConnectedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"integration_connected_details";
+  } else if ([valueObj isIntegrationDisconnectedDetails]) {
+    jsonDict = [[DBTEAMLOGIntegrationDisconnectedDetailsSerializer serialize:valueObj.integrationDisconnectedDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"integration_disconnected_details";
   } else if ([valueObj isFileAddCommentDetails]) {
     jsonDict = [[DBTEAMLOGFileAddCommentDetailsSerializer serialize:valueObj.fileAddCommentDetails] mutableCopy];
     jsonDict[@".tag"] = @"file_add_comment_details";
@@ -24896,6 +26073,9 @@
   } else if ([valueObj isFileRequestCreateDetails]) {
     jsonDict = [[DBTEAMLOGFileRequestCreateDetailsSerializer serialize:valueObj.fileRequestCreateDetails] mutableCopy];
     jsonDict[@".tag"] = @"file_request_create_details";
+  } else if ([valueObj isFileRequestDeleteDetails]) {
+    jsonDict = [[DBTEAMLOGFileRequestDeleteDetailsSerializer serialize:valueObj.fileRequestDeleteDetails] mutableCopy];
+    jsonDict[@".tag"] = @"file_request_delete_details";
   } else if ([valueObj isFileRequestReceiveFileDetails]) {
     jsonDict = [[DBTEAMLOGFileRequestReceiveFileDetailsSerializer serialize:valueObj.fileRequestReceiveFileDetails]
         mutableCopy];
@@ -24949,6 +26129,14 @@
   } else if ([valueObj isEmmErrorDetails]) {
     jsonDict = [[DBTEAMLOGEmmErrorDetailsSerializer serialize:valueObj.emmErrorDetails] mutableCopy];
     jsonDict[@".tag"] = @"emm_error_details";
+  } else if ([valueObj isGuestAdminSignedInViaTrustedTeamsDetails]) {
+    jsonDict = [[DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetailsSerializer
+        serialize:valueObj.guestAdminSignedInViaTrustedTeamsDetails] mutableCopy];
+    jsonDict[@".tag"] = @"guest_admin_signed_in_via_trusted_teams_details";
+  } else if ([valueObj isGuestAdminSignedOutViaTrustedTeamsDetails]) {
+    jsonDict = [[DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetailsSerializer
+        serialize:valueObj.guestAdminSignedOutViaTrustedTeamsDetails] mutableCopy];
+    jsonDict[@".tag"] = @"guest_admin_signed_out_via_trusted_teams_details";
   } else if ([valueObj isLoginFailDetails]) {
     jsonDict = [[DBTEAMLOGLoginFailDetailsSerializer serialize:valueObj.loginFailDetails] mutableCopy];
     jsonDict[@".tag"] = @"login_fail_details";
@@ -24977,6 +26165,10 @@
   } else if ([valueObj isSsoErrorDetails]) {
     jsonDict = [[DBTEAMLOGSsoErrorDetailsSerializer serialize:valueObj.ssoErrorDetails] mutableCopy];
     jsonDict[@".tag"] = @"sso_error_details";
+  } else if ([valueObj isMemberAddExternalIdDetails]) {
+    jsonDict =
+        [[DBTEAMLOGMemberAddExternalIdDetailsSerializer serialize:valueObj.memberAddExternalIdDetails] mutableCopy];
+    jsonDict[@".tag"] = @"member_add_external_id_details";
   } else if ([valueObj isMemberAddNameDetails]) {
     jsonDict = [[DBTEAMLOGMemberAddNameDetailsSerializer serialize:valueObj.memberAddNameDetails] mutableCopy];
     jsonDict[@".tag"] = @"member_add_name_details";
@@ -24987,6 +26179,10 @@
   } else if ([valueObj isMemberChangeEmailDetails]) {
     jsonDict = [[DBTEAMLOGMemberChangeEmailDetailsSerializer serialize:valueObj.memberChangeEmailDetails] mutableCopy];
     jsonDict[@".tag"] = @"member_change_email_details";
+  } else if ([valueObj isMemberChangeExternalIdDetails]) {
+    jsonDict = [[DBTEAMLOGMemberChangeExternalIdDetailsSerializer serialize:valueObj.memberChangeExternalIdDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"member_change_external_id_details";
   } else if ([valueObj isMemberChangeMembershipTypeDetails]) {
     jsonDict = [[DBTEAMLOGMemberChangeMembershipTypeDetailsSerializer
         serialize:valueObj.memberChangeMembershipTypeDetails] mutableCopy];
@@ -25006,6 +26202,10 @@
     jsonDict = [[DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer
         serialize:valueObj.memberPermanentlyDeleteAccountContentsDetails] mutableCopy];
     jsonDict[@".tag"] = @"member_permanently_delete_account_contents_details";
+  } else if ([valueObj isMemberRemoveExternalIdDetails]) {
+    jsonDict = [[DBTEAMLOGMemberRemoveExternalIdDetailsSerializer serialize:valueObj.memberRemoveExternalIdDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"member_remove_external_id_details";
   } else if ([valueObj isMemberSpaceLimitsAddCustomQuotaDetails]) {
     jsonDict = [[DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetailsSerializer
         serialize:valueObj.memberSpaceLimitsAddCustomQuotaDetails] mutableCopy];
@@ -25172,6 +26372,18 @@
     jsonDict =
         [[DBTEAMLOGPaperFolderTeamInviteDetailsSerializer serialize:valueObj.paperFolderTeamInviteDetails] mutableCopy];
     jsonDict[@".tag"] = @"paper_folder_team_invite_details";
+  } else if ([valueObj isPaperPublishedLinkCreateDetails]) {
+    jsonDict = [[DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer serialize:valueObj.paperPublishedLinkCreateDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"paper_published_link_create_details";
+  } else if ([valueObj isPaperPublishedLinkDisabledDetails]) {
+    jsonDict = [[DBTEAMLOGPaperPublishedLinkDisabledDetailsSerializer
+        serialize:valueObj.paperPublishedLinkDisabledDetails] mutableCopy];
+    jsonDict[@".tag"] = @"paper_published_link_disabled_details";
+  } else if ([valueObj isPaperPublishedLinkViewDetails]) {
+    jsonDict = [[DBTEAMLOGPaperPublishedLinkViewDetailsSerializer serialize:valueObj.paperPublishedLinkViewDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"paper_published_link_view_details";
   } else if ([valueObj isPasswordChangeDetails]) {
     jsonDict = [[DBTEAMLOGPasswordChangeDetailsSerializer serialize:valueObj.passwordChangeDetails] mutableCopy];
     jsonDict[@".tag"] = @"password_change_details";
@@ -25205,6 +26417,10 @@
     jsonDict = [[DBTEAMLOGTeamActivityCreateReportDetailsSerializer serialize:valueObj.teamActivityCreateReportDetails]
         mutableCopy];
     jsonDict[@".tag"] = @"team_activity_create_report_details";
+  } else if ([valueObj isTeamActivityCreateReportFailDetails]) {
+    jsonDict = [[DBTEAMLOGTeamActivityCreateReportFailDetailsSerializer
+        serialize:valueObj.teamActivityCreateReportFailDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_activity_create_report_fail_details";
   } else if ([valueObj isCollectionShareDetails]) {
     jsonDict = [[DBTEAMLOGCollectionShareDetailsSerializer serialize:valueObj.collectionShareDetails] mutableCopy];
     jsonDict[@".tag"] = @"collection_share_details";
@@ -25661,6 +26877,10 @@
     jsonDict = [[DBTEAMLOGGroupUserManagementChangePolicyDetailsSerializer
         serialize:valueObj.groupUserManagementChangePolicyDetails] mutableCopy];
     jsonDict[@".tag"] = @"group_user_management_change_policy_details";
+  } else if ([valueObj isIntegrationPolicyChangedDetails]) {
+    jsonDict = [[DBTEAMLOGIntegrationPolicyChangedDetailsSerializer serialize:valueObj.integrationPolicyChangedDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"integration_policy_changed_details";
   } else if ([valueObj isMemberRequestsChangePolicyDetails]) {
     jsonDict = [[DBTEAMLOGMemberRequestsChangePolicyDetailsSerializer
         serialize:valueObj.memberRequestsChangePolicyDetails] mutableCopy];
@@ -25708,6 +26928,14 @@
   } else if ([valueObj isPaperChangePolicyDetails]) {
     jsonDict = [[DBTEAMLOGPaperChangePolicyDetailsSerializer serialize:valueObj.paperChangePolicyDetails] mutableCopy];
     jsonDict[@".tag"] = @"paper_change_policy_details";
+  } else if ([valueObj isPaperDefaultFolderPolicyChangedDetails]) {
+    jsonDict = [[DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer
+        serialize:valueObj.paperDefaultFolderPolicyChangedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"paper_default_folder_policy_changed_details";
+  } else if ([valueObj isPaperDesktopPolicyChangedDetails]) {
+    jsonDict = [[DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer
+        serialize:valueObj.paperDesktopPolicyChangedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"paper_desktop_policy_changed_details";
   } else if ([valueObj isPaperEnabledUsersGroupAdditionDetails]) {
     jsonDict = [[DBTEAMLOGPaperEnabledUsersGroupAdditionDetailsSerializer
         serialize:valueObj.paperEnabledUsersGroupAdditionDetails] mutableCopy];
@@ -25720,6 +26948,10 @@
     jsonDict = [[DBTEAMLOGPermanentDeleteChangePolicyDetailsSerializer
         serialize:valueObj.permanentDeleteChangePolicyDetails] mutableCopy];
     jsonDict[@".tag"] = @"permanent_delete_change_policy_details";
+  } else if ([valueObj isResellerSupportChangePolicyDetails]) {
+    jsonDict = [[DBTEAMLOGResellerSupportChangePolicyDetailsSerializer
+        serialize:valueObj.resellerSupportChangePolicyDetails] mutableCopy];
+    jsonDict[@".tag"] = @"reseller_support_change_policy_details";
   } else if ([valueObj isSharingChangeFolderJoinPolicyDetails]) {
     jsonDict = [[DBTEAMLOGSharingChangeFolderJoinPolicyDetailsSerializer
         serialize:valueObj.sharingChangeFolderJoinPolicyDetails] mutableCopy];
@@ -25758,6 +26990,10 @@
   } else if ([valueObj isSsoChangePolicyDetails]) {
     jsonDict = [[DBTEAMLOGSsoChangePolicyDetailsSerializer serialize:valueObj.ssoChangePolicyDetails] mutableCopy];
     jsonDict[@".tag"] = @"sso_change_policy_details";
+  } else if ([valueObj isTeamExtensionsPolicyChangedDetails]) {
+    jsonDict = [[DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer
+        serialize:valueObj.teamExtensionsPolicyChangedDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_extensions_policy_changed_details";
   } else if ([valueObj isTeamSelectiveSyncPolicyChangedDetails]) {
     jsonDict = [[DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer
         serialize:valueObj.teamSelectiveSyncPolicyChangedDetails] mutableCopy];
@@ -25831,6 +27067,82 @@
   } else if ([valueObj isTfaResetDetails]) {
     jsonDict = [[DBTEAMLOGTfaResetDetailsSerializer serialize:valueObj.tfaResetDetails] mutableCopy];
     jsonDict[@".tag"] = @"tfa_reset_details";
+  } else if ([valueObj isGuestAdminChangeStatusDetails]) {
+    jsonDict = [[DBTEAMLOGGuestAdminChangeStatusDetailsSerializer serialize:valueObj.guestAdminChangeStatusDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"guest_admin_change_status_details";
+  } else if ([valueObj isTeamMergeRequestAcceptedDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer serialize:valueObj.teamMergeRequestAcceptedDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_accepted_details";
+  } else if ([valueObj isTeamMergeRequestAcceptedShownToPrimaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestAcceptedShownToPrimaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_accepted_shown_to_primary_team_details";
+  } else if ([valueObj isTeamMergeRequestAcceptedShownToSecondaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestAcceptedShownToSecondaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_accepted_shown_to_secondary_team_details";
+  } else if ([valueObj isTeamMergeRequestAutoCanceledDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestAutoCanceledDetailsSerializer
+        serialize:valueObj.teamMergeRequestAutoCanceledDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_auto_canceled_details";
+  } else if ([valueObj isTeamMergeRequestCanceledDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestCanceledDetailsSerializer serialize:valueObj.teamMergeRequestCanceledDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_canceled_details";
+  } else if ([valueObj isTeamMergeRequestCanceledShownToPrimaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestCanceledShownToPrimaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_canceled_shown_to_primary_team_details";
+  } else if ([valueObj isTeamMergeRequestCanceledShownToSecondaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestCanceledShownToSecondaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_canceled_shown_to_secondary_team_details";
+  } else if ([valueObj isTeamMergeRequestExpiredDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestExpiredDetailsSerializer serialize:valueObj.teamMergeRequestExpiredDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_expired_details";
+  } else if ([valueObj isTeamMergeRequestExpiredShownToPrimaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestExpiredShownToPrimaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_expired_shown_to_primary_team_details";
+  } else if ([valueObj isTeamMergeRequestExpiredShownToSecondaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestExpiredShownToSecondaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_expired_shown_to_secondary_team_details";
+  } else if ([valueObj isTeamMergeRequestRejectedShownToPrimaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestRejectedShownToPrimaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_rejected_shown_to_primary_team_details";
+  } else if ([valueObj isTeamMergeRequestRejectedShownToSecondaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestRejectedShownToSecondaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_rejected_shown_to_secondary_team_details";
+  } else if ([valueObj isTeamMergeRequestReminderDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestReminderDetailsSerializer serialize:valueObj.teamMergeRequestReminderDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_reminder_details";
+  } else if ([valueObj isTeamMergeRequestReminderShownToPrimaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestReminderShownToPrimaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_reminder_shown_to_primary_team_details";
+  } else if ([valueObj isTeamMergeRequestReminderShownToSecondaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestReminderShownToSecondaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_reminder_shown_to_secondary_team_details";
+  } else if ([valueObj isTeamMergeRequestRevokedDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer serialize:valueObj.teamMergeRequestRevokedDetails]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_revoked_details";
+  } else if ([valueObj isTeamMergeRequestSentShownToPrimaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestSentShownToPrimaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_sent_shown_to_primary_team_details";
+  } else if ([valueObj isTeamMergeRequestSentShownToSecondaryTeamDetails]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetailsSerializer
+        serialize:valueObj.teamMergeRequestSentShownToSecondaryTeamDetails] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_sent_shown_to_secondary_team_details";
   } else if ([valueObj isMissingDetails]) {
     jsonDict = [[DBTEAMLOGMissingDetailsSerializer serialize:valueObj.missingDetails] mutableCopy];
     jsonDict[@".tag"] = @"missing_details";
@@ -25860,6 +27172,14 @@
     DBTEAMLOGAppUnlinkUserDetails *appUnlinkUserDetails =
         [DBTEAMLOGAppUnlinkUserDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithAppUnlinkUserDetails:appUnlinkUserDetails];
+  } else if ([tag isEqualToString:@"integration_connected_details"]) {
+    DBTEAMLOGIntegrationConnectedDetails *integrationConnectedDetails =
+        [DBTEAMLOGIntegrationConnectedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithIntegrationConnectedDetails:integrationConnectedDetails];
+  } else if ([tag isEqualToString:@"integration_disconnected_details"]) {
+    DBTEAMLOGIntegrationDisconnectedDetails *integrationDisconnectedDetails =
+        [DBTEAMLOGIntegrationDisconnectedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithIntegrationDisconnectedDetails:integrationDisconnectedDetails];
   } else if ([tag isEqualToString:@"file_add_comment_details"]) {
     DBTEAMLOGFileAddCommentDetails *fileAddCommentDetails =
         [DBTEAMLOGFileAddCommentDetailsSerializer deserialize:valueDict];
@@ -26071,6 +27391,10 @@
     DBTEAMLOGFileRequestCreateDetails *fileRequestCreateDetails =
         [DBTEAMLOGFileRequestCreateDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithFileRequestCreateDetails:fileRequestCreateDetails];
+  } else if ([tag isEqualToString:@"file_request_delete_details"]) {
+    DBTEAMLOGFileRequestDeleteDetails *fileRequestDeleteDetails =
+        [DBTEAMLOGFileRequestDeleteDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithFileRequestDeleteDetails:fileRequestDeleteDetails];
   } else if ([tag isEqualToString:@"file_request_receive_file_details"]) {
     DBTEAMLOGFileRequestReceiveFileDetails *fileRequestReceiveFileDetails =
         [DBTEAMLOGFileRequestReceiveFileDetailsSerializer deserialize:valueDict];
@@ -26126,6 +27450,16 @@
   } else if ([tag isEqualToString:@"emm_error_details"]) {
     DBTEAMLOGEmmErrorDetails *emmErrorDetails = [DBTEAMLOGEmmErrorDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithEmmErrorDetails:emmErrorDetails];
+  } else if ([tag isEqualToString:@"guest_admin_signed_in_via_trusted_teams_details"]) {
+    DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails *guestAdminSignedInViaTrustedTeamsDetails =
+        [DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithGuestAdminSignedInViaTrustedTeamsDetails:guestAdminSignedInViaTrustedTeamsDetails];
+  } else if ([tag isEqualToString:@"guest_admin_signed_out_via_trusted_teams_details"]) {
+    DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails *guestAdminSignedOutViaTrustedTeamsDetails =
+        [DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithGuestAdminSignedOutViaTrustedTeamsDetails:guestAdminSignedOutViaTrustedTeamsDetails];
   } else if ([tag isEqualToString:@"login_fail_details"]) {
     DBTEAMLOGLoginFailDetails *loginFailDetails = [DBTEAMLOGLoginFailDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithLoginFailDetails:loginFailDetails];
@@ -26155,6 +27489,10 @@
   } else if ([tag isEqualToString:@"sso_error_details"]) {
     DBTEAMLOGSsoErrorDetails *ssoErrorDetails = [DBTEAMLOGSsoErrorDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithSsoErrorDetails:ssoErrorDetails];
+  } else if ([tag isEqualToString:@"member_add_external_id_details"]) {
+    DBTEAMLOGMemberAddExternalIdDetails *memberAddExternalIdDetails =
+        [DBTEAMLOGMemberAddExternalIdDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithMemberAddExternalIdDetails:memberAddExternalIdDetails];
   } else if ([tag isEqualToString:@"member_add_name_details"]) {
     DBTEAMLOGMemberAddNameDetails *memberAddNameDetails =
         [DBTEAMLOGMemberAddNameDetailsSerializer deserialize:valueDict];
@@ -26167,6 +27505,10 @@
     DBTEAMLOGMemberChangeEmailDetails *memberChangeEmailDetails =
         [DBTEAMLOGMemberChangeEmailDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithMemberChangeEmailDetails:memberChangeEmailDetails];
+  } else if ([tag isEqualToString:@"member_change_external_id_details"]) {
+    DBTEAMLOGMemberChangeExternalIdDetails *memberChangeExternalIdDetails =
+        [DBTEAMLOGMemberChangeExternalIdDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithMemberChangeExternalIdDetails:memberChangeExternalIdDetails];
   } else if ([tag isEqualToString:@"member_change_membership_type_details"]) {
     DBTEAMLOGMemberChangeMembershipTypeDetails *memberChangeMembershipTypeDetails =
         [DBTEAMLOGMemberChangeMembershipTypeDetailsSerializer deserialize:valueDict];
@@ -26188,6 +27530,10 @@
         [DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc]
         initWithMemberPermanentlyDeleteAccountContentsDetails:memberPermanentlyDeleteAccountContentsDetails];
+  } else if ([tag isEqualToString:@"member_remove_external_id_details"]) {
+    DBTEAMLOGMemberRemoveExternalIdDetails *memberRemoveExternalIdDetails =
+        [DBTEAMLOGMemberRemoveExternalIdDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithMemberRemoveExternalIdDetails:memberRemoveExternalIdDetails];
   } else if ([tag isEqualToString:@"member_space_limits_add_custom_quota_details"]) {
     DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails *memberSpaceLimitsAddCustomQuotaDetails =
         [DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetailsSerializer deserialize:valueDict];
@@ -26373,6 +27719,18 @@
     DBTEAMLOGPaperFolderTeamInviteDetails *paperFolderTeamInviteDetails =
         [DBTEAMLOGPaperFolderTeamInviteDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithPaperFolderTeamInviteDetails:paperFolderTeamInviteDetails];
+  } else if ([tag isEqualToString:@"paper_published_link_create_details"]) {
+    DBTEAMLOGPaperPublishedLinkCreateDetails *paperPublishedLinkCreateDetails =
+        [DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithPaperPublishedLinkCreateDetails:paperPublishedLinkCreateDetails];
+  } else if ([tag isEqualToString:@"paper_published_link_disabled_details"]) {
+    DBTEAMLOGPaperPublishedLinkDisabledDetails *paperPublishedLinkDisabledDetails =
+        [DBTEAMLOGPaperPublishedLinkDisabledDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithPaperPublishedLinkDisabledDetails:paperPublishedLinkDisabledDetails];
+  } else if ([tag isEqualToString:@"paper_published_link_view_details"]) {
+    DBTEAMLOGPaperPublishedLinkViewDetails *paperPublishedLinkViewDetails =
+        [DBTEAMLOGPaperPublishedLinkViewDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithPaperPublishedLinkViewDetails:paperPublishedLinkViewDetails];
   } else if ([tag isEqualToString:@"password_change_details"]) {
     DBTEAMLOGPasswordChangeDetails *passwordChangeDetails =
         [DBTEAMLOGPasswordChangeDetailsSerializer deserialize:valueDict];
@@ -26410,6 +27768,11 @@
     DBTEAMLOGTeamActivityCreateReportDetails *teamActivityCreateReportDetails =
         [DBTEAMLOGTeamActivityCreateReportDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithTeamActivityCreateReportDetails:teamActivityCreateReportDetails];
+  } else if ([tag isEqualToString:@"team_activity_create_report_fail_details"]) {
+    DBTEAMLOGTeamActivityCreateReportFailDetails *teamActivityCreateReportFailDetails =
+        [DBTEAMLOGTeamActivityCreateReportFailDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithTeamActivityCreateReportFailDetails:teamActivityCreateReportFailDetails];
   } else if ([tag isEqualToString:@"collection_share_details"]) {
     DBTEAMLOGCollectionShareDetails *collectionShareDetails =
         [DBTEAMLOGCollectionShareDetailsSerializer deserialize:valueDict];
@@ -26939,6 +28302,10 @@
         [DBTEAMLOGGroupUserManagementChangePolicyDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc]
         initWithGroupUserManagementChangePolicyDetails:groupUserManagementChangePolicyDetails];
+  } else if ([tag isEqualToString:@"integration_policy_changed_details"]) {
+    DBTEAMLOGIntegrationPolicyChangedDetails *integrationPolicyChangedDetails =
+        [DBTEAMLOGIntegrationPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithIntegrationPolicyChangedDetails:integrationPolicyChangedDetails];
   } else if ([tag isEqualToString:@"member_requests_change_policy_details"]) {
     DBTEAMLOGMemberRequestsChangePolicyDetails *memberRequestsChangePolicyDetails =
         [DBTEAMLOGMemberRequestsChangePolicyDetailsSerializer deserialize:valueDict];
@@ -26995,6 +28362,15 @@
     DBTEAMLOGPaperChangePolicyDetails *paperChangePolicyDetails =
         [DBTEAMLOGPaperChangePolicyDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithPaperChangePolicyDetails:paperChangePolicyDetails];
+  } else if ([tag isEqualToString:@"paper_default_folder_policy_changed_details"]) {
+    DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *paperDefaultFolderPolicyChangedDetails =
+        [DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithPaperDefaultFolderPolicyChangedDetails:paperDefaultFolderPolicyChangedDetails];
+  } else if ([tag isEqualToString:@"paper_desktop_policy_changed_details"]) {
+    DBTEAMLOGPaperDesktopPolicyChangedDetails *paperDesktopPolicyChangedDetails =
+        [DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithPaperDesktopPolicyChangedDetails:paperDesktopPolicyChangedDetails];
   } else if ([tag isEqualToString:@"paper_enabled_users_group_addition_details"]) {
     DBTEAMLOGPaperEnabledUsersGroupAdditionDetails *paperEnabledUsersGroupAdditionDetails =
         [DBTEAMLOGPaperEnabledUsersGroupAdditionDetailsSerializer deserialize:valueDict];
@@ -27010,6 +28386,11 @@
         [DBTEAMLOGPermanentDeleteChangePolicyDetailsSerializer deserialize:valueDict];
     return
         [[DBTEAMLOGEventDetails alloc] initWithPermanentDeleteChangePolicyDetails:permanentDeleteChangePolicyDetails];
+  } else if ([tag isEqualToString:@"reseller_support_change_policy_details"]) {
+    DBTEAMLOGResellerSupportChangePolicyDetails *resellerSupportChangePolicyDetails =
+        [DBTEAMLOGResellerSupportChangePolicyDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithResellerSupportChangePolicyDetails:resellerSupportChangePolicyDetails];
   } else if ([tag isEqualToString:@"sharing_change_folder_join_policy_details"]) {
     DBTEAMLOGSharingChangeFolderJoinPolicyDetails *sharingChangeFolderJoinPolicyDetails =
         [DBTEAMLOGSharingChangeFolderJoinPolicyDetailsSerializer deserialize:valueDict];
@@ -27054,6 +28435,11 @@
     DBTEAMLOGSsoChangePolicyDetails *ssoChangePolicyDetails =
         [DBTEAMLOGSsoChangePolicyDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithSsoChangePolicyDetails:ssoChangePolicyDetails];
+  } else if ([tag isEqualToString:@"team_extensions_policy_changed_details"]) {
+    DBTEAMLOGTeamExtensionsPolicyChangedDetails *teamExtensionsPolicyChangedDetails =
+        [DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithTeamExtensionsPolicyChangedDetails:teamExtensionsPolicyChangedDetails];
   } else if ([tag isEqualToString:@"team_selective_sync_policy_changed_details"]) {
     DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *teamSelectiveSyncPolicyChangedDetails =
         [DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer deserialize:valueDict];
@@ -27136,6 +28522,95 @@
   } else if ([tag isEqualToString:@"tfa_reset_details"]) {
     DBTEAMLOGTfaResetDetails *tfaResetDetails = [DBTEAMLOGTfaResetDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithTfaResetDetails:tfaResetDetails];
+  } else if ([tag isEqualToString:@"guest_admin_change_status_details"]) {
+    DBTEAMLOGGuestAdminChangeStatusDetails *guestAdminChangeStatusDetails =
+        [DBTEAMLOGGuestAdminChangeStatusDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithGuestAdminChangeStatusDetails:guestAdminChangeStatusDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_accepted_details"]) {
+    DBTEAMLOGTeamMergeRequestAcceptedDetails *teamMergeRequestAcceptedDetails =
+        [DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestAcceptedDetails:teamMergeRequestAcceptedDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_accepted_shown_to_primary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails *teamMergeRequestAcceptedShownToPrimaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestAcceptedShownToPrimaryTeamDetails:teamMergeRequestAcceptedShownToPrimaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_accepted_shown_to_secondary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails *teamMergeRequestAcceptedShownToSecondaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestAcceptedShownToSecondaryTeamDetails:
+                                              teamMergeRequestAcceptedShownToSecondaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_auto_canceled_details"]) {
+    DBTEAMLOGTeamMergeRequestAutoCanceledDetails *teamMergeRequestAutoCanceledDetails =
+        [DBTEAMLOGTeamMergeRequestAutoCanceledDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestAutoCanceledDetails:teamMergeRequestAutoCanceledDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_canceled_details"]) {
+    DBTEAMLOGTeamMergeRequestCanceledDetails *teamMergeRequestCanceledDetails =
+        [DBTEAMLOGTeamMergeRequestCanceledDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestCanceledDetails:teamMergeRequestCanceledDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_canceled_shown_to_primary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails *teamMergeRequestCanceledShownToPrimaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestCanceledShownToPrimaryTeamDetails:teamMergeRequestCanceledShownToPrimaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_canceled_shown_to_secondary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *teamMergeRequestCanceledShownToSecondaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestCanceledShownToSecondaryTeamDetails:
+                                              teamMergeRequestCanceledShownToSecondaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_expired_details"]) {
+    DBTEAMLOGTeamMergeRequestExpiredDetails *teamMergeRequestExpiredDetails =
+        [DBTEAMLOGTeamMergeRequestExpiredDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestExpiredDetails:teamMergeRequestExpiredDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_expired_shown_to_primary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails *teamMergeRequestExpiredShownToPrimaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestExpiredShownToPrimaryTeamDetails:teamMergeRequestExpiredShownToPrimaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_expired_shown_to_secondary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails *teamMergeRequestExpiredShownToSecondaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestExpiredShownToSecondaryTeamDetails:teamMergeRequestExpiredShownToSecondaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_rejected_shown_to_primary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails *teamMergeRequestRejectedShownToPrimaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestRejectedShownToPrimaryTeamDetails:teamMergeRequestRejectedShownToPrimaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_rejected_shown_to_secondary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails *teamMergeRequestRejectedShownToSecondaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestRejectedShownToSecondaryTeamDetails:
+                                              teamMergeRequestRejectedShownToSecondaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_reminder_details"]) {
+    DBTEAMLOGTeamMergeRequestReminderDetails *teamMergeRequestReminderDetails =
+        [DBTEAMLOGTeamMergeRequestReminderDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestReminderDetails:teamMergeRequestReminderDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_reminder_shown_to_primary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails *teamMergeRequestReminderShownToPrimaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestReminderShownToPrimaryTeamDetails:teamMergeRequestReminderShownToPrimaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_reminder_shown_to_secondary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails *teamMergeRequestReminderShownToSecondaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestReminderShownToSecondaryTeamDetails:
+                                              teamMergeRequestReminderShownToSecondaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_revoked_details"]) {
+    DBTEAMLOGTeamMergeRequestRevokedDetails *teamMergeRequestRevokedDetails =
+        [DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamMergeRequestRevokedDetails:teamMergeRequestRevokedDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_sent_shown_to_primary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails *teamMergeRequestSentShownToPrimaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestSentShownToPrimaryTeamDetails:teamMergeRequestSentShownToPrimaryTeamDetails];
+  } else if ([tag isEqualToString:@"team_merge_request_sent_shown_to_secondary_team_details"]) {
+    DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails *teamMergeRequestSentShownToSecondaryTeamDetails =
+        [DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithTeamMergeRequestSentShownToSecondaryTeamDetails:teamMergeRequestSentShownToSecondaryTeamDetails];
   } else if ([tag isEqualToString:@"missing_details"]) {
     DBTEAMLOGMissingDetails *missingDetails = [DBTEAMLOGMissingDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithMissingDetails:missingDetails];
@@ -27222,6 +28697,7 @@
 #import "DBTEAMLOGFileRequestChangeType.h"
 #import "DBTEAMLOGFileRequestCloseType.h"
 #import "DBTEAMLOGFileRequestCreateType.h"
+#import "DBTEAMLOGFileRequestDeleteType.h"
 #import "DBTEAMLOGFileRequestReceiveFileType.h"
 #import "DBTEAMLOGFileRequestsChangePolicyType.h"
 #import "DBTEAMLOGFileRequestsEmailsEnabledType.h"
@@ -27248,17 +28724,26 @@
 #import "DBTEAMLOGGroupRemoveMemberType.h"
 #import "DBTEAMLOGGroupRenameType.h"
 #import "DBTEAMLOGGroupUserManagementChangePolicyType.h"
+#import "DBTEAMLOGGuestAdminChangeStatusType.h"
+#import "DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType.h"
+#import "DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType.h"
+#import "DBTEAMLOGIntegrationConnectedType.h"
+#import "DBTEAMLOGIntegrationDisconnectedType.h"
+#import "DBTEAMLOGIntegrationPolicyChangedType.h"
 #import "DBTEAMLOGLoginFailType.h"
 #import "DBTEAMLOGLoginSuccessType.h"
 #import "DBTEAMLOGLogoutType.h"
+#import "DBTEAMLOGMemberAddExternalIdType.h"
 #import "DBTEAMLOGMemberAddNameType.h"
 #import "DBTEAMLOGMemberChangeAdminRoleType.h"
 #import "DBTEAMLOGMemberChangeEmailType.h"
+#import "DBTEAMLOGMemberChangeExternalIdType.h"
 #import "DBTEAMLOGMemberChangeMembershipTypeType.h"
 #import "DBTEAMLOGMemberChangeNameType.h"
 #import "DBTEAMLOGMemberChangeStatusType.h"
 #import "DBTEAMLOGMemberDeleteManualContactsType.h"
 #import "DBTEAMLOGMemberPermanentlyDeleteAccountContentsType.h"
+#import "DBTEAMLOGMemberRemoveExternalIdType.h"
 #import "DBTEAMLOGMemberRequestsChangePolicyType.h"
 #import "DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType.h"
 #import "DBTEAMLOGMemberSpaceLimitsAddExceptionType.h"
@@ -27293,6 +28778,8 @@
 #import "DBTEAMLOGPaperContentRemoveMemberType.h"
 #import "DBTEAMLOGPaperContentRenameType.h"
 #import "DBTEAMLOGPaperContentRestoreType.h"
+#import "DBTEAMLOGPaperDefaultFolderPolicyChangedType.h"
+#import "DBTEAMLOGPaperDesktopPolicyChangedType.h"
 #import "DBTEAMLOGPaperDocAddCommentType.h"
 #import "DBTEAMLOGPaperDocChangeMemberRoleType.h"
 #import "DBTEAMLOGPaperDocChangeSharingPolicyType.h"
@@ -27323,10 +28810,14 @@
 #import "DBTEAMLOGPaperFolderDeletedType.h"
 #import "DBTEAMLOGPaperFolderFollowedType.h"
 #import "DBTEAMLOGPaperFolderTeamInviteType.h"
+#import "DBTEAMLOGPaperPublishedLinkCreateType.h"
+#import "DBTEAMLOGPaperPublishedLinkDisabledType.h"
+#import "DBTEAMLOGPaperPublishedLinkViewType.h"
 #import "DBTEAMLOGPasswordChangeType.h"
 #import "DBTEAMLOGPasswordResetAllType.h"
 #import "DBTEAMLOGPasswordResetType.h"
 #import "DBTEAMLOGPermanentDeleteChangePolicyType.h"
+#import "DBTEAMLOGResellerSupportChangePolicyType.h"
 #import "DBTEAMLOGResellerSupportSessionEndType.h"
 #import "DBTEAMLOGResellerSupportSessionStartType.h"
 #import "DBTEAMLOGSecondaryMailsPolicyChangedType.h"
@@ -27435,13 +28926,33 @@
 #import "DBTEAMLOGSsoRemoveCertType.h"
 #import "DBTEAMLOGSsoRemoveLoginUrlType.h"
 #import "DBTEAMLOGSsoRemoveLogoutUrlType.h"
+#import "DBTEAMLOGTeamActivityCreateReportFailType.h"
 #import "DBTEAMLOGTeamActivityCreateReportType.h"
+#import "DBTEAMLOGTeamExtensionsPolicyChangedType.h"
 #import "DBTEAMLOGTeamFolderChangeStatusType.h"
 #import "DBTEAMLOGTeamFolderCreateType.h"
 #import "DBTEAMLOGTeamFolderDowngradeType.h"
 #import "DBTEAMLOGTeamFolderPermanentlyDeleteType.h"
 #import "DBTEAMLOGTeamFolderRenameType.h"
 #import "DBTEAMLOGTeamMergeFromType.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedType.h"
+#import "DBTEAMLOGTeamMergeRequestAutoCanceledType.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledType.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredType.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestReminderType.h"
+#import "DBTEAMLOGTeamMergeRequestRevokedType.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType.h"
 #import "DBTEAMLOGTeamMergeToType.h"
 #import "DBTEAMLOGTeamProfileAddLogoType.h"
 #import "DBTEAMLOGTeamProfileChangeDefaultLanguageType.h"
@@ -27471,6 +28982,8 @@
 @synthesize appLinkUser = _appLinkUser;
 @synthesize appUnlinkTeam = _appUnlinkTeam;
 @synthesize appUnlinkUser = _appUnlinkUser;
+@synthesize integrationConnected = _integrationConnected;
+@synthesize integrationDisconnected = _integrationDisconnected;
 @synthesize fileAddComment = _fileAddComment;
 @synthesize fileChangeCommentSubscription = _fileChangeCommentSubscription;
 @synthesize fileDeleteComment = _fileDeleteComment;
@@ -27523,6 +29036,7 @@
 @synthesize fileRequestChange = _fileRequestChange;
 @synthesize fileRequestClose = _fileRequestClose;
 @synthesize fileRequestCreate = _fileRequestCreate;
+@synthesize fileRequestDelete = _fileRequestDelete;
 @synthesize fileRequestReceiveFile = _fileRequestReceiveFile;
 @synthesize groupAddExternalId = _groupAddExternalId;
 @synthesize groupAddMember = _groupAddMember;
@@ -27538,6 +29052,8 @@
 @synthesize groupRemoveMember = _groupRemoveMember;
 @synthesize groupRename = _groupRename;
 @synthesize emmError = _emmError;
+@synthesize guestAdminSignedInViaTrustedTeams = _guestAdminSignedInViaTrustedTeams;
+@synthesize guestAdminSignedOutViaTrustedTeams = _guestAdminSignedOutViaTrustedTeams;
 @synthesize loginFail = _loginFail;
 @synthesize loginSuccess = _loginSuccess;
 @synthesize logout = _logout;
@@ -27546,14 +29062,17 @@
 @synthesize signInAsSessionEnd = _signInAsSessionEnd;
 @synthesize signInAsSessionStart = _signInAsSessionStart;
 @synthesize ssoError = _ssoError;
+@synthesize memberAddExternalId = _memberAddExternalId;
 @synthesize memberAddName = _memberAddName;
 @synthesize memberChangeAdminRole = _memberChangeAdminRole;
 @synthesize memberChangeEmail = _memberChangeEmail;
+@synthesize memberChangeExternalId = _memberChangeExternalId;
 @synthesize memberChangeMembershipType = _memberChangeMembershipType;
 @synthesize memberChangeName = _memberChangeName;
 @synthesize memberChangeStatus = _memberChangeStatus;
 @synthesize memberDeleteManualContacts = _memberDeleteManualContacts;
 @synthesize memberPermanentlyDeleteAccountContents = _memberPermanentlyDeleteAccountContents;
+@synthesize memberRemoveExternalId = _memberRemoveExternalId;
 @synthesize memberSpaceLimitsAddCustomQuota = _memberSpaceLimitsAddCustomQuota;
 @synthesize memberSpaceLimitsChangeCustomQuota = _memberSpaceLimitsChangeCustomQuota;
 @synthesize memberSpaceLimitsChangeStatus = _memberSpaceLimitsChangeStatus;
@@ -27598,6 +29117,9 @@
 @synthesize paperFolderDeleted = _paperFolderDeleted;
 @synthesize paperFolderFollowed = _paperFolderFollowed;
 @synthesize paperFolderTeamInvite = _paperFolderTeamInvite;
+@synthesize paperPublishedLinkCreate = _paperPublishedLinkCreate;
+@synthesize paperPublishedLinkDisabled = _paperPublishedLinkDisabled;
+@synthesize paperPublishedLinkView = _paperPublishedLinkView;
 @synthesize passwordChange = _passwordChange;
 @synthesize passwordReset = _passwordReset;
 @synthesize passwordResetAll = _passwordResetAll;
@@ -27607,6 +29129,7 @@
 @synthesize paperAdminExportStart = _paperAdminExportStart;
 @synthesize smartSyncCreateAdminPrivilegeReport = _smartSyncCreateAdminPrivilegeReport;
 @synthesize teamActivityCreateReport = _teamActivityCreateReport;
+@synthesize teamActivityCreateReportFail = _teamActivityCreateReportFail;
 @synthesize collectionShare = _collectionShare;
 @synthesize noteAclInviteOnly = _noteAclInviteOnly;
 @synthesize noteAclLink = _noteAclLink;
@@ -27733,6 +29256,7 @@
 @synthesize fileRequestsEmailsRestrictedToTeamOnly = _fileRequestsEmailsRestrictedToTeamOnly;
 @synthesize googleSsoChangePolicy = _googleSsoChangePolicy;
 @synthesize groupUserManagementChangePolicy = _groupUserManagementChangePolicy;
+@synthesize integrationPolicyChanged = _integrationPolicyChanged;
 @synthesize memberRequestsChangePolicy = _memberRequestsChangePolicy;
 @synthesize memberSpaceLimitsAddException = _memberSpaceLimitsAddException;
 @synthesize memberSpaceLimitsChangeCapsTypePolicy = _memberSpaceLimitsChangeCapsTypePolicy;
@@ -27745,9 +29269,12 @@
 @synthesize paperChangeMemberLinkPolicy = _paperChangeMemberLinkPolicy;
 @synthesize paperChangeMemberPolicy = _paperChangeMemberPolicy;
 @synthesize paperChangePolicy = _paperChangePolicy;
+@synthesize paperDefaultFolderPolicyChanged = _paperDefaultFolderPolicyChanged;
+@synthesize paperDesktopPolicyChanged = _paperDesktopPolicyChanged;
 @synthesize paperEnabledUsersGroupAddition = _paperEnabledUsersGroupAddition;
 @synthesize paperEnabledUsersGroupRemoval = _paperEnabledUsersGroupRemoval;
 @synthesize permanentDeleteChangePolicy = _permanentDeleteChangePolicy;
+@synthesize resellerSupportChangePolicy = _resellerSupportChangePolicy;
 @synthesize sharingChangeFolderJoinPolicy = _sharingChangeFolderJoinPolicy;
 @synthesize sharingChangeLinkPolicy = _sharingChangeLinkPolicy;
 @synthesize sharingChangeMemberPolicy = _sharingChangeMemberPolicy;
@@ -27758,6 +29285,7 @@
 @synthesize smartSyncNotOptOut = _smartSyncNotOptOut;
 @synthesize smartSyncOptOut = _smartSyncOptOut;
 @synthesize ssoChangePolicy = _ssoChangePolicy;
+@synthesize teamExtensionsPolicyChanged = _teamExtensionsPolicyChanged;
 @synthesize teamSelectiveSyncPolicyChanged = _teamSelectiveSyncPolicyChanged;
 @synthesize tfaChangePolicy = _tfaChangePolicy;
 @synthesize twoAccountChangePolicy = _twoAccountChangePolicy;
@@ -27778,6 +29306,25 @@
 @synthesize tfaRemoveBackupPhone = _tfaRemoveBackupPhone;
 @synthesize tfaRemoveSecurityKey = _tfaRemoveSecurityKey;
 @synthesize tfaReset = _tfaReset;
+@synthesize guestAdminChangeStatus = _guestAdminChangeStatus;
+@synthesize teamMergeRequestAccepted = _teamMergeRequestAccepted;
+@synthesize teamMergeRequestAcceptedShownToPrimaryTeam = _teamMergeRequestAcceptedShownToPrimaryTeam;
+@synthesize teamMergeRequestAcceptedShownToSecondaryTeam = _teamMergeRequestAcceptedShownToSecondaryTeam;
+@synthesize teamMergeRequestAutoCanceled = _teamMergeRequestAutoCanceled;
+@synthesize teamMergeRequestCanceled = _teamMergeRequestCanceled;
+@synthesize teamMergeRequestCanceledShownToPrimaryTeam = _teamMergeRequestCanceledShownToPrimaryTeam;
+@synthesize teamMergeRequestCanceledShownToSecondaryTeam = _teamMergeRequestCanceledShownToSecondaryTeam;
+@synthesize teamMergeRequestExpired = _teamMergeRequestExpired;
+@synthesize teamMergeRequestExpiredShownToPrimaryTeam = _teamMergeRequestExpiredShownToPrimaryTeam;
+@synthesize teamMergeRequestExpiredShownToSecondaryTeam = _teamMergeRequestExpiredShownToSecondaryTeam;
+@synthesize teamMergeRequestRejectedShownToPrimaryTeam = _teamMergeRequestRejectedShownToPrimaryTeam;
+@synthesize teamMergeRequestRejectedShownToSecondaryTeam = _teamMergeRequestRejectedShownToSecondaryTeam;
+@synthesize teamMergeRequestReminder = _teamMergeRequestReminder;
+@synthesize teamMergeRequestReminderShownToPrimaryTeam = _teamMergeRequestReminderShownToPrimaryTeam;
+@synthesize teamMergeRequestReminderShownToSecondaryTeam = _teamMergeRequestReminderShownToSecondaryTeam;
+@synthesize teamMergeRequestRevoked = _teamMergeRequestRevoked;
+@synthesize teamMergeRequestSentShownToPrimaryTeam = _teamMergeRequestSentShownToPrimaryTeam;
+@synthesize teamMergeRequestSentShownToSecondaryTeam = _teamMergeRequestSentShownToSecondaryTeam;
 
 #pragma mark - Constructors
 
@@ -27813,6 +29360,24 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeAppUnlinkUser;
     _appUnlinkUser = appUnlinkUser;
+  }
+  return self;
+}
+
+- (instancetype)initWithIntegrationConnected:(DBTEAMLOGIntegrationConnectedType *)integrationConnected {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeIntegrationConnected;
+    _integrationConnected = integrationConnected;
+  }
+  return self;
+}
+
+- (instancetype)initWithIntegrationDisconnected:(DBTEAMLOGIntegrationDisconnectedType *)integrationDisconnected {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeIntegrationDisconnected;
+    _integrationDisconnected = integrationDisconnected;
   }
   return self;
 }
@@ -28300,6 +29865,15 @@
   return self;
 }
 
+- (instancetype)initWithFileRequestDelete:(DBTEAMLOGFileRequestDeleteType *)fileRequestDelete {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeFileRequestDelete;
+    _fileRequestDelete = fileRequestDelete;
+  }
+  return self;
+}
+
 - (instancetype)initWithFileRequestReceiveFile:(DBTEAMLOGFileRequestReceiveFileType *)fileRequestReceiveFile {
   self = [super init];
   if (self) {
@@ -28435,6 +30009,26 @@
   return self;
 }
 
+- (instancetype)initWithGuestAdminSignedInViaTrustedTeams:
+    (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType *)guestAdminSignedInViaTrustedTeams {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeGuestAdminSignedInViaTrustedTeams;
+    _guestAdminSignedInViaTrustedTeams = guestAdminSignedInViaTrustedTeams;
+  }
+  return self;
+}
+
+- (instancetype)initWithGuestAdminSignedOutViaTrustedTeams:
+    (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType *)guestAdminSignedOutViaTrustedTeams {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeGuestAdminSignedOutViaTrustedTeams;
+    _guestAdminSignedOutViaTrustedTeams = guestAdminSignedOutViaTrustedTeams;
+  }
+  return self;
+}
+
 - (instancetype)initWithLoginFail:(DBTEAMLOGLoginFailType *)loginFail {
   self = [super init];
   if (self) {
@@ -28508,6 +30102,15 @@
   return self;
 }
 
+- (instancetype)initWithMemberAddExternalId:(DBTEAMLOGMemberAddExternalIdType *)memberAddExternalId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeMemberAddExternalId;
+    _memberAddExternalId = memberAddExternalId;
+  }
+  return self;
+}
+
 - (instancetype)initWithMemberAddName:(DBTEAMLOGMemberAddNameType *)memberAddName {
   self = [super init];
   if (self) {
@@ -28531,6 +30134,15 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeMemberChangeEmail;
     _memberChangeEmail = memberChangeEmail;
+  }
+  return self;
+}
+
+- (instancetype)initWithMemberChangeExternalId:(DBTEAMLOGMemberChangeExternalIdType *)memberChangeExternalId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeMemberChangeExternalId;
+    _memberChangeExternalId = memberChangeExternalId;
   }
   return self;
 }
@@ -28579,6 +30191,15 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents;
     _memberPermanentlyDeleteAccountContents = memberPermanentlyDeleteAccountContents;
+  }
+  return self;
+}
+
+- (instancetype)initWithMemberRemoveExternalId:(DBTEAMLOGMemberRemoveExternalIdType *)memberRemoveExternalId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeMemberRemoveExternalId;
+    _memberRemoveExternalId = memberRemoveExternalId;
   }
   return self;
 }
@@ -28991,6 +30612,34 @@
   return self;
 }
 
+- (instancetype)initWithPaperPublishedLinkCreate:(DBTEAMLOGPaperPublishedLinkCreateType *)paperPublishedLinkCreate {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperPublishedLinkCreate;
+    _paperPublishedLinkCreate = paperPublishedLinkCreate;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperPublishedLinkDisabled:
+    (DBTEAMLOGPaperPublishedLinkDisabledType *)paperPublishedLinkDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperPublishedLinkDisabled;
+    _paperPublishedLinkDisabled = paperPublishedLinkDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperPublishedLinkView:(DBTEAMLOGPaperPublishedLinkViewType *)paperPublishedLinkView {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperPublishedLinkView;
+    _paperPublishedLinkView = paperPublishedLinkView;
+  }
+  return self;
+}
+
 - (instancetype)initWithPasswordChange:(DBTEAMLOGPasswordChangeType *)passwordChange {
   self = [super init];
   if (self) {
@@ -29069,6 +30718,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeTeamActivityCreateReport;
     _teamActivityCreateReport = teamActivityCreateReport;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamActivityCreateReportFail:
+    (DBTEAMLOGTeamActivityCreateReportFailType *)teamActivityCreateReportFail {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamActivityCreateReportFail;
+    _teamActivityCreateReportFail = teamActivityCreateReportFail;
   }
   return self;
 }
@@ -30247,6 +31906,15 @@
   return self;
 }
 
+- (instancetype)initWithIntegrationPolicyChanged:(DBTEAMLOGIntegrationPolicyChangedType *)integrationPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeIntegrationPolicyChanged;
+    _integrationPolicyChanged = integrationPolicyChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithMemberRequestsChangePolicy:
     (DBTEAMLOGMemberRequestsChangePolicyType *)memberRequestsChangePolicy {
   self = [super init];
@@ -30365,6 +32033,25 @@
   return self;
 }
 
+- (instancetype)initWithPaperDefaultFolderPolicyChanged:
+    (DBTEAMLOGPaperDefaultFolderPolicyChangedType *)paperDefaultFolderPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperDefaultFolderPolicyChanged;
+    _paperDefaultFolderPolicyChanged = paperDefaultFolderPolicyChanged;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperDesktopPolicyChanged:(DBTEAMLOGPaperDesktopPolicyChangedType *)paperDesktopPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperDesktopPolicyChanged;
+    _paperDesktopPolicyChanged = paperDesktopPolicyChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithPaperEnabledUsersGroupAddition:
     (DBTEAMLOGPaperEnabledUsersGroupAdditionType *)paperEnabledUsersGroupAddition {
   self = [super init];
@@ -30391,6 +32078,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypePermanentDeleteChangePolicy;
     _permanentDeleteChangePolicy = permanentDeleteChangePolicy;
+  }
+  return self;
+}
+
+- (instancetype)initWithResellerSupportChangePolicy:
+    (DBTEAMLOGResellerSupportChangePolicyType *)resellerSupportChangePolicy {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeResellerSupportChangePolicy;
+    _resellerSupportChangePolicy = resellerSupportChangePolicy;
   }
   return self;
 }
@@ -30485,6 +32182,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeSsoChangePolicy;
     _ssoChangePolicy = ssoChangePolicy;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamExtensionsPolicyChanged:
+    (DBTEAMLOGTeamExtensionsPolicyChangedType *)teamExtensionsPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamExtensionsPolicyChanged;
+    _teamExtensionsPolicyChanged = teamExtensionsPolicyChanged;
   }
   return self;
 }
@@ -30673,6 +32380,190 @@
   return self;
 }
 
+- (instancetype)initWithGuestAdminChangeStatus:(DBTEAMLOGGuestAdminChangeStatusType *)guestAdminChangeStatus {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeGuestAdminChangeStatus;
+    _guestAdminChangeStatus = guestAdminChangeStatus;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAccepted:(DBTEAMLOGTeamMergeRequestAcceptedType *)teamMergeRequestAccepted {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestAccepted;
+    _teamMergeRequestAccepted = teamMergeRequestAccepted;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAcceptedShownToPrimaryTeam:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType *)teamMergeRequestAcceptedShownToPrimaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToPrimaryTeam;
+    _teamMergeRequestAcceptedShownToPrimaryTeam = teamMergeRequestAcceptedShownToPrimaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAcceptedShownToSecondaryTeam:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType *)teamMergeRequestAcceptedShownToSecondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToSecondaryTeam;
+    _teamMergeRequestAcceptedShownToSecondaryTeam = teamMergeRequestAcceptedShownToSecondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestAutoCanceled:
+    (DBTEAMLOGTeamMergeRequestAutoCanceledType *)teamMergeRequestAutoCanceled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestAutoCanceled;
+    _teamMergeRequestAutoCanceled = teamMergeRequestAutoCanceled;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestCanceled:(DBTEAMLOGTeamMergeRequestCanceledType *)teamMergeRequestCanceled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestCanceled;
+    _teamMergeRequestCanceled = teamMergeRequestCanceled;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestCanceledShownToPrimaryTeam:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType *)teamMergeRequestCanceledShownToPrimaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToPrimaryTeam;
+    _teamMergeRequestCanceledShownToPrimaryTeam = teamMergeRequestCanceledShownToPrimaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestCanceledShownToSecondaryTeam:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType *)teamMergeRequestCanceledShownToSecondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToSecondaryTeam;
+    _teamMergeRequestCanceledShownToSecondaryTeam = teamMergeRequestCanceledShownToSecondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestExpired:(DBTEAMLOGTeamMergeRequestExpiredType *)teamMergeRequestExpired {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestExpired;
+    _teamMergeRequestExpired = teamMergeRequestExpired;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestExpiredShownToPrimaryTeam:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType *)teamMergeRequestExpiredShownToPrimaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToPrimaryTeam;
+    _teamMergeRequestExpiredShownToPrimaryTeam = teamMergeRequestExpiredShownToPrimaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestExpiredShownToSecondaryTeam:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)teamMergeRequestExpiredShownToSecondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToSecondaryTeam;
+    _teamMergeRequestExpiredShownToSecondaryTeam = teamMergeRequestExpiredShownToSecondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestRejectedShownToPrimaryTeam:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType *)teamMergeRequestRejectedShownToPrimaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToPrimaryTeam;
+    _teamMergeRequestRejectedShownToPrimaryTeam = teamMergeRequestRejectedShownToPrimaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestRejectedShownToSecondaryTeam:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType *)teamMergeRequestRejectedShownToSecondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToSecondaryTeam;
+    _teamMergeRequestRejectedShownToSecondaryTeam = teamMergeRequestRejectedShownToSecondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestReminder:(DBTEAMLOGTeamMergeRequestReminderType *)teamMergeRequestReminder {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestReminder;
+    _teamMergeRequestReminder = teamMergeRequestReminder;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestReminderShownToPrimaryTeam:
+    (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType *)teamMergeRequestReminderShownToPrimaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestReminderShownToPrimaryTeam;
+    _teamMergeRequestReminderShownToPrimaryTeam = teamMergeRequestReminderShownToPrimaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestReminderShownToSecondaryTeam:
+    (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType *)teamMergeRequestReminderShownToSecondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestReminderShownToSecondaryTeam;
+    _teamMergeRequestReminderShownToSecondaryTeam = teamMergeRequestReminderShownToSecondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestRevoked:(DBTEAMLOGTeamMergeRequestRevokedType *)teamMergeRequestRevoked {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestRevoked;
+    _teamMergeRequestRevoked = teamMergeRequestRevoked;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestSentShownToPrimaryTeam:
+    (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType *)teamMergeRequestSentShownToPrimaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestSentShownToPrimaryTeam;
+    _teamMergeRequestSentShownToPrimaryTeam = teamMergeRequestSentShownToPrimaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamMergeRequestSentShownToSecondaryTeam:
+    (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType *)teamMergeRequestSentShownToSecondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamMergeRequestSentShownToSecondaryTeam;
+    _teamMergeRequestSentShownToSecondaryTeam = teamMergeRequestSentShownToSecondaryTeam;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -30713,6 +32604,22 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypeAppUnlinkUser, but was %@.", [self tagName]];
   }
   return _appUnlinkUser;
+}
+
+- (DBTEAMLOGIntegrationConnectedType *)integrationConnected {
+  if (![self isIntegrationConnected]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeIntegrationConnected, but was %@.", [self tagName]];
+  }
+  return _integrationConnected;
+}
+
+- (DBTEAMLOGIntegrationDisconnectedType *)integrationDisconnected {
+  if (![self isIntegrationDisconnected]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeIntegrationDisconnected, but was %@.", [self tagName]];
+  }
+  return _integrationDisconnected;
 }
 
 - (DBTEAMLOGFileAddCommentType *)fileAddComment {
@@ -31148,6 +33055,14 @@
   return _fileRequestCreate;
 }
 
+- (DBTEAMLOGFileRequestDeleteType *)fileRequestDelete {
+  if (![self isFileRequestDelete]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeFileRequestDelete, but was %@.", [self tagName]];
+  }
+  return _fileRequestDelete;
+}
+
 - (DBTEAMLOGFileRequestReceiveFileType *)fileRequestReceiveFile {
   if (![self isFileRequestReceiveFile]) {
     [NSException raise:@"IllegalStateException"
@@ -31269,6 +33184,24 @@
   return _emmError;
 }
 
+- (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType *)guestAdminSignedInViaTrustedTeams {
+  if (![self isGuestAdminSignedInViaTrustedTeams]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeGuestAdminSignedInViaTrustedTeams, but was %@.",
+                       [self tagName]];
+  }
+  return _guestAdminSignedInViaTrustedTeams;
+}
+
+- (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType *)guestAdminSignedOutViaTrustedTeams {
+  if (![self isGuestAdminSignedOutViaTrustedTeams]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeGuestAdminSignedOutViaTrustedTeams, but was %@.",
+                       [self tagName]];
+  }
+  return _guestAdminSignedOutViaTrustedTeams;
+}
+
 - (DBTEAMLOGLoginFailType *)loginFail {
   if (![self isLoginFail]) {
     [NSException raise:@"IllegalStateException"
@@ -31335,6 +33268,14 @@
   return _ssoError;
 }
 
+- (DBTEAMLOGMemberAddExternalIdType *)memberAddExternalId {
+  if (![self isMemberAddExternalId]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeMemberAddExternalId, but was %@.", [self tagName]];
+  }
+  return _memberAddExternalId;
+}
+
 - (DBTEAMLOGMemberAddNameType *)memberAddName {
   if (![self isMemberAddName]) {
     [NSException raise:@"IllegalStateException"
@@ -31357,6 +33298,14 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypeMemberChangeEmail, but was %@.", [self tagName]];
   }
   return _memberChangeEmail;
+}
+
+- (DBTEAMLOGMemberChangeExternalIdType *)memberChangeExternalId {
+  if (![self isMemberChangeExternalId]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeMemberChangeExternalId, but was %@.", [self tagName]];
+  }
+  return _memberChangeExternalId;
 }
 
 - (DBTEAMLOGMemberChangeMembershipTypeType *)memberChangeMembershipType {
@@ -31400,6 +33349,14 @@
                        [self tagName]];
   }
   return _memberPermanentlyDeleteAccountContents;
+}
+
+- (DBTEAMLOGMemberRemoveExternalIdType *)memberRemoveExternalId {
+  if (![self isMemberRemoveExternalId]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeMemberRemoveExternalId, but was %@.", [self tagName]];
+  }
+  return _memberRemoveExternalId;
 }
 
 - (DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType *)memberSpaceLimitsAddCustomQuota {
@@ -31770,6 +33727,32 @@
   return _paperFolderTeamInvite;
 }
 
+- (DBTEAMLOGPaperPublishedLinkCreateType *)paperPublishedLinkCreate {
+  if (![self isPaperPublishedLinkCreate]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypePaperPublishedLinkCreate, but was %@.", [self tagName]];
+  }
+  return _paperPublishedLinkCreate;
+}
+
+- (DBTEAMLOGPaperPublishedLinkDisabledType *)paperPublishedLinkDisabled {
+  if (![self isPaperPublishedLinkDisabled]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypePaperPublishedLinkDisabled, but was %@.", [self tagName]];
+  }
+  return _paperPublishedLinkDisabled;
+}
+
+- (DBTEAMLOGPaperPublishedLinkViewType *)paperPublishedLinkView {
+  if (![self isPaperPublishedLinkView]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypePaperPublishedLinkView, but was %@.", [self tagName]];
+  }
+  return _paperPublishedLinkView;
+}
+
 - (DBTEAMLOGPasswordChangeType *)passwordChange {
   if (![self isPasswordChange]) {
     [NSException raise:@"IllegalStateException"
@@ -31843,6 +33826,15 @@
         format:@"Invalid tag: required DBTEAMLOGEventTypeTeamActivityCreateReport, but was %@.", [self tagName]];
   }
   return _teamActivityCreateReport;
+}
+
+- (DBTEAMLOGTeamActivityCreateReportFailType *)teamActivityCreateReportFail {
+  if (![self isTeamActivityCreateReportFail]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamActivityCreateReportFail, but was %@.", [self tagName]];
+  }
+  return _teamActivityCreateReportFail;
 }
 
 - (DBTEAMLOGCollectionShareType *)collectionShare {
@@ -32903,6 +34895,15 @@
   return _groupUserManagementChangePolicy;
 }
 
+- (DBTEAMLOGIntegrationPolicyChangedType *)integrationPolicyChanged {
+  if (![self isIntegrationPolicyChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeIntegrationPolicyChanged, but was %@.", [self tagName]];
+  }
+  return _integrationPolicyChanged;
+}
+
 - (DBTEAMLOGMemberRequestsChangePolicyType *)memberRequestsChangePolicy {
   if (![self isMemberRequestsChangePolicy]) {
     [NSException
@@ -33009,6 +35010,24 @@
   return _paperChangePolicy;
 }
 
+- (DBTEAMLOGPaperDefaultFolderPolicyChangedType *)paperDefaultFolderPolicyChanged {
+  if (![self isPaperDefaultFolderPolicyChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypePaperDefaultFolderPolicyChanged, but was %@.", [self tagName]];
+  }
+  return _paperDefaultFolderPolicyChanged;
+}
+
+- (DBTEAMLOGPaperDesktopPolicyChangedType *)paperDesktopPolicyChanged {
+  if (![self isPaperDesktopPolicyChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypePaperDesktopPolicyChanged, but was %@.", [self tagName]];
+  }
+  return _paperDesktopPolicyChanged;
+}
+
 - (DBTEAMLOGPaperEnabledUsersGroupAdditionType *)paperEnabledUsersGroupAddition {
   if (![self isPaperEnabledUsersGroupAddition]) {
     [NSException
@@ -33034,6 +35053,15 @@
         format:@"Invalid tag: required DBTEAMLOGEventTypePermanentDeleteChangePolicy, but was %@.", [self tagName]];
   }
   return _permanentDeleteChangePolicy;
+}
+
+- (DBTEAMLOGResellerSupportChangePolicyType *)resellerSupportChangePolicy {
+  if (![self isResellerSupportChangePolicy]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeResellerSupportChangePolicy, but was %@.", [self tagName]];
+  }
+  return _resellerSupportChangePolicy;
 }
 
 - (DBTEAMLOGSharingChangeFolderJoinPolicyType *)sharingChangeFolderJoinPolicy {
@@ -33119,6 +35147,15 @@
                 format:@"Invalid tag: required DBTEAMLOGEventTypeSsoChangePolicy, but was %@.", [self tagName]];
   }
   return _ssoChangePolicy;
+}
+
+- (DBTEAMLOGTeamExtensionsPolicyChangedType *)teamExtensionsPolicyChanged {
+  if (![self isTeamExtensionsPolicyChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamExtensionsPolicyChanged, but was %@.", [self tagName]];
+  }
+  return _teamExtensionsPolicyChanged;
 }
 
 - (DBTEAMLOGTeamSelectiveSyncPolicyChangedType *)teamSelectiveSyncPolicyChanged {
@@ -33285,6 +35322,184 @@
   return _tfaReset;
 }
 
+- (DBTEAMLOGGuestAdminChangeStatusType *)guestAdminChangeStatus {
+  if (![self isGuestAdminChangeStatus]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeGuestAdminChangeStatus, but was %@.", [self tagName]];
+  }
+  return _guestAdminChangeStatus;
+}
+
+- (DBTEAMLOGTeamMergeRequestAcceptedType *)teamMergeRequestAccepted {
+  if (![self isTeamMergeRequestAccepted]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestAccepted, but was %@.", [self tagName]];
+  }
+  return _teamMergeRequestAccepted;
+}
+
+- (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType *)teamMergeRequestAcceptedShownToPrimaryTeam {
+  if (![self isTeamMergeRequestAcceptedShownToPrimaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToPrimaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestAcceptedShownToPrimaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType *)teamMergeRequestAcceptedShownToSecondaryTeam {
+  if (![self isTeamMergeRequestAcceptedShownToSecondaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToSecondaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestAcceptedShownToSecondaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestAutoCanceledType *)teamMergeRequestAutoCanceled {
+  if (![self isTeamMergeRequestAutoCanceled]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestAutoCanceled, but was %@.", [self tagName]];
+  }
+  return _teamMergeRequestAutoCanceled;
+}
+
+- (DBTEAMLOGTeamMergeRequestCanceledType *)teamMergeRequestCanceled {
+  if (![self isTeamMergeRequestCanceled]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestCanceled, but was %@.", [self tagName]];
+  }
+  return _teamMergeRequestCanceled;
+}
+
+- (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType *)teamMergeRequestCanceledShownToPrimaryTeam {
+  if (![self isTeamMergeRequestCanceledShownToPrimaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToPrimaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestCanceledShownToPrimaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType *)teamMergeRequestCanceledShownToSecondaryTeam {
+  if (![self isTeamMergeRequestCanceledShownToSecondaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToSecondaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestCanceledShownToSecondaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestExpiredType *)teamMergeRequestExpired {
+  if (![self isTeamMergeRequestExpired]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestExpired, but was %@.", [self tagName]];
+  }
+  return _teamMergeRequestExpired;
+}
+
+- (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType *)teamMergeRequestExpiredShownToPrimaryTeam {
+  if (![self isTeamMergeRequestExpiredShownToPrimaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToPrimaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestExpiredShownToPrimaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)teamMergeRequestExpiredShownToSecondaryTeam {
+  if (![self isTeamMergeRequestExpiredShownToSecondaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToSecondaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestExpiredShownToSecondaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType *)teamMergeRequestRejectedShownToPrimaryTeam {
+  if (![self isTeamMergeRequestRejectedShownToPrimaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToPrimaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestRejectedShownToPrimaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType *)teamMergeRequestRejectedShownToSecondaryTeam {
+  if (![self isTeamMergeRequestRejectedShownToSecondaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToSecondaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestRejectedShownToSecondaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestReminderType *)teamMergeRequestReminder {
+  if (![self isTeamMergeRequestReminder]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestReminder, but was %@.", [self tagName]];
+  }
+  return _teamMergeRequestReminder;
+}
+
+- (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType *)teamMergeRequestReminderShownToPrimaryTeam {
+  if (![self isTeamMergeRequestReminderShownToPrimaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestReminderShownToPrimaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestReminderShownToPrimaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType *)teamMergeRequestReminderShownToSecondaryTeam {
+  if (![self isTeamMergeRequestReminderShownToSecondaryTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestReminderShownToSecondaryTeam, but was %@.",
+               [self tagName]];
+  }
+  return _teamMergeRequestReminderShownToSecondaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestRevokedType *)teamMergeRequestRevoked {
+  if (![self isTeamMergeRequestRevoked]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestRevoked, but was %@.", [self tagName]];
+  }
+  return _teamMergeRequestRevoked;
+}
+
+- (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType *)teamMergeRequestSentShownToPrimaryTeam {
+  if (![self isTeamMergeRequestSentShownToPrimaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestSentShownToPrimaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestSentShownToPrimaryTeam;
+}
+
+- (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType *)teamMergeRequestSentShownToSecondaryTeam {
+  if (![self isTeamMergeRequestSentShownToSecondaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeTeamMergeRequestSentShownToSecondaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _teamMergeRequestSentShownToSecondaryTeam;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isAppLinkTeam {
@@ -33301,6 +35516,14 @@
 
 - (BOOL)isAppUnlinkUser {
   return _tag == DBTEAMLOGEventTypeAppUnlinkUser;
+}
+
+- (BOOL)isIntegrationConnected {
+  return _tag == DBTEAMLOGEventTypeIntegrationConnected;
+}
+
+- (BOOL)isIntegrationDisconnected {
+  return _tag == DBTEAMLOGEventTypeIntegrationDisconnected;
 }
 
 - (BOOL)isFileAddComment {
@@ -33511,6 +35734,10 @@
   return _tag == DBTEAMLOGEventTypeFileRequestCreate;
 }
 
+- (BOOL)isFileRequestDelete {
+  return _tag == DBTEAMLOGEventTypeFileRequestDelete;
+}
+
 - (BOOL)isFileRequestReceiveFile {
   return _tag == DBTEAMLOGEventTypeFileRequestReceiveFile;
 }
@@ -33571,6 +35798,14 @@
   return _tag == DBTEAMLOGEventTypeEmmError;
 }
 
+- (BOOL)isGuestAdminSignedInViaTrustedTeams {
+  return _tag == DBTEAMLOGEventTypeGuestAdminSignedInViaTrustedTeams;
+}
+
+- (BOOL)isGuestAdminSignedOutViaTrustedTeams {
+  return _tag == DBTEAMLOGEventTypeGuestAdminSignedOutViaTrustedTeams;
+}
+
 - (BOOL)isLoginFail {
   return _tag == DBTEAMLOGEventTypeLoginFail;
 }
@@ -33603,6 +35838,10 @@
   return _tag == DBTEAMLOGEventTypeSsoError;
 }
 
+- (BOOL)isMemberAddExternalId {
+  return _tag == DBTEAMLOGEventTypeMemberAddExternalId;
+}
+
 - (BOOL)isMemberAddName {
   return _tag == DBTEAMLOGEventTypeMemberAddName;
 }
@@ -33613,6 +35852,10 @@
 
 - (BOOL)isMemberChangeEmail {
   return _tag == DBTEAMLOGEventTypeMemberChangeEmail;
+}
+
+- (BOOL)isMemberChangeExternalId {
+  return _tag == DBTEAMLOGEventTypeMemberChangeExternalId;
 }
 
 - (BOOL)isMemberChangeMembershipType {
@@ -33633,6 +35876,10 @@
 
 - (BOOL)isMemberPermanentlyDeleteAccountContents {
   return _tag == DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents;
+}
+
+- (BOOL)isMemberRemoveExternalId {
+  return _tag == DBTEAMLOGEventTypeMemberRemoveExternalId;
 }
 
 - (BOOL)isMemberSpaceLimitsAddCustomQuota {
@@ -33811,6 +36058,18 @@
   return _tag == DBTEAMLOGEventTypePaperFolderTeamInvite;
 }
 
+- (BOOL)isPaperPublishedLinkCreate {
+  return _tag == DBTEAMLOGEventTypePaperPublishedLinkCreate;
+}
+
+- (BOOL)isPaperPublishedLinkDisabled {
+  return _tag == DBTEAMLOGEventTypePaperPublishedLinkDisabled;
+}
+
+- (BOOL)isPaperPublishedLinkView {
+  return _tag == DBTEAMLOGEventTypePaperPublishedLinkView;
+}
+
 - (BOOL)isPasswordChange {
   return _tag == DBTEAMLOGEventTypePasswordChange;
 }
@@ -33845,6 +36104,10 @@
 
 - (BOOL)isTeamActivityCreateReport {
   return _tag == DBTEAMLOGEventTypeTeamActivityCreateReport;
+}
+
+- (BOOL)isTeamActivityCreateReportFail {
+  return _tag == DBTEAMLOGEventTypeTeamActivityCreateReportFail;
 }
 
 - (BOOL)isCollectionShare {
@@ -34351,6 +36614,10 @@
   return _tag == DBTEAMLOGEventTypeGroupUserManagementChangePolicy;
 }
 
+- (BOOL)isIntegrationPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeIntegrationPolicyChanged;
+}
+
 - (BOOL)isMemberRequestsChangePolicy {
   return _tag == DBTEAMLOGEventTypeMemberRequestsChangePolicy;
 }
@@ -34399,6 +36666,14 @@
   return _tag == DBTEAMLOGEventTypePaperChangePolicy;
 }
 
+- (BOOL)isPaperDefaultFolderPolicyChanged {
+  return _tag == DBTEAMLOGEventTypePaperDefaultFolderPolicyChanged;
+}
+
+- (BOOL)isPaperDesktopPolicyChanged {
+  return _tag == DBTEAMLOGEventTypePaperDesktopPolicyChanged;
+}
+
 - (BOOL)isPaperEnabledUsersGroupAddition {
   return _tag == DBTEAMLOGEventTypePaperEnabledUsersGroupAddition;
 }
@@ -34409,6 +36684,10 @@
 
 - (BOOL)isPermanentDeleteChangePolicy {
   return _tag == DBTEAMLOGEventTypePermanentDeleteChangePolicy;
+}
+
+- (BOOL)isResellerSupportChangePolicy {
+  return _tag == DBTEAMLOGEventTypeResellerSupportChangePolicy;
 }
 
 - (BOOL)isSharingChangeFolderJoinPolicy {
@@ -34449,6 +36728,10 @@
 
 - (BOOL)isSsoChangePolicy {
   return _tag == DBTEAMLOGEventTypeSsoChangePolicy;
+}
+
+- (BOOL)isTeamExtensionsPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeTeamExtensionsPolicyChanged;
 }
 
 - (BOOL)isTeamSelectiveSyncPolicyChanged {
@@ -34531,6 +36814,82 @@
   return _tag == DBTEAMLOGEventTypeTfaReset;
 }
 
+- (BOOL)isGuestAdminChangeStatus {
+  return _tag == DBTEAMLOGEventTypeGuestAdminChangeStatus;
+}
+
+- (BOOL)isTeamMergeRequestAccepted {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestAccepted;
+}
+
+- (BOOL)isTeamMergeRequestAcceptedShownToPrimaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToPrimaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestAcceptedShownToSecondaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToSecondaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestAutoCanceled {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestAutoCanceled;
+}
+
+- (BOOL)isTeamMergeRequestCanceled {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestCanceled;
+}
+
+- (BOOL)isTeamMergeRequestCanceledShownToPrimaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToPrimaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestCanceledShownToSecondaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToSecondaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestExpired {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestExpired;
+}
+
+- (BOOL)isTeamMergeRequestExpiredShownToPrimaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToPrimaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestExpiredShownToSecondaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToSecondaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestRejectedShownToPrimaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToPrimaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestRejectedShownToSecondaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToSecondaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestReminder {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestReminder;
+}
+
+- (BOOL)isTeamMergeRequestReminderShownToPrimaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestReminderShownToPrimaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestReminderShownToSecondaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestReminderShownToSecondaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestRevoked {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestRevoked;
+}
+
+- (BOOL)isTeamMergeRequestSentShownToPrimaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestSentShownToPrimaryTeam;
+}
+
+- (BOOL)isTeamMergeRequestSentShownToSecondaryTeam {
+  return _tag == DBTEAMLOGEventTypeTeamMergeRequestSentShownToSecondaryTeam;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGEventTypeOther;
 }
@@ -34545,6 +36904,10 @@
     return @"DBTEAMLOGEventTypeAppUnlinkTeam";
   case DBTEAMLOGEventTypeAppUnlinkUser:
     return @"DBTEAMLOGEventTypeAppUnlinkUser";
+  case DBTEAMLOGEventTypeIntegrationConnected:
+    return @"DBTEAMLOGEventTypeIntegrationConnected";
+  case DBTEAMLOGEventTypeIntegrationDisconnected:
+    return @"DBTEAMLOGEventTypeIntegrationDisconnected";
   case DBTEAMLOGEventTypeFileAddComment:
     return @"DBTEAMLOGEventTypeFileAddComment";
   case DBTEAMLOGEventTypeFileChangeCommentSubscription:
@@ -34649,6 +37012,8 @@
     return @"DBTEAMLOGEventTypeFileRequestClose";
   case DBTEAMLOGEventTypeFileRequestCreate:
     return @"DBTEAMLOGEventTypeFileRequestCreate";
+  case DBTEAMLOGEventTypeFileRequestDelete:
+    return @"DBTEAMLOGEventTypeFileRequestDelete";
   case DBTEAMLOGEventTypeFileRequestReceiveFile:
     return @"DBTEAMLOGEventTypeFileRequestReceiveFile";
   case DBTEAMLOGEventTypeGroupAddExternalId:
@@ -34679,6 +37044,10 @@
     return @"DBTEAMLOGEventTypeGroupRename";
   case DBTEAMLOGEventTypeEmmError:
     return @"DBTEAMLOGEventTypeEmmError";
+  case DBTEAMLOGEventTypeGuestAdminSignedInViaTrustedTeams:
+    return @"DBTEAMLOGEventTypeGuestAdminSignedInViaTrustedTeams";
+  case DBTEAMLOGEventTypeGuestAdminSignedOutViaTrustedTeams:
+    return @"DBTEAMLOGEventTypeGuestAdminSignedOutViaTrustedTeams";
   case DBTEAMLOGEventTypeLoginFail:
     return @"DBTEAMLOGEventTypeLoginFail";
   case DBTEAMLOGEventTypeLoginSuccess:
@@ -34695,12 +37064,16 @@
     return @"DBTEAMLOGEventTypeSignInAsSessionStart";
   case DBTEAMLOGEventTypeSsoError:
     return @"DBTEAMLOGEventTypeSsoError";
+  case DBTEAMLOGEventTypeMemberAddExternalId:
+    return @"DBTEAMLOGEventTypeMemberAddExternalId";
   case DBTEAMLOGEventTypeMemberAddName:
     return @"DBTEAMLOGEventTypeMemberAddName";
   case DBTEAMLOGEventTypeMemberChangeAdminRole:
     return @"DBTEAMLOGEventTypeMemberChangeAdminRole";
   case DBTEAMLOGEventTypeMemberChangeEmail:
     return @"DBTEAMLOGEventTypeMemberChangeEmail";
+  case DBTEAMLOGEventTypeMemberChangeExternalId:
+    return @"DBTEAMLOGEventTypeMemberChangeExternalId";
   case DBTEAMLOGEventTypeMemberChangeMembershipType:
     return @"DBTEAMLOGEventTypeMemberChangeMembershipType";
   case DBTEAMLOGEventTypeMemberChangeName:
@@ -34711,6 +37084,8 @@
     return @"DBTEAMLOGEventTypeMemberDeleteManualContacts";
   case DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents:
     return @"DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents";
+  case DBTEAMLOGEventTypeMemberRemoveExternalId:
+    return @"DBTEAMLOGEventTypeMemberRemoveExternalId";
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota:
     return @"DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota";
   case DBTEAMLOGEventTypeMemberSpaceLimitsChangeCustomQuota:
@@ -34799,6 +37174,12 @@
     return @"DBTEAMLOGEventTypePaperFolderFollowed";
   case DBTEAMLOGEventTypePaperFolderTeamInvite:
     return @"DBTEAMLOGEventTypePaperFolderTeamInvite";
+  case DBTEAMLOGEventTypePaperPublishedLinkCreate:
+    return @"DBTEAMLOGEventTypePaperPublishedLinkCreate";
+  case DBTEAMLOGEventTypePaperPublishedLinkDisabled:
+    return @"DBTEAMLOGEventTypePaperPublishedLinkDisabled";
+  case DBTEAMLOGEventTypePaperPublishedLinkView:
+    return @"DBTEAMLOGEventTypePaperPublishedLinkView";
   case DBTEAMLOGEventTypePasswordChange:
     return @"DBTEAMLOGEventTypePasswordChange";
   case DBTEAMLOGEventTypePasswordReset:
@@ -34817,6 +37198,8 @@
     return @"DBTEAMLOGEventTypeSmartSyncCreateAdminPrivilegeReport";
   case DBTEAMLOGEventTypeTeamActivityCreateReport:
     return @"DBTEAMLOGEventTypeTeamActivityCreateReport";
+  case DBTEAMLOGEventTypeTeamActivityCreateReportFail:
+    return @"DBTEAMLOGEventTypeTeamActivityCreateReportFail";
   case DBTEAMLOGEventTypeCollectionShare:
     return @"DBTEAMLOGEventTypeCollectionShare";
   case DBTEAMLOGEventTypeNoteAclInviteOnly:
@@ -35069,6 +37452,8 @@
     return @"DBTEAMLOGEventTypeGoogleSsoChangePolicy";
   case DBTEAMLOGEventTypeGroupUserManagementChangePolicy:
     return @"DBTEAMLOGEventTypeGroupUserManagementChangePolicy";
+  case DBTEAMLOGEventTypeIntegrationPolicyChanged:
+    return @"DBTEAMLOGEventTypeIntegrationPolicyChanged";
   case DBTEAMLOGEventTypeMemberRequestsChangePolicy:
     return @"DBTEAMLOGEventTypeMemberRequestsChangePolicy";
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddException:
@@ -35093,12 +37478,18 @@
     return @"DBTEAMLOGEventTypePaperChangeMemberPolicy";
   case DBTEAMLOGEventTypePaperChangePolicy:
     return @"DBTEAMLOGEventTypePaperChangePolicy";
+  case DBTEAMLOGEventTypePaperDefaultFolderPolicyChanged:
+    return @"DBTEAMLOGEventTypePaperDefaultFolderPolicyChanged";
+  case DBTEAMLOGEventTypePaperDesktopPolicyChanged:
+    return @"DBTEAMLOGEventTypePaperDesktopPolicyChanged";
   case DBTEAMLOGEventTypePaperEnabledUsersGroupAddition:
     return @"DBTEAMLOGEventTypePaperEnabledUsersGroupAddition";
   case DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval:
     return @"DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval";
   case DBTEAMLOGEventTypePermanentDeleteChangePolicy:
     return @"DBTEAMLOGEventTypePermanentDeleteChangePolicy";
+  case DBTEAMLOGEventTypeResellerSupportChangePolicy:
+    return @"DBTEAMLOGEventTypeResellerSupportChangePolicy";
   case DBTEAMLOGEventTypeSharingChangeFolderJoinPolicy:
     return @"DBTEAMLOGEventTypeSharingChangeFolderJoinPolicy";
   case DBTEAMLOGEventTypeSharingChangeLinkPolicy:
@@ -35119,6 +37510,8 @@
     return @"DBTEAMLOGEventTypeSmartSyncOptOut";
   case DBTEAMLOGEventTypeSsoChangePolicy:
     return @"DBTEAMLOGEventTypeSsoChangePolicy";
+  case DBTEAMLOGEventTypeTeamExtensionsPolicyChanged:
+    return @"DBTEAMLOGEventTypeTeamExtensionsPolicyChanged";
   case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
     return @"DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged";
   case DBTEAMLOGEventTypeTfaChangePolicy:
@@ -35159,6 +37552,44 @@
     return @"DBTEAMLOGEventTypeTfaRemoveSecurityKey";
   case DBTEAMLOGEventTypeTfaReset:
     return @"DBTEAMLOGEventTypeTfaReset";
+  case DBTEAMLOGEventTypeGuestAdminChangeStatus:
+    return @"DBTEAMLOGEventTypeGuestAdminChangeStatus";
+  case DBTEAMLOGEventTypeTeamMergeRequestAccepted:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestAccepted";
+  case DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToPrimaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToPrimaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToSecondaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToSecondaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestAutoCanceled:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestAutoCanceled";
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceled:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestCanceled";
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToPrimaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToPrimaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToSecondaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToSecondaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestExpired:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestExpired";
+  case DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToPrimaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToPrimaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToSecondaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToSecondaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToPrimaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToPrimaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToSecondaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToSecondaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestReminder:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestReminder";
+  case DBTEAMLOGEventTypeTeamMergeRequestReminderShownToPrimaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestReminderShownToPrimaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestReminderShownToSecondaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestReminderShownToSecondaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestRevoked:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestRevoked";
+  case DBTEAMLOGEventTypeTeamMergeRequestSentShownToPrimaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestSentShownToPrimaryTeam";
+  case DBTEAMLOGEventTypeTeamMergeRequestSentShownToSecondaryTeam:
+    return @"DBTEAMLOGEventTypeTeamMergeRequestSentShownToSecondaryTeam";
   case DBTEAMLOGEventTypeOther:
     return @"DBTEAMLOGEventTypeOther";
   }
@@ -35205,6 +37636,10 @@
     result = prime * result + [self.appUnlinkTeam hash];
   case DBTEAMLOGEventTypeAppUnlinkUser:
     result = prime * result + [self.appUnlinkUser hash];
+  case DBTEAMLOGEventTypeIntegrationConnected:
+    result = prime * result + [self.integrationConnected hash];
+  case DBTEAMLOGEventTypeIntegrationDisconnected:
+    result = prime * result + [self.integrationDisconnected hash];
   case DBTEAMLOGEventTypeFileAddComment:
     result = prime * result + [self.fileAddComment hash];
   case DBTEAMLOGEventTypeFileChangeCommentSubscription:
@@ -35309,6 +37744,8 @@
     result = prime * result + [self.fileRequestClose hash];
   case DBTEAMLOGEventTypeFileRequestCreate:
     result = prime * result + [self.fileRequestCreate hash];
+  case DBTEAMLOGEventTypeFileRequestDelete:
+    result = prime * result + [self.fileRequestDelete hash];
   case DBTEAMLOGEventTypeFileRequestReceiveFile:
     result = prime * result + [self.fileRequestReceiveFile hash];
   case DBTEAMLOGEventTypeGroupAddExternalId:
@@ -35339,6 +37776,10 @@
     result = prime * result + [self.groupRename hash];
   case DBTEAMLOGEventTypeEmmError:
     result = prime * result + [self.emmError hash];
+  case DBTEAMLOGEventTypeGuestAdminSignedInViaTrustedTeams:
+    result = prime * result + [self.guestAdminSignedInViaTrustedTeams hash];
+  case DBTEAMLOGEventTypeGuestAdminSignedOutViaTrustedTeams:
+    result = prime * result + [self.guestAdminSignedOutViaTrustedTeams hash];
   case DBTEAMLOGEventTypeLoginFail:
     result = prime * result + [self.loginFail hash];
   case DBTEAMLOGEventTypeLoginSuccess:
@@ -35355,12 +37796,16 @@
     result = prime * result + [self.signInAsSessionStart hash];
   case DBTEAMLOGEventTypeSsoError:
     result = prime * result + [self.ssoError hash];
+  case DBTEAMLOGEventTypeMemberAddExternalId:
+    result = prime * result + [self.memberAddExternalId hash];
   case DBTEAMLOGEventTypeMemberAddName:
     result = prime * result + [self.memberAddName hash];
   case DBTEAMLOGEventTypeMemberChangeAdminRole:
     result = prime * result + [self.memberChangeAdminRole hash];
   case DBTEAMLOGEventTypeMemberChangeEmail:
     result = prime * result + [self.memberChangeEmail hash];
+  case DBTEAMLOGEventTypeMemberChangeExternalId:
+    result = prime * result + [self.memberChangeExternalId hash];
   case DBTEAMLOGEventTypeMemberChangeMembershipType:
     result = prime * result + [self.memberChangeMembershipType hash];
   case DBTEAMLOGEventTypeMemberChangeName:
@@ -35371,6 +37816,8 @@
     result = prime * result + [self.memberDeleteManualContacts hash];
   case DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents:
     result = prime * result + [self.memberPermanentlyDeleteAccountContents hash];
+  case DBTEAMLOGEventTypeMemberRemoveExternalId:
+    result = prime * result + [self.memberRemoveExternalId hash];
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota:
     result = prime * result + [self.memberSpaceLimitsAddCustomQuota hash];
   case DBTEAMLOGEventTypeMemberSpaceLimitsChangeCustomQuota:
@@ -35459,6 +37906,12 @@
     result = prime * result + [self.paperFolderFollowed hash];
   case DBTEAMLOGEventTypePaperFolderTeamInvite:
     result = prime * result + [self.paperFolderTeamInvite hash];
+  case DBTEAMLOGEventTypePaperPublishedLinkCreate:
+    result = prime * result + [self.paperPublishedLinkCreate hash];
+  case DBTEAMLOGEventTypePaperPublishedLinkDisabled:
+    result = prime * result + [self.paperPublishedLinkDisabled hash];
+  case DBTEAMLOGEventTypePaperPublishedLinkView:
+    result = prime * result + [self.paperPublishedLinkView hash];
   case DBTEAMLOGEventTypePasswordChange:
     result = prime * result + [self.passwordChange hash];
   case DBTEAMLOGEventTypePasswordReset:
@@ -35477,6 +37930,8 @@
     result = prime * result + [self.smartSyncCreateAdminPrivilegeReport hash];
   case DBTEAMLOGEventTypeTeamActivityCreateReport:
     result = prime * result + [self.teamActivityCreateReport hash];
+  case DBTEAMLOGEventTypeTeamActivityCreateReportFail:
+    result = prime * result + [self.teamActivityCreateReportFail hash];
   case DBTEAMLOGEventTypeCollectionShare:
     result = prime * result + [self.collectionShare hash];
   case DBTEAMLOGEventTypeNoteAclInviteOnly:
@@ -35729,6 +38184,8 @@
     result = prime * result + [self.googleSsoChangePolicy hash];
   case DBTEAMLOGEventTypeGroupUserManagementChangePolicy:
     result = prime * result + [self.groupUserManagementChangePolicy hash];
+  case DBTEAMLOGEventTypeIntegrationPolicyChanged:
+    result = prime * result + [self.integrationPolicyChanged hash];
   case DBTEAMLOGEventTypeMemberRequestsChangePolicy:
     result = prime * result + [self.memberRequestsChangePolicy hash];
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddException:
@@ -35753,12 +38210,18 @@
     result = prime * result + [self.paperChangeMemberPolicy hash];
   case DBTEAMLOGEventTypePaperChangePolicy:
     result = prime * result + [self.paperChangePolicy hash];
+  case DBTEAMLOGEventTypePaperDefaultFolderPolicyChanged:
+    result = prime * result + [self.paperDefaultFolderPolicyChanged hash];
+  case DBTEAMLOGEventTypePaperDesktopPolicyChanged:
+    result = prime * result + [self.paperDesktopPolicyChanged hash];
   case DBTEAMLOGEventTypePaperEnabledUsersGroupAddition:
     result = prime * result + [self.paperEnabledUsersGroupAddition hash];
   case DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval:
     result = prime * result + [self.paperEnabledUsersGroupRemoval hash];
   case DBTEAMLOGEventTypePermanentDeleteChangePolicy:
     result = prime * result + [self.permanentDeleteChangePolicy hash];
+  case DBTEAMLOGEventTypeResellerSupportChangePolicy:
+    result = prime * result + [self.resellerSupportChangePolicy hash];
   case DBTEAMLOGEventTypeSharingChangeFolderJoinPolicy:
     result = prime * result + [self.sharingChangeFolderJoinPolicy hash];
   case DBTEAMLOGEventTypeSharingChangeLinkPolicy:
@@ -35779,6 +38242,8 @@
     result = prime * result + [self.smartSyncOptOut hash];
   case DBTEAMLOGEventTypeSsoChangePolicy:
     result = prime * result + [self.ssoChangePolicy hash];
+  case DBTEAMLOGEventTypeTeamExtensionsPolicyChanged:
+    result = prime * result + [self.teamExtensionsPolicyChanged hash];
   case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
     result = prime * result + [self.teamSelectiveSyncPolicyChanged hash];
   case DBTEAMLOGEventTypeTfaChangePolicy:
@@ -35819,6 +38284,44 @@
     result = prime * result + [self.tfaRemoveSecurityKey hash];
   case DBTEAMLOGEventTypeTfaReset:
     result = prime * result + [self.tfaReset hash];
+  case DBTEAMLOGEventTypeGuestAdminChangeStatus:
+    result = prime * result + [self.guestAdminChangeStatus hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestAccepted:
+    result = prime * result + [self.teamMergeRequestAccepted hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToPrimaryTeam:
+    result = prime * result + [self.teamMergeRequestAcceptedShownToPrimaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToSecondaryTeam:
+    result = prime * result + [self.teamMergeRequestAcceptedShownToSecondaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestAutoCanceled:
+    result = prime * result + [self.teamMergeRequestAutoCanceled hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceled:
+    result = prime * result + [self.teamMergeRequestCanceled hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToPrimaryTeam:
+    result = prime * result + [self.teamMergeRequestCanceledShownToPrimaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToSecondaryTeam:
+    result = prime * result + [self.teamMergeRequestCanceledShownToSecondaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestExpired:
+    result = prime * result + [self.teamMergeRequestExpired hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToPrimaryTeam:
+    result = prime * result + [self.teamMergeRequestExpiredShownToPrimaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToSecondaryTeam:
+    result = prime * result + [self.teamMergeRequestExpiredShownToSecondaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToPrimaryTeam:
+    result = prime * result + [self.teamMergeRequestRejectedShownToPrimaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToSecondaryTeam:
+    result = prime * result + [self.teamMergeRequestRejectedShownToSecondaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestReminder:
+    result = prime * result + [self.teamMergeRequestReminder hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestReminderShownToPrimaryTeam:
+    result = prime * result + [self.teamMergeRequestReminderShownToPrimaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestReminderShownToSecondaryTeam:
+    result = prime * result + [self.teamMergeRequestReminderShownToSecondaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestRevoked:
+    result = prime * result + [self.teamMergeRequestRevoked hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestSentShownToPrimaryTeam:
+    result = prime * result + [self.teamMergeRequestSentShownToPrimaryTeam hash];
+  case DBTEAMLOGEventTypeTeamMergeRequestSentShownToSecondaryTeam:
+    result = prime * result + [self.teamMergeRequestSentShownToSecondaryTeam hash];
   case DBTEAMLOGEventTypeOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -35854,6 +38357,10 @@
     return [self.appUnlinkTeam isEqual:anEventType.appUnlinkTeam];
   case DBTEAMLOGEventTypeAppUnlinkUser:
     return [self.appUnlinkUser isEqual:anEventType.appUnlinkUser];
+  case DBTEAMLOGEventTypeIntegrationConnected:
+    return [self.integrationConnected isEqual:anEventType.integrationConnected];
+  case DBTEAMLOGEventTypeIntegrationDisconnected:
+    return [self.integrationDisconnected isEqual:anEventType.integrationDisconnected];
   case DBTEAMLOGEventTypeFileAddComment:
     return [self.fileAddComment isEqual:anEventType.fileAddComment];
   case DBTEAMLOGEventTypeFileChangeCommentSubscription:
@@ -35958,6 +38465,8 @@
     return [self.fileRequestClose isEqual:anEventType.fileRequestClose];
   case DBTEAMLOGEventTypeFileRequestCreate:
     return [self.fileRequestCreate isEqual:anEventType.fileRequestCreate];
+  case DBTEAMLOGEventTypeFileRequestDelete:
+    return [self.fileRequestDelete isEqual:anEventType.fileRequestDelete];
   case DBTEAMLOGEventTypeFileRequestReceiveFile:
     return [self.fileRequestReceiveFile isEqual:anEventType.fileRequestReceiveFile];
   case DBTEAMLOGEventTypeGroupAddExternalId:
@@ -35988,6 +38497,10 @@
     return [self.groupRename isEqual:anEventType.groupRename];
   case DBTEAMLOGEventTypeEmmError:
     return [self.emmError isEqual:anEventType.emmError];
+  case DBTEAMLOGEventTypeGuestAdminSignedInViaTrustedTeams:
+    return [self.guestAdminSignedInViaTrustedTeams isEqual:anEventType.guestAdminSignedInViaTrustedTeams];
+  case DBTEAMLOGEventTypeGuestAdminSignedOutViaTrustedTeams:
+    return [self.guestAdminSignedOutViaTrustedTeams isEqual:anEventType.guestAdminSignedOutViaTrustedTeams];
   case DBTEAMLOGEventTypeLoginFail:
     return [self.loginFail isEqual:anEventType.loginFail];
   case DBTEAMLOGEventTypeLoginSuccess:
@@ -36004,12 +38517,16 @@
     return [self.signInAsSessionStart isEqual:anEventType.signInAsSessionStart];
   case DBTEAMLOGEventTypeSsoError:
     return [self.ssoError isEqual:anEventType.ssoError];
+  case DBTEAMLOGEventTypeMemberAddExternalId:
+    return [self.memberAddExternalId isEqual:anEventType.memberAddExternalId];
   case DBTEAMLOGEventTypeMemberAddName:
     return [self.memberAddName isEqual:anEventType.memberAddName];
   case DBTEAMLOGEventTypeMemberChangeAdminRole:
     return [self.memberChangeAdminRole isEqual:anEventType.memberChangeAdminRole];
   case DBTEAMLOGEventTypeMemberChangeEmail:
     return [self.memberChangeEmail isEqual:anEventType.memberChangeEmail];
+  case DBTEAMLOGEventTypeMemberChangeExternalId:
+    return [self.memberChangeExternalId isEqual:anEventType.memberChangeExternalId];
   case DBTEAMLOGEventTypeMemberChangeMembershipType:
     return [self.memberChangeMembershipType isEqual:anEventType.memberChangeMembershipType];
   case DBTEAMLOGEventTypeMemberChangeName:
@@ -36020,6 +38537,8 @@
     return [self.memberDeleteManualContacts isEqual:anEventType.memberDeleteManualContacts];
   case DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents:
     return [self.memberPermanentlyDeleteAccountContents isEqual:anEventType.memberPermanentlyDeleteAccountContents];
+  case DBTEAMLOGEventTypeMemberRemoveExternalId:
+    return [self.memberRemoveExternalId isEqual:anEventType.memberRemoveExternalId];
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddCustomQuota:
     return [self.memberSpaceLimitsAddCustomQuota isEqual:anEventType.memberSpaceLimitsAddCustomQuota];
   case DBTEAMLOGEventTypeMemberSpaceLimitsChangeCustomQuota:
@@ -36108,6 +38627,12 @@
     return [self.paperFolderFollowed isEqual:anEventType.paperFolderFollowed];
   case DBTEAMLOGEventTypePaperFolderTeamInvite:
     return [self.paperFolderTeamInvite isEqual:anEventType.paperFolderTeamInvite];
+  case DBTEAMLOGEventTypePaperPublishedLinkCreate:
+    return [self.paperPublishedLinkCreate isEqual:anEventType.paperPublishedLinkCreate];
+  case DBTEAMLOGEventTypePaperPublishedLinkDisabled:
+    return [self.paperPublishedLinkDisabled isEqual:anEventType.paperPublishedLinkDisabled];
+  case DBTEAMLOGEventTypePaperPublishedLinkView:
+    return [self.paperPublishedLinkView isEqual:anEventType.paperPublishedLinkView];
   case DBTEAMLOGEventTypePasswordChange:
     return [self.passwordChange isEqual:anEventType.passwordChange];
   case DBTEAMLOGEventTypePasswordReset:
@@ -36126,6 +38651,8 @@
     return [self.smartSyncCreateAdminPrivilegeReport isEqual:anEventType.smartSyncCreateAdminPrivilegeReport];
   case DBTEAMLOGEventTypeTeamActivityCreateReport:
     return [self.teamActivityCreateReport isEqual:anEventType.teamActivityCreateReport];
+  case DBTEAMLOGEventTypeTeamActivityCreateReportFail:
+    return [self.teamActivityCreateReportFail isEqual:anEventType.teamActivityCreateReportFail];
   case DBTEAMLOGEventTypeCollectionShare:
     return [self.collectionShare isEqual:anEventType.collectionShare];
   case DBTEAMLOGEventTypeNoteAclInviteOnly:
@@ -36380,6 +38907,8 @@
     return [self.googleSsoChangePolicy isEqual:anEventType.googleSsoChangePolicy];
   case DBTEAMLOGEventTypeGroupUserManagementChangePolicy:
     return [self.groupUserManagementChangePolicy isEqual:anEventType.groupUserManagementChangePolicy];
+  case DBTEAMLOGEventTypeIntegrationPolicyChanged:
+    return [self.integrationPolicyChanged isEqual:anEventType.integrationPolicyChanged];
   case DBTEAMLOGEventTypeMemberRequestsChangePolicy:
     return [self.memberRequestsChangePolicy isEqual:anEventType.memberRequestsChangePolicy];
   case DBTEAMLOGEventTypeMemberSpaceLimitsAddException:
@@ -36404,12 +38933,18 @@
     return [self.paperChangeMemberPolicy isEqual:anEventType.paperChangeMemberPolicy];
   case DBTEAMLOGEventTypePaperChangePolicy:
     return [self.paperChangePolicy isEqual:anEventType.paperChangePolicy];
+  case DBTEAMLOGEventTypePaperDefaultFolderPolicyChanged:
+    return [self.paperDefaultFolderPolicyChanged isEqual:anEventType.paperDefaultFolderPolicyChanged];
+  case DBTEAMLOGEventTypePaperDesktopPolicyChanged:
+    return [self.paperDesktopPolicyChanged isEqual:anEventType.paperDesktopPolicyChanged];
   case DBTEAMLOGEventTypePaperEnabledUsersGroupAddition:
     return [self.paperEnabledUsersGroupAddition isEqual:anEventType.paperEnabledUsersGroupAddition];
   case DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval:
     return [self.paperEnabledUsersGroupRemoval isEqual:anEventType.paperEnabledUsersGroupRemoval];
   case DBTEAMLOGEventTypePermanentDeleteChangePolicy:
     return [self.permanentDeleteChangePolicy isEqual:anEventType.permanentDeleteChangePolicy];
+  case DBTEAMLOGEventTypeResellerSupportChangePolicy:
+    return [self.resellerSupportChangePolicy isEqual:anEventType.resellerSupportChangePolicy];
   case DBTEAMLOGEventTypeSharingChangeFolderJoinPolicy:
     return [self.sharingChangeFolderJoinPolicy isEqual:anEventType.sharingChangeFolderJoinPolicy];
   case DBTEAMLOGEventTypeSharingChangeLinkPolicy:
@@ -36430,6 +38965,8 @@
     return [self.smartSyncOptOut isEqual:anEventType.smartSyncOptOut];
   case DBTEAMLOGEventTypeSsoChangePolicy:
     return [self.ssoChangePolicy isEqual:anEventType.ssoChangePolicy];
+  case DBTEAMLOGEventTypeTeamExtensionsPolicyChanged:
+    return [self.teamExtensionsPolicyChanged isEqual:anEventType.teamExtensionsPolicyChanged];
   case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
     return [self.teamSelectiveSyncPolicyChanged isEqual:anEventType.teamSelectiveSyncPolicyChanged];
   case DBTEAMLOGEventTypeTfaChangePolicy:
@@ -36470,6 +39007,54 @@
     return [self.tfaRemoveSecurityKey isEqual:anEventType.tfaRemoveSecurityKey];
   case DBTEAMLOGEventTypeTfaReset:
     return [self.tfaReset isEqual:anEventType.tfaReset];
+  case DBTEAMLOGEventTypeGuestAdminChangeStatus:
+    return [self.guestAdminChangeStatus isEqual:anEventType.guestAdminChangeStatus];
+  case DBTEAMLOGEventTypeTeamMergeRequestAccepted:
+    return [self.teamMergeRequestAccepted isEqual:anEventType.teamMergeRequestAccepted];
+  case DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToPrimaryTeam:
+    return [self.teamMergeRequestAcceptedShownToPrimaryTeam
+        isEqual:anEventType.teamMergeRequestAcceptedShownToPrimaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestAcceptedShownToSecondaryTeam:
+    return [self.teamMergeRequestAcceptedShownToSecondaryTeam
+        isEqual:anEventType.teamMergeRequestAcceptedShownToSecondaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestAutoCanceled:
+    return [self.teamMergeRequestAutoCanceled isEqual:anEventType.teamMergeRequestAutoCanceled];
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceled:
+    return [self.teamMergeRequestCanceled isEqual:anEventType.teamMergeRequestCanceled];
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToPrimaryTeam:
+    return [self.teamMergeRequestCanceledShownToPrimaryTeam
+        isEqual:anEventType.teamMergeRequestCanceledShownToPrimaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestCanceledShownToSecondaryTeam:
+    return [self.teamMergeRequestCanceledShownToSecondaryTeam
+        isEqual:anEventType.teamMergeRequestCanceledShownToSecondaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestExpired:
+    return [self.teamMergeRequestExpired isEqual:anEventType.teamMergeRequestExpired];
+  case DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToPrimaryTeam:
+    return
+        [self.teamMergeRequestExpiredShownToPrimaryTeam isEqual:anEventType.teamMergeRequestExpiredShownToPrimaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestExpiredShownToSecondaryTeam:
+    return [self.teamMergeRequestExpiredShownToSecondaryTeam
+        isEqual:anEventType.teamMergeRequestExpiredShownToSecondaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToPrimaryTeam:
+    return [self.teamMergeRequestRejectedShownToPrimaryTeam
+        isEqual:anEventType.teamMergeRequestRejectedShownToPrimaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestRejectedShownToSecondaryTeam:
+    return [self.teamMergeRequestRejectedShownToSecondaryTeam
+        isEqual:anEventType.teamMergeRequestRejectedShownToSecondaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestReminder:
+    return [self.teamMergeRequestReminder isEqual:anEventType.teamMergeRequestReminder];
+  case DBTEAMLOGEventTypeTeamMergeRequestReminderShownToPrimaryTeam:
+    return [self.teamMergeRequestReminderShownToPrimaryTeam
+        isEqual:anEventType.teamMergeRequestReminderShownToPrimaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestReminderShownToSecondaryTeam:
+    return [self.teamMergeRequestReminderShownToSecondaryTeam
+        isEqual:anEventType.teamMergeRequestReminderShownToSecondaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestRevoked:
+    return [self.teamMergeRequestRevoked isEqual:anEventType.teamMergeRequestRevoked];
+  case DBTEAMLOGEventTypeTeamMergeRequestSentShownToPrimaryTeam:
+    return [self.teamMergeRequestSentShownToPrimaryTeam isEqual:anEventType.teamMergeRequestSentShownToPrimaryTeam];
+  case DBTEAMLOGEventTypeTeamMergeRequestSentShownToSecondaryTeam:
+    return [self.teamMergeRequestSentShownToSecondaryTeam isEqual:anEventType.teamMergeRequestSentShownToSecondaryTeam];
   case DBTEAMLOGEventTypeOther:
     return [[self tagName] isEqual:[anEventType tagName]];
   }
@@ -36497,6 +39082,13 @@
   } else if ([valueObj isAppUnlinkUser]) {
     jsonDict = [[DBTEAMLOGAppUnlinkUserTypeSerializer serialize:valueObj.appUnlinkUser] mutableCopy];
     jsonDict[@".tag"] = @"app_unlink_user";
+  } else if ([valueObj isIntegrationConnected]) {
+    jsonDict = [[DBTEAMLOGIntegrationConnectedTypeSerializer serialize:valueObj.integrationConnected] mutableCopy];
+    jsonDict[@".tag"] = @"integration_connected";
+  } else if ([valueObj isIntegrationDisconnected]) {
+    jsonDict =
+        [[DBTEAMLOGIntegrationDisconnectedTypeSerializer serialize:valueObj.integrationDisconnected] mutableCopy];
+    jsonDict[@".tag"] = @"integration_disconnected";
   } else if ([valueObj isFileAddComment]) {
     jsonDict = [[DBTEAMLOGFileAddCommentTypeSerializer serialize:valueObj.fileAddComment] mutableCopy];
     jsonDict[@".tag"] = @"file_add_comment";
@@ -36671,6 +39263,9 @@
   } else if ([valueObj isFileRequestCreate]) {
     jsonDict = [[DBTEAMLOGFileRequestCreateTypeSerializer serialize:valueObj.fileRequestCreate] mutableCopy];
     jsonDict[@".tag"] = @"file_request_create";
+  } else if ([valueObj isFileRequestDelete]) {
+    jsonDict = [[DBTEAMLOGFileRequestDeleteTypeSerializer serialize:valueObj.fileRequestDelete] mutableCopy];
+    jsonDict[@".tag"] = @"file_request_delete";
   } else if ([valueObj isFileRequestReceiveFile]) {
     jsonDict = [[DBTEAMLOGFileRequestReceiveFileTypeSerializer serialize:valueObj.fileRequestReceiveFile] mutableCopy];
     jsonDict[@".tag"] = @"file_request_receive_file";
@@ -36718,6 +39313,14 @@
   } else if ([valueObj isEmmError]) {
     jsonDict = [[DBTEAMLOGEmmErrorTypeSerializer serialize:valueObj.emmError] mutableCopy];
     jsonDict[@".tag"] = @"emm_error";
+  } else if ([valueObj isGuestAdminSignedInViaTrustedTeams]) {
+    jsonDict = [[DBTEAMLOGGuestAdminSignedInViaTrustedTeamsTypeSerializer
+        serialize:valueObj.guestAdminSignedInViaTrustedTeams] mutableCopy];
+    jsonDict[@".tag"] = @"guest_admin_signed_in_via_trusted_teams";
+  } else if ([valueObj isGuestAdminSignedOutViaTrustedTeams]) {
+    jsonDict = [[DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsTypeSerializer
+        serialize:valueObj.guestAdminSignedOutViaTrustedTeams] mutableCopy];
+    jsonDict[@".tag"] = @"guest_admin_signed_out_via_trusted_teams";
   } else if ([valueObj isLoginFail]) {
     jsonDict = [[DBTEAMLOGLoginFailTypeSerializer serialize:valueObj.loginFail] mutableCopy];
     jsonDict[@".tag"] = @"login_fail";
@@ -36744,6 +39347,9 @@
   } else if ([valueObj isSsoError]) {
     jsonDict = [[DBTEAMLOGSsoErrorTypeSerializer serialize:valueObj.ssoError] mutableCopy];
     jsonDict[@".tag"] = @"sso_error";
+  } else if ([valueObj isMemberAddExternalId]) {
+    jsonDict = [[DBTEAMLOGMemberAddExternalIdTypeSerializer serialize:valueObj.memberAddExternalId] mutableCopy];
+    jsonDict[@".tag"] = @"member_add_external_id";
   } else if ([valueObj isMemberAddName]) {
     jsonDict = [[DBTEAMLOGMemberAddNameTypeSerializer serialize:valueObj.memberAddName] mutableCopy];
     jsonDict[@".tag"] = @"member_add_name";
@@ -36753,6 +39359,9 @@
   } else if ([valueObj isMemberChangeEmail]) {
     jsonDict = [[DBTEAMLOGMemberChangeEmailTypeSerializer serialize:valueObj.memberChangeEmail] mutableCopy];
     jsonDict[@".tag"] = @"member_change_email";
+  } else if ([valueObj isMemberChangeExternalId]) {
+    jsonDict = [[DBTEAMLOGMemberChangeExternalIdTypeSerializer serialize:valueObj.memberChangeExternalId] mutableCopy];
+    jsonDict[@".tag"] = @"member_change_external_id";
   } else if ([valueObj isMemberChangeMembershipType]) {
     jsonDict =
         [[DBTEAMLOGMemberChangeMembershipTypeTypeSerializer serialize:valueObj.memberChangeMembershipType] mutableCopy];
@@ -36771,6 +39380,9 @@
     jsonDict = [[DBTEAMLOGMemberPermanentlyDeleteAccountContentsTypeSerializer
         serialize:valueObj.memberPermanentlyDeleteAccountContents] mutableCopy];
     jsonDict[@".tag"] = @"member_permanently_delete_account_contents";
+  } else if ([valueObj isMemberRemoveExternalId]) {
+    jsonDict = [[DBTEAMLOGMemberRemoveExternalIdTypeSerializer serialize:valueObj.memberRemoveExternalId] mutableCopy];
+    jsonDict[@".tag"] = @"member_remove_external_id";
   } else if ([valueObj isMemberSpaceLimitsAddCustomQuota]) {
     jsonDict = [[DBTEAMLOGMemberSpaceLimitsAddCustomQuotaTypeSerializer
         serialize:valueObj.memberSpaceLimitsAddCustomQuota] mutableCopy];
@@ -36921,6 +39533,17 @@
   } else if ([valueObj isPaperFolderTeamInvite]) {
     jsonDict = [[DBTEAMLOGPaperFolderTeamInviteTypeSerializer serialize:valueObj.paperFolderTeamInvite] mutableCopy];
     jsonDict[@".tag"] = @"paper_folder_team_invite";
+  } else if ([valueObj isPaperPublishedLinkCreate]) {
+    jsonDict =
+        [[DBTEAMLOGPaperPublishedLinkCreateTypeSerializer serialize:valueObj.paperPublishedLinkCreate] mutableCopy];
+    jsonDict[@".tag"] = @"paper_published_link_create";
+  } else if ([valueObj isPaperPublishedLinkDisabled]) {
+    jsonDict =
+        [[DBTEAMLOGPaperPublishedLinkDisabledTypeSerializer serialize:valueObj.paperPublishedLinkDisabled] mutableCopy];
+    jsonDict[@".tag"] = @"paper_published_link_disabled";
+  } else if ([valueObj isPaperPublishedLinkView]) {
+    jsonDict = [[DBTEAMLOGPaperPublishedLinkViewTypeSerializer serialize:valueObj.paperPublishedLinkView] mutableCopy];
+    jsonDict[@".tag"] = @"paper_published_link_view";
   } else if ([valueObj isPasswordChange]) {
     jsonDict = [[DBTEAMLOGPasswordChangeTypeSerializer serialize:valueObj.passwordChange] mutableCopy];
     jsonDict[@".tag"] = @"password_change";
@@ -36951,6 +39574,10 @@
     jsonDict =
         [[DBTEAMLOGTeamActivityCreateReportTypeSerializer serialize:valueObj.teamActivityCreateReport] mutableCopy];
     jsonDict[@".tag"] = @"team_activity_create_report";
+  } else if ([valueObj isTeamActivityCreateReportFail]) {
+    jsonDict = [[DBTEAMLOGTeamActivityCreateReportFailTypeSerializer serialize:valueObj.teamActivityCreateReportFail]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_activity_create_report_fail";
   } else if ([valueObj isCollectionShare]) {
     jsonDict = [[DBTEAMLOGCollectionShareTypeSerializer serialize:valueObj.collectionShare] mutableCopy];
     jsonDict[@".tag"] = @"collection_share";
@@ -37377,6 +40004,10 @@
     jsonDict = [[DBTEAMLOGGroupUserManagementChangePolicyTypeSerializer
         serialize:valueObj.groupUserManagementChangePolicy] mutableCopy];
     jsonDict[@".tag"] = @"group_user_management_change_policy";
+  } else if ([valueObj isIntegrationPolicyChanged]) {
+    jsonDict =
+        [[DBTEAMLOGIntegrationPolicyChangedTypeSerializer serialize:valueObj.integrationPolicyChanged] mutableCopy];
+    jsonDict[@".tag"] = @"integration_policy_changed";
   } else if ([valueObj isMemberRequestsChangePolicy]) {
     jsonDict =
         [[DBTEAMLOGMemberRequestsChangePolicyTypeSerializer serialize:valueObj.memberRequestsChangePolicy] mutableCopy];
@@ -37424,6 +40055,14 @@
   } else if ([valueObj isPaperChangePolicy]) {
     jsonDict = [[DBTEAMLOGPaperChangePolicyTypeSerializer serialize:valueObj.paperChangePolicy] mutableCopy];
     jsonDict[@".tag"] = @"paper_change_policy";
+  } else if ([valueObj isPaperDefaultFolderPolicyChanged]) {
+    jsonDict = [[DBTEAMLOGPaperDefaultFolderPolicyChangedTypeSerializer
+        serialize:valueObj.paperDefaultFolderPolicyChanged] mutableCopy];
+    jsonDict[@".tag"] = @"paper_default_folder_policy_changed";
+  } else if ([valueObj isPaperDesktopPolicyChanged]) {
+    jsonDict =
+        [[DBTEAMLOGPaperDesktopPolicyChangedTypeSerializer serialize:valueObj.paperDesktopPolicyChanged] mutableCopy];
+    jsonDict[@".tag"] = @"paper_desktop_policy_changed";
   } else if ([valueObj isPaperEnabledUsersGroupAddition]) {
     jsonDict = [[DBTEAMLOGPaperEnabledUsersGroupAdditionTypeSerializer
         serialize:valueObj.paperEnabledUsersGroupAddition] mutableCopy];
@@ -37436,6 +40075,10 @@
     jsonDict = [[DBTEAMLOGPermanentDeleteChangePolicyTypeSerializer serialize:valueObj.permanentDeleteChangePolicy]
         mutableCopy];
     jsonDict[@".tag"] = @"permanent_delete_change_policy";
+  } else if ([valueObj isResellerSupportChangePolicy]) {
+    jsonDict = [[DBTEAMLOGResellerSupportChangePolicyTypeSerializer serialize:valueObj.resellerSupportChangePolicy]
+        mutableCopy];
+    jsonDict[@".tag"] = @"reseller_support_change_policy";
   } else if ([valueObj isSharingChangeFolderJoinPolicy]) {
     jsonDict = [[DBTEAMLOGSharingChangeFolderJoinPolicyTypeSerializer serialize:valueObj.sharingChangeFolderJoinPolicy]
         mutableCopy];
@@ -37472,6 +40115,10 @@
   } else if ([valueObj isSsoChangePolicy]) {
     jsonDict = [[DBTEAMLOGSsoChangePolicyTypeSerializer serialize:valueObj.ssoChangePolicy] mutableCopy];
     jsonDict[@".tag"] = @"sso_change_policy";
+  } else if ([valueObj isTeamExtensionsPolicyChanged]) {
+    jsonDict = [[DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer serialize:valueObj.teamExtensionsPolicyChanged]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_extensions_policy_changed";
   } else if ([valueObj isTeamSelectiveSyncPolicyChanged]) {
     jsonDict = [[DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer
         serialize:valueObj.teamSelectiveSyncPolicyChanged] mutableCopy];
@@ -37537,6 +40184,81 @@
   } else if ([valueObj isTfaReset]) {
     jsonDict = [[DBTEAMLOGTfaResetTypeSerializer serialize:valueObj.tfaReset] mutableCopy];
     jsonDict[@".tag"] = @"tfa_reset";
+  } else if ([valueObj isGuestAdminChangeStatus]) {
+    jsonDict = [[DBTEAMLOGGuestAdminChangeStatusTypeSerializer serialize:valueObj.guestAdminChangeStatus] mutableCopy];
+    jsonDict[@".tag"] = @"guest_admin_change_status";
+  } else if ([valueObj isTeamMergeRequestAccepted]) {
+    jsonDict =
+        [[DBTEAMLOGTeamMergeRequestAcceptedTypeSerializer serialize:valueObj.teamMergeRequestAccepted] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_accepted";
+  } else if ([valueObj isTeamMergeRequestAcceptedShownToPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestAcceptedShownToPrimaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_accepted_shown_to_primary_team";
+  } else if ([valueObj isTeamMergeRequestAcceptedShownToSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestAcceptedShownToSecondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_accepted_shown_to_secondary_team";
+  } else if ([valueObj isTeamMergeRequestAutoCanceled]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestAutoCanceledTypeSerializer serialize:valueObj.teamMergeRequestAutoCanceled]
+        mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_auto_canceled";
+  } else if ([valueObj isTeamMergeRequestCanceled]) {
+    jsonDict =
+        [[DBTEAMLOGTeamMergeRequestCanceledTypeSerializer serialize:valueObj.teamMergeRequestCanceled] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_canceled";
+  } else if ([valueObj isTeamMergeRequestCanceledShownToPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestCanceledShownToPrimaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_canceled_shown_to_primary_team";
+  } else if ([valueObj isTeamMergeRequestCanceledShownToSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestCanceledShownToSecondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_canceled_shown_to_secondary_team";
+  } else if ([valueObj isTeamMergeRequestExpired]) {
+    jsonDict =
+        [[DBTEAMLOGTeamMergeRequestExpiredTypeSerializer serialize:valueObj.teamMergeRequestExpired] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_expired";
+  } else if ([valueObj isTeamMergeRequestExpiredShownToPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestExpiredShownToPrimaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_expired_shown_to_primary_team";
+  } else if ([valueObj isTeamMergeRequestExpiredShownToSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestExpiredShownToSecondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_expired_shown_to_secondary_team";
+  } else if ([valueObj isTeamMergeRequestRejectedShownToPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestRejectedShownToPrimaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_rejected_shown_to_primary_team";
+  } else if ([valueObj isTeamMergeRequestRejectedShownToSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestRejectedShownToSecondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_rejected_shown_to_secondary_team";
+  } else if ([valueObj isTeamMergeRequestReminder]) {
+    jsonDict =
+        [[DBTEAMLOGTeamMergeRequestReminderTypeSerializer serialize:valueObj.teamMergeRequestReminder] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_reminder";
+  } else if ([valueObj isTeamMergeRequestReminderShownToPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestReminderShownToPrimaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_reminder_shown_to_primary_team";
+  } else if ([valueObj isTeamMergeRequestReminderShownToSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestReminderShownToSecondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_reminder_shown_to_secondary_team";
+  } else if ([valueObj isTeamMergeRequestRevoked]) {
+    jsonDict =
+        [[DBTEAMLOGTeamMergeRequestRevokedTypeSerializer serialize:valueObj.teamMergeRequestRevoked] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_revoked";
+  } else if ([valueObj isTeamMergeRequestSentShownToPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestSentShownToPrimaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_sent_shown_to_primary_team";
+  } else if ([valueObj isTeamMergeRequestSentShownToSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamTypeSerializer
+        serialize:valueObj.teamMergeRequestSentShownToSecondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"team_merge_request_sent_shown_to_secondary_team";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -37561,6 +40283,14 @@
   } else if ([tag isEqualToString:@"app_unlink_user"]) {
     DBTEAMLOGAppUnlinkUserType *appUnlinkUser = [DBTEAMLOGAppUnlinkUserTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithAppUnlinkUser:appUnlinkUser];
+  } else if ([tag isEqualToString:@"integration_connected"]) {
+    DBTEAMLOGIntegrationConnectedType *integrationConnected =
+        [DBTEAMLOGIntegrationConnectedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithIntegrationConnected:integrationConnected];
+  } else if ([tag isEqualToString:@"integration_disconnected"]) {
+    DBTEAMLOGIntegrationDisconnectedType *integrationDisconnected =
+        [DBTEAMLOGIntegrationDisconnectedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithIntegrationDisconnected:integrationDisconnected];
   } else if ([tag isEqualToString:@"file_add_comment"]) {
     DBTEAMLOGFileAddCommentType *fileAddComment = [DBTEAMLOGFileAddCommentTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithFileAddComment:fileAddComment];
@@ -37757,6 +40487,10 @@
     DBTEAMLOGFileRequestCreateType *fileRequestCreate =
         [DBTEAMLOGFileRequestCreateTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithFileRequestCreate:fileRequestCreate];
+  } else if ([tag isEqualToString:@"file_request_delete"]) {
+    DBTEAMLOGFileRequestDeleteType *fileRequestDelete =
+        [DBTEAMLOGFileRequestDeleteTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithFileRequestDelete:fileRequestDelete];
   } else if ([tag isEqualToString:@"file_request_receive_file"]) {
     DBTEAMLOGFileRequestReceiveFileType *fileRequestReceiveFile =
         [DBTEAMLOGFileRequestReceiveFileTypeSerializer deserialize:valueDict];
@@ -37811,6 +40545,14 @@
   } else if ([tag isEqualToString:@"emm_error"]) {
     DBTEAMLOGEmmErrorType *emmError = [DBTEAMLOGEmmErrorTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithEmmError:emmError];
+  } else if ([tag isEqualToString:@"guest_admin_signed_in_via_trusted_teams"]) {
+    DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType *guestAdminSignedInViaTrustedTeams =
+        [DBTEAMLOGGuestAdminSignedInViaTrustedTeamsTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithGuestAdminSignedInViaTrustedTeams:guestAdminSignedInViaTrustedTeams];
+  } else if ([tag isEqualToString:@"guest_admin_signed_out_via_trusted_teams"]) {
+    DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType *guestAdminSignedOutViaTrustedTeams =
+        [DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithGuestAdminSignedOutViaTrustedTeams:guestAdminSignedOutViaTrustedTeams];
   } else if ([tag isEqualToString:@"login_fail"]) {
     DBTEAMLOGLoginFailType *loginFail = [DBTEAMLOGLoginFailTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithLoginFail:loginFail];
@@ -37839,6 +40581,10 @@
   } else if ([tag isEqualToString:@"sso_error"]) {
     DBTEAMLOGSsoErrorType *ssoError = [DBTEAMLOGSsoErrorTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithSsoError:ssoError];
+  } else if ([tag isEqualToString:@"member_add_external_id"]) {
+    DBTEAMLOGMemberAddExternalIdType *memberAddExternalId =
+        [DBTEAMLOGMemberAddExternalIdTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithMemberAddExternalId:memberAddExternalId];
   } else if ([tag isEqualToString:@"member_add_name"]) {
     DBTEAMLOGMemberAddNameType *memberAddName = [DBTEAMLOGMemberAddNameTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithMemberAddName:memberAddName];
@@ -37850,6 +40596,10 @@
     DBTEAMLOGMemberChangeEmailType *memberChangeEmail =
         [DBTEAMLOGMemberChangeEmailTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithMemberChangeEmail:memberChangeEmail];
+  } else if ([tag isEqualToString:@"member_change_external_id"]) {
+    DBTEAMLOGMemberChangeExternalIdType *memberChangeExternalId =
+        [DBTEAMLOGMemberChangeExternalIdTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithMemberChangeExternalId:memberChangeExternalId];
   } else if ([tag isEqualToString:@"member_change_membership_type"]) {
     DBTEAMLOGMemberChangeMembershipTypeType *memberChangeMembershipType =
         [DBTEAMLOGMemberChangeMembershipTypeTypeSerializer deserialize:valueDict];
@@ -37870,6 +40620,10 @@
         [DBTEAMLOGMemberPermanentlyDeleteAccountContentsTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc]
         initWithMemberPermanentlyDeleteAccountContents:memberPermanentlyDeleteAccountContents];
+  } else if ([tag isEqualToString:@"member_remove_external_id"]) {
+    DBTEAMLOGMemberRemoveExternalIdType *memberRemoveExternalId =
+        [DBTEAMLOGMemberRemoveExternalIdTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithMemberRemoveExternalId:memberRemoveExternalId];
   } else if ([tag isEqualToString:@"member_space_limits_add_custom_quota"]) {
     DBTEAMLOGMemberSpaceLimitsAddCustomQuotaType *memberSpaceLimitsAddCustomQuota =
         [DBTEAMLOGMemberSpaceLimitsAddCustomQuotaTypeSerializer deserialize:valueDict];
@@ -38037,6 +40791,18 @@
     DBTEAMLOGPaperFolderTeamInviteType *paperFolderTeamInvite =
         [DBTEAMLOGPaperFolderTeamInviteTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithPaperFolderTeamInvite:paperFolderTeamInvite];
+  } else if ([tag isEqualToString:@"paper_published_link_create"]) {
+    DBTEAMLOGPaperPublishedLinkCreateType *paperPublishedLinkCreate =
+        [DBTEAMLOGPaperPublishedLinkCreateTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithPaperPublishedLinkCreate:paperPublishedLinkCreate];
+  } else if ([tag isEqualToString:@"paper_published_link_disabled"]) {
+    DBTEAMLOGPaperPublishedLinkDisabledType *paperPublishedLinkDisabled =
+        [DBTEAMLOGPaperPublishedLinkDisabledTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithPaperPublishedLinkDisabled:paperPublishedLinkDisabled];
+  } else if ([tag isEqualToString:@"paper_published_link_view"]) {
+    DBTEAMLOGPaperPublishedLinkViewType *paperPublishedLinkView =
+        [DBTEAMLOGPaperPublishedLinkViewTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithPaperPublishedLinkView:paperPublishedLinkView];
   } else if ([tag isEqualToString:@"password_change"]) {
     DBTEAMLOGPasswordChangeType *passwordChange = [DBTEAMLOGPasswordChangeTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithPasswordChange:passwordChange];
@@ -38070,6 +40836,10 @@
     DBTEAMLOGTeamActivityCreateReportType *teamActivityCreateReport =
         [DBTEAMLOGTeamActivityCreateReportTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithTeamActivityCreateReport:teamActivityCreateReport];
+  } else if ([tag isEqualToString:@"team_activity_create_report_fail"]) {
+    DBTEAMLOGTeamActivityCreateReportFailType *teamActivityCreateReportFail =
+        [DBTEAMLOGTeamActivityCreateReportFailTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamActivityCreateReportFail:teamActivityCreateReportFail];
   } else if ([tag isEqualToString:@"collection_share"]) {
     DBTEAMLOGCollectionShareType *collectionShare = [DBTEAMLOGCollectionShareTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithCollectionShare:collectionShare];
@@ -38543,6 +41313,10 @@
     DBTEAMLOGGroupUserManagementChangePolicyType *groupUserManagementChangePolicy =
         [DBTEAMLOGGroupUserManagementChangePolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithGroupUserManagementChangePolicy:groupUserManagementChangePolicy];
+  } else if ([tag isEqualToString:@"integration_policy_changed"]) {
+    DBTEAMLOGIntegrationPolicyChangedType *integrationPolicyChanged =
+        [DBTEAMLOGIntegrationPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithIntegrationPolicyChanged:integrationPolicyChanged];
   } else if ([tag isEqualToString:@"member_requests_change_policy"]) {
     DBTEAMLOGMemberRequestsChangePolicyType *memberRequestsChangePolicy =
         [DBTEAMLOGMemberRequestsChangePolicyTypeSerializer deserialize:valueDict];
@@ -38592,6 +41366,14 @@
     DBTEAMLOGPaperChangePolicyType *paperChangePolicy =
         [DBTEAMLOGPaperChangePolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithPaperChangePolicy:paperChangePolicy];
+  } else if ([tag isEqualToString:@"paper_default_folder_policy_changed"]) {
+    DBTEAMLOGPaperDefaultFolderPolicyChangedType *paperDefaultFolderPolicyChanged =
+        [DBTEAMLOGPaperDefaultFolderPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithPaperDefaultFolderPolicyChanged:paperDefaultFolderPolicyChanged];
+  } else if ([tag isEqualToString:@"paper_desktop_policy_changed"]) {
+    DBTEAMLOGPaperDesktopPolicyChangedType *paperDesktopPolicyChanged =
+        [DBTEAMLOGPaperDesktopPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithPaperDesktopPolicyChanged:paperDesktopPolicyChanged];
   } else if ([tag isEqualToString:@"paper_enabled_users_group_addition"]) {
     DBTEAMLOGPaperEnabledUsersGroupAdditionType *paperEnabledUsersGroupAddition =
         [DBTEAMLOGPaperEnabledUsersGroupAdditionTypeSerializer deserialize:valueDict];
@@ -38604,6 +41386,10 @@
     DBTEAMLOGPermanentDeleteChangePolicyType *permanentDeleteChangePolicy =
         [DBTEAMLOGPermanentDeleteChangePolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithPermanentDeleteChangePolicy:permanentDeleteChangePolicy];
+  } else if ([tag isEqualToString:@"reseller_support_change_policy"]) {
+    DBTEAMLOGResellerSupportChangePolicyType *resellerSupportChangePolicy =
+        [DBTEAMLOGResellerSupportChangePolicyTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithResellerSupportChangePolicy:resellerSupportChangePolicy];
   } else if ([tag isEqualToString:@"sharing_change_folder_join_policy"]) {
     DBTEAMLOGSharingChangeFolderJoinPolicyType *sharingChangeFolderJoinPolicy =
         [DBTEAMLOGSharingChangeFolderJoinPolicyTypeSerializer deserialize:valueDict];
@@ -38642,6 +41428,10 @@
   } else if ([tag isEqualToString:@"sso_change_policy"]) {
     DBTEAMLOGSsoChangePolicyType *ssoChangePolicy = [DBTEAMLOGSsoChangePolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithSsoChangePolicy:ssoChangePolicy];
+  } else if ([tag isEqualToString:@"team_extensions_policy_changed"]) {
+    DBTEAMLOGTeamExtensionsPolicyChangedType *teamExtensionsPolicyChanged =
+        [DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamExtensionsPolicyChanged:teamExtensionsPolicyChanged];
   } else if ([tag isEqualToString:@"team_selective_sync_policy_changed"]) {
     DBTEAMLOGTeamSelectiveSyncPolicyChangedType *teamSelectiveSyncPolicyChanged =
         [DBTEAMLOGTeamSelectiveSyncPolicyChangedTypeSerializer deserialize:valueDict];
@@ -38717,6 +41507,94 @@
   } else if ([tag isEqualToString:@"tfa_reset"]) {
     DBTEAMLOGTfaResetType *tfaReset = [DBTEAMLOGTfaResetTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithTfaReset:tfaReset];
+  } else if ([tag isEqualToString:@"guest_admin_change_status"]) {
+    DBTEAMLOGGuestAdminChangeStatusType *guestAdminChangeStatus =
+        [DBTEAMLOGGuestAdminChangeStatusTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithGuestAdminChangeStatus:guestAdminChangeStatus];
+  } else if ([tag isEqualToString:@"team_merge_request_accepted"]) {
+    DBTEAMLOGTeamMergeRequestAcceptedType *teamMergeRequestAccepted =
+        [DBTEAMLOGTeamMergeRequestAcceptedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamMergeRequestAccepted:teamMergeRequestAccepted];
+  } else if ([tag isEqualToString:@"team_merge_request_accepted_shown_to_primary_team"]) {
+    DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType *teamMergeRequestAcceptedShownToPrimaryTeam =
+        [DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestAcceptedShownToPrimaryTeam:teamMergeRequestAcceptedShownToPrimaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_accepted_shown_to_secondary_team"]) {
+    DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType *teamMergeRequestAcceptedShownToSecondaryTeam =
+        [DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestAcceptedShownToSecondaryTeam:teamMergeRequestAcceptedShownToSecondaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_auto_canceled"]) {
+    DBTEAMLOGTeamMergeRequestAutoCanceledType *teamMergeRequestAutoCanceled =
+        [DBTEAMLOGTeamMergeRequestAutoCanceledTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamMergeRequestAutoCanceled:teamMergeRequestAutoCanceled];
+  } else if ([tag isEqualToString:@"team_merge_request_canceled"]) {
+    DBTEAMLOGTeamMergeRequestCanceledType *teamMergeRequestCanceled =
+        [DBTEAMLOGTeamMergeRequestCanceledTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamMergeRequestCanceled:teamMergeRequestCanceled];
+  } else if ([tag isEqualToString:@"team_merge_request_canceled_shown_to_primary_team"]) {
+    DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType *teamMergeRequestCanceledShownToPrimaryTeam =
+        [DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestCanceledShownToPrimaryTeam:teamMergeRequestCanceledShownToPrimaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_canceled_shown_to_secondary_team"]) {
+    DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType *teamMergeRequestCanceledShownToSecondaryTeam =
+        [DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestCanceledShownToSecondaryTeam:teamMergeRequestCanceledShownToSecondaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_expired"]) {
+    DBTEAMLOGTeamMergeRequestExpiredType *teamMergeRequestExpired =
+        [DBTEAMLOGTeamMergeRequestExpiredTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamMergeRequestExpired:teamMergeRequestExpired];
+  } else if ([tag isEqualToString:@"team_merge_request_expired_shown_to_primary_team"]) {
+    DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType *teamMergeRequestExpiredShownToPrimaryTeam =
+        [DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestExpiredShownToPrimaryTeam:teamMergeRequestExpiredShownToPrimaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_expired_shown_to_secondary_team"]) {
+    DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *teamMergeRequestExpiredShownToSecondaryTeam =
+        [DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestExpiredShownToSecondaryTeam:teamMergeRequestExpiredShownToSecondaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_rejected_shown_to_primary_team"]) {
+    DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType *teamMergeRequestRejectedShownToPrimaryTeam =
+        [DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestRejectedShownToPrimaryTeam:teamMergeRequestRejectedShownToPrimaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_rejected_shown_to_secondary_team"]) {
+    DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType *teamMergeRequestRejectedShownToSecondaryTeam =
+        [DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestRejectedShownToSecondaryTeam:teamMergeRequestRejectedShownToSecondaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_reminder"]) {
+    DBTEAMLOGTeamMergeRequestReminderType *teamMergeRequestReminder =
+        [DBTEAMLOGTeamMergeRequestReminderTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamMergeRequestReminder:teamMergeRequestReminder];
+  } else if ([tag isEqualToString:@"team_merge_request_reminder_shown_to_primary_team"]) {
+    DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType *teamMergeRequestReminderShownToPrimaryTeam =
+        [DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestReminderShownToPrimaryTeam:teamMergeRequestReminderShownToPrimaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_reminder_shown_to_secondary_team"]) {
+    DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType *teamMergeRequestReminderShownToSecondaryTeam =
+        [DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestReminderShownToSecondaryTeam:teamMergeRequestReminderShownToSecondaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_revoked"]) {
+    DBTEAMLOGTeamMergeRequestRevokedType *teamMergeRequestRevoked =
+        [DBTEAMLOGTeamMergeRequestRevokedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithTeamMergeRequestRevoked:teamMergeRequestRevoked];
+  } else if ([tag isEqualToString:@"team_merge_request_sent_shown_to_primary_team"]) {
+    DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType *teamMergeRequestSentShownToPrimaryTeam =
+        [DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestSentShownToPrimaryTeam:teamMergeRequestSentShownToPrimaryTeam];
+  } else if ([tag isEqualToString:@"team_merge_request_sent_shown_to_secondary_team"]) {
+    DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType *teamMergeRequestSentShownToSecondaryTeam =
+        [DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamMergeRequestSentShownToSecondaryTeam:teamMergeRequestSentShownToSecondaryTeam];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGEventType alloc] initWithOther];
   } else {
@@ -44254,6 +47132,234 @@
   NSString *allowLateUploads = valueDict[@"allow_late_uploads"] ?: nil;
 
   return [[DBTEAMLOGFileRequestDeadline alloc] initWithDeadline:deadline allowLateUploads:allowLateUploads];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGFileRequestDeleteDetails.h"
+#import "DBTEAMLOGFileRequestDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGFileRequestDeleteDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithFileRequestId:(NSString *)fileRequestId
+                      previousDetails:(DBTEAMLOGFileRequestDetails *)previousDetails {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](fileRequestId);
+
+  self = [super init];
+  if (self) {
+    _fileRequestId = fileRequestId;
+    _previousDetails = previousDetails;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithFileRequestId:nil previousDetails:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGFileRequestDeleteDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGFileRequestDeleteDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGFileRequestDeleteDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.fileRequestId != nil) {
+    result = prime * result + [self.fileRequestId hash];
+  }
+  if (self.previousDetails != nil) {
+    result = prime * result + [self.previousDetails hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToFileRequestDeleteDetails:other];
+}
+
+- (BOOL)isEqualToFileRequestDeleteDetails:(DBTEAMLOGFileRequestDeleteDetails *)aFileRequestDeleteDetails {
+  if (self == aFileRequestDeleteDetails) {
+    return YES;
+  }
+  if (self.fileRequestId) {
+    if (![self.fileRequestId isEqual:aFileRequestDeleteDetails.fileRequestId]) {
+      return NO;
+    }
+  }
+  if (self.previousDetails) {
+    if (![self.previousDetails isEqual:aFileRequestDeleteDetails.previousDetails]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGFileRequestDeleteDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestDeleteDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.fileRequestId) {
+    jsonDict[@"file_request_id"] = valueObj.fileRequestId;
+  }
+  if (valueObj.previousDetails) {
+    jsonDict[@"previous_details"] = [DBTEAMLOGFileRequestDetailsSerializer serialize:valueObj.previousDetails];
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGFileRequestDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *fileRequestId = valueDict[@"file_request_id"] ?: nil;
+  DBTEAMLOGFileRequestDetails *previousDetails =
+      valueDict[@"previous_details"]
+          ? [DBTEAMLOGFileRequestDetailsSerializer deserialize:valueDict[@"previous_details"]]
+          : nil;
+
+  return
+      [[DBTEAMLOGFileRequestDeleteDetails alloc] initWithFileRequestId:fileRequestId previousDetails:previousDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGFileRequestDeleteType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGFileRequestDeleteType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGFileRequestDeleteTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGFileRequestDeleteTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGFileRequestDeleteTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToFileRequestDeleteType:other];
+}
+
+- (BOOL)isEqualToFileRequestDeleteType:(DBTEAMLOGFileRequestDeleteType *)aFileRequestDeleteType {
+  if (self == aFileRequestDeleteType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aFileRequestDeleteType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGFileRequestDeleteTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestDeleteType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGFileRequestDeleteType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGFileRequestDeleteType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -51423,6 +54529,728 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGGuestAdminChangeStatusDetails.h"
+#import "DBTEAMLOGTrustedTeamsRequestAction.h"
+#import "DBTEAMLOGTrustedTeamsRequestState.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGuestAdminChangeStatusDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithIsGuest:(NSNumber *)isGuest
+                  previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue
+                      dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue
+                  actionDetails:(DBTEAMLOGTrustedTeamsRequestAction *)actionDetails
+                  guestTeamName:(NSString *)guestTeamName
+                   hostTeamName:(NSString *)hostTeamName {
+  [DBStoneValidators nonnullValidator:nil](isGuest);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](actionDetails);
+
+  self = [super init];
+  if (self) {
+    _isGuest = isGuest;
+    _guestTeamName = guestTeamName;
+    _hostTeamName = hostTeamName;
+    _previousValue = previousValue;
+    _dNewValue = dNewValue;
+    _actionDetails = actionDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithIsGuest:(NSNumber *)isGuest
+                  previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue
+                      dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue
+                  actionDetails:(DBTEAMLOGTrustedTeamsRequestAction *)actionDetails {
+  return [self initWithIsGuest:isGuest
+                 previousValue:previousValue
+                     dNewValue:dNewValue
+                 actionDetails:actionDetails
+                 guestTeamName:nil
+                  hostTeamName:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGGuestAdminChangeStatusDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGGuestAdminChangeStatusDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGuestAdminChangeStatusDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.isGuest hash];
+  result = prime * result + [self.previousValue hash];
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.actionDetails hash];
+  if (self.guestTeamName != nil) {
+    result = prime * result + [self.guestTeamName hash];
+  }
+  if (self.hostTeamName != nil) {
+    result = prime * result + [self.hostTeamName hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGuestAdminChangeStatusDetails:other];
+}
+
+- (BOOL)isEqualToGuestAdminChangeStatusDetails:
+    (DBTEAMLOGGuestAdminChangeStatusDetails *)aGuestAdminChangeStatusDetails {
+  if (self == aGuestAdminChangeStatusDetails) {
+    return YES;
+  }
+  if (![self.isGuest isEqual:aGuestAdminChangeStatusDetails.isGuest]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aGuestAdminChangeStatusDetails.previousValue]) {
+    return NO;
+  }
+  if (![self.dNewValue isEqual:aGuestAdminChangeStatusDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.actionDetails isEqual:aGuestAdminChangeStatusDetails.actionDetails]) {
+    return NO;
+  }
+  if (self.guestTeamName) {
+    if (![self.guestTeamName isEqual:aGuestAdminChangeStatusDetails.guestTeamName]) {
+      return NO;
+    }
+  }
+  if (self.hostTeamName) {
+    if (![self.hostTeamName isEqual:aGuestAdminChangeStatusDetails.hostTeamName]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGuestAdminChangeStatusDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGuestAdminChangeStatusDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"is_guest"] = valueObj.isGuest;
+  jsonDict[@"previous_value"] = [DBTEAMLOGTrustedTeamsRequestStateSerializer serialize:valueObj.previousValue];
+  jsonDict[@"new_value"] = [DBTEAMLOGTrustedTeamsRequestStateSerializer serialize:valueObj.dNewValue];
+  jsonDict[@"action_details"] = [DBTEAMLOGTrustedTeamsRequestActionSerializer serialize:valueObj.actionDetails];
+  if (valueObj.guestTeamName) {
+    jsonDict[@"guest_team_name"] = valueObj.guestTeamName;
+  }
+  if (valueObj.hostTeamName) {
+    jsonDict[@"host_team_name"] = valueObj.hostTeamName;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGuestAdminChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *isGuest = valueDict[@"is_guest"];
+  DBTEAMLOGTrustedTeamsRequestState *previousValue =
+      [DBTEAMLOGTrustedTeamsRequestStateSerializer deserialize:valueDict[@"previous_value"]];
+  DBTEAMLOGTrustedTeamsRequestState *dNewValue =
+      [DBTEAMLOGTrustedTeamsRequestStateSerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGTrustedTeamsRequestAction *actionDetails =
+      [DBTEAMLOGTrustedTeamsRequestActionSerializer deserialize:valueDict[@"action_details"]];
+  NSString *guestTeamName = valueDict[@"guest_team_name"] ?: nil;
+  NSString *hostTeamName = valueDict[@"host_team_name"] ?: nil;
+
+  return [[DBTEAMLOGGuestAdminChangeStatusDetails alloc] initWithIsGuest:isGuest
+                                                           previousValue:previousValue
+                                                               dNewValue:dNewValue
+                                                           actionDetails:actionDetails
+                                                           guestTeamName:guestTeamName
+                                                            hostTeamName:hostTeamName];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGuestAdminChangeStatusType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGuestAdminChangeStatusType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGGuestAdminChangeStatusTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGGuestAdminChangeStatusTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGuestAdminChangeStatusTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGuestAdminChangeStatusType:other];
+}
+
+- (BOOL)isEqualToGuestAdminChangeStatusType:(DBTEAMLOGGuestAdminChangeStatusType *)aGuestAdminChangeStatusType {
+  if (self == aGuestAdminChangeStatusType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aGuestAdminChangeStatusType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGuestAdminChangeStatusTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGuestAdminChangeStatusType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGuestAdminChangeStatusType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGGuestAdminChangeStatusType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTeamName:(NSString *)teamName trustedTeamName:(NSString *)trustedTeamName {
+
+  self = [super init];
+  if (self) {
+    _teamName = teamName;
+    _trustedTeamName = trustedTeamName;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithTeamName:nil trustedTeamName:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.teamName != nil) {
+    result = prime * result + [self.teamName hash];
+  }
+  if (self.trustedTeamName != nil) {
+    result = prime * result + [self.trustedTeamName hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGuestAdminSignedInViaTrustedTeamsDetails:other];
+}
+
+- (BOOL)isEqualToGuestAdminSignedInViaTrustedTeamsDetails:
+    (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails *)aGuestAdminSignedInViaTrustedTeamsDetails {
+  if (self == aGuestAdminSignedInViaTrustedTeamsDetails) {
+    return YES;
+  }
+  if (self.teamName) {
+    if (![self.teamName isEqual:aGuestAdminSignedInViaTrustedTeamsDetails.teamName]) {
+      return NO;
+    }
+  }
+  if (self.trustedTeamName) {
+    if (![self.trustedTeamName isEqual:aGuestAdminSignedInViaTrustedTeamsDetails.trustedTeamName]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.teamName) {
+    jsonDict[@"team_name"] = valueObj.teamName;
+  }
+  if (valueObj.trustedTeamName) {
+    jsonDict[@"trusted_team_name"] = valueObj.trustedTeamName;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *teamName = valueDict[@"team_name"] ?: nil;
+  NSString *trustedTeamName = valueDict[@"trusted_team_name"] ?: nil;
+
+  return [[DBTEAMLOGGuestAdminSignedInViaTrustedTeamsDetails alloc] initWithTeamName:teamName
+                                                                     trustedTeamName:trustedTeamName];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGGuestAdminSignedInViaTrustedTeamsTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGGuestAdminSignedInViaTrustedTeamsTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGuestAdminSignedInViaTrustedTeamsTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGuestAdminSignedInViaTrustedTeamsType:other];
+}
+
+- (BOOL)isEqualToGuestAdminSignedInViaTrustedTeamsType:
+    (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType *)aGuestAdminSignedInViaTrustedTeamsType {
+  if (self == aGuestAdminSignedInViaTrustedTeamsType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aGuestAdminSignedInViaTrustedTeamsType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGuestAdminSignedInViaTrustedTeamsTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGGuestAdminSignedInViaTrustedTeamsType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTeamName:(NSString *)teamName trustedTeamName:(NSString *)trustedTeamName {
+
+  self = [super init];
+  if (self) {
+    _teamName = teamName;
+    _trustedTeamName = trustedTeamName;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithTeamName:nil trustedTeamName:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.teamName != nil) {
+    result = prime * result + [self.teamName hash];
+  }
+  if (self.trustedTeamName != nil) {
+    result = prime * result + [self.trustedTeamName hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGuestAdminSignedOutViaTrustedTeamsDetails:other];
+}
+
+- (BOOL)isEqualToGuestAdminSignedOutViaTrustedTeamsDetails:
+    (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails *)aGuestAdminSignedOutViaTrustedTeamsDetails {
+  if (self == aGuestAdminSignedOutViaTrustedTeamsDetails) {
+    return YES;
+  }
+  if (self.teamName) {
+    if (![self.teamName isEqual:aGuestAdminSignedOutViaTrustedTeamsDetails.teamName]) {
+      return NO;
+    }
+  }
+  if (self.trustedTeamName) {
+    if (![self.trustedTeamName isEqual:aGuestAdminSignedOutViaTrustedTeamsDetails.trustedTeamName]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.teamName) {
+    jsonDict[@"team_name"] = valueObj.teamName;
+  }
+  if (valueObj.trustedTeamName) {
+    jsonDict[@"trusted_team_name"] = valueObj.trustedTeamName;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *teamName = valueDict[@"team_name"] ?: nil;
+  NSString *trustedTeamName = valueDict[@"trusted_team_name"] ?: nil;
+
+  return [[DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsDetails alloc] initWithTeamName:teamName
+                                                                      trustedTeamName:trustedTeamName];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGuestAdminSignedOutViaTrustedTeamsType:other];
+}
+
+- (BOOL)isEqualToGuestAdminSignedOutViaTrustedTeamsType:
+    (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType *)aGuestAdminSignedOutViaTrustedTeamsType {
+  if (self == aGuestAdminSignedOutViaTrustedTeamsType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aGuestAdminSignedOutViaTrustedTeamsType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGIdentifierType.h"
 
 #pragma mark - API Object
@@ -51590,6 +55418,797 @@
   } else {
     return [[DBTEAMLOGIdentifierType alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGIntegrationConnectedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGIntegrationConnectedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithIntegrationName:(NSString *)integrationName {
+  [DBStoneValidators nonnullValidator:nil](integrationName);
+
+  self = [super init];
+  if (self) {
+    _integrationName = integrationName;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGIntegrationConnectedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGIntegrationConnectedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGIntegrationConnectedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.integrationName hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIntegrationConnectedDetails:other];
+}
+
+- (BOOL)isEqualToIntegrationConnectedDetails:(DBTEAMLOGIntegrationConnectedDetails *)anIntegrationConnectedDetails {
+  if (self == anIntegrationConnectedDetails) {
+    return YES;
+  }
+  if (![self.integrationName isEqual:anIntegrationConnectedDetails.integrationName]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGIntegrationConnectedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationConnectedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"integration_name"] = valueObj.integrationName;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGIntegrationConnectedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *integrationName = valueDict[@"integration_name"];
+
+  return [[DBTEAMLOGIntegrationConnectedDetails alloc] initWithIntegrationName:integrationName];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGIntegrationConnectedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGIntegrationConnectedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGIntegrationConnectedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGIntegrationConnectedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGIntegrationConnectedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIntegrationConnectedType:other];
+}
+
+- (BOOL)isEqualToIntegrationConnectedType:(DBTEAMLOGIntegrationConnectedType *)anIntegrationConnectedType {
+  if (self == anIntegrationConnectedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:anIntegrationConnectedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGIntegrationConnectedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationConnectedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGIntegrationConnectedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGIntegrationConnectedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGIntegrationDisconnectedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGIntegrationDisconnectedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithIntegrationName:(NSString *)integrationName {
+  [DBStoneValidators nonnullValidator:nil](integrationName);
+
+  self = [super init];
+  if (self) {
+    _integrationName = integrationName;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGIntegrationDisconnectedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGIntegrationDisconnectedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGIntegrationDisconnectedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.integrationName hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIntegrationDisconnectedDetails:other];
+}
+
+- (BOOL)isEqualToIntegrationDisconnectedDetails:
+    (DBTEAMLOGIntegrationDisconnectedDetails *)anIntegrationDisconnectedDetails {
+  if (self == anIntegrationDisconnectedDetails) {
+    return YES;
+  }
+  if (![self.integrationName isEqual:anIntegrationDisconnectedDetails.integrationName]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGIntegrationDisconnectedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationDisconnectedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"integration_name"] = valueObj.integrationName;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGIntegrationDisconnectedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *integrationName = valueDict[@"integration_name"];
+
+  return [[DBTEAMLOGIntegrationDisconnectedDetails alloc] initWithIntegrationName:integrationName];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGIntegrationDisconnectedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGIntegrationDisconnectedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGIntegrationDisconnectedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGIntegrationDisconnectedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGIntegrationDisconnectedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIntegrationDisconnectedType:other];
+}
+
+- (BOOL)isEqualToIntegrationDisconnectedType:(DBTEAMLOGIntegrationDisconnectedType *)anIntegrationDisconnectedType {
+  if (self == anIntegrationDisconnectedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:anIntegrationDisconnectedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGIntegrationDisconnectedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationDisconnectedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGIntegrationDisconnectedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGIntegrationDisconnectedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGIntegrationPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGIntegrationPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGIntegrationPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGIntegrationPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGIntegrationPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGIntegrationPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGIntegrationPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGIntegrationPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGIntegrationPolicyDisabled:
+    return @"DBTEAMLOGIntegrationPolicyDisabled";
+  case DBTEAMLOGIntegrationPolicyEnabled:
+    return @"DBTEAMLOGIntegrationPolicyEnabled";
+  case DBTEAMLOGIntegrationPolicyOther:
+    return @"DBTEAMLOGIntegrationPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGIntegrationPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGIntegrationPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGIntegrationPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGIntegrationPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGIntegrationPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGIntegrationPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIntegrationPolicy:other];
+}
+
+- (BOOL)isEqualToIntegrationPolicy:(DBTEAMLOGIntegrationPolicy *)anIntegrationPolicy {
+  if (self == anIntegrationPolicy) {
+    return YES;
+  }
+  if (self.tag != anIntegrationPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGIntegrationPolicyDisabled:
+    return [[self tagName] isEqual:[anIntegrationPolicy tagName]];
+  case DBTEAMLOGIntegrationPolicyEnabled:
+    return [[self tagName] isEqual:[anIntegrationPolicy tagName]];
+  case DBTEAMLOGIntegrationPolicyOther:
+    return [[self tagName] isEqual:[anIntegrationPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGIntegrationPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGIntegrationPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGIntegrationPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGIntegrationPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGIntegrationPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGIntegrationPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGIntegrationPolicy.h"
+#import "DBTEAMLOGIntegrationPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGIntegrationPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithIntegrationName:(NSString *)integrationName
+                              dNewValue:(DBTEAMLOGIntegrationPolicy *)dNewValue
+                          previousValue:(DBTEAMLOGIntegrationPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](integrationName);
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _integrationName = integrationName;
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGIntegrationPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGIntegrationPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGIntegrationPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.integrationName hash];
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIntegrationPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToIntegrationPolicyChangedDetails:
+    (DBTEAMLOGIntegrationPolicyChangedDetails *)anIntegrationPolicyChangedDetails {
+  if (self == anIntegrationPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.integrationName isEqual:anIntegrationPolicyChangedDetails.integrationName]) {
+    return NO;
+  }
+  if (![self.dNewValue isEqual:anIntegrationPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:anIntegrationPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGIntegrationPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"integration_name"] = valueObj.integrationName;
+  jsonDict[@"new_value"] = [DBTEAMLOGIntegrationPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGIntegrationPolicySerializer serialize:valueObj.previousValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGIntegrationPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *integrationName = valueDict[@"integration_name"];
+  DBTEAMLOGIntegrationPolicy *dNewValue = [DBTEAMLOGIntegrationPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGIntegrationPolicy *previousValue =
+      [DBTEAMLOGIntegrationPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return [[DBTEAMLOGIntegrationPolicyChangedDetails alloc] initWithIntegrationName:integrationName
+                                                                         dNewValue:dNewValue
+                                                                     previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGIntegrationPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGIntegrationPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGIntegrationPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGIntegrationPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGIntegrationPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIntegrationPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToIntegrationPolicyChangedType:(DBTEAMLOGIntegrationPolicyChangedType *)anIntegrationPolicyChangedType {
+  if (self == anIntegrationPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:anIntegrationPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGIntegrationPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGIntegrationPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGIntegrationPolicyChangedType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -52577,6 +57196,14 @@
   return self;
 }
 
+- (instancetype)initWithGoogleOauth {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGLoginMethodGoogleOauth;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -52601,6 +57228,10 @@
   return _tag == DBTEAMLOGLoginMethodSaml;
 }
 
+- (BOOL)isGoogleOauth {
+  return _tag == DBTEAMLOGLoginMethodGoogleOauth;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGLoginMethodOther;
 }
@@ -52613,6 +57244,8 @@
     return @"DBTEAMLOGLoginMethodTwoFactorAuthentication";
   case DBTEAMLOGLoginMethodSaml:
     return @"DBTEAMLOGLoginMethodSaml";
+  case DBTEAMLOGLoginMethodGoogleOauth:
+    return @"DBTEAMLOGLoginMethodGoogleOauth";
   case DBTEAMLOGLoginMethodOther:
     return @"DBTEAMLOGLoginMethodOther";
   }
@@ -52657,6 +57290,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGLoginMethodSaml:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGLoginMethodGoogleOauth:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGLoginMethodOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -52690,6 +57325,8 @@
     return [[self tagName] isEqual:[aLoginMethod tagName]];
   case DBTEAMLOGLoginMethodSaml:
     return [[self tagName] isEqual:[aLoginMethod tagName]];
+  case DBTEAMLOGLoginMethodGoogleOauth:
+    return [[self tagName] isEqual:[aLoginMethod tagName]];
   case DBTEAMLOGLoginMethodOther:
     return [[self tagName] isEqual:[aLoginMethod tagName]];
   }
@@ -52711,6 +57348,8 @@
     jsonDict[@".tag"] = @"two_factor_authentication";
   } else if ([valueObj isSaml]) {
     jsonDict[@".tag"] = @"saml";
+  } else if ([valueObj isGoogleOauth]) {
+    jsonDict[@".tag"] = @"google_oauth";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -52729,6 +57368,8 @@
     return [[DBTEAMLOGLoginMethod alloc] initWithTwoFactorAuthentication];
   } else if ([tag isEqualToString:@"saml"]) {
     return [[DBTEAMLOGLoginMethod alloc] initWithSaml];
+  } else if ([tag isEqualToString:@"google_oauth"]) {
+    return [[DBTEAMLOGLoginMethod alloc] initWithGoogleOauth];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGLoginMethod alloc] initWithOther];
   } else {
@@ -53140,6 +57781,204 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGLogoutType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberAddExternalIdDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberAddExternalIdDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(NSString *)dNewValue {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](dNewValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberAddExternalIdDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberAddExternalIdDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberAddExternalIdDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberAddExternalIdDetails:other];
+}
+
+- (BOOL)isEqualToMemberAddExternalIdDetails:(DBTEAMLOGMemberAddExternalIdDetails *)aMemberAddExternalIdDetails {
+  if (self == aMemberAddExternalIdDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aMemberAddExternalIdDetails.dNewValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberAddExternalIdDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberAddExternalIdDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = valueObj.dNewValue;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberAddExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *dNewValue = valueDict[@"new_value"];
+
+  return [[DBTEAMLOGMemberAddExternalIdDetails alloc] initWithDNewValue:dNewValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberAddExternalIdType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberAddExternalIdType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberAddExternalIdTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberAddExternalIdTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberAddExternalIdTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberAddExternalIdType:other];
+}
+
+- (BOOL)isEqualToMemberAddExternalIdType:(DBTEAMLOGMemberAddExternalIdType *)aMemberAddExternalIdType {
+  if (self == aMemberAddExternalIdType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aMemberAddExternalIdType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberAddExternalIdTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberAddExternalIdType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberAddExternalIdType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGMemberAddExternalIdType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -53779,6 +58618,214 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGMemberChangeEmailType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberChangeExternalIdDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberChangeExternalIdDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(NSString *)dNewValue previousValue:(NSString *)previousValue {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](dNewValue);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberChangeExternalIdDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberChangeExternalIdDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberChangeExternalIdDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberChangeExternalIdDetails:other];
+}
+
+- (BOOL)isEqualToMemberChangeExternalIdDetails:
+    (DBTEAMLOGMemberChangeExternalIdDetails *)aMemberChangeExternalIdDetails {
+  if (self == aMemberChangeExternalIdDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aMemberChangeExternalIdDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aMemberChangeExternalIdDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberChangeExternalIdDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeExternalIdDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = valueObj.dNewValue;
+  jsonDict[@"previous_value"] = valueObj.previousValue;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberChangeExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *dNewValue = valueDict[@"new_value"];
+  NSString *previousValue = valueDict[@"previous_value"];
+
+  return [[DBTEAMLOGMemberChangeExternalIdDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberChangeExternalIdType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberChangeExternalIdType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberChangeExternalIdTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberChangeExternalIdTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberChangeExternalIdTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberChangeExternalIdType:other];
+}
+
+- (BOOL)isEqualToMemberChangeExternalIdType:(DBTEAMLOGMemberChangeExternalIdType *)aMemberChangeExternalIdType {
+  if (self == aMemberChangeExternalIdType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aMemberChangeExternalIdType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberChangeExternalIdTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeExternalIdType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberChangeExternalIdType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGMemberChangeExternalIdType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -54866,6 +59913,14 @@
   return self;
 }
 
+- (instancetype)initWithOffboardAndRetainTeamFolders {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGMemberRemoveActionTypeOffboardAndRetainTeamFolders;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -54890,6 +59945,10 @@
   return _tag == DBTEAMLOGMemberRemoveActionTypeLeave;
 }
 
+- (BOOL)isOffboardAndRetainTeamFolders {
+  return _tag == DBTEAMLOGMemberRemoveActionTypeOffboardAndRetainTeamFolders;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGMemberRemoveActionTypeOther;
 }
@@ -54902,6 +59961,8 @@
     return @"DBTEAMLOGMemberRemoveActionTypeOffboard";
   case DBTEAMLOGMemberRemoveActionTypeLeave:
     return @"DBTEAMLOGMemberRemoveActionTypeLeave";
+  case DBTEAMLOGMemberRemoveActionTypeOffboardAndRetainTeamFolders:
+    return @"DBTEAMLOGMemberRemoveActionTypeOffboardAndRetainTeamFolders";
   case DBTEAMLOGMemberRemoveActionTypeOther:
     return @"DBTEAMLOGMemberRemoveActionTypeOther";
   }
@@ -54946,6 +60007,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGMemberRemoveActionTypeLeave:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGMemberRemoveActionTypeOffboardAndRetainTeamFolders:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGMemberRemoveActionTypeOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -54979,6 +60042,8 @@
     return [[self tagName] isEqual:[aMemberRemoveActionType tagName]];
   case DBTEAMLOGMemberRemoveActionTypeLeave:
     return [[self tagName] isEqual:[aMemberRemoveActionType tagName]];
+  case DBTEAMLOGMemberRemoveActionTypeOffboardAndRetainTeamFolders:
+    return [[self tagName] isEqual:[aMemberRemoveActionType tagName]];
   case DBTEAMLOGMemberRemoveActionTypeOther:
     return [[self tagName] isEqual:[aMemberRemoveActionType tagName]];
   }
@@ -55000,6 +60065,8 @@
     jsonDict[@".tag"] = @"offboard";
   } else if ([valueObj isLeave]) {
     jsonDict[@".tag"] = @"leave";
+  } else if ([valueObj isOffboardAndRetainTeamFolders]) {
+    jsonDict[@".tag"] = @"offboard_and_retain_team_folders";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -55018,11 +60085,213 @@
     return [[DBTEAMLOGMemberRemoveActionType alloc] initWithOffboard];
   } else if ([tag isEqualToString:@"leave"]) {
     return [[DBTEAMLOGMemberRemoveActionType alloc] initWithLeave];
+  } else if ([tag isEqualToString:@"offboard_and_retain_team_folders"]) {
+    return [[DBTEAMLOGMemberRemoveActionType alloc] initWithOffboardAndRetainTeamFolders];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGMemberRemoveActionType alloc] initWithOther];
   } else {
     return [[DBTEAMLOGMemberRemoveActionType alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberRemoveExternalIdDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberRemoveExternalIdDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPreviousValue:(NSString *)previousValue {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](previousValue);
+
+  self = [super init];
+  if (self) {
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberRemoveExternalIdDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberRemoveExternalIdDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberRemoveExternalIdDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberRemoveExternalIdDetails:other];
+}
+
+- (BOOL)isEqualToMemberRemoveExternalIdDetails:
+    (DBTEAMLOGMemberRemoveExternalIdDetails *)aMemberRemoveExternalIdDetails {
+  if (self == aMemberRemoveExternalIdDetails) {
+    return YES;
+  }
+  if (![self.previousValue isEqual:aMemberRemoveExternalIdDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberRemoveExternalIdDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRemoveExternalIdDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"previous_value"] = valueObj.previousValue;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberRemoveExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *previousValue = valueDict[@"previous_value"];
+
+  return [[DBTEAMLOGMemberRemoveExternalIdDetails alloc] initWithPreviousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGMemberRemoveExternalIdType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGMemberRemoveExternalIdType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGMemberRemoveExternalIdTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGMemberRemoveExternalIdTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGMemberRemoveExternalIdTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberRemoveExternalIdType:other];
+}
+
+- (BOOL)isEqualToMemberRemoveExternalIdType:(DBTEAMLOGMemberRemoveExternalIdType *)aMemberRemoveExternalIdType {
+  if (self == aMemberRemoveExternalIdType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aMemberRemoveExternalIdType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGMemberRemoveExternalIdTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRemoveExternalIdType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGMemberRemoveExternalIdType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGMemberRemoveExternalIdType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -64124,6 +69393,776 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDefaultFolderPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDefaultFolderPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEveryoneInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperDefaultFolderPolicyEveryoneInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithInviteOnly {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperDefaultFolderPolicyInviteOnly;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperDefaultFolderPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isEveryoneInTeam {
+  return _tag == DBTEAMLOGPaperDefaultFolderPolicyEveryoneInTeam;
+}
+
+- (BOOL)isInviteOnly {
+  return _tag == DBTEAMLOGPaperDefaultFolderPolicyInviteOnly;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGPaperDefaultFolderPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGPaperDefaultFolderPolicyEveryoneInTeam:
+    return @"DBTEAMLOGPaperDefaultFolderPolicyEveryoneInTeam";
+  case DBTEAMLOGPaperDefaultFolderPolicyInviteOnly:
+    return @"DBTEAMLOGPaperDefaultFolderPolicyInviteOnly";
+  case DBTEAMLOGPaperDefaultFolderPolicyOther:
+    return @"DBTEAMLOGPaperDefaultFolderPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDefaultFolderPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDefaultFolderPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDefaultFolderPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGPaperDefaultFolderPolicyEveryoneInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPaperDefaultFolderPolicyInviteOnly:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPaperDefaultFolderPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDefaultFolderPolicy:other];
+}
+
+- (BOOL)isEqualToPaperDefaultFolderPolicy:(DBTEAMLOGPaperDefaultFolderPolicy *)aPaperDefaultFolderPolicy {
+  if (self == aPaperDefaultFolderPolicy) {
+    return YES;
+  }
+  if (self.tag != aPaperDefaultFolderPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGPaperDefaultFolderPolicyEveryoneInTeam:
+    return [[self tagName] isEqual:[aPaperDefaultFolderPolicy tagName]];
+  case DBTEAMLOGPaperDefaultFolderPolicyInviteOnly:
+    return [[self tagName] isEqual:[aPaperDefaultFolderPolicy tagName]];
+  case DBTEAMLOGPaperDefaultFolderPolicyOther:
+    return [[self tagName] isEqual:[aPaperDefaultFolderPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDefaultFolderPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDefaultFolderPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isEveryoneInTeam]) {
+    jsonDict[@".tag"] = @"everyone_in_team";
+  } else if ([valueObj isInviteOnly]) {
+    jsonDict[@".tag"] = @"invite_only";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDefaultFolderPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"everyone_in_team"]) {
+    return [[DBTEAMLOGPaperDefaultFolderPolicy alloc] initWithEveryoneInTeam];
+  } else if ([tag isEqualToString:@"invite_only"]) {
+    return [[DBTEAMLOGPaperDefaultFolderPolicy alloc] initWithInviteOnly];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGPaperDefaultFolderPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGPaperDefaultFolderPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDefaultFolderPolicy.h"
+#import "DBTEAMLOGPaperDefaultFolderPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDefaultFolderPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGPaperDefaultFolderPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGPaperDefaultFolderPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDefaultFolderPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToPaperDefaultFolderPolicyChangedDetails:
+    (DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)aPaperDefaultFolderPolicyChangedDetails {
+  if (self == aPaperDefaultFolderPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aPaperDefaultFolderPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aPaperDefaultFolderPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGPaperDefaultFolderPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGPaperDefaultFolderPolicySerializer serialize:valueObj.previousValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGPaperDefaultFolderPolicy *dNewValue =
+      [DBTEAMLOGPaperDefaultFolderPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGPaperDefaultFolderPolicy *previousValue =
+      [DBTEAMLOGPaperDefaultFolderPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return
+      [[DBTEAMLOGPaperDefaultFolderPolicyChangedDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDefaultFolderPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDefaultFolderPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDefaultFolderPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDefaultFolderPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDefaultFolderPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDefaultFolderPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToPaperDefaultFolderPolicyChangedType:
+    (DBTEAMLOGPaperDefaultFolderPolicyChangedType *)aPaperDefaultFolderPolicyChangedType {
+  if (self == aPaperDefaultFolderPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aPaperDefaultFolderPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDefaultFolderPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDefaultFolderPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDefaultFolderPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGPaperDefaultFolderPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDesktopPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDesktopPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperDesktopPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperDesktopPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperDesktopPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGPaperDesktopPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGPaperDesktopPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGPaperDesktopPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGPaperDesktopPolicyDisabled:
+    return @"DBTEAMLOGPaperDesktopPolicyDisabled";
+  case DBTEAMLOGPaperDesktopPolicyEnabled:
+    return @"DBTEAMLOGPaperDesktopPolicyEnabled";
+  case DBTEAMLOGPaperDesktopPolicyOther:
+    return @"DBTEAMLOGPaperDesktopPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDesktopPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDesktopPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDesktopPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGPaperDesktopPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPaperDesktopPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPaperDesktopPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDesktopPolicy:other];
+}
+
+- (BOOL)isEqualToPaperDesktopPolicy:(DBTEAMLOGPaperDesktopPolicy *)aPaperDesktopPolicy {
+  if (self == aPaperDesktopPolicy) {
+    return YES;
+  }
+  if (self.tag != aPaperDesktopPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGPaperDesktopPolicyDisabled:
+    return [[self tagName] isEqual:[aPaperDesktopPolicy tagName]];
+  case DBTEAMLOGPaperDesktopPolicyEnabled:
+    return [[self tagName] isEqual:[aPaperDesktopPolicy tagName]];
+  case DBTEAMLOGPaperDesktopPolicyOther:
+    return [[self tagName] isEqual:[aPaperDesktopPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDesktopPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDesktopPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDesktopPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGPaperDesktopPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGPaperDesktopPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGPaperDesktopPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGPaperDesktopPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDesktopPolicy.h"
+#import "DBTEAMLOGPaperDesktopPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDesktopPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGPaperDesktopPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGPaperDesktopPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDesktopPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToPaperDesktopPolicyChangedDetails:
+    (DBTEAMLOGPaperDesktopPolicyChangedDetails *)aPaperDesktopPolicyChangedDetails {
+  if (self == aPaperDesktopPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aPaperDesktopPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aPaperDesktopPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDesktopPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGPaperDesktopPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGPaperDesktopPolicySerializer serialize:valueObj.previousValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDesktopPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGPaperDesktopPolicy *dNewValue = [DBTEAMLOGPaperDesktopPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGPaperDesktopPolicy *previousValue =
+      [DBTEAMLOGPaperDesktopPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return [[DBTEAMLOGPaperDesktopPolicyChangedDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperDesktopPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperDesktopPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperDesktopPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperDesktopPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperDesktopPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperDesktopPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToPaperDesktopPolicyChangedType:
+    (DBTEAMLOGPaperDesktopPolicyChangedType *)aPaperDesktopPolicyChangedType {
+  if (self == aPaperDesktopPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aPaperDesktopPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperDesktopPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDesktopPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperDesktopPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGPaperDesktopPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGPaperDocAddCommentDetails.h"
 
 #pragma mark - API Object
@@ -70921,6 +76960,604 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperPublishedLinkCreateDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperPublishedLinkCreateDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperPublishedLinkCreateDetails:other];
+}
+
+- (BOOL)isEqualToPaperPublishedLinkCreateDetails:
+    (DBTEAMLOGPaperPublishedLinkCreateDetails *)aPaperPublishedLinkCreateDetails {
+  if (self == aPaperPublishedLinkCreateDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aPaperPublishedLinkCreateDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkCreateDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperPublishedLinkCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGPaperPublishedLinkCreateDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperPublishedLinkCreateType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperPublishedLinkCreateType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperPublishedLinkCreateTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperPublishedLinkCreateTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperPublishedLinkCreateTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperPublishedLinkCreateType:other];
+}
+
+- (BOOL)isEqualToPaperPublishedLinkCreateType:(DBTEAMLOGPaperPublishedLinkCreateType *)aPaperPublishedLinkCreateType {
+  if (self == aPaperPublishedLinkCreateType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aPaperPublishedLinkCreateType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperPublishedLinkCreateTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkCreateType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperPublishedLinkCreateType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGPaperPublishedLinkCreateType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperPublishedLinkDisabledDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperPublishedLinkDisabledDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperPublishedLinkDisabledDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperPublishedLinkDisabledDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperPublishedLinkDisabledDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperPublishedLinkDisabledDetails:other];
+}
+
+- (BOOL)isEqualToPaperPublishedLinkDisabledDetails:
+    (DBTEAMLOGPaperPublishedLinkDisabledDetails *)aPaperPublishedLinkDisabledDetails {
+  if (self == aPaperPublishedLinkDisabledDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aPaperPublishedLinkDisabledDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperPublishedLinkDisabledDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkDisabledDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperPublishedLinkDisabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGPaperPublishedLinkDisabledDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperPublishedLinkDisabledType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperPublishedLinkDisabledType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperPublishedLinkDisabledTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperPublishedLinkDisabledTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperPublishedLinkDisabledTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperPublishedLinkDisabledType:other];
+}
+
+- (BOOL)isEqualToPaperPublishedLinkDisabledType:
+    (DBTEAMLOGPaperPublishedLinkDisabledType *)aPaperPublishedLinkDisabledType {
+  if (self == aPaperPublishedLinkDisabledType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aPaperPublishedLinkDisabledType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperPublishedLinkDisabledTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkDisabledType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperPublishedLinkDisabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGPaperPublishedLinkDisabledType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperPublishedLinkViewDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperPublishedLinkViewDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEventUuid:(NSString *)eventUuid {
+  [DBStoneValidators nonnullValidator:nil](eventUuid);
+
+  self = [super init];
+  if (self) {
+    _eventUuid = eventUuid;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperPublishedLinkViewDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperPublishedLinkViewDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperPublishedLinkViewDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.eventUuid hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperPublishedLinkViewDetails:other];
+}
+
+- (BOOL)isEqualToPaperPublishedLinkViewDetails:
+    (DBTEAMLOGPaperPublishedLinkViewDetails *)aPaperPublishedLinkViewDetails {
+  if (self == aPaperPublishedLinkViewDetails) {
+    return YES;
+  }
+  if (![self.eventUuid isEqual:aPaperPublishedLinkViewDetails.eventUuid]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperPublishedLinkViewDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkViewDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"event_uuid"] = valueObj.eventUuid;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperPublishedLinkViewDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *eventUuid = valueDict[@"event_uuid"];
+
+  return [[DBTEAMLOGPaperPublishedLinkViewDetails alloc] initWithEventUuid:eventUuid];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperPublishedLinkViewType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperPublishedLinkViewType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperPublishedLinkViewTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperPublishedLinkViewTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPaperPublishedLinkViewTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperPublishedLinkViewType:other];
+}
+
+- (BOOL)isEqualToPaperPublishedLinkViewType:(DBTEAMLOGPaperPublishedLinkViewType *)aPaperPublishedLinkViewType {
+  if (self == aPaperPublishedLinkViewType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aPaperPublishedLinkViewType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperPublishedLinkViewTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkViewType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPaperPublishedLinkViewType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGPaperPublishedLinkViewType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGGroupLogInfo.h"
 #import "DBTEAMLOGParticipantLogInfo.h"
 #import "DBTEAMLOGUserLogInfo.h"
@@ -72237,10 +78874,26 @@
 
 #pragma mark - Constructors
 
+- (instancetype)initWithAustraliaOnly {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPlacementRestrictionAustraliaOnly;
+  }
+  return self;
+}
+
 - (instancetype)initWithEuropeOnly {
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGPlacementRestrictionEuropeOnly;
+  }
+  return self;
+}
+
+- (instancetype)initWithJapanOnly {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPlacementRestrictionJapanOnly;
   }
   return self;
 }
@@ -72265,8 +78918,16 @@
 
 #pragma mark - Tag state methods
 
+- (BOOL)isAustraliaOnly {
+  return _tag == DBTEAMLOGPlacementRestrictionAustraliaOnly;
+}
+
 - (BOOL)isEuropeOnly {
   return _tag == DBTEAMLOGPlacementRestrictionEuropeOnly;
+}
+
+- (BOOL)isJapanOnly {
+  return _tag == DBTEAMLOGPlacementRestrictionJapanOnly;
 }
 
 - (BOOL)isNone {
@@ -72279,8 +78940,12 @@
 
 - (NSString *)tagName {
   switch (_tag) {
+  case DBTEAMLOGPlacementRestrictionAustraliaOnly:
+    return @"DBTEAMLOGPlacementRestrictionAustraliaOnly";
   case DBTEAMLOGPlacementRestrictionEuropeOnly:
     return @"DBTEAMLOGPlacementRestrictionEuropeOnly";
+  case DBTEAMLOGPlacementRestrictionJapanOnly:
+    return @"DBTEAMLOGPlacementRestrictionJapanOnly";
   case DBTEAMLOGPlacementRestrictionNone:
     return @"DBTEAMLOGPlacementRestrictionNone";
   case DBTEAMLOGPlacementRestrictionOther:
@@ -72321,7 +78986,11 @@
   NSUInteger result = 1;
 
   switch (_tag) {
+  case DBTEAMLOGPlacementRestrictionAustraliaOnly:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGPlacementRestrictionEuropeOnly:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGPlacementRestrictionJapanOnly:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLOGPlacementRestrictionNone:
     result = prime * result + [[self tagName] hash];
@@ -72352,7 +79021,11 @@
     return NO;
   }
   switch (_tag) {
+  case DBTEAMLOGPlacementRestrictionAustraliaOnly:
+    return [[self tagName] isEqual:[aPlacementRestriction tagName]];
   case DBTEAMLOGPlacementRestrictionEuropeOnly:
+    return [[self tagName] isEqual:[aPlacementRestriction tagName]];
+  case DBTEAMLOGPlacementRestrictionJapanOnly:
     return [[self tagName] isEqual:[aPlacementRestriction tagName]];
   case DBTEAMLOGPlacementRestrictionNone:
     return [[self tagName] isEqual:[aPlacementRestriction tagName]];
@@ -72371,8 +79044,12 @@
 + (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPlacementRestriction *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isEuropeOnly]) {
+  if ([valueObj isAustraliaOnly]) {
+    jsonDict[@".tag"] = @"australia_only";
+  } else if ([valueObj isEuropeOnly]) {
     jsonDict[@".tag"] = @"europe_only";
+  } else if ([valueObj isJapanOnly]) {
+    jsonDict[@".tag"] = @"japan_only";
   } else if ([valueObj isNone]) {
     jsonDict[@".tag"] = @"none";
   } else if ([valueObj isOther]) {
@@ -72387,8 +79064,12 @@
 + (DBTEAMLOGPlacementRestriction *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"europe_only"]) {
+  if ([tag isEqualToString:@"australia_only"]) {
+    return [[DBTEAMLOGPlacementRestriction alloc] initWithAustraliaOnly];
+  } else if ([tag isEqualToString:@"europe_only"]) {
     return [[DBTEAMLOGPlacementRestriction alloc] initWithEuropeOnly];
+  } else if ([tag isEqualToString:@"japan_only"]) {
+    return [[DBTEAMLOGPlacementRestriction alloc] initWithJapanOnly];
   } else if ([tag isEqualToString:@"none"]) {
     return [[DBTEAMLOGPlacementRestriction alloc] initWithNone];
   } else if ([tag isEqualToString:@"other"]) {
@@ -72396,6 +79077,438 @@
   } else {
     return [[DBTEAMLOGPlacementRestriction alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestAcceptedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestAcceptedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPrimaryTeamRequestAcceptedDetails:other];
+}
+
+- (BOOL)isEqualToPrimaryTeamRequestAcceptedDetails:
+    (DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)aPrimaryTeamRequestAcceptedDetails {
+  if (self == aPrimaryTeamRequestAcceptedDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aPrimaryTeamRequestAcceptedDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aPrimaryTeamRequestAcceptedDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGPrimaryTeamRequestAcceptedDetails alloc] initWithSecondaryTeam:secondaryTeam sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestCanceledDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestCanceledDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPrimaryTeamRequestCanceledDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPrimaryTeamRequestCanceledDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPrimaryTeamRequestCanceledDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPrimaryTeamRequestCanceledDetails:other];
+}
+
+- (BOOL)isEqualToPrimaryTeamRequestCanceledDetails:
+    (DBTEAMLOGPrimaryTeamRequestCanceledDetails *)aPrimaryTeamRequestCanceledDetails {
+  if (self == aPrimaryTeamRequestCanceledDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aPrimaryTeamRequestCanceledDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aPrimaryTeamRequestCanceledDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestCanceledDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPrimaryTeamRequestCanceledDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPrimaryTeamRequestCanceledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGPrimaryTeamRequestCanceledDetails alloc] initWithSecondaryTeam:secondaryTeam sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestExpiredDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestExpiredDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPrimaryTeamRequestExpiredDetails:other];
+}
+
+- (BOOL)isEqualToPrimaryTeamRequestExpiredDetails:
+    (DBTEAMLOGPrimaryTeamRequestExpiredDetails *)aPrimaryTeamRequestExpiredDetails {
+  if (self == aPrimaryTeamRequestExpiredDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aPrimaryTeamRequestExpiredDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aPrimaryTeamRequestExpiredDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPrimaryTeamRequestExpiredDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPrimaryTeamRequestExpiredDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGPrimaryTeamRequestExpiredDetails alloc] initWithSecondaryTeam:secondaryTeam sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestReminderDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestReminderDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPrimaryTeamRequestReminderDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPrimaryTeamRequestReminderDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGPrimaryTeamRequestReminderDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPrimaryTeamRequestReminderDetails:other];
+}
+
+- (BOOL)isEqualToPrimaryTeamRequestReminderDetails:
+    (DBTEAMLOGPrimaryTeamRequestReminderDetails *)aPrimaryTeamRequestReminderDetails {
+  if (self == aPrimaryTeamRequestReminderDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aPrimaryTeamRequestReminderDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentTo isEqual:aPrimaryTeamRequestReminderDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPrimaryTeamRequestReminderDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPrimaryTeamRequestReminderDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGPrimaryTeamRequestReminderDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGPrimaryTeamRequestReminderDetails alloc] initWithSecondaryTeam:secondaryTeam sentTo:sentTo];
 }
 
 @end
@@ -72418,6 +79531,38 @@
   return self;
 }
 
+- (instancetype)initWithResetPassword {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGQuickActionTypeResetPassword;
+  }
+  return self;
+}
+
+- (instancetype)initWithRestoreFileOrFolder {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGQuickActionTypeRestoreFileOrFolder;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnlinkApp {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGQuickActionTypeUnlinkApp;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnlinkSession {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGQuickActionTypeUnlinkSession;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -72434,6 +79579,22 @@
   return _tag == DBTEAMLOGQuickActionTypeDeleteSharedLink;
 }
 
+- (BOOL)isResetPassword {
+  return _tag == DBTEAMLOGQuickActionTypeResetPassword;
+}
+
+- (BOOL)isRestoreFileOrFolder {
+  return _tag == DBTEAMLOGQuickActionTypeRestoreFileOrFolder;
+}
+
+- (BOOL)isUnlinkApp {
+  return _tag == DBTEAMLOGQuickActionTypeUnlinkApp;
+}
+
+- (BOOL)isUnlinkSession {
+  return _tag == DBTEAMLOGQuickActionTypeUnlinkSession;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMLOGQuickActionTypeOther;
 }
@@ -72442,6 +79603,14 @@
   switch (_tag) {
   case DBTEAMLOGQuickActionTypeDeleteSharedLink:
     return @"DBTEAMLOGQuickActionTypeDeleteSharedLink";
+  case DBTEAMLOGQuickActionTypeResetPassword:
+    return @"DBTEAMLOGQuickActionTypeResetPassword";
+  case DBTEAMLOGQuickActionTypeRestoreFileOrFolder:
+    return @"DBTEAMLOGQuickActionTypeRestoreFileOrFolder";
+  case DBTEAMLOGQuickActionTypeUnlinkApp:
+    return @"DBTEAMLOGQuickActionTypeUnlinkApp";
+  case DBTEAMLOGQuickActionTypeUnlinkSession:
+    return @"DBTEAMLOGQuickActionTypeUnlinkSession";
   case DBTEAMLOGQuickActionTypeOther:
     return @"DBTEAMLOGQuickActionTypeOther";
   }
@@ -72482,6 +79651,14 @@
   switch (_tag) {
   case DBTEAMLOGQuickActionTypeDeleteSharedLink:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGQuickActionTypeResetPassword:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGQuickActionTypeRestoreFileOrFolder:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGQuickActionTypeUnlinkApp:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGQuickActionTypeUnlinkSession:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLOGQuickActionTypeOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -72511,6 +79688,14 @@
   switch (_tag) {
   case DBTEAMLOGQuickActionTypeDeleteSharedLink:
     return [[self tagName] isEqual:[aQuickActionType tagName]];
+  case DBTEAMLOGQuickActionTypeResetPassword:
+    return [[self tagName] isEqual:[aQuickActionType tagName]];
+  case DBTEAMLOGQuickActionTypeRestoreFileOrFolder:
+    return [[self tagName] isEqual:[aQuickActionType tagName]];
+  case DBTEAMLOGQuickActionTypeUnlinkApp:
+    return [[self tagName] isEqual:[aQuickActionType tagName]];
+  case DBTEAMLOGQuickActionTypeUnlinkSession:
+    return [[self tagName] isEqual:[aQuickActionType tagName]];
   case DBTEAMLOGQuickActionTypeOther:
     return [[self tagName] isEqual:[aQuickActionType tagName]];
   }
@@ -72528,6 +79713,14 @@
 
   if ([valueObj isDeleteSharedLink]) {
     jsonDict[@".tag"] = @"delete_shared_link";
+  } else if ([valueObj isResetPassword]) {
+    jsonDict[@".tag"] = @"reset_password";
+  } else if ([valueObj isRestoreFileOrFolder]) {
+    jsonDict[@".tag"] = @"restore_file_or_folder";
+  } else if ([valueObj isUnlinkApp]) {
+    jsonDict[@".tag"] = @"unlink_app";
+  } else if ([valueObj isUnlinkSession]) {
+    jsonDict[@".tag"] = @"unlink_session";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -72542,6 +79735,14 @@
 
   if ([tag isEqualToString:@"delete_shared_link"]) {
     return [[DBTEAMLOGQuickActionType alloc] initWithDeleteSharedLink];
+  } else if ([tag isEqualToString:@"reset_password"]) {
+    return [[DBTEAMLOGQuickActionType alloc] initWithResetPassword];
+  } else if ([tag isEqualToString:@"restore_file_or_folder"]) {
+    return [[DBTEAMLOGQuickActionType alloc] initWithRestoreFileOrFolder];
+  } else if ([tag isEqualToString:@"unlink_app"]) {
+    return [[DBTEAMLOGQuickActionType alloc] initWithUnlinkApp];
+  } else if ([tag isEqualToString:@"unlink_session"]) {
+    return [[DBTEAMLOGQuickActionType alloc] initWithUnlinkSession];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLOGQuickActionType alloc] initWithOther];
   } else {
@@ -72764,6 +79965,391 @@
   NSString *resellerEmail = valueDict[@"reseller_email"];
 
   return [[DBTEAMLOGResellerLogInfo alloc] initWithResellerName:resellerName resellerEmail:resellerEmail];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGResellerSupportChangePolicyDetails.h"
+#import "DBTEAMLOGResellerSupportPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGResellerSupportChangePolicyDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGResellerSupportPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGResellerSupportPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGResellerSupportChangePolicyDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGResellerSupportChangePolicyDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGResellerSupportChangePolicyDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToResellerSupportChangePolicyDetails:other];
+}
+
+- (BOOL)isEqualToResellerSupportChangePolicyDetails:
+    (DBTEAMLOGResellerSupportChangePolicyDetails *)aResellerSupportChangePolicyDetails {
+  if (self == aResellerSupportChangePolicyDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aResellerSupportChangePolicyDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aResellerSupportChangePolicyDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGResellerSupportChangePolicyDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerSupportChangePolicyDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGResellerSupportPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGResellerSupportPolicySerializer serialize:valueObj.previousValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGResellerSupportChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGResellerSupportPolicy *dNewValue =
+      [DBTEAMLOGResellerSupportPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGResellerSupportPolicy *previousValue =
+      [DBTEAMLOGResellerSupportPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return [[DBTEAMLOGResellerSupportChangePolicyDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGResellerSupportChangePolicyType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGResellerSupportChangePolicyType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGResellerSupportChangePolicyTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGResellerSupportChangePolicyTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGResellerSupportChangePolicyTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToResellerSupportChangePolicyType:other];
+}
+
+- (BOOL)isEqualToResellerSupportChangePolicyType:
+    (DBTEAMLOGResellerSupportChangePolicyType *)aResellerSupportChangePolicyType {
+  if (self == aResellerSupportChangePolicyType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aResellerSupportChangePolicyType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGResellerSupportChangePolicyTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerSupportChangePolicyType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGResellerSupportChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGResellerSupportChangePolicyType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGResellerSupportPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGResellerSupportPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGResellerSupportPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGResellerSupportPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGResellerSupportPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGResellerSupportPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGResellerSupportPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGResellerSupportPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGResellerSupportPolicyDisabled:
+    return @"DBTEAMLOGResellerSupportPolicyDisabled";
+  case DBTEAMLOGResellerSupportPolicyEnabled:
+    return @"DBTEAMLOGResellerSupportPolicyEnabled";
+  case DBTEAMLOGResellerSupportPolicyOther:
+    return @"DBTEAMLOGResellerSupportPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGResellerSupportPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGResellerSupportPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGResellerSupportPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGResellerSupportPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGResellerSupportPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGResellerSupportPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToResellerSupportPolicy:other];
+}
+
+- (BOOL)isEqualToResellerSupportPolicy:(DBTEAMLOGResellerSupportPolicy *)aResellerSupportPolicy {
+  if (self == aResellerSupportPolicy) {
+    return YES;
+  }
+  if (self.tag != aResellerSupportPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGResellerSupportPolicyDisabled:
+    return [[self tagName] isEqual:[aResellerSupportPolicy tagName]];
+  case DBTEAMLOGResellerSupportPolicyEnabled:
+    return [[self tagName] isEqual:[aResellerSupportPolicy tagName]];
+  case DBTEAMLOGResellerSupportPolicyOther:
+    return [[self tagName] isEqual:[aResellerSupportPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGResellerSupportPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGResellerSupportPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGResellerSupportPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGResellerSupportPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGResellerSupportPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGResellerSupportPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGResellerSupportPolicy alloc] initWithOther];
+  }
 }
 
 @end
@@ -73533,6 +81119,422 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSecondaryMailsPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGSecondaryTeamRequestAcceptedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestAcceptedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPrimaryTeam:(NSString *)primaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](primaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _primaryTeam = primaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.primaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSecondaryTeamRequestAcceptedDetails:other];
+}
+
+- (BOOL)isEqualToSecondaryTeamRequestAcceptedDetails:
+    (DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)aSecondaryTeamRequestAcceptedDetails {
+  if (self == aSecondaryTeamRequestAcceptedDetails) {
+    return YES;
+  }
+  if (![self.primaryTeam isEqual:aSecondaryTeamRequestAcceptedDetails.primaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aSecondaryTeamRequestAcceptedDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"primary_team"] = valueObj.primaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *primaryTeam = valueDict[@"primary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGSecondaryTeamRequestAcceptedDetails alloc] initWithPrimaryTeam:primaryTeam sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGSecondaryTeamRequestCanceledDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestCanceledDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentTo:(NSString *)sentTo sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _sentTo = sentTo;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGSecondaryTeamRequestCanceledDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGSecondaryTeamRequestCanceledDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGSecondaryTeamRequestCanceledDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentTo hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSecondaryTeamRequestCanceledDetails:other];
+}
+
+- (BOOL)isEqualToSecondaryTeamRequestCanceledDetails:
+    (DBTEAMLOGSecondaryTeamRequestCanceledDetails *)aSecondaryTeamRequestCanceledDetails {
+  if (self == aSecondaryTeamRequestCanceledDetails) {
+    return YES;
+  }
+  if (![self.sentTo isEqual:aSecondaryTeamRequestCanceledDetails.sentTo]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aSecondaryTeamRequestCanceledDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestCanceledDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryTeamRequestCanceledDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGSecondaryTeamRequestCanceledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentTo = valueDict[@"sent_to"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGSecondaryTeamRequestCanceledDetails alloc] initWithSentTo:sentTo sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGSecondaryTeamRequestExpiredDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestExpiredDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGSecondaryTeamRequestExpiredDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGSecondaryTeamRequestExpiredDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGSecondaryTeamRequestExpiredDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSecondaryTeamRequestExpiredDetails:other];
+}
+
+- (BOOL)isEqualToSecondaryTeamRequestExpiredDetails:
+    (DBTEAMLOGSecondaryTeamRequestExpiredDetails *)aSecondaryTeamRequestExpiredDetails {
+  if (self == aSecondaryTeamRequestExpiredDetails) {
+    return YES;
+  }
+  if (![self.sentTo isEqual:aSecondaryTeamRequestExpiredDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestExpiredDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryTeamRequestExpiredDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGSecondaryTeamRequestExpiredDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGSecondaryTeamRequestExpiredDetails alloc] initWithSentTo:sentTo];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGSecondaryTeamRequestReminderDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestReminderDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSecondaryTeamRequestReminderDetails:other];
+}
+
+- (BOOL)isEqualToSecondaryTeamRequestReminderDetails:
+    (DBTEAMLOGSecondaryTeamRequestReminderDetails *)aSecondaryTeamRequestReminderDetails {
+  if (self == aSecondaryTeamRequestReminderDetails) {
+    return YES;
+  }
+  if (![self.sentTo isEqual:aSecondaryTeamRequestReminderDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryTeamRequestReminderDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGSecondaryTeamRequestReminderDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGSecondaryTeamRequestReminderDetails alloc] initWithSentTo:sentTo];
 }
 
 @end
@@ -98117,6 +106119,208 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamActivityCreateReportFailDetails.h"
+#import "DBTEAMTeamReportFailureReason.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamActivityCreateReportFailDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithFailureReason:(DBTEAMTeamReportFailureReason *)failureReason {
+  [DBStoneValidators nonnullValidator:nil](failureReason);
+
+  self = [super init];
+  if (self) {
+    _failureReason = failureReason;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamActivityCreateReportFailDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamActivityCreateReportFailDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamActivityCreateReportFailDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.failureReason hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamActivityCreateReportFailDetails:other];
+}
+
+- (BOOL)isEqualToTeamActivityCreateReportFailDetails:
+    (DBTEAMLOGTeamActivityCreateReportFailDetails *)aTeamActivityCreateReportFailDetails {
+  if (self == aTeamActivityCreateReportFailDetails) {
+    return YES;
+  }
+  if (![self.failureReason isEqual:aTeamActivityCreateReportFailDetails.failureReason]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamActivityCreateReportFailDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamActivityCreateReportFailDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"failure_reason"] = [DBTEAMTeamReportFailureReasonSerializer serialize:valueObj.failureReason];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamActivityCreateReportFailDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMTeamReportFailureReason *failureReason =
+      [DBTEAMTeamReportFailureReasonSerializer deserialize:valueDict[@"failure_reason"]];
+
+  return [[DBTEAMLOGTeamActivityCreateReportFailDetails alloc] initWithFailureReason:failureReason];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamActivityCreateReportFailType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamActivityCreateReportFailType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamActivityCreateReportFailTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamActivityCreateReportFailTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamActivityCreateReportFailTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamActivityCreateReportFailType:other];
+}
+
+- (BOOL)isEqualToTeamActivityCreateReportFailType:
+    (DBTEAMLOGTeamActivityCreateReportFailType *)aTeamActivityCreateReportFailType {
+  if (self == aTeamActivityCreateReportFailType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamActivityCreateReportFailType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamActivityCreateReportFailTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamActivityCreateReportFailType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamActivityCreateReportFailType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamActivityCreateReportFailType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGTeamActivityCreateReportType.h"
 
 #pragma mark - API Object
@@ -98481,6 +106685,391 @@
                                                context:context
                                           participants:participants
                                                 assets:assets];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamExtensionsPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamExtensionsPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamExtensionsPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamExtensionsPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamExtensionsPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGTeamExtensionsPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGTeamExtensionsPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTeamExtensionsPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTeamExtensionsPolicyDisabled:
+    return @"DBTEAMLOGTeamExtensionsPolicyDisabled";
+  case DBTEAMLOGTeamExtensionsPolicyEnabled:
+    return @"DBTEAMLOGTeamExtensionsPolicyEnabled";
+  case DBTEAMLOGTeamExtensionsPolicyOther:
+    return @"DBTEAMLOGTeamExtensionsPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamExtensionsPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamExtensionsPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamExtensionsPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTeamExtensionsPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTeamExtensionsPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTeamExtensionsPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamExtensionsPolicy:other];
+}
+
+- (BOOL)isEqualToTeamExtensionsPolicy:(DBTEAMLOGTeamExtensionsPolicy *)aTeamExtensionsPolicy {
+  if (self == aTeamExtensionsPolicy) {
+    return YES;
+  }
+  if (self.tag != aTeamExtensionsPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTeamExtensionsPolicyDisabled:
+    return [[self tagName] isEqual:[aTeamExtensionsPolicy tagName]];
+  case DBTEAMLOGTeamExtensionsPolicyEnabled:
+    return [[self tagName] isEqual:[aTeamExtensionsPolicy tagName]];
+  case DBTEAMLOGTeamExtensionsPolicyOther:
+    return [[self tagName] isEqual:[aTeamExtensionsPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamExtensionsPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamExtensionsPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamExtensionsPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGTeamExtensionsPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGTeamExtensionsPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTeamExtensionsPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTeamExtensionsPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamExtensionsPolicy.h"
+#import "DBTEAMLOGTeamExtensionsPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamExtensionsPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGTeamExtensionsPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGTeamExtensionsPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamExtensionsPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToTeamExtensionsPolicyChangedDetails:
+    (DBTEAMLOGTeamExtensionsPolicyChangedDetails *)aTeamExtensionsPolicyChangedDetails {
+  if (self == aTeamExtensionsPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aTeamExtensionsPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aTeamExtensionsPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamExtensionsPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGTeamExtensionsPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGTeamExtensionsPolicySerializer serialize:valueObj.previousValue];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamExtensionsPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGTeamExtensionsPolicy *dNewValue =
+      [DBTEAMLOGTeamExtensionsPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGTeamExtensionsPolicy *previousValue =
+      [DBTEAMLOGTeamExtensionsPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return [[DBTEAMLOGTeamExtensionsPolicyChangedDetails alloc] initWithDNewValue:dNewValue previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamExtensionsPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamExtensionsPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamExtensionsPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToTeamExtensionsPolicyChangedType:
+    (DBTEAMLOGTeamExtensionsPolicyChangedType *)aTeamExtensionsPolicyChangedType {
+  if (self == aTeamExtensionsPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamExtensionsPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamExtensionsPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamExtensionsPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamExtensionsPolicyChangedType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -100149,6 +108738,4521 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamMergeFromType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedDetails.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRequestAcceptedDetails:(DBTEAMLOGTeamMergeRequestAcceptedExtraDetails *)requestAcceptedDetails {
+  [DBStoneValidators nonnullValidator:nil](requestAcceptedDetails);
+
+  self = [super init];
+  if (self) {
+    _requestAcceptedDetails = requestAcceptedDetails;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.requestAcceptedDetails hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAcceptedDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAcceptedDetails:
+    (DBTEAMLOGTeamMergeRequestAcceptedDetails *)aTeamMergeRequestAcceptedDetails {
+  if (self == aTeamMergeRequestAcceptedDetails) {
+    return YES;
+  }
+  if (![self.requestAcceptedDetails isEqual:aTeamMergeRequestAcceptedDetails.requestAcceptedDetails]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"request_accepted_details"] =
+      [DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSerializer serialize:valueObj.requestAcceptedDetails];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGTeamMergeRequestAcceptedExtraDetails *requestAcceptedDetails =
+      [DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSerializer deserialize:valueDict[@"request_accepted_details"]];
+
+  return [[DBTEAMLOGTeamMergeRequestAcceptedDetails alloc] initWithRequestAcceptedDetails:requestAcceptedDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestAcceptedDetails.h"
+#import "DBTEAMLOGSecondaryTeamRequestAcceptedDetails.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedExtraDetails
+
+@synthesize primaryTeam = _primaryTeam;
+@synthesize secondaryTeam = _secondaryTeam;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPrimaryTeam:(DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)primaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsPrimaryTeam;
+    _primaryTeam = primaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithSecondaryTeam:(DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)secondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSecondaryTeam;
+    _secondaryTeam = secondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)primaryTeam {
+  if (![self isPrimaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsPrimaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _primaryTeam;
+}
+
+- (DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)secondaryTeam {
+  if (![self isSecondaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSecondaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _secondaryTeam;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPrimaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsPrimaryTeam;
+}
+
+- (BOOL)isSecondaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSecondaryTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsPrimaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsPrimaryTeam";
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSecondaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSecondaryTeam";
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsOther:
+    return @"DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsPrimaryTeam:
+    result = prime * result + [self.primaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSecondaryTeam:
+    result = prime * result + [self.secondaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAcceptedExtraDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAcceptedExtraDetails:
+    (DBTEAMLOGTeamMergeRequestAcceptedExtraDetails *)aTeamMergeRequestAcceptedExtraDetails {
+  if (self == aTeamMergeRequestAcceptedExtraDetails) {
+    return YES;
+  }
+  if (self.tag != aTeamMergeRequestAcceptedExtraDetails.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsPrimaryTeam:
+    return [self.primaryTeam isEqual:aTeamMergeRequestAcceptedExtraDetails.primaryTeam];
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSecondaryTeam:
+    return [self.secondaryTeam isEqual:aTeamMergeRequestAcceptedExtraDetails.secondaryTeam];
+  case DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsOther:
+    return [[self tagName] isEqual:[aTeamMergeRequestAcceptedExtraDetails tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedExtraDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedExtraDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer serialize:valueObj.primaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"primary_team";
+  } else if ([valueObj isSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer serialize:valueObj.secondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"secondary_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAcceptedExtraDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"primary_team"]) {
+    DBTEAMLOGPrimaryTeamRequestAcceptedDetails *primaryTeam =
+        [DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestAcceptedExtraDetails alloc] initWithPrimaryTeam:primaryTeam];
+  } else if ([tag isEqualToString:@"secondary_team"]) {
+    DBTEAMLOGSecondaryTeamRequestAcceptedDetails *secondaryTeam =
+        [DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestAcceptedExtraDetails alloc] initWithSecondaryTeam:secondaryTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTeamMergeRequestAcceptedExtraDetails alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTeamMergeRequestAcceptedExtraDetails alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAcceptedShownToPrimaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAcceptedShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails *)aTeamMergeRequestAcceptedShownToPrimaryTeamDetails {
+  if (self == aTeamMergeRequestAcceptedShownToPrimaryTeamDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aTeamMergeRequestAcceptedShownToPrimaryTeamDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aTeamMergeRequestAcceptedShownToPrimaryTeamDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamDetails alloc] initWithSecondaryTeam:secondaryTeam
+                                                                                            sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAcceptedShownToPrimaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAcceptedShownToPrimaryTeamType:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType *)aTeamMergeRequestAcceptedShownToPrimaryTeamType {
+  if (self == aTeamMergeRequestAcceptedShownToPrimaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestAcceptedShownToPrimaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToPrimaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPrimaryTeam:(NSString *)primaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](primaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _primaryTeam = primaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.primaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAcceptedShownToSecondaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAcceptedShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails *)
+        aTeamMergeRequestAcceptedShownToSecondaryTeamDetails {
+  if (self == aTeamMergeRequestAcceptedShownToSecondaryTeamDetails) {
+    return YES;
+  }
+  if (![self.primaryTeam isEqual:aTeamMergeRequestAcceptedShownToSecondaryTeamDetails.primaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aTeamMergeRequestAcceptedShownToSecondaryTeamDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"primary_team"] = valueObj.primaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  NSString *primaryTeam = valueDict[@"primary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamDetails alloc] initWithPrimaryTeam:primaryTeam
+                                                                                            sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAcceptedShownToSecondaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAcceptedShownToSecondaryTeamType:
+    (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType *)aTeamMergeRequestAcceptedShownToSecondaryTeamType {
+  if (self == aTeamMergeRequestAcceptedShownToSecondaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestAcceptedShownToSecondaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestAcceptedShownToSecondaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAcceptedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAcceptedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAcceptedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAcceptedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAcceptedType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAcceptedType:(DBTEAMLOGTeamMergeRequestAcceptedType *)aTeamMergeRequestAcceptedType {
+  if (self == aTeamMergeRequestAcceptedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestAcceptedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAcceptedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAcceptedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestAcceptedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAutoCanceledDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAutoCanceledDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDetails:(NSString *)details {
+
+  self = [super init];
+  if (self) {
+    _details = details;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithDetails:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAutoCanceledDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAutoCanceledDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAutoCanceledDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.details != nil) {
+    result = prime * result + [self.details hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAutoCanceledDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAutoCanceledDetails:
+    (DBTEAMLOGTeamMergeRequestAutoCanceledDetails *)aTeamMergeRequestAutoCanceledDetails {
+  if (self == aTeamMergeRequestAutoCanceledDetails) {
+    return YES;
+  }
+  if (self.details) {
+    if (![self.details isEqual:aTeamMergeRequestAutoCanceledDetails.details]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAutoCanceledDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAutoCanceledDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.details) {
+    jsonDict[@"details"] = valueObj.details;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAutoCanceledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *details = valueDict[@"details"] ?: nil;
+
+  return [[DBTEAMLOGTeamMergeRequestAutoCanceledDetails alloc] initWithDetails:details];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestAutoCanceledType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestAutoCanceledType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestAutoCanceledTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestAutoCanceledTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestAutoCanceledTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestAutoCanceledType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestAutoCanceledType:
+    (DBTEAMLOGTeamMergeRequestAutoCanceledType *)aTeamMergeRequestAutoCanceledType {
+  if (self == aTeamMergeRequestAutoCanceledType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestAutoCanceledType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestAutoCanceledTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAutoCanceledType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestAutoCanceledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestAutoCanceledType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledDetails.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRequestCanceledDetails:(DBTEAMLOGTeamMergeRequestCanceledExtraDetails *)requestCanceledDetails {
+  [DBStoneValidators nonnullValidator:nil](requestCanceledDetails);
+
+  self = [super init];
+  if (self) {
+    _requestCanceledDetails = requestCanceledDetails;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestCanceledDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestCanceledDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestCanceledDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.requestCanceledDetails hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestCanceledDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestCanceledDetails:
+    (DBTEAMLOGTeamMergeRequestCanceledDetails *)aTeamMergeRequestCanceledDetails {
+  if (self == aTeamMergeRequestCanceledDetails) {
+    return YES;
+  }
+  if (![self.requestCanceledDetails isEqual:aTeamMergeRequestCanceledDetails.requestCanceledDetails]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestCanceledDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"request_canceled_details"] =
+      [DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSerializer serialize:valueObj.requestCanceledDetails];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestCanceledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGTeamMergeRequestCanceledExtraDetails *requestCanceledDetails =
+      [DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSerializer deserialize:valueDict[@"request_canceled_details"]];
+
+  return [[DBTEAMLOGTeamMergeRequestCanceledDetails alloc] initWithRequestCanceledDetails:requestCanceledDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestCanceledDetails.h"
+#import "DBTEAMLOGSecondaryTeamRequestCanceledDetails.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledExtraDetails
+
+@synthesize primaryTeam = _primaryTeam;
+@synthesize secondaryTeam = _secondaryTeam;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPrimaryTeam:(DBTEAMLOGPrimaryTeamRequestCanceledDetails *)primaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam;
+    _primaryTeam = primaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithSecondaryTeam:(DBTEAMLOGSecondaryTeamRequestCanceledDetails *)secondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam;
+    _secondaryTeam = secondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMLOGPrimaryTeamRequestCanceledDetails *)primaryTeam {
+  if (![self isPrimaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _primaryTeam;
+}
+
+- (DBTEAMLOGSecondaryTeamRequestCanceledDetails *)secondaryTeam {
+  if (![self isSecondaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _secondaryTeam;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPrimaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam;
+}
+
+- (BOOL)isSecondaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam";
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam";
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther:
+    return @"DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam:
+    result = prime * result + [self.primaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam:
+    result = prime * result + [self.secondaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestCanceledExtraDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestCanceledExtraDetails:
+    (DBTEAMLOGTeamMergeRequestCanceledExtraDetails *)aTeamMergeRequestCanceledExtraDetails {
+  if (self == aTeamMergeRequestCanceledExtraDetails) {
+    return YES;
+  }
+  if (self.tag != aTeamMergeRequestCanceledExtraDetails.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam:
+    return [self.primaryTeam isEqual:aTeamMergeRequestCanceledExtraDetails.primaryTeam];
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam:
+    return [self.secondaryTeam isEqual:aTeamMergeRequestCanceledExtraDetails.secondaryTeam];
+  case DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther:
+    return [[self tagName] isEqual:[aTeamMergeRequestCanceledExtraDetails tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestCanceledExtraDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGPrimaryTeamRequestCanceledDetailsSerializer serialize:valueObj.primaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"primary_team";
+  } else if ([valueObj isSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGSecondaryTeamRequestCanceledDetailsSerializer serialize:valueObj.secondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"secondary_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestCanceledExtraDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"primary_team"]) {
+    DBTEAMLOGPrimaryTeamRequestCanceledDetails *primaryTeam =
+        [DBTEAMLOGPrimaryTeamRequestCanceledDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestCanceledExtraDetails alloc] initWithPrimaryTeam:primaryTeam];
+  } else if ([tag isEqualToString:@"secondary_team"]) {
+    DBTEAMLOGSecondaryTeamRequestCanceledDetails *secondaryTeam =
+        [DBTEAMLOGSecondaryTeamRequestCanceledDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestCanceledExtraDetails alloc] initWithSecondaryTeam:secondaryTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTeamMergeRequestCanceledExtraDetails alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTeamMergeRequestCanceledExtraDetails alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestCanceledShownToPrimaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestCanceledShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails *)aTeamMergeRequestCanceledShownToPrimaryTeamDetails {
+  if (self == aTeamMergeRequestCanceledShownToPrimaryTeamDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aTeamMergeRequestCanceledShownToPrimaryTeamDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aTeamMergeRequestCanceledShownToPrimaryTeamDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamDetails alloc] initWithSecondaryTeam:secondaryTeam
+                                                                                            sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestCanceledShownToPrimaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestCanceledShownToPrimaryTeamType:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType *)aTeamMergeRequestCanceledShownToPrimaryTeamType {
+  if (self == aTeamMergeRequestCanceledShownToPrimaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestCanceledShownToPrimaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToPrimaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentTo:(NSString *)sentTo sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _sentTo = sentTo;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentTo hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestCanceledShownToSecondaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestCanceledShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)
+        aTeamMergeRequestCanceledShownToSecondaryTeamDetails {
+  if (self == aTeamMergeRequestCanceledShownToSecondaryTeamDetails) {
+    return YES;
+  }
+  if (![self.sentTo isEqual:aTeamMergeRequestCanceledShownToSecondaryTeamDetails.sentTo]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aTeamMergeRequestCanceledShownToSecondaryTeamDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentTo = valueDict[@"sent_to"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails alloc] initWithSentTo:sentTo sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestCanceledShownToSecondaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestCanceledShownToSecondaryTeamType:
+    (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType *)aTeamMergeRequestCanceledShownToSecondaryTeamType {
+  if (self == aTeamMergeRequestCanceledShownToSecondaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestCanceledShownToSecondaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestCanceledType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestCanceledTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestCanceledTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestCanceledTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestCanceledType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestCanceledType:(DBTEAMLOGTeamMergeRequestCanceledType *)aTeamMergeRequestCanceledType {
+  if (self == aTeamMergeRequestCanceledType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestCanceledType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestCanceledTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestCanceledType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestCanceledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestCanceledType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredDetails.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRequestExpiredDetails:(DBTEAMLOGTeamMergeRequestExpiredExtraDetails *)requestExpiredDetails {
+  [DBStoneValidators nonnullValidator:nil](requestExpiredDetails);
+
+  self = [super init];
+  if (self) {
+    _requestExpiredDetails = requestExpiredDetails;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestExpiredDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestExpiredDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestExpiredDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.requestExpiredDetails hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestExpiredDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestExpiredDetails:
+    (DBTEAMLOGTeamMergeRequestExpiredDetails *)aTeamMergeRequestExpiredDetails {
+  if (self == aTeamMergeRequestExpiredDetails) {
+    return YES;
+  }
+  if (![self.requestExpiredDetails isEqual:aTeamMergeRequestExpiredDetails.requestExpiredDetails]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestExpiredDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"request_expired_details"] =
+      [DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSerializer serialize:valueObj.requestExpiredDetails];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestExpiredDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGTeamMergeRequestExpiredExtraDetails *requestExpiredDetails =
+      [DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSerializer deserialize:valueDict[@"request_expired_details"]];
+
+  return [[DBTEAMLOGTeamMergeRequestExpiredDetails alloc] initWithRequestExpiredDetails:requestExpiredDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestExpiredDetails.h"
+#import "DBTEAMLOGSecondaryTeamRequestExpiredDetails.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredExtraDetails
+
+@synthesize primaryTeam = _primaryTeam;
+@synthesize secondaryTeam = _secondaryTeam;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPrimaryTeam:(DBTEAMLOGPrimaryTeamRequestExpiredDetails *)primaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestExpiredExtraDetailsPrimaryTeam;
+    _primaryTeam = primaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithSecondaryTeam:(DBTEAMLOGSecondaryTeamRequestExpiredDetails *)secondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSecondaryTeam;
+    _secondaryTeam = secondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestExpiredExtraDetailsOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMLOGPrimaryTeamRequestExpiredDetails *)primaryTeam {
+  if (![self isPrimaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestExpiredExtraDetailsPrimaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _primaryTeam;
+}
+
+- (DBTEAMLOGSecondaryTeamRequestExpiredDetails *)secondaryTeam {
+  if (![self isSecondaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSecondaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _secondaryTeam;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPrimaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestExpiredExtraDetailsPrimaryTeam;
+}
+
+- (BOOL)isSecondaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSecondaryTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTeamMergeRequestExpiredExtraDetailsOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsPrimaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestExpiredExtraDetailsPrimaryTeam";
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSecondaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSecondaryTeam";
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsOther:
+    return @"DBTEAMLOGTeamMergeRequestExpiredExtraDetailsOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsPrimaryTeam:
+    result = prime * result + [self.primaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSecondaryTeam:
+    result = prime * result + [self.secondaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestExpiredExtraDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestExpiredExtraDetails:
+    (DBTEAMLOGTeamMergeRequestExpiredExtraDetails *)aTeamMergeRequestExpiredExtraDetails {
+  if (self == aTeamMergeRequestExpiredExtraDetails) {
+    return YES;
+  }
+  if (self.tag != aTeamMergeRequestExpiredExtraDetails.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsPrimaryTeam:
+    return [self.primaryTeam isEqual:aTeamMergeRequestExpiredExtraDetails.primaryTeam];
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSecondaryTeam:
+    return [self.secondaryTeam isEqual:aTeamMergeRequestExpiredExtraDetails.secondaryTeam];
+  case DBTEAMLOGTeamMergeRequestExpiredExtraDetailsOther:
+    return [[self tagName] isEqual:[aTeamMergeRequestExpiredExtraDetails tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredExtraDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestExpiredExtraDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer serialize:valueObj.primaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"primary_team";
+  } else if ([valueObj isSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGSecondaryTeamRequestExpiredDetailsSerializer serialize:valueObj.secondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"secondary_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestExpiredExtraDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"primary_team"]) {
+    DBTEAMLOGPrimaryTeamRequestExpiredDetails *primaryTeam =
+        [DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestExpiredExtraDetails alloc] initWithPrimaryTeam:primaryTeam];
+  } else if ([tag isEqualToString:@"secondary_team"]) {
+    DBTEAMLOGSecondaryTeamRequestExpiredDetails *secondaryTeam =
+        [DBTEAMLOGSecondaryTeamRequestExpiredDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestExpiredExtraDetails alloc] initWithSecondaryTeam:secondaryTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTeamMergeRequestExpiredExtraDetails alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTeamMergeRequestExpiredExtraDetails alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestExpiredShownToPrimaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestExpiredShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails *)aTeamMergeRequestExpiredShownToPrimaryTeamDetails {
+  if (self == aTeamMergeRequestExpiredShownToPrimaryTeamDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aTeamMergeRequestExpiredShownToPrimaryTeamDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aTeamMergeRequestExpiredShownToPrimaryTeamDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamDetails alloc] initWithSecondaryTeam:secondaryTeam
+                                                                                           sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestExpiredShownToPrimaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestExpiredShownToPrimaryTeamType:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType *)aTeamMergeRequestExpiredShownToPrimaryTeamType {
+  if (self == aTeamMergeRequestExpiredShownToPrimaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestExpiredShownToPrimaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToPrimaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestExpiredShownToSecondaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestExpiredShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails *)aTeamMergeRequestExpiredShownToSecondaryTeamDetails {
+  if (self == aTeamMergeRequestExpiredShownToSecondaryTeamDetails) {
+    return YES;
+  }
+  if (![self.sentTo isEqual:aTeamMergeRequestExpiredShownToSecondaryTeamDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamDetails alloc] initWithSentTo:sentTo];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestExpiredShownToSecondaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestExpiredShownToSecondaryTeamType:
+    (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)aTeamMergeRequestExpiredShownToSecondaryTeamType {
+  if (self == aTeamMergeRequestExpiredShownToSecondaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestExpiredShownToSecondaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestExpiredType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestExpiredTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestExpiredTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestExpiredTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestExpiredType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestExpiredType:(DBTEAMLOGTeamMergeRequestExpiredType *)aTeamMergeRequestExpiredType {
+  if (self == aTeamMergeRequestExpiredType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestExpiredType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestExpiredTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestExpiredType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestExpiredType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestExpiredType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestRejectedShownToPrimaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestRejectedShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails *)aTeamMergeRequestRejectedShownToPrimaryTeamDetails {
+  if (self == aTeamMergeRequestRejectedShownToPrimaryTeamDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aTeamMergeRequestRejectedShownToPrimaryTeamDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentBy isEqual:aTeamMergeRequestRejectedShownToPrimaryTeamDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamDetails alloc] initWithSecondaryTeam:secondaryTeam
+                                                                                            sentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestRejectedShownToPrimaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestRejectedShownToPrimaryTeamType:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType *)aTeamMergeRequestRejectedShownToPrimaryTeamType {
+  if (self == aTeamMergeRequestRejectedShownToPrimaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestRejectedShownToPrimaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToPrimaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentBy:(NSString *)sentBy {
+  [DBStoneValidators nonnullValidator:nil](sentBy);
+
+  self = [super init];
+  if (self) {
+    _sentBy = sentBy;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentBy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestRejectedShownToSecondaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestRejectedShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails *)
+        aTeamMergeRequestRejectedShownToSecondaryTeamDetails {
+  if (self == aTeamMergeRequestRejectedShownToSecondaryTeamDetails) {
+    return YES;
+  }
+  if (![self.sentBy isEqual:aTeamMergeRequestRejectedShownToSecondaryTeamDetails.sentBy]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_by"] = valueObj.sentBy;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentBy = valueDict[@"sent_by"];
+
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamDetails alloc] initWithSentBy:sentBy];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestRejectedShownToSecondaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestRejectedShownToSecondaryTeamType:
+    (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType *)aTeamMergeRequestRejectedShownToSecondaryTeamType {
+  if (self == aTeamMergeRequestRejectedShownToSecondaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestRejectedShownToSecondaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestReminderDetails.h"
+#import "DBTEAMLOGTeamMergeRequestReminderExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRequestReminderDetails:(DBTEAMLOGTeamMergeRequestReminderExtraDetails *)requestReminderDetails {
+  [DBStoneValidators nonnullValidator:nil](requestReminderDetails);
+
+  self = [super init];
+  if (self) {
+    _requestReminderDetails = requestReminderDetails;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestReminderDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestReminderDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestReminderDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.requestReminderDetails hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestReminderDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestReminderDetails:
+    (DBTEAMLOGTeamMergeRequestReminderDetails *)aTeamMergeRequestReminderDetails {
+  if (self == aTeamMergeRequestReminderDetails) {
+    return YES;
+  }
+  if (![self.requestReminderDetails isEqual:aTeamMergeRequestReminderDetails.requestReminderDetails]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"request_reminder_details"] =
+      [DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer serialize:valueObj.requestReminderDetails];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestReminderDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGTeamMergeRequestReminderExtraDetails *requestReminderDetails =
+      [DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer deserialize:valueDict[@"request_reminder_details"]];
+
+  return [[DBTEAMLOGTeamMergeRequestReminderDetails alloc] initWithRequestReminderDetails:requestReminderDetails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPrimaryTeamRequestReminderDetails.h"
+#import "DBTEAMLOGSecondaryTeamRequestReminderDetails.h"
+#import "DBTEAMLOGTeamMergeRequestReminderExtraDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderExtraDetails
+
+@synthesize primaryTeam = _primaryTeam;
+@synthesize secondaryTeam = _secondaryTeam;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPrimaryTeam:(DBTEAMLOGPrimaryTeamRequestReminderDetails *)primaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam;
+    _primaryTeam = primaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithSecondaryTeam:(DBTEAMLOGSecondaryTeamRequestReminderDetails *)secondaryTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam;
+    _secondaryTeam = secondaryTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMLOGPrimaryTeamRequestReminderDetails *)primaryTeam {
+  if (![self isPrimaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _primaryTeam;
+}
+
+- (DBTEAMLOGSecondaryTeamRequestReminderDetails *)secondaryTeam {
+  if (![self isSecondaryTeam]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam, but was %@.",
+                       [self tagName]];
+  }
+  return _secondaryTeam;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPrimaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam;
+}
+
+- (BOOL)isSecondaryTeam {
+  return _tag == DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam";
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam:
+    return @"DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam";
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther:
+    return @"DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam:
+    result = prime * result + [self.primaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam:
+    result = prime * result + [self.secondaryTeam hash];
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestReminderExtraDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestReminderExtraDetails:
+    (DBTEAMLOGTeamMergeRequestReminderExtraDetails *)aTeamMergeRequestReminderExtraDetails {
+  if (self == aTeamMergeRequestReminderExtraDetails) {
+    return YES;
+  }
+  if (self.tag != aTeamMergeRequestReminderExtraDetails.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam:
+    return [self.primaryTeam isEqual:aTeamMergeRequestReminderExtraDetails.primaryTeam];
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam:
+    return [self.secondaryTeam isEqual:aTeamMergeRequestReminderExtraDetails.secondaryTeam];
+  case DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther:
+    return [[self tagName] isEqual:[aTeamMergeRequestReminderExtraDetails tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderExtraDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPrimaryTeam]) {
+    jsonDict = [[DBTEAMLOGPrimaryTeamRequestReminderDetailsSerializer serialize:valueObj.primaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"primary_team";
+  } else if ([valueObj isSecondaryTeam]) {
+    jsonDict = [[DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer serialize:valueObj.secondaryTeam] mutableCopy];
+    jsonDict[@".tag"] = @"secondary_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestReminderExtraDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"primary_team"]) {
+    DBTEAMLOGPrimaryTeamRequestReminderDetails *primaryTeam =
+        [DBTEAMLOGPrimaryTeamRequestReminderDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestReminderExtraDetails alloc] initWithPrimaryTeam:primaryTeam];
+  } else if ([tag isEqualToString:@"secondary_team"]) {
+    DBTEAMLOGSecondaryTeamRequestReminderDetails *secondaryTeam =
+        [DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGTeamMergeRequestReminderExtraDetails alloc] initWithSecondaryTeam:secondaryTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTeamMergeRequestReminderExtraDetails alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTeamMergeRequestReminderExtraDetails alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestReminderShownToPrimaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestReminderShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails *)aTeamMergeRequestReminderShownToPrimaryTeamDetails {
+  if (self == aTeamMergeRequestReminderShownToPrimaryTeamDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aTeamMergeRequestReminderShownToPrimaryTeamDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentTo isEqual:aTeamMergeRequestReminderShownToPrimaryTeamDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamDetails alloc] initWithSecondaryTeam:secondaryTeam
+                                                                                            sentTo:sentTo];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestReminderShownToPrimaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestReminderShownToPrimaryTeamType:
+    (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType *)aTeamMergeRequestReminderShownToPrimaryTeamType {
+  if (self == aTeamMergeRequestReminderShownToPrimaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestReminderShownToPrimaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToPrimaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestReminderShownToSecondaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestReminderShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails *)
+        aTeamMergeRequestReminderShownToSecondaryTeamDetails {
+  if (self == aTeamMergeRequestReminderShownToSecondaryTeamDetails) {
+    return YES;
+  }
+  if (![self.sentTo isEqual:aTeamMergeRequestReminderShownToSecondaryTeamDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamDetails alloc] initWithSentTo:sentTo];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestReminderShownToSecondaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestReminderShownToSecondaryTeamType:
+    (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType *)aTeamMergeRequestReminderShownToSecondaryTeamType {
+  if (self == aTeamMergeRequestReminderShownToSecondaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestReminderShownToSecondaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestReminderShownToSecondaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestReminderType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestReminderTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestReminderTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestReminderTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestReminderType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestReminderType:(DBTEAMLOGTeamMergeRequestReminderType *)aTeamMergeRequestReminderType {
+  if (self == aTeamMergeRequestReminderType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestReminderType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestReminderTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestReminderType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestReminderType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestRevokedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestRevokedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTeam:(NSString *)team {
+  [DBStoneValidators nonnullValidator:nil](team);
+
+  self = [super init];
+  if (self) {
+    _team = team;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.team hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestRevokedDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestRevokedDetails:
+    (DBTEAMLOGTeamMergeRequestRevokedDetails *)aTeamMergeRequestRevokedDetails {
+  if (self == aTeamMergeRequestRevokedDetails) {
+    return YES;
+  }
+  if (![self.team isEqual:aTeamMergeRequestRevokedDetails.team]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestRevokedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"team"] = valueObj.team;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestRevokedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *team = valueDict[@"team"];
+
+  return [[DBTEAMLOGTeamMergeRequestRevokedDetails alloc] initWithTeam:team];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestRevokedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestRevokedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestRevokedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestRevokedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestRevokedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestRevokedType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestRevokedType:(DBTEAMLOGTeamMergeRequestRevokedType *)aTeamMergeRequestRevokedType {
+  if (self == aTeamMergeRequestRevokedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestRevokedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestRevokedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestRevokedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestRevokedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestRevokedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](secondaryTeam);
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _secondaryTeam = secondaryTeam;
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.secondaryTeam hash];
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestSentShownToPrimaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestSentShownToPrimaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails *)aTeamMergeRequestSentShownToPrimaryTeamDetails {
+  if (self == aTeamMergeRequestSentShownToPrimaryTeamDetails) {
+    return YES;
+  }
+  if (![self.secondaryTeam isEqual:aTeamMergeRequestSentShownToPrimaryTeamDetails.secondaryTeam]) {
+    return NO;
+  }
+  if (![self.sentTo isEqual:aTeamMergeRequestSentShownToPrimaryTeamDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"secondary_team"] = valueObj.secondaryTeam;
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *secondaryTeam = valueDict[@"secondary_team"];
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamDetails alloc] initWithSecondaryTeam:secondaryTeam
+                                                                                        sentTo:sentTo];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestSentShownToPrimaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestSentShownToPrimaryTeamType:
+    (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType *)aTeamMergeRequestSentShownToPrimaryTeamType {
+  if (self == aTeamMergeRequestSentShownToPrimaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestSentShownToPrimaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestSentShownToPrimaryTeamType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSentTo:(NSString *)sentTo {
+  [DBStoneValidators nonnullValidator:nil](sentTo);
+
+  self = [super init];
+  if (self) {
+    _sentTo = sentTo;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sentTo hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestSentShownToSecondaryTeamDetails:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestSentShownToSecondaryTeamDetails:
+    (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails *)aTeamMergeRequestSentShownToSecondaryTeamDetails {
+  if (self == aTeamMergeRequestSentShownToSecondaryTeamDetails) {
+    return YES;
+  }
+  if (![self.sentTo isEqual:aTeamMergeRequestSentShownToSecondaryTeamDetails.sentTo]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"sent_to"] = valueObj.sentTo;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *sentTo = valueDict[@"sent_to"];
+
+  return [[DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamDetails alloc] initWithSentTo:sentTo];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMergeRequestSentShownToSecondaryTeamType:other];
+}
+
+- (BOOL)isEqualToTeamMergeRequestSentShownToSecondaryTeamType:
+    (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType *)aTeamMergeRequestSentShownToSecondaryTeamType {
+  if (self == aTeamMergeRequestSentShownToSecondaryTeamType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamMergeRequestSentShownToSecondaryTeamType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamMergeRequestSentShownToSecondaryTeamType alloc] initWithDescription_:description_];
 }
 
 @end
@@ -104467,6 +117571,440 @@
     return [[DBTEAMLOGTrustedNonTeamMemberType alloc] initWithOther];
   } else {
     return [[DBTEAMLOGTrustedNonTeamMemberType alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTrustedTeamsRequestAction.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTrustedTeamsRequestAction
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInvited {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestActionInvited;
+  }
+  return self;
+}
+
+- (instancetype)initWithExpired {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestActionExpired;
+  }
+  return self;
+}
+
+- (instancetype)initWithRevoked {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestActionRevoked;
+  }
+  return self;
+}
+
+- (instancetype)initWithAccepted {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestActionAccepted;
+  }
+  return self;
+}
+
+- (instancetype)initWithDeclined {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestActionDeclined;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestActionOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInvited {
+  return _tag == DBTEAMLOGTrustedTeamsRequestActionInvited;
+}
+
+- (BOOL)isExpired {
+  return _tag == DBTEAMLOGTrustedTeamsRequestActionExpired;
+}
+
+- (BOOL)isRevoked {
+  return _tag == DBTEAMLOGTrustedTeamsRequestActionRevoked;
+}
+
+- (BOOL)isAccepted {
+  return _tag == DBTEAMLOGTrustedTeamsRequestActionAccepted;
+}
+
+- (BOOL)isDeclined {
+  return _tag == DBTEAMLOGTrustedTeamsRequestActionDeclined;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTrustedTeamsRequestActionOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTrustedTeamsRequestActionInvited:
+    return @"DBTEAMLOGTrustedTeamsRequestActionInvited";
+  case DBTEAMLOGTrustedTeamsRequestActionExpired:
+    return @"DBTEAMLOGTrustedTeamsRequestActionExpired";
+  case DBTEAMLOGTrustedTeamsRequestActionRevoked:
+    return @"DBTEAMLOGTrustedTeamsRequestActionRevoked";
+  case DBTEAMLOGTrustedTeamsRequestActionAccepted:
+    return @"DBTEAMLOGTrustedTeamsRequestActionAccepted";
+  case DBTEAMLOGTrustedTeamsRequestActionDeclined:
+    return @"DBTEAMLOGTrustedTeamsRequestActionDeclined";
+  case DBTEAMLOGTrustedTeamsRequestActionOther:
+    return @"DBTEAMLOGTrustedTeamsRequestActionOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTrustedTeamsRequestActionSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTrustedTeamsRequestActionSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTrustedTeamsRequestActionSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTrustedTeamsRequestActionInvited:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestActionExpired:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestActionRevoked:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestActionAccepted:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestActionDeclined:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestActionOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTrustedTeamsRequestAction:other];
+}
+
+- (BOOL)isEqualToTrustedTeamsRequestAction:(DBTEAMLOGTrustedTeamsRequestAction *)aTrustedTeamsRequestAction {
+  if (self == aTrustedTeamsRequestAction) {
+    return YES;
+  }
+  if (self.tag != aTrustedTeamsRequestAction.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTrustedTeamsRequestActionInvited:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestAction tagName]];
+  case DBTEAMLOGTrustedTeamsRequestActionExpired:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestAction tagName]];
+  case DBTEAMLOGTrustedTeamsRequestActionRevoked:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestAction tagName]];
+  case DBTEAMLOGTrustedTeamsRequestActionAccepted:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestAction tagName]];
+  case DBTEAMLOGTrustedTeamsRequestActionDeclined:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestAction tagName]];
+  case DBTEAMLOGTrustedTeamsRequestActionOther:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestAction tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTrustedTeamsRequestActionSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTrustedTeamsRequestAction *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInvited]) {
+    jsonDict[@".tag"] = @"invited";
+  } else if ([valueObj isExpired]) {
+    jsonDict[@".tag"] = @"expired";
+  } else if ([valueObj isRevoked]) {
+    jsonDict[@".tag"] = @"revoked";
+  } else if ([valueObj isAccepted]) {
+    jsonDict[@".tag"] = @"accepted";
+  } else if ([valueObj isDeclined]) {
+    jsonDict[@".tag"] = @"declined";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTrustedTeamsRequestAction *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"invited"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestAction alloc] initWithInvited];
+  } else if ([tag isEqualToString:@"expired"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestAction alloc] initWithExpired];
+  } else if ([tag isEqualToString:@"revoked"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestAction alloc] initWithRevoked];
+  } else if ([tag isEqualToString:@"accepted"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestAction alloc] initWithAccepted];
+  } else if ([tag isEqualToString:@"declined"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestAction alloc] initWithDeclined];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestAction alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTrustedTeamsRequestAction alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTrustedTeamsRequestState.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTrustedTeamsRequestState
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInvited {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestStateInvited;
+  }
+  return self;
+}
+
+- (instancetype)initWithLinked {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestStateLinked;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnlinked {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestStateUnlinked;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGTrustedTeamsRequestStateOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInvited {
+  return _tag == DBTEAMLOGTrustedTeamsRequestStateInvited;
+}
+
+- (BOOL)isLinked {
+  return _tag == DBTEAMLOGTrustedTeamsRequestStateLinked;
+}
+
+- (BOOL)isUnlinked {
+  return _tag == DBTEAMLOGTrustedTeamsRequestStateUnlinked;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGTrustedTeamsRequestStateOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGTrustedTeamsRequestStateInvited:
+    return @"DBTEAMLOGTrustedTeamsRequestStateInvited";
+  case DBTEAMLOGTrustedTeamsRequestStateLinked:
+    return @"DBTEAMLOGTrustedTeamsRequestStateLinked";
+  case DBTEAMLOGTrustedTeamsRequestStateUnlinked:
+    return @"DBTEAMLOGTrustedTeamsRequestStateUnlinked";
+  case DBTEAMLOGTrustedTeamsRequestStateOther:
+    return @"DBTEAMLOGTrustedTeamsRequestStateOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTrustedTeamsRequestStateSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTrustedTeamsRequestStateSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMLOGTrustedTeamsRequestStateSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGTrustedTeamsRequestStateInvited:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestStateLinked:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestStateUnlinked:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLOGTrustedTeamsRequestStateOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTrustedTeamsRequestState:other];
+}
+
+- (BOOL)isEqualToTrustedTeamsRequestState:(DBTEAMLOGTrustedTeamsRequestState *)aTrustedTeamsRequestState {
+  if (self == aTrustedTeamsRequestState) {
+    return YES;
+  }
+  if (self.tag != aTrustedTeamsRequestState.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGTrustedTeamsRequestStateInvited:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestState tagName]];
+  case DBTEAMLOGTrustedTeamsRequestStateLinked:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestState tagName]];
+  case DBTEAMLOGTrustedTeamsRequestStateUnlinked:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestState tagName]];
+  case DBTEAMLOGTrustedTeamsRequestStateOther:
+    return [[self tagName] isEqual:[aTrustedTeamsRequestState tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTrustedTeamsRequestStateSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTrustedTeamsRequestState *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInvited]) {
+    jsonDict[@".tag"] = @"invited";
+  } else if ([valueObj isLinked]) {
+    jsonDict[@".tag"] = @"linked";
+  } else if ([valueObj isUnlinked]) {
+    jsonDict[@".tag"] = @"unlinked";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMLOGTrustedTeamsRequestState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"invited"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestState alloc] initWithInvited];
+  } else if ([tag isEqualToString:@"linked"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestState alloc] initWithLinked];
+  } else if ([tag isEqualToString:@"unlinked"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestState alloc] initWithUnlinked];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGTrustedTeamsRequestState alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGTrustedTeamsRequestState alloc] initWithOther];
   }
 }
 

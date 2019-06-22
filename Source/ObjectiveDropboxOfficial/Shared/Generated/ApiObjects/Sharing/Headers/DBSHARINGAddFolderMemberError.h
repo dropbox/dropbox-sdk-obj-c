@@ -36,6 +36,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
   /// The current user's e-mail address is unverified.
   DBSHARINGAddFolderMemberErrorEmailUnverified,
 
+  /// The current user has been banned.
+  DBSHARINGAddFolderMemberErrorBannedMember,
+
   /// `members` in `DBSHARINGAddFolderMemberArg` contains a bad invitation
   /// recipient.
   DBSHARINGAddFolderMemberErrorBadMember,
@@ -116,6 +119,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithEmailUnverified;
+
+///
+/// Initializes union class with tag state of "banned_member".
+///
+/// Description of the "banned_member" tag state: The current user has been
+/// banned.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithBannedMember;
 
 ///
 /// Initializes union class with tag state of "bad_member".
@@ -245,6 +258,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
 /// @return Whether the union's current tag state has value "email_unverified".
 ///
 - (BOOL)isEmailUnverified;
+
+///
+/// Retrieves whether the union's current tag state has value "banned_member".
+///
+/// @return Whether the union's current tag state has value "banned_member".
+///
+- (BOOL)isBannedMember;
 
 ///
 /// Retrieves whether the union's current tag state has value "bad_member".

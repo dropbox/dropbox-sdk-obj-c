@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
   /// The caller is not allowed to access this shared link.
   DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied,
 
-  /// This type of link is not supported.
+  /// This type of link is not supported; use `files` instead.
   DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType,
 
   /// (no description).
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 /// Initializes union class with tag state of "unsupported_link_type".
 ///
 /// Description of the "unsupported_link_type" tag state: This type of link is
-/// not supported.
+/// not supported; use `files` instead.
 ///
 /// @return An initialized instance.
 ///

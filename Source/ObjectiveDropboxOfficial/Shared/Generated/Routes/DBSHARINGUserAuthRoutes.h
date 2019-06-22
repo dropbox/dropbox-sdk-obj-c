@@ -74,6 +74,7 @@
 @class DBSHARINGRemoveFileMemberError;
 @class DBSHARINGRemoveFolderMemberError;
 @class DBSHARINGRemoveMemberJobStatus;
+@class DBSHARINGRequestedLinkAccessLevel;
 @class DBSHARINGRequestedVisibility;
 @class DBSHARINGRevokeSharedLinkError;
 @class DBSHARINGSetAccessInheritanceError;
@@ -88,6 +89,7 @@
 @class DBSHARINGSharedFolderMemberError;
 @class DBSHARINGSharedFolderMembers;
 @class DBSHARINGSharedFolderMetadata;
+@class DBSHARINGSharedLinkAlreadyExistsMetadata;
 @class DBSHARINGSharedLinkError;
 @class DBSHARINGSharedLinkMetadata;
 @class DBSHARINGSharedLinkPolicy;

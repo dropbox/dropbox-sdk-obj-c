@@ -5146,6 +5146,14 @@
   return self;
 }
 
+- (instancetype)initWithUnsupportedFile {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESDownloadErrorUnsupportedFile;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -5170,6 +5178,10 @@
   return _tag == DBFILESDownloadErrorPath;
 }
 
+- (BOOL)isUnsupportedFile {
+  return _tag == DBFILESDownloadErrorUnsupportedFile;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESDownloadErrorOther;
 }
@@ -5178,6 +5190,8 @@
   switch (_tag) {
   case DBFILESDownloadErrorPath:
     return @"DBFILESDownloadErrorPath";
+  case DBFILESDownloadErrorUnsupportedFile:
+    return @"DBFILESDownloadErrorUnsupportedFile";
   case DBFILESDownloadErrorOther:
     return @"DBFILESDownloadErrorOther";
   }
@@ -5218,6 +5232,8 @@
   switch (_tag) {
   case DBFILESDownloadErrorPath:
     result = prime * result + [self.path hash];
+  case DBFILESDownloadErrorUnsupportedFile:
+    result = prime * result + [[self tagName] hash];
   case DBFILESDownloadErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -5247,6 +5263,8 @@
   switch (_tag) {
   case DBFILESDownloadErrorPath:
     return [self.path isEqual:aDownloadError.path];
+  case DBFILESDownloadErrorUnsupportedFile:
+    return [[self tagName] isEqual:[aDownloadError tagName]];
   case DBFILESDownloadErrorOther:
     return [[self tagName] isEqual:[aDownloadError tagName]];
   }
@@ -5265,6 +5283,8 @@
   if ([valueObj isPath]) {
     jsonDict[@"path"] = [[DBFILESLookupErrorSerializer serialize:valueObj.path] mutableCopy];
     jsonDict[@".tag"] = @"path";
+  } else if ([valueObj isUnsupportedFile]) {
+    jsonDict[@".tag"] = @"unsupported_file";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -5280,6 +5300,8 @@
   if ([tag isEqualToString:@"path"]) {
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESDownloadError alloc] initWithPath:path];
+  } else if ([tag isEqualToString:@"unsupported_file"]) {
+    return [[DBFILESDownloadError alloc] initWithUnsupportedFile];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDownloadError alloc] initWithOther];
   } else {
@@ -5701,7 +5723,642 @@
 
 @end
 
+#import "DBFILESExportArg.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESExportArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPath:(NSString *)path {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators
+                        stringValidator:nil
+                              maxLength:nil
+                                pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"]](path);
+
+  self = [super init];
+  if (self) {
+    _path = path;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESExportArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESExportArgSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESExportArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.path hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToExportArg:other];
+}
+
+- (BOOL)isEqualToExportArg:(DBFILESExportArg *)anExportArg {
+  if (self == anExportArg) {
+    return YES;
+  }
+  if (![self.path isEqual:anExportArg.path]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESExportArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESExportArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"path"] = valueObj.path;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESExportArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *path = valueDict[@"path"];
+
+  return [[DBFILESExportArg alloc] initWithPath:path];
+}
+
+@end
+
+#import "DBFILESExportError.h"
+#import "DBFILESLookupError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESExportError
+
+@synthesize path = _path;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPath:(DBFILESLookupError *)path {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESExportErrorPath;
+    _path = path;
+  }
+  return self;
+}
+
+- (instancetype)initWithNonExportable {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESExportErrorNonExportable;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESExportErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBFILESLookupError *)path {
+  if (![self isPath]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESExportErrorPath, but was %@.", [self tagName]];
+  }
+  return _path;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPath {
+  return _tag == DBFILESExportErrorPath;
+}
+
+- (BOOL)isNonExportable {
+  return _tag == DBFILESExportErrorNonExportable;
+}
+
+- (BOOL)isOther {
+  return _tag == DBFILESExportErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBFILESExportErrorPath:
+    return @"DBFILESExportErrorPath";
+  case DBFILESExportErrorNonExportable:
+    return @"DBFILESExportErrorNonExportable";
+  case DBFILESExportErrorOther:
+    return @"DBFILESExportErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESExportErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESExportErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESExportErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBFILESExportErrorPath:
+    result = prime * result + [self.path hash];
+  case DBFILESExportErrorNonExportable:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESExportErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToExportError:other];
+}
+
+- (BOOL)isEqualToExportError:(DBFILESExportError *)anExportError {
+  if (self == anExportError) {
+    return YES;
+  }
+  if (self.tag != anExportError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBFILESExportErrorPath:
+    return [self.path isEqual:anExportError.path];
+  case DBFILESExportErrorNonExportable:
+    return [[self tagName] isEqual:[anExportError tagName]];
+  case DBFILESExportErrorOther:
+    return [[self tagName] isEqual:[anExportError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESExportErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESExportError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPath]) {
+    jsonDict[@"path"] = [[DBFILESLookupErrorSerializer serialize:valueObj.path] mutableCopy];
+    jsonDict[@".tag"] = @"path";
+  } else if ([valueObj isNonExportable]) {
+    jsonDict[@".tag"] = @"non_exportable";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESExportError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"path"]) {
+    DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
+    return [[DBFILESExportError alloc] initWithPath:path];
+  } else if ([tag isEqualToString:@"non_exportable"]) {
+    return [[DBFILESExportError alloc] initWithNonExportable];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESExportError alloc] initWithOther];
+  } else {
+    return [[DBFILESExportError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBFILESExportInfo.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESExportInfo
+
+#pragma mark - Constructors
+
+- (instancetype)initWithExportAs:(NSString *)exportAs {
+
+  self = [super init];
+  if (self) {
+    _exportAs = exportAs;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithExportAs:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESExportInfoSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESExportInfoSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESExportInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.exportAs != nil) {
+    result = prime * result + [self.exportAs hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToExportInfo:other];
+}
+
+- (BOOL)isEqualToExportInfo:(DBFILESExportInfo *)anExportInfo {
+  if (self == anExportInfo) {
+    return YES;
+  }
+  if (self.exportAs) {
+    if (![self.exportAs isEqual:anExportInfo.exportAs]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESExportInfoSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESExportInfo *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.exportAs) {
+    jsonDict[@"export_as"] = valueObj.exportAs;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESExportInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *exportAs = valueDict[@"export_as"] ?: nil;
+
+  return [[DBFILESExportInfo alloc] initWithExportAs:exportAs];
+}
+
+@end
+
+#import "DBFILESExportMetadata.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESExportMetadata
+
+#pragma mark - Constructors
+
+- (instancetype)initWithName:(NSString *)name size:(NSNumber *)size exportHash:(NSString *)exportHash {
+  [DBStoneValidators nonnullValidator:nil](name);
+  [DBStoneValidators nonnullValidator:nil](size);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(64) maxLength:@(64) pattern:nil]](exportHash);
+
+  self = [super init];
+  if (self) {
+    _name = name;
+    _size = size;
+    _exportHash = exportHash;
+  }
+  return self;
+}
+
+- (instancetype)initWithName:(NSString *)name size:(NSNumber *)size {
+  return [self initWithName:name size:size exportHash:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESExportMetadataSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESExportMetadataSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESExportMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.name hash];
+  result = prime * result + [self.size hash];
+  if (self.exportHash != nil) {
+    result = prime * result + [self.exportHash hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToExportMetadata:other];
+}
+
+- (BOOL)isEqualToExportMetadata:(DBFILESExportMetadata *)anExportMetadata {
+  if (self == anExportMetadata) {
+    return YES;
+  }
+  if (![self.name isEqual:anExportMetadata.name]) {
+    return NO;
+  }
+  if (![self.size isEqual:anExportMetadata.size]) {
+    return NO;
+  }
+  if (self.exportHash) {
+    if (![self.exportHash isEqual:anExportMetadata.exportHash]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESExportMetadataSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESExportMetadata *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"name"] = valueObj.name;
+  jsonDict[@"size"] = valueObj.size;
+  if (valueObj.exportHash) {
+    jsonDict[@"export_hash"] = valueObj.exportHash;
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESExportMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *name = valueDict[@"name"];
+  NSNumber *size = valueDict[@"size"];
+  NSString *exportHash = valueDict[@"export_hash"] ?: nil;
+
+  return [[DBFILESExportMetadata alloc] initWithName:name size:size exportHash:exportHash];
+}
+
+@end
+
+#import "DBFILESExportMetadata.h"
+#import "DBFILESExportResult.h"
+#import "DBFILESFileMetadata.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBFILESExportResult
+
+#pragma mark - Constructors
+
+- (instancetype)initWithExportMetadata:(DBFILESExportMetadata *)exportMetadata
+                          fileMetadata:(DBFILESFileMetadata *)fileMetadata {
+  [DBStoneValidators nonnullValidator:nil](exportMetadata);
+  [DBStoneValidators nonnullValidator:nil](fileMetadata);
+
+  self = [super init];
+  if (self) {
+    _exportMetadata = exportMetadata;
+    _fileMetadata = fileMetadata;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBFILESExportResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBFILESExportResultSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBFILESExportResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.exportMetadata hash];
+  result = prime * result + [self.fileMetadata hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToExportResult:other];
+}
+
+- (BOOL)isEqualToExportResult:(DBFILESExportResult *)anExportResult {
+  if (self == anExportResult) {
+    return YES;
+  }
+  if (![self.exportMetadata isEqual:anExportResult.exportMetadata]) {
+    return NO;
+  }
+  if (![self.fileMetadata isEqual:anExportResult.fileMetadata]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBFILESExportResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBFILESExportResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"export_metadata"] = [DBFILESExportMetadataSerializer serialize:valueObj.exportMetadata];
+  jsonDict[@"file_metadata"] = [DBFILESFileMetadataSerializer serialize:valueObj.fileMetadata];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBFILESExportResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBFILESExportMetadata *exportMetadata = [DBFILESExportMetadataSerializer deserialize:valueDict[@"export_metadata"]];
+  DBFILESFileMetadata *fileMetadata = [DBFILESFileMetadataSerializer deserialize:valueDict[@"file_metadata"]];
+
+  return [[DBFILESExportResult alloc] initWithExportMetadata:exportMetadata fileMetadata:fileMetadata];
+}
+
+@end
+
 #import "DBFILEPROPERTIESPropertyGroup.h"
+#import "DBFILESExportInfo.h"
 #import "DBFILESFileMetadata.h"
 #import "DBFILESFileSharingInfo.h"
 #import "DBFILESMediaInfo.h"
@@ -5728,6 +6385,8 @@
                    mediaInfo:(DBFILESMediaInfo *)mediaInfo
                  symlinkInfo:(DBFILESSymlinkInfo *)symlinkInfo
                  sharingInfo:(DBFILESFileSharingInfo *)sharingInfo
+              isDownloadable:(NSNumber *)isDownloadable
+                  exportInfo:(DBFILESExportInfo *)exportInfo
               propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
     hasExplicitSharedMembers:(NSNumber *)hasExplicitSharedMembers
                  contentHash:(NSString *)contentHash {
@@ -5758,6 +6417,8 @@
     _mediaInfo = mediaInfo;
     _symlinkInfo = symlinkInfo;
     _sharingInfo = sharingInfo;
+    _isDownloadable = isDownloadable ?: @YES;
+    _exportInfo = exportInfo;
     _propertyGroups = propertyGroups;
     _hasExplicitSharedMembers = hasExplicitSharedMembers;
     _contentHash = contentHash;
@@ -5783,6 +6444,8 @@
                      mediaInfo:nil
                    symlinkInfo:nil
                    sharingInfo:nil
+                isDownloadable:nil
+                    exportInfo:nil
                 propertyGroups:nil
       hasExplicitSharedMembers:nil
                    contentHash:nil];
@@ -5841,6 +6504,10 @@
   }
   if (self.sharingInfo != nil) {
     result = prime * result + [self.sharingInfo hash];
+  }
+  result = prime * result + [self.isDownloadable hash];
+  if (self.exportInfo != nil) {
+    result = prime * result + [self.exportInfo hash];
   }
   if (self.propertyGroups != nil) {
     result = prime * result + [self.propertyGroups hash];
@@ -5919,6 +6586,14 @@
       return NO;
     }
   }
+  if (![self.isDownloadable isEqual:aFileMetadata.isDownloadable]) {
+    return NO;
+  }
+  if (self.exportInfo) {
+    if (![self.exportInfo isEqual:aFileMetadata.exportInfo]) {
+      return NO;
+    }
+  }
   if (self.propertyGroups) {
     if (![self.propertyGroups isEqual:aFileMetadata.propertyGroups]) {
       return NO;
@@ -5972,6 +6647,10 @@
   if (valueObj.sharingInfo) {
     jsonDict[@"sharing_info"] = [DBFILESFileSharingInfoSerializer serialize:valueObj.sharingInfo];
   }
+  jsonDict[@"is_downloadable"] = valueObj.isDownloadable;
+  if (valueObj.exportInfo) {
+    jsonDict[@"export_info"] = [DBFILESExportInfoSerializer serialize:valueObj.exportInfo];
+  }
   if (valueObj.propertyGroups) {
     jsonDict[@"property_groups"] =
         [DBArraySerializer serialize:valueObj.propertyGroups
@@ -6007,6 +6686,9 @@
       valueDict[@"symlink_info"] ? [DBFILESSymlinkInfoSerializer deserialize:valueDict[@"symlink_info"]] : nil;
   DBFILESFileSharingInfo *sharingInfo =
       valueDict[@"sharing_info"] ? [DBFILESFileSharingInfoSerializer deserialize:valueDict[@"sharing_info"]] : nil;
+  NSNumber *isDownloadable = valueDict[@"is_downloadable"] ?: @YES;
+  DBFILESExportInfo *exportInfo =
+      valueDict[@"export_info"] ? [DBFILESExportInfoSerializer deserialize:valueDict[@"export_info"]] : nil;
   NSArray<DBFILEPROPERTIESPropertyGroup *> *propertyGroups =
       valueDict[@"property_groups"]
           ? [DBArraySerializer deserialize:valueDict[@"property_groups"]
@@ -6029,6 +6711,8 @@
                                          mediaInfo:mediaInfo
                                        symlinkInfo:symlinkInfo
                                        sharingInfo:sharingInfo
+                                    isDownloadable:isDownloadable
+                                        exportInfo:exportInfo
                                     propertyGroups:propertyGroups
                           hasExplicitSharedMembers:hasExplicitSharedMembers
                                        contentHash:contentHash];
@@ -7164,6 +7848,22 @@
   return self;
 }
 
+- (instancetype)initWithEmailNotVerified {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESGetTemporaryLinkErrorEmailNotVerified;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnsupportedFile {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESGetTemporaryLinkErrorUnsupportedFile;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -7188,6 +7888,14 @@
   return _tag == DBFILESGetTemporaryLinkErrorPath;
 }
 
+- (BOOL)isEmailNotVerified {
+  return _tag == DBFILESGetTemporaryLinkErrorEmailNotVerified;
+}
+
+- (BOOL)isUnsupportedFile {
+  return _tag == DBFILESGetTemporaryLinkErrorUnsupportedFile;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESGetTemporaryLinkErrorOther;
 }
@@ -7196,6 +7904,10 @@
   switch (_tag) {
   case DBFILESGetTemporaryLinkErrorPath:
     return @"DBFILESGetTemporaryLinkErrorPath";
+  case DBFILESGetTemporaryLinkErrorEmailNotVerified:
+    return @"DBFILESGetTemporaryLinkErrorEmailNotVerified";
+  case DBFILESGetTemporaryLinkErrorUnsupportedFile:
+    return @"DBFILESGetTemporaryLinkErrorUnsupportedFile";
   case DBFILESGetTemporaryLinkErrorOther:
     return @"DBFILESGetTemporaryLinkErrorOther";
   }
@@ -7236,6 +7948,10 @@
   switch (_tag) {
   case DBFILESGetTemporaryLinkErrorPath:
     result = prime * result + [self.path hash];
+  case DBFILESGetTemporaryLinkErrorEmailNotVerified:
+    result = prime * result + [[self tagName] hash];
+  case DBFILESGetTemporaryLinkErrorUnsupportedFile:
+    result = prime * result + [[self tagName] hash];
   case DBFILESGetTemporaryLinkErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -7265,6 +7981,10 @@
   switch (_tag) {
   case DBFILESGetTemporaryLinkErrorPath:
     return [self.path isEqual:aGetTemporaryLinkError.path];
+  case DBFILESGetTemporaryLinkErrorEmailNotVerified:
+    return [[self tagName] isEqual:[aGetTemporaryLinkError tagName]];
+  case DBFILESGetTemporaryLinkErrorUnsupportedFile:
+    return [[self tagName] isEqual:[aGetTemporaryLinkError tagName]];
   case DBFILESGetTemporaryLinkErrorOther:
     return [[self tagName] isEqual:[aGetTemporaryLinkError tagName]];
   }
@@ -7283,6 +8003,10 @@
   if ([valueObj isPath]) {
     jsonDict[@"path"] = [[DBFILESLookupErrorSerializer serialize:valueObj.path] mutableCopy];
     jsonDict[@".tag"] = @"path";
+  } else if ([valueObj isEmailNotVerified]) {
+    jsonDict[@".tag"] = @"email_not_verified";
+  } else if ([valueObj isUnsupportedFile]) {
+    jsonDict[@".tag"] = @"unsupported_file";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -7298,6 +8022,10 @@
   if ([tag isEqualToString:@"path"]) {
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESGetTemporaryLinkError alloc] initWithPath:path];
+  } else if ([tag isEqualToString:@"email_not_verified"]) {
+    return [[DBFILESGetTemporaryLinkError alloc] initWithEmailNotVerified];
+  } else if ([tag isEqualToString:@"unsupported_file"]) {
+    return [[DBFILESGetTemporaryLinkError alloc] initWithUnsupportedFile];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESGetTemporaryLinkError alloc] initWithOther];
   } else {
@@ -8433,7 +9161,8 @@
               includeMountedFolders:(NSNumber *)includeMountedFolders
                               limit:(NSNumber *)limit
                          sharedLink:(DBFILESSharedLink *)sharedLink
-              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
+        includeNonDownloadableFiles:(NSNumber *)includeNonDownloadableFiles {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
                                              maxLength:nil
@@ -8451,6 +9180,7 @@
     _limit = limit;
     _sharedLink = sharedLink;
     _includePropertyGroups = includePropertyGroups;
+    _includeNonDownloadableFiles = includeNonDownloadableFiles ?: @YES;
   }
   return self;
 }
@@ -8464,7 +9194,8 @@
                 includeMountedFolders:nil
                                 limit:nil
                            sharedLink:nil
-                includePropertyGroups:nil];
+                includePropertyGroups:nil
+          includeNonDownloadableFiles:nil];
 }
 
 #pragma mark - Serialization methods
@@ -8512,6 +9243,7 @@
   if (self.includePropertyGroups != nil) {
     result = prime * result + [self.includePropertyGroups hash];
   }
+  result = prime * result + [self.includeNonDownloadableFiles hash];
 
   return prime * result;
 }
@@ -8565,6 +9297,9 @@
       return NO;
     }
   }
+  if (![self.includeNonDownloadableFiles isEqual:aListFolderArg.includeNonDownloadableFiles]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -8593,6 +9328,7 @@
     jsonDict[@"include_property_groups"] =
         [DBFILEPROPERTIESTemplateFilterBaseSerializer serialize:valueObj.includePropertyGroups];
   }
+  jsonDict[@"include_non_downloadable_files"] = valueObj.includeNonDownloadableFiles;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -8611,6 +9347,7 @@
       valueDict[@"include_property_groups"]
           ? [DBFILEPROPERTIESTemplateFilterBaseSerializer deserialize:valueDict[@"include_property_groups"]]
           : nil;
+  NSNumber *includeNonDownloadableFiles = valueDict[@"include_non_downloadable_files"] ?: @YES;
 
   return [[DBFILESListFolderArg alloc] initWithPath:path
                                           recursive:recursive
@@ -8620,7 +9357,8 @@
                               includeMountedFolders:includeMountedFolders
                                               limit:limit
                                          sharedLink:sharedLink
-                              includePropertyGroups:includePropertyGroups];
+                              includePropertyGroups:includePropertyGroups
+                        includeNonDownloadableFiles:includeNonDownloadableFiles];
 }
 
 @end
@@ -10334,6 +11072,14 @@
   return self;
 }
 
+- (instancetype)initWithUnsupportedContentType {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESLookupErrorUnsupportedContentType;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -10374,6 +11120,10 @@
   return _tag == DBFILESLookupErrorRestrictedContent;
 }
 
+- (BOOL)isUnsupportedContentType {
+  return _tag == DBFILESLookupErrorUnsupportedContentType;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESLookupErrorOther;
 }
@@ -10390,6 +11140,8 @@
     return @"DBFILESLookupErrorNotFolder";
   case DBFILESLookupErrorRestrictedContent:
     return @"DBFILESLookupErrorRestrictedContent";
+  case DBFILESLookupErrorUnsupportedContentType:
+    return @"DBFILESLookupErrorUnsupportedContentType";
   case DBFILESLookupErrorOther:
     return @"DBFILESLookupErrorOther";
   }
@@ -10440,6 +11192,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESLookupErrorRestrictedContent:
     result = prime * result + [[self tagName] hash];
+  case DBFILESLookupErrorUnsupportedContentType:
+    result = prime * result + [[self tagName] hash];
   case DBFILESLookupErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -10479,6 +11233,8 @@
     return [[self tagName] isEqual:[aLookupError tagName]];
   case DBFILESLookupErrorRestrictedContent:
     return [[self tagName] isEqual:[aLookupError tagName]];
+  case DBFILESLookupErrorUnsupportedContentType:
+    return [[self tagName] isEqual:[aLookupError tagName]];
   case DBFILESLookupErrorOther:
     return [[self tagName] isEqual:[aLookupError tagName]];
   }
@@ -10507,6 +11263,8 @@
     jsonDict[@".tag"] = @"not_folder";
   } else if ([valueObj isRestrictedContent]) {
     jsonDict[@".tag"] = @"restricted_content";
+  } else if ([valueObj isUnsupportedContentType]) {
+    jsonDict[@".tag"] = @"unsupported_content_type";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -10530,6 +11288,8 @@
     return [[DBFILESLookupError alloc] initWithNotFolder];
   } else if ([tag isEqualToString:@"restricted_content"]) {
     return [[DBFILESLookupError alloc] initWithRestrictedContent];
+  } else if ([tag isEqualToString:@"unsupported_content_type"]) {
+    return [[DBFILESLookupError alloc] initWithUnsupportedContentType];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESLookupError alloc] initWithOther];
   } else {
@@ -12102,6 +12862,14 @@
   return self;
 }
 
+- (instancetype)initWithCantMoveSharedFolder {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationErrorCantMoveSharedFolder;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -12182,6 +12950,10 @@
   return _tag == DBFILESRelocationErrorInternalError;
 }
 
+- (BOOL)isCantMoveSharedFolder {
+  return _tag == DBFILESRelocationErrorCantMoveSharedFolder;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationErrorOther;
 }
@@ -12210,6 +12982,8 @@
     return @"DBFILESRelocationErrorInsufficientQuota";
   case DBFILESRelocationErrorInternalError:
     return @"DBFILESRelocationErrorInternalError";
+  case DBFILESRelocationErrorCantMoveSharedFolder:
+    return @"DBFILESRelocationErrorCantMoveSharedFolder";
   case DBFILESRelocationErrorOther:
     return @"DBFILESRelocationErrorOther";
   }
@@ -12270,6 +13044,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationErrorInternalError:
     result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationErrorCantMoveSharedFolder:
+    result = prime * result + [[self tagName] hash];
   case DBFILESRelocationErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -12319,6 +13095,8 @@
     return [[self tagName] isEqual:[aRelocationError tagName]];
   case DBFILESRelocationErrorInternalError:
     return [[self tagName] isEqual:[aRelocationError tagName]];
+  case DBFILESRelocationErrorCantMoveSharedFolder:
+    return [[self tagName] isEqual:[aRelocationError tagName]];
   case DBFILESRelocationErrorOther:
     return [[self tagName] isEqual:[aRelocationError tagName]];
   }
@@ -12359,6 +13137,8 @@
     jsonDict[@".tag"] = @"insufficient_quota";
   } else if ([valueObj isInternalError]) {
     jsonDict[@".tag"] = @"internal_error";
+  } else if ([valueObj isCantMoveSharedFolder]) {
+    jsonDict[@".tag"] = @"cant_move_shared_folder";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -12396,6 +13176,8 @@
     return [[DBFILESRelocationError alloc] initWithInsufficientQuota];
   } else if ([tag isEqualToString:@"internal_error"]) {
     return [[DBFILESRelocationError alloc] initWithInternalError];
+  } else if ([tag isEqualToString:@"cant_move_shared_folder"]) {
+    return [[DBFILESRelocationError alloc] initWithCantMoveSharedFolder];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationError alloc] initWithOther];
   } else {
@@ -12513,6 +13295,14 @@
   return self;
 }
 
+- (instancetype)initWithCantMoveSharedFolder {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorCantMoveSharedFolder;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -12601,6 +13391,10 @@
   return _tag == DBFILESRelocationBatchErrorInternalError;
 }
 
+- (BOOL)isCantMoveSharedFolder {
+  return _tag == DBFILESRelocationBatchErrorCantMoveSharedFolder;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationBatchErrorOther;
 }
@@ -12633,6 +13427,8 @@
     return @"DBFILESRelocationBatchErrorInsufficientQuota";
   case DBFILESRelocationBatchErrorInternalError:
     return @"DBFILESRelocationBatchErrorInternalError";
+  case DBFILESRelocationBatchErrorCantMoveSharedFolder:
+    return @"DBFILESRelocationBatchErrorCantMoveSharedFolder";
   case DBFILESRelocationBatchErrorOther:
     return @"DBFILESRelocationBatchErrorOther";
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -12695,6 +13491,8 @@
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorInternalError:
     result = prime * result + [[self tagName] hash];
+  case DBFILESRelocationBatchErrorCantMoveSharedFolder:
+    result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorOther:
     result = prime * result + [[self tagName] hash];
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -12746,6 +13544,8 @@
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorInternalError:
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
+  case DBFILESRelocationBatchErrorCantMoveSharedFolder:
+    return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorOther:
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -12788,6 +13588,8 @@
     jsonDict[@".tag"] = @"insufficient_quota";
   } else if ([valueObj isInternalError]) {
     jsonDict[@".tag"] = @"internal_error";
+  } else if ([valueObj isCantMoveSharedFolder]) {
+    jsonDict[@".tag"] = @"cant_move_shared_folder";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isTooManyWriteOperations]) {
@@ -12827,6 +13629,8 @@
     return [[DBFILESRelocationBatchError alloc] initWithInsufficientQuota];
   } else if ([tag isEqualToString:@"internal_error"]) {
     return [[DBFILESRelocationBatchError alloc] initWithInternalError];
+  } else if ([tag isEqualToString:@"cant_move_shared_folder"]) {
+    return [[DBFILESRelocationBatchError alloc] initWithCantMoveSharedFolder];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationBatchError alloc] initWithOther];
   } else if ([tag isEqualToString:@"too_many_write_operations"]) {

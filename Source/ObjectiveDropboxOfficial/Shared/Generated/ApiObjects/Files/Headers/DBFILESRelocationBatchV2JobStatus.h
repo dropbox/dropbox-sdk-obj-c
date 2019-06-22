@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `RelocationBatchV2JobStatus` union.
 ///
-/// Result returned by `dCopyBatch` or `moveBatch` that may either launch an
-/// asynchronous job or complete synchronously.
+/// Result returned by `dCopyBatchCheck` or `moveBatchCheck` that may either be
+/// in progress or completed with result for each entry.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

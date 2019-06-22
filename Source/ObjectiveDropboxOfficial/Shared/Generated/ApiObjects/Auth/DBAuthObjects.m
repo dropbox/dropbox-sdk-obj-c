@@ -211,12 +211,15 @@
 @end
 
 #import "DBAUTHAuthError.h"
+#import "DBAUTHTokenScopeError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
 #pragma mark - API Object
 
 @implementation DBAUTHAuthError
+
+@synthesize missingScope = _missingScope;
 
 #pragma mark - Constructors
 
@@ -260,6 +263,15 @@
   return self;
 }
 
+- (instancetype)initWithMissingScope:(DBAUTHTokenScopeError *)missingScope {
+  self = [super init];
+  if (self) {
+    _tag = DBAUTHAuthErrorMissingScope;
+    _missingScope = missingScope;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -269,6 +281,14 @@
 }
 
 #pragma mark - Instance field accessors
+
+- (DBAUTHTokenScopeError *)missingScope {
+  if (![self isMissingScope]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBAUTHAuthErrorMissingScope, but was %@.", [self tagName]];
+  }
+  return _missingScope;
+}
 
 #pragma mark - Tag state methods
 
@@ -292,6 +312,10 @@
   return _tag == DBAUTHAuthErrorExpiredAccessToken;
 }
 
+- (BOOL)isMissingScope {
+  return _tag == DBAUTHAuthErrorMissingScope;
+}
+
 - (BOOL)isOther {
   return _tag == DBAUTHAuthErrorOther;
 }
@@ -308,6 +332,8 @@
     return @"DBAUTHAuthErrorUserSuspended";
   case DBAUTHAuthErrorExpiredAccessToken:
     return @"DBAUTHAuthErrorExpiredAccessToken";
+  case DBAUTHAuthErrorMissingScope:
+    return @"DBAUTHAuthErrorMissingScope";
   case DBAUTHAuthErrorOther:
     return @"DBAUTHAuthErrorOther";
   }
@@ -356,6 +382,8 @@
     result = prime * result + [[self tagName] hash];
   case DBAUTHAuthErrorExpiredAccessToken:
     result = prime * result + [[self tagName] hash];
+  case DBAUTHAuthErrorMissingScope:
+    result = prime * result + [self.missingScope hash];
   case DBAUTHAuthErrorOther:
     result = prime * result + [[self tagName] hash];
   }
@@ -393,6 +421,8 @@
     return [[self tagName] isEqual:[anAuthError tagName]];
   case DBAUTHAuthErrorExpiredAccessToken:
     return [[self tagName] isEqual:[anAuthError tagName]];
+  case DBAUTHAuthErrorMissingScope:
+    return [self.missingScope isEqual:anAuthError.missingScope];
   case DBAUTHAuthErrorOther:
     return [[self tagName] isEqual:[anAuthError tagName]];
   }
@@ -418,6 +448,9 @@
     jsonDict[@".tag"] = @"user_suspended";
   } else if ([valueObj isExpiredAccessToken]) {
     jsonDict[@".tag"] = @"expired_access_token";
+  } else if ([valueObj isMissingScope]) {
+    jsonDict = [[DBAUTHTokenScopeErrorSerializer serialize:valueObj.missingScope] mutableCopy];
+    jsonDict[@".tag"] = @"missing_scope";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -440,6 +473,9 @@
     return [[DBAUTHAuthError alloc] initWithUserSuspended];
   } else if ([tag isEqualToString:@"expired_access_token"]) {
     return [[DBAUTHAuthError alloc] initWithExpiredAccessToken];
+  } else if ([tag isEqualToString:@"missing_scope"]) {
+    DBAUTHTokenScopeError *missingScope = [DBAUTHTokenScopeErrorSerializer deserialize:valueDict];
+    return [[DBAUTHAuthError alloc] initWithMissingScope:missingScope];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHAuthError alloc] initWithOther];
   } else {
@@ -1455,6 +1491,105 @@
   NSString *oauth2Token = valueDict[@"oauth2_token"];
 
   return [[DBAUTHTokenFromOAuth1Result alloc] initWithOauth2Token:oauth2Token];
+}
+
+@end
+
+#import "DBAUTHTokenScopeError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBAUTHTokenScopeError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRequiredScope:(NSString *)requiredScope {
+  [DBStoneValidators nonnullValidator:nil](requiredScope);
+
+  self = [super init];
+  if (self) {
+    _requiredScope = requiredScope;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBAUTHTokenScopeErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBAUTHTokenScopeErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBAUTHTokenScopeErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.requiredScope hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTokenScopeError:other];
+}
+
+- (BOOL)isEqualToTokenScopeError:(DBAUTHTokenScopeError *)aTokenScopeError {
+  if (self == aTokenScopeError) {
+    return YES;
+  }
+  if (![self.requiredScope isEqual:aTokenScopeError.requiredScope]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBAUTHTokenScopeErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBAUTHTokenScopeError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"required_scope"] = valueObj.requiredScope;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBAUTHTokenScopeError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *requiredScope = valueDict[@"required_scope"];
+
+  return [[DBAUTHTokenScopeError alloc] initWithRequiredScope:requiredScope];
 }
 
 @end

@@ -55,6 +55,11 @@
 #import "DBFILESDownloadZipArg.h"
 #import "DBFILESDownloadZipError.h"
 #import "DBFILESDownloadZipResult.h"
+#import "DBFILESExportArg.h"
+#import "DBFILESExportError.h"
+#import "DBFILESExportInfo.h"
+#import "DBFILESExportMetadata.h"
+#import "DBFILESExportResult.h"
 #import "DBFILESFileMetadata.h"
 #import "DBFILESFileOpsResult.h"
 #import "DBFILESFileSharingInfo.h"
@@ -543,6 +548,41 @@
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
+- (DBDownloadUrlTask *)exportUrl:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL *)destination {
+  DBRoute *route = DBFILESRouteObjects.DBFILESExport;
+  DBFILESExportArg *arg = [[DBFILESExportArg alloc] initWithPath:path];
+  return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
+}
+
+- (DBDownloadUrlTask *)exportUrl:(NSString *)path
+                       overwrite:(BOOL)overwrite
+                     destination:(NSURL *)destination
+                 byteOffsetStart:(NSNumber *)byteOffsetStart
+                   byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBFILESRouteObjects.DBFILESExport;
+  DBFILESExportArg *arg = [[DBFILESExportArg alloc] initWithPath:path];
+  return [self.client requestDownload:route
+                                  arg:arg
+                            overwrite:overwrite
+                          destination:destination
+                      byteOffsetStart:byteOffsetStart
+                        byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadDataTask *)exportData:(NSString *)path {
+  DBRoute *route = DBFILESRouteObjects.DBFILESExport;
+  DBFILESExportArg *arg = [[DBFILESExportArg alloc] initWithPath:path];
+  return [self.client requestDownload:route arg:arg];
+}
+
+- (DBDownloadDataTask *)exportData:(NSString *)path
+                   byteOffsetStart:(NSNumber *)byteOffsetStart
+                     byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBFILESRouteObjects.DBFILESExport;
+  DBFILESExportArg *arg = [[DBFILESExportArg alloc] initWithPath:path];
+  return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
+}
+
 - (DBRpcTask *)getMetadata:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetMetadata;
   DBFILESGetMetadataArg *arg = [[DBFILESGetMetadataArg alloc] initWithPath:path];
@@ -761,7 +801,8 @@
               includeMountedFolders:(NSNumber *)includeMountedFolders
                               limit:(NSNumber *)limit
                          sharedLink:(DBFILESSharedLink *)sharedLink
-              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
+              includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
+        includeNonDownloadableFiles:(NSNumber *)includeNonDownloadableFiles {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolder;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
@@ -771,7 +812,8 @@
                                                    includeMountedFolders:includeMountedFolders
                                                                    limit:limit
                                                               sharedLink:sharedLink
-                                                   includePropertyGroups:includePropertyGroups];
+                                                   includePropertyGroups:includePropertyGroups
+                                             includeNonDownloadableFiles:includeNonDownloadableFiles];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -795,7 +837,8 @@
                    includeMountedFolders:(NSNumber *)includeMountedFolders
                                    limit:(NSNumber *)limit
                               sharedLink:(DBFILESSharedLink *)sharedLink
-                   includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups {
+                   includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
+             includeNonDownloadableFiles:(NSNumber *)includeNonDownloadableFiles {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolderGetLatestCursor;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
@@ -805,7 +848,8 @@
                                                    includeMountedFolders:includeMountedFolders
                                                                    limit:limit
                                                               sharedLink:sharedLink
-                                                   includePropertyGroups:includePropertyGroups];
+                                                   includePropertyGroups:includePropertyGroups
+                                             includeNonDownloadableFiles:includeNonDownloadableFiles];
   return [self.client requestRpc:route arg:arg];
 }
 

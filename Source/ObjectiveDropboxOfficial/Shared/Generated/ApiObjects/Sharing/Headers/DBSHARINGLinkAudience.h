@@ -40,6 +40,10 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
   /// pre-existing access rights.
   DBSHARINGLinkAudienceNoOne,
 
+  /// A link-specific password is required to access the link. Login is not
+  /// required.
+  DBSHARINGLinkAudiencePassword,
+
   /// Link is accessible only by members of the content.
   DBSHARINGLinkAudienceMembers,
 
@@ -85,6 +89,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
 - (instancetype)initWithNoOne;
 
 ///
+/// Initializes union class with tag state of "password".
+///
+/// Description of the "password" tag state: A link-specific password is
+/// required to access the link. Login is not required.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPassword;
+
+///
 /// Initializes union class with tag state of "members".
 ///
 /// Description of the "members" tag state: Link is accessible only by members
@@ -125,6 +139,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
 /// @return Whether the union's current tag state has value "no_one".
 ///
 - (BOOL)isNoOne;
+
+///
+/// Retrieves whether the union's current tag state has value "password".
+///
+/// @return Whether the union's current tag state has value "password".
+///
+- (BOOL)isPassword;
 
 ///
 /// Retrieves whether the union's current tag state has value "members".

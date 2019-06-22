@@ -193,7 +193,6 @@
 				F236814F1DEF647900D523C5 /* Frameworks */,
 				F23681501DEF647900D523C5 /* Resources */,
 				4AC4AA10EFC0A2DD5135EAEF /* [CP] Embed Pods Frameworks */,
-				CF980C74A7CFA2EDC0C71F61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,7 +212,6 @@
 				F27BA8011D63BBA100FB7864 /* Frameworks */,
 				F27BA8021D63BBA100FB7864 /* Resources */,
 				7A03DFCDE9686959E9D77EEE /* [CP] Embed Pods Frameworks */,
-				871E2EBFE760A7DFFA12549C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -297,7 +295,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestObjectiveDropbox_macOS/Pods-TestObjectiveDropbox_macOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TestObjectiveDropbox_macOS/Pods-TestObjectiveDropbox_macOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ObjectiveDropboxOfficial-macOS/ObjectiveDropboxOfficial.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -306,7 +304,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestObjectiveDropbox_macOS/Pods-TestObjectiveDropbox_macOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestObjectiveDropbox_macOS/Pods-TestObjectiveDropbox_macOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		56C316FB7069A8BE25E87E41 /* [CP] Check Pods Manifest.lock */ = {
@@ -333,7 +331,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ObjectiveDropboxOfficial-iOS/ObjectiveDropboxOfficial.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -342,22 +340,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		871E2EBFE760A7DFFA12549C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A869A6A9C6E78EBA3DB6CAA1 /* [CP] Check Pods Manifest.lock */ = {
@@ -376,21 +359,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF980C74A7CFA2EDC0C71F61 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestObjectiveDropbox_macOS/Pods-TestObjectiveDropbox_macOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -41,6 +41,10 @@
 @class DBFILESDownloadError;
 @class DBFILESDownloadZipError;
 @class DBFILESDownloadZipResult;
+@class DBFILESExportError;
+@class DBFILESExportInfo;
+@class DBFILESExportMetadata;
+@class DBFILESExportResult;
 @class DBFILESFileMetadata;
 @class DBFILESFileSharingInfo;
 @class DBFILESFolderMetadata;
@@ -325,7 +329,7 @@ alphaUploadStream:(NSString *)path
 
 ///
 /// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `dCopyBatch`. The main difference is this route will return stutus for each entry, while `dCopyBatch` raises failure
+/// `dCopyBatch`. The main difference is this route will return status for each entry, while `dCopyBatch` raises failure
 /// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
 /// background. Please use `dCopyBatchCheck` to check the job status.
 ///
@@ -339,7 +343,7 @@ alphaUploadStream:(NSString *)path
 
 ///
 /// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `dCopyBatch`. The main difference is this route will return stutus for each entry, while `dCopyBatch` raises failure
+/// `dCopyBatch`. The main difference is this route will return status for each entry, while `dCopyBatch` raises failure
 /// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
 /// background. Please use `dCopyBatchCheck` to check the job status.
 ///
@@ -810,6 +814,74 @@ byteOffsetStart:(NSNumber *)byteOffsetStart
   byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
+/// Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly
+/// and whose `fileMetadata` in `DBFILESExportResult` has `exportAs` in `DBFILESExportInfo` populated.
+///
+/// @param path The path of the file to be exported.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESExportResult` object on success or a
+/// `DBFILESExportError` object on failure.
+///
+- (DBDownloadUrlTask<DBFILESExportResult *, DBFILESExportError *> *)exportUrl:(NSString *)path
+                                                                    overwrite:(BOOL)overwrite
+                                                                  destination:(NSURL *)destination;
+
+///
+/// Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly
+/// and whose `fileMetadata` in `DBFILESExportResult` has `exportAs` in `DBFILESExportInfo` populated.
+///
+/// @param path The path of the file to be exported.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESExportResult` object on success or a
+/// `DBFILESExportError` object on failure.
+///
+- (DBDownloadUrlTask<DBFILESExportResult *, DBFILESExportError *> *)exportUrl:(NSString *)path
+                                                                    overwrite:(BOOL)overwrite
+                                                                  destination:(NSURL *)destination
+                                                              byteOffsetStart:(NSNumber *)byteOffsetStart
+                                                                byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+
+///
+/// Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly
+/// and whose `fileMetadata` in `DBFILESExportResult` has `exportAs` in `DBFILESExportInfo` populated.
+///
+/// @param path The path of the file to be exported.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESExportResult` object on success or a
+/// `DBFILESExportError` object on failure.
+///
+- (DBDownloadDataTask<DBFILESExportResult *, DBFILESExportError *> *)exportData:(NSString *)path;
+
+///
+/// Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly
+/// and whose `fileMetadata` in `DBFILESExportResult` has `exportAs` in `DBFILESExportInfo` populated.
+///
+/// @param path The path of the file to be exported.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESExportResult` object on success or a
+/// `DBFILESExportError` object on failure.
+///
+- (DBDownloadDataTask<DBFILESExportResult *, DBFILESExportError *> *)exportData:(NSString *)path
+                                                                byteOffsetStart:(NSNumber *)byteOffsetStart
+                                                                  byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+
+///
 /// Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.
 ///
 /// @param path The path of a file or folder on Dropbox.
@@ -843,9 +915,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
@@ -862,9 +934,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 /// @param rev Please specify revision in path instead.
@@ -883,9 +955,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
@@ -908,9 +980,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 /// @param rev Please specify revision in path instead.
@@ -935,9 +1007,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 ///
@@ -948,9 +1020,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 /// @param rev Please specify revision in path instead.
@@ -963,9 +1035,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
@@ -982,9 +1054,9 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc,
-/// .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files
-/// with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension
-/// error.
+/// .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are
+/// generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will
+/// return an unsupported extension error.
 ///
 /// @param path The path of the file to preview.
 /// @param rev Please specify revision in path instead.
@@ -1003,7 +1075,7 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 
 ///
 /// Get a temporary link to stream content of a file. This link will expire in four hours and afterwards you will get
-/// 410 Gone. So this URL should not be used to display content directly in the browser.  Content-Type of the link is
+/// 410 Gone. This URL should not be used to display content directly in the browser. The Content-Type of the link is
 /// determined automatically by the file's mime type.
 ///
 /// @param path The path to the file you want a temporary link to.
@@ -1295,7 +1367,8 @@ getThumbnailData:(NSString *)path
 /// @param path A unique identifier for the file.
 /// @param recursive If true, the list folder operation will be applied recursively to all subfolders and the response
 /// will contain contents of all subfolders.
-/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. This parameter
+/// will no longer have an effect starting December 2, 2019.
 /// @param includeDeleted If true, the results will include entries for files and folders that used to exist but were
 /// deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
@@ -1309,6 +1382,7 @@ getThumbnailData:(NSString *)path
 /// Only non-recursive mode is supported for shared link.
 /// @param includePropertyGroups If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
 /// set if there exists property data associated with the file and each of the listed templates.
+/// @param includeNonDownloadableFiles If true, include files that are not downloadable, i.e. Google Docs.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderError` object on failure.
@@ -1322,7 +1396,8 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
           includeMountedFolders:(nullable NSNumber *)includeMountedFolders
                           limit:(nullable NSNumber *)limit
                      sharedLink:(nullable DBFILESSharedLink *)sharedLink
-          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
+          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
+    includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles;
 
 ///
 /// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to
@@ -1356,7 +1431,8 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 /// @param path A unique identifier for the file.
 /// @param recursive If true, the list folder operation will be applied recursively to all subfolders and the response
 /// will contain contents of all subfolders.
-/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. This parameter
+/// will no longer have an effect starting December 2, 2019.
 /// @param includeDeleted If true, the results will include entries for files and folders that used to exist but were
 /// deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
@@ -1370,6 +1446,7 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 /// Only non-recursive mode is supported for shared link.
 /// @param includePropertyGroups If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
 /// set if there exists property data associated with the file and each of the listed templates.
+/// @param includeNonDownloadableFiles If true, include files that are not downloadable, i.e. Google Docs.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderGetLatestCursorResult` object on
 /// success or a `DBFILESListFolderError` object on failure.
@@ -1383,7 +1460,8 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
           includeMountedFolders:(nullable NSNumber *)includeMountedFolders
                           limit:(nullable NSNumber *)limit
                      sharedLink:(nullable DBFILESSharedLink *)sharedLink
-          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
+          includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
+    includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles;
 
 ///
 /// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you
@@ -1520,7 +1598,7 @@ listRevisions:(NSString *)path
 
 ///
 /// Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `moveBatch`. The main difference is this route will return stutus for each entry, while `moveBatch` raises failure
+/// `moveBatch`. The main difference is this route will return status for each entry, while `moveBatch` raises failure
 /// if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in
 /// background. Please use `moveBatchCheck` to check the job status.
 ///
@@ -1532,7 +1610,7 @@ listRevisions:(NSString *)path
 
 ///
 /// Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `moveBatch`. The main difference is this route will return stutus for each entry, while `moveBatch` raises failure
+/// `moveBatch`. The main difference is this route will return status for each entry, while `moveBatch` raises failure
 /// if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in
 /// background. Please use `moveBatchCheck` to check the job status.
 ///

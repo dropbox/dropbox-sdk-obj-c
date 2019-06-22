@@ -8,13 +8,21 @@
 
 #import "DBTasks.h"
 
+@class DBFILEREQUESTSCountFileRequestsError;
+@class DBFILEREQUESTSCountFileRequestsResult;
 @class DBFILEREQUESTSCreateFileRequestError;
+@class DBFILEREQUESTSDeleteAllClosedFileRequestsError;
+@class DBFILEREQUESTSDeleteAllClosedFileRequestsResult;
+@class DBFILEREQUESTSDeleteFileRequestError;
+@class DBFILEREQUESTSDeleteFileRequestsResult;
 @class DBFILEREQUESTSFileRequest;
 @class DBFILEREQUESTSFileRequestDeadline;
 @class DBFILEREQUESTSGetFileRequestError;
 @class DBFILEREQUESTSGracePeriod;
+@class DBFILEREQUESTSListFileRequestsContinueError;
 @class DBFILEREQUESTSListFileRequestsError;
 @class DBFILEREQUESTSListFileRequestsResult;
+@class DBFILEREQUESTSListFileRequestsV2Result;
 @class DBFILEREQUESTSUpdateFileRequestDeadline;
 @class DBFILEREQUESTSUpdateFileRequestError;
 @class DBNilObject;
@@ -36,6 +44,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// Initializes the `DBFILEREQUESTSUserAuthRoutes` namespace container object
 /// with a networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
+
+///
+/// Returns the total number of file requests owned by this user. Includes both open and closed file requests.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSCountFileRequestsResult` object on
+/// success or a `DBFILEREQUESTSCountFileRequestsError` object on failure.
+///
+- (DBRpcTask<DBFILEREQUESTSCountFileRequestsResult *, DBFILEREQUESTSCountFileRequestsError *> *)count;
 
 ///
 /// Creates a file request for this user.
@@ -70,6 +87,27 @@ destination:(NSString *)destination
        open:(nullable NSNumber *)open;
 
 ///
+/// Delete a batch of closed file requests.
+///
+/// @param ids List IDs of the file requests to delete.
+///
+/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSDeleteFileRequestsResult` object on
+/// success or a `DBFILEREQUESTSDeleteFileRequestError` object on failure.
+///
+- (DBRpcTask<DBFILEREQUESTSDeleteFileRequestsResult *, DBFILEREQUESTSDeleteFileRequestError *> *)delete_:
+    (NSArray<NSString *> *)ids;
+
+///
+/// Delete all closed file requests owned by this user.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSDeleteAllClosedFileRequestsResult`
+/// object on success or a `DBFILEREQUESTSDeleteAllClosedFileRequestsError` object on failure.
+///
+- (DBRpcTask<DBFILEREQUESTSDeleteAllClosedFileRequestsResult *, DBFILEREQUESTSDeleteAllClosedFileRequestsError *> *)
+    deleteAllClosed;
+
+///
 /// Returns the specified file request.
 ///
 /// @param id_ The ID of the file request to retrieve.
@@ -84,10 +122,44 @@ destination:(NSString *)destination
 /// file requests with destinations in the app folder.
 ///
 ///
+/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSListFileRequestsV2Result` object on
+/// success or a `DBFILEREQUESTSListFileRequestsError` object on failure.
+///
+- (DBRpcTask<DBFILEREQUESTSListFileRequestsV2Result *, DBFILEREQUESTSListFileRequestsError *> *)listV2;
+
+///
+/// Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return
+/// file requests with destinations in the app folder.
+///
+/// @param limit The maximum number of file requests that should be returned per request.
+///
+/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSListFileRequestsV2Result` object on
+/// success or a `DBFILEREQUESTSListFileRequestsError` object on failure.
+///
+- (DBRpcTask<DBFILEREQUESTSListFileRequestsV2Result *, DBFILEREQUESTSListFileRequestsError *> *)listV2:
+    (nullable NSNumber *)limit;
+
+///
+/// Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return
+/// file requests with destinations in the app folder.
+///
+///
 /// @return Through the response callback, the caller will receive a `DBFILEREQUESTSListFileRequestsResult` object on
 /// success or a `DBFILEREQUESTSListFileRequestsError` object on failure.
 ///
 - (DBRpcTask<DBFILEREQUESTSListFileRequestsResult *, DBFILEREQUESTSListFileRequestsError *> *)list;
+
+///
+/// Once a cursor has been retrieved from `list`, use this to paginate through all file requests. The cursor must come
+/// from a previous call to `list` or `listContinue`.
+///
+/// @param cursor The cursor returned by the previous API call specified in the endpoint description.
+///
+/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSListFileRequestsV2Result` object on
+/// success or a `DBFILEREQUESTSListFileRequestsContinueError` object on failure.
+///
+- (DBRpcTask<DBFILEREQUESTSListFileRequestsV2Result *, DBFILEREQUESTSListFileRequestsContinueError *> *)listContinue:
+    (NSString *)cursor;
 
 ///
 /// Update a file request.

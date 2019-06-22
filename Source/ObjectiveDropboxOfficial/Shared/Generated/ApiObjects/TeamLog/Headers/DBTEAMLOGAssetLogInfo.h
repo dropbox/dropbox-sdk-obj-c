@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAssetLogInfoTag) {
   /// Folder's details.
   DBTEAMLOGAssetLogInfoFolder,
 
-  /// Paper docuement's details.
+  /// Paper document's details.
   DBTEAMLOGAssetLogInfoPaperDocument,
 
   /// Paper folder's details.
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAssetLogInfoTag) {
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFolderLogInfo *folder;
 
-/// Paper docuement's details. @note Ensure the `isPaperDocument` method returns
+/// Paper document's details. @note Ensure the `isPaperDocument` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocumentLogInfo *paperDocument;
 
@@ -105,9 +105,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAssetLogInfoTag) {
 ///
 /// Initializes union class with tag state of "paper_document".
 ///
-/// Description of the "paper_document" tag state: Paper docuement's details.
+/// Description of the "paper_document" tag state: Paper document's details.
 ///
-/// @param paperDocument Paper docuement's details.
+/// @param paperDocument Paper document's details.
 ///
 /// @return An initialized instance.
 ///

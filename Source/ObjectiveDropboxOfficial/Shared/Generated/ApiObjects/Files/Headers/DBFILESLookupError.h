@@ -49,6 +49,9 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
   /// example, sometimes there are legal restrictions due to copyright claims.
   DBFILESLookupErrorRestrictedContent,
 
+  /// This operation is not supported for this content type.
+  DBFILESLookupErrorUnsupportedContentType,
+
   /// (no description).
   DBFILESLookupErrorOther,
 
@@ -126,6 +129,16 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 - (instancetype)initWithRestrictedContent;
 
 ///
+/// Initializes union class with tag state of "unsupported_content_type".
+///
+/// Description of the "unsupported_content_type" tag state: This operation is
+/// not supported for this content type.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnsupportedContentType;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -175,6 +188,15 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 /// "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_content_type".
+///
+/// @return Whether the union's current tag state has value
+/// "unsupported_content_type".
+///
+- (BOOL)isUnsupportedContentType;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

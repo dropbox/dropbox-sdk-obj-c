@@ -38,6 +38,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
   DBTEAMLOGLoginMethodSaml,
 
   /// (no description).
+  DBTEAMLOGLoginMethodGoogleOauth,
+
+  /// (no description).
   DBTEAMLOGLoginMethodOther,
 
 };
@@ -67,6 +70,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSaml;
+
+///
+/// Initializes union class with tag state of "google_oauth".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGoogleOauth;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -101,6 +111,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
 /// @return Whether the union's current tag state has value "saml".
 ///
 - (BOOL)isSaml;
+
+///
+/// Retrieves whether the union's current tag state has value "google_oauth".
+///
+/// @return Whether the union's current tag state has value "google_oauth".
+///
+- (BOOL)isGoogleOauth;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

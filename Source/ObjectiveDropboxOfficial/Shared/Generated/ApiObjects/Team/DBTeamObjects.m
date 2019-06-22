@@ -15289,8 +15289,10 @@
                           externalId:(NSString *)externalId
                            accountId:(NSString *)accountId
                             joinedOn:(NSDate *)joinedOn
+                         suspendedOn:(NSDate *)suspendedOn
                         persistentId:(NSString *)persistentId
-               isDirectoryRestricted:(NSNumber *)isDirectoryRestricted {
+               isDirectoryRestricted:(NSNumber *)isDirectoryRestricted
+                     profilePhotoUrl:(NSString *)profilePhotoUrl {
   [DBStoneValidators nonnullValidator:nil](teamMemberId);
   [DBStoneValidators nonnullValidator:nil](email);
   [DBStoneValidators nonnullValidator:nil](emailVerified);
@@ -15311,8 +15313,10 @@
     _name = name;
     _membershipType = membershipType;
     _joinedOn = joinedOn;
+    _suspendedOn = suspendedOn;
     _persistentId = persistentId;
     _isDirectoryRestricted = isDirectoryRestricted;
+    _profilePhotoUrl = profilePhotoUrl;
   }
   return self;
 }
@@ -15332,8 +15336,10 @@
                          externalId:nil
                           accountId:nil
                            joinedOn:nil
+                        suspendedOn:nil
                        persistentId:nil
-              isDirectoryRestricted:nil];
+              isDirectoryRestricted:nil
+                    profilePhotoUrl:nil];
 }
 
 #pragma mark - Serialization methods
@@ -15381,11 +15387,17 @@
   if (self.joinedOn != nil) {
     result = prime * result + [self.joinedOn hash];
   }
+  if (self.suspendedOn != nil) {
+    result = prime * result + [self.suspendedOn hash];
+  }
   if (self.persistentId != nil) {
     result = prime * result + [self.persistentId hash];
   }
   if (self.isDirectoryRestricted != nil) {
     result = prime * result + [self.isDirectoryRestricted hash];
+  }
+  if (self.profilePhotoUrl != nil) {
+    result = prime * result + [self.profilePhotoUrl hash];
   }
 
   return prime * result;
@@ -15440,6 +15452,11 @@
       return NO;
     }
   }
+  if (self.suspendedOn) {
+    if (![self.suspendedOn isEqual:aMemberProfile.suspendedOn]) {
+      return NO;
+    }
+  }
   if (self.persistentId) {
     if (![self.persistentId isEqual:aMemberProfile.persistentId]) {
       return NO;
@@ -15447,6 +15464,11 @@
   }
   if (self.isDirectoryRestricted) {
     if (![self.isDirectoryRestricted isEqual:aMemberProfile.isDirectoryRestricted]) {
+      return NO;
+    }
+  }
+  if (self.profilePhotoUrl) {
+    if (![self.profilePhotoUrl isEqual:aMemberProfile.profilePhotoUrl]) {
       return NO;
     }
   }
@@ -15477,11 +15499,17 @@
   if (valueObj.joinedOn) {
     jsonDict[@"joined_on"] = [DBNSDateSerializer serialize:valueObj.joinedOn dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
+  if (valueObj.suspendedOn) {
+    jsonDict[@"suspended_on"] = [DBNSDateSerializer serialize:valueObj.suspendedOn dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
   if (valueObj.persistentId) {
     jsonDict[@"persistent_id"] = valueObj.persistentId;
   }
   if (valueObj.isDirectoryRestricted) {
     jsonDict[@"is_directory_restricted"] = valueObj.isDirectoryRestricted;
+  }
+  if (valueObj.profilePhotoUrl) {
+    jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
@@ -15500,8 +15528,12 @@
   NSDate *joinedOn = valueDict[@"joined_on"]
                          ? [DBNSDateSerializer deserialize:valueDict[@"joined_on"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                          : nil;
+  NSDate *suspendedOn = valueDict[@"suspended_on"] ? [DBNSDateSerializer deserialize:valueDict[@"suspended_on"]
+                                                                          dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                                                   : nil;
   NSString *persistentId = valueDict[@"persistent_id"] ?: nil;
   NSNumber *isDirectoryRestricted = valueDict[@"is_directory_restricted"] ?: nil;
+  NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] ?: nil;
 
   return [[DBTEAMMemberProfile alloc] initWithTeamMemberId:teamMemberId
                                                      email:email
@@ -15512,8 +15544,10 @@
                                                 externalId:externalId
                                                  accountId:accountId
                                                   joinedOn:joinedOn
+                                               suspendedOn:suspendedOn
                                               persistentId:persistentId
-                                     isDirectoryRestricted:isDirectoryRestricted];
+                                     isDirectoryRestricted:isDirectoryRestricted
+                                           profilePhotoUrl:profilePhotoUrl];
 }
 
 @end
@@ -29276,8 +29310,10 @@
                           externalId:(NSString *)externalId
                            accountId:(NSString *)accountId
                             joinedOn:(NSDate *)joinedOn
+                         suspendedOn:(NSDate *)suspendedOn
                         persistentId:(NSString *)persistentId
-               isDirectoryRestricted:(NSNumber *)isDirectoryRestricted {
+               isDirectoryRestricted:(NSNumber *)isDirectoryRestricted
+                     profilePhotoUrl:(NSString *)profilePhotoUrl {
   [DBStoneValidators nonnullValidator:nil](teamMemberId);
   [DBStoneValidators nonnullValidator:nil](email);
   [DBStoneValidators nonnullValidator:nil](emailVerified);
@@ -29302,8 +29338,10 @@
                           externalId:externalId
                            accountId:accountId
                             joinedOn:joinedOn
+                         suspendedOn:suspendedOn
                         persistentId:persistentId
-               isDirectoryRestricted:isDirectoryRestricted];
+               isDirectoryRestricted:isDirectoryRestricted
+                     profilePhotoUrl:profilePhotoUrl];
   if (self) {
     _groups = groups;
     _memberFolderId = memberFolderId;
@@ -29330,8 +29368,10 @@
                          externalId:nil
                           accountId:nil
                            joinedOn:nil
+                        suspendedOn:nil
                        persistentId:nil
-              isDirectoryRestricted:nil];
+              isDirectoryRestricted:nil
+                    profilePhotoUrl:nil];
 }
 
 #pragma mark - Serialization methods
@@ -29381,11 +29421,17 @@
   if (self.joinedOn != nil) {
     result = prime * result + [self.joinedOn hash];
   }
+  if (self.suspendedOn != nil) {
+    result = prime * result + [self.suspendedOn hash];
+  }
   if (self.persistentId != nil) {
     result = prime * result + [self.persistentId hash];
   }
   if (self.isDirectoryRestricted != nil) {
     result = prime * result + [self.isDirectoryRestricted hash];
+  }
+  if (self.profilePhotoUrl != nil) {
+    result = prime * result + [self.profilePhotoUrl hash];
   }
 
   return prime * result;
@@ -29446,6 +29492,11 @@
       return NO;
     }
   }
+  if (self.suspendedOn) {
+    if (![self.suspendedOn isEqual:aTeamMemberProfile.suspendedOn]) {
+      return NO;
+    }
+  }
   if (self.persistentId) {
     if (![self.persistentId isEqual:aTeamMemberProfile.persistentId]) {
       return NO;
@@ -29453,6 +29504,11 @@
   }
   if (self.isDirectoryRestricted) {
     if (![self.isDirectoryRestricted isEqual:aTeamMemberProfile.isDirectoryRestricted]) {
+      return NO;
+    }
+  }
+  if (self.profilePhotoUrl) {
+    if (![self.profilePhotoUrl isEqual:aTeamMemberProfile.profilePhotoUrl]) {
       return NO;
     }
   }
@@ -29488,11 +29544,17 @@
   if (valueObj.joinedOn) {
     jsonDict[@"joined_on"] = [DBNSDateSerializer serialize:valueObj.joinedOn dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
+  if (valueObj.suspendedOn) {
+    jsonDict[@"suspended_on"] = [DBNSDateSerializer serialize:valueObj.suspendedOn dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
   if (valueObj.persistentId) {
     jsonDict[@"persistent_id"] = valueObj.persistentId;
   }
   if (valueObj.isDirectoryRestricted) {
     jsonDict[@"is_directory_restricted"] = valueObj.isDirectoryRestricted;
+  }
+  if (valueObj.profilePhotoUrl) {
+    jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
   }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
@@ -29516,8 +29578,12 @@
   NSDate *joinedOn = valueDict[@"joined_on"]
                          ? [DBNSDateSerializer deserialize:valueDict[@"joined_on"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                          : nil;
+  NSDate *suspendedOn = valueDict[@"suspended_on"] ? [DBNSDateSerializer deserialize:valueDict[@"suspended_on"]
+                                                                          dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                                                   : nil;
   NSString *persistentId = valueDict[@"persistent_id"] ?: nil;
   NSNumber *isDirectoryRestricted = valueDict[@"is_directory_restricted"] ?: nil;
+  NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] ?: nil;
 
   return [[DBTEAMTeamMemberProfile alloc] initWithTeamMemberId:teamMemberId
                                                          email:email
@@ -29530,8 +29596,10 @@
                                                     externalId:externalId
                                                      accountId:accountId
                                                       joinedOn:joinedOn
+                                                   suspendedOn:suspendedOn
                                                   persistentId:persistentId
-                                         isDirectoryRestricted:isDirectoryRestricted];
+                                         isDirectoryRestricted:isDirectoryRestricted
+                                               profilePhotoUrl:profilePhotoUrl];
 }
 
 @end
@@ -30557,6 +30625,201 @@
   NSNumber *hasMore = valueDict[@"has_more"];
 
   return [[DBTEAMTeamNamespacesListResult alloc] initWithNamespaces:namespaces cursor:cursor hasMore:hasMore];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMTeamReportFailureReason.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamReportFailureReason
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTemporaryError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamReportFailureReasonTemporaryError;
+  }
+  return self;
+}
+
+- (instancetype)initWithManyReportsAtOnce {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamReportFailureReasonManyReportsAtOnce;
+  }
+  return self;
+}
+
+- (instancetype)initWithTooMuchData {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamReportFailureReasonTooMuchData;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamReportFailureReasonOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isTemporaryError {
+  return _tag == DBTEAMTeamReportFailureReasonTemporaryError;
+}
+
+- (BOOL)isManyReportsAtOnce {
+  return _tag == DBTEAMTeamReportFailureReasonManyReportsAtOnce;
+}
+
+- (BOOL)isTooMuchData {
+  return _tag == DBTEAMTeamReportFailureReasonTooMuchData;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMTeamReportFailureReasonOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMTeamReportFailureReasonTemporaryError:
+    return @"DBTEAMTeamReportFailureReasonTemporaryError";
+  case DBTEAMTeamReportFailureReasonManyReportsAtOnce:
+    return @"DBTEAMTeamReportFailureReasonManyReportsAtOnce";
+  case DBTEAMTeamReportFailureReasonTooMuchData:
+    return @"DBTEAMTeamReportFailureReasonTooMuchData";
+  case DBTEAMTeamReportFailureReasonOther:
+    return @"DBTEAMTeamReportFailureReasonOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamReportFailureReasonSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamReportFailureReasonSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMTeamReportFailureReasonSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamReportFailureReasonTemporaryError:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamReportFailureReasonManyReportsAtOnce:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamReportFailureReasonTooMuchData:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamReportFailureReasonOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamReportFailureReason:other];
+}
+
+- (BOOL)isEqualToTeamReportFailureReason:(DBTEAMTeamReportFailureReason *)aTeamReportFailureReason {
+  if (self == aTeamReportFailureReason) {
+    return YES;
+  }
+  if (self.tag != aTeamReportFailureReason.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamReportFailureReasonTemporaryError:
+    return [[self tagName] isEqual:[aTeamReportFailureReason tagName]];
+  case DBTEAMTeamReportFailureReasonManyReportsAtOnce:
+    return [[self tagName] isEqual:[aTeamReportFailureReason tagName]];
+  case DBTEAMTeamReportFailureReasonTooMuchData:
+    return [[self tagName] isEqual:[aTeamReportFailureReason tagName]];
+  case DBTEAMTeamReportFailureReasonOther:
+    return [[self tagName] isEqual:[aTeamReportFailureReason tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamReportFailureReasonSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamReportFailureReason *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isTemporaryError]) {
+    jsonDict[@".tag"] = @"temporary_error";
+  } else if ([valueObj isManyReportsAtOnce]) {
+    jsonDict[@".tag"] = @"many_reports_at_once";
+  } else if ([valueObj isTooMuchData]) {
+    jsonDict[@".tag"] = @"too_much_data";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMTeamReportFailureReason *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"temporary_error"]) {
+    return [[DBTEAMTeamReportFailureReason alloc] initWithTemporaryError];
+  } else if ([tag isEqualToString:@"many_reports_at_once"]) {
+    return [[DBTEAMTeamReportFailureReason alloc] initWithManyReportsAtOnce];
+  } else if ([tag isEqualToString:@"too_much_data"]) {
+    return [[DBTEAMTeamReportFailureReason alloc] initWithTooMuchData];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamReportFailureReason alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamReportFailureReason alloc] initWithOther];
+  }
 }
 
 @end

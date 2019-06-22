@@ -119,6 +119,7 @@
 #import "DBSHARINGSharedFolderMembers.h"
 #import "DBSHARINGSharedFolderMetadata.h"
 #import "DBSHARINGSharedFolderMetadataBase.h"
+#import "DBSHARINGSharedLinkAlreadyExistsMetadata.h"
 #import "DBSHARINGSharedLinkError.h"
 #import "DBSHARINGSharedLinkMetadata.h"
 #import "DBSHARINGSharedLinkPolicy.h"

@@ -69,6 +69,9 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
   /// This should happen very rarely.
   DBFILESRelocationErrorInternalError,
 
+  /// Can't move the shared folder to the given destination.
+  DBFILESRelocationErrorCantMoveSharedFolder,
+
   /// (no description).
   DBFILESRelocationErrorOther,
 
@@ -202,6 +205,16 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 - (instancetype)initWithInternalError;
 
 ///
+/// Initializes union class with tag state of "cant_move_shared_folder".
+///
+/// Description of the "cant_move_shared_folder" tag state: Can't move the
+/// shared folder to the given destination.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCantMoveSharedFolder;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -309,6 +322,15 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 /// @return Whether the union's current tag state has value "internal_error".
 ///
 - (BOOL)isInternalError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cant_move_shared_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "cant_move_shared_folder".
+///
+- (BOOL)isCantMoveSharedFolder;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

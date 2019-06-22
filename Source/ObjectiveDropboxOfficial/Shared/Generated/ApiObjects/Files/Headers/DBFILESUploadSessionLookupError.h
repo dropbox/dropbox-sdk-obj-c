@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
   /// due to a network error.
   DBFILESUploadSessionLookupErrorIncorrectOffset,
 
-  /// You are attempting to append data to an upload session that has alread
+  /// You are attempting to append data to an upload session that has already
   /// been closed (i.e. committed).
   DBFILESUploadSessionLookupErrorClosed,
 
@@ -98,7 +98,7 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 /// Initializes union class with tag state of "closed".
 ///
 /// Description of the "closed" tag state: You are attempting to append data to
-/// an upload session that has alread been closed (i.e. committed).
+/// an upload session that has already been closed (i.e. committed).
 ///
 /// @return An initialized instance.
 ///
