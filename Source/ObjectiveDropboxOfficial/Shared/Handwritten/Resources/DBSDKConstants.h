@@ -6,10 +6,10 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const kV2SDKVersion;
-extern NSString *const kV2SDKDefaultUserAgentPrefix;
-extern NSString *const kSDKForegroundSessionId;
-extern NSString *const kSDKBackgroundSessionId;
-extern NSString *const kSDKDebugHost;
-extern BOOL const kSDKDebug;
-extern NSString *const kCSERFKey;
+extern NSString *const kDBXSDKVersion;
+extern NSString *const kDBXSDKDefaultUserAgentPrefix;
+extern NSString *const kDBXSDKForegroundSessionId;
+extern NSString *const kDBXSDKBackgroundSessionId;
+extern NSString *const kDBXSDKDebugHost;
+extern BOOL const kDBXSDKDebug;
+extern NSString *const kDBXSDKCSERFKey;
