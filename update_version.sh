@@ -43,7 +43,7 @@ echo '--------------------'
 echo
 
 echo "Replacing User Agent version number..."
-sed -i '' -E "s/kDBXSDKVersion = @\"$version_regex\";/kDBXSDKVersion = @\"$1\";/" $user_agent
+sed -i '' -E "s/kDBSDKVersion = @\"$version_regex\";/kDBSDKVersion = @\"$1\";/" $user_agent
 echo '--------------------'
 cat $user_agent | grep $1
 echo '--------------------'

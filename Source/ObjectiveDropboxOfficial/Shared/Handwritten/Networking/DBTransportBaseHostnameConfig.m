@@ -27,16 +27,16 @@
 @implementation DBTransportBaseHostnameConfig
 
 - (instancetype)init {
-  if (!kDBXSDKDebug) {
+  if (!kDBSDKDebug) {
     return [self initWithMeta:@"www.dropbox.com"
                           api:@"api.dropbox.com"
                       content:@"api-content.dropbox.com"
                        notify:@"notify.dropboxapi.com"];
   } else {
-    return [self initWithMeta:[NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kDBXSDKDebugHost]
-                          api:[NSString stringWithFormat:@"api-%@.dev.corp.dropbox.com", kDBXSDKDebugHost]
-                      content:[NSString stringWithFormat:@"api-content-%@.dev.corp.dropbox.com", kDBXSDKDebugHost]
-                       notify:[NSString stringWithFormat:@"notify-%@.dev.corp.dropboxapi.com", kDBXSDKDebugHost]];
+    return [self initWithMeta:[NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kDBSDKDebugHost]
+                          api:[NSString stringWithFormat:@"api-%@.dev.corp.dropbox.com", kDBSDKDebugHost]
+                      content:[NSString stringWithFormat:@"api-content-%@.dev.corp.dropbox.com", kDBSDKDebugHost]
+                       notify:[NSString stringWithFormat:@"notify-%@.dev.corp.dropboxapi.com", kDBSDKDebugHost]];
   }
   return self;
 }
