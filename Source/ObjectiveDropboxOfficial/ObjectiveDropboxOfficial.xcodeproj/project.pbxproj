@@ -3136,6 +3136,9 @@
 		63FB3A1C22BDDAD30062BA22 /* DBTEAMTeamAuthRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FB2DE922BDDACA0062BA22 /* DBTEAMTeamAuthRoutes.m */; };
 		63FB3A1D22BDDAD30062BA22 /* DBFILEPROPERTIESUserAuthRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FB2DEA22BDDACA0062BA22 /* DBFILEPROPERTIESUserAuthRoutes.m */; };
 		63FB3A1E22BDDAD30062BA22 /* DBFILEPROPERTIESUserAuthRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FB2DEA22BDDACA0062BA22 /* DBFILEPROPERTIESUserAuthRoutes.m */; };
+		F1D61D25242402600030C9C0 /* DBTokenAccessType.h in Headers */ = {isa = PBXBuildFile; fileRef = F1D61D23242402600030C9C0 /* DBTokenAccessType.h */; };
+		F1D61D26242402600030C9C0 /* DBTokenAccessType.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D61D24242402600030C9C0 /* DBTokenAccessType.m */; };
+		F1D61D272424026A0030C9C0 /* DBTokenAccessType.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D61D24242402600030C9C0 /* DBTokenAccessType.m */; };
 		F235B5221E29913600144F8B /* DBOAuthMobile-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */; };
 		F235B5241E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51E1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m */; };
 		F235B52F1E29915400144F8B /* DBOAuthDesktop-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B5291E29915400144F8B /* DBOAuthDesktop-macOS.m */; };
@@ -4846,6 +4849,8 @@
 		63FB2DE822BDDACA0062BA22 /* DBAUTHUserAuthRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAUTHUserAuthRoutes.m; sourceTree = "<group>"; };
 		63FB2DE922BDDACA0062BA22 /* DBTEAMTeamAuthRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTEAMTeamAuthRoutes.m; sourceTree = "<group>"; };
 		63FB2DEA22BDDACA0062BA22 /* DBFILEPROPERTIESUserAuthRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFILEPROPERTIESUserAuthRoutes.m; sourceTree = "<group>"; };
+		F1D61D23242402600030C9C0 /* DBTokenAccessType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTokenAccessType.h; sourceTree = "<group>"; };
+		F1D61D24242402600030C9C0 /* DBTokenAccessType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTokenAccessType.m; sourceTree = "<group>"; };
 		F235B51B1E29913600144F8B /* DBOAuthMobile-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBOAuthMobile-iOS.h"; sourceTree = "<group>"; };
 		F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOAuthMobile-iOS.m"; sourceTree = "<group>"; };
 		F235B51D1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBClientsManager+MobileAuth-iOS.h"; sourceTree = "<group>"; };
@@ -6981,6 +6986,8 @@
 				F29781911E03692800876A73 /* DBSDKKeychain.h */,
 				F29781921E03692800876A73 /* DBSDKKeychain.m */,
 				F29781931E03692800876A73 /* DBSharedApplicationProtocol.h */,
+				F1D61D23242402600030C9C0 /* DBTokenAccessType.h */,
+				F1D61D24242402600030C9C0 /* DBTokenAccessType.m */,
 			);
 			path = OAuth;
 			sourceTree = "<group>";
@@ -8077,6 +8084,7 @@
 				63FB37BB22BDDAD10062BA22 /* DBTEAMLOGTeamSelectiveSyncPolicyChangedType.h in Headers */,
 				63FB36FF22BDDAD00062BA22 /* DBTEAMLOGGroupJoinPolicy.h in Headers */,
 				63FB394B22BDDAD20062BA22 /* DBFILESListFolderArg.h in Headers */,
+				F1D61D25242402600030C9C0 /* DBTokenAccessType.h in Headers */,
 				63FB2F8522BDDACB0062BA22 /* DBSHARINGTeamMemberInfo.h in Headers */,
 				63FB381B22BDDAD10062BA22 /* DBTEAMLOGFileCopyType.h in Headers */,
 				63FB36A322BDDAD00062BA22 /* DBTEAMLOGShowcaseRemoveMemberDetails.h in Headers */,
@@ -10272,6 +10280,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = F26B756B1D7F6AF700714F70;
@@ -10366,6 +10375,7 @@
 				F241694F1E5247DB0038E306 /* DBTransportBaseConfig.m in Sources */,
 				63FB2FC122BDDACB0062BA22 /* DBSeenStateObjects.m in Sources */,
 				F2A2DBB01E578C3F001D8449 /* DBOpenWithInfo-iOS.m in Sources */,
+				F1D61D26242402600030C9C0 /* DBTokenAccessType.m in Sources */,
 				63FB3A1B22BDDAD30062BA22 /* DBTEAMTeamAuthRoutes.m in Sources */,
 				63FB39CD22BDDAD20062BA22 /* DBUSERSUserAuthRoutes.m in Sources */,
 				F29788F51E03692F00876A73 /* DBTransportBaseClient.m in Sources */,
@@ -10453,6 +10463,7 @@
 				F29788D01E03692F00876A73 /* DBTeamClient.m in Sources */,
 				63FB39F022BDDAD20062BA22 /* DBTEAMLOGRouteObjects.m in Sources */,
 				F29788F61E03692F00876A73 /* DBTransportBaseClient.m in Sources */,
+				F1D61D272424026A0030C9C0 /* DBTokenAccessType.m in Sources */,
 				63FB39CE22BDDAD20062BA22 /* DBUSERSUserAuthRoutes.m in Sources */,
 				3C3C29751F7D757E00C54011 /* DBTransportBaseHostnameConfig.m in Sources */,
 				63FB39BE22BDDAD20062BA22 /* DBAppBaseClient.m in Sources */,

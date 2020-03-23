@@ -3,6 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
+#import "DBTokenAccessType.h"
 
 @class DBAccessToken;
 @class DBOAuthResult;
@@ -54,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
   NSString *_host;
   NSMutableArray<NSURL *> *_urls;
 }
+
+@property (nonatomic, strong, nullable, readonly) DBTokenAccessType tokenAccessType;
 
 /// Sets the locale of the OAuth flow webpages. If `nil`, then defaults to device locale.
 @property (nonatomic, strong) NSLocale *locale;
