@@ -33,12 +33,12 @@ typedef NS_ENUM(NSInteger, DBPAPERImportFormatTag) {
   /// The provided data is interpreted as standard HTML.
   DBPAPERImportFormatHtml,
 
-  /// The provided data is interpreted as markdown. Note: The first line of
-  /// the provided document will be used as the doc title.
+  /// The provided data is interpreted as markdown. The first line of the
+  /// provided document will be used as the doc title.
   DBPAPERImportFormatMarkdown,
 
-  /// The provided data is interpreted as plain text. Note: The first line of
-  /// the provided document will be used as the doc title.
+  /// The provided data is interpreted as plain text. The first line of the
+  /// provided document will be used as the doc title.
   DBPAPERImportFormatPlainText,
 
   /// (no description).
@@ -65,8 +65,8 @@ typedef NS_ENUM(NSInteger, DBPAPERImportFormatTag) {
 /// Initializes union class with tag state of "markdown".
 ///
 /// Description of the "markdown" tag state: The provided data is interpreted as
-/// markdown. Note: The first line of the provided document will be used as the
-/// doc title.
+/// markdown. The first line of the provided document will be used as the doc
+/// title.
 ///
 /// @return An initialized instance.
 ///
@@ -76,8 +76,8 @@ typedef NS_ENUM(NSInteger, DBPAPERImportFormatTag) {
 /// Initializes union class with tag state of "plain_text".
 ///
 /// Description of the "plain_text" tag state: The provided data is interpreted
-/// as plain text. Note: The first line of the provided document will be used as
-/// the doc title.
+/// as plain text. The first line of the provided document will be used as the
+/// doc title.
 ///
 /// @return An initialized instance.
 ///

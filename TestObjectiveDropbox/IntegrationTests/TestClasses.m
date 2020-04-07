@@ -38,47 +38,47 @@ void MyLog(NSString *format, ...) {
 }
 
 // Test user app with 'Full Dropbox' permission
-- (void)testAllUserAPIEndpoints:(void (^)())nextTest asMember:(BOOL)asMember {
-  void (^end)() = ^{
+- (void)testAllUserAPIEndpoints:(void (^)(void))nextTest asMember:(BOOL)asMember {
+    void (^end)(void) = ^{
     if (nextTest) {
       nextTest();
     } else {
       [TestFormat printAllTestsEnd];
     }
   };
-  void (^testAuthEndpoints)() = ^{
+    void (^testAuthEndpoints)(void) = ^{
     [self testAuthEndpoints:end];
   };
-  void (^testUsersEndpoints)() = ^{
+    void (^testUsersEndpoints)(void) = ^{
     [self testUsersEndpoints:testAuthEndpoints];
   };
-  void (^testSharingEndpoints)() = ^{
+    void (^testSharingEndpoints)(void) = ^{
     [self testSharingEndpoints:testUsersEndpoints];
   };
-  void (^testFilesEndpoints)() = ^{
+    void (^testFilesEndpoints)(void) = ^{
     [self testFilesEndpoints:testSharingEndpoints asMember:asMember];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     testFilesEndpoints();
   };
   
   start();
 }
 
-- (void)testAuthEndpoints:(void (^)())nextTest {
+- (void)testAuthEndpoints:(void (^)(void))nextTest {
   AuthTests *authTests = [[AuthTests alloc] init:self];
   
-  void (^end)() = ^{
+    void (^end)(void) = ^{
     [TestFormat printTestEnd];
     nextTest();
   };
-  void (^tokenFromOauth1)() = ^{
+    void (^tokenFromOauth1)(void) = ^{
     [authTests tokenFromOauth1:end];
   };
-  void (^tokenRevoke)() = ^{
+    void (^tokenRevoke)(void) = ^{
     [authTests tokenRevoke:tokenFromOauth1];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     tokenRevoke();
   };
   
@@ -86,77 +86,77 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testFilesEndpoints:(void (^)())nextTest asMember:(BOOL)asMember {
+- (void)testFilesEndpoints:(void (^)(void))nextTest asMember:(BOOL)asMember {
   FilesTests *filesTests = [[FilesTests alloc] init:self];
   
-  void (^end)() = ^{
+    void (^end)(void) = ^{
     [TestFormat printTestEnd];
     nextTest();
   };
-  void (^listFolderLongpollAndTrigger)() = ^{
+    void (^listFolderLongpollAndTrigger)(void) = ^{
     [filesTests listFolderLongpollAndTrigger:end];
   };
-  void (^uploadStream)() = ^{
+    void (^uploadStream)(void) = ^{
     [filesTests uploadStream:listFolderLongpollAndTrigger];
   };
-  void (^uploadFile)() = ^{
+    void (^uploadFile)(void) = ^{
     [filesTests uploadFile:uploadStream];
   };
-  void (^downloadToMemoryWithRange)() = ^{
+    void (^downloadToMemoryWithRange)(void) = ^{
     [filesTests downloadToMemoryWithRange:uploadFile];
   };
-  void (^downloadToMemory)() = ^{
+    void (^downloadToMemory)(void) = ^{
     [filesTests downloadToMemory:downloadToMemoryWithRange];
   };
-  void (^downloadToFileAgain)() = ^{
+    void (^downloadToFileAgain)(void) = ^{
     [filesTests downloadToFileAgain:downloadToMemory];
   };
-  void (^downloadToFile)() = ^{
+    void (^downloadToFile)(void) = ^{
     [filesTests downloadToFile:downloadToFileAgain];
   };
-  void (^saveUrl)() = ^{
+    void (^saveUrl)(void) = ^{
     [filesTests saveUrl:downloadToFile asMember:asMember];
   };
-  void (^move)() = ^{
+    void (^move)(void) = ^{
     [filesTests moveV2:saveUrl];
   };
-  void (^listRevisions)() = ^{
+    void (^listRevisions)(void) = ^{
     [filesTests listRevisions:move];
   };
-  void (^getTemporaryLink)() = ^{
+    void (^getTemporaryLink)(void) = ^{
     [filesTests getTemporaryLink:listRevisions];
   };
-  void (^getMetadataError)() = ^{
+    void (^getMetadataError)(void) = ^{
     [filesTests getMetadataError:getTemporaryLink];
   };
-  void (^getMetadata)() = ^{
+    void (^getMetadata)(void) = ^{
     [filesTests getMetadata:getMetadataError];
   };
-  void (^dCopyReferenceGet)() = ^{
+    void (^dCopyReferenceGet)(void) = ^{
     [filesTests dCopyReferenceGet:getMetadata];
   };
-  void (^dCopy)() = ^{
+    void (^dCopy)(void) = ^{
     [filesTests dCopyV2:dCopyReferenceGet];
   };
-  void (^uploadDataSession)() = ^{
+    void (^uploadDataSession)(void) = ^{
     [filesTests uploadDataSession:dCopy];
   };
-  void (^uploadData)() = ^{
+    void (^uploadData)(void) = ^{
     [filesTests uploadData:uploadDataSession];
   };
-  void (^listFolder)() = ^{
+    void (^listFolder)(void) = ^{
     [filesTests listFolder:uploadData];
   };
-  void (^listFolderError)() = ^{
+    void (^listFolderError)(void) = ^{
     [filesTests listFolderError:listFolder];
   };
-  void (^createFolder)() = ^{
+    void (^createFolder)(void) = ^{
     [filesTests createFolderV2:listFolderError];
   };
-  void (^delete_)() = ^{
+    void (^delete_)(void) = ^{
     [filesTests deleteV2:createFolder];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     delete_();
   };
   
@@ -164,53 +164,53 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testSharingEndpoints:(void (^)())nextTest {
+- (void)testSharingEndpoints:(void (^)(void))nextTest {
   SharingTests *sharingTests = [[SharingTests alloc] init:self];
   
-  void (^end)() = ^{
+    void (^end)(void) = ^{
     [TestFormat printTestEnd];
     nextTest();
   };
-  void (^unshareFolder)() = ^{
+    void (^unshareFolder)(void) = ^{
     [sharingTests updateFolderPolicy:end];
   };
-  void (^updateFolderPolicy)() = ^{
+    void (^updateFolderPolicy)(void) = ^{
     [sharingTests updateFolderPolicy:unshareFolder];
   };
-  void (^mountFolder)() = ^{
+    void (^mountFolder)(void) = ^{
     [sharingTests mountFolder:updateFolderPolicy];
   };
-  void (^unmountFolder)() = ^{
+    void (^unmountFolder)(void) = ^{
     [sharingTests unmountFolder:mountFolder];
   };
-  void (^revokeSharedLink)() = ^{
+    void (^revokeSharedLink)(void) = ^{
     [sharingTests revokeSharedLink:unmountFolder];
   };
-  void (^removeFolderMember)() = ^{
+    void (^removeFolderMember)(void) = ^{
     [sharingTests removeFolderMember:revokeSharedLink];
   };
-  void (^listSharedLinks)() = ^{
+    void (^listSharedLinks)(void) = ^{
     [sharingTests listSharedLinks:removeFolderMember];
   };
-  void (^listFolders)() = ^{
+    void (^listFolders)(void) = ^{
     [sharingTests listFolders:listSharedLinks];
   };
-  void (^listFolderMembers)() = ^{
+    void (^listFolderMembers)(void) = ^{
     [sharingTests listFolderMembers:listFolders];
   };
-  void (^addFolderMember)() = ^{
+    void (^addFolderMember)(void) = ^{
     [sharingTests addFolderMember:listFolderMembers];
   };
-  void (^getFolderMetadata)() = ^{
+    void (^getFolderMetadata)(void) = ^{
     [sharingTests getFolderMetadata:addFolderMember];
   };
-  void (^createSharedLinkWithSettings)() = ^{
+    void (^createSharedLinkWithSettings)(void) = ^{
     [sharingTests createSharedLinkWithSettings:getFolderMetadata];
   };
-  void (^shareFolder)() = ^{
+    void (^shareFolder)(void) = ^{
     [sharingTests shareFolder:createSharedLinkWithSettings];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     shareFolder();
   };
   
@@ -218,26 +218,26 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testUsersEndpoints:(void (^)())nextTest {
+- (void)testUsersEndpoints:(void (^)(void))nextTest {
   UsersTests *usersTests = [[UsersTests alloc] init:self];
   
-  void (^end)() = ^{
+    void (^end)(void) = ^{
     [TestFormat printTestEnd];
     nextTest();
   };
-  void (^getSpaceUsage)() = ^{
+    void (^getSpaceUsage)(void) = ^{
     [usersTests getSpaceUsage:end];
   };
-  void (^getCurrentAccount)() = ^{
+    void (^getCurrentAccount)(void) = ^{
     [usersTests getCurrentAccount:getSpaceUsage];
   };
-  void (^getAccountBatch)() = ^{
+    void (^getAccountBatch)(void) = ^{
     [usersTests getAccountBatch:getCurrentAccount];
   };
-  void (^getAccount)() = ^{
+    void (^getAccount)(void) = ^{
     [usersTests getAccount:getAccountBatch];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     getAccount();
   };
   
@@ -261,8 +261,8 @@ void MyLog(NSString *format, ...) {
 }
 
 // Test business app with 'Team member file access' permission
-- (void)testAllTeamMemberFileAcessActions:(void (^)())nextTest {
-  void (^end)() = ^{
+- (void)testAllTeamMemberFileAcessActions:(void (^)(void))nextTest {
+    void (^end)(void) = ^{
     if (nextTest) {
       nextTest();
     } else {
@@ -271,13 +271,13 @@ void MyLog(NSString *format, ...) {
   };
   void (^testPerformActionAsMember)(TeamTests *) = ^(TeamTests *teamTests) {
     [teamTests initMembersGetInfo:^{}];
-    DropboxTester *tester = [[DropboxTester alloc] initWithTestData:_testData];
+      DropboxTester *tester = [[DropboxTester alloc] initWithTestData:self->_testData];
     [tester testAllUserAPIEndpoints:end asMember:YES];
   };
-  void (^testTeamMemberFileAcessActions)() = ^{
+    void (^testTeamMemberFileAcessActions)(void) = ^{
     [self testTeamMemberFileAcessActions:testPerformActionAsMember];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     testTeamMemberFileAcessActions();
   };
   
@@ -285,18 +285,18 @@ void MyLog(NSString *format, ...) {
 }
 
 // Test business app with 'Team member management' permission
-- (void)testAllTeamMemberManagementActions:(void (^)())nextTest {
-  void (^end)() = ^{
+- (void)testAllTeamMemberManagementActions:(void (^)(void))nextTest {
+    void (^end)(void) = ^{
     if (nextTest) {
       nextTest();
     } else {
       [TestFormat printAllTestsEnd];
     }
   };
-  void (^testTeamMemberManagementActions)() = ^{
+    void (^testTeamMemberManagementActions)(void) = ^{
     [self testTeamMemberManagementActions:end];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     testTeamMemberManagementActions();
   };
   
@@ -306,41 +306,41 @@ void MyLog(NSString *format, ...) {
 - (void)testTeamMemberFileAcessActions:(void (^)(TeamTests *))nextTest {
   TeamTests *teamTests = [[TeamTests alloc] init:self];
 
-  void (^end)() = ^{
+    void (^end)(void) = ^{
     [TestFormat printTestEnd];
     nextTest(teamTests);
   };
-  void (^reportsGetStorage)() = ^{
+    void (^reportsGetStorage)(void) = ^{
     [teamTests reportsGetStorage:end];
   };
-  void (^reportsGetMembership)() = ^{
+    void (^reportsGetMembership)(void) = ^{
     [teamTests reportsGetMembership:reportsGetStorage];
   };
-  void (^reportsGetDevices)() = ^{
+    void (^reportsGetDevices)(void) = ^{
     [teamTests reportsGetDevices:reportsGetMembership];
   };
-  void (^reportsGetActivity)() = ^{
+    void (^reportsGetActivity)(void) = ^{
     [teamTests reportsGetActivity:reportsGetDevices];
   };
-  void (^getInfo)() = ^{
+    void (^getInfo)(void) = ^{
     [teamTests getInfo:reportsGetActivity];
   };
-  void (^linkedAppsListMembersLinkedApps)() = ^{
+    void (^linkedAppsListMembersLinkedApps)(void) = ^{
     [teamTests linkedAppsListMembersLinkedApps:getInfo];
   };
-  void (^linkedAppsListMemberLinkedApps)() = ^{
+    void (^linkedAppsListMemberLinkedApps)(void) = ^{
     [teamTests linkedAppsListMemberLinkedApps:linkedAppsListMembersLinkedApps];
   };
-  void (^listMembersDevices)() = ^{
+    void (^listMembersDevices)(void) = ^{
     [teamTests listMembersDevices:linkedAppsListMemberLinkedApps];
   };
-  void (^listMemberDevices)() = ^{
+    void (^listMemberDevices)(void) = ^{
     [teamTests listMemberDevices:listMembersDevices];
   };
-  void (^initMembersGetInfo)() = ^{
+    void (^initMembersGetInfo)(void) = ^{
     [teamTests initMembersGetInfo:listMemberDevices];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     initMembersGetInfo();
   };
   
@@ -348,59 +348,59 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testTeamMemberManagementActions:(void (^)())nextTest {
+- (void)testTeamMemberManagementActions:(void (^)(void))nextTest {
   TeamTests *teamTests = [[TeamTests alloc] init:self];
   
-  void (^end)() = ^{
+    void (^end)(void) = ^{
     [TestFormat printTestEnd];
     nextTest();
   };
-  void (^membersRemove)() = ^{
+    void (^membersRemove)(void) = ^{
     [teamTests membersRemove:end];
   };
-  void (^membersSetProfile)() = ^{
+    void (^membersSetProfile)(void) = ^{
     [teamTests membersSetProfile:membersRemove];
   };
-  void (^membersSetAdminPermissions)() = ^{
+    void (^membersSetAdminPermissions)(void) = ^{
     [teamTests membersSetAdminPermissions:membersSetProfile];
   };
-  void (^membersSendWelcomeEmail)() = ^{
+    void (^membersSendWelcomeEmail)(void) = ^{
     [teamTests membersSendWelcomeEmail:membersSetAdminPermissions];
   };
-  void (^membersList)() = ^{
+    void (^membersList)(void) = ^{
     [teamTests membersList:membersSendWelcomeEmail];
   };
-  void (^membersGetInfo)() = ^{
+    void (^membersGetInfo)(void) = ^{
     [teamTests membersGetInfo:membersList];
   };
-  void (^membersAdd)() = ^{
+    void (^membersAdd)(void) = ^{
     [teamTests membersAdd:membersGetInfo];
   };
-  void (^groupsDelete)() = ^{
+    void (^groupsDelete)(void) = ^{
     [teamTests groupsDelete:membersAdd];
   };
-  void (^groupsUpdate)() = ^{
+    void (^groupsUpdate)(void) = ^{
     [teamTests groupsUpdate:groupsDelete];
   };
-  void (^groupsMembersList)() = ^{
+    void (^groupsMembersList)(void) = ^{
     [teamTests groupsMembersList:groupsUpdate];
   };
-  void (^groupsMembersAdd)() = ^{
+    void (^groupsMembersAdd)(void) = ^{
     [teamTests groupsMembersAdd:groupsMembersList];
   };
-  void (^groupsList)() = ^{
+    void (^groupsList)(void) = ^{
     [teamTests groupsList:groupsMembersAdd];
   };
-  void (^groupsGetInfo)() = ^{
+    void (^groupsGetInfo)(void) = ^{
     [teamTests groupsGetInfo:groupsList];
   };
-  void (^groupsCreate)() = ^{
+    void (^groupsCreate)(void) = ^{
     [teamTests groupsCreate:groupsGetInfo];
   };
-  void (^initMembersGetInfo)() = ^{
+    void (^initMembersGetInfo)(void) = ^{
     [teamTests initMembersGetInfo:groupsCreate];
   };
-  void (^start)() = ^{
+    void (^start)(void) = ^{
     initMembersGetInfo();
   };
   
@@ -663,7 +663,7 @@ void MyLog(NSString *format, ...) {
   return self;
 }
 
-- (void)tokenRevoke:(void (^)())nextTest {
+- (void)tokenRevoke:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.auth tokenRevoke] setResponseBlock:^(DBNilObject *result, DBNilObject *routeError, DBRequestError *error) {
     MyLog(@"%@\n", result);
@@ -677,7 +677,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)tokenFromOauth1:(void (^)())nextTest {
+- (void)tokenFromOauth1:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.appAuth tokenFromOauth1:_tester.testData.oauth1Token oauth1TokenSecret:_tester.testData.oauth1TokenSecret]
     setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError, DBRequestError *error) {
@@ -717,16 +717,16 @@ void MyLog(NSString *format, ...) {
   return self;
 }
 
-- (void)deleteV2:(void (^)())nextTest {
+- (void)deleteV2:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.files deleteV2:_tester.testData.baseFolder]
-      setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
+    [[[_tester.files delete_V2:_tester.testData.baseFolder]
+      setResponseBlock:^(DBFILESDeleteResult * _Nullable result, DBFILESDeleteError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
-          [TestFormat printErrors:error routeError:routeError];
+          [TestFormat printErrors:networkError routeError:routeError];
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         }
@@ -737,16 +737,16 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)createFolderV2:(void (^)())nextTest {
+- (void)createFolderV2:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files createFolderV2:_tester.testData.testFolderPath]
-      setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESCreateFolderResult * _Nullable result, DBFILESCreateFolderError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
-          [TestFormat abort:error routeError:routeError];
+          [TestFormat abort:networkError routeError:routeError];
         }
       } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
@@ -755,7 +755,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listFolderError:(void (^)())nextTest {
+- (void)listFolderError:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files listFolder:@"/does/not/exist/folder"]
       setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
@@ -775,7 +775,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listFolder:(void (^)())nextTest {
+- (void)listFolder:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files listFolder:_tester.testData.testFolderPath]
       setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
@@ -793,7 +793,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)uploadData:(void (^)())nextTest {
+- (void)uploadData:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = _tester.testData.testFilePath;
   [[[_tester.files uploadData:outputPath inputData:_tester.testData.fileData]
@@ -812,22 +812,22 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)uploadDataSession:(void (^)())nextTest {
+- (void)uploadDataSession:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
 
   void (^uploadSessionAppendV2)(NSString *, DBFILESUploadSessionCursor *) = ^(NSString *sessionId,
                                                                               DBFILESUploadSessionCursor *cursor) {
-    [[[_tester.files uploadSessionAppendV2Data:cursor inputData:_tester.testData.fileData]
+      [[[self->_tester.files uploadSessionAppendV2Data:cursor inputData:self->_tester.testData.fileData]
         setResponseBlock:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
           // response type for this route is nil
           if (!error) {
             DBFILESUploadSessionCursor *cursor = [[DBFILESUploadSessionCursor alloc]
                 initWithSessionId:sessionId
-                           offset:[NSNumber numberWithUnsignedLong:(_tester.testData.fileData.length * 2)]];
+                                                  offset:[NSNumber numberWithUnsignedLong:(self->_tester.testData.fileData.length * 2)]];
             DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc]
-                initWithPath:[NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_session"]];
+                                             initWithPath:[NSString stringWithFormat:@"%@%@", self->_tester.testData.testFilePath, @"_session"]];
 
-            [[[_tester.files uploadSessionFinishData:cursor commit:commitInfo inputData:_tester.testData.fileData]
+              [[[self->_tester.files uploadSessionFinishData:cursor commit:commitInfo inputData:self->_tester.testData.fileData]
                 setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadSessionFinishError *routeError, DBRequestError *error) {
                   if (result) {
                     MyLog(@"%@\n", result);
@@ -861,7 +861,7 @@ void MyLog(NSString *format, ...) {
               result.sessionId,
               [[DBFILESUploadSessionCursor alloc]
                   initWithSessionId:result.sessionId
-                             offset:[NSNumber numberWithUnsignedLong:(_tester.testData.fileData.length)]]);
+               offset:[NSNumber numberWithUnsignedLong:(self->_tester.testData.fileData.length)]]);
         } else {
           [TestFormat abort:error routeError:routeError];
         }
@@ -872,18 +872,18 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)dCopyV2:(void (^)())nextTest {
+- (void)dCopyV2:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *copyOutputPath = [NSString
       stringWithFormat:@"%@%@%@%@", _tester.testData.testFilePath, @"_duplicate", @"_", _tester.testData.testId];
   [[[_tester.files dCopyV2:_tester.testData.testFilePath toPath:copyOutputPath]
-      setResponseBlock:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESRelocationResult * _Nullable result, DBFILESRelocationError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
-          [TestFormat abort:error routeError:routeError];
+          [TestFormat abort:networkError routeError:routeError];
         }
       } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
@@ -892,7 +892,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)dCopyReferenceGet:(void (^)())nextTest {
+- (void)dCopyReferenceGet:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files dCopyReferenceGet:_tester.testData.testFilePath]
       setResponseBlock:^(DBFILESGetCopyReferenceResult *result, DBFILESGetCopyReferenceError *routeError, DBRequestError *error) {
@@ -910,7 +910,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getMetadata:(void (^)())nextTest {
+- (void)getMetadata:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files getMetadata:_tester.testData.testFilePath]
       setResponseBlock:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
@@ -928,7 +928,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getMetadataError:(void (^)())nextTest {
+- (void)getMetadataError:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files getMetadata:@"/this/path/does/not/exist"]
       setResponseBlock:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
@@ -948,7 +948,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getTemporaryLink:(void (^)())nextTest {
+- (void)getTemporaryLink:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files getTemporaryLink:_tester.testData.testFilePath]
       setResponseBlock:^(DBFILESGetTemporaryLinkResult *result, DBFILESGetTemporaryLinkError *routeError, DBRequestError *error) {
@@ -966,7 +966,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listRevisions:(void (^)())nextTest {
+- (void)listRevisions:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files listRevisions:_tester.testData.testFilePath]
       setResponseBlock:^(DBFILESListRevisionsResult *result, DBFILESListRevisionsError *routeError, DBRequestError *error) {
@@ -984,27 +984,27 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)moveV2:(void (^)())nextTest {
+- (void)moveV2:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFolderPath, @"/", @"movedLocation"];
   [[[_tester.files createFolderV2:folderPath]
-      setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESCreateFolderResult * _Nullable result, DBFILESCreateFolderError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printOffset:@"Created destination folder"];
 
-          NSString *fileToMove = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_session"];
+            NSString *fileToMove = [NSString stringWithFormat:@"%@%@", self->_tester.testData.testFilePath, @"_session"];
           NSString *destPath =
-              [NSString stringWithFormat:@"%@%@%@%@", folderPath, @"/", _tester.testData.testFileName, @"_session"];
+            [NSString stringWithFormat:@"%@%@%@%@", folderPath, @"/", self->_tester.testData.testFileName, @"_session"];
 
-          [[[_tester.files moveV2:fileToMove toPath:destPath]
-              setResponseBlock:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
+            [[[self->_tester.files moveV2:fileToMove toPath:destPath]
+            setResponseBlock:^(DBFILESRelocationResult * _Nullable result, DBFILESRelocationError * _Nullable routeError, DBRequestError * _Nullable networkError) {
                 if (result) {
                   MyLog(@"%@\n", result);
                   [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
                   nextTest();
                 } else {
-                  [TestFormat abort:error routeError:routeError];
+                  [TestFormat abort:networkError routeError:routeError];
                 }
               } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
             [TestFormat printSentProgress:bytesSent
@@ -1012,7 +1012,7 @@ void MyLog(NSString *format, ...) {
                  totalBytesExpectedToSend:totalBytesExpectedToSend];
           }];
         } else {
-          [TestFormat abort:error routeError:routeError];
+          [TestFormat abort:networkError routeError:routeError];
         }
       } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
@@ -1021,7 +1021,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)saveUrl:(void (^)())nextTest asMember:(BOOL)asMember {
+- (void)saveUrl:(void (^)(void))nextTest asMember:(BOOL)asMember {
   if (asMember) {
     nextTest();
     return;
@@ -1044,7 +1044,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)downloadToFile:(void (^)())nextTest {
+- (void)downloadToFile:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
@@ -1066,7 +1066,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)downloadToFileAgain:(void (^)())nextTest {
+- (void)downloadToFileAgain:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
@@ -1088,7 +1088,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)downloadToFileError:(void (^)())nextTest {
+- (void)downloadToFileError:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *filePath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_does_not_exist"];
   [[[_tester.files downloadUrl:filePath overwrite:YES destination:_tester.testData.destURL]
@@ -1096,7 +1096,7 @@ void MyLog(NSString *format, ...) {
         if (result) {
           NSAssert(NO, @"This call should have errored!");
         } else {
-          NSAssert(![[NSFileManager defaultManager] fileExistsAtPath:[_tester.testData.destURLException path]],
+            NSAssert(![[NSFileManager defaultManager] fileExistsAtPath:[self->_tester.testData.destURLException path]],
                    @"File should not exist here.");
           [TestFormat printOffset:@"Error properly detected"];
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1109,7 +1109,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)downloadToMemory:(void (^)())nextTest {
+- (void)downloadToMemory:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files downloadData:_tester.testData.testFilePath]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
@@ -1132,7 +1132,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)downloadToMemoryWithRange:(void (^)())nextTest {
+- (void)downloadToMemoryWithRange:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files downloadData:_tester.testData.testFilePath byteOffsetStart:@(0) byteOffsetEnd:@(10)]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
@@ -1156,7 +1156,7 @@ void MyLog(NSString *format, ...) {
     }];
 }
 
-- (void)uploadFile:(void (^)())nextTest {
+- (void)uploadFile:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
   [[[_tester.files uploadUrl:outputPath inputUrl:[_tester.testData.destURL path]]
@@ -1175,7 +1175,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)uploadStream:(void (^)())nextTest {
+- (void)uploadStream:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_stream"];
   [[[_tester.files uploadStream:outputPath inputStream:[[NSInputStream alloc] initWithURL:_tester.testData.destURL]]
@@ -1194,18 +1194,18 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listFolderLongpollAndTrigger:(void (^)())nextTest {
-  void (^copy)() = ^{
+- (void)listFolderLongpollAndTrigger:(void (^)(void))nextTest {
+    void (^copy)(void) = ^{
     [TestFormat printOffset:@"Making change that longpoll will detect (copy file)"];
     NSString *copyOutputPath =
-        [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFilePath, @"_duplicate2_", _tester.testData.testId];
+        [NSString stringWithFormat:@"%@%@%@", self->_tester.testData.testFilePath, @"_duplicate2_", self->_tester.testData.testId];
 
-    [[[_tester.files dCopyV2:_tester.testData.testFilePath toPath:copyOutputPath]
-        setResponseBlock:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
+        [[[self->_tester.files dCopyV2:self->_tester.testData.testFilePath toPath:copyOutputPath]
+      setResponseBlock:^(DBFILESRelocationResult * _Nullable result, DBFILESRelocationError * _Nullable routeError, DBRequestError * _Nullable networkError) {
           if (result) {
             MyLog(@"%@\n", result);
           } else {
-            [TestFormat abort:error routeError:routeError];
+            [TestFormat abort:networkError routeError:routeError];
           }
         } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
@@ -1215,7 +1215,7 @@ void MyLog(NSString *format, ...) {
   };
 
   void (^listFolderContinue)(NSString *) = ^(NSString *cursor) {
-    [[[_tester.files listFolderContinue:cursor]
+      [[[self->_tester.files listFolderContinue:cursor]
         setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderContinueError *routeError, DBRequestError *error) {
           if (result) {
             [TestFormat printOffset:@"Here are the changes:"];
@@ -1234,7 +1234,7 @@ void MyLog(NSString *format, ...) {
 
   void (^listFolderLongpoll)(NSString *) = ^(NSString *cursor) {
     [TestFormat printOffset:@"Establishing longpoll"];
-    [[[_tester.files listFolderLongpoll:cursor] setResponseBlock:^(DBFILESListFolderLongpollResult *result,
+      [[[self->_tester.files listFolderLongpoll:cursor] setResponseBlock:^(DBFILESListFolderLongpollResult *result,
                                                            DBFILESListFolderLongpollError *routeError, DBRequestError *error) {
       if (result) {
         MyLog(@"%@\n", result);
@@ -1289,7 +1289,7 @@ void MyLog(NSString *format, ...) {
   return self;
 }
 
-- (void)shareFolder:(void (^)())nextTest {
+- (void)shareFolder:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing shareFolder:_tester.testData.testShareFolderPath]
       setResponseBlock:^(DBSHARINGShareFolderLaunch *result, DBSHARINGShareFolderError *routeError, DBRequestError *error) {
@@ -1300,7 +1300,7 @@ void MyLog(NSString *format, ...) {
                                                        result.asyncJobId]];
           } else if ([result isComplete]) {
             MyLog(@"%@\n", result.complete);
-            _sharedFolderId = result.complete.sharedFolderId;
+              self->_sharedFolderId = result.complete.sharedFolderId;
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
             nextTest();
           } else {
@@ -1317,7 +1317,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)createSharedLinkWithSettings:(void (^)())nextTest {
+- (void)createSharedLinkWithSettings:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing createSharedLinkWithSettings:_tester.testData.testShareFolderPath]
       setResponseBlock:^(DBSHARINGSharedLinkMetadata *result, DBSHARINGCreateSharedLinkWithSettingsError *routeError,
@@ -1326,7 +1326,7 @@ void MyLog(NSString *format, ...) {
           if ([routeError isSharedLinkAlreadyExists]) {
           }
           MyLog(@"%@\n", result);
-          _sharedLink = result.url;
+            self->_sharedLink = result.url;
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
@@ -1339,7 +1339,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getFolderMetadata:(void (^)())nextTest {
+- (void)getFolderMetadata:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing getFolderMetadata:_sharedFolderId]
       setResponseBlock:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGSharedFolderAccessError *routeError, DBRequestError *error) {
@@ -1357,7 +1357,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)addFolderMember:(void (^)())nextTest {
+- (void)addFolderMember:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBSHARINGMemberSelector *memberSelector =
       [[DBSHARINGMemberSelector alloc] initWithEmail:_tester.testData.accountId3Email];
@@ -1381,7 +1381,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listFolderMembers:(void (^)())nextTest {
+- (void)listFolderMembers:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing listFolderMembers:_sharedFolderId]
       setResponseBlock:^(DBSHARINGSharedFolderMembers *result, DBSHARINGSharedFolderAccessError *routeError, DBRequestError *error) {
@@ -1399,7 +1399,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listFolders:(void (^)())nextTest {
+- (void)listFolders:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing listFolders:[NSNumber numberWithInteger:2] actions:nil]
       setResponseBlock:^(DBSHARINGListFoldersResult *result, DBNilObject *routeError, DBRequestError *error) {
@@ -1417,7 +1417,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listSharedLinks:(void (^)())nextTest {
+- (void)listSharedLinks:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing listSharedLinks]
       setResponseBlock:^(DBSHARINGListSharedLinksResult *result, DBSHARINGListSharedLinksError *routeError, DBRequestError *error) {
@@ -1435,13 +1435,13 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)removeFolderMember:(void (^)())nextTest {
+- (void)removeFolderMember:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBSHARINGMemberSelector *memberSelector =
       [[DBSHARINGMemberSelector alloc] initWithDropboxId:_tester.testData.accountId3];
 
   void (^checkJobStatus)(NSString *) = ^(NSString *asyncJobId) {
-    [[[_tester.sharing checkJobStatus:asyncJobId] setResponseBlock:^(DBSHARINGJobStatus *result, DBASYNCPollError *routeError,
+      [[[self->_tester.sharing checkJobStatus:asyncJobId] setResponseBlock:^(DBSHARINGJobStatus *result, DBASYNCPollError *routeError,
                                                              DBRequestError *error) {
       if (result) {
         MyLog(@"%@\n", result);
@@ -1494,7 +1494,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)revokeSharedLink:(void (^)())nextTest {
+- (void)revokeSharedLink:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing revokeSharedLink:_sharedLink]
       setResponseBlock:^(DBNilObject *result, DBSHARINGRevokeSharedLinkError *routeError, DBRequestError *error) {
@@ -1512,7 +1512,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)unmountFolder:(void (^)())nextTest {
+- (void)unmountFolder:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing unmountFolder:_sharedFolderId]
       setResponseBlock:^(DBNilObject *result, DBSHARINGUnmountFolderError *routeError, DBRequestError *error) {
@@ -1530,7 +1530,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)mountFolder:(void (^)())nextTest {
+- (void)mountFolder:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing mountFolder:_sharedFolderId]
       setResponseBlock:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGMountFolderError *routeError, DBRequestError *error) {
@@ -1548,7 +1548,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)updateFolderPolicy:(void (^)())nextTest {
+- (void)updateFolderPolicy:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing updateFolderPolicy:_sharedFolderId]
       setResponseBlock:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGUpdateFolderPolicyError *routeError, DBRequestError *error) {
@@ -1566,7 +1566,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)unshareFolder:(void (^)())nextTest {
+- (void)unshareFolder:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing unshareFolder:_sharedFolderId]
       setResponseBlock:^(DBASYNCLaunchEmptyResult *result, DBSHARINGUnshareFolderError *routeError, DBRequestError *error) {
@@ -1596,7 +1596,7 @@ void MyLog(NSString *format, ...) {
   return self;
 }
 
-- (void)getAccount:(void (^)())nextTest {
+- (void)getAccount:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.users getAccount:_tester.testData.accountId]
       setResponseBlock:^(DBUSERSBasicAccount *result, DBUSERSGetAccountError *routeError, DBRequestError *error) {
@@ -1614,7 +1614,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getAccountBatch:(void (^)())nextTest {
+- (void)getAccountBatch:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSArray<NSString *> *accountIds = @[ _tester.testData.accountId, _tester.testData.accountId2 ];
   [[[_tester.users getAccountBatch:accountIds]
@@ -1633,7 +1633,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getCurrentAccount:(void (^)())nextTest {
+- (void)getCurrentAccount:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.users getCurrentAccount] setResponseBlock:^(DBUSERSFullAccount *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
@@ -1650,7 +1650,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getSpaceUsage:(void (^)())nextTest {
+- (void)getSpaceUsage:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.users getSpaceUsage] setResponseBlock:^(DBUSERSSpaceUsage *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
@@ -1687,7 +1687,7 @@ void MyLog(NSString *format, ...) {
     Permission: TEAM member file access
  */
 
-- (void)initMembersGetInfo:(void (^)())nextTest {
+- (void)initMembersGetInfo:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithEmail:_tester.testData.teamMemberEmail];
   [[[_tester.team membersGetInfo:@[ userSelectArg ]] setResponseBlock:^(NSArray<DBTEAMMembersGetInfoItem *> *result,
@@ -1698,8 +1698,8 @@ void MyLog(NSString *format, ...) {
       if ([getInfo isIdNotFound]) {
         [TestFormat abort:error routeError:routeError];
       } else if ([getInfo isMemberInfo]) {
-        _teamMemberId = getInfo.memberInfo.profile.teamMemberId;
-        s_teamAdminUserClient = [[DBClientsManager authorizedTeamClient] userClientWithMemberId:_teamMemberId];
+          self->_teamMemberId = getInfo.memberInfo.profile.teamMemberId;
+          s_teamAdminUserClient = [[DBClientsManager authorizedTeamClient] userClientWithMemberId:self->_teamMemberId];
       }
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
       nextTest();
@@ -1713,7 +1713,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listMemberDevices:(void (^)())nextTest {
+- (void)listMemberDevices:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team devicesListMemberDevices:_teamMemberId]
       setResponseBlock:^(DBTEAMListMemberDevicesResult *result, DBTEAMListMemberDevicesError *routeError, DBRequestError *error) {
@@ -1731,7 +1731,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)listMembersDevices:(void (^)())nextTest {
+- (void)listMembersDevices:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team devicesListMembersDevices]
       setResponseBlock:^(DBTEAMListMembersDevicesResult *result, DBTEAMListMembersDevicesError *routeError, DBRequestError *error) {
@@ -1749,7 +1749,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)linkedAppsListMemberLinkedApps:(void (^)())nextTest {
+- (void)linkedAppsListMemberLinkedApps:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team linkedAppsListMemberLinkedApps:_teamMemberId]
       setResponseBlock:^(DBTEAMListMemberAppsResult *result, DBTEAMListMemberAppsError *routeError, DBRequestError *error) {
@@ -1767,7 +1767,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)linkedAppsListMembersLinkedApps:(void (^)())nextTest {
+- (void)linkedAppsListMembersLinkedApps:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team linkedAppsListMembersLinkedApps]
       setResponseBlock:^(DBTEAMListMembersAppsResult *result, DBTEAMListMembersAppsError *routeError, DBRequestError *error) {
@@ -1785,7 +1785,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)getInfo:(void (^)())nextTest {
+- (void)getInfo:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team getInfo] setResponseBlock:^(DBTEAMTeamGetInfoResult *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
@@ -1802,7 +1802,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)reportsGetActivity:(void (^)())nextTest {
+- (void)reportsGetActivity:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
@@ -1822,7 +1822,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)reportsGetDevices:(void (^)())nextTest {
+- (void)reportsGetDevices:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
@@ -1842,7 +1842,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)reportsGetMembership:(void (^)())nextTest {
+- (void)reportsGetMembership:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
@@ -1862,7 +1862,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)reportsGetStorage:(void (^)())nextTest {
+- (void)reportsGetStorage:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
@@ -1886,18 +1886,19 @@ void MyLog(NSString *format, ...) {
     Permission: TEAM member management
  */
 
-- (void)groupsCreate:(void (^)())nextTest {
+- (void)groupsCreate:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team groupsCreate:_tester.testData.groupName
+             addCreatorAsOwner:@(TRUE)
                groupExternalId:_tester.testData.groupExternalId
            groupManagementType:nil]
-      setResponseBlock:^(DBTEAMGroupFullInfo *result, DBTEAMGroupCreateError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBTEAMGroupFullInfo * _Nullable result, DBTEAMGroupCreateError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
-          [TestFormat abort:error routeError:routeError];
+          [TestFormat abort:networkError routeError:routeError];
         }
       } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
@@ -1906,7 +1907,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)groupsGetInfo:(void (^)())nextTest {
+- (void)groupsGetInfo:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMGroupsSelector *groupsSelector =
       [[DBTEAMGroupsSelector alloc] initWithGroupExternalIds:@[ _tester.testData.groupExternalId ]];
@@ -1926,7 +1927,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)groupsList:(void (^)())nextTest {
+- (void)groupsList:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team groupsList] setResponseBlock:^(DBTEAMGroupsListResult *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
@@ -1943,7 +1944,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)groupsMembersAdd:(void (^)())nextTest {
+- (void)groupsMembersAdd:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMGroupSelector *groupSelector =
       [[DBTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
@@ -1966,7 +1967,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)groupsMembersList:(void (^)())nextTest {
+- (void)groupsMembersList:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMGroupSelector *groupSelector =
       [[DBTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
@@ -1986,7 +1987,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)groupsUpdate:(void (^)())nextTest {
+- (void)groupsUpdate:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMGroupSelector *groupSelector =
       [[DBTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
@@ -2010,11 +2011,11 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)groupsDelete:(void (^)())nextTest {
+- (void)groupsDelete:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
 
   void (^jobStatus)(NSString *) = ^(NSString *jobId) {
-    [[[_tester.team groupsJobStatusGet:jobId]
+      [[[self->_tester.team groupsJobStatusGet:jobId]
         setResponseBlock:^(DBASYNCPollEmptyResult *result, DBTEAMGroupsPollError *routeError, DBRequestError *error) {
           if (result) {
             MyLog(@"%@\n", result);
@@ -2059,11 +2060,11 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)membersAdd:(void (^)())nextTest {
+- (void)membersAdd:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
 
   void (^jobStatus)(NSString *) = ^(NSString *jobId) {
-    [[[_tester.team membersAddJobStatusGet:jobId]
+      [[[self->_tester.team membersAddJobStatusGet:jobId]
         setResponseBlock:^(DBTEAMMembersAddJobStatus *result, DBASYNCPollError *routeError, DBRequestError *error) {
           if (result) {
             MyLog(@"%@\n", result);
@@ -2072,7 +2073,7 @@ void MyLog(NSString *format, ...) {
             } else if ([result isComplete]) {
               DBTEAMMemberAddResult *addResult = result.complete[0];
               if ([addResult isSuccess]) {
-                _teamMemberId2 = addResult.success.profile.teamMemberId;
+                  self->_teamMemberId2 = addResult.success.profile.teamMemberId;
               } else {
                 [TestFormat abort:error routeError:routeError];
               }
@@ -2100,7 +2101,7 @@ void MyLog(NSString *format, ...) {
           } else if ([result isComplete]) {
             DBTEAMMemberAddResult *addResult = result.complete[0];
             if ([addResult isSuccess]) {
-              _teamMemberId2 = addResult.success.profile.teamMemberId;
+                self->_teamMemberId2 = addResult.success.profile.teamMemberId;
             } else if (![addResult isUserAlreadyOnTeam]) {
               [TestFormat abort:error routeError:routeError];
             }
@@ -2118,14 +2119,14 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)membersGetInfo:(void (^)())nextTest {
+- (void)membersGetInfo:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithEmail:_tester.testData.teamMemberNewEmail];
   [[[_tester.team membersGetInfo:@[ userSelectArg ]]
       setResponseBlock:^(NSArray<DBTEAMMembersGetInfoItem *> *result, DBTEAMMembersGetInfoError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
-          _teamMemberId2 = result[0].memberInfo.profile.teamMemberId;
+            self->_teamMemberId2 = result[0].memberInfo.profile.teamMemberId;
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
@@ -2138,7 +2139,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)membersList:(void (^)())nextTest {
+- (void)membersList:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team membersList:[NSNumber numberWithInt:2] includeRemoved:nil]
       setResponseBlock:^(DBTEAMMembersListResult *result, DBTEAMMembersListError *routeError, DBRequestError *error) {
@@ -2156,7 +2157,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)membersSendWelcomeEmail:(void (^)())nextTest {
+- (void)membersSendWelcomeEmail:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
   [[[_tester.team membersSendWelcomeEmail:userSelectArg]
@@ -2175,7 +2176,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)membersSetAdminPermissions:(void (^)())nextTest {
+- (void)membersSetAdminPermissions:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
   DBTEAMAdminTier *dNewRole = [[DBTEAMAdminTier alloc] initWithTeamAdmin];
@@ -2196,7 +2197,7 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)membersSetProfile:(void (^)())nextTest {
+- (void)membersSetProfile:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
   [[[_tester.team membersSetProfile:userSelectArg
@@ -2221,11 +2222,11 @@ void MyLog(NSString *format, ...) {
   }];
 }
 
-- (void)membersRemove:(void (^)())nextTest {
+- (void)membersRemove:(void (^)(void))nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
 
   void (^jobStatus)(NSString *) = ^(NSString *jobId) {
-    [[[_tester.team membersRemoveJobStatusGet:jobId]
+      [[[self->_tester.team membersRemoveJobStatusGet:jobId]
         setResponseBlock:^(DBASYNCPollEmptyResult *result, DBASYNCPollError *routeError, DBRequestError *error) {
           if (result) {
             MyLog(@"%@\n", result);

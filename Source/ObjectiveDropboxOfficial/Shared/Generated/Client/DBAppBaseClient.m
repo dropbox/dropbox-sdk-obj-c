@@ -6,6 +6,7 @@
 
 #import "DBAppBaseClient.h"
 #import "DBAUTHAppAuthRoutes.h"
+#import "DBCHECKAppAuthRoutes.h"
 #import "DBTransportClientProtocol.h"
 
 @implementation DBAppBaseClient
@@ -15,6 +16,7 @@
   if (self) {
     _transportClient = client;
     _authRoutes = [[DBAUTHAppAuthRoutes alloc] init:client];
+    _checkRoutes = [[DBCHECKAppAuthRoutes alloc] init:client];
   }
   return self;
 }

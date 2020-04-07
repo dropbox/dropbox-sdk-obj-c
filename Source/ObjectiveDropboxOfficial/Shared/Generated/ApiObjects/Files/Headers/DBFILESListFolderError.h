@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBFILEPROPERTIESTemplateError;
 @class DBFILESListFolderError;
 @class DBFILESLookupError;
 
@@ -33,6 +34,9 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderErrorTag) {
   DBFILESListFolderErrorPath,
 
   /// (no description).
+  DBFILESListFolderErrorTemplateError,
+
+  /// (no description).
   DBFILESListFolderErrorOther,
 
 };
@@ -44,6 +48,10 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderErrorTag) {
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBFILESLookupError *path;
 
+/// (no description). @note Ensure the `isTemplateError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBFILEPROPERTIESTemplateError *templateError;
+
 #pragma mark - Constructors
 
 ///
@@ -54,6 +62,15 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPath:(DBFILESLookupError *)path;
+
+///
+/// Initializes union class with tag state of "template_error".
+///
+/// @param templateError (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTemplateError:(DBFILEPROPERTIESTemplateError *)templateError;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -75,6 +92,16 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderErrorTag) {
 /// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
+
+///
+/// Retrieves whether the union's current tag state has value "template_error".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `templateError` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "template_error".
+///
+- (BOOL)isTemplateError;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -32,8 +32,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
   /// (no description).
   DBFILESSaveUrlErrorPath,
 
-  /// Failed downloading the given URL. The url may be password-protected /
-  /// the password provided was incorrect.
+  /// Failed downloading the given URL. The URL may be  password-protected and
+  /// the password provided was incorrect,  or the link may be disabled.
   DBFILESSaveUrlErrorDownloadFailed,
 
   /// The given URL is invalid.
@@ -69,8 +69,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 /// Initializes union class with tag state of "download_failed".
 ///
 /// Description of the "download_failed" tag state: Failed downloading the given
-/// URL. The url may be password-protected / the password provided was
-/// incorrect.
+/// URL. The URL may be  password-protected and the password provided was
+/// incorrect,  or the link may be disabled.
 ///
 /// @return An initialized instance.
 ///

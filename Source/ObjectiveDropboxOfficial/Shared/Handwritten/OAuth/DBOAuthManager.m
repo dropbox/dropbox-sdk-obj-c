@@ -59,8 +59,8 @@ static DBOAuthManager *s_sharedOAuthManager;
   self = [super init];
   if (self) {
     if (host == nil) {
-      host =
-          !kDBSDKDebug ? @"www.dropbox.com" : [NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kDBSDKDebugHost];
+      host = !kDBSDKDebug ? @"www.dropbox.com"
+                          : [NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kDBSDKDebugHost];
     }
 
     _appKey = appKey;

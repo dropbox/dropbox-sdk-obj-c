@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
   DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer,
 
   /// Cannot keep account and delete the data at the same time. To keep the
-  /// account the argument wipe_data should be set to False.
+  /// account the argument wipe_data should be set to false.
   DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData,
 
   /// The email address of the user is too long to be disabled.
@@ -82,6 +82,30 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 
   /// Cannot keep account of an invited user.
   DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount,
+
+  /// Cannot retain team shares when the user's data is marked for deletion on
+  /// their linked devices. The argument wipe_data should be set to false.
+  DBTEAMMembersRemoveErrorCannotRetainSharesWhenDataWiped,
+
+  /// The user's account must be kept in order to retain team shares. The
+  /// argument keep_account should be set to true.
+  DBTEAMMembersRemoveErrorCannotRetainSharesWhenNoAccountKept,
+
+  /// Externally sharing files, folders, and links must be enabled in team
+  /// settings in order to retain team shares for the user.
+  DBTEAMMembersRemoveErrorCannotRetainSharesWhenTeamExternalSharingOff,
+
+  /// Only a team admin, can convert this account to a Basic account.
+  DBTEAMMembersRemoveErrorCannotKeepAccount,
+
+  /// This user content is currently being held. To convert this member's
+  /// account to a Basic account, you'll first need to remove them from the
+  /// hold.
+  DBTEAMMembersRemoveErrorCannotKeepAccountUnderLegalHold,
+
+  /// To convert this member to a Basic account, they'll first need to sign in
+  /// to Dropbox and agree to the terms of service.
+  DBTEAMMembersRemoveErrorCannotKeepAccountRequiredToSignTos,
 
 };
 
@@ -236,7 +260,7 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 ///
 /// Description of the "cannot_keep_account_and_delete_data" tag state: Cannot
 /// keep account and delete the data at the same time. To keep the account the
-/// argument wipe_data should be set to False.
+/// argument wipe_data should be set to false.
 ///
 /// @return An initialized instance.
 ///
@@ -263,6 +287,76 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithCannotKeepInvitedUserAccount;
+
+///
+/// Initializes union class with tag state of
+/// "cannot_retain_shares_when_data_wiped".
+///
+/// Description of the "cannot_retain_shares_when_data_wiped" tag state: Cannot
+/// retain team shares when the user's data is marked for deletion on their
+/// linked devices. The argument wipe_data should be set to false.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotRetainSharesWhenDataWiped;
+
+///
+/// Initializes union class with tag state of
+/// "cannot_retain_shares_when_no_account_kept".
+///
+/// Description of the "cannot_retain_shares_when_no_account_kept" tag state:
+/// The user's account must be kept in order to retain team shares. The argument
+/// keep_account should be set to true.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotRetainSharesWhenNoAccountKept;
+
+///
+/// Initializes union class with tag state of
+/// "cannot_retain_shares_when_team_external_sharing_off".
+///
+/// Description of the "cannot_retain_shares_when_team_external_sharing_off" tag
+/// state: Externally sharing files, folders, and links must be enabled in team
+/// settings in order to retain team shares for the user.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotRetainSharesWhenTeamExternalSharingOff;
+
+///
+/// Initializes union class with tag state of "cannot_keep_account".
+///
+/// Description of the "cannot_keep_account" tag state: Only a team admin, can
+/// convert this account to a Basic account.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotKeepAccount;
+
+///
+/// Initializes union class with tag state of
+/// "cannot_keep_account_under_legal_hold".
+///
+/// Description of the "cannot_keep_account_under_legal_hold" tag state: This
+/// user content is currently being held. To convert this member's account to a
+/// Basic account, you'll first need to remove them from the hold.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotKeepAccountUnderLegalHold;
+
+///
+/// Initializes union class with tag state of
+/// "cannot_keep_account_required_to_sign_tos".
+///
+/// Description of the "cannot_keep_account_required_to_sign_tos" tag state: To
+/// convert this member to a Basic account, they'll first need to sign in to
+/// Dropbox and agree to the terms of service.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotKeepAccountRequiredToSignTos;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -414,6 +508,60 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// "cannot_keep_invited_user_account".
 ///
 - (BOOL)isCannotKeepInvitedUserAccount;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_retain_shares_when_data_wiped".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_retain_shares_when_data_wiped".
+///
+- (BOOL)isCannotRetainSharesWhenDataWiped;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_retain_shares_when_no_account_kept".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_retain_shares_when_no_account_kept".
+///
+- (BOOL)isCannotRetainSharesWhenNoAccountKept;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_retain_shares_when_team_external_sharing_off".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_retain_shares_when_team_external_sharing_off".
+///
+- (BOOL)isCannotRetainSharesWhenTeamExternalSharingOff;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_keep_account".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_keep_account".
+///
+- (BOOL)isCannotKeepAccount;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_keep_account_under_legal_hold".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_keep_account_under_legal_hold".
+///
+- (BOOL)isCannotKeepAccountUnderLegalHold;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_keep_account_required_to_sign_tos".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_keep_account_required_to_sign_tos".
+///
+- (BOOL)isCannotKeepAccountRequiredToSignTos;
 
 ///
 /// Retrieves string value of union's current tag state.
