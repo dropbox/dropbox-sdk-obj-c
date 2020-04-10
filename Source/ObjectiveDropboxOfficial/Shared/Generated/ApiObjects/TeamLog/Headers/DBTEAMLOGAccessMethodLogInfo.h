@@ -45,6 +45,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAccessMethodLogInfoTag) {
   /// Admin console session details.
   DBTEAMLOGAccessMethodLogInfoAdminConsole,
 
+  /// Enterprise console session details.
+  DBTEAMLOGAccessMethodLogInfoEnterpriseConsole,
+
   /// Api session details.
   DBTEAMLOGAccessMethodLogInfoApi,
 
@@ -71,6 +74,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAccessMethodLogInfoTag) {
 /// Admin console session details. @note Ensure the `isAdminConsole` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGWebSessionLogInfo *adminConsole;
+
+/// Enterprise console session details. @note Ensure the `isEnterpriseConsole`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGWebSessionLogInfo *enterpriseConsole;
 
 /// Api session details. @note Ensure the `isApi` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
@@ -122,6 +130,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAccessMethodLogInfoTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAdminConsole:(DBTEAMLOGWebSessionLogInfo *)adminConsole;
+
+///
+/// Initializes union class with tag state of "enterprise_console".
+///
+/// Description of the "enterprise_console" tag state: Enterprise console
+/// session details.
+///
+/// @param enterpriseConsole Enterprise console session details.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEnterpriseConsole:(DBTEAMLOGWebSessionLogInfo *)enterpriseConsole;
 
 ///
 /// Initializes union class with tag state of "api".
@@ -184,6 +204,18 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAccessMethodLogInfoTag) {
 /// @return Whether the union's current tag state has value "admin_console".
 ///
 - (BOOL)isAdminConsole;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "enterprise_console".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `enterpriseConsole` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "enterprise_console".
+///
+- (BOOL)isEnterpriseConsole;
 
 ///
 /// Retrieves whether the union's current tag state has value "api".

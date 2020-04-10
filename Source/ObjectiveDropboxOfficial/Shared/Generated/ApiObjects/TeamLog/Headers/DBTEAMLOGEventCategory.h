@@ -54,6 +54,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventCategoryTag) {
   /// Events that involve group management.
   DBTEAMLOGEventCategoryGroups,
 
+  /// Events that involve placing holds on content for litigation reasons
+  DBTEAMLOGEventCategoryLegalHolds,
+
   /// Events that involve users signing in to or out of Dropbox.
   DBTEAMLOGEventCategoryLogins,
 
@@ -175,6 +178,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventCategoryTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithGroups;
+
+///
+/// Initializes union class with tag state of "legal_holds".
+///
+/// Description of the "legal_holds" tag state: Events that involve placing
+/// holds on content for litigation reasons
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithLegalHolds;
 
 ///
 /// Initializes union class with tag state of "logins".
@@ -365,6 +378,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventCategoryTag) {
 /// @return Whether the union's current tag state has value "groups".
 ///
 - (BOOL)isGroups;
+
+///
+/// Retrieves whether the union's current tag state has value "legal_holds".
+///
+/// @return Whether the union's current tag state has value "legal_holds".
+///
+- (BOOL)isLegalHolds;
 
 ///
 /// Retrieves whether the union's current tag state has value "logins".

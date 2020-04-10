@@ -32,7 +32,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRequestedLinkAccessLevelTag) {
   /// Users who use the link can view and comment on the content.
   DBSHARINGRequestedLinkAccessLevelViewer,
 
-  /// Users who use the link can edit, view and comment on the content.
+  /// Users who use the link can edit, view and comment on the content. Note
+  /// not all file types support edit links yet.
   DBSHARINGRequestedLinkAccessLevelEditor,
 
   /// Request for the maximum access level you can set the link to.
@@ -62,7 +63,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGRequestedLinkAccessLevelTag) {
 /// Initializes union class with tag state of "editor".
 ///
 /// Description of the "editor" tag state: Users who use the link can edit, view
-/// and comment on the content.
+/// and comment on the content. Note not all file types support edit links yet.
 ///
 /// @return An initialized instance.
 ///

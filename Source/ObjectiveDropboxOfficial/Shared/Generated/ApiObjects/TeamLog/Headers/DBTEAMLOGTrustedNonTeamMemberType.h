@@ -33,6 +33,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGTrustedNonTeamMemberTypeTag) {
   DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin,
 
   /// (no description).
+  DBTEAMLOGTrustedNonTeamMemberTypeEnterpriseAdmin,
+
+  /// (no description).
   DBTEAMLOGTrustedNonTeamMemberTypeOther,
 
 };
@@ -48,6 +51,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGTrustedNonTeamMemberTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithMultiInstanceAdmin;
+
+///
+/// Initializes union class with tag state of "enterprise_admin".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEnterpriseAdmin;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -68,6 +78,14 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGTrustedNonTeamMemberTypeTag) {
 /// "multi_instance_admin".
 ///
 - (BOOL)isMultiInstanceAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "enterprise_admin".
+///
+/// @return Whether the union's current tag state has value "enterprise_admin".
+///
+- (BOOL)isEnterpriseAdmin;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

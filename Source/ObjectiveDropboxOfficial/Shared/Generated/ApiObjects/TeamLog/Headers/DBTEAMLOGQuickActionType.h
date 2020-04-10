@@ -43,6 +43,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag) {
   DBTEAMLOGQuickActionTypeUnlinkApp,
 
   /// (no description).
+  DBTEAMLOGQuickActionTypeUnlinkDevice,
+
+  /// (no description).
   DBTEAMLOGQuickActionTypeUnlinkSession,
 
   /// (no description).
@@ -82,6 +85,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnlinkApp;
+
+///
+/// Initializes union class with tag state of "unlink_device".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnlinkDevice;
 
 ///
 /// Initializes union class with tag state of "unlink_session".
@@ -132,6 +142,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag) {
 /// @return Whether the union's current tag state has value "unlink_app".
 ///
 - (BOOL)isUnlinkApp;
+
+///
+/// Retrieves whether the union's current tag state has value "unlink_device".
+///
+/// @return Whether the union's current tag state has value "unlink_device".
+///
+- (BOOL)isUnlinkDevice;
 
 ///
 /// Retrieves whether the union's current tag state has value "unlink_session".

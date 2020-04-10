@@ -10,6 +10,7 @@
 
 @class DBTEAMLOGContextLogInfo;
 @class DBTEAMLOGNonTeamMemberLogInfo;
+@class DBTEAMLOGTeamLogInfo;
 @class DBTEAMLOGTeamMemberLogInfo;
 @class DBTEAMLOGTrustedNonTeamMemberLogInfo;
 
@@ -45,6 +46,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
   /// Action was done on behalf of the team.
   DBTEAMLOGContextLogInfoTeam,
 
+  /// Action was done on behalf of a team that's part of an organization.
+  DBTEAMLOGContextLogInfoOrganizationTeam,
+
   /// Action was done on behalf of a trusted non team member.
   DBTEAMLOGContextLogInfoTrustedNonTeamMember,
 
@@ -65,6 +69,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 /// `isNonTeamMember` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNonTeamMemberLogInfo *nonTeamMember;
+
+/// Action was done on behalf of a team that's part of an organization. @note
+/// Ensure the `isOrganizationTeam` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGTeamLogInfo *organizationTeam;
 
 /// Action was done on behalf of a trusted non team member. @note Ensure the
 /// `isTrustedNonTeamMember` method returns true before accessing, otherwise a
@@ -114,6 +123,19 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTeam;
+
+///
+/// Initializes union class with tag state of "organization_team".
+///
+/// Description of the "organization_team" tag state: Action was done on behalf
+/// of a team that's part of an organization.
+///
+/// @param organizationTeam Action was done on behalf of a team that's part of
+/// an organization.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithOrganizationTeam:(DBTEAMLOGTeamLogInfo *)organizationTeam;
 
 ///
 /// Initializes union class with tag state of "trusted_non_team_member".
@@ -172,6 +194,17 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
 /// @return Whether the union's current tag state has value "team".
 ///
 - (BOOL)isTeam;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "organization_team".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `organizationTeam` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "organization_team".
+///
+- (BOOL)isOrganizationTeam;
 
 ///
 /// Retrieves whether the union's current tag state has value

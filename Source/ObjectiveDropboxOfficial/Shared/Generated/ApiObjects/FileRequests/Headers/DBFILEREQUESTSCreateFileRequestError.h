@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, DBFILEREQUESTSCreateFileRequestErrorTag) {
   DBFILEREQUESTSCreateFileRequestErrorInvalidLocation,
 
   /// The user has reached the rate limit for creating file requests. The
-  /// limit is currently 100 file requests per day.
+  /// limit is currently 4000 file requests total.
   DBFILEREQUESTSCreateFileRequestErrorRateLimit,
 
 };
@@ -168,8 +168,8 @@ typedef NS_ENUM(NSInteger, DBFILEREQUESTSCreateFileRequestErrorTag) {
 /// Initializes union class with tag state of "rate_limit".
 ///
 /// Description of the "rate_limit" tag state: The user has reached the rate
-/// limit for creating file requests. The limit is currently 100 file requests
-/// per day.
+/// limit for creating file requests. The limit is currently 4000 file requests
+/// total.
 ///
 /// @return An initialized instance.
 ///
