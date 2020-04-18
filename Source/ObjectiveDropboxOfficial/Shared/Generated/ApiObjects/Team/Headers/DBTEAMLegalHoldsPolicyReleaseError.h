@@ -29,6 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLegalHoldsPolicyReleaseError`
 /// union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyReleaseErrorTag) {
+  /// There has been an unknown legal hold error.
+  DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError,
+
+  /// You don't have permissions to perform this action.
+  DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions,
+
+  /// (no description).
+  DBTEAMLegalHoldsPolicyReleaseErrorOther,
+
   /// Legal hold is currently performing another operation.
   DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation,
 
@@ -39,15 +48,39 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyReleaseErrorTag) {
   /// `DBTEAMLegalHoldsPolicyReleaseArg`.
   DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound,
 
-  /// (no description).
-  DBTEAMLegalHoldsPolicyReleaseErrorOther,
-
 };
 
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBTEAMLegalHoldsPolicyReleaseErrorTag tag;
 
 #pragma mark - Constructors
+
+///
+/// Initializes union class with tag state of "unknown_legal_hold_error".
+///
+/// Description of the "unknown_legal_hold_error" tag state: There has been an
+/// unknown legal hold error.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnknownLegalHoldError;
+
+///
+/// Initializes union class with tag state of "insufficient_permissions".
+///
+/// Description of the "insufficient_permissions" tag state: You don't have
+/// permissions to perform this action.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInsufficientPermissions;
+
+///
+/// Initializes union class with tag state of "other".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of
@@ -80,16 +113,34 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyReleaseErrorTag) {
 ///
 - (instancetype)initWithLegalHoldPolicyNotFound;
 
-///
-/// Initializes union class with tag state of "other".
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithOther;
-
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "unknown_legal_hold_error".
+///
+/// @return Whether the union's current tag state has value
+/// "unknown_legal_hold_error".
+///
+- (BOOL)isUnknownLegalHoldError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "insufficient_permissions".
+///
+/// @return Whether the union's current tag state has value
+/// "insufficient_permissions".
+///
+- (BOOL)isInsufficientPermissions;
+
+///
+/// Retrieves whether the union's current tag state has value "other".
+///
+/// @return Whether the union's current tag state has value "other".
+///
+- (BOOL)isOther;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -117,13 +168,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyReleaseErrorTag) {
 /// "legal_hold_policy_not_found".
 ///
 - (BOOL)isLegalHoldPolicyNotFound;
-
-///
-/// Retrieves whether the union's current tag state has value "other".
-///
-/// @return Whether the union's current tag state has value "other".
-///
-- (BOOL)isOther;
 
 ///
 /// Retrieves string value of union's current tag state.

@@ -1751,7 +1751,7 @@ listRevisions:(NSString *)path
 
 ///
 /// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
-/// will be moved.
+/// will be moved. Note that we do not currently support case-only renaming.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
@@ -1762,7 +1762,7 @@ listRevisions:(NSString *)path
 
 ///
 /// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
-/// will be moved.
+/// will be moved. Note that we do not currently support case-only renaming.
 ///
 /// @param allowSharedFolder If true, `dCopy` will copy contents in shared folder, otherwise `cantCopySharedFolder` in
 /// `DBFILESRelocationError` will be returned if fromPath contains shared folder. This field is always true for `move`.
@@ -1812,10 +1812,11 @@ listRevisions:(NSString *)path
     __deprecated_msg("move is deprecated. Use move.");
 
 ///
-/// Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `moveBatch`. The main difference is this route will return status for each entry, while `moveBatch` raises failure
-/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in
-/// background. Please use `moveBatchCheck` to check the job status.
+/// Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently
+/// support case-only renaming. This route will replace `moveBatch`. The main difference is this route will return
+/// status for each entry, while `moveBatch` raises failure if any entry fails. This route will either finish
+/// synchronously, or return a job ID and do the async move job in background. Please use `moveBatchCheck` to check the
+/// job status.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
@@ -1824,10 +1825,11 @@ listRevisions:(NSString *)path
 - (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries;
 
 ///
-/// Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `moveBatch`. The main difference is this route will return status for each entry, while `moveBatch` raises failure
-/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in
-/// background. Please use `moveBatchCheck` to check the job status.
+/// Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently
+/// support case-only renaming. This route will replace `moveBatch`. The main difference is this route will return
+/// status for each entry, while `moveBatch` raises failure if any entry fails. This route will either finish
+/// synchronously, or return a job ID and do the async move job in background. Please use `moveBatchCheck` to check the
+/// job status.
 ///
 /// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
 /// being moved. This does not apply to copies.
@@ -1924,7 +1926,8 @@ listRevisions:(NSString *)path
 /// DEPRECATED: The propertiesAdd route
 ///
 /// @param path A unique identifier for the file or folder.
-/// @param propertyGroups The property groups which are to be added to a Dropbox file.
+/// @param propertyGroups The property groups which are to be added to a Dropbox file. No two groups in the input should
+/// refer to the same template.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBFILEPROPERTIESAddPropertiesError` object on failure.
@@ -1938,7 +1941,8 @@ propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
 /// DEPRECATED: The propertiesOverwrite route
 ///
 /// @param path A unique identifier for the file or folder.
-/// @param propertyGroups The property groups "snapshot" updates to force apply.
+/// @param propertyGroups The property groups "snapshot" updates to force apply. No two groups in the input should
+/// refer to the same template.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBFILEPROPERTIESInvalidPropertyGroupError` object on failure.
@@ -2038,8 +2042,9 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// due to a short delay in indexing.
 ///
 /// @param path The path in the user's Dropbox to search. Should probably be a folder.
-/// @param query The string to search for. The search string is split on spaces into multiple tokens. For file name
-/// searching, the last token is used for prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
+/// @param query The string to search for. Query string may be rewritten to improve relevance of results. The string is
+/// split on spaces into multiple tokens. For file name searching, the last token is used for prefix matching (i.e. "bat
+/// c" matches "bat cave" but not "batman car").
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESSearchResult` object on success or a
 /// `DBFILESSearchError` object on failure.
@@ -2053,8 +2058,9 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// due to a short delay in indexing.
 ///
 /// @param path The path in the user's Dropbox to search. Should probably be a folder.
-/// @param query The string to search for. The search string is split on spaces into multiple tokens. For file name
-/// searching, the last token is used for prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
+/// @param query The string to search for. Query string may be rewritten to improve relevance of results. The string is
+/// split on spaces into multiple tokens. For file name searching, the last token is used for prefix matching (i.e. "bat
+/// c" matches "bat cave" but not "batman car").
 /// @param start The starting index within the search results (used for paging).
 /// @param maxResults The maximum number of search results to return.
 /// @param mode The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content
@@ -2075,7 +2081,8 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing.
 /// Duplicate results may be returned across pages. Some results may not be returned.
 ///
-/// @param query The string to search for. May match across multiple fields based on the request arguments.
+/// @param query The string to search for. May match across multiple fields based on the request arguments. Query string
+/// may be rewritten to improve relevance of results.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESSearchV2Result` object on success or a
 /// `DBFILESSearchError` object on failure.
@@ -2087,7 +2094,8 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing.
 /// Duplicate results may be returned across pages. Some results may not be returned.
 ///
-/// @param query The string to search for. May match across multiple fields based on the request arguments.
+/// @param query The string to search for. May match across multiple fields based on the request arguments. Query string
+/// may be rewritten to improve relevance of results.
 /// @param options Options for more targeted search results.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESSearchV2Result` object on success or a

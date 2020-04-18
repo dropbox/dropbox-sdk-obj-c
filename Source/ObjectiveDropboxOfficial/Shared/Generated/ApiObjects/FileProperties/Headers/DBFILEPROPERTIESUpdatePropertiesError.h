@@ -54,6 +54,10 @@ typedef NS_ENUM(NSInteger, DBFILEPROPERTIESUpdatePropertiesErrorTag) {
   /// template specifications.
   DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate,
 
+  /// There are 2 or more property groups referring to the same templates in
+  /// the input.
+  DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups,
+
   /// (no description).
   DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup,
 
@@ -146,6 +150,16 @@ typedef NS_ENUM(NSInteger, DBFILEPROPERTIESUpdatePropertiesErrorTag) {
 - (instancetype)initWithDoesNotFitTemplate;
 
 ///
+/// Initializes union class with tag state of "duplicate_property_groups".
+///
+/// Description of the "duplicate_property_groups" tag state: There are 2 or
+/// more property groups referring to the same templates in the input.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDuplicatePropertyGroups;
+
+///
 /// Initializes union class with tag state of "property_group_lookup".
 ///
 /// @param propertyGroupLookup (no description).
@@ -222,6 +236,15 @@ typedef NS_ENUM(NSInteger, DBFILEPROPERTIESUpdatePropertiesErrorTag) {
 /// "does_not_fit_template".
 ///
 - (BOOL)isDoesNotFitTemplate;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "duplicate_property_groups".
+///
+/// @return Whether the union's current tag state has value
+/// "duplicate_property_groups".
+///
+- (BOOL)isDuplicatePropertyGroups;
 
 ///
 /// Retrieves whether the union's current tag state has value
