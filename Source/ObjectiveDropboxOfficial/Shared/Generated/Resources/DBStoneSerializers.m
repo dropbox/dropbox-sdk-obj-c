@@ -52,7 +52,7 @@ static NSString *sDateFormat = nil;
   } else if ([token isEqualToString:@"%A"]) { // Weekday as locale's full name.
     result = @"EEE";
   } else if ([token isEqualToString:@"%w"]) { // Weekday as a decimal number, where 0 is Sunday and 6 is Saturday. 0, 1,
-                                              // ..., 6
+    // ..., 6
     result = @"ccccc";
   } else if ([token isEqualToString:@"%d"]) { // Day of the month as a zero-padded decimal number. 01, 02, ..., 31
     result = @"dd";
@@ -77,23 +77,23 @@ static NSString *sDateFormat = nil;
   } else if ([token isEqualToString:@"%S"]) { // Second as a zero-padded decimal number. 00, 01, ..., 59
     result = @"ss";
   } else if ([token isEqualToString:@"%f"]) { // Microsecond as a decimal number, zero-padded on the left. 000000,
-                                              // 000001, ..., 999999
+    // 000001, ..., 999999
     result = @"SSSSSS";
   } else if ([token isEqualToString:@"%z"]) { // UTC offset in the form +HHMM or -HHMM (empty string if the the object
-                                              // is naive). (empty), +0000, -0400, +1030
+    // is naive). (empty), +0000, -0400, +1030
     result = @"Z";
   } else if ([token isEqualToString:@"%Z"]) { // Time zone name (empty string if the object is naive). (empty), UTC,
-                                              // EST, CST
+    // EST, CST
     result = @"z";
   } else if ([token isEqualToString:@"%j"]) { // Day of the year as a zero-padded decimal number. 001, 002, ..., 366
     result = @"DDD";
   } else if ([token isEqualToString:@"%U"]) { // Week number of the year (Sunday as the first day of the week) as a zero
-                                              // padded decimal number. All days in a new year preceding the first
-                                              // Sunday are considered to be in week 0. 00, 01, ..., 53 (6)
+    // padded decimal number. All days in a new year preceding the first
+    // Sunday are considered to be in week 0. 00, 01, ..., 53 (6)
     result = @"ww";
   } else if ([token isEqualToString:@"%W"]) { // Week number of the year (Monday as the first day of the week) as a
-                                              // decimal number. All days in a new year preceding the first Monday are
-                                              // considered to be in week 0. 00, 01, ..., 53 (6)
+    // decimal number. All days in a new year preceding the first Monday are
+    // considered to be in week 0. 00, 01, ..., 53 (6)
     result = @"ww";
   } else if ([token isEqualToString:@"%c"]) { // Locale's appropriate date and time representation.
     result = @"";                            // unsupported
@@ -116,36 +116,38 @@ static NSString *sDateFormat = nil;
   NSCharacterSet *alphabeticSet =
       [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"];
   NSMutableString *newFormat = [@"" mutableCopy];
-  __block BOOL inQuotedText = NO;
+  BOOL inQuotedText = NO;
 
-  // Proper way to enumerate characters in a string taken from https://www.objc.io/issues/9-strings/unicode/
-  [format enumerateSubstringsInRange:NSMakeRange(0, [format length])
-                             options:NSStringEnumerationByComposedCharacterSequences
-                          usingBlock:^(NSString *substring, NSRange substringRange __attribute__((unused)),
-                                       NSRange enclosingRange __attribute__((unused)), BOOL *stop) {
-                            if ([substring isEqualToString:@"%"]) {
-                              if (substringRange.location >= format.length - 1) {
-                                *stop = YES;
-                                return;
-                              }
+  NSUInteger len = [format length];
 
-                              if (inQuotedText) {
-                                [newFormat appendString:@"'"];
-                                inQuotedText = NO;
-                              }
-                              [newFormat appendString:[self formatDateToken:substring]];
-                            } else {
-                              if ([alphabeticSet longCharacterIsMember:[substring characterAtIndex:0]]) {
-                                if (!inQuotedText) {
-                                  [newFormat appendString:@"'"];
-                                  inQuotedText = YES;
-                                }
-                              } else if ([substring isEqualToString:@"'"]) {
-                                [newFormat appendString:@"'"];
-                              }
-                              [newFormat appendString:substring];
-                            }
-                          }];
+  NSUInteger i = 0;
+  while (i < len) {
+    char ch = (char)[format characterAtIndex:i];
+    if (ch == '%') {
+      if (i >= len - 1) {
+        return nil;
+      }
+      i++;
+      ch = (char)[format characterAtIndex:i];
+      NSString *token = [NSString stringWithFormat:@"%%%c", ch];
+      if (inQuotedText) {
+        [newFormat appendString:@"'"];
+        inQuotedText = NO;
+      }
+      [newFormat appendString:[self formatDateToken:token]];
+    } else {
+      if ([alphabeticSet characterIsMember:ch]) {
+        if (!inQuotedText) {
+          [newFormat appendString:@"'"];
+          inQuotedText = YES;
+        }
+      } else if (ch == '\'') {
+        [newFormat appendString:@"'"];
+      }
+      [newFormat appendString:[NSString stringWithFormat:@"%c", ch]];
+    }
+    i++;
+  }
 
   if (inQuotedText) {
     [newFormat appendString:@"'"];

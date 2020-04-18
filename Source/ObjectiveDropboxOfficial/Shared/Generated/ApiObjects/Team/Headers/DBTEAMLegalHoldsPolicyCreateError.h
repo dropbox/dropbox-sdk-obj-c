@@ -57,6 +57,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyCreateErrorTag) {
   /// The name provided is already in use by another legal hold.
   DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique,
 
+  /// Team exceeded legal hold quota.
+  DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota,
+
 };
 
 /// Represents the union's current tag state.
@@ -153,6 +156,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyCreateErrorTag) {
 ///
 - (instancetype)initWithNameMustBeUnique;
 
+///
+/// Initializes union class with tag state of "team_exceeded_legal_hold_quota".
+///
+/// Description of the "team_exceeded_legal_hold_quota" tag state: Team exceeded
+/// legal hold quota.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamExceededLegalHoldQuota;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -231,6 +244,15 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyCreateErrorTag) {
 /// "name_must_be_unique".
 ///
 - (BOOL)isNameMustBeUnique;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_exceeded_legal_hold_quota".
+///
+/// @return Whether the union's current tag state has value
+/// "team_exceeded_legal_hold_quota".
+///
+- (BOOL)isTeamExceededLegalHoldQuota;
 
 ///
 /// Retrieves string value of union's current tag state.

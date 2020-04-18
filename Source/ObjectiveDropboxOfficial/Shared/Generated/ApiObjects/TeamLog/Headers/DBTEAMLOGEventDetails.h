@@ -186,12 +186,20 @@
 @class DBTEAMLOGMicrosoftOfficeAddinChangePolicyDetails;
 @class DBTEAMLOGMissingDetails;
 @class DBTEAMLOGNetworkControlChangePolicyDetails;
+@class DBTEAMLOGNoExpirationLinkGenCreateReportDetails;
+@class DBTEAMLOGNoExpirationLinkGenReportFailedDetails;
+@class DBTEAMLOGNoPasswordLinkGenCreateReportDetails;
+@class DBTEAMLOGNoPasswordLinkGenReportFailedDetails;
+@class DBTEAMLOGNoPasswordLinkViewCreateReportDetails;
+@class DBTEAMLOGNoPasswordLinkViewReportFailedDetails;
 @class DBTEAMLOGNoteAclInviteOnlyDetails;
 @class DBTEAMLOGNoteAclLinkDetails;
 @class DBTEAMLOGNoteAclTeamLinkDetails;
 @class DBTEAMLOGNoteShareReceiveDetails;
 @class DBTEAMLOGNoteSharedDetails;
 @class DBTEAMLOGOpenNoteSharedDetails;
+@class DBTEAMLOGOutdatedLinkViewCreateReportDetails;
+@class DBTEAMLOGOutdatedLinkViewReportFailedDetails;
 @class DBTEAMLOGPaperAdminExportStartDetails;
 @class DBTEAMLOGPaperChangeDeploymentPolicyDetails;
 @class DBTEAMLOGPaperChangeMemberLinkPolicyDetails;
@@ -992,6 +1000,30 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsExportMembersReportFailDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsNoExpirationLinkGenCreateReportDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsNoExpirationLinkGenReportFailedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsNoPasswordLinkGenCreateReportDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsNoPasswordLinkGenReportFailedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsNoPasswordLinkViewCreateReportDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsNoPasswordLinkViewReportFailedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsOutdatedLinkViewCreateReportDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsOutdatedLinkViewReportFailedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsPaperAdminExportStartDetails,
@@ -2503,6 +2535,46 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// (no description). @note Ensure the `isExportMembersReportFailDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGExportMembersReportFailDetails *exportMembersReportFailDetails;
+
+/// (no description). @note Ensure the
+/// `isNoExpirationLinkGenCreateReportDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGNoExpirationLinkGenCreateReportDetails *noExpirationLinkGenCreateReportDetails;
+
+/// (no description). @note Ensure the
+/// `isNoExpirationLinkGenReportFailedDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGNoExpirationLinkGenReportFailedDetails *noExpirationLinkGenReportFailedDetails;
+
+/// (no description). @note Ensure the `isNoPasswordLinkGenCreateReportDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGNoPasswordLinkGenCreateReportDetails *noPasswordLinkGenCreateReportDetails;
+
+/// (no description). @note Ensure the `isNoPasswordLinkGenReportFailedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGNoPasswordLinkGenReportFailedDetails *noPasswordLinkGenReportFailedDetails;
+
+/// (no description). @note Ensure the `isNoPasswordLinkViewCreateReportDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGNoPasswordLinkViewCreateReportDetails *noPasswordLinkViewCreateReportDetails;
+
+/// (no description). @note Ensure the `isNoPasswordLinkViewReportFailedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGNoPasswordLinkViewReportFailedDetails *noPasswordLinkViewReportFailedDetails;
+
+/// (no description). @note Ensure the `isOutdatedLinkViewCreateReportDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGOutdatedLinkViewCreateReportDetails *outdatedLinkViewCreateReportDetails;
+
+/// (no description). @note Ensure the `isOutdatedLinkViewReportFailedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGOutdatedLinkViewReportFailedDetails *outdatedLinkViewReportFailedDetails;
 
 /// (no description). @note Ensure the `isPaperAdminExportStartDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -5435,6 +5507,94 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithExportMembersReportFailDetails:
     (DBTEAMLOGExportMembersReportFailDetails *)exportMembersReportFailDetails;
+
+///
+/// Initializes union class with tag state of
+/// "no_expiration_link_gen_create_report_details".
+///
+/// @param noExpirationLinkGenCreateReportDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoExpirationLinkGenCreateReportDetails:
+    (DBTEAMLOGNoExpirationLinkGenCreateReportDetails *)noExpirationLinkGenCreateReportDetails;
+
+///
+/// Initializes union class with tag state of
+/// "no_expiration_link_gen_report_failed_details".
+///
+/// @param noExpirationLinkGenReportFailedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoExpirationLinkGenReportFailedDetails:
+    (DBTEAMLOGNoExpirationLinkGenReportFailedDetails *)noExpirationLinkGenReportFailedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "no_password_link_gen_create_report_details".
+///
+/// @param noPasswordLinkGenCreateReportDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoPasswordLinkGenCreateReportDetails:
+    (DBTEAMLOGNoPasswordLinkGenCreateReportDetails *)noPasswordLinkGenCreateReportDetails;
+
+///
+/// Initializes union class with tag state of
+/// "no_password_link_gen_report_failed_details".
+///
+/// @param noPasswordLinkGenReportFailedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoPasswordLinkGenReportFailedDetails:
+    (DBTEAMLOGNoPasswordLinkGenReportFailedDetails *)noPasswordLinkGenReportFailedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "no_password_link_view_create_report_details".
+///
+/// @param noPasswordLinkViewCreateReportDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoPasswordLinkViewCreateReportDetails:
+    (DBTEAMLOGNoPasswordLinkViewCreateReportDetails *)noPasswordLinkViewCreateReportDetails;
+
+///
+/// Initializes union class with tag state of
+/// "no_password_link_view_report_failed_details".
+///
+/// @param noPasswordLinkViewReportFailedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoPasswordLinkViewReportFailedDetails:
+    (DBTEAMLOGNoPasswordLinkViewReportFailedDetails *)noPasswordLinkViewReportFailedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "outdated_link_view_create_report_details".
+///
+/// @param outdatedLinkViewCreateReportDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithOutdatedLinkViewCreateReportDetails:
+    (DBTEAMLOGOutdatedLinkViewCreateReportDetails *)outdatedLinkViewCreateReportDetails;
+
+///
+/// Initializes union class with tag state of
+/// "outdated_link_view_report_failed_details".
+///
+/// @param outdatedLinkViewReportFailedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithOutdatedLinkViewReportFailedDetails:
+    (DBTEAMLOGOutdatedLinkViewReportFailedDetails *)outdatedLinkViewReportFailedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -10200,6 +10360,110 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "export_members_report_fail_details".
 ///
 - (BOOL)isExportMembersReportFailDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_expiration_link_gen_create_report_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noExpirationLinkGenCreateReportDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "no_expiration_link_gen_create_report_details".
+///
+- (BOOL)isNoExpirationLinkGenCreateReportDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_expiration_link_gen_report_failed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noExpirationLinkGenReportFailedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "no_expiration_link_gen_report_failed_details".
+///
+- (BOOL)isNoExpirationLinkGenReportFailedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_password_link_gen_create_report_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noPasswordLinkGenCreateReportDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "no_password_link_gen_create_report_details".
+///
+- (BOOL)isNoPasswordLinkGenCreateReportDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_password_link_gen_report_failed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noPasswordLinkGenReportFailedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "no_password_link_gen_report_failed_details".
+///
+- (BOOL)isNoPasswordLinkGenReportFailedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_password_link_view_create_report_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noPasswordLinkViewCreateReportDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "no_password_link_view_create_report_details".
+///
+- (BOOL)isNoPasswordLinkViewCreateReportDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_password_link_view_report_failed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noPasswordLinkViewReportFailedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "no_password_link_view_report_failed_details".
+///
+- (BOOL)isNoPasswordLinkViewReportFailedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "outdated_link_view_create_report_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `outdatedLinkViewCreateReportDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "outdated_link_view_create_report_details".
+///
+- (BOOL)isOutdatedLinkViewCreateReportDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "outdated_link_view_report_failed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `outdatedLinkViewReportFailedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "outdated_link_view_report_failed_details".
+///
+- (BOOL)isOutdatedLinkViewReportFailedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

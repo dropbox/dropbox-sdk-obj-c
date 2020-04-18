@@ -32,6 +32,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
   /// There has been an unknown legal hold error.
   DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError,
 
+  /// You don't have permissions to perform this action.
+  DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions,
+
+  /// (no description).
+  DBTEAMLegalHoldsListHeldRevisionsErrorOther,
+
   /// Temporary infrastructure failure, please retry.
   DBTEAMLegalHoldsListHeldRevisionsErrorTransientError,
 
@@ -40,9 +46,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
 
   /// Trying to list revisions for an inactive legal hold.
   DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold,
-
-  /// (no description).
-  DBTEAMLegalHoldsListHeldRevisionsErrorOther,
 
 };
 
@@ -60,6 +63,23 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnknownLegalHoldError;
+
+///
+/// Initializes union class with tag state of "insufficient_permissions".
+///
+/// Description of the "insufficient_permissions" tag state: You don't have
+/// permissions to perform this action.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInsufficientPermissions;
+
+///
+/// Initializes union class with tag state of "other".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "transient_error".
@@ -91,13 +111,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
 ///
 - (instancetype)initWithInactiveLegalHold;
 
-///
-/// Initializes union class with tag state of "other".
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithOther;
-
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -110,6 +123,22 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
 /// "unknown_legal_hold_error".
 ///
 - (BOOL)isUnknownLegalHoldError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "insufficient_permissions".
+///
+/// @return Whether the union's current tag state has value
+/// "insufficient_permissions".
+///
+- (BOOL)isInsufficientPermissions;
+
+///
+/// Retrieves whether the union's current tag state has value "other".
+///
+/// @return Whether the union's current tag state has value "other".
+///
+- (BOOL)isOther;
 
 ///
 /// Retrieves whether the union's current tag state has value "transient_error".
@@ -135,13 +164,6 @@ typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
 /// "inactive_legal_hold".
 ///
 - (BOOL)isInactiveLegalHold;
-
-///
-/// Retrieves whether the union's current tag state has value "other".
-///
-/// @return Whether the union's current tag state has value "other".
-///
-- (BOOL)isOther;
 
 ///
 /// Retrieves string value of union's current tag state.

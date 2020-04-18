@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// The string to search for. May match across multiple fields based on the
-/// request arguments.
+/// request arguments. Query string may be rewritten to improve relevance of
+/// results.
 @property (nonatomic, readonly, copy) NSString *query;
 
 /// Options for more targeted search results.
@@ -42,7 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param query The string to search for. May match across multiple fields
-/// based on the request arguments.
+/// based on the request arguments. Query string may be rewritten to improve
+/// relevance of results.
 /// @param options Options for more targeted search results.
 /// @param includeHighlights (no description).
 ///
@@ -57,7 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// no default value).
 ///
 /// @param query The string to search for. May match across multiple fields
-/// based on the request arguments.
+/// based on the request arguments. Query string may be rewritten to improve
+/// relevance of results.
 ///
 /// @return An initialized instance.
 ///

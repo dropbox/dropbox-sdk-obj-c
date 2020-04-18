@@ -14676,6 +14676,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLegalHoldsError.h"
 #import "DBTEAMLegalHoldsListHeldRevisionsError.h"
 
 #pragma mark - API Object
@@ -14688,6 +14689,22 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError;
+  }
+  return self;
+}
+
+- (instancetype)initWithInsufficientPermissions {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLegalHoldsListHeldRevisionsErrorOther;
   }
   return self;
 }
@@ -14716,20 +14733,20 @@
   return self;
 }
 
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLegalHoldsListHeldRevisionsErrorOther;
-  }
-  return self;
-}
-
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
 
 - (BOOL)isUnknownLegalHoldError {
   return _tag == DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError;
+}
+
+- (BOOL)isInsufficientPermissions {
+  return _tag == DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLegalHoldsListHeldRevisionsErrorOther;
 }
 
 - (BOOL)isTransientError {
@@ -14744,22 +14761,20 @@
   return _tag == DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold;
 }
 
-- (BOOL)isOther {
-  return _tag == DBTEAMLegalHoldsListHeldRevisionsErrorOther;
-}
-
 - (NSString *)tagName {
   switch (_tag) {
   case DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError:
     return @"DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError";
+  case DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions:
+    return @"DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions";
+  case DBTEAMLegalHoldsListHeldRevisionsErrorOther:
+    return @"DBTEAMLegalHoldsListHeldRevisionsErrorOther";
   case DBTEAMLegalHoldsListHeldRevisionsErrorTransientError:
     return @"DBTEAMLegalHoldsListHeldRevisionsErrorTransientError";
   case DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty:
     return @"DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty";
   case DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold:
     return @"DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold";
-  case DBTEAMLegalHoldsListHeldRevisionsErrorOther:
-    return @"DBTEAMLegalHoldsListHeldRevisionsErrorOther";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -14798,13 +14813,15 @@
   switch (_tag) {
   case DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLegalHoldsListHeldRevisionsErrorOther:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLegalHoldsListHeldRevisionsErrorTransientError:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLegalHoldsListHeldRevisionsErrorOther:
     result = prime * result + [[self tagName] hash];
   }
 
@@ -14834,13 +14851,15 @@
   switch (_tag) {
   case DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError:
     return [[self tagName] isEqual:[aLegalHoldsListHeldRevisionsError tagName]];
+  case DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions:
+    return [[self tagName] isEqual:[aLegalHoldsListHeldRevisionsError tagName]];
+  case DBTEAMLegalHoldsListHeldRevisionsErrorOther:
+    return [[self tagName] isEqual:[aLegalHoldsListHeldRevisionsError tagName]];
   case DBTEAMLegalHoldsListHeldRevisionsErrorTransientError:
     return [[self tagName] isEqual:[aLegalHoldsListHeldRevisionsError tagName]];
   case DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty:
     return [[self tagName] isEqual:[aLegalHoldsListHeldRevisionsError tagName]];
   case DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold:
-    return [[self tagName] isEqual:[aLegalHoldsListHeldRevisionsError tagName]];
-  case DBTEAMLegalHoldsListHeldRevisionsErrorOther:
     return [[self tagName] isEqual:[aLegalHoldsListHeldRevisionsError tagName]];
   }
   return YES;
@@ -14857,14 +14876,16 @@
 
   if ([valueObj isUnknownLegalHoldError]) {
     jsonDict[@".tag"] = @"unknown_legal_hold_error";
+  } else if ([valueObj isInsufficientPermissions]) {
+    jsonDict[@".tag"] = @"insufficient_permissions";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
   } else if ([valueObj isTransientError]) {
     jsonDict[@".tag"] = @"transient_error";
   } else if ([valueObj isLegalHoldStillEmpty]) {
     jsonDict[@".tag"] = @"legal_hold_still_empty";
   } else if ([valueObj isInactiveLegalHold]) {
     jsonDict[@".tag"] = @"inactive_legal_hold";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -14877,14 +14898,16 @@
 
   if ([tag isEqualToString:@"unknown_legal_hold_error"]) {
     return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithUnknownLegalHoldError];
+  } else if ([tag isEqualToString:@"insufficient_permissions"]) {
+    return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithInsufficientPermissions];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithOther];
   } else if ([tag isEqualToString:@"transient_error"]) {
     return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithTransientError];
   } else if ([tag isEqualToString:@"legal_hold_still_empty"]) {
     return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithLegalHoldStillEmpty];
   } else if ([tag isEqualToString:@"inactive_legal_hold"]) {
     return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithInactiveLegalHold];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithOther];
   } else {
     return [[DBTEAMLegalHoldsListHeldRevisionsError alloc] initWithOther];
   }
@@ -15556,6 +15579,14 @@
   return self;
 }
 
+- (instancetype)initWithTeamExceededLegalHoldQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -15596,6 +15627,10 @@
   return _tag == DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique;
 }
 
+- (BOOL)isTeamExceededLegalHoldQuota {
+  return _tag == DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBTEAMLegalHoldsPolicyCreateErrorUnknownLegalHoldError:
@@ -15616,6 +15651,8 @@
     return @"DBTEAMLegalHoldsPolicyCreateErrorTransientError";
   case DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique:
     return @"DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique";
+  case DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota:
+    return @"DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -15670,6 +15707,8 @@
     result = prime * result + [[self tagName] hash];
   case DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique:
     result = prime * result + [[self tagName] hash];
+  case DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota:
+    result = prime * result + [[self tagName] hash];
   }
 
   return prime * result;
@@ -15713,6 +15752,8 @@
     return [[self tagName] isEqual:[aLegalHoldsPolicyCreateError tagName]];
   case DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique:
     return [[self tagName] isEqual:[aLegalHoldsPolicyCreateError tagName]];
+  case DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota:
+    return [[self tagName] isEqual:[aLegalHoldsPolicyCreateError tagName]];
   }
   return YES;
 }
@@ -15744,6 +15785,8 @@
     jsonDict[@".tag"] = @"transient_error";
   } else if ([valueObj isNameMustBeUnique]) {
     jsonDict[@".tag"] = @"name_must_be_unique";
+  } else if ([valueObj isTeamExceededLegalHoldQuota]) {
+    jsonDict[@".tag"] = @"team_exceeded_legal_hold_quota";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -15772,6 +15815,8 @@
     return [[DBTEAMLegalHoldsPolicyCreateError alloc] initWithTransientError];
   } else if ([tag isEqualToString:@"name_must_be_unique"]) {
     return [[DBTEAMLegalHoldsPolicyCreateError alloc] initWithNameMustBeUnique];
+  } else if ([tag isEqualToString:@"team_exceeded_legal_hold_quota"]) {
+    return [[DBTEAMLegalHoldsPolicyCreateError alloc] initWithTeamExceededLegalHoldQuota];
   } else {
     return [[DBTEAMLegalHoldsPolicyCreateError alloc] initWithOther];
   }
@@ -15881,6 +15926,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLegalHoldsError.h"
 #import "DBTEAMLegalHoldsPolicyReleaseError.h"
 
 #pragma mark - API Object
@@ -15888,6 +15934,30 @@
 @implementation DBTEAMLegalHoldsPolicyReleaseError
 
 #pragma mark - Constructors
+
+- (instancetype)initWithUnknownLegalHoldError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError;
+  }
+  return self;
+}
+
+- (instancetype)initWithInsufficientPermissions {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLegalHoldsPolicyReleaseErrorOther;
+  }
+  return self;
+}
 
 - (instancetype)initWithLegalHoldPerformingAnotherOperation {
   self = [super init];
@@ -15913,17 +15983,21 @@
   return self;
 }
 
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMLegalHoldsPolicyReleaseErrorOther;
-  }
-  return self;
-}
-
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
+
+- (BOOL)isUnknownLegalHoldError {
+  return _tag == DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError;
+}
+
+- (BOOL)isInsufficientPermissions {
+  return _tag == DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLegalHoldsPolicyReleaseErrorOther;
+}
 
 - (BOOL)isLegalHoldPerformingAnotherOperation {
   return _tag == DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation;
@@ -15937,20 +16011,20 @@
   return _tag == DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound;
 }
 
-- (BOOL)isOther {
-  return _tag == DBTEAMLegalHoldsPolicyReleaseErrorOther;
-}
-
 - (NSString *)tagName {
   switch (_tag) {
+  case DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError:
+    return @"DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError";
+  case DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions:
+    return @"DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions";
+  case DBTEAMLegalHoldsPolicyReleaseErrorOther:
+    return @"DBTEAMLegalHoldsPolicyReleaseErrorOther";
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation:
     return @"DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation";
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldAlreadyReleasing:
     return @"DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldAlreadyReleasing";
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound:
     return @"DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound";
-  case DBTEAMLegalHoldsPolicyReleaseErrorOther:
-    return @"DBTEAMLegalHoldsPolicyReleaseErrorOther";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -15987,13 +16061,17 @@
   NSUInteger result = 1;
 
   switch (_tag) {
+  case DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMLegalHoldsPolicyReleaseErrorOther:
+    result = prime * result + [[self tagName] hash];
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldAlreadyReleasing:
     result = prime * result + [[self tagName] hash];
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound:
-    result = prime * result + [[self tagName] hash];
-  case DBTEAMLegalHoldsPolicyReleaseErrorOther:
     result = prime * result + [[self tagName] hash];
   }
 
@@ -16020,13 +16098,17 @@
     return NO;
   }
   switch (_tag) {
+  case DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError:
+    return [[self tagName] isEqual:[aLegalHoldsPolicyReleaseError tagName]];
+  case DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions:
+    return [[self tagName] isEqual:[aLegalHoldsPolicyReleaseError tagName]];
+  case DBTEAMLegalHoldsPolicyReleaseErrorOther:
+    return [[self tagName] isEqual:[aLegalHoldsPolicyReleaseError tagName]];
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation:
     return [[self tagName] isEqual:[aLegalHoldsPolicyReleaseError tagName]];
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldAlreadyReleasing:
     return [[self tagName] isEqual:[aLegalHoldsPolicyReleaseError tagName]];
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound:
-    return [[self tagName] isEqual:[aLegalHoldsPolicyReleaseError tagName]];
-  case DBTEAMLegalHoldsPolicyReleaseErrorOther:
     return [[self tagName] isEqual:[aLegalHoldsPolicyReleaseError tagName]];
   }
   return YES;
@@ -16041,14 +16123,18 @@
 + (NSDictionary<NSString *, id> *)serialize:(DBTEAMLegalHoldsPolicyReleaseError *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isLegalHoldPerformingAnotherOperation]) {
+  if ([valueObj isUnknownLegalHoldError]) {
+    jsonDict[@".tag"] = @"unknown_legal_hold_error";
+  } else if ([valueObj isInsufficientPermissions]) {
+    jsonDict[@".tag"] = @"insufficient_permissions";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isLegalHoldPerformingAnotherOperation]) {
     jsonDict[@".tag"] = @"legal_hold_performing_another_operation";
   } else if ([valueObj isLegalHoldAlreadyReleasing]) {
     jsonDict[@".tag"] = @"legal_hold_already_releasing";
   } else if ([valueObj isLegalHoldPolicyNotFound]) {
     jsonDict[@".tag"] = @"legal_hold_policy_not_found";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -16059,14 +16145,18 @@
 + (DBTEAMLegalHoldsPolicyReleaseError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"legal_hold_performing_another_operation"]) {
+  if ([tag isEqualToString:@"unknown_legal_hold_error"]) {
+    return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithUnknownLegalHoldError];
+  } else if ([tag isEqualToString:@"insufficient_permissions"]) {
+    return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithInsufficientPermissions];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"legal_hold_performing_another_operation"]) {
     return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithLegalHoldPerformingAnotherOperation];
   } else if ([tag isEqualToString:@"legal_hold_already_releasing"]) {
     return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithLegalHoldAlreadyReleasing];
   } else if ([tag isEqualToString:@"legal_hold_policy_not_found"]) {
     return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithLegalHoldPolicyNotFound];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithOther];
   } else {
     return [[DBTEAMLegalHoldsPolicyReleaseError alloc] initWithOther];
   }
