@@ -28,24 +28,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLegalHoldsListHeldRevisionsErrorTag` enum type represents the
 /// possible tag states with which the `DBTEAMLegalHoldsListHeldRevisionsError`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
-  /// There has been an unknown legal hold error.
-  DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag){
+    /// There has been an unknown legal hold error.
+    DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError,
 
-  /// You don't have permissions to perform this action.
-  DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions,
+    /// You don't have permissions to perform this action.
+    DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions,
 
-  /// (no description).
-  DBTEAMLegalHoldsListHeldRevisionsErrorOther,
+    /// (no description).
+    DBTEAMLegalHoldsListHeldRevisionsErrorOther,
 
-  /// Temporary infrastructure failure, please retry.
-  DBTEAMLegalHoldsListHeldRevisionsErrorTransientError,
+    /// Temporary infrastructure failure, please retry.
+    DBTEAMLegalHoldsListHeldRevisionsErrorTransientError,
 
-  /// The legal hold is not holding any revisions yet
-  DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty,
+    /// The legal hold is not holding any revisions yet
+    DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty,
 
-  /// Trying to list revisions for an inactive legal hold.
-  DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold,
+    /// Trying to list revisions for an inactive legal hold.
+    DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold,
 
 };
 

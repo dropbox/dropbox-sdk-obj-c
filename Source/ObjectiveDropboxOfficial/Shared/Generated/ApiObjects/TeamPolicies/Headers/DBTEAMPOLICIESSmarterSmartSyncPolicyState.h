@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESSmarterSmartSyncPolicyStateTag` enum type represents the
 /// possible tag states with which the
 /// `DBTEAMPOLICIESSmarterSmartSyncPolicyState` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMPOLICIESSmarterSmartSyncPolicyStateTag) {
-  /// Smarter Smart Sync feature is disabled.
-  DBTEAMPOLICIESSmarterSmartSyncPolicyStateDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSmarterSmartSyncPolicyStateTag){
+    /// Smarter Smart Sync feature is disabled.
+    DBTEAMPOLICIESSmarterSmartSyncPolicyStateDisabled,
 
-  /// Smarter Smart Sync feature is enabled.
-  DBTEAMPOLICIESSmarterSmartSyncPolicyStateEnabled,
+    /// Smarter Smart Sync feature is enabled.
+    DBTEAMPOLICIESSmarterSmartSyncPolicyStateEnabled,
 
-  /// (no description).
-  DBTEAMPOLICIESSmarterSmartSyncPolicyStateOther,
+    /// (no description).
+    DBTEAMPOLICIESSmarterSmartSyncPolicyStateOther,
 
 };
 

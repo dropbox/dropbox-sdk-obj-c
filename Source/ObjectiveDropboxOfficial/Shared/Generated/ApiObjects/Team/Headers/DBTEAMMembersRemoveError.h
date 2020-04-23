@@ -27,85 +27,85 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMMembersRemoveErrorTag` enum type represents the possible tag
 /// states with which the `DBTEAMMembersRemoveError` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or
-  /// external_id does not exist on this team.
-  DBTEAMMembersRemoveErrorUserNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
+    /// No matching user found. The provided team_member_id, email, or
+    /// external_id does not exist on this team.
+    DBTEAMMembersRemoveErrorUserNotFound,
 
-  /// The user is not a member of the team.
-  DBTEAMMembersRemoveErrorUserNotInTeam,
+    /// The user is not a member of the team.
+    DBTEAMMembersRemoveErrorUserNotInTeam,
 
-  /// (no description).
-  DBTEAMMembersRemoveErrorOther,
+    /// (no description).
+    DBTEAMMembersRemoveErrorOther,
 
-  /// Expected removed user and transfer_dest user to be different.
-  DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer,
+    /// Expected removed user and transfer_dest user to be different.
+    DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer,
 
-  /// Expected removed user and transfer_admin user to be different.
-  DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer,
+    /// Expected removed user and transfer_admin user to be different.
+    DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer,
 
-  /// No matching user found for the argument transfer_dest_id.
-  DBTEAMMembersRemoveErrorTransferDestUserNotFound,
+    /// No matching user found for the argument transfer_dest_id.
+    DBTEAMMembersRemoveErrorTransferDestUserNotFound,
 
-  /// The provided transfer_dest_id does not exist on this team.
-  DBTEAMMembersRemoveErrorTransferDestUserNotInTeam,
+    /// The provided transfer_dest_id does not exist on this team.
+    DBTEAMMembersRemoveErrorTransferDestUserNotInTeam,
 
-  /// The provided transfer_admin_id does not exist on this team.
-  DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam,
+    /// The provided transfer_admin_id does not exist on this team.
+    DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam,
 
-  /// No matching user found for the argument transfer_admin_id.
-  DBTEAMMembersRemoveErrorTransferAdminUserNotFound,
+    /// No matching user found for the argument transfer_admin_id.
+    DBTEAMMembersRemoveErrorTransferAdminUserNotFound,
 
-  /// The transfer_admin_id argument must be provided when file transfer is
-  /// requested.
-  DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId,
+    /// The transfer_admin_id argument must be provided when file transfer is
+    /// requested.
+    DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId,
 
-  /// Specified transfer_admin user is not a team admin.
-  DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin,
+    /// Specified transfer_admin user is not a team admin.
+    DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin,
 
-  /// The recipient user's email is not verified.
-  DBTEAMMembersRemoveErrorRecipientNotVerified,
+    /// The recipient user's email is not verified.
+    DBTEAMMembersRemoveErrorRecipientNotVerified,
 
-  /// The user is the last admin of the team, so it cannot be removed from it.
-  DBTEAMMembersRemoveErrorRemoveLastAdmin,
+    /// The user is the last admin of the team, so it cannot be removed from it.
+    DBTEAMMembersRemoveErrorRemoveLastAdmin,
 
-  /// Cannot keep account and transfer the data to another user at the same
-  /// time.
-  DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer,
+    /// Cannot keep account and transfer the data to another user at the same
+    /// time.
+    DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer,
 
-  /// Cannot keep account and delete the data at the same time. To keep the
-  /// account the argument wipe_data should be set to false.
-  DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData,
+    /// Cannot keep account and delete the data at the same time. To keep the
+    /// account the argument wipe_data should be set to false.
+    DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData,
 
-  /// The email address of the user is too long to be disabled.
-  DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled,
+    /// The email address of the user is too long to be disabled.
+    DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled,
 
-  /// Cannot keep account of an invited user.
-  DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount,
+    /// Cannot keep account of an invited user.
+    DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount,
 
-  /// Cannot retain team shares when the user's data is marked for deletion on
-  /// their linked devices. The argument wipe_data should be set to false.
-  DBTEAMMembersRemoveErrorCannotRetainSharesWhenDataWiped,
+    /// Cannot retain team shares when the user's data is marked for deletion on
+    /// their linked devices. The argument wipe_data should be set to false.
+    DBTEAMMembersRemoveErrorCannotRetainSharesWhenDataWiped,
 
-  /// The user's account must be kept in order to retain team shares. The
-  /// argument keep_account should be set to true.
-  DBTEAMMembersRemoveErrorCannotRetainSharesWhenNoAccountKept,
+    /// The user's account must be kept in order to retain team shares. The
+    /// argument keep_account should be set to true.
+    DBTEAMMembersRemoveErrorCannotRetainSharesWhenNoAccountKept,
 
-  /// Externally sharing files, folders, and links must be enabled in team
-  /// settings in order to retain team shares for the user.
-  DBTEAMMembersRemoveErrorCannotRetainSharesWhenTeamExternalSharingOff,
+    /// Externally sharing files, folders, and links must be enabled in team
+    /// settings in order to retain team shares for the user.
+    DBTEAMMembersRemoveErrorCannotRetainSharesWhenTeamExternalSharingOff,
 
-  /// Only a team admin, can convert this account to a Basic account.
-  DBTEAMMembersRemoveErrorCannotKeepAccount,
+    /// Only a team admin, can convert this account to a Basic account.
+    DBTEAMMembersRemoveErrorCannotKeepAccount,
 
-  /// This user content is currently being held. To convert this member's
-  /// account to a Basic account, you'll first need to remove them from the
-  /// hold.
-  DBTEAMMembersRemoveErrorCannotKeepAccountUnderLegalHold,
+    /// This user content is currently being held. To convert this member's
+    /// account to a Basic account, you'll first need to remove them from the
+    /// hold.
+    DBTEAMMembersRemoveErrorCannotKeepAccountUnderLegalHold,
 
-  /// To convert this member to a Basic account, they'll first need to sign in
-  /// to Dropbox and agree to the terms of service.
-  DBTEAMMembersRemoveErrorCannotKeepAccountRequiredToSignTos,
+    /// To convert this member to a Basic account, they'll first need to sign in
+    /// to Dropbox and agree to the terms of service.
+    DBTEAMMembersRemoveErrorCannotKeepAccountRequiredToSignTos,
 
 };
 

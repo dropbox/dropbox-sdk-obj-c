@@ -27,27 +27,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGFedHandshakeActionTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGFedHandshakeAction` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGFedHandshakeActionTag) {
-  /// (no description).
-  DBTEAMLOGFedHandshakeActionInvited,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFedHandshakeActionTag){
+    /// (no description).
+    DBTEAMLOGFedHandshakeActionInvited,
 
-  /// (no description).
-  DBTEAMLOGFedHandshakeActionAcceptedInvite,
+    /// (no description).
+    DBTEAMLOGFedHandshakeActionAcceptedInvite,
 
-  /// (no description).
-  DBTEAMLOGFedHandshakeActionRejectedInvite,
+    /// (no description).
+    DBTEAMLOGFedHandshakeActionRejectedInvite,
 
-  /// (no description).
-  DBTEAMLOGFedHandshakeActionCanceledInvite,
+    /// (no description).
+    DBTEAMLOGFedHandshakeActionCanceledInvite,
 
-  /// (no description).
-  DBTEAMLOGFedHandshakeActionRemovedTeam,
+    /// (no description).
+    DBTEAMLOGFedHandshakeActionRemovedTeam,
 
-  /// (no description).
-  DBTEAMLOGFedHandshakeActionInviteExpired,
+    /// (no description).
+    DBTEAMLOGFedHandshakeActionInviteExpired,
 
-  /// (no description).
-  DBTEAMLOGFedHandshakeActionOther,
+    /// (no description).
+    DBTEAMLOGFedHandshakeActionOther,
 
 };
 

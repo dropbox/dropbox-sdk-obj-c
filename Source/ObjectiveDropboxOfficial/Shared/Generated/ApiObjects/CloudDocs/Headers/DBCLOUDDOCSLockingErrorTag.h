@@ -27,12 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSLockingErrorTagTag` enum type represents the possible tag
 /// states with which the `DBCLOUDDOCSLockingErrorTag` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSLockingErrorTagTag) {
-  /// A lock on the doc is held by another editor
-  DBCLOUDDOCSLockingErrorTagConflict,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSLockingErrorTagTag){
+    /// A lock on the doc is held by another editor
+    DBCLOUDDOCSLockingErrorTagConflict,
 
-  /// (no description).
-  DBCLOUDDOCSLockingErrorTagOther,
+    /// (no description).
+    DBCLOUDDOCSLockingErrorTagOther,
 
 };
 

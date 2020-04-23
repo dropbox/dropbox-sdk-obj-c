@@ -28,25 +28,25 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLegalHoldsPolicyReleaseErrorTag` enum type represents the
 /// possible tag states with which the `DBTEAMLegalHoldsPolicyReleaseError`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyReleaseErrorTag) {
-  /// There has been an unknown legal hold error.
-  DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsPolicyReleaseErrorTag){
+    /// There has been an unknown legal hold error.
+    DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError,
 
-  /// You don't have permissions to perform this action.
-  DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions,
+    /// You don't have permissions to perform this action.
+    DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions,
 
-  /// (no description).
-  DBTEAMLegalHoldsPolicyReleaseErrorOther,
+    /// (no description).
+    DBTEAMLegalHoldsPolicyReleaseErrorOther,
 
-  /// Legal hold is currently performing another operation.
-  DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation,
+    /// Legal hold is currently performing another operation.
+    DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation,
 
-  /// Legal hold is currently performing a release or is already released.
-  DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldAlreadyReleasing,
+    /// Legal hold is currently performing a release or is already released.
+    DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldAlreadyReleasing,
 
-  /// Legal hold policy does not exist for `id_` in
-  /// `DBTEAMLegalHoldsPolicyReleaseArg`.
-  DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound,
+    /// Legal hold policy does not exist for `id_` in
+    /// `DBTEAMLegalHoldsPolicyReleaseArg`.
+    DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound,
 
 };
 

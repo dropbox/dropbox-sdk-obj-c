@@ -34,16 +34,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMUserDeleteResultTag` enum type represents the possible tag states
 /// with which the `DBTEAMUserDeleteResult` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMUserDeleteResultTag) {
-  /// Describes a user and the results for each attempt to delete a secondary
-  /// email.
-  DBTEAMUserDeleteResultSuccess,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMUserDeleteResultTag){
+    /// Describes a user and the results for each attempt to delete a secondary
+    /// email.
+    DBTEAMUserDeleteResultSuccess,
 
-  /// Specified user is not a valid target for deleting secondary emails.
-  DBTEAMUserDeleteResultInvalidUser,
+    /// Specified user is not a valid target for deleting secondary emails.
+    DBTEAMUserDeleteResultInvalidUser,
 
-  /// (no description).
-  DBTEAMUserDeleteResultOther,
+    /// (no description).
+    DBTEAMUserDeleteResultOther,
 
 };
 

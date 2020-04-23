@@ -27,29 +27,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSUpdateContentErrorTag` enum type represents the possible tag
 /// states with which the `DBCLOUDDOCSUpdateContentError` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSUpdateContentErrorTag) {
-  /// The Cloud Doc ID is invalid.
-  DBCLOUDDOCSUpdateContentErrorInvalidDocId,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSUpdateContentErrorTag){
+    /// The Cloud Doc ID is invalid.
+    DBCLOUDDOCSUpdateContentErrorInvalidDocId,
 
-  /// A Cloud Doc could not be found for the given ID.
-  DBCLOUDDOCSUpdateContentErrorNotFound,
+    /// A Cloud Doc could not be found for the given ID.
+    DBCLOUDDOCSUpdateContentErrorNotFound,
 
-  /// Permission denied for the Cloud Doc with the given ID.
-  DBCLOUDDOCSUpdateContentErrorPermissionDenied,
+    /// Permission denied for the Cloud Doc with the given ID.
+    DBCLOUDDOCSUpdateContentErrorPermissionDenied,
 
-  /// (no description).
-  DBCLOUDDOCSUpdateContentErrorOther,
+    /// (no description).
+    DBCLOUDDOCSUpdateContentErrorOther,
 
-  /// Upload payload exceeds maximum allowed size of 150MB.
-  DBCLOUDDOCSUpdateContentErrorUploadSizeTooLarge,
+    /// Upload payload exceeds maximum allowed size of 150MB.
+    DBCLOUDDOCSUpdateContentErrorUploadSizeTooLarge,
 
-  /// A lock on the document identified by path_or_id is held by another
-  /// editor.
-  DBCLOUDDOCSUpdateContentErrorConflict,
+    /// A lock on the document identified by path_or_id is held by another
+    /// editor.
+    DBCLOUDDOCSUpdateContentErrorConflict,
 
-  /// A lock is not held on the document identified by path_or_id. Acquire
-  /// lock before uploading content for the document.
-  DBCLOUDDOCSUpdateContentErrorUnlocked,
+    /// A lock is not held on the document identified by path_or_id. Acquire
+    /// lock before uploading content for the document.
+    DBCLOUDDOCSUpdateContentErrorUnlocked,
 
 };
 

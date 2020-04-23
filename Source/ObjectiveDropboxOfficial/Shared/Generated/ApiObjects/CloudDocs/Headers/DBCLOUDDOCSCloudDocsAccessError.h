@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSCloudDocsAccessErrorTag` enum type represents the possible
 /// tag states with which the `DBCLOUDDOCSCloudDocsAccessError` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSCloudDocsAccessErrorTag) {
-  /// The Cloud Doc ID is invalid.
-  DBCLOUDDOCSCloudDocsAccessErrorInvalidDocId,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSCloudDocsAccessErrorTag){
+    /// The Cloud Doc ID is invalid.
+    DBCLOUDDOCSCloudDocsAccessErrorInvalidDocId,
 
-  /// A Cloud Doc could not be found for the given ID.
-  DBCLOUDDOCSCloudDocsAccessErrorNotFound,
+    /// A Cloud Doc could not be found for the given ID.
+    DBCLOUDDOCSCloudDocsAccessErrorNotFound,
 
-  /// Permission denied for the Cloud Doc with the given ID.
-  DBCLOUDDOCSCloudDocsAccessErrorPermissionDenied,
+    /// Permission denied for the Cloud Doc with the given ID.
+    DBCLOUDDOCSCloudDocsAccessErrorPermissionDenied,
 
-  /// (no description).
-  DBCLOUDDOCSCloudDocsAccessErrorOther,
+    /// (no description).
+    DBCLOUDDOCSCloudDocsAccessErrorOther,
 
 };
 

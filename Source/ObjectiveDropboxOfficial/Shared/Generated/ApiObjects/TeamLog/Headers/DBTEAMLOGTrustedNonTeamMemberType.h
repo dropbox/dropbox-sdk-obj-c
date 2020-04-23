@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGTrustedNonTeamMemberTypeTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGTrustedNonTeamMemberType` union can
 /// exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGTrustedNonTeamMemberTypeTag) {
-  /// (no description).
-  DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTrustedNonTeamMemberTypeTag){
+    /// (no description).
+    DBTEAMLOGTrustedNonTeamMemberTypeMultiInstanceAdmin,
 
-  /// (no description).
-  DBTEAMLOGTrustedNonTeamMemberTypeEnterpriseAdmin,
+    /// (no description).
+    DBTEAMLOGTrustedNonTeamMemberTypeEnterpriseAdmin,
 
-  /// (no description).
-  DBTEAMLOGTrustedNonTeamMemberTypeOther,
+    /// (no description).
+    DBTEAMLOGTrustedNonTeamMemberTypeOther,
 
 };
 

@@ -27,21 +27,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSGenericErrorTagTag` enum type represents the possible tag
 /// states with which the `DBCLOUDDOCSGenericErrorTag` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSGenericErrorTagTag) {
-  /// Invalid argument supplied.
-  DBCLOUDDOCSGenericErrorTagInvalidArgument,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSGenericErrorTagTag){
+    /// Invalid argument supplied.
+    DBCLOUDDOCSGenericErrorTagInvalidArgument,
 
-  /// User is unauthenticated.
-  DBCLOUDDOCSGenericErrorTagUnauthenticated,
+    /// User is unauthenticated.
+    DBCLOUDDOCSGenericErrorTagUnauthenticated,
 
-  /// User does not have access to the specified doc.
-  DBCLOUDDOCSGenericErrorTagPermissionDenied,
+    /// User does not have access to the specified doc.
+    DBCLOUDDOCSGenericErrorTagPermissionDenied,
 
-  /// Doc could not be found based on the supplied doc ID.
-  DBCLOUDDOCSGenericErrorTagDocNotFound,
+    /// Doc could not be found based on the supplied doc ID.
+    DBCLOUDDOCSGenericErrorTagDocNotFound,
 
-  /// (no description).
-  DBCLOUDDOCSGenericErrorTagOther,
+    /// (no description).
+    DBCLOUDDOCSGenericErrorTagOther,
 
 };
 

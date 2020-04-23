@@ -33,18 +33,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGActionDetailsTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGActionDetails` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGActionDetailsTag) {
-  /// Additional information relevant when a new member joins the team.
-  DBTEAMLOGActionDetailsTeamJoinDetails,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGActionDetailsTag){
+    /// Additional information relevant when a new member joins the team.
+    DBTEAMLOGActionDetailsTeamJoinDetails,
 
-  /// Define how the user was removed from the team.
-  DBTEAMLOGActionDetailsRemoveAction,
+    /// Define how the user was removed from the team.
+    DBTEAMLOGActionDetailsRemoveAction,
 
-  /// Additional information relevant when someone is invited to the team.
-  DBTEAMLOGActionDetailsTeamInviteDetails,
+    /// Additional information relevant when someone is invited to the team.
+    DBTEAMLOGActionDetailsTeamInviteDetails,
 
-  /// (no description).
-  DBTEAMLOGActionDetailsOther,
+    /// (no description).
+    DBTEAMLOGActionDetailsOther,
 
 };
 

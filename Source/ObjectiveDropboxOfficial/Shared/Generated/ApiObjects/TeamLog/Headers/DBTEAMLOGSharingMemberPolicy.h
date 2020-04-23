@@ -29,18 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGSharingMemberPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGSharingMemberPolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGSharingMemberPolicyTag) {
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyAllow,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSharingMemberPolicyTag){
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyAllow,
 
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyForbid,
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyForbid,
 
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyForbidWithExclusions,
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyForbidWithExclusions,
 
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyOther,
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyOther,
 
 };
 

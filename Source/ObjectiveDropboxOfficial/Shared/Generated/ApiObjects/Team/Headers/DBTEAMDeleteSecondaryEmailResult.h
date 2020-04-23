@@ -33,19 +33,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMDeleteSecondaryEmailResultTag` enum type represents the possible
 /// tag states with which the `DBTEAMDeleteSecondaryEmailResult` union can
 /// exist.
-typedef NS_ENUM(NSInteger, DBTEAMDeleteSecondaryEmailResultTag) {
-  /// The secondary email was successfully deleted.
-  DBTEAMDeleteSecondaryEmailResultSuccess,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMDeleteSecondaryEmailResultTag){
+    /// The secondary email was successfully deleted.
+    DBTEAMDeleteSecondaryEmailResultSuccess,
 
-  /// The email address was not found for the user.
-  DBTEAMDeleteSecondaryEmailResultNotFound,
+    /// The email address was not found for the user.
+    DBTEAMDeleteSecondaryEmailResultNotFound,
 
-  /// The email address is the primary email address of the user, and cannot
-  /// be removed.
-  DBTEAMDeleteSecondaryEmailResultCannotRemovePrimary,
+    /// The email address is the primary email address of the user, and cannot
+    /// be removed.
+    DBTEAMDeleteSecondaryEmailResultCannotRemovePrimary,
 
-  /// (no description).
-  DBTEAMDeleteSecondaryEmailResultOther,
+    /// (no description).
+    DBTEAMDeleteSecondaryEmailResultOther,
 
 };
 

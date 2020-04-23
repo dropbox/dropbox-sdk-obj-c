@@ -30,18 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSRenameErrorTagUnionTag` enum type represents the possible
 /// tag states with which the `DBCLOUDDOCSRenameErrorTagUnion` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSRenameErrorTagUnionTag) {
-  /// (no description).
-  DBCLOUDDOCSRenameErrorTagUnionRenameError,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSRenameErrorTagUnionTag){
+    /// (no description).
+    DBCLOUDDOCSRenameErrorTagUnionRenameError,
 
-  /// (no description).
-  DBCLOUDDOCSRenameErrorTagUnionGenericError,
+    /// (no description).
+    DBCLOUDDOCSRenameErrorTagUnionGenericError,
 
-  /// (no description).
-  DBCLOUDDOCSRenameErrorTagUnionLockingError,
+    /// (no description).
+    DBCLOUDDOCSRenameErrorTagUnionLockingError,
 
-  /// (no description).
-  DBCLOUDDOCSRenameErrorTagUnionOther,
+    /// (no description).
+    DBCLOUDDOCSRenameErrorTagUnionOther,
 
 };
 

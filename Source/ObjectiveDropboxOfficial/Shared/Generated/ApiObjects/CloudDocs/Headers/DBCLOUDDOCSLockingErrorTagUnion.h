@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSLockingErrorTagUnionTag` enum type represents the possible
 /// tag states with which the `DBCLOUDDOCSLockingErrorTagUnion` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSLockingErrorTagUnionTag) {
-  /// (no description).
-  DBCLOUDDOCSLockingErrorTagUnionLockingError,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSLockingErrorTagUnionTag){
+    /// (no description).
+    DBCLOUDDOCSLockingErrorTagUnionLockingError,
 
-  /// (no description).
-  DBCLOUDDOCSLockingErrorTagUnionGenericError,
+    /// (no description).
+    DBCLOUDDOCSLockingErrorTagUnionGenericError,
 
-  /// (no description).
-  DBCLOUDDOCSLockingErrorTagUnionOther,
+    /// (no description).
+    DBCLOUDDOCSLockingErrorTagUnionOther,
 
 };
 

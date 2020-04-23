@@ -34,22 +34,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMUserAddResultTag` enum type represents the possible tag states
 /// with which the `DBTEAMUserAddResult` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMUserAddResultTag) {
-  /// Describes a user and the results for each attempt to add a secondary
-  /// email.
-  DBTEAMUserAddResultSuccess,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMUserAddResultTag){
+    /// Describes a user and the results for each attempt to add a secondary
+    /// email.
+    DBTEAMUserAddResultSuccess,
 
-  /// Specified user is not a valid target for adding secondary emails.
-  DBTEAMUserAddResultInvalidUser,
+    /// Specified user is not a valid target for adding secondary emails.
+    DBTEAMUserAddResultInvalidUser,
 
-  /// Secondary emails can only be added to verified users.
-  DBTEAMUserAddResultUnverified,
+    /// Secondary emails can only be added to verified users.
+    DBTEAMUserAddResultUnverified,
 
-  /// Secondary emails cannot be added to placeholder users.
-  DBTEAMUserAddResultPlaceholderUser,
+    /// Secondary emails cannot be added to placeholder users.
+    DBTEAMUserAddResultPlaceholderUser,
 
-  /// (no description).
-  DBTEAMUserAddResultOther,
+    /// (no description).
+    DBTEAMUserAddResultOther,
 
 };
 

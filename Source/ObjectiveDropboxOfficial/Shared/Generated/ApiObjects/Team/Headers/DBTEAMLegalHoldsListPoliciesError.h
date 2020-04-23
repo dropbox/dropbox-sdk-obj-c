@@ -28,18 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLegalHoldsListPoliciesErrorTag` enum type represents the possible
 /// tag states with which the `DBTEAMLegalHoldsListPoliciesError` union can
 /// exist.
-typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListPoliciesErrorTag) {
-  /// There has been an unknown legal hold error.
-  DBTEAMLegalHoldsListPoliciesErrorUnknownLegalHoldError,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsListPoliciesErrorTag){
+    /// There has been an unknown legal hold error.
+    DBTEAMLegalHoldsListPoliciesErrorUnknownLegalHoldError,
 
-  /// You don't have permissions to perform this action.
-  DBTEAMLegalHoldsListPoliciesErrorInsufficientPermissions,
+    /// You don't have permissions to perform this action.
+    DBTEAMLegalHoldsListPoliciesErrorInsufficientPermissions,
 
-  /// (no description).
-  DBTEAMLegalHoldsListPoliciesErrorOther,
+    /// (no description).
+    DBTEAMLegalHoldsListPoliciesErrorOther,
 
-  /// Temporary infrastructure failure, please retry.
-  DBTEAMLegalHoldsListPoliciesErrorTransientError,
+    /// Temporary infrastructure failure, please retry.
+    DBTEAMLegalHoldsListPoliciesErrorTransientError,
 
 };
 

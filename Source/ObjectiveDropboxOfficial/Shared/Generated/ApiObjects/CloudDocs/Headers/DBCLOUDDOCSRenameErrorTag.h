@@ -27,13 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSRenameErrorTagTag` enum type represents the possible tag
 /// states with which the `DBCLOUDDOCSRenameErrorTag` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSRenameErrorTagTag) {
-  /// The supplied title is invalid, e.g. the length of the title is longer
-  /// than max length (255 characters); the title contains illegal characters.
-  DBCLOUDDOCSRenameErrorTagInvalidTitle,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSRenameErrorTagTag){
+    /// The supplied title is invalid, e.g. the length of the title is longer
+    /// than max length (255 characters); the title contains illegal characters.
+    DBCLOUDDOCSRenameErrorTagInvalidTitle,
 
-  /// (no description).
-  DBCLOUDDOCSRenameErrorTagOther,
+    /// (no description).
+    DBCLOUDDOCSRenameErrorTagOther,
 
 };
 

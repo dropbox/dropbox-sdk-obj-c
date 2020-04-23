@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGWatermarkingPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGWatermarkingPolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGWatermarkingPolicyTag) {
-  /// (no description).
-  DBTEAMLOGWatermarkingPolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGWatermarkingPolicyTag){
+    /// (no description).
+    DBTEAMLOGWatermarkingPolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGWatermarkingPolicyEnabled,
+    /// (no description).
+    DBTEAMLOGWatermarkingPolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGWatermarkingPolicyOther,
+    /// (no description).
+    DBTEAMLOGWatermarkingPolicyOther,
 
 };
 

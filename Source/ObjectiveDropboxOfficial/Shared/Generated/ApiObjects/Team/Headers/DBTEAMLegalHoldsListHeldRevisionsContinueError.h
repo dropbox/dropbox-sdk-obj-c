@@ -28,20 +28,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLegalHoldsListHeldRevisionsContinueErrorTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMLegalHoldsListHeldRevisionsContinueError` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsContinueErrorTag) {
-  /// There has been an unknown legal hold error.
-  DBTEAMLegalHoldsListHeldRevisionsContinueErrorUnknownLegalHoldError,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsContinueErrorTag){
+    /// There has been an unknown legal hold error.
+    DBTEAMLegalHoldsListHeldRevisionsContinueErrorUnknownLegalHoldError,
 
-  /// Temporary infrastructure failure, please retry.
-  DBTEAMLegalHoldsListHeldRevisionsContinueErrorTransientError,
+    /// Temporary infrastructure failure, please retry.
+    DBTEAMLegalHoldsListHeldRevisionsContinueErrorTransientError,
 
-  /// Indicates that the cursor has been invalidated. Call
-  /// `legalHoldsListHeldRevisionsContinue` again with an empty cursor to
-  /// obtain a new cursor.
-  DBTEAMLegalHoldsListHeldRevisionsContinueErrorReset,
+    /// Indicates that the cursor has been invalidated. Call
+    /// `legalHoldsListHeldRevisionsContinue` again with an empty cursor to
+    /// obtain a new cursor.
+    DBTEAMLegalHoldsListHeldRevisionsContinueErrorReset,
 
-  /// (no description).
-  DBTEAMLegalHoldsListHeldRevisionsContinueErrorOther,
+    /// (no description).
+    DBTEAMLegalHoldsListHeldRevisionsContinueErrorOther,
 
 };
 

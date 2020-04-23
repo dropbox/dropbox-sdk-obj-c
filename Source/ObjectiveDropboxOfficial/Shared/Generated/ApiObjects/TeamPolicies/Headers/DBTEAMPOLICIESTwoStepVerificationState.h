@@ -28,18 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESTwoStepVerificationStateTag` enum type represents the
 /// possible tag states with which the `DBTEAMPOLICIESTwoStepVerificationState`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMPOLICIESTwoStepVerificationStateTag) {
-  /// Enabled require two factor authorization.
-  DBTEAMPOLICIESTwoStepVerificationStateRequired,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESTwoStepVerificationStateTag){
+    /// Enabled require two factor authorization.
+    DBTEAMPOLICIESTwoStepVerificationStateRequired,
 
-  /// Optional require two factor authorization.
-  DBTEAMPOLICIESTwoStepVerificationStateOptional,
+    /// Optional require two factor authorization.
+    DBTEAMPOLICIESTwoStepVerificationStateOptional,
 
-  /// Disabled require two factor authorization.
-  DBTEAMPOLICIESTwoStepVerificationStateDisabled,
+    /// Disabled require two factor authorization.
+    DBTEAMPOLICIESTwoStepVerificationStateDisabled,
 
-  /// (no description).
-  DBTEAMPOLICIESTwoStepVerificationStateOther,
+    /// (no description).
+    DBTEAMPOLICIESTwoStepVerificationStateOther,
 
 };
 

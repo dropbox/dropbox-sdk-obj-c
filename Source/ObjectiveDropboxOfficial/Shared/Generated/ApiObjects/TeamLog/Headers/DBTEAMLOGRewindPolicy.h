@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGRewindPolicyTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGRewindPolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGRewindPolicyTag) {
-  /// (no description).
-  DBTEAMLOGRewindPolicyAdminsOnly,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGRewindPolicyTag){
+    /// (no description).
+    DBTEAMLOGRewindPolicyAdminsOnly,
 
-  /// (no description).
-  DBTEAMLOGRewindPolicyEveryone,
+    /// (no description).
+    DBTEAMLOGRewindPolicyEveryone,
 
-  /// (no description).
-  DBTEAMLOGRewindPolicyOther,
+    /// (no description).
+    DBTEAMLOGRewindPolicyOther,
 
 };
 

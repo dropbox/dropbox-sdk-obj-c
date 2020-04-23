@@ -29,27 +29,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGQuickActionTypeTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGQuickActionType` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag) {
-  /// (no description).
-  DBTEAMLOGQuickActionTypeDeleteSharedLink,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag){
+    /// (no description).
+    DBTEAMLOGQuickActionTypeDeleteSharedLink,
 
-  /// (no description).
-  DBTEAMLOGQuickActionTypeResetPassword,
+    /// (no description).
+    DBTEAMLOGQuickActionTypeResetPassword,
 
-  /// (no description).
-  DBTEAMLOGQuickActionTypeRestoreFileOrFolder,
+    /// (no description).
+    DBTEAMLOGQuickActionTypeRestoreFileOrFolder,
 
-  /// (no description).
-  DBTEAMLOGQuickActionTypeUnlinkApp,
+    /// (no description).
+    DBTEAMLOGQuickActionTypeUnlinkApp,
 
-  /// (no description).
-  DBTEAMLOGQuickActionTypeUnlinkDevice,
+    /// (no description).
+    DBTEAMLOGQuickActionTypeUnlinkDevice,
 
-  /// (no description).
-  DBTEAMLOGQuickActionTypeUnlinkSession,
+    /// (no description).
+    DBTEAMLOGQuickActionTypeUnlinkSession,
 
-  /// (no description).
-  DBTEAMLOGQuickActionTypeOther,
+    /// (no description).
+    DBTEAMLOGQuickActionTypeOther,
 
 };
 

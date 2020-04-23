@@ -33,20 +33,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMResendSecondaryEmailResultTag` enum type represents the possible
 /// tag states with which the `DBTEAMResendSecondaryEmailResult` union can
 /// exist.
-typedef NS_ENUM(NSInteger, DBTEAMResendSecondaryEmailResultTag) {
-  /// A verification email was successfully sent to the secondary email
-  /// address.
-  DBTEAMResendSecondaryEmailResultSuccess,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMResendSecondaryEmailResultTag){
+    /// A verification email was successfully sent to the secondary email
+    /// address.
+    DBTEAMResendSecondaryEmailResultSuccess,
 
-  /// This secondary email address is not pending for the user.
-  DBTEAMResendSecondaryEmailResultNotPending,
+    /// This secondary email address is not pending for the user.
+    DBTEAMResendSecondaryEmailResultNotPending,
 
-  /// Too many emails are being sent to this email address. Please try again
-  /// later.
-  DBTEAMResendSecondaryEmailResultRateLimited,
+    /// Too many emails are being sent to this email address. Please try again
+    /// later.
+    DBTEAMResendSecondaryEmailResultRateLimited,
 
-  /// (no description).
-  DBTEAMResendSecondaryEmailResultOther,
+    /// (no description).
+    DBTEAMResendSecondaryEmailResultOther,
 
 };
 

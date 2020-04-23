@@ -454,1285 +454,1285 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGEventDetailsTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGEventDetails` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
-  /// (no description).
-  DBTEAMLOGEventDetailsAppLinkTeamDetails,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
+    /// (no description).
+    DBTEAMLOGEventDetailsAppLinkTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAppLinkUserDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAppLinkUserDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAppUnlinkTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAppUnlinkTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAppUnlinkUserDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAppUnlinkUserDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsIntegrationConnectedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsIntegrationConnectedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsIntegrationDisconnectedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsIntegrationDisconnectedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileAddCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileAddCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileChangeCommentSubscriptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileChangeCommentSubscriptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileDeleteCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileDeleteCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileEditCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileEditCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileLikeCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileLikeCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileResolveCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileResolveCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileUnlikeCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileUnlikeCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileUnresolveCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileUnresolveCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceChangeIpDesktopDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceChangeIpDesktopDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceChangeIpMobileDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceChangeIpMobileDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceChangeIpWebDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceChangeIpWebDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceDeleteOnUnlinkFailDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceDeleteOnUnlinkFailDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceDeleteOnUnlinkSuccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceDeleteOnUnlinkSuccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceLinkFailDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceLinkFailDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceLinkSuccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceLinkSuccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceManagementDisabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceManagementDisabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceManagementEnabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceManagementEnabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceUnlinkDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceUnlinkDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEmmRefreshAuthTokenDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEmmRefreshAuthTokenDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAccountCaptureChangeAvailabilityDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAccountCaptureChangeAvailabilityDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAccountCaptureMigrateAccountDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAccountCaptureMigrateAccountDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAccountCaptureNotificationEmailsSentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAccountCaptureNotificationEmailsSentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAccountCaptureRelinquishAccountDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAccountCaptureRelinquishAccountDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDisabledDomainInvitesDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDisabledDomainInvitesDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainInvitesApproveRequestToJoinTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainInvitesApproveRequestToJoinTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainInvitesDeclineRequestToJoinTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainInvitesDeclineRequestToJoinTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainInvitesEmailExistingUsersDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainInvitesEmailExistingUsersDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainInvitesRequestToJoinTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainInvitesRequestToJoinTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainInvitesSetInviteNewUserPrefToNoDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainInvitesSetInviteNewUserPrefToNoDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainInvitesSetInviteNewUserPrefToYesDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainInvitesSetInviteNewUserPrefToYesDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainVerificationAddDomainFailDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainVerificationAddDomainFailDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainVerificationAddDomainSuccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainVerificationAddDomainSuccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDomainVerificationRemoveDomainDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDomainVerificationRemoveDomainDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEnabledDomainInvitesDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEnabledDomainInvitesDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsCreateFolderDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsCreateFolderDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileAddDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileAddDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileCopyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileCopyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileDeleteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileDeleteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileDownloadDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileDownloadDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileEditDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileEditDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileGetCopyReferenceDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileGetCopyReferenceDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileLockingLockStatusChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileLockingLockStatusChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileMoveDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileMoveDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFilePermanentlyDeleteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFilePermanentlyDeleteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFilePreviewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFilePreviewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRenameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRenameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRestoreDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRestoreDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRevertDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRevertDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRollbackChangesDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRollbackChangesDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileSaveCopyReferenceDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileSaveCopyReferenceDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFolderOverviewDescriptionChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFolderOverviewDescriptionChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFolderOverviewItemPinnedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFolderOverviewItemPinnedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFolderOverviewItemUnpinnedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFolderOverviewItemUnpinnedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsRewindFolderDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsRewindFolderDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestChangeDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestChangeDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestCloseDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestCloseDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestCreateDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestCreateDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestDeleteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestDeleteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestReceiveFileDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestReceiveFileDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupAddExternalIdDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupAddExternalIdDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupAddMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupAddMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupChangeExternalIdDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupChangeExternalIdDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupChangeManagementTypeDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupChangeManagementTypeDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupChangeMemberRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupChangeMemberRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupCreateDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupCreateDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupDeleteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupDeleteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupDescriptionUpdatedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupJoinPolicyUpdatedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupMovedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupMovedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupRemoveExternalIdDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupRemoveExternalIdDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupRemoveMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupRemoveMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupRenameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupRenameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsActivateAHoldDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsActivateAHoldDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsAddMembersDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsAddMembersDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsChangeHoldDetailsDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsChangeHoldDetailsDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsChangeHoldNameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsChangeHoldNameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsExportAHoldDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsExportAHoldDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsExportCancelledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsExportCancelledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsExportDownloadedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsExportDownloadedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsExportRemovedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsExportRemovedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsReleaseAHoldDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsReleaseAHoldDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsRemoveMembersDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsRemoveMembersDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLegalHoldsReportAHoldDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLegalHoldsReportAHoldDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAccountLockOrUnlockedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAccountLockOrUnlockedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEmmErrorDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEmmErrorDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGuestAdminSignedInViaTrustedTeamsDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGuestAdminSignedOutViaTrustedTeamsDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLoginFailDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLoginFailDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLoginSuccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLoginSuccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsLogoutDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsLogoutDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsResellerSupportSessionEndDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsResellerSupportSessionEndDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsResellerSupportSessionStartDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsResellerSupportSessionStartDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSignInAsSessionEndDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSignInAsSessionEndDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSignInAsSessionStartDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSignInAsSessionStartDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoErrorDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoErrorDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsCreateTeamInviteLinkDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsCreateTeamInviteLinkDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeleteTeamInviteLinkDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeleteTeamInviteLinkDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberAddExternalIdDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberAddExternalIdDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberAddNameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberAddNameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberChangeAdminRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberChangeEmailDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberChangeEmailDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberChangeExternalIdDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberChangeExternalIdDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberChangeMembershipTypeDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberChangeMembershipTypeDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberChangeNameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberChangeNameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberChangeStatusDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberChangeStatusDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberDeleteManualContactsDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberDeleteProfilePhotoDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberDeleteProfilePhotoDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberRemoveExternalIdDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSetProfilePhotoDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSetProfilePhotoDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsAddCustomQuotaDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsChangeCustomQuotaDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsChangeCustomQuotaDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsChangeStatusDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsChangeStatusDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsRemoveCustomQuotaDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsRemoveCustomQuotaDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSuggestDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSuggestDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberTransferAccountContentsDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberTransferAccountContentsDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPendingSecondaryEmailAddedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPendingSecondaryEmailAddedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSecondaryEmailDeletedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSecondaryEmailDeletedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSecondaryEmailVerifiedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSecondaryEmailVerifiedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSecondaryMailsPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSecondaryMailsPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderAddPageDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderAddPageDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderAddSectionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderAddSectionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderRemovePageDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderRemovePageDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderRemoveSectionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderRemoveSectionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderRenamePageDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderRenamePageDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderRenameSectionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderRenameSectionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderReorderPageDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderReorderPageDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsBinderReorderSectionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsBinderReorderSectionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentAddMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentAddMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentAddToFolderDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentAddToFolderDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentArchiveDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentArchiveDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentCreateDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentCreateDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentPermanentlyDeleteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentPermanentlyDeleteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentRemoveFromFolderDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentRemoveFromFolderDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentRemoveMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentRemoveMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentRenameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentRenameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperContentRestoreDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperContentRestoreDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocAddCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocAddCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocChangeMemberRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocChangeMemberRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocChangeSharingPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocChangeSharingPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocChangeSubscriptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocChangeSubscriptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocDeletedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocDeletedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocDeleteCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocDeleteCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocDownloadDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocDownloadDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocEditDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocEditDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocEditCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocEditCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocFollowedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocFollowedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocMentionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocMentionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocOwnershipChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocRequestAccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocRequestAccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocResolveCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocResolveCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocRevertDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocRevertDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocSlackShareDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocSlackShareDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocTeamInviteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocTeamInviteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocTrashedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocTrashedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocUnresolveCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocUnresolveCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocUntrashedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocUntrashedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDocViewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDocViewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperExternalViewAllowDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperExternalViewAllowDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperExternalViewDefaultTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperExternalViewDefaultTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperExternalViewForbidDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperExternalViewForbidDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperFolderChangeSubscriptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperFolderChangeSubscriptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperFolderDeletedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperFolderDeletedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperFolderFollowedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperFolderFollowedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperFolderTeamInviteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperFolderTeamInviteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperPublishedLinkChangePermissionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperPublishedLinkChangePermissionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperPublishedLinkCreateDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperPublishedLinkDisabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperPublishedLinkViewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPasswordChangeDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPasswordChangeDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPasswordResetDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPasswordResetDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPasswordResetAllDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPasswordResetAllDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEmmCreateExceptionsReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEmmCreateExceptionsReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEmmCreateUsageReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEmmCreateUsageReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsExportMembersReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsExportMembersReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsExportMembersReportFailDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsExportMembersReportFailDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoExpirationLinkGenCreateReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoExpirationLinkGenCreateReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoExpirationLinkGenReportFailedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoExpirationLinkGenReportFailedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoPasswordLinkGenCreateReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoPasswordLinkGenCreateReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoPasswordLinkGenReportFailedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoPasswordLinkGenReportFailedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoPasswordLinkViewCreateReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoPasswordLinkViewCreateReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoPasswordLinkViewReportFailedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoPasswordLinkViewReportFailedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsOutdatedLinkViewCreateReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsOutdatedLinkViewCreateReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsOutdatedLinkViewReportFailedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsOutdatedLinkViewReportFailedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperAdminExportStartDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperAdminExportStartDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSmartSyncCreateAdminPrivilegeReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSmartSyncCreateAdminPrivilegeReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamActivityCreateReportDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamActivityCreateReportDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamActivityCreateReportFailDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsCollectionShareDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsCollectionShareDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileTransfersFileAddDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileTransfersFileAddDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileTransfersTransferDeleteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileTransfersTransferDeleteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileTransfersTransferDownloadDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileTransfersTransferDownloadDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileTransfersTransferSendDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileTransfersTransferSendDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileTransfersTransferViewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileTransfersTransferViewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoteAclInviteOnlyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoteAclInviteOnlyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoteAclLinkDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoteAclLinkDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoteAclTeamLinkDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoteAclTeamLinkDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoteSharedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoteSharedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNoteShareReceiveDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNoteShareReceiveDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsOpenNoteSharedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsOpenNoteSharedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfAddGroupDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfAddGroupDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfAllowNonMembersToViewSharedLinksDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfAllowNonMembersToViewSharedLinksDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfExternalInviteWarnDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfExternalInviteWarnDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfFbInviteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfFbInviteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfFbInviteChangeRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfFbInviteChangeRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfFbUninviteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfFbUninviteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfInviteGroupDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfInviteGroupDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfTeamGrantAccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfTeamGrantAccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfTeamInviteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfTeamInviteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfTeamInviteChangeRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfTeamInviteChangeRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfTeamJoinDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfTeamJoinDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfTeamJoinFromOobLinkDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfTeamJoinFromOobLinkDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSfTeamUninviteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSfTeamUninviteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentAddInviteesDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentAddInviteesDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentAddLinkExpiryDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentAddLinkExpiryDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentAddLinkPasswordDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentAddLinkPasswordDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentAddMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentAddMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentChangeDownloadsPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentChangeDownloadsPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentChangeInviteeRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentChangeInviteeRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentChangeLinkAudienceDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentChangeLinkAudienceDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentChangeLinkExpiryDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentChangeLinkExpiryDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentChangeLinkPasswordDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentChangeLinkPasswordDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentChangeMemberRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentChangeMemberRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentChangeViewerInfoPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentChangeViewerInfoPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentClaimInvitationDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentClaimInvitationDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentCopyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentCopyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentDownloadDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentDownloadDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRelinquishMembershipDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRelinquishMembershipDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRemoveInviteesDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRemoveInviteesDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRemoveLinkExpiryDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRemoveLinkExpiryDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRemoveLinkPasswordDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRemoveLinkPasswordDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRemoveMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRemoveMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRequestAccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRequestAccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRestoreInviteesDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRestoreInviteesDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentRestoreMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentRestoreMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentUnshareDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentUnshareDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedContentViewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedContentViewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderChangeLinkPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderChangeLinkPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderChangeMembersInheritancePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderChangeMembersInheritancePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderChangeMembersManagementPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderChangeMembersManagementPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderChangeMembersPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderChangeMembersPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderCreateDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderCreateDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderDeclineInvitationDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderDeclineInvitationDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderMountDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderMountDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderNestDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderNestDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedFolderUnmountDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedFolderUnmountDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkAddExpiryDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkAddExpiryDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkChangeExpiryDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkChangeExpiryDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkChangeVisibilityDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkChangeVisibilityDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkCopyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkCopyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkCreateDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkCreateDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkDisableDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkDisableDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkDownloadDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkDownloadDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkRemoveExpiryDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkRemoveExpiryDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsAddExpirationDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsAddExpirationDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsAddPasswordDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsAddPasswordDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsAllowDownloadDisabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsAllowDownloadDisabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsAllowDownloadEnabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsAllowDownloadEnabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsChangeAudienceDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsChangeAudienceDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsChangeExpirationDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsChangeExpirationDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsChangePasswordDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsChangePasswordDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsRemoveExpirationDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsRemoveExpirationDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkSettingsRemovePasswordDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkSettingsRemovePasswordDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkShareDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkShareDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedLinkViewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedLinkViewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharedNoteOpenedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharedNoteOpenedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShmodelGroupShareDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShmodelGroupShareDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseAccessGrantedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseAddMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseAddMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseArchivedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseArchivedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseCreatedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseCreatedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseDeleteCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseEditedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseEditedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseEditCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseEditCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseFileAddedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseFileAddedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseFileDownloadDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseFileDownloadDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseFileRemovedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseFileRemovedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseFileViewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseFileViewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcasePermanentlyDeletedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcasePostCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcasePostCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseRemoveMemberDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseRenamedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseRenamedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseRequestAccessDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseRequestAccessDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseResolveCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseResolveCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseRestoredDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseRestoredDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseTrashedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseTrashedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseTrashedDeprecatedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseTrashedDeprecatedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseUnresolveCommentDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseUntrashedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseUntrashedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseUntrashedDeprecatedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseUntrashedDeprecatedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseViewDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseViewDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoAddCertDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoAddCertDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoAddLoginUrlDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoAddLoginUrlDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoAddLogoutUrlDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoAddLogoutUrlDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoChangeCertDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoChangeCertDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoChangeLoginUrlDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoChangeLoginUrlDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoChangeLogoutUrlDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoChangeLogoutUrlDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoChangeSamlIdentityModeDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoRemoveCertDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoRemoveCertDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoRemoveLoginUrlDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoRemoveLoginUrlDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoRemoveLogoutUrlDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoRemoveLogoutUrlDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamFolderChangeStatusDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamFolderChangeStatusDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamFolderCreateDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamFolderCreateDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamFolderDowngradeDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamFolderDowngradeDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamFolderPermanentlyDeleteDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamFolderPermanentlyDeleteDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamFolderRenameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamFolderRenameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamSelectiveSyncSettingsChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAccountCaptureChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAccountCaptureChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAllowDownloadDisabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAllowDownloadDisabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsAllowDownloadEnabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsAllowDownloadEnabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceApprovalsAddExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceApprovalsAddExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceApprovalsChangeDesktopPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceApprovalsChangeDesktopPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceApprovalsChangeMobilePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceApprovalsChangeMobilePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceApprovalsChangeOverageActionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceApprovalsChangeOverageActionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceApprovalsChangeUnlinkActionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceApprovalsChangeUnlinkActionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDeviceApprovalsRemoveExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDeviceApprovalsRemoveExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDirectoryRestrictionsAddMembersDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDirectoryRestrictionsAddMembersDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsDirectoryRestrictionsRemoveMembersDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsDirectoryRestrictionsRemoveMembersDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEmmAddExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEmmAddExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEmmChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEmmChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEmmRemoveExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEmmRemoveExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileCommentsChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileCommentsChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileLockingPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileLockingPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestsChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestsChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestsEmailsEnabledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestsEmailsEnabledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileRequestsEmailsRestrictedToTeamOnlyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileRequestsEmailsRestrictedToTeamOnlyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsFileTransfersPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsFileTransfersPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGoogleSsoChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGoogleSsoChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGroupUserManagementChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGroupUserManagementChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsIntegrationPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberRequestsChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberRequestsChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSendInvitePolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSendInvitePolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsAddExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsAddExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsChangeCapsTypePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsChangeCapsTypePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSpaceLimitsRemoveExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSpaceLimitsRemoveExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMemberSuggestionsChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMemberSuggestionsChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsMicrosoftOfficeAddinChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsMicrosoftOfficeAddinChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsNetworkControlChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsNetworkControlChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperChangeDeploymentPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperChangeMemberLinkPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperChangeMemberPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDefaultFolderPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperDesktopPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPasswordStrengthRequirementsChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPasswordStrengthRequirementsChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsPermanentDeleteChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsResellerSupportChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsRewindPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsRewindPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharingChangeFolderJoinPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharingChangeFolderJoinPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharingChangeLinkPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharingChangeLinkPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSharingChangeMemberPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSharingChangeMemberPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseChangeDownloadPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseChangeDownloadPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseChangeEnabledPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseChangeEnabledPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsShowcaseChangeExternalSharingPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsShowcaseChangeExternalSharingPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSmarterSmartSyncPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSmarterSmartSyncPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSmartSyncChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSmartSyncChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSmartSyncNotOptOutDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSmartSyncNotOptOutDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSmartSyncOptOutDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSmartSyncOptOutDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsSsoChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsSsoChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamSharingWhitelistSubjectsChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamSharingWhitelistSubjectsChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaAddExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaAddExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaRemoveExceptionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaRemoveExceptionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTwoAccountChangePolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsViewerInfoPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsWatermarkingPolicyChangedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsWatermarkingPolicyChangedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsWebSessionsChangeActiveSessionLimitDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsWebSessionsChangeActiveSessionLimitDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsWebSessionsChangeFixedLengthPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsWebSessionsChangeFixedLengthPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsWebSessionsChangeIdleLengthPolicyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsWebSessionsChangeIdleLengthPolicyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeFromDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeFromDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeToDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeToDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamProfileAddLogoDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamProfileAddLogoDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamProfileChangeDefaultLanguageDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamProfileChangeLogoDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamProfileChangeLogoDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamProfileChangeNameDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamProfileChangeNameDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamProfileRemoveLogoDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamProfileRemoveLogoDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaAddBackupPhoneDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaAddBackupPhoneDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaAddSecurityKeyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaAddSecurityKeyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaChangeBackupPhoneDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaChangeBackupPhoneDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaChangeStatusDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaChangeStatusDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaRemoveBackupPhoneDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaRemoveBackupPhoneDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaRemoveSecurityKeyDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaRemoveSecurityKeyDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTfaResetDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTfaResetDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsChangedEnterpriseAdminRoleDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsChangedEnterpriseAdminRoleDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsChangedEnterpriseConnectedTeamStatusDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsChangedEnterpriseConnectedTeamStatusDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEndedEnterpriseAdminSessionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEndedEnterpriseAdminSessionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEndedEnterpriseAdminSessionDeprecatedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEndedEnterpriseAdminSessionDeprecatedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsEnterpriseSettingsLockingDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsEnterpriseSettingsLockingDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsGuestAdminChangeStatusDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsStartedEnterpriseAdminSessionDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsStartedEnterpriseAdminSessionDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestAcceptedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToPrimaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestAcceptedShownToSecondaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestAutoCanceledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestCanceledDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToPrimaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestCanceledShownToSecondaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestExpiredDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToPrimaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestExpiredShownToSecondaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToPrimaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestRejectedShownToSecondaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestReminderDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToPrimaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestReminderShownToSecondaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestRevokedDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestSentShownToPrimaryTeamDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails,
+    /// (no description).
+    DBTEAMLOGEventDetailsTeamMergeRequestSentShownToSecondaryTeamDetails,
 
-  /// Hints that this event was returned with missing details due to an
-  /// internal error.
-  DBTEAMLOGEventDetailsMissingDetails,
+    /// Hints that this event was returned with missing details due to an
+    /// internal error.
+    DBTEAMLOGEventDetailsMissingDetails,
 
-  /// (no description).
-  DBTEAMLOGEventDetailsOther,
+    /// (no description).
+    DBTEAMLOGEventDetailsOther,
 
 };
 

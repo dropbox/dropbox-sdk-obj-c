@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGAccountStateTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGAccountState` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGAccountStateTag) {
-  /// (no description).
-  DBTEAMLOGAccountStateLocked,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAccountStateTag){
+    /// (no description).
+    DBTEAMLOGAccountStateLocked,
 
-  /// (no description).
-  DBTEAMLOGAccountStateUnlocked,
+    /// (no description).
+    DBTEAMLOGAccountStateUnlocked,
 
-  /// (no description).
-  DBTEAMLOGAccountStateOther,
+    /// (no description).
+    DBTEAMLOGAccountStateOther,
 
 };
 

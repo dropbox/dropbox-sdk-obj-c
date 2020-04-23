@@ -28,19 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMMembersDeleteProfilePhotoErrorTag` enum type represents the
 /// possible tag states with which the `DBTEAMMembersDeleteProfilePhotoError`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMMembersDeleteProfilePhotoErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or
-  /// external_id does not exist on this team.
-  DBTEAMMembersDeleteProfilePhotoErrorUserNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersDeleteProfilePhotoErrorTag){
+    /// No matching user found. The provided team_member_id, email, or
+    /// external_id does not exist on this team.
+    DBTEAMMembersDeleteProfilePhotoErrorUserNotFound,
 
-  /// The user is not a member of the team.
-  DBTEAMMembersDeleteProfilePhotoErrorUserNotInTeam,
+    /// The user is not a member of the team.
+    DBTEAMMembersDeleteProfilePhotoErrorUserNotInTeam,
 
-  /// Modifying deleted users is not allowed.
-  DBTEAMMembersDeleteProfilePhotoErrorSetProfileDisallowed,
+    /// Modifying deleted users is not allowed.
+    DBTEAMMembersDeleteProfilePhotoErrorSetProfileDisallowed,
 
-  /// (no description).
-  DBTEAMMembersDeleteProfilePhotoErrorOther,
+    /// (no description).
+    DBTEAMMembersDeleteProfilePhotoErrorOther,
 
 };
 

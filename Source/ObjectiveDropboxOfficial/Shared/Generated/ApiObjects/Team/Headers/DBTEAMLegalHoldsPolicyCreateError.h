@@ -28,37 +28,37 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLegalHoldsPolicyCreateErrorTag` enum type represents the possible
 /// tag states with which the `DBTEAMLegalHoldsPolicyCreateError` union can
 /// exist.
-typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyCreateErrorTag) {
-  /// There has been an unknown legal hold error.
-  DBTEAMLegalHoldsPolicyCreateErrorUnknownLegalHoldError,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsPolicyCreateErrorTag){
+    /// There has been an unknown legal hold error.
+    DBTEAMLegalHoldsPolicyCreateErrorUnknownLegalHoldError,
 
-  /// You don't have permissions to perform this action.
-  DBTEAMLegalHoldsPolicyCreateErrorInsufficientPermissions,
+    /// You don't have permissions to perform this action.
+    DBTEAMLegalHoldsPolicyCreateErrorInsufficientPermissions,
 
-  /// (no description).
-  DBTEAMLegalHoldsPolicyCreateErrorOther,
+    /// (no description).
+    DBTEAMLegalHoldsPolicyCreateErrorOther,
 
-  /// Start date must be earlier than end date.
-  DBTEAMLegalHoldsPolicyCreateErrorStartDateIsLaterThanEndDate,
+    /// Start date must be earlier than end date.
+    DBTEAMLegalHoldsPolicyCreateErrorStartDateIsLaterThanEndDate,
 
-  /// The users list must have at least one user.
-  DBTEAMLegalHoldsPolicyCreateErrorEmptyMembersList,
+    /// The users list must have at least one user.
+    DBTEAMLegalHoldsPolicyCreateErrorEmptyMembersList,
 
-  /// Some members in the members list are not valid to be placed under legal
-  /// hold.
-  DBTEAMLegalHoldsPolicyCreateErrorInvalidMembers,
+    /// Some members in the members list are not valid to be placed under legal
+    /// hold.
+    DBTEAMLegalHoldsPolicyCreateErrorInvalidMembers,
 
-  /// You cannot add more than 5 users in a legal hold.
-  DBTEAMLegalHoldsPolicyCreateErrorNumberOfUsersOnHoldIsGreaterThanHoldLimitation,
+    /// You cannot add more than 5 users in a legal hold.
+    DBTEAMLegalHoldsPolicyCreateErrorNumberOfUsersOnHoldIsGreaterThanHoldLimitation,
 
-  /// Temporary infrastructure failure, please retry.
-  DBTEAMLegalHoldsPolicyCreateErrorTransientError,
+    /// Temporary infrastructure failure, please retry.
+    DBTEAMLegalHoldsPolicyCreateErrorTransientError,
 
-  /// The name provided is already in use by another legal hold.
-  DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique,
+    /// The name provided is already in use by another legal hold.
+    DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique,
 
-  /// Team exceeded legal hold quota.
-  DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota,
+    /// Team exceeded legal hold quota.
+    DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota,
 
 };
 

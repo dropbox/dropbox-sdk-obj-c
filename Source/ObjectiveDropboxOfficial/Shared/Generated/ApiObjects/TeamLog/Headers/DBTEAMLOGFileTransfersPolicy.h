@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGFileTransfersPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGFileTransfersPolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGFileTransfersPolicyTag) {
-  /// (no description).
-  DBTEAMLOGFileTransfersPolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFileTransfersPolicyTag){
+    /// (no description).
+    DBTEAMLOGFileTransfersPolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGFileTransfersPolicyEnabled,
+    /// (no description).
+    DBTEAMLOGFileTransfersPolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGFileTransfersPolicyOther,
+    /// (no description).
+    DBTEAMLOGFileTransfersPolicyOther,
 
 };
 

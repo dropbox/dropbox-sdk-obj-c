@@ -29,12 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBCLOUDDOCSGetMetadataErrorTagUnionTag` enum type represents the
 /// possible tag states with which the `DBCLOUDDOCSGetMetadataErrorTagUnion`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSGetMetadataErrorTagUnionTag) {
-  /// (no description).
-  DBCLOUDDOCSGetMetadataErrorTagUnionGenericError,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSGetMetadataErrorTagUnionTag){
+    /// (no description).
+    DBCLOUDDOCSGetMetadataErrorTagUnionGenericError,
 
-  /// (no description).
-  DBCLOUDDOCSGetMetadataErrorTagUnionOther,
+    /// (no description).
+    DBCLOUDDOCSGetMetadataErrorTagUnionOther,
 
 };
 

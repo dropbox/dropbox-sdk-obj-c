@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESPasswordControlModeTag` enum type represents the possible
 /// tag states with which the `DBTEAMPOLICIESPasswordControlMode` union can
 /// exist.
-typedef NS_ENUM(NSInteger, DBTEAMPOLICIESPasswordControlModeTag) {
-  /// Password is disabled.
-  DBTEAMPOLICIESPasswordControlModeDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPasswordControlModeTag){
+    /// Password is disabled.
+    DBTEAMPOLICIESPasswordControlModeDisabled,
 
-  /// Password is enabled.
-  DBTEAMPOLICIESPasswordControlModeEnabled,
+    /// Password is enabled.
+    DBTEAMPOLICIESPasswordControlModeEnabled,
 
-  /// (no description).
-  DBTEAMPOLICIESPasswordControlModeOther,
+    /// (no description).
+    DBTEAMPOLICIESPasswordControlModeOther,
 
 };
 

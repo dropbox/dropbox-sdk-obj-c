@@ -27,33 +27,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGLoginMethodTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGLoginMethod` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
-  /// (no description).
-  DBTEAMLOGLoginMethodPassword,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag){
+    /// (no description).
+    DBTEAMLOGLoginMethodPassword,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodTwoFactorAuthentication,
+    /// (no description).
+    DBTEAMLOGLoginMethodTwoFactorAuthentication,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodSaml,
+    /// (no description).
+    DBTEAMLOGLoginMethodSaml,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodGoogleOauth,
+    /// (no description).
+    DBTEAMLOGLoginMethodGoogleOauth,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodWebSession,
+    /// (no description).
+    DBTEAMLOGLoginMethodWebSession,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodQrCode,
+    /// (no description).
+    DBTEAMLOGLoginMethodQrCode,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodAppleOauth,
+    /// (no description).
+    DBTEAMLOGLoginMethodAppleOauth,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodFirstPartyTokenExchange,
+    /// (no description).
+    DBTEAMLOGLoginMethodFirstPartyTokenExchange,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodOther,
+    /// (no description).
+    DBTEAMLOGLoginMethodOther,
 
 };
 

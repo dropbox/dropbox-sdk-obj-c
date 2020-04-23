@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGAccountCaptureNotificationTypeTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGAccountCaptureNotificationType`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGAccountCaptureNotificationTypeTag) {
-  /// (no description).
-  DBTEAMLOGAccountCaptureNotificationTypeProactiveWarningNotification,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAccountCaptureNotificationTypeTag){
+    /// (no description).
+    DBTEAMLOGAccountCaptureNotificationTypeProactiveWarningNotification,
 
-  /// (no description).
-  DBTEAMLOGAccountCaptureNotificationTypeActionableNotification,
+    /// (no description).
+    DBTEAMLOGAccountCaptureNotificationTypeActionableNotification,
 
-  /// (no description).
-  DBTEAMLOGAccountCaptureNotificationTypeOther,
+    /// (no description).
+    DBTEAMLOGAccountCaptureNotificationTypeOther,
 
 };
 

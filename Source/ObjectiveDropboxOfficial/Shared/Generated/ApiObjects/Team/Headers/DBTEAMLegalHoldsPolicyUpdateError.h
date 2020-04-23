@@ -28,38 +28,38 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLegalHoldsPolicyUpdateErrorTag` enum type represents the possible
 /// tag states with which the `DBTEAMLegalHoldsPolicyUpdateError` union can
 /// exist.
-typedef NS_ENUM(NSInteger, DBTEAMLegalHoldsPolicyUpdateErrorTag) {
-  /// There has been an unknown legal hold error.
-  DBTEAMLegalHoldsPolicyUpdateErrorUnknownLegalHoldError,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsPolicyUpdateErrorTag){
+    /// There has been an unknown legal hold error.
+    DBTEAMLegalHoldsPolicyUpdateErrorUnknownLegalHoldError,
 
-  /// You don't have permissions to perform this action.
-  DBTEAMLegalHoldsPolicyUpdateErrorInsufficientPermissions,
+    /// You don't have permissions to perform this action.
+    DBTEAMLegalHoldsPolicyUpdateErrorInsufficientPermissions,
 
-  /// (no description).
-  DBTEAMLegalHoldsPolicyUpdateErrorOther,
+    /// (no description).
+    DBTEAMLegalHoldsPolicyUpdateErrorOther,
 
-  /// Trying to release an inactive legal hold.
-  DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold,
+    /// Trying to release an inactive legal hold.
+    DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold,
 
-  /// Legal hold is currently performing another operation.
-  DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPerformingAnotherOperation,
+    /// Legal hold is currently performing another operation.
+    DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPerformingAnotherOperation,
 
-  /// Some members in the members list are not valid to be placed under legal
-  /// hold.
-  DBTEAMLegalHoldsPolicyUpdateErrorInvalidMembers,
+    /// Some members in the members list are not valid to be placed under legal
+    /// hold.
+    DBTEAMLegalHoldsPolicyUpdateErrorInvalidMembers,
 
-  /// You cannot add more than 5 users in a legal hold.
-  DBTEAMLegalHoldsPolicyUpdateErrorNumberOfUsersOnHoldIsGreaterThanHoldLimitation,
+    /// You cannot add more than 5 users in a legal hold.
+    DBTEAMLegalHoldsPolicyUpdateErrorNumberOfUsersOnHoldIsGreaterThanHoldLimitation,
 
-  /// The users list must have at least one user.
-  DBTEAMLegalHoldsPolicyUpdateErrorEmptyMembersList,
+    /// The users list must have at least one user.
+    DBTEAMLegalHoldsPolicyUpdateErrorEmptyMembersList,
 
-  /// The name provided is already in use by another legal hold.
-  DBTEAMLegalHoldsPolicyUpdateErrorNameMustBeUnique,
+    /// The name provided is already in use by another legal hold.
+    DBTEAMLegalHoldsPolicyUpdateErrorNameMustBeUnique,
 
-  /// Legal hold policy does not exist for `id_` in
-  /// `DBTEAMLegalHoldsPolicyUpdateArg`.
-  DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPolicyNotFound,
+    /// Legal hold policy does not exist for `id_` in
+    /// `DBTEAMLegalHoldsPolicyUpdateArg`.
+    DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPolicyNotFound,
 
 };
 

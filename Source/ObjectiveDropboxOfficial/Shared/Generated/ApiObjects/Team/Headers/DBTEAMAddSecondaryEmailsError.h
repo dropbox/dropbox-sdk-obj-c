@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMAddSecondaryEmailsErrorTag` enum type represents the possible tag
 /// states with which the `DBTEAMAddSecondaryEmailsError` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMAddSecondaryEmailsErrorTag) {
-  /// Secondary emails are disabled for the team.
-  DBTEAMAddSecondaryEmailsErrorSecondaryEmailsDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMAddSecondaryEmailsErrorTag){
+    /// Secondary emails are disabled for the team.
+    DBTEAMAddSecondaryEmailsErrorSecondaryEmailsDisabled,
 
-  /// A maximum of 20 secondary emails can be added in a single call.
-  DBTEAMAddSecondaryEmailsErrorTooManyEmails,
+    /// A maximum of 20 secondary emails can be added in a single call.
+    DBTEAMAddSecondaryEmailsErrorTooManyEmails,
 
-  /// (no description).
-  DBTEAMAddSecondaryEmailsErrorOther,
+    /// (no description).
+    DBTEAMAddSecondaryEmailsErrorOther,
 
 };
 

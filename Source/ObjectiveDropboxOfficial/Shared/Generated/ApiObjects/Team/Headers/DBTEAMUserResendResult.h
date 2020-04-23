@@ -34,16 +34,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMUserResendResultTag` enum type represents the possible tag states
 /// with which the `DBTEAMUserResendResult` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMUserResendResultTag) {
-  /// Describes a user and the results for each attempt to resend verification
-  /// emails.
-  DBTEAMUserResendResultSuccess,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMUserResendResultTag){
+    /// Describes a user and the results for each attempt to resend verification
+    /// emails.
+    DBTEAMUserResendResultSuccess,
 
-  /// Specified user is not a valid target for resending verification emails.
-  DBTEAMUserResendResultInvalidUser,
+    /// Specified user is not a valid target for resending verification emails.
+    DBTEAMUserResendResultInvalidUser,
 
-  /// (no description).
-  DBTEAMUserResendResultOther,
+    /// (no description).
+    DBTEAMUserResendResultOther,
 
 };
 

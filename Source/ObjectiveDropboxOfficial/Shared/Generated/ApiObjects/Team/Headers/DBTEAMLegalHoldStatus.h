@@ -27,27 +27,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLegalHoldStatusTag` enum type represents the possible tag states
 /// with which the `DBTEAMLegalHoldStatus` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLegalHoldStatusTag) {
-  /// The legal hold policy is active.
-  DBTEAMLegalHoldStatusActive,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldStatusTag){
+    /// The legal hold policy is active.
+    DBTEAMLegalHoldStatusActive,
 
-  /// The legal hold policy was released.
-  DBTEAMLegalHoldStatusReleased,
+    /// The legal hold policy was released.
+    DBTEAMLegalHoldStatusReleased,
 
-  /// The legal hold policy is activating.
-  DBTEAMLegalHoldStatusActivating,
+    /// The legal hold policy is activating.
+    DBTEAMLegalHoldStatusActivating,
 
-  /// The legal hold policy is updating.
-  DBTEAMLegalHoldStatusUpdating,
+    /// The legal hold policy is updating.
+    DBTEAMLegalHoldStatusUpdating,
 
-  /// The legal hold policy is exporting.
-  DBTEAMLegalHoldStatusExporting,
+    /// The legal hold policy is exporting.
+    DBTEAMLegalHoldStatusExporting,
 
-  /// The legal hold policy is releasing.
-  DBTEAMLegalHoldStatusReleasing,
+    /// The legal hold policy is releasing.
+    DBTEAMLegalHoldStatusReleasing,
 
-  /// (no description).
-  DBTEAMLegalHoldStatusOther,
+    /// (no description).
+    DBTEAMLegalHoldStatusOther,
 
 };
 

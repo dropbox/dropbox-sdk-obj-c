@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESFileLockingPolicyStateTag` enum type represents the
 /// possible tag states with which the `DBTEAMPOLICIESFileLockingPolicyState`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMPOLICIESFileLockingPolicyStateTag) {
-  /// File locking feature is disabled.
-  DBTEAMPOLICIESFileLockingPolicyStateDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileLockingPolicyStateTag){
+    /// File locking feature is disabled.
+    DBTEAMPOLICIESFileLockingPolicyStateDisabled,
 
-  /// File locking feature is allowed.
-  DBTEAMPOLICIESFileLockingPolicyStateEnabled,
+    /// File locking feature is allowed.
+    DBTEAMPOLICIESFileLockingPolicyStateEnabled,
 
-  /// (no description).
-  DBTEAMPOLICIESFileLockingPolicyStateOther,
+    /// (no description).
+    DBTEAMPOLICIESFileLockingPolicyStateOther,
 
 };
 

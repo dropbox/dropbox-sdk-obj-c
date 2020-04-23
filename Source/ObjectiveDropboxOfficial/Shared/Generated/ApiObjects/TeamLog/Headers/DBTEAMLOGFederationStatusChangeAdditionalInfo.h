@@ -33,18 +33,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGFederationStatusChangeAdditionalInfoTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoTag) {
-  /// The name of the team.
-  DBTEAMLOGFederationStatusChangeAdditionalInfoConnectedTeamName,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoTag){
+    /// The name of the team.
+    DBTEAMLOGFederationStatusChangeAdditionalInfoConnectedTeamName,
 
-  /// The email to which the request was sent.
-  DBTEAMLOGFederationStatusChangeAdditionalInfoNonTrustedTeamDetails,
+    /// The email to which the request was sent.
+    DBTEAMLOGFederationStatusChangeAdditionalInfoNonTrustedTeamDetails,
 
-  /// The name of the organization.
-  DBTEAMLOGFederationStatusChangeAdditionalInfoOrganizationName,
+    /// The name of the organization.
+    DBTEAMLOGFederationStatusChangeAdditionalInfoOrganizationName,
 
-  /// (no description).
-  DBTEAMLOGFederationStatusChangeAdditionalInfoOther,
+    /// (no description).
+    DBTEAMLOGFederationStatusChangeAdditionalInfoOther,
 
 };
 

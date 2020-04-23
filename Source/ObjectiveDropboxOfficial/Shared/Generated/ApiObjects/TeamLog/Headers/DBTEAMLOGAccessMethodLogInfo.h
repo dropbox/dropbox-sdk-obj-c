@@ -32,27 +32,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGAccessMethodLogInfoTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGAccessMethodLogInfo` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGAccessMethodLogInfoTag) {
-  /// End user session details.
-  DBTEAMLOGAccessMethodLogInfoEndUser,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAccessMethodLogInfoTag){
+    /// End user session details.
+    DBTEAMLOGAccessMethodLogInfoEndUser,
 
-  /// Sign in as session details.
-  DBTEAMLOGAccessMethodLogInfoSignInAs,
+    /// Sign in as session details.
+    DBTEAMLOGAccessMethodLogInfoSignInAs,
 
-  /// Content manager session details.
-  DBTEAMLOGAccessMethodLogInfoContentManager,
+    /// Content manager session details.
+    DBTEAMLOGAccessMethodLogInfoContentManager,
 
-  /// Admin console session details.
-  DBTEAMLOGAccessMethodLogInfoAdminConsole,
+    /// Admin console session details.
+    DBTEAMLOGAccessMethodLogInfoAdminConsole,
 
-  /// Enterprise console session details.
-  DBTEAMLOGAccessMethodLogInfoEnterpriseConsole,
+    /// Enterprise console session details.
+    DBTEAMLOGAccessMethodLogInfoEnterpriseConsole,
 
-  /// Api session details.
-  DBTEAMLOGAccessMethodLogInfoApi,
+    /// Api session details.
+    DBTEAMLOGAccessMethodLogInfoApi,
 
-  /// (no description).
-  DBTEAMLOGAccessMethodLogInfoOther,
+    /// (no description).
+    DBTEAMLOGAccessMethodLogInfoOther,
 
 };
 

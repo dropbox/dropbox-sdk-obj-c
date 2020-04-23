@@ -29,18 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGMemberSendInvitePolicyTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGMemberSendInvitePolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGMemberSendInvitePolicyTag) {
-  /// (no description).
-  DBTEAMLOGMemberSendInvitePolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMemberSendInvitePolicyTag){
+    /// (no description).
+    DBTEAMLOGMemberSendInvitePolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGMemberSendInvitePolicySpecificMembers,
+    /// (no description).
+    DBTEAMLOGMemberSendInvitePolicySpecificMembers,
 
-  /// (no description).
-  DBTEAMLOGMemberSendInvitePolicyEveryone,
+    /// (no description).
+    DBTEAMLOGMemberSendInvitePolicyEveryone,
 
-  /// (no description).
-  DBTEAMLOGMemberSendInvitePolicyOther,
+    /// (no description).
+    DBTEAMLOGMemberSendInvitePolicyOther,
 
 };
 

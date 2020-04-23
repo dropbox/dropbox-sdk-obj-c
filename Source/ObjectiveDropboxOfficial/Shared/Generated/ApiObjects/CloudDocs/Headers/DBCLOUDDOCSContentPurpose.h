@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBCLOUDDOCSContentPurposeTag` enum type represents the possible tag
 /// states with which the `DBCLOUDDOCSContentPurpose` union can exist.
-typedef NS_ENUM(NSInteger, DBCLOUDDOCSContentPurposeTag) {
-  /// (no description).
-  DBCLOUDDOCSContentPurposeSearch,
+typedef NS_CLOSED_ENUM(NSInteger, DBCLOUDDOCSContentPurposeTag){
+    /// (no description).
+    DBCLOUDDOCSContentPurposeSearch,
 
-  /// (no description).
-  DBCLOUDDOCSContentPurposePreview,
+    /// (no description).
+    DBCLOUDDOCSContentPurposePreview,
 
-  /// (no description).
-  DBCLOUDDOCSContentPurposeOther,
+    /// (no description).
+    DBCLOUDDOCSContentPurposeOther,
 
 };
 
