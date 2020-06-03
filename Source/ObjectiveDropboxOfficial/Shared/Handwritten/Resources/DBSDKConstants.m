@@ -19,4 +19,4 @@ NSString *const kDBSDKDebugHost = nil; // `"dbdev"`, if using EC, or "{user_name
                                        // Should never be non-`nil` in production.
 // END DEBUG CONSTANTS
 
-NSString *const kDBSDKCSERFKey = @"kDBSDKCSERFKeyObjCSDK";
+NSString *const kDBSDKCSRFKey = @"kDBSDKCSRFKeyObjCSDK";

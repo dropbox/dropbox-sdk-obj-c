@@ -3,10 +3,14 @@
 ///
 
 #import "DBOAuthManager.h"
+
+#import "DBOAuthPKCESession.h"
 #import "DBOAuthResult.h"
+#import "DBOAuthUtils.h"
 #import "DBSDKConstants.h"
 #import "DBSDKKeychain.h"
 #import "DBSDKReachability.h"
+#import "DBScopeRequest.h"
 #import "DBSharedApplicationProtocol.h"
 
 #pragma mark - Access token class
@@ -101,6 +105,12 @@ static DBOAuthManager *s_sharedOAuthManager;
 }
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication {
+    [self authorizeFromSharedApplication:sharedApplication usePkce:NO scopeRequest:nil];
+}
+
+- (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication
+                               usePkce:(BOOL)usePkce
+                          scopeRequest:(DBScopeRequest *)scopeRequest {
   void (^cancelHandler)(void) = ^{
     [sharedApplication presentExternalApp:self->_cancelURL];
   };
@@ -116,7 +126,7 @@ static DBOAuthManager *s_sharedOAuthManager;
         cancelHandler();
       },
       @"Retry" : ^{
-        [self authorizeFromSharedApplication:sharedApplication];
+        [self authorizeFromSharedApplication:sharedApplication usePkce:usePkce scopeRequest:scopeRequest];
       }
     };
 
@@ -136,6 +146,12 @@ static DBOAuthManager *s_sharedOAuthManager;
     [sharedApplication presentErrorMessage:message title:title];
 
     return;
+  }
+
+  if (usePkce) {
+    _authSession = [[DBOAuthPKCESession alloc] initWithScopeRequest:scopeRequest];
+  } else {
+    _authSession = nil;
   }
 
   NSURL *authUrl = [self authURL];
@@ -171,21 +187,33 @@ static DBOAuthManager *s_sharedOAuthManager;
 
   NSString *localeIdentifier = [[NSBundle mainBundle] preferredLocalizations].firstObject ?: @"en";
 
-  // used to prevent malicious impersonation of app from web browser
-  NSString *state = [[NSProcessInfo processInfo] globallyUniqueString];
-  [[NSUserDefaults standardUserDefaults] setValue:state forKey:kDBSDKCSERFKey];
-
-  components.queryItems = @[
-    [NSURLQueryItem queryItemWithName:@"response_type" value:@"token"],
+  NSMutableArray<NSURLQueryItem *> *queryItems = [@[
     [NSURLQueryItem queryItemWithName:@"client_id" value:_appKey],
-    [NSURLQueryItem queryItemWithName:@"redirect_uri" value:[_redirectURL absoluteString]],
-    [NSURLQueryItem queryItemWithName:@"disable_signup" value:self.disableSignup ? @"true" : @"false"],
-    [NSURLQueryItem queryItemWithName:@"force_reauthentication"
-                                value:self.webAuthShouldForceReauthentication ? @"true" : @"false"],
+    [NSURLQueryItem queryItemWithName:@"redirect_uri" value:_redirectURL.absoluteString],
+    [NSURLQueryItem queryItemWithName:@"disable_signup" value:_disableSignup ? @"true" : @"false"],
     [NSURLQueryItem queryItemWithName:@"locale" value:[self.locale localeIdentifier] ?: localeIdentifier],
-    [NSURLQueryItem queryItemWithName:@"state" value:state],
-  ];
-  return components.URL;
+  ] mutableCopy];
+
+  NSString *state = nil;
+  if (_authSession) {
+    // Code flow
+    state = _authSession.state;
+    [queryItems addObjectsFromArray:[DBOAuthUtils createPkceCodeFlowParamsForAuthSession:_authSession]];
+  } else {
+    // Token flow
+    state = [[NSProcessInfo processInfo] globallyUniqueString];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"response_type" value:@"token"]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"state" value:state]];
+  }
+  // used to prevent malicious impersonation of app from web browser
+  [[NSUserDefaults standardUserDefaults] setValue:state forKey:kDBSDKCSRFKey];
+
+  [queryItems addObject:[NSURLQueryItem queryItemWithName:@"force_reauthentication"
+                                                    value:_webAuthShouldForceReauthentication ? @"true" : @"false"]];
+  components.queryItems = queryItems;
+  NSURL *url = components.URL;
+  NSAssert(url, @"Failed to create auth url.");
+  return url;
 }
 
 - (BOOL)canHandleURL:(NSURL *)url {
@@ -218,14 +246,14 @@ static DBOAuthManager *s_sharedOAuthManager;
     return [[DBOAuthResult alloc] initWithError:results[@"error"] errorDescription:desc];
   } else {
     NSString *state = results[@"state"];
-    NSString *storedState = [[NSUserDefaults standardUserDefaults] stringForKey:kDBSDKCSERFKey];
+    NSString *storedState = [[NSUserDefaults standardUserDefaults] stringForKey:kDBSDKCSRFKey];
 
     if (state == nil || storedState == nil || ![state isEqualToString:storedState]) {
       return [[DBOAuthResult alloc] initWithError:@"inconsistent_state"
                                  errorDescription:@"Auth flow failed because of inconsistent state."];
     } else {
       // reset upon success
-      [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDBSDKCSERFKey];
+      [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDBSDKCSRFKey];
     }
 
     NSString *uid = results[@"uid"];

@@ -9,6 +9,7 @@
 #import "DBOAuthManager.h"
 #import "DBOAuthMobile-iOS.h"
 #import "DBOAuthMobileManager-iOS.h"
+#import "DBScopeRequest.h"
 #import "DBTransportDefaultConfig.h"
 
 @implementation DBClientsManager (MobileAuth)
@@ -24,6 +25,22 @@
                                                            openURL:openURL];
   [DBMobileSharedApplication setMobileSharedApplication:sharedMobileApplication];
   [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication];
+}
+
++ (void)authorizeFromControllerV2:(UIApplication *)sharedApplication
+                       controller:(nullable UIViewController *)controller
+                          openURL:(void (^_Nonnull)(NSURL *))openURL
+                     scopeRequest:(nullable DBScopeRequest*)scopeRequest {
+  NSAssert([DBOAuthManager sharedOAuthManager] != nil,
+           @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
+  DBMobileSharedApplication *sharedMobileApplication =
+  [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
+                                                    controller:controller
+                                                       openURL:openURL];
+  [DBMobileSharedApplication setMobileSharedApplication:sharedMobileApplication];
+  [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication
+                                                              usePkce:YES
+                                                         scopeRequest:scopeRequest];
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {

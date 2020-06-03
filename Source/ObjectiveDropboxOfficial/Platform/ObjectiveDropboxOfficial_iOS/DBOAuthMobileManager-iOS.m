@@ -3,9 +3,13 @@
 ///
 
 #import "DBOAuthMobileManager-iOS.h"
+
+#import "DBOAuthConstants.h"
 #import "DBOAuthManager+Protected.h"
 #import "DBOAuthMobile-iOS.h"
+#import "DBOAuthPKCESession.h"
 #import "DBOAuthResult.h"
+#import "DBScopeRequest+Protected.h"
 #import "DBSharedApplicationProtocol.h"
 
 #pragma mark - OAuth manager base (iOS)
@@ -57,10 +61,18 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
   NSString *scheme = [self dAuthScheme:sharedApplication];
 
   if (scheme != nil) {
-    NSString *nonce = [[NSUUID alloc] init].UUIDString;
-    [[NSUserDefaults standardUserDefaults] setObject:nonce forKey:kDBLinkNonce];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [sharedApplication presentExternalApp:[self dAuthURL:scheme nonce:nonce]];
+    NSURL *url = nil;
+    if (_authSession) {
+      // Code flow
+      url = [self dAuthURL:scheme authSession:_authSession];
+    } else {
+      // Token flow
+      NSString *nonce = [[NSUUID alloc] init].UUIDString;
+      [[NSUserDefaults standardUserDefaults] setObject:nonce forKey:kDBLinkNonce];
+      url = [self dAuthURL:scheme nonce:nonce];
+    }
+    NSAssert(url, @"Failed to create dauth url.");
+    [sharedApplication presentExternalApp:url];
     return YES;
   }
 
@@ -74,19 +86,23 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 }
 
 - (NSURL *)dAuthURL:(NSString *)scheme nonce:(NSString *)nonce {
-  NSURLComponents *components = [[NSURLComponents alloc] init];
-  components.scheme = scheme;
-  components.host = @"1";
-  components.path = @"/connect";
-
+  NSURLComponents *components = [self db_dauthUrlCommonComponentsWithScheme:scheme];
   if (nonce != nil) {
     NSString *state = [NSString stringWithFormat:@"oauth2:%@", nonce];
-    components.queryItems = @[
-      [NSURLQueryItem queryItemWithName:@"k" value:_appKey],
-      [NSURLQueryItem queryItemWithName:@"s" value:@""],
-      [NSURLQueryItem queryItemWithName:@"state" value:state],
-    ];
+    components.queryItems =
+      [components.queryItems arrayByAddingObject:[NSURLQueryItem queryItemWithName:kDBStateKey value:state]];
   }
+  return components.URL;
+}
+
+- (NSURL *)dAuthURL:(NSString *)scheme authSession:(DBOAuthPKCESession *)authSession {
+  NSURLComponents *components = [self db_dauthUrlCommonComponentsWithScheme:scheme];
+  NSString *extraQueryParams = [DBOAuthMobileManager db_createExtraQueryParamsStringForAuthSession:authSession];
+  components.queryItems =
+    [components.queryItems arrayByAddingObjectsFromArray:@[
+      [NSURLQueryItem queryItemWithName:kDBStateKey value:authSession.state],
+      [NSURLQueryItem queryItemWithName:kDBExtraQueryParamsKey value:extraQueryParams],
+    ]];
   return components.URL;
 }
 
@@ -143,6 +159,36 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     }
   }
   return NO;
+}
+
+- (NSURLComponents *)db_dauthUrlCommonComponentsWithScheme:(NSString *)scheme {
+  NSURLComponents *components = [NSURLComponents new];
+  components.scheme = scheme;
+  components.host = @"1";
+  components.path = @"/connect";
+  components.queryItems = @[
+    [NSURLQueryItem queryItemWithName:@"k" value:_appKey],
+    [NSURLQueryItem queryItemWithName:@"s" value:@""],
+  ];
+  return components;
+}
+
++ (NSString *)db_createExtraQueryParamsStringForAuthSession:(DBOAuthPKCESession *)authSession {
+  NSMutableArray<NSString *> *params = [NSMutableArray new];
+  NSString *format = @"%@=%@";
+  DBPkceData *pkceData = authSession.pkceData;
+  [params addObject:[NSString stringWithFormat:format, kDBCodeChallengeKey, pkceData.codeChallenge]];
+  [params addObject:[NSString stringWithFormat:format, kDBCodeChallengeMethodKey, pkceData.codeChallengeMethod]];
+  [params addObject:[NSString stringWithFormat:format, kDBTokenAccessTypeKey, authSession.tokenAccessType]];
+  [params addObject:[NSString stringWithFormat:format, kDBResponseTypeKey, authSession.responseType]];
+  DBScopeRequest *scopeRequest = authSession.scopeRequest;
+  if (scopeRequest.scopeString) {
+    [params addObject:[NSString stringWithFormat:format, kDBScopeKey, scopeRequest.scopeString]];
+  }
+  if (scopeRequest.includeGrantedScopes) {
+    [params addObject:[NSString stringWithFormat:format, kDBIncludeGrantedScopesKey, scopeRequest.scopeType]];
+  }
+  return [params componentsJoinedByString:@"&"];
 }
 
 @end
