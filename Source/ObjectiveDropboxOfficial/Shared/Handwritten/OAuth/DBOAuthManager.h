@@ -5,7 +5,9 @@
 #import <Foundation/Foundation.h>
 
 @class DBAccessToken;
+@class DBOAuthPKCESession;
 @class DBOAuthResult;
+@class DBScopeRequest;
 @protocol DBSharedApplication;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -53,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
   NSURL *_cancelURL;
   NSString *_host;
   NSMutableArray<NSURL *> *_urls;
+  DBOAuthPKCESession *_authSession;
 }
 
 /// Sets the locale of the OAuth flow webpages. If `nil`, then defaults to device locale.
@@ -123,6 +126,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sharedApplication A platform-neutral shared application abstraction for rendering auth flow.
 ///
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication;
+
+///
+/// Commences the authorization flow (platform-neutral).
+///
+/// Interfaces with platform-specific rendering logic via the `DBSharedApplication` protocol.
+///
+/// @param sharedApplication A platform-neutral shared application abstraction for rendering auth flow.
+/// @param usePkce Whether to use OAuth2 code flow with PKCE.
+/// @param scopeRequest The ScopeRequest, only used in code flow with PKCE.
+///
+- (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication
+                               usePkce:(BOOL)usePkce
+                          scopeRequest:(nullable DBScopeRequest *)scopeRequest;
 
 ///
 /// Handles a redirect back into the application (from whichever auth flow was being used).

@@ -12,6 +12,24 @@
 		3C3C29761F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C3C29771F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63FB27AA22BDD97A0062BA22 /* DBSDKImports-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B51F1E29913600144F8B /* DBSDKImports-iOS.h */; };
+		BF33F92824873F12001F4072 /* DBOAuthPKCESession.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92024873F10001F4072 /* DBOAuthPKCESession.m */; };
+		BF33F92924873F12001F4072 /* DBOAuthPKCESession.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92024873F10001F4072 /* DBOAuthPKCESession.m */; };
+		BF33F92A24873F12001F4072 /* DBOAuthConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92124873F11001F4072 /* DBOAuthConstants.m */; };
+		BF33F92B24873F12001F4072 /* DBOAuthConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92124873F11001F4072 /* DBOAuthConstants.m */; };
+		BF33F92C24873F12001F4072 /* DBOAuthUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92224873F11001F4072 /* DBOAuthUtils.m */; };
+		BF33F92D24873F12001F4072 /* DBOAuthUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92224873F11001F4072 /* DBOAuthUtils.m */; };
+		BF33F92E24873F12001F4072 /* DBOAuthPKCESession.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92324873F11001F4072 /* DBOAuthPKCESession.h */; };
+		BF33F92F24873F12001F4072 /* DBOAuthPKCESession.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92324873F11001F4072 /* DBOAuthPKCESession.h */; };
+		BF33F93024873F12001F4072 /* DBOAuthConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92424873F11001F4072 /* DBOAuthConstants.h */; };
+		BF33F93124873F12001F4072 /* DBOAuthConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92424873F11001F4072 /* DBOAuthConstants.h */; };
+		BF33F93224873F12001F4072 /* DBScopeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92524873F11001F4072 /* DBScopeRequest.h */; };
+		BF33F93324873F12001F4072 /* DBScopeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92524873F11001F4072 /* DBScopeRequest.h */; };
+		BF33F93424873F12001F4072 /* DBScopeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92624873F12001F4072 /* DBScopeRequest.m */; };
+		BF33F93524873F12001F4072 /* DBScopeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92624873F12001F4072 /* DBScopeRequest.m */; };
+		BF33F93624873F12001F4072 /* DBOAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92724873F12001F4072 /* DBOAuthUtils.h */; };
+		BF33F93724873F12001F4072 /* DBOAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92724873F12001F4072 /* DBOAuthUtils.h */; };
+		BF33F93924873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93824873F3E001F4072 /* DBScopeRequest+Protected.h */; };
+		BF33F93A24873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93824873F3E001F4072 /* DBScopeRequest+Protected.h */; };
 		C43D4E69245748BB008DF48C /* DBStoneBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C43D46EE245748AF008DF48C /* DBStoneBase.m */; };
 		C43D4E6A245748BB008DF48C /* DBStoneBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C43D46EE245748AF008DF48C /* DBStoneBase.m */; };
 		C43D4E6B245748BB008DF48C /* DBStoneSerializers.m in Sources */ = {isa = PBXBuildFile; fileRef = C43D46EF245748AF008DF48C /* DBStoneSerializers.m */; };
@@ -3902,6 +3920,15 @@
 /* Begin PBXFileReference section */
 		3C3C29721F7D757E00C54011 /* DBTransportBaseHostnameConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTransportBaseHostnameConfig.m; sourceTree = "<group>"; };
 		3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTransportBaseHostnameConfig.h; sourceTree = "<group>"; };
+		BF33F92024873F10001F4072 /* DBOAuthPKCESession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOAuthPKCESession.m; sourceTree = "<group>"; };
+		BF33F92124873F11001F4072 /* DBOAuthConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOAuthConstants.m; sourceTree = "<group>"; };
+		BF33F92224873F11001F4072 /* DBOAuthUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOAuthUtils.m; sourceTree = "<group>"; };
+		BF33F92324873F11001F4072 /* DBOAuthPKCESession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOAuthPKCESession.h; sourceTree = "<group>"; };
+		BF33F92424873F11001F4072 /* DBOAuthConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOAuthConstants.h; sourceTree = "<group>"; };
+		BF33F92524873F11001F4072 /* DBScopeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBScopeRequest.h; sourceTree = "<group>"; };
+		BF33F92624873F12001F4072 /* DBScopeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBScopeRequest.m; sourceTree = "<group>"; };
+		BF33F92724873F12001F4072 /* DBOAuthUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOAuthUtils.h; sourceTree = "<group>"; };
+		BF33F93824873F3E001F4072 /* DBScopeRequest+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBScopeRequest+Protected.h"; sourceTree = "<group>"; };
 		C43D46EE245748AF008DF48C /* DBStoneBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneBase.m; sourceTree = "<group>"; };
 		C43D46EF245748AF008DF48C /* DBStoneSerializers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneSerializers.m; sourceTree = "<group>"; };
 		C43D46F0245748AF008DF48C /* DBStoneValidators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneValidators.m; sourceTree = "<group>"; };
@@ -8273,6 +8300,11 @@
 		F297818C1E03692800876A73 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
+				BF33F92124873F11001F4072 /* DBOAuthConstants.m */,
+				BF33F92024873F10001F4072 /* DBOAuthPKCESession.m */,
+				BF33F92224873F11001F4072 /* DBOAuthUtils.m */,
+				BF33F92524873F11001F4072 /* DBScopeRequest.h */,
+				BF33F92624873F12001F4072 /* DBScopeRequest.m */,
 				F297818D1E03692800876A73 /* DBOAuthManager.h */,
 				F297818E1E03692800876A73 /* DBOAuthManager.m */,
 				F297818F1E03692800876A73 /* DBOAuthResult.h */,
@@ -8366,6 +8398,10 @@
 		F2C59AFB1E9C2EEC00E8D2E6 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
+				BF33F92424873F11001F4072 /* DBOAuthConstants.h */,
+				BF33F92324873F11001F4072 /* DBOAuthPKCESession.h */,
+				BF33F92724873F12001F4072 /* DBOAuthUtils.h */,
+				BF33F93824873F3E001F4072 /* DBScopeRequest+Protected.h */,
 				F2C59AFC1E9C2EFC00E8D2E6 /* DBOAuthManager+Protected.h */,
 			);
 			path = OAuth;
@@ -9086,6 +9122,7 @@
 				C43D5945245748D1008DF48C /* DBTEAMLOGPaperDocMentionType.h in Headers */,
 				C43D548B245748C7008DF48C /* DBTEAMLOGGuestAdminSignedOutViaTrustedTeamsType.h in Headers */,
 				C43D5255245748C2008DF48C /* DBTEAMUserCustomQuotaArg.h in Headers */,
+				BF33F93024873F12001F4072 /* DBOAuthConstants.h in Headers */,
 				C43D55BD245748C9008DF48C /* DBTEAMLOGMemberRemoveExternalIdDetails.h in Headers */,
 				C43D57A9245748CD008DF48C /* DBTEAMLOGTeamSelectiveSyncPolicy.h in Headers */,
 				C43D5A7B245748D4008DF48C /* DBTEAMLOGSharedContentUnshareType.h in Headers */,
@@ -9589,6 +9626,7 @@
 				C43D59FD245748D2008DF48C /* DBTEAMLOGFileRequestCreateType.h in Headers */,
 				C43D56B3245748CB008DF48C /* DBTEAMLOGAppUnlinkUserDetails.h in Headers */,
 				C43D523D245748C2008DF48C /* DBTEAMMembersDeactivateBaseArg.h in Headers */,
+				BF33F93224873F12001F4072 /* DBScopeRequest.h in Headers */,
 				C43D595D245748D1008DF48C /* DBTEAMLOGMemberRequestsChangePolicyDetails.h in Headers */,
 				C43D58B3245748D0008DF48C /* DBTEAMLOGEventType.h in Headers */,
 				C43D593F245748D1008DF48C /* DBTEAMLOGExportMembersReportType.h in Headers */,
@@ -9676,6 +9714,7 @@
 				C43D5387245748C5008DF48C /* DBTEAMLOGInviteMethod.h in Headers */,
 				C43D5339245748C4008DF48C /* DBUSERSGetAccountBatchError.h in Headers */,
 				C43D5585245748C9008DF48C /* DBTEAMLOGShowcaseFileAddedDetails.h in Headers */,
+				BF33F93624873F12001F4072 /* DBOAuthUtils.h in Headers */,
 				C43D58B1245748D0008DF48C /* DBTEAMLOGDeviceManagementEnabledDetails.h in Headers */,
 				C43D561D245748CA008DF48C /* DBTEAMLOGTeamMergeRequestAutoCanceledDetails.h in Headers */,
 				C43D5793245748CD008DF48C /* DBTEAMLOGDesktopDeviceSessionLogInfo.h in Headers */,
@@ -9696,6 +9735,7 @@
 				C43D5AE7245748D5008DF48C /* DBTEAMLOGSharedLinkChangeVisibilityDetails.h in Headers */,
 				C43D50CF245748BF008DF48C /* DBCLOUDDOCSUpdateContentArg.h in Headers */,
 				C43D4FDB245748BE008DF48C /* DBSHARINGUserMembershipInfo.h in Headers */,
+				BF33F92E24873F12001F4072 /* DBOAuthPKCESession.h in Headers */,
 				C43D5009245748BE008DF48C /* DBSHARINGListFilesArg.h in Headers */,
 				C43D4F57245748BD008DF48C /* DBSHARINGSharedLinkPolicy.h in Headers */,
 				C43D5731245748CC008DF48C /* DBTEAMLOGPaperContentRenameDetails.h in Headers */,
@@ -9803,6 +9843,7 @@
 				C43D5C0D245748D7008DF48C /* DBFILESCreateFolderBatchResultEntry.h in Headers */,
 				C43D5941245748D1008DF48C /* DBTEAMLOGMemberSuggestType.h in Headers */,
 				C43D5931245748D1008DF48C /* DBTEAMLOGEmmCreateUsageReportDetails.h in Headers */,
+				BF33F93924873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */,
 				C43D542B245748C6008DF48C /* DBTEAMLOGRewindFolderDetails.h in Headers */,
 				C43D55E3245748CA008DF48C /* DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType.h in Headers */,
 				C43D4F8D245748BD008DF48C /* DBSHARINGSharedLinkSettings.h in Headers */,
@@ -10974,6 +11015,7 @@
 				C43D4F7A245748BD008DF48C /* DBSHARINGSharingUserError.h in Headers */,
 				C43D59BE245748D2008DF48C /* DBTEAMLOGGroupRenameType.h in Headers */,
 				C43D59A6245748D2008DF48C /* DBTEAMLOGTrustedNonTeamMemberLogInfo.h in Headers */,
+				BF33F93324873F12001F4072 /* DBScopeRequest.h in Headers */,
 				C43D51FC245748C2008DF48C /* DBTEAMGroupMembersSelectorError.h in Headers */,
 				C43D583A245748CF008DF48C /* DBTEAMLOGMemberChangeStatusType.h in Headers */,
 				C43D4F26245748BC008DF48C /* DBSHARINGMemberPolicy.h in Headers */,
@@ -11170,7 +11212,9 @@
 				C43D5316245748C4008DF48C /* DBFILEPROPERTIESPropertiesSearchQuery.h in Headers */,
 				C43D520E245748C2008DF48C /* DBTEAMRevokeDeviceSessionBatchError.h in Headers */,
 				C43D5368245748C5008DF48C /* DBTEAMLOGNoteAclTeamLinkType.h in Headers */,
+				BF33F93724873F12001F4072 /* DBOAuthUtils.h in Headers */,
 				C43D58D0245748D0008DF48C /* DBTEAMLOGBinderAddPageType.h in Headers */,
+				BF33F92F24873F12001F4072 /* DBOAuthPKCESession.h in Headers */,
 				C43D596E245748D1008DF48C /* DBTEAMLOGTeamMergeRequestRejectedShownToSecondaryTeamType.h in Headers */,
 				C43D5462245748C7008DF48C /* DBTEAMLOGPaperFolderDeletedType.h in Headers */,
 				C43D5B0C245748D5008DF48C /* DBTEAMLOGActorLogInfo.h in Headers */,
@@ -11522,6 +11566,7 @@
 				C43D5A36245748D3008DF48C /* DBTEAMLOGDeviceChangeIpWebType.h in Headers */,
 				C43D561C245748CA008DF48C /* DBTEAMLOGTeamDetails.h in Headers */,
 				C43D5B54245748D5008DF48C /* DBFILESGetTemporaryLinkArg.h in Headers */,
+				BF33F93124873F12001F4072 /* DBOAuthConstants.h in Headers */,
 				C43D5490245748C7008DF48C /* DBTEAMLOGWebSessionLogInfo.h in Headers */,
 				C43D50C6245748BF008DF48C /* DBCLOUDDOCSLockResult.h in Headers */,
 				C43D54B8245748C7008DF48C /* DBTEAMLOGApiSessionLogInfo.h in Headers */,
@@ -11646,6 +11691,7 @@
 				C43D4EB0245748BB008DF48C /* DBPAPERAddPaperDocUser.h in Headers */,
 				C43D4EBA245748BB008DF48C /* DBPAPERRefPaperDoc.h in Headers */,
 				C43D51BE245748C1008DF48C /* DBTEAMTeamNamespacesListArg.h in Headers */,
+				BF33F93A24873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */,
 				C43D54F8245748C8008DF48C /* DBTEAMLOGSfFbUninviteType.h in Headers */,
 				C43D59AC245748D2008DF48C /* DBTEAMLOGPasswordChangeDetails.h in Headers */,
 				C43D5BF8245748D7008DF48C /* DBFILESDownloadZipError.h in Headers */,
@@ -12218,6 +12264,7 @@
 				F297890B1E03692F00876A73 /* DBChunkInputStream.m in Sources */,
 				C43D5CCD245748D9008DF48C /* DBFILEPROPERTIESRouteObjects.m in Sources */,
 				C43D5CB5245748D9008DF48C /* DBFILEREQUESTSUserAuthRoutes.m in Sources */,
+				BF33F92A24873F12001F4072 /* DBOAuthConstants.m in Sources */,
 				C43D5CB3245748D9008DF48C /* DBCONTACTSUserAuthRoutes.m in Sources */,
 				C43D5C7B245748D8008DF48C /* DBCheckObjects.m in Sources */,
 				C43D5C95245748D8008DF48C /* DBUSERSUserAuthRoutes.m in Sources */,
@@ -12227,6 +12274,7 @@
 				F29788D91E03692F00876A73 /* DBRequestErrors.m in Sources */,
 				C43D5CA5245748D8008DF48C /* DBTEAMLOGTeamAuthRoutes.m in Sources */,
 				C43D5CCB245748D9008DF48C /* DBPAPERRouteObjects.m in Sources */,
+				BF33F92C24873F12001F4072 /* DBOAuthUtils.m in Sources */,
 				F235B5221E29913600144F8B /* DBOAuthMobile-iOS.m in Sources */,
 				C43D5CE9245748D9008DF48C /* DBAUTHRouteObjects.m in Sources */,
 				C43D4EDD245748BC008DF48C /* DBTeamPoliciesObjects.m in Sources */,
@@ -12261,6 +12309,7 @@
 				F2A2CE9A1E562E46001D8449 /* DBCustomTasks.m in Sources */,
 				C43D5CCF245748D9008DF48C /* DBTEAMRouteObjects.m in Sources */,
 				F24169471E523FEB0038E306 /* DBTransportDefaultConfig.m in Sources */,
+				BF33F93424873F12001F4072 /* DBScopeRequest.m in Sources */,
 				F29788DD1E03692F00876A73 /* DBSDKReachability.m in Sources */,
 				F29788E11E03692F00876A73 /* DBSessionData.m in Sources */,
 				C43D5067245748BF008DF48C /* DBAuthObjects.m in Sources */,
@@ -12284,6 +12333,7 @@
 				C43D5C83245748D8008DF48C /* DBTeamBaseClient.m in Sources */,
 				F2AB345E1E89DF0C004F6379 /* DBAppClient.m in Sources */,
 				C43D5323245748C4008DF48C /* DBFilePropertiesObjects.m in Sources */,
+				BF33F92824873F12001F4072 /* DBOAuthPKCESession.m in Sources */,
 				F29788FF1E03692F00876A73 /* DBOAuthResult.m in Sources */,
 				F2A2CEA11E562FEB001D8449 /* DBCustomDatatypes.m in Sources */,
 				F235B5241E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m in Sources */,
@@ -12299,11 +12349,13 @@
 				C43D5CB4245748D9008DF48C /* DBCONTACTSUserAuthRoutes.m in Sources */,
 				C43D50F4245748C0008DF48C /* DBCommonObjects.m in Sources */,
 				C43D4EDE245748BC008DF48C /* DBTeamPoliciesObjects.m in Sources */,
+				BF33F92924873F12001F4072 /* DBOAuthPKCESession.m in Sources */,
 				F2AB345F1E89DF0C004F6379 /* DBAppClient.m in Sources */,
 				C43D4F12245748BC008DF48C /* DBSecondaryEmailsObjects.m in Sources */,
 				F29788F21E03692F00876A73 /* DBTransportDefaultClient.m in Sources */,
 				F29788E61E03692F00876A73 /* DBTasks.m in Sources */,
 				C43D4E78245748BB008DF48C /* DBPaperObjects.m in Sources */,
+				BF33F93524873F12001F4072 /* DBScopeRequest.m in Sources */,
 				F2D40D3D1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */,
 				C43D5C86245748D8008DF48C /* DBAppBaseClient.m in Sources */,
 				C43D5068245748BF008DF48C /* DBAuthObjects.m in Sources */,
@@ -12331,6 +12383,7 @@
 				F29788EE1E03692F00876A73 /* DBTasksStorage.m in Sources */,
 				C43D5CCE245748D9008DF48C /* DBFILEPROPERTIESRouteObjects.m in Sources */,
 				F29788C61E03692F00876A73 /* DBUserClient.m in Sources */,
+				BF33F92B24873F12001F4072 /* DBOAuthConstants.m in Sources */,
 				C43D506A245748BF008DF48C /* DBFileRequestsObjects.m in Sources */,
 				F2A2CE9B1E562E46001D8449 /* DBCustomTasks.m in Sources */,
 				C43D4E6A245748BB008DF48C /* DBStoneBase.m in Sources */,
@@ -12369,6 +12422,7 @@
 				C43D5CE8245748D9008DF48C /* DBFILESRouteObjects.m in Sources */,
 				F2A2CEA21E562FEB001D8449 /* DBCustomDatatypes.m in Sources */,
 				C43D5D06245748D9008DF48C /* DBFILEPROPERTIESUserAuthRoutes.m in Sources */,
+				BF33F92D24873F12001F4072 /* DBOAuthUtils.m in Sources */,
 				C43D5050245748BE008DF48C /* DBSeenStateObjects.m in Sources */,
 				C43D5CBE245748D9008DF48C /* DBACCOUNTUserAuthRoutes.m in Sources */,
 				F29789001E03692F00876A73 /* DBOAuthResult.m in Sources */,
