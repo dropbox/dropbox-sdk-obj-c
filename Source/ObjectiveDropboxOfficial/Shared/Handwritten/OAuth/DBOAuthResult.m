@@ -11,12 +11,12 @@
 @synthesize errorType = _errorType;
 @synthesize errorDescription = _errorDescription;
 
-static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
-
 #pragma mark - Constructors
 
-+ (DBOAuthErrorType)getErrorType:(NSString *)errorDescription {
-  if (!errorTypeLookup) {
++ (DBOAuthErrorType)getErrorType:(NSString *)errorType {
+  static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
     errorTypeLookup = @{
       @"unauthorized_client" : [NSNumber numberWithInt:DBAuthUnauthorizedClient],
       @"access_denied" : [NSNumber numberWithInt:DBAuthAccessDenied],
@@ -27,8 +27,8 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
       @"inconsistent_state" : [NSNumber numberWithInt:DBAuthInconsistentState],
       @"" : [NSNumber numberWithInt:DBAuthUnknown],
     };
-  }
-  return (DBOAuthErrorType)[errorTypeLookup[errorDescription] intValue] ?: DBAuthUnknown;
+  });
+  return (DBOAuthErrorType)[errorTypeLookup[errorType] intValue] ?: DBAuthUnknown;
 }
 
 - (instancetype)initWithSuccess:(DBAccessToken *)accessToken {
@@ -41,10 +41,14 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
 }
 
 - (instancetype)initWithError:(NSString *)errorType errorDescription:(NSString *)errorDescription {
+  return [self initWithErrorType:[[self class] getErrorType:errorType] errorDescription:errorDescription];
+}
+
+- (instancetype)initWithErrorType:(DBOAuthErrorType)errorType errorDescription:(nullable NSString *)errorDescription {
   self = [super init];
   if (self) {
     _tag = DBAuthError;
-    _errorType = [[self class] getErrorType:errorType];
+    _errorType = errorType;
     _errorDescription = errorDescription;
   }
   return self;
@@ -56,6 +60,10 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
     _tag = DBAuthCancel;
   }
   return self;
+}
+
++ (DBOAuthResult *)unknownErrorWithErrorDescription:(NSString *)errorDescription {
+  return  [[DBOAuthResult alloc] initWithErrorType:DBAuthUnknown errorDescription:errorDescription];
 }
 
 #pragma mark - Tag state methods

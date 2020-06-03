@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Creates URL query items needed by PKCE code flow.
 + (NSArray<NSURLQueryItem *> *)createPkceCodeFlowParamsForAuthSession:(DBOAuthPKCESession *)authSession;
 
+/// Extracts query parameters from URL and removes percent encoding.
++ (NSDictionary<NSString *, NSString *> *)extractParamsFromUrl:(NSURL *)url;
+
 @end
 
 NS_ASSUME_NONNULL_END

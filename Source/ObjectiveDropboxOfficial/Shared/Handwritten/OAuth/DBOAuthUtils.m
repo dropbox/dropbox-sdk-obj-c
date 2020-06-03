@@ -31,4 +31,13 @@
   return params;
 }
 
++ (NSDictionary<NSString *, NSString *> *)extractParamsFromUrl:(NSURL *)url {
+  NSURLComponents *components = [[NSURLComponents alloc] initWithString:url.absoluteString];
+  NSMutableDictionary<NSString *, NSString *> *dict = [NSMutableDictionary new];
+  for (NSURLQueryItem *item in components.queryItems) {
+    [dict setValue:item.value forKey:item.name];
+  }
+  return dict;
+}
+
 @end
