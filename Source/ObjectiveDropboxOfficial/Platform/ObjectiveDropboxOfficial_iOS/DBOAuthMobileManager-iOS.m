@@ -9,6 +9,7 @@
 #import "DBOAuthMobile-iOS.h"
 #import "DBOAuthPKCESession.h"
 #import "DBOAuthResult.h"
+#import "DBOAuthUtils.h"
 #import "DBScopeRequest+Protected.h"
 #import "DBSharedApplicationProtocol.h"
 
@@ -37,14 +38,12 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
   return self;
 }
 
-- (DBOAuthResult *)extractFromUrl:(NSURL *)url {
-  DBOAuthResult *result;
-  if ([url.host isEqualToString:@"1"]) { // dauth
-    result = [self extractfromDAuthURL:url];
+- (void)extractFromUrl:(NSURL *)url completion:(DBOAuthCompletion)completion {
+  if ([url.host isEqualToString:_dauthRedirectURL.host]) { // dauth
+    [self extractfromDAuthURL:url completion: completion];
   } else {
-    result = [self extractFromRedirectURL:url];
+    [self extractAuthResultFromRedirectURL:url completion:completion];
   }
-  return result;
 }
 
 - (BOOL)checkAndPresentPlatformSpecificAuth:(id<DBSharedApplication>)sharedApplication {
@@ -79,10 +78,11 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
   return NO;
 }
 
-- (DBOAuthResult *)handleRedirectURL:(NSURL *)url {
-  [[DBMobileSharedApplication mobileSharedApplication] dismissAuthController];
-  DBOAuthResult *result = [super handleRedirectURL:url];
-  return result;
+- (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
+  [super handleRedirectURL:url completion:^(DBOAuthResult *result) {
+    [[DBMobileSharedApplication mobileSharedApplication] dismissAuthController];
+    completion(result);
+  }];
 }
 
 - (NSURL *)dAuthURL:(NSString *)scheme nonce:(NSString *)nonce {
@@ -116,31 +116,19 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
   }
 }
 
-- (DBOAuthResult *)extractfromDAuthURL:(NSURL *)url {
+- (void)extractfromDAuthURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
   NSString *path = url.path;
-  if (path != nil) {
-    if ([path isEqualToString:@"/connect"]) {
-      NSMutableDictionary<NSString *, NSString *> *results = [[NSMutableDictionary alloc] init];
-      NSArray<NSString *> *pairs = [url.query componentsSeparatedByString:@"&"] ?: @[];
-
-      for (NSString *pair in pairs) {
-        NSArray *kv = [pair componentsSeparatedByString:@"="];
-        [results setObject:[kv objectAtIndex:1] forKey:[kv objectAtIndex:0]];
-      }
-      NSArray<NSString *> *state = [results[@"state"] componentsSeparatedByString:@"%3A"];
-
-      NSString *nonce = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kDBLinkNonce];
-      if (state.count == 2 && [state[0] isEqualToString:@"oauth2"] && [state[1] isEqualToString:nonce]) {
-        NSString *accessToken = results[@"oauth_token_secret"];
-        NSString *uid = results[@"uid"];
-        return [[DBOAuthResult alloc] initWithSuccess:[[DBAccessToken alloc] initWithAccessToken:accessToken uid:uid]];
+  if (path && [path isEqualToString:@"/connect"]) {
+      if (_authSession) {
+        // Code flow
+        [self db_handleCodeFlowUrl:url authSession:_authSession completion:completion];
       } else {
-        return [[DBOAuthResult alloc] initWithError:@"" errorDescription:@"Unable to verify link request."];
+        // Token flow
+        completion([self db_extractFromTokenFlowUrl: url]);
       }
-    }
+  } else {
+    completion(nil);
   }
-
-  return nil;
 }
 
 - (BOOL)hasApplicationQueriesSchemes {
@@ -171,6 +159,76 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     [NSURLQueryItem queryItemWithName:@"s" value:@""],
   ];
   return components;
+}
+
+/// Handles code flow response URL from DBApp.
+///
+/// Auth results are passed back in URL query parameters.
+/// Expect results look like below:
+///
+/// 1. DBApp that can handle dauth code flow properly
+/// @code
+/// [
+///     "state": "<state_string>",
+///     "oauth_code": "<oauth_code>"
+/// ]
+/// @endcode
+///
+/// 2. Legacy DBApp that calls legacy dauth api, oauth_token should be "oauth2code:" and the code is stored under
+/// "oauth_token_secret" key.
+/// @code
+/// [
+///     "state": "<state_string>",
+///     "oauth_token": "oauth2code:",
+///     "oauth_token_secret": "<oauth_code>"
+/// ]
+/// @endcode
+- (void)db_handleCodeFlowUrl:(NSURL *)url
+                 authSession:(DBOAuthPKCESession *)authSession
+                  completion:(DBOAuthCompletion)completion {
+  NSDictionary<NSString *, NSString *> *parametersMap = [DBOAuthUtils extractParamsFromUrl:url];
+  NSString *state = parametersMap[kDBStateKey];
+  if (state == nil || ![state isEqualToString:authSession.state]) {
+    completion([DBOAuthResult unknownErrorWithErrorDescription:@"Unable to verify link request."]);
+    return;
+  }
+
+  NSString *authCode = nil;
+  if (parametersMap[kDBOauthCodeKey]) {
+    authCode = parametersMap[kDBOauthCodeKey];
+  } else if ([parametersMap[kDBOauthTokenKey] isEqualToString:@"oauth2code:"]) {
+    authCode = parametersMap[kDBOauthSecretKey];
+  }
+  if (authCode) {
+    [self finishPkceOAuthWithAuthCode:authCode codeVerifier:authSession.pkceData.codeVerifier completion:completion];
+  } else {
+    completion([DBOAuthResult unknownErrorWithErrorDescription:@"Unable to verify link request."]);
+  }
+}
+
+/// Handles token flow response URL from DBApp.
+///
+/// Auth results are passed back in URL query parameters.
+/// Expect results look like below:
+/// @code
+/// [
+///     "state": "oauth2:<nonce>",
+///     "oauth_token_secret": "<oauth2_access_token>",
+///     "uid": "<uid>"
+/// ]
+/// @endcode
+- (DBOAuthResult *)db_extractFromTokenFlowUrl:(NSURL *)url {
+  NSDictionary<NSString *, NSString *> *parametersMap = [DBOAuthUtils extractParamsFromUrl:url];
+  NSString *state = parametersMap[kDBStateKey];
+  NSString *nonce = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kDBLinkNonce];
+  NSString *expectedState = [NSString stringWithFormat:@"oauth2:%@", nonce];
+  NSString *accessToken = parametersMap[kDBOauthSecretKey];
+  NSString *uid = parametersMap[kDBUidKey];
+  if (state && [state isEqualToString:expectedState] && accessToken && uid) {
+    return [[DBOAuthResult alloc] initWithSuccess:[DBAccessToken createWithLongLivedAccessToken:accessToken uid:uid]];
+  } else {
+    return [DBOAuthResult unknownErrorWithErrorDescription:@"Unable to verify link request."];
+  }
 }
 
 + (NSString *)db_createExtraQueryParamsStringForAuthSession:(DBOAuthPKCESession *)authSession {

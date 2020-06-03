@@ -3,6 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
+#import "DBOAuthResultCompletion.h"
 
 @class DBAccessToken;
 @class DBOAuthPKCESession;
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Stores a unique identifying key for storing in `DBKeychain`.
 ///
-@interface DBAccessToken : NSObject
+@interface DBAccessToken : NSObject <NSSecureCoding>
 
 /// The OAuth2 access token.
 @property (nonatomic, readonly, copy) NSString *accessToken;
@@ -28,15 +29,51 @@ NS_ASSUME_NONNULL_BEGIN
 /// the `team_id` if (team app).
 @property (nonatomic, readonly, copy) NSString *uid;
 
+/// The refresh token if accessToken is short-lived.
+@property (nonatomic, readonly, copy, nullable) NSString *refreshToken;
+
+/// The expiration time of the (short-lived) accessToken.
+@property (nonatomic, readonly, assign) NSTimeInterval tokenExpirationTimestamp;
+
+/// Creates a `DBAccessToken` object for a long-lived access token.
+///
+/// @param accessToken The OAuth2 access token retrieved from the auth flow.
+/// @param uid The unique identifier used to store in `DBKeychain`.
+///
+/// @return A `DBAccessToken` object.
++ (DBAccessToken *)createWithLongLivedAccessToken:(NSString *)accessToken uid:(NSString *)uid;
+
+/// Creates a `DBAccessToken` object for a short-lived access token.
+///
+/// @param accessToken The OAuth2 access token retrieved from the auth flow.
+/// @param uid The unique identifier used to store in `DBKeychain`.
+/// @param refreshToken The refresh token if accessToken is short-lived.
+/// @param tokenExpirationTimestamp The expiration time of the (short-lived) accessToken.
+///
+/// @return A `DBAccessToken` object.
++ (DBAccessToken *)createWithShortLivedAccessToken:(NSString *)accessToken
+                                               uid:(NSString *)uid
+                                      refreshToken:(nullable NSString *)refreshToken
+                          tokenExpirationTimestamp:(NSTimeInterval)tokenExpirationTimestamp;
+
+/// Convenience method for initWithAccessToken:uid:refreshToken:tokenExpirationTimestamp: with
+/// refreshToken set to nil and tokenExpirationTimestamp set to 0.
+- (instancetype)initWithAccessToken:(NSString *)accessToken uid:(NSString *)uid;
+
 ///
 /// DBAccessToken full constructor.
 ///
 /// @param accessToken The OAuth2 access token retrieved from the auth flow.
 /// @param uid The unique identifier used to store in `DBKeychain`.
+/// @param refreshToken The refresh token if accessToken is short-lived.
+/// @param tokenExpirationTimestamp The expiration time of the (short-lived) accessToken.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAccessToken:(NSString *)accessToken uid:(NSString *)uid;
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                                uid:(NSString *)uid
+                       refreshToken:(nullable NSString *)refreshToken
+           tokenExpirationTimestamp:(NSTimeInterval)tokenExpirationTimestamp;
 
 @end
 
@@ -144,10 +181,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Handles a redirect back into the application (from whichever auth flow was being used).
 ///
 /// @param url The redirect URL to attempt to handle.
+/// @param completion Completion block for oauth result, called with `nil` if SDK cannot handle the redirect URL,
+/// otherwise an instance of `DBOAuthResult`.
 ///
-/// @return `nil` if SDK cannot handle the redirect URL, otherwise returns an instance of `DBOAuthResult`.
-///
-- (nullable DBOAuthResult *)handleRedirectURL:(NSURL *)url;
+- (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion;
 
 #pragma mark - Keychain methods
 
