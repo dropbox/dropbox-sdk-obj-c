@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 
 @class DBAccessToken;
+@class DBOAuthResult;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -94,7 +95,7 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
 ///
 /// @return An initialized `DBOAuthResult` instance.
 ///
-- (instancetype)initWithError:(NSString *)errorType errorDescription:(NSString *)errorDescription;
+- (instancetype)initWithError:(NSString *)errorType errorDescription:(nullable NSString *)errorDescription;
 
 ///
 /// Initializes union class with tag state of "cancel".
@@ -102,6 +103,15 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
 /// @return An initialized `DBOAuthResult` instance.
 ///
 - (instancetype)initWithCancel;
+
+///
+/// Factory method to create union class with tag state of "error" and unknown error type.
+///
+/// @param errorDescription A short description of the error that occured during the authorization flow.
+///
+/// @return An initialized `DBOAuthResult` instance.
+///
++ (DBOAuthResult *)unknownErrorWithErrorDescription:(nullable NSString *)errorDescription;
 
 #pragma mark - Tag state methods
 
