@@ -6,9 +6,11 @@
 
 #import "DBClientsManager+Protected.h"
 #import "DBClientsManager.h"
+#import "DBLoadingStatusDelegate.h"
 #import "DBOAuthManager.h"
 #import "DBOAuthMobile-iOS.h"
 #import "DBOAuthMobileManager-iOS.h"
+#import "DBOAuthMobile+Protected.h"
 #import "DBScopeRequest.h"
 #import "DBTransportDefaultConfig.h"
 
@@ -29,6 +31,7 @@
 
 + (void)authorizeFromControllerV2:(UIApplication *)sharedApplication
                        controller:(nullable UIViewController *)controller
+            loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
                           openURL:(void (^_Nonnull)(NSURL *))openURL
                      scopeRequest:(nullable DBScopeRequest*)scopeRequest {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
@@ -37,6 +40,7 @@
   [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
                                                     controller:controller
                                                        openURL:openURL];
+  sharedMobileApplication.loadingStatusDelegate = loadingStatusDelegate;
   [DBMobileSharedApplication setMobileSharedApplication:sharedMobileApplication];
   [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication
                                                               usePkce:YES
