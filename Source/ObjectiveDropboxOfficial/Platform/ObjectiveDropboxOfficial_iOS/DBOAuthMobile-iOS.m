@@ -3,12 +3,21 @@
 ///
 
 #import "DBOAuthMobile-iOS.h"
+
+#import "DBLoadingStatusDelegate.h"
+#import "DBLoadingViewController.h"
 #import "DBOAuthManager.h"
 #import "DBSDKSystem.h"
 
 #pragma mark - Shared application
 
 static DBMobileSharedApplication *s_mobileSharedApplication;
+
+@interface DBMobileSharedApplication ()
+
+@property (nonatomic, readwrite, weak) id<DBLoadingStatusDelegate> loadingStatusDelegate;
+
+@end
 
 @implementation DBMobileSharedApplication {
   UIApplication *_sharedApplication;
@@ -116,6 +125,74 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
       [_controller dismissViewControllerAnimated:YES completion:nil];
     }
     _controller = nil;
+  }
+}
+
+- (void)presentLoading {
+  if ([self db_isWebOAuthFlow]) {
+    [self db_presentLoadingInWeb];
+  } else {
+    [self db_presentLoadingInApp];
+  }
+}
+
+- (void)dismissLoading {
+  if ([self db_isWebOAuthFlow]) {
+    [self db_dismissLoadingInWeb];
+  } else {
+    [self db_dismissLoadingInApp];
+  }
+}
+
+#pragma mark Private helpers
+
+- (BOOL)db_isWebOAuthFlow {
+  return [_controller.presentedViewController isKindOfClass:[DBMobileSafariViewController class]];
+}
+
+// Web OAuth flow, present the spinner over the MobileSafariViewController.
+- (void)db_presentLoadingInWeb {
+  UIViewController *vc = _controller.presentedViewController;
+  if ([vc isKindOfClass:[DBMobileSafariViewController class]]) {
+    [self db_presentLoadingInViewController:vc];
+  }
+}
+
+- (void)db_dismissLoadingInWeb {
+  UIViewController *vc = _controller.presentedViewController;
+  if ([vc isKindOfClass:[DBMobileSafariViewController class]]) {
+    [self db_dismissLoadingInViewController:vc];
+  }
+}
+
+// Delegate to app to present loading if delegate is set. Otherwise, present the spinner in the view controller.
+- (void)db_presentLoadingInApp {
+  if (_loadingStatusDelegate) {
+    [_loadingStatusDelegate showLoading];
+  } else {
+    [self db_presentLoadingInViewController:_controller];
+  }
+}
+
+// Delegate to app to dismiss loading if delegate is set. Otherwise, dismiss the spinner in the view controller.
+- (void)db_dismissLoadingInApp {
+  if (_loadingStatusDelegate) {
+    [_loadingStatusDelegate dismissLoading];
+  } else {
+    [self db_dismissLoadingInViewController:_controller];
+  }
+}
+
+- (void)db_presentLoadingInViewController:(UIViewController *)viewController {
+  DBLoadingViewController *loadingVC = [[DBLoadingViewController alloc] init];
+  loadingVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+  [viewController presentViewController:loadingVC animated:false completion:nil];
+}
+
+- (void)db_dismissLoadingInViewController:(UIViewController *)viewController {
+  UIViewController *presentedVC = _controller.presentedViewController;
+  if ([presentedVC isKindOfClass:[DBLoadingViewController class]]) {
+    [presentedVC dismissViewControllerAnimated:false completion:nil];
   }
 }
 

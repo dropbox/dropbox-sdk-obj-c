@@ -88,6 +88,12 @@
 
 #pragma mark - OAuth manager base
 
+@interface DBOAuthManager ()
+
+@property (nonatomic, readwrite, weak) id<DBSharedApplication> sharedApplication;
+
+@end
+
 @implementation DBOAuthManager
 
 /// A shared instance of a `DBOAuthManager` for convenience
@@ -204,6 +210,7 @@ static DBOAuthManager *s_sharedOAuthManager;
   } else {
     _authSession = nil;
   }
+  _sharedApplication = sharedApplication;
 
   NSURL *authUrl = [self authURL];
 
@@ -353,13 +360,18 @@ static DBOAuthManager *s_sharedOAuthManager;
 - (void)finishPkceOAuthWithAuthCode:(NSString *)authCode
                        codeVerifier:(NSString *)codeVerifier
                          completion:(DBOAuthCompletion)completion {
+  [_sharedApplication presentLoading];
   DBOAuthTokenExchangeRequest *request =
     [[DBOAuthTokenExchangeRequest alloc] initWithOAuthCode:authCode
                                               codeVerifier:codeVerifier
                                                     appKey:_appKey
                                                     locale:[self db_localeIdentifier]
                                                redirectUri:_redirectURL.absoluteString];
-  [request startWithCompletion:completion];
+  __weak id<DBSharedApplication> sharedApplication = _sharedApplication;
+  [request startWithCompletion:^(DBOAuthResult *result) {
+    [sharedApplication dismissLoading];
+    completion(result);
+  }];
 }
 
 - (BOOL)checkAndPresentPlatformSpecificAuth:(id<DBSharedApplication>)sharedApplication {

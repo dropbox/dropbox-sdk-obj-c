@@ -3,6 +3,7 @@
 ///
 
 #import "DBClientsManager+MobileAuth-iOS.h"
+#import "DBLoadingStatusDelegate.h"
 #import "DBOAuthMobile-iOS.h"
 #import "DBOAuthMobileManager-iOS.h"
 

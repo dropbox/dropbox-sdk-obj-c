@@ -61,4 +61,12 @@
   return YES;
 }
 
+- (void)presentLoading {
+  // TODO: Implement when OAuth code flow is introduced to Desktop SDK.
+}
+
+- (void)dismissLoading {
+  // TODO: Implement when OAuth code flow is introduced to Desktop SDK.
+}
+
 @end
