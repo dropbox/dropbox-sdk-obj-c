@@ -4,6 +4,7 @@
 
 #import "DBOAuthMobileManager-iOS.h"
 
+#import "DBLoadingViewController.h"
 #import "DBOAuthConstants.h"
 #import "DBOAuthManager+Protected.h"
 #import "DBOAuthMobile-iOS.h"
