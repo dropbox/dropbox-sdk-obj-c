@@ -40,6 +40,10 @@
 		BF474D39248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */; };
 		BF474D3A248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF474D37248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m */; };
 		BF474D3B248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF474D37248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m */; };
+		BF7E352B2488562F00DEDF84 /* DBLoadingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E35292488562F00DEDF84 /* DBLoadingViewController.h */; };
+		BF7E352C2488562F00DEDF84 /* DBLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7E352A2488562F00DEDF84 /* DBLoadingViewController.m */; };
+		BF7E352E248858B600DEDF84 /* DBLoadingStatusDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E352D248858B600DEDF84 /* DBLoadingStatusDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7E353024885A9A00DEDF84 /* DBOAuthMobile+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E352F24885A9A00DEDF84 /* DBOAuthMobile+Protected.h */; };
 		C43D4E69245748BB008DF48C /* DBStoneBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C43D46EE245748AF008DF48C /* DBStoneBase.m */; };
 		C43D4E6A245748BB008DF48C /* DBStoneBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C43D46EE245748AF008DF48C /* DBStoneBase.m */; };
 		C43D4E6B245748BB008DF48C /* DBStoneSerializers.m in Sources */ = {isa = PBXBuildFile; fileRef = C43D46EF245748AF008DF48C /* DBStoneSerializers.m */; };
@@ -3944,6 +3948,10 @@
 		BF33F93D24874DED001F4072 /* DBOAuthTokenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOAuthTokenRequest.m; sourceTree = "<group>"; };
 		BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBAccessToken+NSSecureCoding.h"; sourceTree = "<group>"; };
 		BF474D37248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DBAccessToken+NSSecureCoding.m"; sourceTree = "<group>"; };
+		BF7E35292488562F00DEDF84 /* DBLoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBLoadingViewController.h; sourceTree = "<group>"; };
+		BF7E352A2488562F00DEDF84 /* DBLoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBLoadingViewController.m; sourceTree = "<group>"; };
+		BF7E352D248858B600DEDF84 /* DBLoadingStatusDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBLoadingStatusDelegate.h; sourceTree = "<group>"; };
+		BF7E352F24885A9A00DEDF84 /* DBOAuthMobile+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBOAuthMobile+Protected.h"; sourceTree = "<group>"; };
 		C43D46EE245748AF008DF48C /* DBStoneBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneBase.m; sourceTree = "<group>"; };
 		C43D46EF245748AF008DF48C /* DBStoneSerializers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneSerializers.m; sourceTree = "<group>"; };
 		C43D46F0245748AF008DF48C /* DBStoneValidators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneValidators.m; sourceTree = "<group>"; };
@@ -8181,6 +8189,7 @@
 		F235B51A1E29913600144F8B /* ObjectiveDropboxOfficial_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				BF7E352D248858B600DEDF84 /* DBLoadingStatusDelegate.h */,
 				F235B51F1E29913600144F8B /* DBSDKImports-iOS.h */,
 				F235B51D1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.h */,
 				F235B51E1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m */,
@@ -8190,6 +8199,7 @@
 				F2C59AF91E9C2CAF00E8D2E6 /* DBOAuthMobileManager-iOS.m */,
 				F235B5201E29913600144F8B /* Info.plist */,
 				F2A2DBA71E578C3E001D8449 /* OfficialPartners */,
+				BF7E352A2488562F00DEDF84 /* DBLoadingViewController.m */,
 			);
 			name = ObjectiveDropboxOfficial_iOS;
 			path = Platform/ObjectiveDropboxOfficial_iOS;
@@ -8353,6 +8363,7 @@
 		F2A2CE741E562817001D8449 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				BF7E352F24885A9A00DEDF84 /* DBOAuthMobile+Protected.h */,
 				F2A2CE751E562817001D8449 /* DBClientsManager+Protected.h */,
 				F2A2CE761E562817001D8449 /* Networking */,
 				F2C59AFB1E9C2EEC00E8D2E6 /* OAuth */,
@@ -8417,6 +8428,7 @@
 			isa = PBXGroup;
 			children = (
 				BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */,
+				BF7E35292488562F00DEDF84 /* DBLoadingViewController.h */,
 				BF33F93B24874DED001F4072 /* DBOAuthTokenRequest.h */,
 				BF33F92424873F11001F4072 /* DBOAuthConstants.h */,
 				BF33F92324873F11001F4072 /* DBOAuthPKCESession.h */,
@@ -8633,6 +8645,7 @@
 				C43D5917245748D0008DF48C /* DBTEAMLOGUserNameLogInfo.h in Headers */,
 				C43D5BF7245748D7008DF48C /* DBFILESDownloadZipError.h in Headers */,
 				C43D56DB245748CC008DF48C /* DBTEAMLOGFileUnlikeCommentType.h in Headers */,
+				BF7E352E248858B600DEDF84 /* DBLoadingStatusDelegate.h in Headers */,
 				C43D5C11245748D7008DF48C /* DBFILESDownloadArg.h in Headers */,
 				C43D56C1245748CC008DF48C /* DBTEAMLOGFileGetCopyReferenceType.h in Headers */,
 				C43D58C5245748D0008DF48C /* DBTEAMLOGTeamProfileChangeLogoDetails.h in Headers */,
@@ -9071,6 +9084,7 @@
 				C43D533D245748C4008DF48C /* DBUSERSName.h in Headers */,
 				C43D4E97245748BB008DF48C /* DBPAPERCursor.h in Headers */,
 				C43D59FB245748D2008DF48C /* DBTEAMLOGMemberChangeMembershipTypeDetails.h in Headers */,
+				BF7E352B2488562F00DEDF84 /* DBLoadingViewController.h in Headers */,
 				C43D5453245748C7008DF48C /* DBTEAMLOGEmmCreateExceptionsReportDetails.h in Headers */,
 				C43D5659245748CB008DF48C /* DBTEAMLOGFilePreviewType.h in Headers */,
 				C43D5A39245748D3008DF48C /* DBTEAMLOGTrustedNonTeamMemberType.h in Headers */,
@@ -9520,6 +9534,7 @@
 				C43D5177245748C1008DF48C /* DBTEAMMembersSetProfileError.h in Headers */,
 				C43D5C51245748D8008DF48C /* DBFILESUploadSessionFinishBatchArg.h in Headers */,
 				C43D56A7245748CB008DF48C /* DBTEAMLOGTfaConfiguration.h in Headers */,
+				BF7E353024885A9A00DEDF84 /* DBOAuthMobile+Protected.h in Headers */,
 				C43D52E5245748C4008DF48C /* DBFILEPROPERTIESPropertiesSearchMode.h in Headers */,
 				C43D5873245748CF008DF48C /* DBTEAMLOGMemberSetProfilePhotoDetails.h in Headers */,
 				C43D55AB245748C9008DF48C /* DBTEAMLOGSharedLinkChangeExpiryDetails.h in Headers */,
@@ -12353,6 +12368,7 @@
 				C43D5C8D245748D8008DF48C /* DBUserBaseClient.m in Sources */,
 				F29789111E03692F00876A73 /* DBCustomRoutes.m in Sources */,
 				F29788CF1E03692F00876A73 /* DBTeamClient.m in Sources */,
+				BF7E352C2488562F00DEDF84 /* DBLoadingViewController.m in Sources */,
 				F241694F1E5247DB0038E306 /* DBTransportBaseConfig.m in Sources */,
 				C43D5CBF245748D9008DF48C /* DBFILESAppAuthRoutes.m in Sources */,
 				F2A2DBB01E578C3F001D8449 /* DBOpenWithInfo-iOS.m in Sources */,

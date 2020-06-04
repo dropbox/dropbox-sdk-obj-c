@@ -11,6 +11,8 @@
 @class UIApplication;
 @class UIViewController;
 
+@protocol DBLoadingStatusDelegate;
+
 NS_ASSUME_NONNULL_BEGIN
 
 ///
@@ -47,11 +49,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sharedApplication The `UIApplication` with which to render the OAuth flow.
 /// @param controller The `UIViewController` with which to render the OAuth flow. Please ensure that this is the
 /// top-most view controller, so that the authorization view displays correctly.
+/// @param loadingStatusDelegate An optional delegate to handle loading experience during auth flow.
+/// e.g. Show a looading spinner and block user interaction while loading/waiting.
+/// If a delegate is not provided, the SDK will show a default loading spinner when necessary.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.
 /// @param scopeRequest Request contains information of scopes to be obtained.
 ///
 + (void)authorizeFromControllerV2:(UIApplication *)sharedApplication
                        controller:(nullable UIViewController *)controller
+            loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
                           openURL:(void (^_Nonnull)(NSURL *))openURL
                      scopeRequest:(nullable DBScopeRequest*)scopeRequest;
 
