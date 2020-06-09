@@ -18,14 +18,17 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     errorTypeLookup = @{
-      @"unauthorized_client" : [NSNumber numberWithInt:DBAuthUnauthorizedClient],
-      @"access_denied" : [NSNumber numberWithInt:DBAuthAccessDenied],
-      @"unsupported_response_type" : [NSNumber numberWithInt:DBAuthUnsupportedResponseType],
-      @"invalid_scope" : [NSNumber numberWithInt:DBAuthInvalidScope],
-      @"server_error" : [NSNumber numberWithInt:DBAuthServerError],
-      @"temporarily_unavailable" : [NSNumber numberWithInt:DBAuthTemporarilyUnavailable],
-      @"inconsistent_state" : [NSNumber numberWithInt:DBAuthInconsistentState],
-      @"" : [NSNumber numberWithInt:DBAuthUnknown],
+      @"unauthorized_client" : @(DBAuthUnauthorizedClient),
+      @"access_denied" : @(DBAuthAccessDenied),
+      @"unsupported_response_type" : @(DBAuthUnsupportedResponseType),
+      @"invalid_scope" : @(DBAuthInvalidScope),
+      @"server_error" : @(DBAuthServerError),
+      @"temporarily_unavailable" : @(DBAuthTemporarilyUnavailable),
+      @"invalid_request": @(DBAuthInvalidRequest),
+      @"invalid_client": @(DBAuthInvalidClient),
+      @"invalid_grant": @(DBAuthInvalidGrant),
+      @"unsupported_grant_type": @(DBAuthUnsupportedGrantType),
+      @"inconsistent_state" : @(DBAuthInconsistentState),
     };
   });
   return (DBOAuthErrorType)[errorTypeLookup[errorType] intValue] ?: DBAuthUnknown;

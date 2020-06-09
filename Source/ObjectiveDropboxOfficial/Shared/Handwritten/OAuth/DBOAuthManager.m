@@ -142,6 +142,33 @@ static DBOAuthManager *s_sharedOAuthManager;
   return self;
 }
 
+#pragma mark - Token refresh
+
+- (void)refreshAccessToken:(DBAccessToken *)accessToken
+                    scopes:(NSArray<NSString *> *)scopes
+                     queue:(dispatch_queue_t)queue
+                completion:(DBOAuthCompletion)completion {
+  NSString *refreshToken = accessToken.refreshToken;
+  if (!refreshToken) {
+    completion([DBOAuthResult unknownErrorWithErrorDescription:@"Long-lived token can't be refreshed."]);
+    return;
+  }
+
+  DBOAuthTokenRefreshRequest *request = [[DBOAuthTokenRefreshRequest alloc] initWithUid:accessToken.uid
+                                                                           refreshToken:refreshToken
+                                                                                 scopes:scopes
+                                                                                 appKey:_appKey
+                                                                                 locale:[self db_localeIdentifier]];
+  __weak typeof(self) weakSelf = self;
+  DBOAuthCompletion wrappedCompletion = ^(DBOAuthResult *result) {
+    if ([result isSuccess] && result.accessToken) {
+      [weakSelf storeAccessToken:result.accessToken];
+    }
+    completion(result);
+  };
+  [request startWithCompletion:wrappedCompletion queue:queue ?: dispatch_get_main_queue()];
+}
+
 #pragma mark - Auth flow methods
 
 - (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
@@ -374,10 +401,11 @@ static DBOAuthManager *s_sharedOAuthManager;
                                                     locale:[self db_localeIdentifier]
                                                redirectUri:_redirectURL.absoluteString];
   __weak id<DBSharedApplication> sharedApplication = _sharedApplication;
-  [request startWithCompletion:^(DBOAuthResult *result) {
+  DBOAuthCompletion wrappedCompletion = ^(DBOAuthResult *result) {
     [sharedApplication dismissLoading];
     completion(result);
-  }];
+  };
+  [request startWithCompletion:wrappedCompletion queue: dispatch_get_main_queue()];
 }
 
 - (BOOL)checkAndPresentPlatformSpecificAuth:(id<DBSharedApplication>)sharedApplication {

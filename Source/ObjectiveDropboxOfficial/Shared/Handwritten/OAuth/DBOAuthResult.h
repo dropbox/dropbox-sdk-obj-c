@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, DBOAuthResultTag) {
 };
 
 /// Represents the possible error types that can be returned from OAuth linking.
+/// Includes errors from both Implicit Grant (See RFC6749 4.2.2.1) and Extension Grants (See RFC6749 5.2),
+/// and a couple of SDK defined errors outside of OAuth2 specification.
 typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
   /// The client is not authorized to request an access token using this method.
   DBAuthUnauthorizedClient,
@@ -49,6 +51,23 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
   /// The authorization server is currently unable to handle the request due to a temporary overloading or maintenance
   /// of the server.
   DBAuthTemporarilyUnavailable,
+
+  /// The request is missing a required parameter, includes an unsupported parameter value (other than grant type),
+  /// repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the
+  /// client, or is otherwise malformed.
+  DBAuthInvalidRequest,
+
+  /// Client authentication failed (e.g., unknown client, no client authentication included, or unsupported
+  /// authentication method).
+  DBAuthInvalidClient,
+
+  /// The provided authorization grant (e.g., authorization code, resource owner credentials) or refresh token is
+  /// invalid, expired, revoked, does not match the redirection URI used in the authorization request,
+  /// or was issued to another client.
+  DBAuthInvalidGrant,
+
+  /// The authorization grant type is not supported by the authorization server.
+  DBAuthUnsupportedGrantType,
 
   /// The state param received from the authorization server does not match the state param stored by the SDK.
   DBAuthInconsistentState,
