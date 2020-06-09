@@ -77,6 +77,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@protocol DBAccessTokenRefreshing <NSObject>
+
+/// Refreshes a (short-lived) access token for a given DBAccessToken.
+///
+/// @param accessToken A `DBAccessToken` object.
+/// @param scopes An array of scopes to be granted for the refreshed access token.
+///        The requested scope MUST NOT include any scope not originally granted.
+///        Useful if users want to reduce the granted scopes for the new access token.
+///        Pass in an empty array if you don't want to change scopes of the access token.
+/// @param queue The queue where completion block will be called from.
+/// @param completion A `DBOAuthCompletion` block to notify caller the result.
+- (void)refreshAccessToken:(DBAccessToken *)accessToken
+                    scopes:(NSArray<NSString *> *)scopes
+                     queue:(nullable dispatch_queue_t)queue
+                completion:(nullable DBOAuthCompletion)completion;
+
+@end
+
 #pragma mark - OAuth manager base
 
 ///
@@ -85,7 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @note OAuth flow webviews localize to environment locale.
 ///
 ///
-@interface DBOAuthManager : NSObject {
+@interface DBOAuthManager : NSObject <DBAccessTokenRefreshing> {
 @protected
   NSString *_appKey;
   NSURL *_redirectURL;
