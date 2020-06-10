@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBAccessTokenProvider+Internal.h"
 #import "DBAUTHAccessError.h"
 #import "DBAUTHAuthError.h"
 #import "DBAUTHRateLimitError.h"
@@ -26,8 +27,18 @@
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                            tokenUid:(NSString *)tokenUid
                     transportConfig:(DBTransportBaseConfig *)transportConfig {
+  DBLongLivedAccessTokenProvider *provider = nil;
+  if (accessToken) {
+    provider = [[DBLongLivedAccessTokenProvider alloc] initWithTokenString:accessToken];
+  }
+  return [self initWithAccessTokenProvider:provider tokenUid:tokenUid transportConfig:transportConfig];
+}
+
+- (instancetype)initWithAccessTokenProvider:(id<DBAccessTokenProvider>)accessTokenProvider
+                                   tokenUid:(NSString *)tokenUid
+                            transportConfig:(DBTransportBaseConfig *)transportConfig {
   if (self = [super init]) {
-    _accessToken = accessToken;
+    _accessTokenProvider = accessTokenProvider;
     _tokenUid = [tokenUid copy];
     _appKey = transportConfig.appKey;
     _appSecret = transportConfig.appSecret;
@@ -79,8 +90,9 @@
       NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];
       [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
                   forKey:@"Authorization"];
-    } else {
-      [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessToken] forKey:@"Authorization"];
+    } else if (_accessTokenProvider) {
+      [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessTokenProvider.accessToken]
+                  forKey:@"Authorization"];
     }
   }
 

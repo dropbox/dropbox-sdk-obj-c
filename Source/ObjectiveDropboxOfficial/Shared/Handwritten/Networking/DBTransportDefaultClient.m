@@ -3,6 +3,8 @@
 ///
 
 #import "DBTransportDefaultClient.h"
+
+#import "DBAccessTokenProvider+Internal.h"
 #import "DBDelegate.h"
 #import "DBFILESRouteObjects.h"
 #import "DBSDKConstants.h"
@@ -27,7 +29,16 @@
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                            tokenUid:(NSString *)tokenUid
                     transportConfig:(DBTransportDefaultConfig *)transportConfig {
-  if (self = [super initWithAccessToken:accessToken tokenUid:tokenUid transportConfig:transportConfig]) {
+  return [self initWithAccessTokenProvider:[[DBLongLivedAccessTokenProvider alloc] initWithTokenString:accessToken]
+                                  tokenUid:tokenUid
+                           transportConfig:transportConfig];
+}
+
+- (instancetype)initWithAccessTokenProvider:(id<DBAccessTokenProvider>)accessTokenProvider
+                                   tokenUid:(NSString *)tokenUid
+                            transportConfig:(DBTransportDefaultConfig *)transportConfig {
+  self = [super initWithAccessTokenProvider:accessTokenProvider tokenUid:tokenUid transportConfig:transportConfig];
+  if (self) {
     _delegateQueue = transportConfig.delegateQueue ?: [NSOperationQueue new];
     _delegateQueue.maxConcurrentOperationCount = 1;
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
