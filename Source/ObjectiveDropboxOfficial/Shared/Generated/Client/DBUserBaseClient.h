@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) DBUSERSUserAuthRoutes *usersRoutes;
 
 /// Initializes the `DBUserBaseClient` object with a networking client.
-- (instancetype)initWithTransportClient:(id<DBTransportClient>)client;
+- (instancetype)initWithTransportClient:(id<DBTransportClient>)client NS_DESIGNATED_INITIALIZER;
 
 @end
 

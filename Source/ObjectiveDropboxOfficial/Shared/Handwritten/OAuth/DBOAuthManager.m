@@ -4,6 +4,7 @@
 
 #import "DBOAuthManager.h"
 
+#import "DBAccessTokenProvider+Internal.h"
 #import "DBOAuthConstants.h"
 #import "DBOAuthPKCESession.h"
 #import "DBOAuthResult.h"
@@ -49,6 +50,11 @@
     _tokenExpirationTimestamp = tokenExpirationTimestamp;
   }
   return self;
+}
+
+/// Indicates whether the access token is short-lived.
+- (BOOL)isShortLivedToken {
+  return _refreshToken != nil && _tokenExpirationTimestamp > 0;
 }
 
 - (NSString *)description {
@@ -140,33 +146,6 @@ static DBOAuthManager *s_sharedOAuthManager;
     _webAuthShouldForceReauthentication = NO;
   }
   return self;
-}
-
-#pragma mark - Token refresh
-
-- (void)refreshAccessToken:(DBAccessToken *)accessToken
-                    scopes:(NSArray<NSString *> *)scopes
-                     queue:(dispatch_queue_t)queue
-                completion:(DBOAuthCompletion)completion {
-  NSString *refreshToken = accessToken.refreshToken;
-  if (!refreshToken) {
-    completion([DBOAuthResult unknownErrorWithErrorDescription:@"Long-lived token can't be refreshed."]);
-    return;
-  }
-
-  DBOAuthTokenRefreshRequest *request = [[DBOAuthTokenRefreshRequest alloc] initWithUid:accessToken.uid
-                                                                           refreshToken:refreshToken
-                                                                                 scopes:scopes
-                                                                                 appKey:_appKey
-                                                                                 locale:[self db_localeIdentifier]];
-  __weak typeof(self) weakSelf = self;
-  DBOAuthCompletion wrappedCompletion = ^(DBOAuthResult *result) {
-    if ([result isSuccess] && result.accessToken) {
-      [weakSelf storeAccessToken:result.accessToken];
-    }
-    completion(result);
-  };
-  [request startWithCompletion:wrappedCompletion queue:queue ?: dispatch_get_main_queue()];
 }
 
 #pragma mark - Auth flow methods
@@ -415,6 +394,41 @@ static DBOAuthManager *s_sharedOAuthManager;
 
 - (NSString *)db_localeIdentifier {
   return [_locale localeIdentifier] ?: ([[NSBundle mainBundle] preferredLocalizations].firstObject ?: @"en");
+}
+
+#pragma mark - Short-lived token support.
+
+- (void)refreshAccessToken:(DBAccessToken *)accessToken
+                    scopes:(NSArray<NSString *> *)scopes
+                     queue:(dispatch_queue_t)queue
+                completion:(DBOAuthCompletion)completion {
+  NSString *refreshToken = accessToken.refreshToken;
+  if (!refreshToken) {
+    completion([DBOAuthResult unknownErrorWithErrorDescription:@"Long-lived token can't be refreshed."]);
+    return;
+  }
+
+  DBOAuthTokenRefreshRequest *request = [[DBOAuthTokenRefreshRequest alloc] initWithUid:accessToken.uid
+                                                                           refreshToken:refreshToken
+                                                                                 scopes:scopes
+                                                                                 appKey:_appKey
+                                                                                 locale:[self db_localeIdentifier]];
+  __weak typeof(self) weakSelf = self;
+  DBOAuthCompletion wrappedCompletion = ^(DBOAuthResult *result) {
+    if ([result isSuccess] && result.accessToken) {
+      [weakSelf storeAccessToken:result.accessToken];
+    }
+    completion(result);
+  };
+  [request startWithCompletion:wrappedCompletion queue:queue ?: dispatch_get_main_queue()];
+}
+
+- (id<DBAccessTokenProvider>)accessTokenProviderForToken:(DBAccessToken *)token {
+  if ([token isShortLivedToken]) {
+    return [[DBShortLivedAccessTokenProvider alloc] initWithToken:token tokenRefresher:self];
+  } else {
+    return [[DBLongLivedAccessTokenProvider alloc] initWithTokenString:token.accessToken];
+  }
 }
 
 #pragma mark - Keychain methods
