@@ -7,6 +7,8 @@
 #import "DBOAuthManager.h"
 #import "DBOAuthResultCompletion.h"
 
+@protocol DBAccessTokenProvider;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DBOAuthManager (Protected)
@@ -22,6 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)finishPkceOAuthWithAuthCode:(NSString *)authCode
                        codeVerifier:(NSString *)codeVerifier
                          completion:(DBOAuthCompletion)completion;
+
+/// Creates a `DBAccessTokenProvider` that wraps short-lived token for token refresh
+/// or a static access token provider for long-live token.
+/// @param token The `DBAccessToken` object.
+- (id<DBAccessTokenProvider>)accessTokenProviderForToken:(DBAccessToken *)token;
 
 @end
 
