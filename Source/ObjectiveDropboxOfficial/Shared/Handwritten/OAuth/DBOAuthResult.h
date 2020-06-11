@@ -94,6 +94,10 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
 /// @note Ensure the `isError` method returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *errorDescription;
 
+/// The `NSError` form of the error result.
+/// @note Ensure the `isError` method returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) NSError *nsError;
+
 #pragma mark - Constructors
 
 ///

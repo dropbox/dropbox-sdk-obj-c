@@ -66,7 +66,7 @@
 }
 
 + (DBOAuthResult *)unknownErrorWithErrorDescription:(NSString *)errorDescription {
-  return  [[DBOAuthResult alloc] initWithErrorType:DBAuthUnknown errorDescription:errorDescription];
+  return [[DBOAuthResult alloc] initWithErrorType:DBAuthUnknown errorDescription:errorDescription];
 }
 
 #pragma mark - Tag state methods
@@ -122,6 +122,14 @@
                 format:@"Invalid tag: required `DBAuthError`, but was %@.", [self tagName]];
   }
   return _errorDescription;
+}
+
+- (NSError *)nsError {
+  if (_tag != DBAuthError) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required `DBAuthError`, but was %@.", [self tagName]];
+  }
+  return [NSError errorWithDomain:@"com.dropbox.dropbox_sdk_obj_c.oauth.error" code:_errorType userInfo:nil];
 }
 
 #pragma mark - Description method
