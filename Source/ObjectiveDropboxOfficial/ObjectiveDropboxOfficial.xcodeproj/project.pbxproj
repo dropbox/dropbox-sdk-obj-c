@@ -40,6 +40,10 @@
 		BF474D39248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */; };
 		BF474D3A248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF474D37248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m */; };
 		BF474D3B248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF474D37248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m */; };
+		BF6162C52491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6162C32491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h */; };
+		BF6162C62491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6162C32491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h */; };
+		BF6162C72491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6162C42491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m */; };
+		BF6162C82491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6162C42491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m */; };
 		BF7E352B2488562F00DEDF84 /* DBLoadingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E35292488562F00DEDF84 /* DBLoadingViewController.h */; };
 		BF7E352C2488562F00DEDF84 /* DBLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7E352A2488562F00DEDF84 /* DBLoadingViewController.m */; };
 		BF7E352E248858B600DEDF84 /* DBLoadingStatusDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E352D248858B600DEDF84 /* DBLoadingStatusDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -3950,6 +3954,8 @@
 		BF33F93D24874DED001F4072 /* DBOAuthTokenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOAuthTokenRequest.m; sourceTree = "<group>"; };
 		BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBAccessToken+NSSecureCoding.h"; sourceTree = "<group>"; };
 		BF474D37248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DBAccessToken+NSSecureCoding.m"; sourceTree = "<group>"; };
+		BF6162C32491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBURLSessionTaskWithTokenRefresh.h; sourceTree = "<group>"; };
+		BF6162C42491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBURLSessionTaskWithTokenRefresh.m; sourceTree = "<group>"; };
 		BF7E35292488562F00DEDF84 /* DBLoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBLoadingViewController.h; sourceTree = "<group>"; };
 		BF7E352A2488562F00DEDF84 /* DBLoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBLoadingViewController.m; sourceTree = "<group>"; };
 		BF7E352D248858B600DEDF84 /* DBLoadingStatusDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBLoadingStatusDelegate.h; sourceTree = "<group>"; };
@@ -8323,6 +8329,7 @@
 				F29781881E03692800876A73 /* DBTransportDefaultClient.m */,
 				F24169451E523FD30038E306 /* DBTransportDefaultConfig.h */,
 				F24169461E523FEB0038E306 /* DBTransportDefaultConfig.m */,
+				BF6162C42491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -8382,6 +8389,7 @@
 		F2A2CE761E562817001D8449 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				BF6162C32491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h */,
 				F2A2CE771E562817001D8449 /* DBDelegate.h */,
 				F2A2CE781E562817001D8449 /* DBHandlerTypesInternal.h */,
 				F2A2CE791E562817001D8449 /* DBSDKReachability.h */,
@@ -9492,6 +9500,7 @@
 				C43D568D245748CB008DF48C /* DBTEAMLOGTeamFolderDowngradeDetails.h in Headers */,
 				C43D54A7245748C7008DF48C /* DBTEAMLOGSecondaryTeamRequestExpiredDetails.h in Headers */,
 				C43D5321245748C4008DF48C /* DBFILEPROPERTIESRemovePropertiesError.h in Headers */,
+				BF6162C52491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h in Headers */,
 				C43D508B245748BF008DF48C /* DBFILEREQUESTSDeleteFileRequestArgs.h in Headers */,
 				C43D5A35245748D3008DF48C /* DBTEAMLOGDeviceChangeIpWebType.h in Headers */,
 				C43D598B245748D1008DF48C /* DBTEAMLOGWebSessionsChangeActiveSessionLimitDetails.h in Headers */,
@@ -11768,6 +11777,7 @@
 				C43D5B44245748D5008DF48C /* DBFILESLookupError.h in Headers */,
 				C43D592A245748D1008DF48C /* DBTEAMLOGGroupRemoveExternalIdDetails.h in Headers */,
 				C43D4F80245748BD008DF48C /* DBSHARINGSharedFolderMetadataBase.h in Headers */,
+				BF6162C62491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h in Headers */,
 				C43D526E245748C3008DF48C /* DBTEAMTeamFolderRenameArg.h in Headers */,
 				C43D4F3E245748BC008DF48C /* DBSHARINGListFilesContinueError.h in Headers */,
 				C43D51AA245748C1008DF48C /* DBTEAMIncludeMembersArg.h in Headers */,
@@ -12334,6 +12344,7 @@
 				C43D5D03245748D9008DF48C /* DBTEAMTeamAuthRoutes.m in Sources */,
 				3C3C29741F7D757E00C54011 /* DBTransportBaseHostnameConfig.m in Sources */,
 				C43D5CE7245748D9008DF48C /* DBFILESRouteObjects.m in Sources */,
+				BF6162C72491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m in Sources */,
 				C43D4F11245748BC008DF48C /* DBSecondaryEmailsObjects.m in Sources */,
 				C43D5CF1245748D9008DF48C /* DBCLOUDDOCSRouteObjects.m in Sources */,
 				C43D50BB245748BF008DF48C /* DBTeamCommonObjects.m in Sources */,
@@ -12440,6 +12451,7 @@
 				BF33F92B24873F12001F4072 /* DBOAuthConstants.m in Sources */,
 				C43D506A245748BF008DF48C /* DBFileRequestsObjects.m in Sources */,
 				F2A2CE9B1E562E46001D8449 /* DBCustomTasks.m in Sources */,
+				BF6162C82491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m in Sources */,
 				C43D4E6A245748BB008DF48C /* DBStoneBase.m in Sources */,
 				C43D5CCC245748D9008DF48C /* DBPAPERRouteObjects.m in Sources */,
 				BF474D3B248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m in Sources */,
