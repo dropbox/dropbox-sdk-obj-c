@@ -13,6 +13,7 @@
 #import "DBTransportBaseClient+Internal.h"
 #import "DBTransportBaseHostnameConfig.h"
 #import "DBTransportDefaultConfig.h"
+#import "DBURLSessionTaskWithTokenRefresh.h"
 
 @implementation DBTransportDefaultClient {
   /// The delegate used to manage execution of all response / error code. By default, this
@@ -99,97 +100,104 @@
 #pragma mark - RPC-style request
 
 - (DBRpcTaskImpl *)requestRpc:(DBRoute *)route arg:(id<DBSerializable>)arg {
-  NSURL *requestUrl = [self urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
-
-  // RPC request submits argument in request body
-  NSData *serializedArgData = [[self class] serializeDataWithRoute:route routeArg:arg];
-
-  NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
-
   NSURLSession *sessionToUse = _session;
-
   // longpoll requests have a much longer timeout period than other requests
   if (route.host == DBRouteHostNotify) {
     sessionToUse = _longpollSession;
   }
 
-  NSURLSessionDataTask *task = [sessionToUse dataTaskWithRequest:request];
-  DBRpcTaskImpl *rpcTask = [[DBRpcTaskImpl alloc] initWithTask:task
-                                                      tokenUid:self.tokenUid
-                                                       session:sessionToUse
-                                                      delegate:_delegate
-                                                         route:route];
-  [task resume];
+  DBURLSessionTaskCreationBlock taskCreationBlock = ^{
+    NSURL *requestUrl = [self urlWithRoute:route];
+    NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
+    NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+    // RPC request submits argument in request body
+    NSData *serializedArgData = [[self class] serializeDataWithRoute:route routeArg:arg];
+    NSURLRequest *request =
+      [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
+    return [sessionToUse dataTaskWithRequest:request];
+  };
 
+  id<DBURLSessionTask> taskWithTokenRefresh =
+    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                           taskDelegate:_delegate
+                                                             urlSession:sessionToUse
+                                                          tokenProvider:self.accessTokenProvider];
+  DBRpcTaskImpl *rpcTask = [[DBRpcTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
+  [rpcTask resume];
   return rpcTask;
 }
 
 #pragma mark - Upload-style request (NSURL)
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputUrl:(NSString *)input {
-  NSURL *inputUrl = [NSURL fileURLWithPath:input];
-  NSURL *requestUrl = [self urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+  NSURLSession *sessionToUse = _secondarySession;
+  DBURLSessionTaskCreationBlock taskCreationBlock = ^{
+    NSURL *inputUrl = [NSURL fileURLWithPath:input];
+    NSURL *requestUrl = [self urlWithRoute:route];
+    NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
+    NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+    NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
+    return [sessionToUse uploadTaskWithRequest:request fromFile:inputUrl];
+  };
+  id<DBURLSessionTask> taskWithTokenRefresh =
+    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                           taskDelegate:_delegate
+                                                             urlSession:sessionToUse
+                                                          tokenProvider:self.accessTokenProvider];
 
-  NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
-
-  NSURLSessionUploadTask *task = [_secondarySession uploadTaskWithRequest:request fromFile:inputUrl];
-  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
                                                                tokenUid:self.tokenUid
-                                                                session:_secondarySession
-                                                               delegate:_delegate
-                                                                  route:route
-                                                               inputUrl:inputUrl
-                                                              inputData:nil];
-  [task resume];
-
+                                                                  route:route];
+  [uploadTask resume];
   return uploadTask;
 }
 
 #pragma mark - Upload-style request (NSData)
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputData:(NSData *)input {
-  NSURL *requestUrl = [self urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+  NSURLSession *sessionToUse = _session;
+  DBURLSessionTaskCreationBlock taskCreationBlock = ^{
+    NSURL *requestUrl = [self urlWithRoute:route];
+    NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
+    NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
 
-  NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
+    NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
-  NSURLSessionUploadTask *task = [_session uploadTaskWithRequest:request fromData:input];
-  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+    return [sessionToUse uploadTaskWithRequest:request fromData:input];
+  };
+  id<DBURLSessionTask> taskWithTokenRefresh =
+    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                           taskDelegate:_delegate
+                                                             urlSession:sessionToUse
+                                                          tokenProvider:self.accessTokenProvider];
+
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
                                                                tokenUid:self.tokenUid
-                                                                session:_session
-                                                               delegate:_delegate
-                                                                  route:route
-                                                               inputUrl:nil
-                                                              inputData:input];
-  [task resume];
-
+                                                                  route:route];
+  [uploadTask resume];
   return uploadTask;
 }
 
 #pragma mark - Upload-style request (NSInputStream)
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputStream:(NSInputStream *)input {
-  NSURL *requestUrl = [self urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
-
-  NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:input];
-
-  NSURLSessionUploadTask *task = [_session uploadTaskWithStreamedRequest:request];
-  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+  NSURLSession *sessionToUse = _session;
+  DBURLSessionTaskCreationBlock taskCreationBlock = ^{
+    NSURL *requestUrl = [self urlWithRoute:route];
+    NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
+    NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
+    NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:input];
+    return [sessionToUse uploadTaskWithStreamedRequest:request];
+  };
+  id<DBURLSessionTask> taskWithTokenRefresh =
+    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                           taskDelegate:_delegate
+                                                             urlSession:sessionToUse
+                                                          tokenProvider:self.accessTokenProvider];
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
                                                                tokenUid:self.tokenUid
-                                                                session:_session
-                                                               delegate:_delegate
-                                                                  route:route
-                                                               inputUrl:nil
-                                                              inputData:nil];
-  [task resume];
-
+                                                                  route:route];
+  [uploadTask resume];
   return uploadTask;
 }
 
@@ -213,25 +221,30 @@
                            destination:(NSURL *)destination
                        byteOffsetStart:(NSNumber *)byteOffsetStart
                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
-  NSURL *requestUrl = [self urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs
-                                       serializedArg:serializedArg
-                                     byteOffsetStart:byteOffsetStart
-                                       byteOffsetEnd:byteOffsetEnd];
+  NSURLSession *sessionToUse = _secondarySession;
+  DBURLSessionTaskCreationBlock taskCreationBlock = ^{
+    NSURL *requestUrl = [self urlWithRoute:route];
+    NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
+    NSDictionary *headers = [self headersWithRouteInfo:route.attrs
+                                         serializedArg:serializedArg
+                                       byteOffsetStart:byteOffsetStart
+                                         byteOffsetEnd:byteOffsetEnd];
 
-  NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
+    NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
-  NSURLSessionDownloadTask *task = [_secondarySession downloadTaskWithRequest:request];
-  DBDownloadUrlTaskImpl *downloadTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:task
+    return [sessionToUse downloadTaskWithRequest:request];
+  };
+  id<DBURLSessionTask> taskWithTokenRefresh =
+    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                           taskDelegate:_delegate
+                                                             urlSession:sessionToUse
+                                                          tokenProvider:self.accessTokenProvider];
+  DBDownloadUrlTaskImpl *downloadTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:taskWithTokenRefresh
                                                                            tokenUid:self.tokenUid
-                                                                            session:_secondarySession
-                                                                           delegate:_delegate
                                                                               route:route
                                                                           overwrite:overwrite
                                                                         destination:destination];
-  [task resume];
-
+  [downloadTask resume];
   return downloadTask;
 }
 
@@ -245,23 +258,26 @@
                                     arg:(id<DBSerializable>)arg
                         byteOffsetStart:(NSNumber *)byteOffsetStart
                           byteOffsetEnd:(NSNumber *)byteOffsetEnd {
-  NSURL *requestUrl = [self urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs
-                                       serializedArg:serializedArg
-                                     byteOffsetStart:byteOffsetStart
-                                       byteOffsetEnd:byteOffsetEnd];
-
-  NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
-
-  NSURLSessionDownloadTask *task = [_secondarySession downloadTaskWithRequest:request];
-  DBDownloadDataTaskImpl *downloadTask = [[DBDownloadDataTaskImpl alloc] initWithTask:task
+  NSURLSession *sessionToUse = _secondarySession;
+  DBURLSessionTaskCreationBlock taskCreationBlock = ^{
+    NSURL *requestUrl = [self urlWithRoute:route];
+    NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
+    NSDictionary *headers = [self headersWithRouteInfo:route.attrs
+                                         serializedArg:serializedArg
+                                       byteOffsetStart:byteOffsetStart
+                                         byteOffsetEnd:byteOffsetEnd];
+    NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
+    return [sessionToUse downloadTaskWithRequest:request];
+  };
+  id<DBURLSessionTask> taskWithTokenRefresh =
+    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                           taskDelegate:_delegate
+                                                             urlSession:sessionToUse
+                                                          tokenProvider:self.accessTokenProvider];
+  DBDownloadDataTaskImpl *downloadTask = [[DBDownloadDataTaskImpl alloc] initWithTask:taskWithTokenRefresh
                                                                              tokenUid:self.tokenUid
-                                                                              session:_secondarySession
-                                                                             delegate:_delegate
                                                                                 route:route];
-  [task resume];
-
+  [downloadTask resume];
   return downloadTask;
 }
 
