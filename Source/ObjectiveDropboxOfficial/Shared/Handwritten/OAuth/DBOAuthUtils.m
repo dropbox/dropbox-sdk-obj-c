@@ -31,8 +31,33 @@
   return params;
 }
 
-+ (NSDictionary<NSString *, NSString *> *)extractParamsFromUrl:(NSURL *)url {
+// Extracts auth response parameters from URL and removes percent encoding.
+// Response parameters from DAuth via the Dropbox app are in the query component.
++ (NSDictionary<NSString *, NSString *> *)extractDAuthResponseFromUrl:(NSURL *)url {
+  return [self extractQueryParamsFromUrl:url.absoluteString];
+}
+
+// Extracts auth response parameters from URL and removes percent encoding.
+// Response parameters OAuth 2 code flow (RFC6749 4.1.2) are in the query component.
++ (NSDictionary<NSString *, NSString *> *)extractOAuthResponseFromCodeFlowUrl:(NSURL *)url {
+  return [self extractQueryParamsFromUrl:url.absoluteString];
+}
+
+// Extracts auth response parameters from URL and removes percent encoding.
+// Response parameters from OAuth 2 token flow (RFC6749 4.2.2) are in the fragment component.
++ (NSDictionary<NSString *, NSString *> *)extractOAuthResponseFromTokenFlowUrl:(NSURL *)url {
   NSURLComponents *components = [[NSURLComponents alloc] initWithString:url.absoluteString];
+  if (components.fragment) {
+    // Create a query only URL string and extract its individual query parameters.
+    return [self extractQueryParamsFromUrl:[NSString stringWithFormat:@"?%@", components.fragment]];
+  } else {
+    return @{};
+  }
+}
+
+/// Extracts auth response parameters from URL and removes percent encoding.
++ (NSDictionary<NSString *, NSString *> *)extractQueryParamsFromUrl:(NSString *)url {
+  NSURLComponents *components = [[NSURLComponents alloc] initWithString:url];
   NSMutableDictionary<NSString *, NSString *> *dict = [NSMutableDictionary new];
   for (NSURLQueryItem *item in components.queryItems) {
     [dict setValue:item.value forKey:item.name];
