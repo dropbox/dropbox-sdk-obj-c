@@ -14,8 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// Creates URL query items needed by PKCE code flow.
 + (NSArray<NSURLQueryItem *> *)createPkceCodeFlowParamsForAuthSession:(DBOAuthPKCESession *)authSession;
 
-/// Extracts query parameters from URL and removes percent encoding.
-+ (NSDictionary<NSString *, NSString *> *)extractParamsFromUrl:(NSURL *)url;
+/// Extracts auth response parameters from URL and removes percent encoding.
+/// Response parameters from DAuth via the Dropbox app are in the query component.
++ (NSDictionary<NSString *, NSString *> *)extractDAuthResponseFromUrl:(NSURL *)url;
+
+/// Extracts auth response parameters from URL and removes percent encoding.
+/// Response parameters OAuth 2 code flow (RFC6749 4.1.2) are in the query component.
++ (NSDictionary<NSString *, NSString *> *)extractOAuthResponseFromCodeFlowUrl:(NSURL *)url;
+
+/// Extracts auth response parameters from URL and removes percent encoding.
+/// Response parameters from OAuth 2 token flow (RFC6749 4.2.2) are in the fragment component.
++ (NSDictionary<NSString *, NSString *> *)extractOAuthResponseFromTokenFlowUrl:(NSURL *)url;
 
 @end
 

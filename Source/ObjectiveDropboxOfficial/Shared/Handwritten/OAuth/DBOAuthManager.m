@@ -312,7 +312,13 @@ static DBOAuthManager *s_sharedOAuthManager;
 /// ]
 /// @endcode
 - (void)extractAuthResultFromRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
-  NSDictionary<NSString *, NSString *> *parametersMap = [DBOAuthUtils extractParamsFromUrl:url];
+  NSDictionary<NSString *, NSString *> *parametersMap = nil;
+  BOOL isInOAuthCodeFlow = _authSession != nil;
+  if (isInOAuthCodeFlow) {
+    parametersMap = [DBOAuthUtils extractOAuthResponseFromCodeFlowUrl:url];
+  } else {
+    parametersMap = [DBOAuthUtils extractOAuthResponseFromTokenFlowUrl:url];
+  }
   if (parametersMap[kDBErrorKey]) {
     // Error case
     DBOAuthResult *result = [[DBOAuthResult alloc] initWithError:parametersMap[kDBErrorKey]

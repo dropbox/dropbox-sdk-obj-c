@@ -187,7 +187,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 - (void)db_handleCodeFlowUrl:(NSURL *)url
                  authSession:(DBOAuthPKCESession *)authSession
                   completion:(DBOAuthCompletion)completion {
-  NSDictionary<NSString *, NSString *> *parametersMap = [DBOAuthUtils extractParamsFromUrl:url];
+  NSDictionary<NSString *, NSString *> *parametersMap = [DBOAuthUtils extractDAuthResponseFromUrl:url];
   NSString *state = parametersMap[kDBStateKey];
   if (state == nil || ![state isEqualToString:authSession.state]) {
     completion([DBOAuthResult unknownErrorWithErrorDescription:@"Unable to verify link request."]);
@@ -219,7 +219,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 /// ]
 /// @endcode
 - (DBOAuthResult *)db_extractFromTokenFlowUrl:(NSURL *)url {
-  NSDictionary<NSString *, NSString *> *parametersMap = [DBOAuthUtils extractParamsFromUrl:url];
+  NSDictionary<NSString *, NSString *> *parametersMap = [DBOAuthUtils extractDAuthResponseFromUrl:url];
   NSString *state = parametersMap[kDBStateKey];
   NSString *nonce = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kDBLinkNonce];
   NSString *expectedState = [NSString stringWithFormat:@"oauth2:%@", nonce];
