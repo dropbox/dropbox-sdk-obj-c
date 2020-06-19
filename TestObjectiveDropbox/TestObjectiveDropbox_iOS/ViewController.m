@@ -17,7 +17,8 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 
 @interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *linkButton;
+@property (weak, nonatomic) IBOutlet UIButton *tokenFlowlinkButton;
+@property (weak, nonatomic) IBOutlet UIButton *codeFlowlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *runTestsButton;
 @property (weak, nonatomic) IBOutlet UIButton *unlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *openWithButton;
@@ -27,12 +28,24 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 @end
 
 @implementation ViewController
-- (IBAction)linkButtonPressed:(id)sender {
-    [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
+
+- (IBAction)tokenFlowlinkButton:(id)sender {
+  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
+                                      controller:self
+                                         openURL:^(NSURL *url) {
+                                           [[UIApplication sharedApplication] openURL:url];
+                                         }];
+}
+
+- (IBAction)codeFlowlinkButton:(id)sender {
+  DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
+                                                                    scopes:@[@"account_info.read"]
+                                                      includeGrantedScopes:NO];
+  [DBClientsManager authorizeFromControllerV2:[UIApplication sharedApplication]
                                    controller:self
-                                      openURL:^(NSURL *url) {
-        [[UIApplication sharedApplication] openURL:url];
-    }];
+                        loadingStatusDelegate:nil
+                                      openURL:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }
+                                 scopeRequest:scopeRequest];
 }
 
 - (IBAction)runTestsButtonPressed:(id)sender {
@@ -136,13 +149,15 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 
 - (void)checkButtons {
     if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
-        _linkButton.hidden = YES;
+        _tokenFlowlinkButton.hidden = YES;
+        _codeFlowlinkButton.hidden = YES;
         _unlinkButton.hidden = NO;
         _runTestsButton.hidden = NO;
         _runBatchUploadTestsButton.hidden = NO;
         _runGlobalResponseTestsButton.hidden = NO;
     } else {
-        _linkButton.hidden = NO;
+        _tokenFlowlinkButton.hidden = NO;
+        _codeFlowlinkButton.hidden = NO;
         _unlinkButton.hidden = YES;
         _runTestsButton.hidden = YES;
         _runBatchUploadTestsButton.hidden = YES;

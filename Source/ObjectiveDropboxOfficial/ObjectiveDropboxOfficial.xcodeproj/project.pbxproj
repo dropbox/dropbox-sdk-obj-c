@@ -48,6 +48,7 @@
 		BF7E352C2488562F00DEDF84 /* DBLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7E352A2488562F00DEDF84 /* DBLoadingViewController.m */; };
 		BF7E352E248858B600DEDF84 /* DBLoadingStatusDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E352D248858B600DEDF84 /* DBLoadingStatusDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF7E353024885A9A00DEDF84 /* DBOAuthMobile+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E352F24885A9A00DEDF84 /* DBOAuthMobile+Protected.h */; };
+		BFCE1FFD249C4D1200D11D8E /* DBOAuthDesktop+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BFCE1FFC249C4D1200D11D8E /* DBOAuthDesktop+Protected.h */; };
 		BFD93BC724905D8A006AB165 /* DBAccessTokenProviderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD93BC624905D8A006AB165 /* DBAccessTokenProviderImpl.m */; };
 		BFD93BC824905D8A006AB165 /* DBAccessTokenProviderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD93BC624905D8A006AB165 /* DBAccessTokenProviderImpl.m */; };
 		C43D4E69245748BB008DF48C /* DBStoneBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C43D46EE245748AF008DF48C /* DBStoneBase.m */; };
@@ -3962,6 +3963,7 @@
 		BF7E352F24885A9A00DEDF84 /* DBOAuthMobile+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBOAuthMobile+Protected.h"; sourceTree = "<group>"; };
 		BFC20EA424905395005A5E8F /* DBAccessTokenProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBAccessTokenProvider.h; sourceTree = "<group>"; };
 		BFC20EA524905C57005A5E8F /* DBAccessTokenProvider+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBAccessTokenProvider+Internal.h"; sourceTree = "<group>"; };
+		BFCE1FFC249C4D1200D11D8E /* DBOAuthDesktop+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBOAuthDesktop+Protected.h"; sourceTree = "<group>"; };
 		BFD93BC624905D8A006AB165 /* DBAccessTokenProviderImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBAccessTokenProviderImpl.m; sourceTree = "<group>"; };
 		C43D46EE245748AF008DF48C /* DBStoneBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneBase.m; sourceTree = "<group>"; };
 		C43D46EF245748AF008DF48C /* DBStoneSerializers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBStoneSerializers.m; sourceTree = "<group>"; };
@@ -8378,6 +8380,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7E352F24885A9A00DEDF84 /* DBOAuthMobile+Protected.h */,
+				BFCE1FFC249C4D1200D11D8E /* DBOAuthDesktop+Protected.h */,
 				F2A2CE751E562817001D8449 /* DBClientsManager+Protected.h */,
 				F2A2CE761E562817001D8449 /* Networking */,
 				F2C59AFB1E9C2EEC00E8D2E6 /* OAuth */,
@@ -10943,6 +10946,7 @@
 				C43D5924245748D1008DF48C /* DBTEAMLOGSsoChangePolicyDetails.h in Headers */,
 				C43D55D6245748CA008DF48C /* DBTEAMLOGShowcaseFileRemovedType.h in Headers */,
 				C43D5838245748CF008DF48C /* DBTEAMLOGMemberSpaceLimitsAddCustomQuotaDetails.h in Headers */,
+				BFCE1FFD249C4D1200D11D8E /* DBOAuthDesktop+Protected.h in Headers */,
 				C43D58B4245748D0008DF48C /* DBTEAMLOGEventType.h in Headers */,
 				C43D5954245748D1008DF48C /* DBTEAMLOGFileLockingLockStatusChangedDetails.h in Headers */,
 				C43D52F4245748C4008DF48C /* DBFILEPROPERTIESListTemplateResult.h in Headers */,
