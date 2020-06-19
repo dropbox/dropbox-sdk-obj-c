@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,14 +27,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-gk-MoP">
-                                <rect key="frame" x="112" y="258.5" width="152" height="30"/>
+                                <rect key="frame" x="111.5" y="258.5" width="152" height="30"/>
                                 <state key="normal" title="Link Dropbox Account"/>
                                 <connections>
-                                    <action selector="linkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5P-LZ-Wih"/>
+                                    <action selector="tokenFlowlinkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L1r-FM-vZV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="db5-aq-giW">
-                                <rect key="frame" x="140" y="118.5" width="95" height="30"/>
+                                <rect key="frame" x="140.5" y="118.5" width="94" height="30"/>
                                 <state key="normal" title="Run API Tests"/>
                                 <connections>
                                     <action selector="runTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lj1-FW-imk"/>
@@ -50,17 +48,24 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMW-d6-mUc">
-                                <rect key="frame" x="108" y="158.5" width="160" height="30"/>
+                                <rect key="frame" x="107.5" y="158.5" width="160" height="30"/>
                                 <state key="normal" title="Run BatchUpload Tests"/>
                                 <connections>
                                     <action selector="runBatchUploadTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dhR-J7-UtW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-EQ-KEH">
-                                <rect key="frame" x="94" y="198.5" width="187" height="30"/>
+                                <rect key="frame" x="94.5" y="198.5" width="186" height="30"/>
                                 <state key="normal" title="Run Global Response Tests"/>
                                 <connections>
                                     <action selector="runGlobalResponseTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W88-Xe-Tty"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luI-bu-yCb">
+                                <rect key="frame" x="52" y="288" width="270" height="30"/>
+                                <state key="normal" title="Link Dropbox Account (pkce code flow)"/>
+                                <connections>
+                                    <action selector="codeFlowlinkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y4x-3n-29X"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,19 +78,22 @@
                             <constraint firstItem="db5-aq-giW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O8l-MN-ZX0"/>
                             <constraint firstItem="lAs-Sd-MXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QgU-hg-kg7"/>
                             <constraint firstItem="KTl-EQ-KEH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qtc-hz-ejU"/>
+                            <constraint firstItem="luI-bu-yCb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xya-JM-5VW"/>
                             <constraint firstItem="KTl-EQ-KEH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-120" id="dgx-4H-ijK"/>
                             <constraint firstItem="KMW-d6-mUc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-160" id="fmP-zU-y03"/>
                             <constraint firstItem="db5-aq-giW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-200" id="g3I-ak-LGi"/>
                             <constraint firstItem="0Il-qF-Vab" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="jvu-7a-pCX"/>
+                            <constraint firstItem="luI-bu-yCb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="pHf-cb-Xs5"/>
                             <constraint firstItem="lAs-Sd-MXl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="q5c-K2-FME"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="linkButton" destination="b9W-gk-MoP" id="7Z8-pd-xJo"/>
+                        <outlet property="codeFlowlinkButton" destination="luI-bu-yCb" id="5Rm-tz-nnc"/>
                         <outlet property="openWithButton" destination="lAs-Sd-MXl" id="Z61-Mk-gKB"/>
                         <outlet property="runBatchUploadTestsButton" destination="KMW-d6-mUc" id="Ody-5w-o9z"/>
                         <outlet property="runGlobalResponseTestsButton" destination="KTl-EQ-KEH" id="Ion-L3-Ck9"/>
                         <outlet property="runTestsButton" destination="db5-aq-giW" id="UYY-YH-dIy"/>
+                        <outlet property="tokenFlowlinkButton" destination="b9W-gk-MoP" id="DvX-Jl-kU2"/>
                         <outlet property="unlinkButton" destination="0Il-qF-Vab" id="oAz-BA-Qf0"/>
                     </connections>
                 </viewController>

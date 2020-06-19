@@ -3,12 +3,30 @@
 ///
 
 #import "DBOAuthDesktop-macOS.h"
+
+#import "DBLoadingStatusDelegate.h"
 #import "DBOAuthManager.h"
+
+static DBDesktopSharedApplication *s_desktopSharedApplication;
+
+@interface DBDesktopSharedApplication ()
+
+@property (nonatomic, readwrite, weak) id<DBLoadingStatusDelegate> loadingStatusDelegate;
+
+@end
 
 @implementation DBDesktopSharedApplication {
   NSWorkspace *_sharedWorkspace;
   NSViewController *_controller;
   void (^_openURL)(NSURL *);
+}
+
++ (DBDesktopSharedApplication *)desktopSharedApplication {
+  return s_desktopSharedApplication;
+}
+
++ (void)setDesktopSharedApplication:(DBDesktopSharedApplication *)desktopSharedApplication {
+  s_desktopSharedApplication = desktopSharedApplication;
 }
 
 - (instancetype)initWithSharedApplication:(NSWorkspace *)sharedWorkspace
@@ -62,11 +80,11 @@
 }
 
 - (void)presentLoading {
-  // TODO: Implement when OAuth code flow is introduced to Desktop SDK.
+  [_loadingStatusDelegate showLoading];
 }
 
 - (void)dismissLoading {
-  // TODO: Implement when OAuth code flow is introduced to Desktop SDK.
+  [_loadingStatusDelegate dismissLoading];
 }
 
 @end

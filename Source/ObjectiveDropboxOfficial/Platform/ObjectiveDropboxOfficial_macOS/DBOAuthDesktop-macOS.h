@@ -16,6 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBDesktopSharedApplication : NSObject <DBSharedApplication>
 
+/// Returns the shared instance of `DBDesktopSharedApplication`.
++ (nullable DBDesktopSharedApplication *)desktopSharedApplication;
+
+/// Sets the shared instance of `DBDesktopSharedApplication`.
++ (void)setDesktopSharedApplication:(DBDesktopSharedApplication *)desktopSharedApplication;
+
 ///
 /// Full constructor.
 ///

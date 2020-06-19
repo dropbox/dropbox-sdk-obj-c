@@ -14,20 +14,32 @@
 
 @interface ViewController ()
 
-@property(weak) IBOutlet NSButtonCell *linkButton;
-@property(weak) IBOutlet NSButtonCell *runTestsButton;
-@property(weak) IBOutlet NSButtonCell *unlinkButton;
+@property(weak) IBOutlet NSButton *tokenFlowlinkButton;
+@property(weak) IBOutlet NSButton *codeFlowlinkButton;
+@property(weak) IBOutlet NSButton *runTestsButton;
+@property(weak) IBOutlet NSButton *unlinkButton;
 
 @end
 
 @implementation ViewController
 
-- (IBAction)linkButtonPressed:(id)sender {
+- (IBAction)tokenFlowLinkButtonPressed:(id)sender {
     [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                           controller:self
                                              openURL:^(NSURL *url) {
         [[NSWorkspace sharedWorkspace] openURL:url];
     }];
+}
+
+- (IBAction)codeFlowLinkButtonPressed:(id)sender {
+    DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
+                                                                      scopes:@[@"account_info.read"]
+                                                        includeGrantedScopes:NO];
+    [DBClientsManager authorizeFromControllerDesktopV2:[NSWorkspace sharedWorkspace]
+                                            controller:self
+                                 loadingStatusDelegate:nil
+                                               openURL:^(NSURL *url) { [[NSWorkspace sharedWorkspace] openURL:url]; }
+                                          scopeRequest:scopeRequest];
 }
 
 - (IBAction)runTestsButtonPressed:(id)sender {
@@ -73,11 +85,13 @@
 
 - (void)checkButtons {
     if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
-        [_linkButton setEnabled:NO];
+        [_tokenFlowlinkButton setEnabled:NO];
+        [_codeFlowlinkButton setEnabled:NO];
         [_unlinkButton setEnabled:YES];
         [_runTestsButton setEnabled:YES];
     } else {
-        [_linkButton setEnabled:YES];
+        [_tokenFlowlinkButton setEnabled:YES];
+        [_codeFlowlinkButton setEnabled:YES];
         [_unlinkButton setEnabled:NO];
         [_runTestsButton setEnabled:NO];
     }
