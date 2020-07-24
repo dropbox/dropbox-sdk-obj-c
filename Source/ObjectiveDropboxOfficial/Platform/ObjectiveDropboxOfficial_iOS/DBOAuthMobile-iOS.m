@@ -13,12 +13,6 @@
 
 static DBMobileSharedApplication *s_mobileSharedApplication;
 
-@interface DBMobileSharedApplication ()
-
-@property (nonatomic, readwrite, weak) id<DBLoadingStatusDelegate> loadingStatusDelegate;
-
-@end
-
 @implementation DBMobileSharedApplication {
   UIApplication *_sharedApplication;
   UIViewController *_controller;

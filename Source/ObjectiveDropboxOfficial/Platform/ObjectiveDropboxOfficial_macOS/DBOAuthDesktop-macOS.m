@@ -9,12 +9,6 @@
 
 static DBDesktopSharedApplication *s_desktopSharedApplication;
 
-@interface DBDesktopSharedApplication ()
-
-@property (nonatomic, readwrite, weak) id<DBLoadingStatusDelegate> loadingStatusDelegate;
-
-@end
-
 @implementation DBDesktopSharedApplication {
   NSWorkspace *_sharedWorkspace;
   NSViewController *_controller;
