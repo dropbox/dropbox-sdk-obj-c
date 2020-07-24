@@ -10,7 +10,6 @@
 #import "DBOAuthManager.h"
 #import "DBOAuthMobile-iOS.h"
 #import "DBOAuthMobileManager-iOS.h"
-#import "DBOAuthMobile+Protected.h"
 #import "DBScopeRequest.h"
 #import "DBTransportDefaultConfig.h"
 

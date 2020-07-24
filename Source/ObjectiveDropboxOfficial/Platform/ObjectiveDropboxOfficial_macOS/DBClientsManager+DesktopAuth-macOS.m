@@ -8,7 +8,6 @@
 #import "DBClientsManager.h"
 #import "DBLoadingStatusDelegate.h"
 #import "DBOAuthDesktop-macOS.h"
-#import "DBOAuthDesktop+Protected.h"
 #import "DBOAuthManager.h"
 #import "DBTransportDefaultConfig.h"
 

@@ -6,6 +6,7 @@
 #import <SafariServices/SafariServices.h>
 #import <UIKit/UIKit.h>
 
+#import "DBLoadingStatusDelegate.h"
 #import "DBSharedApplicationProtocol.h"
 
 #pragma mark - Shared application
@@ -18,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Renders OAuth flow and implements `DBSharedApplication` protocol.
 ///
 @interface DBMobileSharedApplication : NSObject <DBSharedApplication>
+
+/// Delegate to handle loading status during auth flow.
+@property (nonatomic, readwrite, weak) id<DBLoadingStatusDelegate> loadingStatusDelegate;
 
 ///
 /// Full constructor.
