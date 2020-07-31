@@ -8,6 +8,7 @@
 #import "DBOAuthDesktop-macOS.h"
 #import "DBOAuthResult.h"
 
+@class DBScopeRequest;
 @class DBTransportDefaultConfig;
 @class NSWorkspace;
 @class NSViewController;
@@ -55,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
                               controller:(nullable NSViewController *)controller
                    loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
                                  openURL:(void (^_Nonnull)(NSURL *))openURL
-                            scopeRequest:(nullable DBScopeRequest*)scopeRequest;
+                            scopeRequest:(nullable DBScopeRequest *)scopeRequest;
 
 ///
 /// Stores the user app key for desktop. If any access token already exists, initializes an authorized shared

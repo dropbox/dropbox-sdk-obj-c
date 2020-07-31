@@ -30,7 +30,7 @@
                        controller:(nullable UIViewController *)controller
             loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
                           openURL:(void (^_Nonnull)(NSURL *))openURL
-                     scopeRequest:(nullable DBScopeRequest*)scopeRequest {
+                     scopeRequest:(nullable DBScopeRequest *)scopeRequest {
   [self db_authorizeFromController:sharedApplication
                         controller:controller
              loadingStatusDelegate:loadingStatusDelegate
@@ -69,7 +69,7 @@
              loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
                            openURL:(void (^_Nonnull)(NSURL *))openURL
                            usePkce:(BOOL)usePkce
-                      scopeRequest:(nullable DBScopeRequest*)scopeRequest {
+                      scopeRequest:(nullable DBScopeRequest *)scopeRequest {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
   DBMobileSharedApplication *sharedMobileApplication =
