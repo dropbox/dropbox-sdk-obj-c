@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
                        controller:(nullable UIViewController *)controller
             loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
                           openURL:(void (^_Nonnull)(NSURL *))openURL
-                     scopeRequest:(nullable DBScopeRequest*)scopeRequest;
+                     scopeRequest:(nullable DBScopeRequest *)scopeRequest;
 
 ///
 /// Stores the user app key. If any access token already exists, initializes an authorized shared `DBUserClient`
