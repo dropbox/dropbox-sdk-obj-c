@@ -256,18 +256,16 @@ static DBOAuthManager *s_sharedOAuthManager;
     [NSURLQueryItem queryItemWithName:@"locale" value:[self db_localeIdentifier]],
   ] mutableCopy];
 
-  NSString *state = nil;
   if (_authSession) {
     // Code flow
-    state = _authSession.state;
     [queryItems addObjectsFromArray:[DBOAuthUtils createPkceCodeFlowParamsForAuthSession:_authSession]];
   } else {
     // Token flow
-    state = [[NSProcessInfo processInfo] globallyUniqueString];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"response_type" value:@"token"]];
-    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"state" value:state]];
   }
   // used to prevent malicious impersonation of app from web browser
+  NSString *state = [[NSProcessInfo processInfo] globallyUniqueString];
+  [queryItems addObject:[NSURLQueryItem queryItemWithName:kDBStateKey value:state]];
   [[NSUserDefaults standardUserDefaults] setValue:state forKey:kDBSDKCSRFKey];
 
   [queryItems addObject:[NSURLQueryItem queryItemWithName:@"force_reauthentication"

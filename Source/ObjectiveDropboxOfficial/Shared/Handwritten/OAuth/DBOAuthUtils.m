@@ -26,7 +26,6 @@
     [NSURLQueryItem queryItemWithName:kDBCodeChallengeMethodKey value:pkceData.codeChallengeMethod],
     [NSURLQueryItem queryItemWithName:kDBTokenAccessTypeKey value:authSession.tokenAccessType],
     [NSURLQueryItem queryItemWithName:kDBResponseTypeKey value:authSession.responseType],
-    [NSURLQueryItem queryItemWithName:kDBStateKey value:authSession.state],
   ]];
   return params;
 }
