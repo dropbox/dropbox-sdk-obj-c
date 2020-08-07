@@ -69,9 +69,9 @@
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
   DBDesktopSharedApplication *sharedDesktopApplication =
-    [[DBDesktopSharedApplication alloc] initWithSharedApplication:sharedApplication
-                                                       controller:controller
-                                                          openURL:openURL];
+      [[DBDesktopSharedApplication alloc] initWithSharedApplication:sharedApplication
+                                                         controller:controller
+                                                            openURL:openURL];
   sharedDesktopApplication.loadingStatusDelegate = loadingStatusDelegate;
   [DBDesktopSharedApplication setDesktopSharedApplication:sharedDesktopApplication];
   [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedDesktopApplication

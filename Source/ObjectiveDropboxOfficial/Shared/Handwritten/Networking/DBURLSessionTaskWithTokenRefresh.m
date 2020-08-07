@@ -5,8 +5,8 @@
 #import "DBURLSessionTaskWithTokenRefresh.h"
 
 #import "DBAccessTokenProvider.h"
-#import "DBOAuthResult.h"
 #import "DBDelegate.h"
+#import "DBOAuthResult.h"
 
 @interface DBURLSessionTaskResponseBlockWrapper ()
 
@@ -70,9 +70,9 @@
     _session = urlSession;
     _tokenProvider = tokenProvider;
     dispatch_queue_attr_t qosAttribute =
-      dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, 0);
+        dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, 0);
     _serialQueue =
-      dispatch_queue_create("com.dropbox.dropbox_sdk_obj_c.DBURLSessionTaskWithTokenRefresh.queue", qosAttribute);
+        dispatch_queue_create("com.dropbox.dropbox_sdk_obj_c.DBURLSessionTaskWithTokenRefresh.queue", qosAttribute);
   }
   return self;
 }
@@ -109,8 +109,7 @@
   });
 }
 
-- (void)setProgressBlock:(DBProgressBlock)progressBlock
-                   queue:(NSOperationQueue *)queue {
+- (void)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
   dispatch_async(_serialQueue, ^{
     self->_progressBlock = progressBlock;
     self->_progressQueue = queue;
@@ -118,8 +117,7 @@
   });
 }
 
-- (void)setResponseBlock:(DBURLSessionTaskResponseBlockWrapper *)responseBlockWrapper
-                   queue:(NSOperationQueue *)queue {
+- (void)setResponseBlock:(DBURLSessionTaskResponseBlockWrapper *)responseBlockWrapper queue:(NSOperationQueue *)queue {
   dispatch_async(_serialQueue, ^{
     self->_responseBlockWrapper = responseBlockWrapper;
     self->_responseQueue = queue;

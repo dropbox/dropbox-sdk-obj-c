@@ -18,9 +18,7 @@
   id<DBURLSessionTask> _task;
 }
 
-- (instancetype)initWithTask:(id<DBURLSessionTask>)task
-                    tokenUid:(NSString *)tokenUid
-                       route:(DBRoute *)route {
+- (instancetype)initWithTask:(id<DBURLSessionTask>)task tokenUid:(NSString *)tokenUid route:(DBRoute *)route {
   self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _task = task;
@@ -95,9 +93,7 @@
   id<DBURLSessionTask> _uploadTask;
 }
 
-- (instancetype)initWithTask:(id<DBURLSessionTask>)task
-                    tokenUid:(NSString *)tokenUid
-                       route:(DBRoute *)route {
+- (instancetype)initWithTask:(id<DBURLSessionTask>)task tokenUid:(NSString *)tokenUid route:(DBRoute *)route {
   self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _uploadTask = task;
@@ -135,9 +131,8 @@
 }
 
 - (DBTask *)restart {
-  DBUploadTaskImpl *sdkTask = [[DBUploadTaskImpl alloc] initWithTask:[_uploadTask duplicate]
-                                                            tokenUid:self.tokenUid
-                                                               route:_route];
+  DBUploadTaskImpl *sdkTask =
+      [[DBUploadTaskImpl alloc] initWithTask:[_uploadTask duplicate] tokenUid:self.tokenUid route:_route];
   sdkTask.retryCount += 1;
   [sdkTask setResponseBlock:_responseBlock queue:_queue];
   [sdkTask resume];
@@ -195,7 +190,6 @@
 - (NSURLSession *)session {
   return _downloadUrlTask.session;
 }
-
 
 - (void)cancel {
   [_downloadUrlTask cancel];
@@ -269,9 +263,7 @@
   id<DBURLSessionTask> _downloadDataTask;
 }
 
-- (instancetype)initWithTask:(id<DBURLSessionTask>)task
-                    tokenUid:(NSString *)tokenUid
-                       route:(DBRoute *)route {
+- (instancetype)initWithTask:(id<DBURLSessionTask>)task tokenUid:(NSString *)tokenUid route:(DBRoute *)route {
   self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _downloadDataTask = task;
@@ -309,9 +301,8 @@
 }
 
 - (DBTask *)restart {
-  DBDownloadDataTaskImpl *sdkTask = [[DBDownloadDataTaskImpl alloc] initWithTask:[_downloadDataTask duplicate]
-                                                                        tokenUid:self.tokenUid
-                                                                           route:_route];
+  DBDownloadDataTaskImpl *sdkTask =
+      [[DBDownloadDataTaskImpl alloc] initWithTask:[_downloadDataTask duplicate] tokenUid:self.tokenUid route:_route];
   sdkTask.retryCount += 1;
   [sdkTask setResponseBlock:_responseBlock queue:_queue];
   [sdkTask resume];

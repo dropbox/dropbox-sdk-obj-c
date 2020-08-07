@@ -73,9 +73,9 @@
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
   DBMobileSharedApplication *sharedMobileApplication =
-    [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
-                                                      controller:controller
-                                                         openURL:openURL];
+      [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
+                                                        controller:controller
+                                                           openURL:openURL];
   sharedMobileApplication.loadingStatusDelegate = loadingStatusDelegate;
   [DBMobileSharedApplication setMobileSharedApplication:sharedMobileApplication];
   [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication

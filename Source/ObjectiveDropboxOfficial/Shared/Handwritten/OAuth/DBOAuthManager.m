@@ -72,7 +72,7 @@
   NSString *accessToken = [coder decodeObjectForKey:NSStringFromSelector(@selector(accessToken))];
   NSString *refreshToken = [coder decodeObjectForKey:NSStringFromSelector(@selector(refreshToken))];
   NSTimeInterval tokenExpirationTimestamp =
-    [coder decodeDoubleForKey:NSStringFromSelector(@selector(tokenExpirationTimestamp))];
+      [coder decodeDoubleForKey:NSStringFromSelector(@selector(tokenExpirationTimestamp))];
   if (accessToken == nil || uid == nil) {
     return nil;
   } else {
@@ -158,17 +158,18 @@ static DBOAuthManager *s_sharedOAuthManager;
   } else if (![self canHandleURL:url]) {
     completion(nil);
   } else {
-    [self extractFromUrl:url completion:^(DBOAuthResult *result) {
-      if ([result isSuccess]) {
-        [self storeAccessToken:result.accessToken];
-      }
-      completion(result);
-    }];
+    [self extractFromUrl:url
+              completion:^(DBOAuthResult *result) {
+                if ([result isSuccess]) {
+                  [self storeAccessToken:result.accessToken];
+                }
+                completion(result);
+              }];
   }
 }
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication {
-    [self authorizeFromSharedApplication:sharedApplication usePkce:NO scopeRequest:nil];
+  [self authorizeFromSharedApplication:sharedApplication usePkce:NO scopeRequest:nil];
 }
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication
@@ -339,8 +340,8 @@ static DBOAuthManager *s_sharedOAuthManager;
 
     // State from redirect URL should be non-nil and match stored state.
     if (state == nil || storedState == nil || ![state isEqualToString:storedState]) {
-      DBOAuthResult * result = [[DBOAuthResult alloc] initWithError:@"inconsistent_state"
-                                                   errorDescription:@"Auth flow failed because of inconsistent state."];
+      DBOAuthResult *result = [[DBOAuthResult alloc] initWithError:@"inconsistent_state"
+                                                  errorDescription:@"Auth flow failed because of inconsistent state."];
       completion(result);
     } else {
       // reset upon success
@@ -354,7 +355,8 @@ static DBOAuthManager *s_sharedOAuthManager;
       } else if (parametersMap[kDBUidKey] && parametersMap[@"access_token"]) {
         // Token flow
         NSString *uid = parametersMap[kDBUidKey];
-        DBAccessToken *accessToken = [DBAccessToken createWithLongLivedAccessToken:parametersMap[@"access_token"] uid:uid];
+        DBAccessToken *accessToken =
+            [DBAccessToken createWithLongLivedAccessToken:parametersMap[@"access_token"] uid:uid];
         completion([[DBOAuthResult alloc] initWithSuccess:accessToken]);
       } else {
         completion([DBOAuthResult unknownErrorWithErrorDescription:@"Invalid response."]);
@@ -372,17 +374,17 @@ static DBOAuthManager *s_sharedOAuthManager;
                          completion:(DBOAuthCompletion)completion {
   [_sharedApplication presentLoading];
   DBOAuthTokenExchangeRequest *request =
-    [[DBOAuthTokenExchangeRequest alloc] initWithOAuthCode:authCode
-                                              codeVerifier:codeVerifier
-                                                    appKey:_appKey
-                                                    locale:[self db_localeIdentifier]
-                                               redirectUri:_redirectURL.absoluteString];
+      [[DBOAuthTokenExchangeRequest alloc] initWithOAuthCode:authCode
+                                                codeVerifier:codeVerifier
+                                                      appKey:_appKey
+                                                      locale:[self db_localeIdentifier]
+                                                 redirectUri:_redirectURL.absoluteString];
   __weak id<DBSharedApplication> sharedApplication = _sharedApplication;
   DBOAuthCompletion wrappedCompletion = ^(DBOAuthResult *result) {
     [sharedApplication dismissLoading];
     completion(result);
   };
-  [request startWithCompletion:wrappedCompletion queue: dispatch_get_main_queue()];
+  [request startWithCompletion:wrappedCompletion queue:dispatch_get_main_queue()];
 }
 
 - (BOOL)checkAndPresentPlatformSpecificAuth:(id<DBSharedApplication>)sharedApplication {

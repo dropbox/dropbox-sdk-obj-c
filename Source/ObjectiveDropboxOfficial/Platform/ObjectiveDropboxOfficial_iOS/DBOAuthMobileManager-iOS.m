@@ -41,7 +41,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 
 - (void)extractFromUrl:(NSURL *)url completion:(DBOAuthCompletion)completion {
   if ([url.host isEqualToString:_dauthRedirectURL.host]) { // dauth
-    [self extractfromDAuthURL:url completion: completion];
+    [self extractfromDAuthURL:url completion:completion];
   } else {
     [self extractAuthResultFromRedirectURL:url completion:completion];
   }
@@ -80,10 +80,11 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 }
 
 - (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
-  [super handleRedirectURL:url completion:^(DBOAuthResult *result) {
-    [[DBMobileSharedApplication mobileSharedApplication] dismissAuthController];
-    completion(result);
-  }];
+  [super handleRedirectURL:url
+                completion:^(DBOAuthResult *result) {
+                  [[DBMobileSharedApplication mobileSharedApplication] dismissAuthController];
+                  completion(result);
+                }];
 }
 
 - (NSURL *)dAuthURL:(NSString *)scheme nonce:(NSString *)nonce {
@@ -91,7 +92,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
   if (nonce != nil) {
     NSString *state = [NSString stringWithFormat:@"oauth2:%@", nonce];
     components.queryItems =
-      [components.queryItems arrayByAddingObject:[NSURLQueryItem queryItemWithName:kDBStateKey value:state]];
+        [components.queryItems arrayByAddingObject:[NSURLQueryItem queryItemWithName:kDBStateKey value:state]];
   }
   return components.URL;
 }
@@ -99,11 +100,10 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 - (NSURL *)dAuthURL:(NSString *)scheme authSession:(DBOAuthPKCESession *)authSession {
   NSURLComponents *components = [self db_dauthUrlCommonComponentsWithScheme:scheme];
   NSString *extraQueryParams = [DBOAuthMobileManager db_createExtraQueryParamsStringForAuthSession:authSession];
-  components.queryItems =
-    [components.queryItems arrayByAddingObjectsFromArray:@[
-      [NSURLQueryItem queryItemWithName:kDBStateKey value:authSession.state],
-      [NSURLQueryItem queryItemWithName:kDBExtraQueryParamsKey value:extraQueryParams],
-    ]];
+  components.queryItems = [components.queryItems arrayByAddingObjectsFromArray:@[
+    [NSURLQueryItem queryItemWithName:kDBStateKey value:authSession.state],
+    [NSURLQueryItem queryItemWithName:kDBExtraQueryParamsKey value:extraQueryParams],
+  ]];
   return components.URL;
 }
 
@@ -120,13 +120,13 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 - (void)extractfromDAuthURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
   NSString *path = url.path;
   if (path && [path isEqualToString:@"/connect"]) {
-      if (_authSession) {
-        // Code flow
-        [self db_handleCodeFlowUrl:url authSession:_authSession completion:completion];
-      } else {
-        // Token flow
-        completion([self db_extractFromTokenFlowUrl: url]);
-      }
+    if (_authSession) {
+      // Code flow
+      [self db_handleCodeFlowUrl:url authSession:_authSession completion:completion];
+    } else {
+      // Token flow
+      completion([self db_extractFromTokenFlowUrl:url]);
+    }
   } else {
     completion(nil);
   }

@@ -32,9 +32,9 @@
                                    tokenUid:(NSString *)tokenUid
                             transportConfig:(DBTransportDefaultConfig *)transportConfig {
   DBTransportDefaultClient *transportClient =
-    [[DBTransportDefaultClient alloc] initWithAccessTokenProvider:accessTokenProvider
-                                                         tokenUid:tokenUid
-                                                  transportConfig:transportConfig];
+      [[DBTransportDefaultClient alloc] initWithAccessTokenProvider:accessTokenProvider
+                                                           tokenUid:tokenUid
+                                                    transportConfig:transportConfig];
   return [self initWithTransportClient:transportClient];
 }
 

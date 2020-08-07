@@ -113,15 +113,15 @@
     // RPC request submits argument in request body
     NSData *serializedArgData = [[self class] serializeDataWithRoute:route routeArg:arg];
     NSURLRequest *request =
-      [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
+        [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
     return [sessionToUse dataTaskWithRequest:request];
   };
 
   id<DBURLSessionTask> taskWithTokenRefresh =
-    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
-                                                           taskDelegate:_delegate
-                                                             urlSession:sessionToUse
-                                                          tokenProvider:self.accessTokenProvider];
+      [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                             taskDelegate:_delegate
+                                                               urlSession:sessionToUse
+                                                            tokenProvider:self.accessTokenProvider];
   DBRpcTaskImpl *rpcTask = [[DBRpcTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
   [rpcTask resume];
   return rpcTask;
@@ -140,14 +140,13 @@
     return [sessionToUse uploadTaskWithRequest:request fromFile:inputUrl];
   };
   id<DBURLSessionTask> taskWithTokenRefresh =
-    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
-                                                           taskDelegate:_delegate
-                                                             urlSession:sessionToUse
-                                                          tokenProvider:self.accessTokenProvider];
+      [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                             taskDelegate:_delegate
+                                                               urlSession:sessionToUse
+                                                            tokenProvider:self.accessTokenProvider];
 
-  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
-                                                               tokenUid:self.tokenUid
-                                                                  route:route];
+  DBUploadTaskImpl *uploadTask =
+      [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
   [uploadTask resume];
   return uploadTask;
 }
@@ -166,14 +165,13 @@
     return [sessionToUse uploadTaskWithRequest:request fromData:input];
   };
   id<DBURLSessionTask> taskWithTokenRefresh =
-    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
-                                                           taskDelegate:_delegate
-                                                             urlSession:sessionToUse
-                                                          tokenProvider:self.accessTokenProvider];
+      [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                             taskDelegate:_delegate
+                                                               urlSession:sessionToUse
+                                                            tokenProvider:self.accessTokenProvider];
 
-  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
-                                                               tokenUid:self.tokenUid
-                                                                  route:route];
+  DBUploadTaskImpl *uploadTask =
+      [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
   [uploadTask resume];
   return uploadTask;
 }
@@ -190,13 +188,12 @@
     return [sessionToUse uploadTaskWithStreamedRequest:request];
   };
   id<DBURLSessionTask> taskWithTokenRefresh =
-    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
-                                                           taskDelegate:_delegate
-                                                             urlSession:sessionToUse
-                                                          tokenProvider:self.accessTokenProvider];
-  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
-                                                               tokenUid:self.tokenUid
-                                                                  route:route];
+      [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                             taskDelegate:_delegate
+                                                               urlSession:sessionToUse
+                                                            tokenProvider:self.accessTokenProvider];
+  DBUploadTaskImpl *uploadTask =
+      [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
   [uploadTask resume];
   return uploadTask;
 }
@@ -235,10 +232,10 @@
     return [sessionToUse downloadTaskWithRequest:request];
   };
   id<DBURLSessionTask> taskWithTokenRefresh =
-    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
-                                                           taskDelegate:_delegate
-                                                             urlSession:sessionToUse
-                                                          tokenProvider:self.accessTokenProvider];
+      [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                             taskDelegate:_delegate
+                                                               urlSession:sessionToUse
+                                                            tokenProvider:self.accessTokenProvider];
   DBDownloadUrlTaskImpl *downloadTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:taskWithTokenRefresh
                                                                            tokenUid:self.tokenUid
                                                                               route:route
@@ -270,13 +267,12 @@
     return [sessionToUse downloadTaskWithRequest:request];
   };
   id<DBURLSessionTask> taskWithTokenRefresh =
-    [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
-                                                           taskDelegate:_delegate
-                                                             urlSession:sessionToUse
-                                                          tokenProvider:self.accessTokenProvider];
-  DBDownloadDataTaskImpl *downloadTask = [[DBDownloadDataTaskImpl alloc] initWithTask:taskWithTokenRefresh
-                                                                             tokenUid:self.tokenUid
-                                                                                route:route];
+      [[DBURLSessionTaskWithTokenRefresh alloc] initWithTaskCreationBlock:taskCreationBlock
+                                                             taskDelegate:_delegate
+                                                               urlSession:sessionToUse
+                                                            tokenProvider:self.accessTokenProvider];
+  DBDownloadDataTaskImpl *downloadTask =
+      [[DBDownloadDataTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
   [downloadTask resume];
   return downloadTask;
 }

@@ -8,7 +8,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Wrapper for legacy long-lived access token.
-@interface DBLongLivedAccessTokenProvider: NSObject<DBAccessTokenProvider>
+@interface DBLongLivedAccessTokenProvider : NSObject <DBAccessTokenProvider>
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /// Wrapper for short-lived token.
-@interface DBShortLivedAccessTokenProvider: NSObject<DBAccessTokenProvider>
+@interface DBShortLivedAccessTokenProvider : NSObject <DBAccessTokenProvider>
 
 - (instancetype)init NS_UNAVAILABLE;
 

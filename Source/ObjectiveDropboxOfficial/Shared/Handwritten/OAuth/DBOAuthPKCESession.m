@@ -4,8 +4,8 @@
 
 #import "DBOAuthPKCESession.h"
 
-#import <CommonCrypto/CommonDigest.h>
 #import "DBScopeRequest+Protected.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation DBPkceData
 
@@ -21,9 +21,10 @@
 
 + (NSString *)randomStringOfLength:(NSUInteger)length {
   static NSString *alphanumerics = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  NSMutableString *randomString = [NSMutableString stringWithCapacity: length];
+  NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
   for (NSUInteger i = 0; i < length; i++) {
-    [randomString appendFormat:@"%c", [alphanumerics characterAtIndex:arc4random_uniform((uint32_t)alphanumerics.length)]];
+    [randomString
+        appendFormat:@"%c", [alphanumerics characterAtIndex:arc4random_uniform((uint32_t)alphanumerics.length)]];
   }
   return randomString;
 }
@@ -68,7 +69,7 @@
                          scopeRequest:(nullable DBScopeRequest *)scopeRequest
                       tokenAccessType:(NSString *)tokenAccessType {
   NSMutableArray<NSString *> *state =
-  [@[@"oauth2code", pkceData.codeChallenge, pkceData.codeChallengeMethod, tokenAccessType] mutableCopy];
+      [@[ @"oauth2code", pkceData.codeChallenge, pkceData.codeChallengeMethod, tokenAccessType ] mutableCopy];
   if (scopeRequest) {
     NSString *scopeString = [scopeRequest scopeString];
     if (scopeString) {

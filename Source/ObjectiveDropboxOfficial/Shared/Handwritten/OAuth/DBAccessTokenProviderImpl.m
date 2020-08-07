@@ -32,7 +32,6 @@
 @property (nonatomic, strong) dispatch_queue_t queue;
 @property (nonatomic, strong) NSMutableArray<DBOAuthCompletion> *completionBlocks;
 
-
 @end
 
 @implementation DBShortLivedAccessTokenProvider
@@ -43,7 +42,7 @@
     _token = token;
     _tokenRefresher = tokenRefresher;
     dispatch_queue_attr_t qosAttribute =
-      dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_CONCURRENT, QOS_CLASS_USER_INITIATED, 0);
+        dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_CONCURRENT, QOS_CLASS_USER_INITIATED, 0);
     _queue = dispatch_queue_create("com.dropbox.dropbox_sdk_obj_c.DBShortLivedAccessTokenProvider.queue", qosAttribute);
     _completionBlocks = [NSMutableArray new];
   }
@@ -71,11 +70,11 @@
     if (!refreshInProgress) {
       __weak typeof(self) weakSelf = self;
       [self->_tokenRefresher refreshAccessToken:self->_token
-                                   scopes:@[]
-                                    queue:nil
-                               completion:^(DBOAuthResult *result) {
-        [weakSelf db_handleRefreshResult:result];
-      }];
+                                         scopes:@[]
+                                          queue:nil
+                                     completion:^(DBOAuthResult *result) {
+                                       [weakSelf db_handleRefreshResult:result];
+                                     }];
     }
   });
 }
@@ -109,4 +108,3 @@
 }
 
 @end
-

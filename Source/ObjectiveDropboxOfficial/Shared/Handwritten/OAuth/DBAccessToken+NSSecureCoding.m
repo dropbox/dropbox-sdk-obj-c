@@ -2,8 +2,8 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthManager.h"
 #import "DBAccessToken+NSSecureCoding.h"
+#import "DBOAuthManager.h"
 
 @implementation DBAccessToken (NSSecureCoding)
 
@@ -29,6 +29,5 @@
   }
   return data;
 }
-
 
 @end

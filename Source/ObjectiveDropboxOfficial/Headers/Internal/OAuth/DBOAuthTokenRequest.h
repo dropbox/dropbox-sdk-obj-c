@@ -2,8 +2,8 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import <Foundation/Foundation.h>
 #import "DBOAuthResultCompletion.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

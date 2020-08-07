@@ -31,9 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTask:(id<DBURLSessionTask>)task
-                    tokenUid:(nullable NSString *)tokenUid
-                       route:(DBRoute *)route;
+- (instancetype)initWithTask:(id<DBURLSessionTask>)task tokenUid:(nullable NSString *)tokenUid route:(DBRoute *)route;
 @end
 
 #pragma mark - Upload-style network task
@@ -54,9 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTask:(id<DBURLSessionTask>)task
-                    tokenUid:(nullable NSString *)tokenUid
-                       route:(DBRoute *)route;
+- (instancetype)initWithTask:(id<DBURLSessionTask>)task tokenUid:(nullable NSString *)tokenUid route:(DBRoute *)route;
 @end
 
 #pragma mark - Download-style network task (NSURL)
@@ -104,9 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTask:(id<DBURLSessionTask>)task
-                    tokenUid:(nullable NSString *)tokenUid
-                       route:(DBRoute *)route;
+- (instancetype)initWithTask:(id<DBURLSessionTask>)task tokenUid:(nullable NSString *)tokenUid route:(DBRoute *)route;
 @end
 
 NS_ASSUME_NONNULL_END

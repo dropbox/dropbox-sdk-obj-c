@@ -24,10 +24,10 @@
       @"invalid_scope" : @(DBAuthInvalidScope),
       @"server_error" : @(DBAuthServerError),
       @"temporarily_unavailable" : @(DBAuthTemporarilyUnavailable),
-      @"invalid_request": @(DBAuthInvalidRequest),
-      @"invalid_client": @(DBAuthInvalidClient),
-      @"invalid_grant": @(DBAuthInvalidGrant),
-      @"unsupported_grant_type": @(DBAuthUnsupportedGrantType),
+      @"invalid_request" : @(DBAuthInvalidRequest),
+      @"invalid_client" : @(DBAuthInvalidClient),
+      @"invalid_grant" : @(DBAuthInvalidGrant),
+      @"unsupported_grant_type" : @(DBAuthUnsupportedGrantType),
       @"inconsistent_state" : @(DBAuthInconsistentState),
     };
   });

@@ -148,8 +148,7 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
 
 #pragma mark Private helpers
 
-+ (void)db_addAuthorizedClientWithToken:(DBAccessToken *)token
-                           setAsDefault:(BOOL)setAsDefault {
++ (void)db_addAuthorizedClientWithToken:(DBAccessToken *)token setAsDefault:(BOOL)setAsDefault {
   id<DBAccessTokenProvider> tokenProvider = [[DBOAuthManager sharedOAuthManager] accessTokenProviderForToken:token];
   DBUserClient *client = [[DBUserClient alloc] initWithAccessTokenProvider:tokenProvider
                                                                   tokenUid:token.uid
@@ -163,9 +162,7 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   }
 }
 
-+ (void)db_addAuthorizedClient:(DBUserClient *)client
-                      tokenUid:(NSString *)tokenUid
-                  setAsDefault:(BOOL)setAsDefault {
++ (void)db_addAuthorizedClient:(DBUserClient *)client tokenUid:(NSString *)tokenUid setAsDefault:(BOOL)setAsDefault {
   @synchronized(self) {
     s_tokenUidToAuthorizedClients[tokenUid] = client;
     if (setAsDefault) {
@@ -174,8 +171,7 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   }
 }
 
-+ (void)db_addAuthorizedTeamClientWithToken:(DBAccessToken *)token
-                               setAsDefault:(BOOL)setAsDefault {
++ (void)db_addAuthorizedTeamClientWithToken:(DBAccessToken *)token setAsDefault:(BOOL)setAsDefault {
   if (![DBOAuthManager sharedOAuthManager]) {
     return;
   }
@@ -241,23 +237,21 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
 }
 
 + (void)db_setupHelperWithOAuthManager:(DBOAuthManager *)oAuthManager
-                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
+                       transportConfig:(DBTransportDefaultConfig *)transportConfig {
   [DBOAuthManager setSharedOAuthManager:oAuthManager];
   [self setTransportConfig:transportConfig];
   [self setAppKey:transportConfig.appKey];
 }
 
 + (void)db_setupAuthorizedClients {
-  NSArray<DBAccessToken *> *accessTokens =
-      [[[DBOAuthManager sharedOAuthManager] retrieveAllAccessTokens] allValues];
+  NSArray<DBAccessToken *> *accessTokens = [[[DBOAuthManager sharedOAuthManager] retrieveAllAccessTokens] allValues];
   for (NSUInteger i = 0; i < accessTokens.count; i++) {
     [self db_addAuthorizedClientWithToken:accessTokens[i] setAsDefault:i == 0];
   }
 }
 
 + (void)db_setupAuthorizedTeamClients {
-  NSArray<DBAccessToken *> *accessTokens =
-      [[[DBOAuthManager sharedOAuthManager] retrieveAllAccessTokens] allValues];
+  NSArray<DBAccessToken *> *accessTokens = [[[DBOAuthManager sharedOAuthManager] retrieveAllAccessTokens] allValues];
   for (NSUInteger i = 0; i < accessTokens.count; i++) {
     [self db_addAuthorizedTeamClientWithToken:accessTokens[i] setAsDefault:i == 0];
   }
@@ -286,7 +280,7 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   }
 
   BOOL shouldResetDefaultTeamClient =
-    [self db_authorizedTeamClient:tokenUid] == [DBClientsManager authorizedTeamClient];
+      [self db_authorizedTeamClient:tokenUid] == [DBClientsManager authorizedTeamClient];
   [self db_removeAuthorizedTeamClient:tokenUid];
   if (shouldResetDefaultTeamClient) {
     [DBClientsManager db_setAuthorizedTeamClient:nil];
@@ -300,23 +294,22 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   }
 }
 
-+ (void)db_handleRedirectURL:(NSURL *)url
-                      isTeam:(BOOL)isTeam
-                  completion:(DBOAuthCompletion)completion {
++ (void)db_handleRedirectURL:(NSURL *)url isTeam:(BOOL)isTeam completion:(DBOAuthCompletion)completion {
   NSAssert([DBOAuthManager sharedOAuthManager],
            @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
 
-  [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url completion:^(DBOAuthResult * result) {
-    if ([result isSuccess]) {
-      DBAccessToken *token = result.accessToken;
-      if (isTeam) {
-        [self db_addAuthorizedTeamClientWithToken:token setAsDefault:YES];
-      } else {
-        [self db_addAuthorizedClientWithToken:token setAsDefault:YES];
-      }
-    }
-    completion(result);
-  }];
+  [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url
+                                              completion:^(DBOAuthResult *result) {
+                                                if ([result isSuccess]) {
+                                                  DBAccessToken *token = result.accessToken;
+                                                  if (isTeam) {
+                                                    [self db_addAuthorizedTeamClientWithToken:token setAsDefault:YES];
+                                                  } else {
+                                                    [self db_addAuthorizedClientWithToken:token setAsDefault:YES];
+                                                  }
+                                                }
+                                                completion(result);
+                                              }];
 }
 
 @end

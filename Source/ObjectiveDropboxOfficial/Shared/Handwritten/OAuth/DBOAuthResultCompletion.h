@@ -9,6 +9,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Callback block for oauth result.
-typedef void(^DBOAuthCompletion)(DBOAuthResult *_Nullable);
+typedef void (^DBOAuthCompletion)(DBOAuthResult *_Nullable);
 
 NS_ASSUME_NONNULL_END

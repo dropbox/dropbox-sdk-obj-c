@@ -2,17 +2,17 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import <Foundation/Foundation.h>
 #import "DBHandlerTypes.h"
 #import "DBHandlerTypesInternal.h"
 #import "DBTasks.h"
+#import <Foundation/Foundation.h>
 
 @protocol DBAccessTokenProvider;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Response handler for DBURLSessionTask.
-@interface DBURLSessionTaskResponseBlockWrapper: NSObject
+@interface DBURLSessionTaskResponseBlockWrapper : NSObject
 
 /// Handler wrapper for RPC tasks.
 + (DBURLSessionTaskResponseBlockWrapper *)withRpcResponseBlock:(DBRpcResponseBlockStorage)responseBlock;
@@ -53,17 +53,16 @@ typedef void (^DBURLSessionTaskSetupBlock)(NSUInteger taskIdentifier);
 /// @param responseBlock The `DBURLSessionTaskResponseBlock` that handles task response.
 /// @param queue An optional operation queue on which to execute response handler code. If not provided, the handler
 /// may be executed on any queue.
-- (void)setResponseBlock:(DBURLSessionTaskResponseBlockWrapper *)responseBlock
-                   queue:(nullable NSOperationQueue *)queue;
+- (void)setResponseBlock:(DBURLSessionTaskResponseBlockWrapper *)responseBlock queue:(nullable NSOperationQueue *)queue;
 
 @end
 
 /// Block that creates the actual API request.
-typedef NSURLSessionTask *_Nonnull(^DBURLSessionTaskCreationBlock)(void);
+typedef NSURLSessionTask *_Nonnull (^DBURLSessionTaskCreationBlock)(void);
 
 /// A class that wraps a network request that calls Dropbox API.
 /// This class will first attempt to refresh the access token and conditionally proceed to the actual API call.
-@interface DBURLSessionTaskWithTokenRefresh : NSObject<DBURLSessionTask>
+@interface DBURLSessionTaskWithTokenRefresh : NSObject <DBURLSessionTask>
 
 - (instancetype)init NS_UNAVAILABLE;
 

@@ -36,10 +36,10 @@
 
 + (NSString *)stringFromScopeType:(DBScopeType)scopeType {
   switch (scopeType) {
-    case DBScopeTypeTeam:
-      return @"team";
-    case DBScopeTypeUser:
-      return @"user";
+  case DBScopeTypeTeam:
+    return @"team";
+  case DBScopeTypeUser:
+    return @"user";
   }
 }
 

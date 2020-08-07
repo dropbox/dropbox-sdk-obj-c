@@ -15,7 +15,7 @@
 @interface DBOAuthTokenRequest ()
 
 @property (nonatomic, strong) NSURLSessionDataTask *task;
-@property (nonatomic, strong) DBOAuthTokenRequest* retainSelf;
+@property (nonatomic, strong) DBOAuthTokenRequest *retainSelf;
 @property (nonatomic, copy) DBOAuthCompletion completion;
 @property (nonatomic, strong) dispatch_queue_t queue;
 
@@ -25,7 +25,7 @@
 
 - (instancetype)initWithAppKey:(NSString *)appKey
                         locale:(NSString *)locale
-                        params:(NSDictionary<NSString *,NSString *> *)params {
+                        params:(NSDictionary<NSString *, NSString *> *)params {
   self = [super init];
   if (self) {
     _task = [self db_createTokenRequestTaskWithParams:params appKey:appKey locale:locale];
@@ -37,8 +37,7 @@
   [self startWithCompletion:completion queue:dispatch_get_main_queue()];
 }
 
-- (void)startWithCompletion:(DBOAuthCompletion)completion
-                      queue:(dispatch_queue_t)queue {
+- (void)startWithCompletion:(DBOAuthCompletion)completion queue:(dispatch_queue_t)queue {
   _retainSelf = self;
   _completion = [completion copy];
   _queue = nil;
@@ -62,7 +61,7 @@
 
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
   NSMutableDictionary<NSString *, NSString *> *allParams = [params mutableCopy];
-  [allParams addEntriesFromDictionary:@{@"locale": locale, @"client_id": appKey}];
+  [allParams addEntriesFromDictionary:@{ @"locale" : locale, @"client_id" : appKey }];
   NSMutableArray<NSString *> *paramsArray = [NSMutableArray new];
   for (NSString *key in allParams.allKeys) {
     [paramsArray addObject:[NSString stringWithFormat:@"%@=%@", key, allParams[key]]];
@@ -77,16 +76,14 @@
 
   __weak typeof(self) weakSelf = self;
   return [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    [weakSelf db_handleResponse:response data:data error:error];
-  }];
+                                         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                           [weakSelf db_handleResponse:response data:data error:error];
+                                         }];
 
   return [[NSURLSession sharedSession] dataTaskWithRequest:request];
 }
 
-- (void)db_handleResponse:(NSURLResponse *)response
-                     data:(NSData *)data
-                    error:(NSError *)error {
+- (void)db_handleResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error {
   NSDictionary<NSString *, id> *resultDict = [self resultDictionaryFromData:data];
   DBOAuthResult *result = nil;
   if (error) {
@@ -160,10 +157,10 @@
                            locale:(NSString *)locale
                       redirectUri:(NSString *)redirectUri {
   NSDictionary<NSString *, NSString *> *paramsDict = @{
-    @"grant_type": @"authorization_code",
-    @"code": oauthCode,
-    @"code_verifier": codeVerifier,
-    @"redirect_uri": redirectUri
+    @"grant_type" : @"authorization_code",
+    @"code" : oauthCode,
+    @"code_verifier" : codeVerifier,
+    @"redirect_uri" : redirectUri
   };
   return [super initWithAppKey:appKey locale:locale params:paramsDict];
 }
@@ -178,7 +175,7 @@
   id expiresIn = dict[@"expires_in"];
 
   BOOL valid =
-    [tokenType isKindOfClass:[NSString class]] && [@"bearer" caseInsensitiveCompare:tokenType] == NSOrderedSame;
+      [tokenType isKindOfClass:[NSString class]] && [@"bearer" caseInsensitiveCompare:tokenType] == NSOrderedSame;
   valid = valid && [accessToken isKindOfClass:[NSString class]];
   valid = valid && [refreshToken isKindOfClass:[NSString class]];
   valid = valid && [userId isKindOfClass:[NSString class]];
@@ -186,11 +183,12 @@
 
   if (valid) {
     NSTimeInterval tokenExpirationTimestamp =
-      [[[NSDate new] dateByAddingTimeInterval:((NSNumber *)expiresIn).doubleValue] timeIntervalSince1970];
+        [[[NSDate new] dateByAddingTimeInterval:((NSNumber *)expiresIn).doubleValue] timeIntervalSince1970];
     DBAccessToken *token = [DBAccessToken createWithShortLivedAccessToken:accessToken
                                                                       uid:userId
                                                              refreshToken:refreshToken
-                                                 tokenExpirationTimestamp:tokenExpirationTimestamp];;
+                                                 tokenExpirationTimestamp:tokenExpirationTimestamp];
+    ;
     return [[DBOAuthResult alloc] initWithSuccess:token];
   } else {
     return nil;
@@ -216,8 +214,8 @@
                      appKey:(NSString *)appKey
                      locale:(NSString *)locale {
   NSMutableDictionary<NSString *, NSString *> *paramsDict = [@{
-    @"grant_type": @"refresh_token",
-    @"refresh_token": refreshToken,
+    @"grant_type" : @"refresh_token",
+    @"refresh_token" : refreshToken,
   } mutableCopy];
   if (scopes.count > 0) {
     paramsDict[@"scope"] = [scopes componentsJoinedByString:@" "];
@@ -237,17 +235,18 @@
   id expiresIn = dict[@"expires_in"];
 
   BOOL valid =
-    [tokenType isKindOfClass:[NSString class]] && [@"bearer" caseInsensitiveCompare:tokenType] == NSOrderedSame;
+      [tokenType isKindOfClass:[NSString class]] && [@"bearer" caseInsensitiveCompare:tokenType] == NSOrderedSame;
   valid = valid && [accessToken isKindOfClass:[NSString class]];
   valid = valid && [expiresIn isKindOfClass:[NSNumber class]];
 
   if (valid) {
     NSTimeInterval tokenExpirationTimestamp =
-      [[[NSDate new] dateByAddingTimeInterval:((NSNumber *)expiresIn).doubleValue] timeIntervalSince1970];
+        [[[NSDate new] dateByAddingTimeInterval:((NSNumber *)expiresIn).doubleValue] timeIntervalSince1970];
     DBAccessToken *token = [DBAccessToken createWithShortLivedAccessToken:accessToken
                                                                       uid:_uid
                                                              refreshToken:_refreshToken
-                                                 tokenExpirationTimestamp:tokenExpirationTimestamp];;
+                                                 tokenExpirationTimestamp:tokenExpirationTimestamp];
+    ;
     return [[DBOAuthResult alloc] initWithSuccess:token];
   } else {
     return nil;

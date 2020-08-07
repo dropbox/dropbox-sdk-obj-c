@@ -7,8 +7,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, DBScopeType) {
-    DBScopeTypeTeam = 0,
-    DBScopeTypeUser,
+  DBScopeTypeTeam = 0,
+  DBScopeTypeUser,
 };
 
 /// Contains the information of requested scopes.
