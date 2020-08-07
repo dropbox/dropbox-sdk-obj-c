@@ -347,11 +347,22 @@ Please ensure that the supplied view controller is the top-most controller, so t
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)myButtonInControllerPressed {
+  // Legacy authorization flow that grants a long-lived token.
   [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
                                  controller:[[self class] topMostController]
                                     openURL:^(NSURL *url) {
                                       [[UIApplication sharedApplication] openURL:url];
                                     }];
+
+  // New: OAuth 2 code flow with PKCE that grants a short-lived token with scopes.
+  DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
+                                                                    scopes:@[@"account_info.read"]
+                                                      includeGrantedScopes:NO];
+  [DBClientsManager authorizeFromControllerV2:[UIApplication sharedApplication]
+                                   controller:[[self class] topMostController]
+                        loadingStatusDelegate:nil
+                                      openURL:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }
+                                 scopeRequest:scopeRequest];
 }
 
 + (UIViewController*)topMostController
@@ -373,9 +384,20 @@ Please ensure that the supplied view controller is the top-most controller, so t
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)myButtonInControllerPressed {
+  // Legacy authorization flow that grants a long-lived token.
   [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                         controller:self
                                            openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }];
+
+  // New: OAuth 2 code flow with PKCE that grants a short-lived token with scopes.
+  DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
+                                                                    scopes:@[@"account_info.read"]
+                                                      includeGrantedScopes:NO];
+  [DBClientsManager authorizeFromControllerDesktopV2:[NSWorkspace sharedWorkspace]
+                                          controller:self
+                               loadingStatusDelegate:nil
+                                             openURL:^(NSURL *url) { [[NSWorkspace sharedWorkspace] openURL:url]; }
+                                        scopeRequest:scopeRequest];
 }
 ```
 
@@ -399,16 +421,18 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-  if (authResult != nil) {
-    if ([authResult isSuccess]) {
-      NSLog(@"Success! User is logged into Dropbox.");
-    } else if ([authResult isCancel]) {
-      NSLog(@"Authorization flow was manually canceled by user!");
-    } else if ([authResult isError]) {
-      NSLog(@"Error: %@", authResult);
+  DBOAuthCompletion completion = ^(DBOAuthResult *authResult) {
+    if (authResult != nil) {
+      if ([authResult isSuccess]) {
+        NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
+      } else if ([authResult isCancel]) {
+        NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
+      } else if ([authResult isError]) {
+        NSLog(@"\n\nError: %@\n\n", authResult);
+      }
     }
-  }
+  };
+  [DBClientsManager handleRedirectURL:url completion:completion];
   return NO;
 }
 ```
@@ -429,19 +453,21 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 // custom handler
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
   NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
-  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-  if (authResult != nil) {
-    if ([authResult isSuccess]) {
-      NSLog(@"Success! User is logged into Dropbox.");
-    } else if ([authResult isCancel]) {
-      NSLog(@"Authorization flow was manually canceled by user!");
-    } else if ([authResult isError]) {
-      NSLog(@"Error: %@", authResult);
+  DBOAuthCompletion oauthCompletion = ^(DBOAuthResult *authResult) {
+    if (authResult != nil) {
+      if ([authResult isSuccess]) {
+        NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
+      } else if ([authResult isCancel]) {
+        NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
+      } else if ([authResult isError]) {
+        NSLog(@"\n\nError: %@\n\n", authResult);
+      }
+      // this forces your app to the foreground, after it has handled the browser redirect
+      [[NSRunningApplication currentApplication]
+          activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
     }
-    // this forces your app to the foreground, after it has handled the browser redirect
-    [[NSRunningApplication currentApplication]
-        activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
-  }
+  };
+  [DBClientsManager handleRedirectURL:url completion:oauthCompletion];
 }
 ```
 
