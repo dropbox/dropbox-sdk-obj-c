@@ -71,6 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
                                    tokenUid:(nullable NSString *)tokenUid
                             transportConfig:(DBTransportBaseConfig *)transportConfig NS_DESIGNATED_INITIALIZER;
 
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 NS_ASSUME_NONNULL_END

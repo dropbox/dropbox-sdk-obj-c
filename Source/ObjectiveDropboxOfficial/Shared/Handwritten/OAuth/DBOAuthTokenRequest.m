@@ -38,6 +38,7 @@
 }
 
 - (void)startWithCompletion:(DBOAuthCompletion)completion queue:(dispatch_queue_t)queue {
+#pragma unused(queue)
   _retainSelf = self;
   _completion = [completion copy];
   _queue = nil;
@@ -84,6 +85,7 @@
 }
 
 - (void)db_handleResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error {
+#pragma unused(response)
   NSDictionary<NSString *, id> *resultDict = [self resultDictionaryFromData:data];
   DBOAuthResult *result = nil;
   if (error) {
@@ -141,6 +143,7 @@
 }
 
 - (DBOAuthResult *)db_extractSuccessResultFromDict:(NSDictionary<NSString *, id> *)dict {
+#pragma unused(dict)
   NSAssert(NO, @"Subclasses must implement this method");
   return nil;
 }
