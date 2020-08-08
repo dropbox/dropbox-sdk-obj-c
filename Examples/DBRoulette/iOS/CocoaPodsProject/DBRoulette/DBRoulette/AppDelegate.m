@@ -31,22 +31,22 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-  if (authResult != nil) {
-    if ([authResult isSuccess]) {
-      NSLog(@"Success! User is logged into Dropbox.");
-      UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-      ViewController *viewController = (ViewController *)navigationController.childViewControllers[0];
-      viewController.authSuccessful = YES;
-      return YES;
-    } else if ([authResult isCancel]) {
-      NSLog(@"Authorization flow was manually canceled by user!");
-    } else if ([authResult isError]) {
-      NSLog(@"Error: %@", authResult);
-    }
-  }
-
-  return NO;
+    DBOAuthCompletion completion = ^(DBOAuthResult *authResult) {
+      if (authResult != nil) {
+        if ([authResult isSuccess]) {
+          NSLog(@"Success! User is logged into Dropbox.");
+          UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+          ViewController *viewController = (ViewController *)navigationController.childViewControllers[0];
+          viewController.authSuccessful = YES;
+        } else if ([authResult isCancel]) {
+          NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
+        } else if ([authResult isError]) {
+          NSLog(@"\n\nError: %@\n\n", authResult);
+        }
+      }
+    };
+    [DBClientsManager handleRedirectURL:url completion:completion];
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
