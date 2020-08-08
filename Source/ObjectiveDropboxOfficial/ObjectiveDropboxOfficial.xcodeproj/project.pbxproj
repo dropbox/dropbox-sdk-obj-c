@@ -22,8 +22,8 @@
 		BF33F92F24873F12001F4072 /* DBOAuthPKCESession.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92324873F11001F4072 /* DBOAuthPKCESession.h */; };
 		BF33F93024873F12001F4072 /* DBOAuthConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92424873F11001F4072 /* DBOAuthConstants.h */; };
 		BF33F93124873F12001F4072 /* DBOAuthConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92424873F11001F4072 /* DBOAuthConstants.h */; };
-		BF33F93224873F12001F4072 /* DBScopeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92524873F11001F4072 /* DBScopeRequest.h */; };
-		BF33F93324873F12001F4072 /* DBScopeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92524873F11001F4072 /* DBScopeRequest.h */; };
+		BF33F93224873F12001F4072 /* DBScopeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92524873F11001F4072 /* DBScopeRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF33F93324873F12001F4072 /* DBScopeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92524873F11001F4072 /* DBScopeRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF33F93424873F12001F4072 /* DBScopeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92624873F12001F4072 /* DBScopeRequest.m */; };
 		BF33F93524873F12001F4072 /* DBScopeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92624873F12001F4072 /* DBScopeRequest.m */; };
 		BF33F93624873F12001F4072 /* DBOAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92724873F12001F4072 /* DBOAuthUtils.h */; };
@@ -32,8 +32,8 @@
 		BF33F93A24873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93824873F3E001F4072 /* DBScopeRequest+Protected.h */; };
 		BF33F93E24874DED001F4072 /* DBOAuthTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93B24874DED001F4072 /* DBOAuthTokenRequest.h */; };
 		BF33F93F24874DED001F4072 /* DBOAuthTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93B24874DED001F4072 /* DBOAuthTokenRequest.h */; };
-		BF33F94024874DED001F4072 /* DBOAuthResultCompletion.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93C24874DED001F4072 /* DBOAuthResultCompletion.h */; };
-		BF33F94124874DED001F4072 /* DBOAuthResultCompletion.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93C24874DED001F4072 /* DBOAuthResultCompletion.h */; };
+		BF33F94024874DED001F4072 /* DBOAuthResultCompletion.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93C24874DED001F4072 /* DBOAuthResultCompletion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF33F94124874DED001F4072 /* DBOAuthResultCompletion.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93C24874DED001F4072 /* DBOAuthResultCompletion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF33F94224874DED001F4072 /* DBOAuthTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F93D24874DED001F4072 /* DBOAuthTokenRequest.m */; };
 		BF33F94324874DED001F4072 /* DBOAuthTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F93D24874DED001F4072 /* DBOAuthTokenRequest.m */; };
 		BF474D38248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */; };
@@ -10418,17 +10418,17 @@
 				F2A2CE9C1E562E7B001D8449 /* DBCustomTasks.h in Headers */,
 				F2A2CEA61E5634DE001D8449 /* DBHandlerTypes.h in Headers */,
 				F2D40D3A1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */,
+				BF33F93224873F12001F4072 /* DBScopeRequest.h in Headers */,
+				BF33F94024874DED001F4072 /* DBOAuthResultCompletion.h in Headers */,
 				F2AB0D8B1E666C96002617AB /* ObjectiveDropboxOfficialLib.h in Headers */,
 				BF474D38248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */,
 				BF33F93E24874DED001F4072 /* DBOAuthTokenRequest.h in Headers */,
 				BF7E352B2488562F00DEDF84 /* DBLoadingViewController.h in Headers */,
 				BF33F93024873F12001F4072 /* DBOAuthConstants.h in Headers */,
 				BF6162C52491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h in Headers */,
-				BF33F93224873F12001F4072 /* DBScopeRequest.h in Headers */,
 				BF33F93624873F12001F4072 /* DBOAuthUtils.h in Headers */,
 				BF33F92E24873F12001F4072 /* DBOAuthPKCESession.h in Headers */,
 				BF33F93924873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */,
-				BF33F94024874DED001F4072 /* DBOAuthResultCompletion.h in Headers */,
 				F2C59AF51E9C033400E8D2E6 /* DBSDKSystem.h in Headers */,
 				F2C59AFD1E9C2EFC00E8D2E6 /* DBOAuthManager+Protected.h in Headers */,
 				F2A2CE8C1E5628D3001D8449 /* DBClientsManager+Protected.h in Headers */,
@@ -12306,14 +12306,14 @@
 				F29789101E03692F00876A73 /* DBCustomRoutes.h in Headers */,
 				F2A2CE9E1E562E90001D8449 /* DBCustomTasks.h in Headers */,
 				F2A2CEA31E562FF6001D8449 /* DBCustomDatatypes.h in Headers */,
-				F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */,
 				BF33F93324873F12001F4072 /* DBScopeRequest.h in Headers */,
+				BF33F94124874DED001F4072 /* DBOAuthResultCompletion.h in Headers */,
+				F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */,
 				BF33F93724873F12001F4072 /* DBOAuthUtils.h in Headers */,
 				BF33F92F24873F12001F4072 /* DBOAuthPKCESession.h in Headers */,
 				BF474D39248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */,
 				BF33F93F24874DED001F4072 /* DBOAuthTokenRequest.h in Headers */,
 				BF33F93124873F12001F4072 /* DBOAuthConstants.h in Headers */,
-				BF33F94124874DED001F4072 /* DBOAuthResultCompletion.h in Headers */,
 				BF33F93A24873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */,
 				BF6162C62491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.h in Headers */,
 				63FB27AA22BDD97A0062BA22 /* DBSDKImports-iOS.h in Headers */,
