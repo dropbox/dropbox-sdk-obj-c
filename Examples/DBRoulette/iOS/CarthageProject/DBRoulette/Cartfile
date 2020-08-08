@@ -1,2 +1,2 @@
 # ObjectiveDropboxOfficial
-github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 3.0.11
+github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 5.0.0
