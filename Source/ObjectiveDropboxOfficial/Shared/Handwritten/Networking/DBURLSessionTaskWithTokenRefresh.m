@@ -100,10 +100,10 @@
 
 - (void)resume {
   dispatch_async(_serialQueue, ^{
-    self->_started = YES;
-    if (self->_sessionTask) {
+    if (self->_started) {
       [self->_sessionTask resume];
     } else {
+      self->_started = YES;
       [self db_start];
     }
   });
