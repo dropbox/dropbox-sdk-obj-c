@@ -36,6 +36,10 @@
 		BF33F94124874DED001F4072 /* DBOAuthResultCompletion.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93C24874DED001F4072 /* DBOAuthResultCompletion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF33F94224874DED001F4072 /* DBOAuthTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F93D24874DED001F4072 /* DBOAuthTokenRequest.m */; };
 		BF33F94324874DED001F4072 /* DBOAuthTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F93D24874DED001F4072 /* DBOAuthTokenRequest.m */; };
+		BF46BE8624E741F000002735 /* DBGlobalErrorResponseHandler+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D3E1E779AE5004CCEB7 /* DBGlobalErrorResponseHandler+Internal.h */; };
+		BF46BE8724E7420000002735 /* DBGlobalErrorResponseHandler+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D3E1E779AE5004CCEB7 /* DBGlobalErrorResponseHandler+Internal.h */; };
+		BF46BE8824E7425C00002735 /* DBAccessTokenProvider+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC20EA524905C57005A5E8F /* DBAccessTokenProvider+Internal.h */; };
+		BF46BE8924E7426A00002735 /* DBAccessTokenProvider+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC20EA524905C57005A5E8F /* DBAccessTokenProvider+Internal.h */; };
 		BF474D38248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */; };
 		BF474D39248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BF474D36248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h */; };
 		BF474D3A248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF474D37248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.m */; };
@@ -3824,6 +3828,12 @@
 		BFFF31D124DE33F90029FC0C /* DBTEAMTeamAuthRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFF231424DE33E80029FC0C /* DBTEAMTeamAuthRoutes.m */; };
 		BFFF31D224DE33F90029FC0C /* DBFILEPROPERTIESUserAuthRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFF231524DE33E80029FC0C /* DBFILEPROPERTIESUserAuthRoutes.m */; };
 		BFFF31D324DE33F90029FC0C /* DBFILEPROPERTIESUserAuthRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFF231524DE33E80029FC0C /* DBFILEPROPERTIESUserAuthRoutes.m */; };
+		BFFFCE8124E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFFCE8024E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m */; };
+		BFFFCE8224E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFFCE8024E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m */; };
+		BFFFCE8424E741440084E238 /* DBURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = BFFFCE7F24E73E0C0084E238 /* DBURLSessionTask.h */; };
+		BFFFCE8524E7414A0084E238 /* DBURLSessionTaskResponseBlockWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = BFFFCE8324E73F6C0084E238 /* DBURLSessionTaskResponseBlockWrapper.h */; };
+		BFFFCE8624E741670084E238 /* DBURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = BFFFCE7F24E73E0C0084E238 /* DBURLSessionTask.h */; };
+		BFFFCE8724E7417B0084E238 /* DBURLSessionTaskResponseBlockWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = BFFFCE8324E73F6C0084E238 /* DBURLSessionTaskResponseBlockWrapper.h */; };
 		F235B5221E29913600144F8B /* DBOAuthMobile-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */; };
 		F235B5241E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51E1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m */; };
 		F235B52F1E29915400144F8B /* DBOAuthDesktop-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B5291E29915400144F8B /* DBOAuthDesktop-macOS.m */; };
@@ -5881,6 +5891,9 @@
 		BFFF231324DE33E80029FC0C /* DBCHECKUserAuthRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCHECKUserAuthRoutes.h; sourceTree = "<group>"; };
 		BFFF231424DE33E80029FC0C /* DBTEAMTeamAuthRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTEAMTeamAuthRoutes.m; sourceTree = "<group>"; };
 		BFFF231524DE33E80029FC0C /* DBFILEPROPERTIESUserAuthRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFILEPROPERTIESUserAuthRoutes.m; sourceTree = "<group>"; };
+		BFFFCE7F24E73E0C0084E238 /* DBURLSessionTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBURLSessionTask.h; sourceTree = "<group>"; };
+		BFFFCE8024E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBURLSessionTaskResponseBlockWrapper.m; sourceTree = "<group>"; };
+		BFFFCE8324E73F6C0084E238 /* DBURLSessionTaskResponseBlockWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBURLSessionTaskResponseBlockWrapper.h; sourceTree = "<group>"; };
 		F235B51B1E29913600144F8B /* DBOAuthMobile-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBOAuthMobile-iOS.h"; sourceTree = "<group>"; };
 		F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOAuthMobile-iOS.m"; sourceTree = "<group>"; };
 		F235B51D1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBClientsManager+MobileAuth-iOS.h"; sourceTree = "<group>"; };
@@ -8425,6 +8438,7 @@
 				F24169451E523FD30038E306 /* DBTransportDefaultConfig.h */,
 				F24169461E523FEB0038E306 /* DBTransportDefaultConfig.m */,
 				BF6162C42491A29F004E34B7 /* DBURLSessionTaskWithTokenRefresh.m */,
+				BFFFCE8024E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -8493,6 +8507,8 @@
 				F2A2CE7C1E562817001D8449 /* DBTasksImpl.h */,
 				F2A2CEA81E5655D1001D8449 /* DBTransportBaseClient+Internal.h */,
 				F2D40D3E1E779AE5004CCEB7 /* DBGlobalErrorResponseHandler+Internal.h */,
+				BFFFCE7F24E73E0C0084E238 /* DBURLSessionTask.h */,
+				BFFFCE8324E73F6C0084E238 /* DBURLSessionTaskResponseBlockWrapper.h */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -10440,6 +10456,10 @@
 				F2A2CE871E5628C1001D8449 /* DBTasksImpl.h in Headers */,
 				F2A2CE8A1E5628CC001D8449 /* DBChunkInputStream.h in Headers */,
 				F2A2CEA91E565678001D8449 /* DBTransportBaseClient+Internal.h in Headers */,
+				BFFFCE8424E741440084E238 /* DBURLSessionTask.h in Headers */,
+				BF46BE8724E7420000002735 /* DBGlobalErrorResponseHandler+Internal.h in Headers */,
+				BFFFCE8524E7414A0084E238 /* DBURLSessionTaskResponseBlockWrapper.h in Headers */,
+				BF46BE8924E7426A00002735 /* DBAccessTokenProvider+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12328,6 +12348,10 @@
 				F2A2CE931E56290B001D8449 /* DBTasksImpl.h in Headers */,
 				F2A2CE961E562917001D8449 /* DBChunkInputStream.h in Headers */,
 				F2A2CEAA1E56567C001D8449 /* DBTransportBaseClient+Internal.h in Headers */,
+				BFFFCE8724E7417B0084E238 /* DBURLSessionTaskResponseBlockWrapper.h in Headers */,
+				BFFFCE8624E741670084E238 /* DBURLSessionTask.h in Headers */,
+				BF46BE8624E741F000002735 /* DBGlobalErrorResponseHandler+Internal.h in Headers */,
+				BF46BE8824E7425C00002735 /* DBAccessTokenProvider+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12502,6 +12526,7 @@
 				BFFF318024DE33F80029FC0C /* DBCONTACTSUserAuthRoutes.m in Sources */,
 				BFFF31CC24DE33F90029FC0C /* DBAUTHUserAuthRoutes.m in Sources */,
 				F29789031E03692F00876A73 /* DBSDKKeychain.m in Sources */,
+				BFFFCE8124E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m in Sources */,
 				F29789111E03692F00876A73 /* DBCustomRoutes.m in Sources */,
 				BFFF315A24DE33F80029FC0C /* DBUserBaseClient.m in Sources */,
 				F29788CF1E03692F00876A73 /* DBTeamClient.m in Sources */,
@@ -12555,6 +12580,7 @@
 				BFFF315324DE33F80029FC0C /* DBAppBaseClient.m in Sources */,
 				F29788DA1E03692F00876A73 /* DBRequestErrors.m in Sources */,
 				BFFF318724DE33F80029FC0C /* DBCHECKAppAuthRoutes.m in Sources */,
+				BFFFCE8224E73F010084E238 /* DBURLSessionTaskResponseBlockWrapper.m in Sources */,
 				BFFF316924DE33F80029FC0C /* DBFILESUserAuthRoutes.m in Sources */,
 				BFFF315D24DE33F80029FC0C /* DBAUTHAppAuthRoutes.m in Sources */,
 				BFFF231924DE33E80029FC0C /* DBStoneSerializers.m in Sources */,
