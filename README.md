@@ -347,6 +347,9 @@ Please ensure that the supplied view controller is the top-most controller, so t
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)myButtonInControllerPressed {
+
+  // Use only one of these two flows at once:
+
   // Legacy authorization flow that grants a long-lived token.
   [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
                                  controller:[[self class] topMostController]
@@ -384,6 +387,9 @@ Please ensure that the supplied view controller is the top-most controller, so t
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)myButtonInControllerPressed {
+
+  // Use only one of these two flows at once:
+
   // Legacy authorization flow that grants a long-lived token.
   [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                         controller:self
