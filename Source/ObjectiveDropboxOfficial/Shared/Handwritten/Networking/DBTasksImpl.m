@@ -9,6 +9,7 @@
 #import "DBStoneBase.h"
 #import "DBTasks+Protected.h"
 #import "DBTransportBaseClient.h"
+#import "DBURLSessionTaskResponseBlockWrapper.h"
 
 #pragma mark - RPC-style network task
 
@@ -90,7 +91,6 @@
 @implementation DBUploadTaskImpl {
   DBUploadTaskImpl *_selfRetained;
   DBUploadResponseBlockImpl _responseBlock;
-  id<DBURLSessionTask> _uploadTask;
 }
 
 - (instancetype)initWithTask:(id<DBURLSessionTask>)task tokenUid:(NSString *)tokenUid route:(DBRoute *)route {
