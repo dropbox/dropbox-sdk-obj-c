@@ -117,12 +117,12 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   [self db_setupAuthorizedTeamClients];
 }
 
-+ (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
-  [self db_handleRedirectURL:url isTeam:NO completion:completion];
++ (BOOL)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
+  return [self db_handleRedirectURL:url isTeam:NO completion:completion];
 }
 
-+ (void)handleRedirectURLTeam:(NSURL *)url completion:(DBOAuthCompletion)completion {
-  [self db_handleRedirectURL:url isTeam:YES completion:completion];
++ (BOOL)handleRedirectURLTeam:(NSURL *)url completion:(DBOAuthCompletion)completion {
+  return [self db_handleRedirectURL:url isTeam:YES completion:completion];
 }
 
 + (void)unlinkAndResetClient:(NSString *)tokenUid {
@@ -294,12 +294,12 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   }
 }
 
-+ (void)db_handleRedirectURL:(NSURL *)url isTeam:(BOOL)isTeam completion:(DBOAuthCompletion)completion {
++ (BOOL)db_handleRedirectURL:(NSURL *)url isTeam:(BOOL)isTeam completion:(DBOAuthCompletion)completion {
   NSAssert([DBOAuthManager sharedOAuthManager],
            @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
 
-  [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url
-                                              completion:^(DBOAuthResult *result) {
+  return [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url
+                                                     completion:^(DBOAuthResult *result) {
                                                 if ([result isSuccess]) {
                                                   DBAccessToken *token = result.accessToken;
                                                   if (isTeam) {

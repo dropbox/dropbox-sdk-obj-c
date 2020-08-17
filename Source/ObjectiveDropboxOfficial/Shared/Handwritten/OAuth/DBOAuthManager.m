@@ -150,21 +150,26 @@ static DBOAuthManager *s_sharedOAuthManager;
 
 #pragma mark - Auth flow methods
 
-- (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
+- (BOOL)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
   // check if url is a cancel url
   if (([[url host] isEqualToString:@"1"] && [[url path] isEqualToString:@"/cancel"]) ||
       ([[url host] isEqualToString:@"2"] && [[url path] isEqualToString:@"/cancel"])) {
     completion([[DBOAuthResult alloc] initWithCancel]);
-  } else if (![self canHandleURL:url]) {
-    completion(nil);
-  } else {
+    return YES;
+  }
+
+  if ([self canHandleURL:url]) {
     [self extractFromUrl:url
               completion:^(DBOAuthResult *result) {
-                if ([result isSuccess]) {
-                  [self storeAccessToken:result.accessToken];
-                }
-                completion(result);
-              }];
+      if ([result isSuccess]) {
+        [self storeAccessToken:result.accessToken];
+      }
+      completion(result);
+    }];
+    return YES;
+  } else {
+    completion(nil);
+    return NO;
   }
 }
 
