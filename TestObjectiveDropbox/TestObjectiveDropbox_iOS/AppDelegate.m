@@ -79,6 +79,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+  BOOL urlHandled = NO;
   if ([[url absoluteString] containsString:@"openWith"]) {
     NSLog(@"Successfully retrieved openWith url");
 
@@ -101,11 +102,12 @@
 
     DBOpenWithInfo *openWithInfo = [connector openWithInfoFromURL:url];
     [((ViewController *)self.window.rootViewController) setOpenWithInfoNSURL:openWithInfo];
+    urlHandled = YES;
   } else {
-    [self db_handleAuthUrl:url];
+    urlHandled = [self db_handleAuthUrl:url];
   }
 
-  return NO;
+  return urlHandled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -138,7 +140,7 @@
   // applicationDidEnterBackground:.
 }
 
-- (void)db_handleAuthUrl:(NSURL *)url {
+- (BOOL)db_handleAuthUrl:(NSURL *)url {
   DBOAuthCompletion completion = ^(DBOAuthResult *authResult) {
     if (authResult != nil) {
       if ([authResult isSuccess]) {
@@ -152,16 +154,18 @@
     [((ViewController *)self.window.rootViewController) checkButtons];
   };
 
+  BOOL handled = NO;
   switch (appPermission) {
     case FullDropbox: {
-      [DBClientsManager handleRedirectURL:url completion: completion];
+      handled = [DBClientsManager handleRedirectURL:url completion:completion];
       break;
     }
     case TeamMemberFileAccess:
     case TeamMemberManagement:
-      [DBClientsManager handleRedirectURLTeam:url completion: completion];
+      handled = [DBClientsManager handleRedirectURLTeam:url completion:completion];
     break;
   }
+  return handled;
 }
 
 @end

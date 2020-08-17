@@ -202,7 +202,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param completion Completion block for oauth result, called with `nil` if SDK cannot handle the redirect URL,
 /// otherwise an instance of `DBOAuthResult`.
 ///
-- (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion;
+/// @return Whether the URL can be handled.
+///
+- (BOOL)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion;
 
 #pragma mark - Keychain methods
 

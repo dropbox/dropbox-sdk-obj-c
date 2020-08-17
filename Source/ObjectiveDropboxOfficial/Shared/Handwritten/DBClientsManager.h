@@ -92,7 +92,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param url The auth redirect url which relaunches the SDK.
 /// @param completion Completion block to pass back authorization result.
 ///
-+ (void)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion;
+/// @return Whether the URL can be handled.
+///
++ (BOOL)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion;
 
 ///
 /// Handles launching the SDK with a redirect url from an external source to authorize a team API client.
@@ -103,7 +105,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param url The auth redirect url which relaunches the SDK.
 /// @param completion Completion block to pass back authorization result.
 ///
-+ (void)handleRedirectURLTeam:(NSURL *)url completion:(DBOAuthCompletion)completion;
+/// @return Whether the URL can be handled.
+///
++ (BOOL)handleRedirectURLTeam:(NSURL *)url completion:(DBOAuthCompletion)completion;
 
 ///
 /// Multi-Dropbox account use case. Sets to `nil` the active user / team shared authorized client, clears the stored

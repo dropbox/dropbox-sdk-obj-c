@@ -438,8 +438,8 @@ To handle the redirection back into the Objective-C SDK once the authentication 
       }
     }
   };
-  [DBClientsManager handleRedirectURL:url completion:completion];
-  return NO;
+  BOOL canHandle = [DBClientsManager handleRedirectURL:url completion:completion];
+  return canHandle;
 }
 ```
 
