@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMLOGFileOrFolderLogInfo.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLOGFileOrFolderLogInfo.h>
 
 @class DBTEAMLOGFolderLogInfo;
 @class DBTEAMLOGPathLogInfo;

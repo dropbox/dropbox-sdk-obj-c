@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTransportBaseClient.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseClient.h>
 
 @class DBRequestError;
 @class DBRoute;

@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBGlobalErrorResponseHandler.h"
+#import <ObjectiveDropboxOfficial/DBGlobalErrorResponseHandler.h>
 
 @class DBTask;
 

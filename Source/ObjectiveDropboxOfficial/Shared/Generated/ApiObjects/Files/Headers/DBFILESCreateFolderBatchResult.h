@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESFileOpsResult.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBFILESFileOpsResult.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILESCreateFolderBatchResult;
 @class DBFILESCreateFolderBatchResultEntry;

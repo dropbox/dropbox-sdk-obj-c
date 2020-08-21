@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `TeamCommon` namespace.
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupManagementType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupManagementType.h>
 
 #pragma mark - API Object
 
@@ -201,10 +201,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupManagementType.h"
-#import "DBTEAMCOMMONGroupSummary.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupManagementType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupSummary.h>
 
 #pragma mark - API Object
 
@@ -363,9 +363,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupType.h>
 
 #pragma mark - API Object
 
@@ -536,9 +536,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONMemberSpaceLimitType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONMemberSpaceLimitType.h>
 
 #pragma mark - API Object
 
@@ -731,9 +731,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONTimeRange.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONTimeRange.h>
 
 #pragma mark - API Object
 

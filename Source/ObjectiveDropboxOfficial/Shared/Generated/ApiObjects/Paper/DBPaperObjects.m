@@ -6,11 +6,11 @@
 
 /// Arguments, results, and errors for the `Paper` namespace.
 
-#import "DBPAPERAddMember.h"
-#import "DBPAPERPaperDocPermissionLevel.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERAddMember.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -122,9 +122,9 @@
 
 @end
 
-#import "DBPAPERRefPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -221,11 +221,11 @@
 
 @end
 
-#import "DBPAPERAddMember.h"
-#import "DBPAPERAddPaperDocUser.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERAddMember.h>
+#import <ObjectiveDropboxOfficial/DBPAPERAddPaperDocUser.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -365,11 +365,11 @@
 
 @end
 
-#import "DBPAPERAddPaperDocUserMemberResult.h"
-#import "DBPAPERAddPaperDocUserResult.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERAddPaperDocUserMemberResult.h>
+#import <ObjectiveDropboxOfficial/DBPAPERAddPaperDocUserResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -474,9 +474,9 @@
 
 @end
 
-#import "DBPAPERAddPaperDocUserResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERAddPaperDocUserResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -757,9 +757,9 @@
 
 @end
 
-#import "DBPAPERCursor.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERCursor.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -875,9 +875,9 @@
 
 @end
 
-#import "DBPAPERPaperApiBaseError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperApiBaseError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1026,10 +1026,10 @@
 
 @end
 
-#import "DBPAPERDocLookupError.h"
-#import "DBPAPERPaperApiBaseError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERDocLookupError.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperApiBaseError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1200,9 +1200,9 @@
 
 @end
 
-#import "DBPAPERDocSubscriptionLevel.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERDocSubscriptionLevel.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1400,9 +1400,9 @@
 
 @end
 
-#import "DBPAPERExportFormat.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERExportFormat.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1573,9 +1573,9 @@
 
 @end
 
-#import "DBPAPERFolder.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERFolder.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1680,9 +1680,9 @@
 
 @end
 
-#import "DBPAPERFolderSharingPolicyType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERFolderSharingPolicyType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1836,9 +1836,9 @@
 
 @end
 
-#import "DBPAPERFolderSubscriptionLevel.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERFolderSubscriptionLevel.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2036,11 +2036,11 @@
 
 @end
 
-#import "DBPAPERFolder.h"
-#import "DBPAPERFolderSharingPolicyType.h"
-#import "DBPAPERFoldersContainingPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERFolder.h>
+#import <ObjectiveDropboxOfficial/DBPAPERFolderSharingPolicyType.h>
+#import <ObjectiveDropboxOfficial/DBPAPERFoldersContainingPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2177,9 +2177,9 @@
 
 @end
 
-#import "DBPAPERImportFormat.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERImportFormat.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2372,11 +2372,11 @@
 
 @end
 
-#import "DBPAPERInviteeInfoWithPermissionLevel.h"
-#import "DBPAPERPaperDocPermissionLevel.h"
-#import "DBSHARINGInviteeInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERInviteeInfoWithPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGInviteeInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2484,10 +2484,10 @@
 
 @end
 
-#import "DBPAPERListDocsCursorError.h"
-#import "DBPAPERPaperApiCursorError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListDocsCursorError.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperApiCursorError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2650,12 +2650,12 @@
 
 @end
 
-#import "DBPAPERListPaperDocsArgs.h"
-#import "DBPAPERListPaperDocsFilterBy.h"
-#import "DBPAPERListPaperDocsSortBy.h"
-#import "DBPAPERListPaperDocsSortOrder.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsArgs.h>
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsFilterBy.h>
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsSortBy.h>
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsSortOrder.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2785,9 +2785,9 @@
 
 @end
 
-#import "DBPAPERListPaperDocsContinueArgs.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsContinueArgs.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2884,9 +2884,9 @@
 
 @end
 
-#import "DBPAPERListPaperDocsFilterBy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsFilterBy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3057,10 +3057,10 @@
 
 @end
 
-#import "DBPAPERCursor.h"
-#import "DBPAPERListPaperDocsResponse.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERCursor.h>
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsResponse.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3184,9 +3184,9 @@
 
 @end
 
-#import "DBPAPERListPaperDocsSortBy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsSortBy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3379,9 +3379,9 @@
 
 @end
 
-#import "DBPAPERListPaperDocsSortOrder.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListPaperDocsSortOrder.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3552,11 +3552,11 @@
 
 @end
 
-#import "DBPAPERListUsersCursorError.h"
-#import "DBPAPERPaperApiBaseError.h"
-#import "DBPAPERPaperApiCursorError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListUsersCursorError.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperApiBaseError.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperApiCursorError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3763,10 +3763,10 @@
 
 @end
 
-#import "DBPAPERListUsersOnFolderArgs.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListUsersOnFolderArgs.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3873,10 +3873,10 @@
 
 @end
 
-#import "DBPAPERListUsersOnFolderContinueArgs.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListUsersOnFolderContinueArgs.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3980,12 +3980,12 @@
 
 @end
 
-#import "DBPAPERCursor.h"
-#import "DBPAPERListUsersOnFolderResponse.h"
-#import "DBSHARINGInviteeInfo.h"
-#import "DBSHARINGUserInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERCursor.h>
+#import <ObjectiveDropboxOfficial/DBPAPERListUsersOnFolderResponse.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGInviteeInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4128,11 +4128,11 @@
 
 @end
 
-#import "DBPAPERListUsersOnPaperDocArgs.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBPAPERUserOnPaperDocFilter.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListUsersOnPaperDocArgs.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBPAPERUserOnPaperDocFilter.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4250,10 +4250,10 @@
 
 @end
 
-#import "DBPAPERListUsersOnPaperDocContinueArgs.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERListUsersOnPaperDocContinueArgs.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4358,13 +4358,13 @@
 
 @end
 
-#import "DBPAPERCursor.h"
-#import "DBPAPERInviteeInfoWithPermissionLevel.h"
-#import "DBPAPERListUsersOnPaperDocResponse.h"
-#import "DBPAPERUserInfoWithPermissionLevel.h"
-#import "DBSHARINGUserInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERCursor.h>
+#import <ObjectiveDropboxOfficial/DBPAPERInviteeInfoWithPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBPAPERListUsersOnPaperDocResponse.h>
+#import <ObjectiveDropboxOfficial/DBPAPERUserInfoWithPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4521,9 +4521,9 @@
 
 @end
 
-#import "DBPAPERPaperApiCursorError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperApiCursorError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4738,10 +4738,10 @@
 
 @end
 
-#import "DBPAPERImportFormat.h"
-#import "DBPAPERPaperDocCreateArgs.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERImportFormat.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocCreateArgs.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4855,10 +4855,10 @@
 
 @end
 
-#import "DBPAPERPaperApiBaseError.h"
-#import "DBPAPERPaperDocCreateError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperApiBaseError.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocCreateError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5095,9 +5095,9 @@
 
 @end
 
-#import "DBPAPERPaperDocCreateUpdateResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocCreateUpdateResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5210,11 +5210,11 @@
 
 @end
 
-#import "DBPAPERExportFormat.h"
-#import "DBPAPERPaperDocExport.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERExportFormat.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocExport.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5318,9 +5318,9 @@
 
 @end
 
-#import "DBPAPERPaperDocExportResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocExportResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5444,9 +5444,9 @@
 
 @end
 
-#import "DBPAPERPaperDocPermissionLevel.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5617,11 +5617,11 @@
 
 @end
 
-#import "DBPAPERPaperDocSharingPolicy.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBPAPERSharingPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocSharingPolicy.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBPAPERSharingPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5725,12 +5725,12 @@
 
 @end
 
-#import "DBPAPERImportFormat.h"
-#import "DBPAPERPaperDocUpdateArgs.h"
-#import "DBPAPERPaperDocUpdatePolicy.h"
-#import "DBPAPERRefPaperDoc.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERImportFormat.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocUpdateArgs.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocUpdatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5857,10 +5857,10 @@
 
 @end
 
-#import "DBPAPERDocLookupError.h"
-#import "DBPAPERPaperDocUpdateError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERDocLookupError.h>
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocUpdateError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6163,9 +6163,9 @@
 
 @end
 
-#import "DBPAPERPaperDocUpdatePolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocUpdatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6358,11 +6358,11 @@
 
 @end
 
-#import "DBPAPERRefPaperDoc.h"
-#import "DBPAPERRemovePaperDocUser.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBPAPERRemovePaperDocUser.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6466,11 +6466,11 @@
 
 @end
 
-#import "DBPAPERSharingPolicy.h"
-#import "DBPAPERSharingPublicPolicyType.h"
-#import "DBPAPERSharingTeamPolicyType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERSharingPolicy.h>
+#import <ObjectiveDropboxOfficial/DBPAPERSharingPublicPolicyType.h>
+#import <ObjectiveDropboxOfficial/DBPAPERSharingTeamPolicyType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6598,9 +6598,9 @@
 
 @end
 
-#import "DBPAPERSharingTeamPolicyType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERSharingTeamPolicyType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6776,10 +6776,10 @@
 
 @end
 
-#import "DBPAPERSharingPublicPolicyType.h"
-#import "DBPAPERSharingTeamPolicyType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERSharingPublicPolicyType.h>
+#import <ObjectiveDropboxOfficial/DBPAPERSharingTeamPolicyType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6977,11 +6977,11 @@
 
 @end
 
-#import "DBPAPERPaperDocPermissionLevel.h"
-#import "DBPAPERUserInfoWithPermissionLevel.h"
-#import "DBSHARINGUserInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERPaperDocPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBPAPERUserInfoWithPermissionLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -7088,9 +7088,9 @@
 
 @end
 
-#import "DBPAPERUserOnPaperDocFilter.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBPAPERUserOnPaperDocFilter.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

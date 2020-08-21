@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthMobile-iOS.h"
-#import "DBOAuthManager.h"
-#import "DBSDKSystem.h"
+#import <ObjectiveDropboxOfficial/DBOAuthMobile-iOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
+#import <ObjectiveDropboxOfficial/DBSDKSystem.h>
 
 #pragma mark - Shared application
 

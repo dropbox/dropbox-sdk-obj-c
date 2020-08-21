@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBHandlerTypes.h"
-#import "DBHandlerTypesInternal.h"
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
+#import <ObjectiveDropboxOfficial/DBHandlerTypesInternal.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -2,7 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOpenWithInfo-iOS.h"
+#import <ObjectiveDropboxOfficial/DBOpenWithInfo-iOS.h>
 
 ///
 /// @note This logic is for official Dropbox partners only, and should not need

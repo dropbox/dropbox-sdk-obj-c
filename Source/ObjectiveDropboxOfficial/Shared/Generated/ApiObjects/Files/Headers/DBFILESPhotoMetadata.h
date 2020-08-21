@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESMediaMetadata.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBFILESMediaMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILESDimensions;
 @class DBFILESGpsCoordinates;

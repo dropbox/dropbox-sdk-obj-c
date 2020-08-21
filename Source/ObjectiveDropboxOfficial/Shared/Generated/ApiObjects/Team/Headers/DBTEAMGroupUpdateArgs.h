@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMIncludeMembersArg.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMIncludeMembersArg.h>
 
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMGroupSelector;

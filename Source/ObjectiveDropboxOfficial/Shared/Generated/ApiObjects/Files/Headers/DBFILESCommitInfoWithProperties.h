@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESCommitInfo.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBFILESCommitInfo.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILEPROPERTIESPropertyGroup;
 @class DBFILESCommitInfoWithProperties;

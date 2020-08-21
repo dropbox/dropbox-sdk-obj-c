@@ -4,8 +4,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DBOfficialAppConnector-iOS.h"
-#import "DBOpenWithInfo-iOS.h"
+#import <ObjectiveDropboxOfficial/DBOfficialAppConnector-iOS.h>
+#import <ObjectiveDropboxOfficial/DBOpenWithInfo-iOS.h>
 
 static NSString *kDBOpenWithPasteboard = @"dropbox.openWith";
 static NSString *kDropboxScheme = @"dbapi-5";

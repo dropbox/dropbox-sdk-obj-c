@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESUserAuthRoutes.h"
-#import "DBHandlerTypes.h"
+#import <ObjectiveDropboxOfficial/DBFILESUserAuthRoutes.h>
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
 
 @class DBBatchUploadTask;
 @class DBFILESCommitInfo;

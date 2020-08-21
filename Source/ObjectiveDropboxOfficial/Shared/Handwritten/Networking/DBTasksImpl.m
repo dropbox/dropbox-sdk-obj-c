@@ -2,13 +2,13 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBTasksImpl.h"
-#import "DBDelegate.h"
-#import "DBHandlerTypes.h"
-#import "DBRequestErrors.h"
-#import "DBStoneBase.h"
-#import "DBTasks+Protected.h"
-#import "DBTransportBaseClient.h"
+#import <ObjectiveDropboxOfficial/DBTasksImpl.h>
+#import <ObjectiveDropboxOfficial/DBDelegate.h>
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
+#import <ObjectiveDropboxOfficial/DBRequestErrors.h>
+#import <ObjectiveDropboxOfficial/DBStoneBase.h>
+#import <ObjectiveDropboxOfficial/DBTasks+Protected.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseClient.h>
 
 #pragma mark - RPC-style network task
 

@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMLOGDeviceSessionLogInfo.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLOGDeviceSessionLogInfo.h>
 
 @class DBTEAMLOGMobileDeviceSessionLogInfo;
 @class DBTEAMLOGMobileSessionLogInfo;

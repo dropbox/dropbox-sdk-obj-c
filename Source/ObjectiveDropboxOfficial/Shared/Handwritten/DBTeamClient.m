@@ -2,11 +2,11 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBTeamClient.h"
+#import <ObjectiveDropboxOfficial/DBTeamClient.h>
 
-#import "DBTransportDefaultClient.h"
-#import "DBTransportDefaultConfig.h"
-#import "DBUserClient.h"
+#import <ObjectiveDropboxOfficial/DBTransportDefaultClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
+#import <ObjectiveDropboxOfficial/DBUserClient.h>
 
 @implementation DBTeamClient
 

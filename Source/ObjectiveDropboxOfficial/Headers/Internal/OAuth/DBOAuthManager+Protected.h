@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

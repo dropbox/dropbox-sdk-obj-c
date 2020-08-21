@@ -14,7 +14,7 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-#import "DBSDKReachability.h"
+#import <ObjectiveDropboxOfficial/DBSDKReachability.h>
 
 #pragma mark IPv6 Support
 // DBSDKReachability fully support IPv6.  For full details, see ReadMe.md.

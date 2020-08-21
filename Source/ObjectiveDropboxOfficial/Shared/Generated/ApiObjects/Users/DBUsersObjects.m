@@ -6,10 +6,10 @@
 
 /// Arguments, results, and errors for the `Users` namespace.
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSAccount.h"
-#import "DBUSERSName.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSAccount.h>
+#import <ObjectiveDropboxOfficial/DBUSERSName.h>
 
 #pragma mark - API Object
 
@@ -174,11 +174,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSAccount.h"
-#import "DBUSERSBasicAccount.h"
-#import "DBUSERSName.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSAccount.h>
+#import <ObjectiveDropboxOfficial/DBUSERSBasicAccount.h>
+#import <ObjectiveDropboxOfficial/DBUSERSName.h>
 
 #pragma mark - API Object
 
@@ -370,14 +370,14 @@
 
 @end
 
-#import "DBCOMMONRootInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSAccount.h"
-#import "DBUSERSCOMMONAccountType.h"
-#import "DBUSERSFullAccount.h"
-#import "DBUSERSFullTeam.h"
-#import "DBUSERSName.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSAccount.h>
+#import <ObjectiveDropboxOfficial/DBUSERSCOMMONAccountType.h>
+#import <ObjectiveDropboxOfficial/DBUSERSFullAccount.h>
+#import <ObjectiveDropboxOfficial/DBUSERSFullTeam.h>
+#import <ObjectiveDropboxOfficial/DBUSERSName.h>
 
 #pragma mark - API Object
 
@@ -650,9 +650,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -757,12 +757,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESOfficeAddInPolicy.h"
-#import "DBTEAMPOLICIESTeamSharingPolicies.h"
-#import "DBUSERSFullTeam.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESOfficeAddInPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTeamSharingPolicies.h>
+#import <ObjectiveDropboxOfficial/DBUSERSFullTeam.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -889,9 +889,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSGetAccountArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSGetAccountArg.h>
 
 #pragma mark - API Object
 
@@ -988,9 +988,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSGetAccountBatchArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSGetAccountBatchArg.h>
 
 #pragma mark - API Object
 
@@ -1100,9 +1100,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSGetAccountBatchError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSGetAccountBatchError.h>
 
 #pragma mark - API Object
 
@@ -1264,9 +1264,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSGetAccountError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSGetAccountError.h>
 
 #pragma mark - API Object
 
@@ -1415,9 +1415,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSIndividualSpaceAllocation.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSIndividualSpaceAllocation.h>
 
 #pragma mark - API Object
 
@@ -1514,9 +1514,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSName.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSName.h>
 
 #pragma mark - API Object
 
@@ -1653,11 +1653,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSIndividualSpaceAllocation.h"
-#import "DBUSERSSpaceAllocation.h"
-#import "DBUSERSTeamSpaceAllocation.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSIndividualSpaceAllocation.h>
+#import <ObjectiveDropboxOfficial/DBUSERSSpaceAllocation.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeamSpaceAllocation.h>
 
 #pragma mark - API Object
 
@@ -1853,10 +1853,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSSpaceAllocation.h"
-#import "DBUSERSSpaceUsage.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSSpaceAllocation.h>
+#import <ObjectiveDropboxOfficial/DBUSERSSpaceUsage.h>
 
 #pragma mark - API Object
 
@@ -1961,10 +1961,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONMemberSpaceLimitType.h"
-#import "DBUSERSTeamSpaceAllocation.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONMemberSpaceLimitType.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeamSpaceAllocation.h>
 
 #pragma mark - API Object
 
