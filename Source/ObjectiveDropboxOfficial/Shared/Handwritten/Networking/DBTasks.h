@@ -2,7 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBHandlerTypes.h"
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
 #import <Foundation/Foundation.h>
 @class DBBatchUploadData;
 @class DBDelegate;

@@ -6,11 +6,11 @@
 
 /// Arguments, results, and errors for the `Auth` namespace.
 
-#import "DBAUTHAccessError.h"
-#import "DBAUTHInvalidAccountTypeError.h"
-#import "DBAUTHPaperAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHAccessError.h>
+#import <ObjectiveDropboxOfficial/DBAUTHInvalidAccountTypeError.h>
+#import <ObjectiveDropboxOfficial/DBAUTHPaperAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -210,9 +210,9 @@
 
 @end
 
-#import "DBAUTHAuthError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHAuthError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -449,9 +449,9 @@
 
 @end
 
-#import "DBAUTHInvalidAccountTypeError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHInvalidAccountTypeError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -622,9 +622,9 @@
 
 @end
 
-#import "DBAUTHPaperAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHPaperAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -795,10 +795,10 @@
 
 @end
 
-#import "DBAUTHRateLimitError.h"
-#import "DBAUTHRateLimitReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHRateLimitError.h>
+#import <ObjectiveDropboxOfficial/DBAUTHRateLimitReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -906,9 +906,9 @@
 
 @end
 
-#import "DBAUTHRateLimitReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHRateLimitReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1079,9 +1079,9 @@
 
 @end
 
-#import "DBAUTHTokenFromOAuth1Arg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHTokenFromOAuth1Arg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1187,9 +1187,9 @@
 
 @end
 
-#import "DBAUTHTokenFromOAuth1Error.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHTokenFromOAuth1Error.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1360,9 +1360,9 @@
 
 @end
 
-#import "DBAUTHTokenFromOAuth1Result.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBAUTHTokenFromOAuth1Result.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

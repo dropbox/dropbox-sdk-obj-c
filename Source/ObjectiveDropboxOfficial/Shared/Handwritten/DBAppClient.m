@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBAppClient.h"
-#import "DBTransportDefaultClient.h"
-#import "DBTransportDefaultConfig.h"
+#import <ObjectiveDropboxOfficial/DBAppClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
 
 @implementation DBAppClient
 

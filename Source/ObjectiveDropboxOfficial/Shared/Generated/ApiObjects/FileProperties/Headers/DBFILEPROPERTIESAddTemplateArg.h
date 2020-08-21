@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILEPROPERTIESPropertyGroupTemplate.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroupTemplate.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILEPROPERTIESAddTemplateArg;
 @class DBFILEPROPERTIESPropertyFieldTemplate;

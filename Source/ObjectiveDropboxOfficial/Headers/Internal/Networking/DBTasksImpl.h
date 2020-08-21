@@ -4,9 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBHandlerTypes.h"
-#import "DBTasks.h"
-#import "DBTasksImpl.h"
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
+#import <ObjectiveDropboxOfficial/DBTasks.h>
+#import <ObjectiveDropboxOfficial/DBTasksImpl.h>
 
 @class DBBatchUploadData;
 @class DBDelegate;

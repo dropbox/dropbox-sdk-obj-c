@@ -2,12 +2,12 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBRequestErrors.h"
-#import "DBAUTHAccessError.h"
-#import "DBAUTHAuthError.h"
-#import "DBAUTHRateLimitError.h"
-#import "DBCOMMONPathRootError.h"
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBRequestErrors.h>
+#import <ObjectiveDropboxOfficial/DBAUTHAccessError.h>
+#import <ObjectiveDropboxOfficial/DBAUTHAuthError.h>
+#import <ObjectiveDropboxOfficial/DBAUTHRateLimitError.h>
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRootError.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
 #pragma mark - HTTP error
 

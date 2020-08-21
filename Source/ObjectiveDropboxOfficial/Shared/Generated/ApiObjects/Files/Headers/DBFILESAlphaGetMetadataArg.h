@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESGetMetadataArg.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBFILESGetMetadataArg.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILEPROPERTIESTemplateFilterBase;
 @class DBFILESAlphaGetMetadataArg;

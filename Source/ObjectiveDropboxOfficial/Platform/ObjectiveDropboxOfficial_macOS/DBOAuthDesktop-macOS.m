@@ -2,8 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthDesktop-macOS.h"
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBOAuthDesktop-macOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
 @implementation DBDesktopSharedApplication {
   NSWorkspace *_sharedWorkspace;

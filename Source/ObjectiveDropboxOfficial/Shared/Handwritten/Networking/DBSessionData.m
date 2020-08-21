@@ -2,7 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBSessionData.h"
+#import <ObjectiveDropboxOfficial/DBSessionData.h>
 
 #pragma mark - Progress data
 

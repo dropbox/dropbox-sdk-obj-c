@@ -4,12 +4,12 @@
 /// Umbrella import for importing as a library
 ///
 
-#import "TargetConditionals.h"
+#import "TargetConditionals.h>
 
-#import "DBSDKImportsShared.h"
+#import <ObjectiveDropboxOfficial/DBSDKImportsShared.h>
 
 #if TARGET_OS_IPHONE
-#import "DBSDKImports-iOS.h"
+#import <ObjectiveDropboxOfficial/DBSDKImports-iOS.h>
 #elif TARGET_OS_MAC
-#import "DBSDKImports-macOS.h"
+#import <ObjectiveDropboxOfficial/DBSDKImports-macOS.h>
 #endif

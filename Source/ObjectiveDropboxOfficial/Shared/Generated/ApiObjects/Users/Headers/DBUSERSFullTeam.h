@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 @class DBTEAMPOLICIESOfficeAddInPolicy;
 @class DBTEAMPOLICIESTeamSharingPolicies;

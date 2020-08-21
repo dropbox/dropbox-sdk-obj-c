@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGChangeFileMemberAccessArgs.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGChangeFileMemberAccessArgs.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBSHARINGAccessLevel;
 @class DBSHARINGMemberSelector;

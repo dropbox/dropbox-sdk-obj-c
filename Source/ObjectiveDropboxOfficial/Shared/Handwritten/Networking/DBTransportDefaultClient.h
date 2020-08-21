@@ -4,9 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBCOMMONPathRoot.h"
-#import "DBTransportBaseClient.h"
-#import "DBTransportClientProtocol.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRoot.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportClientProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

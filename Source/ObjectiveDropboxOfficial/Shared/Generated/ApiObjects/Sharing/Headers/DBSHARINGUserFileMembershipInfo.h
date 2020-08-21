@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGUserMembershipInfo.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGUserMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBSEENSTATEPlatformType;
 @class DBSHARINGAccessLevel;

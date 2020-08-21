@@ -2,7 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBCOMMONPathRoot.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRoot.h>
 #import <Foundation/Foundation.h>
 
 @class DBTransportBaseConfig;

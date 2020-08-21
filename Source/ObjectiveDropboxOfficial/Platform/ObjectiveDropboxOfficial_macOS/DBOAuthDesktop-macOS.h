@@ -5,7 +5,7 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
-#import "DBSharedApplicationProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSharedApplicationProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

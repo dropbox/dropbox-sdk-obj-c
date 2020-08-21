@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMTeamFolderIdArg.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderIdArg.h>
 
 @class DBFILESContentSyncSettingArg;
 @class DBFILESSyncSettingArg;

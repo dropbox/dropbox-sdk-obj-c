@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILESCreateFolderEntryError;
 @class DBFILESWriteError;

@@ -2,5 +2,5 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBClientsManager+DesktopAuth-macOS.h"
-#import "DBOAuthDesktop-macOS.h"
+#import <ObjectiveDropboxOfficial/DBClientsManager+DesktopAuth-macOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthDesktop-macOS.h>

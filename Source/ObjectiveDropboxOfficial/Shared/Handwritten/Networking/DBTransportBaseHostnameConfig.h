@@ -2,7 +2,7 @@
 /// Copyright (c) 2017 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBStoneBase.h"
+#import <ObjectiveDropboxOfficial/DBStoneBase.h>
 #import <Foundation/Foundation.h>
 
 /// Enum of Dropbox API hosts.

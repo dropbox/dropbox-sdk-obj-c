@@ -2,25 +2,25 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBCustomRoutes.h"
-#import "DBASYNCLaunchEmptyResult.h"
-#import "DBChunkInputStream.h"
-#import "DBCustomDatatypes.h"
-#import "DBCustomTasks.h"
-#import "DBFILESCommitInfo.h"
-#import "DBFILESUploadSessionCursor.h"
-#import "DBFILESUploadSessionFinishArg.h"
-#import "DBFILESUploadSessionFinishBatchJobStatus.h"
-#import "DBFILESUploadSessionFinishBatchLaunch.h"
-#import "DBFILESUploadSessionFinishBatchResult.h"
-#import "DBFILESUploadSessionFinishBatchResultEntry.h"
-#import "DBFILESUploadSessionLookupError.h"
-#import "DBFILESUploadSessionOffsetError.h"
-#import "DBFILESUploadSessionStartResult.h"
-#import "DBHandlerTypes.h"
-#import "DBRequestErrors.h"
-#import "DBTasksImpl.h"
-#import "DBTasksStorage.h"
+#import <ObjectiveDropboxOfficial/DBCustomRoutes.h>
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchEmptyResult.h>
+#import <ObjectiveDropboxOfficial/DBChunkInputStream.h>
+#import <ObjectiveDropboxOfficial/DBCustomDatatypes.h>
+#import <ObjectiveDropboxOfficial/DBCustomTasks.h>
+#import <ObjectiveDropboxOfficial/DBFILESCommitInfo.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionCursor.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionFinishArg.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionFinishBatchJobStatus.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionFinishBatchLaunch.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionFinishBatchResult.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionFinishBatchResultEntry.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionLookupError.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionOffsetError.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionStartResult.h>
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
+#import <ObjectiveDropboxOfficial/DBRequestErrors.h>
+#import <ObjectiveDropboxOfficial/DBTasksImpl.h>
+#import <ObjectiveDropboxOfficial/DBTasksStorage.h>
 
 // 10 MB file chunk size
 static const NSUInteger fileChunkSize = 10 * 1024 * 1024;

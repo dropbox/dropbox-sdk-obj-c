@@ -6,7 +6,7 @@
 #import <SafariServices/SafariServices.h>
 #import <UIKit/UIKit.h>
 
-#import "DBSharedApplicationProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSharedApplicationProtocol.h>
 
 #pragma mark - Shared application
 

@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `Sharing` namespace.
 
-#import "DBSHARINGAccessInheritance.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessInheritance.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -179,9 +179,9 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -396,9 +396,9 @@
 
 @end
 
-#import "DBSHARINGAclUpdatePolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAclUpdatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -569,11 +569,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGAddFileMemberArgs.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAddFileMemberArgs.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -741,11 +741,11 @@
 
 @end
 
-#import "DBSHARINGAddFileMemberError.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBSHARINGSharingUserError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAddFileMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -987,10 +987,10 @@
 
 @end
 
-#import "DBSHARINGAddFolderMemberArg.h"
-#import "DBSHARINGAddMember.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAddFolderMemberArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAddMember.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1138,11 +1138,11 @@
 
 @end
 
-#import "DBSHARINGAddFolderMemberError.h"
-#import "DBSHARINGAddMemberSelectorError.h"
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAddFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAddMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1565,11 +1565,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGAddMember.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAddMember.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1679,9 +1679,9 @@
 
 @end
 
-#import "DBSHARINGAddMemberSelectorError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAddMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1980,9 +1980,9 @@
 
 @end
 
-#import "DBSHARINGAudienceExceptionContentInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceExceptionContentInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2079,10 +2079,10 @@
 
 @end
 
-#import "DBSHARINGAudienceExceptionContentInfo.h"
-#import "DBSHARINGAudienceExceptions.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceExceptionContentInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceExceptions.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2199,10 +2199,10 @@
 
 @end
 
-#import "DBSHARINGAudienceRestrictingSharedFolder.h"
-#import "DBSHARINGLinkAudience.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceRestrictingSharedFolder.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAudience.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2321,11 +2321,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGChangeFileMemberAccessArgs.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGChangeFileMemberAccessArgs.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2443,12 +2443,12 @@
 
 @end
 
-#import "DBSHARINGCollectionLinkMetadata.h"
-#import "DBSHARINGLinkMetadata.h"
-#import "DBSHARINGPathLinkMetadata.h"
-#import "DBSHARINGVisibility.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGCollectionLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPathLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGVisibility.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2594,11 +2594,11 @@
 
 @end
 
-#import "DBSHARINGCollectionLinkMetadata.h"
-#import "DBSHARINGLinkMetadata.h"
-#import "DBSHARINGVisibility.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGCollectionLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGVisibility.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2719,10 +2719,10 @@
 
 @end
 
-#import "DBSHARINGCreateSharedLinkArg.h"
-#import "DBSHARINGPendingUploadMode.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGCreateSharedLinkArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPendingUploadMode.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2847,10 +2847,10 @@
 
 @end
 
-#import "DBFILESLookupError.h"
-#import "DBSHARINGCreateSharedLinkError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGCreateSharedLinkError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3012,10 +3012,10 @@
 
 @end
 
-#import "DBSHARINGCreateSharedLinkWithSettingsArg.h"
-#import "DBSHARINGSharedLinkSettings.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGCreateSharedLinkWithSettingsArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkSettings.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3135,11 +3135,11 @@
 
 @end
 
-#import "DBFILESLookupError.h"
-#import "DBSHARINGCreateSharedLinkWithSettingsError.h"
-#import "DBSHARINGSharedLinkSettingsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGCreateSharedLinkWithSettingsError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkSettingsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3389,13 +3389,13 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGAudienceRestrictingSharedFolder.h"
-#import "DBSHARINGLinkAudience.h"
-#import "DBSHARINGLinkPermission.h"
-#import "DBSHARINGSharedContentLinkMetadataBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceRestrictingSharedFolder.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAudience.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedContentLinkMetadataBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3610,14 +3610,14 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGAudienceRestrictingSharedFolder.h"
-#import "DBSHARINGExpectedSharedContentLinkMetadata.h"
-#import "DBSHARINGLinkAudience.h"
-#import "DBSHARINGLinkPermission.h"
-#import "DBSHARINGSharedContentLinkMetadataBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceRestrictingSharedFolder.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGExpectedSharedContentLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAudience.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedContentLinkMetadataBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3831,9 +3831,9 @@
 
 @end
 
-#import "DBSHARINGFileAction.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileAction.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4180,9 +4180,9 @@
 
 @end
 
-#import "DBSHARINGFileErrorResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileErrorResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4414,14 +4414,14 @@
 
 @end
 
-#import "DBSHARINGFileLinkMetadata.h"
-#import "DBSHARINGFolderLinkMetadata.h"
-#import "DBSHARINGLinkPermissions.h"
-#import "DBSHARINGSharedLinkMetadata.h"
-#import "DBSHARINGTeamMemberInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermissions.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGTeamMemberInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -4656,13 +4656,13 @@
 
 @end
 
-#import "DBSHARINGFileLinkMetadata.h"
-#import "DBSHARINGLinkPermissions.h"
-#import "DBSHARINGSharedLinkMetadata.h"
-#import "DBSHARINGTeamMemberInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermissions.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGTeamMemberInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -4926,11 +4926,11 @@
 
 @end
 
-#import "DBSHARINGFileMemberActionError.h"
-#import "DBSHARINGMemberAccessLevelResult.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileMemberActionError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAccessLevelResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5174,11 +5174,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGFileMemberActionError.h"
-#import "DBSHARINGFileMemberActionIndividualResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFileMemberActionError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFileMemberActionIndividualResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5368,11 +5368,11 @@
 
 @end
 
-#import "DBSHARINGFileMemberActionIndividualResult.h"
-#import "DBSHARINGFileMemberActionResult.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileMemberActionIndividualResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFileMemberActionResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5479,11 +5479,11 @@
 
 @end
 
-#import "DBSHARINGFileMemberActionError.h"
-#import "DBSHARINGFileMemberRemoveActionResult.h"
-#import "DBSHARINGMemberAccessLevelResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileMemberActionError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFileMemberRemoveActionResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAccessLevelResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5682,11 +5682,11 @@
 
 @end
 
-#import "DBSHARINGFileAction.h"
-#import "DBSHARINGFilePermission.h"
-#import "DBSHARINGPermissionDeniedReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFilePermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPermissionDeniedReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5811,9 +5811,9 @@
 
 @end
 
-#import "DBSHARINGFolderAction.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderAction.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6248,13 +6248,13 @@
 
 @end
 
-#import "DBSHARINGFolderLinkMetadata.h"
-#import "DBSHARINGLinkPermissions.h"
-#import "DBSHARINGSharedLinkMetadata.h"
-#import "DBSHARINGTeamMemberInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermissions.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGTeamMemberInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -6466,11 +6466,11 @@
 
 @end
 
-#import "DBSHARINGFolderAction.h"
-#import "DBSHARINGFolderPermission.h"
-#import "DBSHARINGPermissionDeniedReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPermissionDeniedReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6595,13 +6595,13 @@
 
 @end
 
-#import "DBSHARINGAclUpdatePolicy.h"
-#import "DBSHARINGFolderPolicy.h"
-#import "DBSHARINGMemberPolicy.h"
-#import "DBSHARINGSharedLinkPolicy.h"
-#import "DBSHARINGViewerInfoPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAclUpdatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGViewerInfoPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6771,10 +6771,10 @@
 
 @end
 
-#import "DBSHARINGFileAction.h"
-#import "DBSHARINGGetFileMetadataArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGGetFileMetadataArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6903,10 +6903,10 @@
 
 @end
 
-#import "DBSHARINGFileAction.h"
-#import "DBSHARINGGetFileMetadataBatchArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGGetFileMetadataBatchArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -7048,10 +7048,10 @@
 
 @end
 
-#import "DBSHARINGGetFileMetadataBatchResult.h"
-#import "DBSHARINGGetFileMetadataIndividualResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetFileMetadataBatchResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGGetFileMetadataIndividualResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -7160,11 +7160,11 @@
 
 @end
 
-#import "DBSHARINGGetFileMetadataError.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBSHARINGSharingUserError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetFileMetadataError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -7362,11 +7362,11 @@
 
 @end
 
-#import "DBSHARINGGetFileMetadataIndividualResult.h"
-#import "DBSHARINGSharedFileMetadata.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetFileMetadataIndividualResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFileMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -7567,10 +7567,10 @@
 
 @end
 
-#import "DBSHARINGFolderAction.h"
-#import "DBSHARINGGetMetadataArgs.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGGetMetadataArgs.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -7697,9 +7697,9 @@
 
 @end
 
-#import "DBSHARINGSharedLinkError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -7892,10 +7892,10 @@
 
 @end
 
-#import "DBSHARINGGetSharedLinkFileError.h"
-#import "DBSHARINGSharedLinkError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetSharedLinkFileError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -8110,9 +8110,9 @@
 
 @end
 
-#import "DBSHARINGGetSharedLinkMetadataArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetSharedLinkMetadataArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -8241,9 +8241,9 @@
 
 @end
 
-#import "DBSHARINGGetSharedLinksArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetSharedLinksArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -8349,9 +8349,9 @@
 
 @end
 
-#import "DBSHARINGGetSharedLinksError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetSharedLinksError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -8519,10 +8519,10 @@
 
 @end
 
-#import "DBSHARINGGetSharedLinksResult.h"
-#import "DBSHARINGLinkMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGetSharedLinksResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -8629,12 +8629,12 @@
 
 @end
 
-#import "DBSHARINGGroupInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupManagementType.h"
-#import "DBTEAMCOMMONGroupSummary.h"
-#import "DBTEAMCOMMONGroupType.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGroupInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupManagementType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupSummary.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupType.h>
 
 #pragma mark - API Object
 
@@ -8840,11 +8840,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGMemberPermission.h"
-#import "DBSHARINGMembershipInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -8996,13 +8996,13 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGGroupInfo.h"
-#import "DBSHARINGGroupMembershipInfo.h"
-#import "DBSHARINGMemberPermission.h"
-#import "DBSHARINGMembershipInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGGroupInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGGroupMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -9160,9 +9160,9 @@
 
 @end
 
-#import "DBSHARINGInsufficientPlan.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGInsufficientPlan.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -9276,9 +9276,9 @@
 
 @end
 
-#import "DBSHARINGInsufficientQuotaAmounts.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGInsufficientQuotaAmounts.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -9395,9 +9395,9 @@
 
 @end
 
-#import "DBSHARINGInviteeInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGInviteeInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -9559,14 +9559,14 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGInviteeInfo.h"
-#import "DBSHARINGInviteeMembershipInfo.h"
-#import "DBSHARINGMemberPermission.h"
-#import "DBSHARINGMembershipInfo.h"
-#import "DBSHARINGUserInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGInviteeInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGInviteeMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -9739,12 +9739,12 @@
 
 @end
 
-#import "DBSHARINGJobError.h"
-#import "DBSHARINGRelinquishFolderMembershipError.h"
-#import "DBSHARINGRemoveFolderMemberError.h"
-#import "DBSHARINGUnshareFolderError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGJobError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRelinquishFolderMembershipError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRemoveFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUnshareFolderError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -9983,11 +9983,11 @@
 
 @end
 
-#import "DBASYNCPollResultBase.h"
-#import "DBSHARINGJobError.h"
-#import "DBSHARINGJobStatus.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGJobError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGJobStatus.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -10176,9 +10176,9 @@
 
 @end
 
-#import "DBSHARINGLinkAction.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAction.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -10437,9 +10437,9 @@
 
 @end
 
-#import "DBSHARINGLinkAudience.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAudience.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -10632,9 +10632,9 @@
 
 @end
 
-#import "DBSHARINGLinkExpiry.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkExpiry.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -10818,9 +10818,9 @@
 
 @end
 
-#import "DBSHARINGLinkPassword.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPassword.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11004,11 +11004,11 @@
 
 @end
 
-#import "DBSHARINGLinkAction.h"
-#import "DBSHARINGLinkPermission.h"
-#import "DBSHARINGPermissionDeniedReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPermissionDeniedReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11133,12 +11133,12 @@
 
 @end
 
-#import "DBSHARINGLinkPermissions.h"
-#import "DBSHARINGRequestedVisibility.h"
-#import "DBSHARINGResolvedVisibility.h"
-#import "DBSHARINGSharedLinkAccessFailureReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermissions.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRequestedVisibility.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGResolvedVisibility.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkAccessFailureReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11294,13 +11294,13 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGLinkAudience.h"
-#import "DBSHARINGLinkExpiry.h"
-#import "DBSHARINGLinkPassword.h"
-#import "DBSHARINGLinkSettings.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAudience.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkExpiry.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPassword.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkSettings.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11453,10 +11453,10 @@
 
 @end
 
-#import "DBSHARINGListFileMembersArg.h"
-#import "DBSHARINGMemberAction.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAction.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11605,9 +11605,9 @@
 
 @end
 
-#import "DBSHARINGListFileMembersBatchArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersBatchArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11731,10 +11731,10 @@
 
 @end
 
-#import "DBSHARINGListFileMembersBatchResult.h"
-#import "DBSHARINGListFileMembersIndividualResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersBatchResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersIndividualResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11843,9 +11843,9 @@
 
 @end
 
-#import "DBSHARINGListFileMembersContinueArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersContinueArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -11942,11 +11942,11 @@
 
 @end
 
-#import "DBSHARINGListFileMembersContinueError.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBSHARINGSharingUserError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersContinueError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -12168,10 +12168,10 @@
 
 @end
 
-#import "DBSHARINGListFileMembersCountResult.h"
-#import "DBSHARINGSharedFileMembers.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersCountResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFileMembers.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -12276,11 +12276,11 @@
 
 @end
 
-#import "DBSHARINGListFileMembersError.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBSHARINGSharingUserError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -12478,11 +12478,11 @@
 
 @end
 
-#import "DBSHARINGListFileMembersCountResult.h"
-#import "DBSHARINGListFileMembersIndividualResult.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersCountResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGListFileMembersIndividualResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -12683,10 +12683,10 @@
 
 @end
 
-#import "DBSHARINGFileAction.h"
-#import "DBSHARINGListFilesArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFileAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGListFilesArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -12811,9 +12811,9 @@
 
 @end
 
-#import "DBSHARINGListFilesContinueArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFilesContinueArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -12910,10 +12910,10 @@
 
 @end
 
-#import "DBSHARINGListFilesContinueError.h"
-#import "DBSHARINGSharingUserError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFilesContinueError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -13097,10 +13097,10 @@
 
 @end
 
-#import "DBSHARINGListFilesResult.h"
-#import "DBSHARINGSharedFileMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFilesResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFileMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -13224,10 +13224,10 @@
 
 @end
 
-#import "DBSHARINGListFolderMembersCursorArg.h"
-#import "DBSHARINGMemberAction.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFolderMembersCursorArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAction.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -13352,11 +13352,11 @@
 
 @end
 
-#import "DBSHARINGListFolderMembersArgs.h"
-#import "DBSHARINGListFolderMembersCursorArg.h"
-#import "DBSHARINGMemberAction.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFolderMembersArgs.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGListFolderMembersCursorArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAction.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -13490,9 +13490,9 @@
 
 @end
 
-#import "DBSHARINGListFolderMembersContinueArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFolderMembersContinueArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -13589,10 +13589,10 @@
 
 @end
 
-#import "DBSHARINGListFolderMembersContinueError.h"
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFolderMembersContinueError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -13780,10 +13780,10 @@
 
 @end
 
-#import "DBSHARINGFolderAction.h"
-#import "DBSHARINGListFoldersArgs.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGListFoldersArgs.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -13908,9 +13908,9 @@
 
 @end
 
-#import "DBSHARINGListFoldersContinueArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFoldersContinueArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -14007,9 +14007,9 @@
 
 @end
 
-#import "DBSHARINGListFoldersContinueError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFoldersContinueError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -14158,10 +14158,10 @@
 
 @end
 
-#import "DBSHARINGListFoldersResult.h"
-#import "DBSHARINGSharedFolderMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListFoldersResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -14285,9 +14285,9 @@
 
 @end
 
-#import "DBSHARINGListSharedLinksArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListSharedLinksArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -14424,10 +14424,10 @@
 
 @end
 
-#import "DBFILESLookupError.h"
-#import "DBSHARINGListSharedLinksError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGListSharedLinksError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -14611,10 +14611,10 @@
 
 @end
 
-#import "DBSHARINGListSharedLinksResult.h"
-#import "DBSHARINGSharedLinkMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGListSharedLinksResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -14748,11 +14748,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGMemberAccessLevelResult.h"
-#import "DBSHARINGParentFolderAccessInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAccessLevelResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGParentFolderAccessInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -14903,9 +14903,9 @@
 
 @end
 
-#import "DBSHARINGMemberAction.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAction.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -15164,11 +15164,11 @@
 
 @end
 
-#import "DBSHARINGMemberAction.h"
-#import "DBSHARINGMemberPermission.h"
-#import "DBSHARINGPermissionDeniedReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPermissionDeniedReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -15293,9 +15293,9 @@
 
 @end
 
-#import "DBSHARINGMemberPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -15466,9 +15466,9 @@
 
 @end
 
-#import "DBSHARINGMemberSelector.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -15664,10 +15664,10 @@
 
 @end
 
-#import "DBSHARINGModifySharedLinkSettingsArgs.h"
-#import "DBSHARINGSharedLinkSettings.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGModifySharedLinkSettingsArgs.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkSettings.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -15787,11 +15787,11 @@
 
 @end
 
-#import "DBSHARINGModifySharedLinkSettingsError.h"
-#import "DBSHARINGSharedLinkError.h"
-#import "DBSHARINGSharedLinkSettingsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGModifySharedLinkSettingsError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkSettingsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -16045,9 +16045,9 @@
 
 @end
 
-#import "DBSHARINGMountFolderArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMountFolderArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -16145,11 +16145,11 @@
 
 @end
 
-#import "DBSHARINGInsufficientQuotaAmounts.h"
-#import "DBSHARINGMountFolderError.h"
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGInsufficientQuotaAmounts.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMountFolderError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -16437,10 +16437,10 @@
 
 @end
 
-#import "DBSHARINGMemberPermission.h"
-#import "DBSHARINGParentFolderAccessInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGParentFolderAccessInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -16578,11 +16578,11 @@
 
 @end
 
-#import "DBSHARINGLinkMetadata.h"
-#import "DBSHARINGPathLinkMetadata.h"
-#import "DBSHARINGVisibility.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPathLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGVisibility.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -16714,9 +16714,9 @@
 
 @end
 
-#import "DBSHARINGPendingUploadMode.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGPendingUploadMode.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -16870,10 +16870,10 @@
 
 @end
 
-#import "DBSHARINGInsufficientPlan.h"
-#import "DBSHARINGPermissionDeniedReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGInsufficientPlan.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGPermissionDeniedReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -17344,9 +17344,9 @@
 
 @end
 
-#import "DBSHARINGRelinquishFileMembershipArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRelinquishFileMembershipArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -17446,10 +17446,10 @@
 
 @end
 
-#import "DBSHARINGRelinquishFileMembershipError.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRelinquishFileMembershipError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -17659,9 +17659,9 @@
 
 @end
 
-#import "DBSHARINGRelinquishFolderMembershipArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRelinquishFolderMembershipArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -17771,10 +17771,10 @@
 
 @end
 
-#import "DBSHARINGRelinquishFolderMembershipError.h"
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRelinquishFolderMembershipError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -18072,10 +18072,10 @@
 
 @end
 
-#import "DBSHARINGMemberSelector.h"
-#import "DBSHARINGRemoveFileMemberArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRemoveFileMemberArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -18183,12 +18183,12 @@
 
 @end
 
-#import "DBSHARINGMemberAccessLevelResult.h"
-#import "DBSHARINGRemoveFileMemberError.h"
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBSHARINGSharingUserError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAccessLevelResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRemoveFileMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -18422,10 +18422,10 @@
 
 @end
 
-#import "DBSHARINGMemberSelector.h"
-#import "DBSHARINGRemoveFolderMemberArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRemoveFolderMemberArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -18543,11 +18543,11 @@
 
 @end
 
-#import "DBSHARINGRemoveFolderMemberError.h"
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBSHARINGSharedFolderMemberError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRemoveFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -18859,12 +18859,12 @@
 
 @end
 
-#import "DBASYNCPollResultBase.h"
-#import "DBSHARINGMemberAccessLevelResult.h"
-#import "DBSHARINGRemoveFolderMemberError.h"
-#import "DBSHARINGRemoveMemberJobStatus.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAccessLevelResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRemoveFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGRemoveMemberJobStatus.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -19066,9 +19066,9 @@
 
 @end
 
-#import "DBSHARINGRequestedVisibility.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRequestedVisibility.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -19244,10 +19244,10 @@
 
 @end
 
-#import "DBSHARINGRequestedVisibility.h"
-#import "DBSHARINGResolvedVisibility.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRequestedVisibility.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGResolvedVisibility.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -19484,9 +19484,9 @@
 
 @end
 
-#import "DBSHARINGRevokeSharedLinkArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRevokeSharedLinkArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -19583,10 +19583,10 @@
 
 @end
 
-#import "DBSHARINGRevokeSharedLinkError.h"
-#import "DBSHARINGSharedLinkError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRevokeSharedLinkError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -19801,10 +19801,10 @@
 
 @end
 
-#import "DBSHARINGAccessInheritance.h"
-#import "DBSHARINGSetAccessInheritanceArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessInheritance.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSetAccessInheritanceArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -19918,10 +19918,10 @@
 
 @end
 
-#import "DBSHARINGSetAccessInheritanceError.h"
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSetAccessInheritanceError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -20108,14 +20108,14 @@
 
 @end
 
-#import "DBSHARINGAccessInheritance.h"
-#import "DBSHARINGAclUpdatePolicy.h"
-#import "DBSHARINGMemberPolicy.h"
-#import "DBSHARINGShareFolderArgBase.h"
-#import "DBSHARINGSharedLinkPolicy.h"
-#import "DBSHARINGViewerInfoPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessInheritance.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAclUpdatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderArgBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGViewerInfoPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -20314,17 +20314,17 @@
 
 @end
 
-#import "DBSHARINGAccessInheritance.h"
-#import "DBSHARINGAclUpdatePolicy.h"
-#import "DBSHARINGFolderAction.h"
-#import "DBSHARINGLinkSettings.h"
-#import "DBSHARINGMemberPolicy.h"
-#import "DBSHARINGShareFolderArg.h"
-#import "DBSHARINGShareFolderArgBase.h"
-#import "DBSHARINGSharedLinkPolicy.h"
-#import "DBSHARINGViewerInfoPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessInheritance.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAclUpdatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkSettings.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderArgBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGViewerInfoPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -20567,10 +20567,10 @@
 
 @end
 
-#import "DBSHARINGShareFolderErrorBase.h"
-#import "DBSHARINGSharePathError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderErrorBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharePathError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -20798,11 +20798,11 @@
 
 @end
 
-#import "DBSHARINGShareFolderError.h"
-#import "DBSHARINGShareFolderErrorBase.h"
-#import "DBSHARINGSharePathError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderErrorBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharePathError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -21052,12 +21052,12 @@
 
 @end
 
-#import "DBASYNCPollResultBase.h"
-#import "DBSHARINGShareFolderError.h"
-#import "DBSHARINGShareFolderJobStatus.h"
-#import "DBSHARINGSharedFolderMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderJobStatus.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -21258,11 +21258,11 @@
 
 @end
 
-#import "DBASYNCLaunchResultBase.h"
-#import "DBSHARINGShareFolderLaunch.h"
-#import "DBSHARINGSharedFolderMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchResultBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGShareFolderLaunch.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -21441,10 +21441,10 @@
 
 @end
 
-#import "DBSHARINGSharePathError.h"
-#import "DBSHARINGSharedFolderMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharePathError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -21870,15 +21870,15 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGAudienceExceptions.h"
-#import "DBSHARINGAudienceRestrictingSharedFolder.h"
-#import "DBSHARINGLinkAudience.h"
-#import "DBSHARINGLinkPermission.h"
-#import "DBSHARINGSharedContentLinkMetadata.h"
-#import "DBSHARINGSharedContentLinkMetadataBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceExceptions.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAudienceRestrictingSharedFolder.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkAudience.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedContentLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedContentLinkMetadataBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -22121,12 +22121,12 @@
 
 @end
 
-#import "DBSHARINGGroupMembershipInfo.h"
-#import "DBSHARINGInviteeMembershipInfo.h"
-#import "DBSHARINGSharedFileMembers.h"
-#import "DBSHARINGUserFileMembershipInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGroupMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGInviteeMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFileMembers.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserFileMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -22291,15 +22291,15 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGExpectedSharedContentLinkMetadata.h"
-#import "DBSHARINGFilePermission.h"
-#import "DBSHARINGFolderPolicy.h"
-#import "DBSHARINGSharedContentLinkMetadata.h"
-#import "DBSHARINGSharedFileMetadata.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGExpectedSharedContentLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFilePermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedContentLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFileMetadata.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -22634,9 +22634,9 @@
 
 @end
 
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -22851,10 +22851,10 @@
 
 @end
 
-#import "DBSHARINGMemberAccessLevelResult.h"
-#import "DBSHARINGSharedFolderMemberError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberAccessLevelResult.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -23062,12 +23062,12 @@
 
 @end
 
-#import "DBSHARINGGroupMembershipInfo.h"
-#import "DBSHARINGInviteeMembershipInfo.h"
-#import "DBSHARINGSharedFolderMembers.h"
-#import "DBSHARINGUserMembershipInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGGroupMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGInviteeMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMembers.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -23232,11 +23232,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGSharedFolderMetadataBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadataBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -23441,16 +23441,16 @@
 
 @end
 
-#import "DBSHARINGAccessInheritance.h"
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGFolderPermission.h"
-#import "DBSHARINGFolderPolicy.h"
-#import "DBSHARINGSharedContentLinkMetadata.h"
-#import "DBSHARINGSharedFolderMetadata.h"
-#import "DBSHARINGSharedFolderMetadataBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessInheritance.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedContentLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadataBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -23775,9 +23775,9 @@
 
 @end
 
-#import "DBSHARINGSharedLinkAccessFailureReason.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkAccessFailureReason.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -24015,9 +24015,9 @@
 
 @end
 
-#import "DBSHARINGSharedLinkPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -24210,10 +24210,10 @@
 
 @end
 
-#import "DBSHARINGRequestedVisibility.h"
-#import "DBSHARINGSharedLinkSettings.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGRequestedVisibility.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkSettings.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -24354,9 +24354,9 @@
 
 @end
 
-#import "DBSHARINGSharedLinkSettingsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkSettingsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -24510,9 +24510,9 @@
 
 @end
 
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -24749,9 +24749,9 @@
 
 @end
 
-#import "DBSHARINGSharingUserError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -24900,10 +24900,10 @@
 
 @end
 
-#import "DBSHARINGTeamMemberInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSTeam.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGTeamMemberInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSTeam.h>
 
 #pragma mark - API Object
 
@@ -25027,9 +25027,9 @@
 
 @end
 
-#import "DBSHARINGTransferFolderArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGTransferFolderArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -25135,10 +25135,10 @@
 
 @end
 
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBSHARINGTransferFolderError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGTransferFolderError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -25434,9 +25434,9 @@
 
 @end
 
-#import "DBSHARINGUnmountFolderArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGUnmountFolderArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -25534,10 +25534,10 @@
 
 @end
 
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBSHARINGUnmountFolderError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUnmountFolderError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -25745,9 +25745,9 @@
 
 @end
 
-#import "DBSHARINGUnshareFileArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGUnshareFileArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -25847,11 +25847,11 @@
 
 @end
 
-#import "DBSHARINGSharingFileAccessError.h"
-#import "DBSHARINGSharingUserError.h"
-#import "DBSHARINGUnshareFileError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingFileAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharingUserError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUnshareFileError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -26049,9 +26049,9 @@
 
 @end
 
-#import "DBSHARINGUnshareFolderArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGUnshareFolderArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -26160,10 +26160,10 @@
 
 @end
 
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBSHARINGUnshareFolderError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUnshareFolderError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -26393,12 +26393,12 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGChangeFileMemberAccessArgs.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBSHARINGUpdateFileMemberArgs.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGChangeFileMemberAccessArgs.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUpdateFileMemberArgs.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -26513,11 +26513,11 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGMemberSelector.h"
-#import "DBSHARINGUpdateFolderMemberArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUpdateFolderMemberArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -26635,12 +26635,12 @@
 
 @end
 
-#import "DBSHARINGAddFolderMemberError.h"
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBSHARINGSharedFolderMemberError.h"
-#import "DBSHARINGUpdateFolderMemberError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAddFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUpdateFolderMemberError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -26923,15 +26923,15 @@
 
 @end
 
-#import "DBSHARINGAclUpdatePolicy.h"
-#import "DBSHARINGFolderAction.h"
-#import "DBSHARINGLinkSettings.h"
-#import "DBSHARINGMemberPolicy.h"
-#import "DBSHARINGSharedLinkPolicy.h"
-#import "DBSHARINGUpdateFolderPolicyArg.h"
-#import "DBSHARINGViewerInfoPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAclUpdatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGFolderAction.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGLinkSettings.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkPolicy.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUpdateFolderPolicyArg.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGViewerInfoPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -27151,10 +27151,10 @@
 
 @end
 
-#import "DBSHARINGSharedFolderAccessError.h"
-#import "DBSHARINGUpdateFolderPolicyError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUpdateFolderPolicyError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -27429,13 +27429,13 @@
 
 @end
 
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGMemberPermission.h"
-#import "DBSHARINGMembershipInfo.h"
-#import "DBSHARINGUserInfo.h"
-#import "DBSHARINGUserMembershipInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -27593,14 +27593,14 @@
 
 @end
 
-#import "DBSEENSTATEPlatformType.h"
-#import "DBSHARINGAccessLevel.h"
-#import "DBSHARINGMemberPermission.h"
-#import "DBSHARINGUserFileMembershipInfo.h"
-#import "DBSHARINGUserInfo.h"
-#import "DBSHARINGUserMembershipInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSEENSTATEPlatformType.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGAccessLevel.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGMemberPermission.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserFileMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserInfo.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGUserMembershipInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -27797,9 +27797,9 @@
 
 @end
 
-#import "DBSHARINGUserInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGUserInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -27948,9 +27948,9 @@
 
 @end
 
-#import "DBSHARINGViewerInfoPolicy.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGViewerInfoPolicy.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -28121,9 +28121,9 @@
 
 @end
 
-#import "DBSHARINGVisibility.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGVisibility.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

@@ -11,6 +11,8 @@
 		3C3C29751F7D757E00C54011 /* DBTransportBaseHostnameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3C29721F7D757E00C54011 /* DBTransportBaseHostnameConfig.m */; };
 		3C3C29761F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C3C29771F7D758E00C54011 /* DBTransportBaseHostnameConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3C29731F7D757E00C54011 /* DBTransportBaseHostnameConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9387D99124EFFB6C00EA65A9 /* DBGlobalErrorResponseHandler+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D3E1E779AE5004CCEB7 /* DBGlobalErrorResponseHandler+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9387D99224EFFB6C00EA65A9 /* DBGlobalErrorResponseHandler+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D3E1E779AE5004CCEB7 /* DBGlobalErrorResponseHandler+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F235B5221E29913600144F8B /* DBOAuthMobile-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */; };
 		F235B5241E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51E1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m */; };
 		F235B52F1E29915400144F8B /* DBOAuthDesktop-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B5291E29915400144F8B /* DBOAuthDesktop-macOS.m */; };
@@ -7108,6 +7110,7 @@
 				F97BA4A3216D385700D2C8A2 /* DBSHARINGRemoveFileMemberError.h in Headers */,
 				F97BAE05216D385E00D2C8A2 /* DBFILESGetCopyReferenceArg.h in Headers */,
 				F97BA661216D385800D2C8A2 /* DBTEAMListTeamDevicesResult.h in Headers */,
+				9387D99124EFFB6C00EA65A9 /* DBGlobalErrorResponseHandler+Internal.h in Headers */,
 				F97BA67F216D385800D2C8A2 /* DBTEAMGroupMemberSelector.h in Headers */,
 				F97BA43F216D385600D2C8A2 /* DBTEAMPOLICIESCameraUploadsPolicyState.h in Headers */,
 				F97BAA49216D385B00D2C8A2 /* DBTEAMLOGSignInAsSessionEndType.h in Headers */,
@@ -9346,6 +9349,7 @@
 				F29788C81E03692F00876A73 /* DBClientsManager.h in Headers */,
 				F29788C41E03692E00876A73 /* DBUserClient.h in Headers */,
 				F29788E41E03692F00876A73 /* DBTasks.h in Headers */,
+				9387D99224EFFB6C00EA65A9 /* DBGlobalErrorResponseHandler+Internal.h in Headers */,
 				F29788F81E03692F00876A73 /* DBTransportClientProtocol.h in Headers */,
 				F29788D81E03692F00876A73 /* DBRequestErrors.h in Headers */,
 				F29788CE1E03692F00876A73 /* DBTeamClient.h in Headers */,

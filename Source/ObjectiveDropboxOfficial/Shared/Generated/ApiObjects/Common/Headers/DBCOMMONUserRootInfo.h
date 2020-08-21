@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBCOMMONRootInfo.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBCOMMONUserRootInfo;
 

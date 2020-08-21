@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBCOMMONPathRoot.h"
-#import "DBTransportBaseHostnameConfig.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRoot.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseHostnameConfig.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

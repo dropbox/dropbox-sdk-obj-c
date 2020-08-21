@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGSharedLinkMetadata.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkMetadata.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBSHARINGFileLinkMetadata;
 @class DBSHARINGLinkPermissions;

@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBAppBaseClient.h"
+#import <ObjectiveDropboxOfficial/DBAppBaseClient.h>
 
 @class DBTransportDefaultConfig;
 

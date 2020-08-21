@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMMembersDeactivateArg.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateArg.h>
 
 @class DBTEAMMembersRemoveArg;
 @class DBTEAMUserSelectorArg;

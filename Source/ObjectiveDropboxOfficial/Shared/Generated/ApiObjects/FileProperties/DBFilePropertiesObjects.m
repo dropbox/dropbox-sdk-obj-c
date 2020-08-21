@@ -6,10 +6,10 @@
 
 /// Arguments, results, and errors for the `FileProperties` namespace.
 
-#import "DBFILEPROPERTIESAddPropertiesArg.h"
-#import "DBFILEPROPERTIESPropertyGroup.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESAddPropertiesArg.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroup.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -128,9 +128,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESTemplateError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -315,11 +315,11 @@
 
 @end
 
-#import "DBFILEPROPERTIESLookupError.h"
-#import "DBFILEPROPERTIESPropertiesError.h"
-#import "DBFILEPROPERTIESTemplateError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -560,11 +560,11 @@
 
 @end
 
-#import "DBFILEPROPERTIESInvalidPropertyGroupError.h"
-#import "DBFILEPROPERTIESLookupError.h"
-#import "DBFILEPROPERTIESPropertiesError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESInvalidPropertyGroupError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -850,11 +850,11 @@
 
 @end
 
-#import "DBFILEPROPERTIESAddPropertiesError.h"
-#import "DBFILEPROPERTIESInvalidPropertyGroupError.h"
-#import "DBFILEPROPERTIESLookupError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESAddPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESInvalidPropertyGroupError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1161,10 +1161,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
-#import "DBFILEPROPERTIESPropertyGroupTemplate.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyFieldTemplate.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroupTemplate.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1289,11 +1289,11 @@
 
 @end
 
-#import "DBFILEPROPERTIESAddTemplateArg.h"
-#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
-#import "DBFILEPROPERTIESPropertyGroupTemplate.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESAddTemplateArg.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyFieldTemplate.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroupTemplate.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1415,9 +1415,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESAddTemplateResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESAddTemplateResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1515,9 +1515,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESGetTemplateArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESGetTemplateArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1615,11 +1615,11 @@
 
 @end
 
-#import "DBFILEPROPERTIESGetTemplateResult.h"
-#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
-#import "DBFILEPROPERTIESPropertyGroupTemplate.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESGetTemplateResult.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyFieldTemplate.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroupTemplate.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1741,9 +1741,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESListTemplateResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESListTemplateResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1854,9 +1854,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESLogicalOperator.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLogicalOperator.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2005,9 +2005,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESLookUpPropertiesError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookUpPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2156,9 +2156,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESLookupError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2408,10 +2408,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESModifyTemplateError.h"
-#import "DBFILEPROPERTIESTemplateError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESModifyTemplateError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2684,10 +2684,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESOverwritePropertyGroupArg.h"
-#import "DBFILEPROPERTIESPropertyGroup.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESOverwritePropertyGroupArg.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroup.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2806,11 +2806,11 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertiesSearchArg.h"
-#import "DBFILEPROPERTIESPropertiesSearchQuery.h"
-#import "DBFILEPROPERTIESTemplateFilter.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchArg.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchQuery.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateFilter.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2932,9 +2932,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertiesSearchContinueArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchContinueArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3032,9 +3032,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertiesSearchContinueError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchContinueError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3184,10 +3184,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESLookUpPropertiesError.h"
-#import "DBFILEPROPERTIESPropertiesSearchError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookUpPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3352,10 +3352,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertiesSearchMatch.h"
-#import "DBFILEPROPERTIESPropertyGroup.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchMatch.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroup.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3492,9 +3492,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertiesSearchMode.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchMode.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3657,11 +3657,11 @@
 
 @end
 
-#import "DBFILEPROPERTIESLogicalOperator.h"
-#import "DBFILEPROPERTIESPropertiesSearchMode.h"
-#import "DBFILEPROPERTIESPropertiesSearchQuery.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLogicalOperator.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchMode.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchQuery.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3783,10 +3783,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertiesSearchMatch.h"
-#import "DBFILEPROPERTIESPropertiesSearchResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchMatch.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesSearchResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3911,9 +3911,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyField.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyField.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4018,10 +4018,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
-#import "DBFILEPROPERTIESPropertyType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyFieldTemplate.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4136,10 +4136,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyField.h"
-#import "DBFILEPROPERTIESPropertyGroup.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyField.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroup.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4255,10 +4255,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyField.h"
-#import "DBFILEPROPERTIESPropertyGroupUpdate.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyField.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroupUpdate.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4416,9 +4416,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4567,9 +4567,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESRemovePropertiesArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESRemovePropertiesArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4691,12 +4691,12 @@
 
 @end
 
-#import "DBFILEPROPERTIESLookUpPropertiesError.h"
-#import "DBFILEPROPERTIESLookupError.h"
-#import "DBFILEPROPERTIESPropertiesError.h"
-#import "DBFILEPROPERTIESRemovePropertiesError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookUpPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESRemovePropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4974,9 +4974,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESRemoveTemplateArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESRemoveTemplateArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5074,9 +5074,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESTemplateFilterBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateFilterBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5245,10 +5245,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESTemplateFilter.h"
-#import "DBFILEPROPERTIESTemplateFilterBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateFilter.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateFilterBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5438,9 +5438,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESTemplateOwnerType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESTemplateOwnerType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5611,10 +5611,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyGroupUpdate.h"
-#import "DBFILEPROPERTIESUpdatePropertiesArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyGroupUpdate.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESUpdatePropertiesArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -5734,12 +5734,12 @@
 
 @end
 
-#import "DBFILEPROPERTIESInvalidPropertyGroupError.h"
-#import "DBFILEPROPERTIESLookUpPropertiesError.h"
-#import "DBFILEPROPERTIESLookupError.h"
-#import "DBFILEPROPERTIESUpdatePropertiesError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESInvalidPropertyGroupError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookUpPropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESLookupError.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESUpdatePropertiesError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6061,10 +6061,10 @@
 
 @end
 
-#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
-#import "DBFILEPROPERTIESUpdateTemplateArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESPropertyFieldTemplate.h>
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESUpdateTemplateArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -6225,9 +6225,9 @@
 
 @end
 
-#import "DBFILEPROPERTIESUpdateTemplateResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEPROPERTIESUpdateTemplateResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
