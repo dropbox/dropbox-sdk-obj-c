@@ -45,8 +45,8 @@
         }
       }
     };
-    [DBClientsManager handleRedirectURL:url completion:completion];
-    return NO;
+    BOOL canHandle = [DBClientsManager handleRedirectURL:url completion:completion];
+    return canHandle;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
