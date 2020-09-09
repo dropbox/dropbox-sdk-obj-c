@@ -27,6 +27,7 @@
 }
 
 - (void)viewDidLoad {
+  [super viewDidLoad];
   UIView *view = self.view;
   view.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.4];
   [view addSubview:_loadingSpinner];
