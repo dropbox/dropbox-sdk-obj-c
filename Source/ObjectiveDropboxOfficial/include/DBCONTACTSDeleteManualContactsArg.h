@@ -1,0 +1,1 @@
+../Shared/Generated/ApiObjects/Contacts/Headers/DBCONTACTSDeleteManualContactsArg.h

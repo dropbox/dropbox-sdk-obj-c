@@ -1,0 +1,1 @@
+../Shared/Generated/ApiObjects/Sharing/Headers/DBSHARINGUserMembershipInfo.h

@@ -18,6 +18,7 @@ NOTE: Please do not rely on `master` in production. Please instead use one of ou
 * [SDK distribution](#sdk-distribution)
   * [CocoaPods](#cocoapods)
   * [Carthage](#carthage)
+  * [Swift Package Manager](#swift-package-manager)
   * [Manually add subproject](#manually-add-subproject)
 * [Configure your project](#configure-your-project)
   * [Application `.plist` file](#application-plist-file)
@@ -219,6 +220,22 @@ If you receive a run-time error message like `dyld: Library not loaded:`, please
 
 - Add ObjectiveDropboxOfficial framework to **Embedded Binaries** as well as **Linked Frameworks and Libraries**.
 - Project Navigator > build target > **Build Settings** > **Linking** > **Runpath Search Paths** add `$(inherited) @executable_path/Frameworks`.
+
+---
+
+### Swift Package Manager
+
+With [Swift Package Manager](https://swift.org/package-manager), add the following `dependency` to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/dropbox/dropbox-sdk-obj-c.git", .upToNextMajor(from: "5.0.4"))
+]
+```
+
+##### Known Issues:
+
+If the Swift Package is added via Xcode as dependency, a `preprocessor macro` with `SWIFT_PACKAGE=1` must be set manually. See also: [https://forums.swift.org/t/unable-to-compile-swift-package-when-used-in-xcode/36081](https://forums.swift.org/t/unable-to-compile-swift-package-when-used-in-xcode/36081)
 
 ---
 

@@ -2,6 +2,10 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
+#import "TargetConditionals.h"
+
+#if TARGET_OS_IPHONE
+
 #import "DBLoadingViewController.h"
 
 @interface DBLoadingViewController ()
@@ -40,3 +44,5 @@
 }
 
 @end
+
+#endif // TARGET_OS_IPHONE
