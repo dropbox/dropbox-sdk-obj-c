@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name         = 'ObjectiveDropboxOfficial'
-  s.version      = '3.9.2'
+  s.version      = '5.0.3'
   s.summary      = 'Dropbox Objective C SDK for APIv2'
-  s.homepage     = 'https://dropbox.com/developers/'
+  s.homepage     = 'https://www.dropbox.com/developers'
   s.license      = 'MIT'
   s.author       = { 'Stephen Cobbe' => 'scobbe@dropbox.com' }
   s.source       = { :git => 'https://github.com/dropbox/dropbox-sdk-obj-c.git', :tag => s.version }

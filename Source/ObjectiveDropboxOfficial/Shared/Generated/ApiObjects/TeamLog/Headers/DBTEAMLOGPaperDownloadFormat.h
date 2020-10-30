@@ -27,18 +27,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGPaperDownloadFormatTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGPaperDownloadFormat` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDownloadFormatTag) {
-  /// (no description).
-  DBTEAMLOGPaperDownloadFormatDocx,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPaperDownloadFormatTag){
+    /// (no description).
+    DBTEAMLOGPaperDownloadFormatDocx,
 
-  /// (no description).
-  DBTEAMLOGPaperDownloadFormatHtml,
+    /// (no description).
+    DBTEAMLOGPaperDownloadFormatHtml,
 
-  /// (no description).
-  DBTEAMLOGPaperDownloadFormatMarkdown,
+    /// (no description).
+    DBTEAMLOGPaperDownloadFormatMarkdown,
 
-  /// (no description).
-  DBTEAMLOGPaperDownloadFormatOther,
+    /// (no description).
+    DBTEAMLOGPaperDownloadFormatPdf,
+
+    /// (no description).
+    DBTEAMLOGPaperDownloadFormatOther,
 
 };
 
@@ -67,6 +70,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDownloadFormatTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithMarkdown;
+
+///
+/// Initializes union class with tag state of "pdf".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPdf;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -99,6 +109,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPaperDownloadFormatTag) {
 /// @return Whether the union's current tag state has value "markdown".
 ///
 - (BOOL)isMarkdown;
+
+///
+/// Retrieves whether the union's current tag state has value "pdf".
+///
+/// @return Whether the union's current tag state has value "pdf".
+///
+- (BOOL)isPdf;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

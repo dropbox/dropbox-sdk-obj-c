@@ -78,6 +78,7 @@
 #import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMembers.h>
 #import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadata.h>
 #import <ObjectiveDropboxOfficial/DBSHARINGSharedFolderMetadataBase.h>
+#import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkAlreadyExistsMetadata.h>
 #import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkError.h>
 #import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkMetadata.h>
 #import <ObjectiveDropboxOfficial/DBSHARINGSharedLinkSettingsError.h>

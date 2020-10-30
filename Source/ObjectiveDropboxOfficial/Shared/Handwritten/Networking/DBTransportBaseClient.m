@@ -7,6 +7,7 @@
 #import <ObjectiveDropboxOfficial/DBAUTHAccessError.h>
 #import <ObjectiveDropboxOfficial/DBAUTHAuthError.h>
 #import <ObjectiveDropboxOfficial/DBAUTHRateLimitError.h>
+#import "DBAccessTokenProvider+Internal.h"
 #import <ObjectiveDropboxOfficial/DBCOMMONPathRootError.h>
 #import <ObjectiveDropboxOfficial/DBRequestErrors.h>
 #import <ObjectiveDropboxOfficial/DBSDKConstants.h>
@@ -26,13 +27,23 @@
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                            tokenUid:(NSString *)tokenUid
                     transportConfig:(DBTransportBaseConfig *)transportConfig {
+  DBLongLivedAccessTokenProvider *provider = nil;
+  if (accessToken) {
+    provider = [[DBLongLivedAccessTokenProvider alloc] initWithTokenString:accessToken];
+  }
+  return [self initWithAccessTokenProvider:provider tokenUid:tokenUid transportConfig:transportConfig];
+}
+
+- (instancetype)initWithAccessTokenProvider:(id<DBAccessTokenProvider>)accessTokenProvider
+                           tokenUid:(NSString *)tokenUid
+                    transportConfig:(DBTransportBaseConfig *)transportConfig {
   if (self = [super init]) {
-    _accessToken = accessToken;
+    _accessTokenProvider = accessTokenProvider;
     _tokenUid = [tokenUid copy];
     _appKey = transportConfig.appKey;
     _appSecret = transportConfig.appSecret;
     _hostnameConfig = transportConfig.hostnameConfig ?: [[DBTransportBaseHostnameConfig alloc] init];
-    NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kV2SDKDefaultUserAgentPrefix, kV2SDKVersion];
+    NSString *defaultUserAgent = [DBTransportBaseConfig defaultUserAgent];
     _userAgent = transportConfig.userAgent ? [[transportConfig.userAgent stringByAppendingString:@"/"]
                                                  stringByAppendingString:defaultUserAgent]
                                            : defaultUserAgent;
@@ -79,8 +90,9 @@
       NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];
       [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
                   forKey:@"Authorization"];
-    } else {
-      [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessToken] forKey:@"Authorization"];
+    } else if (_accessTokenProvider) {
+      [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessTokenProvider.accessToken]
+                  forKey:@"Authorization"];
     }
   }
 
@@ -227,7 +239,15 @@
   } else {
     errorContent = errorData ? [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding] : nil;
   }
-  NSString *userMessage = deserializedData[@"user_message"];
+  DBLocalizedUserMessage *userMessage = nil;
+  NSDictionary *userMessageDict = deserializedData[@"user_message"];
+  if ([userMessageDict isKindOfClass:[NSDictionary class]]) {
+    NSString *text = userMessageDict[@"text"];
+    NSString *locale = userMessageDict[@"locale"];
+    if ([text isKindOfClass:[NSString class]] && [locale isKindOfClass:[NSString class]]) {
+      userMessage = [[DBLocalizedUserMessage alloc] initWithText:text locale:locale];
+    }
+  }
 
   if (statusCode >= 500 && statusCode < 600) {
     dbxError = [[DBRequestError alloc] initAsInternalServerError:requestId
@@ -345,14 +365,6 @@
     }
   }
   return nil;
-}
-
-+ (NSString *)sdkVersion {
-  return kV2SDKVersion;
-}
-
-+ (NSString *)defaultUserAgent {
-  return kV2SDKDefaultUserAgentPrefix;
 }
 
 @end

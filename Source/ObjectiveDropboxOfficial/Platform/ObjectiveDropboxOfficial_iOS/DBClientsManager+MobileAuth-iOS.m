@@ -6,9 +6,11 @@
 
 #import <ObjectiveDropboxOfficial/DBClientsManager+Protected.h>
 #import <ObjectiveDropboxOfficial/DBClientsManager.h>
+#import "DBLoadingStatusDelegate.h"
 #import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 #import <ObjectiveDropboxOfficial/DBOAuthMobile-iOS.h>
 #import <ObjectiveDropboxOfficial/DBOAuthMobileManager-iOS.h>
+#import "DBScopeRequest.h"
 #import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
 
 @implementation DBClientsManager (MobileAuth)
@@ -16,14 +18,25 @@
 + (void)authorizeFromController:(UIApplication *)sharedApplication
                      controller:(UIViewController *)controller
                         openURL:(void (^_Nonnull)(NSURL *))openURL {
-  NSAssert([DBOAuthManager sharedOAuthManager] != nil,
-           @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
-  DBMobileSharedApplication *sharedMobileApplication =
-      [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
+  [self db_authorizeFromController:sharedApplication
+                        controller:controller
+             loadingStatusDelegate:nil
+                           openURL:openURL
+                           usePkce:NO
+                      scopeRequest:nil];
+}
+
++ (void)authorizeFromControllerV2:(UIApplication *)sharedApplication
+                       controller:(nullable UIViewController *)controller
+            loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
+                          openURL:(void (^_Nonnull)(NSURL *))openURL
+                     scopeRequest:(nullable DBScopeRequest *)scopeRequest {
+  [self db_authorizeFromController:sharedApplication
                                                         controller:controller
-                                                           openURL:openURL];
-  [DBMobileSharedApplication setMobileSharedApplication:sharedMobileApplication];
-  [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication];
+             loadingStatusDelegate:loadingStatusDelegate
+                           openURL:openURL
+                           usePkce:YES
+                      scopeRequest:scopeRequest];
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {
@@ -47,6 +60,27 @@
                                                                         host:transportConfig.hostnameConfig.meta
                                                                  redirectURL:transportConfig.redirectURL]
                 transportConfig:transportConfig];
+}
+
+#pragma - mark Private methods
+
++ (void)db_authorizeFromController:(UIApplication *)sharedApplication
+                        controller:(nullable UIViewController *)controller
+             loadingStatusDelegate:(nullable id<DBLoadingStatusDelegate>)loadingStatusDelegate
+                           openURL:(void (^_Nonnull)(NSURL *))openURL
+                           usePkce:(BOOL)usePkce
+                      scopeRequest:(nullable DBScopeRequest *)scopeRequest {
+  NSAssert([DBOAuthManager sharedOAuthManager] != nil,
+           @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
+  DBMobileSharedApplication *sharedMobileApplication =
+      [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
+                                                        controller:controller
+                                                           openURL:openURL];
+  sharedMobileApplication.loadingStatusDelegate = loadingStatusDelegate;
+  [DBMobileSharedApplication setMobileSharedApplication:sharedMobileApplication];
+  [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication
+                                                              usePkce:usePkce
+                                                         scopeRequest:scopeRequest];
 }
 
 @end

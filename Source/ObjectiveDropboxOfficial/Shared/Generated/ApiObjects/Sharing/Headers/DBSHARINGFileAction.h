@@ -29,39 +29,46 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGFileActionTag` enum type represents the possible tag states
 /// with which the `DBSHARINGFileAction` union can exist.
-typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
-  /// Disable viewer information on the file.
-  DBSHARINGFileActionDisableViewerInfo,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFileActionTag){
+    /// Disable viewer information on the file.
+    DBSHARINGFileActionDisableViewerInfo,
 
-  /// Change or edit contents of the file.
-  DBSHARINGFileActionEditContents,
+    /// Change or edit contents of the file.
+    DBSHARINGFileActionEditContents,
 
-  /// Enable viewer information on the file.
-  DBSHARINGFileActionEnableViewerInfo,
+    /// Enable viewer information on the file.
+    DBSHARINGFileActionEnableViewerInfo,
 
-  /// Add a member with view permissions.
-  DBSHARINGFileActionInviteViewer,
+    /// Add a member with view permissions.
+    DBSHARINGFileActionInviteViewer,
 
-  /// Add a member with view permissions but no comment permissions.
-  DBSHARINGFileActionInviteViewerNoComment,
+    /// Add a member with view permissions but no comment permissions.
+    DBSHARINGFileActionInviteViewerNoComment,
 
-  /// Add a member with edit permissions.
-  DBSHARINGFileActionInviteEditor,
+    /// Add a member with edit permissions.
+    DBSHARINGFileActionInviteEditor,
 
-  /// Stop sharing this file.
-  DBSHARINGFileActionUnshare,
+    /// Stop sharing this file.
+    DBSHARINGFileActionUnshare,
 
-  /// Relinquish one's own membership to the file.
-  DBSHARINGFileActionRelinquishMembership,
+    /// Relinquish one's own membership to the file.
+    DBSHARINGFileActionRelinquishMembership,
 
-  /// Use create_link instead.
-  DBSHARINGFileActionShareLink,
+    /// Use create_view_link and create_edit_link instead.
+    DBSHARINGFileActionShareLink,
 
-  /// Create a shared link to the file.
-  DBSHARINGFileActionCreateLink,
+    /// Use create_view_link and create_edit_link instead.
+    DBSHARINGFileActionCreateLink,
 
-  /// (no description).
-  DBSHARINGFileActionOther,
+    /// Create a shared link to a file that only allows users to view the
+    /// content.
+    DBSHARINGFileActionCreateViewLink,
+
+    /// Create a shared link to a file that allows users to edit the content.
+    DBSHARINGFileActionCreateEditLink,
+
+    /// (no description).
+    DBSHARINGFileActionOther,
 
 };
 
@@ -152,7 +159,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// Initializes union class with tag state of "share_link".
 ///
-/// Description of the "share_link" tag state: Use create_link instead.
+/// Description of the "share_link" tag state: Use create_view_link and
+/// create_edit_link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -161,12 +169,32 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// Initializes union class with tag state of "create_link".
 ///
-/// Description of the "create_link" tag state: Create a shared link to the
-/// file.
+/// Description of the "create_link" tag state: Use create_view_link and
+/// create_edit_link instead.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithCreateLink;
+
+///
+/// Initializes union class with tag state of "create_view_link".
+///
+/// Description of the "create_view_link" tag state: Create a shared link to a
+/// file that only allows users to view the content.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCreateViewLink;
+
+///
+/// Initializes union class with tag state of "create_edit_link".
+///
+/// Description of the "create_edit_link" tag state: Create a shared link to a
+/// file that allows users to edit the content.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCreateEditLink;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -256,6 +284,22 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 /// @return Whether the union's current tag state has value "create_link".
 ///
 - (BOOL)isCreateLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "create_view_link".
+///
+/// @return Whether the union's current tag state has value "create_view_link".
+///
+- (BOOL)isCreateViewLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "create_edit_link".
+///
+/// @return Whether the union's current tag state has value "create_edit_link".
+///
+- (BOOL)isCreateEditLink;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

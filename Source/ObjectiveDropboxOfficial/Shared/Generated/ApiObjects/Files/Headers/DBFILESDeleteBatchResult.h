@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// Each entry in `entries` in `DBFILESDeleteBatchArg` will appear at the same
+/// position inside `entries` in `DBFILESDeleteBatchResult`.
 @property (nonatomic, readonly) NSArray<DBFILESDeleteBatchResultEntry *> *entries;
 
 #pragma mark - Constructors
@@ -35,7 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param entries (no description).
+/// @param entries Each entry in `entries` in `DBFILESDeleteBatchArg` will
+/// appear at the same position inside `entries` in `DBFILESDeleteBatchResult`.
 ///
 /// @return An initialized instance.
 ///

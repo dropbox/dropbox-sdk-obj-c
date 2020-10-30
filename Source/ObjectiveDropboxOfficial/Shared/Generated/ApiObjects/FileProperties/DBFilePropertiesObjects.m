@@ -46,9 +46,9 @@
   return [DBFILEPROPERTIESAddPropertiesArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESAddPropertiesArgSerializer serialize:self] description];
 }
 
@@ -213,9 +213,9 @@
   return [DBFILEPROPERTIESTemplateErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESTemplateErrorSerializer serialize:self] description];
 }
 
@@ -440,9 +440,9 @@
   return [DBFILEPROPERTIESPropertiesErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesErrorSerializer serialize:self] description];
 }
 
@@ -633,6 +633,14 @@
   return self;
 }
 
+- (instancetype)initWithDuplicatePropertyGroups {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 - (NSString *)templateNotFound {
@@ -683,6 +691,10 @@
   return _tag == DBFILEPROPERTIESInvalidPropertyGroupErrorDoesNotFitTemplate;
 }
 
+- (BOOL)isDuplicatePropertyGroups {
+  return _tag == DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBFILEPROPERTIESInvalidPropertyGroupErrorTemplateNotFound:
@@ -699,6 +711,8 @@
     return @"DBFILEPROPERTIESInvalidPropertyGroupErrorPropertyFieldTooLarge";
   case DBFILEPROPERTIESInvalidPropertyGroupErrorDoesNotFitTemplate:
     return @"DBFILEPROPERTIESInvalidPropertyGroupErrorDoesNotFitTemplate";
+  case DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups:
+    return @"DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -714,9 +728,9 @@
   return [DBFILEPROPERTIESInvalidPropertyGroupErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESInvalidPropertyGroupErrorSerializer serialize:self] description];
 }
 
@@ -748,6 +762,8 @@
   case DBFILEPROPERTIESInvalidPropertyGroupErrorPropertyFieldTooLarge:
     result = prime * result + [[self tagName] hash];
   case DBFILEPROPERTIESInvalidPropertyGroupErrorDoesNotFitTemplate:
+    result = prime * result + [[self tagName] hash];
+  case DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups:
     result = prime * result + [[self tagName] hash];
   }
 
@@ -788,6 +804,8 @@
     return [[self tagName] isEqual:[anInvalidPropertyGroupError tagName]];
   case DBFILEPROPERTIESInvalidPropertyGroupErrorDoesNotFitTemplate:
     return [[self tagName] isEqual:[anInvalidPropertyGroupError tagName]];
+  case DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups:
+    return [[self tagName] isEqual:[anInvalidPropertyGroupError tagName]];
   }
   return YES;
 }
@@ -817,6 +835,8 @@
     jsonDict[@".tag"] = @"property_field_too_large";
   } else if ([valueObj isDoesNotFitTemplate]) {
     jsonDict[@".tag"] = @"does_not_fit_template";
+  } else if ([valueObj isDuplicatePropertyGroups]) {
+    jsonDict[@".tag"] = @"duplicate_property_groups";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -843,6 +863,8 @@
     return [[DBFILEPROPERTIESInvalidPropertyGroupError alloc] initWithPropertyFieldTooLarge];
   } else if ([tag isEqualToString:@"does_not_fit_template"]) {
     return [[DBFILEPROPERTIESInvalidPropertyGroupError alloc] initWithDoesNotFitTemplate];
+  } else if ([tag isEqualToString:@"duplicate_property_groups"]) {
+    return [[DBFILEPROPERTIESInvalidPropertyGroupError alloc] initWithDuplicatePropertyGroups];
   } else {
     return [[DBFILEPROPERTIESInvalidPropertyGroupError alloc] initWithOther];
   }
@@ -923,6 +945,14 @@
   return self;
 }
 
+- (instancetype)initWithDuplicatePropertyGroups {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEPROPERTIESAddPropertiesErrorDuplicatePropertyGroups;
+  }
+  return self;
+}
+
 - (instancetype)initWithPropertyGroupAlreadyExists {
   self = [super init];
   if (self) {
@@ -980,6 +1010,10 @@
   return _tag == DBFILEPROPERTIESAddPropertiesErrorDoesNotFitTemplate;
 }
 
+- (BOOL)isDuplicatePropertyGroups {
+  return _tag == DBFILEPROPERTIESAddPropertiesErrorDuplicatePropertyGroups;
+}
+
 - (BOOL)isPropertyGroupAlreadyExists {
   return _tag == DBFILEPROPERTIESAddPropertiesErrorPropertyGroupAlreadyExists;
 }
@@ -1000,6 +1034,8 @@
     return @"DBFILEPROPERTIESAddPropertiesErrorPropertyFieldTooLarge";
   case DBFILEPROPERTIESAddPropertiesErrorDoesNotFitTemplate:
     return @"DBFILEPROPERTIESAddPropertiesErrorDoesNotFitTemplate";
+  case DBFILEPROPERTIESAddPropertiesErrorDuplicatePropertyGroups:
+    return @"DBFILEPROPERTIESAddPropertiesErrorDuplicatePropertyGroups";
   case DBFILEPROPERTIESAddPropertiesErrorPropertyGroupAlreadyExists:
     return @"DBFILEPROPERTIESAddPropertiesErrorPropertyGroupAlreadyExists";
   }
@@ -1017,9 +1053,9 @@
   return [DBFILEPROPERTIESAddPropertiesErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESAddPropertiesErrorSerializer serialize:self] description];
 }
 
@@ -1051,6 +1087,8 @@
   case DBFILEPROPERTIESAddPropertiesErrorPropertyFieldTooLarge:
     result = prime * result + [[self tagName] hash];
   case DBFILEPROPERTIESAddPropertiesErrorDoesNotFitTemplate:
+    result = prime * result + [[self tagName] hash];
+  case DBFILEPROPERTIESAddPropertiesErrorDuplicatePropertyGroups:
     result = prime * result + [[self tagName] hash];
   case DBFILEPROPERTIESAddPropertiesErrorPropertyGroupAlreadyExists:
     result = prime * result + [[self tagName] hash];
@@ -1093,6 +1131,8 @@
     return [[self tagName] isEqual:[anAddPropertiesError tagName]];
   case DBFILEPROPERTIESAddPropertiesErrorDoesNotFitTemplate:
     return [[self tagName] isEqual:[anAddPropertiesError tagName]];
+  case DBFILEPROPERTIESAddPropertiesErrorDuplicatePropertyGroups:
+    return [[self tagName] isEqual:[anAddPropertiesError tagName]];
   case DBFILEPROPERTIESAddPropertiesErrorPropertyGroupAlreadyExists:
     return [[self tagName] isEqual:[anAddPropertiesError tagName]];
   }
@@ -1124,6 +1164,8 @@
     jsonDict[@".tag"] = @"property_field_too_large";
   } else if ([valueObj isDoesNotFitTemplate]) {
     jsonDict[@".tag"] = @"does_not_fit_template";
+  } else if ([valueObj isDuplicatePropertyGroups]) {
+    jsonDict[@".tag"] = @"duplicate_property_groups";
   } else if ([valueObj isPropertyGroupAlreadyExists]) {
     jsonDict[@".tag"] = @"property_group_already_exists";
   } else {
@@ -1152,6 +1194,8 @@
     return [[DBFILEPROPERTIESAddPropertiesError alloc] initWithPropertyFieldTooLarge];
   } else if ([tag isEqualToString:@"does_not_fit_template"]) {
     return [[DBFILEPROPERTIESAddPropertiesError alloc] initWithDoesNotFitTemplate];
+  } else if ([tag isEqualToString:@"duplicate_property_groups"]) {
+    return [[DBFILEPROPERTIESAddPropertiesError alloc] initWithDuplicatePropertyGroups];
   } else if ([tag isEqualToString:@"property_group_already_exists"]) {
     return [[DBFILEPROPERTIESAddPropertiesError alloc] initWithPropertyGroupAlreadyExists];
   } else {
@@ -1201,9 +1245,9 @@
   return [DBFILEPROPERTIESPropertyGroupTemplateSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertyGroupTemplateSerializer serialize:self] description];
 }
 
@@ -1327,9 +1371,9 @@
   return [DBFILEPROPERTIESAddTemplateArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESAddTemplateArgSerializer serialize:self] description];
 }
 
@@ -1446,9 +1490,9 @@
   return [DBFILEPROPERTIESAddTemplateResultSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESAddTemplateResultSerializer serialize:self] description];
 }
 
@@ -1546,9 +1590,9 @@
   return [DBFILEPROPERTIESGetTemplateArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESGetTemplateArgSerializer serialize:self] description];
 }
 
@@ -1653,9 +1697,9 @@
   return [DBFILEPROPERTIESGetTemplateResultSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESGetTemplateResultSerializer serialize:self] description];
 }
 
@@ -1779,9 +1823,9 @@
   return [DBFILEPROPERTIESListTemplateResultSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESListTemplateResultSerializer serialize:self] description];
 }
 
@@ -1913,9 +1957,9 @@
   return [DBFILEPROPERTIESLogicalOperatorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESLogicalOperatorSerializer serialize:self] description];
 }
 
@@ -2064,9 +2108,9 @@
   return [DBFILEPROPERTIESLookUpPropertiesErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESLookUpPropertiesErrorSerializer serialize:self] description];
 }
 
@@ -2282,9 +2326,9 @@
   return [DBFILEPROPERTIESLookupErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESLookupErrorSerializer serialize:self] description];
 }
 
@@ -2550,9 +2594,9 @@
   return [DBFILEPROPERTIESModifyTemplateErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESModifyTemplateErrorSerializer serialize:self] description];
 }
 
@@ -2724,9 +2768,9 @@
   return [DBFILEPROPERTIESOverwritePropertyGroupArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESOverwritePropertyGroupArgSerializer serialize:self] description];
 }
 
@@ -2847,9 +2891,9 @@
   return [DBFILEPROPERTIESPropertiesSearchArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchArgSerializer serialize:self] description];
 }
 
@@ -2962,9 +3006,9 @@
   return [DBFILEPROPERTIESPropertiesSearchContinueArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchContinueArgSerializer serialize:self] description];
 }
 
@@ -3091,9 +3135,9 @@
   return [DBFILEPROPERTIESPropertiesSearchContinueErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchContinueErrorSerializer serialize:self] description];
 }
 
@@ -3256,9 +3300,9 @@
   return [DBFILEPROPERTIESPropertiesSearchErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchErrorSerializer serialize:self] description];
 }
 
@@ -3395,9 +3439,9 @@
   return [DBFILEPROPERTIESPropertiesSearchMatchSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchMatchSerializer serialize:self] description];
 }
 
@@ -3563,9 +3607,9 @@
   return [DBFILEPROPERTIESPropertiesSearchModeSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchModeSerializer serialize:self] description];
 }
 
@@ -3698,9 +3742,9 @@
   return [DBFILEPROPERTIESPropertiesSearchQuerySerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchQuerySerializer serialize:self] description];
 }
 
@@ -3823,9 +3867,9 @@
   return [DBFILEPROPERTIESPropertiesSearchResultSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertiesSearchResultSerializer serialize:self] description];
 }
 
@@ -3943,9 +3987,9 @@
   return [DBFILEPROPERTIESPropertyFieldSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertyFieldSerializer serialize:self] description];
 }
 
@@ -4055,9 +4099,9 @@
   return [DBFILEPROPERTIESPropertyFieldTemplateSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertyFieldTemplateSerializer serialize:self] description];
 }
 
@@ -4173,9 +4217,9 @@
   return [DBFILEPROPERTIESPropertyGroupSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertyGroupSerializer serialize:self] description];
 }
 
@@ -4303,9 +4347,9 @@
   return [DBFILEPROPERTIESPropertyGroupUpdateSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertyGroupUpdateSerializer serialize:self] description];
 }
 
@@ -4475,9 +4519,9 @@
   return [DBFILEPROPERTIESPropertyTypeSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESPropertyTypeSerializer serialize:self] description];
 }
 
@@ -4610,9 +4654,9 @@
   return [DBFILEPROPERTIESRemovePropertiesArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESRemovePropertiesArgSerializer serialize:self] description];
 }
 
@@ -4842,9 +4886,9 @@
   return [DBFILEPROPERTIESRemovePropertiesErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESRemovePropertiesErrorSerializer serialize:self] description];
 }
 
@@ -5005,9 +5049,9 @@
   return [DBFILEPROPERTIESRemoveTemplateArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESRemoveTemplateArgSerializer serialize:self] description];
 }
 
@@ -5145,9 +5189,9 @@
   return [DBFILEPROPERTIESTemplateFilterBaseSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESTemplateFilterBaseSerializer serialize:self] description];
 }
 
@@ -5330,9 +5374,9 @@
   return [DBFILEPROPERTIESTemplateFilterSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESTemplateFilterSerializer serialize:self] description];
 }
 
@@ -5511,9 +5555,9 @@
   return [DBFILEPROPERTIESTemplateOwnerTypeSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESTemplateOwnerTypeSerializer serialize:self] description];
 }
 
@@ -5651,9 +5695,9 @@
   return [DBFILEPROPERTIESUpdatePropertiesArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESUpdatePropertiesArgSerializer serialize:self] description];
 }
 
@@ -5809,6 +5853,14 @@
   return self;
 }
 
+- (instancetype)initWithDuplicatePropertyGroups {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups;
+  }
+  return self;
+}
+
 - (instancetype)initWithPropertyGroupLookup:(DBFILEPROPERTIESLookUpPropertiesError *)propertyGroupLookup {
   self = [super init];
   if (self) {
@@ -5876,6 +5928,10 @@
   return _tag == DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate;
 }
 
+- (BOOL)isDuplicatePropertyGroups {
+  return _tag == DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups;
+}
+
 - (BOOL)isPropertyGroupLookup {
   return _tag == DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup;
 }
@@ -5896,6 +5952,8 @@
     return @"DBFILEPROPERTIESUpdatePropertiesErrorPropertyFieldTooLarge";
   case DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate:
     return @"DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate";
+  case DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups:
+    return @"DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups";
   case DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup:
     return @"DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup";
   }
@@ -5913,9 +5971,9 @@
   return [DBFILEPROPERTIESUpdatePropertiesErrorSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESUpdatePropertiesErrorSerializer serialize:self] description];
 }
 
@@ -5947,6 +6005,8 @@
   case DBFILEPROPERTIESUpdatePropertiesErrorPropertyFieldTooLarge:
     result = prime * result + [[self tagName] hash];
   case DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate:
+    result = prime * result + [[self tagName] hash];
+  case DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups:
     result = prime * result + [[self tagName] hash];
   case DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup:
     result = prime * result + [self.propertyGroupLookup hash];
@@ -5989,6 +6049,8 @@
     return [[self tagName] isEqual:[anUpdatePropertiesError tagName]];
   case DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate:
     return [[self tagName] isEqual:[anUpdatePropertiesError tagName]];
+  case DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups:
+    return [[self tagName] isEqual:[anUpdatePropertiesError tagName]];
   case DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup:
     return [self.propertyGroupLookup isEqual:anUpdatePropertiesError.propertyGroupLookup];
   }
@@ -6020,6 +6082,8 @@
     jsonDict[@".tag"] = @"property_field_too_large";
   } else if ([valueObj isDoesNotFitTemplate]) {
     jsonDict[@".tag"] = @"does_not_fit_template";
+  } else if ([valueObj isDuplicatePropertyGroups]) {
+    jsonDict[@".tag"] = @"duplicate_property_groups";
   } else if ([valueObj isPropertyGroupLookup]) {
     jsonDict[@"property_group_lookup"] =
         [[DBFILEPROPERTIESLookUpPropertiesErrorSerializer serialize:valueObj.propertyGroupLookup] mutableCopy];
@@ -6050,6 +6114,8 @@
     return [[DBFILEPROPERTIESUpdatePropertiesError alloc] initWithPropertyFieldTooLarge];
   } else if ([tag isEqualToString:@"does_not_fit_template"]) {
     return [[DBFILEPROPERTIESUpdatePropertiesError alloc] initWithDoesNotFitTemplate];
+  } else if ([tag isEqualToString:@"duplicate_property_groups"]) {
+    return [[DBFILEPROPERTIESUpdatePropertiesError alloc] initWithDuplicatePropertyGroups];
   } else if ([tag isEqualToString:@"property_group_lookup"]) {
     DBFILEPROPERTIESLookUpPropertiesError *propertyGroupLookup =
         [DBFILEPROPERTIESLookUpPropertiesErrorSerializer deserialize:valueDict[@"property_group_lookup"]];
@@ -6107,9 +6173,9 @@
   return [DBFILEPROPERTIESUpdateTemplateArgSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESUpdateTemplateArgSerializer serialize:self] description];
 }
 
@@ -6256,9 +6322,9 @@
   return [DBFILEPROPERTIESUpdateTemplateResultSerializer deserialize:dict];
 }
 
-#pragma mark - Description method
+#pragma mark - Debug Description method
 
-- (NSString *)description {
+- (NSString *)debugDescription {
   return [[DBFILEPROPERTIESUpdateTemplateResultSerializer serialize:self] description];
 }
 

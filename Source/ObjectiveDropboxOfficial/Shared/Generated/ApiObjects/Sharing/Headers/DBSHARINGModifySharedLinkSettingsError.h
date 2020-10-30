@@ -29,24 +29,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGModifySharedLinkSettingsErrorTag` enum type represents the
 /// possible tag states with which the `DBSHARINGModifySharedLinkSettingsError`
 /// union can exist.
-typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
-  /// The shared link wasn't found.
-  DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag){
+    /// The shared link wasn't found.
+    DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound,
 
-  /// The caller is not allowed to access this shared link.
-  DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied,
+    /// The caller is not allowed to access this shared link.
+    DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied,
 
-  /// This type of link is not supported.
-  DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType,
+    /// This type of link is not supported; use `files` instead.
+    DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType,
 
-  /// (no description).
-  DBSHARINGModifySharedLinkSettingsErrorOther,
+    /// (no description).
+    DBSHARINGModifySharedLinkSettingsErrorOther,
 
-  /// There is an error with the given settings.
-  DBSHARINGModifySharedLinkSettingsErrorSettingsError,
+    /// There is an error with the given settings.
+    DBSHARINGModifySharedLinkSettingsErrorSettingsError,
 
-  /// The caller's email should be verified.
-  DBSHARINGModifySharedLinkSettingsErrorEmailNotVerified,
+    /// The caller's email should be verified.
+    DBSHARINGModifySharedLinkSettingsErrorEmailNotVerified,
 
 };
 
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 /// Initializes union class with tag state of "unsupported_link_type".
 ///
 /// Description of the "unsupported_link_type" tag state: This type of link is
-/// not supported.
+/// not supported; use `files` instead.
 ///
 /// @return An initialized instance.
 ///
