@@ -853,7 +853,7 @@ void MyLog(NSString *format, ...) {
     };
     
     [[[_tester.files uploadSessionStartData:_tester.testData.fileData]
-      setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBFILESUploadSessionStartError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printOffset:@"Acquiring sessionId"];
