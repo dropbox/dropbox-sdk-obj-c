@@ -82,9 +82,9 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 - (BOOL)handleRedirectURL:(NSURL *)url completion:(DBOAuthCompletion)completion {
   return [super handleRedirectURL:url
                        completion:^(DBOAuthResult *result) {
-                  [[DBMobileSharedApplication mobileSharedApplication] dismissAuthController];
-                  completion(result);
-                }];
+                         [[DBMobileSharedApplication mobileSharedApplication] dismissAuthController];
+                         completion(result);
+                       }];
 }
 
 - (NSURL *)dAuthURL:(NSString *)scheme nonce:(NSString *)nonce {
