@@ -86,13 +86,13 @@
 
 - (void)db_handleResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error {
 #pragma unused(response)
-  NSDictionary<NSString *, id> *resultDict = [self resultDictionaryFromData:data];
   DBOAuthResult *result = nil;
   if (error) {
     // Network error
     result = [DBOAuthResult unknownErrorWithErrorDescription:error.localizedDescription];
   } else {
     // No network error, parse response data
+    NSDictionary<NSString *, id> *resultDict = [self resultDictionaryFromData:data];
     result = [self db_extractResultFromDict:resultDict];
   }
 
