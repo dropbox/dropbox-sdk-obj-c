@@ -15,6 +15,7 @@
 @class DBTEAMLOGAccountCaptureRelinquishAccountType;
 @class DBTEAMLOGAccountLockOrUnlockedType;
 @class DBTEAMLOGAdminAlertingChangedAlertConfigType;
+@class DBTEAMLOGAdminAlertingTriggeredAlertType;
 @class DBTEAMLOGAllowDownloadDisabledType;
 @class DBTEAMLOGAllowDownloadEnabledType;
 @class DBTEAMLOGAppLinkTeamType;
@@ -33,6 +34,8 @@
 @class DBTEAMLOGChangedEnterpriseAdminRoleType;
 @class DBTEAMLOGChangedEnterpriseConnectedTeamStatusType;
 @class DBTEAMLOGClassificationChangePolicyType;
+@class DBTEAMLOGClassificationCreateReportFailType;
+@class DBTEAMLOGClassificationCreateReportType;
 @class DBTEAMLOGCollectionShareType;
 @class DBTEAMLOGComputerBackupPolicyChangedType;
 @class DBTEAMLOGContentAdministrationPolicyChangedType;
@@ -132,12 +135,17 @@
 @class DBTEAMLOGFolderOverviewItemPinnedType;
 @class DBTEAMLOGFolderOverviewItemUnpinnedType;
 @class DBTEAMLOGGoogleSsoChangePolicyType;
+@class DBTEAMLOGGovernancePolicyAddFolderFailedType;
 @class DBTEAMLOGGovernancePolicyAddFoldersType;
 @class DBTEAMLOGGovernancePolicyCreateType;
 @class DBTEAMLOGGovernancePolicyDeleteType;
 @class DBTEAMLOGGovernancePolicyEditDetailsType;
 @class DBTEAMLOGGovernancePolicyEditDurationType;
+@class DBTEAMLOGGovernancePolicyExportCreatedType;
+@class DBTEAMLOGGovernancePolicyExportRemovedType;
 @class DBTEAMLOGGovernancePolicyRemoveFoldersType;
+@class DBTEAMLOGGovernancePolicyReportCreatedType;
+@class DBTEAMLOGGovernancePolicyZipPartDownloadedType;
 @class DBTEAMLOGGroupAddExternalIdType;
 @class DBTEAMLOGGroupAddMemberType;
 @class DBTEAMLOGGroupChangeExternalIdType;
@@ -480,6 +488,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (admin_alerting) Changed an alert setting
     DBTEAMLOGEventTypeAdminAlertingChangedAlertConfig,
 
+    /// (admin_alerting) Triggered security alert
+    DBTEAMLOGEventTypeAdminAlertingTriggeredAlert,
+
     /// (apps) Linked app for team
     DBTEAMLOGEventTypeAppLinkTeam,
 
@@ -526,6 +537,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (data_governance) Added folders to policy
     DBTEAMLOGEventTypeGovernancePolicyAddFolders,
 
+    /// (data_governance) Couldn't add a folder to a policy
+    DBTEAMLOGEventTypeGovernancePolicyAddFolderFailed,
+
     /// (data_governance) Activated a new policy
     DBTEAMLOGEventTypeGovernancePolicyCreate,
 
@@ -538,8 +552,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (data_governance) Changed policy duration
     DBTEAMLOGEventTypeGovernancePolicyEditDuration,
 
+    /// (data_governance) Created a policy download
+    DBTEAMLOGEventTypeGovernancePolicyExportCreated,
+
+    /// (data_governance) Removed a policy download
+    DBTEAMLOGEventTypeGovernancePolicyExportRemoved,
+
     /// (data_governance) Removed folders from policy
     DBTEAMLOGEventTypeGovernancePolicyRemoveFolders,
+
+    /// (data_governance) Created a summary report for a policy
+    DBTEAMLOGEventTypeGovernancePolicyReportCreated,
+
+    /// (data_governance) Downloaded content from a policy
+    DBTEAMLOGEventTypeGovernancePolicyZipPartDownloaded,
 
     /// (data_governance) Activated a hold
     DBTEAMLOGEventTypeLegalHoldsActivateAHold,
@@ -1060,6 +1086,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
     /// (passwords) Reset all team member passwords
     DBTEAMLOGEventTypePasswordResetAll,
+
+    /// (reports) Created Classification report
+    DBTEAMLOGEventTypeClassificationCreateReport,
+
+    /// (reports) Couldn't create Classification report
+    DBTEAMLOGEventTypeClassificationCreateReportFail,
 
     /// (reports) Created EMM-excluded users report
     DBTEAMLOGEventTypeEmmCreateExceptionsReport,
@@ -1911,6 +1943,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAdminAlertingChangedAlertConfigType *adminAlertingChangedAlertConfig;
 
+/// (admin_alerting) Triggered security alert @note Ensure the
+/// `isAdminAlertingTriggeredAlert` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGAdminAlertingTriggeredAlertType *adminAlertingTriggeredAlert;
+
 /// (apps) Linked app for team @note Ensure the `isAppLinkTeam` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAppLinkTeamType *appLinkTeam;
@@ -1980,6 +2017,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGovernancePolicyAddFoldersType *governancePolicyAddFolders;
 
+/// (data_governance) Couldn't add a folder to a policy @note Ensure the
+/// `isGovernancePolicyAddFolderFailed` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGovernancePolicyAddFolderFailedType *governancePolicyAddFolderFailed;
+
 /// (data_governance) Activated a new policy @note Ensure the
 /// `isGovernancePolicyCreate` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
@@ -2000,10 +2042,30 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGovernancePolicyEditDurationType *governancePolicyEditDuration;
 
+/// (data_governance) Created a policy download @note Ensure the
+/// `isGovernancePolicyExportCreated` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGovernancePolicyExportCreatedType *governancePolicyExportCreated;
+
+/// (data_governance) Removed a policy download @note Ensure the
+/// `isGovernancePolicyExportRemoved` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGovernancePolicyExportRemovedType *governancePolicyExportRemoved;
+
 /// (data_governance) Removed folders from policy @note Ensure the
 /// `isGovernancePolicyRemoveFolders` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGovernancePolicyRemoveFoldersType *governancePolicyRemoveFolders;
+
+/// (data_governance) Created a summary report for a policy @note Ensure the
+/// `isGovernancePolicyReportCreated` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGovernancePolicyReportCreatedType *governancePolicyReportCreated;
+
+/// (data_governance) Downloaded content from a policy @note Ensure the
+/// `isGovernancePolicyZipPartDownloaded` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGovernancePolicyZipPartDownloadedType *governancePolicyZipPartDownloaded;
 
 /// (data_governance) Activated a hold @note Ensure the
 /// `isLegalHoldsActivateAHold` method returns true before accessing, otherwise
@@ -2830,6 +2892,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// `isPasswordResetAll` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPasswordResetAllType *passwordResetAll;
+
+/// (reports) Created Classification report @note Ensure the
+/// `isClassificationCreateReport` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGClassificationCreateReportType *classificationCreateReport;
+
+/// (reports) Couldn't create Classification report @note Ensure the
+/// `isClassificationCreateReportFail` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGClassificationCreateReportFailType *classificationCreateReportFail;
 
 /// (reports) Created EMM-excluded users report @note Ensure the
 /// `isEmmCreateExceptionsReport` method returns true before accessing,
@@ -4168,6 +4240,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     (DBTEAMLOGAdminAlertingChangedAlertConfigType *)adminAlertingChangedAlertConfig;
 
 ///
+/// Initializes union class with tag state of "admin_alerting_triggered_alert".
+///
+/// Description of the "admin_alerting_triggered_alert" tag state:
+/// (admin_alerting) Triggered security alert
+///
+/// @param adminAlertingTriggeredAlert (admin_alerting) Triggered security alert
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAdminAlertingTriggeredAlert:
+    (DBTEAMLOGAdminAlertingTriggeredAlertType *)adminAlertingTriggeredAlert;
+
+///
 /// Initializes union class with tag state of "app_link_team".
 ///
 /// Description of the "app_link_team" tag state: (apps) Linked app for team
@@ -4351,6 +4436,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     (DBTEAMLOGGovernancePolicyAddFoldersType *)governancePolicyAddFolders;
 
 ///
+/// Initializes union class with tag state of
+/// "governance_policy_add_folder_failed".
+///
+/// Description of the "governance_policy_add_folder_failed" tag state:
+/// (data_governance) Couldn't add a folder to a policy
+///
+/// @param governancePolicyAddFolderFailed (data_governance) Couldn't add a
+/// folder to a policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyAddFolderFailed:
+    (DBTEAMLOGGovernancePolicyAddFolderFailedType *)governancePolicyAddFolderFailed;
+
+///
 /// Initializes union class with tag state of "governance_policy_create".
 ///
 /// Description of the "governance_policy_create" tag state: (data_governance)
@@ -4403,6 +4503,36 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
 ///
 /// Initializes union class with tag state of
+/// "governance_policy_export_created".
+///
+/// Description of the "governance_policy_export_created" tag state:
+/// (data_governance) Created a policy download
+///
+/// @param governancePolicyExportCreated (data_governance) Created a policy
+/// download
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyExportCreated:
+    (DBTEAMLOGGovernancePolicyExportCreatedType *)governancePolicyExportCreated;
+
+///
+/// Initializes union class with tag state of
+/// "governance_policy_export_removed".
+///
+/// Description of the "governance_policy_export_removed" tag state:
+/// (data_governance) Removed a policy download
+///
+/// @param governancePolicyExportRemoved (data_governance) Removed a policy
+/// download
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyExportRemoved:
+    (DBTEAMLOGGovernancePolicyExportRemovedType *)governancePolicyExportRemoved;
+
+///
+/// Initializes union class with tag state of
 /// "governance_policy_remove_folders".
 ///
 /// Description of the "governance_policy_remove_folders" tag state:
@@ -4415,6 +4545,36 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 ///
 - (instancetype)initWithGovernancePolicyRemoveFolders:
     (DBTEAMLOGGovernancePolicyRemoveFoldersType *)governancePolicyRemoveFolders;
+
+///
+/// Initializes union class with tag state of
+/// "governance_policy_report_created".
+///
+/// Description of the "governance_policy_report_created" tag state:
+/// (data_governance) Created a summary report for a policy
+///
+/// @param governancePolicyReportCreated (data_governance) Created a summary
+/// report for a policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyReportCreated:
+    (DBTEAMLOGGovernancePolicyReportCreatedType *)governancePolicyReportCreated;
+
+///
+/// Initializes union class with tag state of
+/// "governance_policy_zip_part_downloaded".
+///
+/// Description of the "governance_policy_zip_part_downloaded" tag state:
+/// (data_governance) Downloaded content from a policy
+///
+/// @param governancePolicyZipPartDownloaded (data_governance) Downloaded
+/// content from a policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyZipPartDownloaded:
+    (DBTEAMLOGGovernancePolicyZipPartDownloadedType *)governancePolicyZipPartDownloaded;
 
 ///
 /// Initializes union class with tag state of "legal_holds_activate_a_hold".
@@ -6571,6 +6731,34 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPasswordResetAll:(DBTEAMLOGPasswordResetAllType *)passwordResetAll;
+
+///
+/// Initializes union class with tag state of "classification_create_report".
+///
+/// Description of the "classification_create_report" tag state: (reports)
+/// Created Classification report
+///
+/// @param classificationCreateReport (reports) Created Classification report
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithClassificationCreateReport:
+    (DBTEAMLOGClassificationCreateReportType *)classificationCreateReport;
+
+///
+/// Initializes union class with tag state of
+/// "classification_create_report_fail".
+///
+/// Description of the "classification_create_report_fail" tag state: (reports)
+/// Couldn't create Classification report
+///
+/// @param classificationCreateReportFail (reports) Couldn't create
+/// Classification report
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithClassificationCreateReportFail:
+    (DBTEAMLOGClassificationCreateReportFailType *)classificationCreateReportFail;
 
 ///
 /// Initializes union class with tag state of "emm_create_exceptions_report".
@@ -10129,6 +10317,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 - (BOOL)isAdminAlertingChangedAlertConfig;
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "admin_alerting_triggered_alert".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `adminAlertingTriggeredAlert` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "admin_alerting_triggered_alert".
+///
+- (BOOL)isAdminAlertingTriggeredAlert;
+
+///
 /// Retrieves whether the union's current tag state has value "app_link_team".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -10304,6 +10505,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "governance_policy_add_folder_failed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `governancePolicyAddFolderFailed` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_add_folder_failed".
+///
+- (BOOL)isGovernancePolicyAddFolderFailed;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "governance_policy_create".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -10356,6 +10570,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "governance_policy_export_created".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `governancePolicyExportCreated` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_export_created".
+///
+- (BOOL)isGovernancePolicyExportCreated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "governance_policy_export_removed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `governancePolicyExportRemoved` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_export_removed".
+///
+- (BOOL)isGovernancePolicyExportRemoved;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "governance_policy_remove_folders".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -10366,6 +10606,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// "governance_policy_remove_folders".
 ///
 - (BOOL)isGovernancePolicyRemoveFolders;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "governance_policy_report_created".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `governancePolicyReportCreated` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_report_created".
+///
+- (BOOL)isGovernancePolicyReportCreated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "governance_policy_zip_part_downloaded".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `governancePolicyZipPartDownloaded` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_zip_part_downloaded".
+///
+- (BOOL)isGovernancePolicyZipPartDownloaded;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -12425,6 +12691,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// "password_reset_all".
 ///
 - (BOOL)isPasswordResetAll;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "classification_create_report".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `classificationCreateReport` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "classification_create_report".
+///
+- (BOOL)isClassificationCreateReport;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "classification_create_report_fail".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `classificationCreateReportFail` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "classification_create_report_fail".
+///
+- (BOOL)isClassificationCreateReportFail;
 
 ///
 /// Retrieves whether the union's current tag state has value
