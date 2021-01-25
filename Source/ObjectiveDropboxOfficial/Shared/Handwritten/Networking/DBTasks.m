@@ -142,7 +142,7 @@
       @try {
         result = [DBTransportBaseClient routeResultWithRoute:route data:data serializationError:&serializationError];
       } @catch (NSException *exception) {
-        serializationError = [[self class] dropboxBadResponseErrorWithException:exception];
+        serializationError = [[strongSelf class] dropboxBadResponseErrorWithException:exception];
       }
       if (serializationError) {
         networkError = [[DBRequestError alloc] initAsClientError:serializationError];
@@ -237,7 +237,7 @@
       @try {
         result = [DBTransportBaseClient routeResultWithRoute:route data:data serializationError:&serializationError];
       } @catch (NSException *exception) {
-        serializationError = [[self class] dropboxBadResponseErrorWithException:exception];
+        serializationError = [[strongSelf class] dropboxBadResponseErrorWithException:exception];
       }
       if (serializationError) {
         networkError = [[DBRequestError alloc] initAsClientError:serializationError];
@@ -367,7 +367,7 @@
                                                             data:resultData
                                               serializationError:&serializationError];
           } @catch (NSException *exception) {
-            serializationError = [[self class] dropboxBadResponseErrorWithException:exception];
+            serializationError = [[strongSelf class] dropboxBadResponseErrorWithException:exception];
           }
           if (serializationError) {
             networkError = [[DBRequestError alloc] initAsClientError:serializationError];
@@ -479,7 +479,7 @@
         result =
             [DBTransportBaseClient routeResultWithRoute:route data:resultData serializationError:&serializationError];
       } @catch (NSException *exception) {
-        serializationError = [[self class] dropboxBadResponseErrorWithException:exception];
+        serializationError = [[strongSelf class] dropboxBadResponseErrorWithException:exception];
       }
       if (serializationError) {
         networkError = [[DBRequestError alloc] initAsClientError:serializationError];
