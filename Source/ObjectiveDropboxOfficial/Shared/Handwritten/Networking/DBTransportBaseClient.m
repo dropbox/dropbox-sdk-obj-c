@@ -64,13 +64,15 @@
                        byteOffsetStart:(NSNumber *)byteOffsetStart
                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   NSString *routeStyle = routeAttributes[@"style"];
-  NSString *routeHost = routeAttributes[@"host"];
-  NSString *routeAuth = routeAttributes[@"auth"];
+
+  NSString *routeAuthStr = routeAttributes[@"auth"];
+  // routeAuths is one of user|team|app|noauth|app, user
+  NSArray<NSString *> *routeAuths = [routeAuthStr componentsSeparatedByString:@", "];
 
   NSMutableDictionary<NSString *, NSString *> *headers = [[NSMutableDictionary alloc] init];
   [headers setObject:_userAgent forKey:@"User-Agent"];
 
-  BOOL noauth = [routeHost isEqualToString:@"notify"];
+  BOOL noauth = [routeAuths containsObject:@"noauth"];
 
   if (!noauth) {
     if (_asMemberId) {
@@ -82,17 +84,17 @@
       [headers setObject:pathRootStr forKey:@"Dropbox-Api-Path-Root"];
     }
 
-    if (routeAuth && [routeAuth isEqualToString:@"app"]) {
-      if (!_appKey || !_appSecret) {
-        NSLog(@"App key and/or secret not properly configured. Use custom `DBTransportDefaultConfig` instance to set.");
-      }
-      NSString *authString = [NSString stringWithFormat:@"%@:%@", _appKey, _appSecret];
-      NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];
-      [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
-                  forKey:@"Authorization"];
-    } else if (_accessTokenProvider) {
-      [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessTokenProvider.accessToken]
-                  forKey:@"Authorization"];
+    // Order is important here. Route may support multiple auth types, so check from most specific to least.
+    if (([routeAuths containsObject:@"user"] || [routeAuths containsObject:@"team"]) && (_accessTokenProvider != nil)) {
+        [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessTokenProvider.accessToken]
+                    forKey:@"Authorization"];
+    } else if ([routeAuths containsObject:@"app"] && (_appKey != nil) && (_appSecret != nil)) {
+        NSString *authString = [NSString stringWithFormat:@"%@:%@", _appKey, _appSecret];
+        NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];
+        [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
+                    forKey:@"Authorization"];
+    } else {
+        NSLog(@"Auth info not properly configured. Use custom `DBTransportDefaultConfig` instance to set.");
     }
   }
 
