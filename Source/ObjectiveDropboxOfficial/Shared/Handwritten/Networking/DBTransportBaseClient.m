@@ -65,9 +65,13 @@
                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   NSString *routeStyle = routeAttributes[@"style"];
 
+  // routeAuthStr is one of user|team|app|noauth|app, user
   NSString *routeAuthStr = routeAttributes[@"auth"];
-  // routeAuths is one of user|team|app|noauth|app, user
-  NSArray<NSString *> *routeAuths = [routeAuthStr componentsSeparatedByString:@", "];
+  NSArray *routeAuthsSplit = [routeAuthStr componentsSeparatedByString:@","];
+  NSMutableArray<NSString *> *routeAuths = [NSMutableArray array];
+  [routeAuthsSplit enumerateObjectsUsingBlock:^(NSString *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+    [routeAuths addObject:[obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+  }];
 
   NSMutableDictionary<NSString *, NSString *> *headers = [[NSMutableDictionary alloc] init];
   [headers setObject:_userAgent forKey:@"User-Agent"];
@@ -86,15 +90,15 @@
 
     // Order is important here. Route may support multiple auth types, so check from most specific to least.
     if (([routeAuths containsObject:@"user"] || [routeAuths containsObject:@"team"]) && (_accessTokenProvider != nil)) {
-        [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessTokenProvider.accessToken]
-                    forKey:@"Authorization"];
+      [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessTokenProvider.accessToken]
+                  forKey:@"Authorization"];
     } else if ([routeAuths containsObject:@"app"] && (_appKey != nil) && (_appSecret != nil)) {
-        NSString *authString = [NSString stringWithFormat:@"%@:%@", _appKey, _appSecret];
-        NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];
-        [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
-                    forKey:@"Authorization"];
+      NSString *authString = [NSString stringWithFormat:@"%@:%@", _appKey, _appSecret];
+      NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];
+      [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
+                  forKey:@"Authorization"];
     } else {
-        NSLog(@"Auth info not properly configured. Use custom `DBTransportDefaultConfig` instance to set.");
+      NSLog(@"Auth info not properly configured. Use custom `DBTransportDefaultConfig` instance to set.");
     }
   }
 
