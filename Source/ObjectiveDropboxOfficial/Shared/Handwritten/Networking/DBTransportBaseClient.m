@@ -64,13 +64,15 @@
                        byteOffsetStart:(NSNumber *)byteOffsetStart
                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   NSString *routeStyle = routeAttributes[@"style"];
-  NSString *routeHost = routeAttributes[@"host"];
-  NSString *routeAuth = routeAttributes[@"auth"];
+
+  NSString *routeAuthStr = routeAttributes[@"auth"];
+  // routeAuths may contain one or more of user|team|app|noauth|app
+  NSArray<NSString *> *routeAuths = [routeAuthStr componentsSeparatedByString:@", "];
 
   NSMutableDictionary<NSString *, NSString *> *headers = [[NSMutableDictionary alloc] init];
   [headers setObject:_userAgent forKey:@"User-Agent"];
 
-  BOOL noauth = [routeHost isEqualToString:@"notify"];
+  BOOL noauth = [routeAuths containsObject:@"noauth"];
 
   if (!noauth) {
     if (_asMemberId) {
@@ -82,7 +84,7 @@
       [headers setObject:pathRootStr forKey:@"Dropbox-Api-Path-Root"];
     }
 
-    if (routeAuth && [routeAuth isEqualToString:@"app"]) {
+    if ([routeAuths containsObject:@"app"]) {
       if (!_appKey || !_appSecret) {
         NSLog(@"App key and/or secret not properly configured. Use custom `DBTransportDefaultConfig` instance to set.");
       }
