@@ -98,6 +98,7 @@
   self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _uploadTask = task;
+    _selfRetained = self;
   }
   return self;
 }
@@ -185,6 +186,7 @@
     _downloadUrlTask = task;
     _overwrite = overwrite;
     _destination = destination;
+    _selfRetained = self;
   }
   return self;
 }
