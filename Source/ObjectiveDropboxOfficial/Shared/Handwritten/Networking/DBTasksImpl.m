@@ -67,10 +67,9 @@
 
 - (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  __weak __typeof(self) weakSelf = self;
   DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
                                                                   cleanupBlock:^{
-                                                                    [weakSelf cleanup];
+                                                                    [self cleanup];
                                                                   }];
   [_task setResponseBlock:[DBURLSessionTaskResponseBlockWrapper withRpcResponseBlock:storageBlock] queue:queue];
   return self;
@@ -146,10 +145,9 @@
 
 - (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  __weak __typeof(self) weakSelf = self;
   DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
                                                                      cleanupBlock:^{
-                                                                       [weakSelf cleanup];
+                                                                       [self cleanup];
                                                                      }];
   [_uploadTask setResponseBlock:[DBURLSessionTaskResponseBlockWrapper withUploadResponseBlock:storageBlock]
                           queue:queue];
@@ -236,10 +234,9 @@
 
 - (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  __weak __typeof(self) weakSelf = self;
   DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
                                                                        cleanupBlock:^{
-                                                                         [weakSelf cleanup];
+                                                                         [self cleanup];
                                                                        }];
 
   [_downloadUrlTask setResponseBlock:[DBURLSessionTaskResponseBlockWrapper withDownloadResponseBlock:storageBlock]
@@ -319,10 +316,9 @@
 - (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock
                                    queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  __weak __typeof(self) weakSelf = self;
   DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
                                                                        cleanupBlock:^{
-                                                                         [weakSelf cleanup];
+                                                                         [self cleanup];
                                                                        }];
   [_downloadDataTask setResponseBlock:[DBURLSessionTaskResponseBlockWrapper withDownloadResponseBlock:storageBlock]
                                 queue:queue];
