@@ -272,6 +272,7 @@
   self = [super initWithRoute:route tokenUid:tokenUid];
   if (self) {
     _downloadDataTask = task;
+    _selfRetained = self;
   }
   return self;
 }
