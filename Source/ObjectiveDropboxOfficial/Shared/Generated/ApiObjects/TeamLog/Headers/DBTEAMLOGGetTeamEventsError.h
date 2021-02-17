@@ -29,15 +29,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGGetTeamEventsErrorTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGGetTeamEventsError` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGGetTeamEventsErrorTag) {
-  /// No user found matching the provided account_id.
-  DBTEAMLOGGetTeamEventsErrorAccountIdNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGGetTeamEventsErrorTag){
+    /// No user found matching the provided account_id.
+    DBTEAMLOGGetTeamEventsErrorAccountIdNotFound,
 
-  /// Invalid time range.
-  DBTEAMLOGGetTeamEventsErrorInvalidTimeRange,
+    /// Invalid time range.
+    DBTEAMLOGGetTeamEventsErrorInvalidTimeRange,
 
-  /// (no description).
-  DBTEAMLOGGetTeamEventsErrorOther,
+    /// Invalid filters. Do not specify both event_type and category parameters
+    /// for the same call.
+    DBTEAMLOGGetTeamEventsErrorInvalidFilters,
+
+    /// (no description).
+    DBTEAMLOGGetTeamEventsErrorOther,
 
 };
 
@@ -64,6 +68,16 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGGetTeamEventsErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithInvalidTimeRange;
+
+///
+/// Initializes union class with tag state of "invalid_filters".
+///
+/// Description of the "invalid_filters" tag state: Invalid filters. Do not
+/// specify both event_type and category parameters for the same call.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInvalidFilters;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -93,6 +107,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGGetTeamEventsErrorTag) {
 /// "invalid_time_range".
 ///
 - (BOOL)isInvalidTimeRange;
+
+///
+/// Retrieves whether the union's current tag state has value "invalid_filters".
+///
+/// @return Whether the union's current tag state has value "invalid_filters".
+///
+- (BOOL)isInvalidFilters;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

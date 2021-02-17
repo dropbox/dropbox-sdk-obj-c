@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGSharedLinkErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGSharedLinkError` union can exist.
-typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
-  /// The shared link wasn't found.
-  DBSHARINGSharedLinkErrorSharedLinkNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag){
+    /// The shared link wasn't found.
+    DBSHARINGSharedLinkErrorSharedLinkNotFound,
 
-  /// The caller is not allowed to access this shared link.
-  DBSHARINGSharedLinkErrorSharedLinkAccessDenied,
+    /// The caller is not allowed to access this shared link.
+    DBSHARINGSharedLinkErrorSharedLinkAccessDenied,
 
-  /// This type of link is not supported.
-  DBSHARINGSharedLinkErrorUnsupportedLinkType,
+    /// This type of link is not supported; use `files` instead.
+    DBSHARINGSharedLinkErrorUnsupportedLinkType,
 
-  /// (no description).
-  DBSHARINGSharedLinkErrorOther,
+    /// (no description).
+    DBSHARINGSharedLinkErrorOther,
 
 };
 
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
 /// Initializes union class with tag state of "unsupported_link_type".
 ///
 /// Description of the "unsupported_link_type" tag state: This type of link is
-/// not supported.
+/// not supported; use `files` instead.
 ///
 /// @return An initialized instance.
 ///

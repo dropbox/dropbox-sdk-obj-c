@@ -39,7 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// folder.
 @property (nonatomic, readonly, copy, nullable) NSString *destination;
 
-/// The new deadline for the file request.
+/// The new deadline for the file request. Deadlines can only be set by
+/// Professional and Business accounts.
 @property (nonatomic, readonly) DBFILEREQUESTSUpdateFileRequestDeadline *deadline;
 
 /// Whether to set this file request as open or closed.
@@ -55,7 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param destination The new path of the folder in the Dropbox where uploaded
 /// files will be sent. For apps with the app folder permission, this will be
 /// relative to the app folder.
-/// @param deadline The new deadline for the file request.
+/// @param deadline The new deadline for the file request. Deadlines can only be
+/// set by Professional and Business accounts.
 /// @param open Whether to set this file request as open or closed.
 ///
 /// @return An initialized instance.

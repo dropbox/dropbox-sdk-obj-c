@@ -3,6 +3,7 @@
 ///
 
 #import <ObjectiveDropboxOfficial/DBClientsManager+MobileAuth-iOS.h>
+#import <ObjectiveDropboxOfficial/DBLoadingStatusDelegate.h>
 #import <ObjectiveDropboxOfficial/DBOAuthMobile-iOS.h>
 #import <ObjectiveDropboxOfficial/DBOAuthMobileManager-iOS.h>
 

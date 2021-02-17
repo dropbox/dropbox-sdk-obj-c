@@ -29,12 +29,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGQuickActionTypeTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGQuickActionType` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag) {
-  /// (no description).
-  DBTEAMLOGQuickActionTypeDeleteSharedLink,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag){
+    /// (no description).
+    DBTEAMLOGQuickActionTypeDeleteSharedLink,
 
-  /// (no description).
-  DBTEAMLOGQuickActionTypeOther,
+    /// (no description).
+    DBTEAMLOGQuickActionTypeResetPassword,
+
+    /// (no description).
+    DBTEAMLOGQuickActionTypeRestoreFileOrFolder,
+
+    /// (no description).
+    DBTEAMLOGQuickActionTypeUnlinkApp,
+
+    /// (no description).
+    DBTEAMLOGQuickActionTypeUnlinkDevice,
+
+    /// (no description).
+    DBTEAMLOGQuickActionTypeUnlinkSession,
+
+    /// (no description).
+    DBTEAMLOGQuickActionTypeOther,
 
 };
 
@@ -49,6 +64,41 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithDeleteSharedLink;
+
+///
+/// Initializes union class with tag state of "reset_password".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithResetPassword;
+
+///
+/// Initializes union class with tag state of "restore_file_or_folder".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithRestoreFileOrFolder;
+
+///
+/// Initializes union class with tag state of "unlink_app".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnlinkApp;
+
+///
+/// Initializes union class with tag state of "unlink_device".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnlinkDevice;
+
+///
+/// Initializes union class with tag state of "unlink_session".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnlinkSession;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -69,6 +119,43 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGQuickActionTypeTag) {
 /// "delete_shared_link".
 ///
 - (BOOL)isDeleteSharedLink;
+
+///
+/// Retrieves whether the union's current tag state has value "reset_password".
+///
+/// @return Whether the union's current tag state has value "reset_password".
+///
+- (BOOL)isResetPassword;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "restore_file_or_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "restore_file_or_folder".
+///
+- (BOOL)isRestoreFileOrFolder;
+
+///
+/// Retrieves whether the union's current tag state has value "unlink_app".
+///
+/// @return Whether the union's current tag state has value "unlink_app".
+///
+- (BOOL)isUnlinkApp;
+
+///
+/// Retrieves whether the union's current tag state has value "unlink_device".
+///
+/// @return Whether the union's current tag state has value "unlink_device".
+///
+- (BOOL)isUnlinkDevice;
+
+///
+/// Retrieves whether the union's current tag state has value "unlink_session".
+///
+/// @return Whether the union's current tag state has value "unlink_session".
+///
+- (BOOL)isUnlinkSession;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

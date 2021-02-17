@@ -6,6 +6,7 @@
 
 #import <ObjectiveDropboxOfficial/DBOfficialAppConnector-iOS.h>
 #import <ObjectiveDropboxOfficial/DBOpenWithInfo-iOS.h>
+@import Foundation;
 
 static NSString *kDBOpenWithPasteboard = @"dropbox.openWith";
 static NSString *kDropboxScheme = @"dbapi-5";

@@ -17,7 +17,8 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 
 @interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *linkButton;
+@property (weak, nonatomic) IBOutlet UIButton *tokenFlowlinkButton;
+@property (weak, nonatomic) IBOutlet UIButton *codeFlowlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *runTestsButton;
 @property (weak, nonatomic) IBOutlet UIButton *unlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *openWithButton;
@@ -27,7 +28,8 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 @end
 
 @implementation ViewController
-- (IBAction)linkButtonPressed:(id)sender {
+
+- (IBAction)tokenFlowlinkButton:(id)sender {
   [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
                                       controller:self
                                          openURL:^(NSURL *url) {
@@ -35,119 +37,132 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
                                          }];
 }
 
+- (IBAction)codeFlowlinkButton:(id)sender {
+  DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
+                                                                    scopes:@[@"account_info.read"]
+                                                      includeGrantedScopes:NO];
+  [DBClientsManager authorizeFromControllerV2:[UIApplication sharedApplication]
+                                   controller:self
+                        loadingStatusDelegate:nil
+                                      openURL:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }
+                                 scopeRequest:scopeRequest];
+}
+
 - (IBAction)runTestsButtonPressed:(id)sender {
-  TestData *data = [TestData new];
+    TestData *data = [TestData new];
 
-  void (^unlink)() = ^{
-    [TestFormat printAllTestsEnd];
-    [DBClientsManager unlinkAndResetClients];
-    exit(0);
-  };
+    void (^unlink)(void) = ^{
+        [TestFormat printAllTestsEnd];
+        [DBClientsManager unlinkAndResetClients];
+        exit(0);
+    };
 
-  switch (appPermission) {
-  case FullDropbox:
-    [[[DropboxTester alloc] initWithTestData:data] testAllUserAPIEndpoints:unlink asMember:NO];
-    break;
-  case TeamMemberFileAccess:
-    [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:unlink];
-    break;
-  case TeamMemberManagement:
-    [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
-    break;
-  }
+    switch (appPermission) {
+        case FullDropbox:
+            [[[DropboxTester alloc] initWithTestData:data] testAllUserAPIEndpoints:unlink asMember:NO];
+            break;
+        case TeamMemberFileAccess:
+            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:unlink];
+            break;
+        case TeamMemberManagement:
+            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
+            break;
+    }
 }
 
 - (IBAction)runBatchUploadTestsButtonPressed:(id)sender {
-  TestData *data = [TestData new];
-  BatchUploadTests *batchUploadTests = [[BatchUploadTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
-  [batchUploadTests batchUploadFiles];
+    TestData *data = [TestData new];
+    BatchUploadTests *batchUploadTests = [[BatchUploadTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
+    [batchUploadTests batchUploadFiles];
 }
 
 - (IBAction)runGlobalResponseTestsButtonPressed:(id)sender {
-  TestData *data = [TestData new];
-  GlobalResponseTests *globalResponseTests = [[GlobalResponseTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
-  [[NSOperationQueue new] addOperationWithBlock:^{
-    [globalResponseTests runGlobalResponseTests];
-  }];
+    TestData *data = [TestData new];
+    GlobalResponseTests *globalResponseTests = [[GlobalResponseTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
+    [[NSOperationQueue new] addOperationWithBlock:^{
+        [globalResponseTests runGlobalResponseTests];
+    }];
 }
 
 - (IBAction)openWithButtonPressedRunTests:(id)sender {
-  TestData *data = [TestData new];
-  
-  DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:data.fullDropboxAppKey
-                                                                   canOpenURLWrapper:^BOOL(NSURL *url) {
-                                                                     return [[UIApplication sharedApplication] canOpenURL:url];
-                                                                   }
-                                                                      openURLWrapper:^(NSURL *url) {
-                                                                        [[UIApplication sharedApplication] openURL:url];
-                                                                      }];
-  DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector retriveOfficialDropboxAppOpenWithInfo];
-  
-  if (openWithInfo) {
-    // Data retrieved from UIPasteboard
-    NSLog(@"Returning to Dropbox app via Pasteboard data...");
-    [connector returnToDropboxApp:openWithInfo changesPending:NO];
-  } else if (s_openWithInfoNSURL) {
-    // Data retrieved from openURL call
-    NSLog(@"Returning to Dropbox app via NSURL data...");
-    DBOfficialAppConnector *appConnector = [[DBOfficialAppConnector alloc] initWithAppKey:[DBClientsManager appKey]
-                                                                        canOpenURLWrapper:^BOOL(NSURL *url) {
-                                                                          return [[UIApplication sharedApplication] canOpenURL:url];
-                                                                        }
-                                                                           openURLWrapper:^(NSURL *url) {
-                                                                             [[UIApplication sharedApplication] openURL:url];
-                                                                           }];
-    [appConnector returnToDropboxApp:s_openWithInfoNSURL changesPending:NO];
-  } else {
-    // No OpenWith Data
-    NSLog(@"No info retrieved. Please ensure you have opened this test app with the correct OpenWith info.");
-  }
+    TestData *data = [TestData new];
+
+    DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:data.fullDropboxAppKey
+                                                                     canOpenURLWrapper:^BOOL(NSURL *url) {
+        return [[UIApplication sharedApplication] canOpenURL:url];
+    }
+                                                                        openURLWrapper:^(NSURL *url) {
+        [[UIApplication sharedApplication] openURL:url];
+    }];
+    DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector retriveOfficialDropboxAppOpenWithInfo];
+
+    if (openWithInfo) {
+        // Data retrieved from UIPasteboard
+        NSLog(@"Returning to Dropbox app via Pasteboard data...");
+        [connector returnToDropboxApp:openWithInfo changesPending:NO];
+    } else if (s_openWithInfoNSURL) {
+        // Data retrieved from openURL call
+        NSLog(@"Returning to Dropbox app via NSURL data...");
+        DBOfficialAppConnector *appConnector = [[DBOfficialAppConnector alloc] initWithAppKey:[DBClientsManager appKey]
+                                                                            canOpenURLWrapper:^BOOL(NSURL *url) {
+            return [[UIApplication sharedApplication] canOpenURL:url];
+        }
+                                                                               openURLWrapper:^(NSURL *url) {
+            [[UIApplication sharedApplication] openURL:url];
+        }];
+        [appConnector returnToDropboxApp:s_openWithInfoNSURL changesPending:NO];
+    } else {
+        // No OpenWith Data
+        NSLog(@"No info retrieved. Please ensure you have opened this test app with the correct OpenWith info.");
+    }
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {
-  [DBClientsManager unlinkAndResetClients];
-  [self checkButtons];
+    [DBClientsManager unlinkAndResetClients];
+    [self checkButtons];
 }
 
 - (void)setOpenWithInfoNSURL:(DBOpenWithInfo *)openWithInfoNSURL {
-  s_openWithInfoNSURL = openWithInfoNSURL;
+    s_openWithInfoNSURL = openWithInfoNSURL;
 }
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  [self checkButtons];
-  BOOL authorizedUser = [DBClientsManager authorizedClient].isAuthorized;
-  NSLog(@"%s", authorizedUser ? "user client authorized" : "user client not authorized");
+    [super viewDidLoad];
+    [self checkButtons];
+    BOOL authorizedUser = [DBClientsManager authorizedClient].isAuthorized;
+    NSLog(@"%s", authorizedUser ? "user client authorized" : "user client not authorized");
 
-  BOOL authorizedTeam = [DBClientsManager authorizedTeamClient].isAuthorized;
-  NSLog(@"%s", authorizedTeam ? "team client authorized" : "team client not authorized");
+    BOOL authorizedTeam = [DBClientsManager authorizedTeamClient].isAuthorized;
+    NSLog(@"%s", authorizedTeam ? "team client authorized" : "team client not authorized");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-  [self checkButtons];
+    [super viewDidAppear:animated];
+    [self checkButtons];
 }
 
 
 - (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)checkButtons {
-  if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
-    _linkButton.hidden = YES;
-    _unlinkButton.hidden = NO;
-    _runTestsButton.hidden = NO;
-    _runBatchUploadTestsButton.hidden = NO;
-    _runGlobalResponseTestsButton.hidden = NO;
-  } else {
-    _linkButton.hidden = NO;
-    _unlinkButton.hidden = YES;
-    _runTestsButton.hidden = YES;
-    _runBatchUploadTestsButton.hidden = YES;
-    _runGlobalResponseTestsButton.hidden = YES;
-  }
+    if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
+        _tokenFlowlinkButton.hidden = YES;
+        _codeFlowlinkButton.hidden = YES;
+        _unlinkButton.hidden = NO;
+        _runTestsButton.hidden = NO;
+        _runBatchUploadTestsButton.hidden = NO;
+        _runGlobalResponseTestsButton.hidden = NO;
+    } else {
+        _tokenFlowlinkButton.hidden = NO;
+        _codeFlowlinkButton.hidden = NO;
+        _unlinkButton.hidden = YES;
+        _runTestsButton.hidden = YES;
+        _runBatchUploadTestsButton.hidden = YES;
+        _runGlobalResponseTestsButton.hidden = YES;
+    }
 }
 
 /**
@@ -181,6 +196,6 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
  To create an app or to locate your app's app key, please visit the App Console here:
 
  https://www.dropbox.com/developers/apps
-*/
+ */
 
 @end

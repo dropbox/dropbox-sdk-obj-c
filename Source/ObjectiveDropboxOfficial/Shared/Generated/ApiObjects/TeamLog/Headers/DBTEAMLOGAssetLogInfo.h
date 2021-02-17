@@ -34,24 +34,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGAssetLogInfoTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGAssetLogInfo` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGAssetLogInfoTag) {
-  /// File's details.
-  DBTEAMLOGAssetLogInfoFile,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAssetLogInfoTag){
+    /// File's details.
+    DBTEAMLOGAssetLogInfoFile,
 
-  /// Folder's details.
-  DBTEAMLOGAssetLogInfoFolder,
+    /// Folder's details.
+    DBTEAMLOGAssetLogInfoFolder,
 
-  /// Paper docuement's details.
-  DBTEAMLOGAssetLogInfoPaperDocument,
+    /// Paper document's details.
+    DBTEAMLOGAssetLogInfoPaperDocument,
 
-  /// Paper folder's details.
-  DBTEAMLOGAssetLogInfoPaperFolder,
+    /// Paper folder's details.
+    DBTEAMLOGAssetLogInfoPaperFolder,
 
-  /// Showcase document's details.
-  DBTEAMLOGAssetLogInfoShowcaseDocument,
+    /// Showcase document's details.
+    DBTEAMLOGAssetLogInfoShowcaseDocument,
 
-  /// (no description).
-  DBTEAMLOGAssetLogInfoOther,
+    /// (no description).
+    DBTEAMLOGAssetLogInfoOther,
 
 };
 
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAssetLogInfoTag) {
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFolderLogInfo *folder;
 
-/// Paper docuement's details. @note Ensure the `isPaperDocument` method returns
+/// Paper document's details. @note Ensure the `isPaperDocument` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperDocumentLogInfo *paperDocument;
 
@@ -105,9 +105,9 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGAssetLogInfoTag) {
 ///
 /// Initializes union class with tag state of "paper_document".
 ///
-/// Description of the "paper_document" tag state: Paper docuement's details.
+/// Description of the "paper_document" tag state: Paper document's details.
 ///
-/// @param paperDocument Paper docuement's details.
+/// @param paperDocument Paper document's details.
 ///
 /// @return An initialized instance.
 ///

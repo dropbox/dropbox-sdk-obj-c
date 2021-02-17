@@ -27,15 +27,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGPlacementRestrictionTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGPlacementRestriction` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGPlacementRestrictionTag) {
-  /// (no description).
-  DBTEAMLOGPlacementRestrictionEuropeOnly,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPlacementRestrictionTag){
+    /// (no description).
+    DBTEAMLOGPlacementRestrictionAustraliaOnly,
 
-  /// (no description).
-  DBTEAMLOGPlacementRestrictionNone,
+    /// (no description).
+    DBTEAMLOGPlacementRestrictionEuropeOnly,
 
-  /// (no description).
-  DBTEAMLOGPlacementRestrictionOther,
+    /// (no description).
+    DBTEAMLOGPlacementRestrictionJapanOnly,
+
+    /// (no description).
+    DBTEAMLOGPlacementRestrictionNone,
+
+    /// (no description).
+    DBTEAMLOGPlacementRestrictionOther,
 
 };
 
@@ -45,11 +51,25 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPlacementRestrictionTag) {
 #pragma mark - Constructors
 
 ///
+/// Initializes union class with tag state of "australia_only".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAustraliaOnly;
+
+///
 /// Initializes union class with tag state of "europe_only".
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithEuropeOnly;
+
+///
+/// Initializes union class with tag state of "japan_only".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithJapanOnly;
 
 ///
 /// Initializes union class with tag state of "none".
@@ -70,11 +90,25 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGPlacementRestrictionTag) {
 #pragma mark - Tag state methods
 
 ///
+/// Retrieves whether the union's current tag state has value "australia_only".
+///
+/// @return Whether the union's current tag state has value "australia_only".
+///
+- (BOOL)isAustraliaOnly;
+
+///
 /// Retrieves whether the union's current tag state has value "europe_only".
 ///
 /// @return Whether the union's current tag state has value "europe_only".
 ///
 - (BOOL)isEuropeOnly;
+
+///
+/// Retrieves whether the union's current tag state has value "japan_only".
+///
+/// @return Whether the union's current tag state has value "japan_only".
+///
+- (BOOL)isJapanOnly;
 
 ///
 /// Retrieves whether the union's current tag state has value "none".

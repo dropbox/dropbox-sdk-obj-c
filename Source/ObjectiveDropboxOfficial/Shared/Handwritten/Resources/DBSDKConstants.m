@@ -8,15 +8,15 @@
 
 #import <ObjectiveDropboxOfficial/DBSDKConstants.h>
 
-NSString *const kV2SDKVersion = @"3.9.2";
-NSString *const kV2SDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
-NSString *const kForegroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
-NSString *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
+NSString *const kDBSDKVersion = @"5.0.3";
+NSString *const kDBSDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
+NSString *const kDBSDKForegroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
+NSString *const kDBSDKBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
 // BEGIN DEBUG CONSTANTS
-BOOL const kSDKDebug = NO;           // Should never be `YES` in production
-NSString *const kSDKDebugHost = nil; // `"dbdev"`, if using EC, or "{user_name}-dbx"`, if dev box.
-                                     // Should never be non-`nil` in production.
+BOOL const kDBSDKDebug = NO;           // Should never be `YES` in production
+NSString *const kDBSDKDebugHost = nil; // `"dbdev"`, if using EC, or "{user_name}-dbx"`, if dev box.
+                                       // Should never be non-`nil` in production.
 // END DEBUG CONSTANTS
 
-NSString *const kCSERFKey = @"kCSERFKeyObjCSDK";
+NSString *const kDBSDKCSRFKey = @"kDBSDKCSRFKeyObjCSDK";

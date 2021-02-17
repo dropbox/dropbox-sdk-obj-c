@@ -75,48 +75,29 @@ static ViewController *viewController = nil;
 
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
   NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
+  DBOAuthCompletion oauthCompletion = ^(DBOAuthResult *authResult) {
+    if (authResult != nil) {
+      if ([authResult isSuccess]) {
+        NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
+      } else if ([authResult isCancel]) {
+        NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
+      } else if ([authResult isError]) {
+        NSLog(@"\n\nError: %@\n\n", authResult);
+      }
+    }
+    [self checkButtons];
+  };
   switch (appPermission) {
     case FullDropbox: {
-      DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-      if (authResult != nil) {
-        if ([authResult isSuccess]) {
-          NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
-        } else if ([authResult isCancel]) {
-          NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
-        } else if ([authResult isError]) {
-          NSLog(@"\n\nError: %@\n\n", authResult);
-        }
-      }
+      [DBClientsManager handleRedirectURL:url completion:oauthCompletion];
       break;
     }
-    case TeamMemberFileAccess: {
-      DBOAuthResult *authResult = [DBClientsManager handleRedirectURLTeam:url];
-      if (authResult != nil) {
-        if ([authResult isSuccess]) {
-          NSLog(@"Success! User is logged into Dropbox.");
-        } else if ([authResult isCancel]) {
-          NSLog(@"Authorization flow was manually canceled by user!");
-        } else if ([authResult isError]) {
-          NSLog(@"Error: %@", authResult);
-        }
-      }
-      break;
-    }
+    case TeamMemberFileAccess:
     case TeamMemberManagement: {
-      DBOAuthResult *authResult = [DBClientsManager handleRedirectURLTeam:url];
-      if (authResult != nil) {
-        if ([authResult isSuccess]) {
-          NSLog(@"Success! User is logged into Dropbox.");
-        } else if ([authResult isCancel]) {
-          NSLog(@"Authorization flow was manually canceled by user!");
-        } else if ([authResult isError]) {
-          NSLog(@"Error: %@", authResult);
-        }
-      }
+      [DBClientsManager handleRedirectURLTeam:url completion:oauthCompletion];
       break;
     }
   }
-  [self checkButtons];
   [[NSRunningApplication currentApplication]
       activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
 }

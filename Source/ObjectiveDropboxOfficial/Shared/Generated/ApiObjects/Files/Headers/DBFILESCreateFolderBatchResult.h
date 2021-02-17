@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// Each entry in `paths` in `DBFILESCreateFolderBatchArg` will appear at the
+/// same position inside `entries` in `DBFILESCreateFolderBatchResult`.
 @property (nonatomic, readonly) NSArray<DBFILESCreateFolderBatchResultEntry *> *entries;
 
 #pragma mark - Constructors
@@ -35,7 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param entries (no description).
+/// @param entries Each entry in `paths` in `DBFILESCreateFolderBatchArg` will
+/// appear at the same position inside `entries` in
+/// `DBFILESCreateFolderBatchResult`.
 ///
 /// @return An initialized instance.
 ///

@@ -9,6 +9,7 @@
 #import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILESLookupError;
+@class DBFILESMoveIntoVaultError;
 @class DBFILESRelocationBatchError;
 @class DBFILESWriteError;
 
@@ -29,47 +30,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESRelocationBatchErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESRelocationBatchError` union can exist.
-typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
-  /// (no description).
-  DBFILESRelocationBatchErrorFromLookup,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationBatchErrorTag){
+    /// (no description).
+    DBFILESRelocationBatchErrorFromLookup,
 
-  /// (no description).
-  DBFILESRelocationBatchErrorFromWrite,
+    /// (no description).
+    DBFILESRelocationBatchErrorFromWrite,
 
-  /// (no description).
-  DBFILESRelocationBatchErrorTo,
+    /// (no description).
+    DBFILESRelocationBatchErrorTo,
 
-  /// Shared folders can't be copied.
-  DBFILESRelocationBatchErrorCantCopySharedFolder,
+    /// Shared folders can't be copied.
+    DBFILESRelocationBatchErrorCantCopySharedFolder,
 
-  /// Your move operation would result in nested shared folders.  This is not
-  /// allowed.
-  DBFILESRelocationBatchErrorCantNestSharedFolder,
+    /// Your move operation would result in nested shared folders.  This is not
+    /// allowed.
+    DBFILESRelocationBatchErrorCantNestSharedFolder,
 
-  /// You cannot move a folder into itself.
-  DBFILESRelocationBatchErrorCantMoveFolderIntoItself,
+    /// You cannot move a folder into itself.
+    DBFILESRelocationBatchErrorCantMoveFolderIntoItself,
 
-  /// The operation would involve more than 10,000 files and folders.
-  DBFILESRelocationBatchErrorTooManyFiles,
+    /// The operation would involve more than 10,000 files and folders.
+    DBFILESRelocationBatchErrorTooManyFiles,
 
-  /// There are duplicated/nested paths among `fromPath` in
-  /// `DBFILESRelocationArg` and `toPath` in `DBFILESRelocationArg`.
-  DBFILESRelocationBatchErrorDuplicatedOrNestedPaths,
+    /// There are duplicated/nested paths among `fromPath` in
+    /// `DBFILESRelocationArg` and `toPath` in `DBFILESRelocationArg`.
+    DBFILESRelocationBatchErrorDuplicatedOrNestedPaths,
 
-  /// Your move operation would result in an ownership transfer. You may
-  /// reissue the request with the field `allowOwnershipTransfer` in
-  /// `DBFILESRelocationArg` to true.
-  DBFILESRelocationBatchErrorCantTransferOwnership,
+    /// Your move operation would result in an ownership transfer. You may
+    /// reissue the request with the field `allowOwnershipTransfer` in
+    /// `DBFILESRelocationArg` to true.
+    DBFILESRelocationBatchErrorCantTransferOwnership,
 
-  /// The current user does not have enough space to move or copy the files.
-  DBFILESRelocationBatchErrorInsufficientQuota,
+    /// The current user does not have enough space to move or copy the files.
+    DBFILESRelocationBatchErrorInsufficientQuota,
 
-  /// (no description).
-  DBFILESRelocationBatchErrorOther,
+    /// Something went wrong with the job on Dropbox's end. You'll need to
+    /// verify that the action you were taking succeeded, and if not, try again.
+    /// This should happen very rarely.
+    DBFILESRelocationBatchErrorInternalError,
 
-  /// There are too many write operations in user's Dropbox. Please retry this
-  /// request.
-  DBFILESRelocationBatchErrorTooManyWriteOperations,
+    /// Can't move the shared folder to the given destination.
+    DBFILESRelocationBatchErrorCantMoveSharedFolder,
+
+    /// Some content cannot be moved into Vault under certain circumstances, see
+    /// detailed error.
+    DBFILESRelocationBatchErrorCantMoveIntoVault,
+
+    /// (no description).
+    DBFILESRelocationBatchErrorOther,
+
+    /// There are too many write operations in user's Dropbox. Please retry this
+    /// request.
+    DBFILESRelocationBatchErrorTooManyWriteOperations,
 
 };
 
@@ -87,6 +100,11 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// (no description). @note Ensure the `isTo` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBFILESWriteError *to;
+
+/// Some content cannot be moved into Vault under certain circumstances, see
+/// detailed error. @note Ensure the `isCantMoveIntoVault` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBFILESMoveIntoVaultError *cantMoveIntoVault;
 
 #pragma mark - Constructors
 
@@ -188,6 +206,40 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithInsufficientQuota;
+
+///
+/// Initializes union class with tag state of "internal_error".
+///
+/// Description of the "internal_error" tag state: Something went wrong with the
+/// job on Dropbox's end. You'll need to verify that the action you were taking
+/// succeeded, and if not, try again. This should happen very rarely.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInternalError;
+
+///
+/// Initializes union class with tag state of "cant_move_shared_folder".
+///
+/// Description of the "cant_move_shared_folder" tag state: Can't move the
+/// shared folder to the given destination.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCantMoveSharedFolder;
+
+///
+/// Initializes union class with tag state of "cant_move_into_vault".
+///
+/// Description of the "cant_move_into_vault" tag state: Some content cannot be
+/// moved into Vault under certain circumstances, see detailed error.
+///
+/// @param cantMoveIntoVault Some content cannot be moved into Vault under
+/// certain circumstances, see detailed error.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCantMoveIntoVault:(DBFILESMoveIntoVaultError *)cantMoveIntoVault;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -300,6 +352,34 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// "insufficient_quota".
 ///
 - (BOOL)isInsufficientQuota;
+
+///
+/// Retrieves whether the union's current tag state has value "internal_error".
+///
+/// @return Whether the union's current tag state has value "internal_error".
+///
+- (BOOL)isInternalError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cant_move_shared_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "cant_move_shared_folder".
+///
+- (BOOL)isCantMoveSharedFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cant_move_into_vault".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `cantMoveIntoVault` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "cant_move_into_vault".
+///
+- (BOOL)isCantMoveIntoVault;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

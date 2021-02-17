@@ -28,12 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESSearchErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESSearchError` union can exist.
-typedef NS_ENUM(NSInteger, DBFILESSearchErrorTag) {
-  /// (no description).
-  DBFILESSearchErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchErrorTag){
+    /// (no description).
+    DBFILESSearchErrorPath,
 
-  /// (no description).
-  DBFILESSearchErrorOther,
+    /// (no description).
+    DBFILESSearchErrorInvalidArgument,
+
+    /// Something went wrong, please try again.
+    DBFILESSearchErrorInternalError,
+
+    /// (no description).
+    DBFILESSearchErrorOther,
 
 };
 
@@ -43,6 +49,10 @@ typedef NS_ENUM(NSInteger, DBFILESSearchErrorTag) {
 /// (no description). @note Ensure the `isPath` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBFILESLookupError *path;
+
+/// (no description). @note Ensure the `isInvalidArgument` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly, copy, nullable) NSString *invalidArgument;
 
 #pragma mark - Constructors
 
@@ -54,6 +64,25 @@ typedef NS_ENUM(NSInteger, DBFILESSearchErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPath:(DBFILESLookupError *)path;
+
+///
+/// Initializes union class with tag state of "invalid_argument".
+///
+/// @param invalidArgument (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInvalidArgument:(nullable NSString *)invalidArgument;
+
+///
+/// Initializes union class with tag state of "internal_error".
+///
+/// Description of the "internal_error" tag state: Something went wrong, please
+/// try again.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInternalError;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -75,6 +104,24 @@ typedef NS_ENUM(NSInteger, DBFILESSearchErrorTag) {
 /// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "invalid_argument".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `invalidArgument` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "invalid_argument".
+///
+- (BOOL)isInvalidArgument;
+
+///
+/// Retrieves whether the union's current tag state has value "internal_error".
+///
+/// @return Whether the union's current tag state has value "internal_error".
+///
+- (BOOL)isInternalError;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

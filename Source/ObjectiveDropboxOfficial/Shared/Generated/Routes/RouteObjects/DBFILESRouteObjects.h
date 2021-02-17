@@ -29,8 +29,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the dCopy route object.
 + (DBRoute *)DBFILESDCopy;
 
+/// Accessor method for the dCopyBatchV2 route object.
++ (DBRoute *)DBFILESDCopyBatchV2;
+
 /// Accessor method for the dCopyBatch route object.
 + (DBRoute *)DBFILESDCopyBatch;
+
+/// Accessor method for the dCopyBatchCheckV2 route object.
++ (DBRoute *)DBFILESDCopyBatchCheckV2;
 
 /// Accessor method for the dCopyBatchCheck route object.
 + (DBRoute *)DBFILESDCopyBatchCheck;
@@ -71,6 +77,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the downloadZip route object.
 + (DBRoute *)DBFILESDownloadZip;
 
+/// Accessor method for the export route object.
++ (DBRoute *)DBFILESExport;
+
+/// Accessor method for the getFileLockBatch route object.
++ (DBRoute *)DBFILESGetFileLockBatch;
+
 /// Accessor method for the getMetadata route object.
 + (DBRoute *)DBFILESGetMetadata;
 
@@ -85,6 +97,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the getThumbnail route object.
 + (DBRoute *)DBFILESGetThumbnail;
+
+/// Accessor method for the getThumbnailV2 route object.
++ (DBRoute *)DBFILESGetThumbnailV2;
 
 /// Accessor method for the getThumbnailBatch route object.
 + (DBRoute *)DBFILESGetThumbnailBatch;
@@ -104,14 +119,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the listRevisions route object.
 + (DBRoute *)DBFILESListRevisions;
 
+/// Accessor method for the lockFileBatch route object.
++ (DBRoute *)DBFILESLockFileBatch;
+
 /// Accessor method for the moveV2 route object.
 + (DBRoute *)DBFILESMoveV2;
 
 /// Accessor method for the move route object.
 + (DBRoute *)DBFILESMove;
 
+/// Accessor method for the moveBatchV2 route object.
++ (DBRoute *)DBFILESMoveBatchV2;
+
 /// Accessor method for the moveBatch route object.
 + (DBRoute *)DBFILESMoveBatch;
+
+/// Accessor method for the moveBatchCheckV2 route object.
++ (DBRoute *)DBFILESMoveBatchCheckV2;
 
 /// Accessor method for the moveBatchCheck route object.
 + (DBRoute *)DBFILESMoveBatchCheck;
@@ -148,6 +172,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the search route object.
 + (DBRoute *)DBFILESSearch;
+
+/// Accessor method for the searchV2 route object.
++ (DBRoute *)DBFILESSearchV2;
+
+/// Accessor method for the searchContinueV2 route object.
++ (DBRoute *)DBFILESSearchContinueV2;
+
+/// Accessor method for the unlockFileBatch route object.
++ (DBRoute *)DBFILESUnlockFileBatch;
 
 /// Accessor method for the upload route object.
 + (DBRoute *)DBFILESUpload;

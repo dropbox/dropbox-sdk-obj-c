@@ -9,6 +9,7 @@
 #import <ObjectiveDropboxOfficial/DBStoneBase.h>
 #import <ObjectiveDropboxOfficial/DBTEAMCOMMONTimeRange.h>
 #import <ObjectiveDropboxOfficial/DBTEAMLOGEventCategory.h>
+#import "DBTEAMLOGEventTypeArg.h"
 #import <ObjectiveDropboxOfficial/DBTEAMLOGGetTeamEventsArg.h>
 #import <ObjectiveDropboxOfficial/DBTEAMLOGGetTeamEventsContinueArg.h>
 #import <ObjectiveDropboxOfficial/DBTEAMLOGGetTeamEventsContinueError.h>
@@ -37,10 +38,14 @@
 - (DBRpcTask *)getEvents:(NSNumber *)limit
                accountId:(NSString *)accountId
                     time:(DBTEAMCOMMONTimeRange *)time
-                category:(DBTEAMLOGEventCategory *)category {
+                category:(DBTEAMLOGEventCategory *)category
+               eventType:(DBTEAMLOGEventTypeArg *)eventType {
   DBRoute *route = DBTEAMLOGRouteObjects.DBTEAMLOGGetEvents;
-  DBTEAMLOGGetTeamEventsArg *arg =
-      [[DBTEAMLOGGetTeamEventsArg alloc] initWithLimit:limit accountId:accountId time:time category:category];
+  DBTEAMLOGGetTeamEventsArg *arg = [[DBTEAMLOGGetTeamEventsArg alloc] initWithLimit:limit
+                                                                          accountId:accountId
+                                                                               time:time
+                                                                           category:category
+                                                                          eventType:eventType];
   return [self.client requestRpc:route arg:arg];
 }
 

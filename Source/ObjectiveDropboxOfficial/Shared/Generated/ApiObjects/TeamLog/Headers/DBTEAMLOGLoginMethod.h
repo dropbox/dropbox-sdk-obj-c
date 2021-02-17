@@ -27,18 +27,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGLoginMethodTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGLoginMethod` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
-  /// (no description).
-  DBTEAMLOGLoginMethodPassword,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag){
+    /// (no description).
+    DBTEAMLOGLoginMethodPassword,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodTwoFactorAuthentication,
+    /// (no description).
+    DBTEAMLOGLoginMethodTwoFactorAuthentication,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodSaml,
+    /// (no description).
+    DBTEAMLOGLoginMethodSaml,
 
-  /// (no description).
-  DBTEAMLOGLoginMethodOther,
+    /// (no description).
+    DBTEAMLOGLoginMethodGoogleOauth,
+
+    /// (no description).
+    DBTEAMLOGLoginMethodWebSession,
+
+    /// (no description).
+    DBTEAMLOGLoginMethodQrCode,
+
+    /// (no description).
+    DBTEAMLOGLoginMethodAppleOauth,
+
+    /// (no description).
+    DBTEAMLOGLoginMethodFirstPartyTokenExchange,
+
+    /// (no description).
+    DBTEAMLOGLoginMethodOther,
 
 };
 
@@ -67,6 +82,41 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSaml;
+
+///
+/// Initializes union class with tag state of "google_oauth".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGoogleOauth;
+
+///
+/// Initializes union class with tag state of "web_session".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithWebSession;
+
+///
+/// Initializes union class with tag state of "qr_code".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithQrCode;
+
+///
+/// Initializes union class with tag state of "apple_oauth".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAppleOauth;
+
+///
+/// Initializes union class with tag state of "first_party_token_exchange".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFirstPartyTokenExchange;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -101,6 +151,43 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
 /// @return Whether the union's current tag state has value "saml".
 ///
 - (BOOL)isSaml;
+
+///
+/// Retrieves whether the union's current tag state has value "google_oauth".
+///
+/// @return Whether the union's current tag state has value "google_oauth".
+///
+- (BOOL)isGoogleOauth;
+
+///
+/// Retrieves whether the union's current tag state has value "web_session".
+///
+/// @return Whether the union's current tag state has value "web_session".
+///
+- (BOOL)isWebSession;
+
+///
+/// Retrieves whether the union's current tag state has value "qr_code".
+///
+/// @return Whether the union's current tag state has value "qr_code".
+///
+- (BOOL)isQrCode;
+
+///
+/// Retrieves whether the union's current tag state has value "apple_oauth".
+///
+/// @return Whether the union's current tag state has value "apple_oauth".
+///
+- (BOOL)isAppleOauth;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "first_party_token_exchange".
+///
+/// @return Whether the union's current tag state has value
+/// "first_party_token_exchange".
+///
+- (BOOL)isFirstPartyTokenExchange;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

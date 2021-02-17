@@ -29,46 +29,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGAddFolderMemberErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGAddFolderMemberError` union can exist.
-typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
-  /// Unable to access shared folder.
-  DBSHARINGAddFolderMemberErrorAccessError,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag){
+    /// Unable to access shared folder.
+    DBSHARINGAddFolderMemberErrorAccessError,
 
-  /// The current user's e-mail address is unverified.
-  DBSHARINGAddFolderMemberErrorEmailUnverified,
+    /// The current user's e-mail address is unverified.
+    DBSHARINGAddFolderMemberErrorEmailUnverified,
 
-  /// `members` in `DBSHARINGAddFolderMemberArg` contains a bad invitation
-  /// recipient.
-  DBSHARINGAddFolderMemberErrorBadMember,
+    /// The current user has been banned.
+    DBSHARINGAddFolderMemberErrorBannedMember,
 
-  /// Your team policy does not allow sharing outside of the team.
-  DBSHARINGAddFolderMemberErrorCantShareOutsideTeam,
+    /// `members` in `DBSHARINGAddFolderMemberArg` contains a bad invitation
+    /// recipient.
+    DBSHARINGAddFolderMemberErrorBadMember,
 
-  /// The value is the member limit that was reached.
-  DBSHARINGAddFolderMemberErrorTooManyMembers,
+    /// Your team policy does not allow sharing outside of the team.
+    DBSHARINGAddFolderMemberErrorCantShareOutsideTeam,
 
-  /// The value is the pending invite limit that was reached.
-  DBSHARINGAddFolderMemberErrorTooManyPendingInvites,
+    /// The value is the member limit that was reached.
+    DBSHARINGAddFolderMemberErrorTooManyMembers,
 
-  /// The current user has hit the limit of invites they can send per day. Try
-  /// again in 24 hours.
-  DBSHARINGAddFolderMemberErrorRateLimit,
+    /// The value is the pending invite limit that was reached.
+    DBSHARINGAddFolderMemberErrorTooManyPendingInvites,
 
-  /// The current user is trying to share with too many people at once.
-  DBSHARINGAddFolderMemberErrorTooManyInvitees,
+    /// The current user has hit the limit of invites they can send per day. Try
+    /// again in 24 hours.
+    DBSHARINGAddFolderMemberErrorRateLimit,
 
-  /// The current user's account doesn't support this action. An example of
-  /// this is when adding a read-only member. This action can only be
-  /// performed by users that have upgraded to a Pro or Business plan.
-  DBSHARINGAddFolderMemberErrorInsufficientPlan,
+    /// The current user is trying to share with too many people at once.
+    DBSHARINGAddFolderMemberErrorTooManyInvitees,
 
-  /// This action cannot be performed on a team shared folder.
-  DBSHARINGAddFolderMemberErrorTeamFolder,
+    /// The current user's account doesn't support this action. An example of
+    /// this is when adding a read-only member. This action can only be
+    /// performed by users that have upgraded to a Pro or Business plan.
+    DBSHARINGAddFolderMemberErrorInsufficientPlan,
 
-  /// The current user does not have permission to perform this action.
-  DBSHARINGAddFolderMemberErrorNoPermission,
+    /// This action cannot be performed on a team shared folder.
+    DBSHARINGAddFolderMemberErrorTeamFolder,
 
-  /// (no description).
-  DBSHARINGAddFolderMemberErrorOther,
+    /// The current user does not have permission to perform this action.
+    DBSHARINGAddFolderMemberErrorNoPermission,
+
+    /// Invalid shared folder error will be returned as an access_error.
+    DBSHARINGAddFolderMemberErrorInvalidSharedFolder,
+
+    /// (no description).
+    DBSHARINGAddFolderMemberErrorOther,
 
 };
 
@@ -116,6 +122,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithEmailUnverified;
+
+///
+/// Initializes union class with tag state of "banned_member".
+///
+/// Description of the "banned_member" tag state: The current user has been
+/// banned.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithBannedMember;
 
 ///
 /// Initializes union class with tag state of "bad_member".
@@ -218,6 +234,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
 - (instancetype)initWithNoPermission;
 
 ///
+/// Initializes union class with tag state of "invalid_shared_folder".
+///
+/// Description of the "invalid_shared_folder" tag state: Invalid shared folder
+/// error will be returned as an access_error.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInvalidSharedFolder;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -245,6 +271,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
 /// @return Whether the union's current tag state has value "email_unverified".
 ///
 - (BOOL)isEmailUnverified;
+
+///
+/// Retrieves whether the union's current tag state has value "banned_member".
+///
+/// @return Whether the union's current tag state has value "banned_member".
+///
+- (BOOL)isBannedMember;
 
 ///
 /// Retrieves whether the union's current tag state has value "bad_member".
@@ -325,6 +358,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFolderMemberErrorTag) {
 /// @return Whether the union's current tag state has value "no_permission".
 ///
 - (BOOL)isNoPermission;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "invalid_shared_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "invalid_shared_folder".
+///
+- (BOOL)isInvalidSharedFolder;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -10,6 +10,8 @@
 #import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILEPROPERTIESPropertyGroup;
+@class DBFILESExportInfo;
+@class DBFILESFileLockMetadata;
 @class DBFILESFileMetadata;
 @class DBFILESFileSharingInfo;
 @class DBFILESMediaInfo;
@@ -51,7 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The file size in bytes.
 @property (nonatomic, readonly) NSNumber *size;
 
-/// Additional information if the file is a photo or video.
+/// Additional information if the file is a photo or video. This field will not
+/// be set on entries returned by `listFolder`, `listFolderContinue`, or
+/// `getThumbnailBatch`, starting December 2, 2019.
 @property (nonatomic, readonly, nullable) DBFILESMediaInfo *mediaInfo;
 
 /// Set if this file is a symlink.
@@ -59,6 +63,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Set if this file is contained in a shared folder.
 @property (nonatomic, readonly, nullable) DBFILESFileSharingInfo *sharingInfo;
+
+/// If true, file can be downloaded directly; else the file must be exported.
+@property (nonatomic, readonly) NSNumber *isDownloadable;
+
+/// Information about format this file can be exported to. This filed must be
+/// set if isDownloadable is set to false.
+@property (nonatomic, readonly, nullable) DBFILESExportInfo *exportInfo;
 
 /// Additional information if the file has custom properties with the property
 /// template specified.
@@ -75,6 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 @property (nonatomic, readonly, copy, nullable) NSString *contentHash;
+
+/// If present, the metadata associated with the file's current lock.
+@property (nonatomic, readonly, nullable) DBFILESFileLockMetadata *fileLockInfo;
 
 #pragma mark - Constructors
 
@@ -107,8 +121,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
 /// `DBFILESFolderSharingInfo` instead.
 /// @param mediaInfo Additional information if the file is a photo or video.
+/// This field will not be set on entries returned by `listFolder`,
+/// `listFolderContinue`, or `getThumbnailBatch`, starting December 2, 2019.
 /// @param symlinkInfo Set if this file is a symlink.
 /// @param sharingInfo Set if this file is contained in a shared folder.
+/// @param isDownloadable If true, file can be downloaded directly; else the
+/// file must be exported.
+/// @param exportInfo Information about format this file can be exported to.
+/// This filed must be set if isDownloadable is set to false.
 /// @param propertyGroups Additional information if the file has custom
 /// properties with the property template specified.
 /// @param hasExplicitSharedMembers This flag will only be present if
@@ -120,6 +140,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param contentHash A hash of the file content. This field can be used to
 /// verify data integrity. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
+/// @param fileLockInfo If present, the metadata associated with the file's
+/// current lock.
 ///
 /// @return An initialized instance.
 ///
@@ -135,9 +157,12 @@ NS_ASSUME_NONNULL_BEGIN
                    mediaInfo:(nullable DBFILESMediaInfo *)mediaInfo
                  symlinkInfo:(nullable DBFILESSymlinkInfo *)symlinkInfo
                  sharingInfo:(nullable DBFILESFileSharingInfo *)sharingInfo
+              isDownloadable:(nullable NSNumber *)isDownloadable
+                  exportInfo:(nullable DBFILESExportInfo *)exportInfo
               propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
     hasExplicitSharedMembers:(nullable NSNumber *)hasExplicitSharedMembers
-                 contentHash:(nullable NSString *)contentHash;
+                 contentHash:(nullable NSString *)contentHash
+                fileLockInfo:(nullable DBFILESFileLockMetadata *)fileLockInfo;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

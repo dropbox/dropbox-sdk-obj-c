@@ -28,7 +28,9 @@
 /// OAuth
 #import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 #import <ObjectiveDropboxOfficial/DBOAuthResult.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResultCompletion.h>
 #import <ObjectiveDropboxOfficial/DBSDKKeychain.h>
+#import <ObjectiveDropboxOfficial/DBScopeRequest.h>
 #import <ObjectiveDropboxOfficial/DBSharedApplicationProtocol.h>
 
 /// Resources

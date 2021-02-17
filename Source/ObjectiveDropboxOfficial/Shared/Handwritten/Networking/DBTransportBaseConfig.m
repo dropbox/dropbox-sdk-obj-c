@@ -4,7 +4,13 @@
 
 #import <ObjectiveDropboxOfficial/DBTransportBaseConfig.h>
 
+#import "DBSDKConstants.h"
+
 @implementation DBTransportBaseConfig
+
++ (NSString *)defaultUserAgent {
+  return [NSString stringWithFormat:@"%@/%@", kDBSDKDefaultUserAgentPrefix, kDBSDKVersion];
+}
 
 - (instancetype)initWithAppKey:(NSString *)appKey userAgent:(NSString *)userAgent {
   return [self initWithAppKey:appKey appSecret:nil userAgent:userAgent];

@@ -29,18 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGSharingMemberPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGSharingMemberPolicy` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGSharingMemberPolicyTag) {
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyAllow,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSharingMemberPolicyTag){
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyAllow,
 
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyForbid,
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyForbid,
 
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyTeamMembersAndWhitelist,
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyForbidWithExclusions,
 
-  /// (no description).
-  DBTEAMLOGSharingMemberPolicyOther,
+    /// (no description).
+    DBTEAMLOGSharingMemberPolicyOther,
 
 };
 
@@ -64,11 +64,11 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGSharingMemberPolicyTag) {
 - (instancetype)initWithForbid;
 
 ///
-/// Initializes union class with tag state of "team_members_and_whitelist".
+/// Initializes union class with tag state of "forbid_with_exclusions".
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTeamMembersAndWhitelist;
+- (instancetype)initWithForbidWithExclusions;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -97,12 +97,12 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGSharingMemberPolicyTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
-/// "team_members_and_whitelist".
+/// "forbid_with_exclusions".
 ///
 /// @return Whether the union's current tag state has value
-/// "team_members_and_whitelist".
+/// "forbid_with_exclusions".
 ///
-- (BOOL)isTeamMembersAndWhitelist;
+- (BOOL)isForbidWithExclusions;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

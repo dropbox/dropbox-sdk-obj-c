@@ -27,18 +27,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGLinkAudienceTag` enum type represents the possible tag states
 /// with which the `DBSHARINGLinkAudience` union can exist.
-typedef NS_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
-  /// Link is accessible by anyone.
-  DBSHARINGLinkAudiencePublic,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag){
+    /// Link is accessible by anyone.
+    DBSHARINGLinkAudiencePublic,
 
-  /// Link is accessible only by team members.
-  DBSHARINGLinkAudienceTeam,
+    /// Link is accessible only by team members.
+    DBSHARINGLinkAudienceTeam,
 
-  /// Link is accessible only by members of the content.
-  DBSHARINGLinkAudienceMembers,
+    /// The link can be used by no one. The link merely points the user to the
+    /// content, and does not grant additional rights to the user. Members of
+    /// the content who use this link can only access the content with their
+    /// pre-existing access rights.
+    DBSHARINGLinkAudienceNoOne,
 
-  /// (no description).
-  DBSHARINGLinkAudienceOther,
+    /// A link-specific password is required to access the link. Login is not
+    /// required.
+    DBSHARINGLinkAudiencePassword,
+
+    /// Link is accessible only by members of the content.
+    DBSHARINGLinkAudienceMembers,
+
+    /// (no description).
+    DBSHARINGLinkAudienceOther,
 
 };
 
@@ -65,6 +75,28 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithTeam;
+
+///
+/// Initializes union class with tag state of "no_one".
+///
+/// Description of the "no_one" tag state: The link can be used by no one. The
+/// link merely points the user to the content, and does not grant additional
+/// rights to the user. Members of the content who use this link can only access
+/// the content with their pre-existing access rights.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoOne;
+
+///
+/// Initializes union class with tag state of "password".
+///
+/// Description of the "password" tag state: A link-specific password is
+/// required to access the link. Login is not required.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPassword;
 
 ///
 /// Initializes union class with tag state of "members".
@@ -100,6 +132,20 @@ typedef NS_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
 /// @return Whether the union's current tag state has value "team".
 ///
 - (BOOL)isTeam;
+
+///
+/// Retrieves whether the union's current tag state has value "no_one".
+///
+/// @return Whether the union's current tag state has value "no_one".
+///
+- (BOOL)isNoOne;
+
+///
+/// Retrieves whether the union's current tag state has value "password".
+///
+/// @return Whether the union's current tag state has value "password".
+///
+- (BOOL)isPassword;
 
 ///
 /// Retrieves whether the union's current tag state has value "members".

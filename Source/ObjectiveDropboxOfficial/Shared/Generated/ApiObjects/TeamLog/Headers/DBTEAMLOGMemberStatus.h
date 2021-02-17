@@ -27,24 +27,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGMemberStatusTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGMemberStatus` union can exist.
-typedef NS_ENUM(NSInteger, DBTEAMLOGMemberStatusTag) {
-  /// (no description).
-  DBTEAMLOGMemberStatusNotJoined,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMemberStatusTag){
+    /// (no description).
+    DBTEAMLOGMemberStatusNotJoined,
 
-  /// (no description).
-  DBTEAMLOGMemberStatusInvited,
+    /// (no description).
+    DBTEAMLOGMemberStatusInvited,
 
-  /// (no description).
-  DBTEAMLOGMemberStatusActive,
+    /// (no description).
+    DBTEAMLOGMemberStatusActive,
 
-  /// (no description).
-  DBTEAMLOGMemberStatusSuspended,
+    /// (no description).
+    DBTEAMLOGMemberStatusSuspended,
 
-  /// (no description).
-  DBTEAMLOGMemberStatusRemoved,
+    /// (no description).
+    DBTEAMLOGMemberStatusRemoved,
 
-  /// (no description).
-  DBTEAMLOGMemberStatusOther,
+    /// (no description).
+    DBTEAMLOGMemberStatusMovedToAnotherTeam,
+
+    /// (no description).
+    DBTEAMLOGMemberStatusOther,
 
 };
 
@@ -87,6 +90,13 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGMemberStatusTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithRemoved;
+
+///
+/// Initializes union class with tag state of "moved_to_another_team".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMovedToAnotherTeam;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -133,6 +143,15 @@ typedef NS_ENUM(NSInteger, DBTEAMLOGMemberStatusTag) {
 /// @return Whether the union's current tag state has value "removed".
 ///
 - (BOOL)isRemoved;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "moved_to_another_team".
+///
+/// @return Whether the union's current tag state has value
+/// "moved_to_another_team".
+///
+- (BOOL)isMovedToAnotherTeam;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".
