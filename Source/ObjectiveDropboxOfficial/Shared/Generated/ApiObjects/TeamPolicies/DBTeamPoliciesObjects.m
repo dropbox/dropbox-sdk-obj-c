@@ -102,10 +102,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESCameraUploadsPolicyStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESCameraUploadsPolicyStateEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESCameraUploadsPolicyStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -289,12 +292,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESComputerBackupPolicyStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESComputerBackupPolicyStateEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESComputerBackupPolicyStateDefault_:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESComputerBackupPolicyStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -484,12 +491,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESEmmStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESEmmStateOptional:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESEmmStateRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESEmmStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -665,10 +676,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESFileLockingPolicyStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESFileLockingPolicyStateEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESFileLockingPolicyStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -824,8 +838,10 @@
   switch (_tag) {
   case DBTEAMPOLICIESGroupCreationAdminsAndMembers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESGroupCreationAdminsOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -994,10 +1010,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESOfficeAddInPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESOfficeAddInPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESOfficeAddInPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1167,10 +1186,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperDefaultFolderPolicyEveryoneInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDefaultFolderPolicyInviteOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDefaultFolderPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1340,10 +1362,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperDeploymentPolicyFull:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDeploymentPolicyPartial:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDeploymentPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1513,10 +1538,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperDesktopPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDesktopPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDesktopPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1700,12 +1728,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperEnabledPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperEnabledPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperEnabledPolicyUnspecified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperEnabledPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1881,10 +1913,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPasswordControlModeDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordControlModeEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordControlModeOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2068,12 +2103,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESPasswordStrengthPolicyMinimalRequirements:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordStrengthPolicyModeratePassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordStrengthPolicyStrongPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordStrengthPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2249,10 +2288,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESRolloutMethodUnlinkAll:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESRolloutMethodUnlinkMostInactive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESRolloutMethodAddMemberToExceptions:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2427,10 +2469,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSharedFolderJoinPolicyFromTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderJoinPolicyFromAnyone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderJoinPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2600,10 +2645,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSharedFolderMemberPolicyTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderMemberPolicyAnyone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderMemberPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2787,12 +2835,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedLinkCreatePolicyTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedLinkCreatePolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2968,10 +3020,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESShowcaseDownloadPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseDownloadPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseDownloadPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3141,10 +3196,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESShowcaseEnabledPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseEnabledPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseEnabledPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3314,10 +3372,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESShowcaseExternalSharingPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseExternalSharingPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseExternalSharingPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3488,10 +3549,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSmartSyncPolicyLocal:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmartSyncPolicyOnDemand:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmartSyncPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3661,10 +3725,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSmarterSmartSyncPolicyStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmarterSmartSyncPolicyStateEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmarterSmartSyncPolicyStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3848,12 +3915,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESSsoPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSsoPolicyOptional:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSsoPolicyRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSsoPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4029,10 +4100,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSuggestMembersPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSuggestMembersPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSuggestMembersPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4467,10 +4541,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4654,12 +4731,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESTwoStepVerificationStateRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationStateOptional:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;

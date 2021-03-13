@@ -435,6 +435,7 @@
   switch (_tag) {
   case DBFILESGetMetadataErrorPath:
     result = prime * result + [self.path hash];
+    break;
   }
 
   return prime * result;
@@ -610,8 +611,10 @@
   switch (_tag) {
   case DBFILESAlphaGetMetadataErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESAlphaGetMetadataErrorPropertiesError:
     result = prime * result + [self.propertiesError hash];
+    break;
   }
 
   return prime * result;
@@ -1630,8 +1633,10 @@
   switch (_tag) {
   case DBFILESCreateFolderBatchErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESCreateFolderBatchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1833,12 +1838,16 @@
   switch (_tag) {
   case DBFILESCreateFolderBatchJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESCreateFolderBatchJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESCreateFolderBatchJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   case DBFILESCreateFolderBatchJobStatusOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2041,10 +2050,13 @@
   switch (_tag) {
   case DBFILESCreateFolderBatchLaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBFILESCreateFolderBatchLaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESCreateFolderBatchLaunchOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2431,8 +2443,10 @@
   switch (_tag) {
   case DBFILESCreateFolderBatchResultEntrySuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBFILESCreateFolderBatchResultEntryFailure:
     result = prime * result + [self.failure hash];
+    break;
   }
 
   return prime * result;
@@ -2604,8 +2618,10 @@
   switch (_tag) {
   case DBFILESCreateFolderEntryErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESCreateFolderEntryErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2855,6 +2871,7 @@
   switch (_tag) {
   case DBFILESCreateFolderErrorPath:
     result = prime * result + [self.path hash];
+    break;
   }
 
   return prime * result;
@@ -3336,8 +3353,10 @@
   switch (_tag) {
   case DBFILESDeleteBatchErrorTooManyWriteOperations:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESDeleteBatchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3539,12 +3558,16 @@
   switch (_tag) {
   case DBFILESDeleteBatchJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESDeleteBatchJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESDeleteBatchJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   case DBFILESDeleteBatchJobStatusOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3747,10 +3770,13 @@
   switch (_tag) {
   case DBFILESDeleteBatchLaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBFILESDeleteBatchLaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESDeleteBatchLaunchOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4144,8 +4170,10 @@
   switch (_tag) {
   case DBFILESDeleteBatchResultEntrySuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBFILESDeleteBatchResultEntryFailure:
     result = prime * result + [self.failure hash];
+    break;
   }
 
   return prime * result;
@@ -4369,14 +4397,19 @@
   switch (_tag) {
   case DBFILESDeleteErrorPathLookup:
     result = prime * result + [self.pathLookup hash];
+    break;
   case DBFILESDeleteErrorPathWrite:
     result = prime * result + [self.pathWrite hash];
+    break;
   case DBFILESDeleteErrorTooManyWriteOperations:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESDeleteErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESDeleteErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5232,10 +5265,13 @@
   switch (_tag) {
   case DBFILESDownloadErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESDownloadErrorUnsupportedFile:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESDownloadErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5536,12 +5572,16 @@
   switch (_tag) {
   case DBFILESDownloadZipErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESDownloadZipErrorTooLarge:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESDownloadZipErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESDownloadZipErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5948,12 +5988,16 @@
   switch (_tag) {
   case DBFILESExportErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESExportErrorNonExportable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESExportErrorRetryError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESExportErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -6587,26 +6631,37 @@
   switch (_tag) {
   case DBFILESFileCategoryImage:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryDocument:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryPdf:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategorySpreadsheet:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryPresentation:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryAudio:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryVideo:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryPaper:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryOthers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileCategoryOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -6936,10 +6991,13 @@
   switch (_tag) {
   case DBFILESFileLockContentUnlocked:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileLockContentSingleUser:
     result = prime * result + [self.singleUser hash];
+    break;
   case DBFILESFileLockContentOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7879,10 +7937,13 @@
   switch (_tag) {
   case DBFILESFileStatusActive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileStatusDeleted:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESFileStatusOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -8539,8 +8600,10 @@
   switch (_tag) {
   case DBFILESGetCopyReferenceErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESGetCopyReferenceErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -8954,12 +9017,16 @@
   switch (_tag) {
   case DBFILESGetTemporaryLinkErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESGetTemporaryLinkErrorEmailNotVerified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESGetTemporaryLinkErrorUnsupportedFile:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESGetTemporaryLinkErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -9551,8 +9618,10 @@
   switch (_tag) {
   case DBFILESGetThumbnailBatchErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESGetThumbnailBatchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -9959,10 +10028,13 @@
   switch (_tag) {
   case DBFILESGetThumbnailBatchResultEntrySuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBFILESGetThumbnailBatchResultEntryFailure:
     result = prime * result + [self.failure hash];
+    break;
   case DBFILESGetThumbnailBatchResultEntryOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -10683,10 +10755,13 @@
   switch (_tag) {
   case DBFILESListFolderContinueErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESListFolderContinueErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESListFolderContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -10881,10 +10956,13 @@
   switch (_tag) {
   case DBFILESListFolderErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESListFolderErrorTemplateError:
     result = prime * result + [self.templateError hash];
+    break;
   case DBFILESListFolderErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -11256,8 +11334,10 @@
   switch (_tag) {
   case DBFILESListFolderLongpollErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESListFolderLongpollErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -11785,8 +11865,10 @@
   switch (_tag) {
   case DBFILESListRevisionsErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESListRevisionsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -11952,10 +12034,13 @@
   switch (_tag) {
   case DBFILESListRevisionsModePath:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESListRevisionsModeId_:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESListRevisionsModeOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12795,22 +12880,31 @@
   switch (_tag) {
   case DBFILESLockFileErrorPathLookup:
     result = prime * result + [self.pathLookup hash];
+    break;
   case DBFILESLockFileErrorTooManyWriteOperations:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLockFileErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLockFileErrorNoWritePermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLockFileErrorCannotBeLocked:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLockFileErrorFileNotShared:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLockFileErrorLockConflict:
     result = prime * result + [self.lockConflict hash];
+    break;
   case DBFILESLockFileErrorInternalError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLockFileErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -13138,8 +13232,10 @@
   switch (_tag) {
   case DBFILESLockFileResultEntrySuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBFILESLockFileResultEntryFailure:
     result = prime * result + [self.failure hash];
+    break;
   }
 
   return prime * result;
@@ -13395,20 +13491,28 @@
     if (self.malformedPath != nil) {
       result = prime * result + [self.malformedPath hash];
     }
+    break;
   case DBFILESLookupErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLookupErrorNotFile:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLookupErrorNotFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLookupErrorRestrictedContent:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLookupErrorUnsupportedContentType:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLookupErrorLocked:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESLookupErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -13612,8 +13716,10 @@
   switch (_tag) {
   case DBFILESMediaInfoPending:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESMediaInfoMetadata:
     result = prime * result + [self.metadata hash];
+    break;
   }
 
   return prime * result;
@@ -13942,8 +14048,10 @@
   switch (_tag) {
   case DBFILESMetadataV2Metadata:
     result = prime * result + [self.metadata hash];
+    break;
   case DBFILESMetadataV2Other:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14485,8 +14593,10 @@
   switch (_tag) {
   case DBFILESMoveIntoVaultErrorIsSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESMoveIntoVaultErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14672,10 +14782,13 @@
   switch (_tag) {
   case DBFILESPathOrLinkPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESPathOrLinkLink:
     result = prime * result + [self.link hash];
+    break;
   case DBFILESPathOrLinkOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -15137,12 +15250,16 @@
   switch (_tag) {
   case DBFILESPreviewErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESPreviewErrorInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESPreviewErrorUnsupportedExtension:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESPreviewErrorUnsupportedContent:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16048,32 +16165,46 @@
   switch (_tag) {
   case DBFILESRelocationErrorFromLookup:
     result = prime * result + [self.fromLookup hash];
+    break;
   case DBFILESRelocationErrorFromWrite:
     result = prime * result + [self.fromWrite hash];
+    break;
   case DBFILESRelocationErrorTo:
     result = prime * result + [self.to hash];
+    break;
   case DBFILESRelocationErrorCantCopySharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorCantNestSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorCantMoveFolderIntoItself:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorDuplicatedOrNestedPaths:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorCantTransferOwnership:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorInsufficientQuota:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorInternalError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorCantMoveSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorCantMoveIntoVault:
     result = prime * result + [self.cantMoveIntoVault hash];
+    break;
   case DBFILESRelocationErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16533,34 +16664,49 @@
   switch (_tag) {
   case DBFILESRelocationBatchErrorFromLookup:
     result = prime * result + [self.fromLookup hash];
+    break;
   case DBFILESRelocationBatchErrorFromWrite:
     result = prime * result + [self.fromWrite hash];
+    break;
   case DBFILESRelocationBatchErrorTo:
     result = prime * result + [self.to hash];
+    break;
   case DBFILESRelocationBatchErrorCantCopySharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorCantNestSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorCantMoveFolderIntoItself:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorDuplicatedOrNestedPaths:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorCantTransferOwnership:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorInsufficientQuota:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorInternalError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorCantMoveSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorCantMoveIntoVault:
     result = prime * result + [self.cantMoveIntoVault hash];
+    break;
   case DBFILESRelocationBatchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16839,12 +16985,16 @@
   switch (_tag) {
   case DBFILESRelocationBatchErrorEntryRelocationError:
     result = prime * result + [self.relocationError hash];
+    break;
   case DBFILESRelocationBatchErrorEntryInternalError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorEntryTooManyWriteOperations:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorEntryOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17047,10 +17197,13 @@
   switch (_tag) {
   case DBFILESRelocationBatchJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESRelocationBatchJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   }
 
   return prime * result;
@@ -17252,10 +17405,13 @@
   switch (_tag) {
   case DBFILESRelocationBatchLaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBFILESRelocationBatchLaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESRelocationBatchLaunchOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17663,10 +17819,13 @@
   switch (_tag) {
   case DBFILESRelocationBatchResultEntrySuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBFILESRelocationBatchResultEntryFailure:
     result = prime * result + [self.failure hash];
+    break;
   case DBFILESRelocationBatchResultEntryOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17840,8 +17999,10 @@
   switch (_tag) {
   case DBFILESRelocationBatchV2JobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchV2JobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   }
 
   return prime * result;
@@ -18021,8 +18182,10 @@
   switch (_tag) {
   case DBFILESRelocationBatchV2LaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBFILESRelocationBatchV2LaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   }
 
   return prime * result;
@@ -18567,14 +18730,19 @@
   switch (_tag) {
   case DBFILESRestoreErrorPathLookup:
     result = prime * result + [self.pathLookup hash];
+    break;
   case DBFILESRestoreErrorPathWrite:
     result = prime * result + [self.pathWrite hash];
+    break;
   case DBFILESRestoreErrorInvalidRevision:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRestoreErrorInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRestoreErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -18922,16 +19090,22 @@
   switch (_tag) {
   case DBFILESSaveCopyReferenceErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESSaveCopyReferenceErrorInvalidCopyReference:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveCopyReferenceErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveCopyReferenceErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveCopyReferenceErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveCopyReferenceErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -19369,14 +19543,19 @@
   switch (_tag) {
   case DBFILESSaveUrlErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESSaveUrlErrorDownloadFailed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveUrlErrorInvalidUrl:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveUrlErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveUrlErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -19584,10 +19763,13 @@
   switch (_tag) {
   case DBFILESSaveUrlJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSaveUrlJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESSaveUrlJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   }
 
   return prime * result;
@@ -19775,8 +19957,10 @@
   switch (_tag) {
   case DBFILESSaveUrlResultAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBFILESSaveUrlResultComplete:
     result = prime * result + [self.complete hash];
+    break;
   }
 
   return prime * result;
@@ -20126,14 +20310,18 @@
   switch (_tag) {
   case DBFILESSearchErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESSearchErrorInvalidArgument:
     if (self.invalidArgument != nil) {
       result = prime * result + [self.invalidArgument hash];
     }
+    break;
   case DBFILESSearchErrorInternalError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -20528,10 +20716,13 @@
   switch (_tag) {
   case DBFILESSearchMatchTypeFilename:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchMatchTypeContent:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchMatchTypeBoth:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -20734,14 +20925,19 @@
   switch (_tag) {
   case DBFILESSearchMatchTypeV2Filename:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchMatchTypeV2FileContent:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchMatchTypeV2FilenameAndContent:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchMatchTypeV2ImageContent:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchMatchTypeV2Other:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -21070,10 +21266,13 @@
   switch (_tag) {
   case DBFILESSearchModeFilename:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchModeFilenameAndContent:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchModeDeletedFilename:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -21468,10 +21667,13 @@
   switch (_tag) {
   case DBFILESSearchOrderByRelevance:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchOrderByLastModifiedTime:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSearchOrderByOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -22645,12 +22847,16 @@
   switch (_tag) {
   case DBFILESSyncSettingDefault_:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSyncSettingNotSynced:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSyncSettingNotSyncedInactive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSyncSettingOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -22826,10 +23032,13 @@
   switch (_tag) {
   case DBFILESSyncSettingArgDefault_:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSyncSettingArgNotSynced:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSyncSettingArgOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23025,12 +23234,16 @@
   switch (_tag) {
   case DBFILESSyncSettingsErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESSyncSettingsErrorUnsupportedCombination:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSyncSettingsErrorUnsupportedConfiguration:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESSyncSettingsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23372,12 +23585,16 @@
   switch (_tag) {
   case DBFILESThumbnailErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESThumbnailErrorUnsupportedExtension:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailErrorUnsupportedImage:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailErrorConversionError:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23546,8 +23763,10 @@
   switch (_tag) {
   case DBFILESThumbnailFormatJpeg:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailFormatPng:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23716,10 +23935,13 @@
   switch (_tag) {
   case DBFILESThumbnailModeStrict:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailModeBestfit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailModeFitoneBestfit:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23978,22 +24200,31 @@
   switch (_tag) {
   case DBFILESThumbnailSizeW32h32:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW64h64:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW128h128:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW256h256:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW480h320:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW640h480:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW960h640:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW1024h768:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailSizeW2048h1536:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24407,18 +24638,25 @@
   switch (_tag) {
   case DBFILESThumbnailV2ErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESThumbnailV2ErrorUnsupportedExtension:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailV2ErrorUnsupportedImage:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailV2ErrorConversionError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailV2ErrorAccessDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailV2ErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailV2ErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24849,10 +25087,13 @@
   switch (_tag) {
   case DBFILESUploadErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESUploadErrorPropertiesError:
     result = prime * result + [self.propertiesError hash];
+    break;
   case DBFILESUploadErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -25053,10 +25294,13 @@
   switch (_tag) {
   case DBFILESUploadErrorWithPropertiesPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESUploadErrorWithPropertiesPropertiesError:
     result = prime * result + [self.propertiesError hash];
+    break;
   case DBFILESUploadErrorWithPropertiesOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -25669,8 +25913,10 @@
   switch (_tag) {
   case DBFILESUploadSessionFinishBatchJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionFinishBatchJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   }
 
   return prime * result;
@@ -25868,10 +26114,13 @@
   switch (_tag) {
   case DBFILESUploadSessionFinishBatchLaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBFILESUploadSessionFinishBatchLaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBFILESUploadSessionFinishBatchLaunchOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26170,8 +26419,10 @@
   switch (_tag) {
   case DBFILESUploadSessionFinishBatchResultEntrySuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBFILESUploadSessionFinishBatchResultEntryFailure:
     result = prime * result + [self.failure hash];
+    break;
   }
 
   return prime * result;
@@ -26466,22 +26717,31 @@
   switch (_tag) {
   case DBFILESUploadSessionFinishErrorLookupFailed:
     result = prime * result + [self.lookupFailed hash];
+    break;
   case DBFILESUploadSessionFinishErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBFILESUploadSessionFinishErrorPropertiesError:
     result = prime * result + [self.propertiesError hash];
+    break;
   case DBFILESUploadSessionFinishErrorTooManySharedFolderTargets:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionFinishErrorTooManyWriteOperations:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionFinishErrorConcurrentSessionDataNotAllowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionFinishErrorConcurrentSessionNotClosed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionFinishErrorConcurrentSessionMissingData:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionFinishErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26780,20 +27040,28 @@
   switch (_tag) {
   case DBFILESUploadSessionLookupErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionLookupErrorIncorrectOffset:
     result = prime * result + [self.incorrectOffset hash];
+    break;
   case DBFILESUploadSessionLookupErrorClosed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionLookupErrorNotClosed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionLookupErrorTooLarge:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionLookupErrorConcurrentSessionInvalidOffset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionLookupErrorConcurrentSessionInvalidDataSize:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionLookupErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -27212,10 +27480,13 @@
   switch (_tag) {
   case DBFILESUploadSessionStartErrorConcurrentSessionDataNotAllowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionStartErrorConcurrentSessionCloseNotAllowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionStartErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -27484,10 +27755,13 @@
   switch (_tag) {
   case DBFILESUploadSessionTypeSequential:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionTypeConcurrent:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESUploadSessionTypeOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -27936,12 +28210,16 @@
   switch (_tag) {
   case DBFILESWriteConflictErrorFile:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteConflictErrorFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteConflictErrorFileAncestor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteConflictErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -28225,22 +28503,31 @@
     if (self.malformedPath != nil) {
       result = prime * result + [self.malformedPath hash];
     }
+    break;
   case DBFILESWriteErrorConflict:
     result = prime * result + [self.conflict hash];
+    break;
   case DBFILESWriteErrorNoWritePermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteErrorInsufficientSpace:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteErrorDisallowedName:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteErrorTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteErrorOperationSuppressed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteErrorTooManyWriteOperations:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -28465,10 +28752,13 @@
   switch (_tag) {
   case DBFILESWriteModeAdd:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteModeOverwrite:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteModeUpdate:
     result = prime * result + [self.update hash];
+    break;
   }
 
   return prime * result;
