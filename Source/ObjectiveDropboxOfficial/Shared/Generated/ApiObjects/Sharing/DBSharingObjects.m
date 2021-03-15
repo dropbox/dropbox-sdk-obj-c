@@ -102,10 +102,13 @@
   switch (_tag) {
   case DBSHARINGAccessInheritanceInherit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessInheritanceNoInherit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessInheritanceOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -303,14 +306,19 @@
   switch (_tag) {
   case DBSHARINGAccessLevelOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessLevelEditor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessLevelViewer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessLevelViewerNoComment:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessLevelOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -492,10 +500,13 @@
   switch (_tag) {
   case DBSHARINGAclUpdatePolicyOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAclUpdatePolicyEditors:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAclUpdatePolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -888,14 +899,19 @@
   switch (_tag) {
   case DBSHARINGAddFileMemberErrorUserError:
     result = prime * result + [self.userError hash];
+    break;
   case DBSHARINGAddFileMemberErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGAddFileMemberErrorRateLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFileMemberErrorInvalidComment:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFileMemberErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1433,32 +1449,46 @@
   switch (_tag) {
   case DBSHARINGAddFolderMemberErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGAddFolderMemberErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorBannedMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorBadMember:
     result = prime * result + [self.badMember hash];
+    break;
   case DBSHARINGAddFolderMemberErrorCantShareOutsideTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorTooManyMembers:
     result = prime * result + [self.tooManyMembers hash];
+    break;
   case DBSHARINGAddFolderMemberErrorTooManyPendingInvites:
     result = prime * result + [self.tooManyPendingInvites hash];
+    break;
   case DBSHARINGAddFolderMemberErrorRateLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorTooManyInvitees:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorInsufficientPlan:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorInvalidSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddFolderMemberErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1909,18 +1939,25 @@
   switch (_tag) {
   case DBSHARINGAddMemberSelectorErrorAutomaticGroup:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddMemberSelectorErrorInvalidDropboxId:
     result = prime * result + [self.invalidDropboxId hash];
+    break;
   case DBSHARINGAddMemberSelectorErrorInvalidEmail:
     result = prime * result + [self.invalidEmail hash];
+    break;
   case DBSHARINGAddMemberSelectorErrorUnverifiedDropboxId:
     result = prime * result + [self.unverifiedDropboxId hash];
+    break;
   case DBSHARINGAddMemberSelectorErrorGroupDeleted:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddMemberSelectorErrorGroupNotOnTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAddMemberSelectorErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2985,8 +3022,10 @@
   switch (_tag) {
   case DBSHARINGCreateSharedLinkErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBSHARINGCreateSharedLinkErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3341,16 +3380,21 @@
   switch (_tag) {
   case DBSHARINGCreateSharedLinkWithSettingsErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists:
     if (self.sharedLinkAlreadyExists != nil) {
       result = prime * result + [self.sharedLinkAlreadyExists hash];
     }
+    break;
   case DBSHARINGCreateSharedLinkWithSettingsErrorSettingsError:
     result = prime * result + [self.settingsError hash];
+    break;
   case DBSHARINGCreateSharedLinkWithSettingsErrorAccessDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4136,30 +4180,43 @@
   switch (_tag) {
   case DBSHARINGFileActionDisableViewerInfo:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionEditContents:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionEnableViewerInfo:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionInviteViewer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionInviteViewerNoComment:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionInviteEditor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionUnshare:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionRelinquishMembership:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionShareLink:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionCreateLink:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionCreateViewLink:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionCreateEditLink:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileActionOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4436,12 +4493,16 @@
   switch (_tag) {
   case DBSHARINGFileErrorResultFileNotFoundError:
     result = prime * result + [self.fileNotFoundError hash];
+    break;
   case DBSHARINGFileErrorResultInvalidFileActionError:
     result = prime * result + [self.invalidFileActionError hash];
+    break;
   case DBSHARINGFileErrorResultPermissionDeniedError:
     result = prime * result + [self.permissionDeniedError hash];
+    break;
   case DBSHARINGFileErrorResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5187,14 +5248,19 @@
   switch (_tag) {
   case DBSHARINGFileMemberActionErrorInvalidMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileMemberActionErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFileMemberActionErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGFileMemberActionErrorNoExplicitAccess:
     result = prime * result + [self.noExplicitAccess hash];
+    break;
   case DBSHARINGFileMemberActionErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5396,8 +5462,10 @@
     if (self.success != nil) {
       result = prime * result + [self.success hash];
     }
+    break;
   case DBSHARINGFileMemberActionIndividualResultMemberError:
     result = prime * result + [self.memberError hash];
+    break;
   }
 
   return prime * result;
@@ -5713,10 +5781,13 @@
   switch (_tag) {
   case DBSHARINGFileMemberRemoveActionResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBSHARINGFileMemberRemoveActionResultMemberError:
     result = prime * result + [self.memberError hash];
+    break;
   case DBSHARINGFileMemberRemoveActionResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -6188,34 +6259,49 @@
   switch (_tag) {
   case DBSHARINGFolderActionChangeOptions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionDisableViewerInfo:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionEditContents:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionEnableViewerInfo:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionInviteEditor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionInviteViewer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionInviteViewerNoComment:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionRelinquishMembership:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionUnmount:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionUnshare:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionLeaveACopy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionShareLink:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionCreateLink:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionSetAccessInheritance:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGFolderActionOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7392,10 +7478,13 @@
   switch (_tag) {
   case DBSHARINGGetFileMetadataErrorUserError:
     result = prime * result + [self.userError hash];
+    break;
   case DBSHARINGGetFileMetadataErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGGetFileMetadataErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7596,10 +7685,13 @@
   switch (_tag) {
   case DBSHARINGGetFileMetadataIndividualResultMetadata:
     result = prime * result + [self.metadata hash];
+    break;
   case DBSHARINGGetFileMetadataIndividualResultAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGGetFileMetadataIndividualResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7920,12 +8012,16 @@
   switch (_tag) {
   case DBSHARINGSharedLinkErrorSharedLinkNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkErrorSharedLinkAccessDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkErrorUnsupportedLinkType:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -8130,14 +8226,19 @@
   switch (_tag) {
   case DBSHARINGGetSharedLinkFileErrorSharedLinkNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGGetSharedLinkFileErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGGetSharedLinkFileErrorSharedLinkIsDirectory:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -8557,8 +8658,10 @@
     if (self.path != nil) {
       result = prime * result + [self.path hash];
     }
+    break;
   case DBSHARINGGetSharedLinksErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -9601,8 +9704,10 @@
   switch (_tag) {
   case DBSHARINGInviteeInfoEmail:
     result = prime * result + [self.email hash];
+    break;
   case DBSHARINGInviteeInfoOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -9998,12 +10103,16 @@
   switch (_tag) {
   case DBSHARINGJobErrorUnshareFolderError:
     result = prime * result + [self.unshareFolderError hash];
+    break;
   case DBSHARINGJobErrorRemoveFolderMemberError:
     result = prime * result + [self.removeFolderMemberError hash];
+    break;
   case DBSHARINGJobErrorRelinquishFolderMembershipError:
     result = prime * result + [self.relinquishFolderMembershipError hash];
+    break;
   case DBSHARINGJobErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -10205,10 +10314,13 @@
   switch (_tag) {
   case DBSHARINGJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGJobStatusComplete:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   }
 
   return prime * result;
@@ -10385,10 +10497,13 @@
   switch (_tag) {
   case DBSHARINGLinkAccessLevelViewer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAccessLevelEditor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAccessLevelOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -10614,18 +10729,25 @@
   switch (_tag) {
   case DBSHARINGLinkActionChangeAccessLevel:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkActionChangeAudience:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkActionRemoveExpiry:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkActionRemovePassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkActionSetExpiry:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkActionSetPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkActionOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -10861,16 +10983,22 @@
   switch (_tag) {
   case DBSHARINGLinkAudiencePublic:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAudienceTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAudienceNoOne:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAudiencePassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAudienceMembers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAudienceOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -11069,10 +11197,13 @@
   switch (_tag) {
   case DBSHARINGLinkExpiryRemoveExpiry:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkExpirySetExpiry:
     result = prime * result + [self.setExpiry hash];
+    break;
   case DBSHARINGLinkExpiryOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -11255,10 +11386,13 @@
   switch (_tag) {
   case DBSHARINGLinkPasswordRemovePassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkPasswordSetPassword:
     result = prime * result + [self.setPassword hash];
+    break;
   case DBSHARINGLinkPasswordOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12448,12 +12582,16 @@
   switch (_tag) {
   case DBSHARINGListFileMembersContinueErrorUserError:
     result = prime * result + [self.userError hash];
+    break;
   case DBSHARINGListFileMembersContinueErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGListFileMembersContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGListFileMembersContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12766,10 +12904,13 @@
   switch (_tag) {
   case DBSHARINGListFileMembersErrorUserError:
     result = prime * result + [self.userError hash];
+    break;
   case DBSHARINGListFileMembersErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGListFileMembersErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12970,10 +13111,13 @@
   switch (_tag) {
   case DBSHARINGListFileMembersIndividualResultResult:
     result = prime * result + [self.result hash];
+    break;
   case DBSHARINGListFileMembersIndividualResultAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGListFileMembersIndividualResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -13389,10 +13533,13 @@
   switch (_tag) {
   case DBSHARINGListFilesContinueErrorUserError:
     result = prime * result + [self.userError hash];
+    break;
   case DBSHARINGListFilesContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGListFilesContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14069,10 +14216,13 @@
   switch (_tag) {
   case DBSHARINGListFolderMembersContinueErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGListFolderMembersContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGListFolderMembersContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14460,8 +14610,10 @@
   switch (_tag) {
   case DBSHARINGListFoldersContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGListFoldersContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14903,10 +15055,13 @@
   switch (_tag) {
   case DBSHARINGListSharedLinksErrorPath:
     result = prime * result + [self.path hash];
+    break;
   case DBSHARINGListSharedLinksErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGListSharedLinksErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -15426,18 +15581,25 @@
   switch (_tag) {
   case DBSHARINGMemberActionLeaveACopy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberActionMakeEditor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberActionMakeOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberActionMakeViewer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberActionMakeViewerNoComment:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberActionRemove:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberActionOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -15760,10 +15922,13 @@
   switch (_tag) {
   case DBSHARINGMemberPolicyTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberPolicyAnyone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMemberPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -15954,10 +16119,13 @@
   switch (_tag) {
   case DBSHARINGMemberSelectorDropboxId:
     result = prime * result + [self.dropboxId hash];
+    break;
   case DBSHARINGMemberSelectorEmail:
     result = prime * result + [self.email hash];
+    break;
   case DBSHARINGMemberSelectorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16310,16 +16478,22 @@
   switch (_tag) {
   case DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGModifySharedLinkSettingsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGModifySharedLinkSettingsErrorSettingsError:
     result = prime * result + [self.settingsError hash];
+    break;
   case DBSHARINGModifySharedLinkSettingsErrorEmailNotVerified:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16692,18 +16866,25 @@
   switch (_tag) {
   case DBSHARINGMountFolderErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGMountFolderErrorInsideSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMountFolderErrorInsufficientQuota:
     result = prime * result + [self.insufficientQuota hash];
+    break;
   case DBSHARINGMountFolderErrorAlreadyMounted:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMountFolderErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMountFolderErrorNotMountable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGMountFolderErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17167,8 +17348,10 @@
   switch (_tag) {
   case DBSHARINGPendingUploadModeFile:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPendingUploadModeFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17532,36 +17715,52 @@
   switch (_tag) {
   case DBSHARINGPermissionDeniedReasonUserNotSameTeamAsOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonUserNotAllowedByOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonTargetIsIndirectMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonTargetIsOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonTargetIsSelf:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonTargetNotActive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonFolderIsLimitedTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonOwnerNotOnTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonPermissionDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonRestrictedByTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonUserAccountType:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonUserNotOnTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonRestrictedByParentFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGPermissionDeniedReasonInsufficientPlan:
     result = prime * result + [self.insufficientPlan hash];
+    break;
   case DBSHARINGPermissionDeniedReasonOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17940,12 +18139,16 @@
   switch (_tag) {
   case DBSHARINGRelinquishFileMembershipErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGRelinquishFileMembershipErrorGroupAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFileMembershipErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFileMembershipErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -18321,20 +18524,28 @@
   switch (_tag) {
   case DBSHARINGRelinquishFolderMembershipErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGRelinquishFolderMembershipErrorFolderOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFolderMembershipErrorMounted:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFolderMembershipErrorGroupAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFolderMembershipErrorTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFolderMembershipErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFolderMembershipErrorNoExplicitAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRelinquishFolderMembershipErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -18699,12 +18910,16 @@
   switch (_tag) {
   case DBSHARINGRemoveFileMemberErrorUserError:
     result = prime * result + [self.userError hash];
+    break;
   case DBSHARINGRemoveFileMemberErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGRemoveFileMemberErrorNoExplicitAccess:
     result = prime * result + [self.noExplicitAccess hash];
+    break;
   case DBSHARINGRemoveFileMemberErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -19105,20 +19320,28 @@
   switch (_tag) {
   case DBSHARINGRemoveFolderMemberErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGRemoveFolderMemberErrorMemberError:
     result = prime * result + [self.memberError hash];
+    break;
   case DBSHARINGRemoveFolderMemberErrorFolderOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRemoveFolderMemberErrorGroupAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRemoveFolderMemberErrorTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRemoveFolderMemberErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRemoveFolderMemberErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRemoveFolderMemberErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -19350,10 +19573,13 @@
   switch (_tag) {
   case DBSHARINGRemoveMemberJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRemoveMemberJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBSHARINGRemoveMemberJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   }
 
   return prime * result;
@@ -19547,12 +19773,16 @@
   switch (_tag) {
   case DBSHARINGRequestedLinkAccessLevelViewer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRequestedLinkAccessLevelEditor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRequestedLinkAccessLevelMax:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRequestedLinkAccessLevelOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -19728,10 +19958,13 @@
   switch (_tag) {
   case DBSHARINGRequestedVisibilityPublic:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRequestedVisibilityTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRequestedVisibilityPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -19949,16 +20182,22 @@
   switch (_tag) {
   case DBSHARINGResolvedVisibilityPublic:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGResolvedVisibilityTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGResolvedVisibilityPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGResolvedVisibilityTeamAndPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGResolvedVisibilitySharedFolderOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGResolvedVisibilityOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -20274,14 +20513,19 @@
   switch (_tag) {
   case DBSHARINGRevokeSharedLinkErrorSharedLinkNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRevokeSharedLinkErrorSharedLinkAccessDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRevokeSharedLinkErrorUnsupportedLinkType:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRevokeSharedLinkErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRevokeSharedLinkErrorSharedLinkMalformed:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -20593,10 +20837,13 @@
   switch (_tag) {
   case DBSHARINGSetAccessInheritanceErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGSetAccessInheritanceErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSetAccessInheritanceErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -21269,14 +21516,19 @@
   switch (_tag) {
   case DBSHARINGShareFolderErrorBaseEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderErrorBaseBadPath:
     result = prime * result + [self.badPath hash];
+    break;
   case DBSHARINGShareFolderErrorBaseTeamPolicyDisallowsMemberPolicy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderErrorBaseOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -21515,16 +21767,22 @@
   switch (_tag) {
   case DBSHARINGShareFolderErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderErrorBadPath:
     result = prime * result + [self.badPath hash];
+    break;
   case DBSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -21738,10 +21996,13 @@
   switch (_tag) {
   case DBSHARINGShareFolderJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGShareFolderJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBSHARINGShareFolderJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   }
 
   return prime * result;
@@ -21929,8 +22190,10 @@
   switch (_tag) {
   case DBSHARINGShareFolderLaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBSHARINGShareFolderLaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   }
 
   return prime * result;
@@ -22297,36 +22560,52 @@
   switch (_tag) {
   case DBSHARINGSharePathErrorIsFile:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorInsideSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorContainsSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorContainsAppFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorContainsTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorIsAppFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorInsideAppFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorIsPublicFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorInsidePublicFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorAlreadyShared:
     result = prime * result + [self.alreadyShared hash];
+    break;
   case DBSHARINGSharePathErrorInvalidPath:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorIsOsxPackage:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorInsideOsxPackage:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorIsVault:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorIsFamily:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharePathErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23368,14 +23647,19 @@
   switch (_tag) {
   case DBSHARINGSharedFolderAccessErrorInvalidId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedFolderAccessErrorNotAMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedFolderAccessErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedFolderAccessErrorUnmounted:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedFolderAccessErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23584,12 +23868,16 @@
   switch (_tag) {
   case DBSHARINGSharedFolderMemberErrorInvalidDropboxId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedFolderMemberErrorNotAMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedFolderMemberErrorNoExplicitAccess:
     result = prime * result + [self.noExplicitAccess hash];
+    break;
   case DBSHARINGSharedFolderMemberErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24555,16 +24843,22 @@
   switch (_tag) {
   case DBSHARINGSharedLinkAccessFailureReasonLoginRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkAccessFailureReasonEmailVerifyRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkAccessFailureReasonPasswordRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkAccessFailureReasonTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkAccessFailureReasonOwnerOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkAccessFailureReasonOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24752,8 +25046,10 @@
   switch (_tag) {
   case DBSHARINGSharedLinkAlreadyExistsMetadataMetadata:
     result = prime * result + [self.metadata hash];
+    break;
   case DBSHARINGSharedLinkAlreadyExistsMetadataOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24934,12 +25230,16 @@
   switch (_tag) {
   case DBSHARINGSharedLinkPolicyAnyone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkPolicyTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkPolicyMembers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -25279,8 +25579,10 @@
   switch (_tag) {
   case DBSHARINGSharedLinkSettingsErrorInvalidSettings:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedLinkSettingsErrorNotAuthorized:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -25491,16 +25793,22 @@
   switch (_tag) {
   case DBSHARINGSharingFileAccessErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharingFileAccessErrorInvalidFile:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharingFileAccessErrorIsFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharingFileAccessErrorInsidePublicFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharingFileAccessErrorInsideOsxPackage:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharingFileAccessErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -25674,8 +25982,10 @@
   switch (_tag) {
   case DBSHARINGSharingUserErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharingUserErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26156,20 +26466,28 @@
   switch (_tag) {
   case DBSHARINGTransferFolderErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGTransferFolderErrorInvalidDropboxId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGTransferFolderErrorDNewOwnerNotAMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGTransferFolderErrorDNewOwnerUnmounted:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGTransferFolderErrorDNewOwnerEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGTransferFolderErrorTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGTransferFolderErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGTransferFolderErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26499,12 +26817,16 @@
   switch (_tag) {
   case DBSHARINGUnmountFolderErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGUnmountFolderErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUnmountFolderErrorNotUnmountable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUnmountFolderErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26809,10 +27131,13 @@
   switch (_tag) {
   case DBSHARINGUnshareFileErrorUserError:
     result = prime * result + [self.userError hash];
+    break;
   case DBSHARINGUnshareFileErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGUnshareFileErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -27139,14 +27464,19 @@
   switch (_tag) {
   case DBSHARINGUnshareFolderErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGUnshareFolderErrorTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUnshareFolderErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUnshareFolderErrorTooManyFiles:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUnshareFolderErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -27653,16 +27983,22 @@
   switch (_tag) {
   case DBSHARINGUpdateFolderMemberErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGUpdateFolderMemberErrorMemberError:
     result = prime * result + [self.memberError hash];
+    break;
   case DBSHARINGUpdateFolderMemberErrorNoExplicitAccess:
     result = prime * result + [self.noExplicitAccess hash];
+    break;
   case DBSHARINGUpdateFolderMemberErrorInsufficientPlan:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUpdateFolderMemberErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUpdateFolderMemberErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -28159,18 +28495,25 @@
   switch (_tag) {
   case DBSHARINGUpdateFolderPolicyErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBSHARINGUpdateFolderPolicyErrorNotOnTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUpdateFolderPolicyErrorDisallowedSharedLinkPolicy:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUpdateFolderPolicyErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUpdateFolderPolicyErrorTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGUpdateFolderPolicyErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -28887,10 +29230,13 @@
   switch (_tag) {
   case DBSHARINGViewerInfoPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGViewerInfoPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGViewerInfoPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -29102,16 +29448,22 @@
   switch (_tag) {
   case DBSHARINGVisibilityPublic:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGVisibilityTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGVisibilityPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGVisibilityTeamAndPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGVisibilitySharedFolderOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGVisibilityOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;

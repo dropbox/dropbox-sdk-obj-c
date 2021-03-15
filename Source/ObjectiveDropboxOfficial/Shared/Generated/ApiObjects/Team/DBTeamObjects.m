@@ -684,24 +684,34 @@
   switch (_tag) {
   case DBTEAMAddSecondaryEmailResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMAddSecondaryEmailResultUnavailable:
     result = prime * result + [self.unavailable hash];
+    break;
   case DBTEAMAddSecondaryEmailResultAlreadyPending:
     result = prime * result + [self.alreadyPending hash];
+    break;
   case DBTEAMAddSecondaryEmailResultAlreadyOwnedByUser:
     result = prime * result + [self.alreadyOwnedByUser hash];
+    break;
   case DBTEAMAddSecondaryEmailResultReachedLimit:
     result = prime * result + [self.reachedLimit hash];
+    break;
   case DBTEAMAddSecondaryEmailResultTransientError:
     result = prime * result + [self.transientError hash];
+    break;
   case DBTEAMAddSecondaryEmailResultTooManyUpdates:
     result = prime * result + [self.tooManyUpdates hash];
+    break;
   case DBTEAMAddSecondaryEmailResultUnknownError:
     result = prime * result + [self.unknownError hash];
+    break;
   case DBTEAMAddSecondaryEmailResultRateLimited:
     result = prime * result + [self.rateLimited hash];
+    break;
   case DBTEAMAddSecondaryEmailResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1042,10 +1052,13 @@
   switch (_tag) {
   case DBTEAMAddSecondaryEmailsErrorSecondaryEmailsDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMAddSecondaryEmailsErrorTooManyEmails:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMAddSecondaryEmailsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1339,12 +1352,16 @@
   switch (_tag) {
   case DBTEAMAdminTierTeamAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMAdminTierUserManagementAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMAdminTierSupportAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMAdminTierMemberOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1843,12 +1860,16 @@
   switch (_tag) {
   case DBTEAMBaseTeamFolderErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBTEAMBaseTeamFolderErrorStatusError:
     result = prime * result + [self.statusError hash];
+    break;
   case DBTEAMBaseTeamFolderErrorTeamSharedDropboxError:
     result = prime * result + [self.teamSharedDropboxError hash];
+    break;
   case DBTEAMBaseTeamFolderErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2021,8 +2042,10 @@
   switch (_tag) {
   case DBTEAMCustomQuotaErrorTooManyUsers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMCustomQuotaErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2209,10 +2232,13 @@
   switch (_tag) {
   case DBTEAMCustomQuotaResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMCustomQuotaResultInvalidUser:
     result = prime * result + [self.invalidUser hash];
+    break;
   case DBTEAMCustomQuotaResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2591,6 +2617,7 @@
   switch (_tag) {
   case DBTEAMDateRangeErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2794,12 +2821,16 @@
   switch (_tag) {
   case DBTEAMDeleteSecondaryEmailResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMDeleteSecondaryEmailResultNotFound:
     result = prime * result + [self.notFound hash];
+    break;
   case DBTEAMDeleteSecondaryEmailResultCannotRemovePrimary:
     result = prime * result + [self.cannotRemovePrimary hash];
+    break;
   case DBTEAMDeleteSecondaryEmailResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3443,12 +3474,16 @@
   switch (_tag) {
   case DBTEAMDesktopPlatformWindows:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMDesktopPlatformMac:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMDesktopPlatformLinux:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMDesktopPlatformOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4119,8 +4154,10 @@
   switch (_tag) {
   case DBTEAMExcludedUsersListContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMExcludedUsersListContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4271,8 +4308,10 @@
   switch (_tag) {
   case DBTEAMExcludedUsersListErrorListError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMExcludedUsersListErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4694,10 +4733,13 @@
   switch (_tag) {
   case DBTEAMExcludedUsersUpdateErrorUsersNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMExcludedUsersUpdateErrorTooManyUsers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMExcludedUsersUpdateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4954,8 +4996,10 @@
   switch (_tag) {
   case DBTEAMExcludedUsersUpdateStatusSuccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMExcludedUsersUpdateStatusOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5147,14 +5191,19 @@
   switch (_tag) {
   case DBTEAMFeatureUploadApiRateLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMFeatureHasTeamSharedDropbox:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMFeatureHasTeamFileEvents:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMFeatureHasTeamSelectiveSync:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMFeatureOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5409,14 +5458,19 @@
   switch (_tag) {
   case DBTEAMFeatureValueUploadApiRateLimit:
     result = prime * result + [self.uploadApiRateLimit hash];
+    break;
   case DBTEAMFeatureValueHasTeamSharedDropbox:
     result = prime * result + [self.hasTeamSharedDropbox hash];
+    break;
   case DBTEAMFeatureValueHasTeamFileEvents:
     result = prime * result + [self.hasTeamFileEvents hash];
+    break;
   case DBTEAMFeatureValueHasTeamSelectiveSync:
     result = prime * result + [self.hasTeamSelectiveSync hash];
+    break;
   case DBTEAMFeatureValueOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -5709,8 +5763,10 @@
   switch (_tag) {
   case DBTEAMFeaturesGetValuesBatchErrorEmptyFeaturesList:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMFeaturesGetValuesBatchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -6826,8 +6882,10 @@
   switch (_tag) {
   case DBTEAMGroupAccessTypeMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupAccessTypeOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7171,14 +7229,19 @@
   switch (_tag) {
   case DBTEAMGroupCreateErrorGroupNameAlreadyUsed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupCreateErrorGroupNameInvalid:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupCreateErrorExternalIdAlreadyInUse:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupCreateErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupCreateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7346,8 +7409,10 @@
   switch (_tag) {
   case DBTEAMGroupSelectorErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupSelectorErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7512,10 +7577,13 @@
   switch (_tag) {
   case DBTEAMGroupSelectorWithTeamGroupErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupSelectorWithTeamGroupErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupSelectorWithTeamGroupErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -7701,12 +7769,16 @@
   switch (_tag) {
   case DBTEAMGroupDeleteErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupDeleteErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupDeleteErrorGroupAlreadyDeleted:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -8318,12 +8390,16 @@
   switch (_tag) {
   case DBTEAMGroupMemberSelectorErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMemberSelectorErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMemberSelectorErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMemberSelectorErrorMemberNotInGroup:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -8528,14 +8604,19 @@
   switch (_tag) {
   case DBTEAMGroupMemberSetAccessTypeErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMemberSetAccessTypeErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -9071,22 +9152,31 @@
   switch (_tag) {
   case DBTEAMGroupMembersAddErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersAddErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersAddErrorDuplicateUser:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersAddErrorGroupNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersAddErrorMembersNotInTeam:
     result = prime * result + [self.membersNotInTeam hash];
+    break;
   case DBTEAMGroupMembersAddErrorUsersNotFound:
     result = prime * result + [self.usersNotFound hash];
+    break;
   case DBTEAMGroupMembersAddErrorUserMustBeActiveToBeOwner:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup:
     result = prime * result + [self.userCannotBeManagerOfCompanyManagedGroup hash];
+    break;
   }
 
   return prime * result;
@@ -9575,12 +9665,16 @@
   switch (_tag) {
   case DBTEAMGroupMembersSelectorErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersSelectorErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersSelectorErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersSelectorErrorMemberNotInGroup:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -9836,18 +9930,25 @@
   switch (_tag) {
   case DBTEAMGroupMembersRemoveErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersRemoveErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersRemoveErrorMemberNotInGroup:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersRemoveErrorGroupNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupMembersRemoveErrorMembersNotInTeam:
     result = prime * result + [self.membersNotInTeam hash];
+    break;
   case DBTEAMGroupMembersRemoveErrorUsersNotFound:
     result = prime * result + [self.usersNotFound hash];
+    break;
   }
 
   return prime * result;
@@ -10309,8 +10410,10 @@
   switch (_tag) {
   case DBTEAMGroupSelectorGroupId:
     result = prime * result + [self.groupId hash];
+    break;
   case DBTEAMGroupSelectorGroupExternalId:
     result = prime * result + [self.groupExternalId hash];
+    break;
   }
 
   return prime * result;
@@ -10693,16 +10796,22 @@
   switch (_tag) {
   case DBTEAMGroupUpdateErrorGroupNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupUpdateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupUpdateErrorGroupNameAlreadyUsed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupUpdateErrorGroupNameInvalid:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupUpdateErrorExternalIdAlreadyInUse:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -10876,8 +10985,10 @@
   switch (_tag) {
   case DBTEAMGroupsGetInfoErrorGroupNotOnTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupsGetInfoErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -11049,8 +11160,10 @@
   switch (_tag) {
   case DBTEAMGroupsGetInfoItemIdNotFound:
     result = prime * result + [self.idNotFound hash];
+    break;
   case DBTEAMGroupsGetInfoItemGroupInfo:
     result = prime * result + [self.groupInfo hash];
+    break;
   }
 
   return prime * result;
@@ -11410,8 +11523,10 @@
   switch (_tag) {
   case DBTEAMGroupsListContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupsListContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -11899,8 +12014,10 @@
   switch (_tag) {
   case DBTEAMGroupsMembersListContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupsMembersListContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12208,12 +12325,16 @@
   switch (_tag) {
   case DBTEAMGroupsPollErrorInvalidAsyncJobId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupsPollErrorInternalError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupsPollErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMGroupsPollErrorAccessDenied:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12396,8 +12517,10 @@
   switch (_tag) {
   case DBTEAMGroupsSelectorGroupIds:
     result = prime * result + [self.groupIds hash];
+    break;
   case DBTEAMGroupsSelectorGroupExternalIds:
     result = prime * result + [self.groupExternalIds hash];
+    break;
   }
 
   return prime * result;
@@ -12579,8 +12702,10 @@
   switch (_tag) {
   case DBTEAMHasTeamFileEventsValueEnabled:
     result = prime * result + [self.enabled hash];
+    break;
   case DBTEAMHasTeamFileEventsValueOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12744,8 +12869,10 @@
   switch (_tag) {
   case DBTEAMHasTeamSelectiveSyncValueHasTeamSelectiveSync:
     result = prime * result + [self.hasTeamSelectiveSync hash];
+    break;
   case DBTEAMHasTeamSelectiveSyncValueOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -12909,8 +13036,10 @@
   switch (_tag) {
   case DBTEAMHasTeamSharedDropboxValueHasTeamSharedDropbox:
     result = prime * result + [self.hasTeamSharedDropbox hash];
+    break;
   case DBTEAMHasTeamSharedDropboxValueOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -13541,18 +13670,25 @@
   switch (_tag) {
   case DBTEAMLegalHoldStatusActive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldStatusReleased:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldStatusActivating:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldStatusUpdating:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldStatusExporting:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldStatusReleasing:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldStatusOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -13746,10 +13882,13 @@
   switch (_tag) {
   case DBTEAMLegalHoldsErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsErrorInsufficientPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14034,12 +14173,16 @@
   switch (_tag) {
   case DBTEAMLegalHoldsGetPolicyErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsGetPolicyErrorInsufficientPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsGetPolicyErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsGetPolicyErrorLegalHoldPolicyNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14588,12 +14731,16 @@
   switch (_tag) {
   case DBTEAMLegalHoldsListHeldRevisionsContinueErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsContinueErrorTransientError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsContinueErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -14813,16 +14960,22 @@
   switch (_tag) {
   case DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsErrorTransientError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -15128,12 +15281,16 @@
   switch (_tag) {
   case DBTEAMLegalHoldsListPoliciesErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListPoliciesErrorInsufficientPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListPoliciesErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsListPoliciesErrorTransientError:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -15705,26 +15862,37 @@
   switch (_tag) {
   case DBTEAMLegalHoldsPolicyCreateErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorInsufficientPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorStartDateIsLaterThanEndDate:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorEmptyMembersList:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorInvalidMembers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorNumberOfUsersOnHoldIsGreaterThanHoldLimitation:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorTransientError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorNameMustBeUnique:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorTeamExceededLegalHoldQuota:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyCreateErrorInvalidDate:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16085,16 +16253,22 @@
   switch (_tag) {
   case DBTEAMLegalHoldsPolicyReleaseErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyReleaseErrorInsufficientPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyReleaseErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPerformingAnotherOperation:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldAlreadyReleasing:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyReleaseErrorLegalHoldPolicyNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16541,24 +16715,34 @@
   switch (_tag) {
   case DBTEAMLegalHoldsPolicyUpdateErrorUnknownLegalHoldError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorInsufficientPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPerformingAnotherOperation:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorInvalidMembers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorNumberOfUsersOnHoldIsGreaterThanHoldLimitation:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorEmptyMembersList:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorNameMustBeUnique:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPolicyNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -16855,8 +17039,10 @@
   switch (_tag) {
   case DBTEAMListMemberAppsErrorMemberNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMListMemberAppsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17248,8 +17434,10 @@
   switch (_tag) {
   case DBTEAMListMemberDevicesErrorMemberNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMListMemberDevicesErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -17689,8 +17877,10 @@
   switch (_tag) {
   case DBTEAMListMembersAppsErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMListMembersAppsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -18112,8 +18302,10 @@
   switch (_tag) {
   case DBTEAMListMembersDevicesErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMListMembersDevicesErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -18508,8 +18700,10 @@
   switch (_tag) {
   case DBTEAMListTeamAppsErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMListTeamAppsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -18931,8 +19125,10 @@
   switch (_tag) {
   case DBTEAMListTeamDevicesErrorReset:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMListTeamDevicesErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -19784,26 +19980,37 @@
   switch (_tag) {
   case DBTEAMMemberAddResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMMemberAddResultTeamLicenseLimit:
     result = prime * result + [self.teamLicenseLimit hash];
+    break;
   case DBTEAMMemberAddResultFreeTeamMemberLimitReached:
     result = prime * result + [self.freeTeamMemberLimitReached hash];
+    break;
   case DBTEAMMemberAddResultUserAlreadyOnTeam:
     result = prime * result + [self.userAlreadyOnTeam hash];
+    break;
   case DBTEAMMemberAddResultUserOnAnotherTeam:
     result = prime * result + [self.userOnAnotherTeam hash];
+    break;
   case DBTEAMMemberAddResultUserAlreadyPaired:
     result = prime * result + [self.userAlreadyPaired hash];
+    break;
   case DBTEAMMemberAddResultUserMigrationFailed:
     result = prime * result + [self.userMigrationFailed hash];
+    break;
   case DBTEAMMemberAddResultDuplicateExternalMemberId:
     result = prime * result + [self.duplicateExternalMemberId hash];
+    break;
   case DBTEAMMemberAddResultDuplicateMemberPersistentId:
     result = prime * result + [self.duplicateMemberPersistentId hash];
+    break;
   case DBTEAMMemberAddResultPersistentIdDisabled:
     result = prime * result + [self.persistentIdDisabled hash];
+    break;
   case DBTEAMMemberAddResultUserCreationFailed:
     result = prime * result + [self.userCreationFailed hash];
+    break;
   }
 
   return prime * result;
@@ -20660,6 +20867,7 @@
   switch (_tag) {
   case DBTEAMUserSelectorErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -20809,8 +21017,10 @@
   switch (_tag) {
   case DBTEAMMemberSelectorErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMemberSelectorErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -21123,10 +21333,13 @@
   switch (_tag) {
   case DBTEAMMembersAddJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersAddJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBTEAMMembersAddJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   }
 
   return prime * result;
@@ -21321,8 +21534,10 @@
   switch (_tag) {
   case DBTEAMMembersAddLaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBTEAMMembersAddLaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   }
 
   return prime * result;
@@ -21835,10 +22050,13 @@
   switch (_tag) {
   case DBTEAMMembersDeactivateErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersDeactivateErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersDeactivateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -22123,12 +22341,16 @@
   switch (_tag) {
   case DBTEAMMembersDeleteProfilePhotoErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersDeleteProfilePhotoErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersDeleteProfilePhotoErrorSetProfileDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersDeleteProfilePhotoErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -22387,6 +22609,7 @@
   switch (_tag) {
   case DBTEAMMembersGetInfoErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -22552,8 +22775,10 @@
   switch (_tag) {
   case DBTEAMMembersGetInfoItemIdNotFound:
     result = prime * result + [self.idNotFound hash];
+    break;
   case DBTEAMMembersGetInfoItemMemberInfo:
     result = prime * result + [self.memberInfo hash];
+    break;
   }
 
   return prime * result;
@@ -23038,8 +23263,10 @@
   switch (_tag) {
   case DBTEAMMembersListContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersListContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23175,6 +23402,7 @@
   switch (_tag) {
   case DBTEAMMembersListErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -23589,14 +23817,19 @@
   switch (_tag) {
   case DBTEAMMembersRecoverErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRecoverErrorUserUnrecoverable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRecoverErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRecoverErrorTeamLicenseLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRecoverErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24070,28 +24303,40 @@
   switch (_tag) {
   case DBTEAMMembersTransferFilesErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorTransferDestUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFilesErrorRecipientNotVerified:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24596,50 +24841,73 @@
   switch (_tag) {
   case DBTEAMMembersRemoveErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorTransferDestUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorTransferDestUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorRecipientNotVerified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorRemoveLastAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotRetainSharesWhenDataWiped:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotRetainSharesWhenNoAccountKept:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotRetainSharesWhenTeamExternalSharingOff:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotKeepAccount:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotKeepAccountUnderLegalHold:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersRemoveErrorCannotKeepAccountRequiredToSignTos:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -24930,10 +25198,13 @@
   switch (_tag) {
   case DBTEAMMembersSendWelcomeErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSendWelcomeErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSendWelcomeErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -25255,16 +25526,22 @@
   switch (_tag) {
   case DBTEAMMembersSetPermissionsErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetPermissionsErrorLastAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetPermissionsErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetPermissionsErrorCannotSetPermissions:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetPermissionsErrorTeamLicenseLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetPermissionsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -25897,28 +26174,40 @@
   switch (_tag) {
   case DBTEAMMembersSetProfileErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorNoNewDataSpecified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorEmailReservedForOtherUser:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorExternalIdUsedByOtherUser:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorSetProfileDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorParamCannotBeEmpty:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorPersistentIdDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorDirectoryRestrictedOff:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfileErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26293,14 +26582,19 @@
   switch (_tag) {
   case DBTEAMMembersSetProfilePhotoErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfilePhotoErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfilePhotoErrorSetProfileDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSetProfilePhotoErrorPhotoError:
     result = prime * result + [self.photoError hash];
+    break;
   case DBTEAMMembersSetProfilePhotoErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26528,16 +26822,22 @@
   switch (_tag) {
   case DBTEAMMembersSuspendErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSuspendErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSuspendErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSuspendErrorSuspendInactiveUser:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSuspendErrorSuspendLastAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersSuspendErrorTeamLicenseLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -26908,36 +27208,52 @@
   switch (_tag) {
   case DBTEAMMembersTransferFormerMembersFilesErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferDestShouldDiffer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorRemovedAndTransferAdminShouldDiffer:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorTransferDestUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorUnspecifiedTransferAdminId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorTransferAdminIsNotAdmin:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorRecipientNotVerified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorUserDataIsBeingTransferred:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorUserNotRemoved:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorUserDataCannotBeTransferred:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersTransferFormerMembersFilesErrorUserDataAlreadyTransferred:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -27315,14 +27631,19 @@
   switch (_tag) {
   case DBTEAMMembersUnsuspendErrorUserNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersUnsuspendErrorUserNotInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersUnsuspendErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersUnsuspendErrorUnsuspendNonSuspendedMember:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMembersUnsuspendErrorTeamLicenseLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -27546,16 +27867,22 @@
   switch (_tag) {
   case DBTEAMMobileClientPlatformIphone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMobileClientPlatformIpad:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMobileClientPlatformAndroid:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMobileClientPlatformWindowsPhone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMobileClientPlatformBlackberry:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMMobileClientPlatformOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -28153,14 +28480,19 @@
   switch (_tag) {
   case DBTEAMNamespaceTypeAppFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMNamespaceTypeSharedFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMNamespaceTypeTeamFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMNamespaceTypeTeamMemberFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMNamespaceTypeOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -28364,10 +28696,13 @@
   switch (_tag) {
   case DBTEAMRemoveCustomQuotaResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMRemoveCustomQuotaResultInvalidUser:
     result = prime * result + [self.invalidUser hash];
+    break;
   case DBTEAMRemoveCustomQuotaResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -28695,12 +29030,16 @@
   switch (_tag) {
   case DBTEAMResendSecondaryEmailResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMResendSecondaryEmailResultNotPending:
     result = prime * result + [self.notPending hash];
+    break;
   case DBTEAMResendSecondaryEmailResultRateLimited:
     result = prime * result + [self.rateLimited hash];
+    break;
   case DBTEAMResendSecondaryEmailResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -29256,10 +29595,13 @@
   switch (_tag) {
   case DBTEAMRevokeDeviceSessionArgWebSession:
     result = prime * result + [self.webSession hash];
+    break;
   case DBTEAMRevokeDeviceSessionArgDesktopClient:
     result = prime * result + [self.desktopClient hash];
+    break;
   case DBTEAMRevokeDeviceSessionArgMobileClient:
     result = prime * result + [self.mobileClient hash];
+    break;
   }
 
   return prime * result;
@@ -29522,6 +29864,7 @@
   switch (_tag) {
   case DBTEAMRevokeDeviceSessionBatchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -29791,10 +30134,13 @@
   switch (_tag) {
   case DBTEAMRevokeDeviceSessionErrorDeviceSessionNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMRevokeDeviceSessionErrorMemberNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMRevokeDeviceSessionErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -30285,6 +30631,7 @@
   switch (_tag) {
   case DBTEAMRevokeLinkedAppBatchErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -30567,12 +30914,16 @@
   switch (_tag) {
   case DBTEAMRevokeLinkedAppErrorAppNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMRevokeLinkedAppErrorMemberNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMRevokeLinkedAppErrorAppFolderRemovalNotSupported:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMRevokeLinkedAppErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -30977,10 +31328,13 @@
   switch (_tag) {
   case DBTEAMSetCustomQuotaErrorTooManyUsers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMSetCustomQuotaErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMSetCustomQuotaErrorSomeUsersAreExcluded:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -31257,10 +31611,13 @@
   switch (_tag) {
   case DBTEAMTeamFolderAccessErrorInvalidTeamFolderId:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderAccessErrorNoAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderAccessErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -31480,12 +31837,16 @@
   switch (_tag) {
   case DBTEAMTeamFolderActivateErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBTEAMTeamFolderActivateErrorStatusError:
     result = prime * result + [self.statusError hash];
+    break;
   case DBTEAMTeamFolderActivateErrorTeamSharedDropboxError:
     result = prime * result + [self.teamSharedDropboxError hash];
+    break;
   case DBTEAMTeamFolderActivateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -31933,12 +32294,16 @@
   switch (_tag) {
   case DBTEAMTeamFolderArchiveErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBTEAMTeamFolderArchiveErrorStatusError:
     result = prime * result + [self.statusError hash];
+    break;
   case DBTEAMTeamFolderArchiveErrorTeamSharedDropboxError:
     result = prime * result + [self.teamSharedDropboxError hash];
+    break;
   case DBTEAMTeamFolderArchiveErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -32149,10 +32514,13 @@
   switch (_tag) {
   case DBTEAMTeamFolderArchiveJobStatusInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderArchiveJobStatusComplete:
     result = prime * result + [self.complete hash];
+    break;
   case DBTEAMTeamFolderArchiveJobStatusFailed:
     result = prime * result + [self.failed hash];
+    break;
   }
 
   return prime * result;
@@ -32340,8 +32708,10 @@
   switch (_tag) {
   case DBTEAMTeamFolderArchiveLaunchAsyncJobId:
     result = prime * result + [self.asyncJobId hash];
+    break;
   case DBTEAMTeamFolderArchiveLaunchComplete:
     result = prime * result + [self.complete hash];
+    break;
   }
 
   return prime * result;
@@ -32673,14 +33043,19 @@
   switch (_tag) {
   case DBTEAMTeamFolderCreateErrorInvalidFolderName:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderCreateErrorFolderNameReserved:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderCreateErrorSyncSettingsError:
     result = prime * result + [self.syncSettingsError hash];
+    break;
   case DBTEAMTeamFolderCreateErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -32875,8 +33250,10 @@
   switch (_tag) {
   case DBTEAMTeamFolderGetInfoItemIdNotFound:
     result = prime * result + [self.idNotFound hash];
+    break;
   case DBTEAMTeamFolderGetInfoItemTeamFolderMetadata:
     result = prime * result + [self.teamFolderMetadata hash];
+    break;
   }
 
   return prime * result;
@@ -33176,12 +33553,16 @@
   switch (_tag) {
   case DBTEAMTeamFolderInvalidStatusErrorActive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderInvalidStatusErrorArchived:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderInvalidStatusErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -33544,8 +33925,10 @@
   switch (_tag) {
   case DBTEAMTeamFolderListContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderListContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -34155,12 +34538,16 @@
   switch (_tag) {
   case DBTEAMTeamFolderPermanentlyDeleteErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBTEAMTeamFolderPermanentlyDeleteErrorStatusError:
     result = prime * result + [self.statusError hash];
+    break;
   case DBTEAMTeamFolderPermanentlyDeleteErrorTeamSharedDropboxError:
     result = prime * result + [self.teamSharedDropboxError hash];
+    break;
   case DBTEAMTeamFolderPermanentlyDeleteErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -34548,18 +34935,25 @@
   switch (_tag) {
   case DBTEAMTeamFolderRenameErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBTEAMTeamFolderRenameErrorStatusError:
     result = prime * result + [self.statusError hash];
+    break;
   case DBTEAMTeamFolderRenameErrorTeamSharedDropboxError:
     result = prime * result + [self.teamSharedDropboxError hash];
+    break;
   case DBTEAMTeamFolderRenameErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderRenameErrorInvalidFolderName:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderRenameErrorFolderNameAlreadyUsed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderRenameErrorFolderNameReserved:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -34778,12 +35172,16 @@
   switch (_tag) {
   case DBTEAMTeamFolderStatusActive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderStatusArchived:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderStatusArchiveInProgress:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderStatusOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -34945,8 +35343,10 @@
   switch (_tag) {
   case DBTEAMTeamFolderTeamSharedDropboxErrorDisallowed:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderTeamSharedDropboxErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -35342,14 +35742,19 @@
   switch (_tag) {
   case DBTEAMTeamFolderUpdateSyncSettingsErrorAccessError:
     result = prime * result + [self.accessError hash];
+    break;
   case DBTEAMTeamFolderUpdateSyncSettingsErrorStatusError:
     result = prime * result + [self.statusError hash];
+    break;
   case DBTEAMTeamFolderUpdateSyncSettingsErrorTeamSharedDropboxError:
     result = prime * result + [self.teamSharedDropboxError hash];
+    break;
   case DBTEAMTeamFolderUpdateSyncSettingsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamFolderUpdateSyncSettingsErrorSyncSettingsError:
     result = prime * result + [self.syncSettingsError hash];
+    break;
   }
 
   return prime * result;
@@ -36191,12 +36596,16 @@
   switch (_tag) {
   case DBTEAMTeamMemberStatusActive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamMemberStatusInvited:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamMemberStatusSuspended:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamMemberStatusRemoved:
     result = prime * result + [self.removed hash];
+    break;
   }
 
   return prime * result;
@@ -36365,8 +36774,10 @@
   switch (_tag) {
   case DBTEAMTeamMembershipTypeFull:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamMembershipTypeLimited:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -36722,8 +37133,10 @@
   switch (_tag) {
   case DBTEAMTeamNamespacesListErrorInvalidArg:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamNamespacesListErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -36888,10 +37301,13 @@
   switch (_tag) {
   case DBTEAMTeamNamespacesListContinueErrorInvalidArg:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamNamespacesListContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamNamespacesListContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -37204,12 +37620,16 @@
   switch (_tag) {
   case DBTEAMTeamReportFailureReasonTemporaryError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamReportFailureReasonManyReportsAtOnce:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamReportFailureReasonTooMuchData:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTeamReportFailureReasonOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -37385,10 +37805,13 @@
   switch (_tag) {
   case DBTEAMTokenGetAuthenticatedAdminErrorMappingNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTokenGetAuthenticatedAdminErrorAdminNotActive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMTokenGetAuthenticatedAdminErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -37671,10 +38094,13 @@
   switch (_tag) {
   case DBTEAMUploadApiRateLimitValueUnlimited:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMUploadApiRateLimitValueLimit:
     result = prime * result + [self.limit hash];
+    break;
   case DBTEAMUploadApiRateLimitValueOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -37917,14 +38343,19 @@
   switch (_tag) {
   case DBTEAMUserAddResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMUserAddResultInvalidUser:
     result = prime * result + [self.invalidUser hash];
+    break;
   case DBTEAMUserAddResultUnverified:
     result = prime * result + [self.unverified hash];
+    break;
   case DBTEAMUserAddResultPlaceholderUser:
     result = prime * result + [self.placeholderUser hash];
+    break;
   case DBTEAMUserAddResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -38484,10 +38915,13 @@
   switch (_tag) {
   case DBTEAMUserDeleteResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMUserDeleteResultInvalidUser:
     result = prime * result + [self.invalidUser hash];
+    break;
   case DBTEAMUserDeleteResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -38804,10 +39238,13 @@
   switch (_tag) {
   case DBTEAMUserResendResultSuccess:
     result = prime * result + [self.success hash];
+    break;
   case DBTEAMUserResendResultInvalidUser:
     result = prime * result + [self.invalidUser hash];
+    break;
   case DBTEAMUserResendResultOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -39255,10 +39692,13 @@
   switch (_tag) {
   case DBTEAMUserSelectorArgTeamMemberId:
     result = prime * result + [self.teamMemberId hash];
+    break;
   case DBTEAMUserSelectorArgExternalId:
     result = prime * result + [self.externalId hash];
+    break;
   case DBTEAMUserSelectorArgEmail:
     result = prime * result + [self.email hash];
+    break;
   }
 
   return prime * result;
@@ -39470,10 +39910,13 @@
   switch (_tag) {
   case DBTEAMUsersSelectorArgTeamMemberIds:
     result = prime * result + [self.teamMemberIds hash];
+    break;
   case DBTEAMUsersSelectorArgExternalIds:
     result = prime * result + [self.externalIds hash];
+    break;
   case DBTEAMUsersSelectorArgEmails:
     result = prime * result + [self.emails hash];
+    break;
   }
 
   return prime * result;
