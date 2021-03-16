@@ -58,10 +58,6 @@
 @property(nonatomic, copy) NSString * _Nonnull teamMemberEmail;
 @property(nonatomic, copy) NSString * _Nonnull teamMemberNewEmail;
 
-// OAuth 1.0 token
-@property(nonatomic, copy) NSString * _Nonnull oauth1Token;
-@property(nonatomic, copy) NSString * _Nonnull oauth1TokenSecret;
-
 // App key and secret
 @property(nonatomic, copy) NSString * _Nonnull fullDropboxAppKey;
 @property(nonatomic, copy) NSString * _Nonnull fullDropboxAppSecret;

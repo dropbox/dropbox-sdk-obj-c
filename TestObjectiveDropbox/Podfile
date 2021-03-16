@@ -3,6 +3,9 @@ use_frameworks!
 target "TestObjectiveDropbox_iOS" do
     platform :ios, '9.0'
     pod 'ObjectiveDropboxOfficial', :path => '../'
+    target "TestObjectiveDropbox_iOSTests" do
+        pod 'ObjectiveDropboxOfficial', :path => '../'
+    end
 end
 
 target "TestObjectiveDropbox_macOS" do

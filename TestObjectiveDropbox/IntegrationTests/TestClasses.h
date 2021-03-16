@@ -65,7 +65,6 @@
 - (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;
 
 - (void)tokenRevoke:(void (^_Nonnull)(void))nextTest;
-- (void)tokenFromOauth1:(void (^_Nonnull)(void))nextTest;
 
 @property DropboxTester * _Nonnull tester;
 
@@ -73,8 +72,8 @@
 
 @interface FilesTests : NSObject
 
-- (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;
-
+- (instancetype _Nonnull )init:(DBFILESUserAuthRoutes *_Nonnull)filesRoute
+            testData:(TestData *_Nonnull)testData;
 - (void)deleteV2:(void (^_Nonnull)(void))nextTest;
 - (void)createFolderV2:(void (^_Nonnull)(void))nextTest;
 - (void)listFolderError:(void (^_Nonnull)(void))nextTest;
@@ -97,8 +96,6 @@
 - (void)uploadFile:(void (^_Nonnull)(void))nextTest;
 - (void)uploadStream:(void (^_Nonnull)(void))nextTest;
 - (void)listFolderLongpollAndTrigger:(void (^_Nonnull)(void))nextTest;
-
-@property DropboxTester * _Nonnull tester;
 
 @end
 

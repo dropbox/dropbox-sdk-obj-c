@@ -19,6 +19,12 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    if([[NSProcessInfo processInfo] environment][@"XCTestConfigurationFilePath"] != nil) {
+        // running unit tests
+        self.window.rootViewController = [[UIViewController alloc] init];
+        return YES;
+    }
+
   TestData *data = [TestData new];
 
   if ([data.fullDropboxAppSecret containsString:@"<"] ||

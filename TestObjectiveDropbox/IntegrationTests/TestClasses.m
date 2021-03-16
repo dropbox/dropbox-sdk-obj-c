@@ -46,11 +46,8 @@ void MyLog(NSString *format, ...) {
             [TestFormat printAllTestsEnd];
         }
     };
-    void (^testAuthEndpoints)(void) = ^{
-        [self testAuthEndpoints:end];
-    };
     void (^testUsersEndpoints)(void) = ^{
-        [self testUsersEndpoints:testAuthEndpoints];
+        [self testUsersEndpoints:end];
     };
     void (^testSharingEndpoints)(void) = ^{
         [self testSharingEndpoints:testUsersEndpoints];
@@ -65,29 +62,9 @@ void MyLog(NSString *format, ...) {
     start();
 }
 
-- (void)testAuthEndpoints:(void (^)(void))nextTest {
-    AuthTests *authTests = [[AuthTests alloc] init:self];
-    
-    void (^end)(void) = ^{
-        [TestFormat printTestEnd];
-        nextTest();
-    };
-    void (^tokenFromOauth1)(void) = ^{
-        [authTests tokenFromOauth1:end];
-    };
-    void (^tokenRevoke)(void) = ^{
-        [authTests tokenRevoke:tokenFromOauth1];
-    };
-    void (^start)(void) = ^{
-        tokenRevoke();
-    };
-    
-    [TestFormat printTestBegin:NSStringFromSelector(_cmd)];
-    start();
-}
-
 - (void)testFilesEndpoints:(void (^)(void))nextTest asMember:(BOOL)asMember {
-    FilesTests *filesTests = [[FilesTests alloc] init:self];
+    FilesTests *filesTests = [[FilesTests alloc] init:_files
+                                             testData:_testData];
     
     void (^end)(void) = ^{
         [TestFormat printTestEnd];
@@ -677,49 +654,26 @@ void MyLog(NSString *format, ...) {
     }];
 }
 
-- (void)tokenFromOauth1:(void (^)(void))nextTest {
-    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.appAuth tokenFromOauth1:_tester.testData.oauth1Token oauth1TokenSecret:_tester.testData.oauth1TokenSecret]
-      setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError, DBRequestError *error) {
-        if (result) {
-            MyLog(@"%@\n", result);
-            [[DBOAuthManager sharedOAuthManager] storeAccessToken:[[DBAccessToken alloc] initWithAccessToken:result.oauth2Token uid:@"123"]];
-            [DBClientsManager authorizeClientFromKeychain:@"123"];
-            [[[DBClientsManager authorizedClient].filesRoutes listFolder:@""]
-             setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *networkError) {
-                if (result) {
-                    MyLog(@"%@\n", result);
-                    nextTest();
-                } else {
-                    [TestFormat abort:error routeError:routeError];
-                }
-            }];
-            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-        } else {
-            [TestFormat abort:error routeError:routeError];
-        }
-    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        [TestFormat printSentProgress:bytesSent
-                       totalBytesSent:totalBytesSent
-             totalBytesExpectedToSend:totalBytesExpectedToSend];
-    }];
-}
-
 @end
 
-@implementation FilesTests
+@implementation FilesTests {
+    DBFILESUserAuthRoutes * _filesRoute;
+    TestData *_testData;
+}
 
-- (instancetype)init:(DropboxTester *)tester {
+- (instancetype)init:(DBFILESUserAuthRoutes *)filesRoute
+            testData:(TestData *)testData {
     self = [super init];
     if (self) {
-        _tester = tester;
+        _filesRoute = filesRoute;
+        _testData = testData;
     }
     return self;
 }
 
 - (void)deleteV2:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files delete_V2:_tester.testData.baseFolder]
+    [[[_filesRoute delete_V2:_testData.baseFolder]
       setResponseBlock:^(DBFILESDeleteResult * _Nullable result, DBFILESDeleteError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -739,7 +693,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)createFolderV2:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files createFolderV2:_tester.testData.testFolderPath]
+    [[[_filesRoute createFolderV2:_testData.testFolderPath]
       setResponseBlock:^(DBFILESCreateFolderResult * _Nullable result, DBFILESCreateFolderError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -757,7 +711,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listFolderError:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files listFolder:@"/does/not/exist/folder"]
+    [[[_filesRoute listFolder:@"/does/not/exist/folder"]
       setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"Something went wrong...\n");
@@ -777,7 +731,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listFolder:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files listFolder:_tester.testData.testFolderPath]
+    [[[_filesRoute listFolder:_testData.testFolderPath]
       setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -795,8 +749,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)uploadData:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *outputPath = _tester.testData.testFilePath;
-    [[[_tester.files uploadData:outputPath inputData:_tester.testData.fileData]
+    NSString *outputPath = _testData.testFilePath;
+    [[[_filesRoute uploadData:outputPath inputData:_testData.fileData]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -817,17 +771,17 @@ void MyLog(NSString *format, ...) {
     
     void (^uploadSessionAppendV2)(NSString *, DBFILESUploadSessionCursor *) = ^(NSString *sessionId,
                                                                                 DBFILESUploadSessionCursor *cursor) {
-        [[[self->_tester.files uploadSessionAppendV2Data:cursor inputData:self->_tester.testData.fileData]
+        [[[self->_filesRoute uploadSessionAppendV2Data:cursor inputData:self->_testData.fileData]
           setResponseBlock:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
             // response type for this route is nil
             if (!error) {
                 DBFILESUploadSessionCursor *cursor = [[DBFILESUploadSessionCursor alloc]
                                                       initWithSessionId:sessionId
-                                                      offset:[NSNumber numberWithUnsignedLong:(self->_tester.testData.fileData.length * 2)]];
+                                                      offset:[NSNumber numberWithUnsignedLong:(self->_testData.fileData.length * 2)]];
                 DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc]
-                                                 initWithPath:[NSString stringWithFormat:@"%@%@", self->_tester.testData.testFilePath, @"_session"]];
+                                                 initWithPath:[NSString stringWithFormat:@"%@%@", self->_testData.testFilePath, @"_session"]];
                 
-                [[[self->_tester.files uploadSessionFinishData:cursor commit:commitInfo inputData:self->_tester.testData.fileData]
+                [[[self->_filesRoute uploadSessionFinishData:cursor commit:commitInfo inputData:self->_testData.fileData]
                   setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadSessionFinishError *routeError, DBRequestError *error) {
                     if (result) {
                         MyLog(@"%@\n", result);
@@ -852,7 +806,7 @@ void MyLog(NSString *format, ...) {
         }];
     };
     
-    [[[_tester.files uploadSessionStartData:_tester.testData.fileData]
+    [[[_filesRoute uploadSessionStartData:_testData.fileData]
       setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBFILESUploadSessionStartError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -861,7 +815,7 @@ void MyLog(NSString *format, ...) {
                                   result.sessionId,
                                   [[DBFILESUploadSessionCursor alloc]
                                    initWithSessionId:result.sessionId
-                                   offset:[NSNumber numberWithUnsignedLong:(self->_tester.testData.fileData.length)]]);
+                                   offset:[NSNumber numberWithUnsignedLong:(self->_testData.fileData.length)]]);
         } else {
             [TestFormat abort:error routeError:routeError];
         }
@@ -875,8 +829,8 @@ void MyLog(NSString *format, ...) {
 - (void)dCopyV2:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *copyOutputPath = [NSString
-                                stringWithFormat:@"%@%@%@%@", _tester.testData.testFilePath, @"_duplicate", @"_", _tester.testData.testId];
-    [[[_tester.files dCopyV2:_tester.testData.testFilePath toPath:copyOutputPath]
+                                stringWithFormat:@"%@%@%@%@", _testData.testFilePath, @"_duplicate", @"_", _testData.testId];
+    [[[_filesRoute dCopyV2:_testData.testFilePath toPath:copyOutputPath]
       setResponseBlock:^(DBFILESRelocationResult * _Nullable result, DBFILESRelocationError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -894,7 +848,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)dCopyReferenceGet:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files dCopyReferenceGet:_tester.testData.testFilePath]
+    [[[_filesRoute dCopyReferenceGet:_testData.testFilePath]
       setResponseBlock:^(DBFILESGetCopyReferenceResult *result, DBFILESGetCopyReferenceError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -912,7 +866,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getMetadata:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files getMetadata:_tester.testData.testFilePath]
+    [[[_filesRoute getMetadata:_testData.testFilePath]
       setResponseBlock:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -930,7 +884,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getMetadataError:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files getMetadata:@"/this/path/does/not/exist"]
+    [[[_filesRoute getMetadata:@"/this/path/does/not/exist"]
       setResponseBlock:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
         if (result) {
             NSAssert(NO, @"This call should have errored.");
@@ -950,7 +904,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getTemporaryLink:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files getTemporaryLink:_tester.testData.testFilePath]
+    [[[_filesRoute getTemporaryLink:_testData.testFilePath]
       setResponseBlock:^(DBFILESGetTemporaryLinkResult *result, DBFILESGetTemporaryLinkError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -968,7 +922,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listRevisions:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files listRevisions:_tester.testData.testFilePath]
+    [[[_filesRoute listRevisions:_testData.testFilePath]
       setResponseBlock:^(DBFILESListRevisionsResult *result, DBFILESListRevisionsError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -986,18 +940,18 @@ void MyLog(NSString *format, ...) {
 
 - (void)moveV2:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFolderPath, @"/", @"movedLocation"];
-    [[[_tester.files createFolderV2:folderPath]
+    NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _testData.testFolderPath, @"/", @"movedLocation"];
+    [[[_filesRoute createFolderV2:folderPath]
       setResponseBlock:^(DBFILESCreateFolderResult * _Nullable result, DBFILESCreateFolderError * _Nullable routeError, DBRequestError * _Nullable networkError) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printOffset:@"Created destination folder"];
             
-            NSString *fileToMove = [NSString stringWithFormat:@"%@%@", self->_tester.testData.testFilePath, @"_session"];
+            NSString *fileToMove = [NSString stringWithFormat:@"%@%@", self->_testData.testFilePath, @"_session"];
             NSString *destPath =
-            [NSString stringWithFormat:@"%@%@%@%@", folderPath, @"/", self->_tester.testData.testFileName, @"_session"];
+            [NSString stringWithFormat:@"%@%@%@%@", folderPath, @"/", self->_testData.testFileName, @"_session"];
             
-            [[[self->_tester.files moveV2:fileToMove toPath:destPath]
+            [[[self->_filesRoute moveV2:fileToMove toPath:destPath]
               setResponseBlock:^(DBFILESRelocationResult * _Nullable result, DBFILESRelocationError * _Nullable routeError, DBRequestError * _Nullable networkError) {
                 if (result) {
                     MyLog(@"%@\n", result);
@@ -1027,8 +981,8 @@ void MyLog(NSString *format, ...) {
         return;
     }
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFolderPath, @"/", @"dbx-test.html"];
-    [[[_tester.files saveUrl:folderPath url:@"https://www.google.com"]
+    NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _testData.testFolderPath, @"/", @"dbx-test.html"];
+    [[[_filesRoute saveUrl:folderPath url:@"https://www.google.com"]
       setResponseBlock:^(DBFILESSaveUrlResult *result, DBFILESSaveUrlError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1046,7 +1000,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToFile:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
+    [[[_filesRoute downloadUrl:_testData.testFilePath overwrite:YES destination:_testData.destURL]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1068,7 +1022,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToFileAgain:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
+    [[[_filesRoute downloadUrl:_testData.testFilePath overwrite:YES destination:_testData.destURL]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1090,13 +1044,13 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToFileError:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *filePath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_does_not_exist"];
-    [[[_tester.files downloadUrl:filePath overwrite:YES destination:_tester.testData.destURL]
+    NSString *filePath = [NSString stringWithFormat:@"%@%@", _testData.testFilePath, @"_does_not_exist"];
+    [[[_filesRoute downloadUrl:filePath overwrite:YES destination:_testData.destURL]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
         if (result) {
             NSAssert(NO, @"This call should have errored!");
         } else {
-            NSAssert(![[NSFileManager defaultManager] fileExistsAtPath:[self->_tester.testData.destURLException path]],
+            NSAssert(![[NSFileManager defaultManager] fileExistsAtPath:[self->_testData.destURLException path]],
                      @"File should not exist here.");
             [TestFormat printOffset:@"Error properly detected"];
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1111,7 +1065,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToMemory:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files downloadData:_tester.testData.testFilePath]
+    [[[_filesRoute downloadData:_testData.testFilePath]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1134,7 +1088,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToMemoryWithRange:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files downloadData:_tester.testData.testFilePath byteOffsetStart:@(0) byteOffsetEnd:@(10)]
+    [[[_filesRoute downloadData:_testData.testFilePath byteOffsetStart:@(0) byteOffsetEnd:@(10)]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1158,8 +1112,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)uploadFile:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
-    [[[_tester.files uploadUrl:outputPath inputUrl:[_tester.testData.destURL path]]
+    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _testData.testFilePath, @"_from_file"];
+    [[[_filesRoute uploadUrl:outputPath inputUrl:[_testData.destURL path]]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1177,8 +1131,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)uploadStream:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_stream"];
-    [[[_tester.files uploadStream:outputPath inputStream:[[NSInputStream alloc] initWithURL:_tester.testData.destURL]]
+    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _testData.testFilePath, @"_from_stream"];
+    [[[_filesRoute uploadStream:outputPath inputStream:[[NSInputStream alloc] initWithURL:_testData.destURL]]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1198,9 +1152,9 @@ void MyLog(NSString *format, ...) {
     void (^copy)(void) = ^{
         [TestFormat printOffset:@"Making change that longpoll will detect (copy file)"];
         NSString *copyOutputPath =
-        [NSString stringWithFormat:@"%@%@%@", self->_tester.testData.testFilePath, @"_duplicate2_", self->_tester.testData.testId];
+        [NSString stringWithFormat:@"%@%@%@", self->_testData.testFilePath, @"_duplicate2_", self->_testData.testId];
         
-        [[[self->_tester.files dCopyV2:self->_tester.testData.testFilePath toPath:copyOutputPath]
+        [[[self->_filesRoute dCopyV2:self->_testData.testFilePath toPath:copyOutputPath]
           setResponseBlock:^(DBFILESRelocationResult * _Nullable result, DBFILESRelocationError * _Nullable routeError, DBRequestError * _Nullable networkError) {
             if (result) {
                 MyLog(@"%@\n", result);
@@ -1215,7 +1169,7 @@ void MyLog(NSString *format, ...) {
     };
     
     void (^listFolderContinue)(NSString *) = ^(NSString *cursor) {
-        [[[self->_tester.files listFolderContinue:cursor]
+        [[[self->_filesRoute listFolderContinue:cursor]
           setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderContinueError *routeError, DBRequestError *error) {
             if (result) {
                 [TestFormat printOffset:@"Here are the changes:"];
@@ -1234,7 +1188,7 @@ void MyLog(NSString *format, ...) {
     
     void (^listFolderLongpoll)(NSString *) = ^(NSString *cursor) {
         [TestFormat printOffset:@"Establishing longpoll"];
-        [[[self->_tester.files listFolderLongpoll:cursor] setResponseBlock:^(DBFILESListFolderLongpollResult *result,
+        [[[self->_filesRoute listFolderLongpoll:cursor] setResponseBlock:^(DBFILESListFolderLongpollResult *result,
                                                                              DBFILESListFolderLongpollError *routeError, DBRequestError *error) {
             if (result) {
                 MyLog(@"%@\n", result);
@@ -1259,7 +1213,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     
     [TestFormat printOffset:@"Acquring cursor"];
-    [[[_tester.files listFolderGetLatestCursor:_tester.testData.testFolderPath]
+    [[[_filesRoute listFolderGetLatestCursor:_testData.testFolderPath]
       setResponseBlock:^(DBFILESListFolderGetLatestCursorResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
         if (result) {
             [TestFormat printOffset:@"Cursor acquired"];
