@@ -46,18 +46,14 @@
     // personal team data
     _teamMemberEmail = @"<EMAIL2>";
     _teamMemberNewEmail = @"<EMAIL3>";
-    
-    // OAuth 1.0 token
-    _oauth1Token = @"<OAUTH_1_TOKEN>";
-    _oauth1TokenSecret = @"<OAUTH_1_TOKEN_SECRET>";
-    
+
     // App key and secret
     _fullDropboxAppKey = @"<FULL_DROPBOX_APP_KEY>";
     _fullDropboxAppSecret = @"<FULL_DROPBOX_APP_SECRET>";
-    
+
     _teamMemberFileAccessAppKey = @"<TEAM_MEMBER_FILE_ACCESS_APP_KEY>";
     _teamMemberFileAccessAppSecret = @"<FULL_DROPBOX_APP_SECRET>";
-    
+
     _teamMemberManagementAppKey = @"<TEAM_MEMBER_MANAGEMENT_APP_KEY>";
     _teamMemberManagementAppSecret = @"<TEAM_MEMBER_MANAGEMENT_APP_SECRET>";
   }

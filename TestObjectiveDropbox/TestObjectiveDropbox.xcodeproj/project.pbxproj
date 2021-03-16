@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1D1D6D26005BF800C88B6F /* FilesTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1D6C26005BF800C88B6F /* FilesTestCase.m */; };
 		1BC94474BAF7A7BB8B521568 /* Pods_TestObjectiveDropbox_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E61D8320FDA365F90A8004D /* Pods_TestObjectiveDropbox_iOS.framework */; };
+		7D591876B62B5B205035C8E9 /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D55835BD704F9EAAB8E89FB /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework */; };
 		CB3E70120855B4B1ABCFF719 /* Pods_TestObjectiveDropbox_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF03FDC09CC9F1D2179AB000 /* Pods_TestObjectiveDropbox_macOS.framework */; };
 		F23681561DEF647900D523C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F23681551DEF647900D523C5 /* AppDelegate.m */; };
 		F23681591DEF647900D523C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F23681581DEF647900D523C5 /* main.m */; };
@@ -26,11 +28,26 @@
 		F29BFD911D66290500994345 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27BA80E1D63BBA100FB7864 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0C8ACA002600436100DE08FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F27BA7FC1D63BBA100FB7864 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F27BA8031D63BBA100FB7864;
+			remoteInfo = TestObjectiveDropbox_iOS;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0C1D1D6C26005BF800C88B6F /* FilesTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesTestCase.m; sourceTree = "<group>"; };
+		0C8AC9FB2600436100DE08FF /* TestObjectiveDropbox_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestObjectiveDropbox_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C8AC9FF2600436100DE08FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D55835BD704F9EAAB8E89FB /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E61D8320FDA365F90A8004D /* Pods_TestObjectiveDropbox_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestObjectiveDropbox_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6554325D0AB7E5A7E226CCED /* Pods-TestObjectiveDropbox_macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_macOS/Pods-TestObjectiveDropbox_macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		65F9D9B80A170147CA9887A7 /* Pods-TestObjectiveDropbox_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6874E63CE61C80116147AFB0 /* Pods-TestObjectiveDropbox_macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_macOS/Pods-TestObjectiveDropbox_macOS.release.xcconfig"; sourceTree = "<group>"; };
+		73F1A4955BD1AAF3362871A6 /* Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9403DCD149530530F654EE7 /* Pods-TestObjectiveDropbox_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		EF03FDC09CC9F1D2179AB000 /* Pods_TestObjectiveDropbox_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestObjectiveDropbox_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23681521DEF647900D523C5 /* TestObjectiveDropbox_macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjectiveDropbox_macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,9 +75,18 @@
 		F27BA8161D63BBA100FB7864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F27BA8181D63BBA100FB7864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2A2CEBC1E567499001D8449 /* TestAppType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAppType.h; sourceTree = "<group>"; };
+		F9D311DFBE6B027F6076CB5E /* Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0C8AC9F82600436100DE08FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D591876B62B5B205035C8E9 /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F236814F1DEF647900D523C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,8 +111,18 @@
 			children = (
 				5E61D8320FDA365F90A8004D /* Pods_TestObjectiveDropbox_iOS.framework */,
 				EF03FDC09CC9F1D2179AB000 /* Pods_TestObjectiveDropbox_macOS.framework */,
+				3D55835BD704F9EAAB8E89FB /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C8AC9FC2600436100DE08FF /* TestObjectiveDropbox_iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				0C1D1D6C26005BF800C88B6F /* FilesTestCase.m */,
+				0C8AC9FF2600436100DE08FF /* Info.plist */,
+			);
+			path = TestObjectiveDropbox_iOSTests;
 			sourceTree = "<group>";
 		};
 		92BE4CA0BA790784BB41BE84 /* Pods */ = {
@@ -96,6 +132,8 @@
 				E9403DCD149530530F654EE7 /* Pods-TestObjectiveDropbox_iOS.release.xcconfig */,
 				6554325D0AB7E5A7E226CCED /* Pods-TestObjectiveDropbox_macOS.debug.xcconfig */,
 				6874E63CE61C80116147AFB0 /* Pods-TestObjectiveDropbox_macOS.release.xcconfig */,
+				73F1A4955BD1AAF3362871A6 /* Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.debug.xcconfig */,
+				F9D311DFBE6B027F6076CB5E /* Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -141,6 +179,7 @@
 				F23681661DEF672800D523C5 /* IntegrationTests */,
 				F27BA8061D63BBA100FB7864 /* TestObjectiveDropbox_iOS */,
 				F23681531DEF647900D523C5 /* TestObjectiveDropbox_macOS */,
+				0C8AC9FC2600436100DE08FF /* TestObjectiveDropbox_iOSTests */,
 				F27BA8051D63BBA100FB7864 /* Products */,
 				92BE4CA0BA790784BB41BE84 /* Pods */,
 				017405FC24A1CAB655318F53 /* Frameworks */,
@@ -152,6 +191,7 @@
 			children = (
 				F27BA8041D63BBA100FB7864 /* TestObjectiveDropbox_iOS.app */,
 				F23681521DEF647900D523C5 /* TestObjectiveDropbox_macOS.app */,
+				0C8AC9FB2600436100DE08FF /* TestObjectiveDropbox_iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +224,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0C8AC9FA2600436100DE08FF /* TestObjectiveDropbox_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C8ACA022600436100DE08FF /* Build configuration list for PBXNativeTarget "TestObjectiveDropbox_iOSTests" */;
+			buildPhases = (
+				734E96A937D7B6C649E665C0 /* [CP] Check Pods Manifest.lock */,
+				0C8AC9F72600436100DE08FF /* Sources */,
+				0C8AC9F82600436100DE08FF /* Frameworks */,
+				0C8AC9F92600436100DE08FF /* Resources */,
+				7D898F5BF97042BCF0B78572 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C8ACA012600436100DE08FF /* PBXTargetDependency */,
+			);
+			name = TestObjectiveDropbox_iOSTests;
+			productName = TestObjectiveDropbox_iOSTests;
+			productReference = 0C8AC9FB2600436100DE08FF /* TestObjectiveDropbox_iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F23681511DEF647900D523C5 /* TestObjectiveDropbox_macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F23681651DEF647900D523C5 /* Build configuration list for PBXNativeTarget "TestObjectiveDropbox_macOS" */;
@@ -231,6 +291,11 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Dropbox;
 				TargetAttributes = {
+					0C8AC9FA2600436100DE08FF = {
+						CreatedOnToolsVersion = 12.4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F27BA8031D63BBA100FB7864;
+					};
 					F23681511DEF647900D523C5 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
@@ -262,11 +327,19 @@
 			targets = (
 				F27BA8031D63BBA100FB7864 /* TestObjectiveDropbox_iOS */,
 				F23681511DEF647900D523C5 /* TestObjectiveDropbox_macOS */,
+				0C8AC9FA2600436100DE08FF /* TestObjectiveDropbox_iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0C8AC9F92600436100DE08FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F23681501DEF647900D523C5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +398,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		734E96A937D7B6C649E665C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7A03DFCDE9686959E9D77EEE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,6 +436,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestObjectiveDropbox_iOS/Pods-TestObjectiveDropbox_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D898F5BF97042BCF0B78572 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ObjectiveDropboxOfficial-iOS/ObjectiveDropboxOfficial.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectiveDropboxOfficial.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests/Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A869A6A9C6E78EBA3DB6CAA1 /* [CP] Check Pods Manifest.lock */ = {
@@ -364,6 +477,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0C8AC9F72600436100DE08FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C1D1D6D26005BF800C88B6F /* FilesTestCase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F236814E1DEF647900D523C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -389,6 +510,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0C8ACA012600436100DE08FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F27BA8031D63BBA100FB7864 /* TestObjectiveDropbox_iOS */;
+			targetProxy = 0C8ACA002600436100DE08FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F236815F1DEF647900D523C5 /* Main.storyboard */ = {
@@ -418,6 +547,55 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0C8ACA032600436100DE08FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73F1A4955BD1AAF3362871A6 /* Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TestObjectiveDropbox_iOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.getdropbox.TestObjectiveDropbox-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestObjectiveDropbox_iOS.app/TestObjectiveDropbox_iOS";
+			};
+			name = Debug;
+		};
+		0C8ACA042600436100DE08FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9D311DFBE6B027F6076CB5E /* Pods-TestObjectiveDropbox_iOS-TestObjectiveDropbox_iOSTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TestObjectiveDropbox_iOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.getdropbox.TestObjectiveDropbox-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestObjectiveDropbox_iOS.app/TestObjectiveDropbox_iOS";
+			};
+			name = Release;
+		};
 		F23681631DEF647900D523C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6554325D0AB7E5A7E226CCED /* Pods-TestObjectiveDropbox_macOS.debug.xcconfig */;
@@ -599,6 +777,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0C8ACA022600436100DE08FF /* Build configuration list for PBXNativeTarget "TestObjectiveDropbox_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C8ACA032600436100DE08FF /* Debug */,
+				0C8ACA042600436100DE08FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F23681651DEF647900D523C5 /* Build configuration list for PBXNativeTarget "TestObjectiveDropbox_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
