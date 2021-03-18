@@ -1,0 +1,31 @@
+name: CI
+on:
+  pull_request
+
+jobs:
+  test:
+    name: Run iOS Unit tests
+    runs-on: macos-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Change folder
+        run: cd TestObjectiveDropbox
+      - name: Test
+        env:
+          FULL_DROPBOX_API_APP_KEY: ${{ secrets.FULL_DROPBOX_API_APP_KEY }}
+          FULL_DROPBOX_API_APP_SECRET: ${{ secrets.FULL_DROPBOX_API_APP_SECRET }}
+          FULL_DROPBOX_USER_OAUTH2_TOKEN: ${{ secrets.FULL_DROPBOX_USER_OAUTH2_TOKEN }}
+          platform: ${{ 'iOS Simulator' }}
+        run: |
+          cd TestObjectiveDropbox
+          pod install --repo-update
+          device=`instruments -s -devices | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}'`
+          xcodebuild -workspace TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
+            -destination "platform=$platform,name=$device" \
+            FULL_DROPBOX_API_APP_KEY=$FULL_DROPBOX_API_APP_KEY \
+            FULL_DROPBOX_API_APP_SECRET=$FULL_DROPBOX_API_APP_SECRET \
+            FULL_DROPBOX_USER_OAUTH2_TOKEN=$FULL_DROPBOX_USER_OAUTH2_TOKEN \
+            test
