@@ -21,7 +21,7 @@ jobs:
           platform: ${{ 'iOS Simulator' }}
         run: |
           cd TestObjectiveDropbox
-          pod install
+          pod install --repo-update
           device=`instruments -s -devices | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}'`
           xcodebuild -workspace TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
             -destination "platform=$platform,name=$device" \
