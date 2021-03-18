@@ -6,7 +6,7 @@ jobs:
   test:
     name: Run iOS Unit tests
     runs-on: macos-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
       - name: Checkout
