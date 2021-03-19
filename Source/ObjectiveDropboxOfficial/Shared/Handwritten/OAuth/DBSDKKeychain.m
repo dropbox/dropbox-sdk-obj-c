@@ -103,7 +103,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 
 + (BOOL)clearAllTokens {
-  NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{}];
+  NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecMatchLimit : (id)kSecMatchLimitAll}];
   return SecItemDelete((__bridge CFDictionaryRef)query) == noErr;
 }
 
