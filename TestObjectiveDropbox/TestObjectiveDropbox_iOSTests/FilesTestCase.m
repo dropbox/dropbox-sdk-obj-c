@@ -13,6 +13,8 @@
 }
 
 - (void)setUp {
+    self.continueAfterFailure = NO;
+
     NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
 
     // You need an API app with the "Full Dropbox" permission type.
@@ -34,7 +36,7 @@
                                              userAgent:nil
                                             asMemberId:nil
                                          delegateQueue:_delegateQueue
-                                forceForegroundSession:NO
+                                forceForegroundSession:YES // NO here will cause downloadURL to fail on OSX, need to fix
                              sharedContainerIdentifier:nil];
     _userClient = [[DBUserClient alloc] initWithAccessToken:oauth2Token
         transportConfig:transportConfigFullDropbox];
@@ -98,7 +100,8 @@
     }];
 #pragma clang diagnostic pop
 
-    [self waitForExpectations:@[flag] timeout:3];
+    XCTWaiterResult result = [XCTWaiter waitForExpectations:@[flag] timeout:10];
+    XCTAssertEqual(result, XCTWaiterResultCompleted);
 }
 
 @end

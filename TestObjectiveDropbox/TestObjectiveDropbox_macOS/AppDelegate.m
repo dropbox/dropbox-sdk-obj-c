@@ -21,6 +21,11 @@ static ViewController *viewController = nil;
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    if([[NSProcessInfo processInfo] environment][@"XCTestConfigurationFilePath"] != nil) {
+        // running unit tests
+        return;
+    }
+
   TestData *data = [TestData new];
 
   if ([data.fullDropboxAppSecret containsString:@"<"] ||
