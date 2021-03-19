@@ -11,4 +11,7 @@ end
 target "TestObjectiveDropbox_macOS" do
     platform :osx, '10.10'
     pod 'ObjectiveDropboxOfficial', :path => '../'
+    target "TestObjectiveDropbox_macOSTests" do
+        pod 'ObjectiveDropboxOfficial', :path => '../'
+    end
 end
