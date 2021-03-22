@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C1D1D6D26005BF800C88B6F /* FilesTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1D6C26005BF800C88B6F /* FilesTestCase.m */; };
-		0C1FE6622603032300D879BB /* FilesTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1D6C26005BF800C88B6F /* FilesTestCase.m */; };
+		0C1D1D6D26005BF800C88B6F /* FileRoutesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1D6C26005BF800C88B6F /* FileRoutesTests.m */; };
+		0C1FE6622603032300D879BB /* FileRoutesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1D6C26005BF800C88B6F /* FileRoutesTests.m */; };
 		0C40FBEC260324C000D07F24 /* TestData.m in Sources */ = {isa = PBXBuildFile; fileRef = F236816A1DEF672800D523C5 /* TestData.m */; };
 		0C40FBF1260324C100D07F24 /* TestData.m in Sources */ = {isa = PBXBuildFile; fileRef = F236816A1DEF672800D523C5 /* TestData.m */; };
+		0C40FC02260533B300D07F24 /* TeamRoutesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40FC01260533B300D07F24 /* TeamRoutesTests.m */; };
+		0C40FC03260533B300D07F24 /* TeamRoutesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40FC01260533B300D07F24 /* TeamRoutesTests.m */; };
+		0C8B8AE0260B008E00B3522B /* TestAuthTokenGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B8ADF260B008D00B3522B /* TestAuthTokenGenerator.m */; };
+		0C8B8AE1260B008E00B3522B /* TestAuthTokenGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B8ADF260B008D00B3522B /* TestAuthTokenGenerator.m */; };
 		1BC94474BAF7A7BB8B521568 /* Pods_TestObjectiveDropbox_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E61D8320FDA365F90A8004D /* Pods_TestObjectiveDropbox_iOS.framework */; };
 		7D591876B62B5B205035C8E9 /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D55835BD704F9EAAB8E89FB /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework */; };
 		BCDD1285CB9359806B4DEF2A /* Pods_TestObjectiveDropbox_macOS_TestObjectiveDropbox_macOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0A70443E73CD2045DC5577 /* Pods_TestObjectiveDropbox_macOS_TestObjectiveDropbox_macOSTests.framework */; };
@@ -48,11 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C1D1D6C26005BF800C88B6F /* FilesTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesTestCase.m; sourceTree = "<group>"; };
+		0C1D1D6C26005BF800C88B6F /* FileRoutesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileRoutesTests.m; sourceTree = "<group>"; };
 		0C1FE6502603031100D879BB /* TestObjectiveDropbox_macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestObjectiveDropbox_macOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C1FE6542603031100D879BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C40FC01260533B300D07F24 /* TeamRoutesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamRoutesTests.m; sourceTree = "<group>"; };
 		0C8AC9FB2600436100DE08FF /* TestObjectiveDropbox_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestObjectiveDropbox_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8AC9FF2600436100DE08FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C8B8ADF260B008D00B3522B /* TestAuthTokenGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAuthTokenGenerator.m; sourceTree = "<group>"; };
+		0C8B8AE6260B016200B3522B /* TestAuthTokenGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAuthTokenGenerator.h; sourceTree = "<group>"; };
 		3D55835BD704F9EAAB8E89FB /* Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestObjectiveDropbox_iOS_TestObjectiveDropbox_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40563F1CA15355CA626FA520 /* Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests/Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		58BC6BCB40B840121E9A6B62 /* Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests/Pods-TestObjectiveDropbox_macOS-TestObjectiveDropbox_macOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,8 +157,11 @@
 		0C8AC9FC2600436100DE08FF /* TestObjectiveDropbox_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				0C1D1D6C26005BF800C88B6F /* FilesTestCase.m */,
+				0C1D1D6C26005BF800C88B6F /* FileRoutesTests.m */,
 				0C8AC9FF2600436100DE08FF /* Info.plist */,
+				0C40FC01260533B300D07F24 /* TeamRoutesTests.m */,
+				0C8B8ADF260B008D00B3522B /* TestAuthTokenGenerator.m */,
+				0C8B8AE6260B016200B3522B /* TestAuthTokenGenerator.h */,
 			);
 			path = TestObjectiveDropbox_iOSTests;
 			sourceTree = "<group>";
@@ -589,7 +599,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C1FE6622603032300D879BB /* FilesTestCase.m in Sources */,
+				0C8B8AE1260B008E00B3522B /* TestAuthTokenGenerator.m in Sources */,
+				0C40FC03260533B300D07F24 /* TeamRoutesTests.m in Sources */,
+				0C1FE6622603032300D879BB /* FileRoutesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +609,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C1D1D6D26005BF800C88B6F /* FilesTestCase.m in Sources */,
+				0C8B8AE0260B008E00B3522B /* TestAuthTokenGenerator.m in Sources */,
+				0C40FC02260533B300D07F24 /* TeamRoutesTests.m in Sources */,
+				0C1D1D6D26005BF800C88B6F /* FileRoutesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

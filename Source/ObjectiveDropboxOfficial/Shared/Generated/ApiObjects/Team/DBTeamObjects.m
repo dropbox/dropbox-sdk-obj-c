@@ -7076,7 +7076,7 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"group_name"] = valueObj.groupName;
-  jsonDict[@"add_creator_as_owner"] = valueObj.addCreatorAsOwner;
+    jsonDict[@"add_creator_as_owner"] = valueObj.addCreatorAsOwner;
   if (valueObj.groupExternalId) {
     jsonDict[@"group_external_id"] = valueObj.groupExternalId;
   }

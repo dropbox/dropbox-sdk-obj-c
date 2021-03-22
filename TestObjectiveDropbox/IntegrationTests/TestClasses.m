@@ -19,6 +19,20 @@ void MyLog(NSString *format, ...) {
 }
 
 @implementation DropboxTester
+- (instancetype)initWithUserClient:(DBUserClient *)userClient testData:(TestData *)testData {
+    self = [super init];
+    if (self) {
+        NSParameterAssert(userClient);
+        NSParameterAssert(testData);
+        _testData = testData;
+        _auth = userClient.authRoutes;
+        _files = userClient.filesRoutes;
+        _sharing = userClient.sharingRoutes;
+        _users = userClient.usersRoutes;
+    }
+    return self;
+}
+
 
 - (instancetype)initWithTestData:(TestData *)testData {
     self = [super init];
@@ -26,10 +40,7 @@ void MyLog(NSString *format, ...) {
         DBUserClient *clientToUse = s_teamAdminUserClient ?: [DBClientsManager authorizedClient];
         NSAssert(clientToUse, @"No authorized user client.");
         _testData = testData;
-        DBAppClient *unauthorizedClient = [[DBAppClient alloc] initWithAppKey:_testData.fullDropboxAppKey appSecret:_testData.fullDropboxAppSecret];
-        _unauthorizedClient = unauthorizedClient;
         _auth = clientToUse.authRoutes;
-        _appAuth = unauthorizedClient.authRoutes;
         _files = clientToUse.filesRoutes;
         _sharing = clientToUse.sharingRoutes;
         _users = clientToUse.usersRoutes;
@@ -225,6 +236,14 @@ void MyLog(NSString *format, ...) {
 @end
 
 @implementation DropboxTeamTester
+- (instancetype)initWithTeamRoutes:(DBTEAMTeamAuthRoutes *)teamRoutes testData:(TestData * _Nonnull)testData {
+    self = [super init];
+    if (self) {
+        _testData = testData;
+        _team = teamRoutes;
+    }
+    return self;
+}
 
 - (instancetype)initWithTestData:(TestData *)testData {
     self = [super init];
@@ -1843,9 +1862,9 @@ void MyLog(NSString *format, ...) {
 - (void)groupsCreate:(void (^)(void))nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     [[[_tester.team groupsCreate:_tester.testData.groupName
-               addCreatorAsOwner:@(1)
+               addCreatorAsOwner:@NO
                  groupExternalId:_tester.testData.groupExternalId
-             groupManagementType:nil]
+             groupManagementType:[[DBTEAMCOMMONGroupManagementType alloc] initWithUserManaged]]
       setResponseBlock:^(DBTEAMGroupFullInfo *result, DBTEAMGroupCreateError *routeError, DBRequestError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -1964,8 +1983,10 @@ void MyLog(NSString *format, ...) {
              totalBytesExpectedToSend:totalBytesExpectedToSend];
     }];
 }
-
 - (void)groupsDelete:(void (^)(void))nextTest {
+    [self groupsDelete:nextTest tries:0];
+}
+- (void)groupsDelete:(void (^)(void))nextTest tries:(int)tries {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     
     void (^jobStatus)(NSString *) = ^(NSString *jobId) {
@@ -1974,7 +1995,11 @@ void MyLog(NSString *format, ...) {
             if (result) {
                 MyLog(@"%@\n", result);
                 if ([result isInProgress]) {
-                    [TestFormat abort:error routeError:routeError];
+                    if (tries >= 3) {
+                        [TestFormat abort:error routeError:routeError];
+                    }
+                    int updatedTries = tries + 1;
+                    [self groupsDelete:nextTest tries:updatedTries];
                 } else {
                     [TestFormat printOffset:@"Deleted"];
                     [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -2233,7 +2258,11 @@ static int smallDividerSize = 150;
 + (void)abort:(DBRequestError *)error routeError:(id)routeError {
     [self printErrors:error routeError:routeError];
     MyLog(@"Terminating....\n");
-    exit(0);
+    NSException* myException = [NSException
+            exceptionWithName:@"TestFailure"
+            reason:[NSString stringWithFormat:@"Error: %@ RouteError: %@", error, routeError]
+            userInfo:nil];
+    @throw myException;
 }
 
 + (void)printErrors:(DBRequestError *)error routeError:(id)routeError {

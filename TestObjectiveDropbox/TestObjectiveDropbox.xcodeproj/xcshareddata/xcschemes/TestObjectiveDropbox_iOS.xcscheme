@@ -38,13 +38,23 @@
       </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "FULL_DROPBOX_API_APP_SECRET"
-            value = "$(FULL_DROPBOX_API_APP_SECRET)"
+            key = "EMAIL_TO_ADD_AS_TEAM_MEMBER"
+            value = "$(EMAIL_TO_ADD_AS_TEAM_MEMBER)"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "FULL_DROPBOX_USER_OAUTH2_TOKEN"
-            value = "$(FULL_DROPBOX_USER_OAUTH2_TOKEN)"
+            key = "TEAM_MEMBER_EMAIL"
+            value = "$(TEAM_MEMBER_EMAIL)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"
+            value = "$(FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"
+            value = "$(FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN)"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
