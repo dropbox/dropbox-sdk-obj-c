@@ -13,7 +13,6 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     DBUserClient* _userClient;
     DropboxTester *_tester;
     TestData *_testData;
-    BOOL _shouldFail;
 }
 
 - (void)setUp {
@@ -64,8 +63,7 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     [filesTests deleteV2:^{
         [flag fulfill];
     }];
-    XCTWaiterResult result = [XCTWaiter waitForExpectations:@[flag] timeout:60*5];
-    XCTAssertEqual(result, XCTWaiterResultCompleted);
+    [self waitForExpectations:@[flag] timeout:30]; // don't need to check result
 }
 
 - (void)testFileRoutes {

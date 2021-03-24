@@ -52,20 +52,22 @@ static NSString *scopesForTeamRoutesTests = @"groups.read groups.write members.d
     _teamTester = [[DropboxTeamTester alloc] initWithTeamRoutes:_teamClient.teamRoutes testData:data];
 }
 
-- (void)testTeamRoutes {
+- (void)testTeammemberManagement {
     XCTestExpectation *flag = [[XCTestExpectation alloc] init];
     [_teamTester testAllTeamMemberManagementActions:^{
         [flag fulfill];
     }];
     XCTWaiterResult result = [XCTWaiter waitForExpectations:@[flag] timeout:60*5];
     XCTAssertEqual(result, XCTWaiterResultCompleted);
+}
 
-    XCTestExpectation *flag2 = [[XCTestExpectation alloc] init];
+- (void)testTeamMemberFileAccess {
+    XCTestExpectation *flag = [[XCTestExpectation alloc] init];
     [_teamTester testTeamMemberFileAcessActions:^(TeamTests * tester){
-        [flag2 fulfill];
+        [flag fulfill];
     }];
-    XCTWaiterResult result2 = [XCTWaiter waitForExpectations:@[flag2] timeout:60*5];
-    XCTAssertEqual(result2, XCTWaiterResultCompleted);
+    XCTWaiterResult result = [XCTWaiter waitForExpectations:@[flag] timeout:60*5];
+    XCTAssertEqual(result, XCTWaiterResultCompleted);
 }
 
 @end

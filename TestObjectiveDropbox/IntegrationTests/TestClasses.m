@@ -33,18 +33,10 @@ void MyLog(NSString *format, ...) {
     return self;
 }
 
-
 - (instancetype)initWithTestData:(TestData *)testData {
-    self = [super init];
-    if (self) {
-        DBUserClient *clientToUse = s_teamAdminUserClient ?: [DBClientsManager authorizedClient];
-        NSAssert(clientToUse, @"No authorized user client.");
-        _testData = testData;
-        _auth = clientToUse.authRoutes;
-        _files = clientToUse.filesRoutes;
-        _sharing = clientToUse.sharingRoutes;
-        _users = clientToUse.usersRoutes;
-    }
+    DBUserClient *clientToUse = s_teamAdminUserClient ?: [DBClientsManager authorizedClient];
+    NSAssert(clientToUse, @"No authorized user client.");
+    self = [self initWithUserClient:clientToUse testData:testData ];
     return self;
 }
 
@@ -246,13 +238,9 @@ void MyLog(NSString *format, ...) {
 }
 
 - (instancetype)initWithTestData:(TestData *)testData {
-    self = [super init];
-    if (self) {
-        NSAssert([DBClientsManager authorizedTeamClient], @"No authorized team client.");
-        
-        _testData = testData;
-        _team = [DBClientsManager authorizedTeamClient].teamRoutes;
-    }
+    NSAssert([DBClientsManager authorizedTeamClient], @"No authorized team client.");
+
+    self = [self initWithTeamRoutes:[DBClientsManager authorizedTeamClient].teamRoutes testData:testData];
     return self;
 }
 

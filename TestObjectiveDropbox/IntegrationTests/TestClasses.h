@@ -141,6 +141,7 @@
 @end
 
 @interface TeamTests : NSObject
+
 - (nonnull instancetype)init:(DropboxTeamTester * _Nonnull)tester;
 
 // TeamMemberFileAccess
