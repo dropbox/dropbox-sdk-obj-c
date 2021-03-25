@@ -1318,7 +1318,7 @@ propertiesTemplateAdd:(NSString *)name
     __deprecated_msg("propertiesTemplateAdd is deprecated.");
 
 ///
-/// DEPRECATED: Permission : Team member file access.
+/// DEPRECATED: Permission : Team member file access. The scope for the route is files.team_metadata.write.
 ///
 /// @param templateId An identifier for template added by route  See `templatesAddForUser` or `templatesAddForTeam`.
 ///
@@ -1329,7 +1329,7 @@ propertiesTemplateAdd:(NSString *)name
     (NSString *)templateId __deprecated_msg("propertiesTemplateGet is deprecated.");
 
 ///
-/// DEPRECATED: Permission : Team member file access.
+/// DEPRECATED: Permission : Team member file access. The scope for the route is files.team_metadata.write.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESListTemplateResult` object on
@@ -1369,7 +1369,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("propertiesTemplateUpdate is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's user activity.
+/// DEPRECATED: Retrieves reporting data about a team's user activity. Deprecated: Will be removed on July 1st 2021.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetActivityReport` object on success or a
@@ -1379,7 +1379,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("reportsGetActivity is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's user activity.
+/// DEPRECATED: Retrieves reporting data about a team's user activity. Deprecated: Will be removed on July 1st 2021.
 ///
 /// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
 /// to 6 months ago.
@@ -1393,7 +1393,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("reportsGetActivity is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's linked devices.
+/// DEPRECATED: Retrieves reporting data about a team's linked devices. Deprecated: Will be removed on July 1st 2021.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetDevicesReport` object on success or a
@@ -1403,7 +1403,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("reportsGetDevices is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's linked devices.
+/// DEPRECATED: Retrieves reporting data about a team's linked devices. Deprecated: Will be removed on July 1st 2021.
 ///
 /// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
 /// to 6 months ago.
@@ -1417,7 +1417,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("reportsGetDevices is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's membership.
+/// DEPRECATED: Retrieves reporting data about a team's membership. Deprecated: Will be removed on July 1st 2021.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetMembershipReport` object on success or a
@@ -1427,7 +1427,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("reportsGetMembership is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's membership.
+/// DEPRECATED: Retrieves reporting data about a team's membership. Deprecated: Will be removed on July 1st 2021.
 ///
 /// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
 /// to 6 months ago.
@@ -1441,7 +1441,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("reportsGetMembership is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's storage usage.
+/// DEPRECATED: Retrieves reporting data about a team's storage usage. Deprecated: Will be removed on July 1st 2021.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMGetStorageReport` object on success or a
@@ -1451,7 +1451,7 @@ propertiesTemplateUpdate:(NSString *)templateId
     __deprecated_msg("reportsGetStorage is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves reporting data about a team's storage usage.
+/// DEPRECATED: Retrieves reporting data about a team's storage usage. Deprecated: Will be removed on July 1st 2021.
 ///
 /// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
 /// to 6 months ago.

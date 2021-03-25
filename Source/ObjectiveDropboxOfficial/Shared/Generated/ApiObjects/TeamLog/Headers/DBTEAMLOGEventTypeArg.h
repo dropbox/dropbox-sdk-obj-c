@@ -85,6 +85,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (data_governance) Couldn't add a folder to a policy
     DBTEAMLOGEventTypeArgGovernancePolicyAddFolderFailed,
 
+    /// (data_governance) Content disposed
+    DBTEAMLOGEventTypeArgGovernancePolicyContentDisposed,
+
     /// (data_governance) Activated a new policy
     DBTEAMLOGEventTypeArgGovernancePolicyCreate,
 
@@ -292,6 +295,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 
     /// (file_operations) Unpinned item from folder overview
     DBTEAMLOGEventTypeArgFolderOverviewItemUnpinned,
+
+    /// (file_operations) Added a label
+    DBTEAMLOGEventTypeArgObjectLabelAdded,
+
+    /// (file_operations) Removed a label
+    DBTEAMLOGEventTypeArgObjectLabelRemoved,
+
+    /// (file_operations) Updated a label's value
+    DBTEAMLOGEventTypeArgObjectLabelUpdatedValue,
 
     /// (file_operations) Rewound a folder
     DBTEAMLOGEventTypeArgRewindFolder,
@@ -1666,6 +1678,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 - (instancetype)initWithGovernancePolicyAddFolderFailed;
 
 ///
+/// Initializes union class with tag state of
+/// "governance_policy_content_disposed".
+///
+/// Description of the "governance_policy_content_disposed" tag state:
+/// (data_governance) Content disposed
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyContentDisposed;
+
+///
 /// Initializes union class with tag state of "governance_policy_create".
 ///
 /// Description of the "governance_policy_create" tag state: (data_governance)
@@ -2365,6 +2388,36 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFolderOverviewItemUnpinned;
+
+///
+/// Initializes union class with tag state of "object_label_added".
+///
+/// Description of the "object_label_added" tag state: (file_operations) Added a
+/// label
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelAdded;
+
+///
+/// Initializes union class with tag state of "object_label_removed".
+///
+/// Description of the "object_label_removed" tag state: (file_operations)
+/// Removed a label
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelRemoved;
+
+///
+/// Initializes union class with tag state of "object_label_updated_value".
+///
+/// Description of the "object_label_updated_value" tag state: (file_operations)
+/// Updated a label's value
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelUpdatedValue;
 
 ///
 /// Initializes union class with tag state of "rewind_folder".
@@ -6350,6 +6403,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "governance_policy_content_disposed".
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_content_disposed".
+///
+- (BOOL)isGovernancePolicyContentDisposed;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "governance_policy_create".
 ///
 /// @return Whether the union's current tag state has value
@@ -6934,6 +6996,33 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// "folder_overview_item_unpinned".
 ///
 - (BOOL)isFolderOverviewItemUnpinned;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_added".
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_added".
+///
+- (BOOL)isObjectLabelAdded;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_removed".
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_removed".
+///
+- (BOOL)isObjectLabelRemoved;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_updated_value".
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_updated_value".
+///
+- (BOOL)isObjectLabelUpdatedValue;
 
 ///
 /// Retrieves whether the union's current tag state has value "rewind_folder".

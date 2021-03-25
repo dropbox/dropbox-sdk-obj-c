@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// with which the `DBTEAMLOGAdminRole` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
     /// (no description).
+    DBTEAMLOGAdminRoleBillingAdmin,
+
+    /// (no description).
     DBTEAMLOGAdminRoleLimitedAdmin,
 
     /// (no description).
@@ -52,6 +55,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 @property (nonatomic, readonly) DBTEAMLOGAdminRoleTag tag;
 
 #pragma mark - Constructors
+
+///
+/// Initializes union class with tag state of "billing_admin".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithBillingAdmin;
 
 ///
 /// Initializes union class with tag state of "limited_admin".
@@ -98,6 +108,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
+
+///
+/// Retrieves whether the union's current tag state has value "billing_admin".
+///
+/// @return Whether the union's current tag state has value "billing_admin".
+///
+- (BOOL)isBillingAdmin;
 
 ///
 /// Retrieves whether the union's current tag state has value "limited_admin".
