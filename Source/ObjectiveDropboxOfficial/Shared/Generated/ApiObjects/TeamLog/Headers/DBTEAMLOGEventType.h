@@ -137,6 +137,7 @@
 @class DBTEAMLOGGoogleSsoChangePolicyType;
 @class DBTEAMLOGGovernancePolicyAddFolderFailedType;
 @class DBTEAMLOGGovernancePolicyAddFoldersType;
+@class DBTEAMLOGGovernancePolicyContentDisposedType;
 @class DBTEAMLOGGovernancePolicyCreateType;
 @class DBTEAMLOGGovernancePolicyDeleteType;
 @class DBTEAMLOGGovernancePolicyEditDetailsType;
@@ -220,6 +221,9 @@
 @class DBTEAMLOGNoteAclTeamLinkType;
 @class DBTEAMLOGNoteShareReceiveType;
 @class DBTEAMLOGNoteSharedType;
+@class DBTEAMLOGObjectLabelAddedType;
+@class DBTEAMLOGObjectLabelRemovedType;
+@class DBTEAMLOGObjectLabelUpdatedValueType;
 @class DBTEAMLOGOpenNoteSharedType;
 @class DBTEAMLOGOutdatedLinkViewCreateReportType;
 @class DBTEAMLOGOutdatedLinkViewReportFailedType;
@@ -540,6 +544,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (data_governance) Couldn't add a folder to a policy
     DBTEAMLOGEventTypeGovernancePolicyAddFolderFailed,
 
+    /// (data_governance) Content disposed
+    DBTEAMLOGEventTypeGovernancePolicyContentDisposed,
+
     /// (data_governance) Activated a new policy
     DBTEAMLOGEventTypeGovernancePolicyCreate,
 
@@ -747,6 +754,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
     /// (file_operations) Unpinned item from folder overview
     DBTEAMLOGEventTypeFolderOverviewItemUnpinned,
+
+    /// (file_operations) Added a label
+    DBTEAMLOGEventTypeObjectLabelAdded,
+
+    /// (file_operations) Removed a label
+    DBTEAMLOGEventTypeObjectLabelRemoved,
+
+    /// (file_operations) Updated a label's value
+    DBTEAMLOGEventTypeObjectLabelUpdatedValue,
 
     /// (file_operations) Rewound a folder
     DBTEAMLOGEventTypeRewindFolder,
@@ -2022,6 +2038,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGovernancePolicyAddFolderFailedType *governancePolicyAddFolderFailed;
 
+/// (data_governance) Content disposed @note Ensure the
+/// `isGovernancePolicyContentDisposed` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGovernancePolicyContentDisposedType *governancePolicyContentDisposed;
+
 /// (data_governance) Activated a new policy @note Ensure the
 /// `isGovernancePolicyCreate` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
@@ -2361,6 +2382,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// `isFolderOverviewItemUnpinned` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFolderOverviewItemUnpinnedType *folderOverviewItemUnpinned;
+
+/// (file_operations) Added a label @note Ensure the `isObjectLabelAdded` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGObjectLabelAddedType *objectLabelAdded;
+
+/// (file_operations) Removed a label @note Ensure the `isObjectLabelRemoved`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGObjectLabelRemovedType *objectLabelRemoved;
+
+/// (file_operations) Updated a label's value @note Ensure the
+/// `isObjectLabelUpdatedValue` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGObjectLabelUpdatedValueType *objectLabelUpdatedValue;
 
 /// (file_operations) Rewound a folder @note Ensure the `isRewindFolder` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -4451,6 +4486,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     (DBTEAMLOGGovernancePolicyAddFolderFailedType *)governancePolicyAddFolderFailed;
 
 ///
+/// Initializes union class with tag state of
+/// "governance_policy_content_disposed".
+///
+/// Description of the "governance_policy_content_disposed" tag state:
+/// (data_governance) Content disposed
+///
+/// @param governancePolicyContentDisposed (data_governance) Content disposed
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyContentDisposed:
+    (DBTEAMLOGGovernancePolicyContentDisposedType *)governancePolicyContentDisposed;
+
+///
 /// Initializes union class with tag state of "governance_policy_create".
 ///
 /// Description of the "governance_policy_create" tag state: (data_governance)
@@ -5355,6 +5404,42 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 ///
 - (instancetype)initWithFolderOverviewItemUnpinned:
     (DBTEAMLOGFolderOverviewItemUnpinnedType *)folderOverviewItemUnpinned;
+
+///
+/// Initializes union class with tag state of "object_label_added".
+///
+/// Description of the "object_label_added" tag state: (file_operations) Added a
+/// label
+///
+/// @param objectLabelAdded (file_operations) Added a label
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelAdded:(DBTEAMLOGObjectLabelAddedType *)objectLabelAdded;
+
+///
+/// Initializes union class with tag state of "object_label_removed".
+///
+/// Description of the "object_label_removed" tag state: (file_operations)
+/// Removed a label
+///
+/// @param objectLabelRemoved (file_operations) Removed a label
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelRemoved:(DBTEAMLOGObjectLabelRemovedType *)objectLabelRemoved;
+
+///
+/// Initializes union class with tag state of "object_label_updated_value".
+///
+/// Description of the "object_label_updated_value" tag state: (file_operations)
+/// Updated a label's value
+///
+/// @param objectLabelUpdatedValue (file_operations) Updated a label's value
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelUpdatedValue:(DBTEAMLOGObjectLabelUpdatedValueType *)objectLabelUpdatedValue;
 
 ///
 /// Initializes union class with tag state of "rewind_folder".
@@ -10518,6 +10603,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "governance_policy_content_disposed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `governancePolicyContentDisposed` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_content_disposed".
+///
+- (BOOL)isGovernancePolicyContentDisposed;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "governance_policy_create".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -11359,6 +11457,43 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// "folder_overview_item_unpinned".
 ///
 - (BOOL)isFolderOverviewItemUnpinned;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_added".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `objectLabelAdded` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_added".
+///
+- (BOOL)isObjectLabelAdded;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_removed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `objectLabelRemoved` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_removed".
+///
+- (BOOL)isObjectLabelRemoved;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_updated_value".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `objectLabelUpdatedValue` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_updated_value".
+///
+- (BOOL)isObjectLabelUpdatedValue;
 
 ///
 /// Retrieves whether the union's current tag state has value "rewind_folder".

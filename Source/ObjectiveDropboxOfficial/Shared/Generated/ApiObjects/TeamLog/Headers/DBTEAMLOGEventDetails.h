@@ -137,6 +137,7 @@
 @class DBTEAMLOGGoogleSsoChangePolicyDetails;
 @class DBTEAMLOGGovernancePolicyAddFolderFailedDetails;
 @class DBTEAMLOGGovernancePolicyAddFoldersDetails;
+@class DBTEAMLOGGovernancePolicyContentDisposedDetails;
 @class DBTEAMLOGGovernancePolicyCreateDetails;
 @class DBTEAMLOGGovernancePolicyDeleteDetails;
 @class DBTEAMLOGGovernancePolicyEditDetailsDetails;
@@ -221,6 +222,9 @@
 @class DBTEAMLOGNoteAclTeamLinkDetails;
 @class DBTEAMLOGNoteShareReceiveDetails;
 @class DBTEAMLOGNoteSharedDetails;
+@class DBTEAMLOGObjectLabelAddedDetails;
+@class DBTEAMLOGObjectLabelRemovedDetails;
+@class DBTEAMLOGObjectLabelUpdatedValueDetails;
 @class DBTEAMLOGOpenNoteSharedDetails;
 @class DBTEAMLOGOutdatedLinkViewCreateReportDetails;
 @class DBTEAMLOGOutdatedLinkViewReportFailedDetails;
@@ -541,6 +545,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
     DBTEAMLOGEventDetailsGovernancePolicyAddFolderFailedDetails,
 
     /// (no description).
+    DBTEAMLOGEventDetailsGovernancePolicyContentDisposedDetails,
+
+    /// (no description).
     DBTEAMLOGEventDetailsGovernancePolicyCreateDetails,
 
     /// (no description).
@@ -743,6 +750,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
     /// (no description).
     DBTEAMLOGEventDetailsFolderOverviewItemUnpinnedDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsObjectLabelAddedDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsObjectLabelRemovedDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsObjectLabelUpdatedValueDetails,
 
     /// (no description).
     DBTEAMLOGEventDetailsRewindFolderDetails,
@@ -1940,6 +1956,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGovernancePolicyAddFolderFailedDetails *governancePolicyAddFolderFailedDetails;
 
+/// (no description). @note Ensure the
+/// `isGovernancePolicyContentDisposedDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGGovernancePolicyContentDisposedDetails *governancePolicyContentDisposedDetails;
+
 /// (no description). @note Ensure the `isGovernancePolicyCreateDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGGovernancePolicyCreateDetails *governancePolicyCreateDetails;
@@ -2255,6 +2276,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFolderOverviewItemUnpinnedDetails *folderOverviewItemUnpinnedDetails;
+
+/// (no description). @note Ensure the `isObjectLabelAddedDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGObjectLabelAddedDetails *objectLabelAddedDetails;
+
+/// (no description). @note Ensure the `isObjectLabelRemovedDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGObjectLabelRemovedDetails *objectLabelRemovedDetails;
+
+/// (no description). @note Ensure the `isObjectLabelUpdatedValueDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGObjectLabelUpdatedValueDetails *objectLabelUpdatedValueDetails;
 
 /// (no description). @note Ensure the `isRewindFolderDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
@@ -4146,6 +4179,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
 ///
 /// Initializes union class with tag state of
+/// "governance_policy_content_disposed_details".
+///
+/// @param governancePolicyContentDisposedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithGovernancePolicyContentDisposedDetails:
+    (DBTEAMLOGGovernancePolicyContentDisposedDetails *)governancePolicyContentDisposedDetails;
+
+///
+/// Initializes union class with tag state of
 /// "governance_policy_create_details".
 ///
 /// @param governancePolicyCreateDetails (no description).
@@ -4847,6 +4891,35 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 ///
 - (instancetype)initWithFolderOverviewItemUnpinnedDetails:
     (DBTEAMLOGFolderOverviewItemUnpinnedDetails *)folderOverviewItemUnpinnedDetails;
+
+///
+/// Initializes union class with tag state of "object_label_added_details".
+///
+/// @param objectLabelAddedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelAddedDetails:(DBTEAMLOGObjectLabelAddedDetails *)objectLabelAddedDetails;
+
+///
+/// Initializes union class with tag state of "object_label_removed_details".
+///
+/// @param objectLabelRemovedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelRemovedDetails:(DBTEAMLOGObjectLabelRemovedDetails *)objectLabelRemovedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "object_label_updated_value_details".
+///
+/// @param objectLabelUpdatedValueDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithObjectLabelUpdatedValueDetails:
+    (DBTEAMLOGObjectLabelUpdatedValueDetails *)objectLabelUpdatedValueDetails;
 
 ///
 /// Initializes union class with tag state of "rewind_folder_details".
@@ -8875,6 +8948,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "governance_policy_content_disposed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `governancePolicyContentDisposedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "governance_policy_content_disposed_details".
+///
+- (BOOL)isGovernancePolicyContentDisposedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "governance_policy_create_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -9743,6 +9829,45 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// "folder_overview_item_unpinned_details".
 ///
 - (BOOL)isFolderOverviewItemUnpinnedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_added_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `objectLabelAddedDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_added_details".
+///
+- (BOOL)isObjectLabelAddedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_removed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `objectLabelRemovedDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_removed_details".
+///
+- (BOOL)isObjectLabelRemovedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "object_label_updated_value_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `objectLabelUpdatedValueDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "object_label_updated_value_details".
+///
+- (BOOL)isObjectLabelUpdatedValueDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

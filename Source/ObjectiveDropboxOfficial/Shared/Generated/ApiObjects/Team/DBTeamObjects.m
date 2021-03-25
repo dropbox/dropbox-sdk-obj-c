@@ -16555,6 +16555,14 @@
   return self;
 }
 
+- (instancetype)initWithTransientError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLegalHoldsPolicyUpdateErrorTransientError;
+  }
+  return self;
+}
+
 - (instancetype)initWithInactiveLegalHold {
   self = [super init];
   if (self) {
@@ -16627,6 +16635,10 @@
   return _tag == DBTEAMLegalHoldsPolicyUpdateErrorOther;
 }
 
+- (BOOL)isTransientError {
+  return _tag == DBTEAMLegalHoldsPolicyUpdateErrorTransientError;
+}
+
 - (BOOL)isInactiveLegalHold {
   return _tag == DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold;
 }
@@ -16663,6 +16675,8 @@
     return @"DBTEAMLegalHoldsPolicyUpdateErrorInsufficientPermissions";
   case DBTEAMLegalHoldsPolicyUpdateErrorOther:
     return @"DBTEAMLegalHoldsPolicyUpdateErrorOther";
+  case DBTEAMLegalHoldsPolicyUpdateErrorTransientError:
+    return @"DBTEAMLegalHoldsPolicyUpdateErrorTransientError";
   case DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold:
     return @"DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold";
   case DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPerformingAnotherOperation:
@@ -16722,6 +16736,9 @@
   case DBTEAMLegalHoldsPolicyUpdateErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMLegalHoldsPolicyUpdateErrorTransientError:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold:
     result = prime * result + [[self tagName] hash];
     break;
@@ -16774,6 +16791,8 @@
     return [[self tagName] isEqual:[aLegalHoldsPolicyUpdateError tagName]];
   case DBTEAMLegalHoldsPolicyUpdateErrorOther:
     return [[self tagName] isEqual:[aLegalHoldsPolicyUpdateError tagName]];
+  case DBTEAMLegalHoldsPolicyUpdateErrorTransientError:
+    return [[self tagName] isEqual:[aLegalHoldsPolicyUpdateError tagName]];
   case DBTEAMLegalHoldsPolicyUpdateErrorInactiveLegalHold:
     return [[self tagName] isEqual:[aLegalHoldsPolicyUpdateError tagName]];
   case DBTEAMLegalHoldsPolicyUpdateErrorLegalHoldPerformingAnotherOperation:
@@ -16807,6 +16826,8 @@
     jsonDict[@".tag"] = @"insufficient_permissions";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isTransientError]) {
+    jsonDict[@".tag"] = @"transient_error";
   } else if ([valueObj isInactiveLegalHold]) {
     jsonDict[@".tag"] = @"inactive_legal_hold";
   } else if ([valueObj isLegalHoldPerformingAnotherOperation]) {
@@ -16837,6 +16858,8 @@
     return [[DBTEAMLegalHoldsPolicyUpdateError alloc] initWithInsufficientPermissions];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMLegalHoldsPolicyUpdateError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"transient_error"]) {
+    return [[DBTEAMLegalHoldsPolicyUpdateError alloc] initWithTransientError];
   } else if ([tag isEqualToString:@"inactive_legal_hold"]) {
     return [[DBTEAMLegalHoldsPolicyUpdateError alloc] initWithInactiveLegalHold];
   } else if ([tag isEqualToString:@"legal_hold_performing_another_operation"]) {

@@ -75,6 +75,11 @@
 #import "DBFILESMetadata.h"
 #import "DBFILESMinimalFileLinkMetadata.h"
 #import "DBFILESMoveIntoVaultError.h"
+#import "DBFILESPaperContentError.h"
+#import "DBFILESPaperCreateError.h"
+#import "DBFILESPaperCreateResult.h"
+#import "DBFILESPaperUpdateError.h"
+#import "DBFILESPaperUpdateResult.h"
 #import "DBFILESPreviewError.h"
 #import "DBFILESPreviewResult.h"
 #import "DBFILESRelocationBatchError.h"
@@ -159,6 +164,8 @@ static DBRoute *DBFILESMoveBatchV2;
 static DBRoute *DBFILESMoveBatch;
 static DBRoute *DBFILESMoveBatchCheckV2;
 static DBRoute *DBFILESMoveBatchCheck;
+static DBRoute *DBFILESPaperCreate;
+static DBRoute *DBFILESPaperUpdate;
 static DBRoute *DBFILESPermanentlyDelete;
 static DBRoute *DBFILESPropertiesAdd;
 static DBRoute *DBFILESPropertiesOverwrite;
@@ -917,6 +924,42 @@ static DBRoute *DBFILESUploadSessionStart;
                           dataStructDeserialBlock:nil];
   }
   return DBFILESMoveBatchCheck;
+}
+
++ (DBRoute *)DBFILESPaperCreate {
+  if (!DBFILESPaperCreate) {
+    DBFILESPaperCreate = [[DBRoute alloc] init:@"paper/create"
+                                    namespace_:@"files"
+                                    deprecated:@NO
+                                    resultType:[DBFILESPaperCreateResult class]
+                                     errorType:[DBFILESPaperCreateError class]
+                                         attrs:@{
+                                           @"auth" : @"user",
+                                           @"host" : @"api",
+                                           @"style" : @"upload"
+                                         }
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
+  }
+  return DBFILESPaperCreate;
+}
+
++ (DBRoute *)DBFILESPaperUpdate {
+  if (!DBFILESPaperUpdate) {
+    DBFILESPaperUpdate = [[DBRoute alloc] init:@"paper/update"
+                                    namespace_:@"files"
+                                    deprecated:@NO
+                                    resultType:[DBFILESPaperUpdateResult class]
+                                     errorType:[DBFILESPaperUpdateError class]
+                                         attrs:@{
+                                           @"auth" : @"user",
+                                           @"host" : @"api",
+                                           @"style" : @"upload"
+                                         }
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
+  }
+  return DBFILESPaperUpdate;
 }
 
 + (DBRoute *)DBFILESPermanentlyDelete {
