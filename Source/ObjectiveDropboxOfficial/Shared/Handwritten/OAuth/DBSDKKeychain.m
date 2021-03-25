@@ -107,7 +107,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   // The default behavior works fine on iOS, but not on macOS.
   // An extra parameter is required to be able to delete all items on macOS, but this same parameter
   // would result in an error on iOS. So only add it on macOS.
-#ifdef TARGET_OS_MAC
+#if TARGET_OS_OSX
   NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecMatchLimit : (id)kSecMatchLimitAll}];
 #else
   NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{}];
