@@ -58,7 +58,7 @@ NOTE: Please do not rely on `master` in production. Please instead use one of ou
 
 - iOS 9.0+
 - macOS 10.10+
-- Xcode 8+
+- Xcode 8+ (11.0+ if you use Carthage)
 
 ---
 
@@ -156,7 +156,7 @@ If Xcode errors with a message about `Undefined symbols for architecture...`, tr
 
 ### Carthage
 
-You can also integrate the Dropbox Objective-C SDK into your project using [Carthage](https://github.com/Carthage/Carthage), a decentralized dependency manager for Cocoa. Carthage offers more flexibility than CocoaPods, but requires some additional work. You can install Carthage (with Xcode 7+) via [Homebrew](http://brew.sh/):
+You can also integrate the Dropbox Objective-C SDK into your project using [Carthage](https://github.com/Carthage/Carthage), a decentralized dependency manager for Cocoa. Carthage offers more flexibility than CocoaPods, but requires some additional work. Carthage 0.37.0 is required due to XCFramework requirements on Xcode 12. You can install Carthage (with Xcode 11+) via [Homebrew](http://brew.sh/):
 
 ```bash
 brew update
@@ -175,10 +175,10 @@ Then, run the following command to checkout and build the Dropbox Objective-C SD
 ##### iOS
 
 ```bash
-carthage update --platform iOS
+carthage update --platform iOS --use-xcframeworks
 ```
 
-In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Linked Frameworks and Libraries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/iOS`).
+In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Linked Frameworks and Libraries**, then drag and drop `ObjectiveDropboxOfficial.xcframework` (from `Carthage/Build/iOS`).
 
 Then, navigate to **Build Phases** > **+** > **New Run Script Phase**. In the newly-created **Run Script** section, add the following code to the script body area (beneath the "Shell" box):
 
@@ -189,17 +189,17 @@ Then, navigate to **Build Phases** > **+** > **New Run Script Phase**. In the ne
 Then, navigate to the **Input Files** section and add the following path:
 
 ```
-$(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
+$(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.xcframework
 ```
 
 ##### macOS
 ```bash
-carthage update --platform Mac
+carthage update --platform Mac --use-xcframeworks
 ```
 
-In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/Mac`).
+In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.xcframework` (from `Carthage/Build`).
 
-Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/Mac`).
+Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.xcframework.dSYM` (from `Carthage/Build/ObjectiveDropboxOfficial.xcframework/macos-arm64_x86_64/`).
 
 ##### Common issues
 
@@ -338,7 +338,7 @@ To facilitate the above authorization flows, you should take the following steps
 You can commence the auth flow by calling `authorizeFromController:controller:openURL` method in your application's
 view controller.
 
-Please ensure that the supplied view controller is the top-most controller, so that the authorization view displays correctly. 
+Please ensure that the supplied view controller is the top-most controller, so that the authorization view displays correctly.
 
 
 ##### iOS
@@ -1000,7 +1000,7 @@ The Objective-C SDK includes a convenience class, `DBClientsManager`, for integr
 
 #### Single Dropbox user case
 
-For most apps, it is reasonable to assume that only one Dropbox account (and access token) needs to be managed at a time. In this case, the `DBClientsManager` flow looks like this: 
+For most apps, it is reasonable to assume that only one Dropbox account (and access token) needs to be managed at a time. In this case, the `DBClientsManager` flow looks like this:
 
 * call `setupWithAppKey`/`setupWithAppKeyDesktop` (or `setupWithTeamAppKey`/`setupWithTeamAppKeyDesktop`) in integrating app's app delegate
 * `DBClientsManager` class determines whether any access tokens are stored -- if any exist, one token is arbitrarily chosen to use for the `authorizedClient` / `authorizedTeamClient` shared instance
@@ -1014,7 +1014,7 @@ The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired A
 
 #### Multiple Dropbox user case
 
-For some apps, it is necessary to manage more than one Dropbox account (and access token) at a time. In this case, the `DBClientsManager` flow looks like this: 
+For some apps, it is necessary to manage more than one Dropbox account (and access token) at a time. In this case, the `DBClientsManager` flow looks like this:
 
 * access token uids are managed by the app that is integrating with the SDK for later lookup
 * call `setupWithAppKey`/`setupWithAppKeyDesktop` (or `setupWithTeamAppKey`/`setupWithTeamAppKeyDesktop`) in integrating app's app delegate
@@ -1139,7 +1139,7 @@ following the instructions listed in the `ViewController.m` file.
 ## Bugs
 
 Please post any bugs to the [issue tracker](https://github.com/dropbox/dropbox-sdk-obj-c/issues) found on the project's GitHub page.
-  
+
 Please include the following with your issue:
  - a description of what is not working right
  - sample code to help replicate the issue
