@@ -123,8 +123,6 @@
 				F2ACB7391D88A99200596DDE /* Sources */,
 				F2ACB73A1D88A99200596DDE /* Frameworks */,
 				F2ACB73B1D88A99200596DDE /* Resources */,
-				F2ACB7591D88AADC00596DDE /* Run Script */,
-				F2E0ABC81D92393800CEA4D3 /* ShellScript */,
 				0C8C5627260EC93200CD70B7 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -181,38 +179,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F2ACB7591D88AADC00596DDE /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework",
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		F2E0ABC81D92393800CEA4D3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F2ACB7391D88A99200596DDE /* Sources */ = {
