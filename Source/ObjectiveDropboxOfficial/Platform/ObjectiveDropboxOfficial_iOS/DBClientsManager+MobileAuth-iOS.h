@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param sharedApplication The `UIApplication` with which to render the OAuth flow.
 /// @param controller The `UIViewController` with which to render the OAuth flow. Please ensure that this is the
-/// top-most view controller, so that the authorization view displays correctly.
+/// top-most view controller, so that the authorization view displays correctly. The controller reference is weakly held.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.
 ///
 + (void)authorizeFromController:(UIApplication *)sharedApplication
@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param sharedApplication The `UIApplication` with which to render the OAuth flow.
 /// @param controller The `UIViewController` with which to render the OAuth flow. Please ensure that this is the
-/// top-most view controller, so that the authorization view displays correctly.
+/// top-most view controller, so that the authorization view displays correctly. The controller reference is weakly held.
 /// @param loadingStatusDelegate An optional delegate to handle loading experience during auth flow.
 /// e.g. Show a loading spinner and block user interaction while loading/waiting.
 /// If a delegate is not provided, the SDK will show a default loading spinner when necessary.
