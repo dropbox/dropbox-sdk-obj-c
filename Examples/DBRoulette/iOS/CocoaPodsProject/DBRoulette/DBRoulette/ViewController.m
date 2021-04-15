@@ -21,11 +21,16 @@
 @implementation ViewController
 
 - (IBAction)linkDropboxButtonPressed:(id)sender {
-  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
-                                      controller:self
-                                         openURL:^(NSURL *url) {
-                                           [[UIApplication sharedApplication] openURL:url];
-                                         }];
+    [DBClientsManager authorizeFromControllerV2:[UIApplication sharedApplication]
+                                         controller:self
+                              loadingStatusDelegate:nil
+                                            openURL:^(NSURL *url) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+                                       scopeRequest:[[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
+                                                                                       scopes:@[@"files.metadata.read",
+                                                                                                @"files.content.read"]
+                                                                         includeGrantedScopes:NO]];
 }
 
 - (IBAction)unlinkDropboxButtonPressed:(id)sender {

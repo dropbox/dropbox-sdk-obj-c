@@ -31,9 +31,14 @@
 }
 
 - (IBAction)linkButtonPressed:(id)sender {
-  [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
-                                        controller:self
-                                           openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }];
+    [DBClientsManager authorizeFromControllerDesktopV2:[NSWorkspace sharedWorkspace]
+                                            controller:self
+                                 loadingStatusDelegate:nil
+                                               openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
+                                          scopeRequest:[[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
+                                                                                          scopes:@[@"files.metadata.read",
+                                                                                                   @"files.content.read"]
+                                                                            includeGrantedScopes:NO]];
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {
