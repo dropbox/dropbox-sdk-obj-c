@@ -180,14 +180,35 @@ Run the following command to checkout and build the Dropbox Objective-C SDK repo
 carthage update --platform iOS --use-xcframeworks
 ```
 
-Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Linked Frameworks and Libraries**. Drag the `ObjectiveDropboxOfficial.xcframework` file from `Carthage/Build` into the table and choose `Embed & Sign`.
+##### macOS
+```bash
+carthage update --platform Mac --use-xcframeworks
+```
+
+Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Frameworks, Libraries and Embedded Content**. Drag the `ObjectiveDropboxOfficial.xcframework` file from `Carthage/Build` into the table and choose `Embed & Sign`.
+
+---
+
+### Manually add subproject
+
+Finally, you can also integrate the Dropbox Objective-C SDK into your project manually with the help of Carthage. Please take the following steps:
+
+Create a `Cartfile` in your project with the same contents as the Cartfile listed in the [Carthage](#carthage) section of the README.
+
+Then, run the following command to checkout and build the Dropbox Objective-C SDK repository:
+
+##### iOS
+
+```bash
+carthage update --platform iOS --use-xcframeworks
+```
 
 ##### macOS
 ```bash
 carthage update --platform Mac --use-xcframeworks
 ```
 
-Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries**. Drag the `ObjectiveDropboxOfficial.xcframework` file from `Carthage/Build` into the table and choose `Embed & Sign`.
+Once you have checked-out out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` file into your project as a subproject.
 
 ---
 
