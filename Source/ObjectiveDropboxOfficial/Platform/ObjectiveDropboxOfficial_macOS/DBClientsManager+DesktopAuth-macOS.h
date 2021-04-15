@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Commences OAuth desktop flow from supplied view controller.
 ///
 /// @param sharedApplication The `NSWorkspace` with which to render the OAuth flow.
-/// @param controller The `NSViewController` with which to render the OAuth flow.
+/// @param controller The `NSViewController` with which to render the OAuth flow. The controller reference is weakly held.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.
 ///
 + (void)authorizeFromControllerDesktop:(NSWorkspace *)sharedApplication
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// code_verifier, which is stored inside this SDK.
 ///
 /// @param sharedApplication The `NSWorkspace` with which to render the OAuth flow.
-/// @param controller The `NSViewController` with which to render the OAuth flow.
+/// @param controller The `NSViewController` with which to render the OAuth flow. The controller reference is weakly held.
 /// @param loadingStatusDelegate An optional delegate to handle loading experience during auth flow.
 /// e.g. Show a loading spinner and block user interaction while loading/waiting.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.

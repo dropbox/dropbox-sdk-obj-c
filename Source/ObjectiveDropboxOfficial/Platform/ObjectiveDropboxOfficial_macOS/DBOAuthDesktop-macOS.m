@@ -11,7 +11,7 @@ static DBDesktopSharedApplication *s_desktopSharedApplication;
 
 @implementation DBDesktopSharedApplication {
   NSWorkspace *_sharedWorkspace;
-  NSViewController *_controller;
+  __weak NSViewController * _Nullable _controller;
   void (^_openURL)(NSURL *);
 }
 
