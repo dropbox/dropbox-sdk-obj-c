@@ -180,14 +180,35 @@ Run the following command to checkout and build the Dropbox Objective-C SDK repo
 carthage update --platform iOS --use-xcframeworks
 ```
 
-Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Linked Frameworks and Libraries**. Drag the `ObjectiveDropboxOfficial.xcframework` file from `Carthage/Build` into the table and choose `Embed & Sign`.
+##### macOS
+```bash
+carthage update --platform Mac --use-xcframeworks
+```
+
+Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Frameworks, Libraries and Embedded Content**. Drag the `ObjectiveDropboxOfficial.xcframework` file from `Carthage/Build` into the table and choose `Embed & Sign`.
+
+---
+
+### Manually add subproject
+
+Finally, you can also integrate the Dropbox Objective-C SDK into your project manually with the help of Carthage. Please take the following steps:
+
+Create a `Cartfile` in your project with the same contents as the Cartfile listed in the [Carthage](#carthage) section of the README.
+
+Then, run the following command to checkout and build the Dropbox Objective-C SDK repository:
+
+##### iOS
+
+```bash
+carthage update --platform iOS --use-xcframeworks
+```
 
 ##### macOS
 ```bash
 carthage update --platform Mac --use-xcframeworks
 ```
 
-Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries**. Drag the `ObjectiveDropboxOfficial.xcframework` file from `Carthage/Build` into the table and choose `Embed & Sign`.
+Once you have checked-out out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` file into your project as a subproject.
 
 ---
 
@@ -381,6 +402,32 @@ To handle the redirection back into the Objective-C SDK once the authentication 
   };
   BOOL canHandle = [DBClientsManager handleRedirectURL:url completion:completion];
   return canHandle;
+}
+```
+
+Or if your app is iOS13+, or your app also supports Scenes, add the following code into your application's main scene delegate:
+```objective-c
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
+- (void)scene:(UIScene *)scene 
+        openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+  DBOAuthCompletion completion = ^(DBOAuthResult *authResult) {
+    if (authResult != nil) {
+      if ([authResult isSuccess]) {
+        NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
+      } else if ([authResult isCancel]) {
+        NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
+      } else if ([authResult isError]) {
+        NSLog(@"\n\nError: %@\n\n", authResult);
+      }
+    }
+  };
+  for (UIOpenURLContext *context in URLContexts) {
+    if ([DBClientsManager handleRedirectURL:context.url completion:completion]) { 
+      // stop iterating after the first handle-able url
+      break;
+    }
+  }
 }
 ```
 
