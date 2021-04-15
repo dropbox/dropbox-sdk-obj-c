@@ -3,18 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C451F6A2628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C451F692628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework */; };
+		0C451F6B2628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C451F692628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2F8C0BA1E6518C10016D04A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F8C0B91E6518C10016D04A /* AppDelegate.m */; };
 		F2F8C0BD1E6518C10016D04A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F8C0BC1E6518C10016D04A /* main.m */; };
 		F2F8C0C01E6518C10016D04A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F8C0BF1E6518C10016D04A /* ViewController.m */; };
 		F2F8C0C21E6518C10016D04A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F8C0C11E6518C10016D04A /* Assets.xcassets */; };
 		F2F8C0C51E6518C10016D04A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F8C0C31E6518C10016D04A /* Main.storyboard */; };
-		F2F8C0CD1E651A750016D04A /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F8C0CC1E651A750016D04A /* ObjectiveDropboxOfficial.framework */; };
-		F2F8C0CE1E651A750016D04A /* ObjectiveDropboxOfficial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2F8C0CC1E651A750016D04A /* ObjectiveDropboxOfficial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F2F8C0D21E651AB80016D04A /* ObjectiveDropboxOfficial.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = F2F8C0D11E651AB80016D04A /* ObjectiveDropboxOfficial.framework.dSYM */; };
 		F2F8C0D51E651C000016D04A /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F8C0D41E651C000016D04A /* PhotoViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F2F8C0CE1E651A750016D04A /* ObjectiveDropboxOfficial.framework in Embed Frameworks */,
+				0C451F6B2628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,13 +35,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				F2F8C0D21E651AB80016D04A /* ObjectiveDropboxOfficial.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C451F662628E8540082FBF3 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveDropboxOfficial.framework; sourceTree = "<group>"; };
+		0C451F682628E8540082FBF3 /* ObjectiveDropboxOfficial.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = ObjectiveDropboxOfficial.framework.dSYM; sourceTree = "<group>"; };
+		0C451F692628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ObjectiveDropboxOfficial.xcframework; path = Carthage/Build/ObjectiveDropboxOfficial.xcframework; sourceTree = "<group>"; };
 		F2F8C0B51E6518C10016D04A /* DBRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F8C0B81E6518C10016D04A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2F8C0B91E6518C10016D04A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,8 +53,6 @@
 		F2F8C0C11E6518C10016D04A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2F8C0C41E6518C10016D04A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2F8C0C61E6518C10016D04A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2F8C0CC1E651A750016D04A /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveDropboxOfficial.framework; path = Carthage/Build/Mac/ObjectiveDropboxOfficial.framework; sourceTree = "<group>"; };
-		F2F8C0D11E651AB80016D04A /* ObjectiveDropboxOfficial.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ObjectiveDropboxOfficial.framework.dSYM; path = Carthage/Build/Mac/ObjectiveDropboxOfficial.framework.dSYM; sourceTree = "<group>"; };
 		F2F8C0D31E651BEE0016D04A /* PhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		F2F8C0D41E651C000016D04A /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,20 +62,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2F8C0CD1E651A750016D04A /* ObjectiveDropboxOfficial.framework in Frameworks */,
+				0C451F6A2628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C451F642628E8540082FBF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C451F692628E85F0082FBF3 /* ObjectiveDropboxOfficial.xcframework */,
+				0C451F652628E8540082FBF3 /* macos-arm64_x86_64 */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C451F652628E8540082FBF3 /* macos-arm64_x86_64 */ = {
+			isa = PBXGroup;
+			children = (
+				0C451F662628E8540082FBF3 /* ObjectiveDropboxOfficial.framework */,
+				0C451F672628E8540082FBF3 /* dSYMs */,
+			);
+			name = "macos-arm64_x86_64";
+			path = "Carthage/Build/ObjectiveDropboxOfficial.xcframework/macos-arm64_x86_64";
+			sourceTree = "<group>";
+		};
+		0C451F672628E8540082FBF3 /* dSYMs */ = {
+			isa = PBXGroup;
+			children = (
+				0C451F682628E8540082FBF3 /* ObjectiveDropboxOfficial.framework.dSYM */,
+			);
+			path = dSYMs;
+			sourceTree = "<group>";
+		};
 		F2F8C0AC1E6518C10016D04A = {
 			isa = PBXGroup;
 			children = (
-				F2F8C0CC1E651A750016D04A /* ObjectiveDropboxOfficial.framework */,
-				F2F8C0D11E651AB80016D04A /* ObjectiveDropboxOfficial.framework.dSYM */,
 				F2F8C0B71E6518C10016D04A /* DBRoulette */,
 				F2F8C0B61E6518C10016D04A /* Products */,
+				0C451F642628E8540082FBF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +180,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -315,7 +341,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DBRoulette/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.DBRoulette;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -331,7 +360,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DBRoulette/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.DBRoulette;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
