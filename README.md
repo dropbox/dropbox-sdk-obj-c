@@ -405,6 +405,32 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 }
 ```
 
+Or if your app is iOS13+, or your app also supports Scenes, add the following code into your application's main scene delegate:
+```objective-c
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
+- (void)scene:(UIScene *)scene 
+        openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+  DBOAuthCompletion completion = ^(DBOAuthResult *authResult) {
+    if (authResult != nil) {
+      if ([authResult isSuccess]) {
+        NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
+      } else if ([authResult isCancel]) {
+        NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
+      } else if ([authResult isError]) {
+        NSLog(@"\n\nError: %@\n\n", authResult);
+      }
+    }
+  };
+  for (UIOpenURLContext *context in URLContexts) {
+    if ([DBClientsManager handleRedirectURL:context.url completion:completion]) { 
+      // stop iterating after the first handle-able url
+      break;
+    }
+  }
+}
+```
+
 ##### macOS
 
 ```objective-c
