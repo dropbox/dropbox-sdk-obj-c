@@ -423,7 +423,7 @@ Or if your app is iOS13+, or your app also supports Scenes, add the following co
     }
   };
   for (UIOpenURLContext *context in URLContexts) {
-    if ([DBClientsManager handleRedirectURL:context.url completion:completion]) { 
+    if ([DBClientsManager handleRedirectURL:context.URL completion:completion]) { 
       // stop iterating after the first handle-able url
       break;
     }
