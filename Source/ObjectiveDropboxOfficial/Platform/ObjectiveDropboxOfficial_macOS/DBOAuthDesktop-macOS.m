@@ -59,9 +59,7 @@ static DBDesktopSharedApplication *s_desktopSharedApplication;
 
 - (void)presentAuthChannel:(NSURL *)authURL cancelHandler:(void (^_Nonnull)(void))cancelHandler {
 #pragma unused(cancelHandler)
-  if (_controller) {
-    [self presentExternalApp:authURL];
-  }
+  [self presentExternalApp:authURL];
 }
 
 - (void)presentExternalApp:(NSURL *)url {
