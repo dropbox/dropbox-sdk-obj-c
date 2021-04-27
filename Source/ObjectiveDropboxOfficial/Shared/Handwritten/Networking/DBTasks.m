@@ -328,8 +328,11 @@
     NSURL *destination = strongSelf->_destination;
 
     if (clientError || !resultData || !location) {
-      // error data is in response body (downloaded to output tmp file)
-      NSData *errorData = location ? [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:location.path]] : nil;
+      NSData *errorData = location ? [NSData dataWithContentsOfURL:location] : nil;
+      if (errorData == nil && location.path != nil) {
+          // error data is in response body (downloaded to output tmp file)
+          errorData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:location.path]];
+      }
       networkError = [DBTransportBaseClient dBRequestErrorWithErrorData:errorData
                                                             clientError:clientError
                                                              statusCode:statusCode
