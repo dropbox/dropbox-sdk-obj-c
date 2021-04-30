@@ -120,7 +120,7 @@
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
 
-    DBRoute *route = strongSelf->_route;
+    DBRoute *route = strongSelf.route;
 
     BOOL successful = NO;
 
@@ -215,7 +215,7 @@
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
 
-    DBRoute *route = strongSelf->_route;
+    DBRoute *route = strongSelf.route;
 
     BOOL successful = NO;
 
@@ -318,7 +318,7 @@
       resultData = [headerString dataUsingEncoding:NSUTF8StringEncoding];
     }
 
-    DBRoute *route = strongSelf->_route;
+    DBRoute *route = strongSelf.route;
 
     BOOL successful = NO;
 
@@ -454,7 +454,7 @@
       resultData = [headerString dataUsingEncoding:NSUTF8StringEncoding];
     }
 
-    DBRoute *route = strongSelf->_route;
+    DBRoute *route = strongSelf.route;
 
     BOOL successful = NO;
 
