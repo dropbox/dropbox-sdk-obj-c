@@ -3917,7 +3917,7 @@
 		BF33F93424873F12001F4072 /* DBScopeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92624873F12001F4072 /* DBScopeRequest.m */; };
 		BF33F93524873F12001F4072 /* DBScopeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33F92624873F12001F4072 /* DBScopeRequest.m */; };
 		BF33F93624873F12001F4072 /* DBOAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92724873F12001F4072 /* DBOAuthUtils.h */; };
-		BF33F93724873F12001F4072 /* DBOAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92724873F12001F4072 /* DBOAuthUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF33F93724873F12001F4072 /* DBOAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F92724873F12001F4072 /* DBOAuthUtils.h */; };
 		BF33F93924873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93824873F3E001F4072 /* DBScopeRequest+Protected.h */; };
 		BF33F93A24873F3E001F4072 /* DBScopeRequest+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93824873F3E001F4072 /* DBScopeRequest+Protected.h */; };
 		BF33F93E24874DED001F4072 /* DBOAuthTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF33F93B24874DED001F4072 /* DBOAuthTokenRequest.h */; };
@@ -10729,7 +10729,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF33F93724873F12001F4072 /* DBOAuthUtils.h in Headers */,
 				0C8C5604260D6C6D00CD70B7 /* DBCHECKUserAuthRoutes.h in Headers */,
 				0C8C5600260D6C6D00CD70B7 /* DBPAPERUserAuthRoutes.h in Headers */,
 				0C8C55FE260D6C6D00CD70B7 /* DBFILEREQUESTSRouteObjects.h in Headers */,
@@ -12654,6 +12653,7 @@
 				BF33F93324873F12001F4072 /* DBScopeRequest.h in Headers */,
 				BF33F94124874DED001F4072 /* DBOAuthResultCompletion.h in Headers */,
 				F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */,
+				BF33F93724873F12001F4072 /* DBOAuthUtils.h in Headers */,
 				BF33F92F24873F12001F4072 /* DBOAuthPKCESession.h in Headers */,
 				BF474D39248ED1AA007171C0 /* DBAccessToken+NSSecureCoding.h in Headers */,
 				BF33F93F24874DED001F4072 /* DBOAuthTokenRequest.h in Headers */,
