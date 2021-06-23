@@ -15,14 +15,6 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     TestData *_testData;
 }
 
-- (NSString *)environmentVariableForKey:(NSString *)key {
-    NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
-    NSString *value = processInfoDict[key];
-    XCTAssertNotNil(value, @"%@ environment variable must exist", key);
-    XCTAssertNotEqual(value.length, 0, @"%@ environment variable must be longer than 0", key);
-    return value;
-}
-
 - (void)setUp {
     self.continueAfterFailure = NO;
     // You need an API app with the "Full Dropbox" permission type and at least the scopes in scopesForFileRoutesTests
@@ -30,10 +22,10 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     // You can create one for testing here: https://www.dropbox.com/developers/apps/create
     // The 'App key' will be on the app's info page.
     // Then follow https://dropbox.tech/developers/pkce--what-and-why- to get a refresh token using the PKCE flow
-    NSString *apiAppKey = [self environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
+    NSString *apiAppKey = [TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
 
     NSString *fileRoutesTestsAuthToken = [TestAuthTokenGenerator
-                                          refreshToken:[self environmentVariableForKey:@"FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"]
+                                          refreshToken:[TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"]
                                           apiKey:apiAppKey
                                           scopes:[scopesForFileRoutesTests componentsSeparatedByString:@" "]];
     XCTAssertNotNil(fileRoutesTestsAuthToken, @"Error obtaining auth token.");

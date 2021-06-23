@@ -15,24 +15,16 @@ static NSString *scopesForMemberFileAccessUserTests = @"files.content.write file
     DBTeamClient* _teamClient;
 }
 
-- (NSString *)environmentVariableForKey:(NSString *)key {
-    NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
-    NSString *value = processInfoDict[key];
-    XCTAssertNotNil(value, @"%@ environment variable must exist", key);
-    XCTAssertNotEqual(value.length, 0, @"%@ environment variable must be longer than 0", key);
-    return value;
-}
-
 - (void)setUp {
     self.continueAfterFailure = NO;
     _teamClient = [self createTeamClient];
 
     TestData * data = [[TestData alloc] init];
-    data.teamMemberEmail = [self environmentVariableForKey:@"TEAM_MEMBER_EMAIL"];
-    data.teamMemberNewEmail = [self environmentVariableForKey:@"NON_TEAM_MEMBER_EMAIL"];
-    data.accountId = [self environmentVariableForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
-    data.accountId2 = [self environmentVariableForKey:@"ANY_OTHER_ACCOUNT_ID"];
-    data.accountId3 = [self environmentVariableForKey:@"NON_TEAM_MEMBER_ACCOUNT_ID"];
+    data.teamMemberEmail = [TestAuthTokenGenerator environmentVariableForKey:@"TEAM_MEMBER_EMAIL"];
+    data.teamMemberNewEmail = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_EMAIL"];
+    data.accountId = [TestAuthTokenGenerator environmentVariableForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
+    data.accountId2 = [TestAuthTokenGenerator environmentVariableForKey:@"ANY_OTHER_ACCOUNT_ID"];
+    data.accountId3 = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_ACCOUNT_ID"];
     data.accountId3Email = data.teamMemberNewEmail;
     
     _teamTester = [[DropboxTeamTester alloc] initWithTeamClient:_teamClient testData:data];
@@ -47,9 +39,9 @@ static NSString *scopesForMemberFileAccessUserTests = @"files.content.write file
     NSMutableArray<NSString *>*scopes = [[scopesForTeamRoutesTests componentsSeparatedByString:@" "] mutableCopy];
     [scopes addObjectsFromArray:[scopesForMemberFileAccessUserTests componentsSeparatedByString:@" "]];
 
-    NSString *apiAppKey = [self environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
+    NSString *apiAppKey = [TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
     NSString *teamRoutesTestsAuthToken = [TestAuthTokenGenerator
-                                          refreshToken:[self environmentVariableForKey:@"FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"]
+                                          refreshToken:[TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"]
                                           apiKey:apiAppKey
                                           scopes:scopes];
     XCTAssertNotNil(teamRoutesTestsAuthToken, @"Errors obtaining auth token.");
