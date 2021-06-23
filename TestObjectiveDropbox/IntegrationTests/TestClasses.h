@@ -30,7 +30,7 @@
 
 @interface DropboxTeamTester : NSObject
 
-- (nonnull instancetype)initWithTeamRoutes:(DBTEAMTeamAuthRoutes *_Nonnull)teamRoutes testData:(TestData * _Nonnull)testData;
+- (nonnull instancetype)initWithTeamClient:(DBTeamClient *_Nonnull)teamClient testData:(TestData * _Nonnull)testData;
 - (nonnull instancetype)initWithTestData:(TestData * _Nonnull)testData;
 
 - (void)testAllTeamMemberFileAcessActions:(void (^ _Nonnull)(void))nextTest;
@@ -39,8 +39,9 @@
 - (void)testTeamMemberFileAcessActions:(void (^ _Nonnull)(TeamTests *_Nonnull))nextTest;
 - (void)testTeamMemberManagementActions:(void (^ _Nonnull)(void))nextTest;
 
-@property DBTEAMTeamAuthRoutes * _Nullable team;
+@property DBTeamClient * _Nonnull teamClient;
 @property TestData * _Nonnull testData;
+@property DBTEAMTeamAuthRoutes * _Nonnull team;
 
 @end
 
@@ -145,7 +146,7 @@
 - (nonnull instancetype)init:(DropboxTeamTester * _Nonnull)tester;
 
 // TeamMemberFileAccess
-
+- (void)initMembersGetInfoAndMemberId:(void (^_Nonnull)(NSString * _Nullable))nextTest;
 - (void)initMembersGetInfo:(void (^_Nonnull)(void))nextTest;
 - (void)listMemberDevices:(void (^_Nonnull)(void))nextTest;
 - (void)listMembersDevices:(void (^_Nonnull)(void))nextTest;

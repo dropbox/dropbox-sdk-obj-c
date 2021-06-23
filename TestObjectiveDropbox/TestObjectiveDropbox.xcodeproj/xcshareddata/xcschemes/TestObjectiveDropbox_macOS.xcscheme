@@ -43,8 +43,23 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "EMAIL_TO_ADD_AS_TEAM_MEMBER"
-            value = "$(EMAIL_TO_ADD_AS_TEAM_MEMBER)"
+            key = "NON_TEAM_MEMBER_EMAIL"
+            value = "$(NON_TEAM_MEMBER_EMAIL)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "REFRESH_TOKEN_ACCOUNT_ID"
+            value = "$(REFRESH_TOKEN_ACCOUNT_ID)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ANY_OTHER_ACCOUNT_ID"
+            value = "$(ANY_OTHER_ACCOUNT_ID)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "NON_TEAM_MEMBER_ACCOUNT_ID"
+            value = "$(NON_TEAM_MEMBER_ACCOUNT_ID)"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

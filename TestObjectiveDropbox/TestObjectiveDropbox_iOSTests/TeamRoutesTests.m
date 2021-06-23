@@ -4,6 +4,7 @@
 #import "TestAuthTokenGenerator.h"
 
 static NSString *scopesForTeamRoutesTests = @"groups.read groups.write members.delete members.read members.write sessions.list team_data.member team_info.read";
+static NSString *scopesForMemberFileAccessUserTests = @"files.content.write files.content.read sharing.write account_info.read";
 
 @interface TeamRoutesTests : XCTestCase
 @end
@@ -14,27 +15,44 @@ static NSString *scopesForTeamRoutesTests = @"groups.read groups.write members.d
     DBTeamClient* _teamClient;
 }
 
+- (NSString *)environmentVariableForKey:(NSString *)key {
+    NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
+    NSString *value = processInfoDict[key];
+    XCTAssertNotNil(value, @"%@ environment variable must exist", key);
+    XCTAssertNotEqual(value.length, 0, @"%@ environment variable must be longer than 0", key);
+    return value;
+}
+
 - (void)setUp {
     self.continueAfterFailure = NO;
-    // You need an API app with the "Full Dropbox" permission type and at least the scopes in scopesForTeamRoutesTests
+    _teamClient = [self createTeamClient];
+
+    TestData * data = [[TestData alloc] init];
+    data.teamMemberEmail = [self environmentVariableForKey:@"TEAM_MEMBER_EMAIL"];
+    data.teamMemberNewEmail = [self environmentVariableForKey:@"NON_TEAM_MEMBER_EMAIL"];
+    data.accountId = [self environmentVariableForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
+    data.accountId2 = [self environmentVariableForKey:@"ANY_OTHER_ACCOUNT_ID"];
+    data.accountId3 = [self environmentVariableForKey:@"NON_TEAM_MEMBER_ACCOUNT_ID"];
+    data.accountId3Email = data.teamMemberNewEmail;
+    
+    _teamTester = [[DropboxTeamTester alloc] initWithTeamClient:_teamClient testData:data];
+}
+
+- (DBTeamClient *)createTeamClient {
+    // You need an API app with the "Full Dropbox" permission type and at least the scopes in scopesForTeamRoutesTests+scopesForMemberFileAccessUserTests
     // You can create one for testing here: https://www.dropbox.com/developers/apps/create
     // The 'App key' will be on the app's info page.
     // Then follow https://dropbox.tech/developers/pkce--what-and-why- to get a refresh token using the PKCE flow
-    NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
-    NSString *apiAppKey = processInfoDict[@"FULL_DROPBOX_API_APP_KEY"];
-    XCTAssertNotEqual(apiAppKey.length, 0, @"FULL_DROPBOX_API_APP_KEY needs to be set in the test Scheme");
 
+    NSMutableArray<NSString *>*scopes = [[scopesForTeamRoutesTests componentsSeparatedByString:@" "] mutableCopy];
+    [scopes addObjectsFromArray:[scopesForMemberFileAccessUserTests componentsSeparatedByString:@" "]];
+
+    NSString *apiAppKey = [self environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
     NSString *teamRoutesTestsAuthToken = [TestAuthTokenGenerator
-                                refreshToken:processInfoDict[@"FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"]
-                                apiKey:apiAppKey
-                                scopes:[scopesForTeamRoutesTests componentsSeparatedByString:@" "]];
+                                          refreshToken:[self environmentVariableForKey:@"FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"]
+                                          apiKey:apiAppKey
+                                          scopes:scopes];
     XCTAssertNotNil(teamRoutesTestsAuthToken, @"Errors obtaining auth token.");
-
-    NSString *teamMemberEmail = processInfoDict[@"TEAM_MEMBER_EMAIL"];
-    NSString *emailToAddAsTeamMember = processInfoDict[@"EMAIL_TO_ADD_AS_TEAM_MEMBER"];
-
-    XCTAssertNotEqual(teamMemberEmail.length, 0, @"TEAM_MEMBER_EMAIL needs to be set in the test Scheme");
-    XCTAssertNotEqual(emailToAddAsTeamMember.length, 0, @"EMAIL_TO_ADD_AS_TEAM_MEMBER needs to be set in the test Scheme");
 
     _delegateQueue = [[NSOperationQueue alloc] init];
     DBTransportDefaultConfig *transportConfigFullDropbox =
@@ -45,11 +63,8 @@ static NSString *scopesForTeamRoutesTests = @"groups.read groups.write members.d
                                          delegateQueue:_delegateQueue
                                 forceForegroundSession:YES // NO here will cause downloadURL to fail on OSX
                              sharedContainerIdentifier:nil];
-    _teamClient = [[DBTeamClient alloc] initWithAccessToken:teamRoutesTestsAuthToken transportConfig:transportConfigFullDropbox];
-    TestData * data = [[TestData alloc] init];
-    data.teamMemberEmail = teamMemberEmail;
-    data.teamMemberNewEmail = emailToAddAsTeamMember;
-    _teamTester = [[DropboxTeamTester alloc] initWithTeamRoutes:_teamClient.teamRoutes testData:data];
+    
+    return [[DBTeamClient alloc] initWithAccessToken:teamRoutesTestsAuthToken transportConfig:transportConfigFullDropbox];
 }
 
 - (void)testTeammemberManagement {
@@ -63,7 +78,8 @@ static NSString *scopesForTeamRoutesTests = @"groups.read groups.write members.d
 
 - (void)testTeamMemberFileAccess {
     XCTestExpectation *flag = [[XCTestExpectation alloc] init];
-    [_teamTester testTeamMemberFileAcessActions:^(TeamTests * tester){
+    
+    [_teamTester testAllTeamMemberFileAcessActions:^(){
         [flag fulfill];
     }];
     XCTWaiterResult result = [XCTWaiter waitForExpectations:@[flag] timeout:60*5];

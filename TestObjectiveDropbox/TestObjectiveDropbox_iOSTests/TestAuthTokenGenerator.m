@@ -3,7 +3,6 @@
 #import "TestAuthTokenGenerator.h"
 
 @implementation TestAuthTokenGenerator
-
 // Easy way for all tests to get an auth token for the scopes they use.
 + (nullable NSString *)refreshToken:(nullable NSString *)refreshToken
                              apiKey:(nullable NSString *)apiKey
