@@ -15,22 +15,27 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     TestData *_testData;
 }
 
+- (NSString *)environmentVariableForKey:(NSString *)key {
+    NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
+    NSString *value = processInfoDict[key];
+    XCTAssertNotNil(value, @"%@ environment variable must exist", key);
+    XCTAssertNotEqual(value.length, 0, @"%@ environment variable must be longer than 0", key);
+    return value;
+}
+
 - (void)setUp {
     self.continueAfterFailure = NO;
-    NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
-
     // You need an API app with the "Full Dropbox" permission type and at least the scopes in scopesForFileRoutesTests
     // and no team scopes.
     // You can create one for testing here: https://www.dropbox.com/developers/apps/create
     // The 'App key' will be on the app's info page.
     // Then follow https://dropbox.tech/developers/pkce--what-and-why- to get a refresh token using the PKCE flow
-    NSString *apiAppKey = processInfoDict[@"FULL_DROPBOX_API_APP_KEY"];
-    XCTAssertNotNil(apiAppKey, @"FULL_DROPBOX_API_APP_KEY needs to be set in the test Scheme");
+    NSString *apiAppKey = [self environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
 
     NSString *fileRoutesTestsAuthToken = [TestAuthTokenGenerator
-                                refreshToken:processInfoDict[@"FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"]
-                                apiKey:apiAppKey
-                                scopes:[scopesForFileRoutesTests componentsSeparatedByString:@" "]];
+                                          refreshToken:[self environmentVariableForKey:@"FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"]
+                                          apiKey:apiAppKey
+                                          scopes:[scopesForFileRoutesTests componentsSeparatedByString:@" "]];
     XCTAssertNotNil(fileRoutesTestsAuthToken, @"Error obtaining auth token.");
 
     _delegateQueue = [[NSOperationQueue alloc] init];
@@ -50,7 +55,7 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     _tester = [[DropboxTester alloc] initWithUserClient:_userClient testData:_testData];
 }
 
--(void)tearDown {
+- (void)tearDown {
     NSLog(@"tearDown: delete folder");
     if (_userClient == nil) {
         return;
