@@ -3,6 +3,15 @@
 #import "TestAuthTokenGenerator.h"
 
 @implementation TestAuthTokenGenerator
+
++ (NSString *)environmentVariableForKey:(NSString *)key {
+    NSDictionary<NSString *, NSString *> *processInfoDict = [[NSProcessInfo processInfo] environment];
+    NSString *value = processInfoDict[key];
+    XCTAssertNotNil(value, @"%@ environment variable must exist", key);
+    XCTAssertNotEqual(value.length, 0, @"%@ environment variable must be longer than 0", key);
+    return value;
+}
+
 // Easy way for all tests to get an auth token for the scopes they use.
 + (nullable NSString *)refreshToken:(nullable NSString *)refreshToken
                              apiKey:(nullable NSString *)apiKey
