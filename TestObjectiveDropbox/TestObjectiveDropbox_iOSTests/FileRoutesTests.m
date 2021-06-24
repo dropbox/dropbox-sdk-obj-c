@@ -76,7 +76,7 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     [self waitForExpectations:@[flag] timeout:30]; // don't need to check result
 }
 
-- (void)testFileRoutes {
+- (void)testAllUserEndpoints {
     XCTestExpectation *flag = [[XCTestExpectation alloc] init];
     [_tester testAllUserAPIEndpoints:^{
         [flag fulfill];
