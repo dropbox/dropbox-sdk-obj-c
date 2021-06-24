@@ -1283,6 +1283,9 @@ void MyLog(NSString *format, ...) {
                 [self unshareFolder:^{
                     [self shareFolder:nextTest];
                 }];
+            } else if (error.isRateLimitError) {
+                sleep(error.backoff.unsignedIntValue);
+                [self shareFolder:nextTest];
             } else {
                 [TestFormat abort:error routeError:routeError];
             }
