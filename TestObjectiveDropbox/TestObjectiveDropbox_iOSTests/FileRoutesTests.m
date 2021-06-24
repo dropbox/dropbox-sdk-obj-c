@@ -3,7 +3,7 @@
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 #import "TestAuthTokenGenerator.h"
 
-static NSString *scopesForFileRoutesTests = @"account_info.read files.content.read files.content.write files.metadata.read files.metadata.write";
+static NSString *scopesForFileRoutesTests = @"account_info.read files.content.read files.content.write files.metadata.read files.metadata.write sharing.write sharing.read";
 
 @interface FileRoutesTests : XCTestCase
 @end
@@ -15,7 +15,7 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     TestData *_testData;
 }
 
-- (void)setUp {
+- (DBUserClient *)createUserClient {
     self.continueAfterFailure = NO;
     // You need an API app with the "Full Dropbox" permission type and at least the scopes in scopesForFileRoutesTests
     // and no team scopes.
@@ -40,11 +40,24 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
                                 forceForegroundSession:YES // NO here will cause downloadURL to fail on OSX
                              sharedContainerIdentifier:nil];
 
-    _userClient = [[DBUserClient alloc] initWithAccessToken:fileRoutesTestsAuthToken
+    return [[DBUserClient alloc] initWithAccessToken:fileRoutesTestsAuthToken
         transportConfig:transportConfigFullDropbox];
+}
 
-    _testData = [[TestData alloc] init];
-    _tester = [[DropboxTester alloc] initWithUserClient:_userClient testData:_testData];
+- (void)setUp {
+    self.continueAfterFailure = NO;
+    _userClient = [self createUserClient];
+
+    TestData * data = [[TestData alloc] init];
+    data.teamMemberEmail = [TestAuthTokenGenerator environmentVariableForKey:@"TEAM_MEMBER_EMAIL"];
+    data.teamMemberNewEmail = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_EMAIL"];
+    data.accountId = [TestAuthTokenGenerator environmentVariableForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
+    data.accountId2 = [TestAuthTokenGenerator environmentVariableForKey:@"ANY_OTHER_ACCOUNT_ID"];
+    data.accountId3 = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_ACCOUNT_ID"];
+    data.accountId3Email = data.teamMemberNewEmail;
+    
+    _tester = [[DropboxTester alloc] initWithUserClient:_userClient testData:data];
+    _testData = data;
 }
 
 - (void)tearDown {
@@ -65,7 +78,7 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
 
 - (void)testFileRoutes {
     XCTestExpectation *flag = [[XCTestExpectation alloc] init];
-    [_tester testFilesEndpoints:^{
+    [_tester testAllUserAPIEndpoints:^{
         [flag fulfill];
     } asMember:NO];
     XCTWaiterResult result = [XCTWaiter waitForExpectations:@[flag] timeout:60*5];
