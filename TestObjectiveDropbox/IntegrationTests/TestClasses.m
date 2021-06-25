@@ -1170,7 +1170,12 @@ void MyLog(NSString *format, ...) {
             if (result) {
                 MyLog(@"%@\n", result);
             } else {
-                [TestFormat abort:networkError routeError:routeError];
+                if (networkError.isRateLimitError) {
+                    sleep(networkError.backoff.unsignedIntValue);
+                    [self listFolderLongpollAndTrigger:nextTest];
+                } else {
+                    [TestFormat abort:networkError routeError:routeError];
+                }
             }
         } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
             [TestFormat printSentProgress:bytesSent
@@ -1273,7 +1278,17 @@ void MyLog(NSString *format, ...) {
                 [TestFormat abort:error routeError:routeError];
             }
         } else {
-            [TestFormat abort:error routeError:routeError];
+            if(routeError.isBadPath && routeError.badPath.isAlreadyShared) {
+                // prob leftover from another test
+                [self unshareFolder:^{
+                    [self shareFolder:nextTest];
+                }];
+            } else if (error.isRateLimitError) {
+                sleep(error.backoff.unsignedIntValue);
+                [self shareFolder:nextTest];
+            } else {
+                [TestFormat abort:error routeError:routeError];
+            }
         }
     } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         [TestFormat printSentProgress:bytesSent

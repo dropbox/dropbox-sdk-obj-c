@@ -9,6 +9,7 @@
     NSString *value = processInfoDict[key];
     XCTAssertNotNil(value, @"%@ environment variable must exist", key);
     XCTAssertNotEqual(value.length, 0, @"%@ environment variable must be longer than 0", key);
+    XCTAssertFalse([value hasSuffix:@" "], @"%@ environment variable value must not end in whitespace", key);
     return value;
 }
 
