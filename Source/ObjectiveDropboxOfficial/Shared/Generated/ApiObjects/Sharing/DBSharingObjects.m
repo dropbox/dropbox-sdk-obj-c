@@ -25332,25 +25332,28 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRequestedVisibility:(DBSHARINGRequestedVisibility *)requestedVisibility
-                               linkPassword:(NSString *)linkPassword
-                                    expires:(NSDate *)expires
-                                   audience:(DBSHARINGLinkAudience *)audience
-                                     access:(DBSHARINGRequestedLinkAccessLevel *)access {
+- (instancetype)initWithRequirePassword:(NSNumber *)requirePassword
+                           linkPassword:(NSString *)linkPassword
+                                expires:(NSDate *)expires
+                               audience:(DBSHARINGLinkAudience *)audience
+                                 access:(DBSHARINGRequestedLinkAccessLevel *)access
+                    requestedVisibility:(DBSHARINGRequestedVisibility *)requestedVisibility {
 
   self = [super init];
   if (self) {
-    _requestedVisibility = requestedVisibility;
+    _requirePassword = requirePassword;
     _linkPassword = linkPassword;
     _expires = expires;
     _audience = audience;
     _access = access;
+    _requestedVisibility = requestedVisibility;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithRequestedVisibility:nil linkPassword:nil expires:nil audience:nil access:nil];
+  return
+      [self initWithRequirePassword:nil linkPassword:nil expires:nil audience:nil access:nil requestedVisibility:nil];
 }
 
 #pragma mark - Serialization methods
@@ -25383,8 +25386,8 @@
   NSUInteger prime = 31;
   NSUInteger result = 1;
 
-  if (self.requestedVisibility != nil) {
-    result = prime * result + [self.requestedVisibility hash];
+  if (self.requirePassword != nil) {
+    result = prime * result + [self.requirePassword hash];
   }
   if (self.linkPassword != nil) {
     result = prime * result + [self.linkPassword hash];
@@ -25397,6 +25400,9 @@
   }
   if (self.access != nil) {
     result = prime * result + [self.access hash];
+  }
+  if (self.requestedVisibility != nil) {
+    result = prime * result + [self.requestedVisibility hash];
   }
 
   return prime * result;
@@ -25418,8 +25424,8 @@
   if (self == aSharedLinkSettings) {
     return YES;
   }
-  if (self.requestedVisibility) {
-    if (![self.requestedVisibility isEqual:aSharedLinkSettings.requestedVisibility]) {
+  if (self.requirePassword) {
+    if (![self.requirePassword isEqual:aSharedLinkSettings.requirePassword]) {
       return NO;
     }
   }
@@ -25443,6 +25449,11 @@
       return NO;
     }
   }
+  if (self.requestedVisibility) {
+    if (![self.requestedVisibility isEqual:aSharedLinkSettings.requestedVisibility]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -25455,8 +25466,8 @@
 + (NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedLinkSettings *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.requestedVisibility) {
-    jsonDict[@"requested_visibility"] = [DBSHARINGRequestedVisibilitySerializer serialize:valueObj.requestedVisibility];
+  if (valueObj.requirePassword) {
+    jsonDict[@"require_password"] = valueObj.requirePassword;
   }
   if (valueObj.linkPassword) {
     jsonDict[@"link_password"] = valueObj.linkPassword;
@@ -25470,15 +25481,15 @@
   if (valueObj.access) {
     jsonDict[@"access"] = [DBSHARINGRequestedLinkAccessLevelSerializer serialize:valueObj.access];
   }
+  if (valueObj.requestedVisibility) {
+    jsonDict[@"requested_visibility"] = [DBSHARINGRequestedVisibilitySerializer serialize:valueObj.requestedVisibility];
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
 
 + (DBSHARINGSharedLinkSettings *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBSHARINGRequestedVisibility *requestedVisibility =
-      valueDict[@"requested_visibility"]
-          ? [DBSHARINGRequestedVisibilitySerializer deserialize:valueDict[@"requested_visibility"]]
-          : nil;
+  NSNumber *requirePassword = valueDict[@"require_password"] ?: nil;
   NSString *linkPassword = valueDict[@"link_password"] ?: nil;
   NSDate *expires = valueDict[@"expires"]
                         ? [DBNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
@@ -25487,12 +25498,17 @@
       valueDict[@"audience"] ? [DBSHARINGLinkAudienceSerializer deserialize:valueDict[@"audience"]] : nil;
   DBSHARINGRequestedLinkAccessLevel *access =
       valueDict[@"access"] ? [DBSHARINGRequestedLinkAccessLevelSerializer deserialize:valueDict[@"access"]] : nil;
+  DBSHARINGRequestedVisibility *requestedVisibility =
+      valueDict[@"requested_visibility"]
+          ? [DBSHARINGRequestedVisibilitySerializer deserialize:valueDict[@"requested_visibility"]]
+          : nil;
 
-  return [[DBSHARINGSharedLinkSettings alloc] initWithRequestedVisibility:requestedVisibility
-                                                             linkPassword:linkPassword
-                                                                  expires:expires
-                                                                 audience:audience
-                                                                   access:access];
+  return [[DBSHARINGSharedLinkSettings alloc] initWithRequirePassword:requirePassword
+                                                         linkPassword:linkPassword
+                                                              expires:expires
+                                                             audience:audience
+                                                               access:access
+                                                  requestedVisibility:requestedVisibility];
 }
 
 @end

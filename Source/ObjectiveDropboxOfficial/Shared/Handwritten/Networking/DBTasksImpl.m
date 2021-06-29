@@ -54,7 +54,8 @@
 }
 
 - (DBTask *)restart {
-  DBRpcTaskImpl *sdkTask = [[DBRpcTaskImpl alloc] initWithTask:[_task duplicate] tokenUid:self.tokenUid route:self.route];
+  DBRpcTaskImpl *sdkTask =
+      [[DBRpcTaskImpl alloc] initWithTask:[_task duplicate] tokenUid:self.tokenUid route:self.route];
   sdkTask.retryCount += 1;
   [sdkTask setResponseBlock:_responseBlock queue:_queue];
   [sdkTask resume];
@@ -307,8 +308,9 @@
 }
 
 - (DBTask *)restart {
-  DBDownloadDataTaskImpl *sdkTask =
-      [[DBDownloadDataTaskImpl alloc] initWithTask:[_downloadDataTask duplicate] tokenUid:self.tokenUid route:self.route];
+  DBDownloadDataTaskImpl *sdkTask = [[DBDownloadDataTaskImpl alloc] initWithTask:[_downloadDataTask duplicate]
+                                                                        tokenUid:self.tokenUid
+                                                                           route:self.route];
   sdkTask.retryCount += 1;
   [sdkTask setResponseBlock:_responseBlock queue:_queue];
   [sdkTask resume];

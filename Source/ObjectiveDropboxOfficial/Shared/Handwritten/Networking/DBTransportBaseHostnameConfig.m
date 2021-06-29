@@ -27,10 +27,10 @@
 @implementation DBTransportBaseHostnameConfig
 
 - (instancetype)init {
-    return [self initWithMeta:@"www.dropbox.com"
-                          api:@"api.dropbox.com"
-                      content:@"api-content.dropbox.com"
-                       notify:@"notify.dropboxapi.com"];
+  return [self initWithMeta:@"www.dropbox.com"
+                        api:@"api.dropbox.com"
+                    content:@"api-content.dropbox.com"
+                     notify:@"notify.dropboxapi.com"];
 }
 
 - (instancetype)initWithMeta:(NSString *)meta

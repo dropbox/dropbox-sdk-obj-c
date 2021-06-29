@@ -34,6 +34,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLabelTypeTag){
     DBTEAMLOGLabelTypePersonalInformation,
 
     /// (no description).
+    DBTEAMLOGLabelTypeTestOnly,
+
+    /// (no description).
+    DBTEAMLOGLabelTypeUserDefinedTag,
+
+    /// (no description).
     DBTEAMLOGLabelTypeOther,
 
 };
@@ -49,6 +55,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLabelTypeTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPersonalInformation;
+
+///
+/// Initializes union class with tag state of "test_only".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTestOnly;
+
+///
+/// Initializes union class with tag state of "user_defined_tag".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUserDefinedTag;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -69,6 +89,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLabelTypeTag){
 /// "personal_information".
 ///
 - (BOOL)isPersonalInformation;
+
+///
+/// Retrieves whether the union's current tag state has value "test_only".
+///
+/// @return Whether the union's current tag state has value "test_only".
+///
+- (BOOL)isTestOnly;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "user_defined_tag".
+///
+/// @return Whether the union's current tag state has value "user_defined_tag".
+///
+- (BOOL)isUserDefinedTag;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

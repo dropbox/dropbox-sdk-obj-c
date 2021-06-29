@@ -330,8 +330,8 @@
     if (clientError || !resultData || !location) {
       NSData *errorData = location ? [NSData dataWithContentsOfURL:location] : nil;
       if (errorData == nil && location.path != nil) {
-          // error data is in response body (downloaded to output tmp file)
-          errorData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:location.path]];
+        // error data is in response body (downloaded to output tmp file)
+        errorData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:location.path]];
       }
       networkError = [DBTransportBaseClient dBRequestErrorWithErrorData:errorData
                                                             clientError:clientError
