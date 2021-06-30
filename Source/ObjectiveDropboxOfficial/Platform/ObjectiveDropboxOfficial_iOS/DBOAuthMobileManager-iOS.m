@@ -2,6 +2,10 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "TargetConditionals.h"
+
+#if TARGET_OS_IPHONE
+
 #import "DBOAuthMobileManager-iOS.h"
 
 #import "DBLoadingViewController.h"
@@ -251,3 +255,5 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 }
 
 @end
+
+#endif // TARGET_OS_IPHONE

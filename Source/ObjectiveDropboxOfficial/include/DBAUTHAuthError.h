@@ -1,0 +1,1 @@
+../Shared/Generated/ApiObjects/Auth/Headers/DBAUTHAuthError.h

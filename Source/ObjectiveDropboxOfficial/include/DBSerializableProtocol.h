@@ -1,0 +1,1 @@
+../Shared/Generated/Resources/DBSerializableProtocol.h

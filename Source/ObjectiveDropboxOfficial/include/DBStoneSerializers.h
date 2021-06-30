@@ -1,0 +1,1 @@
+../Shared/Generated/Resources/DBStoneSerializers.h

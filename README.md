@@ -18,6 +18,7 @@ NOTE: Please do not rely on `master` in production. Please instead use one of ou
 * [SDK distribution](#sdk-distribution)
   * [CocoaPods](#cocoapods)
   * [Carthage](#carthage)
+  * [Swift Package Manager](#swift-package-manager)
   * [Manually add subproject](#manually-add-subproject)
 * [Configure your project](#configure-your-project)
   * [Application `.plist` file](#application-plist-file)
@@ -187,6 +188,22 @@ carthage update --platform Mac --use-xcframeworks
 ```
 
 Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Frameworks, Libraries and Embedded Content**. Drag the `ObjectiveDropboxOfficial.xcframework` file from `Carthage/Build` into the table and choose `Embed & Sign`.
+
+---
+
+### Swift Package Manager
+
+With [Swift Package Manager](https://swift.org/package-manager), add the following `dependency` to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/dropbox/dropbox-sdk-obj-c.git", .upToNextMajor(from: "5.0.4"))
+]
+```
+
+##### Known Issues:
+
+If the Swift Package is added via Xcode as dependency, a `preprocessor macro` with `SWIFT_PACKAGE=1` must be set manually. See also: [https://forums.swift.org/t/unable-to-compile-swift-package-when-used-in-xcode/36081](https://forums.swift.org/t/unable-to-compile-swift-package-when-used-in-xcode/36081)
 
 ---
 

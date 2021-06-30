@@ -2,6 +2,10 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import <TargetConditionals.h>
+
+#if TARGET_OS_OSX
+
 #import <AppKit/AppKit.h>
 
 #import "DBClientsManager+Protected.h"
@@ -80,3 +84,5 @@
 }
 
 @end
+
+#endif // TARGET_OS_OSX

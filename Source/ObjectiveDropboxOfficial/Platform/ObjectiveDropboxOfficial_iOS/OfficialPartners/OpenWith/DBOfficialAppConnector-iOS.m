@@ -2,6 +2,10 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "TargetConditionals.h"
+
+#if TARGET_OS_IPHONE
+
 #import <UIKit/UIKit.h>
 
 #import "DBOfficialAppConnector-iOS.h"
@@ -253,3 +257,5 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
 }
 
 @end
+
+#endif // TARGET_OS_IPHONE
