@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSDKConstants.h"
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
 
 NSString *const kDBSDKVersion = @"6.0.1";
 NSString *const kDBSDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";

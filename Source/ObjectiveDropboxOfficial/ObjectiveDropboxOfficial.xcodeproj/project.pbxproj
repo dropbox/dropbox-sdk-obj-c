@@ -4193,6 +4193,8 @@
 		F2F2CFFD1E9D769500512DE8 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F2CFFC1E9D769500512DE8 /* SafariServices.framework */; };
 		F2F2CFFF1E9D76C300512DE8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F2CFFE1E9D76C300512DE8 /* SystemConfiguration.framework */; };
 		F2F2D0011E9D76CA00512DE8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F2D0001E9D76CA00512DE8 /* SystemConfiguration.framework */; };
+		F9DE0AF826CD4DE700073069 /* DBAccessTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC20EA424905395005A5E8F /* DBAccessTokenProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9DE0AF926CD4DE800073069 /* DBAccessTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC20EA424905395005A5E8F /* DBAccessTokenProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -10365,6 +10367,7 @@
 				0C516805268A9AF000E0678F /* DBPAPERUserAuthRoutes.h in Headers */,
 				0C51711F268A9B0000E0678F /* DBTEAMLOGCameraUploadsPolicyChangedType.h in Headers */,
 				0C517427268A9B0700E0678F /* DBTEAMLOGFileDeleteCommentType.h in Headers */,
+				F9DE0AF826CD4DE700073069 /* DBAccessTokenProvider.h in Headers */,
 				0C516F83268A9AFD00E0678F /* DBTEAMLOGPaperExternalViewForbidType.h in Headers */,
 				0C516D25268A9AF800E0678F /* DBTEAMLOGDeviceDeleteOnUnlinkSuccessType.h in Headers */,
 				0C517249268A9B0200E0678F /* DBTEAMLOGSecondaryMailsPolicyChangedDetails.h in Headers */,
@@ -11022,6 +11025,7 @@
 				0C5176C4268A9B0E00E0678F /* DBFILESSearchV2Arg.h in Headers */,
 				0C5176C2268A9B0E00E0678F /* DBFILESGetTemporaryLinkResult.h in Headers */,
 				0C5176C0268A9B0E00E0678F /* DBFILESSingleUserLock.h in Headers */,
+				F9DE0AF926CD4DE800073069 /* DBAccessTokenProvider.h in Headers */,
 				0C5176BE268A9B0E00E0678F /* DBFILESDeleteBatchError.h in Headers */,
 				0C5176BC268A9B0E00E0678F /* DBFILESThumbnailArg.h in Headers */,
 				0C5176BA268A9B0E00E0678F /* DBFILESExportInfo.h in Headers */,

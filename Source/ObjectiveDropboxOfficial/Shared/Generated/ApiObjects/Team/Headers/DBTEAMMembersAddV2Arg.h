@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMMembersAddArgBase.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddArgBase.h>
 
 @class DBTEAMMemberAddV2Arg;
 @class DBTEAMMembersAddV2Arg;

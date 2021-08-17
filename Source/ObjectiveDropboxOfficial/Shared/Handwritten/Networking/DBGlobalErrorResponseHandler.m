@@ -2,10 +2,10 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBGlobalErrorResponseHandler.h"
-#import "DBRequestErrors.h"
-#import "DBTasks.h"
-#import "DBTransportBaseClient+Internal.h"
+#import <ObjectiveDropboxOfficial/DBGlobalErrorResponseHandler.h>
+#import <ObjectiveDropboxOfficial/DBRequestErrors.h>
+#import <ObjectiveDropboxOfficial/DBTasks.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseClient+Internal.h>
 #import <objc/runtime.h>
 
 static DBNetworkErrorResponseBlock s_networkErrorResponseBlock = nil;

@@ -4,13 +4,13 @@
 
 #import <AppKit/AppKit.h>
 
-#import "DBClientsManager+Protected.h"
-#import "DBClientsManager.h"
-#import "DBLoadingStatusDelegate.h"
-#import "DBOAuthDesktop-macOS.h"
-#import "DBOAuthManager.h"
-#import "DBScopeRequest.h"
-#import "DBTransportDefaultConfig.h"
+#import <ObjectiveDropboxOfficial/DBClientsManager+Protected.h>
+#import <ObjectiveDropboxOfficial/DBClientsManager.h>
+#import <ObjectiveDropboxOfficial/DBLoadingStatusDelegate.h>
+#import <ObjectiveDropboxOfficial/DBOAuthDesktop-macOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
+#import <ObjectiveDropboxOfficial/DBScopeRequest.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
 
 @implementation DBClientsManager (DesktopAuth)
 

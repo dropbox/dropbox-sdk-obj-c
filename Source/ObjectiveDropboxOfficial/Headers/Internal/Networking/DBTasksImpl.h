@@ -4,10 +4,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBHandlerTypes.h"
-#import "DBTasks.h"
-#import "DBTasksImpl.h"
-#import "DBURLSessionTaskWithTokenRefresh.h"
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
+#import <ObjectiveDropboxOfficial/DBTasks.h>
+#import <ObjectiveDropboxOfficial/DBTasksImpl.h>
+#import <ObjectiveDropboxOfficial/DBURLSessionTaskWithTokenRefresh.h>
 
 @class DBBatchUploadData;
 @class DBDelegate;

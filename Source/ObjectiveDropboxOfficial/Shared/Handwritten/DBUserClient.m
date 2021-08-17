@@ -2,11 +2,11 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBUserClient.h"
+#import <ObjectiveDropboxOfficial/DBUserClient.h>
 
-#import "DBAccessTokenProvider.h"
-#import "DBTransportDefaultClient.h"
-#import "DBTransportDefaultConfig.h"
+#import <ObjectiveDropboxOfficial/DBAccessTokenProvider.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
 
 @implementation DBUserClient
 

@@ -2,8 +2,8 @@
 /// Copyright (c) 2017 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBStoneBase.h"
 #import <Foundation/Foundation.h>
+#import <ObjectiveDropboxOfficial/DBStoneBase.h>
 
 /// Enum of Dropbox API hosts.
 typedef NS_ENUM(NSUInteger, DBRouteHost) {

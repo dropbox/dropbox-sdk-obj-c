@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBTransportBaseHostnameConfig.h"
-#import "DBSDKConstants.h"
-#import "DBStoneBase.h"
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
+#import <ObjectiveDropboxOfficial/DBStoneBase.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseHostnameConfig.h>
 
 @implementation DBRoute (DropboxHost)
 

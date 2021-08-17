@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMMemberProfile.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberProfile.h>
 
 @class DBSECONDARYEMAILSSecondaryEmail;
 @class DBTEAMTeamMemberProfile;

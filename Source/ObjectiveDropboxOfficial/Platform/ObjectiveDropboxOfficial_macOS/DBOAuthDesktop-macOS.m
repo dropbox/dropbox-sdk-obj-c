@@ -2,10 +2,10 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthDesktop-macOS.h"
+#import <ObjectiveDropboxOfficial/DBOAuthDesktop-macOS.h>
 
-#import "DBLoadingStatusDelegate.h"
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBLoadingStatusDelegate.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
 static DBDesktopSharedApplication *s_desktopSharedApplication;
 

@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBPAPERRefPaperDoc.h"
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBPAPERRefPaperDoc.h>
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBPAPERListUsersOnFolderArgs;
 

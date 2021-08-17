@@ -2,7 +2,7 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBLoadingViewController.h"
+#import <ObjectiveDropboxOfficial/DBLoadingViewController.h>
 
 @interface DBLoadingViewController ()
 

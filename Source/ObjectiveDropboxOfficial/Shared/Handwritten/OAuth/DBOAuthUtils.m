@@ -2,11 +2,11 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthUtils.h"
+#import <ObjectiveDropboxOfficial/DBOAuthUtils.h>
 
-#import "DBOAuthConstants.h"
-#import "DBOAuthPKCESession.h"
-#import "DBScopeRequest+Protected.h"
+#import <ObjectiveDropboxOfficial/DBOAuthConstants.h>
+#import <ObjectiveDropboxOfficial/DBOAuthPKCESession.h>
+#import <ObjectiveDropboxOfficial/DBScopeRequest+Protected.h>
 
 @implementation DBOAuthUtils
 

@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `SeenState` namespace.
 
-#import "DBSEENSTATEPlatformType.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSEENSTATEPlatformType.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

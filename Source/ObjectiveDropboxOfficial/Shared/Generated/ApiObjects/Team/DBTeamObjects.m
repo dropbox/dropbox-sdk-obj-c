@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `Team` namespace.
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeviceSession.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSession.h>
 
 #pragma mark - API Object
 
@@ -173,10 +173,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMActiveWebSession.h"
-#import "DBTEAMDeviceSession.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMActiveWebSession.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSession.h>
 
 #pragma mark - API Object
 
@@ -394,10 +394,10 @@
 
 @end
 
-#import "DBSECONDARYEMAILSSecondaryEmail.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAddSecondaryEmailResult.h"
+#import <ObjectiveDropboxOfficial/DBSECONDARYEMAILSSecondaryEmail.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAddSecondaryEmailResult.h>
 
 #pragma mark - API Object
 
@@ -845,10 +845,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAddSecondaryEmailsArg.h"
-#import "DBTEAMUserSecondaryEmailsArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAddSecondaryEmailsArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSecondaryEmailsArg.h>
 
 #pragma mark - API Object
 
@@ -956,9 +956,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAddSecondaryEmailsError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAddSecondaryEmailsError.h>
 
 #pragma mark - API Object
 
@@ -1132,10 +1132,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAddSecondaryEmailsResult.h"
-#import "DBTEAMUserAddResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAddSecondaryEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserAddResult.h>
 
 #pragma mark - API Object
 
@@ -1242,9 +1242,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAdminTier.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAdminTier.h>
 
 #pragma mark - API Object
 
@@ -1446,9 +1446,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMApiApp.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMApiApp.h>
 
 #pragma mark - API Object
 
@@ -1616,9 +1616,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseDfbReport.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseDfbReport.h>
 
 #pragma mark - API Object
 
@@ -1715,12 +1715,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseTeamFolderError.h"
-#import "DBTEAMTeamFolderAccessError.h"
-#import "DBTEAMTeamFolderInvalidStatusError.h"
-#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseTeamFolderError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderInvalidStatusError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderTeamSharedDropboxError.h>
 
 #pragma mark - API Object
 
@@ -1960,9 +1960,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCustomQuotaError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCustomQuotaError.h>
 
 #pragma mark - API Object
 
@@ -2113,11 +2113,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCustomQuotaResult.h"
-#import "DBTEAMUserCustomQuotaResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCustomQuotaResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserCustomQuotaResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -2316,10 +2316,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCustomQuotaUsersArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCustomQuotaUsersArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -2426,9 +2426,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDateRange.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDateRange.h>
 
 #pragma mark - API Object
 
@@ -2549,9 +2549,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDateRangeError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDateRangeError.h>
 
 #pragma mark - API Object
 
@@ -2679,9 +2679,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeleteSecondaryEmailResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeleteSecondaryEmailResult.h>
 
 #pragma mark - API Object
 
@@ -2916,10 +2916,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeleteSecondaryEmailsArg.h"
-#import "DBTEAMUserSecondaryEmailsArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeleteSecondaryEmailsArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSecondaryEmailsArg.h>
 
 #pragma mark - API Object
 
@@ -3026,10 +3026,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeleteSecondaryEmailsResult.h"
-#import "DBTEAMUserDeleteResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeleteSecondaryEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserDeleteResult.h>
 
 #pragma mark - API Object
 
@@ -3136,11 +3136,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDesktopClientSession.h"
-#import "DBTEAMDesktopPlatform.h"
-#import "DBTEAMDeviceSession.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDesktopClientSession.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDesktopPlatform.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSession.h>
 
 #pragma mark - API Object
 
@@ -3364,9 +3364,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDesktopPlatform.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDesktopPlatform.h>
 
 #pragma mark - API Object
 
@@ -3563,9 +3563,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeviceSessionArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSessionArg.h>
 
 #pragma mark - API Object
 
@@ -3670,9 +3670,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDevicesActive.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDevicesActive.h>
 
 #pragma mark - API Object
 
@@ -3871,9 +3871,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersListArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersListArg.h>
 
 #pragma mark - API Object
 
@@ -3973,9 +3973,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersListContinueArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersListContinueArg.h>
 
 #pragma mark - API Object
 
@@ -4072,9 +4072,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersListContinueError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersListContinueError.h>
 
 #pragma mark - API Object
 
@@ -4226,9 +4226,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersListError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersListError.h>
 
 #pragma mark - API Object
 
@@ -4379,10 +4379,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersListResult.h"
-#import "DBTEAMMemberProfile.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersListResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberProfile.h>
 
 #pragma mark - API Object
 
@@ -4516,10 +4516,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersUpdateArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersUpdateArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -4637,9 +4637,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersUpdateError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersUpdateError.h>
 
 #pragma mark - API Object
 
@@ -4813,10 +4813,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersUpdateResult.h"
-#import "DBTEAMExcludedUsersUpdateStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersUpdateResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersUpdateStatus.h>
 
 #pragma mark - API Object
 
@@ -4914,9 +4914,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMExcludedUsersUpdateStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMExcludedUsersUpdateStatus.h>
 
 #pragma mark - API Object
 
@@ -5067,9 +5067,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMFeature.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMFeature.h>
 
 #pragma mark - API Object
 
@@ -5289,13 +5289,13 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMFeatureValue.h"
-#import "DBTEAMHasTeamFileEventsValue.h"
-#import "DBTEAMHasTeamSelectiveSyncValue.h"
-#import "DBTEAMHasTeamSharedDropboxValue.h"
-#import "DBTEAMUploadApiRateLimitValue.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMFeatureValue.h>
+#import <ObjectiveDropboxOfficial/DBTEAMHasTeamFileEventsValue.h>
+#import <ObjectiveDropboxOfficial/DBTEAMHasTeamSelectiveSyncValue.h>
+#import <ObjectiveDropboxOfficial/DBTEAMHasTeamSharedDropboxValue.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUploadApiRateLimitValue.h>
 
 #pragma mark - API Object
 
@@ -5572,10 +5572,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMFeature.h"
-#import "DBTEAMFeaturesGetValuesBatchArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMFeature.h>
+#import <ObjectiveDropboxOfficial/DBTEAMFeaturesGetValuesBatchArg.h>
 
 #pragma mark - API Object
 
@@ -5681,9 +5681,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMFeaturesGetValuesBatchError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMFeaturesGetValuesBatchError.h>
 
 #pragma mark - API Object
 
@@ -5834,10 +5834,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMFeatureValue.h"
-#import "DBTEAMFeaturesGetValuesBatchResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMFeatureValue.h>
+#import <ObjectiveDropboxOfficial/DBTEAMFeaturesGetValuesBatchResult.h>
 
 #pragma mark - API Object
 
@@ -5944,10 +5944,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseDfbReport.h"
-#import "DBTEAMGetActivityReport.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseDfbReport.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGetActivityReport.h>
 
 #pragma mark - API Object
 
@@ -6286,11 +6286,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseDfbReport.h"
-#import "DBTEAMDevicesActive.h"
-#import "DBTEAMGetDevicesReport.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseDfbReport.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDevicesActive.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGetDevicesReport.h>
 
 #pragma mark - API Object
 
@@ -6416,10 +6416,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseDfbReport.h"
-#import "DBTEAMGetMembershipReport.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseDfbReport.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGetMembershipReport.h>
 
 #pragma mark - API Object
 
@@ -6598,11 +6598,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseDfbReport.h"
-#import "DBTEAMGetStorageReport.h"
-#import "DBTEAMStorageBucket.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseDfbReport.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGetStorageReport.h>
+#import <ObjectiveDropboxOfficial/DBTEAMStorageBucket.h>
 
 #pragma mark - API Object
 
@@ -6800,9 +6800,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupAccessType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupAccessType.h>
 
 #pragma mark - API Object
 
@@ -6958,10 +6958,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupManagementType.h"
-#import "DBTEAMGroupCreateArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupManagementType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupCreateArg.h>
 
 #pragma mark - API Object
 
@@ -7105,9 +7105,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupCreateError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupCreateError.h>
 
 #pragma mark - API Object
 
@@ -7327,9 +7327,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorError.h>
 
 #pragma mark - API Object
 
@@ -7480,10 +7480,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupSelectorError.h"
-#import "DBTEAMGroupSelectorWithTeamGroupError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorWithTeamGroupError.h>
 
 #pragma mark - API Object
 
@@ -7658,10 +7658,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupDeleteError.h"
-#import "DBTEAMGroupSelectorWithTeamGroupError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupDeleteError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorWithTeamGroupError.h>
 
 #pragma mark - API Object
 
@@ -7858,12 +7858,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupManagementType.h"
-#import "DBTEAMCOMMONGroupSummary.h"
-#import "DBTEAMGroupFullInfo.h"
-#import "DBTEAMGroupMemberInfo.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupManagementType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupSummary.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupFullInfo.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberInfo.h>
 
 #pragma mark - API Object
 
@@ -8061,11 +8061,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupAccessType.h"
-#import "DBTEAMGroupMemberInfo.h"
-#import "DBTEAMMemberProfile.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupAccessType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberInfo.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberProfile.h>
 
 #pragma mark - API Object
 
@@ -8170,11 +8170,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMemberSelector.h"
-#import "DBTEAMGroupSelector.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -8279,10 +8279,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMemberSelectorError.h"
-#import "DBTEAMGroupSelectorWithTeamGroupError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorWithTeamGroupError.h>
 
 #pragma mark - API Object
 
@@ -8479,10 +8479,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMemberSelectorError.h"
-#import "DBTEAMGroupMemberSetAccessTypeError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberSetAccessTypeError.h>
 
 #pragma mark - API Object
 
@@ -8702,9 +8702,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMIncludeMembersArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMIncludeMembersArg.h>
 
 #pragma mark - API Object
 
@@ -8804,12 +8804,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMembersAddArg.h"
-#import "DBTEAMGroupSelector.h"
-#import "DBTEAMIncludeMembersArg.h"
-#import "DBTEAMMemberAccess.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersAddArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMIncludeMembersArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAccess.h>
 
 #pragma mark - API Object
 
@@ -8936,10 +8936,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMembersAddError.h"
-#import "DBTEAMGroupSelectorWithTeamGroupError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersAddError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorWithTeamGroupError.h>
 
 #pragma mark - API Object
 
@@ -9314,10 +9314,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupFullInfo.h"
-#import "DBTEAMGroupMembersChangeResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupFullInfo.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersChangeResult.h>
 
 #pragma mark - API Object
 
@@ -9422,12 +9422,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMembersRemoveArg.h"
-#import "DBTEAMGroupSelector.h"
-#import "DBTEAMIncludeMembersArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersRemoveArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMIncludeMembersArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -9554,10 +9554,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMembersSelectorError.h"
-#import "DBTEAMGroupSelectorWithTeamGroupError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorWithTeamGroupError.h>
 
 #pragma mark - API Object
 
@@ -9754,10 +9754,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMembersRemoveError.h"
-#import "DBTEAMGroupMembersSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersRemoveError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersSelectorError.h>
 
 #pragma mark - API Object
 
@@ -10062,11 +10062,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMembersSelector.h"
-#import "DBTEAMGroupSelector.h"
-#import "DBTEAMUsersSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUsersSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -10171,13 +10171,13 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupAccessType.h"
-#import "DBTEAMGroupMemberSelector.h"
-#import "DBTEAMGroupMembersSetAccessTypeArg.h"
-#import "DBTEAMGroupSelector.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupAccessType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMembersSetAccessTypeArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -10307,9 +10307,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupSelector.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
 
 #pragma mark - API Object
 
@@ -10490,12 +10490,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupManagementType.h"
-#import "DBTEAMGroupSelector.h"
-#import "DBTEAMGroupUpdateArgs.h"
-#import "DBTEAMIncludeMembersArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupManagementType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupUpdateArgs.h>
+#import <ObjectiveDropboxOfficial/DBTEAMIncludeMembersArg.h>
 
 #pragma mark - API Object
 
@@ -10657,10 +10657,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupSelectorWithTeamGroupError.h"
-#import "DBTEAMGroupUpdateError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelectorWithTeamGroupError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupUpdateError.h>
 
 #pragma mark - API Object
 
@@ -10903,9 +10903,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsGetInfoError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsGetInfoError.h>
 
 #pragma mark - API Object
 
@@ -11056,10 +11056,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupFullInfo.h"
-#import "DBTEAMGroupsGetInfoItem.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupFullInfo.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsGetInfoItem.h>
 
 #pragma mark - API Object
 
@@ -11240,9 +11240,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsListArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsListArg.h>
 
 #pragma mark - API Object
 
@@ -11342,9 +11342,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsListContinueArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsListContinueArg.h>
 
 #pragma mark - API Object
 
@@ -11441,9 +11441,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsListContinueError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsListContinueError.h>
 
 #pragma mark - API Object
 
@@ -11594,10 +11594,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCOMMONGroupSummary.h"
-#import "DBTEAMGroupsListResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupSummary.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsListResult.h>
 
 #pragma mark - API Object
 
@@ -11722,10 +11722,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupSelector.h"
-#import "DBTEAMGroupsMembersListArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupSelector.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsMembersListArg.h>
 
 #pragma mark - API Object
 
@@ -11833,9 +11833,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsMembersListContinueArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsMembersListContinueArg.h>
 
 #pragma mark - API Object
 
@@ -11932,9 +11932,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsMembersListContinueError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsMembersListContinueError.h>
 
 #pragma mark - API Object
 
@@ -12086,10 +12086,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupMemberInfo.h"
-#import "DBTEAMGroupsMembersListResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupMemberInfo.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsMembersListResult.h>
 
 #pragma mark - API Object
 
@@ -12214,10 +12214,10 @@
 
 @end
 
-#import "DBASYNCPollError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsPollError.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsPollError.h>
 
 #pragma mark - API Object
 
@@ -12414,9 +12414,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupsSelector.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupsSelector.h>
 
 #pragma mark - API Object
 
@@ -12609,9 +12609,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMHasTeamFileEventsValue.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMHasTeamFileEventsValue.h>
 
 #pragma mark - API Object
 
@@ -12775,9 +12775,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMHasTeamSelectiveSyncValue.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMHasTeamSelectiveSyncValue.h>
 
 #pragma mark - API Object
 
@@ -12942,9 +12942,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMHasTeamSharedDropboxValue.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMHasTeamSharedDropboxValue.h>
 
 #pragma mark - API Object
 
@@ -13109,10 +13109,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldHeldRevisionMetadata.h"
-#import "DBTEAMTeamMemberStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldHeldRevisionMetadata.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberStatus.h>
 
 #pragma mark - API Object
 
@@ -13309,11 +13309,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldPolicy.h"
-#import "DBTEAMLegalHoldStatus.h"
-#import "DBTEAMMembersInfo.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldStatus.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersInfo.h>
 
 #pragma mark - API Object
 
@@ -13518,9 +13518,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldStatus.h>
 
 #pragma mark - API Object
 
@@ -13786,9 +13786,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsError.h>
 
 #pragma mark - API Object
 
@@ -13962,9 +13962,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsGetPolicyArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsGetPolicyArg.h>
 
 #pragma mark - API Object
 
@@ -14062,10 +14062,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsError.h"
-#import "DBTEAMLegalHoldsGetPolicyError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsGetPolicyError.h>
 
 #pragma mark - API Object
 
@@ -14262,10 +14262,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldHeldRevisionMetadata.h"
-#import "DBTEAMLegalHoldsListHeldRevisionResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldHeldRevisionMetadata.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListHeldRevisionResult.h>
 
 #pragma mark - API Object
 
@@ -14401,9 +14401,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsListHeldRevisionsArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListHeldRevisionsArg.h>
 
 #pragma mark - API Object
 
@@ -14502,9 +14502,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsListHeldRevisionsContinueArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListHeldRevisionsContinueArg.h>
 
 #pragma mark - API Object
 
@@ -14621,9 +14621,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsListHeldRevisionsContinueError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListHeldRevisionsContinueError.h>
 
 #pragma mark - API Object
 
@@ -14821,10 +14821,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsError.h"
-#import "DBTEAMLegalHoldsListHeldRevisionsError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListHeldRevisionsError.h>
 
 #pragma mark - API Object
 
@@ -15068,9 +15068,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsListPoliciesArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListPoliciesArg.h>
 
 #pragma mark - API Object
 
@@ -15170,10 +15170,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsError.h"
-#import "DBTEAMLegalHoldsListPoliciesError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListPoliciesError.h>
 
 #pragma mark - API Object
 
@@ -15370,10 +15370,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldPolicy.h"
-#import "DBTEAMLegalHoldsListPoliciesResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsListPoliciesResult.h>
 
 #pragma mark - API Object
 
@@ -15480,9 +15480,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsPolicyCreateArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsPolicyCreateArg.h>
 
 #pragma mark - API Object
 
@@ -15653,10 +15653,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsError.h"
-#import "DBTEAMLegalHoldsPolicyCreateError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsPolicyCreateError.h>
 
 #pragma mark - API Object
 
@@ -16014,9 +16014,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsPolicyReleaseArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsPolicyReleaseArg.h>
 
 #pragma mark - API Object
 
@@ -16114,10 +16114,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsError.h"
-#import "DBTEAMLegalHoldsPolicyReleaseError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsPolicyReleaseError.h>
 
 #pragma mark - API Object
 
@@ -16360,9 +16360,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsPolicyUpdateArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsPolicyUpdateArg.h>
 
 #pragma mark - API Object
 
@@ -16520,10 +16520,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMLegalHoldsError.h"
-#import "DBTEAMLegalHoldsPolicyUpdateError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMLegalHoldsPolicyUpdateError.h>
 
 #pragma mark - API Object
 
@@ -16881,9 +16881,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMemberAppsArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMemberAppsArg.h>
 
 #pragma mark - API Object
 
@@ -16980,9 +16980,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMemberAppsError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMemberAppsError.h>
 
 #pragma mark - API Object
 
@@ -17133,10 +17133,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMApiApp.h"
-#import "DBTEAMListMemberAppsResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMApiApp.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMemberAppsResult.h>
 
 #pragma mark - API Object
 
@@ -17242,9 +17242,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMemberDevicesArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMemberDevicesArg.h>
 
 #pragma mark - API Object
 
@@ -17375,9 +17375,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMemberDevicesError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMemberDevicesError.h>
 
 #pragma mark - API Object
 
@@ -17528,12 +17528,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMActiveWebSession.h"
-#import "DBTEAMDesktopClientSession.h"
-#import "DBTEAMListMemberDevicesResult.h"
-#import "DBTEAMMobileClientSession.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMActiveWebSession.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDesktopClientSession.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMemberDevicesResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMobileClientSession.h>
 
 #pragma mark - API Object
 
@@ -17710,9 +17710,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMembersAppsArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMembersAppsArg.h>
 
 #pragma mark - API Object
 
@@ -17818,9 +17818,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMembersAppsError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMembersAppsError.h>
 
 #pragma mark - API Object
 
@@ -17971,10 +17971,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMembersAppsResult.h"
-#import "DBTEAMMemberLinkedApps.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMembersAppsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberLinkedApps.h>
 
 #pragma mark - API Object
 
@@ -18108,9 +18108,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMembersDevicesArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMembersDevicesArg.h>
 
 #pragma mark - API Object
 
@@ -18243,9 +18243,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMembersDevicesError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMembersDevicesError.h>
 
 #pragma mark - API Object
 
@@ -18396,10 +18396,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListMembersDevicesResult.h"
-#import "DBTEAMMemberDevices.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListMembersDevicesResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberDevices.h>
 
 #pragma mark - API Object
 
@@ -18533,9 +18533,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListTeamAppsArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListTeamAppsArg.h>
 
 #pragma mark - API Object
 
@@ -18641,9 +18641,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListTeamAppsError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListTeamAppsError.h>
 
 #pragma mark - API Object
 
@@ -18794,10 +18794,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListTeamAppsResult.h"
-#import "DBTEAMMemberLinkedApps.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListTeamAppsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberLinkedApps.h>
 
 #pragma mark - API Object
 
@@ -18931,9 +18931,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListTeamDevicesArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListTeamDevicesArg.h>
 
 #pragma mark - API Object
 
@@ -19066,9 +19066,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListTeamDevicesError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListTeamDevicesError.h>
 
 #pragma mark - API Object
 
@@ -19219,10 +19219,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMListTeamDevicesResult.h"
-#import "DBTEAMMemberDevices.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMListTeamDevicesResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberDevices.h>
 
 #pragma mark - API Object
 
@@ -19356,11 +19356,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMGroupAccessType.h"
-#import "DBTEAMMemberAccess.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMGroupAccessType.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAccess.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -19465,9 +19465,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddArgBase.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddArgBase.h>
 
 #pragma mark - API Object
 
@@ -19668,11 +19668,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAdminTier.h"
-#import "DBTEAMMemberAddArg.h"
-#import "DBTEAMMemberAddArgBase.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAdminTier.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddArgBase.h>
 
 #pragma mark - API Object
 
@@ -19883,9 +19883,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddResultBase.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddResultBase.h>
 
 #pragma mark - API Object
 
@@ -20355,11 +20355,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddResult.h"
-#import "DBTEAMMemberAddResultBase.h"
-#import "DBTEAMTeamMemberInfo.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddResultBase.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfo.h>
 
 #pragma mark - API Object
 
@@ -20858,10 +20858,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddArgBase.h"
-#import "DBTEAMMemberAddV2Arg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddArgBase.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddV2Arg.h>
 
 #pragma mark - API Object
 
@@ -21093,11 +21093,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddResultBase.h"
-#import "DBTEAMMemberAddV2Result.h"
-#import "DBTEAMTeamMemberInfoV2.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddResultBase.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddV2Result.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfoV2.h>
 
 #pragma mark - API Object
 
@@ -21616,12 +21616,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMActiveWebSession.h"
-#import "DBTEAMDesktopClientSession.h"
-#import "DBTEAMMemberDevices.h"
-#import "DBTEAMMobileClientSession.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMActiveWebSession.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDesktopClientSession.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberDevices.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMobileClientSession.h>
 
 #pragma mark - API Object
 
@@ -21805,10 +21805,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMApiApp.h"
-#import "DBTEAMMemberLinkedApps.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMApiApp.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberLinkedApps.h>
 
 #pragma mark - API Object
 
@@ -21922,13 +21922,13 @@
 
 @end
 
-#import "DBSECONDARYEMAILSSecondaryEmail.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberProfile.h"
-#import "DBTEAMTeamMemberStatus.h"
-#import "DBTEAMTeamMembershipType.h"
-#import "DBUSERSName.h"
+#import <ObjectiveDropboxOfficial/DBSECONDARYEMAILSSecondaryEmail.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberProfile.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberStatus.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMembershipType.h>
+#import <ObjectiveDropboxOfficial/DBUSERSName.h>
 
 #pragma mark - API Object
 
@@ -22256,9 +22256,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorError.h>
 
 #pragma mark - API Object
 
@@ -22391,10 +22391,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberSelectorError.h"
-#import "DBTEAMUserSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorError.h>
 
 #pragma mark - API Object
 
@@ -22550,9 +22550,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersAddArgBase.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddArgBase.h>
 
 #pragma mark - API Object
 
@@ -22652,11 +22652,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddArg.h"
-#import "DBTEAMMembersAddArg.h"
-#import "DBTEAMMembersAddArgBase.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddArgBase.h>
 
 #pragma mark - API Object
 
@@ -22773,11 +22773,11 @@
 
 @end
 
-#import "DBASYNCPollResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddResult.h"
-#import "DBTEAMMembersAddJobStatus.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddJobStatus.h>
 
 #pragma mark - API Object
 
@@ -22988,11 +22988,11 @@
 
 @end
 
-#import "DBASYNCPollResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddV2Result.h"
-#import "DBTEAMMembersAddJobStatusV2Result.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddV2Result.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddJobStatusV2Result.h>
 
 #pragma mark - API Object
 
@@ -23221,11 +23221,11 @@
 
 @end
 
-#import "DBASYNCLaunchResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddResult.h"
-#import "DBTEAMMembersAddLaunch.h"
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddLaunch.h>
 
 #pragma mark - API Object
 
@@ -23413,11 +23413,11 @@
 
 @end
 
-#import "DBASYNCLaunchResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddV2Result.h"
-#import "DBTEAMMembersAddLaunchV2Result.h"
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddV2Result.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddLaunchV2Result.h>
 
 #pragma mark - API Object
 
@@ -23623,11 +23623,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberAddV2Arg.h"
-#import "DBTEAMMembersAddArgBase.h"
-#import "DBTEAMMembersAddV2Arg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberAddV2Arg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddArgBase.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersAddV2Arg.h>
 
 #pragma mark - API Object
 
@@ -23744,10 +23744,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateBaseArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateBaseArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -23844,11 +23844,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDataTransferArg.h"
-#import "DBTEAMMembersDeactivateBaseArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDataTransferArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateBaseArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -23965,11 +23965,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateArg.h"
-#import "DBTEAMMembersDeactivateBaseArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateBaseArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -24076,10 +24076,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateError.h"
-#import "DBTEAMUserSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorError.h>
 
 #pragma mark - API Object
 
@@ -24253,10 +24253,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeleteProfilePhotoArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeleteProfilePhotoArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -24353,10 +24353,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberSelectorError.h"
-#import "DBTEAMMembersDeleteProfilePhotoError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeleteProfilePhotoError.h>
 
 #pragma mark - API Object
 
@@ -24554,10 +24554,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetAvailableTeamMemberRolesResult.h"
-#import "DBTEAMTeamMemberRole.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetAvailableTeamMemberRolesResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberRole.h>
 
 #pragma mark - API Object
 
@@ -24665,10 +24665,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetInfoArgs.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoArgs.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -24775,9 +24775,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetInfoError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoError.h>
 
 #pragma mark - API Object
 
@@ -24905,9 +24905,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetInfoItemBase.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoItemBase.h>
 
 #pragma mark - API Object
 
@@ -25053,11 +25053,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetInfoItem.h"
-#import "DBTEAMMembersGetInfoItemBase.h"
-#import "DBTEAMTeamMemberInfo.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoItem.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoItemBase.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfo.h>
 
 #pragma mark - API Object
 
@@ -25238,11 +25238,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetInfoItemBase.h"
-#import "DBTEAMMembersGetInfoItemV2.h"
-#import "DBTEAMTeamMemberInfoV2.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoItemBase.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoItemV2.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfoV2.h>
 
 #pragma mark - API Object
 
@@ -25441,10 +25441,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetInfoV2Arg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoV2Arg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -25551,10 +25551,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersGetInfoItemV2.h"
-#import "DBTEAMMembersGetInfoV2Result.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoItemV2.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersGetInfoV2Result.h>
 
 #pragma mark - API Object
 
@@ -25661,9 +25661,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersInfo.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersInfo.h>
 
 #pragma mark - API Object
 
@@ -25779,9 +25779,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersListArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersListArg.h>
 
 #pragma mark - API Object
 
@@ -25888,9 +25888,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersListContinueArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersListContinueArg.h>
 
 #pragma mark - API Object
 
@@ -25987,9 +25987,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersListContinueError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersListContinueError.h>
 
 #pragma mark - API Object
 
@@ -26140,9 +26140,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersListError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersListError.h>
 
 #pragma mark - API Object
 
@@ -26270,10 +26270,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersListResult.h"
-#import "DBTEAMTeamMemberInfo.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersListResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfo.h>
 
 #pragma mark - API Object
 
@@ -26398,10 +26398,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersListV2Result.h"
-#import "DBTEAMTeamMemberInfoV2.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersListV2Result.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfoV2.h>
 
 #pragma mark - API Object
 
@@ -26526,10 +26526,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersRecoverArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersRecoverArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -26626,10 +26626,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersRecoverError.h"
-#import "DBTEAMUserSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersRecoverError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorError.h>
 
 #pragma mark - API Object
 
@@ -26849,11 +26849,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateArg.h"
-#import "DBTEAMMembersRemoveArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersRemoveArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -27014,10 +27014,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateError.h"
-#import "DBTEAMMembersTransferFilesError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersTransferFilesError.h>
 
 #pragma mark - API Object
 
@@ -27398,10 +27398,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersRemoveError.h"
-#import "DBTEAMMembersTransferFilesError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersRemoveError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersTransferFilesError.h>
 
 #pragma mark - API Object
 
@@ -28035,10 +28035,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberSelectorError.h"
-#import "DBTEAMMembersSendWelcomeError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSendWelcomeError.h>
 
 #pragma mark - API Object
 
@@ -28212,10 +28212,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersSetPermissions2Arg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetPermissions2Arg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -28345,10 +28345,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersSetPermissions2Error.h"
-#import "DBTEAMUserSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetPermissions2Error.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorError.h>
 
 #pragma mark - API Object
 
@@ -28591,10 +28591,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersSetPermissions2Result.h"
-#import "DBTEAMTeamMemberRole.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetPermissions2Result.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberRole.h>
 
 #pragma mark - API Object
 
@@ -28720,11 +28720,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAdminTier.h"
-#import "DBTEAMMembersSetPermissionsArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAdminTier.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetPermissionsArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -28829,10 +28829,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersSetPermissionsError.h"
-#import "DBTEAMUserSelectorError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetPermissionsError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorError.h>
 
 #pragma mark - API Object
 
@@ -29075,10 +29075,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAdminTier.h"
-#import "DBTEAMMembersSetPermissionsResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAdminTier.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetPermissionsResult.h>
 
 #pragma mark - API Object
 
@@ -29183,10 +29183,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersSetProfileArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetProfileArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -29393,10 +29393,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberSelectorError.h"
-#import "DBTEAMMembersSetProfileError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetProfileError.h>
 
 #pragma mark - API Object
 
@@ -29777,11 +29777,11 @@
 
 @end
 
-#import "DBACCOUNTPhotoSourceArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersSetProfilePhotoArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBACCOUNTPhotoSourceArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetProfilePhotoArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -29886,11 +29886,11 @@
 
 @end
 
-#import "DBACCOUNTSetProfilePhotoError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberSelectorError.h"
-#import "DBTEAMMembersSetProfilePhotoError.h"
+#import <ObjectiveDropboxOfficial/DBACCOUNTSetProfilePhotoError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberSelectorError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSetProfilePhotoError.h>
 
 #pragma mark - API Object
 
@@ -30125,10 +30125,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateError.h"
-#import "DBTEAMMembersSuspendError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersSuspendError.h>
 
 #pragma mark - API Object
 
@@ -30371,10 +30371,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersTransferFilesError.h"
-#import "DBTEAMMembersTransferFormerMembersFilesError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersTransferFilesError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersTransferFormerMembersFilesError.h>
 
 #pragma mark - API Object
 
@@ -30848,10 +30848,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersUnsuspendArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersUnsuspendArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -30948,10 +30948,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateError.h"
-#import "DBTEAMMembersUnsuspendError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersDeactivateError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMembersUnsuspendError.h>
 
 #pragma mark - API Object
 
@@ -31171,9 +31171,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMobileClientPlatform.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMobileClientPlatform.h>
 
 #pragma mark - API Object
 
@@ -31416,11 +31416,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeviceSession.h"
-#import "DBTEAMMobileClientPlatform.h"
-#import "DBTEAMMobileClientSession.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSession.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMobileClientPlatform.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMobileClientSession.h>
 
 #pragma mark - API Object
 
@@ -31656,10 +31656,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMNamespaceMetadata.h"
-#import "DBTEAMNamespaceType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMNamespaceMetadata.h>
+#import <ObjectiveDropboxOfficial/DBTEAMNamespaceType.h>
 
 #pragma mark - API Object
 
@@ -31798,9 +31798,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMNamespaceType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMNamespaceType.h>
 
 #pragma mark - API Object
 
@@ -32020,10 +32020,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRemoveCustomQuotaResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRemoveCustomQuotaResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -32222,9 +32222,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRemovedStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRemovedStatus.h>
 
 #pragma mark - API Object
 
@@ -32329,9 +32329,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMResendSecondaryEmailResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMResendSecondaryEmailResult.h>
 
 #pragma mark - API Object
 
@@ -32567,10 +32567,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMResendVerificationEmailArg.h"
-#import "DBTEAMUserSecondaryEmailsArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMResendVerificationEmailArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSecondaryEmailsArg.h>
 
 #pragma mark - API Object
 
@@ -32677,10 +32677,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMResendVerificationEmailResult.h"
-#import "DBTEAMUserResendResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMResendVerificationEmailResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserResendResult.h>
 
 #pragma mark - API Object
 
@@ -32787,10 +32787,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeviceSessionArg.h"
-#import "DBTEAMRevokeDesktopClientArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSessionArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDesktopClientArg.h>
 
 #pragma mark - API Object
 
@@ -32908,11 +32908,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeviceSessionArg.h"
-#import "DBTEAMRevokeDesktopClientArg.h"
-#import "DBTEAMRevokeDeviceSessionArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSessionArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDesktopClientArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionArg.h>
 
 #pragma mark - API Object
 
@@ -33128,10 +33128,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeDeviceSessionArg.h"
-#import "DBTEAMRevokeDeviceSessionBatchArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionBatchArg.h>
 
 #pragma mark - API Object
 
@@ -33238,9 +33238,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeDeviceSessionBatchError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionBatchError.h>
 
 #pragma mark - API Object
 
@@ -33368,10 +33368,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeDeviceSessionBatchResult.h"
-#import "DBTEAMRevokeDeviceSessionStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionBatchResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionStatus.h>
 
 #pragma mark - API Object
 
@@ -33480,9 +33480,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeDeviceSessionError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionError.h>
 
 #pragma mark - API Object
 
@@ -33656,10 +33656,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeDeviceSessionError.h"
-#import "DBTEAMRevokeDeviceSessionStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeDeviceSessionStatus.h>
 
 #pragma mark - API Object
 
@@ -33774,9 +33774,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeLinkedApiAppArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedApiAppArg.h>
 
 #pragma mark - API Object
 
@@ -33895,10 +33895,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeLinkedApiAppArg.h"
-#import "DBTEAMRevokeLinkedApiAppBatchArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedApiAppArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedApiAppBatchArg.h>
 
 #pragma mark - API Object
 
@@ -34005,9 +34005,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeLinkedAppBatchError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedAppBatchError.h>
 
 #pragma mark - API Object
 
@@ -34135,10 +34135,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeLinkedAppBatchResult.h"
-#import "DBTEAMRevokeLinkedAppStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedAppBatchResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedAppStatus.h>
 
 #pragma mark - API Object
 
@@ -34246,9 +34246,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeLinkedAppError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedAppError.h>
 
 #pragma mark - API Object
 
@@ -34445,10 +34445,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRevokeLinkedAppError.h"
-#import "DBTEAMRevokeLinkedAppStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedAppError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRevokeLinkedAppStatus.h>
 
 #pragma mark - API Object
 
@@ -34563,10 +34563,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMSetCustomQuotaArg.h"
-#import "DBTEAMUserCustomQuotaArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMSetCustomQuotaArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserCustomQuotaArg.h>
 
 #pragma mark - API Object
 
@@ -34673,10 +34673,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMCustomQuotaError.h"
-#import "DBTEAMSetCustomQuotaError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCustomQuotaError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMSetCustomQuotaError.h>
 
 #pragma mark - API Object
 
@@ -34850,9 +34850,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMStorageBucket.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMStorageBucket.h>
 
 #pragma mark - API Object
 
@@ -34957,9 +34957,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderAccessError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
 
 #pragma mark - API Object
 
@@ -35133,13 +35133,13 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseTeamFolderError.h"
-#import "DBTEAMTeamFolderAccessError.h"
-#import "DBTEAMTeamFolderActivateError.h"
-#import "DBTEAMTeamFolderInvalidStatusError.h"
-#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseTeamFolderError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderActivateError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderInvalidStatusError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderTeamSharedDropboxError.h>
 
 #pragma mark - API Object
 
@@ -35379,9 +35379,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderIdArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderIdArg.h>
 
 #pragma mark - API Object
 
@@ -35479,10 +35479,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderArchiveArg.h"
-#import "DBTEAMTeamFolderIdArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderArchiveArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderIdArg.h>
 
 #pragma mark - API Object
 
@@ -35590,13 +35590,13 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseTeamFolderError.h"
-#import "DBTEAMTeamFolderAccessError.h"
-#import "DBTEAMTeamFolderArchiveError.h"
-#import "DBTEAMTeamFolderInvalidStatusError.h"
-#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseTeamFolderError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderArchiveError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderInvalidStatusError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderTeamSharedDropboxError.h>
 
 #pragma mark - API Object
 
@@ -35836,12 +35836,12 @@
 
 @end
 
-#import "DBASYNCPollResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderArchiveError.h"
-#import "DBTEAMTeamFolderArchiveJobStatus.h"
-#import "DBTEAMTeamFolderMetadata.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderArchiveError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderArchiveJobStatus.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderMetadata.h>
 
 #pragma mark - API Object
 
@@ -36045,11 +36045,11 @@
 
 @end
 
-#import "DBASYNCLaunchResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderArchiveLaunch.h"
-#import "DBTEAMTeamFolderMetadata.h"
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderArchiveLaunch.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderMetadata.h>
 
 #pragma mark - API Object
 
@@ -36230,10 +36230,10 @@
 
 @end
 
-#import "DBFILESSyncSettingArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderCreateArg.h"
+#import <ObjectiveDropboxOfficial/DBFILESSyncSettingArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderCreateArg.h>
 
 #pragma mark - API Object
 
@@ -36348,10 +36348,10 @@
 
 @end
 
-#import "DBFILESSyncSettingsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderCreateError.h"
+#import <ObjectiveDropboxOfficial/DBFILESSyncSettingsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderCreateError.h>
 
 #pragma mark - API Object
 
@@ -36587,10 +36587,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderGetInfoItem.h"
-#import "DBTEAMTeamFolderMetadata.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderGetInfoItem.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderMetadata.h>
 
 #pragma mark - API Object
 
@@ -36772,9 +36772,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderIdListArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderIdListArg.h>
 
 #pragma mark - API Object
 
@@ -36885,9 +36885,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderInvalidStatusError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderInvalidStatusError.h>
 
 #pragma mark - API Object
 
@@ -37084,9 +37084,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderListArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderListArg.h>
 
 #pragma mark - API Object
 
@@ -37186,9 +37186,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderListContinueArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderListContinueArg.h>
 
 #pragma mark - API Object
 
@@ -37285,9 +37285,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderListContinueError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderListContinueError.h>
 
 #pragma mark - API Object
 
@@ -37438,10 +37438,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderAccessError.h"
-#import "DBTEAMTeamFolderListError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderListError.h>
 
 #pragma mark - API Object
 
@@ -37539,10 +37539,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderListResult.h"
-#import "DBTEAMTeamFolderMetadata.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderListResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderMetadata.h>
 
 #pragma mark - API Object
 
@@ -37667,12 +37667,12 @@
 
 @end
 
-#import "DBFILESContentSyncSetting.h"
-#import "DBFILESSyncSetting.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderMetadata.h"
-#import "DBTEAMTeamFolderStatus.h"
+#import <ObjectiveDropboxOfficial/DBFILESContentSyncSetting.h>
+#import <ObjectiveDropboxOfficial/DBFILESSyncSetting.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderMetadata.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderStatus.h>
 
 #pragma mark - API Object
 
@@ -37831,13 +37831,13 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseTeamFolderError.h"
-#import "DBTEAMTeamFolderAccessError.h"
-#import "DBTEAMTeamFolderInvalidStatusError.h"
-#import "DBTEAMTeamFolderPermanentlyDeleteError.h"
-#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseTeamFolderError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderInvalidStatusError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderPermanentlyDeleteError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderTeamSharedDropboxError.h>
 
 #pragma mark - API Object
 
@@ -38081,10 +38081,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderIdArg.h"
-#import "DBTEAMTeamFolderRenameArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderIdArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderRenameArg.h>
 
 #pragma mark - API Object
 
@@ -38189,13 +38189,13 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseTeamFolderError.h"
-#import "DBTEAMTeamFolderAccessError.h"
-#import "DBTEAMTeamFolderInvalidStatusError.h"
-#import "DBTEAMTeamFolderRenameError.h"
-#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseTeamFolderError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderInvalidStatusError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderRenameError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderTeamSharedDropboxError.h>
 
 #pragma mark - API Object
 
@@ -38504,9 +38504,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderStatus.h>
 
 #pragma mark - API Object
 
@@ -38703,9 +38703,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderTeamSharedDropboxError.h>
 
 #pragma mark - API Object
 
@@ -38857,12 +38857,12 @@
 
 @end
 
-#import "DBFILESContentSyncSettingArg.h"
-#import "DBFILESSyncSettingArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamFolderIdArg.h"
-#import "DBTEAMTeamFolderUpdateSyncSettingsArg.h"
+#import <ObjectiveDropboxOfficial/DBFILESContentSyncSettingArg.h>
+#import <ObjectiveDropboxOfficial/DBFILESSyncSettingArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderIdArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderUpdateSyncSettingsArg.h>
 
 #pragma mark - API Object
 
@@ -39009,14 +39009,14 @@
 
 @end
 
-#import "DBFILESSyncSettingsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMBaseTeamFolderError.h"
-#import "DBTEAMTeamFolderAccessError.h"
-#import "DBTEAMTeamFolderInvalidStatusError.h"
-#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
-#import "DBTEAMTeamFolderUpdateSyncSettingsError.h"
+#import <ObjectiveDropboxOfficial/DBFILESSyncSettingsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMBaseTeamFolderError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderAccessError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderInvalidStatusError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderTeamSharedDropboxError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamFolderUpdateSyncSettingsError.h>
 
 #pragma mark - API Object
 
@@ -39298,10 +39298,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESTeamMemberPolicies.h"
-#import "DBTEAMTeamGetInfoResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTeamMemberPolicies.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamGetInfoResult.h>
 
 #pragma mark - API Object
 
@@ -39439,11 +39439,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAdminTier.h"
-#import "DBTEAMTeamMemberInfo.h"
-#import "DBTEAMTeamMemberProfile.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAdminTier.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfo.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberProfile.h>
 
 #pragma mark - API Object
 
@@ -39548,11 +39548,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamMemberInfoV2.h"
-#import "DBTEAMTeamMemberProfile.h"
-#import "DBTEAMTeamMemberRole.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfoV2.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberProfile.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberRole.h>
 
 #pragma mark - API Object
 
@@ -39678,10 +39678,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamMemberInfoV2.h"
-#import "DBTEAMTeamMemberInfoV2Result.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfoV2.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberInfoV2Result.h>
 
 #pragma mark - API Object
 
@@ -39778,14 +39778,14 @@
 
 @end
 
-#import "DBSECONDARYEMAILSSecondaryEmail.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMemberProfile.h"
-#import "DBTEAMTeamMemberProfile.h"
-#import "DBTEAMTeamMemberStatus.h"
-#import "DBTEAMTeamMembershipType.h"
-#import "DBUSERSName.h"
+#import <ObjectiveDropboxOfficial/DBSECONDARYEMAILSSecondaryEmail.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMMemberProfile.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberProfile.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberStatus.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMembershipType.h>
+#import <ObjectiveDropboxOfficial/DBUSERSName.h>
 
 #pragma mark - API Object
 
@@ -40146,9 +40146,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamMemberRole.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberRole.h>
 
 #pragma mark - API Object
 
@@ -40263,10 +40263,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMRemovedStatus.h"
-#import "DBTEAMTeamMemberStatus.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMRemovedStatus.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberStatus.h>
 
 #pragma mark - API Object
 
@@ -40481,9 +40481,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamMembershipType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMembershipType.h>
 
 #pragma mark - API Object
 
@@ -40639,9 +40639,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamNamespacesListArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamNamespacesListArg.h>
 
 #pragma mark - API Object
 
@@ -40741,9 +40741,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamNamespacesListContinueArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamNamespacesListContinueArg.h>
 
 #pragma mark - API Object
 
@@ -40840,9 +40840,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamNamespacesListError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamNamespacesListError.h>
 
 #pragma mark - API Object
 
@@ -40993,10 +40993,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamNamespacesListContinueError.h"
-#import "DBTEAMTeamNamespacesListError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamNamespacesListContinueError.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamNamespacesListError.h>
 
 #pragma mark - API Object
 
@@ -41171,10 +41171,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMNamespaceMetadata.h"
-#import "DBTEAMTeamNamespacesListResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMNamespaceMetadata.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamNamespacesListResult.h>
 
 #pragma mark - API Object
 
@@ -41299,9 +41299,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamReportFailureReason.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamReportFailureReason.h>
 
 #pragma mark - API Object
 
@@ -41498,9 +41498,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTokenGetAuthenticatedAdminError.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTokenGetAuthenticatedAdminError.h>
 
 #pragma mark - API Object
 
@@ -41675,10 +41675,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMTeamMemberProfile.h"
-#import "DBTEAMTokenGetAuthenticatedAdminResult.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTeamMemberProfile.h>
+#import <ObjectiveDropboxOfficial/DBTEAMTokenGetAuthenticatedAdminResult.h>
 
 #pragma mark - API Object
 
@@ -41776,9 +41776,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUploadApiRateLimitValue.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUploadApiRateLimitValue.h>
 
 #pragma mark - API Object
 
@@ -41965,11 +41965,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserAddResult.h"
-#import "DBTEAMUserSecondaryEmailsResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserAddResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSecondaryEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -42239,10 +42239,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserCustomQuotaArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserCustomQuotaArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -42347,10 +42347,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserCustomQuotaResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserCustomQuotaResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -42465,11 +42465,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMDeleteSecondaryEmailResult.h"
-#import "DBTEAMUserDeleteEmailsResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeleteSecondaryEmailResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserDeleteEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -42585,11 +42585,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserDeleteEmailsResult.h"
-#import "DBTEAMUserDeleteResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserDeleteEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserDeleteResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -42788,11 +42788,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMResendSecondaryEmailResult.h"
-#import "DBTEAMUserResendEmailsResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMResendSecondaryEmailResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserResendEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -42908,11 +42908,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserResendEmailsResult.h"
-#import "DBTEAMUserResendResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserResendEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserResendResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -43111,10 +43111,10 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserSecondaryEmailsArg.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSecondaryEmailsArg.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -43235,11 +43235,11 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMAddSecondaryEmailResult.h"
-#import "DBTEAMUserSecondaryEmailsResult.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMAddSecondaryEmailResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSecondaryEmailsResult.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -43354,9 +43354,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUserSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUserSelectorArg.h>
 
 #pragma mark - API Object
 
@@ -43572,9 +43572,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMUsersSelectorArg.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMUsersSelectorArg.h>
 
 #pragma mark - API Object
 

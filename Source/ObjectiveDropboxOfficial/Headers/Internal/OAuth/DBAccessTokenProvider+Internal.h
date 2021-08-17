@@ -2,8 +2,8 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBAccessTokenProvider.h"
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBAccessTokenProvider.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

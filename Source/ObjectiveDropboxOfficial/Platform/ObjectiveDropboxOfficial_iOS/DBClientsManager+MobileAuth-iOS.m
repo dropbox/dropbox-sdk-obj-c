@@ -4,14 +4,14 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DBClientsManager+Protected.h"
-#import "DBClientsManager.h"
-#import "DBLoadingStatusDelegate.h"
-#import "DBOAuthManager.h"
-#import "DBOAuthMobile-iOS.h"
-#import "DBOAuthMobileManager-iOS.h"
-#import "DBScopeRequest.h"
-#import "DBTransportDefaultConfig.h"
+#import <ObjectiveDropboxOfficial/DBClientsManager+Protected.h>
+#import <ObjectiveDropboxOfficial/DBClientsManager.h>
+#import <ObjectiveDropboxOfficial/DBLoadingStatusDelegate.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
+#import <ObjectiveDropboxOfficial/DBOAuthMobile-iOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthMobileManager-iOS.h>
+#import <ObjectiveDropboxOfficial/DBScopeRequest.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
 
 @implementation DBClientsManager (MobileAuth)
 

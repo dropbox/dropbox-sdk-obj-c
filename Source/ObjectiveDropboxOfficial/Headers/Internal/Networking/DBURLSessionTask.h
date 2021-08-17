@@ -2,8 +2,8 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBHandlerTypes.h"
 #import <Foundation/Foundation.h>
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
 
 @class DBURLSessionTaskResponseBlockWrapper;
 

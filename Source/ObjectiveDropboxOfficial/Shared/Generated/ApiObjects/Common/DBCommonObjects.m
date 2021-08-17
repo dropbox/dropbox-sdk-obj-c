@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `Common` namespace.
 
-#import "DBCOMMONPathRoot.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRoot.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -230,10 +230,10 @@
 
 @end
 
-#import "DBCOMMONPathRootError.h"
-#import "DBCOMMONRootInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRootError.h>
+#import <ObjectiveDropboxOfficial/DBCOMMONRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -420,11 +420,11 @@
 
 @end
 
-#import "DBCOMMONRootInfo.h"
-#import "DBCOMMONTeamRootInfo.h"
-#import "DBCOMMONUserRootInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBCOMMONTeamRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBCOMMONUserRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -552,10 +552,10 @@
 
 @end
 
-#import "DBCOMMONRootInfo.h"
-#import "DBCOMMONTeamRootInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBCOMMONTeamRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -672,10 +672,10 @@
 
 @end
 
-#import "DBCOMMONRootInfo.h"
-#import "DBCOMMONUserRootInfo.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBCOMMONUserRootInfo.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

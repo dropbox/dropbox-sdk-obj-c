@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `Contacts` namespace.
 
-#import "DBCONTACTSDeleteManualContactsArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBCONTACTSDeleteManualContactsArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -121,9 +121,9 @@
 
 @end
 
-#import "DBCONTACTSDeleteManualContactsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBCONTACTSDeleteManualContactsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

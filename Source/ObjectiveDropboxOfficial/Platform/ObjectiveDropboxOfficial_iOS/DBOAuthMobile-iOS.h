@@ -6,8 +6,8 @@
 #import <SafariServices/SafariServices.h>
 #import <UIKit/UIKit.h>
 
-#import "DBLoadingStatusDelegate.h"
-#import "DBSharedApplicationProtocol.h"
+#import <ObjectiveDropboxOfficial/DBLoadingStatusDelegate.h>
+#import <ObjectiveDropboxOfficial/DBSharedApplicationProtocol.h>
 
 #pragma mark - Shared application
 

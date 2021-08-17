@@ -2,13 +2,13 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthTokenRequest.h"
+#import <ObjectiveDropboxOfficial/DBOAuthTokenRequest.h>
 
-#import "DBOAuthManager.h"
-#import "DBOAuthResult.h"
-#import "DBSDKConstants.h"
-#import "DBTransportBaseConfig.h"
-#import "DBTransportBaseHostnameConfig.h"
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResult.h>
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseConfig.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseHostnameConfig.h>
 
 #pragma mark - DBOAuthTokenRequest
 

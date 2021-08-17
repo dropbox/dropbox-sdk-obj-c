@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBFILESRelocationBatchV2JobStatus;
 @class DBFILESRelocationBatchV2Result;

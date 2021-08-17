@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBOAuthManager.h"
-#import "DBOAuthResultCompletion.h"
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResultCompletion.h>
 
 @protocol DBAccessTokenProvider;
 

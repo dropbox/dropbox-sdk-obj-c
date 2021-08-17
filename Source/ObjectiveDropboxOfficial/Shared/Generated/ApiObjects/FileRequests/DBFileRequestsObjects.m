@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `FileRequests` namespace.
 
-#import "DBFILEREQUESTSGeneralFileRequestsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGeneralFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -159,10 +159,10 @@
 
 @end
 
-#import "DBFILEREQUESTSCountFileRequestsError.h"
-#import "DBFILEREQUESTSGeneralFileRequestsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSCountFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGeneralFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -313,9 +313,9 @@
 
 @end
 
-#import "DBFILEREQUESTSCountFileRequestsResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSCountFileRequestsResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -412,10 +412,10 @@
 
 @end
 
-#import "DBFILEREQUESTSCreateFileRequestArgs.h"
-#import "DBFILEREQUESTSFileRequestDeadline.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSCreateFileRequestArgs.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestDeadline.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -567,10 +567,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequestError.h"
-#import "DBFILEREQUESTSGeneralFileRequestsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGeneralFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -859,10 +859,10 @@
 
 @end
 
-#import "DBFILEREQUESTSCreateFileRequestError.h"
-#import "DBFILEREQUESTSFileRequestError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSCreateFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1197,10 +1197,10 @@
 
 @end
 
-#import "DBFILEREQUESTSDeleteAllClosedFileRequestsError.h"
-#import "DBFILEREQUESTSFileRequestError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSDeleteAllClosedFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1490,10 +1490,10 @@
 
 @end
 
-#import "DBFILEREQUESTSDeleteAllClosedFileRequestsResult.h"
-#import "DBFILEREQUESTSFileRequest.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSDeleteAllClosedFileRequestsResult.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequest.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1601,9 +1601,9 @@
 
 @end
 
-#import "DBFILEREQUESTSDeleteFileRequestArgs.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSDeleteFileRequestArgs.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -1714,10 +1714,10 @@
 
 @end
 
-#import "DBFILEREQUESTSDeleteFileRequestError.h"
-#import "DBFILEREQUESTSFileRequestError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSDeleteFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2029,10 +2029,10 @@
 
 @end
 
-#import "DBFILEREQUESTSDeleteFileRequestsResult.h"
-#import "DBFILEREQUESTSFileRequest.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSDeleteFileRequestsResult.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequest.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2139,10 +2139,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequest.h"
-#import "DBFILEREQUESTSFileRequestDeadline.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequest.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestDeadline.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2355,10 +2355,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequestDeadline.h"
-#import "DBFILEREQUESTSGracePeriod.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestDeadline.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGracePeriod.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2475,9 +2475,9 @@
 
 @end
 
-#import "DBFILEREQUESTSGetFileRequestArgs.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGetFileRequestArgs.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2575,10 +2575,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequestError.h"
-#import "DBFILEREQUESTSGetFileRequestError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGetFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -2867,9 +2867,9 @@
 
 @end
 
-#import "DBFILEREQUESTSGracePeriod.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGracePeriod.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3112,9 +3112,9 @@
 
 @end
 
-#import "DBFILEREQUESTSListFileRequestsArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSListFileRequestsArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3214,9 +3214,9 @@
 
 @end
 
-#import "DBFILEREQUESTSListFileRequestsContinueArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSListFileRequestsContinueArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3313,10 +3313,10 @@
 
 @end
 
-#import "DBFILEREQUESTSGeneralFileRequestsError.h"
-#import "DBFILEREQUESTSListFileRequestsContinueError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGeneralFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSListFileRequestsContinueError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3491,10 +3491,10 @@
 
 @end
 
-#import "DBFILEREQUESTSGeneralFileRequestsError.h"
-#import "DBFILEREQUESTSListFileRequestsError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSGeneralFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSListFileRequestsError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3645,10 +3645,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequest.h"
-#import "DBFILEREQUESTSListFileRequestsResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequest.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSListFileRequestsResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3755,10 +3755,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequest.h"
-#import "DBFILEREQUESTSListFileRequestsV2Result.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequest.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSListFileRequestsV2Result.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -3884,10 +3884,10 @@
 
 @end
 
-#import "DBFILEREQUESTSUpdateFileRequestArgs.h"
-#import "DBFILEREQUESTSUpdateFileRequestDeadline.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSUpdateFileRequestArgs.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSUpdateFileRequestDeadline.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4063,10 +4063,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequestDeadline.h"
-#import "DBFILEREQUESTSUpdateFileRequestDeadline.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestDeadline.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSUpdateFileRequestDeadline.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -4261,10 +4261,10 @@
 
 @end
 
-#import "DBFILEREQUESTSFileRequestError.h"
-#import "DBFILEREQUESTSUpdateFileRequestError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBFILEREQUESTSUpdateFileRequestError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

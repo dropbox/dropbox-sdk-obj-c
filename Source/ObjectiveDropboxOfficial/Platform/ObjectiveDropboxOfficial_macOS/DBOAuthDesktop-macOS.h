@@ -5,8 +5,8 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
-#import "DBLoadingStatusDelegate.h"
-#import "DBSharedApplicationProtocol.h"
+#import <ObjectiveDropboxOfficial/DBLoadingStatusDelegate.h>
+#import <ObjectiveDropboxOfficial/DBSharedApplicationProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

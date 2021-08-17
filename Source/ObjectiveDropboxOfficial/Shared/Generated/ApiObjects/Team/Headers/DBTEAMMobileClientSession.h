@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMDeviceSession.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMDeviceSession.h>
 
 @class DBTEAMMobileClientPlatform;
 @class DBTEAMMobileClientSession;

@@ -2,8 +2,8 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBAccessToken+NSSecureCoding.h"
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBAccessToken+NSSecureCoding.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
 @implementation DBAccessToken (NSSecureCoding)
 

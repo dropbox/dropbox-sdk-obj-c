@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `Async` namespace.
 
-#import "DBASYNCLaunchResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -154,10 +154,10 @@
 
 @end
 
-#import "DBASYNCLaunchEmptyResult.h"
-#import "DBASYNCLaunchResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchEmptyResult.h>
+#import <ObjectiveDropboxOfficial/DBASYNCLaunchResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -326,9 +326,9 @@
 
 @end
 
-#import "DBASYNCPollArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -425,9 +425,9 @@
 
 @end
 
-#import "DBASYNCPollResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -560,10 +560,10 @@
 
 @end
 
-#import "DBASYNCPollEmptyResult.h"
-#import "DBASYNCPollResultBase.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollEmptyResult.h>
+#import <ObjectiveDropboxOfficial/DBASYNCPollResultBase.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -719,9 +719,9 @@
 
 @end
 
-#import "DBASYNCPollError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBASYNCPollError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

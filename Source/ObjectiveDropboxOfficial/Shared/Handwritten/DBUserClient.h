@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBCOMMONPathRoot.h"
-#import "DBUserBaseClient.h"
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRoot.h>
+#import <ObjectiveDropboxOfficial/DBUserBaseClient.h>
 
 @class DBTransportDefaultClient;
 @class DBTransportDefaultConfig;

@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `TeamPolicies` namespace.
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESCameraUploadsPolicyState.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESCameraUploadsPolicyState.h>
 
 #pragma mark - API Object
 
@@ -182,9 +182,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESComputerBackupPolicyState.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESComputerBackupPolicyState.h>
 
 #pragma mark - API Object
 
@@ -381,9 +381,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESEmmState.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESEmmState.h>
 
 #pragma mark - API Object
 
@@ -580,9 +580,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESFileLockingPolicyState.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESFileLockingPolicyState.h>
 
 #pragma mark - API Object
 
@@ -756,9 +756,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESGroupCreation.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESGroupCreation.h>
 
 #pragma mark - API Object
 
@@ -914,9 +914,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESOfficeAddInPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESOfficeAddInPolicy.h>
 
 #pragma mark - API Object
 
@@ -1090,9 +1090,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESPaperDefaultFolderPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESPaperDefaultFolderPolicy.h>
 
 #pragma mark - API Object
 
@@ -1266,9 +1266,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESPaperDeploymentPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESPaperDeploymentPolicy.h>
 
 #pragma mark - API Object
 
@@ -1442,9 +1442,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESPaperDesktopPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESPaperDesktopPolicy.h>
 
 #pragma mark - API Object
 
@@ -1618,9 +1618,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESPaperEnabledPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESPaperEnabledPolicy.h>
 
 #pragma mark - API Object
 
@@ -1817,9 +1817,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESPasswordControlMode.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESPasswordControlMode.h>
 
 #pragma mark - API Object
 
@@ -1993,9 +1993,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESPasswordStrengthPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESPasswordStrengthPolicy.h>
 
 #pragma mark - API Object
 
@@ -2192,9 +2192,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESRolloutMethod.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESRolloutMethod.h>
 
 #pragma mark - API Object
 
@@ -2373,9 +2373,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSharedFolderJoinPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSharedFolderJoinPolicy.h>
 
 #pragma mark - API Object
 
@@ -2549,9 +2549,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSharedFolderMemberPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSharedFolderMemberPolicy.h>
 
 #pragma mark - API Object
 
@@ -2725,9 +2725,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSharedLinkCreatePolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSharedLinkCreatePolicy.h>
 
 #pragma mark - API Object
 
@@ -2924,9 +2924,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESShowcaseDownloadPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESShowcaseDownloadPolicy.h>
 
 #pragma mark - API Object
 
@@ -3100,9 +3100,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESShowcaseEnabledPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESShowcaseEnabledPolicy.h>
 
 #pragma mark - API Object
 
@@ -3276,9 +3276,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESShowcaseExternalSharingPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESShowcaseExternalSharingPolicy.h>
 
 #pragma mark - API Object
 
@@ -3453,9 +3453,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSmartSyncPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSmartSyncPolicy.h>
 
 #pragma mark - API Object
 
@@ -3629,9 +3629,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSmarterSmartSyncPolicyState.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSmarterSmartSyncPolicyState.h>
 
 #pragma mark - API Object
 
@@ -3805,9 +3805,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSsoPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSsoPolicy.h>
 
 #pragma mark - API Object
 
@@ -4004,9 +4004,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSuggestMembersPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSuggestMembersPolicy.h>
 
 #pragma mark - API Object
 
@@ -4180,13 +4180,13 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESEmmState.h"
-#import "DBTEAMPOLICIESOfficeAddInPolicy.h"
-#import "DBTEAMPOLICIESSuggestMembersPolicy.h"
-#import "DBTEAMPOLICIESTeamMemberPolicies.h"
-#import "DBTEAMPOLICIESTeamSharingPolicies.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESEmmState.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESOfficeAddInPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSuggestMembersPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTeamMemberPolicies.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTeamSharingPolicies.h>
 
 #pragma mark - API Object
 
@@ -4317,12 +4317,12 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESSharedFolderJoinPolicy.h"
-#import "DBTEAMPOLICIESSharedFolderMemberPolicy.h"
-#import "DBTEAMPOLICIESSharedLinkCreatePolicy.h"
-#import "DBTEAMPOLICIESTeamSharingPolicies.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSharedFolderJoinPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSharedFolderMemberPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSharedLinkCreatePolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTeamSharingPolicies.h>
 
 #pragma mark - API Object
 
@@ -4445,9 +4445,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESTwoStepVerificationPolicy.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTwoStepVerificationPolicy.h>
 
 #pragma mark - API Object
 
@@ -4621,9 +4621,9 @@
 
 @end
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMPOLICIESTwoStepVerificationState.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTwoStepVerificationState.h>
 
 #pragma mark - API Object
 

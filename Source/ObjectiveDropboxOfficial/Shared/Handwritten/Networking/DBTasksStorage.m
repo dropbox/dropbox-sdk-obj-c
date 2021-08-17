@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBTasksStorage.h"
-#import "DBSDKConstants.h"
-#import "DBTasksImpl.h"
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
+#import <ObjectiveDropboxOfficial/DBTasksImpl.h>
+#import <ObjectiveDropboxOfficial/DBTasksStorage.h>
 
 @interface DBTasksStorage ()
 

@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
 @protocol DBSharedApplication;
 

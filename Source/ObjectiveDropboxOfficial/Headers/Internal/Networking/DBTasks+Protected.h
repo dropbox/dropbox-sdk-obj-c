@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBHandlerTypesInternal.h"
-#import "DBTasks.h"
 #import <Foundation/Foundation.h>
+#import <ObjectiveDropboxOfficial/DBHandlerTypesInternal.h>
+#import <ObjectiveDropboxOfficial/DBTasks.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

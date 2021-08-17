@@ -4,16 +4,16 @@
 
 #import <Security/Security.h>
 
-#import "DBAUTHAppAuthRoutes.h"
-#import "DBAUTHTokenFromOAuth1Error.h"
-#import "DBAUTHTokenFromOAuth1Result.h"
-#import "DBAUTHUserAuthRoutes.h"
-#import "DBAccessToken+NSSecureCoding.h"
-#import "DBAppClient.h"
-#import "DBClientsManager+Protected.h"
-#import "DBRequestErrors.h"
-#import "DBSDKKeychain.h"
-#import "DBTransportDefaultConfig.h"
+#import <ObjectiveDropboxOfficial/DBAUTHAppAuthRoutes.h>
+#import <ObjectiveDropboxOfficial/DBAUTHTokenFromOAuth1Error.h>
+#import <ObjectiveDropboxOfficial/DBAUTHTokenFromOAuth1Result.h>
+#import <ObjectiveDropboxOfficial/DBAUTHUserAuthRoutes.h>
+#import <ObjectiveDropboxOfficial/DBAccessToken+NSSecureCoding.h>
+#import <ObjectiveDropboxOfficial/DBAppClient.h>
+#import <ObjectiveDropboxOfficial/DBClientsManager+Protected.h>
+#import <ObjectiveDropboxOfficial/DBRequestErrors.h>
+#import <ObjectiveDropboxOfficial/DBSDKKeychain.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
 
 static NSString *kAccessibilityMigrationOccurredKey = @"KeychainAccessibilityMigration";
 static NSString *kV1TokenMigrationOccurredKeyBase = @"KeychainV1TokenMigration-%@";

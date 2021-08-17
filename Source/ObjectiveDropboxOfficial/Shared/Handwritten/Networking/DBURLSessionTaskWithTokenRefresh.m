@@ -2,12 +2,12 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBURLSessionTaskWithTokenRefresh.h"
+#import <ObjectiveDropboxOfficial/DBURLSessionTaskWithTokenRefresh.h>
 
-#import "DBAccessTokenProvider.h"
-#import "DBDelegate.h"
-#import "DBOAuthResult.h"
-#import "DBURLSessionTaskResponseBlockWrapper.h"
+#import <ObjectiveDropboxOfficial/DBAccessTokenProvider.h>
+#import <ObjectiveDropboxOfficial/DBDelegate.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResult.h>
+#import <ObjectiveDropboxOfficial/DBURLSessionTaskResponseBlockWrapper.h>
 
 @interface DBURLSessionTaskWithTokenRefresh ()
 

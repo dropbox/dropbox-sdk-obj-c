@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBDelegate.h"
-#import "DBSDKConstants.h"
-#import "DBSessionData.h"
+#import <ObjectiveDropboxOfficial/DBDelegate.h>
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
+#import <ObjectiveDropboxOfficial/DBSessionData.h>
 
 #pragma mark - Initializers
 

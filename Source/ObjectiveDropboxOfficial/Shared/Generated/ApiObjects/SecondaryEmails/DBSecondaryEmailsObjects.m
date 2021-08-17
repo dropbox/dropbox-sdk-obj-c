@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `SecondaryEmails` namespace.
 
-#import "DBSECONDARYEMAILSSecondaryEmail.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBSECONDARYEMAILSSecondaryEmail.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

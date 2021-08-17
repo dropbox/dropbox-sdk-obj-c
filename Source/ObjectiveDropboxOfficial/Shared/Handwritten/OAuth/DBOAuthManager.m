@@ -2,19 +2,19 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthManager.h"
+#import <ObjectiveDropboxOfficial/DBOAuthManager.h>
 
-#import "DBAccessTokenProvider+Internal.h"
-#import "DBOAuthConstants.h"
-#import "DBOAuthPKCESession.h"
-#import "DBOAuthResult.h"
-#import "DBOAuthTokenRequest.h"
-#import "DBOAuthUtils.h"
-#import "DBSDKConstants.h"
-#import "DBSDKKeychain.h"
-#import "DBSDKReachability.h"
-#import "DBScopeRequest.h"
-#import "DBSharedApplicationProtocol.h"
+#import <ObjectiveDropboxOfficial/DBAccessTokenProvider+Internal.h>
+#import <ObjectiveDropboxOfficial/DBOAuthConstants.h>
+#import <ObjectiveDropboxOfficial/DBOAuthPKCESession.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResult.h>
+#import <ObjectiveDropboxOfficial/DBOAuthTokenRequest.h>
+#import <ObjectiveDropboxOfficial/DBOAuthUtils.h>
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
+#import <ObjectiveDropboxOfficial/DBSDKKeychain.h>
+#import <ObjectiveDropboxOfficial/DBSDKReachability.h>
+#import <ObjectiveDropboxOfficial/DBScopeRequest.h>
+#import <ObjectiveDropboxOfficial/DBSharedApplicationProtocol.h>
 
 #pragma mark - Access token class
 

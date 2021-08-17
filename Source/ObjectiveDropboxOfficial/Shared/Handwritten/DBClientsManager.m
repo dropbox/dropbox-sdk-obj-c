@@ -2,14 +2,14 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBClientsManager.h"
-#import "DBOAuthManager+Protected.h"
-#import "DBOAuthResult.h"
-#import "DBSDKKeychain.h"
-#import "DBTeamClient.h"
-#import "DBTransportDefaultClient.h"
-#import "DBTransportDefaultConfig.h"
-#import "DBUserClient.h"
+#import <ObjectiveDropboxOfficial/DBClientsManager.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager+Protected.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResult.h>
+#import <ObjectiveDropboxOfficial/DBSDKKeychain.h>
+#import <ObjectiveDropboxOfficial/DBTeamClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportDefaultConfig.h>
+#import <ObjectiveDropboxOfficial/DBUserClient.h>
 
 @implementation DBClientsManager
 

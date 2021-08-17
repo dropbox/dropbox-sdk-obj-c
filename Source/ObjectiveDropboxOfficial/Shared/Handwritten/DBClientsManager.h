@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBHandlerTypes.h"
-#import "DBOAuthResultCompletion.h"
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResultCompletion.h>
 
 @class DBUserClient;
 @class DBTeamClient;

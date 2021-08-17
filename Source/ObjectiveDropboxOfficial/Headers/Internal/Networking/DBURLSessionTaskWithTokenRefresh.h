@@ -2,9 +2,9 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBTasks.h"
-#import "DBURLSessionTask.h"
 #import <Foundation/Foundation.h>
+#import <ObjectiveDropboxOfficial/DBTasks.h>
+#import <ObjectiveDropboxOfficial/DBURLSessionTask.h>
 
 @protocol DBAccessTokenProvider;
 

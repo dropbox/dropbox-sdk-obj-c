@@ -2,10 +2,10 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthPKCESession.h"
+#import <ObjectiveDropboxOfficial/DBOAuthPKCESession.h>
 
-#import "DBScopeRequest+Protected.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <ObjectiveDropboxOfficial/DBScopeRequest+Protected.h>
 
 @implementation DBPkceData
 

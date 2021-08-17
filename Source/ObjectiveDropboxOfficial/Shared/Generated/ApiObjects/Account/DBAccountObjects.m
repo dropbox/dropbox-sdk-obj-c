@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `Account` namespace.
 
-#import "DBACCOUNTPhotoSourceArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBACCOUNTPhotoSourceArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -172,10 +172,10 @@
 
 @end
 
-#import "DBACCOUNTPhotoSourceArg.h"
-#import "DBACCOUNTSetProfilePhotoArg.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBACCOUNTPhotoSourceArg.h>
+#import <ObjectiveDropboxOfficial/DBACCOUNTSetProfilePhotoArg.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -272,9 +272,9 @@
 
 @end
 
-#import "DBACCOUNTSetProfilePhotoError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBACCOUNTSetProfilePhotoError.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 
@@ -517,9 +517,9 @@
 
 @end
 
-#import "DBACCOUNTSetProfilePhotoResult.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
+#import <ObjectiveDropboxOfficial/DBACCOUNTSetProfilePhotoResult.h>
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 
 #pragma mark - API Object
 

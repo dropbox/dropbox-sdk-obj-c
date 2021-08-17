@@ -4,9 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBClientsManager.h"
-#import "DBOAuthDesktop-macOS.h"
-#import "DBOAuthResult.h"
+#import <ObjectiveDropboxOfficial/DBClientsManager.h>
+#import <ObjectiveDropboxOfficial/DBOAuthDesktop-macOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResult.h>
 
 @class DBScopeRequest;
 @class DBTransportDefaultConfig;

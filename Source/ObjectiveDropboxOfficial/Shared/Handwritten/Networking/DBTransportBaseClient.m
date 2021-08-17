@@ -4,17 +4,17 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBAUTHAccessError.h"
-#import "DBAUTHAuthError.h"
-#import "DBAUTHRateLimitError.h"
-#import "DBAccessTokenProvider+Internal.h"
-#import "DBCOMMONPathRootError.h"
-#import "DBRequestErrors.h"
-#import "DBSDKConstants.h"
-#import "DBStoneBase.h"
-#import "DBTransportBaseClient.h"
-#import "DBTransportBaseConfig.h"
-#import "DBTransportBaseHostnameConfig.h"
+#import <ObjectiveDropboxOfficial/DBAUTHAccessError.h>
+#import <ObjectiveDropboxOfficial/DBAUTHAuthError.h>
+#import <ObjectiveDropboxOfficial/DBAUTHRateLimitError.h>
+#import <ObjectiveDropboxOfficial/DBAccessTokenProvider+Internal.h>
+#import <ObjectiveDropboxOfficial/DBCOMMONPathRootError.h>
+#import <ObjectiveDropboxOfficial/DBRequestErrors.h>
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
+#import <ObjectiveDropboxOfficial/DBStoneBase.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseClient.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseConfig.h>
+#import <ObjectiveDropboxOfficial/DBTransportBaseHostnameConfig.h>
 
 #pragma mark - Internal serialization helpers
 

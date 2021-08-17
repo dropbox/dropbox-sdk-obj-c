@@ -2,9 +2,9 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBAccessTokenProvider+Internal.h"
+#import <ObjectiveDropboxOfficial/DBAccessTokenProvider+Internal.h>
 
-#import "DBOAuthResult.h"
+#import <ObjectiveDropboxOfficial/DBOAuthResult.h>
 
 @implementation DBLongLivedAccessTokenProvider
 

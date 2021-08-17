@@ -2,17 +2,17 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthMobileManager-iOS.h"
+#import <ObjectiveDropboxOfficial/DBOAuthMobileManager-iOS.h>
 
-#import "DBLoadingViewController.h"
-#import "DBOAuthConstants.h"
-#import "DBOAuthManager+Protected.h"
-#import "DBOAuthMobile-iOS.h"
-#import "DBOAuthPKCESession.h"
-#import "DBOAuthResult.h"
-#import "DBOAuthUtils.h"
-#import "DBScopeRequest+Protected.h"
-#import "DBSharedApplicationProtocol.h"
+#import <ObjectiveDropboxOfficial/DBLoadingViewController.h>
+#import <ObjectiveDropboxOfficial/DBOAuthConstants.h>
+#import <ObjectiveDropboxOfficial/DBOAuthManager+Protected.h>
+#import <ObjectiveDropboxOfficial/DBOAuthMobile-iOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthPKCESession.h>
+#import <ObjectiveDropboxOfficial/DBOAuthResult.h>
+#import <ObjectiveDropboxOfficial/DBOAuthUtils.h>
+#import <ObjectiveDropboxOfficial/DBScopeRequest+Protected.h>
+#import <ObjectiveDropboxOfficial/DBSharedApplicationProtocol.h>
 
 #pragma mark - OAuth manager base (iOS)
 

@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBTransportBaseConfig.h"
+#import <ObjectiveDropboxOfficial/DBTransportBaseConfig.h>
 
-#import "DBSDKConstants.h"
+#import <ObjectiveDropboxOfficial/DBSDKConstants.h>
 
 @implementation DBTransportBaseConfig
 

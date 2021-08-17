@@ -2,11 +2,11 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBClientsManager+MobileAuth-iOS.h"
-#import "DBLoadingStatusDelegate.h"
-#import "DBOAuthMobile-iOS.h"
-#import "DBOAuthMobileManager-iOS.h"
+#import <ObjectiveDropboxOfficial/DBClientsManager+MobileAuth-iOS.h>
+#import <ObjectiveDropboxOfficial/DBLoadingStatusDelegate.h>
+#import <ObjectiveDropboxOfficial/DBOAuthMobile-iOS.h>
+#import <ObjectiveDropboxOfficial/DBOAuthMobileManager-iOS.h>
 
 /// OpenWith
-#import "DBOfficialAppConnector-iOS.h"
-#import "DBOpenWithInfo-iOS.h"
+#import <ObjectiveDropboxOfficial/DBOfficialAppConnector-iOS.h>
+#import <ObjectiveDropboxOfficial/DBOpenWithInfo-iOS.h>

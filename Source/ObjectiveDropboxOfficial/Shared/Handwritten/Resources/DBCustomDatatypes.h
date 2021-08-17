@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBHandlerTypes.h"
+#import <ObjectiveDropboxOfficial/DBHandlerTypes.h>
 
 @class DBASYNCPollError;
 @class DBFILESCommitInfo;

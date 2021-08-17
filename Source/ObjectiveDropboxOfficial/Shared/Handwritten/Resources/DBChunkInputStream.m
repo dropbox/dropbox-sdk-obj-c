@@ -5,7 +5,7 @@
 /// Based on example from @bjhomer https://github.com/bjhomer/HSCountingInputStream
 ///
 
-#import "DBChunkInputStream.h"
+#import <ObjectiveDropboxOfficial/DBChunkInputStream.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

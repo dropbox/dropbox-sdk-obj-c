@@ -2,7 +2,7 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuthConstants.h"
+#import <ObjectiveDropboxOfficial/DBOAuthConstants.h>
 
 NSString *const kDBCodeChallengeKey = @"code_challenge";
 NSString *const kDBCodeChallengeMethodKey = @"code_challenge_method";

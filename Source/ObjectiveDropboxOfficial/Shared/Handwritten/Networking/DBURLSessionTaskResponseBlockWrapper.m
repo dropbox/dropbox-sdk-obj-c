@@ -2,7 +2,7 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBURLSessionTaskResponseBlockWrapper.h"
+#import <ObjectiveDropboxOfficial/DBURLSessionTaskResponseBlockWrapper.h>
 
 @interface DBURLSessionTaskResponseBlockWrapper ()
 

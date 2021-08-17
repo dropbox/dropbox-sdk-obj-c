@@ -2,7 +2,7 @@
 /// Copyright (c) 2020 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBScopeRequest.h"
+#import <ObjectiveDropboxOfficial/DBScopeRequest.h>
 
 @interface DBScopeRequest ()
 

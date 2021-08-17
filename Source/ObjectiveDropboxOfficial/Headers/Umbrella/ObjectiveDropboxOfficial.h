@@ -4,7 +4,7 @@
 /// Umbrella import for importing as a framework
 ///
 
-#import "TargetConditionals.h"
+#import <TargetConditionals.h>
 
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>

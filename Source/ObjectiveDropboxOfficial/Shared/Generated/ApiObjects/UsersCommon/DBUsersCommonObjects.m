@@ -6,9 +6,9 @@
 
 /// Arguments, results, and errors for the `UsersCommon` namespace.
 
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBUSERSCOMMONAccountType.h"
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBUSERSCOMMONAccountType.h>
 
 #pragma mark - API Object
 

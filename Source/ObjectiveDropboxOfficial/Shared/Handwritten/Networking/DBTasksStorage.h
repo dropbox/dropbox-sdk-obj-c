@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBTasks.h"
+#import <ObjectiveDropboxOfficial/DBTasks.h>
 
 ///
 /// Task storage for upload and download tasks.

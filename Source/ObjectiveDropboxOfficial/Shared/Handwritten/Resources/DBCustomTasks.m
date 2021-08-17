@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBCustomTasks.h"
-#import "DBCustomDatatypes.h"
-#import "DBTasksStorage.h"
+#import <ObjectiveDropboxOfficial/DBCustomDatatypes.h>
+#import <ObjectiveDropboxOfficial/DBCustomTasks.h>
+#import <ObjectiveDropboxOfficial/DBTasksStorage.h>
 
 @implementation DBBatchUploadTask {
   DBBatchUploadData *_uploadData;

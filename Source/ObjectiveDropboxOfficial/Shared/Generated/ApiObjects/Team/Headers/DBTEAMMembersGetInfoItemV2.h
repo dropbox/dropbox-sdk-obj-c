@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBTEAMMembersGetInfoItemV2;
 @class DBTEAMTeamMemberInfoV2;

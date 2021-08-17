@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBClientsManager.h"
+#import <ObjectiveDropboxOfficial/DBClientsManager.h>
 
 @class DBScopeRequest;
 @class DBTransportDefaultConfig;

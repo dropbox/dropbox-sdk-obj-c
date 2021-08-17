@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
-#import "DBTEAMCOMMONGroupSummary.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
+#import <ObjectiveDropboxOfficial/DBTEAMCOMMONGroupSummary.h>
 
 @class DBSHARINGGroupInfo;
 @class DBTEAMCOMMONGroupManagementType;

@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
+#import <ObjectiveDropboxOfficial/DBSerializableProtocol.h>
 
 @class DBDownloadDataTask;
 @class DBDownloadUrlTask;
