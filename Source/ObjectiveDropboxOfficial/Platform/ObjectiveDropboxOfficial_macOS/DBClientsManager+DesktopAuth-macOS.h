@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Commences OAuth desktop flow from supplied view controller.
 ///
+/// This method should no longer be used.
+/// Long-lived access tokens are deprecated. See https://dropbox.tech/developers/migrating-app-permissions-and-access-tokens.
+/// Please use `authorizeFromControllerDesktopV2` instead.
+///
 /// @param sharedApplication The `NSWorkspace` with which to render the OAuth flow.
 /// @param controller The `NSViewController` with which to render the OAuth flow. The controller reference is weakly
 /// held.
@@ -34,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 + (void)authorizeFromControllerDesktop:(NSWorkspace *)sharedApplication
                             controller:(nullable NSViewController *)controller
-                               openURL:(void (^_Nonnull)(NSURL *))openURL;
+                               openURL:(void (^_Nonnull)(NSURL *))openURL __deprecated_msg("This method was used for long-lived access tokens, which are now deprecated. Please use `authorizeFromControllerDesktopV2` instead.");
 
 ///
 /// Commences OAuth mobile flow from supplied view controller.
