@@ -28,9 +28,7 @@ static ViewController *viewController = nil;
 
   TestData *data = [TestData new];
 
-  if ([data.fullDropboxAppSecret containsString:@"<"] ||
-      [data.teamMemberFileAccessAppKey containsString:@"<"] ||
-      [data.teamMemberManagementAppKey containsString:@"<"]) {
+  if ([data.fullDropboxAppSecret containsString:@"<"]) {
     NSLog(@"\n\n\nMust set test data (in TestData.h) before launching app.\n\n\nTerminating.....\n\n");
     exit(0);
   }
@@ -46,20 +44,13 @@ static ViewController *viewController = nil;
 
   DBTransportDefaultConfig *transportConfigFullDropbox =
     [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
-  DBTransportDefaultConfig *transportConfigTeamFileAccess =
-    [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberFileAccessAppKey appSecret:data.teamMemberFileAccessAppSecret];
-  DBTransportDefaultConfig *transportConfigTeamManagement =
-    [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberManagementAppKey appSecret:data.teamMemberManagementAppSecret];
   
   switch (appPermission) {
-    case FullDropbox:
+    case FullDropboxScoped:
       [DBClientsManager setupWithTransportConfigDesktop:transportConfigFullDropbox];
       break;
-    case TeamMemberFileAccess:
-      [DBClientsManager setupWithTeamTransportConfigDesktop:transportConfigTeamFileAccess];
-      break;
-    case TeamMemberManagement:
-      [DBClientsManager setupWithTeamTransportConfigDesktop:transportConfigTeamManagement];
+    case FullDropboxScopedForTeamTesting:
+      [DBClientsManager setupWithTeamTransportConfigDesktop:transportConfigFullDropbox];
       break;
   }
   viewController = (ViewController *)[[[NSApplication sharedApplication] windows] objectAtIndex:0].contentViewController;
@@ -93,12 +84,11 @@ static ViewController *viewController = nil;
     [self checkButtons];
   };
   switch (appPermission) {
-    case FullDropbox: {
+    case FullDropboxScoped: {
       [DBClientsManager handleRedirectURL:url completion:oauthCompletion];
       break;
     }
-    case TeamMemberFileAccess:
-    case TeamMemberManagement: {
+      case FullDropboxScopedForTeamTesting: {
       [DBClientsManager handleRedirectURLTeam:url completion:oauthCompletion];
       break;
     }

@@ -9,10 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, ApiAppPermissionType) {
-  FullDropbox,
-  TeamMemberFileAccess,
-  TeamMemberManagement,
+  FullDropboxScoped,
+  FullDropboxScopedForTeamTesting,
 };
 
 /// Toggle this variable depending on which set of tests you are running.
-static ApiAppPermissionType appPermission = (ApiAppPermissionType)FullDropbox;
+static ApiAppPermissionType appPermission = (ApiAppPermissionType)FullDropboxScoped;

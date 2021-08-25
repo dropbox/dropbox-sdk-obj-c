@@ -3,8 +3,6 @@
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 #import "TestAuthTokenGenerator.h"
 
-static NSString *scopesForFileRoutesTests = @"account_info.read files.content.read files.content.write files.metadata.read files.metadata.write sharing.write sharing.read";
-
 @interface FileRoutesTests : XCTestCase
 @end
 
@@ -17,7 +15,7 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
 
 - (DBUserClient *)createUserClient {
     self.continueAfterFailure = NO;
-    // You need an API app with the "Full Dropbox" permission type and at least the scopes in scopesForFileRoutesTests
+    // You need an API app with the "Full Dropbox" permission type and at least the scopes in DropoboxTester.scopesForTests
     // and no team scopes.
     // You can create one for testing here: https://www.dropbox.com/developers/apps/create
     // The 'App key' will be on the app's info page.
@@ -27,7 +25,7 @@ static NSString *scopesForFileRoutesTests = @"account_info.read files.content.re
     NSString *fileRoutesTestsAuthToken = [TestAuthTokenGenerator
                                           refreshToken:[TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"]
                                           apiKey:apiAppKey
-                                          scopes:[scopesForFileRoutesTests componentsSeparatedByString:@" "]];
+                                          scopes:[DropboxTester scopesForTests]];
     XCTAssertNotNil(fileRoutesTestsAuthToken, @"Error obtaining auth token.");
 
     _delegateQueue = [[NSOperationQueue alloc] init];

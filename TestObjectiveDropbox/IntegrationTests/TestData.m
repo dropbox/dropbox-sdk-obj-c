@@ -50,12 +50,6 @@
     // App key and secret
     _fullDropboxAppKey = @"<FULL_DROPBOX_APP_KEY>";
     _fullDropboxAppSecret = @"<FULL_DROPBOX_APP_SECRET>";
-
-    _teamMemberFileAccessAppKey = @"<TEAM_MEMBER_FILE_ACCESS_APP_KEY>";
-    _teamMemberFileAccessAppSecret = @"<FULL_DROPBOX_APP_SECRET>";
-
-    _teamMemberManagementAppKey = @"<TEAM_MEMBER_MANAGEMENT_APP_KEY>";
-    _teamMemberManagementAppSecret = @"<TEAM_MEMBER_MANAGEMENT_APP_SECRET>";
   }
   return self;
 }

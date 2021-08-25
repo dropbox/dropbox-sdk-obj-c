@@ -62,10 +62,4 @@
 @property(nonatomic, copy) NSString * _Nonnull fullDropboxAppKey;
 @property(nonatomic, copy) NSString * _Nonnull fullDropboxAppSecret;
 
-@property(nonatomic, copy) NSString * _Nonnull teamMemberFileAccessAppKey;
-@property(nonatomic, copy) NSString * _Nonnull teamMemberFileAccessAppSecret;
-
-@property(nonatomic, copy) NSString * _Nonnull teamMemberManagementAppKey;
-@property(nonatomic, copy) NSString * _Nonnull teamMemberManagementAppSecret;
-
 @end

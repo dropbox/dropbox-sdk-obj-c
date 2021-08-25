@@ -19,6 +19,10 @@ void MyLog(NSString *format, ...) {
 }
 
 @implementation DropboxTester
++ (NSArray<NSString *>*)scopesForTests {
+    return [@"account_info.read files.content.read files.content.write files.metadata.read files.metadata.write sharing.write sharing.read" componentsSeparatedByString:@" "];
+}
+
 - (instancetype)initWithUserClient:(DBUserClient *)userClient testData:(TestData *)testData {
     self = [super init];
     if (self) {
@@ -228,6 +232,14 @@ void MyLog(NSString *format, ...) {
 @end
 
 @implementation DropboxTeamTester
++ (NSArray<NSString *>*)scopesForTests {
+    NSString *scopesForTeamRoutesTests = @"groups.read groups.write members.delete members.read members.write sessions.list team_data.member team_info.read";
+    NSString *scopesForMemberFileAccessUserTests = @"files.content.write files.content.read sharing.write account_info.read";
+    return [[NSString stringWithFormat:@"%@ %@",
+             scopesForTeamRoutesTests,
+             scopesForMemberFileAccessUserTests] componentsSeparatedByString:@" "];
+}
+
 - (instancetype)initWithTeamClient:(DBTeamClient *)teamClient testData:(TestData * _Nonnull)testData {
     self = [super init];
     if (self) {
