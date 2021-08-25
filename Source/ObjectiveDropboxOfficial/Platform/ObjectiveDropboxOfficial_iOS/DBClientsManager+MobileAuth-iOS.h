@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// This starts a "token" flow.
 ///
+/// This method should no longer be used.
+/// Long-lived access tokens are deprecated. See https://dropbox.tech/developers/migrating-app-permissions-and-access-tokens.
+/// Please use `authorizeFromControllerV2` instead.
+///
 /// @param sharedApplication The `UIApplication` with which to render the OAuth flow.
 /// @param controller The `UIViewController` with which to render the OAuth flow. Please ensure that this is the
 /// top-most view controller, so that the authorization view displays correctly. The controller reference is weakly
@@ -35,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 + (void)authorizeFromController:(UIApplication *)sharedApplication
                      controller:(nullable UIViewController *)controller
-                        openURL:(void (^_Nonnull)(NSURL *))openURL;
+                        openURL:(void (^_Nonnull)(NSURL *))openURL __deprecated_msg("This method was used for long-lived access tokens, which are now deprecated. Please use `authorizeFromControllerV2` instead.");
 
 ///
 /// Commences OAuth mobile flow from supplied view controller.
