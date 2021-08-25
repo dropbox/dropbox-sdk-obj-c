@@ -3,9 +3,6 @@
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 #import "TestAuthTokenGenerator.h"
 
-static NSString *scopesForTeamRoutesTests = @"groups.read groups.write members.delete members.read members.write sessions.list team_data.member team_info.read";
-static NSString *scopesForMemberFileAccessUserTests = @"files.content.write files.content.read sharing.write account_info.read";
-
 @interface TeamRoutesTests : XCTestCase
 @end
 
@@ -31,19 +28,16 @@ static NSString *scopesForMemberFileAccessUserTests = @"files.content.write file
 }
 
 - (DBTeamClient *)createTeamClient {
-    // You need an API app with the "Full Dropbox" permission type and at least the scopes in scopesForTeamRoutesTests+scopesForMemberFileAccessUserTests
+    // You need an API app with the "Full Dropbox" permission type and at least the scopes in DropboxTeamTester.scopesForTests
     // You can create one for testing here: https://www.dropbox.com/developers/apps/create
     // The 'App key' will be on the app's info page.
     // Then follow https://dropbox.tech/developers/pkce--what-and-why- to get a refresh token using the PKCE flow
-
-    NSMutableArray<NSString *>*scopes = [[scopesForTeamRoutesTests componentsSeparatedByString:@" "] mutableCopy];
-    [scopes addObjectsFromArray:[scopesForMemberFileAccessUserTests componentsSeparatedByString:@" "]];
 
     NSString *apiAppKey = [TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
     NSString *teamRoutesTestsAuthToken = [TestAuthTokenGenerator
                                           refreshToken:[TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"]
                                           apiKey:apiAppKey
-                                          scopes:scopes];
+                                          scopes:[DropboxTeamTester scopesForTests]];
     XCTAssertNotNil(teamRoutesTestsAuthToken, @"Errors obtaining auth token.");
 
     _delegateQueue = [[NSOperationQueue alloc] init];

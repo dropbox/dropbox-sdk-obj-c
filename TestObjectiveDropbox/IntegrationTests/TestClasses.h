@@ -14,6 +14,7 @@
 @class TeamTests;
 
 @interface DropboxTester : NSObject
++ (NSArray<NSString *>*_Nonnull)scopesForTests;
 - (nonnull instancetype)initWithUserClient:(DBUserClient *_Nonnull)userClient testData:(TestData *_Nonnull)testData;
 - (nonnull instancetype)initWithTestData:(TestData * _Nonnull)testData;
 
@@ -29,7 +30,7 @@
 @end
 
 @interface DropboxTeamTester : NSObject
-
++ (NSArray<NSString *>*_Nonnull)scopesForTests;
 - (nonnull instancetype)initWithTeamClient:(DBTeamClient *_Nonnull)teamClient testData:(TestData * _Nonnull)testData;
 - (nonnull instancetype)initWithTestData:(TestData * _Nonnull)testData;
 

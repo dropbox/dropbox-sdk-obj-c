@@ -32,10 +32,10 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
     NSArray<NSString*>*scopes = @[];
     switch (appPermission) {
         case FullDropboxScoped:
-            scopes = [@"account_info.read files.content.read files.content.write files.metadata.read files.metadata.write sharing.write sharing.read" componentsSeparatedByString:@" "];
+            scopes = [DropboxTester scopesForTests];
             break;
         case FullDropboxScopedForTeamTesting:
-            scopes = [@"groups.read groups.write members.delete members.read members.write sessions.list team_data.member team_info.read files.content.write files.content.read sharing.write account_info.read" componentsSeparatedByString:@" "];
+            scopes = [DropboxTeamTester scopesForTests];
             break;
     }
   DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
