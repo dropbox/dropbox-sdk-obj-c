@@ -23,17 +23,18 @@
 
 @implementation ViewController
 
-- (IBAction)tokenFlowLinkButtonPressed:(id)sender {
-    [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
-                                          controller:self
-                                             openURL:^(NSURL *url) {
-        [[NSWorkspace sharedWorkspace] openURL:url];
-    }];
-}
-
 - (IBAction)codeFlowLinkButtonPressed:(id)sender {
+    NSArray<NSString*>*scopes = @[];
+    switch (appPermission) {
+        case FullDropboxScoped:
+            scopes = [@"account_info.read files.content.read files.content.write files.metadata.read files.metadata.write sharing.write sharing.read" componentsSeparatedByString:@" "];
+            break;
+        case FullDropboxScopedForTeamTesting:
+            scopes = [@"groups.read groups.write members.delete members.read members.write sessions.list team_data.member team_info.read files.content.write files.content.read sharing.write account_info.read" componentsSeparatedByString:@" "];
+            break;
+    }
     DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
-                                                                      scopes:@[@"account_info.read"]
+                                                                      scopes:scopes
                                                         includeGrantedScopes:NO];
     [DBClientsManager authorizeFromControllerDesktopV2:[NSWorkspace sharedWorkspace]
                                             controller:self
@@ -52,14 +53,13 @@
     };
     
     switch (appPermission) {
-        case FullDropbox:
+        case FullDropboxScoped:
             [[[DropboxTester alloc] initWithTestData:data] testAllUserAPIEndpoints:unlink asMember:NO];
             break;
-        case TeamMemberFileAccess:
-            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:unlink];
-            break;
-        case TeamMemberManagement:
-            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
+        case FullDropboxScopedForTeamTesting:
+            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:^() {
+                [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
+            }];
             break;
     }
 }

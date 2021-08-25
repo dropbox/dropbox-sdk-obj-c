@@ -27,9 +27,7 @@
 
   TestData *data = [TestData new];
 
-  if ([data.fullDropboxAppSecret containsString:@"<"] ||
-      [data.teamMemberFileAccessAppKey containsString:@"<"] ||
-      [data.teamMemberManagementAppKey containsString:@"<"]) {
+  if ([data.fullDropboxAppSecret containsString:@"<"]) {
     NSLog(@"\n\n\nMust set test data (in TestData.h) before launching app.\n\n\nTerminating.....\n\n");
     exit(0);
   }
@@ -51,10 +49,6 @@
                                        delegateQueue:[NSOperationQueue new]
                               forceForegroundSession:NO
                            sharedContainerIdentifier:[NSBundle mainBundle].bundleIdentifier];
-  DBTransportDefaultConfig *transportConfigTeamFileAccess =
-    [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberFileAccessAppKey appSecret:data.teamMemberFileAccessAppSecret];
-  DBTransportDefaultConfig *transportConfigTeamManagement =
-    [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberManagementAppKey appSecret:data.teamMemberManagementAppSecret];
 
   void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
   ^(DBRequestError *networkError, DBTask *restartTask) {
@@ -70,14 +64,11 @@
   [DBGlobalErrorResponseHandler registerNetworkErrorResponseBlock:networkGlobalResponseBlock];
 
   switch (appPermission) {
-  case FullDropbox:
+  case FullDropboxScoped:
       [DBClientsManager setupWithTransportConfig:transportConfigFullDropbox];
       break;
-  case TeamMemberFileAccess:
-      [DBClientsManager setupWithTeamTransportConfig:transportConfigTeamFileAccess];
-      break;
-  case TeamMemberManagement:
-      [DBClientsManager setupWithTeamTransportConfig:transportConfigTeamManagement];
+  case FullDropboxScopedForTeamTesting:
+      [DBClientsManager setupWithTeamTransportConfig:transportConfigFullDropbox];
       break;
   }
 
@@ -162,12 +153,11 @@
 
   BOOL handled = NO;
   switch (appPermission) {
-    case FullDropbox: {
+    case FullDropboxScoped: {
       handled = [DBClientsManager handleRedirectURL:url completion:completion];
       break;
     }
-    case TeamMemberFileAccess:
-    case TeamMemberManagement:
+    case FullDropboxScopedForTeamTesting:
       handled = [DBClientsManager handleRedirectURLTeam:url completion:completion];
     break;
   }

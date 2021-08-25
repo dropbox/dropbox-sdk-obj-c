@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,50 +19,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Il-qF-Vab">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Il-qF-Vab">
                                 <rect key="frame" x="104.5" y="438.5" width="166" height="30"/>
                                 <state key="normal" title="Unlink Dropbox Account"/>
                                 <connections>
                                     <action selector="unlinkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lzJ-ZW-kww"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-gk-MoP">
-                                <rect key="frame" x="111.5" y="258.5" width="152" height="30"/>
-                                <state key="normal" title="Link Dropbox Account"/>
-                                <connections>
-                                    <action selector="tokenFlowlinkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L1r-FM-vZV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="db5-aq-giW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="db5-aq-giW">
                                 <rect key="frame" x="140.5" y="118.5" width="94" height="30"/>
                                 <state key="normal" title="Run API Tests"/>
                                 <connections>
                                     <action selector="runTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lj1-FW-imk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAs-Sd-MXl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAs-Sd-MXl">
                                 <rect key="frame" x="38" y="318.5" width="299" height="30"/>
                                 <state key="normal" title="Read info and return to official Dropbox app"/>
                                 <connections>
                                     <action selector="openWithButtonPressedRunTests:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2jH-2n-WvR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMW-d6-mUc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMW-d6-mUc">
                                 <rect key="frame" x="107.5" y="158.5" width="160" height="30"/>
                                 <state key="normal" title="Run BatchUpload Tests"/>
                                 <connections>
                                     <action selector="runBatchUploadTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dhR-J7-UtW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-EQ-KEH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-EQ-KEH">
                                 <rect key="frame" x="94.5" y="198.5" width="186" height="30"/>
                                 <state key="normal" title="Run Global Response Tests"/>
                                 <connections>
                                     <action selector="runGlobalResponseTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W88-Xe-Tty"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luI-bu-yCb">
-                                <rect key="frame" x="52" y="288" width="270" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luI-bu-yCb">
+                                <rect key="frame" x="52.5" y="288.5" width="270" height="30"/>
                                 <state key="normal" title="Link Dropbox Account (pkce code flow)"/>
                                 <connections>
                                     <action selector="codeFlowlinkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y4x-3n-29X"/>
@@ -71,8 +64,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="b9W-gk-MoP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-60" id="AKt-Sh-DWa"/>
-                            <constraint firstItem="b9W-gk-MoP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JeO-KH-8c6"/>
                             <constraint firstItem="0Il-qF-Vab" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KZa-p9-Tp7"/>
                             <constraint firstItem="KMW-d6-mUc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O2J-vQ-A1K"/>
                             <constraint firstItem="db5-aq-giW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O8l-MN-ZX0"/>
@@ -93,7 +84,6 @@
                         <outlet property="runBatchUploadTestsButton" destination="KMW-d6-mUc" id="Ody-5w-o9z"/>
                         <outlet property="runGlobalResponseTestsButton" destination="KTl-EQ-KEH" id="Ion-L3-Ck9"/>
                         <outlet property="runTestsButton" destination="db5-aq-giW" id="UYY-YH-dIy"/>
-                        <outlet property="tokenFlowlinkButton" destination="b9W-gk-MoP" id="DvX-Jl-kU2"/>
                         <outlet property="unlinkButton" destination="0Il-qF-Vab" id="oAz-BA-Qf0"/>
                     </connections>
                 </viewController>
