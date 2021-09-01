@@ -7,6 +7,7 @@
 #import "DBAccessTokenProvider.h"
 #import "DBTransportDefaultClient.h"
 #import "DBTransportDefaultConfig.h"
+#import "DBOAuthManager+Protected.h"
 
 @implementation DBUserClient
 
@@ -34,6 +35,20 @@
   DBTransportDefaultClient *transportClient =
       [[DBTransportDefaultClient alloc] initWithAccessTokenProvider:accessTokenProvider
                                                            tokenUid:tokenUid
+                                                    transportConfig:transportConfig];
+  return [self initWithTransportClient:transportClient];
+}
+
+- (instancetype)initWithAccessToken:(DBAccessToken *)accessToken
+                                   oauthManager:(DBOAuthManager *)oauthManager
+                            transportConfig:(DBTransportDefaultConfig *)transportConfig {
+  NSCParameterAssert(oauthManager);
+  NSCParameterAssert(accessToken);
+  id<DBAccessTokenProvider> tokenProvider = [oauthManager accessTokenProviderForToken:accessToken];
+
+  DBTransportDefaultClient *transportClient =
+      [[DBTransportDefaultClient alloc] initWithAccessTokenProvider:tokenProvider
+                                                           tokenUid:accessToken.uid
                                                     transportConfig:transportConfig];
   return [self initWithTransportClient:transportClient];
 }

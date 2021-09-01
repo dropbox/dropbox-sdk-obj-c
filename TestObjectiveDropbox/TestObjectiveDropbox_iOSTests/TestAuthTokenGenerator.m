@@ -14,7 +14,7 @@
 }
 
 // Easy way for all tests to get an auth token for the scopes they use.
-+ (nullable NSString *)refreshToken:(nullable NSString *)refreshToken
++ (nullable DBAccessToken *)refreshToken:(nullable NSString *)refreshToken
                              apiKey:(nullable NSString *)apiKey
                              scopes:(nonnull NSArray<NSString *>*)scopes {
     XCTAssertNotEqual(refreshToken.length, 0, @"Error: refreshToken needs to be set");
@@ -34,7 +34,7 @@
 
     XCTestExpectation *flag = [[XCTestExpectation alloc] init];
     DBOAuthManager *manager = [[DBOAuthManager alloc] initWithAppKey:apiKey];
-    __block NSString *authToken = nil;
+    __block DBAccessToken *authToken = nil;
     [manager refreshAccessToken:defaultToken
                          scopes:scopes
                           queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
@@ -42,7 +42,7 @@
         if(!result.isSuccess) {
             XCTFail(@"Error: failed to refresh access token (%@)", result.errorDescription);
         } else {
-            authToken = result.accessToken.accessToken;
+            authToken = result.accessToken;
         }
         [flag fulfill];
     }];
