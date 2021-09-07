@@ -22,7 +22,7 @@
     // Then follow https://dropbox.tech/developers/pkce--what-and-why- to get a refresh token using the PKCE flow
     NSString *apiAppKey = [TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
 
-    NSString *fileRoutesTestsAuthToken = [TestAuthTokenGenerator
+    DBAccessToken *fileRoutesTestsAuthToken = [TestAuthTokenGenerator
                                           refreshToken:[TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"]
                                           apiKey:apiAppKey
                                           scopes:[DropboxTester scopesForTests]];
@@ -38,8 +38,8 @@
                                 forceForegroundSession:YES // NO here will cause downloadURL to fail on OSX
                              sharedContainerIdentifier:nil];
 
-    return [[DBUserClient alloc] initWithAccessToken:fileRoutesTestsAuthToken
-        transportConfig:transportConfigFullDropbox];
+    DBOAuthManager *manager = [[DBOAuthManager alloc] initWithAppKey:transportConfigFullDropbox.appKey];
+    return [[DBUserClient alloc] initWithAccessToken:fileRoutesTestsAuthToken oauthManager:manager transportConfig:transportConfigFullDropbox];
 }
 
 - (void)setUp {
