@@ -90,8 +90,10 @@
   switch (_tag) {
   case DBFILEREQUESTSGeneralFileRequestsErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGeneralFileRequestsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -242,8 +244,10 @@
   switch (_tag) {
   case DBFILEREQUESTSCountFileRequestsErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCountFileRequestsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -424,7 +428,8 @@
 - (instancetype)initWithTitle:(NSString *)title
                   destination:(NSString *)destination
                      deadline:(DBFILEREQUESTSFileRequestDeadline *)deadline
-                         open:(NSNumber *)open {
+                         open:(NSNumber *)open
+                 description_:(NSString *)description_ {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
@@ -435,12 +440,13 @@
     _destination = destination;
     _deadline = deadline;
     _open = open ?: @YES;
+    _description_ = description_;
   }
   return self;
 }
 
 - (instancetype)initWithTitle:(NSString *)title destination:(NSString *)destination {
-  return [self initWithTitle:title destination:destination deadline:nil open:nil];
+  return [self initWithTitle:title destination:destination deadline:nil open:nil description_:nil];
 }
 
 #pragma mark - Serialization methods
@@ -479,6 +485,9 @@
     result = prime * result + [self.deadline hash];
   }
   result = prime * result + [self.open hash];
+  if (self.description_ != nil) {
+    result = prime * result + [self.description_ hash];
+  }
 
   return prime * result;
 }
@@ -513,6 +522,11 @@
   if (![self.open isEqual:aCreateFileRequestArgs.open]) {
     return NO;
   }
+  if (self.description_) {
+    if (![self.description_ isEqual:aCreateFileRequestArgs.description_]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -531,6 +545,9 @@
     jsonDict[@"deadline"] = [DBFILEREQUESTSFileRequestDeadlineSerializer serialize:valueObj.deadline];
   }
   jsonDict[@"open"] = valueObj.open;
+  if (valueObj.description_) {
+    jsonDict[@"description"] = valueObj.description_;
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -541,11 +558,13 @@
   DBFILEREQUESTSFileRequestDeadline *deadline =
       valueDict[@"deadline"] ? [DBFILEREQUESTSFileRequestDeadlineSerializer deserialize:valueDict[@"deadline"]] : nil;
   NSNumber *open = valueDict[@"open"] ?: @YES;
+  NSString *description_ = valueDict[@"description"] ?: nil;
 
   return [[DBFILEREQUESTSCreateFileRequestArgs alloc] initWithTitle:title
                                                         destination:destination
                                                            deadline:deadline
-                                                               open:open];
+                                                               open:open
+                                                       description_:description_];
 }
 
 @end
@@ -717,20 +736,28 @@
   switch (_tag) {
   case DBFILEREQUESTSFileRequestErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSFileRequestErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSFileRequestErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSFileRequestErrorNotAFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSFileRequestErrorAppLacksAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSFileRequestErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSFileRequestErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1029,24 +1056,34 @@
   switch (_tag) {
   case DBFILEREQUESTSCreateFileRequestErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorNotAFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorAppLacksAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorInvalidLocation:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorRateLimit:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1329,20 +1366,28 @@
   switch (_tag) {
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNotAFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorAppLacksAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1854,22 +1899,31 @@
   switch (_tag) {
   case DBFILEREQUESTSDeleteFileRequestErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorNotAFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorAppLacksAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorFileRequestOpen:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2108,7 +2162,8 @@
                      isOpen:(NSNumber *)isOpen
                   fileCount:(NSNumber *)fileCount
                 destination:(NSString *)destination
-                   deadline:(DBFILEREQUESTSFileRequestDeadline *)deadline {
+                   deadline:(DBFILEREQUESTSFileRequestDeadline *)deadline
+               description_:(NSString *)description_ {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](url);
@@ -2129,6 +2184,7 @@
     _deadline = deadline;
     _isOpen = isOpen;
     _fileCount = fileCount;
+    _description_ = description_;
   }
   return self;
 }
@@ -2146,7 +2202,8 @@
                     isOpen:isOpen
                  fileCount:fileCount
                destination:nil
-                  deadline:nil];
+                  deadline:nil
+              description_:nil];
 }
 
 #pragma mark - Serialization methods
@@ -2190,6 +2247,9 @@
   }
   if (self.deadline != nil) {
     result = prime * result + [self.deadline hash];
+  }
+  if (self.description_ != nil) {
+    result = prime * result + [self.description_ hash];
   }
 
   return prime * result;
@@ -2239,6 +2299,11 @@
       return NO;
     }
   }
+  if (self.description_) {
+    if (![self.description_ isEqual:aFileRequest.description_]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -2263,6 +2328,9 @@
   if (valueObj.deadline) {
     jsonDict[@"deadline"] = [DBFILEREQUESTSFileRequestDeadlineSerializer serialize:valueObj.deadline];
   }
+  if (valueObj.description_) {
+    jsonDict[@"description"] = valueObj.description_;
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -2277,6 +2345,7 @@
   NSString *destination = valueDict[@"destination"] ?: nil;
   DBFILEREQUESTSFileRequestDeadline *deadline =
       valueDict[@"deadline"] ? [DBFILEREQUESTSFileRequestDeadlineSerializer deserialize:valueDict[@"deadline"]] : nil;
+  NSString *description_ = valueDict[@"description"] ?: nil;
 
   return [[DBFILEREQUESTSFileRequest alloc] initWithId_:id_
                                                     url:url
@@ -2285,7 +2354,8 @@
                                                  isOpen:isOpen
                                               fileCount:fileCount
                                             destination:destination
-                                               deadline:deadline];
+                                               deadline:deadline
+                                           description_:description_];
 }
 
 @end
@@ -2677,20 +2747,28 @@
   switch (_tag) {
   case DBFILEREQUESTSGetFileRequestErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGetFileRequestErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGetFileRequestErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGetFileRequestErrorNotAFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGetFileRequestErrorAppLacksAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGetFileRequestErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGetFileRequestErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGetFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2932,16 +3010,22 @@
   switch (_tag) {
   case DBFILEREQUESTSGracePeriodOneDay:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGracePeriodTwoDays:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGracePeriodSevenDays:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGracePeriodThirtyDays:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGracePeriodAlways:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSGracePeriodOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3331,10 +3415,13 @@
   switch (_tag) {
   case DBFILEREQUESTSListFileRequestsContinueErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSListFileRequestsContinueErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSListFileRequestsContinueErrorInvalidCursor:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3492,8 +3579,10 @@
   switch (_tag) {
   case DBFILEREQUESTSListFileRequestsErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSListFileRequestsErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3815,7 +3904,8 @@
                       title:(NSString *)title
                 destination:(NSString *)destination
                    deadline:(DBFILEREQUESTSUpdateFileRequestDeadline *)deadline
-                       open:(NSNumber *)open {
+                       open:(NSNumber *)open
+               description_:(NSString *)description_ {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
@@ -3829,12 +3919,13 @@
     _destination = destination;
     _deadline = deadline ?: [[DBFILEREQUESTSUpdateFileRequestDeadline alloc] initWithNoUpdate];
     _open = open;
+    _description_ = description_;
   }
   return self;
 }
 
 - (instancetype)initWithId_:(NSString *)id_ {
-  return [self initWithId_:id_ title:nil destination:nil deadline:nil open:nil];
+  return [self initWithId_:id_ title:nil destination:nil deadline:nil open:nil description_:nil];
 }
 
 #pragma mark - Serialization methods
@@ -3878,6 +3969,9 @@
   if (self.open != nil) {
     result = prime * result + [self.open hash];
   }
+  if (self.description_ != nil) {
+    result = prime * result + [self.description_ hash];
+  }
 
   return prime * result;
 }
@@ -3919,6 +4013,11 @@
       return NO;
     }
   }
+  if (self.description_) {
+    if (![self.description_ isEqual:anUpdateFileRequestArgs.description_]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -3942,6 +4041,9 @@
   if (valueObj.open) {
     jsonDict[@"open"] = valueObj.open;
   }
+  if (valueObj.description_) {
+    jsonDict[@"description"] = valueObj.description_;
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -3954,12 +4056,14 @@
       valueDict[@"deadline"] ? [DBFILEREQUESTSUpdateFileRequestDeadlineSerializer deserialize:valueDict[@"deadline"]]
                              : [[DBFILEREQUESTSUpdateFileRequestDeadline alloc] initWithNoUpdate];
   NSNumber *open = valueDict[@"open"] ?: nil;
+  NSString *description_ = valueDict[@"description"] ?: nil;
 
   return [[DBFILEREQUESTSUpdateFileRequestArgs alloc] initWithId_:id_
                                                             title:title
                                                       destination:destination
                                                          deadline:deadline
-                                                             open:open];
+                                                             open:open
+                                                     description_:description_];
 }
 
 @end
@@ -4073,12 +4177,15 @@
   switch (_tag) {
   case DBFILEREQUESTSUpdateFileRequestDeadlineNoUpdate:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestDeadlineUpdate:
     if (self.update != nil) {
       result = prime * result + [self.update hash];
     }
+    break;
   case DBFILEREQUESTSUpdateFileRequestDeadlineOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4326,20 +4433,28 @@
   switch (_tag) {
   case DBFILEREQUESTSUpdateFileRequestErrorDisabledForTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestErrorOther:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestErrorNotFound:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestErrorNotAFolder:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestErrorAppLacksAccess:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestErrorNoPermission:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSUpdateFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;

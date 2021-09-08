@@ -45,17 +45,18 @@ static NSTabViewController *tabViewController = nil;
 // custom handler
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
   NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
-  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-  if (authResult != nil) {
-    if ([authResult isSuccess]) {
-      NSLog(@"Success! User is logged into Dropbox.");
-    } else if ([authResult isCancel]) {
-      NSLog(@"Authorization flow was manually canceled by user!");
-    } else if ([authResult isError]) {
-      NSLog(@"Error: %@", authResult);
-    }
-  }
-  [self checkAllButtons];
+  [DBClientsManager handleRedirectURL:url completion:^(DBOAuthResult *authResult) {
+      if (authResult != nil) {
+        if ([authResult isSuccess]) {
+          NSLog(@"Success! User is logged into Dropbox.");
+        } else if ([authResult isCancel]) {
+          NSLog(@"Authorization flow was manually canceled by user!");
+        } else if ([authResult isError]) {
+          NSLog(@"Error: %@", authResult);
+        }
+      }
+      [self checkAllButtons];
+  }];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

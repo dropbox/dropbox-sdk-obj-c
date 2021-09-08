@@ -129,8 +129,7 @@ static DBOAuthManager *s_sharedOAuthManager;
   self = [super init];
   if (self) {
     if (host == nil) {
-      host = !kDBSDKDebug ? @"www.dropbox.com"
-                          : [NSString stringWithFormat:@"meta-%@.dev.corp.dropbox.com", kDBSDKDebugHost];
+      host = @"www.dropbox.com";
     }
 
     _appKey = appKey;
@@ -138,7 +137,7 @@ static DBOAuthManager *s_sharedOAuthManager;
     _cancelURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];
     _host = host;
     _urls = [NSMutableArray arrayWithObjects:_redirectURL, nil];
-#ifdef TARGET_OS_X
+#ifdef TARGET_OS_OSX
     _disableSignup = NO;
 #else
     _disableSignup = YES;
@@ -161,11 +160,11 @@ static DBOAuthManager *s_sharedOAuthManager;
   if ([self canHandleURL:url]) {
     [self extractFromUrl:url
               completion:^(DBOAuthResult *result) {
-      if ([result isSuccess]) {
-        [self storeAccessToken:result.accessToken];
-      }
-      completion(result);
-    }];
+                if ([result isSuccess]) {
+                  [self storeAccessToken:result.accessToken];
+                }
+                completion(result);
+              }];
     return YES;
   } else {
     completion(nil);

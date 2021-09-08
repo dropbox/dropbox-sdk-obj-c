@@ -75,6 +75,11 @@
 #import <ObjectiveDropboxOfficial/DBFILESMetadata.h>
 #import "DBFILESMinimalFileLinkMetadata.h"
 #import "DBFILESMoveIntoVaultError.h"
+#import <ObjectiveDropboxOfficial/DBFILESPaperContentError.h>
+#import <ObjectiveDropboxOfficial/DBFILESPaperCreateError.h>
+#import <ObjectiveDropboxOfficial/DBFILESPaperCreateResult.h>
+#import <ObjectiveDropboxOfficial/DBFILESPaperUpdateError.h>
+#import <ObjectiveDropboxOfficial/DBFILESPaperUpdateResult.h>
 #import <ObjectiveDropboxOfficial/DBFILESPreviewError.h>
 #import "DBFILESPreviewResult.h"
 #import <ObjectiveDropboxOfficial/DBFILESRelocationBatchError.h>
@@ -108,6 +113,7 @@
 #import <ObjectiveDropboxOfficial/DBFILESUploadSessionFinishError.h>
 #import <ObjectiveDropboxOfficial/DBFILESUploadSessionLookupError.h>
 #import <ObjectiveDropboxOfficial/DBFILESUploadSessionOffsetError.h>
+#import <ObjectiveDropboxOfficial/DBFILESUploadSessionStartError.h>
 #import <ObjectiveDropboxOfficial/DBFILESUploadSessionStartResult.h>
 #import <ObjectiveDropboxOfficial/DBFILESUploadWriteFailed.h>
 #import <ObjectiveDropboxOfficial/DBFILESUserAuthRoutes.h>
@@ -158,6 +164,8 @@ static DBRoute *DBFILESMoveBatchV2;
 static DBRoute *DBFILESMoveBatch;
 static DBRoute *DBFILESMoveBatchCheckV2;
 static DBRoute *DBFILESMoveBatchCheck;
+static DBRoute *DBFILESPaperCreate;
+static DBRoute *DBFILESPaperUpdate;
 static DBRoute *DBFILESPermanentlyDelete;
 static DBRoute *DBFILESPropertiesAdd;
 static DBRoute *DBFILESPropertiesOverwrite;
@@ -918,6 +926,42 @@ static DBRoute *DBFILESUploadSessionStart;
   return DBFILESMoveBatchCheck;
 }
 
++ (DBRoute *)DBFILESPaperCreate {
+  if (!DBFILESPaperCreate) {
+    DBFILESPaperCreate = [[DBRoute alloc] init:@"paper/create"
+                                    namespace_:@"files"
+                                    deprecated:@NO
+                                    resultType:[DBFILESPaperCreateResult class]
+                                     errorType:[DBFILESPaperCreateError class]
+                                         attrs:@{
+                                           @"auth" : @"user",
+                                           @"host" : @"api",
+                                           @"style" : @"upload"
+                                         }
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
+  }
+  return DBFILESPaperCreate;
+}
+
++ (DBRoute *)DBFILESPaperUpdate {
+  if (!DBFILESPaperUpdate) {
+    DBFILESPaperUpdate = [[DBRoute alloc] init:@"paper/update"
+                                    namespace_:@"files"
+                                    deprecated:@NO
+                                    resultType:[DBFILESPaperUpdateResult class]
+                                     errorType:[DBFILESPaperUpdateError class]
+                                         attrs:@{
+                                           @"auth" : @"user",
+                                           @"host" : @"api",
+                                           @"style" : @"upload"
+                                         }
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
+  }
+  return DBFILESPaperUpdate;
+}
+
 + (DBRoute *)DBFILESPermanentlyDelete {
   if (!DBFILESPermanentlyDelete) {
     DBFILESPermanentlyDelete = [[DBRoute alloc] init:@"permanently_delete"
@@ -1284,7 +1328,7 @@ static DBRoute *DBFILESUploadSessionStart;
                                            namespace_:@"files"
                                            deprecated:@NO
                                            resultType:[DBFILESUploadSessionStartResult class]
-                                            errorType:nil
+                                            errorType:[DBFILESUploadSessionStartError class]
                                                 attrs:@{
                                                   @"auth" : @"user",
                                                   @"host" : @"content",

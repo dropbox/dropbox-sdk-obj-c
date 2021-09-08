@@ -102,10 +102,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESCameraUploadsPolicyStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESCameraUploadsPolicyStateEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESCameraUploadsPolicyStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -174,6 +177,205 @@
     return [[DBTEAMPOLICIESCameraUploadsPolicyState alloc] initWithOther];
   } else {
     return [[DBTEAMPOLICIESCameraUploadsPolicyState alloc] initWithOther];
+  }
+}
+
+@end
+
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESComputerBackupPolicyState.h>
+
+#pragma mark - API Object
+
+@implementation DBTEAMPOLICIESComputerBackupPolicyState
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESComputerBackupPolicyStateDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESComputerBackupPolicyStateEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithDefault_ {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESComputerBackupPolicyStateDefault_;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESComputerBackupPolicyStateOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMPOLICIESComputerBackupPolicyStateDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMPOLICIESComputerBackupPolicyStateEnabled;
+}
+
+- (BOOL)isDefault_ {
+  return _tag == DBTEAMPOLICIESComputerBackupPolicyStateDefault_;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMPOLICIESComputerBackupPolicyStateOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMPOLICIESComputerBackupPolicyStateDisabled:
+    return @"DBTEAMPOLICIESComputerBackupPolicyStateDisabled";
+  case DBTEAMPOLICIESComputerBackupPolicyStateEnabled:
+    return @"DBTEAMPOLICIESComputerBackupPolicyStateEnabled";
+  case DBTEAMPOLICIESComputerBackupPolicyStateDefault_:
+    return @"DBTEAMPOLICIESComputerBackupPolicyStateDefault_";
+  case DBTEAMPOLICIESComputerBackupPolicyStateOther:
+    return @"DBTEAMPOLICIESComputerBackupPolicyStateOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMPOLICIESComputerBackupPolicyStateSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMPOLICIESComputerBackupPolicyStateSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMPOLICIESComputerBackupPolicyStateSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESComputerBackupPolicyStateDisabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMPOLICIESComputerBackupPolicyStateEnabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMPOLICIESComputerBackupPolicyStateDefault_:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMPOLICIESComputerBackupPolicyStateOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToComputerBackupPolicyState:other];
+}
+
+- (BOOL)isEqualToComputerBackupPolicyState:(DBTEAMPOLICIESComputerBackupPolicyState *)aComputerBackupPolicyState {
+  if (self == aComputerBackupPolicyState) {
+    return YES;
+  }
+  if (self.tag != aComputerBackupPolicyState.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESComputerBackupPolicyStateDisabled:
+    return [[self tagName] isEqual:[aComputerBackupPolicyState tagName]];
+  case DBTEAMPOLICIESComputerBackupPolicyStateEnabled:
+    return [[self tagName] isEqual:[aComputerBackupPolicyState tagName]];
+  case DBTEAMPOLICIESComputerBackupPolicyStateDefault_:
+    return [[self tagName] isEqual:[aComputerBackupPolicyState tagName]];
+  case DBTEAMPOLICIESComputerBackupPolicyStateOther:
+    return [[self tagName] isEqual:[aComputerBackupPolicyState tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMPOLICIESComputerBackupPolicyStateSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESComputerBackupPolicyState *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isDefault_]) {
+    jsonDict[@".tag"] = @"default";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMPOLICIESComputerBackupPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMPOLICIESComputerBackupPolicyState alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMPOLICIESComputerBackupPolicyState alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"default"]) {
+    return [[DBTEAMPOLICIESComputerBackupPolicyState alloc] initWithDefault_];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMPOLICIESComputerBackupPolicyState alloc] initWithOther];
+  } else {
+    return [[DBTEAMPOLICIESComputerBackupPolicyState alloc] initWithOther];
   }
 }
 
@@ -289,12 +491,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESEmmStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESEmmStateOptional:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESEmmStateRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESEmmStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -470,10 +676,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESFileLockingPolicyStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESFileLockingPolicyStateEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESFileLockingPolicyStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -629,8 +838,10 @@
   switch (_tag) {
   case DBTEAMPOLICIESGroupCreationAdminsAndMembers:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESGroupCreationAdminsOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -799,10 +1010,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESOfficeAddInPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESOfficeAddInPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESOfficeAddInPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -972,10 +1186,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperDefaultFolderPolicyEveryoneInTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDefaultFolderPolicyInviteOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDefaultFolderPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1145,10 +1362,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperDeploymentPolicyFull:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDeploymentPolicyPartial:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDeploymentPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1318,10 +1538,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperDesktopPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDesktopPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperDesktopPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1505,12 +1728,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESPaperEnabledPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperEnabledPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperEnabledPolicyUnspecified:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPaperEnabledPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1686,10 +1913,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESPasswordControlModeDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordControlModeEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordControlModeOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1873,12 +2103,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESPasswordStrengthPolicyMinimalRequirements:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordStrengthPolicyModeratePassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordStrengthPolicyStrongPassword:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESPasswordStrengthPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2054,10 +2288,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESRolloutMethodUnlinkAll:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESRolloutMethodUnlinkMostInactive:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESRolloutMethodAddMemberToExceptions:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2232,10 +2469,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSharedFolderJoinPolicyFromTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderJoinPolicyFromAnyone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderJoinPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2405,10 +2645,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSharedFolderMemberPolicyTeam:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderMemberPolicyAnyone:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedFolderMemberPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2592,12 +2835,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedLinkCreatePolicyTeamOnly:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSharedLinkCreatePolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2773,10 +3020,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESShowcaseDownloadPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseDownloadPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseDownloadPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2946,10 +3196,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESShowcaseEnabledPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseEnabledPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseEnabledPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3119,10 +3372,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESShowcaseExternalSharingPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseExternalSharingPolicyEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESShowcaseExternalSharingPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3293,10 +3549,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSmartSyncPolicyLocal:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmartSyncPolicyOnDemand:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmartSyncPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3466,10 +3725,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESSmarterSmartSyncPolicyStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmarterSmartSyncPolicyStateEnabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSmarterSmartSyncPolicyStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3653,12 +3915,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESSsoPolicyDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSsoPolicyOptional:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSsoPolicyRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESSsoPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -3740,8 +4006,185 @@
 
 #import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
 #import <ObjectiveDropboxOfficial/DBStoneValidators.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSuggestMembersPolicy.h>
+
+#pragma mark - API Object
+
+@implementation DBTEAMPOLICIESSuggestMembersPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESSuggestMembersPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESSuggestMembersPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESSuggestMembersPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMPOLICIESSuggestMembersPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMPOLICIESSuggestMembersPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMPOLICIESSuggestMembersPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMPOLICIESSuggestMembersPolicyDisabled:
+    return @"DBTEAMPOLICIESSuggestMembersPolicyDisabled";
+  case DBTEAMPOLICIESSuggestMembersPolicyEnabled:
+    return @"DBTEAMPOLICIESSuggestMembersPolicyEnabled";
+  case DBTEAMPOLICIESSuggestMembersPolicyOther:
+    return @"DBTEAMPOLICIESSuggestMembersPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMPOLICIESSuggestMembersPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMPOLICIESSuggestMembersPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMPOLICIESSuggestMembersPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESSuggestMembersPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMPOLICIESSuggestMembersPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMPOLICIESSuggestMembersPolicyOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSuggestMembersPolicy:other];
+}
+
+- (BOOL)isEqualToSuggestMembersPolicy:(DBTEAMPOLICIESSuggestMembersPolicy *)aSuggestMembersPolicy {
+  if (self == aSuggestMembersPolicy) {
+    return YES;
+  }
+  if (self.tag != aSuggestMembersPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESSuggestMembersPolicyDisabled:
+    return [[self tagName] isEqual:[aSuggestMembersPolicy tagName]];
+  case DBTEAMPOLICIESSuggestMembersPolicyEnabled:
+    return [[self tagName] isEqual:[aSuggestMembersPolicy tagName]];
+  case DBTEAMPOLICIESSuggestMembersPolicyOther:
+    return [[self tagName] isEqual:[aSuggestMembersPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMPOLICIESSuggestMembersPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESSuggestMembersPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMPOLICIESSuggestMembersPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMPOLICIESSuggestMembersPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMPOLICIESSuggestMembersPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMPOLICIESSuggestMembersPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMPOLICIESSuggestMembersPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import <ObjectiveDropboxOfficial/DBStoneSerializers.h>
+#import <ObjectiveDropboxOfficial/DBStoneValidators.h>
 #import <ObjectiveDropboxOfficial/DBTEAMPOLICIESEmmState.h>
 #import <ObjectiveDropboxOfficial/DBTEAMPOLICIESOfficeAddInPolicy.h>
+#import <ObjectiveDropboxOfficial/DBTEAMPOLICIESSuggestMembersPolicy.h>
 #import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTeamMemberPolicies.h>
 #import <ObjectiveDropboxOfficial/DBTEAMPOLICIESTeamSharingPolicies.h>
 
@@ -3753,16 +4196,19 @@
 
 - (instancetype)initWithSharing:(DBTEAMPOLICIESTeamSharingPolicies *)sharing
                        emmState:(DBTEAMPOLICIESEmmState *)emmState
-                    officeAddin:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddin {
+                    officeAddin:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddin
+           suggestMembersPolicy:(DBTEAMPOLICIESSuggestMembersPolicy *)suggestMembersPolicy {
   [DBStoneValidators nonnullValidator:nil](sharing);
   [DBStoneValidators nonnullValidator:nil](emmState);
   [DBStoneValidators nonnullValidator:nil](officeAddin);
+  [DBStoneValidators nonnullValidator:nil](suggestMembersPolicy);
 
   self = [super init];
   if (self) {
     _sharing = sharing;
     _emmState = emmState;
     _officeAddin = officeAddin;
+    _suggestMembersPolicy = suggestMembersPolicy;
   }
   return self;
 }
@@ -3800,6 +4246,7 @@
   result = prime * result + [self.sharing hash];
   result = prime * result + [self.emmState hash];
   result = prime * result + [self.officeAddin hash];
+  result = prime * result + [self.suggestMembersPolicy hash];
 
   return prime * result;
 }
@@ -3829,6 +4276,9 @@
   if (![self.officeAddin isEqual:aTeamMemberPolicies.officeAddin]) {
     return NO;
   }
+  if (![self.suggestMembersPolicy isEqual:aTeamMemberPolicies.suggestMembersPolicy]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -3844,6 +4294,8 @@
   jsonDict[@"sharing"] = [DBTEAMPOLICIESTeamSharingPoliciesSerializer serialize:valueObj.sharing];
   jsonDict[@"emm_state"] = [DBTEAMPOLICIESEmmStateSerializer serialize:valueObj.emmState];
   jsonDict[@"office_addin"] = [DBTEAMPOLICIESOfficeAddInPolicySerializer serialize:valueObj.officeAddin];
+  jsonDict[@"suggest_members_policy"] =
+      [DBTEAMPOLICIESSuggestMembersPolicySerializer serialize:valueObj.suggestMembersPolicy];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -3854,8 +4306,13 @@
   DBTEAMPOLICIESEmmState *emmState = [DBTEAMPOLICIESEmmStateSerializer deserialize:valueDict[@"emm_state"]];
   DBTEAMPOLICIESOfficeAddInPolicy *officeAddin =
       [DBTEAMPOLICIESOfficeAddInPolicySerializer deserialize:valueDict[@"office_addin"]];
+  DBTEAMPOLICIESSuggestMembersPolicy *suggestMembersPolicy =
+      [DBTEAMPOLICIESSuggestMembersPolicySerializer deserialize:valueDict[@"suggest_members_policy"]];
 
-  return [[DBTEAMPOLICIESTeamMemberPolicies alloc] initWithSharing:sharing emmState:emmState officeAddin:officeAddin];
+  return [[DBTEAMPOLICIESTeamMemberPolicies alloc] initWithSharing:sharing
+                                                          emmState:emmState
+                                                       officeAddin:officeAddin
+                                              suggestMembersPolicy:suggestMembersPolicy];
 }
 
 @end
@@ -4084,10 +4541,13 @@
   switch (_tag) {
   case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaEnable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationPolicyRequireTfaDisable:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationPolicyOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4271,12 +4731,16 @@
   switch (_tag) {
   case DBTEAMPOLICIESTwoStepVerificationStateRequired:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationStateOptional:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationStateDisabled:
     result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMPOLICIESTwoStepVerificationStateOther:
     result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;

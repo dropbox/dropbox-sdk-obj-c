@@ -29,19 +29,34 @@ NS_ASSUME_NONNULL_BEGIN
 /// with which the `DBTEAMLOGAdminRole` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
     /// (no description).
-    DBTEAMLOGAdminRoleTeamAdmin,
+    DBTEAMLOGAdminRoleBillingAdmin,
 
     /// (no description).
-    DBTEAMLOGAdminRoleUserManagementAdmin,
+    DBTEAMLOGAdminRoleComplianceAdmin,
 
     /// (no description).
-    DBTEAMLOGAdminRoleSupportAdmin,
+    DBTEAMLOGAdminRoleContentAdmin,
 
     /// (no description).
     DBTEAMLOGAdminRoleLimitedAdmin,
 
     /// (no description).
     DBTEAMLOGAdminRoleMemberOnly,
+
+    /// (no description).
+    DBTEAMLOGAdminRoleReportingAdmin,
+
+    /// (no description).
+    DBTEAMLOGAdminRoleSecurityAdmin,
+
+    /// (no description).
+    DBTEAMLOGAdminRoleSupportAdmin,
+
+    /// (no description).
+    DBTEAMLOGAdminRoleTeamAdmin,
+
+    /// (no description).
+    DBTEAMLOGAdminRoleUserManagementAdmin,
 
     /// (no description).
     DBTEAMLOGAdminRoleOther,
@@ -54,25 +69,25 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of "team_admin".
+/// Initializes union class with tag state of "billing_admin".
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithTeamAdmin;
+- (instancetype)initWithBillingAdmin;
 
 ///
-/// Initializes union class with tag state of "user_management_admin".
+/// Initializes union class with tag state of "compliance_admin".
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithUserManagementAdmin;
+- (instancetype)initWithComplianceAdmin;
 
 ///
-/// Initializes union class with tag state of "support_admin".
+/// Initializes union class with tag state of "content_admin".
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithSupportAdmin;
+- (instancetype)initWithContentAdmin;
 
 ///
 /// Initializes union class with tag state of "limited_admin".
@@ -89,6 +104,41 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 - (instancetype)initWithMemberOnly;
 
 ///
+/// Initializes union class with tag state of "reporting_admin".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithReportingAdmin;
+
+///
+/// Initializes union class with tag state of "security_admin".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSecurityAdmin;
+
+///
+/// Initializes union class with tag state of "support_admin".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSupportAdmin;
+
+///
+/// Initializes union class with tag state of "team_admin".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamAdmin;
+
+///
+/// Initializes union class with tag state of "user_management_admin".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUserManagementAdmin;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -98,6 +148,63 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
+
+///
+/// Retrieves whether the union's current tag state has value "billing_admin".
+///
+/// @return Whether the union's current tag state has value "billing_admin".
+///
+- (BOOL)isBillingAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "compliance_admin".
+///
+/// @return Whether the union's current tag state has value "compliance_admin".
+///
+- (BOOL)isComplianceAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value "content_admin".
+///
+/// @return Whether the union's current tag state has value "content_admin".
+///
+- (BOOL)isContentAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value "limited_admin".
+///
+/// @return Whether the union's current tag state has value "limited_admin".
+///
+- (BOOL)isLimitedAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value "member_only".
+///
+/// @return Whether the union's current tag state has value "member_only".
+///
+- (BOOL)isMemberOnly;
+
+///
+/// Retrieves whether the union's current tag state has value "reporting_admin".
+///
+/// @return Whether the union's current tag state has value "reporting_admin".
+///
+- (BOOL)isReportingAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value "security_admin".
+///
+/// @return Whether the union's current tag state has value "security_admin".
+///
+- (BOOL)isSecurityAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value "support_admin".
+///
+/// @return Whether the union's current tag state has value "support_admin".
+///
+- (BOOL)isSupportAdmin;
 
 ///
 /// Retrieves whether the union's current tag state has value "team_admin".
@@ -114,27 +221,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 /// "user_management_admin".
 ///
 - (BOOL)isUserManagementAdmin;
-
-///
-/// Retrieves whether the union's current tag state has value "support_admin".
-///
-/// @return Whether the union's current tag state has value "support_admin".
-///
-- (BOOL)isSupportAdmin;
-
-///
-/// Retrieves whether the union's current tag state has value "limited_admin".
-///
-/// @return Whether the union's current tag state has value "limited_admin".
-///
-- (BOOL)isLimitedAdmin;
-
-///
-/// Retrieves whether the union's current tag state has value "member_only".
-///
-/// @return Whether the union's current tag state has value "member_only".
-///
-- (BOOL)isMemberOnly;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

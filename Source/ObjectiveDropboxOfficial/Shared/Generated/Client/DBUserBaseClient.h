@@ -7,7 +7,6 @@
 #import <ObjectiveDropboxOfficial/DBACCOUNTUserAuthRoutes.h>
 #import <ObjectiveDropboxOfficial/DBAUTHUserAuthRoutes.h>
 #import <ObjectiveDropboxOfficial/DBCHECKUserAuthRoutes.h>
-#import <ObjectiveDropboxOfficial/DBCLOUDDOCSUserAuthRoutes.h>
 #import <ObjectiveDropboxOfficial/DBCONTACTSUserAuthRoutes.h>
 #import <ObjectiveDropboxOfficial/DBFILEPROPERTIESUserAuthRoutes.h>
 #import <ObjectiveDropboxOfficial/DBFILEREQUESTSUserAuthRoutes.h>
@@ -42,9 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Routes within the `check` namespace.
 @property (nonatomic, readonly) DBCHECKUserAuthRoutes *checkRoutes;
-
-/// Routes within the `cloudDocs` namespace.
-@property (nonatomic, readonly) DBCLOUDDOCSUserAuthRoutes *cloudDocsRoutes;
 
 /// Routes within the `contacts` namespace.
 @property (nonatomic, readonly) DBCONTACTSUserAuthRoutes *contactsRoutes;

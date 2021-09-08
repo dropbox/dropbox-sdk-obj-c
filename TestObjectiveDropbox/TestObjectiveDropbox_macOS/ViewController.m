@@ -23,17 +23,18 @@
 
 @implementation ViewController
 
-- (IBAction)tokenFlowLinkButtonPressed:(id)sender {
-    [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
-                                          controller:self
-                                             openURL:^(NSURL *url) {
-        [[NSWorkspace sharedWorkspace] openURL:url];
-    }];
-}
-
 - (IBAction)codeFlowLinkButtonPressed:(id)sender {
+    NSArray<NSString*>*scopes = @[];
+    switch (appPermission) {
+        case FullDropboxScoped:
+            scopes = [DropboxTester scopesForTests];
+            break;
+        case FullDropboxScopedForTeamTesting:
+            scopes = [DropboxTeamTester scopesForTests];
+            break;
+    }
     DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
-                                                                      scopes:@[@"account_info.read"]
+                                                                      scopes:scopes
                                                         includeGrantedScopes:NO];
     [DBClientsManager authorizeFromControllerDesktopV2:[NSWorkspace sharedWorkspace]
                                             controller:self
@@ -52,14 +53,13 @@
     };
     
     switch (appPermission) {
-        case FullDropbox:
+        case FullDropboxScoped:
             [[[DropboxTester alloc] initWithTestData:data] testAllUserAPIEndpoints:unlink asMember:NO];
             break;
-        case TeamMemberFileAccess:
-            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:unlink];
-            break;
-        case TeamMemberManagement:
-            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
+        case FullDropboxScopedForTeamTesting:
+            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:^() {
+                [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
+            }];
             break;
     }
 }

@@ -17,7 +17,6 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 
 @interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *tokenFlowlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *codeFlowlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *runTestsButton;
 @property (weak, nonatomic) IBOutlet UIButton *unlinkButton;
@@ -29,17 +28,18 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 
 @implementation ViewController
 
-- (IBAction)tokenFlowlinkButton:(id)sender {
-  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
-                                      controller:self
-                                         openURL:^(NSURL *url) {
-                                           [[UIApplication sharedApplication] openURL:url];
-                                         }];
-}
-
 - (IBAction)codeFlowlinkButton:(id)sender {
+    NSArray<NSString*>*scopes = @[];
+    switch (appPermission) {
+        case FullDropboxScoped:
+            scopes = [DropboxTester scopesForTests];
+            break;
+        case FullDropboxScopedForTeamTesting:
+            scopes = [DropboxTeamTester scopesForTests];
+            break;
+    }
   DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
-                                                                    scopes:@[@"account_info.read"]
+                                                                    scopes:scopes
                                                       includeGrantedScopes:NO];
   [DBClientsManager authorizeFromControllerV2:[UIApplication sharedApplication]
                                    controller:self
@@ -58,14 +58,13 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
     };
 
     switch (appPermission) {
-        case FullDropbox:
+        case FullDropboxScoped:
             [[[DropboxTester alloc] initWithTestData:data] testAllUserAPIEndpoints:unlink asMember:NO];
             break;
-        case TeamMemberFileAccess:
-            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:unlink];
-            break;
-        case TeamMemberManagement:
-            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
+        case FullDropboxScopedForTeamTesting:
+            [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:^() {
+                [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
+            }];
             break;
     }
 }
@@ -149,14 +148,12 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 
 - (void)checkButtons {
     if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
-        _tokenFlowlinkButton.hidden = YES;
         _codeFlowlinkButton.hidden = YES;
         _unlinkButton.hidden = NO;
         _runTestsButton.hidden = NO;
         _runBatchUploadTestsButton.hidden = NO;
         _runGlobalResponseTestsButton.hidden = NO;
     } else {
-        _tokenFlowlinkButton.hidden = NO;
         _codeFlowlinkButton.hidden = NO;
         _unlinkButton.hidden = YES;
         _runTestsButton.hidden = YES;

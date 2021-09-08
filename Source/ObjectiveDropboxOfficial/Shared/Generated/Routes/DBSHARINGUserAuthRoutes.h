@@ -132,7 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Adds specified members to a file.
 ///
 /// @param file File to which to add members.
-/// @param members Members to add. Note that even an email address is given, this may result in a user being directy
+/// @param members Members to add. Note that even an email address is given, this may result in a user being directly
 /// added to the membership if that email is the user's main account email.
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGFileMemberActionResult *>` object
@@ -146,7 +146,7 @@ addFileMember:(NSString *)file
 /// Adds specified members to a file.
 ///
 /// @param file File to which to add members.
-/// @param members Members to add. Note that even an email address is given, this may result in a user being directy
+/// @param members Members to add. Note that even an email address is given, this may result in a user being directly
 /// added to the membership if that email is the user's main account email.
 /// @param customMessage Message to send to added members in their invitation.
 /// @param quiet Whether added members should be notified via device notifications of their invitation.
@@ -809,10 +809,12 @@ listReceivedFiles:(nullable NSNumber *)limit
     (NSString *)cursor;
 
 ///
-/// List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a
-/// non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to
-/// the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting
-/// direct_only to true.
+/// List shared links of this user. If no path is given, returns a list of all shared links for the current user. For
+/// members of business teams using team space and member folders, returns all shared links in the team member's home
+/// folder unless the team space ID is specified in the request header. For more information, refer to the Namespace
+/// Guide https://www.dropbox.com/developers/reference/namespace-guide. If a non-empty path is given, returns a list of
+/// all shared links that allow access to the given path - direct links to the given path and links to parent folders of
+/// the given path. Links to parent folders can be suppressed by setting direct_only to true.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListSharedLinksResult` object on success
@@ -821,10 +823,12 @@ listReceivedFiles:(nullable NSNumber *)limit
 - (DBRpcTask<DBSHARINGListSharedLinksResult *, DBSHARINGListSharedLinksError *> *)listSharedLinks;
 
 ///
-/// List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a
-/// non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to
-/// the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting
-/// direct_only to true.
+/// List shared links of this user. If no path is given, returns a list of all shared links for the current user. For
+/// members of business teams using team space and member folders, returns all shared links in the team member's home
+/// folder unless the team space ID is specified in the request header. For more information, refer to the Namespace
+/// Guide https://www.dropbox.com/developers/reference/namespace-guide. If a non-empty path is given, returns a list of
+/// all shared links that allow access to the given path - direct links to the given path and links to parent folders of
+/// the given path. Links to parent folders can be suppressed by setting direct_only to true.
 ///
 /// @param path See `listSharedLinks` description.
 /// @param cursor The cursor returned by your last call to `listSharedLinks`.

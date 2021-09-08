@@ -61,6 +61,7 @@
 @class DBFILESGetThumbnailBatchError;
 @class DBFILESGetThumbnailBatchResult;
 @class DBFILESGetThumbnailBatchResultEntry;
+@class DBFILESImportFormat;
 @class DBFILESListFolderContinueError;
 @class DBFILESListFolderError;
 @class DBFILESListFolderGetLatestCursorResult;
@@ -80,6 +81,11 @@
 @class DBFILESMetadata;
 @class DBFILESMinimalFileLinkMetadata;
 @class DBFILESMoveIntoVaultError;
+@class DBFILESPaperCreateError;
+@class DBFILESPaperCreateResult;
+@class DBFILESPaperDocUpdatePolicy;
+@class DBFILESPaperUpdateError;
+@class DBFILESPaperUpdateResult;
 @class DBFILESPathOrLink;
 @class DBFILESPreviewError;
 @class DBFILESPreviewResult;
@@ -105,6 +111,7 @@
 @class DBFILESSearchMatchV2;
 @class DBFILESSearchMode;
 @class DBFILESSearchOptions;
+@class DBFILESSearchOrderBy;
 @class DBFILESSearchResult;
 @class DBFILESSearchV2Result;
 @class DBFILESSharedLink;
@@ -127,7 +134,9 @@
 @class DBFILESUploadSessionFinishError;
 @class DBFILESUploadSessionLookupError;
 @class DBFILESUploadSessionOffsetError;
+@class DBFILESUploadSessionStartError;
 @class DBFILESUploadSessionStartResult;
+@class DBFILESUploadSessionType;
 @class DBFILESUploadWriteFailed;
 @class DBFILESWriteError;
 @class DBFILESWriteMode;
@@ -152,7 +161,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init:(id<DBTransportClient>)client;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
@@ -170,7 +180,8 @@ NS_ASSUME_NONNULL_BEGIN
                                                                                 destination:(NSURL *)destination;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
@@ -195,7 +206,8 @@ getThumbnailV2Url:(DBFILESPathOrLink *)resource
       destination:(NSURL *)destination;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
@@ -219,7 +231,8 @@ getThumbnailV2Url:(DBFILESPathOrLink *)resource
                                                                               byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
@@ -250,7 +263,8 @@ getThumbnailV2Url:(DBFILESPathOrLink *)resource
     byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
@@ -262,7 +276,8 @@ getThumbnailV2Url:(DBFILESPathOrLink *)resource
     (DBFILESPathOrLink *)resource;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
@@ -281,7 +296,8 @@ getThumbnailV2Data:(DBFILESPathOrLink *)resource
               mode:(nullable DBFILESThumbnailMode *)mode;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
@@ -299,7 +315,8 @@ getThumbnailV2Data:(DBFILESPathOrLink *)resource
      byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
-/// Get a thumbnail for a file.
+/// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
+/// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.

@@ -32,11 +32,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetTemporaryLinkErrorTag){
     /// (no description).
     DBFILESGetTemporaryLinkErrorPath,
 
-    /// The user's email address needs to be verified to use this functionality.
+    /// This user's email address is not verified. This functionality is only
+    /// available on accounts with a verified email address. Users can verify
+    /// their email address here https://www.dropbox.com/help/317.
     DBFILESGetTemporaryLinkErrorEmailNotVerified,
 
     /// Cannot get temporary link to this file type; use `export` instead.
     DBFILESGetTemporaryLinkErrorUnsupportedFile,
+
+    /// The user is not allowed to request a temporary link to the specified
+    /// file. For example, this can occur if the file is restricted or if the
+    /// user's links are banned
+    /// https://help.dropbox.com/files-folders/share/banned-links.
+    DBFILESGetTemporaryLinkErrorNotAllowed,
 
     /// (no description).
     DBFILESGetTemporaryLinkErrorOther,
@@ -64,8 +72,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetTemporaryLinkErrorTag){
 ///
 /// Initializes union class with tag state of "email_not_verified".
 ///
-/// Description of the "email_not_verified" tag state: The user's email address
-/// needs to be verified to use this functionality.
+/// Description of the "email_not_verified" tag state: This user's email address
+/// is not verified. This functionality is only available on accounts with a
+/// verified email address. Users can verify their email address here
+/// https://www.dropbox.com/help/317.
 ///
 /// @return An initialized instance.
 ///
@@ -80,6 +90,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetTemporaryLinkErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnsupportedFile;
+
+///
+/// Initializes union class with tag state of "not_allowed".
+///
+/// Description of the "not_allowed" tag state: The user is not allowed to
+/// request a temporary link to the specified file. For example, this can occur
+/// if the file is restricted or if the user's links are banned
+/// https://help.dropbox.com/files-folders/share/banned-links.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNotAllowed;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -118,6 +140,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetTemporaryLinkErrorTag){
 /// @return Whether the union's current tag state has value "unsupported_file".
 ///
 - (BOOL)isUnsupportedFile;
+
+///
+/// Retrieves whether the union's current tag state has value "not_allowed".
+///
+/// @return Whether the union's current tag state has value "not_allowed".
+///
+- (BOOL)isNotAllowed;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

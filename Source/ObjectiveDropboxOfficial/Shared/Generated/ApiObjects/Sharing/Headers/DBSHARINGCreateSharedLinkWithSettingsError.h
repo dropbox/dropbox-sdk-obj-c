@@ -35,7 +35,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
     /// (no description).
     DBSHARINGCreateSharedLinkWithSettingsErrorPath,
 
-    /// User's email should be verified.
+    /// This user's email address is not verified. This functionality is only
+    /// available on accounts with a verified email address. Users can verify
+    /// their email address here https://www.dropbox.com/help/317.
     DBSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified,
 
     /// The shared link already exists. You can call `listSharedLinks` to get
@@ -45,7 +47,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
     /// There is an error with the given settings.
     DBSHARINGCreateSharedLinkWithSettingsErrorSettingsError,
 
-    /// Access to the requested path is forbidden.
+    /// The user is not allowed to create a shared link to the specified file.
+    /// For  example, this can occur if the file is restricted or if the user's
+    /// links are  banned
+    /// https://help.dropbox.com/files-folders/share/banned-links.
     DBSHARINGCreateSharedLinkWithSettingsErrorAccessDenied,
 
 };
@@ -82,8 +87,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
 ///
 /// Initializes union class with tag state of "email_not_verified".
 ///
-/// Description of the "email_not_verified" tag state: User's email should be
-/// verified.
+/// Description of the "email_not_verified" tag state: This user's email address
+/// is not verified. This functionality is only available on accounts with a
+/// verified email address. Users can verify their email address here
+/// https://www.dropbox.com/help/317.
 ///
 /// @return An initialized instance.
 ///
@@ -120,8 +127,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
 ///
 /// Initializes union class with tag state of "access_denied".
 ///
-/// Description of the "access_denied" tag state: Access to the requested path
-/// is forbidden.
+/// Description of the "access_denied" tag state: The user is not allowed to
+/// create a shared link to the specified file. For  example, this can occur if
+/// the file is restricted or if the user's links are  banned
+/// https://help.dropbox.com/files-folders/share/banned-links.
 ///
 /// @return An initialized instance.
 ///
