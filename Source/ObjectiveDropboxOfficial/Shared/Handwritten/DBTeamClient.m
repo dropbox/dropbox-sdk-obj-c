@@ -5,10 +5,10 @@
 #import "DBTeamClient.h"
 
 #import "DBAccessTokenProvider.h"
+#import "DBOAuthManager+Protected.h"
 #import "DBTransportDefaultClient.h"
 #import "DBTransportDefaultConfig.h"
 #import "DBUserClient.h"
-#import "DBOAuthManager+Protected.h"
 
 @implementation DBTeamClient
 
@@ -41,10 +41,10 @@
 }
 
 - (instancetype)initWithAccessToken:(DBAccessToken *)accessToken
-                                   oauthManager:(DBOAuthManager *)oauthManager
-                            transportConfig:(DBTransportDefaultConfig *)transportConfig {
-    NSCParameterAssert(oauthManager);
-    NSCParameterAssert(accessToken);
+                       oauthManager:(DBOAuthManager *)oauthManager
+                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
+  NSCParameterAssert(oauthManager);
+  NSCParameterAssert(accessToken);
 
   id<DBAccessTokenProvider> tokenProvider = [oauthManager accessTokenProviderForToken:accessToken];
 

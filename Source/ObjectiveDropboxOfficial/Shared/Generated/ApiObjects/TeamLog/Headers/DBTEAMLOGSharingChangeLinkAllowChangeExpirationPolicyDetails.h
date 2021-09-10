@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `SharingChangeLinkAllowChangeExpirationPolicyDetails` struct.
 ///
-/// Changed the password requirement for the links shared outside of the team.
+/// Changed the allow remove or change expiration policy for the links shared
+/// outside of the team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

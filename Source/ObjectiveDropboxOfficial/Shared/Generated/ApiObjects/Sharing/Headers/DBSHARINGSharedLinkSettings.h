@@ -52,6 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Use audience instead.  The requested access for this shared link.
 @property (nonatomic, readonly, nullable) DBSHARINGRequestedVisibility *requestedVisibility;
 
+/// Boolean flag to allow or not download capabilities for shared links.
+@property (nonatomic, readonly, nullable) NSNumber *allowDownload;
+
 #pragma mark - Constructors
 
 ///
@@ -72,6 +75,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// link. Note, modifying access level for an existing link is not supported.
 /// @param requestedVisibility Use audience instead.  The requested access for
 /// this shared link.
+/// @param allowDownload Boolean flag to allow or not download capabilities for
+/// shared links.
 ///
 /// @return An initialized instance.
 ///
@@ -80,7 +85,8 @@ NS_ASSUME_NONNULL_BEGIN
                                 expires:(nullable NSDate *)expires
                                audience:(nullable DBSHARINGLinkAudience *)audience
                                  access:(nullable DBSHARINGRequestedLinkAccessLevel *)access
-                    requestedVisibility:(nullable DBSHARINGRequestedVisibility *)requestedVisibility;
+                    requestedVisibility:(nullable DBSHARINGRequestedVisibility *)requestedVisibility
+                          allowDownload:(nullable NSNumber *)allowDownload;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

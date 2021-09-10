@@ -582,6 +582,183 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMPOLICIESExternalDriveBackupPolicyState.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMPOLICIESExternalDriveBackupPolicyState
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMPOLICIESExternalDriveBackupPolicyStateOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMPOLICIESExternalDriveBackupPolicyStateOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled:
+    return @"DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled";
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled:
+    return @"DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled";
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateOther:
+    return @"DBTEAMPOLICIESExternalDriveBackupPolicyStateOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMPOLICIESExternalDriveBackupPolicyStateSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMPOLICIESExternalDriveBackupPolicyStateSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMPOLICIESExternalDriveBackupPolicyStateSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToExternalDriveBackupPolicyState:other];
+}
+
+- (BOOL)isEqualToExternalDriveBackupPolicyState:
+    (DBTEAMPOLICIESExternalDriveBackupPolicyState *)anExternalDriveBackupPolicyState {
+  if (self == anExternalDriveBackupPolicyState) {
+    return YES;
+  }
+  if (self.tag != anExternalDriveBackupPolicyState.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled:
+    return [[self tagName] isEqual:[anExternalDriveBackupPolicyState tagName]];
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled:
+    return [[self tagName] isEqual:[anExternalDriveBackupPolicyState tagName]];
+  case DBTEAMPOLICIESExternalDriveBackupPolicyStateOther:
+    return [[self tagName] isEqual:[anExternalDriveBackupPolicyState tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMPOLICIESExternalDriveBackupPolicyStateSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESExternalDriveBackupPolicyState *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMPOLICIESExternalDriveBackupPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMPOLICIESExternalDriveBackupPolicyState alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMPOLICIESExternalDriveBackupPolicyState alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMPOLICIESExternalDriveBackupPolicyState alloc] initWithOther];
+  } else {
+    return [[DBTEAMPOLICIESExternalDriveBackupPolicyState alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMPOLICIESFileLockingPolicyState.h"
 
 #pragma mark - API Object

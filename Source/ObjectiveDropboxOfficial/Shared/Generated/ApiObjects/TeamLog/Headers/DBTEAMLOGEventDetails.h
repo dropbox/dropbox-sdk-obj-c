@@ -35,6 +35,7 @@
 @class DBTEAMLOGBinderReorderPageDetails;
 @class DBTEAMLOGBinderReorderSectionDetails;
 @class DBTEAMLOGCameraUploadsPolicyChangedDetails;
+@class DBTEAMLOGCaptureTranscriptPolicyChangedDetails;
 @class DBTEAMLOGChangedEnterpriseAdminRoleDetails;
 @class DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails;
 @class DBTEAMLOGClassificationChangePolicyDetails;
@@ -79,6 +80,8 @@
 @class DBTEAMLOGDomainVerificationRemoveDomainDetails;
 @class DBTEAMLOGDropboxPasswordsExportedDetails;
 @class DBTEAMLOGDropboxPasswordsNewDeviceEnrolledDetails;
+@class DBTEAMLOGEmailIngestPolicyChangedDetails;
+@class DBTEAMLOGEmailIngestReceiveFileDetails;
 @class DBTEAMLOGEmmAddExceptionDetails;
 @class DBTEAMLOGEmmChangePolicyDetails;
 @class DBTEAMLOGEmmCreateExceptionsReportDetails;
@@ -94,6 +97,7 @@
 @class DBTEAMLOGExportMembersReportDetails;
 @class DBTEAMLOGExportMembersReportFailDetails;
 @class DBTEAMLOGExtendedVersionHistoryChangePolicyDetails;
+@class DBTEAMLOGExternalDriveBackupPolicyChangedDetails;
 @class DBTEAMLOGExternalSharingCreateReportDetails;
 @class DBTEAMLOGExternalSharingReportFailedDetails;
 @class DBTEAMLOGFileAddCommentDetails;
@@ -791,6 +795,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
     /// (no description).
     DBTEAMLOGEventDetailsUserTagsRemovedDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsEmailIngestReceiveFileDetails,
 
     /// (no description).
     DBTEAMLOGEventDetailsFileRequestChangeDetails,
@@ -1558,6 +1565,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
     DBTEAMLOGEventDetailsCameraUploadsPolicyChangedDetails,
 
     /// (no description).
+    DBTEAMLOGEventDetailsCaptureTranscriptPolicyChangedDetails,
+
+    /// (no description).
     DBTEAMLOGEventDetailsClassificationChangePolicyDetails,
 
     /// (no description).
@@ -1597,6 +1607,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
     DBTEAMLOGEventDetailsDirectoryRestrictionsRemoveMembersDetails,
 
     /// (no description).
+    DBTEAMLOGEventDetailsEmailIngestPolicyChangedDetails,
+
+    /// (no description).
     DBTEAMLOGEventDetailsEmmAddExceptionDetails,
 
     /// (no description).
@@ -1607,6 +1620,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
     /// (no description).
     DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsExternalDriveBackupPolicyChangedDetails,
 
     /// (no description).
     DBTEAMLOGEventDetailsFileCommentsChangePolicyDetails,
@@ -2361,6 +2377,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// (no description). @note Ensure the `isUserTagsRemovedDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGUserTagsRemovedDetails *userTagsRemovedDetails;
+
+/// (no description). @note Ensure the `isEmailIngestReceiveFileDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGEmailIngestReceiveFileDetails *emailIngestReceiveFileDetails;
 
 /// (no description). @note Ensure the `isFileRequestChangeDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -3498,6 +3518,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGCameraUploadsPolicyChangedDetails *cameraUploadsPolicyChangedDetails;
 
+/// (no description). @note Ensure the `isCaptureTranscriptPolicyChangedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGCaptureTranscriptPolicyChangedDetails *captureTranscriptPolicyChangedDetails;
+
 /// (no description). @note Ensure the `isClassificationChangePolicyDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
@@ -3571,6 +3596,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 @property (nonatomic, readonly)
     DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *directoryRestrictionsRemoveMembersDetails;
 
+/// (no description). @note Ensure the `isEmailIngestPolicyChangedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGEmailIngestPolicyChangedDetails *emailIngestPolicyChangedDetails;
+
 /// (no description). @note Ensure the `isEmmAddExceptionDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmAddExceptionDetails *emmAddExceptionDetails;
@@ -3588,6 +3618,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *extendedVersionHistoryChangePolicyDetails;
+
+/// (no description). @note Ensure the
+/// `isExternalDriveBackupPolicyChangedDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly)
+    DBTEAMLOGExternalDriveBackupPolicyChangedDetails *externalDriveBackupPolicyChangedDetails;
 
 /// (no description). @note Ensure the `isFileCommentsChangePolicyDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
@@ -5087,6 +5123,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUserTagsRemovedDetails:(DBTEAMLOGUserTagsRemovedDetails *)userTagsRemovedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "email_ingest_receive_file_details".
+///
+/// @param emailIngestReceiveFileDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEmailIngestReceiveFileDetails:
+    (DBTEAMLOGEmailIngestReceiveFileDetails *)emailIngestReceiveFileDetails;
 
 ///
 /// Initializes union class with tag state of "file_request_change_details".
@@ -7648,6 +7695,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
 ///
 /// Initializes union class with tag state of
+/// "capture_transcript_policy_changed_details".
+///
+/// @param captureTranscriptPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCaptureTranscriptPolicyChangedDetails:
+    (DBTEAMLOGCaptureTranscriptPolicyChangedDetails *)captureTranscriptPolicyChangedDetails;
+
+///
+/// Initializes union class with tag state of
 /// "classification_change_policy_details".
 ///
 /// @param classificationChangePolicyDetails (no description).
@@ -7790,6 +7848,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
     (DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *)directoryRestrictionsRemoveMembersDetails;
 
 ///
+/// Initializes union class with tag state of
+/// "email_ingest_policy_changed_details".
+///
+/// @param emailIngestPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEmailIngestPolicyChangedDetails:
+    (DBTEAMLOGEmailIngestPolicyChangedDetails *)emailIngestPolicyChangedDetails;
+
+///
 /// Initializes union class with tag state of "emm_add_exception_details".
 ///
 /// @param emmAddExceptionDetails (no description).
@@ -7826,6 +7895,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 ///
 - (instancetype)initWithExtendedVersionHistoryChangePolicyDetails:
     (DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)extendedVersionHistoryChangePolicyDetails;
+
+///
+/// Initializes union class with tag state of
+/// "external_drive_backup_policy_changed_details".
+///
+/// @param externalDriveBackupPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithExternalDriveBackupPolicyChangedDetails:
+    (DBTEAMLOGExternalDriveBackupPolicyChangedDetails *)externalDriveBackupPolicyChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -10171,6 +10251,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// "user_tags_removed_details".
 ///
 - (BOOL)isUserTagsRemovedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "email_ingest_receive_file_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `emailIngestReceiveFileDetails` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "email_ingest_receive_file_details".
+///
+- (BOOL)isEmailIngestReceiveFileDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -13471,6 +13564,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "capture_transcript_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `captureTranscriptPolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "capture_transcript_policy_changed_details".
+///
+- (BOOL)isCaptureTranscriptPolicyChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "classification_change_policy_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -13640,6 +13746,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "email_ingest_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `emailIngestPolicyChangedDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "email_ingest_policy_changed_details".
+///
+- (BOOL)isEmailIngestPolicyChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "emm_add_exception_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -13689,6 +13808,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// "extended_version_history_change_policy_details".
 ///
 - (BOOL)isExtendedVersionHistoryChangePolicyDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "external_drive_backup_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `externalDriveBackupPolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "external_drive_backup_policy_changed_details".
+///
+- (BOOL)isExternalDriveBackupPolicyChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

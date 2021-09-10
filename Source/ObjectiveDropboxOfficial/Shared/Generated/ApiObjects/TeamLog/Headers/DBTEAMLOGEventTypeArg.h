@@ -326,6 +326,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (file_operations) Removed tags
     DBTEAMLOGEventTypeArgUserTagsRemoved,
 
+    /// (file_requests) Received files via Email to my Dropbox
+    DBTEAMLOGEventTypeArgEmailIngestReceiveFile,
+
     /// (file_requests) Changed file request
     DBTEAMLOGEventTypeArgFileRequestChange,
 
@@ -1130,6 +1133,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (team_policies) Changed camera uploads setting for team
     DBTEAMLOGEventTypeArgCameraUploadsPolicyChanged,
 
+    /// (team_policies) Changed Capture transcription policy for team
+    DBTEAMLOGEventTypeArgCaptureTranscriptPolicyChanged,
+
     /// (team_policies) Changed classification policy for team
     DBTEAMLOGEventTypeArgClassificationChangePolicy,
 
@@ -1175,6 +1181,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (team_policies) Removed members from directory restrictions list
     DBTEAMLOGEventTypeArgDirectoryRestrictionsRemoveMembers,
 
+    /// (team_policies) Changed email to my dropbox policy for team
+    DBTEAMLOGEventTypeArgEmailIngestPolicyChanged,
+
     /// (team_policies) Added members to EMM exception list
     DBTEAMLOGEventTypeArgEmmAddException,
 
@@ -1187,6 +1196,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 
     /// (team_policies) Accepted/opted out of extended version history
     DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy,
+
+    /// (team_policies) Changed external drive backup policy for team
+    DBTEAMLOGEventTypeArgExternalDriveBackupPolicyChanged,
 
     /// (team_policies) Enabled/disabled commenting on team files
     DBTEAMLOGEventTypeArgFileCommentsChangePolicy,
@@ -1296,16 +1308,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// owned outside team
     DBTEAMLOGEventTypeArgSharingChangeFolderJoinPolicy,
 
-    /// (team_policies) Changed the password requirement for the links shared
-    /// outside of the team
+    /// (team_policies) Changed the allow remove or change expiration policy for
+    /// the links shared outside of the team
     DBTEAMLOGEventTypeArgSharingChangeLinkAllowChangeExpirationPolicy,
 
     /// (team_policies) Changed the default expiration for the links shared
     /// outside of the team
     DBTEAMLOGEventTypeArgSharingChangeLinkDefaultExpirationPolicy,
 
-    /// (team_policies) Changed the allow remove or change expiration policy for
-    /// the links shared outside of the team
+    /// (team_policies) Changed the password requirement for the links shared
+    /// outside of the team
     DBTEAMLOGEventTypeArgSharingChangeLinkEnforcePasswordPolicy,
 
     /// (team_policies) Changed whether members can share links outside team,
@@ -2525,6 +2537,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUserTagsRemoved;
+
+///
+/// Initializes union class with tag state of "email_ingest_receive_file".
+///
+/// Description of the "email_ingest_receive_file" tag state: (file_requests)
+/// Received files via Email to my Dropbox
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEmailIngestReceiveFile;
 
 ///
 /// Initializes union class with tag state of "file_request_change".
@@ -5128,6 +5150,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 - (instancetype)initWithCameraUploadsPolicyChanged;
 
 ///
+/// Initializes union class with tag state of
+/// "capture_transcript_policy_changed".
+///
+/// Description of the "capture_transcript_policy_changed" tag state:
+/// (team_policies) Changed Capture transcription policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCaptureTranscriptPolicyChanged;
+
+///
 /// Initializes union class with tag state of "classification_change_policy".
 ///
 /// Description of the "classification_change_policy" tag state: (team_policies)
@@ -5273,6 +5306,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 - (instancetype)initWithDirectoryRestrictionsRemoveMembers;
 
 ///
+/// Initializes union class with tag state of "email_ingest_policy_changed".
+///
+/// Description of the "email_ingest_policy_changed" tag state: (team_policies)
+/// Changed email to my dropbox policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEmailIngestPolicyChanged;
+
+///
 /// Initializes union class with tag state of "emm_add_exception".
 ///
 /// Description of the "emm_add_exception" tag state: (team_policies) Added
@@ -5312,6 +5355,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithExtendedVersionHistoryChangePolicy;
+
+///
+/// Initializes union class with tag state of
+/// "external_drive_backup_policy_changed".
+///
+/// Description of the "external_drive_backup_policy_changed" tag state:
+/// (team_policies) Changed external drive backup policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithExternalDriveBackupPolicyChanged;
 
 ///
 /// Initializes union class with tag state of "file_comments_change_policy".
@@ -5671,8 +5725,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// "sharing_change_link_allow_change_expiration_policy".
 ///
 /// Description of the "sharing_change_link_allow_change_expiration_policy" tag
-/// state: (team_policies) Changed the password requirement for the links shared
-/// outside of the team
+/// state: (team_policies) Changed the allow remove or change expiration policy
+/// for the links shared outside of the team
 ///
 /// @return An initialized instance.
 ///
@@ -5695,8 +5749,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// "sharing_change_link_enforce_password_policy".
 ///
 /// Description of the "sharing_change_link_enforce_password_policy" tag state:
-/// (team_policies) Changed the allow remove or change expiration policy for the
-/// links shared outside of the team
+/// (team_policies) Changed the password requirement for the links shared
+/// outside of the team
 ///
 /// @return An initialized instance.
 ///
@@ -7235,6 +7289,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// @return Whether the union's current tag state has value "user_tags_removed".
 ///
 - (BOOL)isUserTagsRemoved;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "email_ingest_receive_file".
+///
+/// @return Whether the union's current tag state has value
+/// "email_ingest_receive_file".
+///
+- (BOOL)isEmailIngestReceiveFile;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -9458,6 +9521,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "capture_transcript_policy_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "capture_transcript_policy_changed".
+///
+- (BOOL)isCaptureTranscriptPolicyChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "classification_change_policy".
 ///
 /// @return Whether the union's current tag state has value
@@ -9575,6 +9647,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "email_ingest_policy_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "email_ingest_policy_changed".
+///
+- (BOOL)isEmailIngestPolicyChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "emm_add_exception".
 ///
 /// @return Whether the union's current tag state has value "emm_add_exception".
@@ -9606,6 +9687,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// "extended_version_history_change_policy".
 ///
 - (BOOL)isExtendedVersionHistoryChangePolicy;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "external_drive_backup_policy_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "external_drive_backup_policy_changed".
+///
+- (BOOL)isExternalDriveBackupPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

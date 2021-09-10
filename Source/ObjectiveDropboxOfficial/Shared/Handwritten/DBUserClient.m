@@ -5,9 +5,9 @@
 #import "DBUserClient.h"
 
 #import "DBAccessTokenProvider.h"
+#import "DBOAuthManager+Protected.h"
 #import "DBTransportDefaultClient.h"
 #import "DBTransportDefaultConfig.h"
-#import "DBOAuthManager+Protected.h"
 
 @implementation DBUserClient
 
@@ -40,8 +40,8 @@
 }
 
 - (instancetype)initWithAccessToken:(DBAccessToken *)accessToken
-                                   oauthManager:(DBOAuthManager *)oauthManager
-                            transportConfig:(DBTransportDefaultConfig *)transportConfig {
+                       oauthManager:(DBOAuthManager *)oauthManager
+                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
   NSCParameterAssert(oauthManager);
   NSCParameterAssert(accessToken);
   id<DBAccessTokenProvider> tokenProvider = [oauthManager accessTokenProviderForToken:accessToken];

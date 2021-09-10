@@ -1672,8 +1672,8 @@ propertiesTemplateUpdate:(NSString *)templateId
 - (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderActivateError *> *)teamFolderActivate:(NSString *)teamFolderId;
 
 ///
-/// Sets an active team folder's status to archived and removes all folder and file members. Permission : Team member
-/// file access.
+/// Sets an active team folder's status to archived and removes all folder and file members. This endpoint cannot be
+/// used for teams that have a shared team space. Permission : Team member file access.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderArchiveLaunch` object on success
@@ -1683,8 +1683,8 @@ propertiesTemplateUpdate:(NSString *)templateId
     (NSString *)teamFolderId;
 
 ///
-/// Sets an active team folder's status to archived and removes all folder and file members. Permission : Team member
-/// file access.
+/// Sets an active team folder's status to archived and removes all folder and file members. This endpoint cannot be
+/// used for teams that have a shared team space. Permission : Team member file access.
 ///
 /// @param forceAsyncOff Whether to force the archive to happen synchronously.
 ///
@@ -1707,7 +1707,8 @@ teamFolderArchive:(NSString *)teamFolderId
 - (DBRpcTask<DBTEAMTeamFolderArchiveJobStatus *, DBASYNCPollError *> *)teamFolderArchiveCheck:(NSString *)asyncJobId;
 
 ///
-/// Creates a new, active, team folder with no members. Permission : Team member file access.
+/// Creates a new, active, team folder with no members. This endpoint can only be used for teams that do not already
+/// have a shared team space. Permission : Team member file access.
 ///
 /// @param name Name for the new team folder.
 ///
@@ -1717,7 +1718,8 @@ teamFolderArchive:(NSString *)teamFolderId
 - (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderCreateError *> *)teamFolderCreate:(NSString *)name;
 
 ///
-/// Creates a new, active, team folder with no members. Permission : Team member file access.
+/// Creates a new, active, team folder with no members. This endpoint can only be used for teams that do not already
+/// have a shared team space. Permission : Team member file access.
 ///
 /// @param name Name for the new team folder.
 /// @param syncSetting The sync setting to apply to this team folder. Only permitted if the team has team selective sync
@@ -1773,7 +1775,8 @@ teamFolderCreate:(NSString *)name
     (NSString *)cursor;
 
 ///
-/// Permanently deletes an archived team folder. Permission : Team member file access.
+/// Permanently deletes an archived team folder. This endpoint cannot be used for teams that have a shared team space.
+/// Permission : Team member file access.
 ///
 /// @param teamFolderId The ID of the team folder.
 ///
