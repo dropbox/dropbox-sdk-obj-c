@@ -24,10 +24,9 @@ jobs:
           REFRESH_TOKEN_ACCOUNT_ID: ${{ secrets.REFRESH_TOKEN_ACCOUNT_ID }}
           ANY_OTHER_ACCOUNT_ID: ${{ secrets.ANY_OTHER_ACCOUNT_ID }}
           NON_TEAM_MEMBER_ACCOUNT_ID: ${{ secrets.NON_TEAM_MEMBER_ACCOUNT_ID }}
-
           platform: ${{ 'iOS Simulator' }}
+          device: ${{ 'iPhone 13' }}
         run: |
-          device=`instruments -s -devices | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}'`
           xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
             -destination "platform=$platform,name=$device" \
             FULL_DROPBOX_API_APP_KEY=$FULL_DROPBOX_API_APP_KEY \
