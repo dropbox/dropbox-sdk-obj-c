@@ -29,8 +29,11 @@
 #import "DBFILEPROPERTIESTemplateFilterBase.h"
 #import "DBFILEPROPERTIESUpdatePropertiesArg.h"
 #import "DBFILEPROPERTIESUpdatePropertiesError.h"
+#import "DBFILESAddTagArg.h"
+#import "DBFILESAddTagError.h"
 #import "DBFILESAlphaGetMetadataArg.h"
 #import "DBFILESAlphaGetMetadataError.h"
+#import "DBFILESBaseTagError.h"
 #import "DBFILESCommitInfo.h"
 #import "DBFILESCommitInfoWithProperties.h"
 #import "DBFILESCreateFolderArg.h"
@@ -71,6 +74,8 @@
 #import "DBFILESGetCopyReferenceResult.h"
 #import "DBFILESGetMetadataArg.h"
 #import "DBFILESGetMetadataError.h"
+#import "DBFILESGetTagsArg.h"
+#import "DBFILESGetTagsResult.h"
 #import "DBFILESGetTemporaryLinkArg.h"
 #import "DBFILESGetTemporaryLinkError.h"
 #import "DBFILESGetTemporaryLinkResult.h"
@@ -115,6 +120,7 @@
 #import "DBFILESPaperUpdateError.h"
 #import "DBFILESPaperUpdateResult.h"
 #import "DBFILESPathOrLink.h"
+#import "DBFILESPathToTags.h"
 #import "DBFILESPreviewArg.h"
 #import "DBFILESPreviewError.h"
 #import "DBFILESPreviewResult.h"
@@ -131,6 +137,8 @@
 #import "DBFILESRelocationError.h"
 #import "DBFILESRelocationPath.h"
 #import "DBFILESRelocationResult.h"
+#import "DBFILESRemoveTagArg.h"
+#import "DBFILESRemoveTagError.h"
 #import "DBFILESRestoreArg.h"
 #import "DBFILESRestoreError.h"
 #import "DBFILESRouteObjects.h"
@@ -172,6 +180,7 @@
 #import "DBFILESUploadSessionFinishBatchJobStatus.h"
 #import "DBFILESUploadSessionFinishBatchLaunch.h"
 #import "DBFILESUploadSessionFinishBatchResult.h"
+#import "DBFILESUploadSessionFinishBatchResultEntry.h"
 #import "DBFILESUploadSessionFinishError.h"
 #import "DBFILESUploadSessionLookupError.h"
 #import "DBFILESUploadSessionOffsetError.h"
@@ -1343,6 +1352,24 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)tagsAdd:(NSString *)path tagText:(NSString *)tagText {
+  DBRoute *route = DBFILESRouteObjects.DBFILESTagsAdd;
+  DBFILESAddTagArg *arg = [[DBFILESAddTagArg alloc] initWithPath:path tagText:tagText];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)tagsGet:(NSArray<NSString *> *)paths {
+  DBRoute *route = DBFILESRouteObjects.DBFILESTagsGet;
+  DBFILESGetTagsArg *arg = [[DBFILESGetTagsArg alloc] initWithPaths:paths];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)tagsRemove:(NSString *)path tagText:(NSString *)tagText {
+  DBRoute *route = DBFILESRouteObjects.DBFILESTagsRemove;
+  DBFILESRemoveTagArg *arg = [[DBFILESRemoveTagArg alloc] initWithPath:path tagText:tagText];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)unlockFileBatch:(NSArray<DBFILESUnlockFileArg *> *)entries {
   DBRoute *route = DBFILESRouteObjects.DBFILESUnlockFileBatch;
   DBFILESUnlockFileBatchArg *arg = [[DBFILESUnlockFileBatchArg alloc] initWithEntries:entries];
@@ -1515,6 +1542,12 @@
 
 - (DBRpcTask *)uploadSessionFinishBatch:(NSArray<DBFILESUploadSessionFinishArg *> *)entries {
   DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionFinishBatch;
+  DBFILESUploadSessionFinishBatchArg *arg = [[DBFILESUploadSessionFinishBatchArg alloc] initWithEntries:entries];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)uploadSessionFinishBatchV2:(NSArray<DBFILESUploadSessionFinishArg *> *)entries {
+  DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionFinishBatchV2;
   DBFILESUploadSessionFinishBatchArg *arg = [[DBFILESUploadSessionFinishBatchArg alloc] initWithEntries:entries];
   return [self.client requestRpc:route arg:arg];
 }

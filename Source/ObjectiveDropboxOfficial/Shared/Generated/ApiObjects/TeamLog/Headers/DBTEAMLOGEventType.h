@@ -476,6 +476,8 @@
 @class DBTEAMLOGTfaRemoveSecurityKeyType;
 @class DBTEAMLOGTfaResetType;
 @class DBTEAMLOGTwoAccountChangePolicyType;
+@class DBTEAMLOGUndoNamingConventionType;
+@class DBTEAMLOGUndoOrganizeFolderWithTidyType;
 @class DBTEAMLOGUserTagsAddedType;
 @class DBTEAMLOGUserTagsRemovedType;
 @class DBTEAMLOGViewerInfoPolicyChangedType;
@@ -719,7 +721,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (domains) Enabled domain invites (deprecated, no longer logged)
     DBTEAMLOGEventTypeEnabledDomainInvites,
 
-    /// (file_operations) Applied a Naming Convention rule
+    /// (file_operations) Applied naming convention
     DBTEAMLOGEventTypeApplyNamingConvention,
 
     /// (file_operations) Created folders (deprecated, no longer logged)
@@ -788,11 +790,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (file_operations) Updated a label's value
     DBTEAMLOGEventTypeObjectLabelUpdatedValue,
 
-    /// (file_operations) Organized a folder with the Tidy Up action
+    /// (file_operations) Organized a folder with multi-file organize
     DBTEAMLOGEventTypeOrganizeFolderWithTidy,
 
     /// (file_operations) Rewound a folder
     DBTEAMLOGEventTypeRewindFolder,
+
+    /// (file_operations) Reverted naming convention
+    DBTEAMLOGEventTypeUndoNamingConvention,
+
+    /// (file_operations) Removed multi-file organize
+    DBTEAMLOGEventTypeUndoOrganizeFolderWithTidy,
 
     /// (file_operations) Tagged a file
     DBTEAMLOGEventTypeUserTagsAdded,
@@ -1655,7 +1663,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (team_policies) Removed members from directory restrictions list
     DBTEAMLOGEventTypeDirectoryRestrictionsRemoveMembers,
 
-    /// (team_policies) Changed email to my dropbox policy for team
+    /// (team_policies) Changed email to my Dropbox policy for team
     DBTEAMLOGEventTypeEmailIngestPolicyChanged,
 
     /// (team_policies) Added members to EMM exception list
@@ -2362,7 +2370,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEnabledDomainInvitesType *enabledDomainInvites;
 
-/// (file_operations) Applied a Naming Convention rule @note Ensure the
+/// (file_operations) Applied naming convention @note Ensure the
 /// `isApplyNamingConvention` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGApplyNamingConventionType *applyNamingConvention;
@@ -2475,7 +2483,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGObjectLabelUpdatedValueType *objectLabelUpdatedValue;
 
-/// (file_operations) Organized a folder with the Tidy Up action @note Ensure
+/// (file_operations) Organized a folder with multi-file organize @note Ensure
 /// the `isOrganizeFolderWithTidy` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGOrganizeFolderWithTidyType *organizeFolderWithTidy;
@@ -2483,6 +2491,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// (file_operations) Rewound a folder @note Ensure the `isRewindFolder` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGRewindFolderType *rewindFolder;
+
+/// (file_operations) Reverted naming convention @note Ensure the
+/// `isUndoNamingConvention` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGUndoNamingConventionType *undoNamingConvention;
+
+/// (file_operations) Removed multi-file organize @note Ensure the
+/// `isUndoOrganizeFolderWithTidy` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGUndoOrganizeFolderWithTidyType *undoOrganizeFolderWithTidy;
 
 /// (file_operations) Tagged a file @note Ensure the `isUserTagsAdded` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -3828,7 +3846,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDirectoryRestrictionsRemoveMembersType *directoryRestrictionsRemoveMembers;
 
-/// (team_policies) Changed email to my dropbox policy for team @note Ensure the
+/// (team_policies) Changed email to my Dropbox policy for team @note Ensure the
 /// `isEmailIngestPolicyChanged` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmailIngestPolicyChangedType *emailIngestPolicyChanged;
@@ -5338,10 +5356,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// Initializes union class with tag state of "apply_naming_convention".
 ///
 /// Description of the "apply_naming_convention" tag state: (file_operations)
-/// Applied a Naming Convention rule
+/// Applied naming convention
 ///
-/// @param applyNamingConvention (file_operations) Applied a Naming Convention
-/// rule
+/// @param applyNamingConvention (file_operations) Applied naming convention
 ///
 /// @return An initialized instance.
 ///
@@ -5627,10 +5644,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// Initializes union class with tag state of "organize_folder_with_tidy".
 ///
 /// Description of the "organize_folder_with_tidy" tag state: (file_operations)
-/// Organized a folder with the Tidy Up action
+/// Organized a folder with multi-file organize
 ///
-/// @param organizeFolderWithTidy (file_operations) Organized a folder with the
-/// Tidy Up action
+/// @param organizeFolderWithTidy (file_operations) Organized a folder with
+/// multi-file organize
 ///
 /// @return An initialized instance.
 ///
@@ -5647,6 +5664,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithRewindFolder:(DBTEAMLOGRewindFolderType *)rewindFolder;
+
+///
+/// Initializes union class with tag state of "undo_naming_convention".
+///
+/// Description of the "undo_naming_convention" tag state: (file_operations)
+/// Reverted naming convention
+///
+/// @param undoNamingConvention (file_operations) Reverted naming convention
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUndoNamingConvention:(DBTEAMLOGUndoNamingConventionType *)undoNamingConvention;
+
+///
+/// Initializes union class with tag state of "undo_organize_folder_with_tidy".
+///
+/// Description of the "undo_organize_folder_with_tidy" tag state:
+/// (file_operations) Removed multi-file organize
+///
+/// @param undoOrganizeFolderWithTidy (file_operations) Removed multi-file
+/// organize
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUndoOrganizeFolderWithTidy:
+    (DBTEAMLOGUndoOrganizeFolderWithTidyType *)undoOrganizeFolderWithTidy;
 
 ///
 /// Initializes union class with tag state of "user_tags_added".
@@ -9214,9 +9257,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// Initializes union class with tag state of "email_ingest_policy_changed".
 ///
 /// Description of the "email_ingest_policy_changed" tag state: (team_policies)
-/// Changed email to my dropbox policy for team
+/// Changed email to my Dropbox policy for team
 ///
-/// @param emailIngestPolicyChanged (team_policies) Changed email to my dropbox
+/// @param emailIngestPolicyChanged (team_policies) Changed email to my Dropbox
 /// policy for team
 ///
 /// @return An initialized instance.
@@ -11907,6 +11950,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// @return Whether the union's current tag state has value "rewind_folder".
 ///
 - (BOOL)isRewindFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "undo_naming_convention".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `undoNamingConvention` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "undo_naming_convention".
+///
+- (BOOL)isUndoNamingConvention;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "undo_organize_folder_with_tidy".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `undoOrganizeFolderWithTidy` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "undo_organize_folder_with_tidy".
+///
+- (BOOL)isUndoOrganizeFolderWithTidy;
 
 ///
 /// Retrieves whether the union's current tag state has value "user_tags_added".
