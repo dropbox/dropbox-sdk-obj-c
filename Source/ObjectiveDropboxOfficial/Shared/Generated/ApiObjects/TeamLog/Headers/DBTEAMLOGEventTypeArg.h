@@ -245,7 +245,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (domains) Enabled domain invites (deprecated, no longer logged)
     DBTEAMLOGEventTypeArgEnabledDomainInvites,
 
-    /// (file_operations) Applied a Naming Convention rule
+    /// (file_operations) Applied naming convention
     DBTEAMLOGEventTypeArgApplyNamingConvention,
 
     /// (file_operations) Created folders (deprecated, no longer logged)
@@ -314,11 +314,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (file_operations) Updated a label's value
     DBTEAMLOGEventTypeArgObjectLabelUpdatedValue,
 
-    /// (file_operations) Organized a folder with the Tidy Up action
+    /// (file_operations) Organized a folder with multi-file organize
     DBTEAMLOGEventTypeArgOrganizeFolderWithTidy,
 
     /// (file_operations) Rewound a folder
     DBTEAMLOGEventTypeArgRewindFolder,
+
+    /// (file_operations) Reverted naming convention
+    DBTEAMLOGEventTypeArgUndoNamingConvention,
+
+    /// (file_operations) Removed multi-file organize
+    DBTEAMLOGEventTypeArgUndoOrganizeFolderWithTidy,
 
     /// (file_operations) Tagged a file
     DBTEAMLOGEventTypeArgUserTagsAdded,
@@ -1181,7 +1187,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (team_policies) Removed members from directory restrictions list
     DBTEAMLOGEventTypeArgDirectoryRestrictionsRemoveMembers,
 
-    /// (team_policies) Changed email to my dropbox policy for team
+    /// (team_policies) Changed email to my Dropbox policy for team
     DBTEAMLOGEventTypeArgEmailIngestPolicyChanged,
 
     /// (team_policies) Added members to EMM exception list
@@ -2271,7 +2277,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// Initializes union class with tag state of "apply_naming_convention".
 ///
 /// Description of the "apply_naming_convention" tag state: (file_operations)
-/// Applied a Naming Convention rule
+/// Applied naming convention
 ///
 /// @return An initialized instance.
 ///
@@ -2502,7 +2508,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// Initializes union class with tag state of "organize_folder_with_tidy".
 ///
 /// Description of the "organize_folder_with_tidy" tag state: (file_operations)
-/// Organized a folder with the Tidy Up action
+/// Organized a folder with multi-file organize
 ///
 /// @return An initialized instance.
 ///
@@ -2517,6 +2523,26 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithRewindFolder;
+
+///
+/// Initializes union class with tag state of "undo_naming_convention".
+///
+/// Description of the "undo_naming_convention" tag state: (file_operations)
+/// Reverted naming convention
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUndoNamingConvention;
+
+///
+/// Initializes union class with tag state of "undo_organize_folder_with_tidy".
+///
+/// Description of the "undo_organize_folder_with_tidy" tag state:
+/// (file_operations) Removed multi-file organize
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUndoOrganizeFolderWithTidy;
 
 ///
 /// Initializes union class with tag state of "user_tags_added".
@@ -5309,7 +5335,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// Initializes union class with tag state of "email_ingest_policy_changed".
 ///
 /// Description of the "email_ingest_policy_changed" tag state: (team_policies)
-/// Changed email to my dropbox policy for team
+/// Changed email to my Dropbox policy for team
 ///
 /// @return An initialized instance.
 ///
@@ -7274,6 +7300,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// @return Whether the union's current tag state has value "rewind_folder".
 ///
 - (BOOL)isRewindFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "undo_naming_convention".
+///
+/// @return Whether the union's current tag state has value
+/// "undo_naming_convention".
+///
+- (BOOL)isUndoNamingConvention;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "undo_organize_folder_with_tidy".
+///
+/// @return Whether the union's current tag state has value
+/// "undo_organize_folder_with_tidy".
+///
+- (BOOL)isUndoOrganizeFolderWithTidy;
 
 ///
 /// Retrieves whether the union's current tag state has value "user_tags_added".

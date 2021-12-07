@@ -477,6 +477,8 @@
 @class DBTEAMLOGTfaRemoveSecurityKeyDetails;
 @class DBTEAMLOGTfaResetDetails;
 @class DBTEAMLOGTwoAccountChangePolicyDetails;
+@class DBTEAMLOGUndoNamingConventionDetails;
+@class DBTEAMLOGUndoOrganizeFolderWithTidyDetails;
 @class DBTEAMLOGUserTagsAddedDetails;
 @class DBTEAMLOGUserTagsRemovedDetails;
 @class DBTEAMLOGViewerInfoPolicyChangedDetails;
@@ -789,6 +791,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
     /// (no description).
     DBTEAMLOGEventDetailsRewindFolderDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsUndoNamingConventionDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsUndoOrganizeFolderWithTidyDetails,
 
     /// (no description).
     DBTEAMLOGEventDetailsUserTagsAddedDetails,
@@ -2369,6 +2377,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// (no description). @note Ensure the `isRewindFolderDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGRewindFolderDetails *rewindFolderDetails;
+
+/// (no description). @note Ensure the `isUndoNamingConventionDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGUndoNamingConventionDetails *undoNamingConventionDetails;
+
+/// (no description). @note Ensure the `isUndoOrganizeFolderWithTidyDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGUndoOrganizeFolderWithTidyDetails *undoOrganizeFolderWithTidyDetails;
 
 /// (no description). @note Ensure the `isUserTagsAddedDetails` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
@@ -5105,6 +5122,26 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithRewindFolderDetails:(DBTEAMLOGRewindFolderDetails *)rewindFolderDetails;
+
+///
+/// Initializes union class with tag state of "undo_naming_convention_details".
+///
+/// @param undoNamingConventionDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUndoNamingConventionDetails:(DBTEAMLOGUndoNamingConventionDetails *)undoNamingConventionDetails;
+
+///
+/// Initializes union class with tag state of
+/// "undo_organize_folder_with_tidy_details".
+///
+/// @param undoOrganizeFolderWithTidyDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUndoOrganizeFolderWithTidyDetails:
+    (DBTEAMLOGUndoOrganizeFolderWithTidyDetails *)undoOrganizeFolderWithTidyDetails;
 
 ///
 /// Initializes union class with tag state of "user_tags_added_details".
@@ -10225,6 +10262,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// "rewind_folder_details".
 ///
 - (BOOL)isRewindFolderDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "undo_naming_convention_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `undoNamingConventionDetails` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "undo_naming_convention_details".
+///
+- (BOOL)isUndoNamingConventionDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "undo_organize_folder_with_tidy_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `undoOrganizeFolderWithTidyDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "undo_organize_folder_with_tidy_details".
+///
+- (BOOL)isUndoOrganizeFolderWithTidyDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

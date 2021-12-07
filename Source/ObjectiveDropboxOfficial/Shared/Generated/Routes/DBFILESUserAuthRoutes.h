@@ -23,7 +23,9 @@
 @class DBFILEPROPERTIESTemplateError;
 @class DBFILEPROPERTIESTemplateFilterBase;
 @class DBFILEPROPERTIESUpdatePropertiesError;
+@class DBFILESAddTagError;
 @class DBFILESAlphaGetMetadataError;
+@class DBFILESBaseTagError;
 @class DBFILESCommitInfo;
 @class DBFILESCreateFolderBatchError;
 @class DBFILESCreateFolderBatchJobStatus;
@@ -55,6 +57,7 @@
 @class DBFILESGetCopyReferenceError;
 @class DBFILESGetCopyReferenceResult;
 @class DBFILESGetMetadataError;
+@class DBFILESGetTagsResult;
 @class DBFILESGetTemporaryLinkError;
 @class DBFILESGetTemporaryLinkResult;
 @class DBFILESGetTemporaryUploadLinkResult;
@@ -87,6 +90,7 @@
 @class DBFILESPaperUpdateError;
 @class DBFILESPaperUpdateResult;
 @class DBFILESPathOrLink;
+@class DBFILESPathToTags;
 @class DBFILESPreviewError;
 @class DBFILESPreviewResult;
 @class DBFILESRelocationBatchError;
@@ -99,6 +103,7 @@
 @class DBFILESRelocationError;
 @class DBFILESRelocationPath;
 @class DBFILESRelocationResult;
+@class DBFILESRemoveTagError;
 @class DBFILESRestoreError;
 @class DBFILESSaveCopyReferenceError;
 @class DBFILESSaveCopyReferenceResult;
@@ -131,6 +136,7 @@
 @class DBFILESUploadSessionFinishBatchJobStatus;
 @class DBFILESUploadSessionFinishBatchLaunch;
 @class DBFILESUploadSessionFinishBatchResult;
+@class DBFILESUploadSessionFinishBatchResultEntry;
 @class DBFILESUploadSessionFinishError;
 @class DBFILESUploadSessionLookupError;
 @class DBFILESUploadSessionOffsetError;
@@ -2382,6 +2388,38 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 - (DBRpcTask<DBFILESSearchV2Result *, DBFILESSearchError *> *)searchContinueV2:(NSString *)cursor;
 
 ///
+/// Add a tag to an item. A tag is a string. No more than 20 tags can be added to a given item.
+///
+/// @param path Path to the item to be tagged.
+/// @param tagText The value of the tag to add.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a `DBFILESAddTagError`
+/// object on failure.
+///
+- (DBRpcTask<DBNilObject *, DBFILESAddTagError *> *)tagsAdd:(NSString *)path tagText:(NSString *)tagText;
+
+///
+/// Get list of tags assigned to items.
+///
+/// @param paths Path to the items.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESGetTagsResult` object on success or a
+/// `DBFILESBaseTagError` object on failure.
+///
+- (DBRpcTask<DBFILESGetTagsResult *, DBFILESBaseTagError *> *)tagsGet:(NSArray<NSString *> *)paths;
+
+///
+/// Remove a tag from an item.
+///
+/// @param path Path to the item to tag.
+/// @param tagText The tag to remove.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESRemoveTagError` object on failure.
+///
+- (DBRpcTask<DBNilObject *, DBFILESRemoveTagError *> *)tagsRemove:(NSString *)path tagText:(NSString *)tagText;
+
+///
 /// Unlock the files at the given paths. A locked file can only be unlocked by the lock holder or, if a business
 /// account, a team admin. A successful response indicates that the file has been unlocked. Returns a list of the
 /// unlocked file paths and their metadata after this operation.
@@ -2771,7 +2809,7 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
               inputStream:(NSInputStream *)inputStream;
 
 ///
-/// This route helps you commit many files at once into a user's Dropbox. Use `uploadSessionStart` and
+/// DEPRECATED: This route helps you commit many files at once into a user's Dropbox. Use `uploadSessionStart` and
 /// `uploadSessionAppend` to upload file contents. We recommend uploading many files in parallel to increase throughput.
 /// Once the file contents have been uploaded, rather than calling `uploadSessionFinish`, use this route to finish all
 /// your upload sessions in a single request. `close` in `DBFILESUploadSessionStartArg` or `close` in
@@ -2790,6 +2828,26 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
 /// success or a `void` object on failure.
 ///
 - (DBRpcTask<DBFILESUploadSessionFinishBatchLaunch *, DBNilObject *> *)uploadSessionFinishBatch:
+    (NSArray<DBFILESUploadSessionFinishArg *> *)entries
+    __deprecated_msg("uploadSessionFinishBatch is deprecated. Use uploadSessionFinishBatch.");
+
+///
+/// This route helps you commit many files at once into a user's Dropbox. Use `uploadSessionStart` and
+/// `uploadSessionAppend` to upload file contents. We recommend uploading many files in parallel to increase throughput.
+/// Once the file contents have been uploaded, rather than calling `uploadSessionFinish`, use this route to finish all
+/// your upload sessions in a single request. `close` in `DBFILESUploadSessionStartArg` or `close` in
+/// `DBFILESUploadSessionAppendArg` needs to be true for the last `uploadSessionStart` or `uploadSessionAppend` call of
+/// each upload session. The maximum size of a file one can upload to an upload session is 350 GB. We allow up to 1000
+/// entries in a single request. Calls to this endpoint will count as data transport calls for any Dropbox Business
+/// teams with a limit on the number of data transport calls allowed per month. For more information, see the Data
+/// transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
+///
+/// @param entries Commit information for each file in the batch.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionFinishBatchResult` object on
+/// success or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESUploadSessionFinishBatchResult *, DBNilObject *> *)uploadSessionFinishBatchV2:
     (NSArray<DBFILESUploadSessionFinishArg *> *)entries;
 
 ///
