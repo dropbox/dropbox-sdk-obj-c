@@ -413,6 +413,8 @@ static const int timeoutInSec = 200;
 
     uploadData.finishArgs = sortedFinishArgs;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[self uploadSessionFinishBatch:sortedFinishArgs]
         setResponseBlock:^(DBFILESUploadSessionFinishBatchLaunch *result, DBNilObject *routeError,
                            DBRequestError *error) {
@@ -429,6 +431,7 @@ static const int timeoutInSec = 200;
         }
                    queue:uploadData.pollingQueue];
   });
+#pragma clang diagnostic pop
 }
 
 - (void)executeProgressHandler:(DBBatchUploadData *)uploadData amountUploaded:(int64_t)amountUploaded {
