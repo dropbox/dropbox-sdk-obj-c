@@ -413,25 +413,17 @@ static const int timeoutInSec = 200;
 
     uploadData.finishArgs = sortedFinishArgs;
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    [[self uploadSessionFinishBatch:sortedFinishArgs]
-        setResponseBlock:^(DBFILESUploadSessionFinishBatchLaunch *result, DBNilObject *routeError,
-                           DBRequestError *error) {
-          if (result && !routeError) {
-            if ([result isAsyncJobId]) {
-              sleep(1);
-              [self queryJobStatus:uploadData asyncJobId:result.asyncJobId retryCount:2];
-            }
-          } else {
+    [[self uploadSessionFinishBatchV2:sortedFinishArgs]
+    setResponseBlock:^(DBFILESUploadSessionFinishBatchResult * _Nullable result,
+                        DBNilObject * _Nullable routeError,
+                        DBRequestError * _Nullable networkError) {
+        if (!result || routeError) {
             [uploadData.queue addOperationWithBlock:^{
-              uploadData.responseBlock(nil, nil, error, uploadData.fileUrlsToRequestErrors);
+                uploadData.responseBlock(nil, nil, networkError, uploadData.fileUrlsToRequestErrors);
             }];
-          }
         }
-                   queue:uploadData.pollingQueue];
+    } queue:uploadData.pollingQueue];
   });
-#pragma clang diagnostic pop
 }
 
 - (void)executeProgressHandler:(DBBatchUploadData *)uploadData amountUploaded:(int64_t)amountUploaded {
