@@ -77,6 +77,7 @@
 #import "DBFILESMediaInfo.h"
 #import "DBFILESMetadata.h"
 #import "DBFILESMinimalFileLinkMetadata.h"
+#import "DBFILESMoveIntoFamilyError.h"
 #import "DBFILESMoveIntoVaultError.h"
 #import "DBFILESPaperContentError.h"
 #import "DBFILESPaperCreateError.h"
@@ -111,7 +112,7 @@
 #import "DBFILESThumbnailError.h"
 #import "DBFILESThumbnailV2Error.h"
 #import "DBFILESUploadError.h"
-#import "DBFILESUploadErrorWithProperties.h"
+#import "DBFILESUploadSessionAppendError.h"
 #import "DBFILESUploadSessionFinishBatchJobStatus.h"
 #import "DBFILESUploadSessionFinishBatchLaunch.h"
 #import "DBFILESUploadSessionFinishBatchResult.h"
@@ -233,7 +234,7 @@ static NSObject *lockObj = nil;
                                       namespace_:@"files"
                                       deprecated:@YES
                                       resultType:[DBFILESFileMetadata class]
-                                       errorType:[DBFILESUploadErrorWithProperties class]
+                                       errorType:[DBFILESUploadError class]
                                            attrs:@{
                                              @"auth" : @"user",
                                              @"host" : @"content",
@@ -1433,7 +1434,7 @@ static NSObject *lockObj = nil;
                                                 namespace_:@"files"
                                                 deprecated:@NO
                                                 resultType:nil
-                                                 errorType:[DBFILESUploadSessionLookupError class]
+                                                 errorType:[DBFILESUploadSessionAppendError class]
                                                      attrs:@{
                                                        @"auth" : @"user",
                                                        @"host" : @"content",
@@ -1453,7 +1454,7 @@ static NSObject *lockObj = nil;
                                               namespace_:@"files"
                                               deprecated:@YES
                                               resultType:nil
-                                               errorType:[DBFILESUploadSessionLookupError class]
+                                               errorType:[DBFILESUploadSessionAppendError class]
                                                    attrs:@{
                                                      @"auth" : @"user",
                                                      @"host" : @"content",

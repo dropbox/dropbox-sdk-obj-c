@@ -83,6 +83,7 @@
 @class DBFILESMediaInfo;
 @class DBFILESMetadata;
 @class DBFILESMinimalFileLinkMetadata;
+@class DBFILESMoveIntoFamilyError;
 @class DBFILESMoveIntoVaultError;
 @class DBFILESPaperCreateError;
 @class DBFILESPaperCreateResult;
@@ -130,7 +131,7 @@
 @class DBFILESThumbnailV2Error;
 @class DBFILESUnlockFileArg;
 @class DBFILESUploadError;
-@class DBFILESUploadErrorWithProperties;
+@class DBFILESUploadSessionAppendError;
 @class DBFILESUploadSessionCursor;
 @class DBFILESUploadSessionFinishArg;
 @class DBFILESUploadSessionFinishBatchJobStatus;

@@ -83,6 +83,7 @@
 @class DBFILESMediaInfo;
 @class DBFILESMetadata;
 @class DBFILESMinimalFileLinkMetadata;
+@class DBFILESMoveIntoFamilyError;
 @class DBFILESMoveIntoVaultError;
 @class DBFILESPaperCreateError;
 @class DBFILESPaperCreateResult;
@@ -130,7 +131,7 @@
 @class DBFILESThumbnailV2Error;
 @class DBFILESUnlockFileArg;
 @class DBFILESUploadError;
-@class DBFILESUploadErrorWithProperties;
+@class DBFILESUploadSessionAppendError;
 @class DBFILESUploadSessionCursor;
 @class DBFILESUploadSessionFinishArg;
 @class DBFILESUploadSessionFinishBatchJobStatus;
@@ -197,30 +198,33 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
     __deprecated_msg("alphaGetMetadata is deprecated. Use getMetadata.");
 
 ///
-/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
-/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that the behavior of this alpha
+/// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
+/// upload session with `uploadSessionStart`.
 ///
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
-/// `DBFILESUploadErrorWithProperties` object on failure.
+/// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)alphaUploadUrl:(NSString *)path
-                                                                                   inputUrl:(NSString *)inputUrl
-    __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)alphaUploadUrl:(NSString *)path
+                                                                     inputUrl:(NSString *)inputUrl
+    __deprecated_msg("alphaUpload is deprecated. Use upload.");
 
 ///
-/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
-/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that the behavior of this alpha
+/// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
+/// upload session with `uploadSessionStart`.
 ///
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
-/// `DBFILESUploadErrorWithProperties` object on failure.
+/// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)
 alphaUploadUrl:(NSString *)path
           mode:(nullable DBFILESWriteMode *)mode
     autorename:(nullable NSNumber *)autorename
@@ -228,33 +232,37 @@ clientModified:(nullable NSDate *)clientModified
           mute:(nullable NSNumber *)mute
 propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
 strictConflict:(nullable NSNumber *)strictConflict
-      inputUrl:(NSString *)inputUrl __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
+   contentHash:(nullable NSString *)contentHash
+      inputUrl:(NSString *)inputUrl __deprecated_msg("alphaUpload is deprecated. Use upload.");
 
 ///
-/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
-/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that the behavior of this alpha
+/// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
+/// upload session with `uploadSessionStart`.
 ///
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
-/// `DBFILESUploadErrorWithProperties` object on failure.
+/// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)alphaUploadData:(NSString *)path
-                                                                                   inputData:(NSData *)inputData
-    __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)alphaUploadData:(NSString *)path
+                                                                     inputData:(NSData *)inputData
+    __deprecated_msg("alphaUpload is deprecated. Use upload.");
 
 ///
-/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
-/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that the behavior of this alpha
+/// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
+/// upload session with `uploadSessionStart`.
 ///
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
-/// `DBFILESUploadErrorWithProperties` object on failure.
+/// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)
 alphaUploadData:(NSString *)path
            mode:(nullable DBFILESWriteMode *)mode
      autorename:(nullable NSNumber *)autorename
@@ -262,34 +270,37 @@ alphaUploadData:(NSString *)path
            mute:(nullable NSNumber *)mute
  propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
  strictConflict:(nullable NSNumber *)strictConflict
-      inputData:(NSData *)inputData __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
+    contentHash:(nullable NSString *)contentHash
+      inputData:(NSData *)inputData __deprecated_msg("alphaUpload is deprecated. Use upload.");
 
 ///
-/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
-/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that the behavior of this alpha
+/// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
+/// upload session with `uploadSessionStart`.
 ///
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
-/// `DBFILESUploadErrorWithProperties` object on failure.
+/// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)alphaUploadStream:(NSString *)path
-                                                                                   inputStream:
-                                                                                       (NSInputStream *)inputStream
-    __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)alphaUploadStream:(NSString *)path
+                                                                     inputStream:(NSInputStream *)inputStream
+    __deprecated_msg("alphaUpload is deprecated. Use upload.");
 
 ///
-/// DEPRECATED: Create a new file with the contents provided in the request. Note that this endpoint is part of the
-/// properties API alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with `uploadSessionStart`.
+/// DEPRECATED: Create a new file with the contents provided in the request. Note that the behavior of this alpha
+/// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
+/// upload session with `uploadSessionStart`.
 ///
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
-/// `DBFILESUploadErrorWithProperties` object on failure.
+/// `DBFILESUploadError` object on failure.
 ///
-- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> *)
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> *)
 alphaUploadStream:(NSString *)path
              mode:(nullable DBFILESWriteMode *)mode
        autorename:(nullable NSNumber *)autorename
@@ -297,7 +308,8 @@ alphaUploadStream:(NSString *)path
              mute:(nullable NSNumber *)mute
    propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
    strictConflict:(nullable NSNumber *)strictConflict
-      inputStream:(NSInputStream *)inputStream __deprecated_msg("alphaUpload is deprecated. Use alphaUpload.");
+      contentHash:(nullable NSString *)contentHash
+      inputStream:(NSInputStream *)inputStream __deprecated_msg("alphaUpload is deprecated. Use upload.");
 
 ///
 /// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
@@ -2439,7 +2451,6 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param path Path in the user's Dropbox to save the file.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2453,20 +2464,9 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param path Path in the user's Dropbox to save the file.
-/// @param mode Selects what to do if the file already exists.
-/// @param autorename If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file
-/// to avoid conflict.
-/// @param clientModified The value to store as the clientModified timestamp. Dropbox automatically records the time at
-/// which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox
-/// desktop clients, mobile clients, and API apps of when the file was actually created or modified.
-/// @param mute Normally, users are made aware of any file modifications in their Dropbox account via notifications in
-/// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
-/// @param propertyGroups List of custom properties to add to file.
-/// @param strictConflict Be more strict about how each WriteMode detects conflict. For example, always return a
-/// conflict error when mode = `update` in `DBFILESWriteMode` and the given "rev" doesn't match the existing file's
-/// "rev", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a
-/// file with identical contents.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2480,6 +2480,7 @@ clientModified:(nullable NSDate *)clientModified
           mute:(nullable NSNumber *)mute
 propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
 strictConflict:(nullable NSNumber *)strictConflict
+   contentHash:(nullable NSString *)contentHash
       inputUrl:(NSString *)inputUrl;
 
 ///
@@ -2488,7 +2489,6 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param path Path in the user's Dropbox to save the file.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2503,20 +2503,9 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param path Path in the user's Dropbox to save the file.
-/// @param mode Selects what to do if the file already exists.
-/// @param autorename If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file
-/// to avoid conflict.
-/// @param clientModified The value to store as the clientModified timestamp. Dropbox automatically records the time at
-/// which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox
-/// desktop clients, mobile clients, and API apps of when the file was actually created or modified.
-/// @param mute Normally, users are made aware of any file modifications in their Dropbox account via notifications in
-/// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
-/// @param propertyGroups List of custom properties to add to file.
-/// @param strictConflict Be more strict about how each WriteMode detects conflict. For example, always return a
-/// conflict error when mode = `update` in `DBFILESWriteMode` and the given "rev" doesn't match the existing file's
-/// "rev", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a
-/// file with identical contents.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2530,6 +2519,7 @@ clientModified:(nullable NSDate *)clientModified
           mute:(nullable NSNumber *)mute
 propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
 strictConflict:(nullable NSNumber *)strictConflict
+   contentHash:(nullable NSString *)contentHash
      inputData:(NSData *)inputData;
 
 ///
@@ -2538,7 +2528,6 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param path Path in the user's Dropbox to save the file.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2553,20 +2542,9 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param path Path in the user's Dropbox to save the file.
-/// @param mode Selects what to do if the file already exists.
-/// @param autorename If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file
-/// to avoid conflict.
-/// @param clientModified The value to store as the clientModified timestamp. Dropbox automatically records the time at
-/// which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox
-/// desktop clients, mobile clients, and API apps of when the file was actually created or modified.
-/// @param mute Normally, users are made aware of any file modifications in their Dropbox account via notifications in
-/// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
-/// @param propertyGroups List of custom properties to add to file.
-/// @param strictConflict Be more strict about how each WriteMode detects conflict. For example, always return a
-/// conflict error when mode = `update` in `DBFILESWriteMode` and the given "rev" doesn't match the existing file's
-/// "rev", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a
-/// file with identical contents.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2580,6 +2558,7 @@ clientModified:(nullable NSDate *)clientModified
           mute:(nullable NSNumber *)mute
 propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
 strictConflict:(nullable NSNumber *)strictConflict
+   contentHash:(nullable NSString *)contentHash
    inputStream:(NSInputStream *)inputStream;
 
 ///
@@ -2593,9 +2572,9 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendV2Url:
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendV2Url:
                                                                         (DBFILESUploadSessionCursor *)cursor
                                                                                     inputUrl:(NSString *)inputUrl;
 
@@ -2609,15 +2588,19 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendV2Url:
-                                                                        (DBFILESUploadSessionCursor *)cursor
-                                                                                       close:(nullable NSNumber *)close
-                                                                                    inputUrl:(NSString *)inputUrl;
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)
+uploadSessionAppendV2Url:(DBFILESUploadSessionCursor *)cursor
+                   close:(nullable NSNumber *)close
+             contentHash:(nullable NSString *)contentHash
+                inputUrl:(NSString *)inputUrl;
 
 ///
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -2630,9 +2613,9 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendV2Data:
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendV2Data:
                                                                         (DBFILESUploadSessionCursor *)cursor
                                                                                     inputData:(NSData *)inputData;
 
@@ -2646,15 +2629,19 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendV2Data:
-                                                                        (DBFILESUploadSessionCursor *)cursor
-                                                                                        close:(nullable NSNumber *)close
-                                                                                    inputData:(NSData *)inputData;
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)
+uploadSessionAppendV2Data:(DBFILESUploadSessionCursor *)cursor
+                    close:(nullable NSNumber *)close
+              contentHash:(nullable NSString *)contentHash
+                inputData:(NSData *)inputData;
 
 ///
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -2667,9 +2654,9 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)
 uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor *)cursor
                 inputStream:(NSInputStream *)inputStream;
 
@@ -2683,14 +2670,18 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor *)cursor
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)
 uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor *)cursor
                       close:(nullable NSNumber *)close
+                contentHash:(nullable NSString *)contentHash
                 inputStream:(NSInputStream *)inputStream;
 
 ///
@@ -2705,9 +2696,9 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor *)cursor
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendUrl:(NSString *)sessionId
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendUrl:(NSString *)sessionId
                                                                                     offset:(NSNumber *)offset
                                                                                   inputUrl:(NSString *)inputUrl
     __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
@@ -2724,9 +2715,9 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor *)cursor
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendData:(NSString *)sessionId
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendData:(NSString *)sessionId
                                                                                      offset:(NSNumber *)offset
                                                                                   inputData:(NSData *)inputData
     __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
@@ -2743,9 +2734,9 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor *)cursor
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionLookupError` object on failure.
+/// `DBFILESUploadSessionAppendError` object on failure.
 ///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> *)uploadSessionAppendStream:(NSString *)sessionId
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendStream:(NSString *)sessionId
                                                                                        offset:(NSNumber *)offset
                                                                                   inputStream:
                                                                                       (NSInputStream *)inputStream
@@ -2779,6 +2770,29 @@ uploadSessionFinishUrl:(DBFILESUploadSessionCursor *)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
+/// @param inputUrl The file to upload, as an NSString * object.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadSessionFinishError` object on failure.
+///
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> *)
+uploadSessionFinishUrl:(DBFILESUploadSessionCursor *)cursor
+                commit:(DBFILESCommitInfo *)commit
+           contentHash:(nullable NSString *)contentHash
+              inputUrl:(NSString *)inputUrl;
+
+///
+/// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
+/// than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will
+/// count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls
+/// allowed per month. For more information, see the Data transport limit page
+/// https://www.dropbox.com/developers/reference/data-transport-limit.
+///
+/// @param cursor Contains the upload session ID and the offset.
+/// @param commit Contains the path and other optional modifiers for the commit.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2798,6 +2812,29 @@ uploadSessionFinishData:(DBFILESUploadSessionCursor *)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
+/// @param inputData The file to upload, as an NSData * object.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadSessionFinishError` object on failure.
+///
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> *)
+uploadSessionFinishData:(DBFILESUploadSessionCursor *)cursor
+                 commit:(DBFILESCommitInfo *)commit
+            contentHash:(nullable NSString *)contentHash
+              inputData:(NSData *)inputData;
+
+///
+/// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
+/// than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will
+/// count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls
+/// allowed per month. For more information, see the Data transport limit page
+/// https://www.dropbox.com/developers/reference/data-transport-limit.
+///
+/// @param cursor Contains the upload session ID and the offset.
+/// @param commit Contains the path and other optional modifiers for the commit.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2806,6 +2843,29 @@ uploadSessionFinishData:(DBFILESUploadSessionCursor *)cursor
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> *)
 uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
                    commit:(DBFILESCommitInfo *)commit
+              inputStream:(NSInputStream *)inputStream;
+
+///
+/// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
+/// than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will
+/// count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls
+/// allowed per month. For more information, see the Data transport limit page
+/// https://www.dropbox.com/developers/reference/data-transport-limit.
+///
+/// @param cursor Contains the upload session ID and the offset.
+/// @param commit Contains the path and other optional modifiers for the commit.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
+/// @param inputStream The file to upload, as an NSInputStream * object.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadSessionFinishError` object on failure.
+///
+- (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> *)
+uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
+                   commit:(DBFILESCommitInfo *)commit
+              contentHash:(nullable NSString *)contentHash
               inputStream:(NSInputStream *)inputStream;
 
 ///
@@ -2917,6 +2977,9 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
 /// `uploadSessionAppend` anymore with the current session.
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
@@ -2925,6 +2988,7 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBFILESUploadSessionStartError *> *)
 uploadSessionStartUrl:(nullable NSNumber *)close
           sessionType:(nullable DBFILESUploadSessionType *)sessionType
+          contentHash:(nullable NSString *)contentHash
              inputUrl:(NSString *)inputUrl;
 
 ///
@@ -2981,6 +3045,9 @@ uploadSessionStartUrl:(nullable NSNumber *)close
 /// `uploadSessionAppend` anymore with the current session.
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
@@ -2989,6 +3056,7 @@ uploadSessionStartUrl:(nullable NSNumber *)close
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBFILESUploadSessionStartError *> *)
 uploadSessionStartData:(nullable NSNumber *)close
            sessionType:(nullable DBFILESUploadSessionType *)sessionType
+           contentHash:(nullable NSString *)contentHash
              inputData:(NSData *)inputData;
 
 ///
@@ -3045,6 +3113,9 @@ uploadSessionStartData:(nullable NSNumber *)close
 /// `uploadSessionAppend` anymore with the current session.
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
+/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
+/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
@@ -3053,6 +3124,7 @@ uploadSessionStartData:(nullable NSNumber *)close
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBFILESUploadSessionStartError *> *)
 uploadSessionStartStream:(nullable NSNumber *)close
              sessionType:(nullable DBFILESUploadSessionType *)sessionType
+             contentHash:(nullable NSString *)contentHash
              inputStream:(NSInputStream *)inputStream;
 
 @end
