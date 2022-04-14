@@ -82,6 +82,7 @@
 @class DBTEAMLOGDomainVerificationRemoveDomainType;
 @class DBTEAMLOGDropboxPasswordsExportedType;
 @class DBTEAMLOGDropboxPasswordsNewDeviceEnrolledType;
+@class DBTEAMLOGDropboxPasswordsPolicyChangedType;
 @class DBTEAMLOGEmailIngestPolicyChangedType;
 @class DBTEAMLOGEmailIngestReceiveFileType;
 @class DBTEAMLOGEmmAddExceptionType;
@@ -810,7 +811,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (file_operations) Removed tags
     DBTEAMLOGEventTypeUserTagsRemoved,
 
-    /// (file_requests) Received files via Email to my Dropbox
+    /// (file_requests) Received files via Email to Dropbox
     DBTEAMLOGEventTypeEmailIngestReceiveFile,
 
     /// (file_requests) Changed file request
@@ -1665,7 +1666,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (team_policies) Removed members from directory restrictions list
     DBTEAMLOGEventTypeDirectoryRestrictionsRemoveMembers,
 
-    /// (team_policies) Changed email to my Dropbox policy for team
+    /// (team_policies) Changed Dropbox Passwords policy for team
+    DBTEAMLOGEventTypeDropboxPasswordsPolicyChanged,
+
+    /// (team_policies) Changed email to Dropbox policy for team
     DBTEAMLOGEventTypeEmailIngestPolicyChanged,
 
     /// (team_policies) Added members to EMM exception list
@@ -2519,7 +2523,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGUserTagsRemovedType *userTagsRemoved;
 
-/// (file_requests) Received files via Email to my Dropbox @note Ensure the
+/// (file_requests) Received files via Email to Dropbox @note Ensure the
 /// `isEmailIngestReceiveFile` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmailIngestReceiveFileType *emailIngestReceiveFile;
@@ -3855,7 +3859,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGDirectoryRestrictionsRemoveMembersType *directoryRestrictionsRemoveMembers;
 
-/// (team_policies) Changed email to my Dropbox policy for team @note Ensure the
+/// (team_policies) Changed Dropbox Passwords policy for team @note Ensure the
+/// `isDropboxPasswordsPolicyChanged` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGDropboxPasswordsPolicyChangedType *dropboxPasswordsPolicyChanged;
+
+/// (team_policies) Changed email to Dropbox policy for team @note Ensure the
 /// `isEmailIngestPolicyChanged` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmailIngestPolicyChangedType *emailIngestPolicyChanged;
@@ -5740,9 +5749,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// Initializes union class with tag state of "email_ingest_receive_file".
 ///
 /// Description of the "email_ingest_receive_file" tag state: (file_requests)
-/// Received files via Email to my Dropbox
+/// Received files via Email to Dropbox
 ///
-/// @param emailIngestReceiveFile (file_requests) Received files via Email to my
+/// @param emailIngestReceiveFile (file_requests) Received files via Email to
 /// Dropbox
 ///
 /// @return An initialized instance.
@@ -9275,12 +9284,27 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     (DBTEAMLOGDirectoryRestrictionsRemoveMembersType *)directoryRestrictionsRemoveMembers;
 
 ///
+/// Initializes union class with tag state of
+/// "dropbox_passwords_policy_changed".
+///
+/// Description of the "dropbox_passwords_policy_changed" tag state:
+/// (team_policies) Changed Dropbox Passwords policy for team
+///
+/// @param dropboxPasswordsPolicyChanged (team_policies) Changed Dropbox
+/// Passwords policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDropboxPasswordsPolicyChanged:
+    (DBTEAMLOGDropboxPasswordsPolicyChangedType *)dropboxPasswordsPolicyChanged;
+
+///
 /// Initializes union class with tag state of "email_ingest_policy_changed".
 ///
 /// Description of the "email_ingest_policy_changed" tag state: (team_policies)
-/// Changed email to my Dropbox policy for team
+/// Changed email to Dropbox policy for team
 ///
-/// @param emailIngestPolicyChanged (team_policies) Changed email to my Dropbox
+/// @param emailIngestPolicyChanged (team_policies) Changed email to Dropbox
 /// policy for team
 ///
 /// @return An initialized instance.
@@ -15389,6 +15413,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// "directory_restrictions_remove_members".
 ///
 - (BOOL)isDirectoryRestrictionsRemoveMembers;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "dropbox_passwords_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `dropboxPasswordsPolicyChanged` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "dropbox_passwords_policy_changed".
+///
+- (BOOL)isDropboxPasswordsPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

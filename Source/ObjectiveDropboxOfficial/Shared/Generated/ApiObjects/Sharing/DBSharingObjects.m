@@ -224,6 +224,14 @@
   return self;
 }
 
+- (instancetype)initWithTraverse {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGAccessLevelTraverse;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -252,6 +260,10 @@
   return _tag == DBSHARINGAccessLevelViewerNoComment;
 }
 
+- (BOOL)isTraverse {
+  return _tag == DBSHARINGAccessLevelTraverse;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGAccessLevelOther;
 }
@@ -266,6 +278,8 @@
     return @"DBSHARINGAccessLevelViewer";
   case DBSHARINGAccessLevelViewerNoComment:
     return @"DBSHARINGAccessLevelViewerNoComment";
+  case DBSHARINGAccessLevelTraverse:
+    return @"DBSHARINGAccessLevelTraverse";
   case DBSHARINGAccessLevelOther:
     return @"DBSHARINGAccessLevelOther";
   }
@@ -316,6 +330,9 @@
   case DBSHARINGAccessLevelViewerNoComment:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGAccessLevelTraverse:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessLevelOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -352,6 +369,8 @@
     return [[self tagName] isEqual:[anAccessLevel tagName]];
   case DBSHARINGAccessLevelViewerNoComment:
     return [[self tagName] isEqual:[anAccessLevel tagName]];
+  case DBSHARINGAccessLevelTraverse:
+    return [[self tagName] isEqual:[anAccessLevel tagName]];
   case DBSHARINGAccessLevelOther:
     return [[self tagName] isEqual:[anAccessLevel tagName]];
   }
@@ -375,6 +394,8 @@
     jsonDict[@".tag"] = @"viewer";
   } else if ([valueObj isViewerNoComment]) {
     jsonDict[@".tag"] = @"viewer_no_comment";
+  } else if ([valueObj isTraverse]) {
+    jsonDict[@".tag"] = @"traverse";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -395,6 +416,8 @@
     return [[DBSHARINGAccessLevel alloc] initWithViewer];
   } else if ([tag isEqualToString:@"viewer_no_comment"]) {
     return [[DBSHARINGAccessLevel alloc] initWithViewerNoComment];
+  } else if ([tag isEqualToString:@"traverse"]) {
+    return [[DBSHARINGAccessLevel alloc] initWithTraverse];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAccessLevel alloc] initWithOther];
   } else {

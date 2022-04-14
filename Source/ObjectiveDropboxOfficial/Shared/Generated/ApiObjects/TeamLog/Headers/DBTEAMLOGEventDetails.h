@@ -82,6 +82,7 @@
 @class DBTEAMLOGDomainVerificationRemoveDomainDetails;
 @class DBTEAMLOGDropboxPasswordsExportedDetails;
 @class DBTEAMLOGDropboxPasswordsNewDeviceEnrolledDetails;
+@class DBTEAMLOGDropboxPasswordsPolicyChangedDetails;
 @class DBTEAMLOGEmailIngestPolicyChangedDetails;
 @class DBTEAMLOGEmailIngestReceiveFileDetails;
 @class DBTEAMLOGEmmAddExceptionDetails;
@@ -1615,6 +1616,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
     /// (no description).
     DBTEAMLOGEventDetailsDirectoryRestrictionsRemoveMembersDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsDropboxPasswordsPolicyChangedDetails,
 
     /// (no description).
     DBTEAMLOGEventDetailsEmailIngestPolicyChangedDetails,
@@ -3620,6 +3624,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *directoryRestrictionsRemoveMembersDetails;
+
+/// (no description). @note Ensure the `isDropboxPasswordsPolicyChangedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGDropboxPasswordsPolicyChangedDetails *dropboxPasswordsPolicyChangedDetails;
 
 /// (no description). @note Ensure the `isEmailIngestPolicyChangedDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
@@ -7903,6 +7912,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 ///
 - (instancetype)initWithDirectoryRestrictionsRemoveMembersDetails:
     (DBTEAMLOGDirectoryRestrictionsRemoveMembersDetails *)directoryRestrictionsRemoveMembersDetails;
+
+///
+/// Initializes union class with tag state of
+/// "dropbox_passwords_policy_changed_details".
+///
+/// @param dropboxPasswordsPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDropboxPasswordsPolicyChangedDetails:
+    (DBTEAMLOGDropboxPasswordsPolicyChangedDetails *)dropboxPasswordsPolicyChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -13848,6 +13868,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// "directory_restrictions_remove_members_details".
 ///
 - (BOOL)isDirectoryRestrictionsRemoveMembersDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "dropbox_passwords_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `dropboxPasswordsPolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "dropbox_passwords_policy_changed_details".
+///
+- (BOOL)isDropboxPasswordsPolicyChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

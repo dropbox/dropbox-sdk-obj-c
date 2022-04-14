@@ -216,8 +216,8 @@ includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMem
 /// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
 /// upload session with `uploadSessionStart`.
 ///
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
@@ -254,8 +254,8 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
 /// upload session with `uploadSessionStart`.
 ///
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
@@ -292,8 +292,8 @@ alphaUploadData:(NSString *)path
 /// endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an
 /// upload session with `uploadSessionStart`.
 ///
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
@@ -2400,7 +2400,8 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 - (DBRpcTask<DBFILESSearchV2Result *, DBFILESSearchError *> *)searchContinueV2:(NSString *)cursor;
 
 ///
-/// Add a tag to an item. A tag is a string. No more than 20 tags can be added to a given item.
+/// Add a tag to an item. A tag is a string. The strings are automatically converted to lowercase letters. No more than
+/// 20 tags can be added to a given item.
 ///
 /// @param path Path to the item to be tagged.
 /// @param tagText The value of the tag to add.
@@ -2464,8 +2465,8 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
@@ -2503,8 +2504,8 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
@@ -2542,8 +2543,8 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
@@ -2588,8 +2589,8 @@ strictConflict:(nullable NSNumber *)strictConflict
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
@@ -2629,8 +2630,8 @@ uploadSessionAppendV2Url:(DBFILESUploadSessionCursor *)cursor
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
@@ -2670,8 +2671,8 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor *)cursor
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
@@ -2770,8 +2771,8 @@ uploadSessionFinishUrl:(DBFILESUploadSessionCursor *)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
@@ -2812,8 +2813,8 @@ uploadSessionFinishData:(DBFILESUploadSessionCursor *)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
@@ -2854,8 +2855,8 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
@@ -2977,8 +2978,8 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor *)cursor
 /// `uploadSessionAppend` anymore with the current session.
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
@@ -3045,8 +3046,8 @@ uploadSessionStartUrl:(nullable NSNumber *)close
 /// `uploadSessionAppend` anymore with the current session.
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
@@ -3113,8 +3114,8 @@ uploadSessionStartData:(nullable NSNumber *)close
 /// `uploadSessionAppend` anymore with the current session.
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
-/// @param contentHash NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more information see our Content hash
+/// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
+/// match this hash, an error will be returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///

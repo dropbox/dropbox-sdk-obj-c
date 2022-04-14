@@ -4885,7 +4885,8 @@
 - (instancetype)initWithName:(NSString *)name
                    pathLower:(NSString *)pathLower
                  pathDisplay:(NSString *)pathDisplay
-        parentSharedFolderId:(NSString *)parentSharedFolderId {
+        parentSharedFolderId:(NSString *)parentSharedFolderId
+                  previewUrl:(NSString *)previewUrl {
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](
@@ -4897,12 +4898,13 @@
     _pathLower = pathLower;
     _pathDisplay = pathDisplay;
     _parentSharedFolderId = parentSharedFolderId;
+    _previewUrl = previewUrl;
   }
   return self;
 }
 
 - (instancetype)initWithName:(NSString *)name {
-  return [self initWithName:name pathLower:nil pathDisplay:nil parentSharedFolderId:nil];
+  return [self initWithName:name pathLower:nil pathDisplay:nil parentSharedFolderId:nil previewUrl:nil];
 }
 
 #pragma mark - Serialization methods
@@ -4945,6 +4947,9 @@
   if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
+  if (self.previewUrl != nil) {
+    result = prime * result + [self.previewUrl hash];
+  }
 
   return prime * result;
 }
@@ -4983,6 +4988,11 @@
       return NO;
     }
   }
+  if (self.previewUrl) {
+    if (![self.previewUrl isEqual:aMetadata.previewUrl]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -5004,6 +5014,9 @@
   }
   if (valueObj.parentSharedFolderId) {
     jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
+  }
+  if (valueObj.previewUrl) {
+    jsonDict[@"preview_url"] = valueObj.previewUrl;
   }
 
   if ([valueObj isKindOfClass:[DBFILESFileMetadata class]]) {
@@ -5062,21 +5075,25 @@
 - (instancetype)initWithName:(NSString *)name
                    pathLower:(NSString *)pathLower
                  pathDisplay:(NSString *)pathDisplay
-        parentSharedFolderId:(NSString *)parentSharedFolderId {
+        parentSharedFolderId:(NSString *)parentSharedFolderId
+                  previewUrl:(NSString *)previewUrl {
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](
       parentSharedFolderId);
 
-  self =
-      [super initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
+  self = [super initWithName:name
+                   pathLower:pathLower
+                 pathDisplay:pathDisplay
+        parentSharedFolderId:parentSharedFolderId
+                  previewUrl:previewUrl];
   if (self) {
   }
   return self;
 }
 
 - (instancetype)initWithName:(NSString *)name {
-  return [self initWithName:name pathLower:nil pathDisplay:nil parentSharedFolderId:nil];
+  return [self initWithName:name pathLower:nil pathDisplay:nil parentSharedFolderId:nil previewUrl:nil];
 }
 
 #pragma mark - Serialization methods
@@ -5119,6 +5136,9 @@
   if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
   }
+  if (self.previewUrl != nil) {
+    result = prime * result + [self.previewUrl hash];
+  }
 
   return prime * result;
 }
@@ -5157,6 +5177,11 @@
       return NO;
     }
   }
+  if (self.previewUrl) {
+    if (![self.previewUrl isEqual:aDeletedMetadata.previewUrl]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -5179,6 +5204,9 @@
   if (valueObj.parentSharedFolderId) {
     jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
   }
+  if (valueObj.previewUrl) {
+    jsonDict[@"preview_url"] = valueObj.previewUrl;
+  }
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -5188,11 +5216,13 @@
   NSString *pathLower = valueDict[@"path_lower"] ?: nil;
   NSString *pathDisplay = valueDict[@"path_display"] ?: nil;
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
+  NSString *previewUrl = valueDict[@"preview_url"] ?: nil;
 
   return [[DBFILESDeletedMetadata alloc] initWithName:name
                                             pathLower:pathLower
                                           pathDisplay:pathDisplay
-                                 parentSharedFolderId:parentSharedFolderId];
+                                 parentSharedFolderId:parentSharedFolderId
+                                           previewUrl:previewUrl];
 }
 
 @end
@@ -7606,6 +7636,7 @@
                    pathLower:(NSString *)pathLower
                  pathDisplay:(NSString *)pathDisplay
         parentSharedFolderId:(NSString *)parentSharedFolderId
+                  previewUrl:(NSString *)previewUrl
                    mediaInfo:(DBFILESMediaInfo *)mediaInfo
                  symlinkInfo:(DBFILESSymlinkInfo *)symlinkInfo
                  sharingInfo:(DBFILESFileSharingInfo *)sharingInfo
@@ -7631,8 +7662,11 @@
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(64) maxLength:@(64) pattern:nil]](contentHash);
 
-  self =
-      [super initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
+  self = [super initWithName:name
+                   pathLower:pathLower
+                 pathDisplay:pathDisplay
+        parentSharedFolderId:parentSharedFolderId
+                  previewUrl:previewUrl];
   if (self) {
     _id_ = id_;
     _clientModified = clientModified;
@@ -7667,6 +7701,7 @@
                      pathLower:nil
                    pathDisplay:nil
           parentSharedFolderId:nil
+                    previewUrl:nil
                      mediaInfo:nil
                    symlinkInfo:nil
                    sharingInfo:nil
@@ -7722,6 +7757,9 @@
   }
   if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
+  }
+  if (self.previewUrl != nil) {
+    result = prime * result + [self.previewUrl hash];
   }
   if (self.mediaInfo != nil) {
     result = prime * result + [self.mediaInfo hash];
@@ -7801,6 +7839,11 @@
       return NO;
     }
   }
+  if (self.previewUrl) {
+    if (![self.previewUrl isEqual:aFileMetadata.previewUrl]) {
+      return NO;
+    }
+  }
   if (self.mediaInfo) {
     if (![self.mediaInfo isEqual:aFileMetadata.mediaInfo]) {
       return NO;
@@ -7873,6 +7916,9 @@
   if (valueObj.parentSharedFolderId) {
     jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
   }
+  if (valueObj.previewUrl) {
+    jsonDict[@"preview_url"] = valueObj.previewUrl;
+  }
   if (valueObj.mediaInfo) {
     jsonDict[@"media_info"] = [DBFILESMediaInfoSerializer serialize:valueObj.mediaInfo];
   }
@@ -7918,6 +7964,7 @@
   NSString *pathLower = valueDict[@"path_lower"] ?: nil;
   NSString *pathDisplay = valueDict[@"path_display"] ?: nil;
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
+  NSString *previewUrl = valueDict[@"preview_url"] ?: nil;
   DBFILESMediaInfo *mediaInfo =
       valueDict[@"media_info"] ? [DBFILESMediaInfoSerializer deserialize:valueDict[@"media_info"]] : nil;
   DBFILESSymlinkInfo *symlinkInfo =
@@ -7948,6 +7995,7 @@
                                          pathLower:pathLower
                                        pathDisplay:pathDisplay
                               parentSharedFolderId:parentSharedFolderId
+                                        previewUrl:previewUrl
                                          mediaInfo:mediaInfo
                                        symlinkInfo:symlinkInfo
                                        sharingInfo:sharingInfo
@@ -8385,6 +8433,7 @@
                    pathLower:(NSString *)pathLower
                  pathDisplay:(NSString *)pathDisplay
         parentSharedFolderId:(NSString *)parentSharedFolderId
+                  previewUrl:(NSString *)previewUrl
               sharedFolderId:(NSString *)sharedFolderId
                  sharingInfo:(DBFILESFolderSharingInfo *)sharingInfo
               propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
@@ -8400,8 +8449,11 @@
                                               maxItems:nil
                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](propertyGroups);
 
-  self =
-      [super initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
+  self = [super initWithName:name
+                   pathLower:pathLower
+                 pathDisplay:pathDisplay
+        parentSharedFolderId:parentSharedFolderId
+                  previewUrl:previewUrl];
   if (self) {
     _id_ = id_;
     _sharedFolderId = sharedFolderId;
@@ -8417,6 +8469,7 @@
                   pathLower:nil
                 pathDisplay:nil
        parentSharedFolderId:nil
+                 previewUrl:nil
              sharedFolderId:nil
                 sharingInfo:nil
              propertyGroups:nil];
@@ -8462,6 +8515,9 @@
   }
   if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
+  }
+  if (self.previewUrl != nil) {
+    result = prime * result + [self.previewUrl hash];
   }
   if (self.sharedFolderId != nil) {
     result = prime * result + [self.sharedFolderId hash];
@@ -8513,6 +8569,11 @@
       return NO;
     }
   }
+  if (self.previewUrl) {
+    if (![self.previewUrl isEqual:aFolderMetadata.previewUrl]) {
+      return NO;
+    }
+  }
   if (self.sharedFolderId) {
     if (![self.sharedFolderId isEqual:aFolderMetadata.sharedFolderId]) {
       return NO;
@@ -8551,6 +8612,9 @@
   if (valueObj.parentSharedFolderId) {
     jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
   }
+  if (valueObj.previewUrl) {
+    jsonDict[@"preview_url"] = valueObj.previewUrl;
+  }
   if (valueObj.sharedFolderId) {
     jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   }
@@ -8574,6 +8638,7 @@
   NSString *pathLower = valueDict[@"path_lower"] ?: nil;
   NSString *pathDisplay = valueDict[@"path_display"] ?: nil;
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
+  NSString *previewUrl = valueDict[@"preview_url"] ?: nil;
   NSString *sharedFolderId = valueDict[@"shared_folder_id"] ?: nil;
   DBFILESFolderSharingInfo *sharingInfo =
       valueDict[@"sharing_info"] ? [DBFILESFolderSharingInfoSerializer deserialize:valueDict[@"sharing_info"]] : nil;
@@ -8590,6 +8655,7 @@
                                            pathLower:pathLower
                                          pathDisplay:pathDisplay
                                 parentSharedFolderId:parentSharedFolderId
+                                          previewUrl:previewUrl
                                       sharedFolderId:sharedFolderId
                                          sharingInfo:sharingInfo
                                       propertyGroups:propertyGroups];

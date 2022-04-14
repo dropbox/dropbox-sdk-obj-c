@@ -332,7 +332,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (file_operations) Removed tags
     DBTEAMLOGEventTypeArgUserTagsRemoved,
 
-    /// (file_requests) Received files via Email to my Dropbox
+    /// (file_requests) Received files via Email to Dropbox
     DBTEAMLOGEventTypeArgEmailIngestReceiveFile,
 
     /// (file_requests) Changed file request
@@ -1187,7 +1187,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
     /// (team_policies) Removed members from directory restrictions list
     DBTEAMLOGEventTypeArgDirectoryRestrictionsRemoveMembers,
 
-    /// (team_policies) Changed email to my Dropbox policy for team
+    /// (team_policies) Changed Dropbox Passwords policy for team
+    DBTEAMLOGEventTypeArgDropboxPasswordsPolicyChanged,
+
+    /// (team_policies) Changed email to Dropbox policy for team
     DBTEAMLOGEventTypeArgEmailIngestPolicyChanged,
 
     /// (team_policies) Added members to EMM exception list
@@ -2575,7 +2578,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// Initializes union class with tag state of "email_ingest_receive_file".
 ///
 /// Description of the "email_ingest_receive_file" tag state: (file_requests)
-/// Received files via Email to my Dropbox
+/// Received files via Email to Dropbox
 ///
 /// @return An initialized instance.
 ///
@@ -5339,10 +5342,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 - (instancetype)initWithDirectoryRestrictionsRemoveMembers;
 
 ///
+/// Initializes union class with tag state of
+/// "dropbox_passwords_policy_changed".
+///
+/// Description of the "dropbox_passwords_policy_changed" tag state:
+/// (team_policies) Changed Dropbox Passwords policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDropboxPasswordsPolicyChanged;
+
+///
 /// Initializes union class with tag state of "email_ingest_policy_changed".
 ///
 /// Description of the "email_ingest_policy_changed" tag state: (team_policies)
-/// Changed email to my Dropbox policy for team
+/// Changed email to Dropbox policy for team
 ///
 /// @return An initialized instance.
 ///
@@ -9718,6 +9732,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
 /// "directory_restrictions_remove_members".
 ///
 - (BOOL)isDirectoryRestrictionsRemoveMembers;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "dropbox_passwords_policy_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "dropbox_passwords_policy_changed".
+///
+- (BOOL)isDropboxPasswordsPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

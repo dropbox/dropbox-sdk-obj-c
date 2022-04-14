@@ -416,15 +416,15 @@ static const int timeoutInSec = 200;
     uploadData.finishArgs = sortedFinishArgs;
 
     [[self uploadSessionFinishBatchV2:sortedFinishArgs]
-    setResponseBlock:^(DBFILESUploadSessionFinishBatchResult * _Nullable result,
-                        DBNilObject * _Nullable routeError,
-                        DBRequestError * _Nullable networkError) {
-        if (!result || routeError) {
+        setResponseBlock:^(DBFILESUploadSessionFinishBatchResult *_Nullable result, DBNilObject *_Nullable routeError,
+                           DBRequestError *_Nullable networkError) {
+          if (!result || routeError) {
             [uploadData.queue addOperationWithBlock:^{
-                uploadData.responseBlock(nil, nil, networkError, uploadData.fileUrlsToRequestErrors);
+              uploadData.responseBlock(nil, nil, networkError, uploadData.fileUrlsToRequestErrors);
             }];
+          }
         }
-    } queue:uploadData.pollingQueue];
+                   queue:uploadData.pollingQueue];
   });
 }
 

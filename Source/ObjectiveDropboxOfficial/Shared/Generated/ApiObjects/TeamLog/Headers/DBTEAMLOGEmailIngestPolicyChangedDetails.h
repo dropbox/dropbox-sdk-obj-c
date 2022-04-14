@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `EmailIngestPolicyChangedDetails` struct.
 ///
-/// Changed email to my Dropbox policy for team.
+/// Changed email to Dropbox policy for team.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

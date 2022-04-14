@@ -68,7 +68,7 @@
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
-  NSString *uid = [coder decodeObjectForKey:NSStringFromSelector(@selector(uid))];
+  NSString *uid = [coder decodeObjectOfClass:NSString.class forKey:NSStringFromSelector(@selector(uid))];
   NSString *accessToken = [coder decodeObjectForKey:NSStringFromSelector(@selector(accessToken))];
   NSString *refreshToken = [coder decodeObjectForKey:NSStringFromSelector(@selector(refreshToken))];
   NSTimeInterval tokenExpirationTimestamp =
