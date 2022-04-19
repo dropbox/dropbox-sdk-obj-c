@@ -796,7 +796,7 @@ void MyLog(NSString *format, ...) {
     void (^uploadSessionAppendV2)(NSString *, DBFILESUploadSessionCursor *) = ^(NSString *sessionId,
                                                                                 DBFILESUploadSessionCursor *cursor) {
         [[[self->_filesRoute uploadSessionAppendV2Data:cursor inputData:self->_testData.fileData]
-          setResponseBlock:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
+          setResponseBlock:^(DBNilObject *result, DBFILESUploadSessionAppendError *routeError, DBRequestError *error) {
             // response type for this route is nil
             if (!error) {
                 DBFILESUploadSessionCursor *cursor = [[DBFILESUploadSessionCursor alloc]
