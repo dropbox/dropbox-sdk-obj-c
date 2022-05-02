@@ -24,7 +24,6 @@
 
 // 10 MB file chunk size
 static const NSUInteger fileChunkSize = 10 * 1024 * 1024;
-static const int timeoutInSec = 200;
 
 @implementation DBFILESUserAuthRoutes (DBCustomRoutes)
 
