@@ -57,7 +57,7 @@ NOTE: Please do not rely on `master` in production. Please instead use one of ou
 
 ## System requirements
 
-- iOS 9.0+
+- iOS 11.0+
 - macOS 10.10+
 - Xcode 8+ (11.0+ if you use Carthage)
 
