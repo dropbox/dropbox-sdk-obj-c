@@ -22,7 +22,7 @@
     if (maxLength != nil) {
       if ([value length] > [maxLength unsignedIntegerValue]) {
         NSString *exceptionMessage =
-            [NSString stringWithFormat:@"value must be at most %@ characters", [minLength stringValue]];
+            [NSString stringWithFormat:@"value must be at most %@ characters", [maxLength stringValue]];
         [[self class] raiseIllegalStateErrorWithMessage:exceptionMessage];
       }
     }
