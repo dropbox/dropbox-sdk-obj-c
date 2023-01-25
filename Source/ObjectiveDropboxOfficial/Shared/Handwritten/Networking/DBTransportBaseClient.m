@@ -206,16 +206,13 @@
 }
 
 + (NSString *)asciiEscapeWithString:(NSString *)string {
-  NSMutableString *result = [[NSMutableString alloc] init];
-  for (NSUInteger i = 0; i < string.length; i++) {
-    NSString *substring = [string substringWithRange:NSMakeRange(i, 1)];
-    if ([substring canBeConvertedToEncoding:NSASCIIStringEncoding]) {
-      [result appendString:substring];
-    } else {
-      [result appendFormat:@"\\u%04x", [string characterAtIndex:i]];
+    // if the string is already ascii, return immediately
+    if ([string canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+        return [string copy];
     }
-  }
-  return result;
+    
+    const char *encoded = [string cStringUsingEncoding:NSNonLossyASCIIStringEncoding];
+    return [[NSString alloc] initWithCString:encoded encoding:NSASCIIStringEncoding];
 }
 
 + (DBRequestError *)dBRequestErrorWithErrorData:(NSData *)errorData
