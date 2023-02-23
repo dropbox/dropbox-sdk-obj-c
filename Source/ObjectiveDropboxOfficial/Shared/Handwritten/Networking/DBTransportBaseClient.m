@@ -266,7 +266,7 @@ static NSLock *kAsciiEscapeSelectorLock;
   }
   
   NSMutableString *encoded = [NSMutableString stringWithCapacity:[string length]];
-  for(int i = 0; i < [string length]; i++) {
+  for (NSUInteger i = 0; i < [string length]; i++) {
     unichar character = [string characterAtIndex:i];
     // Anything that is raw ASCII (not extended) can be applied as a regular old character.
     if (character < 128) {
