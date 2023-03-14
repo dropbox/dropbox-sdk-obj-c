@@ -2409,7 +2409,7 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// 20 tags can be added to a given item.
 ///
 /// @param path Path to the item to be tagged.
-/// @param tagText The value of the tag to add.
+/// @param tagText The value of the tag to add. Will be automatically converted to lowercase letters.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a `DBFILESAddTagError`
 /// object on failure.
@@ -2430,7 +2430,7 @@ updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePro
 /// Remove a tag from an item.
 ///
 /// @param path Path to the item to tag.
-/// @param tagText The tag to remove.
+/// @param tagText The tag to remove. Will be automatically converted to lowercase letters.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBFILESRemoveTagError` object on failure.

@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBTEAMPOLICIESGroupCreation;
 @class DBTEAMPOLICIESSharedFolderJoinPolicy;
 @class DBTEAMPOLICIESSharedFolderMemberPolicy;
 @class DBTEAMPOLICIESSharedLinkCreatePolicy;
@@ -39,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Who can view shared links owned by team members.
 @property (nonatomic, readonly) DBTEAMPOLICIESSharedLinkCreatePolicy *sharedLinkCreatePolicy;
 
+/// Who can create groups.
+@property (nonatomic, readonly) DBTEAMPOLICIESGroupCreation *groupCreationPolicy;
+
 #pragma mark - Constructors
 
 ///
@@ -48,12 +52,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sharedFolderJoinPolicy Which shared folders team members can join.
 /// @param sharedLinkCreatePolicy Who can view shared links owned by team
 /// members.
+/// @param groupCreationPolicy Who can create groups.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy
                           sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy
-                          sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy;
+                          sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy
+                             groupCreationPolicy:(DBTEAMPOLICIESGroupCreation *)groupCreationPolicy;
 
 - (instancetype)init NS_UNAVAILABLE;
 

@@ -218,7 +218,7 @@ static NSLock *kAsciiEscapeSelectorLock;
 
 + (BOOL)useFastAsciiEncoding {
   BOOL result;
-  
+
   [kAsciiEscapeSelectorLock lock];
   result = kUseFastAsciiEncoding;
   [kAsciiEscapeSelectorLock unlock];
@@ -236,8 +236,8 @@ static NSLock *kAsciiEscapeSelectorLock;
   [kAsciiEscapeSelectorLock lock];
   useFastEncoding = kUseFastAsciiEncoding;
   [kAsciiEscapeSelectorLock unlock];
-  
-  NSString* result;
+
+  NSString *result;
   if (useFastEncoding) {
     result = [self fast_asciiEscapeWithString:string];
   } else {
@@ -264,7 +264,7 @@ static NSLock *kAsciiEscapeSelectorLock;
   if ([string canBeConvertedToEncoding:NSASCIIStringEncoding]) {
     return [string copy];
   }
-  
+
   NSMutableString *encoded = [NSMutableString stringWithCapacity:[string length]];
   for (NSUInteger i = 0; i < [string length]; i++) {
     unichar character = [string characterAtIndex:i];
@@ -276,7 +276,7 @@ static NSLock *kAsciiEscapeSelectorLock;
       [encoded appendFormat:@"\\u%04x", character];
     }
   }
-  
+
   return [encoded copy];
 }
 

@@ -150,6 +150,13 @@
 @class DBTEAMRevokeLinkedAppError;
 @class DBTEAMRevokeLinkedAppStatus;
 @class DBTEAMSetCustomQuotaError;
+@class DBTEAMSharingAllowlistAddError;
+@class DBTEAMSharingAllowlistAddResponse;
+@class DBTEAMSharingAllowlistListContinueError;
+@class DBTEAMSharingAllowlistListError;
+@class DBTEAMSharingAllowlistListResponse;
+@class DBTEAMSharingAllowlistRemoveError;
+@class DBTEAMSharingAllowlistRemoveResponse;
 @class DBTEAMStorageBucket;
 @class DBTEAMTeamFolderAccessError;
 @class DBTEAMTeamFolderActivateError;
@@ -1660,6 +1667,93 @@ propertiesTemplateUpdate:(NSString *)templateId
 - (DBRpcTask<DBTEAMGetStorageReport *, DBTEAMDateRangeError *> *)reportsGetStorage:(nullable NSDate *)startDate
                                                                            endDate:(nullable NSDate *)endDate
     __deprecated_msg("reportsGetStorage is deprecated.");
+
+///
+/// Endpoint adds Approve List entries. Changes are effective immediately. Changes are committed in transaction. In case
+/// of single validation error - all entries are rejected. Valid domains (RFC-1034/5) and emails (RFC-5322/822) are
+/// accepted. Added entries cannot overflow limit of 10000 entries per team. Maximum 100 entries per call is allowed.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMSharingAllowlistAddResponse` object on
+/// success or a `DBTEAMSharingAllowlistAddError` object on failure.
+///
+- (DBRpcTask<DBTEAMSharingAllowlistAddResponse *, DBTEAMSharingAllowlistAddError *> *)sharingAllowlistAdd;
+
+///
+/// Endpoint adds Approve List entries. Changes are effective immediately. Changes are committed in transaction. In case
+/// of single validation error - all entries are rejected. Valid domains (RFC-1034/5) and emails (RFC-5322/822) are
+/// accepted. Added entries cannot overflow limit of 10000 entries per team. Maximum 100 entries per call is allowed.
+///
+/// @param domains List of domains represented by valid string representation (RFC-1034/5).
+/// @param emails List of emails represented by valid string representation (RFC-5322/822).
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMSharingAllowlistAddResponse` object on
+/// success or a `DBTEAMSharingAllowlistAddError` object on failure.
+///
+- (DBRpcTask<DBTEAMSharingAllowlistAddResponse *, DBTEAMSharingAllowlistAddError *> *)
+sharingAllowlistAdd:(nullable NSArray<NSString *> *)domains
+             emails:(nullable NSArray<NSString *> *)emails;
+
+///
+/// Lists Approve List entries for given team, from newest to oldest, returning up to `limit` entries at a time. If
+/// there are more than `limit` entries associated with the current team, more can be fetched by passing the returned
+/// `cursor` to `sharingAllowlistListContinue`.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMSharingAllowlistListResponse` object on
+/// success or a `DBTEAMSharingAllowlistListError` object on failure.
+///
+- (DBRpcTask<DBTEAMSharingAllowlistListResponse *, DBTEAMSharingAllowlistListError *> *)sharingAllowlistList;
+
+///
+/// Lists Approve List entries for given team, from newest to oldest, returning up to `limit` entries at a time. If
+/// there are more than `limit` entries associated with the current team, more can be fetched by passing the returned
+/// `cursor` to `sharingAllowlistListContinue`.
+///
+/// @param limit The number of entries to fetch at one time.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMSharingAllowlistListResponse` object on
+/// success or a `DBTEAMSharingAllowlistListError` object on failure.
+///
+- (DBRpcTask<DBTEAMSharingAllowlistListResponse *, DBTEAMSharingAllowlistListError *> *)sharingAllowlistList:
+    (nullable NSNumber *)limit;
+
+///
+/// Lists entries associated with given team, starting from a the cursor. See `sharingAllowlistList`.
+///
+/// @param cursor The cursor returned from a previous call to `sharingAllowlistList` or `sharingAllowlistListContinue`.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMSharingAllowlistListResponse` object on
+/// success or a `DBTEAMSharingAllowlistListContinueError` object on failure.
+///
+- (DBRpcTask<DBTEAMSharingAllowlistListResponse *, DBTEAMSharingAllowlistListContinueError *> *)
+sharingAllowlistListContinue:(NSString *)cursor;
+
+///
+/// Endpoint removes Approve List entries. Changes are effective immediately. Changes are committed in transaction. In
+/// case of single validation error - all entries are rejected. Valid domains (RFC-1034/5) and emails (RFC-5322/822) are
+/// accepted. Entries being removed have to be present on the list. Maximum 1000 entries per call is allowed.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMSharingAllowlistRemoveResponse` object on
+/// success or a `DBTEAMSharingAllowlistRemoveError` object on failure.
+///
+- (DBRpcTask<DBTEAMSharingAllowlistRemoveResponse *, DBTEAMSharingAllowlistRemoveError *> *)sharingAllowlistRemove;
+
+///
+/// Endpoint removes Approve List entries. Changes are effective immediately. Changes are committed in transaction. In
+/// case of single validation error - all entries are rejected. Valid domains (RFC-1034/5) and emails (RFC-5322/822) are
+/// accepted. Entries being removed have to be present on the list. Maximum 1000 entries per call is allowed.
+///
+/// @param domains List of domains represented by valid string representation (RFC-1034/5).
+/// @param emails List of emails represented by valid string representation (RFC-5322/822).
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMSharingAllowlistRemoveResponse` object on
+/// success or a `DBTEAMSharingAllowlistRemoveError` object on failure.
+///
+- (DBRpcTask<DBTEAMSharingAllowlistRemoveResponse *, DBTEAMSharingAllowlistRemoveError *> *)
+sharingAllowlistRemove:(nullable NSArray<NSString *> *)domains
+                emails:(nullable NSArray<NSString *> *)emails;
 
 ///
 /// Sets an archived team folder's status to active. Permission : Team member file access.

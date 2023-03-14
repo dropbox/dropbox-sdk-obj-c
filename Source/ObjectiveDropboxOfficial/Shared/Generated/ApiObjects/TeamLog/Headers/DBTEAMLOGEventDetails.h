@@ -123,6 +123,7 @@
 @class DBTEAMLOGFileMoveDetails;
 @class DBTEAMLOGFilePermanentlyDeleteDetails;
 @class DBTEAMLOGFilePreviewDetails;
+@class DBTEAMLOGFileProviderMigrationPolicyChangedDetails;
 @class DBTEAMLOGFileRenameDetails;
 @class DBTEAMLOGFileRequestChangeDetails;
 @class DBTEAMLOGFileRequestCloseDetails;
@@ -145,6 +146,7 @@
 @class DBTEAMLOGFileTransfersTransferViewDetails;
 @class DBTEAMLOGFileUnlikeCommentDetails;
 @class DBTEAMLOGFileUnresolveCommentDetails;
+@class DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails;
 @class DBTEAMLOGFolderOverviewDescriptionChangedDetails;
 @class DBTEAMLOGFolderOverviewItemPinnedDetails;
 @class DBTEAMLOGFolderOverviewItemUnpinnedDetails;
@@ -1657,6 +1659,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
     DBTEAMLOGEventDetailsFileLockingPolicyChangedDetails,
 
     /// (no description).
+    DBTEAMLOGEventDetailsFileProviderMigrationPolicyChangedDetails,
+
+    /// (no description).
     DBTEAMLOGEventDetailsFileRequestsChangePolicyDetails,
 
     /// (no description).
@@ -1667,6 +1672,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
     /// (no description).
     DBTEAMLOGEventDetailsFileTransfersPolicyChangedDetails,
+
+    /// (no description).
+    DBTEAMLOGEventDetailsFolderLinkRestrictionPolicyChangedDetails,
 
     /// (no description).
     DBTEAMLOGEventDetailsGoogleSsoChangePolicyDetails,
@@ -3698,6 +3706,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileLockingPolicyChangedDetails *fileLockingPolicyChangedDetails;
 
+/// (no description). @note Ensure the
+/// `isFileProviderMigrationPolicyChangedDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly)
+    DBTEAMLOGFileProviderMigrationPolicyChangedDetails *fileProviderMigrationPolicyChangedDetails;
+
 /// (no description). @note Ensure the `isFileRequestsChangePolicyDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
@@ -3718,6 +3732,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileTransfersPolicyChangedDetails *fileTransfersPolicyChangedDetails;
+
+/// (no description). @note Ensure the
+/// `isFolderLinkRestrictionPolicyChangedDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly)
+    DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails *folderLinkRestrictionPolicyChangedDetails;
 
 /// (no description). @note Ensure the `isGoogleSsoChangePolicyDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -8070,6 +8090,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
 ///
 /// Initializes union class with tag state of
+/// "file_provider_migration_policy_changed_details".
+///
+/// @param fileProviderMigrationPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFileProviderMigrationPolicyChangedDetails:
+    (DBTEAMLOGFileProviderMigrationPolicyChangedDetails *)fileProviderMigrationPolicyChangedDetails;
+
+///
+/// Initializes union class with tag state of
 /// "file_requests_change_policy_details".
 ///
 /// @param fileRequestsChangePolicyDetails (no description).
@@ -8111,6 +8142,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 ///
 - (instancetype)initWithFileTransfersPolicyChangedDetails:
     (DBTEAMLOGFileTransfersPolicyChangedDetails *)fileTransfersPolicyChangedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "folder_link_restriction_policy_changed_details".
+///
+/// @param folderLinkRestrictionPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFolderLinkRestrictionPolicyChangedDetails:
+    (DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails *)folderLinkRestrictionPolicyChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -14089,6 +14131,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "file_provider_migration_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `fileProviderMigrationPolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "file_provider_migration_policy_changed_details".
+///
+- (BOOL)isFileProviderMigrationPolicyChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "file_requests_change_policy_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -14138,6 +14193,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag){
 /// "file_transfers_policy_changed_details".
 ///
 - (BOOL)isFileTransfersPolicyChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_link_restriction_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `folderLinkRestrictionPolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "folder_link_restriction_policy_changed_details".
+///
+- (BOOL)isFolderLinkRestrictionPolicyChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

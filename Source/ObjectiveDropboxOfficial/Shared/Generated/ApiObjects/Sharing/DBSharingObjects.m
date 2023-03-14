@@ -21286,6 +21286,14 @@
   return self;
 }
 
+- (instancetype)initWithDefault_ {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGRequestedLinkAccessLevelDefault_;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -21310,6 +21318,10 @@
   return _tag == DBSHARINGRequestedLinkAccessLevelMax;
 }
 
+- (BOOL)isDefault_ {
+  return _tag == DBSHARINGRequestedLinkAccessLevelDefault_;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGRequestedLinkAccessLevelOther;
 }
@@ -21322,6 +21334,8 @@
     return @"DBSHARINGRequestedLinkAccessLevelEditor";
   case DBSHARINGRequestedLinkAccessLevelMax:
     return @"DBSHARINGRequestedLinkAccessLevelMax";
+  case DBSHARINGRequestedLinkAccessLevelDefault_:
+    return @"DBSHARINGRequestedLinkAccessLevelDefault_";
   case DBSHARINGRequestedLinkAccessLevelOther:
     return @"DBSHARINGRequestedLinkAccessLevelOther";
   }
@@ -21369,6 +21383,9 @@
   case DBSHARINGRequestedLinkAccessLevelMax:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGRequestedLinkAccessLevelDefault_:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGRequestedLinkAccessLevelOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -21403,6 +21420,8 @@
     return [[self tagName] isEqual:[aRequestedLinkAccessLevel tagName]];
   case DBSHARINGRequestedLinkAccessLevelMax:
     return [[self tagName] isEqual:[aRequestedLinkAccessLevel tagName]];
+  case DBSHARINGRequestedLinkAccessLevelDefault_:
+    return [[self tagName] isEqual:[aRequestedLinkAccessLevel tagName]];
   case DBSHARINGRequestedLinkAccessLevelOther:
     return [[self tagName] isEqual:[aRequestedLinkAccessLevel tagName]];
   }
@@ -21424,6 +21443,8 @@
     jsonDict[@".tag"] = @"editor";
   } else if ([valueObj isMax]) {
     jsonDict[@".tag"] = @"max";
+  } else if ([valueObj isDefault_]) {
+    jsonDict[@".tag"] = @"default";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -21442,6 +21463,8 @@
     return [[DBSHARINGRequestedLinkAccessLevel alloc] initWithEditor];
   } else if ([tag isEqualToString:@"max"]) {
     return [[DBSHARINGRequestedLinkAccessLevel alloc] initWithMax];
+  } else if ([tag isEqualToString:@"default"]) {
+    return [[DBSHARINGRequestedLinkAccessLevel alloc] initWithDefault_];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRequestedLinkAccessLevel alloc] initWithOther];
   } else {

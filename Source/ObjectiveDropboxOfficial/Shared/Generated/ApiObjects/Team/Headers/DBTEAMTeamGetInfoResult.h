@@ -39,6 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// of the team.
 @property (nonatomic, readonly) NSNumber *numProvisionedUsers;
 
+/// The number of licenses used on the team.
+@property (nonatomic, readonly) NSNumber *numUsedLicenses;
+
 /// (no description).
 @property (nonatomic, readonly) DBTEAMPOLICIESTeamMemberPolicies *policies;
 
@@ -52,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param numLicensedUsers The number of licenses available to the team.
 /// @param numProvisionedUsers The number of accounts that have been invited or
 /// are already active members of the team.
+/// @param numUsedLicenses The number of licenses used on the team.
 /// @param policies (no description).
 ///
 /// @return An initialized instance.
@@ -60,6 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
                       teamId:(NSString *)teamId
             numLicensedUsers:(NSNumber *)numLicensedUsers
          numProvisionedUsers:(NSNumber *)numProvisionedUsers
+             numUsedLicenses:(NSNumber *)numUsedLicenses
                     policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies;
 
 - (instancetype)init NS_UNAVAILABLE;

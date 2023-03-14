@@ -34852,6 +34852,1636 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistAddArgs.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistAddArgs
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDomains:(NSArray<NSString *> *)domains emails:(NSArray<NSString *> *)emails {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](domains);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](emails);
+
+  self = [super init];
+  if (self) {
+    _domains = domains;
+    _emails = emails;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithDomains:nil emails:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistAddArgsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistAddArgsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistAddArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.domains != nil) {
+    result = prime * result + [self.domains hash];
+  }
+  if (self.emails != nil) {
+    result = prime * result + [self.emails hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistAddArgs:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistAddArgs:(DBTEAMSharingAllowlistAddArgs *)aSharingAllowlistAddArgs {
+  if (self == aSharingAllowlistAddArgs) {
+    return YES;
+  }
+  if (self.domains) {
+    if (![self.domains isEqual:aSharingAllowlistAddArgs.domains]) {
+      return NO;
+    }
+  }
+  if (self.emails) {
+    if (![self.emails isEqual:aSharingAllowlistAddArgs.emails]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistAddArgsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistAddArgs *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.domains) {
+    jsonDict[@"domains"] = [DBArraySerializer serialize:valueObj.domains
+                                              withBlock:^id(id elem0) {
+                                                return elem0;
+                                              }];
+  }
+  if (valueObj.emails) {
+    jsonDict[@"emails"] = [DBArraySerializer serialize:valueObj.emails
+                                             withBlock:^id(id elem0) {
+                                               return elem0;
+                                             }];
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistAddArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<NSString *> *domains = valueDict[@"domains"] ? [DBArraySerializer deserialize:valueDict[@"domains"]
+                                                                              withBlock:^id(id elem0) {
+                                                                                return elem0;
+                                                                              }]
+                                                       : nil;
+  NSArray<NSString *> *emails = valueDict[@"emails"] ? [DBArraySerializer deserialize:valueDict[@"emails"]
+                                                                            withBlock:^id(id elem0) {
+                                                                              return elem0;
+                                                                            }]
+                                                     : nil;
+
+  return [[DBTEAMSharingAllowlistAddArgs alloc] initWithDomains:domains emails:emails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistAddError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistAddError
+
+@synthesize malformedEntry = _malformedEntry;
+@synthesize entriesAlreadyExist = _entriesAlreadyExist;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithMalformedEntry:(NSString *)malformedEntry {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistAddErrorMalformedEntry;
+    _malformedEntry = malformedEntry;
+  }
+  return self;
+}
+
+- (instancetype)initWithNoEntriesProvided {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistAddErrorNoEntriesProvided;
+  }
+  return self;
+}
+
+- (instancetype)initWithTooManyEntriesProvided {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamLimitReached {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistAddErrorTeamLimitReached;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnknownError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistAddErrorUnknownError;
+  }
+  return self;
+}
+
+- (instancetype)initWithEntriesAlreadyExist:(NSString *)entriesAlreadyExist {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist;
+    _entriesAlreadyExist = entriesAlreadyExist;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistAddErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSString *)malformedEntry {
+  if (![self isMalformedEntry]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMSharingAllowlistAddErrorMalformedEntry, but was %@.", [self tagName]];
+  }
+  return _malformedEntry;
+}
+
+- (NSString *)entriesAlreadyExist {
+  if (![self isEntriesAlreadyExist]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist, but was %@.", [self tagName]];
+  }
+  return _entriesAlreadyExist;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isMalformedEntry {
+  return _tag == DBTEAMSharingAllowlistAddErrorMalformedEntry;
+}
+
+- (BOOL)isNoEntriesProvided {
+  return _tag == DBTEAMSharingAllowlistAddErrorNoEntriesProvided;
+}
+
+- (BOOL)isTooManyEntriesProvided {
+  return _tag == DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided;
+}
+
+- (BOOL)isTeamLimitReached {
+  return _tag == DBTEAMSharingAllowlistAddErrorTeamLimitReached;
+}
+
+- (BOOL)isUnknownError {
+  return _tag == DBTEAMSharingAllowlistAddErrorUnknownError;
+}
+
+- (BOOL)isEntriesAlreadyExist {
+  return _tag == DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMSharingAllowlistAddErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMSharingAllowlistAddErrorMalformedEntry:
+    return @"DBTEAMSharingAllowlistAddErrorMalformedEntry";
+  case DBTEAMSharingAllowlistAddErrorNoEntriesProvided:
+    return @"DBTEAMSharingAllowlistAddErrorNoEntriesProvided";
+  case DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided:
+    return @"DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided";
+  case DBTEAMSharingAllowlistAddErrorTeamLimitReached:
+    return @"DBTEAMSharingAllowlistAddErrorTeamLimitReached";
+  case DBTEAMSharingAllowlistAddErrorUnknownError:
+    return @"DBTEAMSharingAllowlistAddErrorUnknownError";
+  case DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist:
+    return @"DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist";
+  case DBTEAMSharingAllowlistAddErrorOther:
+    return @"DBTEAMSharingAllowlistAddErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistAddErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistAddErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistAddErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMSharingAllowlistAddErrorMalformedEntry:
+    result = prime * result + [self.malformedEntry hash];
+    break;
+  case DBTEAMSharingAllowlistAddErrorNoEntriesProvided:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistAddErrorTeamLimitReached:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistAddErrorUnknownError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist:
+    result = prime * result + [self.entriesAlreadyExist hash];
+    break;
+  case DBTEAMSharingAllowlistAddErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistAddError:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistAddError:(DBTEAMSharingAllowlistAddError *)aSharingAllowlistAddError {
+  if (self == aSharingAllowlistAddError) {
+    return YES;
+  }
+  if (self.tag != aSharingAllowlistAddError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMSharingAllowlistAddErrorMalformedEntry:
+    return [self.malformedEntry isEqual:aSharingAllowlistAddError.malformedEntry];
+  case DBTEAMSharingAllowlistAddErrorNoEntriesProvided:
+    return [[self tagName] isEqual:[aSharingAllowlistAddError tagName]];
+  case DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided:
+    return [[self tagName] isEqual:[aSharingAllowlistAddError tagName]];
+  case DBTEAMSharingAllowlistAddErrorTeamLimitReached:
+    return [[self tagName] isEqual:[aSharingAllowlistAddError tagName]];
+  case DBTEAMSharingAllowlistAddErrorUnknownError:
+    return [[self tagName] isEqual:[aSharingAllowlistAddError tagName]];
+  case DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist:
+    return [self.entriesAlreadyExist isEqual:aSharingAllowlistAddError.entriesAlreadyExist];
+  case DBTEAMSharingAllowlistAddErrorOther:
+    return [[self tagName] isEqual:[aSharingAllowlistAddError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistAddErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistAddError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isMalformedEntry]) {
+    jsonDict[@"malformed_entry"] = valueObj.malformedEntry;
+    jsonDict[@".tag"] = @"malformed_entry";
+  } else if ([valueObj isNoEntriesProvided]) {
+    jsonDict[@".tag"] = @"no_entries_provided";
+  } else if ([valueObj isTooManyEntriesProvided]) {
+    jsonDict[@".tag"] = @"too_many_entries_provided";
+  } else if ([valueObj isTeamLimitReached]) {
+    jsonDict[@".tag"] = @"team_limit_reached";
+  } else if ([valueObj isUnknownError]) {
+    jsonDict[@".tag"] = @"unknown_error";
+  } else if ([valueObj isEntriesAlreadyExist]) {
+    jsonDict[@"entries_already_exist"] = valueObj.entriesAlreadyExist;
+    jsonDict[@".tag"] = @"entries_already_exist";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistAddError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"malformed_entry"]) {
+    NSString *malformedEntry = valueDict[@"malformed_entry"];
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithMalformedEntry:malformedEntry];
+  } else if ([tag isEqualToString:@"no_entries_provided"]) {
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithNoEntriesProvided];
+  } else if ([tag isEqualToString:@"too_many_entries_provided"]) {
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithTooManyEntriesProvided];
+  } else if ([tag isEqualToString:@"team_limit_reached"]) {
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithTeamLimitReached];
+  } else if ([tag isEqualToString:@"unknown_error"]) {
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithUnknownError];
+  } else if ([tag isEqualToString:@"entries_already_exist"]) {
+    NSString *entriesAlreadyExist = valueDict[@"entries_already_exist"];
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithEntriesAlreadyExist:entriesAlreadyExist];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithOther];
+  } else {
+    return [[DBTEAMSharingAllowlistAddError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistAddResponse.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistAddResponse
+
+#pragma mark - Constructors
+
+- (instancetype)initDefault {
+
+  self = [super init];
+  if (self) {
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistAddResponseSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistAddResponseSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistAddResponseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistAddResponse:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistAddResponse:(DBTEAMSharingAllowlistAddResponse *)aSharingAllowlistAddResponse {
+  if (self == aSharingAllowlistAddResponse) {
+    return YES;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistAddResponseSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistAddResponse *)valueObj {
+#pragma unused(valueObj)
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistAddResponse *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+#pragma unused(valueDict)
+
+  return [[DBTEAMSharingAllowlistAddResponse alloc] initDefault];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistListArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistListArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithLimit:(NSNumber *)limit {
+
+  self = [super init];
+  if (self) {
+    _limit = limit ?: @(1000);
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithLimit:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistListArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistListArgSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistListArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.limit hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistListArg:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistListArg:(DBTEAMSharingAllowlistListArg *)aSharingAllowlistListArg {
+  if (self == aSharingAllowlistListArg) {
+    return YES;
+  }
+  if (![self.limit isEqual:aSharingAllowlistListArg.limit]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistListArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistListArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"limit"] = valueObj.limit;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *limit = valueDict[@"limit"] ?: @(1000);
+
+  return [[DBTEAMSharingAllowlistListArg alloc] initWithLimit:limit];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistListContinueArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistListContinueArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCursor:(NSString *)cursor {
+  [DBStoneValidators nonnullValidator:nil](cursor);
+
+  self = [super init];
+  if (self) {
+    _cursor = cursor;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistListContinueArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistListContinueArgSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistListContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.cursor hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistListContinueArg:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistListContinueArg:
+    (DBTEAMSharingAllowlistListContinueArg *)aSharingAllowlistListContinueArg {
+  if (self == aSharingAllowlistListContinueArg) {
+    return YES;
+  }
+  if (![self.cursor isEqual:aSharingAllowlistListContinueArg.cursor]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistListContinueArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistListContinueArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"cursor"] = valueObj.cursor;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *cursor = valueDict[@"cursor"];
+
+  return [[DBTEAMSharingAllowlistListContinueArg alloc] initWithCursor:cursor];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistListContinueError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistListContinueError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInvalidCursor {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistListContinueErrorInvalidCursor;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistListContinueErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInvalidCursor {
+  return _tag == DBTEAMSharingAllowlistListContinueErrorInvalidCursor;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMSharingAllowlistListContinueErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMSharingAllowlistListContinueErrorInvalidCursor:
+    return @"DBTEAMSharingAllowlistListContinueErrorInvalidCursor";
+  case DBTEAMSharingAllowlistListContinueErrorOther:
+    return @"DBTEAMSharingAllowlistListContinueErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistListContinueErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistListContinueErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistListContinueErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMSharingAllowlistListContinueErrorInvalidCursor:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistListContinueErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistListContinueError:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistListContinueError:
+    (DBTEAMSharingAllowlistListContinueError *)aSharingAllowlistListContinueError {
+  if (self == aSharingAllowlistListContinueError) {
+    return YES;
+  }
+  if (self.tag != aSharingAllowlistListContinueError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMSharingAllowlistListContinueErrorInvalidCursor:
+    return [[self tagName] isEqual:[aSharingAllowlistListContinueError tagName]];
+  case DBTEAMSharingAllowlistListContinueErrorOther:
+    return [[self tagName] isEqual:[aSharingAllowlistListContinueError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistListContinueErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistListContinueError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInvalidCursor]) {
+    jsonDict[@".tag"] = @"invalid_cursor";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"invalid_cursor"]) {
+    return [[DBTEAMSharingAllowlistListContinueError alloc] initWithInvalidCursor];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMSharingAllowlistListContinueError alloc] initWithOther];
+  } else {
+    return [[DBTEAMSharingAllowlistListContinueError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistListError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistListError
+
+#pragma mark - Constructors
+
+- (instancetype)initDefault {
+
+  self = [super init];
+  if (self) {
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistListErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistListErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistListErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistListError:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistListError:(DBTEAMSharingAllowlistListError *)aSharingAllowlistListError {
+  if (self == aSharingAllowlistListError) {
+    return YES;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistListErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistListError *)valueObj {
+#pragma unused(valueObj)
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistListError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+#pragma unused(valueDict)
+
+  return [[DBTEAMSharingAllowlistListError alloc] initDefault];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistListResponse.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistListResponse
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDomains:(NSArray<NSString *> *)domains
+                         emails:(NSArray<NSString *> *)emails
+                         cursor:(NSString *)cursor
+                        hasMore:(NSNumber *)hasMore {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](domains);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](emails);
+
+  self = [super init];
+  if (self) {
+    _domains = domains;
+    _emails = emails;
+    _cursor = cursor ?: @"";
+    _hasMore = hasMore ?: @NO;
+  }
+  return self;
+}
+
+- (instancetype)initWithDomains:(NSArray<NSString *> *)domains emails:(NSArray<NSString *> *)emails {
+  return [self initWithDomains:domains emails:emails cursor:nil hasMore:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistListResponseSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistListResponseSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistListResponseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.domains hash];
+  result = prime * result + [self.emails hash];
+  result = prime * result + [self.cursor hash];
+  result = prime * result + [self.hasMore hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistListResponse:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistListResponse:(DBTEAMSharingAllowlistListResponse *)aSharingAllowlistListResponse {
+  if (self == aSharingAllowlistListResponse) {
+    return YES;
+  }
+  if (![self.domains isEqual:aSharingAllowlistListResponse.domains]) {
+    return NO;
+  }
+  if (![self.emails isEqual:aSharingAllowlistListResponse.emails]) {
+    return NO;
+  }
+  if (![self.cursor isEqual:aSharingAllowlistListResponse.cursor]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aSharingAllowlistListResponse.hasMore]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistListResponseSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistListResponse *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"domains"] = [DBArraySerializer serialize:valueObj.domains
+                                            withBlock:^id(id elem0) {
+                                              return elem0;
+                                            }];
+  jsonDict[@"emails"] = [DBArraySerializer serialize:valueObj.emails
+                                           withBlock:^id(id elem0) {
+                                             return elem0;
+                                           }];
+  jsonDict[@"cursor"] = valueObj.cursor;
+  jsonDict[@"has_more"] = valueObj.hasMore;
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistListResponse *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<NSString *> *domains = [DBArraySerializer deserialize:valueDict[@"domains"]
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
+                                                      }];
+  NSArray<NSString *> *emails = [DBArraySerializer deserialize:valueDict[@"emails"]
+                                                     withBlock:^id(id elem0) {
+                                                       return elem0;
+                                                     }];
+  NSString *cursor = valueDict[@"cursor"] ?: @"";
+  NSNumber *hasMore = valueDict[@"has_more"] ?: @NO;
+
+  return
+      [[DBTEAMSharingAllowlistListResponse alloc] initWithDomains:domains emails:emails cursor:cursor hasMore:hasMore];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistRemoveArgs.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistRemoveArgs
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDomains:(NSArray<NSString *> *)domains emails:(NSArray<NSString *> *)emails {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](domains);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](emails);
+
+  self = [super init];
+  if (self) {
+    _domains = domains;
+    _emails = emails;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithDomains:nil emails:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistRemoveArgsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistRemoveArgsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistRemoveArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.domains != nil) {
+    result = prime * result + [self.domains hash];
+  }
+  if (self.emails != nil) {
+    result = prime * result + [self.emails hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistRemoveArgs:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistRemoveArgs:(DBTEAMSharingAllowlistRemoveArgs *)aSharingAllowlistRemoveArgs {
+  if (self == aSharingAllowlistRemoveArgs) {
+    return YES;
+  }
+  if (self.domains) {
+    if (![self.domains isEqual:aSharingAllowlistRemoveArgs.domains]) {
+      return NO;
+    }
+  }
+  if (self.emails) {
+    if (![self.emails isEqual:aSharingAllowlistRemoveArgs.emails]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistRemoveArgsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistRemoveArgs *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.domains) {
+    jsonDict[@"domains"] = [DBArraySerializer serialize:valueObj.domains
+                                              withBlock:^id(id elem0) {
+                                                return elem0;
+                                              }];
+  }
+  if (valueObj.emails) {
+    jsonDict[@"emails"] = [DBArraySerializer serialize:valueObj.emails
+                                             withBlock:^id(id elem0) {
+                                               return elem0;
+                                             }];
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistRemoveArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<NSString *> *domains = valueDict[@"domains"] ? [DBArraySerializer deserialize:valueDict[@"domains"]
+                                                                              withBlock:^id(id elem0) {
+                                                                                return elem0;
+                                                                              }]
+                                                       : nil;
+  NSArray<NSString *> *emails = valueDict[@"emails"] ? [DBArraySerializer deserialize:valueDict[@"emails"]
+                                                                            withBlock:^id(id elem0) {
+                                                                              return elem0;
+                                                                            }]
+                                                     : nil;
+
+  return [[DBTEAMSharingAllowlistRemoveArgs alloc] initWithDomains:domains emails:emails];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistRemoveError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistRemoveError
+
+@synthesize malformedEntry = _malformedEntry;
+@synthesize entriesDoNotExist = _entriesDoNotExist;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithMalformedEntry:(NSString *)malformedEntry {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistRemoveErrorMalformedEntry;
+    _malformedEntry = malformedEntry;
+  }
+  return self;
+}
+
+- (instancetype)initWithEntriesDoNotExist:(NSString *)entriesDoNotExist {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist;
+    _entriesDoNotExist = entriesDoNotExist;
+  }
+  return self;
+}
+
+- (instancetype)initWithNoEntriesProvided {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided;
+  }
+  return self;
+}
+
+- (instancetype)initWithTooManyEntriesProvided {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnknownError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistRemoveErrorUnknownError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMSharingAllowlistRemoveErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSString *)malformedEntry {
+  if (![self isMalformedEntry]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMSharingAllowlistRemoveErrorMalformedEntry, but was %@.", [self tagName]];
+  }
+  return _malformedEntry;
+}
+
+- (NSString *)entriesDoNotExist {
+  if (![self isEntriesDoNotExist]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist, but was %@.",
+                       [self tagName]];
+  }
+  return _entriesDoNotExist;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isMalformedEntry {
+  return _tag == DBTEAMSharingAllowlistRemoveErrorMalformedEntry;
+}
+
+- (BOOL)isEntriesDoNotExist {
+  return _tag == DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist;
+}
+
+- (BOOL)isNoEntriesProvided {
+  return _tag == DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided;
+}
+
+- (BOOL)isTooManyEntriesProvided {
+  return _tag == DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided;
+}
+
+- (BOOL)isUnknownError {
+  return _tag == DBTEAMSharingAllowlistRemoveErrorUnknownError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMSharingAllowlistRemoveErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMSharingAllowlistRemoveErrorMalformedEntry:
+    return @"DBTEAMSharingAllowlistRemoveErrorMalformedEntry";
+  case DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist:
+    return @"DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist";
+  case DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided:
+    return @"DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided";
+  case DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided:
+    return @"DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided";
+  case DBTEAMSharingAllowlistRemoveErrorUnknownError:
+    return @"DBTEAMSharingAllowlistRemoveErrorUnknownError";
+  case DBTEAMSharingAllowlistRemoveErrorOther:
+    return @"DBTEAMSharingAllowlistRemoveErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistRemoveErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistRemoveErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistRemoveErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMSharingAllowlistRemoveErrorMalformedEntry:
+    result = prime * result + [self.malformedEntry hash];
+    break;
+  case DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist:
+    result = prime * result + [self.entriesDoNotExist hash];
+    break;
+  case DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistRemoveErrorUnknownError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMSharingAllowlistRemoveErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistRemoveError:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistRemoveError:(DBTEAMSharingAllowlistRemoveError *)aSharingAllowlistRemoveError {
+  if (self == aSharingAllowlistRemoveError) {
+    return YES;
+  }
+  if (self.tag != aSharingAllowlistRemoveError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMSharingAllowlistRemoveErrorMalformedEntry:
+    return [self.malformedEntry isEqual:aSharingAllowlistRemoveError.malformedEntry];
+  case DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist:
+    return [self.entriesDoNotExist isEqual:aSharingAllowlistRemoveError.entriesDoNotExist];
+  case DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided:
+    return [[self tagName] isEqual:[aSharingAllowlistRemoveError tagName]];
+  case DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided:
+    return [[self tagName] isEqual:[aSharingAllowlistRemoveError tagName]];
+  case DBTEAMSharingAllowlistRemoveErrorUnknownError:
+    return [[self tagName] isEqual:[aSharingAllowlistRemoveError tagName]];
+  case DBTEAMSharingAllowlistRemoveErrorOther:
+    return [[self tagName] isEqual:[aSharingAllowlistRemoveError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistRemoveErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistRemoveError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isMalformedEntry]) {
+    jsonDict[@"malformed_entry"] = valueObj.malformedEntry;
+    jsonDict[@".tag"] = @"malformed_entry";
+  } else if ([valueObj isEntriesDoNotExist]) {
+    jsonDict[@"entries_do_not_exist"] = valueObj.entriesDoNotExist;
+    jsonDict[@".tag"] = @"entries_do_not_exist";
+  } else if ([valueObj isNoEntriesProvided]) {
+    jsonDict[@".tag"] = @"no_entries_provided";
+  } else if ([valueObj isTooManyEntriesProvided]) {
+    jsonDict[@".tag"] = @"too_many_entries_provided";
+  } else if ([valueObj isUnknownError]) {
+    jsonDict[@".tag"] = @"unknown_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistRemoveError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"malformed_entry"]) {
+    NSString *malformedEntry = valueDict[@"malformed_entry"];
+    return [[DBTEAMSharingAllowlistRemoveError alloc] initWithMalformedEntry:malformedEntry];
+  } else if ([tag isEqualToString:@"entries_do_not_exist"]) {
+    NSString *entriesDoNotExist = valueDict[@"entries_do_not_exist"];
+    return [[DBTEAMSharingAllowlistRemoveError alloc] initWithEntriesDoNotExist:entriesDoNotExist];
+  } else if ([tag isEqualToString:@"no_entries_provided"]) {
+    return [[DBTEAMSharingAllowlistRemoveError alloc] initWithNoEntriesProvided];
+  } else if ([tag isEqualToString:@"too_many_entries_provided"]) {
+    return [[DBTEAMSharingAllowlistRemoveError alloc] initWithTooManyEntriesProvided];
+  } else if ([tag isEqualToString:@"unknown_error"]) {
+    return [[DBTEAMSharingAllowlistRemoveError alloc] initWithUnknownError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMSharingAllowlistRemoveError alloc] initWithOther];
+  } else {
+    return [[DBTEAMSharingAllowlistRemoveError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMSharingAllowlistRemoveResponse.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMSharingAllowlistRemoveResponse
+
+#pragma mark - Constructors
+
+- (instancetype)initDefault {
+
+  self = [super init];
+  if (self) {
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMSharingAllowlistRemoveResponseSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMSharingAllowlistRemoveResponseSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMSharingAllowlistRemoveResponseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharingAllowlistRemoveResponse:other];
+}
+
+- (BOOL)isEqualToSharingAllowlistRemoveResponse:
+    (DBTEAMSharingAllowlistRemoveResponse *)aSharingAllowlistRemoveResponse {
+  if (self == aSharingAllowlistRemoveResponse) {
+    return YES;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMSharingAllowlistRemoveResponseSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistRemoveResponse *)valueObj {
+#pragma unused(valueObj)
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  return [jsonDict count] > 0 ? jsonDict : nil;
+}
+
++ (DBTEAMSharingAllowlistRemoveResponse *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+#pragma unused(valueDict)
+
+  return [[DBTEAMSharingAllowlistRemoveResponse alloc] initDefault];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMStorageBucket.h"
 
 #pragma mark - API Object
@@ -39313,11 +40943,13 @@
                       teamId:(NSString *)teamId
             numLicensedUsers:(NSNumber *)numLicensedUsers
          numProvisionedUsers:(NSNumber *)numProvisionedUsers
+             numUsedLicenses:(NSNumber *)numUsedLicenses
                     policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies {
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](teamId);
   [DBStoneValidators nonnullValidator:nil](numLicensedUsers);
   [DBStoneValidators nonnullValidator:nil](numProvisionedUsers);
+  [DBStoneValidators nonnullValidator:nil](numUsedLicenses);
   [DBStoneValidators nonnullValidator:nil](policies);
 
   self = [super init];
@@ -39326,6 +40958,7 @@
     _teamId = teamId;
     _numLicensedUsers = numLicensedUsers;
     _numProvisionedUsers = numProvisionedUsers;
+    _numUsedLicenses = numUsedLicenses;
     _policies = policies;
   }
   return self;
@@ -39365,6 +40998,7 @@
   result = prime * result + [self.teamId hash];
   result = prime * result + [self.numLicensedUsers hash];
   result = prime * result + [self.numProvisionedUsers hash];
+  result = prime * result + [self.numUsedLicenses hash];
   result = prime * result + [self.policies hash];
 
   return prime * result;
@@ -39398,6 +41032,9 @@
   if (![self.numProvisionedUsers isEqual:aTeamGetInfoResult.numProvisionedUsers]) {
     return NO;
   }
+  if (![self.numUsedLicenses isEqual:aTeamGetInfoResult.numUsedLicenses]) {
+    return NO;
+  }
   if (![self.policies isEqual:aTeamGetInfoResult.policies]) {
     return NO;
   }
@@ -39417,6 +41054,7 @@
   jsonDict[@"team_id"] = valueObj.teamId;
   jsonDict[@"num_licensed_users"] = valueObj.numLicensedUsers;
   jsonDict[@"num_provisioned_users"] = valueObj.numProvisionedUsers;
+  jsonDict[@"num_used_licenses"] = valueObj.numUsedLicenses;
   jsonDict[@"policies"] = [DBTEAMPOLICIESTeamMemberPoliciesSerializer serialize:valueObj.policies];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
@@ -39427,6 +41065,7 @@
   NSString *teamId = valueDict[@"team_id"];
   NSNumber *numLicensedUsers = valueDict[@"num_licensed_users"];
   NSNumber *numProvisionedUsers = valueDict[@"num_provisioned_users"];
+  NSNumber *numUsedLicenses = valueDict[@"num_used_licenses"];
   DBTEAMPOLICIESTeamMemberPolicies *policies =
       [DBTEAMPOLICIESTeamMemberPoliciesSerializer deserialize:valueDict[@"policies"]];
 
@@ -39434,6 +41073,7 @@
                                                 teamId:teamId
                                       numLicensedUsers:numLicensedUsers
                                    numProvisionedUsers:numProvisionedUsers
+                                       numUsedLicenses:numUsedLicenses
                                               policies:policies];
 }
 

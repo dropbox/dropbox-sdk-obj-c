@@ -4742,6 +4742,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMPOLICIESGroupCreation.h"
 #import "DBTEAMPOLICIESSharedFolderJoinPolicy.h"
 #import "DBTEAMPOLICIESSharedFolderMemberPolicy.h"
 #import "DBTEAMPOLICIESSharedLinkCreatePolicy.h"
@@ -4755,16 +4756,19 @@
 
 - (instancetype)initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy
                           sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy
-                          sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy {
+                          sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy
+                             groupCreationPolicy:(DBTEAMPOLICIESGroupCreation *)groupCreationPolicy {
   [DBStoneValidators nonnullValidator:nil](sharedFolderMemberPolicy);
   [DBStoneValidators nonnullValidator:nil](sharedFolderJoinPolicy);
   [DBStoneValidators nonnullValidator:nil](sharedLinkCreatePolicy);
+  [DBStoneValidators nonnullValidator:nil](groupCreationPolicy);
 
   self = [super init];
   if (self) {
     _sharedFolderMemberPolicy = sharedFolderMemberPolicy;
     _sharedFolderJoinPolicy = sharedFolderJoinPolicy;
     _sharedLinkCreatePolicy = sharedLinkCreatePolicy;
+    _groupCreationPolicy = groupCreationPolicy;
   }
   return self;
 }
@@ -4802,6 +4806,7 @@
   result = prime * result + [self.sharedFolderMemberPolicy hash];
   result = prime * result + [self.sharedFolderJoinPolicy hash];
   result = prime * result + [self.sharedLinkCreatePolicy hash];
+  result = prime * result + [self.groupCreationPolicy hash];
 
   return prime * result;
 }
@@ -4831,6 +4836,9 @@
   if (![self.sharedLinkCreatePolicy isEqual:aTeamSharingPolicies.sharedLinkCreatePolicy]) {
     return NO;
   }
+  if (![self.groupCreationPolicy isEqual:aTeamSharingPolicies.groupCreationPolicy]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -4849,6 +4857,7 @@
       [DBTEAMPOLICIESSharedFolderJoinPolicySerializer serialize:valueObj.sharedFolderJoinPolicy];
   jsonDict[@"shared_link_create_policy"] =
       [DBTEAMPOLICIESSharedLinkCreatePolicySerializer serialize:valueObj.sharedLinkCreatePolicy];
+  jsonDict[@"group_creation_policy"] = [DBTEAMPOLICIESGroupCreationSerializer serialize:valueObj.groupCreationPolicy];
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -4860,10 +4869,13 @@
       [DBTEAMPOLICIESSharedFolderJoinPolicySerializer deserialize:valueDict[@"shared_folder_join_policy"]];
   DBTEAMPOLICIESSharedLinkCreatePolicy *sharedLinkCreatePolicy =
       [DBTEAMPOLICIESSharedLinkCreatePolicySerializer deserialize:valueDict[@"shared_link_create_policy"]];
+  DBTEAMPOLICIESGroupCreation *groupCreationPolicy =
+      [DBTEAMPOLICIESGroupCreationSerializer deserialize:valueDict[@"group_creation_policy"]];
 
   return [[DBTEAMPOLICIESTeamSharingPolicies alloc] initWithSharedFolderMemberPolicy:sharedFolderMemberPolicy
                                                               sharedFolderJoinPolicy:sharedFolderJoinPolicy
-                                                              sharedLinkCreatePolicy:sharedLinkCreatePolicy];
+                                                              sharedLinkCreatePolicy:sharedLinkCreatePolicy
+                                                                 groupCreationPolicy:groupCreationPolicy];
 }
 
 @end

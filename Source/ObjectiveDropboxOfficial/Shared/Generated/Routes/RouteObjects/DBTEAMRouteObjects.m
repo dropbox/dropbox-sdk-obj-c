@@ -146,6 +146,13 @@
 #import "DBTEAMRevokeLinkedAppError.h"
 #import "DBTEAMRevokeLinkedAppStatus.h"
 #import "DBTEAMSetCustomQuotaError.h"
+#import "DBTEAMSharingAllowlistAddError.h"
+#import "DBTEAMSharingAllowlistAddResponse.h"
+#import "DBTEAMSharingAllowlistListContinueError.h"
+#import "DBTEAMSharingAllowlistListError.h"
+#import "DBTEAMSharingAllowlistListResponse.h"
+#import "DBTEAMSharingAllowlistRemoveError.h"
+#import "DBTEAMSharingAllowlistRemoveResponse.h"
 #import "DBTEAMStorageBucket.h"
 #import "DBTEAMTeamAuthRoutes.h"
 #import "DBTEAMTeamFolderAccessError.h"
@@ -263,6 +270,10 @@ static DBRoute *DBTEAMReportsGetActivity;
 static DBRoute *DBTEAMReportsGetDevices;
 static DBRoute *DBTEAMReportsGetMembership;
 static DBRoute *DBTEAMReportsGetStorage;
+static DBRoute *DBTEAMSharingAllowlistAdd;
+static DBRoute *DBTEAMSharingAllowlistList;
+static DBRoute *DBTEAMSharingAllowlistListContinue;
+static DBRoute *DBTEAMSharingAllowlistRemove;
 static DBRoute *DBTEAMTeamFolderActivate;
 static DBRoute *DBTEAMTeamFolderArchive;
 static DBRoute *DBTEAMTeamFolderArchiveCheck;
@@ -1874,6 +1885,86 @@ static NSObject *lockObj = nil;
                               dataStructDeserialBlock:nil];
     }
     return DBTEAMReportsGetStorage;
+  }
+}
+
++ (DBRoute *)DBTEAMSharingAllowlistAdd {
+  @synchronized(lockObj) {
+    if (!DBTEAMSharingAllowlistAdd) {
+      DBTEAMSharingAllowlistAdd = [[DBRoute alloc] init:@"sharing_allowlist/add"
+                                             namespace_:@"team"
+                                             deprecated:@NO
+                                             resultType:[DBTEAMSharingAllowlistAddResponse class]
+                                              errorType:[DBTEAMSharingAllowlistAddError class]
+                                                  attrs:@{
+                                                    @"auth" : @"team",
+                                                    @"host" : @"api",
+                                                    @"style" : @"rpc"
+                                                  }
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
+    }
+    return DBTEAMSharingAllowlistAdd;
+  }
+}
+
++ (DBRoute *)DBTEAMSharingAllowlistList {
+  @synchronized(lockObj) {
+    if (!DBTEAMSharingAllowlistList) {
+      DBTEAMSharingAllowlistList = [[DBRoute alloc] init:@"sharing_allowlist/list"
+                                              namespace_:@"team"
+                                              deprecated:@NO
+                                              resultType:[DBTEAMSharingAllowlistListResponse class]
+                                               errorType:[DBTEAMSharingAllowlistListError class]
+                                                   attrs:@{
+                                                     @"auth" : @"team",
+                                                     @"host" : @"api",
+                                                     @"style" : @"rpc"
+                                                   }
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
+    }
+    return DBTEAMSharingAllowlistList;
+  }
+}
+
++ (DBRoute *)DBTEAMSharingAllowlistListContinue {
+  @synchronized(lockObj) {
+    if (!DBTEAMSharingAllowlistListContinue) {
+      DBTEAMSharingAllowlistListContinue = [[DBRoute alloc] init:@"sharing_allowlist/list/continue"
+                                                      namespace_:@"team"
+                                                      deprecated:@NO
+                                                      resultType:[DBTEAMSharingAllowlistListResponse class]
+                                                       errorType:[DBTEAMSharingAllowlistListContinueError class]
+                                                           attrs:@{
+                                                             @"auth" : @"team",
+                                                             @"host" : @"api",
+                                                             @"style" : @"rpc"
+                                                           }
+                                           dataStructSerialBlock:nil
+                                         dataStructDeserialBlock:nil];
+    }
+    return DBTEAMSharingAllowlistListContinue;
+  }
+}
+
++ (DBRoute *)DBTEAMSharingAllowlistRemove {
+  @synchronized(lockObj) {
+    if (!DBTEAMSharingAllowlistRemove) {
+      DBTEAMSharingAllowlistRemove = [[DBRoute alloc] init:@"sharing_allowlist/remove"
+                                                namespace_:@"team"
+                                                deprecated:@NO
+                                                resultType:[DBTEAMSharingAllowlistRemoveResponse class]
+                                                 errorType:[DBTEAMSharingAllowlistRemoveError class]
+                                                     attrs:@{
+                                                       @"auth" : @"team",
+                                                       @"host" : @"api",
+                                                       @"style" : @"rpc"
+                                                     }
+                                     dataStructSerialBlock:nil
+                                   dataStructDeserialBlock:nil];
+    }
+    return DBTEAMSharingAllowlistRemove;
   }
 }
 

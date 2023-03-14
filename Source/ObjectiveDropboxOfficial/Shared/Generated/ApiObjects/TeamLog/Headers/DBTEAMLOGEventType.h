@@ -123,6 +123,7 @@
 @class DBTEAMLOGFileMoveType;
 @class DBTEAMLOGFilePermanentlyDeleteType;
 @class DBTEAMLOGFilePreviewType;
+@class DBTEAMLOGFileProviderMigrationPolicyChangedType;
 @class DBTEAMLOGFileRenameType;
 @class DBTEAMLOGFileRequestChangeType;
 @class DBTEAMLOGFileRequestCloseType;
@@ -145,6 +146,7 @@
 @class DBTEAMLOGFileTransfersTransferViewType;
 @class DBTEAMLOGFileUnlikeCommentType;
 @class DBTEAMLOGFileUnresolveCommentType;
+@class DBTEAMLOGFolderLinkRestrictionPolicyChangedType;
 @class DBTEAMLOGFolderOverviewDescriptionChangedType;
 @class DBTEAMLOGFolderOverviewItemPinnedType;
 @class DBTEAMLOGFolderOverviewItemUnpinnedType;
@@ -1615,8 +1617,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (team_policies) Changed account capture setting on team domain
     DBTEAMLOGEventTypeAccountCaptureChangePolicy,
 
-    /// (team_policies) Changed admin email reminder policy for team requests to
-    /// join
+    /// (team_policies) Changed admin reminder settings for requests to join the
+    /// team
     DBTEAMLOGEventTypeAdminEmailRemindersChanged,
 
     /// (team_policies) Disabled downloads (deprecated, no longer logged)
@@ -1707,6 +1709,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
     /// (team_policies) Changed file locking policy for team
     DBTEAMLOGEventTypeFileLockingPolicyChanged,
 
+    /// (team_policies) Changed File Provider Migration policy for team
+    DBTEAMLOGEventTypeFileProviderMigrationPolicyChanged,
+
     /// (team_policies) Enabled/disabled file requests
     DBTEAMLOGEventTypeFileRequestsChangePolicy,
 
@@ -1720,6 +1725,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
     /// (team_policies) Changed file transfers policy for team
     DBTEAMLOGEventTypeFileTransfersPolicyChanged,
+
+    /// (team_policies) Changed folder link restrictions policy for team
+    DBTEAMLOGEventTypeFolderLinkRestrictionPolicyChanged,
 
     /// (team_policies) Enabled/disabled Google single sign-on for team
     DBTEAMLOGEventTypeGoogleSsoChangePolicy,
@@ -3788,8 +3796,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAccountCaptureChangePolicyType *accountCaptureChangePolicy;
 
-/// (team_policies) Changed admin email reminder policy for team requests to
-/// join @note Ensure the `isAdminEmailRemindersChanged` method returns true
+/// (team_policies) Changed admin reminder settings for requests to join the
+/// team @note Ensure the `isAdminEmailRemindersChanged` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGAdminEmailRemindersChangedType *adminEmailRemindersChanged;
 
@@ -3933,6 +3941,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileLockingPolicyChangedType *fileLockingPolicyChanged;
 
+/// (team_policies) Changed File Provider Migration policy for team @note Ensure
+/// the `isFileProviderMigrationPolicyChanged` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGFileProviderMigrationPolicyChangedType *fileProviderMigrationPolicyChanged;
+
 /// (team_policies) Enabled/disabled file requests @note Ensure the
 /// `isFileRequestsChangePolicy` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
@@ -3953,6 +3966,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// `isFileTransfersPolicyChanged` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFileTransfersPolicyChangedType *fileTransfersPolicyChanged;
+
+/// (team_policies) Changed folder link restrictions policy for team @note
+/// Ensure the `isFolderLinkRestrictionPolicyChanged` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGFolderLinkRestrictionPolicyChangedType *folderLinkRestrictionPolicyChanged;
 
 /// (team_policies) Enabled/disabled Google single sign-on for team @note Ensure
 /// the `isGoogleSsoChangePolicy` method returns true before accessing,
@@ -9082,11 +9100,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// Initializes union class with tag state of "admin_email_reminders_changed".
 ///
 /// Description of the "admin_email_reminders_changed" tag state:
-/// (team_policies) Changed admin email reminder policy for team requests to
-/// join
+/// (team_policies) Changed admin reminder settings for requests to join the
+/// team
 ///
-/// @param adminEmailRemindersChanged (team_policies) Changed admin email
-/// reminder policy for team requests to join
+/// @param adminEmailRemindersChanged (team_policies) Changed admin reminder
+/// settings for requests to join the team
 ///
 /// @return An initialized instance.
 ///
@@ -9480,6 +9498,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 - (instancetype)initWithFileLockingPolicyChanged:(DBTEAMLOGFileLockingPolicyChangedType *)fileLockingPolicyChanged;
 
 ///
+/// Initializes union class with tag state of
+/// "file_provider_migration_policy_changed".
+///
+/// Description of the "file_provider_migration_policy_changed" tag state:
+/// (team_policies) Changed File Provider Migration policy for team
+///
+/// @param fileProviderMigrationPolicyChanged (team_policies) Changed File
+/// Provider Migration policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFileProviderMigrationPolicyChanged:
+    (DBTEAMLOGFileProviderMigrationPolicyChangedType *)fileProviderMigrationPolicyChanged;
+
+///
 /// Initializes union class with tag state of "file_requests_change_policy".
 ///
 /// Description of the "file_requests_change_policy" tag state: (team_policies)
@@ -9534,6 +9567,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 ///
 - (instancetype)initWithFileTransfersPolicyChanged:
     (DBTEAMLOGFileTransfersPolicyChangedType *)fileTransfersPolicyChanged;
+
+///
+/// Initializes union class with tag state of
+/// "folder_link_restriction_policy_changed".
+///
+/// Description of the "folder_link_restriction_policy_changed" tag state:
+/// (team_policies) Changed folder link restrictions policy for team
+///
+/// @param folderLinkRestrictionPolicyChanged (team_policies) Changed folder
+/// link restrictions policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFolderLinkRestrictionPolicyChanged:
+    (DBTEAMLOGFolderLinkRestrictionPolicyChangedType *)folderLinkRestrictionPolicyChanged;
 
 ///
 /// Initializes union class with tag state of "google_sso_change_policy".
@@ -15641,6 +15689,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "file_provider_migration_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `fileProviderMigrationPolicyChanged` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "file_provider_migration_policy_changed".
+///
+- (BOOL)isFileProviderMigrationPolicyChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "file_requests_change_policy".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -15690,6 +15751,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag){
 /// "file_transfers_policy_changed".
 ///
 - (BOOL)isFileTransfersPolicyChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_link_restriction_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `folderLinkRestrictionPolicyChanged` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "folder_link_restriction_policy_changed".
+///
+- (BOOL)isFolderLinkRestrictionPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value
