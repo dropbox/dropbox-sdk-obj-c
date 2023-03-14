@@ -2004,9 +2004,10 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     DBTEAMGroupSelector *groupSelector =
     [[DBTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    NSString *newGroupName = [NSString stringWithFormat:@"%@%@", @"New Group Name", _tester.testData.testIdTeam];
     [[[_tester.team groupsUpdate:groupSelector
                    returnMembers:nil
-                   dNewGroupName:@"New Group Name"
+                   dNewGroupName:newGroupName
              dNewGroupExternalId:nil
          dNewGroupManagementType:nil]
       setResponseBlock:^(DBTEAMGroupFullInfo *result, DBTEAMGroupUpdateError *routeError, DBRequestError *error) {
