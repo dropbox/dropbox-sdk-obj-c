@@ -2,7 +2,7 @@
 
 The Official Dropbox Objective-C SDK for integrating with Dropbox [API v2](https://www.dropbox.com/developers/documentation/http/documentation) on iOS or macOS.
 
-Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/).
+Full documentation [here](https://dropbox.github.io/dropbox-sdk-obj-c/api-docs/7.1.0/).
 
 NOTE: Please do not rely on `master` in production. Please instead use one of our tagged [release commits](https://github.com/dropbox/dropbox-sdk-obj-c/releases) (preferrably fetched via CocoaPods or Carthage), as these commits have been more thoroughly tested.
 
