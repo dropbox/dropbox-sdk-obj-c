@@ -14,7 +14,7 @@ exit_with_message() {
 }
 
 exit_with_clang_format_install_message() {
-    exit_with_message "Skipping code formatting. Please install clang-format version 16 or greater: 'brew install clang-format'"
+    exit_with_message "Skipping code formatting. Please install clang-format version 7 or greater: 'brew install clang-format'"
 }
 
 if ! [ -x "$(command -v clang-format)" ]; then
@@ -27,8 +27,7 @@ fi
 
 clang_format_version="$(clang-format --version | cut -f3 -w | tail)"
 clang_format_version_major=$(awk -F. '{print $1}' <<<"$clang_format_version")
-
-if [ "$clang_format_version_major" -lt 16 ]; then
+if [ "$clang_format_version_major" -lt 7 ]; then
     exit_with_clang_format_install_message
 fi
 
