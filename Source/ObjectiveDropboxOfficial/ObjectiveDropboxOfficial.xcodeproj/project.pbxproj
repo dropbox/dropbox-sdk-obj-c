@@ -13942,7 +13942,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platform/ObjectiveDropboxOfficial_macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.ObjectiveDropboxOfficial;
 				PRODUCT_NAME = ObjectiveDropboxOfficial;
 				SDKROOT = macosx;
@@ -13972,7 +13972,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platform/ObjectiveDropboxOfficial_macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.ObjectiveDropboxOfficial;
 				PRODUCT_NAME = ObjectiveDropboxOfficial;
 				SDKROOT = macosx;
