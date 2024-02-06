@@ -305,7 +305,7 @@
                      errorContent:(NSString *)errorContent
                       userMessage:(DBLocalizedUserMessage *)userMessage
             structuredAccessError:(DBAUTHAccessError *)structuredAccessError {
-  return [self init:DBRequestErrorAuth
+  return [self init:DBRequestErrorAccess
                      requestId:requestId
                     statusCode:statusCode
                   errorContent:errorContent
