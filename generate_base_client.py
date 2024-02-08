@@ -52,6 +52,12 @@ _cmdline_parser.add_argument(
     help='Path to format output.',
 )
 _cmdline_parser.add_argument(
+    '-fs',
+    '--format-script-dir',
+    type=str,
+    help='Path to format script directory.',
+)
+_cmdline_parser.add_argument(
     '-e',
     '--exclude-from-analysis',
     action='store_true',
@@ -84,9 +90,13 @@ def main():
         stone_path = args.stone
 
     dropbox_src_path = os.path.abspath('Source')
-    dropbox_default_output_path = os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
+    dropbox_default_output_path = \
+        os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
     dropbox_pkg_path = args.output_path if args.output_path else dropbox_default_output_path
-    dropbox_format_script_path = os.path.abspath('Format')
+
+    dropbox_format_script_dir = args.format_script_dir if args.format_script_dir else \
+        os.path.abspath('Format')
+
     dropbox_format_output_path = args.format_output_path if args.format_output_path else dropbox_src_path
 
     # clear out all old files
@@ -156,7 +166,7 @@ def main():
         print('Formatting source files')
 
     cmd = ['./format_files.sh', dropbox_format_output_path]
-    o = subprocess.check_output(cmd, cwd=dropbox_format_script_path)
+    o = subprocess.check_output(cmd, cwd=dropbox_format_script_dir)
     if o:
         print('Output:', o)
 
