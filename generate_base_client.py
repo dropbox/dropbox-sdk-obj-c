@@ -9,6 +9,12 @@ import shutil
 import subprocess
 import sys
 
+def dir_path(string):
+    if os.path.isdir(string):
+        return string
+    else:
+        raise NotADirectoryError(string)
+
 cmdline_desc = """\
 Runs Stone to generate Obj-C types and client for the Dropbox client.
 """
@@ -52,6 +58,12 @@ _cmdline_parser.add_argument(
     help='Path to format output.',
 )
 _cmdline_parser.add_argument(
+    '-fs',
+    '--format-script-path',
+    type=dir_path,
+    help='Path to format script directory.',
+)
+_cmdline_parser.add_argument(
     '-e',
     '--exclude-from-analysis',
     action='store_true',
@@ -84,9 +96,13 @@ def main():
         stone_path = args.stone
 
     dropbox_src_path = os.path.abspath('Source')
-    dropbox_default_output_path = os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
+    dropbox_default_output_path = \
+        os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
     dropbox_pkg_path = args.output_path if args.output_path else dropbox_default_output_path
-    dropbox_format_script_path = os.path.abspath('Format')
+
+    dropbox_format_script_path = args.format_script_path if args.format_script_path else \
+        os.path.abspath('Format')
+
     dropbox_format_output_path = args.format_output_path if args.format_output_path else dropbox_src_path
 
     # clear out all old files
