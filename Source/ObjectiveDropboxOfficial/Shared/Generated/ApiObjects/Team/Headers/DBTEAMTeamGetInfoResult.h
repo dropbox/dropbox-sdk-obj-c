@@ -55,7 +55,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param numLicensedUsers The number of licenses available to the team.
 /// @param numProvisionedUsers The number of accounts that have been invited or
 /// are already active members of the team.
+/// @param policies (no description).
 /// @param numUsedLicenses The number of licenses used on the team.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithName:(NSString *)name
+                      teamId:(NSString *)teamId
+            numLicensedUsers:(NSNumber *)numLicensedUsers
+         numProvisionedUsers:(NSNumber *)numProvisionedUsers
+                    policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies
+             numUsedLicenses:(nullable NSNumber *)numUsedLicenses;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
+/// @param name The name of the team.
+/// @param teamId The ID of the team.
+/// @param numLicensedUsers The number of licenses available to the team.
+/// @param numProvisionedUsers The number of accounts that have been invited or
+/// are already active members of the team.
 /// @param policies (no description).
 ///
 /// @return An initialized instance.
@@ -64,7 +84,6 @@ NS_ASSUME_NONNULL_BEGIN
                       teamId:(NSString *)teamId
             numLicensedUsers:(NSNumber *)numLicensedUsers
          numProvisionedUsers:(NSNumber *)numProvisionedUsers
-             numUsedLicenses:(NSNumber *)numUsedLicenses
                     policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies;
 
 - (instancetype)init NS_UNAVAILABLE;

@@ -20,7 +20,7 @@
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](path);
   [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32) pattern:@"[A-Za-z0-9_]+"]](tagText);
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32) pattern:@"[\\w]+"]](tagText);
 
   self = [super init];
   if (self) {
@@ -3445,7 +3445,7 @@
 - (instancetype)initWithEntries:(NSArray<DBFILESDeleteArg *> *)entries {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:nil
-                                             maxItems:nil
+                                             maxItems:@(1000)
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
 
   self = [super init];
@@ -15134,7 +15134,7 @@
 - (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries autorename:(NSNumber *)autorename {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:@(1)
-                                             maxItems:nil
+                                             maxItems:@(1000)
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
 
   self = [super init];
@@ -15258,7 +15258,7 @@
          allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:@(1)
-                                             maxItems:nil
+                                             maxItems:@(1000)
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
 
   self = [super initWithEntries:entries autorename:autorename];
@@ -18452,7 +18452,7 @@
          allowOwnershipTransfer:(NSNumber *)allowOwnershipTransfer {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:@(1)
-                                             maxItems:nil
+                                             maxItems:@(1000)
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
 
   self = [super initWithEntries:entries autorename:autorename];
@@ -21268,7 +21268,7 @@
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](path);
   [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32) pattern:@"[A-Za-z0-9_]+"]](tagText);
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32) pattern:@"[\\w]+"]](tagText);
 
   self = [super init];
   if (self) {
@@ -32025,7 +32025,7 @@
 
 - (instancetype)initWithTagText:(NSString *)tagText {
   [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32) pattern:@"[A-Za-z0-9_]+"]](tagText);
+   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32) pattern:@"[\\w]+"]](tagText);
 
   self = [super init];
   if (self) {

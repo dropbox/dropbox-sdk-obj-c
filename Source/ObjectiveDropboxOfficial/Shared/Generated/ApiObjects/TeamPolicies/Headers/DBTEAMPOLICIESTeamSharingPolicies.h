@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMPOLICIESGroupCreation;
+@class DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy;
 @class DBTEAMPOLICIESSharedFolderJoinPolicy;
 @class DBTEAMPOLICIESSharedFolderMemberPolicy;
 @class DBTEAMPOLICIESSharedLinkCreatePolicy;
@@ -43,6 +44,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Who can create groups.
 @property (nonatomic, readonly) DBTEAMPOLICIESGroupCreation *groupCreationPolicy;
 
+/// Who can view links to content in shared folders.
+@property (nonatomic, readonly)
+    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *sharedFolderLinkRestrictionPolicy;
+
 #pragma mark - Constructors
 
 ///
@@ -53,13 +58,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sharedLinkCreatePolicy Who can view shared links owned by team
 /// members.
 /// @param groupCreationPolicy Who can create groups.
+/// @param sharedFolderLinkRestrictionPolicy Who can view links to content in
+/// shared folders.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy
                           sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy
                           sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy
-                             groupCreationPolicy:(DBTEAMPOLICIESGroupCreation *)groupCreationPolicy;
+                             groupCreationPolicy:(DBTEAMPOLICIESGroupCreation *)groupCreationPolicy
+               sharedFolderLinkRestrictionPolicy:
+                   (DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)sharedFolderLinkRestrictionPolicy;
 
 - (instancetype)init NS_UNAVAILABLE;
 

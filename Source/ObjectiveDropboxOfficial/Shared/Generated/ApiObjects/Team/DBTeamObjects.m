@@ -40943,13 +40943,12 @@
                       teamId:(NSString *)teamId
             numLicensedUsers:(NSNumber *)numLicensedUsers
          numProvisionedUsers:(NSNumber *)numProvisionedUsers
-             numUsedLicenses:(NSNumber *)numUsedLicenses
-                    policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies {
+                    policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies
+             numUsedLicenses:(NSNumber *)numUsedLicenses {
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](teamId);
   [DBStoneValidators nonnullValidator:nil](numLicensedUsers);
   [DBStoneValidators nonnullValidator:nil](numProvisionedUsers);
-  [DBStoneValidators nonnullValidator:nil](numUsedLicenses);
   [DBStoneValidators nonnullValidator:nil](policies);
 
   self = [super init];
@@ -40958,10 +40957,23 @@
     _teamId = teamId;
     _numLicensedUsers = numLicensedUsers;
     _numProvisionedUsers = numProvisionedUsers;
-    _numUsedLicenses = numUsedLicenses;
+    _numUsedLicenses = numUsedLicenses ?: @(0);
     _policies = policies;
   }
   return self;
+}
+
+- (instancetype)initWithName:(NSString *)name
+                      teamId:(NSString *)teamId
+            numLicensedUsers:(NSNumber *)numLicensedUsers
+         numProvisionedUsers:(NSNumber *)numProvisionedUsers
+                    policies:(DBTEAMPOLICIESTeamMemberPolicies *)policies {
+  return [self initWithName:name
+                     teamId:teamId
+           numLicensedUsers:numLicensedUsers
+        numProvisionedUsers:numProvisionedUsers
+                   policies:policies
+            numUsedLicenses:nil];
 }
 
 #pragma mark - Serialization methods
@@ -40998,8 +41010,8 @@
   result = prime * result + [self.teamId hash];
   result = prime * result + [self.numLicensedUsers hash];
   result = prime * result + [self.numProvisionedUsers hash];
-  result = prime * result + [self.numUsedLicenses hash];
   result = prime * result + [self.policies hash];
+  result = prime * result + [self.numUsedLicenses hash];
 
   return prime * result;
 }
@@ -41032,10 +41044,10 @@
   if (![self.numProvisionedUsers isEqual:aTeamGetInfoResult.numProvisionedUsers]) {
     return NO;
   }
-  if (![self.numUsedLicenses isEqual:aTeamGetInfoResult.numUsedLicenses]) {
+  if (![self.policies isEqual:aTeamGetInfoResult.policies]) {
     return NO;
   }
-  if (![self.policies isEqual:aTeamGetInfoResult.policies]) {
+  if (![self.numUsedLicenses isEqual:aTeamGetInfoResult.numUsedLicenses]) {
     return NO;
   }
   return YES;
@@ -41054,8 +41066,8 @@
   jsonDict[@"team_id"] = valueObj.teamId;
   jsonDict[@"num_licensed_users"] = valueObj.numLicensedUsers;
   jsonDict[@"num_provisioned_users"] = valueObj.numProvisionedUsers;
-  jsonDict[@"num_used_licenses"] = valueObj.numUsedLicenses;
   jsonDict[@"policies"] = [DBTEAMPOLICIESTeamMemberPoliciesSerializer serialize:valueObj.policies];
+  jsonDict[@"num_used_licenses"] = valueObj.numUsedLicenses;
 
   return [jsonDict count] > 0 ? jsonDict : nil;
 }
@@ -41065,16 +41077,16 @@
   NSString *teamId = valueDict[@"team_id"];
   NSNumber *numLicensedUsers = valueDict[@"num_licensed_users"];
   NSNumber *numProvisionedUsers = valueDict[@"num_provisioned_users"];
-  NSNumber *numUsedLicenses = valueDict[@"num_used_licenses"];
   DBTEAMPOLICIESTeamMemberPolicies *policies =
       [DBTEAMPOLICIESTeamMemberPoliciesSerializer deserialize:valueDict[@"policies"]];
+  NSNumber *numUsedLicenses = valueDict[@"num_used_licenses"] ?: @(0);
 
   return [[DBTEAMTeamGetInfoResult alloc] initWithName:name
                                                 teamId:teamId
                                       numLicensedUsers:numLicensedUsers
                                    numProvisionedUsers:numProvisionedUsers
-                                       numUsedLicenses:numUsedLicenses
-                                              policies:policies];
+                                              policies:policies
+                                       numUsedLicenses:numUsedLicenses];
 }
 
 @end

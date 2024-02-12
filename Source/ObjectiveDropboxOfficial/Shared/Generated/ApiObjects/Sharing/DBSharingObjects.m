@@ -232,6 +232,14 @@
   return self;
 }
 
+- (instancetype)initWithNoAccess {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGAccessLevelNoAccess;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -264,6 +272,10 @@
   return _tag == DBSHARINGAccessLevelTraverse;
 }
 
+- (BOOL)isNoAccess {
+  return _tag == DBSHARINGAccessLevelNoAccess;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGAccessLevelOther;
 }
@@ -280,6 +292,8 @@
     return @"DBSHARINGAccessLevelViewerNoComment";
   case DBSHARINGAccessLevelTraverse:
     return @"DBSHARINGAccessLevelTraverse";
+  case DBSHARINGAccessLevelNoAccess:
+    return @"DBSHARINGAccessLevelNoAccess";
   case DBSHARINGAccessLevelOther:
     return @"DBSHARINGAccessLevelOther";
   }
@@ -333,6 +347,9 @@
   case DBSHARINGAccessLevelTraverse:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGAccessLevelNoAccess:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGAccessLevelOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -371,6 +388,8 @@
     return [[self tagName] isEqual:[anAccessLevel tagName]];
   case DBSHARINGAccessLevelTraverse:
     return [[self tagName] isEqual:[anAccessLevel tagName]];
+  case DBSHARINGAccessLevelNoAccess:
+    return [[self tagName] isEqual:[anAccessLevel tagName]];
   case DBSHARINGAccessLevelOther:
     return [[self tagName] isEqual:[anAccessLevel tagName]];
   }
@@ -396,6 +415,8 @@
     jsonDict[@".tag"] = @"viewer_no_comment";
   } else if ([valueObj isTraverse]) {
     jsonDict[@".tag"] = @"traverse";
+  } else if ([valueObj isNoAccess]) {
+    jsonDict[@".tag"] = @"no_access";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -418,6 +439,8 @@
     return [[DBSHARINGAccessLevel alloc] initWithViewerNoComment];
   } else if ([tag isEqualToString:@"traverse"]) {
     return [[DBSHARINGAccessLevel alloc] initWithTraverse];
+  } else if ([tag isEqualToString:@"no_access"]) {
+    return [[DBSHARINGAccessLevel alloc] initWithNoAccess];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAccessLevel alloc] initWithOther];
   } else {
@@ -22128,9 +22151,10 @@
             sharedLinkPolicy:(DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
             viewerInfoPolicy:(DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
            accessInheritance:(DBSHARINGAccessInheritance *)accessInheritance {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
-                                                               maxLength:nil
-                                                                 pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"]](path);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil
+                                             maxLength:nil
+                                               pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)"]](path);
 
   self = [super init];
   if (self) {
@@ -22339,9 +22363,10 @@
            accessInheritance:(DBSHARINGAccessInheritance *)accessInheritance
                      actions:(NSArray<DBSHARINGFolderAction *> *)actions
                 linkSettings:(DBSHARINGLinkSettings *)linkSettings {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
-                                                               maxLength:nil
-                                                                 pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"]](path);
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators stringValidator:nil
+                                             maxLength:nil
+                                               pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)"]](path);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -24757,6 +24782,14 @@
   return self;
 }
 
+- (instancetype)initWithInvalidMember {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGSharedFolderAccessErrorInvalidMember;
+  }
+  return self;
+}
+
 - (instancetype)initWithEmailUnverified {
   self = [super init];
   if (self) {
@@ -24793,6 +24826,10 @@
   return _tag == DBSHARINGSharedFolderAccessErrorNotAMember;
 }
 
+- (BOOL)isInvalidMember {
+  return _tag == DBSHARINGSharedFolderAccessErrorInvalidMember;
+}
+
 - (BOOL)isEmailUnverified {
   return _tag == DBSHARINGSharedFolderAccessErrorEmailUnverified;
 }
@@ -24811,6 +24848,8 @@
     return @"DBSHARINGSharedFolderAccessErrorInvalidId";
   case DBSHARINGSharedFolderAccessErrorNotAMember:
     return @"DBSHARINGSharedFolderAccessErrorNotAMember";
+  case DBSHARINGSharedFolderAccessErrorInvalidMember:
+    return @"DBSHARINGSharedFolderAccessErrorInvalidMember";
   case DBSHARINGSharedFolderAccessErrorEmailUnverified:
     return @"DBSHARINGSharedFolderAccessErrorEmailUnverified";
   case DBSHARINGSharedFolderAccessErrorUnmounted:
@@ -24859,6 +24898,9 @@
   case DBSHARINGSharedFolderAccessErrorNotAMember:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGSharedFolderAccessErrorInvalidMember:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGSharedFolderAccessErrorEmailUnverified:
     result = prime * result + [[self tagName] hash];
     break;
@@ -24897,6 +24939,8 @@
     return [[self tagName] isEqual:[aSharedFolderAccessError tagName]];
   case DBSHARINGSharedFolderAccessErrorNotAMember:
     return [[self tagName] isEqual:[aSharedFolderAccessError tagName]];
+  case DBSHARINGSharedFolderAccessErrorInvalidMember:
+    return [[self tagName] isEqual:[aSharedFolderAccessError tagName]];
   case DBSHARINGSharedFolderAccessErrorEmailUnverified:
     return [[self tagName] isEqual:[aSharedFolderAccessError tagName]];
   case DBSHARINGSharedFolderAccessErrorUnmounted:
@@ -24920,6 +24964,8 @@
     jsonDict[@".tag"] = @"invalid_id";
   } else if ([valueObj isNotAMember]) {
     jsonDict[@".tag"] = @"not_a_member";
+  } else if ([valueObj isInvalidMember]) {
+    jsonDict[@".tag"] = @"invalid_member";
   } else if ([valueObj isEmailUnverified]) {
     jsonDict[@".tag"] = @"email_unverified";
   } else if ([valueObj isUnmounted]) {
@@ -24940,6 +24986,8 @@
     return [[DBSHARINGSharedFolderAccessError alloc] initWithInvalidId];
   } else if ([tag isEqualToString:@"not_a_member"]) {
     return [[DBSHARINGSharedFolderAccessError alloc] initWithNotAMember];
+  } else if ([tag isEqualToString:@"invalid_member"]) {
+    return [[DBSHARINGSharedFolderAccessError alloc] initWithInvalidMember];
   } else if ([tag isEqualToString:@"email_unverified"]) {
     return [[DBSHARINGSharedFolderAccessError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"unmounted"]) {
@@ -25357,6 +25405,7 @@
                  ownerDisplayNames:(NSArray<NSString *> *)ownerDisplayNames
                          ownerTeam:(DBUSERSTeam *)ownerTeam
               parentSharedFolderId:(NSString *)parentSharedFolderId
+                       pathDisplay:(NSString *)pathDisplay
                          pathLower:(NSString *)pathLower
                   parentFolderName:(NSString *)parentFolderName {
   [DBStoneValidators nonnullValidator:nil](accessType);
@@ -25378,6 +25427,7 @@
     _ownerDisplayNames = ownerDisplayNames;
     _ownerTeam = ownerTeam;
     _parentSharedFolderId = parentSharedFolderId;
+    _pathDisplay = pathDisplay;
     _pathLower = pathLower;
     _parentFolderName = parentFolderName;
   }
@@ -25393,6 +25443,7 @@
                 ownerDisplayNames:nil
                         ownerTeam:nil
              parentSharedFolderId:nil
+                      pathDisplay:nil
                         pathLower:nil
                  parentFolderName:nil];
 }
@@ -25438,6 +25489,9 @@
   }
   if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
+  }
+  if (self.pathDisplay != nil) {
+    result = prime * result + [self.pathDisplay hash];
   }
   if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
@@ -25489,6 +25543,11 @@
       return NO;
     }
   }
+  if (self.pathDisplay) {
+    if (![self.pathDisplay isEqual:aSharedFolderMetadataBase.pathDisplay]) {
+      return NO;
+    }
+  }
   if (self.pathLower) {
     if (![self.pathLower isEqual:aSharedFolderMetadataBase.pathLower]) {
       return NO;
@@ -25526,6 +25585,9 @@
   if (valueObj.parentSharedFolderId) {
     jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
   }
+  if (valueObj.pathDisplay) {
+    jsonDict[@"path_display"] = valueObj.pathDisplay;
+  }
   if (valueObj.pathLower) {
     jsonDict[@"path_lower"] = valueObj.pathLower;
   }
@@ -25549,6 +25611,7 @@
   DBUSERSTeam *ownerTeam =
       valueDict[@"owner_team"] ? [DBUSERSTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
+  NSString *pathDisplay = valueDict[@"path_display"] ?: nil;
   NSString *pathLower = valueDict[@"path_lower"] ?: nil;
   NSString *parentFolderName = valueDict[@"parent_folder_name"] ?: nil;
 
@@ -25558,6 +25621,7 @@
                                                      ownerDisplayNames:ownerDisplayNames
                                                              ownerTeam:ownerTeam
                                                   parentSharedFolderId:parentSharedFolderId
+                                                           pathDisplay:pathDisplay
                                                              pathLower:pathLower
                                                       parentFolderName:parentFolderName];
 }
@@ -25592,6 +25656,7 @@
                  ownerDisplayNames:(NSArray<NSString *> *)ownerDisplayNames
                          ownerTeam:(DBUSERSTeam *)ownerTeam
               parentSharedFolderId:(NSString *)parentSharedFolderId
+                       pathDisplay:(NSString *)pathDisplay
                          pathLower:(NSString *)pathLower
                   parentFolderName:(NSString *)parentFolderName
                       linkMetadata:(DBSHARINGSharedContentLinkMetadata *)linkMetadata
@@ -25624,6 +25689,7 @@
                  ownerDisplayNames:ownerDisplayNames
                          ownerTeam:ownerTeam
               parentSharedFolderId:parentSharedFolderId
+                       pathDisplay:pathDisplay
                          pathLower:pathLower
                   parentFolderName:parentFolderName];
   if (self) {
@@ -25658,6 +25724,7 @@
                 ownerDisplayNames:nil
                         ownerTeam:nil
              parentSharedFolderId:nil
+                      pathDisplay:nil
                         pathLower:nil
                  parentFolderName:nil
                      linkMetadata:nil
@@ -25711,6 +25778,9 @@
   }
   if (self.parentSharedFolderId != nil) {
     result = prime * result + [self.parentSharedFolderId hash];
+  }
+  if (self.pathDisplay != nil) {
+    result = prime * result + [self.pathDisplay hash];
   }
   if (self.pathLower != nil) {
     result = prime * result + [self.pathLower hash];
@@ -25784,6 +25854,11 @@
       return NO;
     }
   }
+  if (self.pathDisplay) {
+    if (![self.pathDisplay isEqual:aSharedFolderMetadata.pathDisplay]) {
+      return NO;
+    }
+  }
   if (self.pathLower) {
     if (![self.pathLower isEqual:aSharedFolderMetadata.pathLower]) {
       return NO;
@@ -25839,6 +25914,9 @@
   if (valueObj.parentSharedFolderId) {
     jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
   }
+  if (valueObj.pathDisplay) {
+    jsonDict[@"path_display"] = valueObj.pathDisplay;
+  }
   if (valueObj.pathLower) {
     jsonDict[@"path_lower"] = valueObj.pathLower;
   }
@@ -25877,6 +25955,7 @@
   DBUSERSTeam *ownerTeam =
       valueDict[@"owner_team"] ? [DBUSERSTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
+  NSString *pathDisplay = valueDict[@"path_display"] ?: nil;
   NSString *pathLower = valueDict[@"path_lower"] ?: nil;
   NSString *parentFolderName = valueDict[@"parent_folder_name"] ?: nil;
   DBSHARINGSharedContentLinkMetadata *linkMetadata =
@@ -25905,6 +25984,7 @@
                                                  ownerDisplayNames:ownerDisplayNames
                                                          ownerTeam:ownerTeam
                                               parentSharedFolderId:parentSharedFolderId
+                                                       pathDisplay:pathDisplay
                                                          pathLower:pathLower
                                                   parentFolderName:parentFolderName
                                                       linkMetadata:linkMetadata

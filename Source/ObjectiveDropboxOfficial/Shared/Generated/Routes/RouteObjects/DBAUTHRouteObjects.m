@@ -30,7 +30,7 @@ static NSObject *lockObj = nil;
     if (!DBAUTHTokenFromOauth1) {
       DBAUTHTokenFromOauth1 = [[DBRoute alloc] init:@"token/from_oauth1"
                                          namespace_:@"auth"
-                                         deprecated:@NO
+                                         deprecated:@YES
                                          resultType:[DBAUTHTokenFromOAuth1Result class]
                                           errorType:[DBAUTHTokenFromOAuth1Error class]
                                               attrs:@{@"auth" : @"app", @"host" : @"api", @"style" : @"rpc"}

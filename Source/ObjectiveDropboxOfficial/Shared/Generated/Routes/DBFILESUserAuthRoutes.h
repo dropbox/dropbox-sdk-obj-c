@@ -2300,7 +2300,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///
 /// Save the data from a specified URL into a file in user's Dropbox. Note that the transfer from the URL must complete
-/// within 5 minutes, or the operation will time out and the job will fail. If the given path already exists, the file
+/// within 15 minutes, or the operation will time out and the job will fail. If the given path already exists, the file
 /// will be renamed to avoid the conflict (e.g. myfile (1).txt).
 ///
 /// @param path The path in Dropbox where the URL will be saved to.
