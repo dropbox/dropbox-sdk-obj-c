@@ -236,7 +236,7 @@
 }
 
 - (NSString *)description {
-  NSDictionary *values = @{ @"NSError" : _nsError ?: @"nil" };
+  NSDictionary *values = @{@"NSError" : _nsError ?: @"nil"};
   return [NSString stringWithFormat:@"DropboxClientError[%@];", values];
 }
 

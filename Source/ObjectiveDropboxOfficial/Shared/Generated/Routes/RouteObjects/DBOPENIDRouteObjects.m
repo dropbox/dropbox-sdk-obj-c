@@ -32,11 +32,7 @@ static NSObject *lockObj = nil;
                                     deprecated:@NO
                                     resultType:[DBOPENIDUserInfoResult class]
                                      errorType:[DBOPENIDUserInfoError class]
-                                         attrs:@{
-                                           @"auth" : @"user",
-                                           @"host" : @"api",
-                                           @"style" : @"rpc"
-                                         }
+                                         attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
                          dataStructSerialBlock:nil
                        dataStructDeserialBlock:nil];
     }

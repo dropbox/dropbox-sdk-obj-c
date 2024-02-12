@@ -1704,11 +1704,11 @@
                         arrayValidator:nil
                               maxItems:@(10000)
                          itemValidator:[DBStoneValidators
-                                           nonnullValidator:[DBStoneValidators stringValidator:nil
-                                                                                     maxLength:nil
-                                                                                       pattern:@"(/(.|[\\r\\n])*)|(ns:["
-                                                                                               @"0-9]+(/.*)?)"]]]](
-      paths);
+                                           nonnullValidator:[DBStoneValidators
+                                                                stringValidator:nil
+                                                                      maxLength:nil
+                                                                        pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/"
+                                                                                @".*)?)"]]]](paths);
 
   self = [super init];
   if (self) {

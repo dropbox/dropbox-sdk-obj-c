@@ -33,11 +33,7 @@ static NSObject *lockObj = nil;
                                          deprecated:@NO
                                          resultType:[DBAUTHTokenFromOAuth1Result class]
                                           errorType:[DBAUTHTokenFromOAuth1Error class]
-                                              attrs:@{
-                                                @"auth" : @"app",
-                                                @"host" : @"api",
-                                                @"style" : @"rpc"
-                                              }
+                                              attrs:@{@"auth" : @"app", @"host" : @"api", @"style" : @"rpc"}
                               dataStructSerialBlock:nil
                             dataStructDeserialBlock:nil];
     }
@@ -53,11 +49,7 @@ static NSObject *lockObj = nil;
                                      deprecated:@NO
                                      resultType:nil
                                       errorType:nil
-                                          attrs:@{
-                                            @"auth" : @"user",
-                                            @"host" : @"api",
-                                            @"style" : @"rpc"
-                                          }
+                                          attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
                           dataStructSerialBlock:nil
                         dataStructDeserialBlock:nil];
     }
