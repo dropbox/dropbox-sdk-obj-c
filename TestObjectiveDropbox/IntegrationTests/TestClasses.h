@@ -154,10 +154,6 @@
 - (void)linkedAppsListMemberLinkedApps:(void (^_Nonnull)(void))nextTest;
 - (void)linkedAppsListMembersLinkedApps:(void (^_Nonnull)(void))nextTest;
 - (void)getInfo:(void (^_Nonnull)(void))nextTest;
-- (void)reportsGetActivity:(void (^_Nonnull)(void))nextTest;
-- (void)reportsGetDevices:(void (^_Nonnull)(void))nextTest;
-- (void)reportsGetMembership:(void (^_Nonnull)(void))nextTest;
-- (void)reportsGetStorage:(void (^_Nonnull)(void))nextTest;
 
 // TeamMemberManagement
 
@@ -171,6 +167,7 @@
 - (void)membersAdd:(void (^_Nonnull)(void))nextTest;
 - (void)membersGetInfo:(void (^_Nonnull)(void))nextTest;
 - (void)membersList:(void (^_Nonnull)(void))nextTest;
+- (void)membersListDevices:(void (^_Nonnull)(void))nextTest;
 - (void)membersSendWelcomeEmail:(void (^_Nonnull)(void))nextTest;
 - (void)membersSetAdminPermissions:(void (^_Nonnull)(void))nextTest;
 - (void)membersSetProfile:(void (^_Nonnull)(void))nextTest;

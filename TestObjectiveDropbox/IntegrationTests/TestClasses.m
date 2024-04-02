@@ -310,20 +310,8 @@ void MyLog(NSString *format, ...) {
         [TestFormat printTestEnd];
         nextTest(teamTests);
     };
-    void (^reportsGetStorage)(void) = ^{
-        [teamTests reportsGetStorage:end];
-    };
-    void (^reportsGetMembership)(void) = ^{
-        [teamTests reportsGetMembership:reportsGetStorage];
-    };
-    void (^reportsGetDevices)(void) = ^{
-        [teamTests reportsGetDevices:reportsGetMembership];
-    };
-    void (^reportsGetActivity)(void) = ^{
-        [teamTests reportsGetActivity:reportsGetDevices];
-    };
     void (^getInfo)(void) = ^{
-        [teamTests getInfo:reportsGetActivity];
+        [teamTests getInfo:end];
     };
     void (^linkedAppsListMembersLinkedApps)(void) = ^{
         [teamTests linkedAppsListMembersLinkedApps:getInfo];
@@ -371,8 +359,11 @@ void MyLog(NSString *format, ...) {
     void (^membersList)(void) = ^{
         [teamTests membersList:membersSendWelcomeEmail];
     };
+    void (^membersListDevices)(void) = ^{
+        [teamTests membersListDevices:membersList];
+    };
     void (^membersGetInfo)(void) = ^{
-        [teamTests membersGetInfo:membersList];
+        [teamTests membersGetInfo:membersListDevices];
     };
     void (^membersAdd)(void) = ^{
         [teamTests membersAdd:membersGetInfo];
@@ -1815,86 +1806,6 @@ void MyLog(NSString *format, ...) {
     }];
 }
 
-- (void)reportsGetActivity:(void (^)(void))nextTest {
-    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetActivity:twoDaysAgo endDate:[NSDate new]]
-      setResponseBlock:^(DBTEAMGetActivityReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
-        if (result) {
-            MyLog(@"%@\n", result);
-            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-            nextTest();
-        } else {
-            [TestFormat abort:error routeError:routeError];
-        }
-    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        [TestFormat printSentProgress:bytesSent
-                       totalBytesSent:totalBytesSent
-             totalBytesExpectedToSend:totalBytesExpectedToSend];
-    }];
-}
-
-- (void)reportsGetDevices:(void (^)(void))nextTest {
-    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetDevices:twoDaysAgo endDate:[NSDate new]]
-      setResponseBlock:^(DBTEAMGetDevicesReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
-        if (result) {
-            MyLog(@"%@\n", result);
-            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-            nextTest();
-        } else {
-            [TestFormat abort:error routeError:routeError];
-        }
-    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        [TestFormat printSentProgress:bytesSent
-                       totalBytesSent:totalBytesSent
-             totalBytesExpectedToSend:totalBytesExpectedToSend];
-    }];
-}
-
-- (void)reportsGetMembership:(void (^)(void))nextTest {
-    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetMembership:twoDaysAgo endDate:[NSDate new]]
-      setResponseBlock:^(DBTEAMGetMembershipReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
-        if (result) {
-            MyLog(@"%@\n", result);
-            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-            nextTest();
-        } else {
-            [TestFormat abort:error routeError:routeError];
-        }
-    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        [TestFormat printSentProgress:bytesSent
-                       totalBytesSent:totalBytesSent
-             totalBytesExpectedToSend:totalBytesExpectedToSend];
-    }];
-}
-
-- (void)reportsGetStorage:(void (^)(void))nextTest {
-    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetStorage:twoDaysAgo endDate:[NSDate new]]
-      setResponseBlock:^(DBTEAMGetStorageReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
-        if (result) {
-            MyLog(@"%@\n", result);
-            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-            nextTest();
-        } else {
-            [TestFormat abort:error routeError:routeError];
-        }
-    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        [TestFormat printSentProgress:bytesSent
-                       totalBytesSent:totalBytesSent
-             totalBytesExpectedToSend:totalBytesExpectedToSend];
-    }];
-}
-
 /**
  Permission: TEAM member management
  */
@@ -2173,6 +2084,25 @@ void MyLog(NSString *format, ...) {
             [TestFormat abort:error routeError:routeError];
         }
     } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent
+                       totalBytesSent:totalBytesSent
+             totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersListDevices:(void (^)(void))nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+
+    [[[_tester.team devicesListMembersDevices]
+     setResponseBlock:^(DBTEAMListMembersDevicesResult *result, DBTEAMListMembersDevicesError *routeError, DBRequestError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }  queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         [TestFormat printSentProgress:bytesSent
                        totalBytesSent:totalBytesSent
              totalBytesExpectedToSend:totalBytesExpectedToSend];
