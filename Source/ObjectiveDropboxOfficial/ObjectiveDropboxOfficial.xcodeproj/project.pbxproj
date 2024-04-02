@@ -4544,6 +4544,7 @@
 		F2F2CFFC1E9D769500512DE8 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		F2F2CFFE1E9D76C300512DE8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		F2F2D0001E9D76CA00512DE8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F94D30DB2BBB1A5D00F86465 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		F99E08502B7A733000D55EF8 /* DBTeamBaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTeamBaseClient.m; sourceTree = "<group>"; };
 		F99E08512B7A733000D55EF8 /* DBAppBaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAppBaseClient.m; sourceTree = "<group>"; };
 		F99E08522B7A733000D55EF8 /* DBUserBaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUserBaseClient.h; sourceTree = "<group>"; };
@@ -6764,6 +6765,7 @@
 		F26B756B1D7F6AF700714F70 = {
 			isa = PBXGroup;
 			children = (
+				F94D30DB2BBB1A5D00F86465 /* PrivacyInfo.xcprivacy */,
 				F235B5341E29917E00144F8B /* Headers */,
 				F235B5191E29912D00144F8B /* Platform */,
 				F2977DCB1E03692600876A73 /* Shared */,

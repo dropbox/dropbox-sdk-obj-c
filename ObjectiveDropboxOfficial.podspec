@@ -10,6 +10,10 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/ObjectiveDropboxOfficial/Shared/**/*.{h,m}', 'Source/ObjectiveDropboxOfficial/Headers/**/*.h'
   s.osx.source_files =  'Source/ObjectiveDropboxOfficial/Platform/ObjectiveDropboxOfficial_macOS/**/*.{h,m}'
   s.ios.source_files = 'Source/ObjectiveDropboxOfficial/Platform/ObjectiveDropboxOfficial_iOS/**/*.{h,m}'
+
+  s.resource_bundles = {
+    'ObjectiveDropboxPrivacyInfo' => ['Source/ObjectiveDropbox/PrivacyInfo.xcprivacy'],
+  }
   
   s.requires_arc = true
   
