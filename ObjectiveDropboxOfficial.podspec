@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'ObjectiveDropboxOfficial'
-  s.version      = '7.3.0'
+  s.version      = '7.3.1'
   s.summary      = 'Dropbox Objective C SDK for APIv2'
   s.homepage     = 'https://www.dropbox.com/developers'
   s.license      = 'MIT'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.ios.source_files = 'Source/ObjectiveDropboxOfficial/Platform/ObjectiveDropboxOfficial_iOS/**/*.{h,m}'
 
   s.resource_bundles = {
-    'ObjectiveDropboxPrivacyInfo' => ['Source/ObjectiveDropbox/PrivacyInfo.xcprivacy'],
+    'ObjectiveDropboxPrivacyInfo' => ['Source/ObjectiveDropboxOfficial/PrivacyInfo.xcprivacy'],
   }
   
   s.requires_arc = true
