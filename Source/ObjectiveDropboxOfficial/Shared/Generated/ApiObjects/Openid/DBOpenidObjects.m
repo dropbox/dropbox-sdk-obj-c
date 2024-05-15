@@ -142,7 +142,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBOPENIDOpenIdError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -239,7 +239,7 @@
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBOPENIDUserInfoArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -399,7 +399,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBOPENIDUserInfoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -567,7 +567,7 @@
   jsonDict[@"iss"] = valueObj.iss;
   jsonDict[@"sub"] = valueObj.sub;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBOPENIDUserInfoResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {

@@ -150,7 +150,7 @@
     jsonDict[@"updated"] = [DBNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDeviceSession *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -361,7 +361,7 @@
     jsonDict[@"expires"] = [DBNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMActiveWebSession *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -803,7 +803,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMAddSecondaryEmailResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -941,7 +941,7 @@
                            return [DBTEAMUserSecondaryEmailsArgSerializer serialize:elem0];
                          }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMAddSecondaryEmailsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1113,7 +1113,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMAddSecondaryEmailsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1227,7 +1227,7 @@
                                               return [DBTEAMUserAddResultSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMAddSecondaryEmailsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1422,7 +1422,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMAdminTier *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1593,7 +1593,7 @@
     jsonDict[@"linked"] = [DBNSDateSerializer serialize:valueObj.linked dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMApiApp *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1704,7 +1704,7 @@
 
   jsonDict[@"start_date"] = valueObj.startDate;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMBaseDfbReport *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1933,7 +1933,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMBaseTeamFolderError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2096,7 +2096,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMCustomQuotaError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2295,7 +2295,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMCustomQuotaResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2411,7 +2411,7 @@
                                             return [DBTEAMUserSelectorArgSerializer serialize:elem0];
                                           }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMCustomQuotaUsersArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2535,7 +2535,7 @@
     jsonDict[@"end_date"] = [DBNSDateSerializer serialize:valueObj.endDate dateFormat:@"%Y-%m-%d"];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDateRange *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2664,7 +2664,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDateRangeError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2892,7 +2892,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDeleteSecondaryEmailResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3011,7 +3011,7 @@
                                                        return [DBTEAMUserSecondaryEmailsArgSerializer serialize:elem0];
                                                      }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDeleteSecondaryEmailsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3121,7 +3121,7 @@
                                               return [DBTEAMUserDeleteResultSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDeleteSecondaryEmailsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3331,7 +3331,7 @@
     jsonDict[@"updated"] = [DBNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDesktopClientSession *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3542,7 +3542,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDesktopPlatform *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3658,7 +3658,7 @@
   jsonDict[@"session_id"] = valueObj.sessionId;
   jsonDict[@"team_member_id"] = valueObj.teamMemberId;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDeviceSessionArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3827,7 +3827,7 @@
                                             return elem0;
                                           }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMDevicesActive *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3962,7 +3962,7 @@
 
   jsonDict[@"limit"] = valueObj.limit;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4061,7 +4061,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4209,7 +4209,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4362,7 +4362,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersListError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4499,7 +4499,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersListResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4621,7 +4621,7 @@
                                             }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersUpdateArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4794,7 +4794,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersUpdateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4902,7 +4902,7 @@
 
   jsonDict[@"status"] = [DBTEAMExcludedUsersUpdateStatusSerializer serialize:valueObj.status];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersUpdateResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5050,7 +5050,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMExcludedUsersUpdateStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5266,7 +5266,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMFeature *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5541,7 +5541,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMFeatureValue *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5667,7 +5667,7 @@
                                                return [DBTEAMFeatureSerializer serialize:elem0];
                                              }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMFeaturesGetValuesBatchArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5817,7 +5817,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMFeaturesGetValuesBatchError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5929,7 +5929,7 @@
                                              return [DBTEAMFeatureValueSerializer serialize:elem0];
                                            }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMFeaturesGetValuesBatchResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -6199,7 +6199,7 @@
                                                                 return elem0;
                                                               }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGetActivityReport *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -6399,7 +6399,7 @@
   jsonDict[@"active_7_day"] = [DBTEAMDevicesActiveSerializer serialize:valueObj.active7Day];
   jsonDict[@"active_28_day"] = [DBTEAMDevicesActiveSerializer serialize:valueObj.active28Day];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGetDevicesReport *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -6562,7 +6562,7 @@
                                                return elem0;
                                              }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGetMembershipReport *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -6760,7 +6760,7 @@
                                                      }];
                          }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGetStorageReport *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -6938,7 +6938,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupAccessType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -7085,7 +7085,7 @@
         [DBTEAMCOMMONGroupManagementTypeSerializer serialize:valueObj.groupManagementType];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupCreateArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -7304,7 +7304,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupCreateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -7463,7 +7463,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupSelectorError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -7639,7 +7639,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupSelectorWithTeamGroupError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -7837,7 +7837,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupDeleteError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -8032,7 +8032,7 @@
                                               }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupFullInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -8158,7 +8158,7 @@
   jsonDict[@"profile"] = [DBTEAMMemberProfileSerializer serialize:valueObj.profile];
   jsonDict[@"access_type"] = [DBTEAMGroupAccessTypeSerializer serialize:valueObj.accessType];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMemberInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -8267,7 +8267,7 @@
   jsonDict[@"group"] = [DBTEAMGroupSelectorSerializer serialize:valueObj.group];
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMemberSelector *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -8458,7 +8458,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMemberSelectorError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -8679,7 +8679,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMemberSetAccessTypeError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -8793,7 +8793,7 @@
 
   jsonDict[@"return_members"] = valueObj.returnMembers;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMIncludeMembersArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -8919,7 +8919,7 @@
                                             }];
   jsonDict[@"return_members"] = valueObj.returnMembers;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersAddArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -9269,7 +9269,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersAddError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -9410,7 +9410,7 @@
   jsonDict[@"group_info"] = [DBTEAMGroupFullInfoSerializer serialize:valueObj.groupInfo];
   jsonDict[@"async_job_id"] = valueObj.asyncJobId;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersChangeResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -9537,7 +9537,7 @@
                                           }];
   jsonDict[@"return_members"] = valueObj.returnMembers;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersRemoveArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -9733,7 +9733,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersSelectorError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -10027,7 +10027,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersRemoveError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -10159,7 +10159,7 @@
   jsonDict[@"group"] = [DBTEAMGroupSelectorSerializer serialize:valueObj.group];
   jsonDict[@"users"] = [DBTEAMUsersSelectorArgSerializer serialize:valueObj.users];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersSelector *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -10290,7 +10290,7 @@
   jsonDict[@"access_type"] = [DBTEAMGroupAccessTypeSerializer serialize:valueObj.accessType];
   jsonDict[@"return_members"] = valueObj.returnMembers;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupMembersSetAccessTypeArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -10468,7 +10468,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupSelector *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -10635,7 +10635,7 @@
         [DBTEAMCOMMONGroupManagementTypeSerializer serialize:valueObj.dNewGroupManagementType];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupUpdateArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -10878,7 +10878,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupUpdateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11039,7 +11039,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsGetInfoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11218,7 +11218,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsGetInfoItem *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11331,7 +11331,7 @@
 
   jsonDict[@"limit"] = valueObj.limit;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11430,7 +11430,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11577,7 +11577,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11705,7 +11705,7 @@
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsListResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11821,7 +11821,7 @@
   jsonDict[@"group"] = [DBTEAMGroupSelectorSerializer serialize:valueObj.group];
   jsonDict[@"limit"] = valueObj.limit;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsMembersListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -11921,7 +11921,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsMembersListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -12069,7 +12069,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsMembersListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -12197,7 +12197,7 @@
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsMembersListResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -12393,7 +12393,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsPollError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -12581,7 +12581,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMGroupsSelector *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -12757,7 +12757,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMHasTeamFileEventsValue *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -12924,7 +12924,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMHasTeamSelectiveSyncValue *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -13091,7 +13091,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMHasTeamSharedDropboxValue *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -13278,7 +13278,7 @@
   jsonDict[@"size"] = valueObj.size;
   jsonDict[@"content_hash"] = valueObj.contentHash;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldHeldRevisionMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -13489,7 +13489,7 @@
     jsonDict[@"end_date"] = [DBNSDateSerializer serialize:valueObj.endDate dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -13759,7 +13759,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -13943,7 +13943,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -14051,7 +14051,7 @@
 
   jsonDict[@"id"] = valueObj.id_;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsGetPolicyArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -14241,7 +14241,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsGetPolicyError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -14384,7 +14384,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListHeldRevisionResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -14491,7 +14491,7 @@
 
   jsonDict[@"id"] = valueObj.id_;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListHeldRevisionsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -14609,7 +14609,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListHeldRevisionsContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -14800,7 +14800,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListHeldRevisionsContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -15043,7 +15043,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListHeldRevisionsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -15159,7 +15159,7 @@
 
   jsonDict[@"include_released"] = valueObj.includeReleased;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListPoliciesArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -15349,7 +15349,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListPoliciesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -15465,7 +15465,7 @@
                                                return [DBTEAMLegalHoldPolicySerializer serialize:elem0];
                                              }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsListPoliciesResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -15627,7 +15627,7 @@
     jsonDict[@"end_date"] = [DBNSDateSerializer serialize:valueObj.endDate dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsPolicyCreateArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -15979,7 +15979,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsPolicyCreateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -16103,7 +16103,7 @@
 
   jsonDict[@"id"] = valueObj.id_;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsPolicyReleaseArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -16335,7 +16335,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsPolicyReleaseError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -16502,7 +16502,7 @@
                                               }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsPolicyUpdateArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -16846,7 +16846,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMLegalHoldsPolicyUpdateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -16969,7 +16969,7 @@
 
   jsonDict[@"team_member_id"] = valueObj.teamMemberId;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMemberAppsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -17116,7 +17116,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMemberAppsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -17228,7 +17228,7 @@
                                                       return [DBTEAMApiAppSerializer serialize:elem0];
                                                     }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMemberAppsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -17358,7 +17358,7 @@
   jsonDict[@"include_desktop_clients"] = valueObj.includeDesktopClients;
   jsonDict[@"include_mobile_clients"] = valueObj.includeMobileClients;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMemberDevicesArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -17511,7 +17511,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMemberDevicesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -17677,7 +17677,7 @@
                            }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMemberDevicesResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -17807,7 +17807,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMembersAppsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -17954,7 +17954,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMembersAppsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -18091,7 +18091,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMembersAppsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -18226,7 +18226,7 @@
   jsonDict[@"include_desktop_clients"] = valueObj.includeDesktopClients;
   jsonDict[@"include_mobile_clients"] = valueObj.includeMobileClients;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMembersDevicesArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -18379,7 +18379,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMembersDevicesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -18516,7 +18516,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListMembersDevicesResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -18630,7 +18630,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListTeamAppsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -18777,7 +18777,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListTeamAppsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -18914,7 +18914,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListTeamAppsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -19049,7 +19049,7 @@
   jsonDict[@"include_desktop_clients"] = valueObj.includeDesktopClients;
   jsonDict[@"include_mobile_clients"] = valueObj.includeMobileClients;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListTeamDevicesArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -19202,7 +19202,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListTeamDevicesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -19339,7 +19339,7 @@
     jsonDict[@"cursor"] = valueObj.cursor;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMListTeamDevicesResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -19453,7 +19453,7 @@
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
   jsonDict[@"access_type"] = [DBTEAMGroupAccessTypeSerializer serialize:valueObj.accessType];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberAccess *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -19645,7 +19645,7 @@
     jsonDict[@"is_directory_restricted"] = valueObj.isDirectoryRestricted;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberAddArgBase *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -19857,7 +19857,7 @@
   }
   jsonDict[@"role"] = [DBTEAMAdminTierSerializer serialize:valueObj.role];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberAddArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -20309,7 +20309,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberAddResultBase *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -20809,7 +20809,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberAddResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -21064,7 +21064,7 @@
                                                }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberAddV2Arg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -21568,7 +21568,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberAddV2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -21771,7 +21771,7 @@
                                                      }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberDevices *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -21907,7 +21907,7 @@
                                                       return [DBTEAMApiAppSerializer serialize:elem0];
                                                     }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberLinkedApps *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -22204,7 +22204,7 @@
     jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberProfile *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -22373,7 +22373,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserSelectorError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -22530,7 +22530,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMemberSelectorError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -22641,7 +22641,7 @@
 
   jsonDict[@"force_async"] = valueObj.forceAsync;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersAddArgBase *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -22757,7 +22757,7 @@
                                                 }];
   jsonDict[@"force_async"] = valueObj.forceAsync;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersAddArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -22960,7 +22960,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersAddJobStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -23194,7 +23194,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersAddJobStatusV2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -23387,7 +23387,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersAddLaunch *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -23598,7 +23598,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersAddLaunchV2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -23728,7 +23728,7 @@
                                                 }];
   jsonDict[@"force_async"] = valueObj.forceAsync;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersAddV2Arg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -23833,7 +23833,7 @@
 
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersDeactivateBaseArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -23949,7 +23949,7 @@
   jsonDict[@"transfer_dest_id"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.transferDestId];
   jsonDict[@"transfer_admin_id"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.transferAdminId];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersDataTransferArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -24064,7 +24064,7 @@
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
   jsonDict[@"wipe_data"] = valueObj.wipeData;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersDeactivateArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -24234,7 +24234,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersDeactivateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -24342,7 +24342,7 @@
 
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersDeleteProfilePhotoArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -24533,7 +24533,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersDeleteProfilePhotoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -24650,7 +24650,7 @@
                                             return [DBTEAMTeamMemberRoleSerializer serialize:elem0];
                                           }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetAvailableTeamMemberRolesResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -24760,7 +24760,7 @@
                                               return [DBTEAMUserSelectorArgSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetInfoArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -24890,7 +24890,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetInfoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25034,7 +25034,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetInfoItemBase *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25216,7 +25216,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetInfoItem *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25420,7 +25420,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetInfoItemV2 *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25536,7 +25536,7 @@
                                               return [DBTEAMUserSelectorArgSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetInfoV2Arg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25646,7 +25646,7 @@
                                                    return [DBTEAMMembersGetInfoItemV2Serializer serialize:elem0];
                                                  }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersGetInfoV2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25763,7 +25763,7 @@
                                                     }];
   jsonDict[@"permanently_deleted_users"] = valueObj.permanentlyDeletedUsers;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25876,7 +25876,7 @@
   jsonDict[@"limit"] = valueObj.limit;
   jsonDict[@"include_removed"] = valueObj.includeRemoved;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -25976,7 +25976,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -26123,7 +26123,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -26255,7 +26255,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersListError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -26381,7 +26381,7 @@
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersListResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -26509,7 +26509,7 @@
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersListV2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -26615,7 +26615,7 @@
 
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersRecoverArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -26826,7 +26826,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersRecoverError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -26989,7 +26989,7 @@
   jsonDict[@"keep_account"] = valueObj.keepAccount;
   jsonDict[@"retain_team_shares"] = valueObj.retainTeamShares;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersRemoveArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -27361,7 +27361,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersTransferFilesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -27976,7 +27976,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersRemoveError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -28193,7 +28193,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSendWelcomeError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -28329,7 +28329,7 @@
                                                 }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetPermissions2Arg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -28566,7 +28566,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetPermissions2Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -28703,7 +28703,7 @@
                                             }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetPermissions2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -28817,7 +28817,7 @@
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
   jsonDict[@"new_role"] = [DBTEAMAdminTierSerializer serialize:valueObj.dNewRole];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetPermissionsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -29050,7 +29050,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetPermissionsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -29171,7 +29171,7 @@
   jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   jsonDict[@"role"] = [DBTEAMAdminTierSerializer serialize:valueObj.role];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetPermissionsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -29370,7 +29370,7 @@
     jsonDict[@"new_is_directory_restricted"] = valueObj.dNewIsDirectoryRestricted;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetProfileArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -29740,7 +29740,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetProfileError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -29874,7 +29874,7 @@
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
   jsonDict[@"photo"] = [DBACCOUNTPhotoSourceArgSerializer serialize:valueObj.photo];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetProfilePhotoArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -30100,7 +30100,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSetProfilePhotoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -30346,7 +30346,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersSuspendError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -30803,7 +30803,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersTransferFormerMembersFilesError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -30937,7 +30937,7 @@
 
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersUnsuspendArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -31148,7 +31148,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMembersUnsuspendError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -31391,7 +31391,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMobileClientPlatform *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -31623,7 +31623,7 @@
     jsonDict[@"last_carrier"] = valueObj.lastCarrier;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMMobileClientSession *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -31781,7 +31781,7 @@
     jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMNamespaceMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -31997,7 +31997,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMNamespaceType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -32201,7 +32201,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRemoveCustomQuotaResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -32317,7 +32317,7 @@
   jsonDict[@"is_recoverable"] = valueObj.isRecoverable;
   jsonDict[@"is_disconnected"] = valueObj.isDisconnected;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRemovedStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -32543,7 +32543,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMResendSecondaryEmailResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -32662,7 +32662,7 @@
                                                        return [DBTEAMUserSecondaryEmailsArgSerializer serialize:elem0];
                                                      }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMResendVerificationEmailArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -32772,7 +32772,7 @@
                                               return [DBTEAMUserResendResultSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMResendVerificationEmailResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -32893,7 +32893,7 @@
   jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   jsonDict[@"delete_on_unlink"] = valueObj.deleteOnUnlink;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeDesktopClientArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33103,7 +33103,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeDeviceSessionArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33223,7 +33223,7 @@
                                                      return [DBTEAMRevokeDeviceSessionArgSerializer serialize:elem0];
                                                    }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeDeviceSessionBatchArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33353,7 +33353,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeDeviceSessionBatchError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33465,7 +33465,7 @@
                            return [DBTEAMRevokeDeviceSessionStatusSerializer serialize:elem0];
                          }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeDeviceSessionBatchResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33637,7 +33637,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeDeviceSessionError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33761,7 +33761,7 @@
     jsonDict[@"error_type"] = [DBTEAMRevokeDeviceSessionErrorSerializer serialize:valueObj.errorType];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeDeviceSessionStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33881,7 +33881,7 @@
   jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   jsonDict[@"keep_app_folder"] = valueObj.keepAppFolder;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeLinkedApiAppArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -33990,7 +33990,7 @@
                                                         return [DBTEAMRevokeLinkedApiAppArgSerializer serialize:elem0];
                                                       }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeLinkedApiAppBatchArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -34120,7 +34120,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeLinkedAppBatchError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -34231,7 +34231,7 @@
                            return [DBTEAMRevokeLinkedAppStatusSerializer serialize:elem0];
                          }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeLinkedAppBatchResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -34424,7 +34424,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeLinkedAppError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -34550,7 +34550,7 @@
     jsonDict[@"error_type"] = [DBTEAMRevokeLinkedAppErrorSerializer serialize:valueObj.errorType];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMRevokeLinkedAppStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -34658,7 +34658,7 @@
                                                        return [DBTEAMUserCustomQuotaArgSerializer serialize:elem0];
                                                      }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSetCustomQuotaArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -34831,7 +34831,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSetCustomQuotaError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -34973,7 +34973,7 @@
                                              }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistAddArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -35259,7 +35259,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistAddError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -35368,7 +35368,7 @@
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistAddResponse *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -35470,7 +35470,7 @@
 
   jsonDict[@"limit"] = valueObj.limit;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -35570,7 +35570,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -35718,7 +35718,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -35815,7 +35815,7 @@
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistListError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -35952,7 +35952,7 @@
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistListResponse *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -36096,7 +36096,7 @@
                                              }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistRemoveArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -36361,7 +36361,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistRemoveError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -36469,7 +36469,7 @@
 #pragma unused(valueObj)
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMSharingAllowlistRemoveResponse *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -36575,7 +36575,7 @@
   jsonDict[@"bucket"] = valueObj.bucket;
   jsonDict[@"users"] = valueObj.users;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMStorageBucket *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -36744,7 +36744,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderAccessError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -36982,7 +36982,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderActivateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -37098,7 +37098,7 @@
 
   jsonDict[@"team_folder_id"] = valueObj.teamFolderId;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderIdArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -37208,7 +37208,7 @@
   jsonDict[@"team_folder_id"] = valueObj.teamFolderId;
   jsonDict[@"force_async_off"] = valueObj.forceAsyncOff;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderArchiveArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -37439,7 +37439,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderArchiveError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -37651,7 +37651,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderArchiveJobStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -37838,7 +37838,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderArchiveLaunch *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -37965,7 +37965,7 @@
     jsonDict[@"sync_setting"] = [DBFILESSyncSettingArgSerializer serialize:valueObj.syncSetting];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderCreateArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -38192,7 +38192,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderCreateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -38380,7 +38380,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderGetInfoItem *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -38501,7 +38501,7 @@
                                                       return elem0;
                                                     }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderIdListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -38693,7 +38693,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderInvalidStatusError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -38805,7 +38805,7 @@
 
   jsonDict[@"limit"] = valueObj.limit;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -38904,7 +38904,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -39051,7 +39051,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -39157,7 +39157,7 @@
 
   jsonDict[@"access_error"] = [DBTEAMTeamFolderAccessErrorSerializer serialize:valueObj.accessError];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderListError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -39280,7 +39280,7 @@
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderListResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -39436,7 +39436,7 @@
                            return [DBFILESContentSyncSettingSerializer serialize:elem0];
                          }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -39684,7 +39684,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderPermanentlyDeleteError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -39807,7 +39807,7 @@
   jsonDict[@"team_folder_id"] = valueObj.teamFolderId;
   jsonDict[@"name"] = valueObj.name;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderRenameArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -40101,7 +40101,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderRenameError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -40312,7 +40312,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -40470,7 +40470,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderTeamSharedDropboxError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -40617,7 +40617,7 @@
                            }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderUpdateSyncSettingsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -40897,7 +40897,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamFolderUpdateSyncSettingsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -41069,7 +41069,7 @@
   jsonDict[@"policies"] = [DBTEAMPOLICIESTeamMemberPoliciesSerializer serialize:valueObj.policies];
   jsonDict[@"num_used_licenses"] = valueObj.numUsedLicenses;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamGetInfoResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -41188,7 +41188,7 @@
   jsonDict[@"profile"] = [DBTEAMTeamMemberProfileSerializer serialize:valueObj.profile];
   jsonDict[@"role"] = [DBTEAMAdminTierSerializer serialize:valueObj.role];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamMemberInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -41313,7 +41313,7 @@
                                             }];
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamMemberInfoV2 *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -41419,7 +41419,7 @@
 
   jsonDict[@"member_info"] = [DBTEAMTeamMemberInfoV2Serializer serialize:valueObj.memberInfo];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamMemberInfoV2Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -41739,7 +41739,7 @@
     jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamMemberProfile *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -41902,7 +41902,7 @@
   jsonDict[@"name"] = valueObj.name;
   jsonDict[@"description"] = valueObj.description_;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamMemberRole *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -42108,7 +42108,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamMemberStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -42271,7 +42271,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamMembershipType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -42382,7 +42382,7 @@
 
   jsonDict[@"limit"] = valueObj.limit;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamNamespacesListArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -42481,7 +42481,7 @@
 
   jsonDict[@"cursor"] = valueObj.cursor;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamNamespacesListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -42628,7 +42628,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamNamespacesListError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -42804,7 +42804,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamNamespacesListContinueError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -42934,7 +42934,7 @@
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamNamespacesListResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -43129,7 +43129,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTeamReportFailureReason *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -43308,7 +43308,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTokenGetAuthenticatedAdminError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -43417,7 +43417,7 @@
 
   jsonDict[@"admin_profile"] = [DBTEAMTeamMemberProfileSerializer serialize:valueObj.adminProfile];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMTokenGetAuthenticatedAdminResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -43597,7 +43597,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUploadApiRateLimitValue *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -43863,7 +43863,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserAddResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -43987,7 +43987,7 @@
   jsonDict[@"user"] = [DBTEAMUserSelectorArgSerializer serialize:valueObj.user];
   jsonDict[@"quota_gb"] = valueObj.quotaGb;
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserCustomQuotaArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -44105,7 +44105,7 @@
     jsonDict[@"quota_gb"] = valueObj.quotaGb;
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserCustomQuotaResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -44221,7 +44221,7 @@
                                               return [DBTEAMDeleteSecondaryEmailResultSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserDeleteEmailsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -44419,7 +44419,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserDeleteResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -44544,7 +44544,7 @@
                                               return [DBTEAMResendSecondaryEmailResultSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserResendEmailsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -44742,7 +44742,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserResendResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -44872,7 +44872,7 @@
                                                        return elem0;
                                                      }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserSecondaryEmailsArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -44990,7 +44990,7 @@
                                               return [DBTEAMAddSecondaryEmailResultSerializer serialize:elem0];
                                             }];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserSecondaryEmailsResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -45199,7 +45199,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUserSelectorArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -45426,7 +45426,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMUsersSelectorArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
