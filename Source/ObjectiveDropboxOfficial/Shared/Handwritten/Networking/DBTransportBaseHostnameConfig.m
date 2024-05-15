@@ -41,8 +41,19 @@
     _meta = meta;
     _api = api;
     _content = content;
+    _downloadContent = content;
     _notify = notify;
   }
+  return self;
+}
+
+- (instancetype)initWithMeta:(NSString *)meta
+                         api:(NSString *)api
+                     content:(NSString *)content
+             downloadContent:(NSString *)downloadContent
+                      notify:(NSString *)notify {
+  self = [self initWithMeta:meta api:api content:content notify:notify];
+  _downloadContent = downloadContent;
   return self;
 }
 
@@ -51,7 +62,11 @@
   case DBRouteHostApi:
     return [NSString stringWithFormat:@"https://%@/2", _api];
   case DBRouteHostContent:
-    return [NSString stringWithFormat:@"https://%@/2", _content];
+    if ([route.attrs[@"style"] isEqualToString:@"download"]) {
+        return [NSString stringWithFormat:@"https://%@/2", _downloadContent];
+    } else {
+        return [NSString stringWithFormat:@"https://%@/2", _content];
+    }
   case DBRouteHostNotify:
     return [NSString stringWithFormat:@"https://%@/2", _notify];
   case DBRouteHostUnknown:
