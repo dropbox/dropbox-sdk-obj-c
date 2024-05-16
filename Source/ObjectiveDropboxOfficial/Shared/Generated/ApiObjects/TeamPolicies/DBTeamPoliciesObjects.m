@@ -163,7 +163,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESCameraUploadsPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -360,7 +360,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESComputerBackupPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -559,7 +559,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESEmmState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -759,7 +759,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESExternalDriveBackupPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -937,7 +937,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESFileLockingPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1135,7 +1135,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESFileProviderMigrationPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1294,7 +1294,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESGroupCreation *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1471,7 +1471,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESOfficeAddInPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1647,7 +1647,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESPaperDefaultFolderPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1823,7 +1823,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESPaperDeploymentPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -1999,7 +1999,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESPaperDesktopPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2196,7 +2196,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESPaperEnabledPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2374,7 +2374,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESPasswordControlMode *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2571,7 +2571,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESPasswordStrengthPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2751,7 +2751,7 @@
                                  userInfo:nil]);
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESRolloutMethod *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -2931,7 +2931,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3107,7 +3107,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSharedFolderJoinPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3283,7 +3283,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSharedFolderMemberPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3501,7 +3501,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSharedLinkCreatePolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3681,7 +3681,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESShowcaseDownloadPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -3857,7 +3857,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESShowcaseEnabledPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4034,7 +4034,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESShowcaseExternalSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4210,7 +4210,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSmartSyncPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4386,7 +4386,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSmarterSmartSyncPolicyState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4583,7 +4583,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSsoPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4761,7 +4761,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESSuggestMembersPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -4897,7 +4897,7 @@
   jsonDict[@"suggest_members_policy"] =
       [DBTEAMPOLICIESSuggestMembersPolicySerializer serialize:valueObj.suggestMembersPolicy];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESTeamMemberPolicies *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5047,7 +5047,7 @@
   jsonDict[@"shared_folder_link_restriction_policy"] = [DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicySerializer
       serialize:valueObj.sharedFolderLinkRestrictionPolicy];
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESTeamSharingPolicies *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5229,7 +5229,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESTwoStepVerificationPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
@@ -5426,7 +5426,7 @@
     jsonDict[@".tag"] = @"other";
   }
 
-  return [jsonDict count] > 0 ? jsonDict : nil;
+  return jsonDict;
 }
 
 + (DBTEAMPOLICIESTwoStepVerificationState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
