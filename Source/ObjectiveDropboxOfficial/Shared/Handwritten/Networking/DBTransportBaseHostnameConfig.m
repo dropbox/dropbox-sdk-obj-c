@@ -37,14 +37,7 @@
                          api:(NSString *)api
                      content:(NSString *)content
                       notify:(NSString *)notify {
-  if (self = [super init]) {
-    _meta = meta;
-    _api = api;
-    _content = content;
-    _downloadContent = content;
-    _notify = notify;
-  }
-  return self;
+    return [self initWithMeta:meta api:api content:content downloadContent:content notify:notify];
 }
 
 - (instancetype)initWithMeta:(NSString *)meta
@@ -52,8 +45,13 @@
                      content:(NSString *)content
              downloadContent:(NSString *)downloadContent
                       notify:(NSString *)notify {
-  self = [self initWithMeta:meta api:api content:content notify:notify];
-  _downloadContent = downloadContent;
+  if (self = [super init]) {
+    _meta = meta;
+    _api = api;
+    _content = content;
+    _downloadContent = downloadContent;
+    _notify = notify;
+  }
   return self;
 }
 
