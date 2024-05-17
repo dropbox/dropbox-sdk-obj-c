@@ -49,7 +49,7 @@
     _meta = meta;
     _api = api;
     _content = content;
-    _downloadContent = content;
+    _downloadContent = downloadContent;
     _notify = notify;
   }
   return self;
