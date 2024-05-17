@@ -51,7 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return An initialized instance with the provided hostname configuration
 ///
-- (instancetype)initWithMeta:(NSString *)meta api:(NSString *)api content:(NSString *)content downloadContent:(NSString *)downloadContent notify:(NSString *)notify;
+- (instancetype)initWithMeta:(NSString *)meta api:(NSString *)api content:(NSString *)content downloadContent:(NSString *)downloadContent notify:(NSString *)notify NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithMeta:(NSString *)meta api:(NSString *)api content:(NSString *)content notify:(NSString *)notify;
 
 ///
 /// Returns the prefix to use for API calls to the given route type.
