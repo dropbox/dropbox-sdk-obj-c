@@ -75,7 +75,8 @@
   return YES;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
   BOOL urlHandled = NO;
   if ([[url absoluteString] containsString:@"openWith"]) {
     NSLog(@"Successfully retrieved openWith url");
@@ -85,17 +86,17 @@
 
     for (NSString *pair in pairs) {
       NSArray *kv = [pair componentsSeparatedByString:@"="];
-      NSString *unEscapedValue = [[kv objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+      NSString *unEscapedValue = [[kv objectAtIndex:1] stringByRemovingPercentEncoding];
       [urlData setObject:unEscapedValue forKey:[kv objectAtIndex:0]];
     }
 
-    DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:[TestData new].fullDropboxAppKey
-                                                                     canOpenURLWrapper:^BOOL(NSURL *url) {
-                                                                       return [[UIApplication sharedApplication] canOpenURL:url];
-                                                                     }
-                                                                        openURLWrapper:^(NSURL *url) {
-                                                                          [[UIApplication sharedApplication] openURL:url];
-                                                                        }];
+      DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:[TestData new].fullDropboxAppKey
+                                                                       canOpenURLWrapper:^BOOL(NSURL *url) {
+          return [[UIApplication sharedApplication] canOpenURL:url];
+      }
+                                                                          openURLWrapper:^(NSURL *url) {
+          [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+      }];
 
     DBOpenWithInfo *openWithInfo = [connector openWithInfoFromURL:url];
     [((ViewController *)self.window.rootViewController) setOpenWithInfoNSURL:openWithInfo];
