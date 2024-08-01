@@ -44,7 +44,9 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
   [DBClientsManager authorizeFromControllerV2:[UIApplication sharedApplication]
                                    controller:self
                         loadingStatusDelegate:nil
-                                      openURL:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }
+                                      openURL:^(NSURL *url) {
+      [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+  }
                                  scopeRequest:scopeRequest];
 }
 
@@ -91,7 +93,7 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
         return [[UIApplication sharedApplication] canOpenURL:url];
     }
                                                                         openURLWrapper:^(NSURL *url) {
-        [[UIApplication sharedApplication] openURL:url];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }];
     DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector retriveOfficialDropboxAppOpenWithInfo];
 
@@ -107,7 +109,7 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
             return [[UIApplication sharedApplication] canOpenURL:url];
         }
                                                                                openURLWrapper:^(NSURL *url) {
-            [[UIApplication sharedApplication] openURL:url];
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
         }];
         [appConnector returnToDropboxApp:s_openWithInfoNSURL changesPending:NO];
     } else {
