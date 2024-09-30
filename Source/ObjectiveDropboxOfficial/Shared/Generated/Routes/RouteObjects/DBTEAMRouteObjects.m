@@ -230,19 +230,19 @@ static DBRoute *DBTEAMMemberSpaceLimitsExcludedUsersRemove;
 static DBRoute *DBTEAMMemberSpaceLimitsGetCustomQuota;
 static DBRoute *DBTEAMMemberSpaceLimitsRemoveCustomQuota;
 static DBRoute *DBTEAMMemberSpaceLimitsSetCustomQuota;
-static DBRoute *DBTEAMMembersAddV2;
 static DBRoute *DBTEAMMembersAdd;
-static DBRoute *DBTEAMMembersAddJobStatusGetV2;
+static DBRoute *DBTEAMMembersAddV2;
 static DBRoute *DBTEAMMembersAddJobStatusGet;
-static DBRoute *DBTEAMMembersDeleteProfilePhotoV2;
+static DBRoute *DBTEAMMembersAddJobStatusGetV2;
 static DBRoute *DBTEAMMembersDeleteProfilePhoto;
+static DBRoute *DBTEAMMembersDeleteProfilePhotoV2;
 static DBRoute *DBTEAMMembersGetAvailableTeamMemberRoles;
-static DBRoute *DBTEAMMembersGetInfoV2;
 static DBRoute *DBTEAMMembersGetInfo;
-static DBRoute *DBTEAMMembersListV2;
+static DBRoute *DBTEAMMembersGetInfoV2;
 static DBRoute *DBTEAMMembersList;
-static DBRoute *DBTEAMMembersListContinueV2;
+static DBRoute *DBTEAMMembersListV2;
 static DBRoute *DBTEAMMembersListContinue;
+static DBRoute *DBTEAMMembersListContinueV2;
 static DBRoute *DBTEAMMembersMoveFormerMemberFiles;
 static DBRoute *DBTEAMMembersMoveFormerMemberFilesJobStatusCheck;
 static DBRoute *DBTEAMMembersRecover;
@@ -252,12 +252,12 @@ static DBRoute *DBTEAMMembersSecondaryEmailsAdd;
 static DBRoute *DBTEAMMembersSecondaryEmailsDelete;
 static DBRoute *DBTEAMMembersSecondaryEmailsResendVerificationEmails;
 static DBRoute *DBTEAMMembersSendWelcomeEmail;
-static DBRoute *DBTEAMMembersSetAdminPermissionsV2;
 static DBRoute *DBTEAMMembersSetAdminPermissions;
-static DBRoute *DBTEAMMembersSetProfileV2;
+static DBRoute *DBTEAMMembersSetAdminPermissionsV2;
 static DBRoute *DBTEAMMembersSetProfile;
-static DBRoute *DBTEAMMembersSetProfilePhotoV2;
+static DBRoute *DBTEAMMembersSetProfileV2;
 static DBRoute *DBTEAMMembersSetProfilePhoto;
+static DBRoute *DBTEAMMembersSetProfilePhotoV2;
 static DBRoute *DBTEAMMembersSuspend;
 static DBRoute *DBTEAMMembersUnsuspend;
 static DBRoute *DBTEAMNamespacesList;
@@ -942,6 +942,22 @@ static NSObject *lockObj = nil;
   }
 }
 
++ (DBRoute *)DBTEAMMembersAdd {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersAdd) {
+      DBTEAMMembersAdd = [[DBRoute alloc] init:@"members/add"
+                                    namespace_:@"team"
+                                    deprecated:@NO
+                                    resultType:[DBTEAMMembersAddLaunch class]
+                                     errorType:nil
+                                         attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                         dataStructSerialBlock:nil
+                       dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersAdd;
+  }
+}
+
 + (DBRoute *)DBTEAMMembersAddV2 {
   @synchronized(lockObj) {
     if (!DBTEAMMembersAddV2) {
@@ -958,19 +974,19 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersAdd {
++ (DBRoute *)DBTEAMMembersAddJobStatusGet {
   @synchronized(lockObj) {
-    if (!DBTEAMMembersAdd) {
-      DBTEAMMembersAdd = [[DBRoute alloc] init:@"members/add"
-                                    namespace_:@"team"
-                                    deprecated:@NO
-                                    resultType:[DBTEAMMembersAddLaunch class]
-                                     errorType:nil
-                                         attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                         dataStructSerialBlock:nil
-                       dataStructDeserialBlock:nil];
+    if (!DBTEAMMembersAddJobStatusGet) {
+      DBTEAMMembersAddJobStatusGet = [[DBRoute alloc] init:@"members/add/job_status/get"
+                                                namespace_:@"team"
+                                                deprecated:@NO
+                                                resultType:[DBTEAMMembersAddJobStatus class]
+                                                 errorType:[DBASYNCPollError class]
+                                                     attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                     dataStructSerialBlock:nil
+                                   dataStructDeserialBlock:nil];
     }
-    return DBTEAMMembersAdd;
+    return DBTEAMMembersAddJobStatusGet;
   }
 }
 
@@ -990,19 +1006,19 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersAddJobStatusGet {
++ (DBRoute *)DBTEAMMembersDeleteProfilePhoto {
   @synchronized(lockObj) {
-    if (!DBTEAMMembersAddJobStatusGet) {
-      DBTEAMMembersAddJobStatusGet = [[DBRoute alloc] init:@"members/add/job_status/get"
-                                                namespace_:@"team"
-                                                deprecated:@NO
-                                                resultType:[DBTEAMMembersAddJobStatus class]
-                                                 errorType:[DBASYNCPollError class]
-                                                     attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                     dataStructSerialBlock:nil
-                                   dataStructDeserialBlock:nil];
+    if (!DBTEAMMembersDeleteProfilePhoto) {
+      DBTEAMMembersDeleteProfilePhoto = [[DBRoute alloc] init:@"members/delete_profile_photo"
+                                                   namespace_:@"team"
+                                                   deprecated:@NO
+                                                   resultType:[DBTEAMTeamMemberInfo class]
+                                                    errorType:[DBTEAMMembersDeleteProfilePhotoError class]
+                                                        attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                        dataStructSerialBlock:nil
+                                      dataStructDeserialBlock:nil];
     }
-    return DBTEAMMembersAddJobStatusGet;
+    return DBTEAMMembersDeleteProfilePhoto;
   }
 }
 
@@ -1023,22 +1039,6 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersDeleteProfilePhoto {
-  @synchronized(lockObj) {
-    if (!DBTEAMMembersDeleteProfilePhoto) {
-      DBTEAMMembersDeleteProfilePhoto = [[DBRoute alloc] init:@"members/delete_profile_photo"
-                                                   namespace_:@"team"
-                                                   deprecated:@NO
-                                                   resultType:[DBTEAMTeamMemberInfo class]
-                                                    errorType:[DBTEAMMembersDeleteProfilePhotoError class]
-                                                        attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                        dataStructSerialBlock:nil
-                                      dataStructDeserialBlock:nil];
-    }
-    return DBTEAMMembersDeleteProfilePhoto;
-  }
-}
-
 + (DBRoute *)DBTEAMMembersGetAvailableTeamMemberRoles {
   @synchronized(lockObj) {
     if (!DBTEAMMembersGetAvailableTeamMemberRoles) {
@@ -1053,22 +1053,6 @@ static NSObject *lockObj = nil;
               dataStructDeserialBlock:nil];
     }
     return DBTEAMMembersGetAvailableTeamMemberRoles;
-  }
-}
-
-+ (DBRoute *)DBTEAMMembersGetInfoV2 {
-  @synchronized(lockObj) {
-    if (!DBTEAMMembersGetInfoV2) {
-      DBTEAMMembersGetInfoV2 = [[DBRoute alloc] init:@"members/get_info_v2"
-                                          namespace_:@"team"
-                                          deprecated:@NO
-                                          resultType:[DBTEAMMembersGetInfoV2Result class]
-                                           errorType:[DBTEAMMembersGetInfoError class]
-                                               attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                               dataStructSerialBlock:nil
-                             dataStructDeserialBlock:nil];
-    }
-    return DBTEAMMembersGetInfoV2;
   }
 }
 
@@ -1094,19 +1078,19 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersListV2 {
++ (DBRoute *)DBTEAMMembersGetInfoV2 {
   @synchronized(lockObj) {
-    if (!DBTEAMMembersListV2) {
-      DBTEAMMembersListV2 = [[DBRoute alloc] init:@"members/list_v2"
-                                       namespace_:@"team"
-                                       deprecated:@NO
-                                       resultType:[DBTEAMMembersListV2Result class]
-                                        errorType:[DBTEAMMembersListError class]
-                                            attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                            dataStructSerialBlock:nil
-                          dataStructDeserialBlock:nil];
+    if (!DBTEAMMembersGetInfoV2) {
+      DBTEAMMembersGetInfoV2 = [[DBRoute alloc] init:@"members/get_info_v2"
+                                          namespace_:@"team"
+                                          deprecated:@NO
+                                          resultType:[DBTEAMMembersGetInfoV2Result class]
+                                           errorType:[DBTEAMMembersGetInfoError class]
+                                               attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
     }
-    return DBTEAMMembersListV2;
+    return DBTEAMMembersGetInfoV2;
   }
 }
 
@@ -1126,19 +1110,19 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersListContinueV2 {
++ (DBRoute *)DBTEAMMembersListV2 {
   @synchronized(lockObj) {
-    if (!DBTEAMMembersListContinueV2) {
-      DBTEAMMembersListContinueV2 = [[DBRoute alloc] init:@"members/list/continue_v2"
-                                               namespace_:@"team"
-                                               deprecated:@NO
-                                               resultType:[DBTEAMMembersListV2Result class]
-                                                errorType:[DBTEAMMembersListContinueError class]
-                                                    attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                    dataStructSerialBlock:nil
-                                  dataStructDeserialBlock:nil];
+    if (!DBTEAMMembersListV2) {
+      DBTEAMMembersListV2 = [[DBRoute alloc] init:@"members/list_v2"
+                                       namespace_:@"team"
+                                       deprecated:@NO
+                                       resultType:[DBTEAMMembersListV2Result class]
+                                        errorType:[DBTEAMMembersListError class]
+                                            attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                            dataStructSerialBlock:nil
+                          dataStructDeserialBlock:nil];
     }
-    return DBTEAMMembersListContinueV2;
+    return DBTEAMMembersListV2;
   }
 }
 
@@ -1155,6 +1139,22 @@ static NSObject *lockObj = nil;
                                 dataStructDeserialBlock:nil];
     }
     return DBTEAMMembersListContinue;
+  }
+}
+
++ (DBRoute *)DBTEAMMembersListContinueV2 {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersListContinueV2) {
+      DBTEAMMembersListContinueV2 = [[DBRoute alloc] init:@"members/list/continue_v2"
+                                               namespace_:@"team"
+                                               deprecated:@NO
+                                               resultType:[DBTEAMMembersListV2Result class]
+                                                errorType:[DBTEAMMembersListContinueError class]
+                                                    attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                    dataStructSerialBlock:nil
+                                  dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersListContinueV2;
   }
 }
 
@@ -1306,23 +1306,6 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersSetAdminPermissionsV2 {
-  @synchronized(lockObj) {
-    if (!DBTEAMMembersSetAdminPermissionsV2) {
-      DBTEAMMembersSetAdminPermissionsV2 =
-          [[DBRoute alloc] init:@"members/set_admin_permissions_v2"
-                           namespace_:@"team"
-                           deprecated:@NO
-                           resultType:[DBTEAMMembersSetPermissions2Result class]
-                            errorType:[DBTEAMMembersSetPermissions2Error class]
-                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                dataStructSerialBlock:nil
-              dataStructDeserialBlock:nil];
-    }
-    return DBTEAMMembersSetAdminPermissionsV2;
-  }
-}
-
 + (DBRoute *)DBTEAMMembersSetAdminPermissions {
   @synchronized(lockObj) {
     if (!DBTEAMMembersSetAdminPermissions) {
@@ -1339,19 +1322,20 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersSetProfileV2 {
++ (DBRoute *)DBTEAMMembersSetAdminPermissionsV2 {
   @synchronized(lockObj) {
-    if (!DBTEAMMembersSetProfileV2) {
-      DBTEAMMembersSetProfileV2 = [[DBRoute alloc] init:@"members/set_profile_v2"
-                                             namespace_:@"team"
-                                             deprecated:@NO
-                                             resultType:[DBTEAMTeamMemberInfoV2Result class]
-                                              errorType:[DBTEAMMembersSetProfileError class]
-                                                  attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                  dataStructSerialBlock:nil
-                                dataStructDeserialBlock:nil];
+    if (!DBTEAMMembersSetAdminPermissionsV2) {
+      DBTEAMMembersSetAdminPermissionsV2 =
+          [[DBRoute alloc] init:@"members/set_admin_permissions_v2"
+                           namespace_:@"team"
+                           deprecated:@NO
+                           resultType:[DBTEAMMembersSetPermissions2Result class]
+                            errorType:[DBTEAMMembersSetPermissions2Error class]
+                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
     }
-    return DBTEAMMembersSetProfileV2;
+    return DBTEAMMembersSetAdminPermissionsV2;
   }
 }
 
@@ -1371,19 +1355,19 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersSetProfilePhotoV2 {
++ (DBRoute *)DBTEAMMembersSetProfileV2 {
   @synchronized(lockObj) {
-    if (!DBTEAMMembersSetProfilePhotoV2) {
-      DBTEAMMembersSetProfilePhotoV2 = [[DBRoute alloc] init:@"members/set_profile_photo_v2"
-                                                  namespace_:@"team"
-                                                  deprecated:@NO
-                                                  resultType:[DBTEAMTeamMemberInfoV2Result class]
-                                                   errorType:[DBTEAMMembersSetProfilePhotoError class]
-                                                       attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                       dataStructSerialBlock:nil
-                                     dataStructDeserialBlock:nil];
+    if (!DBTEAMMembersSetProfileV2) {
+      DBTEAMMembersSetProfileV2 = [[DBRoute alloc] init:@"members/set_profile_v2"
+                                             namespace_:@"team"
+                                             deprecated:@NO
+                                             resultType:[DBTEAMTeamMemberInfoV2Result class]
+                                              errorType:[DBTEAMMembersSetProfileError class]
+                                                  attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
     }
-    return DBTEAMMembersSetProfilePhotoV2;
+    return DBTEAMMembersSetProfileV2;
   }
 }
 
@@ -1400,6 +1384,22 @@ static NSObject *lockObj = nil;
                                    dataStructDeserialBlock:nil];
     }
     return DBTEAMMembersSetProfilePhoto;
+  }
+}
+
++ (DBRoute *)DBTEAMMembersSetProfilePhotoV2 {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersSetProfilePhotoV2) {
+      DBTEAMMembersSetProfilePhotoV2 = [[DBRoute alloc] init:@"members/set_profile_photo_v2"
+                                                  namespace_:@"team"
+                                                  deprecated:@NO
+                                                  resultType:[DBTEAMTeamMemberInfoV2Result class]
+                                                   errorType:[DBTEAMMembersSetProfilePhotoError class]
+                                                       attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                       dataStructSerialBlock:nil
+                                     dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersSetProfilePhotoV2;
   }
 }
 

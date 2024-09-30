@@ -313,35 +313,6 @@ NS_ASSUME_NONNULL_BEGIN
           inputStream:(NSInputStream *)inputStream __deprecated_msg("alphaUpload is deprecated. Use upload.");
 
 ///
-/// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
-/// will be copied.
-///
-///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
-/// `DBFILESRelocationError` object on failure.
-///
-- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)dCopyV2:(NSString *)fromPath
-                                                                     toPath:(NSString *)toPath;
-
-///
-/// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
-/// will be copied.
-///
-/// @param allowSharedFolder This flag has no effect.
-/// @param autorename If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.
-/// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
-/// being moved. This does not apply to copies.
-///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
-/// `DBFILESRelocationError` object on failure.
-///
-- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)dCopyV2:(NSString *)fromPath
-                                                                     toPath:(NSString *)toPath
-                                                          allowSharedFolder:(nullable NSNumber *)allowSharedFolder
-                                                                 autorename:(nullable NSNumber *)autorename
-                                                     allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
-
-///
 /// DEPRECATED: Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all
 /// its contents will be copied.
 ///
@@ -373,34 +344,33 @@ NS_ASSUME_NONNULL_BEGIN
     __deprecated_msg("dCopy is deprecated. Use dCopy.");
 
 ///
-/// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `dCopyBatch`. The main difference is this route will return status for each entry, while `dCopyBatch` raises failure
-/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
-/// background. Please use `dCopyBatchCheck` to check the job status.
+/// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
+/// will be copied.
 ///
-/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
 ///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
-/// or a `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
+/// `DBFILESRelocationError` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)dCopyBatchV2:
-    (NSArray<DBFILESRelocationPath *> *)entries;
+- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)dCopyV2:(NSString *)fromPath
+                                                                     toPath:(NSString *)toPath;
 
 ///
-/// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
-/// `dCopyBatch`. The main difference is this route will return status for each entry, while `dCopyBatch` raises failure
-/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
-/// background. Please use `dCopyBatchCheck` to check the job status.
+/// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
+/// will be copied.
 ///
-/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
-/// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
-/// the conflict.
+/// @param allowSharedFolder This flag has no effect.
+/// @param autorename If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.
+/// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
+/// being moved. This does not apply to copies.
 ///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
-/// or a `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
+/// `DBFILESRelocationError` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)dCopyBatchV2:(NSArray<DBFILESRelocationPath *> *)entries
-                                                                  autorename:(nullable NSNumber *)autorename;
+- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)dCopyV2:(NSString *)fromPath
+                                                                     toPath:(NSString *)toPath
+                                                          allowSharedFolder:(nullable NSNumber *)allowSharedFolder
+                                                                 autorename:(nullable NSNumber *)autorename
+                                                     allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
 
 ///
 /// DEPRECATED: Copy multiple files or folders to different locations at once in the user's Dropbox. This route will
@@ -433,15 +403,34 @@ NS_ASSUME_NONNULL_BEGIN
     __deprecated_msg("dCopyBatch is deprecated. Use dCopyBatch.");
 
 ///
-/// Returns the status of an asynchronous job for `dCopyBatch`. It returns list of results for each entry.
+/// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
+/// `dCopyBatch`. The main difference is this route will return status for each entry, while `dCopyBatch` raises failure
+/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
+/// background. Please use `dCopyBatchCheck` to check the job status.
 ///
-/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
-/// the job.
+/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
 ///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2JobStatus` object on
-/// success or a `DBASYNCPollError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchV2JobStatus *, DBASYNCPollError *> *)dCopyBatchCheckV2:(NSString *)asyncJobId;
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)dCopyBatchV2:
+    (NSArray<DBFILESRelocationPath *> *)entries;
+
+///
+/// Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace
+/// `dCopyBatch`. The main difference is this route will return status for each entry, while `dCopyBatch` raises failure
+/// if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in
+/// background. Please use `dCopyBatchCheck` to check the job status.
+///
+/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
+/// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
+/// the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)dCopyBatchV2:(NSArray<DBFILESRelocationPath *> *)entries
+                                                                  autorename:(nullable NSNumber *)autorename;
 
 ///
 /// DEPRECATED: Returns the status of an asynchronous job for `dCopyBatch`. If success, it returns list of results for
@@ -455,6 +444,17 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBFILESRelocationBatchJobStatus *, DBASYNCPollError *> *)dCopyBatchCheck:(NSString *)asyncJobId
     __deprecated_msg("dCopyBatchCheck is deprecated. Use dCopyBatchCheck.");
+
+///
+/// Returns the status of an asynchronous job for `dCopyBatch`. It returns list of results for each entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2JobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2JobStatus *, DBASYNCPollError *> *)dCopyBatchCheckV2:(NSString *)asyncJobId;
 
 ///
 /// Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another
@@ -481,28 +481,6 @@ NS_ASSUME_NONNULL_BEGIN
                                                                                                 path:(NSString *)path;
 
 ///
-/// Create a folder at a given path.
-///
-/// @param path Path in the user's Dropbox to create.
-///
-/// @return Through the response callback, the caller will receive a `DBFILESCreateFolderResult` object on success or a
-/// `DBFILESCreateFolderError` object on failure.
-///
-- (DBRpcTask<DBFILESCreateFolderResult *, DBFILESCreateFolderError *> *)createFolderV2:(NSString *)path;
-
-///
-/// Create a folder at a given path.
-///
-/// @param path Path in the user's Dropbox to create.
-/// @param autorename If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict.
-///
-/// @return Through the response callback, the caller will receive a `DBFILESCreateFolderResult` object on success or a
-/// `DBFILESCreateFolderError` object on failure.
-///
-- (DBRpcTask<DBFILESCreateFolderResult *, DBFILESCreateFolderError *> *)createFolderV2:(NSString *)path
-                                                                            autorename:(nullable NSNumber *)autorename;
-
-///
 /// DEPRECATED: Create a folder at a given path.
 ///
 /// @param path Path in the user's Dropbox to create.
@@ -525,6 +503,28 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBFILESFolderMetadata *, DBFILESCreateFolderError *> *)createFolder:(NSString *)path
                                                                       autorename:(nullable NSNumber *)autorename
     __deprecated_msg("createFolder is deprecated. Use createFolder.");
+
+///
+/// Create a folder at a given path.
+///
+/// @param path Path in the user's Dropbox to create.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESCreateFolderResult` object on success or a
+/// `DBFILESCreateFolderError` object on failure.
+///
+- (DBRpcTask<DBFILESCreateFolderResult *, DBFILESCreateFolderError *> *)createFolderV2:(NSString *)path;
+
+///
+/// Create a folder at a given path.
+///
+/// @param path Path in the user's Dropbox to create.
+/// @param autorename If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESCreateFolderResult` object on success or a
+/// `DBFILESCreateFolderError` object on failure.
+///
+- (DBRpcTask<DBFILESCreateFolderResult *, DBFILESCreateFolderError *> *)createFolderV2:(NSString *)path
+                                                                            autorename:(nullable NSNumber *)autorename;
 
 ///
 /// Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately
@@ -571,33 +571,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBFILESCreateFolderBatchJobStatus *, DBASYNCPollError *> *)createFolderBatchCheck:(NSString *)asyncJobId;
 
 ///
-/// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
-/// successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding
-/// FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
-///
-/// @param path Path in the user's Dropbox to delete.
-///
-/// @return Through the response callback, the caller will receive a `DBFILESDeleteResult` object on success or a
-/// `DBFILESDeleteError` object on failure.
-///
-- (DBRpcTask<DBFILESDeleteResult *, DBFILESDeleteError *> *)delete_V2:(NSString *)path;
-
-///
-/// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
-/// successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding
-/// FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
-///
-/// @param path Path in the user's Dropbox to delete.
-/// @param parentRev Perform delete if given "rev" matches the existing file's latest "rev". This field does not support
-/// deleting a folder.
-///
-/// @return Through the response callback, the caller will receive a `DBFILESDeleteResult` object on success or a
-/// `DBFILESDeleteError` object on failure.
-///
-- (DBRpcTask<DBFILESDeleteResult *, DBFILESDeleteError *> *)delete_V2:(NSString *)path
-                                                            parentRev:(nullable NSString *)parentRev;
-
-///
 /// DEPRECATED: Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted
 /// too. A successful response indicates that the file or folder was deleted. The returned metadata will be the
 /// corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
@@ -625,6 +598,33 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBFILESMetadata *, DBFILESDeleteError *> *)delete_:(NSString *)path
                                                       parentRev:(nullable NSString *)parentRev
     __deprecated_msg("delete_ is deprecated. Use delete_.");
+
+///
+/// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
+/// successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding
+/// FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+///
+/// @param path Path in the user's Dropbox to delete.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDeleteResult` object on success or a
+/// `DBFILESDeleteError` object on failure.
+///
+- (DBRpcTask<DBFILESDeleteResult *, DBFILESDeleteError *> *)delete_V2:(NSString *)path;
+
+///
+/// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
+/// successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding
+/// FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+///
+/// @param path Path in the user's Dropbox to delete.
+/// @param parentRev Perform delete if given "rev" matches the existing file's latest "rev". This field does not support
+/// deleting a folder.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDeleteResult` object on success or a
+/// `DBFILESDeleteError` object on failure.
+///
+- (DBRpcTask<DBFILESDeleteResult *, DBFILESDeleteError *> *)delete_V2:(NSString *)path
+                                                            parentRev:(nullable NSString *)parentRev;
 
 ///
 /// Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the
@@ -1872,35 +1872,6 @@ NS_ASSUME_NONNULL_BEGIN
     (NSArray<DBFILESLockFileArg *> *)entries;
 
 ///
-/// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
-/// will be moved. Note that we do not currently support case-only renaming.
-///
-///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
-/// `DBFILESRelocationError` object on failure.
-///
-- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)moveV2:(NSString *)fromPath
-                                                                    toPath:(NSString *)toPath;
-
-///
-/// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
-/// will be moved. Note that we do not currently support case-only renaming.
-///
-/// @param allowSharedFolder This flag has no effect.
-/// @param autorename If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.
-/// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
-/// being moved. This does not apply to copies.
-///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
-/// `DBFILESRelocationError` object on failure.
-///
-- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)moveV2:(NSString *)fromPath
-                                                                    toPath:(NSString *)toPath
-                                                         allowSharedFolder:(nullable NSNumber *)allowSharedFolder
-                                                                autorename:(nullable NSNumber *)autorename
-                                                    allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
-
-///
 /// DEPRECATED: Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all
 /// its contents will be moved.
 ///
@@ -1932,34 +1903,33 @@ NS_ASSUME_NONNULL_BEGIN
     __deprecated_msg("move is deprecated. Use move.");
 
 ///
-/// Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently
-/// support case-only renaming. This route will replace `moveBatch`. The main difference is this route will return
-/// status for each entry, while `moveBatch` raises failure if any entry fails. This route will either finish
-/// synchronously, or return a job ID and do the async move job in background. Please use `moveBatchCheck` to check the
-/// job status.
+/// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
+/// will be moved. Note that we do not currently support case-only renaming.
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
-/// or a `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
+/// `DBFILESRelocationError` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries;
+- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)moveV2:(NSString *)fromPath
+                                                                    toPath:(NSString *)toPath;
 
 ///
-/// Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently
-/// support case-only renaming. This route will replace `moveBatch`. The main difference is this route will return
-/// status for each entry, while `moveBatch` raises failure if any entry fails. This route will either finish
-/// synchronously, or return a job ID and do the async move job in background. Please use `moveBatchCheck` to check the
-/// job status.
+/// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
+/// will be moved. Note that we do not currently support case-only renaming.
 ///
+/// @param allowSharedFolder This flag has no effect.
+/// @param autorename If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.
 /// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
 /// being moved. This does not apply to copies.
 ///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
-/// or a `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationResult` object on success or a
+/// `DBFILESRelocationError` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries
-                                                                 autorename:(nullable NSNumber *)autorename
-                                                     allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
+- (DBRpcTask<DBFILESRelocationResult *, DBFILESRelocationError *> *)moveV2:(NSString *)fromPath
+                                                                    toPath:(NSString *)toPath
+                                                         allowSharedFolder:(nullable NSNumber *)allowSharedFolder
+                                                                autorename:(nullable NSNumber *)autorename
+                                                    allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
 
 ///
 /// DEPRECATED: Move multiple files or folders to different locations at once in the user's Dropbox. This route will
@@ -1992,15 +1962,34 @@ NS_ASSUME_NONNULL_BEGIN
     __deprecated_msg("moveBatch is deprecated. Use moveBatch.");
 
 ///
-/// Returns the status of an asynchronous job for `moveBatch`. It returns list of results for each entry.
+/// Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently
+/// support case-only renaming. This route will replace `moveBatch`. The main difference is this route will return
+/// status for each entry, while `moveBatch` raises failure if any entry fails. This route will either finish
+/// synchronously, or return a job ID and do the async move job in background. Please use `moveBatchCheck` to check the
+/// job status.
 ///
-/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
-/// the job.
 ///
-/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2JobStatus` object on
-/// success or a `DBASYNCPollError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
 ///
-- (DBRpcTask<DBFILESRelocationBatchV2JobStatus *, DBASYNCPollError *> *)moveBatchCheckV2:(NSString *)asyncJobId;
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries;
+
+///
+/// Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently
+/// support case-only renaming. This route will replace `moveBatch`. The main difference is this route will return
+/// status for each entry, while `moveBatch` raises failure if any entry fails. This route will either finish
+/// synchronously, or return a job ID and do the async move job in background. Please use `moveBatchCheck` to check the
+/// job status.
+///
+/// @param allowOwnershipTransfer Allow moves by owner even if it would result in an ownership transfer for the content
+/// being moved. This does not apply to copies.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2Launch` object on success
+/// or a `void` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2Launch *, DBNilObject *> *)moveBatchV2:(NSArray<DBFILESRelocationPath *> *)entries
+                                                                 autorename:(nullable NSNumber *)autorename
+                                                     allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
 
 ///
 /// DEPRECATED: Returns the status of an asynchronous job for `moveBatch`. If success, it returns list of results for
@@ -2014,6 +2003,17 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBFILESRelocationBatchJobStatus *, DBASYNCPollError *> *)moveBatchCheck:(NSString *)asyncJobId
     __deprecated_msg("moveBatchCheck is deprecated. Use moveBatchCheck.");
+
+///
+/// Returns the status of an asynchronous job for `moveBatch`. It returns list of results for each entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchV2JobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchV2JobStatus *, DBASYNCPollError *> *)moveBatchCheckV2:(NSString *)asyncJobId;
 
 ///
 /// Creates a new Paper doc with the provided content.
@@ -2568,6 +2568,64 @@ NS_ASSUME_NONNULL_BEGIN
        inputStream:(NSInputStream *)inputStream;
 
 ///
+/// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB. The maximum
+/// size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport
+/// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
+/// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
+///
+/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
+/// @param offset Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or
+/// duplicated in the event of a network error.
+/// @param inputUrl The file to upload, as an NSString * object.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionAppendError` object on failure.
+///
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendUrl:(NSString *)sessionId
+                                                                                    offset:(NSNumber *)offset
+                                                                                  inputUrl:(NSString *)inputUrl
+    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
+
+///
+/// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB. The maximum
+/// size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport
+/// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
+/// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
+///
+/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
+/// @param offset Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or
+/// duplicated in the event of a network error.
+/// @param inputData The file to upload, as an NSData * object.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionAppendError` object on failure.
+///
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendData:(NSString *)sessionId
+                                                                                     offset:(NSNumber *)offset
+                                                                                  inputData:(NSData *)inputData
+    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
+
+///
+/// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB. The maximum
+/// size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport
+/// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
+/// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
+///
+/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
+/// @param offset Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or
+/// duplicated in the event of a network error.
+/// @param inputStream The file to upload, as an NSInputStream * object.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionAppendError` object on failure.
+///
+- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendStream:(NSString *)sessionId
+                                                                                       offset:(NSNumber *)offset
+                                                                                  inputStream:
+                                                                                      (NSInputStream *)inputStream
+    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
+
+///
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
 /// request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350
 /// GB. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the
@@ -2689,64 +2747,6 @@ NS_ASSUME_NONNULL_BEGIN
                           close:(nullable NSNumber *)close
                     contentHash:(nullable NSString *)contentHash
                     inputStream:(NSInputStream *)inputStream;
-
-///
-/// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB. The maximum
-/// size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport
-/// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
-/// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
-///
-/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
-/// @param offset Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or
-/// duplicated in the event of a network error.
-/// @param inputUrl The file to upload, as an NSString * object.
-///
-/// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionAppendError` object on failure.
-///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendUrl:(NSString *)sessionId
-                                                                                    offset:(NSNumber *)offset
-                                                                                  inputUrl:(NSString *)inputUrl
-    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
-
-///
-/// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB. The maximum
-/// size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport
-/// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
-/// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
-///
-/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
-/// @param offset Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or
-/// duplicated in the event of a network error.
-/// @param inputData The file to upload, as an NSData * object.
-///
-/// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionAppendError` object on failure.
-///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendData:(NSString *)sessionId
-                                                                                     offset:(NSNumber *)offset
-                                                                                  inputData:(NSData *)inputData
-    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
-
-///
-/// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB. The maximum
-/// size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport
-/// calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more
-/// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
-///
-/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
-/// @param offset Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or
-/// duplicated in the event of a network error.
-/// @param inputStream The file to upload, as an NSInputStream * object.
-///
-/// @return Through the response callback, the caller will receive a `void` object on success or a
-/// `DBFILESUploadSessionAppendError` object on failure.
-///
-- (DBUploadTask<DBNilObject *, DBFILESUploadSessionAppendError *> *)uploadSessionAppendStream:(NSString *)sessionId
-                                                                                       offset:(NSNumber *)offset
-                                                                                  inputStream:
-                                                                                      (NSInputStream *)inputStream
-    __deprecated_msg("uploadSessionAppend is deprecated. Use uploadSessionAppend.");
 
 ///
 /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more

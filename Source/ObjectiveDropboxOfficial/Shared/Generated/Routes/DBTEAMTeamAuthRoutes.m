@@ -704,18 +704,6 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)membersAddV2:(NSArray<DBTEAMMemberAddV2Arg *> *)dNewMembers {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAddV2;
-  DBTEAMMembersAddV2Arg *arg = [[DBTEAMMembersAddV2Arg alloc] initWithDNewMembers:dNewMembers];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)membersAddV2:(NSArray<DBTEAMMemberAddV2Arg *> *)dNewMembers forceAsync:(NSNumber *)forceAsync {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAddV2;
-  DBTEAMMembersAddV2Arg *arg = [[DBTEAMMembersAddV2Arg alloc] initWithDNewMembers:dNewMembers forceAsync:forceAsync];
-  return [self.client requestRpc:route arg:arg];
-}
-
 - (DBRpcTask *)membersAdd:(NSArray<DBTEAMMemberAddArg *> *)dNewMembers {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAdd;
   DBTEAMMembersAddArg *arg = [[DBTEAMMembersAddArg alloc] initWithDNewMembers:dNewMembers];
@@ -728,9 +716,15 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)membersAddJobStatusGetV2:(NSString *)asyncJobId {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAddJobStatusGetV2;
-  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+- (DBRpcTask *)membersAddV2:(NSArray<DBTEAMMemberAddV2Arg *> *)dNewMembers {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAddV2;
+  DBTEAMMembersAddV2Arg *arg = [[DBTEAMMembersAddV2Arg alloc] initWithDNewMembers:dNewMembers];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersAddV2:(NSArray<DBTEAMMemberAddV2Arg *> *)dNewMembers forceAsync:(NSNumber *)forceAsync {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAddV2;
+  DBTEAMMembersAddV2Arg *arg = [[DBTEAMMembersAddV2Arg alloc] initWithDNewMembers:dNewMembers forceAsync:forceAsync];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -740,9 +734,9 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)membersDeleteProfilePhotoV2:(DBTEAMUserSelectorArg *)user {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersDeleteProfilePhotoV2;
-  DBTEAMMembersDeleteProfilePhotoArg *arg = [[DBTEAMMembersDeleteProfilePhotoArg alloc] initWithUser:user];
+- (DBRpcTask *)membersAddJobStatusGetV2:(NSString *)asyncJobId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAddJobStatusGetV2;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -752,15 +746,15 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)membersDeleteProfilePhotoV2:(DBTEAMUserSelectorArg *)user {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersDeleteProfilePhotoV2;
+  DBTEAMMembersDeleteProfilePhotoArg *arg = [[DBTEAMMembersDeleteProfilePhotoArg alloc] initWithUser:user];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)membersGetAvailableTeamMemberRoles {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersGetAvailableTeamMemberRoles;
   return [self.client requestRpc:route arg:nil];
-}
-
-- (DBRpcTask *)membersGetInfoV2:(NSArray<DBTEAMUserSelectorArg *> *)members {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersGetInfoV2;
-  DBTEAMMembersGetInfoV2Arg *arg = [[DBTEAMMembersGetInfoV2Arg alloc] initWithMembers:members];
-  return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)membersGetInfo:(NSArray<DBTEAMUserSelectorArg *> *)members {
@@ -769,15 +763,9 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)membersListV2 {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersListV2;
-  DBTEAMMembersListArg *arg = [[DBTEAMMembersListArg alloc] initDefault];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)membersListV2:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersListV2;
-  DBTEAMMembersListArg *arg = [[DBTEAMMembersListArg alloc] initWithLimit:limit includeRemoved:includeRemoved];
+- (DBRpcTask *)membersGetInfoV2:(NSArray<DBTEAMUserSelectorArg *> *)members {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersGetInfoV2;
+  DBTEAMMembersGetInfoV2Arg *arg = [[DBTEAMMembersGetInfoV2Arg alloc] initWithMembers:members];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -793,14 +781,26 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)membersListContinueV2:(NSString *)cursor {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersListContinueV2;
-  DBTEAMMembersListContinueArg *arg = [[DBTEAMMembersListContinueArg alloc] initWithCursor:cursor];
+- (DBRpcTask *)membersListV2 {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersListV2;
+  DBTEAMMembersListArg *arg = [[DBTEAMMembersListArg alloc] initDefault];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersListV2:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersListV2;
+  DBTEAMMembersListArg *arg = [[DBTEAMMembersListArg alloc] initWithLimit:limit includeRemoved:includeRemoved];
   return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)membersListContinue:(NSString *)cursor {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersListContinue;
+  DBTEAMMembersListContinueArg *arg = [[DBTEAMMembersListContinueArg alloc] initWithCursor:cursor];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersListContinueV2:(NSString *)cursor {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersListContinueV2;
   DBTEAMMembersListContinueArg *arg = [[DBTEAMMembersListContinueArg alloc] initWithCursor:cursor];
   return [self.client requestRpc:route arg:arg];
 }
@@ -882,6 +882,12 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user dNewRole:(DBTEAMAdminTier *)dNewRole {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetAdminPermissions;
+  DBTEAMMembersSetPermissionsArg *arg = [[DBTEAMMembersSetPermissionsArg alloc] initWithUser:user dNewRole:dNewRole];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)membersSetAdminPermissionsV2:(DBTEAMUserSelectorArg *)user {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetAdminPermissionsV2;
   DBTEAMMembersSetPermissions2Arg *arg = [[DBTEAMMembersSetPermissions2Arg alloc] initWithUser:user];
@@ -892,36 +898,6 @@
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetAdminPermissionsV2;
   DBTEAMMembersSetPermissions2Arg *arg =
       [[DBTEAMMembersSetPermissions2Arg alloc] initWithUser:user dNewRoles:dNewRoles];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user dNewRole:(DBTEAMAdminTier *)dNewRole {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetAdminPermissions;
-  DBTEAMMembersSetPermissionsArg *arg = [[DBTEAMMembersSetPermissionsArg alloc] initWithUser:user dNewRole:dNewRole];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)membersSetProfileV2:(DBTEAMUserSelectorArg *)user {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetProfileV2;
-  DBTEAMMembersSetProfileArg *arg = [[DBTEAMMembersSetProfileArg alloc] initWithUser:user];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)membersSetProfileV2:(DBTEAMUserSelectorArg *)user
-                         dNewEmail:(NSString *)dNewEmail
-                    dNewExternalId:(NSString *)dNewExternalId
-                     dNewGivenName:(NSString *)dNewGivenName
-                       dNewSurname:(NSString *)dNewSurname
-                  dNewPersistentId:(NSString *)dNewPersistentId
-         dNewIsDirectoryRestricted:(NSNumber *)dNewIsDirectoryRestricted {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetProfileV2;
-  DBTEAMMembersSetProfileArg *arg = [[DBTEAMMembersSetProfileArg alloc] initWithUser:user
-                                                                           dNewEmail:dNewEmail
-                                                                      dNewExternalId:dNewExternalId
-                                                                       dNewGivenName:dNewGivenName
-                                                                         dNewSurname:dNewSurname
-                                                                    dNewPersistentId:dNewPersistentId
-                                                           dNewIsDirectoryRestricted:dNewIsDirectoryRestricted];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -949,14 +925,38 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)membersSetProfilePhotoV2:(DBTEAMUserSelectorArg *)user photo:(DBACCOUNTPhotoSourceArg *)photo {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetProfilePhotoV2;
-  DBTEAMMembersSetProfilePhotoArg *arg = [[DBTEAMMembersSetProfilePhotoArg alloc] initWithUser:user photo:photo];
+- (DBRpcTask *)membersSetProfileV2:(DBTEAMUserSelectorArg *)user {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetProfileV2;
+  DBTEAMMembersSetProfileArg *arg = [[DBTEAMMembersSetProfileArg alloc] initWithUser:user];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersSetProfileV2:(DBTEAMUserSelectorArg *)user
+                         dNewEmail:(NSString *)dNewEmail
+                    dNewExternalId:(NSString *)dNewExternalId
+                     dNewGivenName:(NSString *)dNewGivenName
+                       dNewSurname:(NSString *)dNewSurname
+                  dNewPersistentId:(NSString *)dNewPersistentId
+         dNewIsDirectoryRestricted:(NSNumber *)dNewIsDirectoryRestricted {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetProfileV2;
+  DBTEAMMembersSetProfileArg *arg = [[DBTEAMMembersSetProfileArg alloc] initWithUser:user
+                                                                           dNewEmail:dNewEmail
+                                                                      dNewExternalId:dNewExternalId
+                                                                       dNewGivenName:dNewGivenName
+                                                                         dNewSurname:dNewSurname
+                                                                    dNewPersistentId:dNewPersistentId
+                                                           dNewIsDirectoryRestricted:dNewIsDirectoryRestricted];
   return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)membersSetProfilePhoto:(DBTEAMUserSelectorArg *)user photo:(DBACCOUNTPhotoSourceArg *)photo {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetProfilePhoto;
+  DBTEAMMembersSetProfilePhotoArg *arg = [[DBTEAMMembersSetProfilePhotoArg alloc] initWithUser:user photo:photo];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersSetProfilePhotoV2:(DBTEAMUserSelectorArg *)user photo:(DBACCOUNTPhotoSourceArg *)photo {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetProfilePhotoV2;
   DBTEAMMembersSetProfilePhotoArg *arg = [[DBTEAMMembersSetProfilePhotoArg alloc] initWithUser:user photo:photo];
   return [self.client requestRpc:route arg:arg];
 }

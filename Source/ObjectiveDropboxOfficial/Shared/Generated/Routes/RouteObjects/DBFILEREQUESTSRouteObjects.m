@@ -33,8 +33,8 @@ static DBRoute *DBFILEREQUESTSCreate;
 static DBRoute *DBFILEREQUESTSDelete_;
 static DBRoute *DBFILEREQUESTSDeleteAllClosed;
 static DBRoute *DBFILEREQUESTSGet;
-static DBRoute *DBFILEREQUESTSListV2;
 static DBRoute *DBFILEREQUESTSList;
+static DBRoute *DBFILEREQUESTSListV2;
 static DBRoute *DBFILEREQUESTSListContinue;
 static DBRoute *DBFILEREQUESTSUpdate;
 
@@ -126,22 +126,6 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBFILEREQUESTSListV2 {
-  @synchronized(lockObj) {
-    if (!DBFILEREQUESTSListV2) {
-      DBFILEREQUESTSListV2 = [[DBRoute alloc] init:@"list_v2"
-                                        namespace_:@"file_requests"
-                                        deprecated:@NO
-                                        resultType:[DBFILEREQUESTSListFileRequestsV2Result class]
-                                         errorType:[DBFILEREQUESTSListFileRequestsError class]
-                                             attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
-                             dataStructSerialBlock:nil
-                           dataStructDeserialBlock:nil];
-    }
-    return DBFILEREQUESTSListV2;
-  }
-}
-
 + (DBRoute *)DBFILEREQUESTSList {
   @synchronized(lockObj) {
     if (!DBFILEREQUESTSList) {
@@ -155,6 +139,22 @@ static NSObject *lockObj = nil;
                          dataStructDeserialBlock:nil];
     }
     return DBFILEREQUESTSList;
+  }
+}
+
++ (DBRoute *)DBFILEREQUESTSListV2 {
+  @synchronized(lockObj) {
+    if (!DBFILEREQUESTSListV2) {
+      DBFILEREQUESTSListV2 = [[DBRoute alloc] init:@"list_v2"
+                                        namespace_:@"file_requests"
+                                        deprecated:@NO
+                                        resultType:[DBFILEREQUESTSListFileRequestsV2Result class]
+                                         errorType:[DBFILEREQUESTSListFileRequestsError class]
+                                             attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
+                             dataStructSerialBlock:nil
+                           dataStructDeserialBlock:nil];
+    }
+    return DBFILEREQUESTSListV2;
   }
 }
 
