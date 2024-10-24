@@ -23,23 +23,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the alphaUpload route object.
 + (DBRoute *)DBFILESAlphaUpload;
 
-/// Accessor method for the dCopyV2 route object.
-+ (DBRoute *)DBFILESDCopyV2;
-
 /// Accessor method for the dCopy route object.
 + (DBRoute *)DBFILESDCopy;
 
-/// Accessor method for the dCopyBatchV2 route object.
-+ (DBRoute *)DBFILESDCopyBatchV2;
+/// Accessor method for the dCopyV2 route object.
++ (DBRoute *)DBFILESDCopyV2;
 
 /// Accessor method for the dCopyBatch route object.
 + (DBRoute *)DBFILESDCopyBatch;
 
-/// Accessor method for the dCopyBatchCheckV2 route object.
-+ (DBRoute *)DBFILESDCopyBatchCheckV2;
+/// Accessor method for the dCopyBatchV2 route object.
++ (DBRoute *)DBFILESDCopyBatchV2;
 
 /// Accessor method for the dCopyBatchCheck route object.
 + (DBRoute *)DBFILESDCopyBatchCheck;
+
+/// Accessor method for the dCopyBatchCheckV2 route object.
++ (DBRoute *)DBFILESDCopyBatchCheckV2;
 
 /// Accessor method for the dCopyReferenceGet route object.
 + (DBRoute *)DBFILESDCopyReferenceGet;
@@ -47,11 +47,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the dCopyReferenceSave route object.
 + (DBRoute *)DBFILESDCopyReferenceSave;
 
-/// Accessor method for the createFolderV2 route object.
-+ (DBRoute *)DBFILESCreateFolderV2;
-
 /// Accessor method for the createFolder route object.
 + (DBRoute *)DBFILESCreateFolder;
+
+/// Accessor method for the createFolderV2 route object.
++ (DBRoute *)DBFILESCreateFolderV2;
 
 /// Accessor method for the createFolderBatch route object.
 + (DBRoute *)DBFILESCreateFolderBatch;
@@ -59,11 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the createFolderBatchCheck route object.
 + (DBRoute *)DBFILESCreateFolderBatchCheck;
 
-/// Accessor method for the delete_V2 route object.
-+ (DBRoute *)DBFILESDelete_V2;
-
 /// Accessor method for the delete_ route object.
 + (DBRoute *)DBFILESDelete_;
+
+/// Accessor method for the delete_V2 route object.
++ (DBRoute *)DBFILESDelete_V2;
 
 /// Accessor method for the deleteBatch route object.
 + (DBRoute *)DBFILESDeleteBatch;
@@ -122,23 +122,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the lockFileBatch route object.
 + (DBRoute *)DBFILESLockFileBatch;
 
-/// Accessor method for the moveV2 route object.
-+ (DBRoute *)DBFILESMoveV2;
-
 /// Accessor method for the move route object.
 + (DBRoute *)DBFILESMove;
 
-/// Accessor method for the moveBatchV2 route object.
-+ (DBRoute *)DBFILESMoveBatchV2;
+/// Accessor method for the moveV2 route object.
++ (DBRoute *)DBFILESMoveV2;
 
 /// Accessor method for the moveBatch route object.
 + (DBRoute *)DBFILESMoveBatch;
 
-/// Accessor method for the moveBatchCheckV2 route object.
-+ (DBRoute *)DBFILESMoveBatchCheckV2;
+/// Accessor method for the moveBatchV2 route object.
++ (DBRoute *)DBFILESMoveBatchV2;
 
 /// Accessor method for the moveBatchCheck route object.
 + (DBRoute *)DBFILESMoveBatchCheck;
+
+/// Accessor method for the moveBatchCheckV2 route object.
++ (DBRoute *)DBFILESMoveBatchCheckV2;
 
 /// Accessor method for the paperCreate route object.
 + (DBRoute *)DBFILESPaperCreate;
@@ -200,11 +200,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the upload route object.
 + (DBRoute *)DBFILESUpload;
 
-/// Accessor method for the uploadSessionAppendV2 route object.
-+ (DBRoute *)DBFILESUploadSessionAppendV2;
-
 /// Accessor method for the uploadSessionAppend route object.
 + (DBRoute *)DBFILESUploadSessionAppend;
+
+/// Accessor method for the uploadSessionAppendV2 route object.
++ (DBRoute *)DBFILESUploadSessionAppendV2;
 
 /// Accessor method for the uploadSessionFinish route object.
 + (DBRoute *)DBFILESUploadSessionFinish;

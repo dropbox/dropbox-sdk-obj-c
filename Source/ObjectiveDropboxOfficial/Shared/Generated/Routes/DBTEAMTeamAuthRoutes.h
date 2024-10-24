@@ -960,6 +960,39 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param dNewMembers Details of new members to be added to the team.
 ///
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersAddLaunch` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBTEAMMembersAddLaunch *, DBNilObject *> *)membersAdd:(NSArray<DBTEAMMemberAddArg *> *)dNewMembers;
+
+///
+/// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
+/// call. If no Dropbox account exists with the email address specified, a new Dropbox account will be created with the
+/// given email address, and that account will be invited to the team. If a personal Dropbox account exists with the
+/// email address specified in the call, this call will create a placeholder Dropbox account for the user on the team
+/// and send an email inviting the user to migrate their existing personal account onto the team. Team member management
+/// apps are required to set an initial given_name and surname for a user to use in the team invitation and for 'Perform
+/// as team member' actions taken on the user before they become 'active'.
+///
+/// @param dNewMembers Details of new members to be added to the team.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersAddLaunch` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBTEAMMembersAddLaunch *, DBNilObject *> *)membersAdd:(NSArray<DBTEAMMemberAddArg *> *)dNewMembers
+                                                        forceAsync:(nullable NSNumber *)forceAsync;
+
+///
+/// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
+/// call. If no Dropbox account exists with the email address specified, a new Dropbox account will be created with the
+/// given email address, and that account will be invited to the team. If a personal Dropbox account exists with the
+/// email address specified in the call, this call will create a placeholder Dropbox account for the user on the team
+/// and send an email inviting the user to migrate their existing personal account onto the team. Team member management
+/// apps are required to set an initial given_name and surname for a user to use in the team invitation and for 'Perform
+/// as team member' actions taken on the user before they become 'active'.
+///
+/// @param dNewMembers Details of new members to be added to the team.
+///
 /// @return Through the response callback, the caller will receive a `DBTEAMMembersAddLaunchV2Result` object on success
 /// or a `void` object on failure.
 ///
@@ -985,37 +1018,16 @@ NS_ASSUME_NONNULL_BEGIN
                                                                   forceAsync:(nullable NSNumber *)forceAsync;
 
 ///
-/// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
-/// call. If no Dropbox account exists with the email address specified, a new Dropbox account will be created with the
-/// given email address, and that account will be invited to the team. If a personal Dropbox account exists with the
-/// email address specified in the call, this call will create a placeholder Dropbox account for the user on the team
-/// and send an email inviting the user to migrate their existing personal account onto the team. Team member management
-/// apps are required to set an initial given_name and surname for a user to use in the team invitation and for 'Perform
-/// as team member' actions taken on the user before they become 'active'.
+/// Once an async_job_id is returned from `membersAdd` , use this to poll the status of the asynchronous request.
+/// Permission : Team member management.
 ///
-/// @param dNewMembers Details of new members to be added to the team.
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMMembersAddLaunch` object on success or a
-/// `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersAddJobStatus` object on success or a
+/// `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBTEAMMembersAddLaunch *, DBNilObject *> *)membersAdd:(NSArray<DBTEAMMemberAddArg *> *)dNewMembers;
-
-///
-/// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
-/// call. If no Dropbox account exists with the email address specified, a new Dropbox account will be created with the
-/// given email address, and that account will be invited to the team. If a personal Dropbox account exists with the
-/// email address specified in the call, this call will create a placeholder Dropbox account for the user on the team
-/// and send an email inviting the user to migrate their existing personal account onto the team. Team member management
-/// apps are required to set an initial given_name and surname for a user to use in the team invitation and for 'Perform
-/// as team member' actions taken on the user before they become 'active'.
-///
-/// @param dNewMembers Details of new members to be added to the team.
-///
-/// @return Through the response callback, the caller will receive a `DBTEAMMembersAddLaunch` object on success or a
-/// `void` object on failure.
-///
-- (DBRpcTask<DBTEAMMembersAddLaunch *, DBNilObject *> *)membersAdd:(NSArray<DBTEAMMemberAddArg *> *)dNewMembers
-                                                        forceAsync:(nullable NSNumber *)forceAsync;
+- (DBRpcTask<DBTEAMMembersAddJobStatus *, DBASYNCPollError *> *)membersAddJobStatusGet:(NSString *)asyncJobId;
 
 ///
 /// Once an async_job_id is returned from `membersAdd` , use this to poll the status of the asynchronous request.
@@ -1030,16 +1042,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBTEAMMembersAddJobStatusV2Result *, DBASYNCPollError *> *)membersAddJobStatusGetV2:(NSString *)asyncJobId;
 
 ///
-/// Once an async_job_id is returned from `membersAdd` , use this to poll the status of the asynchronous request.
-/// Permission : Team member management.
+/// Deletes a team member's profile photo. Permission : Team member management.
 ///
-/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
-/// the job.
+/// @param user Identity of the user whose profile photo will be deleted.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMMembersAddJobStatus` object on success or a
-/// `DBASYNCPollError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
+/// `DBTEAMMembersDeleteProfilePhotoError` object on failure.
 ///
-- (DBRpcTask<DBTEAMMembersAddJobStatus *, DBASYNCPollError *> *)membersAddJobStatusGet:(NSString *)asyncJobId;
+- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersDeleteProfilePhotoError *> *)membersDeleteProfilePhoto:
+    (DBTEAMUserSelectorArg *)user;
 
 ///
 /// Deletes a team member's profile photo. Permission : Team member management.
@@ -1050,17 +1061,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// a `DBTEAMMembersDeleteProfilePhotoError` object on failure.
 ///
 - (DBRpcTask<DBTEAMTeamMemberInfoV2Result *, DBTEAMMembersDeleteProfilePhotoError *> *)membersDeleteProfilePhotoV2:
-    (DBTEAMUserSelectorArg *)user;
-
-///
-/// Deletes a team member's profile photo. Permission : Team member management.
-///
-/// @param user Identity of the user whose profile photo will be deleted.
-///
-/// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
-/// `DBTEAMMembersDeleteProfilePhotoError` object on failure.
-///
-- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersDeleteProfilePhotoError *> *)membersDeleteProfilePhoto:
     (DBTEAMUserSelectorArg *)user;
 
 ///
@@ -1079,10 +1079,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param members List of team members.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMMembersGetInfoV2Result` object on success or
-/// a `DBTEAMMembersGetInfoError` object on failure.
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMMembersGetInfoItem *>` object on
+/// success or a `DBTEAMMembersGetInfoError` object on failure.
 ///
-- (DBRpcTask<DBTEAMMembersGetInfoV2Result *, DBTEAMMembersGetInfoError *> *)membersGetInfoV2:
+- (DBRpcTask<NSArray<DBTEAMMembersGetInfoItem *> *, DBTEAMMembersGetInfoError *> *)membersGetInfo:
     (NSArray<DBTEAMUserSelectorArg *> *)members;
 
 ///
@@ -1091,32 +1091,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param members List of team members.
 ///
-/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMMembersGetInfoItem *>` object on
-/// success or a `DBTEAMMembersGetInfoError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersGetInfoV2Result` object on success or
+/// a `DBTEAMMembersGetInfoError` object on failure.
 ///
-- (DBRpcTask<NSArray<DBTEAMMembersGetInfoItem *> *, DBTEAMMembersGetInfoError *> *)membersGetInfo:
+- (DBRpcTask<DBTEAMMembersGetInfoV2Result *, DBTEAMMembersGetInfoError *> *)membersGetInfoV2:
     (NSArray<DBTEAMUserSelectorArg *> *)members;
-
-///
-/// Lists members of a team. Permission : Team information.
-///
-///
-/// @return Through the response callback, the caller will receive a `DBTEAMMembersListV2Result` object on success or a
-/// `DBTEAMMembersListError` object on failure.
-///
-- (DBRpcTask<DBTEAMMembersListV2Result *, DBTEAMMembersListError *> *)membersListV2;
-
-///
-/// Lists members of a team. Permission : Team information.
-///
-/// @param limit Number of results to return per call.
-/// @param includeRemoved Whether to return removed members.
-///
-/// @return Through the response callback, the caller will receive a `DBTEAMMembersListV2Result` object on success or a
-/// `DBTEAMMembersListError` object on failure.
-///
-- (DBRpcTask<DBTEAMMembersListV2Result *, DBTEAMMembersListError *> *)membersListV2:(nullable NSNumber *)limit
-                                                                     includeRemoved:(nullable NSNumber *)includeRemoved;
 
 ///
 /// Lists members of a team. Permission : Team information.
@@ -1140,15 +1119,25 @@ NS_ASSUME_NONNULL_BEGIN
                                                                  includeRemoved:(nullable NSNumber *)includeRemoved;
 
 ///
-/// Once a cursor has been retrieved from `membersList`, use this to paginate through all team members. Permission :
-/// Team information.
+/// Lists members of a team. Permission : Team information.
 ///
-/// @param cursor Indicates from what point to get the next set of members.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMMembersListV2Result` object on success or a
-/// `DBTEAMMembersListContinueError` object on failure.
+/// `DBTEAMMembersListError` object on failure.
 ///
-- (DBRpcTask<DBTEAMMembersListV2Result *, DBTEAMMembersListContinueError *> *)membersListContinueV2:(NSString *)cursor;
+- (DBRpcTask<DBTEAMMembersListV2Result *, DBTEAMMembersListError *> *)membersListV2;
+
+///
+/// Lists members of a team. Permission : Team information.
+///
+/// @param limit Number of results to return per call.
+/// @param includeRemoved Whether to return removed members.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersListV2Result` object on success or a
+/// `DBTEAMMembersListError` object on failure.
+///
+- (DBRpcTask<DBTEAMMembersListV2Result *, DBTEAMMembersListError *> *)membersListV2:(nullable NSNumber *)limit
+                                                                     includeRemoved:(nullable NSNumber *)includeRemoved;
 
 ///
 /// Once a cursor has been retrieved from `membersList`, use this to paginate through all team members. Permission :
@@ -1160,6 +1149,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBTEAMMembersListContinueError` object on failure.
 ///
 - (DBRpcTask<DBTEAMMembersListResult *, DBTEAMMembersListContinueError *> *)membersListContinue:(NSString *)cursor;
+
+///
+/// Once a cursor has been retrieved from `membersList`, use this to paginate through all team members. Permission :
+/// Team information.
+///
+/// @param cursor Indicates from what point to get the next set of members.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersListV2Result` object on success or a
+/// `DBTEAMMembersListContinueError` object on failure.
+///
+- (DBRpcTask<DBTEAMMembersListV2Result *, DBTEAMMembersListContinueError *> *)membersListContinueV2:(NSString *)cursor;
 
 ///
 /// Moves removed member's files to a different member. This endpoint initiates an asynchronous job. To obtain the final
@@ -1312,6 +1312,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// Updates a team member's permissions. Permission : Team member management.
 ///
 /// @param user Identity of user whose role will be set.
+/// @param dNewRole The new role of the member.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersSetPermissionsResult` object on
+/// success or a `DBTEAMMembersSetPermissionsError` object on failure.
+///
+- (DBRpcTask<DBTEAMMembersSetPermissionsResult *, DBTEAMMembersSetPermissionsError *> *)
+    membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user
+                      dNewRole:(DBTEAMAdminTier *)dNewRole;
+
+///
+/// Updates a team member's permissions. Permission : Team member management.
+///
+/// @param user Identity of user whose role will be set.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMMembersSetPermissions2Result` object on
 /// success or a `DBTEAMMembersSetPermissions2Error` object on failure.
@@ -1334,17 +1347,38 @@ NS_ASSUME_NONNULL_BEGIN
                        dNewRoles:(nullable NSArray<NSString *> *)dNewRoles;
 
 ///
-/// Updates a team member's permissions. Permission : Team member management.
+/// Updates a team member's profile. Permission : Team member management.
 ///
-/// @param user Identity of user whose role will be set.
-/// @param dNewRole The new role of the member.
+/// @param user Identity of user whose profile will be set.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMMembersSetPermissionsResult` object on
-/// success or a `DBTEAMMembersSetPermissionsError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
+/// `DBTEAMMembersSetProfileError` object on failure.
 ///
-- (DBRpcTask<DBTEAMMembersSetPermissionsResult *, DBTEAMMembersSetPermissionsError *> *)
-    membersSetAdminPermissions:(DBTEAMUserSelectorArg *)user
-                      dNewRole:(DBTEAMAdminTier *)dNewRole;
+- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfileError *> *)membersSetProfile:(DBTEAMUserSelectorArg *)user;
+
+///
+/// Updates a team member's profile. Permission : Team member management.
+///
+/// @param user Identity of user whose profile will be set.
+/// @param dNewEmail New email for member.
+/// @param dNewExternalId New external ID for member.
+/// @param dNewGivenName New given name for member.
+/// @param dNewSurname New surname for member.
+/// @param dNewPersistentId New persistent ID. This field only available to teams using persistent ID SAML
+/// configuration.
+/// @param dNewIsDirectoryRestricted New value for whether the user is a directory restricted user.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
+/// `DBTEAMMembersSetProfileError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfileError *> *)
+            membersSetProfile:(DBTEAMUserSelectorArg *)user
+                    dNewEmail:(nullable NSString *)dNewEmail
+               dNewExternalId:(nullable NSString *)dNewExternalId
+                dNewGivenName:(nullable NSString *)dNewGivenName
+                  dNewSurname:(nullable NSString *)dNewSurname
+             dNewPersistentId:(nullable NSString *)dNewPersistentId
+    dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
 
 ///
 /// Updates a team member's profile. Permission : Team member management.
@@ -1382,38 +1416,17 @@ NS_ASSUME_NONNULL_BEGIN
     dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
 
 ///
-/// Updates a team member's profile. Permission : Team member management.
+/// Updates a team member's profile photo. Permission : Team member management.
 ///
-/// @param user Identity of user whose profile will be set.
-///
-/// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
-/// `DBTEAMMembersSetProfileError` object on failure.
-///
-- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfileError *> *)membersSetProfile:(DBTEAMUserSelectorArg *)user;
-
-///
-/// Updates a team member's profile. Permission : Team member management.
-///
-/// @param user Identity of user whose profile will be set.
-/// @param dNewEmail New email for member.
-/// @param dNewExternalId New external ID for member.
-/// @param dNewGivenName New given name for member.
-/// @param dNewSurname New surname for member.
-/// @param dNewPersistentId New persistent ID. This field only available to teams using persistent ID SAML
-/// configuration.
-/// @param dNewIsDirectoryRestricted New value for whether the user is a directory restricted user.
+/// @param user Identity of the user whose profile photo will be set.
+/// @param photo Image to set as the member's new profile photo.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
-/// `DBTEAMMembersSetProfileError` object on failure.
+/// `DBTEAMMembersSetProfilePhotoError` object on failure.
 ///
-- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfileError *> *)
-            membersSetProfile:(DBTEAMUserSelectorArg *)user
-                    dNewEmail:(nullable NSString *)dNewEmail
-               dNewExternalId:(nullable NSString *)dNewExternalId
-                dNewGivenName:(nullable NSString *)dNewGivenName
-                  dNewSurname:(nullable NSString *)dNewSurname
-             dNewPersistentId:(nullable NSString *)dNewPersistentId
-    dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
+- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfilePhotoError *> *)
+    membersSetProfilePhoto:(DBTEAMUserSelectorArg *)user
+                     photo:(DBACCOUNTPhotoSourceArg *)photo;
 
 ///
 /// Updates a team member's profile photo. Permission : Team member management.
@@ -1427,19 +1440,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBTEAMTeamMemberInfoV2Result *, DBTEAMMembersSetProfilePhotoError *> *)
     membersSetProfilePhotoV2:(DBTEAMUserSelectorArg *)user
                        photo:(DBACCOUNTPhotoSourceArg *)photo;
-
-///
-/// Updates a team member's profile photo. Permission : Team member management.
-///
-/// @param user Identity of the user whose profile photo will be set.
-/// @param photo Image to set as the member's new profile photo.
-///
-/// @return Through the response callback, the caller will receive a `DBTEAMTeamMemberInfo` object on success or a
-/// `DBTEAMMembersSetProfilePhotoError` object on failure.
-///
-- (DBRpcTask<DBTEAMTeamMemberInfo *, DBTEAMMembersSetProfilePhotoError *> *)
-    membersSetProfilePhoto:(DBTEAMUserSelectorArg *)user
-                     photo:(DBACCOUNTPhotoSourceArg *)photo;
 
 ///
 /// Suspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or

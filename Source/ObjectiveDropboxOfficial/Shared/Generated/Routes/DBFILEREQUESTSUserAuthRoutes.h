@@ -124,6 +124,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// file requests with destinations in the app folder.
 ///
 ///
+/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSListFileRequestsResult` object on
+/// success or a `DBFILEREQUESTSListFileRequestsError` object on failure.
+///
+- (DBRpcTask<DBFILEREQUESTSListFileRequestsResult *, DBFILEREQUESTSListFileRequestsError *> *)list;
+
+///
+/// Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return
+/// file requests with destinations in the app folder.
+///
+///
 /// @return Through the response callback, the caller will receive a `DBFILEREQUESTSListFileRequestsV2Result` object on
 /// success or a `DBFILEREQUESTSListFileRequestsError` object on failure.
 ///
@@ -140,16 +150,6 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBFILEREQUESTSListFileRequestsV2Result *, DBFILEREQUESTSListFileRequestsError *> *)listV2:
     (nullable NSNumber *)limit;
-
-///
-/// Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return
-/// file requests with destinations in the app folder.
-///
-///
-/// @return Through the response callback, the caller will receive a `DBFILEREQUESTSListFileRequestsResult` object on
-/// success or a `DBFILEREQUESTSListFileRequestsError` object on failure.
-///
-- (DBRpcTask<DBFILEREQUESTSListFileRequestsResult *, DBFILEREQUESTSListFileRequestsError *> *)list;
 
 ///
 /// Once a cursor has been retrieved from `list`, use this to paginate through all file requests. The cursor must come

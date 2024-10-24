@@ -32,11 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the get route object.
 + (DBRoute *)DBFILEREQUESTSGet;
 
-/// Accessor method for the listV2 route object.
-+ (DBRoute *)DBFILEREQUESTSListV2;
-
 /// Accessor method for the list route object.
 + (DBRoute *)DBFILEREQUESTSList;
+
+/// Accessor method for the listV2 route object.
++ (DBRoute *)DBFILEREQUESTSListV2;
 
 /// Accessor method for the listContinue route object.
 + (DBRoute *)DBFILEREQUESTSListContinue;

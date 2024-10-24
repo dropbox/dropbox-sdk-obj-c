@@ -87,6 +87,11 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)list {
+  DBRoute *route = DBFILEREQUESTSRouteObjects.DBFILEREQUESTSList;
+  return [self.client requestRpc:route arg:nil];
+}
+
 - (DBRpcTask *)listV2 {
   DBRoute *route = DBFILEREQUESTSRouteObjects.DBFILEREQUESTSListV2;
   DBFILEREQUESTSListFileRequestsArg *arg = [[DBFILEREQUESTSListFileRequestsArg alloc] initDefault];
@@ -97,11 +102,6 @@
   DBRoute *route = DBFILEREQUESTSRouteObjects.DBFILEREQUESTSListV2;
   DBFILEREQUESTSListFileRequestsArg *arg = [[DBFILEREQUESTSListFileRequestsArg alloc] initWithLimit:limit];
   return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)list {
-  DBRoute *route = DBFILEREQUESTSRouteObjects.DBFILEREQUESTSList;
-  return [self.client requestRpc:route arg:nil];
 }
 
 - (DBRpcTask *)listContinue:(NSString *)cursor {
