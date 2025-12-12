@@ -25,7 +25,7 @@ jobs:
           ANY_OTHER_ACCOUNT_ID: ${{ secrets.ANY_OTHER_ACCOUNT_ID }}
           NON_TEAM_MEMBER_ACCOUNT_ID: ${{ secrets.NON_TEAM_MEMBER_ACCOUNT_ID }}
           platform: ${{ 'iOS Simulator' }}
-          device: ${{ 'iPhone 13' }}
+          device: ${{ 'iPhone 16' }}
         run: |
           xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
             -destination "platform=$platform,name=$device" \
