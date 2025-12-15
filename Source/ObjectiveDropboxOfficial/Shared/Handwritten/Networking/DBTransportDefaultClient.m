@@ -78,9 +78,12 @@
     NSOperationQueue *longpollSessionDelegateQueue =
         [self urlSessionDelegateQueueWithName:[NSString stringWithFormat:@"%@ Longpoll NSURLSession delegate queue",
                                                                          NSStringFromClass(self.class)]];
-    _longpollSession = [NSURLSession sessionWithConfiguration:longpollSessionConfig
+      NSURLSession *longpollSession = [NSURLSession sessionWithConfiguration:longpollSessionConfig
                                                      delegate:_delegate
                                                 delegateQueue:longpollSessionDelegateQueue];
+      // Sessions must be uniquely identifiable so that we can disambiguate them in `sessionIdWithSession:`.
+      longpollSession.sessionDescription = @"longpoll";
+      _longpollSession = longpollSession;
   }
   return self;
 }
