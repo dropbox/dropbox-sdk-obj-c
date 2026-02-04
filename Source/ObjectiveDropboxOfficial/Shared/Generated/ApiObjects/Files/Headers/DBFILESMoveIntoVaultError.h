@@ -27,12 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESMoveIntoVaultErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESMoveIntoVaultError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESMoveIntoVaultErrorTag){
-    /// Moving shared folder into Vault is not allowed.
-    DBFILESMoveIntoVaultErrorIsSharedFolder,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESMoveIntoVaultErrorTag) {
+  /// Moving shared folder into Vault is not allowed.
+  DBFILESMoveIntoVaultErrorIsSharedFolder,
 
-    /// (no description).
-    DBFILESMoveIntoVaultErrorOther,
+  /// (no description).
+  DBFILESMoveIntoVaultErrorOther,
 
 };
 

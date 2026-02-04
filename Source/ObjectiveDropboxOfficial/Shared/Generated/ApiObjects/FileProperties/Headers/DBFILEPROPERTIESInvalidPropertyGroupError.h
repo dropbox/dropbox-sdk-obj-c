@@ -29,33 +29,33 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBFILEPROPERTIESInvalidPropertyGroupErrorTag` enum type represents the
 /// possible tag states with which the
 /// `DBFILEPROPERTIESInvalidPropertyGroupError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILEPROPERTIESInvalidPropertyGroupErrorTag){
-    /// Template does not exist for the given identifier.
-    DBFILEPROPERTIESInvalidPropertyGroupErrorTemplateNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILEPROPERTIESInvalidPropertyGroupErrorTag) {
+  /// Template does not exist for the given identifier.
+  DBFILEPROPERTIESInvalidPropertyGroupErrorTemplateNotFound,
 
-    /// You do not have permission to modify this template.
-    DBFILEPROPERTIESInvalidPropertyGroupErrorRestrictedContent,
+  /// You do not have permission to modify this template.
+  DBFILEPROPERTIESInvalidPropertyGroupErrorRestrictedContent,
 
-    /// (no description).
-    DBFILEPROPERTIESInvalidPropertyGroupErrorOther,
+  /// (no description).
+  DBFILEPROPERTIESInvalidPropertyGroupErrorOther,
 
-    /// (no description).
-    DBFILEPROPERTIESInvalidPropertyGroupErrorPath,
+  /// (no description).
+  DBFILEPROPERTIESInvalidPropertyGroupErrorPath,
 
-    /// This folder cannot be tagged. Tagging folders is not supported for
-    /// team-owned templates.
-    DBFILEPROPERTIESInvalidPropertyGroupErrorUnsupportedFolder,
+  /// This folder cannot be tagged. Tagging folders is not supported for
+  /// team-owned templates.
+  DBFILEPROPERTIESInvalidPropertyGroupErrorUnsupportedFolder,
 
-    /// One or more of the supplied property field values is too large.
-    DBFILEPROPERTIESInvalidPropertyGroupErrorPropertyFieldTooLarge,
+  /// One or more of the supplied property field values is too large.
+  DBFILEPROPERTIESInvalidPropertyGroupErrorPropertyFieldTooLarge,
 
-    /// One or more of the supplied property fields does not conform to the
-    /// template specifications.
-    DBFILEPROPERTIESInvalidPropertyGroupErrorDoesNotFitTemplate,
+  /// One or more of the supplied property fields does not conform to the
+  /// template specifications.
+  DBFILEPROPERTIESInvalidPropertyGroupErrorDoesNotFitTemplate,
 
-    /// There are 2 or more property groups referring to the same templates in
-    /// the input.
-    DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups,
+  /// There are 2 or more property groups referring to the same templates in
+  /// the input.
+  DBFILEPROPERTIESInvalidPropertyGroupErrorDuplicatePropertyGroups,
 
 };
 

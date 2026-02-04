@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGPolicyTypeTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGPolicyType` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPolicyTypeTag){
-    /// (no description).
-    DBTEAMLOGPolicyTypeDisposition,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPolicyTypeTag) {
+  /// (no description).
+  DBTEAMLOGPolicyTypeDisposition,
 
-    /// (no description).
-    DBTEAMLOGPolicyTypeRetention,
+  /// (no description).
+  DBTEAMLOGPolicyTypeRetention,
 
-    /// (no description).
-    DBTEAMLOGPolicyTypeOther,
+  /// (no description).
+  DBTEAMLOGPolicyTypeOther,
 
 };
 

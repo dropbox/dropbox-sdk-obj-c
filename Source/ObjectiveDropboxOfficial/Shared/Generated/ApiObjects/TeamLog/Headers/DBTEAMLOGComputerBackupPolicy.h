@@ -29,18 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGComputerBackupPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGComputerBackupPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGComputerBackupPolicyTag){
-    /// (no description).
-    DBTEAMLOGComputerBackupPolicyDefault_,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGComputerBackupPolicyTag) {
+  /// (no description).
+  DBTEAMLOGComputerBackupPolicyDefault_,
 
-    /// (no description).
-    DBTEAMLOGComputerBackupPolicyDisabled,
+  /// (no description).
+  DBTEAMLOGComputerBackupPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGComputerBackupPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGComputerBackupPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGComputerBackupPolicyOther,
+  /// (no description).
+  DBTEAMLOGComputerBackupPolicyOther,
 
 };
 

@@ -27,22 +27,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESUploadSessionStartErrorTag` enum type represents the possible
 /// tag states with which the `DBFILESUploadSessionStartError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionStartErrorTag){
-    /// Uploading data not allowed when starting concurrent upload session.
-    DBFILESUploadSessionStartErrorConcurrentSessionDataNotAllowed,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionStartErrorTag) {
+  /// Uploading data not allowed when starting concurrent upload session.
+  DBFILESUploadSessionStartErrorConcurrentSessionDataNotAllowed,
 
-    /// Can not start a closed concurrent upload session.
-    DBFILESUploadSessionStartErrorConcurrentSessionCloseNotAllowed,
+  /// Can not start a closed concurrent upload session.
+  DBFILESUploadSessionStartErrorConcurrentSessionCloseNotAllowed,
 
-    /// The request payload must be at most 150 MB.
-    DBFILESUploadSessionStartErrorPayloadTooLarge,
+  /// The request payload must be at most 150 MB.
+  DBFILESUploadSessionStartErrorPayloadTooLarge,
 
-    /// The content received by the Dropbox server in this call does not match
-    /// the provided content hash.
-    DBFILESUploadSessionStartErrorContentHashMismatch,
+  /// The content received by the Dropbox server in this call does not match
+  /// the provided content hash.
+  DBFILESUploadSessionStartErrorContentHashMismatch,
 
-    /// (no description).
-    DBFILESUploadSessionStartErrorOther,
+  /// (no description).
+  DBFILESUploadSessionStartErrorOther,
 
 };
 

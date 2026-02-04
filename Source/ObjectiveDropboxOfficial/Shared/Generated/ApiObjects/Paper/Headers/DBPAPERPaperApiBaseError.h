@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBPAPERPaperApiBaseErrorTag` enum type represents the possible tag
 /// states with which the `DBPAPERPaperApiBaseError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperApiBaseErrorTag){
-    /// Your account does not have permissions to perform this action. This may
-    /// be due to it only having access to Paper as files in the Dropbox
-    /// filesystem. For more information, refer to the Paper Migration Guide
-    /// https://www.dropbox.com/lp/developers/reference/paper-migration-guide.
-    DBPAPERPaperApiBaseErrorInsufficientPermissions,
+typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperApiBaseErrorTag) {
+  /// Your account does not have permissions to perform this action. This may
+  /// be due to it only having access to Paper as files in the Dropbox
+  /// filesystem. For more information, refer to the Paper Migration Guide
+  /// https://www.dropbox.com/lp/developers/reference/paper-migration-guide.
+  DBPAPERPaperApiBaseErrorInsufficientPermissions,
 
-    /// (no description).
-    DBPAPERPaperApiBaseErrorOther,
+  /// (no description).
+  DBPAPERPaperApiBaseErrorOther,
 
 };
 

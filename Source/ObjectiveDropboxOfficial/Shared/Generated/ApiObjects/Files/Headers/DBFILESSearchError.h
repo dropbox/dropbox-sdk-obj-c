@@ -28,18 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESSearchErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESSearchError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchErrorTag){
-    /// (no description).
-    DBFILESSearchErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchErrorTag) {
+  /// (no description).
+  DBFILESSearchErrorPath,
 
-    /// (no description).
-    DBFILESSearchErrorInvalidArgument,
+  /// (no description).
+  DBFILESSearchErrorInvalidArgument,
 
-    /// Something went wrong, please try again.
-    DBFILESSearchErrorInternalError,
+  /// Something went wrong, please try again.
+  DBFILESSearchErrorInternalError,
 
-    /// (no description).
-    DBFILESSearchErrorOther,
+  /// (no description).
+  DBFILESSearchErrorOther,
 
 };
 

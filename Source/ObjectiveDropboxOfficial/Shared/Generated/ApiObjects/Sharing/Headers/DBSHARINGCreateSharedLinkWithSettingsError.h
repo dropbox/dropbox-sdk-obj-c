@@ -31,27 +31,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGCreateSharedLinkWithSettingsErrorTag` enum type represents the
 /// possible tag states with which the
 /// `DBSHARINGCreateSharedLinkWithSettingsError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag){
-    /// (no description).
-    DBSHARINGCreateSharedLinkWithSettingsErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag) {
+  /// (no description).
+  DBSHARINGCreateSharedLinkWithSettingsErrorPath,
 
-    /// This user's email address is not verified. This functionality is only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified,
+  /// This user's email address is not verified. This functionality is only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified,
 
-    /// The shared link already exists. You can call `listSharedLinks` to get
-    /// the  existing link, or use the provided metadata if it is returned.
-    DBSHARINGCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists,
+  /// The shared link already exists. You can call `listSharedLinks` to get
+  /// the  existing link, or use the provided metadata if it is returned.
+  DBSHARINGCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists,
 
-    /// There is an error with the given settings.
-    DBSHARINGCreateSharedLinkWithSettingsErrorSettingsError,
+  /// There is an error with the given settings.
+  DBSHARINGCreateSharedLinkWithSettingsErrorSettingsError,
 
-    /// The user is not allowed to create a shared link to the specified file.
-    /// For  example, this can occur if the file is restricted or if the user's
-    /// links are  banned
-    /// https://help.dropbox.com/files-folders/share/banned-links.
-    DBSHARINGCreateSharedLinkWithSettingsErrorAccessDenied,
+  /// The user is not allowed to create a shared link to the specified file.
+  /// For  example, this can occur if the file is restricted or if the user's
+  /// links are  banned
+  /// https://help.dropbox.com/files-folders/share/banned-links.
+  DBSHARINGCreateSharedLinkWithSettingsErrorAccessDenied,
 
 };
 

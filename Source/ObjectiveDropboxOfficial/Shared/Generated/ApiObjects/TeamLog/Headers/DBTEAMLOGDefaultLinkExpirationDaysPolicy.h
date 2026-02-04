@@ -31,33 +31,33 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGDefaultLinkExpirationDaysPolicyTag` enum type represents the
 /// possible tag states with which the
 /// `DBTEAMLOGDefaultLinkExpirationDaysPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDefaultLinkExpirationDaysPolicyTag){
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyDay1,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDefaultLinkExpirationDaysPolicyTag) {
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyDay1,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyDay180,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyDay180,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyDay3,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyDay3,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyDay30,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyDay30,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyDay7,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyDay7,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyDay90,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyDay90,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyNone,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyNone,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyYear1,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyYear1,
 
-    /// (no description).
-    DBTEAMLOGDefaultLinkExpirationDaysPolicyOther,
+  /// (no description).
+  DBTEAMLOGDefaultLinkExpirationDaysPolicyOther,
 
 };
 

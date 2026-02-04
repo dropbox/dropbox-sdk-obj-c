@@ -6557,8 +6557,9 @@
   NSString *parentFolderId = valueDict[@"parent_folder_id"] ?: nil;
   NSNumber *isTeamFolder = valueDict[@"is_team_folder"] ?: nil;
 
-  return
-      [[DBPAPERPaperFolderCreateArg alloc] initWithName:name parentFolderId:parentFolderId isTeamFolder:isTeamFolder];
+  return [[DBPAPERPaperFolderCreateArg alloc] initWithName:name
+                                            parentFolderId:parentFolderId
+                                              isTeamFolder:isTeamFolder];
 }
 
 @end

@@ -27,22 +27,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESPaperContentErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESPaperContentError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperContentErrorTag){
-    /// Your account does not have permissions to edit Paper docs.
-    DBFILESPaperContentErrorInsufficientPermissions,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperContentErrorTag) {
+  /// Your account does not have permissions to edit Paper docs.
+  DBFILESPaperContentErrorInsufficientPermissions,
 
-    /// The provided content was malformed and cannot be imported to Paper.
-    DBFILESPaperContentErrorContentMalformed,
+  /// The provided content was malformed and cannot be imported to Paper.
+  DBFILESPaperContentErrorContentMalformed,
 
-    /// The Paper doc would be too large, split the content into multiple docs.
-    DBFILESPaperContentErrorDocLengthExceeded,
+  /// The Paper doc would be too large, split the content into multiple docs.
+  DBFILESPaperContentErrorDocLengthExceeded,
 
-    /// The imported document contains an image that is too large. The current
-    /// limit is 1MB. This only applies to HTML with data URI.
-    DBFILESPaperContentErrorImageSizeExceeded,
+  /// The imported document contains an image that is too large. The current
+  /// limit is 1MB. This only applies to HTML with data URI.
+  DBFILESPaperContentErrorImageSizeExceeded,
 
-    /// (no description).
-    DBFILESPaperContentErrorOther,
+  /// (no description).
+  DBFILESPaperContentErrorOther,
 
 };
 

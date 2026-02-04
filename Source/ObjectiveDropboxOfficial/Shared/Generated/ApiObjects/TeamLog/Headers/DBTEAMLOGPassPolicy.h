@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGPassPolicyTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGPassPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPassPolicyTag){
-    /// (no description).
-    DBTEAMLOGPassPolicyAllow,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPassPolicyTag) {
+  /// (no description).
+  DBTEAMLOGPassPolicyAllow,
 
-    /// (no description).
-    DBTEAMLOGPassPolicyDisabled,
+  /// (no description).
+  DBTEAMLOGPassPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGPassPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGPassPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGPassPolicyOther,
+  /// (no description).
+  DBTEAMLOGPassPolicyOther,
 
 };
 

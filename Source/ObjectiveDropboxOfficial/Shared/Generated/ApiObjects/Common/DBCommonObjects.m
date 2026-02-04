@@ -433,10 +433,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId homeNamespaceId:(NSString *)homeNamespaceId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
 
   self = [super init];
   if (self) {
@@ -566,10 +566,10 @@
 - (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId
                         homeNamespaceId:(NSString *)homeNamespaceId
                                homePath:(NSString *)homePath {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
   [DBStoneValidators nonnullValidator:nil](homePath);
 
   self = [super initWithRootNamespaceId:rootNamespaceId homeNamespaceId:homeNamespaceId];
@@ -684,10 +684,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId homeNamespaceId:(NSString *)homeNamespaceId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
 
   self = [super initWithRootNamespaceId:rootNamespaceId homeNamespaceId:homeNamespaceId];
   if (self) {

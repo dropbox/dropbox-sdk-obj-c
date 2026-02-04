@@ -31,15 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGFolderLinkRestrictionPolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGFolderLinkRestrictionPolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFolderLinkRestrictionPolicyTag){
-    /// (no description).
-    DBTEAMLOGFolderLinkRestrictionPolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFolderLinkRestrictionPolicyTag) {
+  /// (no description).
+  DBTEAMLOGFolderLinkRestrictionPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGFolderLinkRestrictionPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGFolderLinkRestrictionPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGFolderLinkRestrictionPolicyOther,
+  /// (no description).
+  DBTEAMLOGFolderLinkRestrictionPolicyOther,
 
 };
 

@@ -56,8 +56,8 @@
 - (DBRpcTask *)propertiesAdd:(NSString *)path
               propertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups {
   DBRoute *route = DBFILEPROPERTIESRouteObjects.DBFILEPROPERTIESPropertiesAdd;
-  DBFILEPROPERTIESAddPropertiesArg *arg =
-      [[DBFILEPROPERTIESAddPropertiesArg alloc] initWithPath:path propertyGroups:propertyGroups];
+  DBFILEPROPERTIESAddPropertiesArg *arg = [[DBFILEPROPERTIESAddPropertiesArg alloc] initWithPath:path
+                                                                                  propertyGroups:propertyGroups];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -109,8 +109,9 @@
                       description_:(NSString *)description_
                             fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields {
   DBRoute *route = DBFILEPROPERTIESRouteObjects.DBFILEPROPERTIESTemplatesAddForUser;
-  DBFILEPROPERTIESAddTemplateArg *arg =
-      [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name description_:description_ fields:fields];
+  DBFILEPROPERTIESAddTemplateArg *arg = [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name
+                                                                                description_:description_
+                                                                                      fields:fields];
   return [self.client requestRpc:route arg:arg];
 }
 

@@ -50,8 +50,9 @@
     NSOperationQueue *sessionDelegateQueue =
         [self urlSessionDelegateQueueWithName:[NSString stringWithFormat:@"%@ NSURLSession delegate queue",
                                                                          NSStringFromClass(self.class)]];
-    _session =
-        [NSURLSession sessionWithConfiguration:sessionConfig delegate:_delegate delegateQueue:sessionDelegateQueue];
+    _session = [NSURLSession sessionWithConfiguration:sessionConfig
+                                             delegate:_delegate
+                                        delegateQueue:sessionDelegateQueue];
     _forceForegroundSession = transportConfig.forceForegroundSession ? YES : NO;
     if (!_forceForegroundSession) {
       NSString *backgroundId =
@@ -78,12 +79,12 @@
     NSOperationQueue *longpollSessionDelegateQueue =
         [self urlSessionDelegateQueueWithName:[NSString stringWithFormat:@"%@ Longpoll NSURLSession delegate queue",
                                                                          NSStringFromClass(self.class)]];
-      NSURLSession *longpollSession = [NSURLSession sessionWithConfiguration:longpollSessionConfig
-                                                     delegate:_delegate
-                                                delegateQueue:longpollSessionDelegateQueue];
-      // Sessions must be uniquely identifiable so that we can disambiguate them in `sessionIdWithSession:`.
-      longpollSession.sessionDescription = @"longpoll";
-      _longpollSession = longpollSession;
+    NSURLSession *longpollSession = [NSURLSession sessionWithConfiguration:longpollSessionConfig
+                                                                  delegate:_delegate
+                                                             delegateQueue:longpollSessionDelegateQueue];
+    // Sessions must be uniquely identifiable so that we can disambiguate them in `sessionIdWithSession:`.
+    longpollSession.sessionDescription = @"longpoll";
+    _longpollSession = longpollSession;
   }
   return self;
 }
@@ -115,8 +116,10 @@
     NSDictionary *headers = [self headersWithRouteInfo:route.attrs serializedArg:serializedArg];
     // RPC request submits argument in request body
     NSData *serializedArgData = [[self class] serializeDataWithRoute:route routeArg:arg];
-    NSURLRequest *request =
-        [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
+    NSURLRequest *request = [[self class] requestWithHeaders:headers
+                                                         url:requestUrl
+                                                     content:serializedArgData
+                                                      stream:nil];
     return [sessionToUse dataTaskWithRequest:request];
   };
 
@@ -148,8 +151,9 @@
                                                                urlSession:sessionToUse
                                                             tokenProvider:self.accessTokenProvider];
 
-  DBUploadTaskImpl *uploadTask =
-      [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
+                                                               tokenUid:self.tokenUid
+                                                                  route:route];
   [uploadTask resume];
   return uploadTask;
 }
@@ -173,8 +177,9 @@
                                                                urlSession:sessionToUse
                                                             tokenProvider:self.accessTokenProvider];
 
-  DBUploadTaskImpl *uploadTask =
-      [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
+                                                               tokenUid:self.tokenUid
+                                                                  route:route];
   [uploadTask resume];
   return uploadTask;
 }
@@ -195,8 +200,9 @@
                                                              taskDelegate:_delegate
                                                                urlSession:sessionToUse
                                                             tokenProvider:self.accessTokenProvider];
-  DBUploadTaskImpl *uploadTask =
-      [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:taskWithTokenRefresh
+                                                               tokenUid:self.tokenUid
+                                                                  route:route];
   [uploadTask resume];
   return uploadTask;
 }
@@ -274,8 +280,9 @@
                                                              taskDelegate:_delegate
                                                                urlSession:sessionToUse
                                                             tokenProvider:self.accessTokenProvider];
-  DBDownloadDataTaskImpl *downloadTask =
-      [[DBDownloadDataTaskImpl alloc] initWithTask:taskWithTokenRefresh tokenUid:self.tokenUid route:route];
+  DBDownloadDataTaskImpl *downloadTask = [[DBDownloadDataTaskImpl alloc] initWithTask:taskWithTokenRefresh
+                                                                             tokenUid:self.tokenUid
+                                                                                route:route];
   [downloadTask resume];
   return downloadTask;
 }

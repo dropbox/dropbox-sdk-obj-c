@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGAdminConsoleAppPolicyTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGAdminConsoleAppPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminConsoleAppPolicyTag){
-    /// (no description).
-    DBTEAMLOGAdminConsoleAppPolicyAllow,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminConsoleAppPolicyTag) {
+  /// (no description).
+  DBTEAMLOGAdminConsoleAppPolicyAllow,
 
-    /// (no description).
-    DBTEAMLOGAdminConsoleAppPolicyBlock,
+  /// (no description).
+  DBTEAMLOGAdminConsoleAppPolicyBlock,
 
-    /// (no description).
-    DBTEAMLOGAdminConsoleAppPolicyDefault_,
+  /// (no description).
+  DBTEAMLOGAdminConsoleAppPolicyDefault_,
 
-    /// (no description).
-    DBTEAMLOGAdminConsoleAppPolicyOther,
+  /// (no description).
+  DBTEAMLOGAdminConsoleAppPolicyOther,
 
 };
 

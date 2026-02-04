@@ -29,1603 +29,1603 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGEventTypeArgTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGEventTypeArg` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag){
-    /// (admin_alerting) Changed an alert state
-    DBTEAMLOGEventTypeArgAdminAlertingAlertStateChanged,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
+  /// (admin_alerting) Changed an alert state
+  DBTEAMLOGEventTypeArgAdminAlertingAlertStateChanged,
 
-    /// (admin_alerting) Changed an alert setting
-    DBTEAMLOGEventTypeArgAdminAlertingChangedAlertConfig,
+  /// (admin_alerting) Changed an alert setting
+  DBTEAMLOGEventTypeArgAdminAlertingChangedAlertConfig,
 
-    /// (admin_alerting) Triggered security alert
-    DBTEAMLOGEventTypeArgAdminAlertingTriggeredAlert,
+  /// (admin_alerting) Triggered security alert
+  DBTEAMLOGEventTypeArgAdminAlertingTriggeredAlert,
 
-    /// (admin_alerting) Completed ransomware restore process
-    DBTEAMLOGEventTypeArgRansomwareRestoreProcessCompleted,
+  /// (admin_alerting) Completed ransomware restore process
+  DBTEAMLOGEventTypeArgRansomwareRestoreProcessCompleted,
 
-    /// (admin_alerting) Started ransomware restore process
-    DBTEAMLOGEventTypeArgRansomwareRestoreProcessStarted,
+  /// (admin_alerting) Started ransomware restore process
+  DBTEAMLOGEventTypeArgRansomwareRestoreProcessStarted,
 
-    /// (apps) Failed to connect app for member
-    DBTEAMLOGEventTypeArgAppBlockedByPermissions,
+  /// (apps) Failed to connect app for member
+  DBTEAMLOGEventTypeArgAppBlockedByPermissions,
 
-    /// (apps) Linked app for team
-    DBTEAMLOGEventTypeArgAppLinkTeam,
+  /// (apps) Linked app for team
+  DBTEAMLOGEventTypeArgAppLinkTeam,
 
-    /// (apps) Linked app for member
-    DBTEAMLOGEventTypeArgAppLinkUser,
+  /// (apps) Linked app for member
+  DBTEAMLOGEventTypeArgAppLinkUser,
 
-    /// (apps) Unlinked app for team
-    DBTEAMLOGEventTypeArgAppUnlinkTeam,
+  /// (apps) Unlinked app for team
+  DBTEAMLOGEventTypeArgAppUnlinkTeam,
 
-    /// (apps) Unlinked app for member
-    DBTEAMLOGEventTypeArgAppUnlinkUser,
+  /// (apps) Unlinked app for member
+  DBTEAMLOGEventTypeArgAppUnlinkUser,
 
-    /// (apps) Connected integration for member
-    DBTEAMLOGEventTypeArgIntegrationConnected,
+  /// (apps) Connected integration for member
+  DBTEAMLOGEventTypeArgIntegrationConnected,
 
-    /// (apps) Disconnected integration for member
-    DBTEAMLOGEventTypeArgIntegrationDisconnected,
+  /// (apps) Disconnected integration for member
+  DBTEAMLOGEventTypeArgIntegrationDisconnected,
 
-    /// (comments) Added file comment
-    DBTEAMLOGEventTypeArgFileAddComment,
+  /// (comments) Added file comment
+  DBTEAMLOGEventTypeArgFileAddComment,
 
-    /// (comments) Subscribed to or unsubscribed from comment notifications for
-    /// file
-    DBTEAMLOGEventTypeArgFileChangeCommentSubscription,
+  /// (comments) Subscribed to or unsubscribed from comment notifications for
+  /// file
+  DBTEAMLOGEventTypeArgFileChangeCommentSubscription,
 
-    /// (comments) Deleted file comment
-    DBTEAMLOGEventTypeArgFileDeleteComment,
+  /// (comments) Deleted file comment
+  DBTEAMLOGEventTypeArgFileDeleteComment,
 
-    /// (comments) Edited file comment
-    DBTEAMLOGEventTypeArgFileEditComment,
+  /// (comments) Edited file comment
+  DBTEAMLOGEventTypeArgFileEditComment,
 
-    /// (comments) Liked file comment (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgFileLikeComment,
+  /// (comments) Liked file comment (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgFileLikeComment,
 
-    /// (comments) Resolved file comment
-    DBTEAMLOGEventTypeArgFileResolveComment,
+  /// (comments) Resolved file comment
+  DBTEAMLOGEventTypeArgFileResolveComment,
 
-    /// (comments) Unliked file comment (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgFileUnlikeComment,
+  /// (comments) Unliked file comment (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgFileUnlikeComment,
 
-    /// (comments) Unresolved file comment
-    DBTEAMLOGEventTypeArgFileUnresolveComment,
+  /// (comments) Unresolved file comment
+  DBTEAMLOGEventTypeArgFileUnresolveComment,
 
-    /// (data_governance) Added folders to policy
-    DBTEAMLOGEventTypeArgGovernancePolicyAddFolders,
+  /// (data_governance) Added folders to policy
+  DBTEAMLOGEventTypeArgGovernancePolicyAddFolders,
 
-    /// (data_governance) Couldn't add a folder to a policy
-    DBTEAMLOGEventTypeArgGovernancePolicyAddFolderFailed,
+  /// (data_governance) Couldn't add a folder to a policy
+  DBTEAMLOGEventTypeArgGovernancePolicyAddFolderFailed,
 
-    /// (data_governance) Content disposed
-    DBTEAMLOGEventTypeArgGovernancePolicyContentDisposed,
+  /// (data_governance) Content disposed
+  DBTEAMLOGEventTypeArgGovernancePolicyContentDisposed,
 
-    /// (data_governance) Activated a new policy
-    DBTEAMLOGEventTypeArgGovernancePolicyCreate,
+  /// (data_governance) Activated a new policy
+  DBTEAMLOGEventTypeArgGovernancePolicyCreate,
 
-    /// (data_governance) Deleted a policy
-    DBTEAMLOGEventTypeArgGovernancePolicyDelete,
+  /// (data_governance) Deleted a policy
+  DBTEAMLOGEventTypeArgGovernancePolicyDelete,
 
-    /// (data_governance) Edited policy
-    DBTEAMLOGEventTypeArgGovernancePolicyEditDetails,
+  /// (data_governance) Edited policy
+  DBTEAMLOGEventTypeArgGovernancePolicyEditDetails,
 
-    /// (data_governance) Changed policy duration
-    DBTEAMLOGEventTypeArgGovernancePolicyEditDuration,
+  /// (data_governance) Changed policy duration
+  DBTEAMLOGEventTypeArgGovernancePolicyEditDuration,
 
-    /// (data_governance) Created a policy download
-    DBTEAMLOGEventTypeArgGovernancePolicyExportCreated,
+  /// (data_governance) Created a policy download
+  DBTEAMLOGEventTypeArgGovernancePolicyExportCreated,
 
-    /// (data_governance) Removed a policy download
-    DBTEAMLOGEventTypeArgGovernancePolicyExportRemoved,
+  /// (data_governance) Removed a policy download
+  DBTEAMLOGEventTypeArgGovernancePolicyExportRemoved,
 
-    /// (data_governance) Removed folders from policy
-    DBTEAMLOGEventTypeArgGovernancePolicyRemoveFolders,
+  /// (data_governance) Removed folders from policy
+  DBTEAMLOGEventTypeArgGovernancePolicyRemoveFolders,
 
-    /// (data_governance) Created a summary report for a policy
-    DBTEAMLOGEventTypeArgGovernancePolicyReportCreated,
+  /// (data_governance) Created a summary report for a policy
+  DBTEAMLOGEventTypeArgGovernancePolicyReportCreated,
 
-    /// (data_governance) Downloaded content from a policy
-    DBTEAMLOGEventTypeArgGovernancePolicyZipPartDownloaded,
+  /// (data_governance) Downloaded content from a policy
+  DBTEAMLOGEventTypeArgGovernancePolicyZipPartDownloaded,
 
-    /// (data_governance) Activated a hold
-    DBTEAMLOGEventTypeArgLegalHoldsActivateAHold,
+  /// (data_governance) Activated a hold
+  DBTEAMLOGEventTypeArgLegalHoldsActivateAHold,
 
-    /// (data_governance) Added members to a hold
-    DBTEAMLOGEventTypeArgLegalHoldsAddMembers,
+  /// (data_governance) Added members to a hold
+  DBTEAMLOGEventTypeArgLegalHoldsAddMembers,
 
-    /// (data_governance) Edited details for a hold
-    DBTEAMLOGEventTypeArgLegalHoldsChangeHoldDetails,
+  /// (data_governance) Edited details for a hold
+  DBTEAMLOGEventTypeArgLegalHoldsChangeHoldDetails,
 
-    /// (data_governance) Renamed a hold
-    DBTEAMLOGEventTypeArgLegalHoldsChangeHoldName,
+  /// (data_governance) Renamed a hold
+  DBTEAMLOGEventTypeArgLegalHoldsChangeHoldName,
 
-    /// (data_governance) Exported hold
-    DBTEAMLOGEventTypeArgLegalHoldsExportAHold,
+  /// (data_governance) Exported hold
+  DBTEAMLOGEventTypeArgLegalHoldsExportAHold,
 
-    /// (data_governance) Canceled export for a hold
-    DBTEAMLOGEventTypeArgLegalHoldsExportCancelled,
+  /// (data_governance) Canceled export for a hold
+  DBTEAMLOGEventTypeArgLegalHoldsExportCancelled,
 
-    /// (data_governance) Downloaded export for a hold
-    DBTEAMLOGEventTypeArgLegalHoldsExportDownloaded,
+  /// (data_governance) Downloaded export for a hold
+  DBTEAMLOGEventTypeArgLegalHoldsExportDownloaded,
 
-    /// (data_governance) Removed export for a hold
-    DBTEAMLOGEventTypeArgLegalHoldsExportRemoved,
+  /// (data_governance) Removed export for a hold
+  DBTEAMLOGEventTypeArgLegalHoldsExportRemoved,
 
-    /// (data_governance) Released a hold
-    DBTEAMLOGEventTypeArgLegalHoldsReleaseAHold,
+  /// (data_governance) Released a hold
+  DBTEAMLOGEventTypeArgLegalHoldsReleaseAHold,
 
-    /// (data_governance) Removed members from a hold
-    DBTEAMLOGEventTypeArgLegalHoldsRemoveMembers,
+  /// (data_governance) Removed members from a hold
+  DBTEAMLOGEventTypeArgLegalHoldsRemoveMembers,
 
-    /// (data_governance) Created a summary report for a hold
-    DBTEAMLOGEventTypeArgLegalHoldsReportAHold,
+  /// (data_governance) Created a summary report for a hold
+  DBTEAMLOGEventTypeArgLegalHoldsReportAHold,
 
-    /// (devices) Changed IP address associated with active desktop session
-    DBTEAMLOGEventTypeArgDeviceChangeIpDesktop,
+  /// (devices) Changed IP address associated with active desktop session
+  DBTEAMLOGEventTypeArgDeviceChangeIpDesktop,
 
-    /// (devices) Changed IP address associated with active mobile session
-    DBTEAMLOGEventTypeArgDeviceChangeIpMobile,
+  /// (devices) Changed IP address associated with active mobile session
+  DBTEAMLOGEventTypeArgDeviceChangeIpMobile,
 
-    /// (devices) Changed IP address associated with active web session
-    DBTEAMLOGEventTypeArgDeviceChangeIpWeb,
+  /// (devices) Changed IP address associated with active web session
+  DBTEAMLOGEventTypeArgDeviceChangeIpWeb,
 
-    /// (devices) Failed to delete all files from unlinked device
-    DBTEAMLOGEventTypeArgDeviceDeleteOnUnlinkFail,
+  /// (devices) Failed to delete all files from unlinked device
+  DBTEAMLOGEventTypeArgDeviceDeleteOnUnlinkFail,
 
-    /// (devices) Deleted all files from unlinked device
-    DBTEAMLOGEventTypeArgDeviceDeleteOnUnlinkSuccess,
+  /// (devices) Deleted all files from unlinked device
+  DBTEAMLOGEventTypeArgDeviceDeleteOnUnlinkSuccess,
 
-    /// (devices) Failed to link device
-    DBTEAMLOGEventTypeArgDeviceLinkFail,
+  /// (devices) Failed to link device
+  DBTEAMLOGEventTypeArgDeviceLinkFail,
 
-    /// (devices) Linked device
-    DBTEAMLOGEventTypeArgDeviceLinkSuccess,
+  /// (devices) Linked device
+  DBTEAMLOGEventTypeArgDeviceLinkSuccess,
 
-    /// (devices) Disabled device management (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgDeviceManagementDisabled,
+  /// (devices) Disabled device management (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgDeviceManagementDisabled,
 
-    /// (devices) Enabled device management (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgDeviceManagementEnabled,
+  /// (devices) Enabled device management (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgDeviceManagementEnabled,
 
-    /// (devices) Enabled/disabled backup for computer
-    DBTEAMLOGEventTypeArgDeviceSyncBackupStatusChanged,
+  /// (devices) Enabled/disabled backup for computer
+  DBTEAMLOGEventTypeArgDeviceSyncBackupStatusChanged,
 
-    /// (devices) Disconnected device
-    DBTEAMLOGEventTypeArgDeviceUnlink,
+  /// (devices) Disconnected device
+  DBTEAMLOGEventTypeArgDeviceUnlink,
 
-    /// (devices) Exported passwords
-    DBTEAMLOGEventTypeArgDropboxPasswordsExported,
+  /// (devices) Exported passwords
+  DBTEAMLOGEventTypeArgDropboxPasswordsExported,
 
-    /// (devices) Enrolled new Dropbox Passwords device
-    DBTEAMLOGEventTypeArgDropboxPasswordsNewDeviceEnrolled,
+  /// (devices) Enrolled new Dropbox Passwords device
+  DBTEAMLOGEventTypeArgDropboxPasswordsNewDeviceEnrolled,
 
-    /// (devices) Refreshed auth token used for setting up EMM
-    DBTEAMLOGEventTypeArgEmmRefreshAuthToken,
+  /// (devices) Refreshed auth token used for setting up EMM
+  DBTEAMLOGEventTypeArgEmmRefreshAuthToken,
 
-    /// (devices) Checked external drive backup eligibility status
-    DBTEAMLOGEventTypeArgExternalDriveBackupEligibilityStatusChecked,
+  /// (devices) Checked external drive backup eligibility status
+  DBTEAMLOGEventTypeArgExternalDriveBackupEligibilityStatusChecked,
 
-    /// (devices) Modified external drive backup
-    DBTEAMLOGEventTypeArgExternalDriveBackupStatusChanged,
+  /// (devices) Modified external drive backup
+  DBTEAMLOGEventTypeArgExternalDriveBackupStatusChanged,
 
-    /// (domains) Granted/revoked option to enable account capture on team
-    /// domains
-    DBTEAMLOGEventTypeArgAccountCaptureChangeAvailability,
+  /// (domains) Granted/revoked option to enable account capture on team
+  /// domains
+  DBTEAMLOGEventTypeArgAccountCaptureChangeAvailability,
 
-    /// (domains) Account-captured user migrated account to team
-    DBTEAMLOGEventTypeArgAccountCaptureMigrateAccount,
+  /// (domains) Account-captured user migrated account to team
+  DBTEAMLOGEventTypeArgAccountCaptureMigrateAccount,
 
-    /// (domains) Sent account capture email to all unmanaged members
-    DBTEAMLOGEventTypeArgAccountCaptureNotificationEmailsSent,
+  /// (domains) Sent account capture email to all unmanaged members
+  DBTEAMLOGEventTypeArgAccountCaptureNotificationEmailsSent,
 
-    /// (domains) Account-captured user changed account email to personal email
-    DBTEAMLOGEventTypeArgAccountCaptureRelinquishAccount,
+  /// (domains) Account-captured user changed account email to personal email
+  DBTEAMLOGEventTypeArgAccountCaptureRelinquishAccount,
 
-    /// (domains) Disabled domain invites (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgDisabledDomainInvites,
+  /// (domains) Disabled domain invites (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgDisabledDomainInvites,
 
-    /// (domains) Approved user's request to join team
-    DBTEAMLOGEventTypeArgDomainInvitesApproveRequestToJoinTeam,
+  /// (domains) Approved user's request to join team
+  DBTEAMLOGEventTypeArgDomainInvitesApproveRequestToJoinTeam,
 
-    /// (domains) Declined user's request to join team
-    DBTEAMLOGEventTypeArgDomainInvitesDeclineRequestToJoinTeam,
+  /// (domains) Declined user's request to join team
+  DBTEAMLOGEventTypeArgDomainInvitesDeclineRequestToJoinTeam,
 
-    /// (domains) Sent domain invites to existing domain accounts (deprecated,
-    /// no longer logged)
-    DBTEAMLOGEventTypeArgDomainInvitesEmailExistingUsers,
+  /// (domains) Sent domain invites to existing domain accounts (deprecated,
+  /// no longer logged)
+  DBTEAMLOGEventTypeArgDomainInvitesEmailExistingUsers,
 
-    /// (domains) Requested to join team
-    DBTEAMLOGEventTypeArgDomainInvitesRequestToJoinTeam,
+  /// (domains) Requested to join team
+  DBTEAMLOGEventTypeArgDomainInvitesRequestToJoinTeam,
 
-    /// (domains) Disabled "Automatically invite new users" (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgDomainInvitesSetInviteNewUserPrefToNo,
+  /// (domains) Disabled "Automatically invite new users" (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgDomainInvitesSetInviteNewUserPrefToNo,
 
-    /// (domains) Enabled "Automatically invite new users" (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgDomainInvitesSetInviteNewUserPrefToYes,
+  /// (domains) Enabled "Automatically invite new users" (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgDomainInvitesSetInviteNewUserPrefToYes,
 
-    /// (domains) Failed to verify team domain
-    DBTEAMLOGEventTypeArgDomainVerificationAddDomainFail,
+  /// (domains) Failed to verify team domain
+  DBTEAMLOGEventTypeArgDomainVerificationAddDomainFail,
 
-    /// (domains) Verified team domain
-    DBTEAMLOGEventTypeArgDomainVerificationAddDomainSuccess,
+  /// (domains) Verified team domain
+  DBTEAMLOGEventTypeArgDomainVerificationAddDomainSuccess,
 
-    /// (domains) Removed domain from list of verified team domains
-    DBTEAMLOGEventTypeArgDomainVerificationRemoveDomain,
+  /// (domains) Removed domain from list of verified team domains
+  DBTEAMLOGEventTypeArgDomainVerificationRemoveDomain,
 
-    /// (domains) Enabled domain invites (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgEnabledDomainInvites,
+  /// (domains) Enabled domain invites (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgEnabledDomainInvites,
 
-    /// (encryption) Canceled team encryption key deletion
-    DBTEAMLOGEventTypeArgTeamEncryptionKeyCancelKeyDeletion,
+  /// (encryption) Canceled team encryption key deletion
+  DBTEAMLOGEventTypeArgTeamEncryptionKeyCancelKeyDeletion,
 
-    /// (encryption) Created team encryption key
-    DBTEAMLOGEventTypeArgTeamEncryptionKeyCreateKey,
+  /// (encryption) Created team encryption key
+  DBTEAMLOGEventTypeArgTeamEncryptionKeyCreateKey,
 
-    /// (encryption) Deleted team encryption key
-    DBTEAMLOGEventTypeArgTeamEncryptionKeyDeleteKey,
+  /// (encryption) Deleted team encryption key
+  DBTEAMLOGEventTypeArgTeamEncryptionKeyDeleteKey,
 
-    /// (encryption) Disabled team encryption key
-    DBTEAMLOGEventTypeArgTeamEncryptionKeyDisableKey,
+  /// (encryption) Disabled team encryption key
+  DBTEAMLOGEventTypeArgTeamEncryptionKeyDisableKey,
 
-    /// (encryption) Enabled team encryption key
-    DBTEAMLOGEventTypeArgTeamEncryptionKeyEnableKey,
+  /// (encryption) Enabled team encryption key
+  DBTEAMLOGEventTypeArgTeamEncryptionKeyEnableKey,
 
-    /// (encryption) Rotated team encryption key (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgTeamEncryptionKeyRotateKey,
+  /// (encryption) Rotated team encryption key (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgTeamEncryptionKeyRotateKey,
 
-    /// (encryption) Scheduled encryption key deletion
-    DBTEAMLOGEventTypeArgTeamEncryptionKeyScheduleKeyDeletion,
+  /// (encryption) Scheduled encryption key deletion
+  DBTEAMLOGEventTypeArgTeamEncryptionKeyScheduleKeyDeletion,
 
-    /// (file_operations) Applied naming convention
-    DBTEAMLOGEventTypeArgApplyNamingConvention,
+  /// (file_operations) Applied naming convention
+  DBTEAMLOGEventTypeArgApplyNamingConvention,
 
-    /// (file_operations) Created folders (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgCreateFolder,
+  /// (file_operations) Created folders (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgCreateFolder,
 
-    /// (file_operations) Added files and/or folders
-    DBTEAMLOGEventTypeArgFileAdd,
+  /// (file_operations) Added files and/or folders
+  DBTEAMLOGEventTypeArgFileAdd,
 
-    /// (file_operations) Added files and/or folders from automation
-    DBTEAMLOGEventTypeArgFileAddFromAutomation,
+  /// (file_operations) Added files and/or folders from automation
+  DBTEAMLOGEventTypeArgFileAddFromAutomation,
 
-    /// (file_operations) Copied files and/or folders
-    DBTEAMLOGEventTypeArgFileCopy,
+  /// (file_operations) Copied files and/or folders
+  DBTEAMLOGEventTypeArgFileCopy,
 
-    /// (file_operations) Deleted files and/or folders
-    DBTEAMLOGEventTypeArgFileDelete,
+  /// (file_operations) Deleted files and/or folders
+  DBTEAMLOGEventTypeArgFileDelete,
 
-    /// (file_operations) Downloaded files and/or folders
-    DBTEAMLOGEventTypeArgFileDownload,
+  /// (file_operations) Downloaded files and/or folders
+  DBTEAMLOGEventTypeArgFileDownload,
 
-    /// (file_operations) Edited files
-    DBTEAMLOGEventTypeArgFileEdit,
+  /// (file_operations) Edited files
+  DBTEAMLOGEventTypeArgFileEdit,
 
-    /// (file_operations) Created copy reference to file/folder
-    DBTEAMLOGEventTypeArgFileGetCopyReference,
+  /// (file_operations) Created copy reference to file/folder
+  DBTEAMLOGEventTypeArgFileGetCopyReference,
 
-    /// (file_operations) Locked/unlocked editing for a file
-    DBTEAMLOGEventTypeArgFileLockingLockStatusChanged,
+  /// (file_operations) Locked/unlocked editing for a file
+  DBTEAMLOGEventTypeArgFileLockingLockStatusChanged,
 
-    /// (file_operations) Moved files and/or folders
-    DBTEAMLOGEventTypeArgFileMove,
+  /// (file_operations) Moved files and/or folders
+  DBTEAMLOGEventTypeArgFileMove,
 
-    /// (file_operations) Permanently deleted files and/or folders
-    DBTEAMLOGEventTypeArgFilePermanentlyDelete,
+  /// (file_operations) Permanently deleted files and/or folders
+  DBTEAMLOGEventTypeArgFilePermanentlyDelete,
 
-    /// (file_operations) Previewed files and/or folders
-    DBTEAMLOGEventTypeArgFilePreview,
+  /// (file_operations) Previewed files and/or folders
+  DBTEAMLOGEventTypeArgFilePreview,
 
-    /// (file_operations) Renamed files and/or folders
-    DBTEAMLOGEventTypeArgFileRename,
+  /// (file_operations) Renamed files and/or folders
+  DBTEAMLOGEventTypeArgFileRename,
 
-    /// (file_operations) Restored deleted files and/or folders
-    DBTEAMLOGEventTypeArgFileRestore,
+  /// (file_operations) Restored deleted files and/or folders
+  DBTEAMLOGEventTypeArgFileRestore,
 
-    /// (file_operations) Reverted files to previous version
-    DBTEAMLOGEventTypeArgFileRevert,
+  /// (file_operations) Reverted files to previous version
+  DBTEAMLOGEventTypeArgFileRevert,
 
-    /// (file_operations) Rolled back file actions
-    DBTEAMLOGEventTypeArgFileRollbackChanges,
+  /// (file_operations) Rolled back file actions
+  DBTEAMLOGEventTypeArgFileRollbackChanges,
 
-    /// (file_operations) Saved file/folder using copy reference
-    DBTEAMLOGEventTypeArgFileSaveCopyReference,
+  /// (file_operations) Saved file/folder using copy reference
+  DBTEAMLOGEventTypeArgFileSaveCopyReference,
 
-    /// (file_operations) Updated folder overview
-    DBTEAMLOGEventTypeArgFolderOverviewDescriptionChanged,
+  /// (file_operations) Updated folder overview
+  DBTEAMLOGEventTypeArgFolderOverviewDescriptionChanged,
 
-    /// (file_operations) Pinned item to folder overview
-    DBTEAMLOGEventTypeArgFolderOverviewItemPinned,
+  /// (file_operations) Pinned item to folder overview
+  DBTEAMLOGEventTypeArgFolderOverviewItemPinned,
 
-    /// (file_operations) Unpinned item from folder overview
-    DBTEAMLOGEventTypeArgFolderOverviewItemUnpinned,
+  /// (file_operations) Unpinned item from folder overview
+  DBTEAMLOGEventTypeArgFolderOverviewItemUnpinned,
 
-    /// (file_operations) Added a label
-    DBTEAMLOGEventTypeArgObjectLabelAdded,
+  /// (file_operations) Added a label
+  DBTEAMLOGEventTypeArgObjectLabelAdded,
 
-    /// (file_operations) Removed a label
-    DBTEAMLOGEventTypeArgObjectLabelRemoved,
+  /// (file_operations) Removed a label
+  DBTEAMLOGEventTypeArgObjectLabelRemoved,
 
-    /// (file_operations) Updated a label's value
-    DBTEAMLOGEventTypeArgObjectLabelUpdatedValue,
+  /// (file_operations) Updated a label's value
+  DBTEAMLOGEventTypeArgObjectLabelUpdatedValue,
 
-    /// (file_operations) Organized a folder with multi-file organize
-    DBTEAMLOGEventTypeArgOrganizeFolderWithTidy,
+  /// (file_operations) Organized a folder with multi-file organize
+  DBTEAMLOGEventTypeArgOrganizeFolderWithTidy,
 
-    /// (file_operations) Deleted files in Replay
-    DBTEAMLOGEventTypeArgReplayFileDelete,
+  /// (file_operations) Deleted files in Replay
+  DBTEAMLOGEventTypeArgReplayFileDelete,
 
-    /// (file_operations) Rewound a folder
-    DBTEAMLOGEventTypeArgRewindFolder,
+  /// (file_operations) Rewound a folder
+  DBTEAMLOGEventTypeArgRewindFolder,
 
-    /// (file_operations) Reverted naming convention
-    DBTEAMLOGEventTypeArgUndoNamingConvention,
+  /// (file_operations) Reverted naming convention
+  DBTEAMLOGEventTypeArgUndoNamingConvention,
 
-    /// (file_operations) Removed multi-file organize
-    DBTEAMLOGEventTypeArgUndoOrganizeFolderWithTidy,
+  /// (file_operations) Removed multi-file organize
+  DBTEAMLOGEventTypeArgUndoOrganizeFolderWithTidy,
 
-    /// (file_operations) Tagged a file
-    DBTEAMLOGEventTypeArgUserTagsAdded,
+  /// (file_operations) Tagged a file
+  DBTEAMLOGEventTypeArgUserTagsAdded,
 
-    /// (file_operations) Removed tags
-    DBTEAMLOGEventTypeArgUserTagsRemoved,
+  /// (file_operations) Removed tags
+  DBTEAMLOGEventTypeArgUserTagsRemoved,
 
-    /// (file_requests) Received files via Email to Dropbox
-    DBTEAMLOGEventTypeArgEmailIngestReceiveFile,
+  /// (file_requests) Received files via Email to Dropbox
+  DBTEAMLOGEventTypeArgEmailIngestReceiveFile,
 
-    /// (file_requests) Changed file request
-    DBTEAMLOGEventTypeArgFileRequestChange,
+  /// (file_requests) Changed file request
+  DBTEAMLOGEventTypeArgFileRequestChange,
 
-    /// (file_requests) Closed file request
-    DBTEAMLOGEventTypeArgFileRequestClose,
+  /// (file_requests) Closed file request
+  DBTEAMLOGEventTypeArgFileRequestClose,
 
-    /// (file_requests) Created file request
-    DBTEAMLOGEventTypeArgFileRequestCreate,
+  /// (file_requests) Created file request
+  DBTEAMLOGEventTypeArgFileRequestCreate,
 
-    /// (file_requests) Delete file request
-    DBTEAMLOGEventTypeArgFileRequestDelete,
+  /// (file_requests) Delete file request
+  DBTEAMLOGEventTypeArgFileRequestDelete,
 
-    /// (file_requests) Received files for file request
-    DBTEAMLOGEventTypeArgFileRequestReceiveFile,
+  /// (file_requests) Received files for file request
+  DBTEAMLOGEventTypeArgFileRequestReceiveFile,
 
-    /// (groups) Added external ID for group
-    DBTEAMLOGEventTypeArgGroupAddExternalId,
+  /// (groups) Added external ID for group
+  DBTEAMLOGEventTypeArgGroupAddExternalId,
 
-    /// (groups) Added team members to group
-    DBTEAMLOGEventTypeArgGroupAddMember,
+  /// (groups) Added team members to group
+  DBTEAMLOGEventTypeArgGroupAddMember,
 
-    /// (groups) Changed external ID for group
-    DBTEAMLOGEventTypeArgGroupChangeExternalId,
+  /// (groups) Changed external ID for group
+  DBTEAMLOGEventTypeArgGroupChangeExternalId,
 
-    /// (groups) Changed group management type
-    DBTEAMLOGEventTypeArgGroupChangeManagementType,
+  /// (groups) Changed group management type
+  DBTEAMLOGEventTypeArgGroupChangeManagementType,
 
-    /// (groups) Changed manager permissions of group member
-    DBTEAMLOGEventTypeArgGroupChangeMemberRole,
+  /// (groups) Changed manager permissions of group member
+  DBTEAMLOGEventTypeArgGroupChangeMemberRole,
 
-    /// (groups) Created group
-    DBTEAMLOGEventTypeArgGroupCreate,
+  /// (groups) Created group
+  DBTEAMLOGEventTypeArgGroupCreate,
 
-    /// (groups) Deleted group
-    DBTEAMLOGEventTypeArgGroupDelete,
+  /// (groups) Deleted group
+  DBTEAMLOGEventTypeArgGroupDelete,
 
-    /// (groups) Updated group (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgGroupDescriptionUpdated,
+  /// (groups) Updated group (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgGroupDescriptionUpdated,
 
-    /// (groups) Updated group join policy (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgGroupJoinPolicyUpdated,
+  /// (groups) Updated group join policy (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgGroupJoinPolicyUpdated,
 
-    /// (groups) Moved group (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgGroupMoved,
+  /// (groups) Moved group (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgGroupMoved,
 
-    /// (groups) Removed external ID for group
-    DBTEAMLOGEventTypeArgGroupRemoveExternalId,
+  /// (groups) Removed external ID for group
+  DBTEAMLOGEventTypeArgGroupRemoveExternalId,
 
-    /// (groups) Removed team members from group
-    DBTEAMLOGEventTypeArgGroupRemoveMember,
+  /// (groups) Removed team members from group
+  DBTEAMLOGEventTypeArgGroupRemoveMember,
 
-    /// (groups) Renamed group
-    DBTEAMLOGEventTypeArgGroupRename,
+  /// (groups) Renamed group
+  DBTEAMLOGEventTypeArgGroupRename,
 
-    /// (logins) Unlocked/locked account after failed sign in attempts
-    DBTEAMLOGEventTypeArgAccountLockOrUnlocked,
+  /// (logins) Unlocked/locked account after failed sign in attempts
+  DBTEAMLOGEventTypeArgAccountLockOrUnlocked,
 
-    /// (logins) Failed to sign in via EMM (deprecated, replaced by 'Failed to
-    /// sign in')
-    DBTEAMLOGEventTypeArgEmmError,
+  /// (logins) Failed to sign in via EMM (deprecated, replaced by 'Failed to
+  /// sign in')
+  DBTEAMLOGEventTypeArgEmmError,
 
-    /// (logins) Started trusted team admin session
-    DBTEAMLOGEventTypeArgGuestAdminSignedInViaTrustedTeams,
+  /// (logins) Started trusted team admin session
+  DBTEAMLOGEventTypeArgGuestAdminSignedInViaTrustedTeams,
 
-    /// (logins) Ended trusted team admin session
-    DBTEAMLOGEventTypeArgGuestAdminSignedOutViaTrustedTeams,
+  /// (logins) Ended trusted team admin session
+  DBTEAMLOGEventTypeArgGuestAdminSignedOutViaTrustedTeams,
 
-    /// (logins) Failed to sign in
-    DBTEAMLOGEventTypeArgLoginFail,
+  /// (logins) Failed to sign in
+  DBTEAMLOGEventTypeArgLoginFail,
 
-    /// (logins) Signed in
-    DBTEAMLOGEventTypeArgLoginSuccess,
+  /// (logins) Signed in
+  DBTEAMLOGEventTypeArgLoginSuccess,
 
-    /// (logins) Signed out
-    DBTEAMLOGEventTypeArgLogout,
+  /// (logins) Signed out
+  DBTEAMLOGEventTypeArgLogout,
 
-    /// (logins) Ended reseller support session
-    DBTEAMLOGEventTypeArgResellerSupportSessionEnd,
+  /// (logins) Ended reseller support session
+  DBTEAMLOGEventTypeArgResellerSupportSessionEnd,
 
-    /// (logins) Started reseller support session
-    DBTEAMLOGEventTypeArgResellerSupportSessionStart,
+  /// (logins) Started reseller support session
+  DBTEAMLOGEventTypeArgResellerSupportSessionStart,
 
-    /// (logins) Ended admin sign-in-as session
-    DBTEAMLOGEventTypeArgSignInAsSessionEnd,
+  /// (logins) Ended admin sign-in-as session
+  DBTEAMLOGEventTypeArgSignInAsSessionEnd,
 
-    /// (logins) Started admin sign-in-as session
-    DBTEAMLOGEventTypeArgSignInAsSessionStart,
+  /// (logins) Started admin sign-in-as session
+  DBTEAMLOGEventTypeArgSignInAsSessionStart,
 
-    /// (logins) Failed to sign in via SSO (deprecated, replaced by 'Failed to
-    /// sign in')
-    DBTEAMLOGEventTypeArgSsoError,
+  /// (logins) Failed to sign in via SSO (deprecated, replaced by 'Failed to
+  /// sign in')
+  DBTEAMLOGEventTypeArgSsoError,
 
-    /// (members) Invited members to activate Backup
-    DBTEAMLOGEventTypeArgBackupAdminInvitationSent,
+  /// (members) Invited members to activate Backup
+  DBTEAMLOGEventTypeArgBackupAdminInvitationSent,
 
-    /// (members) Opened Backup invite
-    DBTEAMLOGEventTypeArgBackupInvitationOpened,
+  /// (members) Opened Backup invite
+  DBTEAMLOGEventTypeArgBackupInvitationOpened,
 
-    /// (members) Created team invite link
-    DBTEAMLOGEventTypeArgCreateTeamInviteLink,
+  /// (members) Created team invite link
+  DBTEAMLOGEventTypeArgCreateTeamInviteLink,
 
-    /// (members) Deleted team invite link
-    DBTEAMLOGEventTypeArgDeleteTeamInviteLink,
+  /// (members) Deleted team invite link
+  DBTEAMLOGEventTypeArgDeleteTeamInviteLink,
 
-    /// (members) Added an external ID for team member
-    DBTEAMLOGEventTypeArgMemberAddExternalId,
+  /// (members) Added an external ID for team member
+  DBTEAMLOGEventTypeArgMemberAddExternalId,
 
-    /// (members) Added team member name
-    DBTEAMLOGEventTypeArgMemberAddName,
+  /// (members) Added team member name
+  DBTEAMLOGEventTypeArgMemberAddName,
 
-    /// (members) Changed team member admin role
-    DBTEAMLOGEventTypeArgMemberChangeAdminRole,
+  /// (members) Changed team member admin role
+  DBTEAMLOGEventTypeArgMemberChangeAdminRole,
 
-    /// (members) Changed team member email
-    DBTEAMLOGEventTypeArgMemberChangeEmail,
+  /// (members) Changed team member email
+  DBTEAMLOGEventTypeArgMemberChangeEmail,
 
-    /// (members) Changed the external ID for team member
-    DBTEAMLOGEventTypeArgMemberChangeExternalId,
+  /// (members) Changed the external ID for team member
+  DBTEAMLOGEventTypeArgMemberChangeExternalId,
 
-    /// (members) Changed membership type (limited/full) of member (deprecated,
-    /// no longer logged)
-    DBTEAMLOGEventTypeArgMemberChangeMembershipType,
+  /// (members) Changed membership type (limited/full) of member (deprecated,
+  /// no longer logged)
+  DBTEAMLOGEventTypeArgMemberChangeMembershipType,
 
-    /// (members) Changed team member name
-    DBTEAMLOGEventTypeArgMemberChangeName,
+  /// (members) Changed team member name
+  DBTEAMLOGEventTypeArgMemberChangeName,
 
-    /// (members) Changed team member reseller role
-    DBTEAMLOGEventTypeArgMemberChangeResellerRole,
+  /// (members) Changed team member reseller role
+  DBTEAMLOGEventTypeArgMemberChangeResellerRole,
 
-    /// (members) Changed member status (invited, joined, suspended, etc.)
-    DBTEAMLOGEventTypeArgMemberChangeStatus,
+  /// (members) Changed member status (invited, joined, suspended, etc.)
+  DBTEAMLOGEventTypeArgMemberChangeStatus,
 
-    /// (members) Cleared manually added contacts
-    DBTEAMLOGEventTypeArgMemberDeleteManualContacts,
+  /// (members) Cleared manually added contacts
+  DBTEAMLOGEventTypeArgMemberDeleteManualContacts,
 
-    /// (members) Deleted team member profile photo
-    DBTEAMLOGEventTypeArgMemberDeleteProfilePhoto,
+  /// (members) Deleted team member profile photo
+  DBTEAMLOGEventTypeArgMemberDeleteProfilePhoto,
 
-    /// (members) Permanently deleted contents of deleted team member account
-    DBTEAMLOGEventTypeArgMemberPermanentlyDeleteAccountContents,
+  /// (members) Permanently deleted contents of deleted team member account
+  DBTEAMLOGEventTypeArgMemberPermanentlyDeleteAccountContents,
 
-    /// (members) Removed the external ID for team member
-    DBTEAMLOGEventTypeArgMemberRemoveExternalId,
+  /// (members) Removed the external ID for team member
+  DBTEAMLOGEventTypeArgMemberRemoveExternalId,
 
-    /// (members) Set team member profile photo
-    DBTEAMLOGEventTypeArgMemberSetProfilePhoto,
+  /// (members) Set team member profile photo
+  DBTEAMLOGEventTypeArgMemberSetProfilePhoto,
 
-    /// (members) Set custom member space limit
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsAddCustomQuota,
+  /// (members) Set custom member space limit
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsAddCustomQuota,
 
-    /// (members) Changed custom member space limit
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsChangeCustomQuota,
+  /// (members) Changed custom member space limit
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsChangeCustomQuota,
 
-    /// (members) Changed space limit status
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsChangeStatus,
+  /// (members) Changed space limit status
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsChangeStatus,
 
-    /// (members) Removed custom member space limit
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsRemoveCustomQuota,
+  /// (members) Removed custom member space limit
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsRemoveCustomQuota,
 
-    /// (members) Suggested person to add to team
-    DBTEAMLOGEventTypeArgMemberSuggest,
+  /// (members) Suggested person to add to team
+  DBTEAMLOGEventTypeArgMemberSuggest,
 
-    /// (members) Transferred contents of deleted member account to another
-    /// member
-    DBTEAMLOGEventTypeArgMemberTransferAccountContents,
+  /// (members) Transferred contents of deleted member account to another
+  /// member
+  DBTEAMLOGEventTypeArgMemberTransferAccountContents,
 
-    /// (members) Added pending secondary email
-    DBTEAMLOGEventTypeArgPendingSecondaryEmailAdded,
+  /// (members) Added pending secondary email
+  DBTEAMLOGEventTypeArgPendingSecondaryEmailAdded,
 
-    /// (members) Deleted secondary email
-    DBTEAMLOGEventTypeArgSecondaryEmailDeleted,
+  /// (members) Deleted secondary email
+  DBTEAMLOGEventTypeArgSecondaryEmailDeleted,
 
-    /// (members) Verified secondary email
-    DBTEAMLOGEventTypeArgSecondaryEmailVerified,
+  /// (members) Verified secondary email
+  DBTEAMLOGEventTypeArgSecondaryEmailVerified,
 
-    /// (members) Secondary mails policy changed
-    DBTEAMLOGEventTypeArgSecondaryMailsPolicyChanged,
+  /// (members) Secondary mails policy changed
+  DBTEAMLOGEventTypeArgSecondaryMailsPolicyChanged,
 
-    /// (paper) Added Binder page (deprecated, replaced by 'Edited files')
-    DBTEAMLOGEventTypeArgBinderAddPage,
+  /// (paper) Added Binder page (deprecated, replaced by 'Edited files')
+  DBTEAMLOGEventTypeArgBinderAddPage,
 
-    /// (paper) Added Binder section (deprecated, replaced by 'Edited files')
-    DBTEAMLOGEventTypeArgBinderAddSection,
+  /// (paper) Added Binder section (deprecated, replaced by 'Edited files')
+  DBTEAMLOGEventTypeArgBinderAddSection,
 
-    /// (paper) Removed Binder page (deprecated, replaced by 'Edited files')
-    DBTEAMLOGEventTypeArgBinderRemovePage,
+  /// (paper) Removed Binder page (deprecated, replaced by 'Edited files')
+  DBTEAMLOGEventTypeArgBinderRemovePage,
 
-    /// (paper) Removed Binder section (deprecated, replaced by 'Edited files')
-    DBTEAMLOGEventTypeArgBinderRemoveSection,
+  /// (paper) Removed Binder section (deprecated, replaced by 'Edited files')
+  DBTEAMLOGEventTypeArgBinderRemoveSection,
 
-    /// (paper) Renamed Binder page (deprecated, replaced by 'Edited files')
-    DBTEAMLOGEventTypeArgBinderRenamePage,
+  /// (paper) Renamed Binder page (deprecated, replaced by 'Edited files')
+  DBTEAMLOGEventTypeArgBinderRenamePage,
 
-    /// (paper) Renamed Binder section (deprecated, replaced by 'Edited files')
-    DBTEAMLOGEventTypeArgBinderRenameSection,
+  /// (paper) Renamed Binder section (deprecated, replaced by 'Edited files')
+  DBTEAMLOGEventTypeArgBinderRenameSection,
 
-    /// (paper) Reordered Binder page (deprecated, replaced by 'Edited files')
-    DBTEAMLOGEventTypeArgBinderReorderPage,
+  /// (paper) Reordered Binder page (deprecated, replaced by 'Edited files')
+  DBTEAMLOGEventTypeArgBinderReorderPage,
 
-    /// (paper) Reordered Binder section (deprecated, replaced by 'Edited
-    /// files')
-    DBTEAMLOGEventTypeArgBinderReorderSection,
+  /// (paper) Reordered Binder section (deprecated, replaced by 'Edited
+  /// files')
+  DBTEAMLOGEventTypeArgBinderReorderSection,
 
-    /// (paper) Added users and/or groups to Paper doc/folder
-    DBTEAMLOGEventTypeArgPaperContentAddMember,
+  /// (paper) Added users and/or groups to Paper doc/folder
+  DBTEAMLOGEventTypeArgPaperContentAddMember,
 
-    /// (paper) Added Paper doc/folder to folder
-    DBTEAMLOGEventTypeArgPaperContentAddToFolder,
+  /// (paper) Added Paper doc/folder to folder
+  DBTEAMLOGEventTypeArgPaperContentAddToFolder,
 
-    /// (paper) Archived Paper doc/folder
-    DBTEAMLOGEventTypeArgPaperContentArchive,
+  /// (paper) Archived Paper doc/folder
+  DBTEAMLOGEventTypeArgPaperContentArchive,
 
-    /// (paper) Created Paper doc/folder
-    DBTEAMLOGEventTypeArgPaperContentCreate,
+  /// (paper) Created Paper doc/folder
+  DBTEAMLOGEventTypeArgPaperContentCreate,
 
-    /// (paper) Permanently deleted Paper doc/folder
-    DBTEAMLOGEventTypeArgPaperContentPermanentlyDelete,
+  /// (paper) Permanently deleted Paper doc/folder
+  DBTEAMLOGEventTypeArgPaperContentPermanentlyDelete,
 
-    /// (paper) Removed Paper doc/folder from folder
-    DBTEAMLOGEventTypeArgPaperContentRemoveFromFolder,
+  /// (paper) Removed Paper doc/folder from folder
+  DBTEAMLOGEventTypeArgPaperContentRemoveFromFolder,
 
-    /// (paper) Removed users and/or groups from Paper doc/folder
-    DBTEAMLOGEventTypeArgPaperContentRemoveMember,
+  /// (paper) Removed users and/or groups from Paper doc/folder
+  DBTEAMLOGEventTypeArgPaperContentRemoveMember,
 
-    /// (paper) Renamed Paper doc/folder
-    DBTEAMLOGEventTypeArgPaperContentRename,
+  /// (paper) Renamed Paper doc/folder
+  DBTEAMLOGEventTypeArgPaperContentRename,
 
-    /// (paper) Restored archived Paper doc/folder
-    DBTEAMLOGEventTypeArgPaperContentRestore,
+  /// (paper) Restored archived Paper doc/folder
+  DBTEAMLOGEventTypeArgPaperContentRestore,
 
-    /// (paper) Added Paper doc comment
-    DBTEAMLOGEventTypeArgPaperDocAddComment,
+  /// (paper) Added Paper doc comment
+  DBTEAMLOGEventTypeArgPaperDocAddComment,
 
-    /// (paper) Changed member permissions for Paper doc
-    DBTEAMLOGEventTypeArgPaperDocChangeMemberRole,
+  /// (paper) Changed member permissions for Paper doc
+  DBTEAMLOGEventTypeArgPaperDocChangeMemberRole,
 
-    /// (paper) Changed sharing setting for Paper doc
-    DBTEAMLOGEventTypeArgPaperDocChangeSharingPolicy,
+  /// (paper) Changed sharing setting for Paper doc
+  DBTEAMLOGEventTypeArgPaperDocChangeSharingPolicy,
 
-    /// (paper) Followed/unfollowed Paper doc
-    DBTEAMLOGEventTypeArgPaperDocChangeSubscription,
+  /// (paper) Followed/unfollowed Paper doc
+  DBTEAMLOGEventTypeArgPaperDocChangeSubscription,
 
-    /// (paper) Archived Paper doc (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgPaperDocDeleted,
+  /// (paper) Archived Paper doc (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgPaperDocDeleted,
 
-    /// (paper) Deleted Paper doc comment
-    DBTEAMLOGEventTypeArgPaperDocDeleteComment,
+  /// (paper) Deleted Paper doc comment
+  DBTEAMLOGEventTypeArgPaperDocDeleteComment,
 
-    /// (paper) Downloaded Paper doc in specific format
-    DBTEAMLOGEventTypeArgPaperDocDownload,
+  /// (paper) Downloaded Paper doc in specific format
+  DBTEAMLOGEventTypeArgPaperDocDownload,
 
-    /// (paper) Edited Paper doc
-    DBTEAMLOGEventTypeArgPaperDocEdit,
+  /// (paper) Edited Paper doc
+  DBTEAMLOGEventTypeArgPaperDocEdit,
 
-    /// (paper) Edited Paper doc comment
-    DBTEAMLOGEventTypeArgPaperDocEditComment,
+  /// (paper) Edited Paper doc comment
+  DBTEAMLOGEventTypeArgPaperDocEditComment,
 
-    /// (paper) Followed Paper doc (deprecated, replaced by 'Followed/unfollowed
-    /// Paper doc')
-    DBTEAMLOGEventTypeArgPaperDocFollowed,
+  /// (paper) Followed Paper doc (deprecated, replaced by 'Followed/unfollowed
+  /// Paper doc')
+  DBTEAMLOGEventTypeArgPaperDocFollowed,
 
-    /// (paper) Mentioned user in Paper doc
-    DBTEAMLOGEventTypeArgPaperDocMention,
+  /// (paper) Mentioned user in Paper doc
+  DBTEAMLOGEventTypeArgPaperDocMention,
 
-    /// (paper) Transferred ownership of Paper doc
-    DBTEAMLOGEventTypeArgPaperDocOwnershipChanged,
+  /// (paper) Transferred ownership of Paper doc
+  DBTEAMLOGEventTypeArgPaperDocOwnershipChanged,
 
-    /// (paper) Requested access to Paper doc
-    DBTEAMLOGEventTypeArgPaperDocRequestAccess,
+  /// (paper) Requested access to Paper doc
+  DBTEAMLOGEventTypeArgPaperDocRequestAccess,
 
-    /// (paper) Resolved Paper doc comment
-    DBTEAMLOGEventTypeArgPaperDocResolveComment,
+  /// (paper) Resolved Paper doc comment
+  DBTEAMLOGEventTypeArgPaperDocResolveComment,
 
-    /// (paper) Restored Paper doc to previous version
-    DBTEAMLOGEventTypeArgPaperDocRevert,
+  /// (paper) Restored Paper doc to previous version
+  DBTEAMLOGEventTypeArgPaperDocRevert,
 
-    /// (paper) Shared Paper doc via Slack
-    DBTEAMLOGEventTypeArgPaperDocSlackShare,
+  /// (paper) Shared Paper doc via Slack
+  DBTEAMLOGEventTypeArgPaperDocSlackShare,
 
-    /// (paper) Shared Paper doc with users and/or groups (deprecated, no longer
-    /// logged)
-    DBTEAMLOGEventTypeArgPaperDocTeamInvite,
+  /// (paper) Shared Paper doc with users and/or groups (deprecated, no longer
+  /// logged)
+  DBTEAMLOGEventTypeArgPaperDocTeamInvite,
 
-    /// (paper) Deleted Paper doc
-    DBTEAMLOGEventTypeArgPaperDocTrashed,
+  /// (paper) Deleted Paper doc
+  DBTEAMLOGEventTypeArgPaperDocTrashed,
 
-    /// (paper) Unresolved Paper doc comment
-    DBTEAMLOGEventTypeArgPaperDocUnresolveComment,
+  /// (paper) Unresolved Paper doc comment
+  DBTEAMLOGEventTypeArgPaperDocUnresolveComment,
 
-    /// (paper) Restored Paper doc
-    DBTEAMLOGEventTypeArgPaperDocUntrashed,
+  /// (paper) Restored Paper doc
+  DBTEAMLOGEventTypeArgPaperDocUntrashed,
 
-    /// (paper) Viewed Paper doc
-    DBTEAMLOGEventTypeArgPaperDocView,
+  /// (paper) Viewed Paper doc
+  DBTEAMLOGEventTypeArgPaperDocView,
 
-    /// (paper) Changed Paper external sharing setting to anyone (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgPaperExternalViewAllow,
+  /// (paper) Changed Paper external sharing setting to anyone (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgPaperExternalViewAllow,
 
-    /// (paper) Changed Paper external sharing setting to default team
-    /// (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgPaperExternalViewDefaultTeam,
+  /// (paper) Changed Paper external sharing setting to default team
+  /// (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgPaperExternalViewDefaultTeam,
 
-    /// (paper) Changed Paper external sharing setting to team-only (deprecated,
-    /// no longer logged)
-    DBTEAMLOGEventTypeArgPaperExternalViewForbid,
+  /// (paper) Changed Paper external sharing setting to team-only (deprecated,
+  /// no longer logged)
+  DBTEAMLOGEventTypeArgPaperExternalViewForbid,
 
-    /// (paper) Followed/unfollowed Paper folder
-    DBTEAMLOGEventTypeArgPaperFolderChangeSubscription,
+  /// (paper) Followed/unfollowed Paper folder
+  DBTEAMLOGEventTypeArgPaperFolderChangeSubscription,
 
-    /// (paper) Archived Paper folder (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgPaperFolderDeleted,
+  /// (paper) Archived Paper folder (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgPaperFolderDeleted,
 
-    /// (paper) Followed Paper folder (deprecated, replaced by
-    /// 'Followed/unfollowed Paper folder')
-    DBTEAMLOGEventTypeArgPaperFolderFollowed,
+  /// (paper) Followed Paper folder (deprecated, replaced by
+  /// 'Followed/unfollowed Paper folder')
+  DBTEAMLOGEventTypeArgPaperFolderFollowed,
 
-    /// (paper) Shared Paper folder with users and/or groups (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgPaperFolderTeamInvite,
+  /// (paper) Shared Paper folder with users and/or groups (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgPaperFolderTeamInvite,
 
-    /// (paper) Changed permissions for published doc
-    DBTEAMLOGEventTypeArgPaperPublishedLinkChangePermission,
+  /// (paper) Changed permissions for published doc
+  DBTEAMLOGEventTypeArgPaperPublishedLinkChangePermission,
 
-    /// (paper) Published doc
-    DBTEAMLOGEventTypeArgPaperPublishedLinkCreate,
+  /// (paper) Published doc
+  DBTEAMLOGEventTypeArgPaperPublishedLinkCreate,
 
-    /// (paper) Unpublished doc
-    DBTEAMLOGEventTypeArgPaperPublishedLinkDisabled,
+  /// (paper) Unpublished doc
+  DBTEAMLOGEventTypeArgPaperPublishedLinkDisabled,
 
-    /// (paper) Viewed published doc
-    DBTEAMLOGEventTypeArgPaperPublishedLinkView,
+  /// (paper) Viewed published doc
+  DBTEAMLOGEventTypeArgPaperPublishedLinkView,
 
-    /// (passwords) Changed password
-    DBTEAMLOGEventTypeArgPasswordChange,
+  /// (passwords) Changed password
+  DBTEAMLOGEventTypeArgPasswordChange,
 
-    /// (passwords) Reset password
-    DBTEAMLOGEventTypeArgPasswordReset,
+  /// (passwords) Reset password
+  DBTEAMLOGEventTypeArgPasswordReset,
 
-    /// (passwords) Reset all team member passwords
-    DBTEAMLOGEventTypeArgPasswordResetAll,
+  /// (passwords) Reset all team member passwords
+  DBTEAMLOGEventTypeArgPasswordResetAll,
 
-    /// (reports) Created Classification report
-    DBTEAMLOGEventTypeArgClassificationCreateReport,
+  /// (reports) Created Classification report
+  DBTEAMLOGEventTypeArgClassificationCreateReport,
 
-    /// (reports) Couldn't create Classification report
-    DBTEAMLOGEventTypeArgClassificationCreateReportFail,
+  /// (reports) Couldn't create Classification report
+  DBTEAMLOGEventTypeArgClassificationCreateReportFail,
 
-    /// (reports) Created EMM-excluded users report
-    DBTEAMLOGEventTypeArgEmmCreateExceptionsReport,
+  /// (reports) Created EMM-excluded users report
+  DBTEAMLOGEventTypeArgEmmCreateExceptionsReport,
 
-    /// (reports) Created EMM mobile app usage report
-    DBTEAMLOGEventTypeArgEmmCreateUsageReport,
+  /// (reports) Created EMM mobile app usage report
+  DBTEAMLOGEventTypeArgEmmCreateUsageReport,
 
-    /// (reports) Created member data report
-    DBTEAMLOGEventTypeArgExportMembersReport,
+  /// (reports) Created member data report
+  DBTEAMLOGEventTypeArgExportMembersReport,
 
-    /// (reports) Failed to create members data report
-    DBTEAMLOGEventTypeArgExportMembersReportFail,
+  /// (reports) Failed to create members data report
+  DBTEAMLOGEventTypeArgExportMembersReportFail,
 
-    /// (reports) Created External sharing report
-    DBTEAMLOGEventTypeArgExternalSharingCreateReport,
+  /// (reports) Created External sharing report
+  DBTEAMLOGEventTypeArgExternalSharingCreateReport,
 
-    /// (reports) Couldn't create External sharing report
-    DBTEAMLOGEventTypeArgExternalSharingReportFailed,
+  /// (reports) Couldn't create External sharing report
+  DBTEAMLOGEventTypeArgExternalSharingReportFailed,
 
-    /// (reports) Report created: Links created with no expiration
-    DBTEAMLOGEventTypeArgNoExpirationLinkGenCreateReport,
+  /// (reports) Report created: Links created with no expiration
+  DBTEAMLOGEventTypeArgNoExpirationLinkGenCreateReport,
 
-    /// (reports) Couldn't create report: Links created with no expiration
-    DBTEAMLOGEventTypeArgNoExpirationLinkGenReportFailed,
+  /// (reports) Couldn't create report: Links created with no expiration
+  DBTEAMLOGEventTypeArgNoExpirationLinkGenReportFailed,
 
-    /// (reports) Report created: Links created without passwords
-    DBTEAMLOGEventTypeArgNoPasswordLinkGenCreateReport,
+  /// (reports) Report created: Links created without passwords
+  DBTEAMLOGEventTypeArgNoPasswordLinkGenCreateReport,
 
-    /// (reports) Couldn't create report: Links created without passwords
-    DBTEAMLOGEventTypeArgNoPasswordLinkGenReportFailed,
+  /// (reports) Couldn't create report: Links created without passwords
+  DBTEAMLOGEventTypeArgNoPasswordLinkGenReportFailed,
 
-    /// (reports) Report created: Views of links without passwords
-    DBTEAMLOGEventTypeArgNoPasswordLinkViewCreateReport,
+  /// (reports) Report created: Views of links without passwords
+  DBTEAMLOGEventTypeArgNoPasswordLinkViewCreateReport,
 
-    /// (reports) Couldn't create report: Views of links without passwords
-    DBTEAMLOGEventTypeArgNoPasswordLinkViewReportFailed,
+  /// (reports) Couldn't create report: Views of links without passwords
+  DBTEAMLOGEventTypeArgNoPasswordLinkViewReportFailed,
 
-    /// (reports) Report created: Views of old links
-    DBTEAMLOGEventTypeArgOutdatedLinkViewCreateReport,
+  /// (reports) Report created: Views of old links
+  DBTEAMLOGEventTypeArgOutdatedLinkViewCreateReport,
 
-    /// (reports) Couldn't create report: Views of old links
-    DBTEAMLOGEventTypeArgOutdatedLinkViewReportFailed,
+  /// (reports) Couldn't create report: Views of old links
+  DBTEAMLOGEventTypeArgOutdatedLinkViewReportFailed,
 
-    /// (reports) Exported all team Paper docs
-    DBTEAMLOGEventTypeArgPaperAdminExportStart,
+  /// (reports) Exported all team Paper docs
+  DBTEAMLOGEventTypeArgPaperAdminExportStart,
 
-    /// (reports) Created ransomware report
-    DBTEAMLOGEventTypeArgRansomwareAlertCreateReport,
+  /// (reports) Created ransomware report
+  DBTEAMLOGEventTypeArgRansomwareAlertCreateReport,
 
-    /// (reports) Couldn't generate ransomware report
-    DBTEAMLOGEventTypeArgRansomwareAlertCreateReportFailed,
+  /// (reports) Couldn't generate ransomware report
+  DBTEAMLOGEventTypeArgRansomwareAlertCreateReportFailed,
 
-    /// (reports) Created Smart Sync non-admin devices report
-    DBTEAMLOGEventTypeArgSmartSyncCreateAdminPrivilegeReport,
+  /// (reports) Created Smart Sync non-admin devices report
+  DBTEAMLOGEventTypeArgSmartSyncCreateAdminPrivilegeReport,
 
-    /// (reports) Created team activity report
-    DBTEAMLOGEventTypeArgTeamActivityCreateReport,
+  /// (reports) Created team activity report
+  DBTEAMLOGEventTypeArgTeamActivityCreateReport,
 
-    /// (reports) Couldn't generate team activity report
-    DBTEAMLOGEventTypeArgTeamActivityCreateReportFail,
+  /// (reports) Couldn't generate team activity report
+  DBTEAMLOGEventTypeArgTeamActivityCreateReportFail,
 
-    /// (sharing) Shared album
-    DBTEAMLOGEventTypeArgCollectionShare,
+  /// (sharing) Shared album
+  DBTEAMLOGEventTypeArgCollectionShare,
 
-    /// (sharing) Transfer files added
-    DBTEAMLOGEventTypeArgFileTransfersFileAdd,
+  /// (sharing) Transfer files added
+  DBTEAMLOGEventTypeArgFileTransfersFileAdd,
 
-    /// (sharing) Deleted transfer
-    DBTEAMLOGEventTypeArgFileTransfersTransferDelete,
+  /// (sharing) Deleted transfer
+  DBTEAMLOGEventTypeArgFileTransfersTransferDelete,
 
-    /// (sharing) Transfer downloaded
-    DBTEAMLOGEventTypeArgFileTransfersTransferDownload,
+  /// (sharing) Transfer downloaded
+  DBTEAMLOGEventTypeArgFileTransfersTransferDownload,
 
-    /// (sharing) Sent transfer
-    DBTEAMLOGEventTypeArgFileTransfersTransferSend,
+  /// (sharing) Sent transfer
+  DBTEAMLOGEventTypeArgFileTransfersTransferSend,
 
-    /// (sharing) Viewed transfer
-    DBTEAMLOGEventTypeArgFileTransfersTransferView,
+  /// (sharing) Viewed transfer
+  DBTEAMLOGEventTypeArgFileTransfersTransferView,
 
-    /// (sharing) Changed Paper doc to invite-only (deprecated, no longer
-    /// logged)
-    DBTEAMLOGEventTypeArgNoteAclInviteOnly,
+  /// (sharing) Changed Paper doc to invite-only (deprecated, no longer
+  /// logged)
+  DBTEAMLOGEventTypeArgNoteAclInviteOnly,
 
-    /// (sharing) Changed Paper doc to link-accessible (deprecated, no longer
-    /// logged)
-    DBTEAMLOGEventTypeArgNoteAclLink,
+  /// (sharing) Changed Paper doc to link-accessible (deprecated, no longer
+  /// logged)
+  DBTEAMLOGEventTypeArgNoteAclLink,
 
-    /// (sharing) Changed Paper doc to link-accessible for team (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgNoteAclTeamLink,
+  /// (sharing) Changed Paper doc to link-accessible for team (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgNoteAclTeamLink,
 
-    /// (sharing) Shared Paper doc (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgNoteShared,
+  /// (sharing) Shared Paper doc (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgNoteShared,
 
-    /// (sharing) Shared received Paper doc (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgNoteShareReceive,
+  /// (sharing) Shared received Paper doc (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgNoteShareReceive,
 
-    /// (sharing) Opened shared Paper doc (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgOpenNoteShared,
+  /// (sharing) Opened shared Paper doc (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgOpenNoteShared,
 
-    /// (sharing) Created shared link in Replay
-    DBTEAMLOGEventTypeArgReplayFileSharedLinkCreated,
+  /// (sharing) Created shared link in Replay
+  DBTEAMLOGEventTypeArgReplayFileSharedLinkCreated,
 
-    /// (sharing) Modified shared link in Replay
-    DBTEAMLOGEventTypeArgReplayFileSharedLinkModified,
+  /// (sharing) Modified shared link in Replay
+  DBTEAMLOGEventTypeArgReplayFileSharedLinkModified,
 
-    /// (sharing) Added member to Replay Project
-    DBTEAMLOGEventTypeArgReplayProjectTeamAdd,
+  /// (sharing) Added member to Replay Project
+  DBTEAMLOGEventTypeArgReplayProjectTeamAdd,
 
-    /// (sharing) Removed member from Replay Project
-    DBTEAMLOGEventTypeArgReplayProjectTeamDelete,
+  /// (sharing) Removed member from Replay Project
+  DBTEAMLOGEventTypeArgReplayProjectTeamDelete,
 
-    /// (sharing) Added team to shared folder (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSfAddGroup,
+  /// (sharing) Added team to shared folder (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSfAddGroup,
 
-    /// (sharing) Allowed non-collaborators to view links to files in shared
-    /// folder (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSfAllowNonMembersToViewSharedLinks,
+  /// (sharing) Allowed non-collaborators to view links to files in shared
+  /// folder (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSfAllowNonMembersToViewSharedLinks,
 
-    /// (sharing) Set team members to see warning before sharing folders outside
-    /// team (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSfExternalInviteWarn,
+  /// (sharing) Set team members to see warning before sharing folders outside
+  /// team (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSfExternalInviteWarn,
 
-    /// (sharing) Invited Facebook users to shared folder (deprecated, no longer
-    /// logged)
-    DBTEAMLOGEventTypeArgSfFbInvite,
+  /// (sharing) Invited Facebook users to shared folder (deprecated, no longer
+  /// logged)
+  DBTEAMLOGEventTypeArgSfFbInvite,
 
-    /// (sharing) Changed Facebook user's role in shared folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSfFbInviteChangeRole,
+  /// (sharing) Changed Facebook user's role in shared folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSfFbInviteChangeRole,
 
-    /// (sharing) Uninvited Facebook user from shared folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSfFbUninvite,
+  /// (sharing) Uninvited Facebook user from shared folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSfFbUninvite,
 
-    /// (sharing) Invited group to shared folder (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSfInviteGroup,
+  /// (sharing) Invited group to shared folder (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSfInviteGroup,
 
-    /// (sharing) Granted access to shared folder (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSfTeamGrantAccess,
+  /// (sharing) Granted access to shared folder (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSfTeamGrantAccess,
 
-    /// (sharing) Invited team members to shared folder (deprecated, replaced by
-    /// 'Invited user to Dropbox and added them to shared file/folder')
-    DBTEAMLOGEventTypeArgSfTeamInvite,
+  /// (sharing) Invited team members to shared folder (deprecated, replaced by
+  /// 'Invited user to Dropbox and added them to shared file/folder')
+  DBTEAMLOGEventTypeArgSfTeamInvite,
 
-    /// (sharing) Changed team member's role in shared folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSfTeamInviteChangeRole,
+  /// (sharing) Changed team member's role in shared folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSfTeamInviteChangeRole,
 
-    /// (sharing) Joined team member's shared folder (deprecated, no longer
-    /// logged)
-    DBTEAMLOGEventTypeArgSfTeamJoin,
+  /// (sharing) Joined team member's shared folder (deprecated, no longer
+  /// logged)
+  DBTEAMLOGEventTypeArgSfTeamJoin,
 
-    /// (sharing) Joined team member's shared folder from link (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSfTeamJoinFromOobLink,
+  /// (sharing) Joined team member's shared folder from link (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSfTeamJoinFromOobLink,
 
-    /// (sharing) Unshared folder with team member (deprecated, replaced by
-    /// 'Removed invitee from shared file/folder before invite was accepted')
-    DBTEAMLOGEventTypeArgSfTeamUninvite,
+  /// (sharing) Unshared folder with team member (deprecated, replaced by
+  /// 'Removed invitee from shared file/folder before invite was accepted')
+  DBTEAMLOGEventTypeArgSfTeamUninvite,
 
-    /// (sharing) Invited user to Dropbox and added them to shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentAddInvitees,
+  /// (sharing) Invited user to Dropbox and added them to shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentAddInvitees,
 
-    /// (sharing) Added expiration date to link for shared file/folder
-    /// (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSharedContentAddLinkExpiry,
+  /// (sharing) Added expiration date to link for shared file/folder
+  /// (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSharedContentAddLinkExpiry,
 
-    /// (sharing) Added password to link for shared file/folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSharedContentAddLinkPassword,
+  /// (sharing) Added password to link for shared file/folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSharedContentAddLinkPassword,
 
-    /// (sharing) Added users and/or groups to shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentAddMember,
+  /// (sharing) Added users and/or groups to shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentAddMember,
 
-    /// (sharing) Changed whether members can download shared file/folder
-    /// (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSharedContentChangeDownloadsPolicy,
+  /// (sharing) Changed whether members can download shared file/folder
+  /// (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSharedContentChangeDownloadsPolicy,
 
-    /// (sharing) Changed access type of invitee to shared file/folder before
-    /// invite was accepted
-    DBTEAMLOGEventTypeArgSharedContentChangeInviteeRole,
+  /// (sharing) Changed access type of invitee to shared file/folder before
+  /// invite was accepted
+  DBTEAMLOGEventTypeArgSharedContentChangeInviteeRole,
 
-    /// (sharing) Changed link audience of shared file/folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSharedContentChangeLinkAudience,
+  /// (sharing) Changed link audience of shared file/folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSharedContentChangeLinkAudience,
 
-    /// (sharing) Changed link expiration of shared file/folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSharedContentChangeLinkExpiry,
+  /// (sharing) Changed link expiration of shared file/folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSharedContentChangeLinkExpiry,
 
-    /// (sharing) Changed link password of shared file/folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSharedContentChangeLinkPassword,
+  /// (sharing) Changed link password of shared file/folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSharedContentChangeLinkPassword,
 
-    /// (sharing) Changed access type of shared file/folder member
-    DBTEAMLOGEventTypeArgSharedContentChangeMemberRole,
+  /// (sharing) Changed access type of shared file/folder member
+  DBTEAMLOGEventTypeArgSharedContentChangeMemberRole,
 
-    /// (sharing) Changed whether members can see who viewed shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentChangeViewerInfoPolicy,
+  /// (sharing) Changed whether members can see who viewed shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentChangeViewerInfoPolicy,
 
-    /// (sharing) Acquired membership of shared file/folder by accepting invite
-    DBTEAMLOGEventTypeArgSharedContentClaimInvitation,
+  /// (sharing) Acquired membership of shared file/folder by accepting invite
+  DBTEAMLOGEventTypeArgSharedContentClaimInvitation,
 
-    /// (sharing) Copied shared file/folder to own Dropbox
-    DBTEAMLOGEventTypeArgSharedContentCopy,
+  /// (sharing) Copied shared file/folder to own Dropbox
+  DBTEAMLOGEventTypeArgSharedContentCopy,
 
-    /// (sharing) Downloaded shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentDownload,
+  /// (sharing) Downloaded shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentDownload,
 
-    /// (sharing) Left shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentRelinquishMembership,
+  /// (sharing) Left shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentRelinquishMembership,
 
-    /// (sharing) Removed invitee from shared file/folder before invite was
-    /// accepted
-    DBTEAMLOGEventTypeArgSharedContentRemoveInvitees,
+  /// (sharing) Removed invitee from shared file/folder before invite was
+  /// accepted
+  DBTEAMLOGEventTypeArgSharedContentRemoveInvitees,
 
-    /// (sharing) Removed link expiration date of shared file/folder
-    /// (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSharedContentRemoveLinkExpiry,
+  /// (sharing) Removed link expiration date of shared file/folder
+  /// (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSharedContentRemoveLinkExpiry,
 
-    /// (sharing) Removed link password of shared file/folder (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgSharedContentRemoveLinkPassword,
+  /// (sharing) Removed link password of shared file/folder (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgSharedContentRemoveLinkPassword,
 
-    /// (sharing) Removed user/group from shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentRemoveMember,
+  /// (sharing) Removed user/group from shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentRemoveMember,
 
-    /// (sharing) Requested access to shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentRequestAccess,
+  /// (sharing) Requested access to shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentRequestAccess,
 
-    /// (sharing) Restored shared file/folder invitees
-    DBTEAMLOGEventTypeArgSharedContentRestoreInvitees,
+  /// (sharing) Restored shared file/folder invitees
+  DBTEAMLOGEventTypeArgSharedContentRestoreInvitees,
 
-    /// (sharing) Restored users and/or groups to membership of shared
-    /// file/folder
-    DBTEAMLOGEventTypeArgSharedContentRestoreMember,
+  /// (sharing) Restored users and/or groups to membership of shared
+  /// file/folder
+  DBTEAMLOGEventTypeArgSharedContentRestoreMember,
 
-    /// (sharing) Unshared file/folder by clearing membership
-    DBTEAMLOGEventTypeArgSharedContentUnshare,
+  /// (sharing) Unshared file/folder by clearing membership
+  DBTEAMLOGEventTypeArgSharedContentUnshare,
 
-    /// (sharing) Previewed shared file/folder
-    DBTEAMLOGEventTypeArgSharedContentView,
+  /// (sharing) Previewed shared file/folder
+  DBTEAMLOGEventTypeArgSharedContentView,
 
-    /// (sharing) Changed who can access shared folder via link
-    DBTEAMLOGEventTypeArgSharedFolderChangeLinkPolicy,
+  /// (sharing) Changed who can access shared folder via link
+  DBTEAMLOGEventTypeArgSharedFolderChangeLinkPolicy,
 
-    /// (sharing) Changed whether shared folder inherits members from parent
-    /// folder
-    DBTEAMLOGEventTypeArgSharedFolderChangeMembersInheritancePolicy,
+  /// (sharing) Changed whether shared folder inherits members from parent
+  /// folder
+  DBTEAMLOGEventTypeArgSharedFolderChangeMembersInheritancePolicy,
 
-    /// (sharing) Changed who can add/remove members of shared folder
-    DBTEAMLOGEventTypeArgSharedFolderChangeMembersManagementPolicy,
+  /// (sharing) Changed who can add/remove members of shared folder
+  DBTEAMLOGEventTypeArgSharedFolderChangeMembersManagementPolicy,
 
-    /// (sharing) Changed who can become member of shared folder
-    DBTEAMLOGEventTypeArgSharedFolderChangeMembersPolicy,
+  /// (sharing) Changed who can become member of shared folder
+  DBTEAMLOGEventTypeArgSharedFolderChangeMembersPolicy,
 
-    /// (sharing) Created shared folder
-    DBTEAMLOGEventTypeArgSharedFolderCreate,
+  /// (sharing) Created shared folder
+  DBTEAMLOGEventTypeArgSharedFolderCreate,
 
-    /// (sharing) Declined team member's invite to shared folder
-    DBTEAMLOGEventTypeArgSharedFolderDeclineInvitation,
+  /// (sharing) Declined team member's invite to shared folder
+  DBTEAMLOGEventTypeArgSharedFolderDeclineInvitation,
 
-    /// (sharing) Added shared folder to own Dropbox
-    DBTEAMLOGEventTypeArgSharedFolderMount,
+  /// (sharing) Added shared folder to own Dropbox
+  DBTEAMLOGEventTypeArgSharedFolderMount,
 
-    /// (sharing) Changed parent of shared folder
-    DBTEAMLOGEventTypeArgSharedFolderNest,
+  /// (sharing) Changed parent of shared folder
+  DBTEAMLOGEventTypeArgSharedFolderNest,
 
-    /// (sharing) Transferred ownership of shared folder to another member
-    DBTEAMLOGEventTypeArgSharedFolderTransferOwnership,
+  /// (sharing) Transferred ownership of shared folder to another member
+  DBTEAMLOGEventTypeArgSharedFolderTransferOwnership,
 
-    /// (sharing) Deleted shared folder from Dropbox
-    DBTEAMLOGEventTypeArgSharedFolderUnmount,
+  /// (sharing) Deleted shared folder from Dropbox
+  DBTEAMLOGEventTypeArgSharedFolderUnmount,
 
-    /// (sharing) Added shared link expiration date
-    DBTEAMLOGEventTypeArgSharedLinkAddExpiry,
+  /// (sharing) Added shared link expiration date
+  DBTEAMLOGEventTypeArgSharedLinkAddExpiry,
 
-    /// (sharing) Changed shared link expiration date
-    DBTEAMLOGEventTypeArgSharedLinkChangeExpiry,
+  /// (sharing) Changed shared link expiration date
+  DBTEAMLOGEventTypeArgSharedLinkChangeExpiry,
 
-    /// (sharing) Changed visibility of shared link
-    DBTEAMLOGEventTypeArgSharedLinkChangeVisibility,
+  /// (sharing) Changed visibility of shared link
+  DBTEAMLOGEventTypeArgSharedLinkChangeVisibility,
 
-    /// (sharing) Added file/folder to Dropbox from shared link
-    DBTEAMLOGEventTypeArgSharedLinkCopy,
+  /// (sharing) Added file/folder to Dropbox from shared link
+  DBTEAMLOGEventTypeArgSharedLinkCopy,
 
-    /// (sharing) Created shared link
-    DBTEAMLOGEventTypeArgSharedLinkCreate,
+  /// (sharing) Created shared link
+  DBTEAMLOGEventTypeArgSharedLinkCreate,
 
-    /// (sharing) Removed shared link
-    DBTEAMLOGEventTypeArgSharedLinkDisable,
+  /// (sharing) Removed shared link
+  DBTEAMLOGEventTypeArgSharedLinkDisable,
 
-    /// (sharing) Downloaded file/folder from shared link
-    DBTEAMLOGEventTypeArgSharedLinkDownload,
+  /// (sharing) Downloaded file/folder from shared link
+  DBTEAMLOGEventTypeArgSharedLinkDownload,
 
-    /// (sharing) Removed shared link expiration date
-    DBTEAMLOGEventTypeArgSharedLinkRemoveExpiry,
+  /// (sharing) Removed shared link expiration date
+  DBTEAMLOGEventTypeArgSharedLinkRemoveExpiry,
 
-    /// (sharing) Added an expiration date to the shared link
-    DBTEAMLOGEventTypeArgSharedLinkSettingsAddExpiration,
+  /// (sharing) Added an expiration date to the shared link
+  DBTEAMLOGEventTypeArgSharedLinkSettingsAddExpiration,
 
-    /// (sharing) Added a password to the shared link
-    DBTEAMLOGEventTypeArgSharedLinkSettingsAddPassword,
+  /// (sharing) Added a password to the shared link
+  DBTEAMLOGEventTypeArgSharedLinkSettingsAddPassword,
 
-    /// (sharing) Disabled downloads
-    DBTEAMLOGEventTypeArgSharedLinkSettingsAllowDownloadDisabled,
+  /// (sharing) Disabled downloads
+  DBTEAMLOGEventTypeArgSharedLinkSettingsAllowDownloadDisabled,
 
-    /// (sharing) Enabled downloads
-    DBTEAMLOGEventTypeArgSharedLinkSettingsAllowDownloadEnabled,
+  /// (sharing) Enabled downloads
+  DBTEAMLOGEventTypeArgSharedLinkSettingsAllowDownloadEnabled,
 
-    /// (sharing) Changed the audience of the shared link
-    DBTEAMLOGEventTypeArgSharedLinkSettingsChangeAudience,
+  /// (sharing) Changed the audience of the shared link
+  DBTEAMLOGEventTypeArgSharedLinkSettingsChangeAudience,
 
-    /// (sharing) Changed the expiration date of the shared link
-    DBTEAMLOGEventTypeArgSharedLinkSettingsChangeExpiration,
+  /// (sharing) Changed the expiration date of the shared link
+  DBTEAMLOGEventTypeArgSharedLinkSettingsChangeExpiration,
 
-    /// (sharing) Changed the password of the shared link
-    DBTEAMLOGEventTypeArgSharedLinkSettingsChangePassword,
+  /// (sharing) Changed the password of the shared link
+  DBTEAMLOGEventTypeArgSharedLinkSettingsChangePassword,
 
-    /// (sharing) Removed the expiration date from the shared link
-    DBTEAMLOGEventTypeArgSharedLinkSettingsRemoveExpiration,
+  /// (sharing) Removed the expiration date from the shared link
+  DBTEAMLOGEventTypeArgSharedLinkSettingsRemoveExpiration,
 
-    /// (sharing) Removed the password from the shared link
-    DBTEAMLOGEventTypeArgSharedLinkSettingsRemovePassword,
+  /// (sharing) Removed the password from the shared link
+  DBTEAMLOGEventTypeArgSharedLinkSettingsRemovePassword,
 
-    /// (sharing) Added members as audience of shared link
-    DBTEAMLOGEventTypeArgSharedLinkShare,
+  /// (sharing) Added members as audience of shared link
+  DBTEAMLOGEventTypeArgSharedLinkShare,
 
-    /// (sharing) Opened shared link
-    DBTEAMLOGEventTypeArgSharedLinkView,
+  /// (sharing) Opened shared link
+  DBTEAMLOGEventTypeArgSharedLinkView,
 
-    /// (sharing) Opened shared Paper doc (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgSharedNoteOpened,
+  /// (sharing) Opened shared Paper doc (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgSharedNoteOpened,
 
-    /// (sharing) Disabled downloads for link (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgShmodelDisableDownloads,
+  /// (sharing) Disabled downloads for link (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgShmodelDisableDownloads,
 
-    /// (sharing) Enabled downloads for link (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgShmodelEnableDownloads,
+  /// (sharing) Enabled downloads for link (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgShmodelEnableDownloads,
 
-    /// (sharing) Shared link with group (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgShmodelGroupShare,
+  /// (sharing) Shared link with group (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgShmodelGroupShare,
 
-    /// (showcase) Granted access to showcase
-    DBTEAMLOGEventTypeArgShowcaseAccessGranted,
+  /// (showcase) Granted access to showcase
+  DBTEAMLOGEventTypeArgShowcaseAccessGranted,
 
-    /// (showcase) Added member to showcase
-    DBTEAMLOGEventTypeArgShowcaseAddMember,
+  /// (showcase) Added member to showcase
+  DBTEAMLOGEventTypeArgShowcaseAddMember,
 
-    /// (showcase) Archived showcase
-    DBTEAMLOGEventTypeArgShowcaseArchived,
+  /// (showcase) Archived showcase
+  DBTEAMLOGEventTypeArgShowcaseArchived,
 
-    /// (showcase) Created showcase
-    DBTEAMLOGEventTypeArgShowcaseCreated,
+  /// (showcase) Created showcase
+  DBTEAMLOGEventTypeArgShowcaseCreated,
 
-    /// (showcase) Deleted showcase comment
-    DBTEAMLOGEventTypeArgShowcaseDeleteComment,
+  /// (showcase) Deleted showcase comment
+  DBTEAMLOGEventTypeArgShowcaseDeleteComment,
 
-    /// (showcase) Edited showcase
-    DBTEAMLOGEventTypeArgShowcaseEdited,
+  /// (showcase) Edited showcase
+  DBTEAMLOGEventTypeArgShowcaseEdited,
 
-    /// (showcase) Edited showcase comment
-    DBTEAMLOGEventTypeArgShowcaseEditComment,
+  /// (showcase) Edited showcase comment
+  DBTEAMLOGEventTypeArgShowcaseEditComment,
 
-    /// (showcase) Added file to showcase
-    DBTEAMLOGEventTypeArgShowcaseFileAdded,
+  /// (showcase) Added file to showcase
+  DBTEAMLOGEventTypeArgShowcaseFileAdded,
 
-    /// (showcase) Downloaded file from showcase
-    DBTEAMLOGEventTypeArgShowcaseFileDownload,
+  /// (showcase) Downloaded file from showcase
+  DBTEAMLOGEventTypeArgShowcaseFileDownload,
 
-    /// (showcase) Removed file from showcase
-    DBTEAMLOGEventTypeArgShowcaseFileRemoved,
+  /// (showcase) Removed file from showcase
+  DBTEAMLOGEventTypeArgShowcaseFileRemoved,
 
-    /// (showcase) Viewed file in showcase
-    DBTEAMLOGEventTypeArgShowcaseFileView,
+  /// (showcase) Viewed file in showcase
+  DBTEAMLOGEventTypeArgShowcaseFileView,
 
-    /// (showcase) Permanently deleted showcase
-    DBTEAMLOGEventTypeArgShowcasePermanentlyDeleted,
+  /// (showcase) Permanently deleted showcase
+  DBTEAMLOGEventTypeArgShowcasePermanentlyDeleted,
 
-    /// (showcase) Added showcase comment
-    DBTEAMLOGEventTypeArgShowcasePostComment,
+  /// (showcase) Added showcase comment
+  DBTEAMLOGEventTypeArgShowcasePostComment,
 
-    /// (showcase) Removed member from showcase
-    DBTEAMLOGEventTypeArgShowcaseRemoveMember,
+  /// (showcase) Removed member from showcase
+  DBTEAMLOGEventTypeArgShowcaseRemoveMember,
 
-    /// (showcase) Renamed showcase
-    DBTEAMLOGEventTypeArgShowcaseRenamed,
+  /// (showcase) Renamed showcase
+  DBTEAMLOGEventTypeArgShowcaseRenamed,
 
-    /// (showcase) Requested access to showcase
-    DBTEAMLOGEventTypeArgShowcaseRequestAccess,
+  /// (showcase) Requested access to showcase
+  DBTEAMLOGEventTypeArgShowcaseRequestAccess,
 
-    /// (showcase) Resolved showcase comment
-    DBTEAMLOGEventTypeArgShowcaseResolveComment,
+  /// (showcase) Resolved showcase comment
+  DBTEAMLOGEventTypeArgShowcaseResolveComment,
 
-    /// (showcase) Unarchived showcase
-    DBTEAMLOGEventTypeArgShowcaseRestored,
+  /// (showcase) Unarchived showcase
+  DBTEAMLOGEventTypeArgShowcaseRestored,
 
-    /// (showcase) Deleted showcase
-    DBTEAMLOGEventTypeArgShowcaseTrashed,
+  /// (showcase) Deleted showcase
+  DBTEAMLOGEventTypeArgShowcaseTrashed,
 
-    /// (showcase) Deleted showcase (old version) (deprecated, replaced by
-    /// 'Deleted showcase')
-    DBTEAMLOGEventTypeArgShowcaseTrashedDeprecated,
+  /// (showcase) Deleted showcase (old version) (deprecated, replaced by
+  /// 'Deleted showcase')
+  DBTEAMLOGEventTypeArgShowcaseTrashedDeprecated,
 
-    /// (showcase) Unresolved showcase comment
-    DBTEAMLOGEventTypeArgShowcaseUnresolveComment,
+  /// (showcase) Unresolved showcase comment
+  DBTEAMLOGEventTypeArgShowcaseUnresolveComment,
 
-    /// (showcase) Restored showcase
-    DBTEAMLOGEventTypeArgShowcaseUntrashed,
+  /// (showcase) Restored showcase
+  DBTEAMLOGEventTypeArgShowcaseUntrashed,
 
-    /// (showcase) Restored showcase (old version) (deprecated, replaced by
-    /// 'Restored showcase')
-    DBTEAMLOGEventTypeArgShowcaseUntrashedDeprecated,
+  /// (showcase) Restored showcase (old version) (deprecated, replaced by
+  /// 'Restored showcase')
+  DBTEAMLOGEventTypeArgShowcaseUntrashedDeprecated,
 
-    /// (showcase) Viewed showcase
-    DBTEAMLOGEventTypeArgShowcaseView,
+  /// (showcase) Viewed showcase
+  DBTEAMLOGEventTypeArgShowcaseView,
 
-    /// (sso) Added X.509 certificate for SSO
-    DBTEAMLOGEventTypeArgSsoAddCert,
+  /// (sso) Added X.509 certificate for SSO
+  DBTEAMLOGEventTypeArgSsoAddCert,
 
-    /// (sso) Added sign-in URL for SSO
-    DBTEAMLOGEventTypeArgSsoAddLoginUrl,
+  /// (sso) Added sign-in URL for SSO
+  DBTEAMLOGEventTypeArgSsoAddLoginUrl,
 
-    /// (sso) Added sign-out URL for SSO
-    DBTEAMLOGEventTypeArgSsoAddLogoutUrl,
+  /// (sso) Added sign-out URL for SSO
+  DBTEAMLOGEventTypeArgSsoAddLogoutUrl,
 
-    /// (sso) Changed X.509 certificate for SSO
-    DBTEAMLOGEventTypeArgSsoChangeCert,
+  /// (sso) Changed X.509 certificate for SSO
+  DBTEAMLOGEventTypeArgSsoChangeCert,
 
-    /// (sso) Changed sign-in URL for SSO
-    DBTEAMLOGEventTypeArgSsoChangeLoginUrl,
+  /// (sso) Changed sign-in URL for SSO
+  DBTEAMLOGEventTypeArgSsoChangeLoginUrl,
 
-    /// (sso) Changed sign-out URL for SSO
-    DBTEAMLOGEventTypeArgSsoChangeLogoutUrl,
+  /// (sso) Changed sign-out URL for SSO
+  DBTEAMLOGEventTypeArgSsoChangeLogoutUrl,
 
-    /// (sso) Changed SAML identity mode for SSO
-    DBTEAMLOGEventTypeArgSsoChangeSamlIdentityMode,
+  /// (sso) Changed SAML identity mode for SSO
+  DBTEAMLOGEventTypeArgSsoChangeSamlIdentityMode,
 
-    /// (sso) Removed X.509 certificate for SSO
-    DBTEAMLOGEventTypeArgSsoRemoveCert,
+  /// (sso) Removed X.509 certificate for SSO
+  DBTEAMLOGEventTypeArgSsoRemoveCert,
 
-    /// (sso) Removed sign-in URL for SSO
-    DBTEAMLOGEventTypeArgSsoRemoveLoginUrl,
+  /// (sso) Removed sign-in URL for SSO
+  DBTEAMLOGEventTypeArgSsoRemoveLoginUrl,
 
-    /// (sso) Removed sign-out URL for SSO
-    DBTEAMLOGEventTypeArgSsoRemoveLogoutUrl,
+  /// (sso) Removed sign-out URL for SSO
+  DBTEAMLOGEventTypeArgSsoRemoveLogoutUrl,
 
-    /// (team_folders) Changed archival status of team folder
-    DBTEAMLOGEventTypeArgTeamFolderChangeStatus,
+  /// (team_folders) Changed archival status of team folder
+  DBTEAMLOGEventTypeArgTeamFolderChangeStatus,
 
-    /// (team_folders) Created team folder in active status
-    DBTEAMLOGEventTypeArgTeamFolderCreate,
+  /// (team_folders) Created team folder in active status
+  DBTEAMLOGEventTypeArgTeamFolderCreate,
 
-    /// (team_folders) Downgraded team folder to regular shared folder
-    DBTEAMLOGEventTypeArgTeamFolderDowngrade,
+  /// (team_folders) Downgraded team folder to regular shared folder
+  DBTEAMLOGEventTypeArgTeamFolderDowngrade,
 
-    /// (team_folders) Permanently deleted archived team folder
-    DBTEAMLOGEventTypeArgTeamFolderPermanentlyDelete,
+  /// (team_folders) Permanently deleted archived team folder
+  DBTEAMLOGEventTypeArgTeamFolderPermanentlyDelete,
 
-    /// (team_folders) Renamed active/archived team folder
-    DBTEAMLOGEventTypeArgTeamFolderRename,
+  /// (team_folders) Renamed active/archived team folder
+  DBTEAMLOGEventTypeArgTeamFolderRename,
 
-    /// (team_folders) Changed sync default
-    DBTEAMLOGEventTypeArgTeamSelectiveSyncSettingsChanged,
+  /// (team_folders) Changed sync default
+  DBTEAMLOGEventTypeArgTeamSelectiveSyncSettingsChanged,
 
-    /// (team_policies) Changed account capture setting on team domain
-    DBTEAMLOGEventTypeArgAccountCaptureChangePolicy,
+  /// (team_policies) Changed account capture setting on team domain
+  DBTEAMLOGEventTypeArgAccountCaptureChangePolicy,
 
-    /// (team_policies) Changed admin reminder settings for requests to join the
-    /// team
-    DBTEAMLOGEventTypeArgAdminEmailRemindersChanged,
+  /// (team_policies) Changed admin reminder settings for requests to join the
+  /// team
+  DBTEAMLOGEventTypeArgAdminEmailRemindersChanged,
 
-    /// (team_policies) Disabled downloads (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgAllowDownloadDisabled,
+  /// (team_policies) Disabled downloads (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgAllowDownloadDisabled,
 
-    /// (team_policies) Enabled downloads (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgAllowDownloadEnabled,
+  /// (team_policies) Enabled downloads (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgAllowDownloadEnabled,
 
-    /// (team_policies) Changed app permissions
-    DBTEAMLOGEventTypeArgAppPermissionsChanged,
+  /// (team_policies) Changed app permissions
+  DBTEAMLOGEventTypeArgAppPermissionsChanged,
 
-    /// (team_policies) Changed camera uploads setting for team
-    DBTEAMLOGEventTypeArgCameraUploadsPolicyChanged,
+  /// (team_policies) Changed camera uploads setting for team
+  DBTEAMLOGEventTypeArgCameraUploadsPolicyChanged,
 
-    /// (team_policies) Changed Capture transcription policy for team
-    DBTEAMLOGEventTypeArgCaptureTranscriptPolicyChanged,
+  /// (team_policies) Changed Capture transcription policy for team
+  DBTEAMLOGEventTypeArgCaptureTranscriptPolicyChanged,
 
-    /// (team_policies) Changed classification policy for team
-    DBTEAMLOGEventTypeArgClassificationChangePolicy,
+  /// (team_policies) Changed classification policy for team
+  DBTEAMLOGEventTypeArgClassificationChangePolicy,
 
-    /// (team_policies) Changed computer backup policy for team
-    DBTEAMLOGEventTypeArgComputerBackupPolicyChanged,
+  /// (team_policies) Changed computer backup policy for team
+  DBTEAMLOGEventTypeArgComputerBackupPolicyChanged,
 
-    /// (team_policies) Changed content management setting
-    DBTEAMLOGEventTypeArgContentAdministrationPolicyChanged,
+  /// (team_policies) Changed content management setting
+  DBTEAMLOGEventTypeArgContentAdministrationPolicyChanged,
 
-    /// (team_policies) Set restrictions on data center locations where team
-    /// data resides
-    DBTEAMLOGEventTypeArgDataPlacementRestrictionChangePolicy,
+  /// (team_policies) Set restrictions on data center locations where team
+  /// data resides
+  DBTEAMLOGEventTypeArgDataPlacementRestrictionChangePolicy,
 
-    /// (team_policies) Completed restrictions on data center locations where
-    /// team data resides
-    DBTEAMLOGEventTypeArgDataPlacementRestrictionSatisfyPolicy,
+  /// (team_policies) Completed restrictions on data center locations where
+  /// team data resides
+  DBTEAMLOGEventTypeArgDataPlacementRestrictionSatisfyPolicy,
 
-    /// (team_policies) Added members to device approvals exception list
-    DBTEAMLOGEventTypeArgDeviceApprovalsAddException,
+  /// (team_policies) Added members to device approvals exception list
+  DBTEAMLOGEventTypeArgDeviceApprovalsAddException,
 
-    /// (team_policies) Set/removed limit on number of computers member can link
-    /// to team Dropbox account
-    DBTEAMLOGEventTypeArgDeviceApprovalsChangeDesktopPolicy,
+  /// (team_policies) Set/removed limit on number of computers member can link
+  /// to team Dropbox account
+  DBTEAMLOGEventTypeArgDeviceApprovalsChangeDesktopPolicy,
 
-    /// (team_policies) Set/removed limit on number of mobile devices member can
-    /// link to team Dropbox account
-    DBTEAMLOGEventTypeArgDeviceApprovalsChangeMobilePolicy,
+  /// (team_policies) Set/removed limit on number of mobile devices member can
+  /// link to team Dropbox account
+  DBTEAMLOGEventTypeArgDeviceApprovalsChangeMobilePolicy,
 
-    /// (team_policies) Changed device approvals setting when member is over
-    /// limit
-    DBTEAMLOGEventTypeArgDeviceApprovalsChangeOverageAction,
+  /// (team_policies) Changed device approvals setting when member is over
+  /// limit
+  DBTEAMLOGEventTypeArgDeviceApprovalsChangeOverageAction,
 
-    /// (team_policies) Changed device approvals setting when member unlinks
-    /// approved device
-    DBTEAMLOGEventTypeArgDeviceApprovalsChangeUnlinkAction,
+  /// (team_policies) Changed device approvals setting when member unlinks
+  /// approved device
+  DBTEAMLOGEventTypeArgDeviceApprovalsChangeUnlinkAction,
 
-    /// (team_policies) Removed members from device approvals exception list
-    DBTEAMLOGEventTypeArgDeviceApprovalsRemoveException,
+  /// (team_policies) Removed members from device approvals exception list
+  DBTEAMLOGEventTypeArgDeviceApprovalsRemoveException,
 
-    /// (team_policies) Added members to directory restrictions list
-    DBTEAMLOGEventTypeArgDirectoryRestrictionsAddMembers,
+  /// (team_policies) Added members to directory restrictions list
+  DBTEAMLOGEventTypeArgDirectoryRestrictionsAddMembers,
 
-    /// (team_policies) Removed members from directory restrictions list
-    DBTEAMLOGEventTypeArgDirectoryRestrictionsRemoveMembers,
+  /// (team_policies) Removed members from directory restrictions list
+  DBTEAMLOGEventTypeArgDirectoryRestrictionsRemoveMembers,
 
-    /// (team_policies) Changed Dropbox Passwords policy for team
-    DBTEAMLOGEventTypeArgDropboxPasswordsPolicyChanged,
+  /// (team_policies) Changed Dropbox Passwords policy for team
+  DBTEAMLOGEventTypeArgDropboxPasswordsPolicyChanged,
 
-    /// (team_policies) Changed email to Dropbox policy for team
-    DBTEAMLOGEventTypeArgEmailIngestPolicyChanged,
+  /// (team_policies) Changed email to Dropbox policy for team
+  DBTEAMLOGEventTypeArgEmailIngestPolicyChanged,
 
-    /// (team_policies) Added members to EMM exception list
-    DBTEAMLOGEventTypeArgEmmAddException,
+  /// (team_policies) Added members to EMM exception list
+  DBTEAMLOGEventTypeArgEmmAddException,
 
-    /// (team_policies) Enabled/disabled enterprise mobility management for
-    /// members
-    DBTEAMLOGEventTypeArgEmmChangePolicy,
+  /// (team_policies) Enabled/disabled enterprise mobility management for
+  /// members
+  DBTEAMLOGEventTypeArgEmmChangePolicy,
 
-    /// (team_policies) Removed members from EMM exception list
-    DBTEAMLOGEventTypeArgEmmRemoveException,
+  /// (team_policies) Removed members from EMM exception list
+  DBTEAMLOGEventTypeArgEmmRemoveException,
 
-    /// (team_policies) Accepted/opted out of extended version history
-    DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy,
+  /// (team_policies) Accepted/opted out of extended version history
+  DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy,
 
-    /// (team_policies) Changed external drive backup policy for team
-    DBTEAMLOGEventTypeArgExternalDriveBackupPolicyChanged,
+  /// (team_policies) Changed external drive backup policy for team
+  DBTEAMLOGEventTypeArgExternalDriveBackupPolicyChanged,
 
-    /// (team_policies) Enabled/disabled commenting on team files
-    DBTEAMLOGEventTypeArgFileCommentsChangePolicy,
+  /// (team_policies) Enabled/disabled commenting on team files
+  DBTEAMLOGEventTypeArgFileCommentsChangePolicy,
 
-    /// (team_policies) Changed file locking policy for team
-    DBTEAMLOGEventTypeArgFileLockingPolicyChanged,
+  /// (team_policies) Changed file locking policy for team
+  DBTEAMLOGEventTypeArgFileLockingPolicyChanged,
 
-    /// (team_policies) Changed File Provider Migration policy for team
-    DBTEAMLOGEventTypeArgFileProviderMigrationPolicyChanged,
+  /// (team_policies) Changed File Provider Migration policy for team
+  DBTEAMLOGEventTypeArgFileProviderMigrationPolicyChanged,
 
-    /// (team_policies) Enabled/disabled file requests
-    DBTEAMLOGEventTypeArgFileRequestsChangePolicy,
+  /// (team_policies) Enabled/disabled file requests
+  DBTEAMLOGEventTypeArgFileRequestsChangePolicy,
 
-    /// (team_policies) Enabled file request emails for everyone (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgFileRequestsEmailsEnabled,
+  /// (team_policies) Enabled file request emails for everyone (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgFileRequestsEmailsEnabled,
 
-    /// (team_policies) Enabled file request emails for team (deprecated, no
-    /// longer logged)
-    DBTEAMLOGEventTypeArgFileRequestsEmailsRestrictedToTeamOnly,
+  /// (team_policies) Enabled file request emails for team (deprecated, no
+  /// longer logged)
+  DBTEAMLOGEventTypeArgFileRequestsEmailsRestrictedToTeamOnly,
 
-    /// (team_policies) Changed file transfers policy for team
-    DBTEAMLOGEventTypeArgFileTransfersPolicyChanged,
+  /// (team_policies) Changed file transfers policy for team
+  DBTEAMLOGEventTypeArgFileTransfersPolicyChanged,
 
-    /// (team_policies) Changed folder link restrictions policy for team
-    DBTEAMLOGEventTypeArgFolderLinkRestrictionPolicyChanged,
+  /// (team_policies) Changed folder link restrictions policy for team
+  DBTEAMLOGEventTypeArgFolderLinkRestrictionPolicyChanged,
 
-    /// (team_policies) Enabled/disabled Google single sign-on for team
-    DBTEAMLOGEventTypeArgGoogleSsoChangePolicy,
+  /// (team_policies) Enabled/disabled Google single sign-on for team
+  DBTEAMLOGEventTypeArgGoogleSsoChangePolicy,
 
-    /// (team_policies) Changed who can create groups
-    DBTEAMLOGEventTypeArgGroupUserManagementChangePolicy,
+  /// (team_policies) Changed who can create groups
+  DBTEAMLOGEventTypeArgGroupUserManagementChangePolicy,
 
-    /// (team_policies) Changed integration policy for team
-    DBTEAMLOGEventTypeArgIntegrationPolicyChanged,
+  /// (team_policies) Changed integration policy for team
+  DBTEAMLOGEventTypeArgIntegrationPolicyChanged,
 
-    /// (team_policies) Changed invite accept email policy for team
-    DBTEAMLOGEventTypeArgInviteAcceptanceEmailPolicyChanged,
+  /// (team_policies) Changed invite accept email policy for team
+  DBTEAMLOGEventTypeArgInviteAcceptanceEmailPolicyChanged,
 
-    /// (team_policies) Changed whether users can find team when not invited
-    DBTEAMLOGEventTypeArgMemberRequestsChangePolicy,
+  /// (team_policies) Changed whether users can find team when not invited
+  DBTEAMLOGEventTypeArgMemberRequestsChangePolicy,
 
-    /// (team_policies) Changed member send invite policy for team
-    DBTEAMLOGEventTypeArgMemberSendInvitePolicyChanged,
+  /// (team_policies) Changed member send invite policy for team
+  DBTEAMLOGEventTypeArgMemberSendInvitePolicyChanged,
 
-    /// (team_policies) Added members to member space limit exception list
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsAddException,
+  /// (team_policies) Added members to member space limit exception list
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsAddException,
 
-    /// (team_policies) Changed member space limit type for team
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsChangeCapsTypePolicy,
+  /// (team_policies) Changed member space limit type for team
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsChangeCapsTypePolicy,
 
-    /// (team_policies) Changed team default member space limit
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsChangePolicy,
+  /// (team_policies) Changed team default member space limit
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsChangePolicy,
 
-    /// (team_policies) Removed members from member space limit exception list
-    DBTEAMLOGEventTypeArgMemberSpaceLimitsRemoveException,
+  /// (team_policies) Removed members from member space limit exception list
+  DBTEAMLOGEventTypeArgMemberSpaceLimitsRemoveException,
 
-    /// (team_policies) Enabled/disabled option for team members to suggest
-    /// people to add to team
-    DBTEAMLOGEventTypeArgMemberSuggestionsChangePolicy,
+  /// (team_policies) Enabled/disabled option for team members to suggest
+  /// people to add to team
+  DBTEAMLOGEventTypeArgMemberSuggestionsChangePolicy,
 
-    /// (team_policies) Enabled/disabled Microsoft Office add-in
-    DBTEAMLOGEventTypeArgMicrosoftOfficeAddinChangePolicy,
+  /// (team_policies) Enabled/disabled Microsoft Office add-in
+  DBTEAMLOGEventTypeArgMicrosoftOfficeAddinChangePolicy,
 
-    /// (team_policies) Enabled/disabled network control
-    DBTEAMLOGEventTypeArgNetworkControlChangePolicy,
+  /// (team_policies) Enabled/disabled network control
+  DBTEAMLOGEventTypeArgNetworkControlChangePolicy,
 
-    /// (team_policies) Changed whether Dropbox Paper, when enabled, is deployed
-    /// to all members or to specific members
-    DBTEAMLOGEventTypeArgPaperChangeDeploymentPolicy,
+  /// (team_policies) Changed whether Dropbox Paper, when enabled, is deployed
+  /// to all members or to specific members
+  DBTEAMLOGEventTypeArgPaperChangeDeploymentPolicy,
 
-    /// (team_policies) Changed whether non-members can view Paper docs with
-    /// link (deprecated, no longer logged)
-    DBTEAMLOGEventTypeArgPaperChangeMemberLinkPolicy,
+  /// (team_policies) Changed whether non-members can view Paper docs with
+  /// link (deprecated, no longer logged)
+  DBTEAMLOGEventTypeArgPaperChangeMemberLinkPolicy,
 
-    /// (team_policies) Changed whether members can share Paper docs outside
-    /// team, and if docs are accessible only by team members or anyone by
-    /// default
-    DBTEAMLOGEventTypeArgPaperChangeMemberPolicy,
+  /// (team_policies) Changed whether members can share Paper docs outside
+  /// team, and if docs are accessible only by team members or anyone by
+  /// default
+  DBTEAMLOGEventTypeArgPaperChangeMemberPolicy,
 
-    /// (team_policies) Enabled/disabled Dropbox Paper for team
-    DBTEAMLOGEventTypeArgPaperChangePolicy,
+  /// (team_policies) Enabled/disabled Dropbox Paper for team
+  DBTEAMLOGEventTypeArgPaperChangePolicy,
 
-    /// (team_policies) Changed Paper Default Folder Policy setting for team
-    DBTEAMLOGEventTypeArgPaperDefaultFolderPolicyChanged,
+  /// (team_policies) Changed Paper Default Folder Policy setting for team
+  DBTEAMLOGEventTypeArgPaperDefaultFolderPolicyChanged,
 
-    /// (team_policies) Enabled/disabled Paper Desktop for team
-    DBTEAMLOGEventTypeArgPaperDesktopPolicyChanged,
+  /// (team_policies) Enabled/disabled Paper Desktop for team
+  DBTEAMLOGEventTypeArgPaperDesktopPolicyChanged,
 
-    /// (team_policies) Added users to Paper-enabled users list
-    DBTEAMLOGEventTypeArgPaperEnabledUsersGroupAddition,
+  /// (team_policies) Added users to Paper-enabled users list
+  DBTEAMLOGEventTypeArgPaperEnabledUsersGroupAddition,
 
-    /// (team_policies) Removed users from Paper-enabled users list
-    DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval,
+  /// (team_policies) Removed users from Paper-enabled users list
+  DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval,
 
-    /// (team_policies) Changed team password strength requirements
-    DBTEAMLOGEventTypeArgPasswordStrengthRequirementsChangePolicy,
+  /// (team_policies) Changed team password strength requirements
+  DBTEAMLOGEventTypeArgPasswordStrengthRequirementsChangePolicy,
 
-    /// (team_policies) Enabled/disabled ability of team members to permanently
-    /// delete content
-    DBTEAMLOGEventTypeArgPermanentDeleteChangePolicy,
+  /// (team_policies) Enabled/disabled ability of team members to permanently
+  /// delete content
+  DBTEAMLOGEventTypeArgPermanentDeleteChangePolicy,
 
-    /// (team_policies) Enabled/disabled reseller support
-    DBTEAMLOGEventTypeArgResellerSupportChangePolicy,
+  /// (team_policies) Enabled/disabled reseller support
+  DBTEAMLOGEventTypeArgResellerSupportChangePolicy,
 
-    /// (team_policies) Changed Rewind policy for team
-    DBTEAMLOGEventTypeArgRewindPolicyChanged,
+  /// (team_policies) Changed Rewind policy for team
+  DBTEAMLOGEventTypeArgRewindPolicyChanged,
 
-    /// (team_policies) Changed send for signature policy for team
-    DBTEAMLOGEventTypeArgSendForSignaturePolicyChanged,
+  /// (team_policies) Changed send for signature policy for team
+  DBTEAMLOGEventTypeArgSendForSignaturePolicyChanged,
 
-    /// (team_policies) Changed whether team members can join shared folders
-    /// owned outside team
-    DBTEAMLOGEventTypeArgSharingChangeFolderJoinPolicy,
+  /// (team_policies) Changed whether team members can join shared folders
+  /// owned outside team
+  DBTEAMLOGEventTypeArgSharingChangeFolderJoinPolicy,
 
-    /// (team_policies) Changed the allow remove or change expiration policy for
-    /// the links shared outside of the team
-    DBTEAMLOGEventTypeArgSharingChangeLinkAllowChangeExpirationPolicy,
+  /// (team_policies) Changed the allow remove or change expiration policy for
+  /// the links shared outside of the team
+  DBTEAMLOGEventTypeArgSharingChangeLinkAllowChangeExpirationPolicy,
 
-    /// (team_policies) Changed the default expiration for the links shared
-    /// outside of the team
-    DBTEAMLOGEventTypeArgSharingChangeLinkDefaultExpirationPolicy,
+  /// (team_policies) Changed the default expiration for the links shared
+  /// outside of the team
+  DBTEAMLOGEventTypeArgSharingChangeLinkDefaultExpirationPolicy,
 
-    /// (team_policies) Changed the password requirement for the links shared
-    /// outside of the team
-    DBTEAMLOGEventTypeArgSharingChangeLinkEnforcePasswordPolicy,
+  /// (team_policies) Changed the password requirement for the links shared
+  /// outside of the team
+  DBTEAMLOGEventTypeArgSharingChangeLinkEnforcePasswordPolicy,
 
-    /// (team_policies) Changed whether members can share links outside team,
-    /// and if links are accessible only by team members or anyone by default
-    DBTEAMLOGEventTypeArgSharingChangeLinkPolicy,
+  /// (team_policies) Changed whether members can share links outside team,
+  /// and if links are accessible only by team members or anyone by default
+  DBTEAMLOGEventTypeArgSharingChangeLinkPolicy,
 
-    /// (team_policies) Changed whether members can share files/folders outside
-    /// team
-    DBTEAMLOGEventTypeArgSharingChangeMemberPolicy,
+  /// (team_policies) Changed whether members can share files/folders outside
+  /// team
+  DBTEAMLOGEventTypeArgSharingChangeMemberPolicy,
 
-    /// (team_policies) Enabled/disabled downloading files from Dropbox Showcase
-    /// for team
-    DBTEAMLOGEventTypeArgShowcaseChangeDownloadPolicy,
+  /// (team_policies) Enabled/disabled downloading files from Dropbox Showcase
+  /// for team
+  DBTEAMLOGEventTypeArgShowcaseChangeDownloadPolicy,
 
-    /// (team_policies) Enabled/disabled Dropbox Showcase for team
-    DBTEAMLOGEventTypeArgShowcaseChangeEnabledPolicy,
+  /// (team_policies) Enabled/disabled Dropbox Showcase for team
+  DBTEAMLOGEventTypeArgShowcaseChangeEnabledPolicy,
 
-    /// (team_policies) Enabled/disabled sharing Dropbox Showcase externally for
-    /// team
-    DBTEAMLOGEventTypeArgShowcaseChangeExternalSharingPolicy,
+  /// (team_policies) Enabled/disabled sharing Dropbox Showcase externally for
+  /// team
+  DBTEAMLOGEventTypeArgShowcaseChangeExternalSharingPolicy,
 
-    /// (team_policies) Changed automatic Smart Sync setting for team
-    DBTEAMLOGEventTypeArgSmarterSmartSyncPolicyChanged,
+  /// (team_policies) Changed automatic Smart Sync setting for team
+  DBTEAMLOGEventTypeArgSmarterSmartSyncPolicyChanged,
 
-    /// (team_policies) Changed default Smart Sync setting for team members
-    DBTEAMLOGEventTypeArgSmartSyncChangePolicy,
+  /// (team_policies) Changed default Smart Sync setting for team members
+  DBTEAMLOGEventTypeArgSmartSyncChangePolicy,
 
-    /// (team_policies) Opted team into Smart Sync
-    DBTEAMLOGEventTypeArgSmartSyncNotOptOut,
+  /// (team_policies) Opted team into Smart Sync
+  DBTEAMLOGEventTypeArgSmartSyncNotOptOut,
 
-    /// (team_policies) Opted team out of Smart Sync
-    DBTEAMLOGEventTypeArgSmartSyncOptOut,
+  /// (team_policies) Opted team out of Smart Sync
+  DBTEAMLOGEventTypeArgSmartSyncOptOut,
 
-    /// (team_policies) Changed single sign-on setting for team
-    DBTEAMLOGEventTypeArgSsoChangePolicy,
+  /// (team_policies) Changed single sign-on setting for team
+  DBTEAMLOGEventTypeArgSsoChangePolicy,
 
-    /// (team_policies) Changed team branding policy for team
-    DBTEAMLOGEventTypeArgTeamBrandingPolicyChanged,
+  /// (team_policies) Changed team branding policy for team
+  DBTEAMLOGEventTypeArgTeamBrandingPolicyChanged,
 
-    /// (team_policies) Changed App Integrations setting for team
-    DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged,
+  /// (team_policies) Changed App Integrations setting for team
+  DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged,
 
-    /// (team_policies) Enabled/disabled Team Selective Sync for team
-    DBTEAMLOGEventTypeArgTeamSelectiveSyncPolicyChanged,
+  /// (team_policies) Enabled/disabled Team Selective Sync for team
+  DBTEAMLOGEventTypeArgTeamSelectiveSyncPolicyChanged,
 
-    /// (team_policies) Edited the approved list for sharing externally
-    DBTEAMLOGEventTypeArgTeamSharingWhitelistSubjectsChanged,
+  /// (team_policies) Edited the approved list for sharing externally
+  DBTEAMLOGEventTypeArgTeamSharingWhitelistSubjectsChanged,
 
-    /// (team_policies) Added members to two factor authentication exception
-    /// list
-    DBTEAMLOGEventTypeArgTfaAddException,
+  /// (team_policies) Added members to two factor authentication exception
+  /// list
+  DBTEAMLOGEventTypeArgTfaAddException,
 
-    /// (team_policies) Changed two-step verification setting for team
-    DBTEAMLOGEventTypeArgTfaChangePolicy,
+  /// (team_policies) Changed two-step verification setting for team
+  DBTEAMLOGEventTypeArgTfaChangePolicy,
 
-    /// (team_policies) Removed members from two factor authentication exception
-    /// list
-    DBTEAMLOGEventTypeArgTfaRemoveException,
+  /// (team_policies) Removed members from two factor authentication exception
+  /// list
+  DBTEAMLOGEventTypeArgTfaRemoveException,
 
-    /// (team_policies) Enabled/disabled option for members to link personal
-    /// Dropbox account and team account to same computer
-    DBTEAMLOGEventTypeArgTwoAccountChangePolicy,
+  /// (team_policies) Enabled/disabled option for members to link personal
+  /// Dropbox account and team account to same computer
+  DBTEAMLOGEventTypeArgTwoAccountChangePolicy,
 
-    /// (team_policies) Changed team policy for viewer info
-    DBTEAMLOGEventTypeArgViewerInfoPolicyChanged,
+  /// (team_policies) Changed team policy for viewer info
+  DBTEAMLOGEventTypeArgViewerInfoPolicyChanged,
 
-    /// (team_policies) Changed watermarking policy for team
-    DBTEAMLOGEventTypeArgWatermarkingPolicyChanged,
+  /// (team_policies) Changed watermarking policy for team
+  DBTEAMLOGEventTypeArgWatermarkingPolicyChanged,
 
-    /// (team_policies) Changed limit on active sessions per member
-    DBTEAMLOGEventTypeArgWebSessionsChangeActiveSessionLimit,
+  /// (team_policies) Changed limit on active sessions per member
+  DBTEAMLOGEventTypeArgWebSessionsChangeActiveSessionLimit,
 
-    /// (team_policies) Changed how long members can stay signed in to
-    /// Dropbox.com
-    DBTEAMLOGEventTypeArgWebSessionsChangeFixedLengthPolicy,
+  /// (team_policies) Changed how long members can stay signed in to
+  /// Dropbox.com
+  DBTEAMLOGEventTypeArgWebSessionsChangeFixedLengthPolicy,
 
-    /// (team_policies) Changed how long team members can be idle while signed
-    /// in to Dropbox.com
-    DBTEAMLOGEventTypeArgWebSessionsChangeIdleLengthPolicy,
+  /// (team_policies) Changed how long team members can be idle while signed
+  /// in to Dropbox.com
+  DBTEAMLOGEventTypeArgWebSessionsChangeIdleLengthPolicy,
 
-    /// (team_profile) Requested data residency migration for team data
-    DBTEAMLOGEventTypeArgDataResidencyMigrationRequestSuccessful,
+  /// (team_profile) Requested data residency migration for team data
+  DBTEAMLOGEventTypeArgDataResidencyMigrationRequestSuccessful,
 
-    /// (team_profile) Request for data residency migration for team data has
-    /// failed
-    DBTEAMLOGEventTypeArgDataResidencyMigrationRequestUnsuccessful,
+  /// (team_profile) Request for data residency migration for team data has
+  /// failed
+  DBTEAMLOGEventTypeArgDataResidencyMigrationRequestUnsuccessful,
 
-    /// (team_profile) Merged another team into this team
-    DBTEAMLOGEventTypeArgTeamMergeFrom,
+  /// (team_profile) Merged another team into this team
+  DBTEAMLOGEventTypeArgTeamMergeFrom,
 
-    /// (team_profile) Merged this team into another team
-    DBTEAMLOGEventTypeArgTeamMergeTo,
+  /// (team_profile) Merged this team into another team
+  DBTEAMLOGEventTypeArgTeamMergeTo,
 
-    /// (team_profile) Added team background to display on shared link headers
-    DBTEAMLOGEventTypeArgTeamProfileAddBackground,
+  /// (team_profile) Added team background to display on shared link headers
+  DBTEAMLOGEventTypeArgTeamProfileAddBackground,
 
-    /// (team_profile) Added team logo to display on shared link headers
-    DBTEAMLOGEventTypeArgTeamProfileAddLogo,
+  /// (team_profile) Added team logo to display on shared link headers
+  DBTEAMLOGEventTypeArgTeamProfileAddLogo,
 
-    /// (team_profile) Changed team background displayed on shared link headers
-    DBTEAMLOGEventTypeArgTeamProfileChangeBackground,
+  /// (team_profile) Changed team background displayed on shared link headers
+  DBTEAMLOGEventTypeArgTeamProfileChangeBackground,
 
-    /// (team_profile) Changed default language for team
-    DBTEAMLOGEventTypeArgTeamProfileChangeDefaultLanguage,
+  /// (team_profile) Changed default language for team
+  DBTEAMLOGEventTypeArgTeamProfileChangeDefaultLanguage,
 
-    /// (team_profile) Changed team logo displayed on shared link headers
-    DBTEAMLOGEventTypeArgTeamProfileChangeLogo,
+  /// (team_profile) Changed team logo displayed on shared link headers
+  DBTEAMLOGEventTypeArgTeamProfileChangeLogo,
 
-    /// (team_profile) Changed team name
-    DBTEAMLOGEventTypeArgTeamProfileChangeName,
+  /// (team_profile) Changed team name
+  DBTEAMLOGEventTypeArgTeamProfileChangeName,
 
-    /// (team_profile) Removed team background displayed on shared link headers
-    DBTEAMLOGEventTypeArgTeamProfileRemoveBackground,
+  /// (team_profile) Removed team background displayed on shared link headers
+  DBTEAMLOGEventTypeArgTeamProfileRemoveBackground,
 
-    /// (team_profile) Removed team logo displayed on shared link headers
-    DBTEAMLOGEventTypeArgTeamProfileRemoveLogo,
+  /// (team_profile) Removed team logo displayed on shared link headers
+  DBTEAMLOGEventTypeArgTeamProfileRemoveLogo,
 
-    /// (tfa) Added backup phone for two-step verification
-    DBTEAMLOGEventTypeArgTfaAddBackupPhone,
+  /// (tfa) Added backup phone for two-step verification
+  DBTEAMLOGEventTypeArgTfaAddBackupPhone,
 
-    /// (tfa) Added security key for two-step verification
-    DBTEAMLOGEventTypeArgTfaAddSecurityKey,
+  /// (tfa) Added security key for two-step verification
+  DBTEAMLOGEventTypeArgTfaAddSecurityKey,
 
-    /// (tfa) Changed backup phone for two-step verification
-    DBTEAMLOGEventTypeArgTfaChangeBackupPhone,
+  /// (tfa) Changed backup phone for two-step verification
+  DBTEAMLOGEventTypeArgTfaChangeBackupPhone,
 
-    /// (tfa) Enabled/disabled/changed two-step verification setting
-    DBTEAMLOGEventTypeArgTfaChangeStatus,
+  /// (tfa) Enabled/disabled/changed two-step verification setting
+  DBTEAMLOGEventTypeArgTfaChangeStatus,
 
-    /// (tfa) Removed backup phone for two-step verification
-    DBTEAMLOGEventTypeArgTfaRemoveBackupPhone,
+  /// (tfa) Removed backup phone for two-step verification
+  DBTEAMLOGEventTypeArgTfaRemoveBackupPhone,
 
-    /// (tfa) Removed security key for two-step verification
-    DBTEAMLOGEventTypeArgTfaRemoveSecurityKey,
+  /// (tfa) Removed security key for two-step verification
+  DBTEAMLOGEventTypeArgTfaRemoveSecurityKey,
 
-    /// (tfa) Reset two-step verification for team member
-    DBTEAMLOGEventTypeArgTfaReset,
+  /// (tfa) Reset two-step verification for team member
+  DBTEAMLOGEventTypeArgTfaReset,
 
-    /// (trusted_teams) Changed enterprise admin role
-    DBTEAMLOGEventTypeArgChangedEnterpriseAdminRole,
+  /// (trusted_teams) Changed enterprise admin role
+  DBTEAMLOGEventTypeArgChangedEnterpriseAdminRole,
 
-    /// (trusted_teams) Changed enterprise-connected team status
-    DBTEAMLOGEventTypeArgChangedEnterpriseConnectedTeamStatus,
+  /// (trusted_teams) Changed enterprise-connected team status
+  DBTEAMLOGEventTypeArgChangedEnterpriseConnectedTeamStatus,
 
-    /// (trusted_teams) Ended enterprise admin session
-    DBTEAMLOGEventTypeArgEndedEnterpriseAdminSession,
+  /// (trusted_teams) Ended enterprise admin session
+  DBTEAMLOGEventTypeArgEndedEnterpriseAdminSession,
 
-    /// (trusted_teams) Ended enterprise admin session (deprecated, replaced by
-    /// 'Ended enterprise admin session')
-    DBTEAMLOGEventTypeArgEndedEnterpriseAdminSessionDeprecated,
+  /// (trusted_teams) Ended enterprise admin session (deprecated, replaced by
+  /// 'Ended enterprise admin session')
+  DBTEAMLOGEventTypeArgEndedEnterpriseAdminSessionDeprecated,
 
-    /// (trusted_teams) Changed who can update a setting
-    DBTEAMLOGEventTypeArgEnterpriseSettingsLocking,
+  /// (trusted_teams) Changed who can update a setting
+  DBTEAMLOGEventTypeArgEnterpriseSettingsLocking,
 
-    /// (trusted_teams) Changed guest team admin status
-    DBTEAMLOGEventTypeArgGuestAdminChangeStatus,
+  /// (trusted_teams) Changed guest team admin status
+  DBTEAMLOGEventTypeArgGuestAdminChangeStatus,
 
-    /// (trusted_teams) Started enterprise admin session
-    DBTEAMLOGEventTypeArgStartedEnterpriseAdminSession,
+  /// (trusted_teams) Started enterprise admin session
+  DBTEAMLOGEventTypeArgStartedEnterpriseAdminSession,
 
-    /// (trusted_teams) Accepted a team merge request
-    DBTEAMLOGEventTypeArgTeamMergeRequestAccepted,
+  /// (trusted_teams) Accepted a team merge request
+  DBTEAMLOGEventTypeArgTeamMergeRequestAccepted,
 
-    /// (trusted_teams) Accepted a team merge request (deprecated, replaced by
-    /// 'Accepted a team merge request')
-    DBTEAMLOGEventTypeArgTeamMergeRequestAcceptedShownToPrimaryTeam,
+  /// (trusted_teams) Accepted a team merge request (deprecated, replaced by
+  /// 'Accepted a team merge request')
+  DBTEAMLOGEventTypeArgTeamMergeRequestAcceptedShownToPrimaryTeam,
 
-    /// (trusted_teams) Accepted a team merge request (deprecated, replaced by
-    /// 'Accepted a team merge request')
-    DBTEAMLOGEventTypeArgTeamMergeRequestAcceptedShownToSecondaryTeam,
+  /// (trusted_teams) Accepted a team merge request (deprecated, replaced by
+  /// 'Accepted a team merge request')
+  DBTEAMLOGEventTypeArgTeamMergeRequestAcceptedShownToSecondaryTeam,
 
-    /// (trusted_teams) Automatically canceled team merge request
-    DBTEAMLOGEventTypeArgTeamMergeRequestAutoCanceled,
+  /// (trusted_teams) Automatically canceled team merge request
+  DBTEAMLOGEventTypeArgTeamMergeRequestAutoCanceled,
 
-    /// (trusted_teams) Canceled a team merge request
-    DBTEAMLOGEventTypeArgTeamMergeRequestCanceled,
+  /// (trusted_teams) Canceled a team merge request
+  DBTEAMLOGEventTypeArgTeamMergeRequestCanceled,
 
-    /// (trusted_teams) Canceled a team merge request (deprecated, replaced by
-    /// 'Canceled a team merge request')
-    DBTEAMLOGEventTypeArgTeamMergeRequestCanceledShownToPrimaryTeam,
+  /// (trusted_teams) Canceled a team merge request (deprecated, replaced by
+  /// 'Canceled a team merge request')
+  DBTEAMLOGEventTypeArgTeamMergeRequestCanceledShownToPrimaryTeam,
 
-    /// (trusted_teams) Canceled a team merge request (deprecated, replaced by
-    /// 'Canceled a team merge request')
-    DBTEAMLOGEventTypeArgTeamMergeRequestCanceledShownToSecondaryTeam,
+  /// (trusted_teams) Canceled a team merge request (deprecated, replaced by
+  /// 'Canceled a team merge request')
+  DBTEAMLOGEventTypeArgTeamMergeRequestCanceledShownToSecondaryTeam,
 
-    /// (trusted_teams) Team merge request expired
-    DBTEAMLOGEventTypeArgTeamMergeRequestExpired,
+  /// (trusted_teams) Team merge request expired
+  DBTEAMLOGEventTypeArgTeamMergeRequestExpired,
 
-    /// (trusted_teams) Team merge request expired (deprecated, replaced by
-    /// 'Team merge request expired')
-    DBTEAMLOGEventTypeArgTeamMergeRequestExpiredShownToPrimaryTeam,
+  /// (trusted_teams) Team merge request expired (deprecated, replaced by
+  /// 'Team merge request expired')
+  DBTEAMLOGEventTypeArgTeamMergeRequestExpiredShownToPrimaryTeam,
 
-    /// (trusted_teams) Team merge request expired (deprecated, replaced by
-    /// 'Team merge request expired')
-    DBTEAMLOGEventTypeArgTeamMergeRequestExpiredShownToSecondaryTeam,
+  /// (trusted_teams) Team merge request expired (deprecated, replaced by
+  /// 'Team merge request expired')
+  DBTEAMLOGEventTypeArgTeamMergeRequestExpiredShownToSecondaryTeam,
 
-    /// (trusted_teams) Rejected a team merge request (deprecated, no longer
-    /// logged)
-    DBTEAMLOGEventTypeArgTeamMergeRequestRejectedShownToPrimaryTeam,
+  /// (trusted_teams) Rejected a team merge request (deprecated, no longer
+  /// logged)
+  DBTEAMLOGEventTypeArgTeamMergeRequestRejectedShownToPrimaryTeam,
 
-    /// (trusted_teams) Rejected a team merge request (deprecated, no longer
-    /// logged)
-    DBTEAMLOGEventTypeArgTeamMergeRequestRejectedShownToSecondaryTeam,
+  /// (trusted_teams) Rejected a team merge request (deprecated, no longer
+  /// logged)
+  DBTEAMLOGEventTypeArgTeamMergeRequestRejectedShownToSecondaryTeam,
 
-    /// (trusted_teams) Sent a team merge request reminder
-    DBTEAMLOGEventTypeArgTeamMergeRequestReminder,
+  /// (trusted_teams) Sent a team merge request reminder
+  DBTEAMLOGEventTypeArgTeamMergeRequestReminder,
 
-    /// (trusted_teams) Sent a team merge request reminder (deprecated, replaced
-    /// by 'Sent a team merge request reminder')
-    DBTEAMLOGEventTypeArgTeamMergeRequestReminderShownToPrimaryTeam,
+  /// (trusted_teams) Sent a team merge request reminder (deprecated, replaced
+  /// by 'Sent a team merge request reminder')
+  DBTEAMLOGEventTypeArgTeamMergeRequestReminderShownToPrimaryTeam,
 
-    /// (trusted_teams) Sent a team merge request reminder (deprecated, replaced
-    /// by 'Sent a team merge request reminder')
-    DBTEAMLOGEventTypeArgTeamMergeRequestReminderShownToSecondaryTeam,
+  /// (trusted_teams) Sent a team merge request reminder (deprecated, replaced
+  /// by 'Sent a team merge request reminder')
+  DBTEAMLOGEventTypeArgTeamMergeRequestReminderShownToSecondaryTeam,
 
-    /// (trusted_teams) Canceled the team merge
-    DBTEAMLOGEventTypeArgTeamMergeRequestRevoked,
+  /// (trusted_teams) Canceled the team merge
+  DBTEAMLOGEventTypeArgTeamMergeRequestRevoked,
 
-    /// (trusted_teams) Requested to merge their Dropbox team into yours
-    DBTEAMLOGEventTypeArgTeamMergeRequestSentShownToPrimaryTeam,
+  /// (trusted_teams) Requested to merge their Dropbox team into yours
+  DBTEAMLOGEventTypeArgTeamMergeRequestSentShownToPrimaryTeam,
 
-    /// (trusted_teams) Requested to merge your team into another Dropbox team
-    DBTEAMLOGEventTypeArgTeamMergeRequestSentShownToSecondaryTeam,
+  /// (trusted_teams) Requested to merge your team into another Dropbox team
+  DBTEAMLOGEventTypeArgTeamMergeRequestSentShownToSecondaryTeam,
 
-    /// (no description).
-    DBTEAMLOGEventTypeArgOther,
+  /// (no description).
+  DBTEAMLOGEventTypeArgOther,
 
 };
 

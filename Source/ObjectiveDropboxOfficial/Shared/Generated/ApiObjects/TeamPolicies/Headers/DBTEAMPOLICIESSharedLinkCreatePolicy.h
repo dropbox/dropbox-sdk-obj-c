@@ -31,26 +31,26 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESSharedLinkCreatePolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMPOLICIESSharedLinkCreatePolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedLinkCreatePolicyTag){
-    /// By default, anyone can access newly created shared links. No login will
-    /// be required to access the shared links unless overridden.
-    DBTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedLinkCreatePolicyTag) {
+  /// By default, anyone can access newly created shared links. No login will
+  /// be required to access the shared links unless overridden.
+  DBTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic,
 
-    /// By default, only members of the same team can access newly created
-    /// shared links. Login will be required to access the shared links unless
-    /// overridden.
-    DBTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly,
+  /// By default, only members of the same team can access newly created
+  /// shared links. Login will be required to access the shared links unless
+  /// overridden.
+  DBTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly,
 
-    /// Only members of the same team can access all shared links. Login will be
-    /// required to access all shared links.
-    DBTEAMPOLICIESSharedLinkCreatePolicyTeamOnly,
+  /// Only members of the same team can access all shared links. Login will be
+  /// required to access all shared links.
+  DBTEAMPOLICIESSharedLinkCreatePolicyTeamOnly,
 
-    /// Only people invited can access newly created links. Login will be
-    /// required to access the shared links unless overridden.
-    DBTEAMPOLICIESSharedLinkCreatePolicyDefaultNoOne,
+  /// Only people invited can access newly created links. Login will be
+  /// required to access the shared links unless overridden.
+  DBTEAMPOLICIESSharedLinkCreatePolicyDefaultNoOne,
 
-    /// (no description).
-    DBTEAMPOLICIESSharedLinkCreatePolicyOther,
+  /// (no description).
+  DBTEAMPOLICIESSharedLinkCreatePolicyOther,
 
 };
 

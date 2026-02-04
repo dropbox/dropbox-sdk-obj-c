@@ -31,15 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBUSERSUserFeatureValueTag` enum type represents the possible tag
 /// states with which the `DBUSERSUserFeatureValue` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag){
-    /// (no description).
-    DBUSERSUserFeatureValuePaperAsFiles,
+typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag) {
+  /// (no description).
+  DBUSERSUserFeatureValuePaperAsFiles,
 
-    /// (no description).
-    DBUSERSUserFeatureValueFileLocking,
+  /// (no description).
+  DBUSERSUserFeatureValueFileLocking,
 
-    /// (no description).
-    DBUSERSUserFeatureValueOther,
+  /// (no description).
+  DBUSERSUserFeatureValueOther,
 
 };
 

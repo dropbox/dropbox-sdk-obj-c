@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGEmailIngestPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGEmailIngestPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEmailIngestPolicyTag){
-    /// (no description).
-    DBTEAMLOGEmailIngestPolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEmailIngestPolicyTag) {
+  /// (no description).
+  DBTEAMLOGEmailIngestPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGEmailIngestPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGEmailIngestPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGEmailIngestPolicyOther,
+  /// (no description).
+  DBTEAMLOGEmailIngestPolicyOther,
 
 };
 

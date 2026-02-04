@@ -182,8 +182,8 @@
 
 - (DBRpcTask *)addFolderMember:(NSString *)sharedFolderId members:(NSArray<DBSHARINGAddMember *> *)members {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGAddFolderMember;
-  DBSHARINGAddFolderMemberArg *arg =
-      [[DBSHARINGAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId members:members];
+  DBSHARINGAddFolderMemberArg *arg = [[DBSHARINGAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId
+                                                                                         members:members];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -227,8 +227,9 @@
                        shortUrl:(NSNumber *)shortUrl
                   pendingUpload:(DBSHARINGPendingUploadMode *)pendingUpload {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGCreateSharedLink;
-  DBSHARINGCreateSharedLinkArg *arg =
-      [[DBSHARINGCreateSharedLinkArg alloc] initWithPath:path shortUrl:shortUrl pendingUpload:pendingUpload];
+  DBSHARINGCreateSharedLinkArg *arg = [[DBSHARINGCreateSharedLinkArg alloc] initWithPath:path
+                                                                                shortUrl:shortUrl
+                                                                           pendingUpload:pendingUpload];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -265,8 +266,8 @@
 
 - (DBRpcTask *)getFileMetadataBatch:(NSArray<NSString *> *)files actions:(NSArray<DBSHARINGFileAction *> *)actions {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetFileMetadataBatch;
-  DBSHARINGGetFileMetadataBatchArg *arg =
-      [[DBSHARINGGetFileMetadataBatchArg alloc] initWithFiles:files actions:actions];
+  DBSHARINGGetFileMetadataBatchArg *arg = [[DBSHARINGGetFileMetadataBatchArg alloc] initWithFiles:files
+                                                                                          actions:actions];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -278,8 +279,8 @@
 
 - (DBRpcTask *)getFolderMetadata:(NSString *)sharedFolderId actions:(NSArray<DBSHARINGFolderAction *> *)actions {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetFolderMetadata;
-  DBSHARINGGetMetadataArgs *arg =
-      [[DBSHARINGGetMetadataArgs alloc] initWithSharedFolderId:sharedFolderId actions:actions];
+  DBSHARINGGetMetadataArgs *arg = [[DBSHARINGGetMetadataArgs alloc] initWithSharedFolderId:sharedFolderId
+                                                                                   actions:actions];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -295,8 +296,9 @@
                                   overwrite:(BOOL)overwrite
                                 destination:(NSURL *)destination {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
-  DBSHARINGGetSharedLinkMetadataArg *arg =
-      [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
@@ -323,8 +325,9 @@
                             byteOffsetStart:(NSNumber *)byteOffsetStart
                               byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
-  DBSHARINGGetSharedLinkMetadataArg *arg =
-      [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
   return [self.client requestDownload:route
                                   arg:arg
                             overwrite:overwrite
@@ -343,8 +346,9 @@
                                          path:(NSString *)path
                                  linkPassword:(NSString *)linkPassword {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
-  DBSHARINGGetSharedLinkMetadataArg *arg =
-      [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
   return [self.client requestDownload:route arg:arg];
 }
 
@@ -362,8 +366,9 @@
                               byteOffsetStart:(NSNumber *)byteOffsetStart
                                 byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
-  DBSHARINGGetSharedLinkMetadataArg *arg =
-      [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
@@ -375,8 +380,9 @@
 
 - (DBRpcTask *)getSharedLinkMetadata:(NSString *)url path:(NSString *)path linkPassword:(NSString *)linkPassword {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkMetadata;
-  DBSHARINGGetSharedLinkMetadataArg *arg =
-      [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -438,8 +444,9 @@
                          actions:(NSArray<DBSHARINGMemberAction *> *)actions
                            limit:(NSNumber *)limit {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGListFolderMembers;
-  DBSHARINGListFolderMembersArgs *arg =
-      [[DBSHARINGListFolderMembersArgs alloc] initWithSharedFolderId:sharedFolderId actions:actions limit:limit];
+  DBSHARINGListFolderMembersArgs *arg = [[DBSHARINGListFolderMembersArgs alloc] initWithSharedFolderId:sharedFolderId
+                                                                                               actions:actions
+                                                                                                 limit:limit];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -511,15 +518,16 @@
 
 - (DBRpcTask *)listSharedLinks:(NSString *)path cursor:(NSString *)cursor directOnly:(NSNumber *)directOnly {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGListSharedLinks;
-  DBSHARINGListSharedLinksArg *arg =
-      [[DBSHARINGListSharedLinksArg alloc] initWithPath:path cursor:cursor directOnly:directOnly];
+  DBSHARINGListSharedLinksArg *arg = [[DBSHARINGListSharedLinksArg alloc] initWithPath:path
+                                                                                cursor:cursor
+                                                                            directOnly:directOnly];
   return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)modifySharedLinkSettings:(NSString *)url settings:(DBSHARINGSharedLinkSettings *)settings {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGModifySharedLinkSettings;
-  DBSHARINGModifySharedLinkSettingsArgs *arg =
-      [[DBSHARINGModifySharedLinkSettingsArgs alloc] initWithUrl:url settings:settings];
+  DBSHARINGModifySharedLinkSettingsArgs *arg = [[DBSHARINGModifySharedLinkSettingsArgs alloc] initWithUrl:url
+                                                                                                 settings:settings];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -634,8 +642,8 @@
 
 - (DBRpcTask *)transferFolder:(NSString *)sharedFolderId toDropboxId:(NSString *)toDropboxId {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGTransferFolder;
-  DBSHARINGTransferFolderArg *arg =
-      [[DBSHARINGTransferFolderArg alloc] initWithSharedFolderId:sharedFolderId toDropboxId:toDropboxId];
+  DBSHARINGTransferFolderArg *arg = [[DBSHARINGTransferFolderArg alloc] initWithSharedFolderId:sharedFolderId
+                                                                                   toDropboxId:toDropboxId];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -659,8 +667,8 @@
 
 - (DBRpcTask *)unshareFolder:(NSString *)sharedFolderId leaveACopy:(NSNumber *)leaveACopy {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGUnshareFolder;
-  DBSHARINGUnshareFolderArg *arg =
-      [[DBSHARINGUnshareFolderArg alloc] initWithSharedFolderId:sharedFolderId leaveACopy:leaveACopy];
+  DBSHARINGUnshareFolderArg *arg = [[DBSHARINGUnshareFolderArg alloc] initWithSharedFolderId:sharedFolderId
+                                                                                  leaveACopy:leaveACopy];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -668,8 +676,9 @@
                          member:(DBSHARINGMemberSelector *)member
                     accessLevel:(DBSHARINGAccessLevel *)accessLevel {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGUpdateFileMember;
-  DBSHARINGUpdateFileMemberArgs *arg =
-      [[DBSHARINGUpdateFileMemberArgs alloc] initWithFile:file member:member accessLevel:accessLevel];
+  DBSHARINGUpdateFileMemberArgs *arg = [[DBSHARINGUpdateFileMemberArgs alloc] initWithFile:file
+                                                                                    member:member
+                                                                               accessLevel:accessLevel];
   return [self.client requestRpc:route arg:arg];
 }
 

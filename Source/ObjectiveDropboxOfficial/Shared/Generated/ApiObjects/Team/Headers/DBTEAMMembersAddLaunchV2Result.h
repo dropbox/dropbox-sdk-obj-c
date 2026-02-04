@@ -28,16 +28,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMMembersAddLaunchV2ResultTag` enum type represents the possible
 /// tag states with which the `DBTEAMMembersAddLaunchV2Result` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersAddLaunchV2ResultTag){
-    /// This response indicates that the processing is asynchronous. The string
-    /// is an id that can be used to obtain the status of the asynchronous job.
-    DBTEAMMembersAddLaunchV2ResultAsyncJobId,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersAddLaunchV2ResultTag) {
+  /// This response indicates that the processing is asynchronous. The string
+  /// is an id that can be used to obtain the status of the asynchronous job.
+  DBTEAMMembersAddLaunchV2ResultAsyncJobId,
 
-    /// (no description).
-    DBTEAMMembersAddLaunchV2ResultComplete,
+  /// (no description).
+  DBTEAMMembersAddLaunchV2ResultComplete,
 
-    /// (no description).
-    DBTEAMMembersAddLaunchV2ResultOther,
+  /// (no description).
+  DBTEAMMembersAddLaunchV2ResultOther,
 
 };
 

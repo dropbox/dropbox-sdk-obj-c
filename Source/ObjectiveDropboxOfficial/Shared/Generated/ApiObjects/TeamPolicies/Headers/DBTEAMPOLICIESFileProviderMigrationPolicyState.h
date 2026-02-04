@@ -28,19 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESFileProviderMigrationPolicyStateTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyStateTag){
-    /// Team admin has opted out of File Provider Migration for team members.
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyStateTag) {
+  /// Team admin has opted out of File Provider Migration for team members.
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateDisabled,
 
-    /// Team admin has not opted out of File Provider Migration for team
-    /// members.
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateEnabled,
+  /// Team admin has not opted out of File Provider Migration for team
+  /// members.
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateEnabled,
 
-    /// Team admin has default value based on team tier.
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateDefault_,
+  /// Team admin has default value based on team tier.
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateDefault_,
 
-    /// (no description).
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateOther,
+  /// (no description).
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateOther,
 
 };
 

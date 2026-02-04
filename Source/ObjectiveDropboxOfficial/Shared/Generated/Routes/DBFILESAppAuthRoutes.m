@@ -223,8 +223,10 @@
                                overwrite:(BOOL)overwrite
                              destination:(NSURL *)destination {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
@@ -252,8 +254,10 @@
                          byteOffsetStart:(NSNumber *)byteOffsetStart
                            byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode];
   return [self.client requestDownload:route
                                   arg:arg
                             overwrite:overwrite
@@ -273,8 +277,10 @@
                                       size:(DBFILESThumbnailSize *)size
                                       mode:(DBFILESThumbnailMode *)mode {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode];
   return [self.client requestDownload:route arg:arg];
 }
 
@@ -293,8 +299,10 @@
                            byteOffsetStart:(NSNumber *)byteOffsetStart
                              byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 

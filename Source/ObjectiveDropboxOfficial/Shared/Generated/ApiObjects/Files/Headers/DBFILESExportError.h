@@ -28,21 +28,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESExportErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESExportError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESExportErrorTag){
-    /// (no description).
-    DBFILESExportErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESExportErrorTag) {
+  /// (no description).
+  DBFILESExportErrorPath,
 
-    /// This file type cannot be exported. Use `download` instead.
-    DBFILESExportErrorNonExportable,
+  /// This file type cannot be exported. Use `download` instead.
+  DBFILESExportErrorNonExportable,
 
-    /// The specified export format is not a valid option for this file type.
-    DBFILESExportErrorInvalidExportFormat,
+  /// The specified export format is not a valid option for this file type.
+  DBFILESExportErrorInvalidExportFormat,
 
-    /// The exportable content is not yet available. Please retry later.
-    DBFILESExportErrorRetryError,
+  /// The exportable content is not yet available. Please retry later.
+  DBFILESExportErrorRetryError,
 
-    /// (no description).
-    DBFILESExportErrorOther,
+  /// (no description).
+  DBFILESExportErrorOther,
 
 };
 

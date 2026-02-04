@@ -29,14 +29,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBUSERSFileLockingValueTag` enum type represents the possible tag
 /// states with which the `DBUSERSFileLockingValue` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBUSERSFileLockingValueTag){
-    /// When this value is True, the user can lock files in shared directories.
-    /// When the value is False the user can unlock the files they have locked
-    /// or request to unlock files locked by others.
-    DBUSERSFileLockingValueEnabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBUSERSFileLockingValueTag) {
+  /// When this value is True, the user can lock files in shared directories.
+  /// When the value is False the user can unlock the files they have locked
+  /// or request to unlock files locked by others.
+  DBUSERSFileLockingValueEnabled,
 
-    /// (no description).
-    DBUSERSFileLockingValueOther,
+  /// (no description).
+  DBUSERSFileLockingValueOther,
 
 };
 

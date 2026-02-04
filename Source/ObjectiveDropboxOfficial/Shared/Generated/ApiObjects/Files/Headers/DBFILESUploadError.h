@@ -29,23 +29,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESUploadErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESUploadError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag){
-    /// Unable to save the uploaded contents to a file.
-    DBFILESUploadErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag) {
+  /// Unable to save the uploaded contents to a file.
+  DBFILESUploadErrorPath,
 
-    /// The supplied property group is invalid. The file has uploaded without
-    /// property groups.
-    DBFILESUploadErrorPropertiesError,
+  /// The supplied property group is invalid. The file has uploaded without
+  /// property groups.
+  DBFILESUploadErrorPropertiesError,
 
-    /// The request payload must be at most 150 MB.
-    DBFILESUploadErrorPayloadTooLarge,
+  /// The request payload must be at most 150 MB.
+  DBFILESUploadErrorPayloadTooLarge,
 
-    /// The content received by the Dropbox server in this call does not match
-    /// the provided content hash.
-    DBFILESUploadErrorContentHashMismatch,
+  /// The content received by the Dropbox server in this call does not match
+  /// the provided content hash.
+  DBFILESUploadErrorContentHashMismatch,
 
-    /// (no description).
-    DBFILESUploadErrorOther,
+  /// (no description).
+  DBFILESUploadErrorOther,
 
 };
 

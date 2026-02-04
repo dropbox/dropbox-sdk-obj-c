@@ -91,8 +91,8 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
   NSURLComponents *components = [self db_dauthUrlCommonComponentsWithScheme:scheme];
   if (nonce != nil) {
     NSString *state = [NSString stringWithFormat:@"oauth2:%@", nonce];
-    components.queryItems =
-        [components.queryItems arrayByAddingObject:[NSURLQueryItem queryItemWithName:kDBStateKey value:state]];
+    components.queryItems = [components.queryItems arrayByAddingObject:[NSURLQueryItem queryItemWithName:kDBStateKey
+                                                                                                   value:state]];
   }
   return components.URL;
 }

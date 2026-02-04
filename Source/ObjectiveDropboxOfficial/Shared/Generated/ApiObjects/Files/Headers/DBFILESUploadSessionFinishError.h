@@ -30,47 +30,47 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESUploadSessionFinishErrorTag` enum type represents the possible
 /// tag states with which the `DBFILESUploadSessionFinishError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag){
-    /// The session arguments are incorrect; the value explains the reason.
-    DBFILESUploadSessionFinishErrorLookupFailed,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
+  /// The session arguments are incorrect; the value explains the reason.
+  DBFILESUploadSessionFinishErrorLookupFailed,
 
-    /// Unable to save the uploaded contents to a file. Data has already been
-    /// appended to the upload session. Please retry with empty data body and
-    /// updated offset.
-    DBFILESUploadSessionFinishErrorPath,
+  /// Unable to save the uploaded contents to a file. Data has already been
+  /// appended to the upload session. Please retry with empty data body and
+  /// updated offset.
+  DBFILESUploadSessionFinishErrorPath,
 
-    /// The supplied property group is invalid. The file has uploaded without
-    /// property groups.
-    DBFILESUploadSessionFinishErrorPropertiesError,
+  /// The supplied property group is invalid. The file has uploaded without
+  /// property groups.
+  DBFILESUploadSessionFinishErrorPropertiesError,
 
-    /// The batch request commits files into too many different shared folders.
-    /// Please limit your batch request to files contained in a single shared
-    /// folder.
-    DBFILESUploadSessionFinishErrorTooManySharedFolderTargets,
+  /// The batch request commits files into too many different shared folders.
+  /// Please limit your batch request to files contained in a single shared
+  /// folder.
+  DBFILESUploadSessionFinishErrorTooManySharedFolderTargets,
 
-    /// There are too many write operations happening in the user's Dropbox. You
-    /// should retry uploading this file.
-    DBFILESUploadSessionFinishErrorTooManyWriteOperations,
+  /// There are too many write operations happening in the user's Dropbox. You
+  /// should retry uploading this file.
+  DBFILESUploadSessionFinishErrorTooManyWriteOperations,
 
-    /// Uploading data not allowed when finishing concurrent upload session.
-    DBFILESUploadSessionFinishErrorConcurrentSessionDataNotAllowed,
+  /// Uploading data not allowed when finishing concurrent upload session.
+  DBFILESUploadSessionFinishErrorConcurrentSessionDataNotAllowed,
 
-    /// Concurrent upload sessions need to be closed before finishing.
-    DBFILESUploadSessionFinishErrorConcurrentSessionNotClosed,
+  /// Concurrent upload sessions need to be closed before finishing.
+  DBFILESUploadSessionFinishErrorConcurrentSessionNotClosed,
 
-    /// Not all pieces of data were uploaded before trying to finish the
-    /// session.
-    DBFILESUploadSessionFinishErrorConcurrentSessionMissingData,
+  /// Not all pieces of data were uploaded before trying to finish the
+  /// session.
+  DBFILESUploadSessionFinishErrorConcurrentSessionMissingData,
 
-    /// The request payload must be at most 150 MB.
-    DBFILESUploadSessionFinishErrorPayloadTooLarge,
+  /// The request payload must be at most 150 MB.
+  DBFILESUploadSessionFinishErrorPayloadTooLarge,
 
-    /// The content received by the Dropbox server in this call does not match
-    /// the provided content hash.
-    DBFILESUploadSessionFinishErrorContentHashMismatch,
+  /// The content received by the Dropbox server in this call does not match
+  /// the provided content hash.
+  DBFILESUploadSessionFinishErrorContentHashMismatch,
 
-    /// (no description).
-    DBFILESUploadSessionFinishErrorOther,
+  /// (no description).
+  DBFILESUploadSessionFinishErrorOther,
 
 };
 

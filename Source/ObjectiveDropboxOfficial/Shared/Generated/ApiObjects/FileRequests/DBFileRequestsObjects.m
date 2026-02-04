@@ -429,8 +429,8 @@
                          open:(NSNumber *)open
                  description_:(NSString *)description_ {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"/(.|[\\r\\n])*"]](destination);
 
   self = [super init];
   if (self) {
@@ -2159,15 +2159,15 @@
                 destination:(NSString *)destination
                    deadline:(DBFILEREQUESTSFileRequestDeadline *)deadline
                description_:(NSString *)description_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z]+"]](id_);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](url);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
   [DBStoneValidators nonnullValidator:nil](created);
   [DBStoneValidators nonnullValidator:nil](isOpen);
   [DBStoneValidators nonnullValidator:nil](fileCount);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                  pattern:@"/(.|[\\r\\n])*"]](destination);
 
   self = [super init];
   if (self) {
@@ -2486,8 +2486,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z]+"]](id_);
 
   self = [super init];
   if (self) {
@@ -3878,8 +3878,9 @@
   NSString *cursor = valueDict[@"cursor"];
   NSNumber *hasMore = valueDict[@"has_more"];
 
-  return
-      [[DBFILEREQUESTSListFileRequestsV2Result alloc] initWithFileRequests:fileRequests cursor:cursor hasMore:hasMore];
+  return [[DBFILEREQUESTSListFileRequestsV2Result alloc] initWithFileRequests:fileRequests
+                                                                       cursor:cursor
+                                                                      hasMore:hasMore];
 }
 
 @end
@@ -3901,11 +3902,11 @@
                    deadline:(DBFILEREQUESTSUpdateFileRequestDeadline *)deadline
                        open:(NSNumber *)open
                description_:(NSString *)description_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z]+"]](id_);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                  pattern:@"/(.|[\\r\\n])*"]](destination);
 
   self = [super init];
   if (self) {

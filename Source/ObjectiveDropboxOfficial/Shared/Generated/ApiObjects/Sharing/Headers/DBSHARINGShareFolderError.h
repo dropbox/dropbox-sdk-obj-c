@@ -28,28 +28,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGShareFolderErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGShareFolderError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorTag){
-    /// This user's email address is not verified. This functionality is only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBSHARINGShareFolderErrorEmailUnverified,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
+  /// This user's email address is not verified. This functionality is only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBSHARINGShareFolderErrorEmailUnverified,
 
-    /// `path` in `DBSHARINGShareFolderArg` is invalid.
-    DBSHARINGShareFolderErrorBadPath,
+  /// `path` in `DBSHARINGShareFolderArg` is invalid.
+  DBSHARINGShareFolderErrorBadPath,
 
-    /// Team policy is more restrictive than `memberPolicy` in
-    /// `DBSHARINGShareFolderArg`.
-    DBSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy,
+  /// Team policy is more restrictive than `memberPolicy` in
+  /// `DBSHARINGShareFolderArg`.
+  DBSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy,
 
-    /// The current user's account is not allowed to select the specified
-    /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
-    DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy,
+  /// The current user's account is not allowed to select the specified
+  /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
+  DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy,
 
-    /// (no description).
-    DBSHARINGShareFolderErrorOther,
+  /// (no description).
+  DBSHARINGShareFolderErrorOther,
 
-    /// The current user does not have permission to perform this action.
-    DBSHARINGShareFolderErrorNoPermission,
+  /// The current user does not have permission to perform this action.
+  DBSHARINGShareFolderErrorNoPermission,
 
 };
 

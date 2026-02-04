@@ -29,17 +29,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBUSERSUserFeatureTag` enum type represents the possible tag states
 /// with which the `DBUSERSUserFeature` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureTag){
-    /// This feature contains information about how the user's Paper files are
-    /// stored.
-    DBUSERSUserFeaturePaperAsFiles,
+typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureTag) {
+  /// This feature contains information about how the user's Paper files are
+  /// stored.
+  DBUSERSUserFeaturePaperAsFiles,
 
-    /// This feature allows users to lock files in order to restrict other users
-    /// from editing them.
-    DBUSERSUserFeatureFileLocking,
+  /// This feature allows users to lock files in order to restrict other users
+  /// from editing them.
+  DBUSERSUserFeatureFileLocking,
 
-    /// (no description).
-    DBUSERSUserFeatureOther,
+  /// (no description).
+  DBUSERSUserFeatureOther,
 
 };
 

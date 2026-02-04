@@ -30,24 +30,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGAdminAlertGeneralStateEnumTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGAdminAlertGeneralStateEnum`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertGeneralStateEnumTag){
-    /// (no description).
-    DBTEAMLOGAdminAlertGeneralStateEnumActive,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertGeneralStateEnumTag) {
+  /// (no description).
+  DBTEAMLOGAdminAlertGeneralStateEnumActive,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertGeneralStateEnumDismissed,
+  /// (no description).
+  DBTEAMLOGAdminAlertGeneralStateEnumDismissed,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertGeneralStateEnumInProgress,
+  /// (no description).
+  DBTEAMLOGAdminAlertGeneralStateEnumInProgress,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertGeneralStateEnumNa,
+  /// (no description).
+  DBTEAMLOGAdminAlertGeneralStateEnumNa,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertGeneralStateEnumResolved,
+  /// (no description).
+  DBTEAMLOGAdminAlertGeneralStateEnumResolved,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertGeneralStateEnumOther,
+  /// (no description).
+  DBTEAMLOGAdminAlertGeneralStateEnumOther,
 
 };
 

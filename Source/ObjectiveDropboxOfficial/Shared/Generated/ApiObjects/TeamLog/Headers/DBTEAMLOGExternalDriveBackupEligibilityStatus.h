@@ -30,15 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGExternalDriveBackupEligibilityStatusTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMLOGExternalDriveBackupEligibilityStatus` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupEligibilityStatusTag){
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupEligibilityStatusExceedLicenseCap,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupEligibilityStatusTag) {
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupEligibilityStatusExceedLicenseCap,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupEligibilityStatusSuccess,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupEligibilityStatusSuccess,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupEligibilityStatusOther,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupEligibilityStatusOther,
 
 };
 

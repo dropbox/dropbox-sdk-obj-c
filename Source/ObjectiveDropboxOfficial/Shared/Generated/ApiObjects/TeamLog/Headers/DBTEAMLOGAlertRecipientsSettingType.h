@@ -30,21 +30,21 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGAlertRecipientsSettingTypeTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGAlertRecipientsSettingType`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAlertRecipientsSettingTypeTag){
-    /// (no description).
-    DBTEAMLOGAlertRecipientsSettingTypeCustomList,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAlertRecipientsSettingTypeTag) {
+  /// (no description).
+  DBTEAMLOGAlertRecipientsSettingTypeCustomList,
 
-    /// (no description).
-    DBTEAMLOGAlertRecipientsSettingTypeInvalid,
+  /// (no description).
+  DBTEAMLOGAlertRecipientsSettingTypeInvalid,
 
-    /// (no description).
-    DBTEAMLOGAlertRecipientsSettingTypeNone,
+  /// (no description).
+  DBTEAMLOGAlertRecipientsSettingTypeNone,
 
-    /// (no description).
-    DBTEAMLOGAlertRecipientsSettingTypeTeamAdmins,
+  /// (no description).
+  DBTEAMLOGAlertRecipientsSettingTypeTeamAdmins,
 
-    /// (no description).
-    DBTEAMLOGAlertRecipientsSettingTypeOther,
+  /// (no description).
+  DBTEAMLOGAlertRecipientsSettingTypeOther,
 
 };
 

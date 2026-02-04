@@ -29,21 +29,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESSearchMatchTypeV2Tag` enum type represents the possible tag
 /// states with which the `DBFILESSearchMatchTypeV2` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchMatchTypeV2Tag){
-    /// This item was matched on its file or folder name.
-    DBFILESSearchMatchTypeV2Filename,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchMatchTypeV2Tag) {
+  /// This item was matched on its file or folder name.
+  DBFILESSearchMatchTypeV2Filename,
 
-    /// This item was matched based on its file contents.
-    DBFILESSearchMatchTypeV2FileContent,
+  /// This item was matched based on its file contents.
+  DBFILESSearchMatchTypeV2FileContent,
 
-    /// This item was matched based on both its contents and its file name.
-    DBFILESSearchMatchTypeV2FilenameAndContent,
+  /// This item was matched based on both its contents and its file name.
+  DBFILESSearchMatchTypeV2FilenameAndContent,
 
-    /// This item was matched on image content.
-    DBFILESSearchMatchTypeV2ImageContent,
+  /// This item was matched on image content.
+  DBFILESSearchMatchTypeV2ImageContent,
 
-    /// (no description).
-    DBFILESSearchMatchTypeV2Other,
+  /// (no description).
+  DBFILESSearchMatchTypeV2Other,
 
 };
 

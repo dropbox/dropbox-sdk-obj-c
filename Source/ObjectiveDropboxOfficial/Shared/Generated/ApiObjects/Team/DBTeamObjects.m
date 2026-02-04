@@ -5974,28 +5974,28 @@
   [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](adds);
   [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](edits);
   [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](deletes);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeUsers28Day);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeUsers7Day);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeUsers1Day);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeSharedFolders28Day);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeSharedFolders7Day);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](activeSharedFolders1Day);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedLinksCreated);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedLinksViewedByTeam);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](
-      sharedLinksViewedByOutsideUser);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](
-      sharedLinksViewedByNotLoggedIn);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedLinksViewedTotal);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](activeUsers28Day);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](activeUsers7Day);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](activeUsers1Day);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](activeSharedFolders28Day);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](activeSharedFolders7Day);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](activeSharedFolders1Day);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](sharedLinksCreated);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](sharedLinksViewedByTeam);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](sharedLinksViewedByOutsideUser);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](sharedLinksViewedByNotLoggedIn);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](sharedLinksViewedTotal);
 
   self = [super initWithStartDate:startDate];
   if (self) {
@@ -6435,12 +6435,12 @@
                          licenses:(NSArray<NSNumber *> *)licenses {
   [DBStoneValidators nonnullValidator:nil](startDate);
   [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](teamSize);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](pendingInvites);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](membersJoined);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](suspendedMembers);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](pendingInvites);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](membersJoined);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](suspendedMembers);
   [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](licenses);
 
   self = [super initWithStartDate:startDate];
@@ -6617,14 +6617,14 @@
                     sharedFolders:(NSArray<NSNumber *> *)sharedFolders
                  memberStorageMap:(NSArray<NSArray<DBTEAMStorageBucket *> *> *)memberStorageMap {
   [DBStoneValidators nonnullValidator:nil](startDate);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](totalUsage);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedUsage);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](unsharedUsage);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](sharedFolders);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](totalUsage);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](sharedUsage);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](unsharedUsage);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil
+                                                          itemValidator:nil]](sharedFolders);
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators
                         arrayValidator:nil
@@ -13131,11 +13131,11 @@
                                 size:(NSNumber *)size
                          contentHash:(NSString *)contentHash {
   [DBStoneValidators nonnullValidator:nil](dNewFilename);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(9) maxLength:nil pattern:@"[0-9a-f]+"]](originalRevisionId);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)?"]](
-      originalFilePath);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(9) maxLength:nil
+                                                                 pattern:@"[0-9a-f]+"]](originalRevisionId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil
+                                                               maxLength:nil
+                                                                 pattern:@"(/(.|[\\r\\n])*)?"]](originalFilePath);
   [DBStoneValidators nonnullValidator:nil](serverModified);
   [DBStoneValidators nonnullValidator:nil](authorMemberId);
   [DBStoneValidators nonnullValidator:nil](authorMemberStatus);
@@ -13145,8 +13145,8 @@
                                                                          @"9.-]*\\.[A-Za-z]{2,15}$"]](authorEmail);
   [DBStoneValidators nonnullValidator:nil](fileType);
   [DBStoneValidators nonnullValidator:nil](size);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(64) maxLength:@(64) pattern:nil]](contentHash);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(64) maxLength:@(64)
+                                                                 pattern:nil]](contentHash);
 
   self = [super init];
   if (self) {
@@ -13269,8 +13269,8 @@
   jsonDict[@"new_filename"] = valueObj.dNewFilename;
   jsonDict[@"original_revision_id"] = valueObj.originalRevisionId;
   jsonDict[@"original_file_path"] = valueObj.originalFilePath;
-  jsonDict[@"server_modified"] =
-      [DBNSDateSerializer serialize:valueObj.serverModified dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  jsonDict[@"server_modified"] = [DBNSDateSerializer serialize:valueObj.serverModified
+                                                    dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   jsonDict[@"author_member_id"] = valueObj.authorMemberId;
   jsonDict[@"author_member_status"] = [DBTEAMTeamMemberStatusSerializer serialize:valueObj.authorMemberStatus];
   jsonDict[@"author_email"] = valueObj.authorEmail;
@@ -13285,8 +13285,8 @@
   NSString *dNewFilename = valueDict[@"new_filename"];
   NSString *originalRevisionId = valueDict[@"original_revision_id"];
   NSString *originalFilePath = valueDict[@"original_file_path"];
-  NSDate *serverModified =
-      [DBNSDateSerializer deserialize:valueDict[@"server_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  NSDate *serverModified = [DBNSDateSerializer deserialize:valueDict[@"server_modified"]
+                                                dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   NSString *authorMemberId = valueDict[@"author_member_id"];
   DBTEAMTeamMemberStatus *authorMemberStatus =
       [DBTEAMTeamMemberStatusSerializer deserialize:valueDict[@"author_member_status"]];
@@ -13329,14 +13329,14 @@
                description_:(NSString *)description_
              activationTime:(NSDate *)activationTime
                     endDate:(NSDate *)endDate {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"^pid_dbhid:.+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"^pid_dbhid:.+"]](id_);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(140) pattern:nil]](name);
   [DBStoneValidators nonnullValidator:nil](members);
   [DBStoneValidators nonnullValidator:nil](status);
   [DBStoneValidators nonnullValidator:nil](startDate);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(501) pattern:nil]](description_);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(501)
+                                                                  pattern:nil]](description_);
 
   self = [super init];
   if (self) {
@@ -13482,8 +13482,8 @@
     jsonDict[@"description"] = valueObj.description_;
   }
   if (valueObj.activationTime) {
-    jsonDict[@"activation_time"] =
-        [DBNSDateSerializer serialize:valueObj.activationTime dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+    jsonDict[@"activation_time"] = [DBNSDateSerializer serialize:valueObj.activationTime
+                                                      dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
   if (valueObj.endDate) {
     jsonDict[@"end_date"] = [DBNSDateSerializer serialize:valueObj.endDate dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -13973,8 +13973,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"^pid_dbhid:.+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"^pid_dbhid:.+"]](id_);
 
   self = [super init];
   if (self) {
@@ -14412,8 +14412,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"^pid_dbhid:.+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"^pid_dbhid:.+"]](id_);
 
   self = [super init];
   if (self) {
@@ -14513,8 +14513,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ cursor:(NSString *)cursor {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"^pid_dbhid:.+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"^pid_dbhid:.+"]](id_);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](cursor);
 
   self = [super init];
@@ -15500,8 +15500,8 @@
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(501) pattern:nil]](description_);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(501)
+                                                                  pattern:nil]](description_);
 
   self = [super init];
   if (self) {
@@ -16025,8 +16025,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"^pid_dbhid:.+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"^pid_dbhid:.+"]](id_);
 
   self = [super init];
   if (self) {
@@ -16374,11 +16374,11 @@
                        name:(NSString *)name
                description_:(NSString *)description_
                     members:(NSArray<NSString *> *)members {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"^pid_dbhid:.+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"^pid_dbhid:.+"]](id_);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(140) pattern:nil]](name);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(501) pattern:nil]](description_);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(501)
+                                                                  pattern:nil]](description_);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -19486,13 +19486,14 @@
                                                                maxLength:@(255)
                                                                  pattern:@"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
                                                                          @"9.-]*\\.[A-Za-z]{2,15}$"]](memberEmail);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](
-      memberGivenName);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](memberSurname);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](memberGivenName);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](memberSurname);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64)
+                                                                  pattern:nil]](memberExternalId);
 
   self = [super init];
   if (self) {
@@ -19692,13 +19693,14 @@
                                                                maxLength:@(255)
                                                                  pattern:@"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
                                                                          @"9.-]*\\.[A-Za-z]{2,15}$"]](memberEmail);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](
-      memberGivenName);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](memberSurname);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](memberGivenName);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](memberSurname);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64)
+                                                                  pattern:nil]](memberExternalId);
 
   self = [super initWithMemberEmail:memberEmail
                     memberGivenName:memberGivenName
@@ -20881,13 +20883,14 @@
                                                                maxLength:@(255)
                                                                  pattern:@"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
                                                                          @"9.-]*\\.[A-Za-z]{2,15}$"]](memberEmail);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](
-      memberGivenName);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](memberSurname);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](memberGivenName);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](memberSurname);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64)
+                                                                  pattern:nil]](memberExternalId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators
                          arrayValidator:nil
@@ -21957,8 +21960,8 @@
   [DBStoneValidators nonnullValidator:nil](status);
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](membershipType);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40)
+                                                                  pattern:nil]](accountId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -25773,8 +25776,8 @@
                                                             }];
   NSNumber *permanentlyDeletedUsers = valueDict[@"permanently_deleted_users"];
 
-  return
-      [[DBTEAMMembersInfo alloc] initWithTeamMemberIds:teamMemberIds permanentlyDeletedUsers:permanentlyDeletedUsers];
+  return [[DBTEAMMembersInfo alloc] initWithTeamMemberIds:teamMemberIds
+                                  permanentlyDeletedUsers:permanentlyDeletedUsers];
 }
 
 @end
@@ -26880,8 +26883,12 @@
 }
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user {
-  return
-      [self initWithUser:user wipeData:nil transferDestId:nil transferAdminId:nil keepAccount:nil retainTeamShares:nil];
+  return [self initWithUser:user
+                   wipeData:nil
+             transferDestId:nil
+            transferAdminId:nil
+                keepAccount:nil
+           retainTeamShares:nil];
 }
 
 #pragma mark - Serialization methods
@@ -29206,12 +29213,14 @@
                                                                 maxLength:@(255)
                                                                   pattern:@"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
                                                                           @"9.-]*\\.[A-Za-z]{2,15}$"]](dNewEmail);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](dNewExternalId);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewGivenName);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewSurname);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(64)
+                                                                  pattern:nil]](dNewExternalId);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](dNewGivenName);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
+                                                                maxLength:@(100)
+                                                                  pattern:@"[^/:?*<>\"|]*"]](dNewSurname);
 
   self = [super init];
   if (self) {
@@ -31672,8 +31681,8 @@
                namespaceType:(DBTEAMNamespaceType *)namespaceType
                 teamMemberId:(NSString *)teamMemberId {
   [DBStoneValidators nonnullValidator:nil](name);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](namespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](namespaceId);
   [DBStoneValidators nonnullValidator:nil](namespaceType);
 
   self = [super init];
@@ -33889,8 +33898,9 @@
   NSString *teamMemberId = valueDict[@"team_member_id"];
   NSNumber *keepAppFolder = valueDict[@"keep_app_folder"] ?: @YES;
 
-  return
-      [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:keepAppFolder];
+  return [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId
+                                               teamMemberId:teamMemberId
+                                              keepAppFolder:keepAppFolder];
 }
 
 @end
@@ -35967,8 +35977,10 @@
   NSString *cursor = valueDict[@"cursor"] ?: @"";
   NSNumber *hasMore = valueDict[@"has_more"] ?: @NO;
 
-  return
-      [[DBTEAMSharingAllowlistListResponse alloc] initWithDomains:domains emails:emails cursor:cursor hasMore:hasMore];
+  return [[DBTEAMSharingAllowlistListResponse alloc] initWithDomains:domains
+                                                              emails:emails
+                                                              cursor:cursor
+                                                             hasMore:hasMore];
 }
 
 @end
@@ -37020,8 +37032,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
 
   self = [super init];
   if (self) {
@@ -37121,8 +37133,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId forceAsyncOff:(NSNumber *)forceAsyncOff {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
 
   self = [super initWithTeamFolderId:teamFolderId];
   if (self) {
@@ -39316,8 +39328,8 @@
                  isTeamSharedDropbox:(NSNumber *)isTeamSharedDropbox
                          syncSetting:(DBFILESSyncSetting *)syncSetting
                  contentSyncSettings:(NSArray<DBFILESContentSyncSetting *> *)contentSyncSettings {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](status);
   [DBStoneValidators nonnullValidator:nil](isTeamSharedDropbox);
@@ -39723,8 +39735,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId name:(NSString *)name {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
   [DBStoneValidators nonnullValidator:nil](name);
 
   self = [super initWithTeamFolderId:teamFolderId];
@@ -40503,8 +40515,8 @@
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId
                          syncSetting:(DBFILESSyncSettingArg *)syncSetting
                  contentSyncSettings:(NSArray<DBFILESContentSyncSettingArg *> *)contentSyncSettings {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -41472,10 +41484,10 @@
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](groups);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](memberFolderId);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](memberFolderId);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40)
+                                                                  pattern:nil]](accountId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -41809,11 +41821,11 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRoleId:(NSString *)roleId name:(NSString *)name description_:(NSString *)description_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(128) pattern:@"pid_dbtmr:.*"]](roleId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(128)
+                                                                 pattern:@"pid_dbtmr:.*"]](roleId);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(32) pattern:nil]](name);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(256) pattern:nil]](description_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(256)
+                                                                 pattern:nil]](description_);
 
   self = [super init];
   if (self) {

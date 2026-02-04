@@ -27,12 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBACCOUNTPhotoSourceArgTag` enum type represents the possible tag
 /// states with which the `DBACCOUNTPhotoSourceArg` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBACCOUNTPhotoSourceArgTag){
-    /// Image data in base64-encoded bytes.
-    DBACCOUNTPhotoSourceArgBase64Data,
+typedef NS_CLOSED_ENUM(NSInteger, DBACCOUNTPhotoSourceArgTag) {
+  /// Image data in base64-encoded bytes.
+  DBACCOUNTPhotoSourceArgBase64Data,
 
-    /// (no description).
-    DBACCOUNTPhotoSourceArgOther,
+  /// (no description).
+  DBACCOUNTPhotoSourceArgOther,
 
 };
 

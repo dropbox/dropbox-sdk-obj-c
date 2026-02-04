@@ -28,45 +28,45 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESUploadSessionAppendErrorTag` enum type represents the possible
 /// tag states with which the `DBFILESUploadSessionAppendError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
-    /// The upload session ID was not found or has expired. Upload sessions are
-    /// valid for 7 days.
-    DBFILESUploadSessionAppendErrorNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag) {
+  /// The upload session ID was not found or has expired. Upload sessions are
+  /// valid for 7 days.
+  DBFILESUploadSessionAppendErrorNotFound,
 
-    /// The specified offset was incorrect. See the value for the correct
-    /// offset. This error may occur when a previous request was received and
-    /// processed successfully but the client did not receive the response, e.g.
-    /// due to a network error.
-    DBFILESUploadSessionAppendErrorIncorrectOffset,
+  /// The specified offset was incorrect. See the value for the correct
+  /// offset. This error may occur when a previous request was received and
+  /// processed successfully but the client did not receive the response, e.g.
+  /// due to a network error.
+  DBFILESUploadSessionAppendErrorIncorrectOffset,
 
-    /// You are attempting to append data to an upload session that has already
-    /// been closed (i.e. committed).
-    DBFILESUploadSessionAppendErrorClosed,
+  /// You are attempting to append data to an upload session that has already
+  /// been closed (i.e. committed).
+  DBFILESUploadSessionAppendErrorClosed,
 
-    /// The session must be closed before calling upload_session/finish_batch.
-    DBFILESUploadSessionAppendErrorNotClosed,
+  /// The session must be closed before calling upload_session/finish_batch.
+  DBFILESUploadSessionAppendErrorNotClosed,
 
-    /// You can not append to the upload session because the size of a file
-    /// should not reach the max file size limit (i.e. 350GB).
-    DBFILESUploadSessionAppendErrorTooLarge,
+  /// You can not append to the upload session because the size of a file
+  /// should not reach the max file size limit (i.e. 350GB).
+  DBFILESUploadSessionAppendErrorTooLarge,
 
-    /// For concurrent upload sessions, offset needs to be multiple of 4194304
-    /// bytes.
-    DBFILESUploadSessionAppendErrorConcurrentSessionInvalidOffset,
+  /// For concurrent upload sessions, offset needs to be multiple of 4194304
+  /// bytes.
+  DBFILESUploadSessionAppendErrorConcurrentSessionInvalidOffset,
 
-    /// For concurrent upload sessions, only chunks with size multiple of
-    /// 4194304 bytes can be uploaded.
-    DBFILESUploadSessionAppendErrorConcurrentSessionInvalidDataSize,
+  /// For concurrent upload sessions, only chunks with size multiple of
+  /// 4194304 bytes can be uploaded.
+  DBFILESUploadSessionAppendErrorConcurrentSessionInvalidDataSize,
 
-    /// The request payload must be at most 150 MB.
-    DBFILESUploadSessionAppendErrorPayloadTooLarge,
+  /// The request payload must be at most 150 MB.
+  DBFILESUploadSessionAppendErrorPayloadTooLarge,
 
-    /// (no description).
-    DBFILESUploadSessionAppendErrorOther,
+  /// (no description).
+  DBFILESUploadSessionAppendErrorOther,
 
-    /// The content received by the Dropbox server in this call does not match
-    /// the provided content hash.
-    DBFILESUploadSessionAppendErrorContentHashMismatch,
+  /// The content received by the Dropbox server in this call does not match
+  /// the provided content hash.
+  DBFILESUploadSessionAppendErrorContentHashMismatch,
 
 };
 

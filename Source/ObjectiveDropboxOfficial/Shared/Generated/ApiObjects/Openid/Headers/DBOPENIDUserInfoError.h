@@ -28,12 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBOPENIDUserInfoErrorTag` enum type represents the possible tag states
 /// with which the `DBOPENIDUserInfoError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBOPENIDUserInfoErrorTag){
-    /// (no description).
-    DBOPENIDUserInfoErrorOpenidError,
+typedef NS_CLOSED_ENUM(NSInteger, DBOPENIDUserInfoErrorTag) {
+  /// (no description).
+  DBOPENIDUserInfoErrorOpenidError,
 
-    /// (no description).
-    DBOPENIDUserInfoErrorOther,
+  /// (no description).
+  DBOPENIDUserInfoErrorOther,
 
 };
 

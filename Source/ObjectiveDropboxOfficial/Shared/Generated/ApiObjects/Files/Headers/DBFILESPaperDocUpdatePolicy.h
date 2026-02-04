@@ -27,26 +27,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESPaperDocUpdatePolicyTag` enum type represents the possible tag
 /// states with which the `DBFILESPaperDocUpdatePolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperDocUpdatePolicyTag){
-    /// Sets the doc content to the provided content if the provided
-    /// paper_revision matches the latest doc revision. Otherwise, returns an
-    /// error.
-    DBFILESPaperDocUpdatePolicyUpdate,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperDocUpdatePolicyTag) {
+  /// Sets the doc content to the provided content if the provided
+  /// paper_revision matches the latest doc revision. Otherwise, returns an
+  /// error.
+  DBFILESPaperDocUpdatePolicyUpdate,
 
-    /// Sets the doc content to the provided content without checking
-    /// paper_revision.
-    DBFILESPaperDocUpdatePolicyOverwrite,
+  /// Sets the doc content to the provided content without checking
+  /// paper_revision.
+  DBFILESPaperDocUpdatePolicyOverwrite,
 
-    /// Adds the provided content to the beginning of the doc without checking
-    /// paper_revision.
-    DBFILESPaperDocUpdatePolicyPrepend,
+  /// Adds the provided content to the beginning of the doc without checking
+  /// paper_revision.
+  DBFILESPaperDocUpdatePolicyPrepend,
 
-    /// Adds the provided content to the end of the doc without checking
-    /// paper_revision.
-    DBFILESPaperDocUpdatePolicyAppend,
+  /// Adds the provided content to the end of the doc without checking
+  /// paper_revision.
+  DBFILESPaperDocUpdatePolicyAppend,
 
-    /// (no description).
-    DBFILESPaperDocUpdatePolicyOther,
+  /// (no description).
+  DBFILESPaperDocUpdatePolicyOther,
 
 };
 

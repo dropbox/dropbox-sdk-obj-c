@@ -28,27 +28,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESThumbnailV2ErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESThumbnailV2Error` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag){
-    /// An error occurred when downloading metadata for the image.
-    DBFILESThumbnailV2ErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag) {
+  /// An error occurred when downloading metadata for the image.
+  DBFILESThumbnailV2ErrorPath,
 
-    /// The file extension doesn't allow conversion to a thumbnail.
-    DBFILESThumbnailV2ErrorUnsupportedExtension,
+  /// The file extension doesn't allow conversion to a thumbnail.
+  DBFILESThumbnailV2ErrorUnsupportedExtension,
 
-    /// The image cannot be converted to a thumbnail.
-    DBFILESThumbnailV2ErrorUnsupportedImage,
+  /// The image cannot be converted to a thumbnail.
+  DBFILESThumbnailV2ErrorUnsupportedImage,
 
-    /// An error occurred during thumbnail conversion.
-    DBFILESThumbnailV2ErrorConversionError,
+  /// An error occurred during thumbnail conversion.
+  DBFILESThumbnailV2ErrorConversionError,
 
-    /// Access to this shared link is forbidden.
-    DBFILESThumbnailV2ErrorAccessDenied,
+  /// Access to this shared link is forbidden.
+  DBFILESThumbnailV2ErrorAccessDenied,
 
-    /// The shared link does not exist.
-    DBFILESThumbnailV2ErrorNotFound,
+  /// The shared link does not exist.
+  DBFILESThumbnailV2ErrorNotFound,
 
-    /// (no description).
-    DBFILESThumbnailV2ErrorOther,
+  /// (no description).
+  DBFILESThumbnailV2ErrorOther,
 
 };
 

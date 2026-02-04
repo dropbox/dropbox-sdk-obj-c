@@ -166,8 +166,9 @@
 
 - (DBRpcTask *)getSharedLinkMetadata:(NSString *)url path:(NSString *)path linkPassword:(NSString *)linkPassword {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkMetadata;
-  DBSHARINGGetSharedLinkMetadataArg *arg =
-      [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
   return [self.client requestRpc:route arg:arg];
 }
 

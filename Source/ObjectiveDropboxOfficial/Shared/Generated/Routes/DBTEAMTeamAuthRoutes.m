@@ -431,8 +431,9 @@
                         members:(NSArray<DBTEAMMemberAccess *> *)members
                   returnMembers:(NSNumber *)returnMembers {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMGroupsMembersAdd;
-  DBTEAMGroupMembersAddArg *arg =
-      [[DBTEAMGroupMembersAddArg alloc] initWithGroup:group members:members returnMembers:returnMembers];
+  DBTEAMGroupMembersAddArg *arg = [[DBTEAMGroupMembersAddArg alloc] initWithGroup:group
+                                                                          members:members
+                                                                    returnMembers:returnMembers];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -464,8 +465,9 @@
                              users:(NSArray<DBTEAMUserSelectorArg *> *)users
                      returnMembers:(NSNumber *)returnMembers {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMGroupsMembersRemove;
-  DBTEAMGroupMembersRemoveArg *arg =
-      [[DBTEAMGroupMembersRemoveArg alloc] initWithGroup:group users:users returnMembers:returnMembers];
+  DBTEAMGroupMembersRemoveArg *arg = [[DBTEAMGroupMembersRemoveArg alloc] initWithGroup:group
+                                                                                  users:users
+                                                                          returnMembers:returnMembers];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -473,8 +475,9 @@
                                      user:(DBTEAMUserSelectorArg *)user
                                accessType:(DBTEAMGroupAccessType *)accessType {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMGroupsMembersSetAccessType;
-  DBTEAMGroupMembersSetAccessTypeArg *arg =
-      [[DBTEAMGroupMembersSetAccessTypeArg alloc] initWithGroup:group user:user accessType:accessType];
+  DBTEAMGroupMembersSetAccessTypeArg *arg = [[DBTEAMGroupMembersSetAccessTypeArg alloc] initWithGroup:group
+                                                                                                 user:user
+                                                                                           accessType:accessType];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -586,8 +589,10 @@
                          description_:(NSString *)description_
                               members:(NSArray<NSString *> *)members {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLegalHoldsUpdatePolicy;
-  DBTEAMLegalHoldsPolicyUpdateArg *arg =
-      [[DBTEAMLegalHoldsPolicyUpdateArg alloc] initWithId_:id_ name:name description_:description_ members:members];
+  DBTEAMLegalHoldsPolicyUpdateArg *arg = [[DBTEAMLegalHoldsPolicyUpdateArg alloc] initWithId_:id_
+                                                                                         name:name
+                                                                                 description_:description_
+                                                                                      members:members];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -623,8 +628,8 @@
 
 - (DBRpcTask *)linkedAppsRevokeLinkedApp:(NSString *)appId teamMemberId:(NSString *)teamMemberId {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsRevokeLinkedApp;
-  DBTEAMRevokeLinkedApiAppArg *arg =
-      [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId];
+  DBTEAMRevokeLinkedApiAppArg *arg = [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId
+                                                                           teamMemberId:teamMemberId];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -632,8 +637,9 @@
                             teamMemberId:(NSString *)teamMemberId
                            keepAppFolder:(NSNumber *)keepAppFolder {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsRevokeLinkedApp;
-  DBTEAMRevokeLinkedApiAppArg *arg =
-      [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:keepAppFolder];
+  DBTEAMRevokeLinkedApiAppArg *arg = [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId
+                                                                           teamMemberId:teamMemberId
+                                                                          keepAppFolder:keepAppFolder];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -896,8 +902,8 @@
 
 - (DBRpcTask *)membersSetAdminPermissionsV2:(DBTEAMUserSelectorArg *)user dNewRoles:(NSArray<NSString *> *)dNewRoles {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetAdminPermissionsV2;
-  DBTEAMMembersSetPermissions2Arg *arg =
-      [[DBTEAMMembersSetPermissions2Arg alloc] initWithUser:user dNewRoles:dNewRoles];
+  DBTEAMMembersSetPermissions2Arg *arg = [[DBTEAMMembersSetPermissions2Arg alloc] initWithUser:user
+                                                                                     dNewRoles:dNewRoles];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -1001,8 +1007,9 @@
                         description_:(NSString *)description_
                               fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMPropertiesTemplateAdd;
-  DBFILEPROPERTIESAddTemplateArg *arg =
-      [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name description_:description_ fields:fields];
+  DBFILEPROPERTIESAddTemplateArg *arg = [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name
+                                                                                description_:description_
+                                                                                      fields:fields];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -1121,8 +1128,8 @@
 
 - (DBRpcTask *)sharingAllowlistRemove:(NSArray<NSString *> *)domains emails:(NSArray<NSString *> *)emails {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistRemove;
-  DBTEAMSharingAllowlistRemoveArgs *arg =
-      [[DBTEAMSharingAllowlistRemoveArgs alloc] initWithDomains:domains emails:emails];
+  DBTEAMSharingAllowlistRemoveArgs *arg = [[DBTEAMSharingAllowlistRemoveArgs alloc] initWithDomains:domains
+                                                                                             emails:emails];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -1140,8 +1147,8 @@
 
 - (DBRpcTask *)teamFolderArchive:(NSString *)teamFolderId forceAsyncOff:(NSNumber *)forceAsyncOff {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderArchive;
-  DBTEAMTeamFolderArchiveArg *arg =
-      [[DBTEAMTeamFolderArchiveArg alloc] initWithTeamFolderId:teamFolderId forceAsyncOff:forceAsyncOff];
+  DBTEAMTeamFolderArchiveArg *arg = [[DBTEAMTeamFolderArchiveArg alloc] initWithTeamFolderId:teamFolderId
+                                                                               forceAsyncOff:forceAsyncOff];
   return [self.client requestRpc:route arg:arg];
 }
 

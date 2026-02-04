@@ -1495,8 +1495,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"(/|ptid:).*"]](templateId);
 
   self = [super init];
   if (self) {
@@ -1595,8 +1595,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"(/|ptid:).*"]](templateId);
 
   self = [super init];
   if (self) {
@@ -4240,8 +4240,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId fields:(NSArray<DBFILEPROPERTIESPropertyField *> *)fields {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"(/|ptid:).*"]](templateId);
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:nil
                                              maxItems:nil
@@ -4361,8 +4361,8 @@
 - (instancetype)initWithTemplateId:(NSString *)templateId
                  addOrUpdateFields:(NSArray<DBFILEPROPERTIESPropertyField *> *)addOrUpdateFields
                       removeFields:(NSArray<NSString *> *)removeFields {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"(/|ptid:).*"]](templateId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -5085,8 +5085,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"(/|ptid:).*"]](templateId);
 
   self = [super init];
   if (self) {
@@ -6215,8 +6215,8 @@
                               name:(NSString *)name
                       description_:(NSString *)description_
                          addFields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)addFields {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"(/|ptid:).*"]](templateId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
                                               maxItems:nil
@@ -6375,8 +6375,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](templateId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"(/|ptid:).*"]](templateId);
 
   self = [super init];
   if (self) {

@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGAdminConsoleAppPermissionTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGAdminConsoleAppPermission`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminConsoleAppPermissionTag){
-    /// (no description).
-    DBTEAMLOGAdminConsoleAppPermissionDefaultForListedApps,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminConsoleAppPermissionTag) {
+  /// (no description).
+  DBTEAMLOGAdminConsoleAppPermissionDefaultForListedApps,
 
-    /// (no description).
-    DBTEAMLOGAdminConsoleAppPermissionDefaultForUnlistedApps,
+  /// (no description).
+  DBTEAMLOGAdminConsoleAppPermissionDefaultForUnlistedApps,
 
-    /// (no description).
-    DBTEAMLOGAdminConsoleAppPermissionOther,
+  /// (no description).
+  DBTEAMLOGAdminConsoleAppPermissionOther,
 
 };
 

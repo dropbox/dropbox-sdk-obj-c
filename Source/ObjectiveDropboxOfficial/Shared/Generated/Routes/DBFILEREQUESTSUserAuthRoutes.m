@@ -51,8 +51,8 @@
 
 - (DBRpcTask *)create:(NSString *)title destination:(NSString *)destination {
   DBRoute *route = DBFILEREQUESTSRouteObjects.DBFILEREQUESTSCreate;
-  DBFILEREQUESTSCreateFileRequestArgs *arg =
-      [[DBFILEREQUESTSCreateFileRequestArgs alloc] initWithTitle:title destination:destination];
+  DBFILEREQUESTSCreateFileRequestArgs *arg = [[DBFILEREQUESTSCreateFileRequestArgs alloc] initWithTitle:title
+                                                                                            destination:destination];
   return [self.client requestRpc:route arg:arg];
 }
 

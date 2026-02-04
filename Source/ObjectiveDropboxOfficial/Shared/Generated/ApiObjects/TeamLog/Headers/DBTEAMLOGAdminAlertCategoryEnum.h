@@ -29,30 +29,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGAdminAlertCategoryEnumTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGAdminAlertCategoryEnum` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertCategoryEnumTag){
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumAccountTakeover,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertCategoryEnumTag) {
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumAccountTakeover,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumDataLossProtection,
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumDataLossProtection,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumInformationGovernance,
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumInformationGovernance,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumMalwareSharing,
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumMalwareSharing,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumMassiveFileOperation,
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumMassiveFileOperation,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumNa,
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumNa,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumThreatManagement,
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumThreatManagement,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertCategoryEnumOther,
+  /// (no description).
+  DBTEAMLOGAdminAlertCategoryEnumOther,
 
 };
 

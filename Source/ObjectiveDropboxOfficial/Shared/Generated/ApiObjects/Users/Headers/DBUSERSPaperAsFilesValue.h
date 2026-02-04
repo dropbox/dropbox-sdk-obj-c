@@ -29,16 +29,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBUSERSPaperAsFilesValueTag` enum type represents the possible tag
 /// states with which the `DBUSERSPaperAsFilesValue` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBUSERSPaperAsFilesValueTag){
-    /// When this value is true, the user's Paper docs are accessible in Dropbox
-    /// with the .paper extension and must be accessed via the /files endpoints.
-    /// When this value is false, the user's Paper docs are stored separate from
-    /// Dropbox files and folders and should be accessed via the /paper
-    /// endpoints.
-    DBUSERSPaperAsFilesValueEnabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBUSERSPaperAsFilesValueTag) {
+  /// When this value is true, the user's Paper docs are accessible in Dropbox
+  /// with the .paper extension and must be accessed via the /files endpoints.
+  /// When this value is false, the user's Paper docs are stored separate from
+  /// Dropbox files and folders and should be accessed via the /paper
+  /// endpoints.
+  DBUSERSPaperAsFilesValueEnabled,
 
-    /// (no description).
-    DBUSERSPaperAsFilesValueOther,
+  /// (no description).
+  DBUSERSPaperAsFilesValueOther,
 
 };
 

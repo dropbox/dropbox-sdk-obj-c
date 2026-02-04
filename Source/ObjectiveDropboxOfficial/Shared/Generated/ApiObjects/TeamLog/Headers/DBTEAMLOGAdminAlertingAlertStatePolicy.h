@@ -30,15 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGAdminAlertingAlertStatePolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGAdminAlertingAlertStatePolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertingAlertStatePolicyTag){
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertStatePolicyOff,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertingAlertStatePolicyTag) {
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertStatePolicyOff,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertStatePolicyOn,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertStatePolicyOn,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertStatePolicyOther,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertStatePolicyOther,
 
 };
 
