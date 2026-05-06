@@ -128,12 +128,8 @@ def main():
 
     types_cmd = stone_cmd_prefix + ['obj_c_types', dropbox_pkg_path] + specs
 
-    if args.documentation or args.exclude_from_analysis:
-        types_cmd += ['--']
-        if args.documentation:
-            types_cmd += ['-d']
-        if args.exclude_from_analysis:
-            types_cmd += ['-e']
+    if args.exclude_from_analysis:
+        types_cmd += ['--', '-e']
 
     o = subprocess.check_output(
         (types_cmd),
