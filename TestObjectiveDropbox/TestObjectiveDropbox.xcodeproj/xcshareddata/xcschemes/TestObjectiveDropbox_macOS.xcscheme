@@ -36,48 +36,6 @@
             ReferencedContainer = "container:TestObjectiveDropbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "FULL_DROPBOX_API_APP_KEY"
-            value = "$(FULL_DROPBOX_API_APP_KEY)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "NON_TEAM_MEMBER_EMAIL"
-            value = "$(NON_TEAM_MEMBER_EMAIL)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "REFRESH_TOKEN_ACCOUNT_ID"
-            value = "$(REFRESH_TOKEN_ACCOUNT_ID)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "ANY_OTHER_ACCOUNT_ID"
-            value = "$(ANY_OTHER_ACCOUNT_ID)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "NON_TEAM_MEMBER_ACCOUNT_ID"
-            value = "$(NON_TEAM_MEMBER_ACCOUNT_ID)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "TEAM_MEMBER_EMAIL"
-            value = "$(TEAM_MEMBER_EMAIL)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"
-            value = "$(FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"
-            value = "$(FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO">
