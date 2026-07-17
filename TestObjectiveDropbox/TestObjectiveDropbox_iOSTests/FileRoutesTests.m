@@ -20,18 +20,20 @@
     // You can create one for testing here: https://www.dropbox.com/developers/apps/create
     // The 'App key' will be on the app's info page.
     // Then follow https://dropbox.tech/developers/pkce--what-and-why- to get a refresh token using the PKCE flow
-    NSString *apiAppKey = [TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
+    NSString *apiAppKey = [TestAuthTokenGenerator credentialForKey:@"SCOPED_USER_CLIENT_ID"];
+    NSString *apiAppSecret = [TestAuthTokenGenerator credentialForKey:@"SCOPED_USER_CLIENT_SECRET"];
 
     DBAccessToken *fileRoutesTestsAuthToken = [TestAuthTokenGenerator
-                                          refreshToken:[TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_TESTER_USER_REFRESH_TOKEN"]
+                                          refreshToken:[TestAuthTokenGenerator credentialForKey:@"SCOPED_USER_REFRESH_TOKEN"]
                                           apiKey:apiAppKey
+                                          apiSecret:apiAppSecret
                                           scopes:[DropboxTester scopesForTests]];
     XCTAssertNotNil(fileRoutesTestsAuthToken, @"Error obtaining auth token.");
 
     _delegateQueue = [[NSOperationQueue alloc] init];
     DBTransportDefaultConfig *transportConfigFullDropbox =
       [[DBTransportDefaultConfig alloc] initWithAppKey:apiAppKey
-                                             appSecret:nil // not needed
+                                             appSecret:apiAppSecret
                                              userAgent:nil
                                             asMemberId:nil
                                          delegateQueue:_delegateQueue
@@ -47,12 +49,9 @@
     _userClient = [self createUserClient];
 
     TestData * data = [[TestData alloc] init];
-    data.teamMemberEmail = [TestAuthTokenGenerator environmentVariableForKey:@"TEAM_MEMBER_EMAIL"];
-    data.teamMemberNewEmail = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_EMAIL"];
-    data.accountId = [TestAuthTokenGenerator environmentVariableForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
-    data.accountId2 = [TestAuthTokenGenerator environmentVariableForKey:@"ANY_OTHER_ACCOUNT_ID"];
-    data.accountId3 = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_ACCOUNT_ID"];
-    data.accountId3Email = data.teamMemberNewEmail;
+    data.accountId = [TestAuthTokenGenerator credentialForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
+    data.accountId2 = [TestAuthTokenGenerator credentialForKey:@"ANY_OTHER_ACCOUNT_ID"];
+    data.accountId3Email = [TestAuthTokenGenerator credentialForKey:@"SHARING_MEMBER_EMAIL"];
     
     _tester = [[DropboxTester alloc] initWithUserClient:_userClient testData:data];
     _testData = data;

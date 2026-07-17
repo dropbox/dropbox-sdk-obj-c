@@ -23,6 +23,11 @@ static ViewController *viewController = nil;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     if([[NSProcessInfo processInfo] environment][@"XCTestConfigurationFilePath"] != nil) {
         // running unit tests
+        // The storyboard's default button can otherwise receive an activation event while
+        // XCTest is launching the host app and start the legacy manual test flow in parallel.
+        for (NSWindow *window in [NSApplication sharedApplication].windows) {
+            window.contentViewController = [[NSViewController alloc] init];
+        }
         return;
     }
 

@@ -1,9 +1,17 @@
 name: CI
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  test:
-    name: Run Unit tests
+  build:
+    name: Build tests
     runs-on: macos-latest
     timeout-minutes: 20
 
@@ -14,7 +22,7 @@ jobs:
         run: |
           cd TestObjectiveDropbox
           pod install --repo-update
-      - name: Test iOS
+      - name: Build iOS tests
         env:
           platform: 'iOS Simulator'
           device: 'iPhone 16'
@@ -22,10 +30,132 @@ jobs:
           xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
             -destination "platform=$platform,name=$device" \
             build-for-testing
+      - name: Build macOS tests
+        env:
+          platform: macOS
+        run: |
+          xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_macOS \
+            -destination "platform=$platform,arch=x86_64" \
+            build-for-testing
+
+  integration:
+    name: Run integration tests
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: macos-latest
+    timeout-minutes: 40
+    permissions:
+      id-token: write
+      contents: read
+    concurrency:
+      group: ${{ github.workflow }}-integration-tests
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Pod
+        run: |
+          cd TestObjectiveDropbox
+          pod install --repo-update
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::082972943155:role/oidc-github-dropbox-dropbox-sdk-obj-c-repo
+          aws-region: us-west-2
+      - name: Get integration credentials from AWS Secrets Manager
+        uses: aws-actions/aws-secretsmanager-get-secrets@v3
+        with:
+          secret-ids: |
+            CREDS,api-sdk-integration-test-creds
+          parse-json-secrets: true
+      - name: Discover integration test fixtures
+        run: |
+          set -euo pipefail
+          user_access_token=$(curl --fail --silent --show-error \
+            --user "$CREDS_SCOPED_USER_CLIENT_ID:$CREDS_SCOPED_USER_CLIENT_SECRET" \
+            --data grant_type=refresh_token \
+            --data refresh_token="$CREDS_SCOPED_USER_REFRESH_TOKEN" \
+            https://api.dropboxapi.com/oauth2/token | jq -r '.access_token')
+          team_access_token=$(curl --fail --silent --show-error \
+            --user "$CREDS_SCOPED_TEAM_CLIENT_ID:$CREDS_SCOPED_TEAM_CLIENT_SECRET" \
+            --data grant_type=refresh_token \
+            --data refresh_token="$CREDS_SCOPED_TEAM_REFRESH_TOKEN" \
+            https://api.dropboxapi.com/oauth2/token | jq -r '.access_token')
+
+          user_account=$(curl --fail --silent --show-error \
+            --request POST \
+            --header "Authorization: Bearer $user_access_token" \
+            --header 'Content-Type: application/json' \
+            --data '{}' \
+            https://api.dropboxapi.com/2/users/get_current_account)
+          team_member=$(curl --fail --silent --show-error \
+            --request POST \
+            --header "Authorization: Bearer $team_access_token" \
+            --header 'Content-Type: application/json' \
+            --data '{"limit":10}' \
+            https://api.dropboxapi.com/2/team/members/list_v2 | \
+            jq -c '[.members[] | select(.profile.status[".tag"] == "active") | .profile][0]')
+
+          user_account_id=$(jq -r '.account_id' <<<"$user_account")
+          user_account_email=$(jq -r '.email' <<<"$user_account")
+          team_member_account_id=$(jq -r '.account_id' <<<"$team_member")
+          team_member_email=$(jq -r '.email' <<<"$team_member")
+          test -n "$user_account_id"
+          test -n "$user_account_email"
+          test -n "$team_member_account_id"
+          test -n "$team_member_email"
+          test "$user_account_id" != null
+          test "$user_account_email" != null
+          test "$team_member_account_id" != null
+          test "$team_member_email" != null
+
+          echo "::add-mask::$user_account_id"
+          echo "::add-mask::$user_account_email"
+          echo "::add-mask::$team_member_account_id"
+          echo "::add-mask::$team_member_email"
+
+          credentials_file="$RUNNER_TEMP/dropbox-sdk-integration-creds.json"
+          umask 077
+          jq -n \
+            --arg user_client_id "$CREDS_SCOPED_USER_CLIENT_ID" \
+            --arg user_client_secret "$CREDS_SCOPED_USER_CLIENT_SECRET" \
+            --arg user_refresh_token "$CREDS_SCOPED_USER_REFRESH_TOKEN" \
+            --arg team_client_id "$CREDS_SCOPED_TEAM_CLIENT_ID" \
+            --arg team_client_secret "$CREDS_SCOPED_TEAM_CLIENT_SECRET" \
+            --arg team_refresh_token "$CREDS_SCOPED_TEAM_REFRESH_TOKEN" \
+            --arg user_account_id "$user_account_id" \
+            --arg team_member_account_id "$team_member_account_id" \
+            --arg user_account_email "$user_account_email" \
+            --arg team_member_email "$team_member_email" \
+            '{
+              SCOPED_USER_CLIENT_ID: $user_client_id,
+              SCOPED_USER_CLIENT_SECRET: $user_client_secret,
+              SCOPED_USER_REFRESH_TOKEN: $user_refresh_token,
+              SCOPED_TEAM_CLIENT_ID: $team_client_id,
+              SCOPED_TEAM_CLIENT_SECRET: $team_client_secret,
+              SCOPED_TEAM_REFRESH_TOKEN: $team_refresh_token,
+              REFRESH_TOKEN_ACCOUNT_ID: $user_account_id,
+              ANY_OTHER_ACCOUNT_ID: $team_member_account_id,
+              TEAM_MEMBER_EMAIL: $team_member_email,
+              SHARING_MEMBER_EMAIL: $team_member_email,
+              TEAM_SHARING_MEMBER_EMAIL: $user_account_email
+            }' > "$credentials_file"
+          chmod 600 "$credentials_file"
+          echo "SDK_TEST_CREDENTIALS_FILE=$credentials_file" >> "$GITHUB_ENV"
+      - name: Test iOS
+        env:
+          platform: 'iOS Simulator'
+          device: 'iPhone 16'
+        run: |
+          xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
+            -destination "platform=$platform,name=$device" \
+            SDK_TEST_CREDENTIALS_FILE="$SDK_TEST_CREDENTIALS_FILE" \
+            test
       - name: Test macOS
         env:
           platform: macOS
         run: |
-          xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_macOS  \
+          xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_macOS \
             -destination "platform=$platform,arch=x86_64" \
-            build-for-testing
+            SDK_TEST_CREDENTIALS_FILE="$SDK_TEST_CREDENTIALS_FILE" \
+            test

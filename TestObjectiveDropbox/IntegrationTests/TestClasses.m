@@ -343,33 +343,14 @@ void MyLog(NSString *format, ...) {
         [TestFormat printTestEnd];
         nextTest();
     };
-// Comment this out until we understand the email_address_too_long_to_be_disabled error
-//    void (^membersRemove)(void) = ^{
-//        [teamTests membersRemove:end];
-//    };
-    void (^membersSetProfile)(void) = ^{
-        [teamTests membersSetProfile:end];
-    };
-    void (^membersSetAdminPermissions)(void) = ^{
-        [teamTests membersSetAdminPermissions:membersSetProfile];
-    };
-    void (^membersSendWelcomeEmail)(void) = ^{
-        [teamTests membersSendWelcomeEmail:membersSetAdminPermissions];
-    };
     void (^membersList)(void) = ^{
-        [teamTests membersList:membersSendWelcomeEmail];
+        [teamTests membersList:end];
     };
     void (^membersListDevices)(void) = ^{
         [teamTests membersListDevices:membersList];
     };
-    void (^membersGetInfo)(void) = ^{
-        [teamTests membersGetInfo:membersListDevices];
-    };
-    void (^membersAdd)(void) = ^{
-        [teamTests membersAdd:membersGetInfo];
-    };
     void (^groupsDelete)(void) = ^{
-        [teamTests groupsDelete:membersAdd];
+        [teamTests groupsDelete:membersListDevices];
     };
     void (^groupsUpdate)(void) = ^{
         [teamTests groupsUpdate:groupsDelete];
