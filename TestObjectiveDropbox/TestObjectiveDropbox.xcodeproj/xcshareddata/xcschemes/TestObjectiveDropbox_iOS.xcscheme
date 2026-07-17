@@ -36,6 +36,10 @@
             ReferencedContainer = "container:TestObjectiveDropbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable key = "SDK_TEST_CREDENTIALS_FILE" value = "$(SDK_TEST_CREDENTIALS_FILE)" isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO">

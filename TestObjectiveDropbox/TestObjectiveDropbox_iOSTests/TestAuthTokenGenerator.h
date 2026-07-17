@@ -1,9 +1,10 @@
 @class DBAccessToken;
 
 @interface TestAuthTokenGenerator : NSObject
-+ (nonnull NSString *)environmentVariableForKey:(nonnull NSString *)key;
++ (nonnull NSString *)credentialForKey:(nonnull NSString *)key;
 
 + (nullable DBAccessToken *)refreshToken:(nullable NSString *)refreshToken
-                             apiKey:(nullable NSString *)apiKey
-                             scopes:(nonnull NSArray<NSString *>*)scopes;
+                                  apiKey:(nullable NSString *)apiKey
+                               apiSecret:(nullable NSString *)apiSecret
+                                  scopes:(nonnull NSArray<NSString *> *)scopes;
 @end

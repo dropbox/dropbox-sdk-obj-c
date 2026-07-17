@@ -17,12 +17,10 @@
     _teamClient = [self createTeamClient];
 
     TestData * data = [[TestData alloc] init];
-    data.teamMemberEmail = [TestAuthTokenGenerator environmentVariableForKey:@"TEAM_MEMBER_EMAIL"];
-    data.teamMemberNewEmail = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_EMAIL"];
-    data.accountId = [TestAuthTokenGenerator environmentVariableForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
-    data.accountId2 = [TestAuthTokenGenerator environmentVariableForKey:@"ANY_OTHER_ACCOUNT_ID"];
-    data.accountId3 = [TestAuthTokenGenerator environmentVariableForKey:@"NON_TEAM_MEMBER_ACCOUNT_ID"];
-    data.accountId3Email = data.teamMemberNewEmail;
+    data.teamMemberEmail = [TestAuthTokenGenerator credentialForKey:@"TEAM_MEMBER_EMAIL"];
+    data.accountId = [TestAuthTokenGenerator credentialForKey:@"REFRESH_TOKEN_ACCOUNT_ID"];
+    data.accountId2 = [TestAuthTokenGenerator credentialForKey:@"ANY_OTHER_ACCOUNT_ID"];
+    data.accountId3Email = [TestAuthTokenGenerator credentialForKey:@"TEAM_SHARING_MEMBER_EMAIL"];
     
     _teamTester = [[DropboxTeamTester alloc] initWithTeamClient:_teamClient testData:data];
 }
@@ -33,17 +31,19 @@
     // The 'App key' will be on the app's info page.
     // Then follow https://dropbox.tech/developers/pkce--what-and-why- to get a refresh token using the PKCE flow
 
-    NSString *apiAppKey = [TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_API_APP_KEY"];
+    NSString *apiAppKey = [TestAuthTokenGenerator credentialForKey:@"SCOPED_TEAM_CLIENT_ID"];
+    NSString *apiAppSecret = [TestAuthTokenGenerator credentialForKey:@"SCOPED_TEAM_CLIENT_SECRET"];
     DBAccessToken *teamRoutesTestsAuthToken = [TestAuthTokenGenerator
-                                          refreshToken:[TestAuthTokenGenerator environmentVariableForKey:@"FULL_DROPBOX_TESTER_TEAM_REFRESH_TOKEN"]
+                                          refreshToken:[TestAuthTokenGenerator credentialForKey:@"SCOPED_TEAM_REFRESH_TOKEN"]
                                           apiKey:apiAppKey
+                                          apiSecret:apiAppSecret
                                           scopes:[DropboxTeamTester scopesForTests]];
     XCTAssertNotNil(teamRoutesTestsAuthToken, @"Errors obtaining auth token.");
 
     _delegateQueue = [[NSOperationQueue alloc] init];
     DBTransportDefaultConfig *transportConfigFullDropbox =
       [[DBTransportDefaultConfig alloc] initWithAppKey:apiAppKey
-                                             appSecret:nil // not needed
+                                             appSecret:apiAppSecret
                                              userAgent:nil
                                             asMemberId:nil
                                          delegateQueue:_delegateQueue
