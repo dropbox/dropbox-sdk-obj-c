@@ -52,8 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param audienceRestrictingSharedFolder The shared folder that prevents the
 /// link audience for this link from being more restrictive.
 /// @param expiry Whether the link has an expiry set on it. A link with an
-/// expiry will have its  audience changed to members when the expiry is
-/// reached.
+/// expiry will have its audience changed to members when the expiry is reached.
 ///
 /// @return An initialized instance.
 ///

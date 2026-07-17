@@ -28,18 +28,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESPasswordStrengthPolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMPOLICIESPasswordStrengthPolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPasswordStrengthPolicyTag){
-    /// User passwords will adhere to the minimal password strength policy.
-    DBTEAMPOLICIESPasswordStrengthPolicyMinimalRequirements,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPasswordStrengthPolicyTag) {
+  /// User passwords will not adhere to a password strength policy.
+  DBTEAMPOLICIESPasswordStrengthPolicyMinimalRequirements,
 
-    /// User passwords will adhere to the moderate password strength policy.
-    DBTEAMPOLICIESPasswordStrengthPolicyModeratePassword,
+  /// User passwords will adhere to the strong password strength policy. Note
+  /// that product surfaces refer to this as the strong policy but the value
+  /// must be kept as is for backwards compatability.
+  DBTEAMPOLICIESPasswordStrengthPolicyModeratePassword,
 
-    /// User passwords will adhere to the very strong password strength policy.
-    DBTEAMPOLICIESPasswordStrengthPolicyStrongPassword,
+  /// User passwords will adhere to the very strong password strength policy.
+  /// Note that product surfaces refer to this as the very strong policy but
+  /// the value must be kept as is for backwards compatability.
+  DBTEAMPOLICIESPasswordStrengthPolicyStrongPassword,
 
-    /// (no description).
-    DBTEAMPOLICIESPasswordStrengthPolicyOther,
+  /// (no description).
+  DBTEAMPOLICIESPasswordStrengthPolicyOther,
 
 };
 
@@ -51,8 +55,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPasswordStrengthPolicyTag){
 ///
 /// Initializes union class with tag state of "minimal_requirements".
 ///
-/// Description of the "minimal_requirements" tag state: User passwords will
-/// adhere to the minimal password strength policy.
+/// Description of the "minimal_requirements" tag state: User passwords will not
+/// adhere to a password strength policy.
 ///
 /// @return An initialized instance.
 ///
@@ -62,7 +66,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPasswordStrengthPolicyTag){
 /// Initializes union class with tag state of "moderate_password".
 ///
 /// Description of the "moderate_password" tag state: User passwords will adhere
-/// to the moderate password strength policy.
+/// to the strong password strength policy. Note that product surfaces refer to
+/// this as the strong policy but the value must be kept as is for backwards
+/// compatability.
 ///
 /// @return An initialized instance.
 ///
@@ -72,7 +78,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPasswordStrengthPolicyTag){
 /// Initializes union class with tag state of "strong_password".
 ///
 /// Description of the "strong_password" tag state: User passwords will adhere
-/// to the very strong password strength policy.
+/// to the very strong password strength policy. Note that product surfaces
+/// refer to this as the very strong policy but the value must be kept as is for
+/// backwards compatability.
 ///
 /// @return An initialized instance.
 ///

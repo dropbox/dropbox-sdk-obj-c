@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// A unique identifier for the folder.
 @property (nonatomic, readonly, copy) NSString *id_;
 
-/// Please use sharingInfo instead.
+/// Field is deprecated. Please use sharingInfo instead.
 @property (nonatomic, readonly, copy, nullable) NSString *sharedFolderId;
 
 /// Set if the folder is contained in a shared folder or is a shared folder
@@ -60,11 +60,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// least the last path component will have the correct casing. Changes to only
 /// the casing of paths won't be returned by `listFolderContinue`. This field
 /// will be null if the file or folder is not mounted.
-/// @param parentSharedFolderId Please use `parentSharedFolderId` in
-/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
-/// `DBFILESFolderSharingInfo` instead.
+/// @param parentSharedFolderId Field is deprecated. Please use
+/// `parentSharedFolderId` in `DBFILESFileSharingInfo` or `parentSharedFolderId`
+/// in `DBFILESFolderSharingInfo` instead.
 /// @param previewUrl The preview URL of the file.
-/// @param sharedFolderId Please use sharingInfo instead.
+/// @param sharedFolderId Field is deprecated. Please use sharingInfo instead.
 /// @param sharingInfo Set if the folder is contained in a shared folder or is a
 /// shared folder mount point.
 /// @param propertyGroups Additional information if the file has custom

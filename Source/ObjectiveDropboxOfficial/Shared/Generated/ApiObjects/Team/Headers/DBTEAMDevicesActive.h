@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param ios Array of number of linked ios devices with activity.
 /// @param android Array of number of linked android devices with activity.
 /// @param other Array of number of other linked devices (blackberry, windows
-/// phone, etc)  with activity.
+/// phone, etc) with activity.
 /// @param total Array of total number of linked clients with activity.
 ///
 /// @return An initialized instance.

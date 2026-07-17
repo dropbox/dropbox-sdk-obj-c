@@ -62,6 +62,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Whether the folder inherits its members from its parent.
 @property (nonatomic, readonly) DBSHARINGAccessInheritance *accessInheritance;
 
+/// The ID of the content.
+@property (nonatomic, readonly, copy, nullable) NSString *folderId;
+
 #pragma mark - Constructors
 
 ///
@@ -97,6 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// request.
 /// @param accessInheritance Whether the folder inherits its members from its
 /// parent.
+/// @param folderId The ID of the content.
 ///
 /// @return An initialized instance.
 ///
@@ -116,7 +120,8 @@ NS_ASSUME_NONNULL_BEGIN
                   parentFolderName:(nullable NSString *)parentFolderName
                       linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata
                        permissions:(nullable NSArray<DBSHARINGFolderPermission *> *)permissions
-                 accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance;
+                 accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance
+                          folderId:(nullable NSString *)folderId;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

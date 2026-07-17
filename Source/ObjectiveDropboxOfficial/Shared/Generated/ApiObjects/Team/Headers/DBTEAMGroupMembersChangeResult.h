@@ -31,10 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// The group info after member change operation has been performed.
 @property (nonatomic, readonly) DBTEAMGroupFullInfo *groupInfo;
 
-/// For legacy purposes async_job_id will always return one space ' '. Formerly,
-/// it was an ID that was used to obtain the status of granting/revoking
-/// group-owned resources. It's no longer necessary because the async processing
-/// now happens automatically.
+/// Field is deprecated. For legacy purposes async_job_id will always return one
+/// space ' '. Formerly, it was an ID that was used to obtain the status of
+/// granting/revoking group-owned resources. It's no longer necessary because
+/// the async processing now happens automatically.
 @property (nonatomic, readonly, copy) NSString *asyncJobId;
 
 #pragma mark - Constructors
@@ -44,10 +44,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param groupInfo The group info after member change operation has been
 /// performed.
-/// @param asyncJobId For legacy purposes async_job_id will always return one
-/// space ' '. Formerly, it was an ID that was used to obtain the status of
-/// granting/revoking group-owned resources. It's no longer necessary because
-/// the async processing now happens automatically.
+/// @param asyncJobId Field is deprecated. For legacy purposes async_job_id will
+/// always return one space ' '. Formerly, it was an ID that was used to obtain
+/// the status of granting/revoking group-owned resources. It's no longer
+/// necessary because the async processing now happens automatically.
 ///
 /// @return An initialized instance.
 ///

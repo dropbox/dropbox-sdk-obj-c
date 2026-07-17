@@ -28,12 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESListRevisionsErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESListRevisionsError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESListRevisionsErrorTag){
-    /// (no description).
-    DBFILESListRevisionsErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESListRevisionsErrorTag) {
+  /// (no description).
+  DBFILESListRevisionsErrorPath,
 
-    /// (no description).
-    DBFILESListRevisionsErrorOther,
+  /// The revision in before_rev is invalid.
+  DBFILESListRevisionsErrorInvalidBeforeRev,
+
+  /// The before_rev argument is only supported in path mode.
+  DBFILESListRevisionsErrorBeforeRevNotSupported,
+
+  /// (no description).
+  DBFILESListRevisionsErrorOther,
 
 };
 
@@ -56,6 +62,26 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESListRevisionsErrorTag){
 - (instancetype)initWithPath:(DBFILESLookupError *)path;
 
 ///
+/// Initializes union class with tag state of "invalid_before_rev".
+///
+/// Description of the "invalid_before_rev" tag state: The revision in
+/// before_rev is invalid.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInvalidBeforeRev;
+
+///
+/// Initializes union class with tag state of "before_rev_not_supported".
+///
+/// Description of the "before_rev_not_supported" tag state: The before_rev
+/// argument is only supported in path mode.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithBeforeRevNotSupported;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -75,6 +101,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESListRevisionsErrorTag){
 /// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "invalid_before_rev".
+///
+/// @return Whether the union's current tag state has value
+/// "invalid_before_rev".
+///
+- (BOOL)isInvalidBeforeRev;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "before_rev_not_supported".
+///
+/// @return Whether the union's current tag state has value
+/// "before_rev_not_supported".
+///
+- (BOOL)isBeforeRevNotSupported;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

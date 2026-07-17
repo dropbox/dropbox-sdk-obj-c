@@ -29,21 +29,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESSearchMatchTypeV2Tag` enum type represents the possible tag
 /// states with which the `DBFILESSearchMatchTypeV2` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchMatchTypeV2Tag){
-    /// This item was matched on its file or folder name.
-    DBFILESSearchMatchTypeV2Filename,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchMatchTypeV2Tag) {
+  /// This item was matched on its file or folder name.
+  DBFILESSearchMatchTypeV2Filename,
 
-    /// This item was matched based on its file contents.
-    DBFILESSearchMatchTypeV2FileContent,
+  /// This item was matched based on its file contents.
+  DBFILESSearchMatchTypeV2FileContent,
 
-    /// This item was matched based on both its contents and its file name.
-    DBFILESSearchMatchTypeV2FilenameAndContent,
+  /// This item was matched based on both its contents and its file name.
+  DBFILESSearchMatchTypeV2FilenameAndContent,
 
-    /// This item was matched on image content.
-    DBFILESSearchMatchTypeV2ImageContent,
+  /// This item was matched on image content.
+  DBFILESSearchMatchTypeV2ImageContent,
 
-    /// (no description).
-    DBFILESSearchMatchTypeV2Other,
+  /// This item was matched based on its metadata.
+  DBFILESSearchMatchTypeV2Metadata,
+
+  /// (no description).
+  DBFILESSearchMatchTypeV2Other,
 
 };
 
@@ -93,6 +96,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchMatchTypeV2Tag){
 - (instancetype)initWithImageContent;
 
 ///
+/// Initializes union class with tag state of "metadata".
+///
+/// Description of the "metadata" tag state: This item was matched based on its
+/// metadata.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMetadata;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -132,6 +145,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchMatchTypeV2Tag){
 /// @return Whether the union's current tag state has value "image_content".
 ///
 - (BOOL)isImageContent;
+
+///
+/// Retrieves whether the union's current tag state has value "metadata".
+///
+/// @return Whether the union's current tag state has value "metadata".
+///
+- (BOOL)isMetadata;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

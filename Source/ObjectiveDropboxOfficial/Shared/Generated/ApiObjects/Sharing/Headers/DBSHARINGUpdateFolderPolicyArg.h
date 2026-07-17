@@ -55,8 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable) DBSHARINGLinkSettings *linkSettings;
 
 /// A list of `FolderAction`s corresponding to `FolderPermission`s that should
-/// appear in the  response's `permissions` in `DBSHARINGSharedFolderMetadata`
-/// field describing the actions the  authenticated user can perform on the
+/// appear in the response's `permissions` in `DBSHARINGSharedFolderMetadata`
+/// field describing the actions the authenticated user can perform on the
 /// folder.
 @property (nonatomic, readonly, nullable) NSArray<DBSHARINGFolderAction *> *actions;
 
@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param linkSettings Settings on the link for this folder.
 /// @param actions A list of `FolderAction`s corresponding to
-/// `FolderPermission`s that should appear in the  response's `permissions` in
+/// `FolderPermission`s that should appear in the response's `permissions` in
 /// `DBSHARINGSharedFolderMetadata` field describing the actions the
 /// authenticated user can perform on the folder.
 ///

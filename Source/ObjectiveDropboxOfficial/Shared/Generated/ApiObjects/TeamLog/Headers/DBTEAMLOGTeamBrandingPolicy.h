@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGTeamBrandingPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGTeamBrandingPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamBrandingPolicyTag){
-    /// (no description).
-    DBTEAMLOGTeamBrandingPolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamBrandingPolicyTag) {
+  /// (no description).
+  DBTEAMLOGTeamBrandingPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGTeamBrandingPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGTeamBrandingPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGTeamBrandingPolicyOther,
+  /// (no description).
+  DBTEAMLOGTeamBrandingPolicyOther,
 
 };
 

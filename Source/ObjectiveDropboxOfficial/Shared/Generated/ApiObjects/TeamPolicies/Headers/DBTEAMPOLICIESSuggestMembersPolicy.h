@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESSuggestMembersPolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMPOLICIESSuggestMembersPolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSuggestMembersPolicyTag){
-    /// Suggest members is disabled.
-    DBTEAMPOLICIESSuggestMembersPolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSuggestMembersPolicyTag) {
+  /// Suggest members is disabled.
+  DBTEAMPOLICIESSuggestMembersPolicyDisabled,
 
-    /// Suggest members is enabled.
-    DBTEAMPOLICIESSuggestMembersPolicyEnabled,
+  /// Suggest members is enabled.
+  DBTEAMPOLICIESSuggestMembersPolicyEnabled,
 
-    /// (no description).
-    DBTEAMPOLICIESSuggestMembersPolicyOther,
+  /// (no description).
+  DBTEAMPOLICIESSuggestMembersPolicyOther,
 
 };
 

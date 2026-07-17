@@ -28,30 +28,30 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGVisibilityPolicyDisallowedReasonTag` enum type represents the
 /// possible tag states with which the
 /// `DBSHARINGVisibilityPolicyDisallowedReason` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGVisibilityPolicyDisallowedReasonTag){
-    /// The user needs to delete and recreate the link to change the visibility
-    /// policy.
-    DBSHARINGVisibilityPolicyDisallowedReasonDeleteAndRecreate,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGVisibilityPolicyDisallowedReasonTag) {
+  /// The user needs to delete and recreate the link to change the visibility
+  /// policy.
+  DBSHARINGVisibilityPolicyDisallowedReasonDeleteAndRecreate,
 
-    /// The parent shared folder restricts sharing of links outside the shared
-    /// folder. To change the visibility policy, remove the restriction from the
-    /// parent shared folder.
-    DBSHARINGVisibilityPolicyDisallowedReasonRestrictedBySharedFolder,
+  /// The parent shared folder restricts sharing of links outside the shared
+  /// folder. To change the visibility policy, remove the restriction from the
+  /// parent shared folder.
+  DBSHARINGVisibilityPolicyDisallowedReasonRestrictedBySharedFolder,
 
-    /// The team policy prevents links being shared outside the team.
-    DBSHARINGVisibilityPolicyDisallowedReasonRestrictedByTeam,
+  /// The team policy prevents links being shared outside the team.
+  DBSHARINGVisibilityPolicyDisallowedReasonRestrictedByTeam,
 
-    /// The user needs to be on a team to set this policy.
-    DBSHARINGVisibilityPolicyDisallowedReasonUserNotOnTeam,
+  /// The user needs to be on a team to set this policy.
+  DBSHARINGVisibilityPolicyDisallowedReasonUserNotOnTeam,
 
-    /// The user is a basic user or is on a limited team.
-    DBSHARINGVisibilityPolicyDisallowedReasonUserAccountType,
+  /// The user is a basic user or is on a limited team.
+  DBSHARINGVisibilityPolicyDisallowedReasonUserAccountType,
 
-    /// The user does not have permission.
-    DBSHARINGVisibilityPolicyDisallowedReasonPermissionDenied,
+  /// The user does not have permission.
+  DBSHARINGVisibilityPolicyDisallowedReasonPermissionDenied,
 
-    /// (no description).
-    DBSHARINGVisibilityPolicyDisallowedReasonOther,
+  /// (no description).
+  DBSHARINGVisibilityPolicyDisallowedReasonOther,
 
 };
 

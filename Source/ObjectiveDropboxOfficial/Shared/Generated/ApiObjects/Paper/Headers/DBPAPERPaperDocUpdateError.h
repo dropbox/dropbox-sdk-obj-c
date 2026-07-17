@@ -27,38 +27,38 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBPAPERPaperDocUpdateErrorTag` enum type represents the possible tag
 /// states with which the `DBPAPERPaperDocUpdateError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperDocUpdateErrorTag){
-    /// Your account does not have permissions to perform this action. This may
-    /// be due to it only having access to Paper as files in the Dropbox
-    /// filesystem. For more information, refer to the Paper Migration Guide
-    /// https://www.dropbox.com/lp/developers/reference/paper-migration-guide.
-    DBPAPERPaperDocUpdateErrorInsufficientPermissions,
+typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperDocUpdateErrorTag) {
+  /// Your account does not have permissions to perform this action. This may
+  /// be due to it only having access to Paper as files in the Dropbox
+  /// filesystem. For more information, refer to the Paper Migration Guide
+  /// https://www.dropbox.com/lp/developers/reference/paper-migration-guide.
+  DBPAPERPaperDocUpdateErrorInsufficientPermissions,
 
-    /// (no description).
-    DBPAPERPaperDocUpdateErrorOther,
+  /// (no description).
+  DBPAPERPaperDocUpdateErrorOther,
 
-    /// The required doc was not found.
-    DBPAPERPaperDocUpdateErrorDocNotFound,
+  /// The required doc was not found.
+  DBPAPERPaperDocUpdateErrorDocNotFound,
 
-    /// The provided content was malformed and cannot be imported to Paper.
-    DBPAPERPaperDocUpdateErrorContentMalformed,
+  /// The provided content was malformed and cannot be imported to Paper.
+  DBPAPERPaperDocUpdateErrorContentMalformed,
 
-    /// The provided revision does not match the document head.
-    DBPAPERPaperDocUpdateErrorRevisionMismatch,
+  /// The provided revision does not match the document head.
+  DBPAPERPaperDocUpdateErrorRevisionMismatch,
 
-    /// The newly created Paper doc would be too large, split the content into
-    /// multiple docs.
-    DBPAPERPaperDocUpdateErrorDocLengthExceeded,
+  /// The newly created Paper doc would be too large, split the content into
+  /// multiple docs.
+  DBPAPERPaperDocUpdateErrorDocLengthExceeded,
 
-    /// The imported document contains an image that is too large. The current
-    /// limit is 1MB. This only applies to HTML with data URI.
-    DBPAPERPaperDocUpdateErrorImageSizeExceeded,
+  /// The imported document contains an image that is too large. The current
+  /// limit is 1MB. This only applies to HTML with data URI.
+  DBPAPERPaperDocUpdateErrorImageSizeExceeded,
 
-    /// This operation is not allowed on archived Paper docs.
-    DBPAPERPaperDocUpdateErrorDocArchived,
+  /// This operation is not allowed on archived Paper docs.
+  DBPAPERPaperDocUpdateErrorDocArchived,
 
-    /// This operation is not allowed on deleted Paper docs.
-    DBPAPERPaperDocUpdateErrorDocDeleted,
+  /// This operation is not allowed on deleted Paper docs.
+  DBPAPERPaperDocUpdateErrorDocDeleted,
 
 };
 

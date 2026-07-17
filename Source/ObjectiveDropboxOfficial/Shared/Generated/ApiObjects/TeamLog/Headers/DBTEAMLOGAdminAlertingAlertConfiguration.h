@@ -11,6 +11,7 @@
 @class DBTEAMLOGAdminAlertingAlertConfiguration;
 @class DBTEAMLOGAdminAlertingAlertSensitivity;
 @class DBTEAMLOGAdminAlertingAlertStatePolicy;
+@class DBTEAMLOGMalwareExclusionState;
 @class DBTEAMLOGRecipientsConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -45,6 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Excluded file extensions.
 @property (nonatomic, readonly, copy, nullable) NSString *excludedFileExtensions;
 
+/// Malware exclusion list state.
+@property (nonatomic, readonly, nullable) DBTEAMLOGMalwareExclusionState *malwareExclusionState;
+
 #pragma mark - Constructors
 
 ///
@@ -55,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param recipientsSettings Recipient settings.
 /// @param text Text.
 /// @param excludedFileExtensions Excluded file extensions.
+/// @param malwareExclusionState Malware exclusion list state.
 ///
 /// @return An initialized instance.
 ///
@@ -62,7 +67,8 @@ NS_ASSUME_NONNULL_BEGIN
                   sensitivityLevel:(nullable DBTEAMLOGAdminAlertingAlertSensitivity *)sensitivityLevel
                 recipientsSettings:(nullable DBTEAMLOGRecipientsConfiguration *)recipientsSettings
                               text:(nullable NSString *)text
-            excludedFileExtensions:(nullable NSString *)excludedFileExtensions;
+            excludedFileExtensions:(nullable NSString *)excludedFileExtensions
+             malwareExclusionState:(nullable DBTEAMLOGMalwareExclusionState *)malwareExclusionState;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

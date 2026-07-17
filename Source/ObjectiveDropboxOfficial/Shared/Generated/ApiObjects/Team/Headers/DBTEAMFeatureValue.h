@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMFeatureValue;
+@class DBTEAMHasDistinctMemberHomesValue;
 @class DBTEAMHasTeamFileEventsValue;
 @class DBTEAMHasTeamSelectiveSyncValue;
 @class DBTEAMHasTeamSharedDropboxValue;
@@ -34,21 +35,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMFeatureValueTag` enum type represents the possible tag states
 /// with which the `DBTEAMFeatureValue` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureValueTag){
-    /// (no description).
-    DBTEAMFeatureValueUploadApiRateLimit,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureValueTag) {
+  /// (no description).
+  DBTEAMFeatureValueUploadApiRateLimit,
 
-    /// (no description).
-    DBTEAMFeatureValueHasTeamSharedDropbox,
+  /// (no description).
+  DBTEAMFeatureValueHasTeamSharedDropbox,
 
-    /// (no description).
-    DBTEAMFeatureValueHasTeamFileEvents,
+  /// (no description).
+  DBTEAMFeatureValueHasTeamFileEvents,
 
-    /// (no description).
-    DBTEAMFeatureValueHasTeamSelectiveSync,
+  /// (no description).
+  DBTEAMFeatureValueHasTeamSelectiveSync,
 
-    /// (no description).
-    DBTEAMFeatureValueOther,
+  /// (no description).
+  DBTEAMFeatureValueHasDistinctMemberHomes,
+
+  /// (no description).
+  DBTEAMFeatureValueOther,
 
 };
 
@@ -70,6 +74,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureValueTag){
 /// (no description). @note Ensure the `isHasTeamSelectiveSync` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMHasTeamSelectiveSyncValue *hasTeamSelectiveSync;
+
+/// (no description). @note Ensure the `isHasDistinctMemberHomes` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMHasDistinctMemberHomesValue *hasDistinctMemberHomes;
 
 #pragma mark - Constructors
 
@@ -108,6 +116,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureValueTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithHasTeamSelectiveSync:(DBTEAMHasTeamSelectiveSyncValue *)hasTeamSelectiveSync;
+
+///
+/// Initializes union class with tag state of "has_distinct_member_homes".
+///
+/// @param hasDistinctMemberHomes (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithHasDistinctMemberHomes:(DBTEAMHasDistinctMemberHomesValue *)hasDistinctMemberHomes;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -169,6 +186,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureValueTag){
 /// "has_team_selective_sync".
 ///
 - (BOOL)isHasTeamSelectiveSync;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "has_distinct_member_homes".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `hasDistinctMemberHomes` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "has_distinct_member_homes".
+///
+- (BOOL)isHasDistinctMemberHomes;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

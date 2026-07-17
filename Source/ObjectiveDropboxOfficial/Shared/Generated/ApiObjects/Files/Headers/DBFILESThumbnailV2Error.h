@@ -28,27 +28,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESThumbnailV2ErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESThumbnailV2Error` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag){
-    /// An error occurred when downloading metadata for the image.
-    DBFILESThumbnailV2ErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag) {
+  /// An error occurred when downloading metadata for the image.
+  DBFILESThumbnailV2ErrorPath,
 
-    /// The file extension doesn't allow conversion to a thumbnail.
-    DBFILESThumbnailV2ErrorUnsupportedExtension,
+  /// The file extension doesn't allow conversion to a thumbnail.
+  DBFILESThumbnailV2ErrorUnsupportedExtension,
 
-    /// The image cannot be converted to a thumbnail.
-    DBFILESThumbnailV2ErrorUnsupportedImage,
+  /// The image cannot be converted to a thumbnail.
+  DBFILESThumbnailV2ErrorUnsupportedImage,
 
-    /// An error occurred during thumbnail conversion.
-    DBFILESThumbnailV2ErrorConversionError,
+  /// Encrypted content cannot be converted to a thumbnail.
+  DBFILESThumbnailV2ErrorEncryptedContent,
 
-    /// Access to this shared link is forbidden.
-    DBFILESThumbnailV2ErrorAccessDenied,
+  /// An error occurred during thumbnail conversion.
+  DBFILESThumbnailV2ErrorConversionError,
 
-    /// The shared link does not exist.
-    DBFILESThumbnailV2ErrorNotFound,
+  /// Access to this shared link is forbidden.
+  DBFILESThumbnailV2ErrorAccessDenied,
 
-    /// (no description).
-    DBFILESThumbnailV2ErrorOther,
+  /// The shared link does not exist.
+  DBFILESThumbnailV2ErrorNotFound,
+
+  /// (no description).
+  DBFILESThumbnailV2ErrorOther,
 
 };
 
@@ -93,6 +96,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnsupportedImage;
+
+///
+/// Initializes union class with tag state of "encrypted_content".
+///
+/// Description of the "encrypted_content" tag state: Encrypted content cannot
+/// be converted to a thumbnail.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEncryptedContent;
 
 ///
 /// Initializes union class with tag state of "conversion_error".
@@ -160,6 +173,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag){
 /// @return Whether the union's current tag state has value "unsupported_image".
 ///
 - (BOOL)isUnsupportedImage;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "encrypted_content".
+///
+/// @return Whether the union's current tag state has value "encrypted_content".
+///
+- (BOOL)isEncryptedContent;
 
 ///
 /// Retrieves whether the union's current tag state has value

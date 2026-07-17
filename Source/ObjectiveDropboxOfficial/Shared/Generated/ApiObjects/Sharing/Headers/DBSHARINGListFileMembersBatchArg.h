@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Files for which to return members.
 @property (nonatomic, readonly) NSArray<NSString *> *files;
 
-/// Number of members to return max per query. Defaults to 10 if no limit is
+/// Number of members to return max per query. Defaults to 1000 if no limit is
 /// specified.
 @property (nonatomic, readonly) NSNumber *limit;
 
@@ -40,8 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param files Files for which to return members.
-/// @param limit Number of members to return max per query. Defaults to 10 if no
-/// limit is specified.
+/// @param limit Number of members to return max per query. Defaults to 1000 if
+/// no limit is specified.
 ///
 /// @return An initialized instance.
 ///

@@ -29,18 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESImportFormatTag` enum type represents the possible tag states
 /// with which the `DBFILESImportFormat` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESImportFormatTag){
-    /// The provided data is interpreted as standard HTML.
-    DBFILESImportFormatHtml,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESImportFormatTag) {
+  /// The provided data is interpreted as standard HTML.
+  DBFILESImportFormatHtml,
 
-    /// The provided data is interpreted as markdown.
-    DBFILESImportFormatMarkdown,
+  /// The provided data is interpreted as markdown.
+  DBFILESImportFormatMarkdown,
 
-    /// The provided data is interpreted as plain text.
-    DBFILESImportFormatPlainText,
+  /// The provided data is interpreted as plain text.
+  DBFILESImportFormatPlainText,
 
-    /// (no description).
-    DBFILESImportFormatOther,
+  /// (no description).
+  DBFILESImportFormatOther,
 
 };
 

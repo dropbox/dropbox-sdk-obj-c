@@ -29,7 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The namespace ID for user's root namespace. It will be the namespace ID of
 /// the shared team root if the user is member of a team with a separate team
-/// root. Otherwise it will be same as `homeNamespaceId` in `DBCOMMONRootInfo`.
+/// root, or the user root if user is member of a team with separate distinct
+/// roots for users. Otherwise it will be the same as `homeNamespaceId` in
+/// `DBCOMMONRootInfo`.
 @property (nonatomic, readonly, copy) NSString *rootNamespaceId;
 
 /// The namespace ID for user's home namespace.
@@ -42,8 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param rootNamespaceId The namespace ID for user's root namespace. It will
 /// be the namespace ID of the shared team root if the user is member of a team
-/// with a separate team root. Otherwise it will be same as `homeNamespaceId` in
-/// `DBCOMMONRootInfo`.
+/// with a separate team root, or the user root if user is member of a team with
+/// separate distinct roots for users. Otherwise it will be the same as
+/// `homeNamespaceId` in `DBCOMMONRootInfo`.
 /// @param homeNamespaceId The namespace ID for user's home namespace.
 ///
 /// @return An initialized instance.

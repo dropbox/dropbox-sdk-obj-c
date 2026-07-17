@@ -27,12 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESThumbnailFormatTag` enum type represents the possible tag states
 /// with which the `DBFILESThumbnailFormat` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailFormatTag){
-    /// (no description).
-    DBFILESThumbnailFormatJpeg,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailFormatTag) {
+  /// (no description).
+  DBFILESThumbnailFormatJpeg,
 
-    /// (no description).
-    DBFILESThumbnailFormatPng,
+  /// (no description).
+  DBFILESThumbnailFormatPng,
+
+  /// (no description).
+  DBFILESThumbnailFormatWebp,
 
 };
 
@@ -55,6 +58,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailFormatTag){
 ///
 - (instancetype)initWithPng;
 
+///
+/// Initializes union class with tag state of "webp".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithWebp;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -72,6 +82,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailFormatTag){
 /// @return Whether the union's current tag state has value "png".
 ///
 - (BOOL)isPng;
+
+///
+/// Retrieves whether the union's current tag state has value "webp".
+///
+/// @return Whether the union's current tag state has value "webp".
+///
+- (BOOL)isWebp;
 
 ///
 /// Retrieves string value of union's current tag state.

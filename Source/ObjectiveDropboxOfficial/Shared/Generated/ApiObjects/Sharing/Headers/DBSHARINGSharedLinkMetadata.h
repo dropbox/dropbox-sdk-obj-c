@@ -44,14 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The lowercased full path in the user's Dropbox. This always starts with a
 /// slash. This field will only be present only if the linked file is in the
-/// authenticated user's  dropbox.
+/// authenticated user's dropbox and the user is the owner of the link.
 @property (nonatomic, readonly, copy, nullable) NSString *pathLower;
 
 /// The link's access permissions.
 @property (nonatomic, readonly) DBSHARINGLinkPermissions *linkPermissions;
 
 /// The team membership information of the link's owner.  This field will only
-/// be present  if the link's owner is a team member.
+/// be present if the link's owner is a team member.
 @property (nonatomic, readonly, nullable) DBSHARINGTeamMemberInfo *teamMemberInfo;
 
 /// The team information of the content's owner. This field will only be present
@@ -72,9 +72,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param expires Expiration time, if set. By default the link won't expire.
 /// @param pathLower The lowercased full path in the user's Dropbox. This always
 /// starts with a slash. This field will only be present only if the linked file
-/// is in the authenticated user's  dropbox.
+/// is in the authenticated user's dropbox and the user is the owner of the
+/// link.
 /// @param teamMemberInfo The team membership information of the link's owner.
-/// This field will only be present  if the link's owner is a team member.
+/// This field will only be present if the link's owner is a team member.
 /// @param contentOwnerTeamInfo The team information of the content's owner.
 /// This field will only be present if the content's owner is a team member and
 /// the content's owner team is different from the link's owner team.

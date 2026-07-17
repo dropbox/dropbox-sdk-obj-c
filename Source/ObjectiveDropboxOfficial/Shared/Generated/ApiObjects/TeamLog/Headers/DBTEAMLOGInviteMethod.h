@@ -27,21 +27,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGInviteMethodTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGInviteMethod` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGInviteMethodTag){
-    /// (no description).
-    DBTEAMLOGInviteMethodAutoApprove,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGInviteMethodTag) {
+  /// (no description).
+  DBTEAMLOGInviteMethodAutoApprove,
 
-    /// (no description).
-    DBTEAMLOGInviteMethodInviteLink,
+  /// (no description).
+  DBTEAMLOGInviteMethodInviteLink,
 
-    /// (no description).
-    DBTEAMLOGInviteMethodMemberInvite,
+  /// (no description).
+  DBTEAMLOGInviteMethodMemberInvite,
 
-    /// (no description).
-    DBTEAMLOGInviteMethodMovedFromAnotherTeam,
+  /// (no description).
+  DBTEAMLOGInviteMethodMovedFromAnotherTeam,
 
-    /// (no description).
-    DBTEAMLOGInviteMethodOther,
+  /// (no description).
+  DBTEAMLOGInviteMethodOther,
 
 };
 

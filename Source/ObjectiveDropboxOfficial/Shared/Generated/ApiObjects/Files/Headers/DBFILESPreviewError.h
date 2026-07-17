@@ -28,19 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESPreviewErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESPreviewError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESPreviewErrorTag){
-    /// An error occurs when downloading metadata for the file.
-    DBFILESPreviewErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESPreviewErrorTag) {
+  /// An error occurs when downloading metadata for the file.
+  DBFILESPreviewErrorPath,
 
-    /// This preview generation is still in progress and the file is not ready
-    /// for preview yet.
-    DBFILESPreviewErrorInProgress,
+  /// This preview generation is still in progress and the file is not ready
+  /// for preview yet.
+  DBFILESPreviewErrorInProgress,
 
-    /// The file extension is not supported preview generation.
-    DBFILESPreviewErrorUnsupportedExtension,
+  /// The file extension is not supported preview generation.
+  DBFILESPreviewErrorUnsupportedExtension,
 
-    /// The file content is not supported for preview generation.
-    DBFILESPreviewErrorUnsupportedContent,
+  /// The file content is not supported for preview generation.
+  DBFILESPreviewErrorUnsupportedContent,
 
 };
 
@@ -70,7 +70,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESPreviewErrorTag){
 /// Initializes union class with tag state of "in_progress".
 ///
 /// Description of the "in_progress" tag state: This preview generation is still
-/// in progress and the file is not ready  for preview yet.
+/// in progress and the file is not ready for preview yet.
 ///
 /// @return An initialized instance.
 ///

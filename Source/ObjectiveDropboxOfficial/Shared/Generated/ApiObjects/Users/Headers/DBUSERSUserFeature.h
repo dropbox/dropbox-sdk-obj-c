@@ -29,17 +29,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBUSERSUserFeatureTag` enum type represents the possible tag states
 /// with which the `DBUSERSUserFeature` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureTag){
-    /// This feature contains information about how the user's Paper files are
-    /// stored.
-    DBUSERSUserFeaturePaperAsFiles,
+typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureTag) {
+  /// This feature contains information about how the user's Paper files are
+  /// stored.
+  DBUSERSUserFeaturePaperAsFiles,
 
-    /// This feature allows users to lock files in order to restrict other users
-    /// from editing them.
-    DBUSERSUserFeatureFileLocking,
+  /// This feature allows users to lock files in order to restrict other users
+  /// from editing them.
+  DBUSERSUserFeatureFileLocking,
 
-    /// (no description).
-    DBUSERSUserFeatureOther,
+  /// This feature contains information about whether or not the user is part
+  /// of a team with a shared team root.
+  DBUSERSUserFeatureTeamSharedDropbox,
+
+  /// This feature contains information about whether or not the user's home
+  /// namespace is distinct from their root namespace.
+  DBUSERSUserFeatureDistinctMemberHome,
+
+  /// (no description).
+  DBUSERSUserFeatureOther,
 
 };
 
@@ -69,6 +77,28 @@ typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureTag){
 - (instancetype)initWithFileLocking;
 
 ///
+/// Initializes union class with tag state of "team_shared_dropbox".
+///
+/// Description of the "team_shared_dropbox" tag state: This feature contains
+/// information about whether or not the user is part of a team with a shared
+/// team root.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamSharedDropbox;
+
+///
+/// Initializes union class with tag state of "distinct_member_home".
+///
+/// Description of the "distinct_member_home" tag state: This feature contains
+/// information about whether or not the user's home namespace is distinct from
+/// their root namespace.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDistinctMemberHome;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -92,6 +122,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureTag){
 /// @return Whether the union's current tag state has value "file_locking".
 ///
 - (BOOL)isFileLocking;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_shared_dropbox".
+///
+/// @return Whether the union's current tag state has value
+/// "team_shared_dropbox".
+///
+- (BOOL)isTeamSharedDropbox;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "distinct_member_home".
+///
+/// @return Whether the union's current tag state has value
+/// "distinct_member_home".
+///
+- (BOOL)isDistinctMemberHome;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -27,21 +27,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGGetSharedLinkFileErrorTag` enum type represents the possible
 /// tag states with which the `DBSHARINGGetSharedLinkFileError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag){
-    /// The shared link wasn't found.
-    DBSHARINGGetSharedLinkFileErrorSharedLinkNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
+  /// The shared link wasn't found.
+  DBSHARINGGetSharedLinkFileErrorSharedLinkNotFound,
 
-    /// The caller is not allowed to access this shared link.
-    DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied,
+  /// The caller is not allowed to access this shared link.
+  DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied,
 
-    /// This type of link is not supported; use `files` instead.
-    DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType,
+  /// This type of link is not supported; use `files` instead.
+  DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType,
 
-    /// (no description).
-    DBSHARINGGetSharedLinkFileErrorOther,
+  /// Private shared links do not support `path` or `link_password` parameter
+  /// fields.
+  DBSHARINGGetSharedLinkFileErrorUnsupportedParameterField,
 
-    /// Directories cannot be retrieved by this endpoint.
-    DBSHARINGGetSharedLinkFileErrorSharedLinkIsDirectory,
+  /// (no description).
+  DBSHARINGGetSharedLinkFileErrorOther,
+
+  /// Directories cannot be retrieved by this endpoint.
+  DBSHARINGGetSharedLinkFileErrorSharedLinkIsDirectory,
 
 };
 
@@ -79,6 +83,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnsupportedLinkType;
+
+///
+/// Initializes union class with tag state of "unsupported_parameter_field".
+///
+/// Description of the "unsupported_parameter_field" tag state: Private shared
+/// links do not support `path` or `link_password` parameter fields.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnsupportedParameterField;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -127,6 +141,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag){
 /// "unsupported_link_type".
 ///
 - (BOOL)isUnsupportedLinkType;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_parameter_field".
+///
+/// @return Whether the union's current tag state has value
+/// "unsupported_parameter_field".
+///
+- (BOOL)isUnsupportedParameterField;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

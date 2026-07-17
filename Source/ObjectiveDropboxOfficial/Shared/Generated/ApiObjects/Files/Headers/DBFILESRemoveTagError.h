@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESRemoveTagErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESRemoveTagError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESRemoveTagErrorTag){
-    /// (no description).
-    DBFILESRemoveTagErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESRemoveTagErrorTag) {
+  /// (no description).
+  DBFILESRemoveTagErrorPath,
 
-    /// (no description).
-    DBFILESRemoveTagErrorOther,
+  /// (no description).
+  DBFILESRemoveTagErrorOther,
 
-    /// That tag doesn't exist at this path.
-    DBFILESRemoveTagErrorTagNotPresent,
+  /// That tag doesn't exist at this path.
+  DBFILESRemoveTagErrorTagNotPresent,
 
 };
 

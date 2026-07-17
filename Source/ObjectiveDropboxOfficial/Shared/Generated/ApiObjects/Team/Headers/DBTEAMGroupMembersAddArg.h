@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param group Group to which users will be added.
 /// @param members List of users to be added to the group.
 /// @param returnMembers Whether to return the list of members in the group.
-/// Note that the default value will cause all the group members  to be returned
+/// Note that the default value will cause all the group members to be returned
 /// in the response. This may take a long time for large groups.
 ///
 /// @return An initialized instance.

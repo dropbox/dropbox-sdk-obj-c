@@ -30,9 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Equivalent to the parameters provided to `upload`.
 @property (nonatomic, readonly) DBFILESCommitInfo *commitInfo;
 
-/// How long before this link expires, in seconds.  Attempting to start an
-/// upload with this link longer than this period  of time after link creation
-/// will result in an error.
+/// How long before this link expires, in seconds. Attempting to start an upload
+/// with this link longer than this period of time after link creation will
+/// result in an error.
 @property (nonatomic, readonly) NSNumber *duration;
 
 #pragma mark - Constructors
@@ -42,9 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param commitInfo Contains the path and other optional modifiers for the
 /// future upload commit. Equivalent to the parameters provided to `upload`.
-/// @param duration How long before this link expires, in seconds.  Attempting
-/// to start an upload with this link longer than this period  of time after
-/// link creation will result in an error.
+/// @param duration How long before this link expires, in seconds. Attempting to
+/// start an upload with this link longer than this period of time after link
+/// creation will result in an error.
 ///
 /// @return An initialized instance.
 ///

@@ -27,27 +27,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGMemberStatusTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGMemberStatus` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMemberStatusTag){
-    /// (no description).
-    DBTEAMLOGMemberStatusActive,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMemberStatusTag) {
+  /// (no description).
+  DBTEAMLOGMemberStatusActive,
 
-    /// (no description).
-    DBTEAMLOGMemberStatusInvited,
+  /// (no description).
+  DBTEAMLOGMemberStatusInvited,
 
-    /// (no description).
-    DBTEAMLOGMemberStatusMovedToAnotherTeam,
+  /// (no description).
+  DBTEAMLOGMemberStatusMovedToAnotherTeam,
 
-    /// (no description).
-    DBTEAMLOGMemberStatusNotJoined,
+  /// (no description).
+  DBTEAMLOGMemberStatusNotJoined,
 
-    /// (no description).
-    DBTEAMLOGMemberStatusRemoved,
+  /// (no description).
+  DBTEAMLOGMemberStatusRemoved,
 
-    /// (no description).
-    DBTEAMLOGMemberStatusSuspended,
+  /// (no description).
+  DBTEAMLOGMemberStatusSuspended,
 
-    /// (no description).
-    DBTEAMLOGMemberStatusOther,
+  /// (no description).
+  DBTEAMLOGMemberStatusOther,
 
 };
 

@@ -29,18 +29,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGSharedLinkPolicyTag` enum type represents the possible tag
 /// states with which the `DBSHARINGSharedLinkPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag){
-    /// Links can be shared with anyone.
-    DBSHARINGSharedLinkPolicyAnyone,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
+  /// Links can be shared with anyone.
+  DBSHARINGSharedLinkPolicyAnyone,
 
-    /// Links can be shared with anyone on the same team as the owner.
-    DBSHARINGSharedLinkPolicyTeam,
+  /// Field is deprecated. Links can be shared with anyone on the same team as
+  /// the owner.
+  DBSHARINGSharedLinkPolicyTeam,
 
-    /// Links can only be shared among members of the shared folder.
-    DBSHARINGSharedLinkPolicyMembers,
+  /// Links can only be shared among members of the shared folder.
+  DBSHARINGSharedLinkPolicyMembers,
 
-    /// (no description).
-    DBSHARINGSharedLinkPolicyOther,
+  /// (no description).
+  DBSHARINGSharedLinkPolicyOther,
 
 };
 
@@ -61,8 +62,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag){
 ///
 /// Initializes union class with tag state of "team".
 ///
-/// Description of the "team" tag state: Links can be shared with anyone on the
-/// same team as the owner.
+/// Description of the "team" tag state: Field is deprecated. Links can be
+/// shared with anyone on the same team as the owner.
 ///
 /// @return An initialized instance.
 ///

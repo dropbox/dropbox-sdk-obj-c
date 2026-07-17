@@ -28,26 +28,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESGetTemporaryLinkErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESGetTemporaryLinkError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetTemporaryLinkErrorTag){
-    /// (no description).
-    DBFILESGetTemporaryLinkErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetTemporaryLinkErrorTag) {
+  /// (no description).
+  DBFILESGetTemporaryLinkErrorPath,
 
-    /// This user's email address is not verified. This functionality is only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBFILESGetTemporaryLinkErrorEmailNotVerified,
+  /// This user's email address is not verified. This functionality is only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBFILESGetTemporaryLinkErrorEmailNotVerified,
 
-    /// Cannot get temporary link to this file type; use `export` instead.
-    DBFILESGetTemporaryLinkErrorUnsupportedFile,
+  /// Cannot get temporary link to this file type; use `export` instead.
+  DBFILESGetTemporaryLinkErrorUnsupportedFile,
 
-    /// The user is not allowed to request a temporary link to the specified
-    /// file. For example, this can occur if the file is restricted or if the
-    /// user's links are banned
-    /// https://help.dropbox.com/files-folders/share/banned-links.
-    DBFILESGetTemporaryLinkErrorNotAllowed,
+  /// The user is not allowed to request a temporary link to the specified
+  /// file. For example, this can occur if the file is restricted or if the
+  /// user's links are banned
+  /// https://help.dropbox.com/files-folders/share/banned-links.
+  DBFILESGetTemporaryLinkErrorNotAllowed,
 
-    /// (no description).
-    DBFILESGetTemporaryLinkErrorOther,
+  /// (no description).
+  DBFILESGetTemporaryLinkErrorOther,
 
 };
 

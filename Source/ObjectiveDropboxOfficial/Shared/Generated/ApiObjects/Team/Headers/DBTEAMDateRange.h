@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Optional starting date (inclusive). If start_date is None or too long ago,
-/// this field will  be set to 6 months ago.
+/// this field will be set to 6 months ago.
 @property (nonatomic, readonly, nullable) NSDate *startDate;
 
 /// Optional ending date (exclusive).
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param startDate Optional starting date (inclusive). If start_date is None
-/// or too long ago, this field will  be set to 6 months ago.
+/// or too long ago, this field will be set to 6 months ago.
 /// @param endDate Optional ending date (exclusive).
 ///
 /// @return An initialized instance.

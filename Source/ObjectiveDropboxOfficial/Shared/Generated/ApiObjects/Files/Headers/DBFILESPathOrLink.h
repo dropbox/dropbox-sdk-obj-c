@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESPathOrLinkTag` enum type represents the possible tag states with
 /// which the `DBFILESPathOrLink` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESPathOrLinkTag){
-    /// (no description).
-    DBFILESPathOrLinkPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESPathOrLinkTag) {
+  /// (no description).
+  DBFILESPathOrLinkPath,
 
-    /// (no description).
-    DBFILESPathOrLinkLink,
+  /// (no description).
+  DBFILESPathOrLinkLink,
 
-    /// (no description).
-    DBFILESPathOrLinkOther,
+  /// (no description).
+  DBFILESPathOrLinkOther,
 
 };
 

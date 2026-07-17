@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// File request deadline.
 @property (nonatomic, readonly, nullable) DBTEAMLOGFileRequestDeadline *deadline;
 
+/// Flag represents if this file request has password.
+@property (nonatomic, readonly, nullable) NSNumber *hasPassword;
+
 #pragma mark - Constructors
 
 ///
@@ -41,10 +44,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param assetIndex Asset position in the Assets list.
 /// @param deadline File request deadline.
+/// @param hasPassword Flag represents if this file request has password.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithAssetIndex:(NSNumber *)assetIndex deadline:(nullable DBTEAMLOGFileRequestDeadline *)deadline;
+- (instancetype)initWithAssetIndex:(NSNumber *)assetIndex
+                          deadline:(nullable DBTEAMLOGFileRequestDeadline *)deadline
+                       hasPassword:(nullable NSNumber *)hasPassword;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

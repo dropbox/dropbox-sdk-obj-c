@@ -27,33 +27,46 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The ID for the shared folder.
+/// The ID for the shared folder. When path is provided, the folder ID will be
+/// extracted from the path instead.
 @property (nonatomic, readonly, copy) NSString *sharedFolderId;
+
+/// Optional path to get inherited members. When omitted, uses shared_folder_id
+/// to return direct members. When provided, extracts folder ID from this path
+/// and returns users who have access through parent shared folder.
+@property (nonatomic, readonly, copy, nullable) NSString *path;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param sharedFolderId The ID for the shared folder.
+/// @param sharedFolderId The ID for the shared folder. When path is provided,
+/// the folder ID will be extracted from the path instead.
 /// @param actions This is a list indicating whether each returned member will
 /// include a boolean value `allow` in `DBSHARINGMemberPermission` that
 /// describes whether the current user can perform the MemberAction on the
 /// member.
 /// @param limit The maximum number of results that include members, groups and
 /// invitees to return per request.
+/// @param path Optional path to get inherited members. When omitted, uses
+/// shared_folder_id to return direct members. When provided, extracts folder ID
+/// from this path and returns users who have access through parent shared
+/// folder.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId
                                actions:(nullable NSArray<DBSHARINGMemberAction *> *)actions
-                                 limit:(nullable NSNumber *)limit;
+                                 limit:(nullable NSNumber *)limit
+                                  path:(nullable NSString *)path;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param sharedFolderId The ID for the shared folder.
+/// @param sharedFolderId The ID for the shared folder. When path is provided,
+/// the folder ID will be extracted from the path instead.
 ///
 /// @return An initialized instance.
 ///

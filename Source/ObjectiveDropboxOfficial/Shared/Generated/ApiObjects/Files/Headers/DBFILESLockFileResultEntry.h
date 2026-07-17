@@ -29,12 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESLockFileResultEntryTag` enum type represents the possible tag
 /// states with which the `DBFILESLockFileResultEntry` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESLockFileResultEntryTag){
-    /// (no description).
-    DBFILESLockFileResultEntrySuccess,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESLockFileResultEntryTag) {
+  /// (no description).
+  DBFILESLockFileResultEntrySuccess,
 
-    /// (no description).
-    DBFILESLockFileResultEntryFailure,
+  /// (no description).
+  DBFILESLockFileResultEntryFailure,
 
 };
 

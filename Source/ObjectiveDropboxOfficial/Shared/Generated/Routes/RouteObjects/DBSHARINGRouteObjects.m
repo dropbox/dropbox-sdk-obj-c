@@ -59,6 +59,8 @@
 #import "DBSHARINGMountFolderError.h"
 #import "DBSHARINGParentFolderAccessInfo.h"
 #import "DBSHARINGPathLinkMetadata.h"
+#import "DBSHARINGRelinquishAccessError.h"
+#import "DBSHARINGRelinquishAccessResult.h"
 #import "DBSHARINGRelinquishFileMembershipError.h"
 #import "DBSHARINGRelinquishFolderMembershipError.h"
 #import "DBSHARINGRemoveFileMemberError.h"
@@ -82,6 +84,7 @@
 #import "DBSHARINGSharedLinkAlreadyExistsMetadata.h"
 #import "DBSHARINGSharedLinkError.h"
 #import "DBSHARINGSharedLinkMetadata.h"
+#import "DBSHARINGSharedLinkMetadataError.h"
 #import "DBSHARINGSharedLinkSettingsError.h"
 #import "DBSHARINGSharingFileAccessError.h"
 #import "DBSHARINGSharingUserError.h"
@@ -90,6 +93,7 @@
 #import "DBSHARINGUnmountFolderError.h"
 #import "DBSHARINGUnshareFileError.h"
 #import "DBSHARINGUnshareFolderError.h"
+#import "DBSHARINGUpdateFilePolicyError.h"
 #import "DBSHARINGUpdateFolderMemberError.h"
 #import "DBSHARINGUpdateFolderPolicyError.h"
 #import "DBSHARINGUserAuthRoutes.h"
@@ -128,6 +132,7 @@ static DBRoute *DBSHARINGListReceivedFilesContinue;
 static DBRoute *DBSHARINGListSharedLinks;
 static DBRoute *DBSHARINGModifySharedLinkSettings;
 static DBRoute *DBSHARINGMountFolder;
+static DBRoute *DBSHARINGRelinquishAccess;
 static DBRoute *DBSHARINGRelinquishFileMembership;
 static DBRoute *DBSHARINGRelinquishFolderMembership;
 static DBRoute *DBSHARINGRemoveFileMember;
@@ -141,6 +146,7 @@ static DBRoute *DBSHARINGUnmountFolder;
 static DBRoute *DBSHARINGUnshareFile;
 static DBRoute *DBSHARINGUnshareFolder;
 static DBRoute *DBSHARINGUpdateFileMember;
+static DBRoute *DBSHARINGUpdateFilePolicy;
 static DBRoute *DBSHARINGUpdateFolderMember;
 static DBRoute *DBSHARINGUpdateFolderPolicy;
 
@@ -335,7 +341,7 @@ static NSObject *lockObj = nil;
                            deprecated:@NO
                            resultType:[DBSHARINGSharedLinkMetadata class]
                             errorType:[DBSHARINGGetSharedLinkFileError class]
-                                attrs:@{@"auth" : @"user", @"host" : @"content", @"style" : @"download"}
+                                attrs:@{@"auth" : @"app, user", @"host" : @"content", @"style" : @"download"}
                 dataStructSerialBlock:nil
               dataStructDeserialBlock:nil];
     }
@@ -351,7 +357,7 @@ static NSObject *lockObj = nil;
                            namespace_:@"sharing"
                            deprecated:@NO
                            resultType:[DBSHARINGSharedLinkMetadata class]
-                            errorType:[DBSHARINGSharedLinkError class]
+                            errorType:[DBSHARINGSharedLinkMetadataError class]
                                 attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
                 dataStructSerialBlock:nil
               dataStructDeserialBlock:nil];
@@ -610,6 +616,22 @@ static NSObject *lockObj = nil;
   }
 }
 
++ (DBRoute *)DBSHARINGRelinquishAccess {
+  @synchronized(lockObj) {
+    if (!DBSHARINGRelinquishAccess) {
+      DBSHARINGRelinquishAccess = [[DBRoute alloc] init:@"relinquish_access"
+                                             namespace_:@"sharing"
+                                             deprecated:@NO
+                                             resultType:[DBSHARINGRelinquishAccessResult class]
+                                              errorType:[DBSHARINGRelinquishAccessError class]
+                                                  attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
+    }
+    return DBSHARINGRelinquishAccess;
+  }
+}
+
 + (DBRoute *)DBSHARINGRelinquishFileMembership {
   @synchronized(lockObj) {
     if (!DBSHARINGRelinquishFileMembership) {
@@ -817,6 +839,22 @@ static NSObject *lockObj = nil;
                                 dataStructDeserialBlock:nil];
     }
     return DBSHARINGUpdateFileMember;
+  }
+}
+
++ (DBRoute *)DBSHARINGUpdateFilePolicy {
+  @synchronized(lockObj) {
+    if (!DBSHARINGUpdateFilePolicy) {
+      DBSHARINGUpdateFilePolicy = [[DBRoute alloc] init:@"update_file_policy"
+                                             namespace_:@"sharing"
+                                             deprecated:@NO
+                                             resultType:[DBSHARINGSharedFileMetadata class]
+                                              errorType:[DBSHARINGUpdateFilePolicyError class]
+                                                  attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
+    }
+    return DBSHARINGUpdateFilePolicy;
   }
 }
 

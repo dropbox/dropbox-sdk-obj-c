@@ -30,18 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGCaptureTranscriptPolicyTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGCaptureTranscriptPolicy` union can
 /// exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGCaptureTranscriptPolicyTag){
-    /// (no description).
-    DBTEAMLOGCaptureTranscriptPolicyDefault_,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGCaptureTranscriptPolicyTag) {
+  /// (no description).
+  DBTEAMLOGCaptureTranscriptPolicyDefault_,
 
-    /// (no description).
-    DBTEAMLOGCaptureTranscriptPolicyDisabled,
+  /// (no description).
+  DBTEAMLOGCaptureTranscriptPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGCaptureTranscriptPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGCaptureTranscriptPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGCaptureTranscriptPolicyOther,
+  /// (no description).
+  DBTEAMLOGCaptureTranscriptPolicyOther,
 
 };
 

@@ -89,6 +89,9 @@
 #import "DBSHARINGParentFolderAccessInfo.h"
 #import "DBSHARINGPathLinkMetadata.h"
 #import "DBSHARINGPendingUploadMode.h"
+#import "DBSHARINGRelinquishAccessArg.h"
+#import "DBSHARINGRelinquishAccessError.h"
+#import "DBSHARINGRelinquishAccessResult.h"
 #import "DBSHARINGRelinquishFileMembershipArg.h"
 #import "DBSHARINGRelinquishFileMembershipError.h"
 #import "DBSHARINGRelinquishFolderMembershipArg.h"
@@ -121,6 +124,7 @@
 #import "DBSHARINGSharedLinkAlreadyExistsMetadata.h"
 #import "DBSHARINGSharedLinkError.h"
 #import "DBSHARINGSharedLinkMetadata.h"
+#import "DBSHARINGSharedLinkMetadataError.h"
 #import "DBSHARINGSharedLinkPolicy.h"
 #import "DBSHARINGSharedLinkSettings.h"
 #import "DBSHARINGSharedLinkSettingsError.h"
@@ -136,6 +140,8 @@
 #import "DBSHARINGUnshareFolderArg.h"
 #import "DBSHARINGUnshareFolderError.h"
 #import "DBSHARINGUpdateFileMemberArgs.h"
+#import "DBSHARINGUpdateFilePolicyArg.h"
+#import "DBSHARINGUpdateFilePolicyError.h"
 #import "DBSHARINGUpdateFolderMemberArg.h"
 #import "DBSHARINGUpdateFolderMemberError.h"
 #import "DBSHARINGUpdateFolderPolicyArg.h"
@@ -158,6 +164,94 @@
   return self;
 }
 
+- (DBDownloadUrlTask *)getSharedLinkFileUrl:(NSString *)url overwrite:(BOOL)overwrite destination:(NSURL *)destination {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url];
+  return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
+}
+
+- (DBDownloadUrlTask *)getSharedLinkFileUrl:(NSString *)url
+                                       path:(NSString *)path
+                               linkPassword:(NSString *)linkPassword
+                                  overwrite:(BOOL)overwrite
+                                destination:(NSURL *)destination {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
+  return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
+}
+
+- (DBDownloadUrlTask *)getSharedLinkFileUrl:(NSString *)url
+                                  overwrite:(BOOL)overwrite
+                                destination:(NSURL *)destination
+                            byteOffsetStart:(NSNumber *)byteOffsetStart
+                              byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url];
+  return [self.client requestDownload:route
+                                  arg:arg
+                            overwrite:overwrite
+                          destination:destination
+                      byteOffsetStart:byteOffsetStart
+                        byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadUrlTask *)getSharedLinkFileUrl:(NSString *)url
+                                       path:(NSString *)path
+                               linkPassword:(NSString *)linkPassword
+                                  overwrite:(BOOL)overwrite
+                                destination:(NSURL *)destination
+                            byteOffsetStart:(NSNumber *)byteOffsetStart
+                              byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
+  return [self.client requestDownload:route
+                                  arg:arg
+                            overwrite:overwrite
+                          destination:destination
+                      byteOffsetStart:byteOffsetStart
+                        byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadDataTask *)getSharedLinkFileData:(NSString *)url {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url];
+  return [self.client requestDownload:route arg:arg];
+}
+
+- (DBDownloadDataTask *)getSharedLinkFileData:(NSString *)url
+                                         path:(NSString *)path
+                                 linkPassword:(NSString *)linkPassword {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
+  return [self.client requestDownload:route arg:arg];
+}
+
+- (DBDownloadDataTask *)getSharedLinkFileData:(NSString *)url
+                              byteOffsetStart:(NSNumber *)byteOffsetStart
+                                byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url];
+  return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadDataTask *)getSharedLinkFileData:(NSString *)url
+                                         path:(NSString *)path
+                                 linkPassword:(NSString *)linkPassword
+                              byteOffsetStart:(NSNumber *)byteOffsetStart
+                                byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
+  return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
+}
+
 - (DBRpcTask *)getSharedLinkMetadata:(NSString *)url {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkMetadata;
   DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url];
@@ -166,8 +260,9 @@
 
 - (DBRpcTask *)getSharedLinkMetadata:(NSString *)url path:(NSString *)path linkPassword:(NSString *)linkPassword {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkMetadata;
-  DBSHARINGGetSharedLinkMetadataArg *arg =
-      [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
+  DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url
+                                                                                             path:path
+                                                                                     linkPassword:linkPassword];
   return [self.client requestRpc:route arg:arg];
 }
 

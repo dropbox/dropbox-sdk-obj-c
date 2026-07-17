@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGTeamMembershipTypeTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGTeamMembershipType` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMembershipTypeTag){
-    /// (no description).
-    DBTEAMLOGTeamMembershipTypeFree,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMembershipTypeTag) {
+  /// (no description).
+  DBTEAMLOGTeamMembershipTypeFree,
 
-    /// (no description).
-    DBTEAMLOGTeamMembershipTypeFull,
+  /// (no description).
+  DBTEAMLOGTeamMembershipTypeFull,
 
-    /// (no description).
-    DBTEAMLOGTeamMembershipTypeGuest,
+  /// (no description).
+  DBTEAMLOGTeamMembershipTypeGuest,
 
-    /// (no description).
-    DBTEAMLOGTeamMembershipTypeOther,
+  /// (no description).
+  DBTEAMLOGTeamMembershipTypeOther,
 
 };
 

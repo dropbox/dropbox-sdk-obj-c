@@ -11,20 +11,13 @@
 #import "DBASYNCPollResultBase.h"
 #import "DBFILEPROPERTIESAddPropertiesArg.h"
 #import "DBFILEPROPERTIESAddPropertiesError.h"
-#import "DBFILEPROPERTIESGetTemplateArg.h"
-#import "DBFILEPROPERTIESGetTemplateResult.h"
 #import "DBFILEPROPERTIESInvalidPropertyGroupError.h"
-#import "DBFILEPROPERTIESListTemplateResult.h"
 #import "DBFILEPROPERTIESLookUpPropertiesError.h"
 #import "DBFILEPROPERTIESLookupError.h"
 #import "DBFILEPROPERTIESOverwritePropertyGroupArg.h"
 #import "DBFILEPROPERTIESPropertiesError.h"
-#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
 #import "DBFILEPROPERTIESPropertyGroup.h"
-#import "DBFILEPROPERTIESPropertyGroupTemplate.h"
 #import "DBFILEPROPERTIESPropertyGroupUpdate.h"
-#import "DBFILEPROPERTIESRemovePropertiesArg.h"
-#import "DBFILEPROPERTIESRemovePropertiesError.h"
 #import "DBFILEPROPERTIESTemplateError.h"
 #import "DBFILEPROPERTIESTemplateFilterBase.h"
 #import "DBFILEPROPERTIESUpdatePropertiesArg.h"
@@ -166,6 +159,7 @@
 #import "DBFILESThumbnailError.h"
 #import "DBFILESThumbnailFormat.h"
 #import "DBFILESThumbnailMode.h"
+#import "DBFILESThumbnailQuality.h"
 #import "DBFILESThumbnailSize.h"
 #import "DBFILESThumbnailV2Arg.h"
 #import "DBFILESThumbnailV2Error.h"
@@ -174,6 +168,11 @@
 #import "DBFILESUploadArg.h"
 #import "DBFILESUploadError.h"
 #import "DBFILESUploadSessionAppendArg.h"
+#import "DBFILESUploadSessionAppendBatchArg.h"
+#import "DBFILESUploadSessionAppendBatchArgEntry.h"
+#import "DBFILESUploadSessionAppendBatchError.h"
+#import "DBFILESUploadSessionAppendBatchResult.h"
+#import "DBFILESUploadSessionAppendBatchResultEntry.h"
 #import "DBFILESUploadSessionAppendError.h"
 #import "DBFILESUploadSessionCursor.h"
 #import "DBFILESUploadSessionFinishArg.h"
@@ -220,11 +219,17 @@
                                   format:(DBFILESThumbnailFormat *)format
                                     size:(DBFILESThumbnailSize *)size
                                     mode:(DBFILESThumbnailMode *)mode
+                                 quality:(DBFILESThumbnailQuality *)quality
+                        excludeMediaInfo:(NSNumber *)excludeMediaInfo
                                overwrite:(BOOL)overwrite
                              destination:(NSURL *)destination {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode
+                                                                       quality:quality
+                                                              excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
@@ -247,13 +252,19 @@
                                   format:(DBFILESThumbnailFormat *)format
                                     size:(DBFILESThumbnailSize *)size
                                     mode:(DBFILESThumbnailMode *)mode
+                                 quality:(DBFILESThumbnailQuality *)quality
+                        excludeMediaInfo:(NSNumber *)excludeMediaInfo
                                overwrite:(BOOL)overwrite
                              destination:(NSURL *)destination
                          byteOffsetStart:(NSNumber *)byteOffsetStart
                            byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode
+                                                                       quality:quality
+                                                              excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route
                                   arg:arg
                             overwrite:overwrite
@@ -271,10 +282,16 @@
 - (DBDownloadDataTask *)getThumbnailV2Data:(DBFILESPathOrLink *)resource
                                     format:(DBFILESThumbnailFormat *)format
                                       size:(DBFILESThumbnailSize *)size
-                                      mode:(DBFILESThumbnailMode *)mode {
+                                      mode:(DBFILESThumbnailMode *)mode
+                                   quality:(DBFILESThumbnailQuality *)quality
+                          excludeMediaInfo:(NSNumber *)excludeMediaInfo {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode
+                                                                       quality:quality
+                                                              excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route arg:arg];
 }
 
@@ -290,11 +307,17 @@
                                     format:(DBFILESThumbnailFormat *)format
                                       size:(DBFILESThumbnailSize *)size
                                       mode:(DBFILESThumbnailMode *)mode
+                                   quality:(DBFILESThumbnailQuality *)quality
+                          excludeMediaInfo:(NSNumber *)excludeMediaInfo
                            byteOffsetStart:(NSNumber *)byteOffsetStart
                              byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
-  DBFILESThumbnailV2Arg *arg =
-      [[DBFILESThumbnailV2Arg alloc] initWithResource:resource format:format size:size mode:mode];
+  DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
+                                                                        format:format
+                                                                          size:size
+                                                                          mode:mode
+                                                                       quality:quality
+                                                              excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
@@ -313,7 +336,8 @@
                               limit:(NSNumber *)limit
                          sharedLink:(DBFILESSharedLink *)sharedLink
               includePropertyGroups:(DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
-        includeNonDownloadableFiles:(NSNumber *)includeNonDownloadableFiles {
+        includeNonDownloadableFiles:(NSNumber *)includeNonDownloadableFiles
+              includeRestorableInfo:(NSNumber *)includeRestorableInfo {
   DBRoute *route = DBFILESRouteObjects.DBFILESListFolder;
   DBFILESListFolderArg *arg = [[DBFILESListFolderArg alloc] initWithPath:path
                                                                recursive:recursive
@@ -324,7 +348,8 @@
                                                                    limit:limit
                                                               sharedLink:sharedLink
                                                    includePropertyGroups:includePropertyGroups
-                                             includeNonDownloadableFiles:includeNonDownloadableFiles];
+                                             includeNonDownloadableFiles:includeNonDownloadableFiles
+                                                   includeRestorableInfo:includeRestorableInfo];
   return [self.client requestRpc:route arg:arg];
 }
 

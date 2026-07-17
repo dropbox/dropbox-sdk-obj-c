@@ -155,15 +155,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the propertiesOverwrite route object.
 + (DBRoute *)DBFILESPropertiesOverwrite;
 
-/// Accessor method for the propertiesRemove route object.
-+ (DBRoute *)DBFILESPropertiesRemove;
-
-/// Accessor method for the propertiesTemplateGet route object.
-+ (DBRoute *)DBFILESPropertiesTemplateGet;
-
-/// Accessor method for the propertiesTemplateList route object.
-+ (DBRoute *)DBFILESPropertiesTemplateList;
-
 /// Accessor method for the propertiesUpdate route object.
 + (DBRoute *)DBFILESPropertiesUpdate;
 
@@ -205,6 +196,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the uploadSessionAppendV2 route object.
 + (DBRoute *)DBFILESUploadSessionAppendV2;
+
+/// Accessor method for the uploadSessionAppendBatch route object.
++ (DBRoute *)DBFILESUploadSessionAppendBatch;
 
 /// Accessor method for the uploadSessionFinish route object.
 + (DBRoute *)DBFILESUploadSessionFinish;

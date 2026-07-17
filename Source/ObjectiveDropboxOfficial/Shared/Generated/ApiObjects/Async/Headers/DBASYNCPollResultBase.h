@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Result returned by methods that poll for the status of an asynchronous job.
 /// Unions that extend this union should add a 'complete' field with a type of
 /// the information returned upon job completion. See PollEmptyResult for an
-/// example.
+/// example
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -32,9 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBASYNCPollResultBaseTag` enum type represents the possible tag states
 /// with which the `DBASYNCPollResultBase` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBASYNCPollResultBaseTag){
-    /// The asynchronous job is still in progress.
-    DBASYNCPollResultBaseInProgress,
+typedef NS_CLOSED_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
+  /// The asynchronous job is still in progress.
+  DBASYNCPollResultBaseInProgress,
 
 };
 

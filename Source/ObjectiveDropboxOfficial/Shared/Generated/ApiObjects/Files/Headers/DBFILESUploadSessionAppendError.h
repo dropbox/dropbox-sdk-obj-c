@@ -28,45 +28,43 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESUploadSessionAppendErrorTag` enum type represents the possible
 /// tag states with which the `DBFILESUploadSessionAppendError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
-    /// The upload session ID was not found or has expired. Upload sessions are
-    /// valid for 7 days.
-    DBFILESUploadSessionAppendErrorNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag) {
+  /// The upload session ID was not found or has expired. Upload sessions are
+  /// valid for 7 days.
+  DBFILESUploadSessionAppendErrorNotFound,
 
-    /// The specified offset was incorrect. See the value for the correct
-    /// offset. This error may occur when a previous request was received and
-    /// processed successfully but the client did not receive the response, e.g.
-    /// due to a network error.
-    DBFILESUploadSessionAppendErrorIncorrectOffset,
+  /// The specified offset was incorrect. See the value for the correct
+  /// offset. This error may occur when a previous request was received and
+  /// processed successfully but the client did not receive the response, e.g.
+  /// due to a network error.
+  DBFILESUploadSessionAppendErrorIncorrectOffset,
 
-    /// You are attempting to append data to an upload session that has already
-    /// been closed (i.e. committed).
-    DBFILESUploadSessionAppendErrorClosed,
+  /// You are attempting to append data to an upload session that has already
+  /// been closed (i.e. committed).
+  DBFILESUploadSessionAppendErrorClosed,
 
-    /// The session must be closed before calling upload_session/finish_batch.
-    DBFILESUploadSessionAppendErrorNotClosed,
+  /// You can not append to the upload session because the size of a file
+  /// should not exceed the max file size limit (i.e. 2^41 - 2^22 or
+  /// 2,199,019,061,248 bytes).
+  DBFILESUploadSessionAppendErrorTooLarge,
 
-    /// You can not append to the upload session because the size of a file
-    /// should not reach the max file size limit (i.e. 350GB).
-    DBFILESUploadSessionAppendErrorTooLarge,
+  /// For concurrent upload sessions, offset needs to be multiple of 2^22
+  /// (4,194,304) bytes.
+  DBFILESUploadSessionAppendErrorConcurrentSessionInvalidOffset,
 
-    /// For concurrent upload sessions, offset needs to be multiple of 4194304
-    /// bytes.
-    DBFILESUploadSessionAppendErrorConcurrentSessionInvalidOffset,
+  /// For concurrent upload sessions, only chunks with size multiple of 2^22
+  /// (4,194,304) bytes can be uploaded.
+  DBFILESUploadSessionAppendErrorConcurrentSessionInvalidDataSize,
 
-    /// For concurrent upload sessions, only chunks with size multiple of
-    /// 4194304 bytes can be uploaded.
-    DBFILESUploadSessionAppendErrorConcurrentSessionInvalidDataSize,
+  /// The request payload must be at most 150 MiB.
+  DBFILESUploadSessionAppendErrorPayloadTooLarge,
 
-    /// The request payload must be at most 150 MB.
-    DBFILESUploadSessionAppendErrorPayloadTooLarge,
+  /// The content received by the Dropbox server in this call does not match
+  /// the provided content hash.
+  DBFILESUploadSessionAppendErrorContentHashMismatch,
 
-    /// (no description).
-    DBFILESUploadSessionAppendErrorOther,
-
-    /// The content received by the Dropbox server in this call does not match
-    /// the provided content hash.
-    DBFILESUploadSessionAppendErrorContentHashMismatch,
+  /// (no description).
+  DBFILESUploadSessionAppendErrorOther,
 
 };
 
@@ -120,21 +118,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 - (instancetype)initWithClosed;
 
 ///
-/// Initializes union class with tag state of "not_closed".
-///
-/// Description of the "not_closed" tag state: The session must be closed before
-/// calling upload_session/finish_batch.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithNotClosed;
-
-///
 /// Initializes union class with tag state of "too_large".
 ///
 /// Description of the "too_large" tag state: You can not append to the upload
-/// session because the size of a file should not reach the max file size limit
-/// (i.e. 350GB).
+/// session because the size of a file should not exceed the max file size limit
+/// (i.e. 2^41 - 2^22 or 2,199,019,061,248 bytes).
 ///
 /// @return An initialized instance.
 ///
@@ -145,7 +133,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 /// "concurrent_session_invalid_offset".
 ///
 /// Description of the "concurrent_session_invalid_offset" tag state: For
-/// concurrent upload sessions, offset needs to be multiple of 4194304 bytes.
+/// concurrent upload sessions, offset needs to be multiple of 2^22 (4,194,304)
+/// bytes.
 ///
 /// @return An initialized instance.
 ///
@@ -156,8 +145,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 /// "concurrent_session_invalid_data_size".
 ///
 /// Description of the "concurrent_session_invalid_data_size" tag state: For
-/// concurrent upload sessions, only chunks with size multiple of 4194304 bytes
-/// can be uploaded.
+/// concurrent upload sessions, only chunks with size multiple of 2^22
+/// (4,194,304) bytes can be uploaded.
 ///
 /// @return An initialized instance.
 ///
@@ -167,18 +156,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 /// Initializes union class with tag state of "payload_too_large".
 ///
 /// Description of the "payload_too_large" tag state: The request payload must
-/// be at most 150 MB.
+/// be at most 150 MiB.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPayloadTooLarge;
-
-///
-/// Initializes union class with tag state of "other".
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "content_hash_mismatch".
@@ -189,6 +171,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithContentHashMismatch;
+
+///
+/// Initializes union class with tag state of "other".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -218,13 +207,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 /// @return Whether the union's current tag state has value "closed".
 ///
 - (BOOL)isClosed;
-
-///
-/// Retrieves whether the union's current tag state has value "not_closed".
-///
-/// @return Whether the union's current tag state has value "not_closed".
-///
-- (BOOL)isNotClosed;
 
 ///
 /// Retrieves whether the union's current tag state has value "too_large".
@@ -260,13 +242,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 - (BOOL)isPayloadTooLarge;
 
 ///
-/// Retrieves whether the union's current tag state has value "other".
-///
-/// @return Whether the union's current tag state has value "other".
-///
-- (BOOL)isOther;
-
-///
 /// Retrieves whether the union's current tag state has value
 /// "content_hash_mismatch".
 ///
@@ -274,6 +249,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag){
 /// "content_hash_mismatch".
 ///
 - (BOOL)isContentHashMismatch;
+
+///
+/// Retrieves whether the union's current tag state has value "other".
+///
+/// @return Whether the union's current tag state has value "other".
+///
+- (BOOL)isOther;
 
 ///
 /// Retrieves string value of union's current tag state.

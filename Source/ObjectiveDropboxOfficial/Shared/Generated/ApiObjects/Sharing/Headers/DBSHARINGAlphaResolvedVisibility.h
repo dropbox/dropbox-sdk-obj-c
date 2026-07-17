@@ -30,36 +30,36 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGAlphaResolvedVisibilityTag` enum type represents the possible
 /// tag states with which the `DBSHARINGAlphaResolvedVisibility` union can
 /// exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAlphaResolvedVisibilityTag){
-    /// Anyone who has received the link can access it. No login required.
-    DBSHARINGAlphaResolvedVisibilityPublic,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAlphaResolvedVisibilityTag) {
+  /// Anyone who has received the link can access it. No login required.
+  DBSHARINGAlphaResolvedVisibilityPublic,
 
-    /// Only members of the same team can access the link. Login is required.
-    DBSHARINGAlphaResolvedVisibilityTeamOnly,
+  /// Only members of the same team can access the link. Login is required.
+  DBSHARINGAlphaResolvedVisibilityTeamOnly,
 
-    /// A link-specific password is required to access the link. Login is not
-    /// required.
-    DBSHARINGAlphaResolvedVisibilityPassword,
+  /// A link-specific password is required to access the link. Login is not
+  /// required.
+  DBSHARINGAlphaResolvedVisibilityPassword,
 
-    /// Only members of the same team who have the link-specific password can
-    /// access the link. Login is required.
-    DBSHARINGAlphaResolvedVisibilityTeamAndPassword,
+  /// Only members of the same team who have the link-specific password can
+  /// access the link. Login is required.
+  DBSHARINGAlphaResolvedVisibilityTeamAndPassword,
 
-    /// Only members of the shared folder containing the linked file can access
-    /// the link. Login is required.
-    DBSHARINGAlphaResolvedVisibilitySharedFolderOnly,
+  /// Only members of the shared folder containing the linked file can access
+  /// the link. Login is required.
+  DBSHARINGAlphaResolvedVisibilitySharedFolderOnly,
 
-    /// The link merely points the user to the content, and does not grant any
-    /// additional rights. Existing members of the content who use this link can
-    /// only access the content with their pre-existing access rights. Either on
-    /// the file directly, or inherited from a parent folder.
-    DBSHARINGAlphaResolvedVisibilityNoOne,
+  /// The link merely points the user to the content, and does not grant any
+  /// additional rights. Existing members of the content who use this link can
+  /// only access the content with their pre-existing access rights. Either on
+  /// the file directly, or inherited from a parent folder.
+  DBSHARINGAlphaResolvedVisibilityNoOne,
 
-    /// Only the current user can view this link.
-    DBSHARINGAlphaResolvedVisibilityOnlyYou,
+  /// Only the current user can view this link.
+  DBSHARINGAlphaResolvedVisibilityOnlyYou,
 
-    /// (no description).
-    DBSHARINGAlphaResolvedVisibilityOther,
+  /// (no description).
+  DBSHARINGAlphaResolvedVisibilityOther,
 
 };
 

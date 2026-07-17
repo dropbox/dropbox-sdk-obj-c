@@ -8,9 +8,14 @@
 
 #import "DBTasks.h"
 
+@class DBACCOUNTAccountPhotoGetError;
+@class DBACCOUNTAccountPhotoGetResult;
+@class DBACCOUNTDeleteProfilePhotoError;
+@class DBACCOUNTDeleteProfilePhotoResult;
 @class DBACCOUNTPhotoSourceArg;
 @class DBACCOUNTSetProfilePhotoError;
 @class DBACCOUNTSetProfilePhotoResult;
+@class DBACCOUNTThumbnailError;
 @class DBNilObject;
 
 @protocol DBTransportClient;
@@ -30,6 +35,107 @@ NS_ASSUME_NONNULL_BEGIN
 /// Initializes the `DBACCOUNTUserAuthRoutes` namespace container object with a
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
+
+///
+/// Deletes the current user's profile photo.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBACCOUNTDeleteProfilePhotoResult` object on
+/// success or a `DBACCOUNTDeleteProfilePhotoError` object on failure.
+///
+- (DBRpcTask<DBACCOUNTDeleteProfilePhotoResult *, DBACCOUNTDeleteProfilePhotoError *> *)deleteProfilePhoto;
+
+///
+/// This lovely endpoint gets the account photo of a given user.
+///
+/// @param dbxAccountId Encoded ID of the user. Must start either with 'dbid:' or 'dbaphid:'.
+/// @param size A string representing the size of the photo.
+/// @param circleCrop True if the photo should be cropped and false otherwise.
+/// @param expectAccountPhoto True if we expect account photo to exist.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+///
+/// @return Through the response callback, the caller will receive a `DBACCOUNTAccountPhotoGetResult` object on success
+/// or a `DBACCOUNTAccountPhotoGetError` object on failure.
+///
+- (DBDownloadUrlTask<DBACCOUNTAccountPhotoGetResult *, DBACCOUNTAccountPhotoGetError *> *)
+           getPhotoUrl:(NSString *)dbxAccountId
+                  size:(NSString *)size
+            circleCrop:(NSNumber *)circleCrop
+    expectAccountPhoto:(NSNumber *)expectAccountPhoto
+             overwrite:(BOOL)overwrite
+           destination:(NSURL *)destination;
+
+///
+/// This lovely endpoint gets the account photo of a given user.
+///
+/// @param dbxAccountId Encoded ID of the user. Must start either with 'dbid:' or 'dbaphid:'.
+/// @param size A string representing the size of the photo.
+/// @param circleCrop True if the photo should be cropped and false otherwise.
+/// @param expectAccountPhoto True if we expect account photo to exist.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBACCOUNTAccountPhotoGetResult` object on success
+/// or a `DBACCOUNTAccountPhotoGetError` object on failure.
+///
+- (DBDownloadUrlTask<DBACCOUNTAccountPhotoGetResult *, DBACCOUNTAccountPhotoGetError *> *)
+           getPhotoUrl:(NSString *)dbxAccountId
+                  size:(NSString *)size
+            circleCrop:(NSNumber *)circleCrop
+    expectAccountPhoto:(NSNumber *)expectAccountPhoto
+             overwrite:(BOOL)overwrite
+           destination:(NSURL *)destination
+       byteOffsetStart:(NSNumber *)byteOffsetStart
+         byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+
+///
+/// This lovely endpoint gets the account photo of a given user.
+///
+/// @param dbxAccountId Encoded ID of the user. Must start either with 'dbid:' or 'dbaphid:'.
+/// @param size A string representing the size of the photo.
+/// @param circleCrop True if the photo should be cropped and false otherwise.
+/// @param expectAccountPhoto True if we expect account photo to exist.
+///
+/// @return Through the response callback, the caller will receive a `DBACCOUNTAccountPhotoGetResult` object on success
+/// or a `DBACCOUNTAccountPhotoGetError` object on failure.
+///
+- (DBDownloadDataTask<DBACCOUNTAccountPhotoGetResult *, DBACCOUNTAccountPhotoGetError *> *)
+          getPhotoData:(NSString *)dbxAccountId
+                  size:(NSString *)size
+            circleCrop:(NSNumber *)circleCrop
+    expectAccountPhoto:(NSNumber *)expectAccountPhoto;
+
+///
+/// This lovely endpoint gets the account photo of a given user.
+///
+/// @param dbxAccountId Encoded ID of the user. Must start either with 'dbid:' or 'dbaphid:'.
+/// @param size A string representing the size of the photo.
+/// @param circleCrop True if the photo should be cropped and false otherwise.
+/// @param expectAccountPhoto True if we expect account photo to exist.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBACCOUNTAccountPhotoGetResult` object on success
+/// or a `DBACCOUNTAccountPhotoGetError` object on failure.
+///
+- (DBDownloadDataTask<DBACCOUNTAccountPhotoGetResult *, DBACCOUNTAccountPhotoGetError *> *)
+          getPhotoData:(NSString *)dbxAccountId
+                  size:(NSString *)size
+            circleCrop:(NSNumber *)circleCrop
+    expectAccountPhoto:(NSNumber *)expectAccountPhoto
+       byteOffsetStart:(NSNumber *)byteOffsetStart
+         byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Sets a user's profile photo.

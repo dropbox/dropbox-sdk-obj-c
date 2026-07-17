@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy, nullable) NSString *path;
 
 /// Password for the shared link. Required for password-protected shared links
-/// to files  unless it can be read from a cookie.
+/// to files unless it can be read from a cookie.
 @property (nonatomic, readonly, copy, nullable) NSString *password;
 
 #pragma mark - Constructors
@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param path The path corresponding to a file in a shared link to a folder.
 /// Required for shared links to folders.
 /// @param password Password for the shared link. Required for
-/// password-protected shared links to files  unless it can be read from a
+/// password-protected shared links to files unless it can be read from a
 /// cookie.
 ///
 /// @return An initialized instance.

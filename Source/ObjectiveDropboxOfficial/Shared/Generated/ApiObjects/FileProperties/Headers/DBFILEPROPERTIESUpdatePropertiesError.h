@@ -30,36 +30,36 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBFILEPROPERTIESUpdatePropertiesErrorTag` enum type represents the
 /// possible tag states with which the `DBFILEPROPERTIESUpdatePropertiesError`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILEPROPERTIESUpdatePropertiesErrorTag){
-    /// Template does not exist for the given identifier.
-    DBFILEPROPERTIESUpdatePropertiesErrorTemplateNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILEPROPERTIESUpdatePropertiesErrorTag) {
+  /// Template does not exist for the given identifier.
+  DBFILEPROPERTIESUpdatePropertiesErrorTemplateNotFound,
 
-    /// You do not have permission to modify this template.
-    DBFILEPROPERTIESUpdatePropertiesErrorRestrictedContent,
+  /// You do not have permission to modify this template.
+  DBFILEPROPERTIESUpdatePropertiesErrorRestrictedContent,
 
-    /// (no description).
-    DBFILEPROPERTIESUpdatePropertiesErrorOther,
+  /// (no description).
+  DBFILEPROPERTIESUpdatePropertiesErrorOther,
 
-    /// (no description).
-    DBFILEPROPERTIESUpdatePropertiesErrorPath,
+  /// (no description).
+  DBFILEPROPERTIESUpdatePropertiesErrorPath,
 
-    /// This folder cannot be tagged. Tagging folders is not supported for
-    /// team-owned templates.
-    DBFILEPROPERTIESUpdatePropertiesErrorUnsupportedFolder,
+  /// This folder cannot be tagged. Tagging folders is not supported for
+  /// team-owned templates.
+  DBFILEPROPERTIESUpdatePropertiesErrorUnsupportedFolder,
 
-    /// One or more of the supplied property field values is too large.
-    DBFILEPROPERTIESUpdatePropertiesErrorPropertyFieldTooLarge,
+  /// One or more of the supplied property field values is too large.
+  DBFILEPROPERTIESUpdatePropertiesErrorPropertyFieldTooLarge,
 
-    /// One or more of the supplied property fields does not conform to the
-    /// template specifications.
-    DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate,
+  /// One or more of the supplied property fields does not conform to the
+  /// template specifications.
+  DBFILEPROPERTIESUpdatePropertiesErrorDoesNotFitTemplate,
 
-    /// There are 2 or more property groups referring to the same templates in
-    /// the input.
-    DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups,
+  /// There are 2 or more property groups referring to the same templates in
+  /// the input.
+  DBFILEPROPERTIESUpdatePropertiesErrorDuplicatePropertyGroups,
 
-    /// (no description).
-    DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup,
+  /// (no description).
+  DBFILEPROPERTIESUpdatePropertiesErrorPropertyGroupLookup,
 
 };
 

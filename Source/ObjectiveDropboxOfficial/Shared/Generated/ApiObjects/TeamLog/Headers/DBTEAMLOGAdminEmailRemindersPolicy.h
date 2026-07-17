@@ -31,18 +31,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGAdminEmailRemindersPolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGAdminEmailRemindersPolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminEmailRemindersPolicyTag){
-    /// (no description).
-    DBTEAMLOGAdminEmailRemindersPolicyDefault_,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminEmailRemindersPolicyTag) {
+  /// (no description).
+  DBTEAMLOGAdminEmailRemindersPolicyDefault_,
 
-    /// (no description).
-    DBTEAMLOGAdminEmailRemindersPolicyDisabled,
+  /// (no description).
+  DBTEAMLOGAdminEmailRemindersPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGAdminEmailRemindersPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGAdminEmailRemindersPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGAdminEmailRemindersPolicyOther,
+  /// (no description).
+  DBTEAMLOGAdminEmailRemindersPolicyOther,
 
 };
 

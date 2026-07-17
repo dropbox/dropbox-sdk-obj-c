@@ -17,13 +17,10 @@
 #import "DBFILEPROPERTIESAddTemplateResult.h"
 #import "DBFILEPROPERTIESGetTemplateArg.h"
 #import "DBFILEPROPERTIESGetTemplateResult.h"
-#import "DBFILEPROPERTIESListTemplateResult.h"
 #import "DBFILEPROPERTIESModifyTemplateError.h"
 #import "DBFILEPROPERTIESPropertyFieldTemplate.h"
 #import "DBFILEPROPERTIESPropertyGroupTemplate.h"
 #import "DBFILEPROPERTIESTemplateError.h"
-#import "DBFILEPROPERTIESUpdateTemplateArg.h"
-#import "DBFILEPROPERTIESUpdateTemplateResult.h"
 #import "DBFILESContentSyncSetting.h"
 #import "DBFILESContentSyncSettingArg.h"
 #import "DBFILESSyncSetting.h"
@@ -160,8 +157,10 @@
 #import "DBTEAMMembersDeactivateArg.h"
 #import "DBTEAMMembersDeactivateBaseArg.h"
 #import "DBTEAMMembersDeactivateError.h"
+#import "DBTEAMMembersDeleteFormerMemberFilesError.h"
 #import "DBTEAMMembersDeleteProfilePhotoArg.h"
 #import "DBTEAMMembersDeleteProfilePhotoError.h"
+#import "DBTEAMMembersFormerMemberArg.h"
 #import "DBTEAMMembersGetAvailableTeamMemberRolesResult.h"
 #import "DBTEAMMembersGetInfoArgs.h"
 #import "DBTEAMMembersGetInfoError.h"
@@ -177,6 +176,7 @@
 #import "DBTEAMMembersListError.h"
 #import "DBTEAMMembersListResult.h"
 #import "DBTEAMMembersListV2Result.h"
+#import "DBTEAMMembersPermanentlyDeleteFilesError.h"
 #import "DBTEAMMembersRecoverArg.h"
 #import "DBTEAMMembersRecoverError.h"
 #import "DBTEAMMembersRemoveArg.h"
@@ -252,6 +252,7 @@
 #import "DBTEAMTeamFolderPermanentlyDeleteError.h"
 #import "DBTEAMTeamFolderRenameArg.h"
 #import "DBTEAMTeamFolderRenameError.h"
+#import "DBTEAMTeamFolderRestoreError.h"
 #import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamFolderTeamSharedDropboxError.h"
 #import "DBTEAMTeamFolderUpdateSyncSettingsArg.h"
@@ -431,8 +432,9 @@
                         members:(NSArray<DBTEAMMemberAccess *> *)members
                   returnMembers:(NSNumber *)returnMembers {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMGroupsMembersAdd;
-  DBTEAMGroupMembersAddArg *arg =
-      [[DBTEAMGroupMembersAddArg alloc] initWithGroup:group members:members returnMembers:returnMembers];
+  DBTEAMGroupMembersAddArg *arg = [[DBTEAMGroupMembersAddArg alloc] initWithGroup:group
+                                                                          members:members
+                                                                    returnMembers:returnMembers];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -464,8 +466,9 @@
                              users:(NSArray<DBTEAMUserSelectorArg *> *)users
                      returnMembers:(NSNumber *)returnMembers {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMGroupsMembersRemove;
-  DBTEAMGroupMembersRemoveArg *arg =
-      [[DBTEAMGroupMembersRemoveArg alloc] initWithGroup:group users:users returnMembers:returnMembers];
+  DBTEAMGroupMembersRemoveArg *arg = [[DBTEAMGroupMembersRemoveArg alloc] initWithGroup:group
+                                                                                  users:users
+                                                                          returnMembers:returnMembers];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -473,8 +476,9 @@
                                      user:(DBTEAMUserSelectorArg *)user
                                accessType:(DBTEAMGroupAccessType *)accessType {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMGroupsMembersSetAccessType;
-  DBTEAMGroupMembersSetAccessTypeArg *arg =
-      [[DBTEAMGroupMembersSetAccessTypeArg alloc] initWithGroup:group user:user accessType:accessType];
+  DBTEAMGroupMembersSetAccessTypeArg *arg = [[DBTEAMGroupMembersSetAccessTypeArg alloc] initWithGroup:group
+                                                                                                 user:user
+                                                                                           accessType:accessType];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -586,8 +590,10 @@
                          description_:(NSString *)description_
                               members:(NSArray<NSString *> *)members {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLegalHoldsUpdatePolicy;
-  DBTEAMLegalHoldsPolicyUpdateArg *arg =
-      [[DBTEAMLegalHoldsPolicyUpdateArg alloc] initWithId_:id_ name:name description_:description_ members:members];
+  DBTEAMLegalHoldsPolicyUpdateArg *arg = [[DBTEAMLegalHoldsPolicyUpdateArg alloc] initWithId_:id_
+                                                                                         name:name
+                                                                                 description_:description_
+                                                                                      members:members];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -623,8 +629,8 @@
 
 - (DBRpcTask *)linkedAppsRevokeLinkedApp:(NSString *)appId teamMemberId:(NSString *)teamMemberId {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsRevokeLinkedApp;
-  DBTEAMRevokeLinkedApiAppArg *arg =
-      [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId];
+  DBTEAMRevokeLinkedApiAppArg *arg = [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId
+                                                                           teamMemberId:teamMemberId];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -632,8 +638,9 @@
                             teamMemberId:(NSString *)teamMemberId
                            keepAppFolder:(NSNumber *)keepAppFolder {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsRevokeLinkedApp;
-  DBTEAMRevokeLinkedApiAppArg *arg =
-      [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:keepAppFolder];
+  DBTEAMRevokeLinkedApiAppArg *arg = [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId
+                                                                           teamMemberId:teamMemberId
+                                                                          keepAppFolder:keepAppFolder];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -740,6 +747,12 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)membersDeleteFormerMemberFiles:(DBTEAMUserSelectorArg *)user {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersDeleteFormerMemberFiles;
+  DBTEAMMembersFormerMemberArg *arg = [[DBTEAMMembersFormerMemberArg alloc] initWithUser:user];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)membersDeleteProfilePhoto:(DBTEAMUserSelectorArg *)user {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersDeleteProfilePhoto;
   DBTEAMMembersDeleteProfilePhotoArg *arg = [[DBTEAMMembersDeleteProfilePhotoArg alloc] initWithUser:user];
@@ -838,14 +851,16 @@
               transferDestId:(DBTEAMUserSelectorArg *)transferDestId
              transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId
                  keepAccount:(NSNumber *)keepAccount
-            retainTeamShares:(NSNumber *)retainTeamShares {
+            retainTeamShares:(NSNumber *)retainTeamShares
+      permanentlyDeleteFiles:(NSNumber *)permanentlyDeleteFiles {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersRemove;
   DBTEAMMembersRemoveArg *arg = [[DBTEAMMembersRemoveArg alloc] initWithUser:user
                                                                     wipeData:wipeData
                                                               transferDestId:transferDestId
                                                              transferAdminId:transferAdminId
                                                                  keepAccount:keepAccount
-                                                            retainTeamShares:retainTeamShares];
+                                                            retainTeamShares:retainTeamShares
+                                                      permanentlyDeleteFiles:permanentlyDeleteFiles];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -896,8 +911,8 @@
 
 - (DBRpcTask *)membersSetAdminPermissionsV2:(DBTEAMUserSelectorArg *)user dNewRoles:(NSArray<NSString *> *)dNewRoles {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSetAdminPermissionsV2;
-  DBTEAMMembersSetPermissions2Arg *arg =
-      [[DBTEAMMembersSetPermissions2Arg alloc] initWithUser:user dNewRoles:dNewRoles];
+  DBTEAMMembersSetPermissions2Arg *arg = [[DBTEAMMembersSetPermissions2Arg alloc] initWithUser:user
+                                                                                     dNewRoles:dNewRoles];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -1001,37 +1016,15 @@
                         description_:(NSString *)description_
                               fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMPropertiesTemplateAdd;
-  DBFILEPROPERTIESAddTemplateArg *arg =
-      [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name description_:description_ fields:fields];
+  DBFILEPROPERTIESAddTemplateArg *arg = [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name
+                                                                                description_:description_
+                                                                                      fields:fields];
   return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)propertiesTemplateGet:(NSString *)templateId {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMPropertiesTemplateGet;
   DBFILEPROPERTIESGetTemplateArg *arg = [[DBFILEPROPERTIESGetTemplateArg alloc] initWithTemplateId:templateId];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)propertiesTemplateList {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMPropertiesTemplateList;
-  return [self.client requestRpc:route arg:nil];
-}
-
-- (DBRpcTask *)propertiesTemplateUpdate:(NSString *)templateId {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMPropertiesTemplateUpdate;
-  DBFILEPROPERTIESUpdateTemplateArg *arg = [[DBFILEPROPERTIESUpdateTemplateArg alloc] initWithTemplateId:templateId];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)propertiesTemplateUpdate:(NSString *)templateId
-                                   name:(NSString *)name
-                           description_:(NSString *)description_
-                              addFields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)addFields {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMPropertiesTemplateUpdate;
-  DBFILEPROPERTIESUpdateTemplateArg *arg = [[DBFILEPROPERTIESUpdateTemplateArg alloc] initWithTemplateId:templateId
-                                                                                                    name:name
-                                                                                            description_:description_
-                                                                                               addFields:addFields];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -1121,8 +1114,8 @@
 
 - (DBRpcTask *)sharingAllowlistRemove:(NSArray<NSString *> *)domains emails:(NSArray<NSString *> *)emails {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistRemove;
-  DBTEAMSharingAllowlistRemoveArgs *arg =
-      [[DBTEAMSharingAllowlistRemoveArgs alloc] initWithDomains:domains emails:emails];
+  DBTEAMSharingAllowlistRemoveArgs *arg = [[DBTEAMSharingAllowlistRemoveArgs alloc] initWithDomains:domains
+                                                                                             emails:emails];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -1140,8 +1133,8 @@
 
 - (DBRpcTask *)teamFolderArchive:(NSString *)teamFolderId forceAsyncOff:(NSNumber *)forceAsyncOff {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderArchive;
-  DBTEAMTeamFolderArchiveArg *arg =
-      [[DBTEAMTeamFolderArchiveArg alloc] initWithTeamFolderId:teamFolderId forceAsyncOff:forceAsyncOff];
+  DBTEAMTeamFolderArchiveArg *arg = [[DBTEAMTeamFolderArchiveArg alloc] initWithTeamFolderId:teamFolderId
+                                                                               forceAsyncOff:forceAsyncOff];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -1196,6 +1189,12 @@
 - (DBRpcTask *)teamFolderRename:(NSString *)teamFolderId name:(NSString *)name {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderRename;
   DBTEAMTeamFolderRenameArg *arg = [[DBTEAMTeamFolderRenameArg alloc] initWithTeamFolderId:teamFolderId name:name];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderRestore:(NSString *)teamFolderId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderRestore;
+  DBTEAMTeamFolderIdArg *arg = [[DBTEAMTeamFolderIdArg alloc] initWithTeamFolderId:teamFolderId];
   return [self.client requestRpc:route arg:arg];
 }
 

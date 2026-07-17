@@ -75,11 +75,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// template specified.
 @property (nonatomic, readonly, nullable) NSArray<DBFILEPROPERTIESPropertyGroup *> *propertyGroups;
 
-/// This flag will only be present if include_has_explicit_shared_members  is
-/// true in `listFolder` or `getMetadata`. If this  flag is present, it will be
-/// true if this file has any explicit shared  members. This is different from
-/// sharing_info in that this could be true  in the case where a file has
-/// explicit members but is not contained within  a shared folder.
+/// This flag will only be present if include_has_explicit_shared_members is
+/// true in `listFolder` or `getMetadata`. If this flag is present, it will be
+/// true if this file has any explicit shared members. This is different from
+/// sharing_info in that this could be true in the case where a file has
+/// explicit members but is not contained within a shared folder.
 @property (nonatomic, readonly, nullable) NSNumber *hasExplicitSharedMembers;
 
 /// A hash of the file content. This field can be used to verify data integrity.
@@ -89,6 +89,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// If present, the metadata associated with the file's current lock.
 @property (nonatomic, readonly, nullable) DBFILESFileLockMetadata *fileLockInfo;
+
+/// If present, indicates whether this file revision can be restored.
+@property (nonatomic, readonly, nullable) NSNumber *isRestorable;
 
 #pragma mark - Constructors
 
@@ -117,9 +120,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// least the last path component will have the correct casing. Changes to only
 /// the casing of paths won't be returned by `listFolderContinue`. This field
 /// will be null if the file or folder is not mounted.
-/// @param parentSharedFolderId Please use `parentSharedFolderId` in
-/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
-/// `DBFILESFolderSharingInfo` instead.
+/// @param parentSharedFolderId Field is deprecated. Please use
+/// `parentSharedFolderId` in `DBFILESFileSharingInfo` or `parentSharedFolderId`
+/// in `DBFILESFolderSharingInfo` instead.
 /// @param previewUrl The preview URL of the file.
 /// @param mediaInfo Additional information if the file is a photo or video.
 /// This field will not be set on entries returned by `listFolder`,
@@ -133,16 +136,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param propertyGroups Additional information if the file has custom
 /// properties with the property template specified.
 /// @param hasExplicitSharedMembers This flag will only be present if
-/// include_has_explicit_shared_members  is true in `listFolder` or
-/// `getMetadata`. If this  flag is present, it will be true if this file has
-/// any explicit shared  members. This is different from sharing_info in that
-/// this could be true  in the case where a file has explicit members but is not
-/// contained within  a shared folder.
+/// include_has_explicit_shared_members is true in `listFolder` or
+/// `getMetadata`. If this flag is present, it will be true if this file has any
+/// explicit shared members. This is different from sharing_info in that this
+/// could be true in the case where a file has explicit members but is not
+/// contained within a shared folder.
 /// @param contentHash A hash of the file content. This field can be used to
 /// verify data integrity. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param fileLockInfo If present, the metadata associated with the file's
 /// current lock.
+/// @param isRestorable If present, indicates whether this file revision can be
+/// restored.
 ///
 /// @return An initialized instance.
 ///
@@ -164,7 +169,8 @@ NS_ASSUME_NONNULL_BEGIN
               propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
     hasExplicitSharedMembers:(nullable NSNumber *)hasExplicitSharedMembers
                  contentHash:(nullable NSString *)contentHash
-                fileLockInfo:(nullable DBFILESFileLockMetadata *)fileLockInfo;
+                fileLockInfo:(nullable DBFILESFileLockMetadata *)fileLockInfo
+                isRestorable:(nullable NSNumber *)isRestorable;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

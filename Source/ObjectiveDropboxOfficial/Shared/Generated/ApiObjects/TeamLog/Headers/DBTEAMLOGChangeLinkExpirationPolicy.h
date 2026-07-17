@@ -31,15 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGChangeLinkExpirationPolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGChangeLinkExpirationPolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGChangeLinkExpirationPolicyTag){
-    /// (no description).
-    DBTEAMLOGChangeLinkExpirationPolicyAllowed,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGChangeLinkExpirationPolicyTag) {
+  /// (no description).
+  DBTEAMLOGChangeLinkExpirationPolicyAllowed,
 
-    /// (no description).
-    DBTEAMLOGChangeLinkExpirationPolicyNotAllowed,
+  /// (no description).
+  DBTEAMLOGChangeLinkExpirationPolicyNotAllowed,
 
-    /// (no description).
-    DBTEAMLOGChangeLinkExpirationPolicyOther,
+  /// (no description).
+  DBTEAMLOGChangeLinkExpirationPolicyOther,
 
 };
 

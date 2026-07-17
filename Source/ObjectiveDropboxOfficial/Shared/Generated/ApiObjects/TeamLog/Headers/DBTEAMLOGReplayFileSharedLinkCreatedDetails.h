@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMLOGReplayFileSharedLinkCreatedDetails;
+@class DBTEAMLOGReplayLinkAccess;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,10 +28,31 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// Indicates whether it was a watermark share link.
+@property (nonatomic, readonly, nullable) NSNumber *isWatermarked;
+
+/// The Replay sharing policy in place when the link was created. Might be
+/// missing due to historical data gap.
+@property (nonatomic, readonly, nullable) DBTEAMLOGReplayLinkAccess *access;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param isWatermarked Indicates whether it was a watermark share link.
+/// @param access The Replay sharing policy in place when the link was created.
+/// Might be missing due to historical data gap.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithIsWatermarked:(nullable NSNumber *)isWatermarked
+                               access:(nullable DBTEAMLOGReplayLinkAccess *)access;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
 ///
 /// @return An initialized instance.
 ///

@@ -30,15 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGMemberPolicyTag` enum type represents the possible tag states
 /// with which the `DBSHARINGMemberPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMemberPolicyTag){
-    /// Only a teammate can become a member.
-    DBSHARINGMemberPolicyTeam,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMemberPolicyTag) {
+  /// Only a teammate can become a member.
+  DBSHARINGMemberPolicyTeam,
 
-    /// Anyone can become a member.
-    DBSHARINGMemberPolicyAnyone,
+  /// Anyone can become a member.
+  DBSHARINGMemberPolicyAnyone,
 
-    /// (no description).
-    DBSHARINGMemberPolicyOther,
+  /// Only a teammate and approved people can become a member.
+  DBSHARINGMemberPolicyTeamAndApproved,
+
+  /// (no description).
+  DBSHARINGMemberPolicyOther,
 
 };
 
@@ -66,6 +69,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMemberPolicyTag){
 - (instancetype)initWithAnyone;
 
 ///
+/// Initializes union class with tag state of "team_and_approved".
+///
+/// Description of the "team_and_approved" tag state: Only a teammate and
+/// approved people can become a member.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamAndApproved;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -89,6 +102,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMemberPolicyTag){
 /// @return Whether the union's current tag state has value "anyone".
 ///
 - (BOOL)isAnyone;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_and_approved".
+///
+/// @return Whether the union's current tag state has value "team_and_approved".
+///
+- (BOOL)isTeamAndApproved;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

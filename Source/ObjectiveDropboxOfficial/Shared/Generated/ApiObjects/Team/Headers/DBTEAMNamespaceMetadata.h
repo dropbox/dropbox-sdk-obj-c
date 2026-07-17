@@ -41,6 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Otherwise, this field is not present.
 @property (nonatomic, readonly, copy, nullable) NSString *teamMemberId;
 
+/// The quota limit in bytes for this namespace tree. Only applicable to team
+/// folders.
+@property (nonatomic, readonly) NSNumber *quotaLimit;
+
 #pragma mark - Constructors
 
 ///
@@ -51,13 +55,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param namespaceType The type of this namespace.
 /// @param teamMemberId If this is a team member or app folder, the ID of the
 /// owning team member. Otherwise, this field is not present.
+/// @param quotaLimit The quota limit in bytes for this namespace tree. Only
+/// applicable to team folders.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithName:(NSString *)name
                  namespaceId:(NSString *)namespaceId
                namespaceType:(DBTEAMNamespaceType *)namespaceType
-                teamMemberId:(nullable NSString *)teamMemberId;
+                teamMemberId:(nullable NSString *)teamMemberId
+                  quotaLimit:(nullable NSNumber *)quotaLimit;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

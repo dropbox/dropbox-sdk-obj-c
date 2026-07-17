@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESAddTagErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESAddTagError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESAddTagErrorTag){
-    /// (no description).
-    DBFILESAddTagErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESAddTagErrorTag) {
+  /// (no description).
+  DBFILESAddTagErrorPath,
 
-    /// (no description).
-    DBFILESAddTagErrorOther,
+  /// (no description).
+  DBFILESAddTagErrorOther,
 
-    /// The item already has the maximum supported number of tags.
-    DBFILESAddTagErrorTooManyTags,
+  /// The item already has the maximum supported number of tags.
+  DBFILESAddTagErrorTooManyTags,
 
 };
 

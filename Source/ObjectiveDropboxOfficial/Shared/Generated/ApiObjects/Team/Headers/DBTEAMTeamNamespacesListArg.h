@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Specifying a value here has no effect.
+/// Field is deprecated. Specifying a value here has no effect.
 @property (nonatomic, readonly) NSNumber *limit;
 
 #pragma mark - Constructors
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param limit Specifying a value here has no effect.
+/// @param limit Field is deprecated. Specifying a value here has no effect.
 ///
 /// @return An initialized instance.
 ///

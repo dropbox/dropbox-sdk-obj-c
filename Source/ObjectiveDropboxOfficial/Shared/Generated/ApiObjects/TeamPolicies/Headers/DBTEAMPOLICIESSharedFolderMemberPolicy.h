@@ -30,15 +30,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESSharedFolderMemberPolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMPOLICIESSharedFolderMemberPolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderMemberPolicyTag){
-    /// Only a teammate can be a member of a folder shared by a team member.
-    DBTEAMPOLICIESSharedFolderMemberPolicyTeam,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderMemberPolicyTag) {
+  /// Only a teammate can be a member of a folder shared by a team member.
+  DBTEAMPOLICIESSharedFolderMemberPolicyTeam,
 
-    /// Anyone can be a member of a folder shared by a team member.
-    DBTEAMPOLICIESSharedFolderMemberPolicyAnyone,
+  /// Anyone can be a member of a folder shared by a team member.
+  DBTEAMPOLICIESSharedFolderMemberPolicyAnyone,
 
-    /// (no description).
-    DBTEAMPOLICIESSharedFolderMemberPolicyOther,
+  /// Only a teammate and approved people can be a member of a folder shared
+  /// by a team member.
+  DBTEAMPOLICIESSharedFolderMemberPolicyTeamAndApproved,
+
+  /// (no description).
+  DBTEAMPOLICIESSharedFolderMemberPolicyOther,
 
 };
 
@@ -68,6 +72,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderMemberPolicyTag){
 - (instancetype)initWithAnyone;
 
 ///
+/// Initializes union class with tag state of "team_and_approved".
+///
+/// Description of the "team_and_approved" tag state: Only a teammate and
+/// approved people can be a member of a folder shared by a team member.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamAndApproved;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -91,6 +105,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderMemberPolicyTag){
 /// @return Whether the union's current tag state has value "anyone".
 ///
 - (BOOL)isAnyone;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_and_approved".
+///
+/// @return Whether the union's current tag state has value "team_and_approved".
+///
+- (BOOL)isTeamAndApproved;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

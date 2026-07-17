@@ -30,27 +30,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGExternalDriveBackupStatusTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGExternalDriveBackupStatus`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupStatusTag){
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupStatusBroken,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupStatusTag) {
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupStatusBroken,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupStatusCreated,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupStatusCreated,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupStatusCreatedOrBroken,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupStatusCreatedOrBroken,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupStatusDeleted,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupStatusDeleted,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupStatusEmpty,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupStatusEmpty,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupStatusUnknown,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupStatusUnknown,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupStatusOther,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupStatusOther,
 
 };
 

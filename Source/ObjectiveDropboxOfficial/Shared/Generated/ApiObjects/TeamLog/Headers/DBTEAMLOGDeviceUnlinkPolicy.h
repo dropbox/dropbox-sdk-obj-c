@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGDeviceUnlinkPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGDeviceUnlinkPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDeviceUnlinkPolicyTag){
-    /// (no description).
-    DBTEAMLOGDeviceUnlinkPolicyKeep,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDeviceUnlinkPolicyTag) {
+  /// (no description).
+  DBTEAMLOGDeviceUnlinkPolicyKeep,
 
-    /// (no description).
-    DBTEAMLOGDeviceUnlinkPolicyRemove,
+  /// (no description).
+  DBTEAMLOGDeviceUnlinkPolicyRemove,
 
-    /// (no description).
-    DBTEAMLOGDeviceUnlinkPolicyOther,
+  /// (no description).
+  DBTEAMLOGDeviceUnlinkPolicyOther,
 
 };
 

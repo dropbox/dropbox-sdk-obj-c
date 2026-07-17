@@ -28,12 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMSharingAllowlistListContinueErrorTag` enum type represents the
 /// possible tag states with which the `DBTEAMSharingAllowlistListContinueError`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSharingAllowlistListContinueErrorTag){
-    /// Provided cursor is not valid.
-    DBTEAMSharingAllowlistListContinueErrorInvalidCursor,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSharingAllowlistListContinueErrorTag) {
+  /// Provided cursor is not valid.
+  DBTEAMSharingAllowlistListContinueErrorInvalidCursor,
 
-    /// (no description).
-    DBTEAMSharingAllowlistListContinueErrorOther,
+  /// (no description).
+  DBTEAMSharingAllowlistListContinueErrorOther,
 
 };
 

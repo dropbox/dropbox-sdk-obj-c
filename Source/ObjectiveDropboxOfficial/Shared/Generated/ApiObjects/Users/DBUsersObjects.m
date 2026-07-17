@@ -372,6 +372,172 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBUSERSDistinctMemberHomeValue.h"
+
+#pragma mark - API Object
+
+@implementation DBUSERSDistinctMemberHomeValue
+
+@synthesize enabled = _enabled;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEnabled:(NSNumber *)enabled {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSDistinctMemberHomeValueEnabled;
+    _enabled = enabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSDistinctMemberHomeValueOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSNumber *)enabled {
+  if (![self isEnabled]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBUSERSDistinctMemberHomeValueEnabled, but was %@.", [self tagName]];
+  }
+  return _enabled;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isEnabled {
+  return _tag == DBUSERSDistinctMemberHomeValueEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBUSERSDistinctMemberHomeValueOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBUSERSDistinctMemberHomeValueEnabled:
+    return @"DBUSERSDistinctMemberHomeValueEnabled";
+  case DBUSERSDistinctMemberHomeValueOther:
+    return @"DBUSERSDistinctMemberHomeValueOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBUSERSDistinctMemberHomeValueSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBUSERSDistinctMemberHomeValueSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBUSERSDistinctMemberHomeValueSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBUSERSDistinctMemberHomeValueEnabled:
+    result = prime * result + [self.enabled hash];
+    break;
+  case DBUSERSDistinctMemberHomeValueOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDistinctMemberHomeValue:other];
+}
+
+- (BOOL)isEqualToDistinctMemberHomeValue:(DBUSERSDistinctMemberHomeValue *)aDistinctMemberHomeValue {
+  if (self == aDistinctMemberHomeValue) {
+    return YES;
+  }
+  if (self.tag != aDistinctMemberHomeValue.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBUSERSDistinctMemberHomeValueEnabled:
+    return [self.enabled isEqual:aDistinctMemberHomeValue.enabled];
+  case DBUSERSDistinctMemberHomeValueOther:
+    return [[self tagName] isEqual:[aDistinctMemberHomeValue tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBUSERSDistinctMemberHomeValueSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBUSERSDistinctMemberHomeValue *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isEnabled]) {
+    jsonDict[@"enabled"] = valueObj.enabled;
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBUSERSDistinctMemberHomeValue *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"enabled"]) {
+    NSNumber *enabled = valueDict[@"enabled"];
+    return [[DBUSERSDistinctMemberHomeValue alloc] initWithEnabled:enabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBUSERSDistinctMemberHomeValue alloc] initWithOther];
+  } else {
+    return [[DBUSERSDistinctMemberHomeValue alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBUSERSFileLockingValue.h"
 
 #pragma mark - API Object
@@ -927,6 +1093,7 @@
 #import "DBStoneValidators.h"
 #import "DBTEAMPOLICIESOfficeAddInPolicy.h"
 #import "DBTEAMPOLICIESTeamSharingPolicies.h"
+#import "DBTEAMPOLICIESTopLevelContentPolicy.h"
 #import "DBUSERSFullTeam.h"
 #import "DBUSERSTeam.h"
 
@@ -939,16 +1106,19 @@
 - (instancetype)initWithId_:(NSString *)id_
                        name:(NSString *)name
             sharingPolicies:(DBTEAMPOLICIESTeamSharingPolicies *)sharingPolicies
-          officeAddinPolicy:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddinPolicy {
+          officeAddinPolicy:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddinPolicy
+      topLevelContentPolicy:(DBTEAMPOLICIESTopLevelContentPolicy *)topLevelContentPolicy {
   [DBStoneValidators nonnullValidator:nil](id_);
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](sharingPolicies);
   [DBStoneValidators nonnullValidator:nil](officeAddinPolicy);
+  [DBStoneValidators nonnullValidator:nil](topLevelContentPolicy);
 
   self = [super initWithId_:id_ name:name];
   if (self) {
     _sharingPolicies = sharingPolicies;
     _officeAddinPolicy = officeAddinPolicy;
+    _topLevelContentPolicy = topLevelContentPolicy;
   }
   return self;
 }
@@ -987,6 +1157,7 @@
   result = prime * result + [self.name hash];
   result = prime * result + [self.sharingPolicies hash];
   result = prime * result + [self.officeAddinPolicy hash];
+  result = prime * result + [self.topLevelContentPolicy hash];
 
   return prime * result;
 }
@@ -1019,6 +1190,9 @@
   if (![self.officeAddinPolicy isEqual:aFullTeam.officeAddinPolicy]) {
     return NO;
   }
+  if (![self.topLevelContentPolicy isEqual:aFullTeam.topLevelContentPolicy]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1035,6 +1209,8 @@
   jsonDict[@"name"] = valueObj.name;
   jsonDict[@"sharing_policies"] = [DBTEAMPOLICIESTeamSharingPoliciesSerializer serialize:valueObj.sharingPolicies];
   jsonDict[@"office_addin_policy"] = [DBTEAMPOLICIESOfficeAddInPolicySerializer serialize:valueObj.officeAddinPolicy];
+  jsonDict[@"top_level_content_policy"] =
+      [DBTEAMPOLICIESTopLevelContentPolicySerializer serialize:valueObj.topLevelContentPolicy];
 
   return jsonDict;
 }
@@ -1046,11 +1222,14 @@
       [DBTEAMPOLICIESTeamSharingPoliciesSerializer deserialize:valueDict[@"sharing_policies"]];
   DBTEAMPOLICIESOfficeAddInPolicy *officeAddinPolicy =
       [DBTEAMPOLICIESOfficeAddInPolicySerializer deserialize:valueDict[@"office_addin_policy"]];
+  DBTEAMPOLICIESTopLevelContentPolicy *topLevelContentPolicy =
+      [DBTEAMPOLICIESTopLevelContentPolicySerializer deserialize:valueDict[@"top_level_content_policy"]];
 
   return [[DBUSERSFullTeam alloc] initWithId_:id_
                                          name:name
                               sharingPolicies:sharingPolicies
-                            officeAddinPolicy:officeAddinPolicy];
+                            officeAddinPolicy:officeAddinPolicy
+                        topLevelContentPolicy:topLevelContentPolicy];
 }
 
 @end
@@ -2302,6 +2481,172 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBUSERSTeamSharedDropboxValue.h"
+
+#pragma mark - API Object
+
+@implementation DBUSERSTeamSharedDropboxValue
+
+@synthesize enabled = _enabled;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithEnabled:(NSNumber *)enabled {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSTeamSharedDropboxValueEnabled;
+    _enabled = enabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSTeamSharedDropboxValueOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSNumber *)enabled {
+  if (![self isEnabled]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBUSERSTeamSharedDropboxValueEnabled, but was %@.", [self tagName]];
+  }
+  return _enabled;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isEnabled {
+  return _tag == DBUSERSTeamSharedDropboxValueEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBUSERSTeamSharedDropboxValueOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBUSERSTeamSharedDropboxValueEnabled:
+    return @"DBUSERSTeamSharedDropboxValueEnabled";
+  case DBUSERSTeamSharedDropboxValueOther:
+    return @"DBUSERSTeamSharedDropboxValueOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBUSERSTeamSharedDropboxValueSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBUSERSTeamSharedDropboxValueSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBUSERSTeamSharedDropboxValueSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBUSERSTeamSharedDropboxValueEnabled:
+    result = prime * result + [self.enabled hash];
+    break;
+  case DBUSERSTeamSharedDropboxValueOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamSharedDropboxValue:other];
+}
+
+- (BOOL)isEqualToTeamSharedDropboxValue:(DBUSERSTeamSharedDropboxValue *)aTeamSharedDropboxValue {
+  if (self == aTeamSharedDropboxValue) {
+    return YES;
+  }
+  if (self.tag != aTeamSharedDropboxValue.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBUSERSTeamSharedDropboxValueEnabled:
+    return [self.enabled isEqual:aTeamSharedDropboxValue.enabled];
+  case DBUSERSTeamSharedDropboxValueOther:
+    return [[self tagName] isEqual:[aTeamSharedDropboxValue tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBUSERSTeamSharedDropboxValueSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBUSERSTeamSharedDropboxValue *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isEnabled]) {
+    jsonDict[@"enabled"] = valueObj.enabled;
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBUSERSTeamSharedDropboxValue *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"enabled"]) {
+    NSNumber *enabled = valueDict[@"enabled"];
+    return [[DBUSERSTeamSharedDropboxValue alloc] initWithEnabled:enabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBUSERSTeamSharedDropboxValue alloc] initWithOther];
+  } else {
+    return [[DBUSERSTeamSharedDropboxValue alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMCOMMONMemberSpaceLimitType.h"
 #import "DBUSERSTeamSpaceAllocation.h"
 
@@ -2468,6 +2813,22 @@
   return self;
 }
 
+- (instancetype)initWithTeamSharedDropbox {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSUserFeatureTeamSharedDropbox;
+  }
+  return self;
+}
+
+- (instancetype)initWithDistinctMemberHome {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSUserFeatureDistinctMemberHome;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -2488,6 +2849,14 @@
   return _tag == DBUSERSUserFeatureFileLocking;
 }
 
+- (BOOL)isTeamSharedDropbox {
+  return _tag == DBUSERSUserFeatureTeamSharedDropbox;
+}
+
+- (BOOL)isDistinctMemberHome {
+  return _tag == DBUSERSUserFeatureDistinctMemberHome;
+}
+
 - (BOOL)isOther {
   return _tag == DBUSERSUserFeatureOther;
 }
@@ -2498,6 +2867,10 @@
     return @"DBUSERSUserFeaturePaperAsFiles";
   case DBUSERSUserFeatureFileLocking:
     return @"DBUSERSUserFeatureFileLocking";
+  case DBUSERSUserFeatureTeamSharedDropbox:
+    return @"DBUSERSUserFeatureTeamSharedDropbox";
+  case DBUSERSUserFeatureDistinctMemberHome:
+    return @"DBUSERSUserFeatureDistinctMemberHome";
   case DBUSERSUserFeatureOther:
     return @"DBUSERSUserFeatureOther";
   }
@@ -2542,6 +2915,12 @@
   case DBUSERSUserFeatureFileLocking:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBUSERSUserFeatureTeamSharedDropbox:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBUSERSUserFeatureDistinctMemberHome:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBUSERSUserFeatureOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -2574,6 +2953,10 @@
     return [[self tagName] isEqual:[anUserFeature tagName]];
   case DBUSERSUserFeatureFileLocking:
     return [[self tagName] isEqual:[anUserFeature tagName]];
+  case DBUSERSUserFeatureTeamSharedDropbox:
+    return [[self tagName] isEqual:[anUserFeature tagName]];
+  case DBUSERSUserFeatureDistinctMemberHome:
+    return [[self tagName] isEqual:[anUserFeature tagName]];
   case DBUSERSUserFeatureOther:
     return [[self tagName] isEqual:[anUserFeature tagName]];
   }
@@ -2593,6 +2976,10 @@
     jsonDict[@".tag"] = @"paper_as_files";
   } else if ([valueObj isFileLocking]) {
     jsonDict[@".tag"] = @"file_locking";
+  } else if ([valueObj isTeamSharedDropbox]) {
+    jsonDict[@".tag"] = @"team_shared_dropbox";
+  } else if ([valueObj isDistinctMemberHome]) {
+    jsonDict[@".tag"] = @"distinct_member_home";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -2609,6 +2996,10 @@
     return [[DBUSERSUserFeature alloc] initWithPaperAsFiles];
   } else if ([tag isEqualToString:@"file_locking"]) {
     return [[DBUSERSUserFeature alloc] initWithFileLocking];
+  } else if ([tag isEqualToString:@"team_shared_dropbox"]) {
+    return [[DBUSERSUserFeature alloc] initWithTeamSharedDropbox];
+  } else if ([tag isEqualToString:@"distinct_member_home"]) {
+    return [[DBUSERSUserFeature alloc] initWithDistinctMemberHome];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBUSERSUserFeature alloc] initWithOther];
   } else {
@@ -2620,8 +3011,10 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBUSERSDistinctMemberHomeValue.h"
 #import "DBUSERSFileLockingValue.h"
 #import "DBUSERSPaperAsFilesValue.h"
+#import "DBUSERSTeamSharedDropboxValue.h"
 #import "DBUSERSUserFeatureValue.h"
 
 #pragma mark - API Object
@@ -2630,6 +3023,8 @@
 
 @synthesize paperAsFiles = _paperAsFiles;
 @synthesize fileLocking = _fileLocking;
+@synthesize teamSharedDropbox = _teamSharedDropbox;
+@synthesize distinctMemberHome = _distinctMemberHome;
 
 #pragma mark - Constructors
 
@@ -2647,6 +3042,24 @@
   if (self) {
     _tag = DBUSERSUserFeatureValueFileLocking;
     _fileLocking = fileLocking;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamSharedDropbox:(DBUSERSTeamSharedDropboxValue *)teamSharedDropbox {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSUserFeatureValueTeamSharedDropbox;
+    _teamSharedDropbox = teamSharedDropbox;
+  }
+  return self;
+}
+
+- (instancetype)initWithDistinctMemberHome:(DBUSERSDistinctMemberHomeValue *)distinctMemberHome {
+  self = [super init];
+  if (self) {
+    _tag = DBUSERSUserFeatureValueDistinctMemberHome;
+    _distinctMemberHome = distinctMemberHome;
   }
   return self;
 }
@@ -2677,6 +3090,22 @@
   return _fileLocking;
 }
 
+- (DBUSERSTeamSharedDropboxValue *)teamSharedDropbox {
+  if (![self isTeamSharedDropbox]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBUSERSUserFeatureValueTeamSharedDropbox, but was %@.", [self tagName]];
+  }
+  return _teamSharedDropbox;
+}
+
+- (DBUSERSDistinctMemberHomeValue *)distinctMemberHome {
+  if (![self isDistinctMemberHome]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBUSERSUserFeatureValueDistinctMemberHome, but was %@.", [self tagName]];
+  }
+  return _distinctMemberHome;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isPaperAsFiles {
@@ -2685,6 +3114,14 @@
 
 - (BOOL)isFileLocking {
   return _tag == DBUSERSUserFeatureValueFileLocking;
+}
+
+- (BOOL)isTeamSharedDropbox {
+  return _tag == DBUSERSUserFeatureValueTeamSharedDropbox;
+}
+
+- (BOOL)isDistinctMemberHome {
+  return _tag == DBUSERSUserFeatureValueDistinctMemberHome;
 }
 
 - (BOOL)isOther {
@@ -2697,6 +3134,10 @@
     return @"DBUSERSUserFeatureValuePaperAsFiles";
   case DBUSERSUserFeatureValueFileLocking:
     return @"DBUSERSUserFeatureValueFileLocking";
+  case DBUSERSUserFeatureValueTeamSharedDropbox:
+    return @"DBUSERSUserFeatureValueTeamSharedDropbox";
+  case DBUSERSUserFeatureValueDistinctMemberHome:
+    return @"DBUSERSUserFeatureValueDistinctMemberHome";
   case DBUSERSUserFeatureValueOther:
     return @"DBUSERSUserFeatureValueOther";
   }
@@ -2741,6 +3182,12 @@
   case DBUSERSUserFeatureValueFileLocking:
     result = prime * result + [self.fileLocking hash];
     break;
+  case DBUSERSUserFeatureValueTeamSharedDropbox:
+    result = prime * result + [self.teamSharedDropbox hash];
+    break;
+  case DBUSERSUserFeatureValueDistinctMemberHome:
+    result = prime * result + [self.distinctMemberHome hash];
+    break;
   case DBUSERSUserFeatureValueOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -2773,6 +3220,10 @@
     return [self.paperAsFiles isEqual:anUserFeatureValue.paperAsFiles];
   case DBUSERSUserFeatureValueFileLocking:
     return [self.fileLocking isEqual:anUserFeatureValue.fileLocking];
+  case DBUSERSUserFeatureValueTeamSharedDropbox:
+    return [self.teamSharedDropbox isEqual:anUserFeatureValue.teamSharedDropbox];
+  case DBUSERSUserFeatureValueDistinctMemberHome:
+    return [self.distinctMemberHome isEqual:anUserFeatureValue.distinctMemberHome];
   case DBUSERSUserFeatureValueOther:
     return [[self tagName] isEqual:[anUserFeatureValue tagName]];
   }
@@ -2794,6 +3245,14 @@
   } else if ([valueObj isFileLocking]) {
     jsonDict[@"file_locking"] = [[DBUSERSFileLockingValueSerializer serialize:valueObj.fileLocking] mutableCopy];
     jsonDict[@".tag"] = @"file_locking";
+  } else if ([valueObj isTeamSharedDropbox]) {
+    jsonDict[@"team_shared_dropbox"] =
+        [[DBUSERSTeamSharedDropboxValueSerializer serialize:valueObj.teamSharedDropbox] mutableCopy];
+    jsonDict[@".tag"] = @"team_shared_dropbox";
+  } else if ([valueObj isDistinctMemberHome]) {
+    jsonDict[@"distinct_member_home"] =
+        [[DBUSERSDistinctMemberHomeValueSerializer serialize:valueObj.distinctMemberHome] mutableCopy];
+    jsonDict[@".tag"] = @"distinct_member_home";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -2813,6 +3272,14 @@
   } else if ([tag isEqualToString:@"file_locking"]) {
     DBUSERSFileLockingValue *fileLocking = [DBUSERSFileLockingValueSerializer deserialize:valueDict[@"file_locking"]];
     return [[DBUSERSUserFeatureValue alloc] initWithFileLocking:fileLocking];
+  } else if ([tag isEqualToString:@"team_shared_dropbox"]) {
+    DBUSERSTeamSharedDropboxValue *teamSharedDropbox =
+        [DBUSERSTeamSharedDropboxValueSerializer deserialize:valueDict[@"team_shared_dropbox"]];
+    return [[DBUSERSUserFeatureValue alloc] initWithTeamSharedDropbox:teamSharedDropbox];
+  } else if ([tag isEqualToString:@"distinct_member_home"]) {
+    DBUSERSDistinctMemberHomeValue *distinctMemberHome =
+        [DBUSERSDistinctMemberHomeValueSerializer deserialize:valueDict[@"distinct_member_home"]];
+    return [[DBUSERSUserFeatureValue alloc] initWithDistinctMemberHome:distinctMemberHome];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBUSERSUserFeatureValue alloc] initWithOther];
   } else {

@@ -27,18 +27,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMTeamFolderStatusTag` enum type represents the possible tag states
 /// with which the `DBTEAMTeamFolderStatus` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderStatusTag){
-    /// The team folder and sub-folders are available to all members.
-    DBTEAMTeamFolderStatusActive,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderStatusTag) {
+  /// The team folder and sub-folders are available to all members.
+  DBTEAMTeamFolderStatusActive,
 
-    /// The team folder is not accessible outside of the team folder manager.
-    DBTEAMTeamFolderStatusArchived,
+  /// The team folder is archived and is not accessible outside of the team
+  /// folder manager.
+  DBTEAMTeamFolderStatusArchived,
 
-    /// The team folder is not accessible outside of the team folder manager.
-    DBTEAMTeamFolderStatusArchiveInProgress,
+  /// The team folder is in the process of being archived and is not
+  /// accessible outside of the team folder manager.
+  DBTEAMTeamFolderStatusArchiveInProgress,
 
-    /// (no description).
-    DBTEAMTeamFolderStatusOther,
+  /// The team folder is unmounted and can be restored.
+  DBTEAMTeamFolderStatusInactive,
+
+  /// (no description).
+  DBTEAMTeamFolderStatusOther,
 
 };
 
@@ -60,8 +65,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderStatusTag){
 ///
 /// Initializes union class with tag state of "archived".
 ///
-/// Description of the "archived" tag state: The team folder is not accessible
-/// outside of the team folder manager.
+/// Description of the "archived" tag state: The team folder is archived and is
+/// not accessible outside of the team folder manager.
 ///
 /// @return An initialized instance.
 ///
@@ -70,12 +75,23 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderStatusTag){
 ///
 /// Initializes union class with tag state of "archive_in_progress".
 ///
-/// Description of the "archive_in_progress" tag state: The team folder is not
-/// accessible outside of the team folder manager.
+/// Description of the "archive_in_progress" tag state: The team folder is in
+/// the process of being archived and is not accessible outside of the team
+/// folder manager.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithArchiveInProgress;
+
+///
+/// Initializes union class with tag state of "inactive".
+///
+/// Description of the "inactive" tag state: The team folder is unmounted and
+/// can be restored.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInactive;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -110,6 +126,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderStatusTag){
 /// "archive_in_progress".
 ///
 - (BOOL)isArchiveInProgress;
+
+///
+/// Retrieves whether the union's current tag state has value "inactive".
+///
+/// @return Whether the union's current tag state has value "inactive".
+///
+- (BOOL)isInactive;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

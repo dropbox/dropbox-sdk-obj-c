@@ -10,6 +10,7 @@
 
 @class DBAUTHAccessError;
 @class DBAUTHInvalidAccountTypeError;
+@class DBAUTHNoPermissionError;
 @class DBAUTHPaperAccessError;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -32,15 +33,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBAUTHAccessErrorTag` enum type represents the possible tag states with
 /// which the `DBAUTHAccessError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAccessErrorTag){
-    /// Current account type cannot access the resource.
-    DBAUTHAccessErrorInvalidAccountType,
+typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAccessErrorTag) {
+  /// Current account type cannot access the resource.
+  DBAUTHAccessErrorInvalidAccountType,
 
-    /// Current account cannot access Paper.
-    DBAUTHAccessErrorPaperAccessDenied,
+  /// Current account cannot access Paper.
+  DBAUTHAccessErrorPaperAccessDenied,
 
-    /// (no description).
-    DBAUTHAccessErrorOther,
+  /// Team doesn't have permission to access.
+  DBAUTHAccessErrorTeamAccessDenied,
+
+  /// Caller does not have permission to access the resource.
+  DBAUTHAccessErrorNoPermission,
+
+  /// (no description).
+  DBAUTHAccessErrorOther,
 
 };
 
@@ -56,6 +63,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAccessErrorTag){
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBAUTHPaperAccessError *paperAccessDenied;
+
+/// Caller does not have permission to access the resource. @note Ensure the
+/// `isNoPermission` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
+@property (nonatomic, readonly) DBAUTHNoPermissionError *noPermission;
 
 #pragma mark - Constructors
 
@@ -82,6 +94,28 @@ typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAccessErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPaperAccessDenied:(DBAUTHPaperAccessError *)paperAccessDenied;
+
+///
+/// Initializes union class with tag state of "team_access_denied".
+///
+/// Description of the "team_access_denied" tag state: Team doesn't have
+/// permission to access.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamAccessDenied;
+
+///
+/// Initializes union class with tag state of "no_permission".
+///
+/// Description of the "no_permission" tag state: Caller does not have
+/// permission to access the resource.
+///
+/// @param noPermission Caller does not have permission to access the resource.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoPermission:(DBAUTHNoPermissionError *)noPermission;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -117,6 +151,25 @@ typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAccessErrorTag){
 /// "paper_access_denied".
 ///
 - (BOOL)isPaperAccessDenied;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_access_denied".
+///
+/// @return Whether the union's current tag state has value
+/// "team_access_denied".
+///
+- (BOOL)isTeamAccessDenied;
+
+///
+/// Retrieves whether the union's current tag state has value "no_permission".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noPermission` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "no_permission".
+///
+- (BOOL)isNoPermission;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

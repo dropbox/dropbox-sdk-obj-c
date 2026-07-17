@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The path of the file to download.
 @property (nonatomic, readonly, copy) NSString *path;
 
-/// Please specify revision in path instead.
+/// Field is deprecated. Please specify revision in path instead.
 @property (nonatomic, readonly, copy, nullable) NSString *rev;
 
 #pragma mark - Constructors
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path of the file to download.
-/// @param rev Please specify revision in path instead.
+/// @param rev Field is deprecated. Please specify revision in path instead.
 ///
 /// @return An initialized instance.
 ///

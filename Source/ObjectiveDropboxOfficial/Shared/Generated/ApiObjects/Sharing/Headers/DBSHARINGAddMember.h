@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The access level to grant member to the shared folder.  `owner` in
 /// `DBSHARINGAccessLevel` is disallowed.
-@property (nonatomic, readonly) DBSHARINGAccessLevel *accessLevel;
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *accessLevel;
 
 #pragma mark - Constructors
 

@@ -8,11 +8,14 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy;
+@class DBTEAMPOLICIESEnforceLinkPasswordPolicy;
 @class DBTEAMPOLICIESGroupCreation;
 @class DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy;
 @class DBTEAMPOLICIESSharedFolderJoinPolicy;
 @class DBTEAMPOLICIESSharedFolderMemberPolicy;
 @class DBTEAMPOLICIESSharedLinkCreatePolicy;
+@class DBTEAMPOLICIESSharedLinkDefaultPermissionsPolicy;
 @class DBTEAMPOLICIESTeamSharingPolicies;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -48,6 +51,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly)
     DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *sharedFolderLinkRestrictionPolicy;
 
+/// If passwords are required for new links shared outside the team.
+@property (nonatomic, readonly) DBTEAMPOLICIESEnforceLinkPasswordPolicy *enforceLinkPasswordPolicy;
+
+/// Default expiration date for new links shared outside the team.
+@property (nonatomic, readonly) DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *defaultLinkExpirationDaysPolicy;
+
+/// Default access level for new links shared by team members.
+@property (nonatomic, readonly) DBTEAMPOLICIESSharedLinkDefaultPermissionsPolicy *sharedLinkDefaultPermissionsPolicy;
+
 #pragma mark - Constructors
 
 ///
@@ -60,6 +72,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param groupCreationPolicy Who can create groups.
 /// @param sharedFolderLinkRestrictionPolicy Who can view links to content in
 /// shared folders.
+/// @param enforceLinkPasswordPolicy If passwords are required for new links
+/// shared outside the team.
+/// @param defaultLinkExpirationDaysPolicy Default expiration date for new links
+/// shared outside the team.
+/// @param sharedLinkDefaultPermissionsPolicy Default access level for new links
+/// shared by team members.
 ///
 /// @return An initialized instance.
 ///
@@ -68,7 +86,12 @@ NS_ASSUME_NONNULL_BEGIN
                           sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy
                              groupCreationPolicy:(DBTEAMPOLICIESGroupCreation *)groupCreationPolicy
                sharedFolderLinkRestrictionPolicy:
-                   (DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)sharedFolderLinkRestrictionPolicy;
+                   (DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)sharedFolderLinkRestrictionPolicy
+                       enforceLinkPasswordPolicy:(DBTEAMPOLICIESEnforceLinkPasswordPolicy *)enforceLinkPasswordPolicy
+                 defaultLinkExpirationDaysPolicy:
+                     (DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)defaultLinkExpirationDaysPolicy
+              sharedLinkDefaultPermissionsPolicy:
+                  (DBTEAMPOLICIESSharedLinkDefaultPermissionsPolicy *)sharedLinkDefaultPermissionsPolicy;
 
 - (instancetype)init NS_UNAVAILABLE;
 

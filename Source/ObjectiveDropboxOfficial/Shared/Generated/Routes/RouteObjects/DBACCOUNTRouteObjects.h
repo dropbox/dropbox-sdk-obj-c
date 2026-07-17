@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBACCOUNTRouteObjects : NSObject
 
+/// Accessor method for the deleteProfilePhoto route object.
++ (DBRoute *)DBACCOUNTDeleteProfilePhoto;
+
+/// Accessor method for the getPhoto route object.
++ (DBRoute *)DBACCOUNTGetPhoto;
+
 /// Accessor method for the setProfilePhoto route object.
 + (DBRoute *)DBACCOUNTSetProfilePhoto;
 

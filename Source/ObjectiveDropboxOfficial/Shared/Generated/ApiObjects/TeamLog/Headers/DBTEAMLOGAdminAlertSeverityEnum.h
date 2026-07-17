@@ -29,24 +29,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGAdminAlertSeverityEnumTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGAdminAlertSeverityEnum` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertSeverityEnumTag){
-    /// (no description).
-    DBTEAMLOGAdminAlertSeverityEnumHigh,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertSeverityEnumTag) {
+  /// (no description).
+  DBTEAMLOGAdminAlertSeverityEnumHigh,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertSeverityEnumInfo,
+  /// (no description).
+  DBTEAMLOGAdminAlertSeverityEnumInfo,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertSeverityEnumLow,
+  /// (no description).
+  DBTEAMLOGAdminAlertSeverityEnumLow,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertSeverityEnumMedium,
+  /// (no description).
+  DBTEAMLOGAdminAlertSeverityEnumMedium,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertSeverityEnumNa,
+  /// (no description).
+  DBTEAMLOGAdminAlertSeverityEnumNa,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertSeverityEnumOther,
+  /// (no description).
+  DBTEAMLOGAdminAlertSeverityEnumOther,
 
 };
 

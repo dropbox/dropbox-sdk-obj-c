@@ -6,6 +6,113 @@
 
 /// Arguments, results, and errors for the `Common` namespace.
 
+#import "DBCOMMONDropboxDuration.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBCOMMONDropboxDuration
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSeconds:(NSNumber *)seconds nanos:(NSNumber *)nanos {
+  [DBStoneValidators nonnullValidator:nil](seconds);
+  [DBStoneValidators nonnullValidator:nil](nanos);
+
+  self = [super init];
+  if (self) {
+    _seconds = seconds;
+    _nanos = nanos;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBCOMMONDropboxDurationSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBCOMMONDropboxDurationSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBCOMMONDropboxDurationSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.seconds hash];
+  result = prime * result + [self.nanos hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDropboxDuration:other];
+}
+
+- (BOOL)isEqualToDropboxDuration:(DBCOMMONDropboxDuration *)aDropboxDuration {
+  if (self == aDropboxDuration) {
+    return YES;
+  }
+  if (![self.seconds isEqual:aDropboxDuration.seconds]) {
+    return NO;
+  }
+  if (![self.nanos isEqual:aDropboxDuration.nanos]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBCOMMONDropboxDurationSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBCOMMONDropboxDuration *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"seconds"] = valueObj.seconds;
+  jsonDict[@"nanos"] = valueObj.nanos;
+
+  return jsonDict;
+}
+
++ (DBCOMMONDropboxDuration *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *seconds = valueDict[@"seconds"];
+  NSNumber *nanos = valueDict[@"nanos"];
+
+  return [[DBCOMMONDropboxDuration alloc] initWithSeconds:seconds nanos:nanos];
+}
+
+@end
+
 #import "DBCOMMONPathRoot.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -433,10 +540,10 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId homeNamespaceId:(NSString *)homeNamespaceId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
 
   self = [super init];
   if (self) {
@@ -566,10 +673,10 @@
 - (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId
                         homeNamespaceId:(NSString *)homeNamespaceId
                                homePath:(NSString *)homePath {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
   [DBStoneValidators nonnullValidator:nil](homePath);
 
   self = [super initWithRootNamespaceId:rootNamespaceId homeNamespaceId:homeNamespaceId];
@@ -683,16 +790,23 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId homeNamespaceId:(NSString *)homeNamespaceId {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
+- (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId
+                        homeNamespaceId:(NSString *)homeNamespaceId
+                               homePath:(NSString *)homePath {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](rootNamespaceId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](homeNamespaceId);
 
   self = [super initWithRootNamespaceId:rootNamespaceId homeNamespaceId:homeNamespaceId];
   if (self) {
+    _homePath = homePath;
   }
   return self;
+}
+
+- (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId homeNamespaceId:(NSString *)homeNamespaceId {
+  return [self initWithRootNamespaceId:rootNamespaceId homeNamespaceId:homeNamespaceId homePath:nil];
 }
 
 #pragma mark - Serialization methods
@@ -727,6 +841,9 @@
 
   result = prime * result + [self.rootNamespaceId hash];
   result = prime * result + [self.homeNamespaceId hash];
+  if (self.homePath != nil) {
+    result = prime * result + [self.homePath hash];
+  }
 
   return prime * result;
 }
@@ -753,6 +870,11 @@
   if (![self.homeNamespaceId isEqual:anUserRootInfo.homeNamespaceId]) {
     return NO;
   }
+  if (self.homePath) {
+    if (![self.homePath isEqual:anUserRootInfo.homePath]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -767,6 +889,9 @@
 
   jsonDict[@"root_namespace_id"] = valueObj.rootNamespaceId;
   jsonDict[@"home_namespace_id"] = valueObj.homeNamespaceId;
+  if (valueObj.homePath) {
+    jsonDict[@"home_path"] = valueObj.homePath;
+  }
 
   return jsonDict;
 }
@@ -774,8 +899,11 @@
 + (DBCOMMONUserRootInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *rootNamespaceId = valueDict[@"root_namespace_id"];
   NSString *homeNamespaceId = valueDict[@"home_namespace_id"];
+  NSString *homePath = valueDict[@"home_path"] ?: nil;
 
-  return [[DBCOMMONUserRootInfo alloc] initWithRootNamespaceId:rootNamespaceId homeNamespaceId:homeNamespaceId];
+  return [[DBCOMMONUserRootInfo alloc] initWithRootNamespaceId:rootNamespaceId
+                                               homeNamespaceId:homeNamespaceId
+                                                      homePath:homePath];
 }
 
 @end

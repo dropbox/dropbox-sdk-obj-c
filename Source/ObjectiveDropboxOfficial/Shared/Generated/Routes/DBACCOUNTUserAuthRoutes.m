@@ -5,11 +5,18 @@
 ///
 
 #import "DBACCOUNTUserAuthRoutes.h"
+#import "DBACCOUNTAccountPhotoGetArg.h"
+#import "DBACCOUNTAccountPhotoGetError.h"
+#import "DBACCOUNTAccountPhotoGetResult.h"
+#import "DBACCOUNTDeleteProfilePhotoArg.h"
+#import "DBACCOUNTDeleteProfilePhotoError.h"
+#import "DBACCOUNTDeleteProfilePhotoResult.h"
 #import "DBACCOUNTPhotoSourceArg.h"
 #import "DBACCOUNTRouteObjects.h"
 #import "DBACCOUNTSetProfilePhotoArg.h"
 #import "DBACCOUNTSetProfilePhotoError.h"
 #import "DBACCOUNTSetProfilePhotoResult.h"
+#import "DBACCOUNTThumbnailError.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTransportClientProtocol.h"
@@ -22,6 +29,73 @@
     _client = client;
   }
   return self;
+}
+
+- (DBRpcTask *)deleteProfilePhoto {
+  DBRoute *route = DBACCOUNTRouteObjects.DBACCOUNTDeleteProfilePhoto;
+  DBACCOUNTDeleteProfilePhotoArg *arg = [[DBACCOUNTDeleteProfilePhotoArg alloc] initDefault];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBDownloadUrlTask *)getPhotoUrl:(NSString *)dbxAccountId
+                              size:(NSString *)size
+                        circleCrop:(NSNumber *)circleCrop
+                expectAccountPhoto:(NSNumber *)expectAccountPhoto
+                         overwrite:(BOOL)overwrite
+                       destination:(NSURL *)destination {
+  DBRoute *route = DBACCOUNTRouteObjects.DBACCOUNTGetPhoto;
+  DBACCOUNTAccountPhotoGetArg *arg = [[DBACCOUNTAccountPhotoGetArg alloc] initWithDbxAccountId:dbxAccountId
+                                                                                          size:size
+                                                                                    circleCrop:circleCrop
+                                                                            expectAccountPhoto:expectAccountPhoto];
+  return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
+}
+
+- (DBDownloadUrlTask *)getPhotoUrl:(NSString *)dbxAccountId
+                              size:(NSString *)size
+                        circleCrop:(NSNumber *)circleCrop
+                expectAccountPhoto:(NSNumber *)expectAccountPhoto
+                         overwrite:(BOOL)overwrite
+                       destination:(NSURL *)destination
+                   byteOffsetStart:(NSNumber *)byteOffsetStart
+                     byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBACCOUNTRouteObjects.DBACCOUNTGetPhoto;
+  DBACCOUNTAccountPhotoGetArg *arg = [[DBACCOUNTAccountPhotoGetArg alloc] initWithDbxAccountId:dbxAccountId
+                                                                                          size:size
+                                                                                    circleCrop:circleCrop
+                                                                            expectAccountPhoto:expectAccountPhoto];
+  return [self.client requestDownload:route
+                                  arg:arg
+                            overwrite:overwrite
+                          destination:destination
+                      byteOffsetStart:byteOffsetStart
+                        byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadDataTask *)getPhotoData:(NSString *)dbxAccountId
+                                size:(NSString *)size
+                          circleCrop:(NSNumber *)circleCrop
+                  expectAccountPhoto:(NSNumber *)expectAccountPhoto {
+  DBRoute *route = DBACCOUNTRouteObjects.DBACCOUNTGetPhoto;
+  DBACCOUNTAccountPhotoGetArg *arg = [[DBACCOUNTAccountPhotoGetArg alloc] initWithDbxAccountId:dbxAccountId
+                                                                                          size:size
+                                                                                    circleCrop:circleCrop
+                                                                            expectAccountPhoto:expectAccountPhoto];
+  return [self.client requestDownload:route arg:arg];
+}
+
+- (DBDownloadDataTask *)getPhotoData:(NSString *)dbxAccountId
+                                size:(NSString *)size
+                          circleCrop:(NSNumber *)circleCrop
+                  expectAccountPhoto:(NSNumber *)expectAccountPhoto
+                     byteOffsetStart:(NSNumber *)byteOffsetStart
+                       byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBACCOUNTRouteObjects.DBACCOUNTGetPhoto;
+  DBACCOUNTAccountPhotoGetArg *arg = [[DBACCOUNTAccountPhotoGetArg alloc] initWithDbxAccountId:dbxAccountId
+                                                                                          size:size
+                                                                                    circleCrop:circleCrop
+                                                                            expectAccountPhoto:expectAccountPhoto];
+  return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
 - (DBRpcTask *)setProfilePhoto:(DBACCOUNTPhotoSourceArg *)photo {

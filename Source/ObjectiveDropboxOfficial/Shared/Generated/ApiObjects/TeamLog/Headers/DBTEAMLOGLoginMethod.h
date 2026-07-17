@@ -27,36 +27,45 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGLoginMethodTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGLoginMethod` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag){
-    /// (no description).
-    DBTEAMLOGLoginMethodAppleOauth,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag) {
+  /// (no description).
+  DBTEAMLOGLoginMethodAppleOauth,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodFirstPartyTokenExchange,
+  /// (no description).
+  DBTEAMLOGLoginMethodFirstPartyTokenExchange,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodGoogleOauth,
+  /// (no description).
+  DBTEAMLOGLoginMethodGoogleOauth,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodLenovoOauth,
+  /// (no description).
+  DBTEAMLOGLoginMethodKakaoOauth,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodPassword,
+  /// (no description).
+  DBTEAMLOGLoginMethodLenovoOauth,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodQrCode,
+  /// (no description).
+  DBTEAMLOGLoginMethodPasskey,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodSaml,
+  /// (no description).
+  DBTEAMLOGLoginMethodPassword,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodTwoFactorAuthentication,
+  /// (no description).
+  DBTEAMLOGLoginMethodQrCode,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodWebSession,
+  /// (no description).
+  DBTEAMLOGLoginMethodSaml,
 
-    /// (no description).
-    DBTEAMLOGLoginMethodOther,
+  /// (no description).
+  DBTEAMLOGLoginMethodTwoFactorAuthentication,
+
+  /// (no description).
+  DBTEAMLOGLoginMethodWebSession,
+
+  /// (no description).
+  DBTEAMLOGLoginMethodMicrosoftOauth,
+
+  /// (no description).
+  DBTEAMLOGLoginMethodOther,
 
 };
 
@@ -87,11 +96,25 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag){
 - (instancetype)initWithGoogleOauth;
 
 ///
+/// Initializes union class with tag state of "kakao_oauth".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithKakaoOauth;
+
+///
 /// Initializes union class with tag state of "lenovo_oauth".
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithLenovoOauth;
+
+///
+/// Initializes union class with tag state of "passkey".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPasskey;
 
 ///
 /// Initializes union class with tag state of "password".
@@ -129,6 +152,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag){
 - (instancetype)initWithWebSession;
 
 ///
+/// Initializes union class with tag state of "microsoft_oauth".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMicrosoftOauth;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -163,11 +193,25 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag){
 - (BOOL)isGoogleOauth;
 
 ///
+/// Retrieves whether the union's current tag state has value "kakao_oauth".
+///
+/// @return Whether the union's current tag state has value "kakao_oauth".
+///
+- (BOOL)isKakaoOauth;
+
+///
 /// Retrieves whether the union's current tag state has value "lenovo_oauth".
 ///
 /// @return Whether the union's current tag state has value "lenovo_oauth".
 ///
 - (BOOL)isLenovoOauth;
+
+///
+/// Retrieves whether the union's current tag state has value "passkey".
+///
+/// @return Whether the union's current tag state has value "passkey".
+///
+- (BOOL)isPasskey;
 
 ///
 /// Retrieves whether the union's current tag state has value "password".
@@ -205,6 +249,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLoginMethodTag){
 /// @return Whether the union's current tag state has value "web_session".
 ///
 - (BOOL)isWebSession;
+
+///
+/// Retrieves whether the union's current tag state has value "microsoft_oauth".
+///
+/// @return Whether the union's current tag state has value "microsoft_oauth".
+///
+- (BOOL)isMicrosoftOauth;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -32,8 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// New group access type the user will have.
 @property (nonatomic, readonly) DBTEAMGroupAccessType *accessType;
 
-/// Whether to return the list of members in the group.  Note that the default
-/// value will cause all the group members  to be returned in the response. This
+/// Whether to return the list of members in the group. Note that the default
+/// value will cause all the group members to be returned in the response. This
 /// may take a long time for large groups.
 @property (nonatomic, readonly) NSNumber *returnMembers;
 
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param user Identity of a user that is a member of group.
 /// @param accessType New group access type the user will have.
 /// @param returnMembers Whether to return the list of members in the group.
-/// Note that the default value will cause all the group members  to be returned
+/// Note that the default value will cause all the group members to be returned
 /// in the response. This may take a long time for large groups.
 ///
 /// @return An initialized instance.

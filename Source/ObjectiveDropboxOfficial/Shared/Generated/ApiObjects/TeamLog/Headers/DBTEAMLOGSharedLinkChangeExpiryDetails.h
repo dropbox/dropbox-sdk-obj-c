@@ -35,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// data gap.
 @property (nonatomic, readonly, nullable) NSDate *previousValue;
 
+/// Indicates whether this was a consolidation action by system.
+@property (nonatomic, readonly, nullable) NSNumber *isConsolidationAction;
+
 #pragma mark - Constructors
 
 ///
@@ -44,10 +47,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// historical data gap.
 /// @param previousValue Previous shared link expiration date. Might be missing
 /// due to historical data gap.
+/// @param isConsolidationAction Indicates whether this was a consolidation
+/// action by system.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithDNewValue:(nullable NSDate *)dNewValue previousValue:(nullable NSDate *)previousValue;
+- (instancetype)initWithDNewValue:(nullable NSDate *)dNewValue
+                    previousValue:(nullable NSDate *)previousValue
+            isConsolidationAction:(nullable NSNumber *)isConsolidationAction;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

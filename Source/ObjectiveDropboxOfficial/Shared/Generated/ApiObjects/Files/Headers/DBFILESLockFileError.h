@@ -29,37 +29,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESLockFileErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESLockFileError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESLockFileErrorTag){
-    /// Could not find the specified resource.
-    DBFILESLockFileErrorPathLookup,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESLockFileErrorTag) {
+  /// Could not find the specified resource.
+  DBFILESLockFileErrorPathLookup,
 
-    /// There are too many write operations in user's Dropbox. Please retry this
-    /// request.
-    DBFILESLockFileErrorTooManyWriteOperations,
+  /// There are too many write operations in user's Dropbox. Please retry this
+  /// request.
+  DBFILESLockFileErrorTooManyWriteOperations,
 
-    /// There are too many files in one request. Please retry with fewer files.
-    DBFILESLockFileErrorTooManyFiles,
+  /// There are too many files in one request. Please retry with fewer files.
+  DBFILESLockFileErrorTooManyFiles,
 
-    /// The user does not have permissions to change the lock state or access
-    /// the file.
-    DBFILESLockFileErrorNoWritePermission,
+  /// The user does not have permissions to change the lock state or access
+  /// the file.
+  DBFILESLockFileErrorNoWritePermission,
 
-    /// Item is a type that cannot be locked.
-    DBFILESLockFileErrorCannotBeLocked,
+  /// Item is a type that cannot be locked.
+  DBFILESLockFileErrorCannotBeLocked,
 
-    /// Requested file is not currently shared.
-    DBFILESLockFileErrorFileNotShared,
+  /// Requested file is not currently shared.
+  DBFILESLockFileErrorFileNotShared,
 
-    /// The user action conflicts with an existing lock on the file.
-    DBFILESLockFileErrorLockConflict,
+  /// The user action conflicts with an existing lock on the file.
+  DBFILESLockFileErrorLockConflict,
 
-    /// Something went wrong with the job on Dropbox's end. You'll need to
-    /// verify that the action you were taking succeeded, and if not, try again.
-    /// This should happen very rarely.
-    DBFILESLockFileErrorInternalError,
+  /// Something went wrong with the job on Dropbox's end. You'll need to
+  /// verify that the action you were taking succeeded, and if not, try again.
+  /// This should happen very rarely.
+  DBFILESLockFileErrorInternalError,
 
-    /// (no description).
-    DBFILESLockFileErrorOther,
+  /// (no description).
+  DBFILESLockFileErrorOther,
 
 };
 

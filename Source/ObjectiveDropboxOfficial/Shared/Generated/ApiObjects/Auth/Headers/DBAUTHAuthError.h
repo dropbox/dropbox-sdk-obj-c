@@ -30,32 +30,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBAUTHAuthErrorTag` enum type represents the possible tag states with
 /// which the `DBAUTHAuthError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAuthErrorTag){
-    /// The access token is invalid.
-    DBAUTHAuthErrorInvalidAccessToken,
+typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAuthErrorTag) {
+  /// The access token is invalid.
+  DBAUTHAuthErrorInvalidAccessToken,
 
-    /// The user specified in 'Dropbox-API-Select-User' is no longer on the
-    /// team.
-    DBAUTHAuthErrorInvalidSelectUser,
+  /// The user specified in 'Dropbox-API-Select-User' is no longer on the
+  /// team.
+  DBAUTHAuthErrorInvalidSelectUser,
 
-    /// The user specified in 'Dropbox-API-Select-Admin' is not a Dropbox
-    /// Business team admin.
-    DBAUTHAuthErrorInvalidSelectAdmin,
+  /// The user specified in 'Dropbox-API-Select-Admin' is not a Dropbox
+  /// Business team admin.
+  DBAUTHAuthErrorInvalidSelectAdmin,
 
-    /// The user has been suspended.
-    DBAUTHAuthErrorUserSuspended,
+  /// The user has been suspended.
+  DBAUTHAuthErrorUserSuspended,
 
-    /// The access token has expired.
-    DBAUTHAuthErrorExpiredAccessToken,
+  /// The access token has expired.
+  DBAUTHAuthErrorExpiredAccessToken,
 
-    /// The access token does not have the required scope to access the route.
-    DBAUTHAuthErrorMissingScope,
+  /// The access token does not have the required scope to access the route.
+  DBAUTHAuthErrorMissingScope,
 
-    /// The route is not available to public.
-    DBAUTHAuthErrorRouteAccessDenied,
+  /// The route is not available to public.
+  DBAUTHAuthErrorRouteAccessDenied,
 
-    /// (no description).
-    DBAUTHAuthErrorOther,
+  /// (no description).
+  DBAUTHAuthErrorOther,
 
 };
 

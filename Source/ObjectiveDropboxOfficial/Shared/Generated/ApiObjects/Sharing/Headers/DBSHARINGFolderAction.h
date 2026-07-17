@@ -29,54 +29,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGFolderActionTag` enum type represents the possible tag states
 /// with which the `DBSHARINGFolderAction` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFolderActionTag){
-    /// Change folder options, such as who can be invited to join the folder.
-    DBSHARINGFolderActionChangeOptions,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFolderActionTag) {
+  /// Change folder options, such as who can be invited to join the folder.
+  DBSHARINGFolderActionChangeOptions,
 
-    /// Disable viewer information for this folder.
-    DBSHARINGFolderActionDisableViewerInfo,
+  /// Disable viewer information for this folder.
+  DBSHARINGFolderActionDisableViewerInfo,
 
-    /// Change or edit contents of the folder.
-    DBSHARINGFolderActionEditContents,
+  /// Change or edit contents of the folder.
+  DBSHARINGFolderActionEditContents,
 
-    /// Enable viewer information on the folder.
-    DBSHARINGFolderActionEnableViewerInfo,
+  /// Enable viewer information on the folder.
+  DBSHARINGFolderActionEnableViewerInfo,
 
-    /// Invite a user or group to join the folder with read and write
-    /// permission.
-    DBSHARINGFolderActionInviteEditor,
+  /// Invite a user or group to join the folder with read and write
+  /// permission.
+  DBSHARINGFolderActionInviteEditor,
 
-    /// Invite a user or group to join the folder with read permission.
-    DBSHARINGFolderActionInviteViewer,
+  /// Invite a user or group to join the folder with read permission.
+  DBSHARINGFolderActionInviteViewer,
 
-    /// Invite a user or group to join the folder with read permission but no
-    /// comment permissions.
-    DBSHARINGFolderActionInviteViewerNoComment,
+  /// Invite a user or group to join the folder with read permission but no
+  /// comment permissions.
+  DBSHARINGFolderActionInviteViewerNoComment,
 
-    /// Relinquish one's own membership in the folder.
-    DBSHARINGFolderActionRelinquishMembership,
+  /// Relinquish one's own membership in the folder.
+  DBSHARINGFolderActionRelinquishMembership,
 
-    /// Unmount the folder.
-    DBSHARINGFolderActionUnmount,
+  /// Unmount the folder.
+  DBSHARINGFolderActionUnmount,
 
-    /// Stop sharing this folder.
-    DBSHARINGFolderActionUnshare,
+  /// Stop sharing this folder.
+  DBSHARINGFolderActionUnshare,
 
-    /// Keep a copy of the contents upon leaving or being kicked from the
-    /// folder.
-    DBSHARINGFolderActionLeaveACopy,
+  /// Keep a copy of the contents upon leaving or being kicked from the
+  /// folder.
+  DBSHARINGFolderActionLeaveACopy,
 
-    /// Use create_link instead.
-    DBSHARINGFolderActionShareLink,
+  /// Field is deprecated. Use create_view_link and create_edit_link instead.
+  DBSHARINGFolderActionShareLink,
 
-    /// Create a shared link for folder.
-    DBSHARINGFolderActionCreateLink,
+  /// Field is deprecated. Use create_view_link and create_edit_link instead.
+  DBSHARINGFolderActionCreateLink,
 
-    /// Set whether the folder inherits permissions from its parent.
-    DBSHARINGFolderActionSetAccessInheritance,
+  /// Create a shared link that only allows users to view the content.
+  DBSHARINGFolderActionCreateViewLink,
 
-    /// (no description).
-    DBSHARINGFolderActionOther,
+  /// Create a shared link that allows users to edit the content.
+  DBSHARINGFolderActionCreateEditLink,
+
+  /// Set whether the folder inherits permissions from its parent.
+  DBSHARINGFolderActionSetAccessInheritance,
+
+  /// (no description).
+  DBSHARINGFolderActionOther,
 
 };
 
@@ -196,7 +202,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFolderActionTag){
 ///
 /// Initializes union class with tag state of "share_link".
 ///
-/// Description of the "share_link" tag state: Use create_link instead.
+/// Description of the "share_link" tag state: Field is deprecated. Use
+/// create_view_link and create_edit_link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -205,11 +212,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFolderActionTag){
 ///
 /// Initializes union class with tag state of "create_link".
 ///
-/// Description of the "create_link" tag state: Create a shared link for folder.
+/// Description of the "create_link" tag state: Field is deprecated. Use
+/// create_view_link and create_edit_link instead.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithCreateLink;
+
+///
+/// Initializes union class with tag state of "create_view_link".
+///
+/// Description of the "create_view_link" tag state: Create a shared link that
+/// only allows users to view the content.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCreateViewLink;
+
+///
+/// Initializes union class with tag state of "create_edit_link".
+///
+/// Description of the "create_edit_link" tag state: Create a shared link that
+/// allows users to edit the content.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCreateEditLink;
 
 ///
 /// Initializes union class with tag state of "set_access_inheritance".
@@ -330,6 +358,22 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFolderActionTag){
 /// @return Whether the union's current tag state has value "create_link".
 ///
 - (BOOL)isCreateLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "create_view_link".
+///
+/// @return Whether the union's current tag state has value "create_view_link".
+///
+- (BOOL)isCreateViewLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "create_edit_link".
+///
+/// @return Whether the union's current tag state has value "create_edit_link".
+///
+- (BOOL)isCreateEditLink;
 
 ///
 /// Retrieves whether the union's current tag state has value

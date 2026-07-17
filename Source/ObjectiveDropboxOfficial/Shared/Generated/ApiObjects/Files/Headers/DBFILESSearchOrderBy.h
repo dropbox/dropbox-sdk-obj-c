@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESSearchOrderByTag` enum type represents the possible tag states
 /// with which the `DBFILESSearchOrderBy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchOrderByTag){
-    /// (no description).
-    DBFILESSearchOrderByRelevance,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchOrderByTag) {
+  /// (no description).
+  DBFILESSearchOrderByRelevance,
 
-    /// (no description).
-    DBFILESSearchOrderByLastModifiedTime,
+  /// (no description).
+  DBFILESSearchOrderByLastModifiedTime,
 
-    /// (no description).
-    DBFILESSearchOrderByOther,
+  /// (no description).
+  DBFILESSearchOrderByOther,
 
 };
 

@@ -27,8 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// If set to a valid list of template IDs, `propertyGroups` in
-/// `DBFILESFileMetadata` is set for files with custom properties.
+/// Field is deprecated. If set to a valid list of template IDs,
+/// `propertyGroups` in `DBFILESFileMetadata` is set for files with custom
+/// properties.
 @property (nonatomic, readonly, nullable) NSArray<NSString *> *includePropertyTemplates;
 
 #pragma mark - Constructors
@@ -43,14 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// file or folder, otherwise `notFound` in `DBFILESLookupError` will be
 /// returned.
 /// @param includeHasExplicitSharedMembers If true, the results will include a
-/// flag for each file indicating whether or not  that file has any explicit
+/// flag for each file indicating whether or not that file has any explicit
 /// members.
 /// @param includePropertyGroups If set to a valid list of template IDs,
 /// `propertyGroups` in `DBFILESFileMetadata` is set if there exists property
 /// data associated with the file and each of the listed templates.
-/// @param includePropertyTemplates If set to a valid list of template IDs,
-/// `propertyGroups` in `DBFILESFileMetadata` is set for files with custom
-/// properties.
+/// @param includePropertyTemplates Field is deprecated. If set to a valid list
+/// of template IDs, `propertyGroups` in `DBFILESFileMetadata` is set for files
+/// with custom properties.
 ///
 /// @return An initialized instance.
 ///

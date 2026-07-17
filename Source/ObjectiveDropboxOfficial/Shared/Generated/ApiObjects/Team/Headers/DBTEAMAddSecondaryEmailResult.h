@@ -33,37 +33,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMAddSecondaryEmailResultTag` enum type represents the possible tag
 /// states with which the `DBTEAMAddSecondaryEmailResult` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMAddSecondaryEmailResultTag){
-    /// Describes a secondary email that was successfully added to a user.
-    DBTEAMAddSecondaryEmailResultSuccess,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMAddSecondaryEmailResultTag) {
+  /// Describes a secondary email that was successfully added to a user.
+  DBTEAMAddSecondaryEmailResultSuccess,
 
-    /// Secondary email is not available to be claimed by the user.
-    DBTEAMAddSecondaryEmailResultUnavailable,
+  /// Secondary email is not available to be claimed by the user.
+  DBTEAMAddSecondaryEmailResultUnavailable,
 
-    /// Secondary email is already a pending email for the user.
-    DBTEAMAddSecondaryEmailResultAlreadyPending,
+  /// Secondary email is already a pending email for the user.
+  DBTEAMAddSecondaryEmailResultAlreadyPending,
 
-    /// Secondary email is already a verified email for the user.
-    DBTEAMAddSecondaryEmailResultAlreadyOwnedByUser,
+  /// Secondary email is already a verified email for the user.
+  DBTEAMAddSecondaryEmailResultAlreadyOwnedByUser,
 
-    /// User already has the maximum number of secondary emails allowed.
-    DBTEAMAddSecondaryEmailResultReachedLimit,
+  /// User already has the maximum number of secondary emails allowed.
+  DBTEAMAddSecondaryEmailResultReachedLimit,
 
-    /// A transient error occurred. Please try again later.
-    DBTEAMAddSecondaryEmailResultTransientError,
+  /// Field is deprecated. A transient error occurred. Please try again later.
+  DBTEAMAddSecondaryEmailResultTransientError,
 
-    /// An error occurred due to conflicting updates. Please try again later.
-    DBTEAMAddSecondaryEmailResultTooManyUpdates,
+  /// An error occurred due to conflicting updates. Please try again later.
+  DBTEAMAddSecondaryEmailResultTooManyUpdates,
 
-    /// An unknown error occurred.
-    DBTEAMAddSecondaryEmailResultUnknownError,
+  /// An unknown error occurred.
+  DBTEAMAddSecondaryEmailResultUnknownError,
 
-    /// Too many emails are being sent to this email address. Please try again
-    /// later.
-    DBTEAMAddSecondaryEmailResultRateLimited,
+  /// Too many emails are being sent to this email address. Please try again
+  /// later.
+  DBTEAMAddSecondaryEmailResultRateLimited,
 
-    /// (no description).
-    DBTEAMAddSecondaryEmailResultOther,
+  /// (no description).
+  DBTEAMAddSecondaryEmailResultOther,
 
 };
 
@@ -95,9 +95,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMAddSecondaryEmailResultTag){
 /// a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *reachedLimit;
 
-/// A transient error occurred. Please try again later. @note Ensure the
-/// `isTransientError` method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// Field is deprecated. A transient error occurred. Please try again later.
+/// @note Ensure the `isTransientError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *transientError;
 
 /// An error occurred due to conflicting updates. Please try again later. @note
@@ -184,10 +184,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMAddSecondaryEmailResultTag){
 ///
 /// Initializes union class with tag state of "transient_error".
 ///
-/// Description of the "transient_error" tag state: A transient error occurred.
-/// Please try again later.
+/// Description of the "transient_error" tag state: Field is deprecated. A
+/// transient error occurred. Please try again later.
 ///
-/// @param transientError A transient error occurred. Please try again later.
+/// @param transientError Field is deprecated. A transient error occurred.
+/// Please try again later.
 ///
 /// @return An initialized instance.
 ///

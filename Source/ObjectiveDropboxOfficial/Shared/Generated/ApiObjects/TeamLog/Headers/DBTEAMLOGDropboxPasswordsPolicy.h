@@ -29,18 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGDropboxPasswordsPolicyTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGDropboxPasswordsPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDropboxPasswordsPolicyTag){
-    /// (no description).
-    DBTEAMLOGDropboxPasswordsPolicyDefault_,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDropboxPasswordsPolicyTag) {
+  /// (no description).
+  DBTEAMLOGDropboxPasswordsPolicyDefault_,
 
-    /// (no description).
-    DBTEAMLOGDropboxPasswordsPolicyDisabled,
+  /// (no description).
+  DBTEAMLOGDropboxPasswordsPolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGDropboxPasswordsPolicyEnabled,
+  /// (no description).
+  DBTEAMLOGDropboxPasswordsPolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGDropboxPasswordsPolicyOther,
+  /// (no description).
+  DBTEAMLOGDropboxPasswordsPolicyOther,
 
 };
 

@@ -27,34 +27,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESPaperCreateErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESPaperCreateError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperCreateErrorTag){
-    /// Your account does not have permissions to edit Paper docs.
-    DBFILESPaperCreateErrorInsufficientPermissions,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperCreateErrorTag) {
+  /// Your account does not have permissions to edit Paper docs.
+  DBFILESPaperCreateErrorInsufficientPermissions,
 
-    /// The provided content was malformed and cannot be imported to Paper.
-    DBFILESPaperCreateErrorContentMalformed,
+  /// The provided content was malformed and cannot be imported to Paper.
+  DBFILESPaperCreateErrorContentMalformed,
 
-    /// The Paper doc would be too large, split the content into multiple docs.
-    DBFILESPaperCreateErrorDocLengthExceeded,
+  /// The Paper doc would be too large, split the content into multiple docs.
+  DBFILESPaperCreateErrorDocLengthExceeded,
 
-    /// The imported document contains an image that is too large. The current
-    /// limit is 1MB. This only applies to HTML with data URI.
-    DBFILESPaperCreateErrorImageSizeExceeded,
+  /// The imported document contains an image that is too large. The current
+  /// limit is 1MB. This only applies to HTML with data URI.
+  DBFILESPaperCreateErrorImageSizeExceeded,
 
-    /// (no description).
-    DBFILESPaperCreateErrorOther,
+  /// (no description).
+  DBFILESPaperCreateErrorOther,
 
-    /// The file could not be saved to the specified location.
-    DBFILESPaperCreateErrorInvalidPath,
+  /// The file could not be saved to the specified location.
+  DBFILESPaperCreateErrorInvalidPath,
 
-    /// The user's email must be verified to create Paper docs.
-    DBFILESPaperCreateErrorEmailUnverified,
+  /// The user's email must be verified to create Paper docs.
+  DBFILESPaperCreateErrorEmailUnverified,
 
-    /// The file path must end in .paper.
-    DBFILESPaperCreateErrorInvalidFileExtension,
+  /// The file path must end in .paper.
+  DBFILESPaperCreateErrorInvalidFileExtension,
 
-    /// Paper is disabled for your team.
-    DBFILESPaperCreateErrorPaperDisabled,
+  /// Paper is disabled for your team.
+  DBFILESPaperCreateErrorPaperDisabled,
 
 };
 

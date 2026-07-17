@@ -37,8 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 1024 bytes.
 @property (nonatomic, readonly, copy) NSString *description_;
 
-/// Data type of the value of this property field. This type will be enforced
-/// upon property creation and modifications.
+/// (no description).
 @property (nonatomic, readonly) DBFILEPROPERTIESPropertyType *type;
 
 #pragma mark - Constructors
@@ -50,8 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// can be up to 256 bytes.
 /// @param description_ Description of the property field. Property field
 /// descriptions can be up to 1024 bytes.
-/// @param type Data type of the value of this property field. This type will be
-/// enforced upon property creation and modifications.
+/// @param type (no description).
 ///
 /// @return An initialized instance.
 ///

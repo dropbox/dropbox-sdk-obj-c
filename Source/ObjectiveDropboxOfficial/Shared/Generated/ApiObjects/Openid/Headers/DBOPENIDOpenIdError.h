@@ -27,12 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBOPENIDOpenIdErrorTag` enum type represents the possible tag states
 /// with which the `DBOPENIDOpenIdError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBOPENIDOpenIdErrorTag){
-    /// Missing openid claims for the associated access token.
-    DBOPENIDOpenIdErrorIncorrectOpenidScopes,
+typedef NS_CLOSED_ENUM(NSInteger, DBOPENIDOpenIdErrorTag) {
+  /// Missing openid claims for the associated access token.
+  DBOPENIDOpenIdErrorIncorrectOpenidScopes,
 
-    /// (no description).
-    DBOPENIDOpenIdErrorOther,
+  /// (no description).
+  DBOPENIDOpenIdErrorOther,
 
 };
 

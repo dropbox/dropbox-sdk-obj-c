@@ -46,10 +46,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// AccessLevel union object, describing what access level we want to give new
 /// members.
-@property (nonatomic, readonly) DBSHARINGAccessLevel *accessLevel;
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *accessLevel;
 
-/// If the custom message should be added as a comment on the file.
+/// If the custom message should be added as a comment on the file. Only meant
+/// for Paper files.
 @property (nonatomic, readonly) NSNumber *addMessageAsComment;
+
+/// Field is only returned for "internal" callers. The FingerprintJS Sealed
+/// Client Result value
+@property (nonatomic, readonly, copy, nullable) NSString *fpSealedResult;
 
 #pragma mark - Constructors
 
@@ -66,7 +71,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param accessLevel AccessLevel union object, describing what access level we
 /// want to give new members.
 /// @param addMessageAsComment If the custom message should be added as a
-/// comment on the file.
+/// comment on the file. Only meant for Paper files.
+/// @param fpSealedResult Field is only returned for "internal" callers. The
+/// FingerprintJS Sealed Client Result value
 ///
 /// @return An initialized instance.
 ///
@@ -75,7 +82,8 @@ NS_ASSUME_NONNULL_BEGIN
                customMessage:(nullable NSString *)customMessage
                        quiet:(nullable NSNumber *)quiet
                  accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
-         addMessageAsComment:(nullable NSNumber *)addMessageAsComment;
+         addMessageAsComment:(nullable NSNumber *)addMessageAsComment
+              fpSealedResult:(nullable NSString *)fpSealedResult;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

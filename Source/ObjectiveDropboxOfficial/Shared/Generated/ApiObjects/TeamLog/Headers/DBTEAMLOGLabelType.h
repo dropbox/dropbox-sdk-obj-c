@@ -29,18 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGLabelTypeTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGLabelType` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLabelTypeTag){
-    /// (no description).
-    DBTEAMLOGLabelTypePersonalInformation,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGLabelTypeTag) {
+  /// (no description).
+  DBTEAMLOGLabelTypePersonalInformation,
 
-    /// (no description).
-    DBTEAMLOGLabelTypeTestOnly,
+  /// (no description).
+  DBTEAMLOGLabelTypeTestOnly,
 
-    /// (no description).
-    DBTEAMLOGLabelTypeUserDefinedTag,
+  /// (no description).
+  DBTEAMLOGLabelTypeUserDefinedTag,
 
-    /// (no description).
-    DBTEAMLOGLabelTypeOther,
+  /// (no description).
+  DBTEAMLOGLabelTypeOther,
 
 };
 

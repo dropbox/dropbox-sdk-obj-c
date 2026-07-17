@@ -28,21 +28,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESMediaInfoTag` enum type represents the possible tag states with
 /// which the `DBFILESMediaInfo` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESMediaInfoTag){
-    /// Indicate the photo/video is still under processing and metadata is not
-    /// available yet.
-    DBFILESMediaInfoPending,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESMediaInfoTag) {
+  /// Indicate the photo/video is still under processing and metadata is not
+  /// available yet.
+  DBFILESMediaInfoPending,
 
-    /// The metadata for the photo/video.
-    DBFILESMediaInfoMetadata,
+  /// The metadata for the photo/video. Uses MediaMetadataAbstract to preserve
+  /// photo/video subtypes (e.g. VideoMetadata.duration).
+  DBFILESMediaInfoMetadata,
 
 };
 
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBFILESMediaInfoTag tag;
 
-/// The metadata for the photo/video. @note Ensure the `isMetadata` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// The metadata for the photo/video. Uses MediaMetadataAbstract to preserve
+/// photo/video subtypes (e.g. VideoMetadata.duration). @note Ensure the
+/// `isMetadata` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property (nonatomic, readonly) DBFILESMediaMetadata *metadata;
 
 #pragma mark - Constructors
@@ -61,8 +64,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESMediaInfoTag){
 /// Initializes union class with tag state of "metadata".
 ///
 /// Description of the "metadata" tag state: The metadata for the photo/video.
+/// Uses MediaMetadataAbstract to preserve photo/video subtypes (e.g.
+/// VideoMetadata.duration).
 ///
-/// @param metadata The metadata for the photo/video.
+/// @param metadata The metadata for the photo/video. Uses MediaMetadataAbstract
+/// to preserve photo/video subtypes (e.g. VideoMetadata.duration).
 ///
 /// @return An initialized instance.
 ///

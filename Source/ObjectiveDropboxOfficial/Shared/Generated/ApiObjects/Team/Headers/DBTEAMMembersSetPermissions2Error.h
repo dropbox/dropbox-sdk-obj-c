@@ -28,27 +28,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMMembersSetPermissions2ErrorTag` enum type represents the possible
 /// tag states with which the `DBTEAMMembersSetPermissions2Error` union can
 /// exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersSetPermissions2ErrorTag){
-    /// No matching user found. The provided team_member_id, email, or
-    /// external_id does not exist on this team.
-    DBTEAMMembersSetPermissions2ErrorUserNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersSetPermissions2ErrorTag) {
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
+  DBTEAMMembersSetPermissions2ErrorUserNotFound,
 
-    /// Cannot remove the admin setting of the last admin.
-    DBTEAMMembersSetPermissions2ErrorLastAdmin,
+  /// Cannot remove the admin setting of the last admin.
+  DBTEAMMembersSetPermissions2ErrorLastAdmin,
 
-    /// The user is not a member of the team.
-    DBTEAMMembersSetPermissions2ErrorUserNotInTeam,
+  /// The user is not a member of the team.
+  DBTEAMMembersSetPermissions2ErrorUserNotInTeam,
 
-    /// Cannot remove/grant permissions. This can happen if the team member is
-    /// suspended.
-    DBTEAMMembersSetPermissions2ErrorCannotSetPermissions,
+  /// Cannot remove/grant permissions. This can happen if the team member is
+  /// suspended.
+  DBTEAMMembersSetPermissions2ErrorCannotSetPermissions,
 
-    /// No matching role found. At least one of the provided new_roles does not
-    /// exist on this team.
-    DBTEAMMembersSetPermissions2ErrorRoleNotFound,
+  /// No matching role found. At least one of the provided new_roles does not
+  /// exist on this team.
+  DBTEAMMembersSetPermissions2ErrorRoleNotFound,
 
-    /// (no description).
-    DBTEAMMembersSetPermissions2ErrorOther,
+  /// (no description).
+  DBTEAMMembersSetPermissions2ErrorOther,
 
 };
 

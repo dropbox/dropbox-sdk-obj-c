@@ -28,13 +28,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBUSERSUserFeaturesGetValuesBatchErrorTag` enum type represents the
 /// possible tag states with which the `DBUSERSUserFeaturesGetValuesBatchError`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeaturesGetValuesBatchErrorTag){
-    /// At least one UserFeature must be included in the
-    /// UserFeaturesGetValuesBatchArg.features list.
-    DBUSERSUserFeaturesGetValuesBatchErrorEmptyFeaturesList,
+typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeaturesGetValuesBatchErrorTag) {
+  /// At least one UserFeature must be included in the
+  /// UserFeaturesGetValuesBatchArg.features list.
+  DBUSERSUserFeaturesGetValuesBatchErrorEmptyFeaturesList,
 
-    /// (no description).
-    DBUSERSUserFeaturesGetValuesBatchErrorOther,
+  /// (no description).
+  DBUSERSUserFeaturesGetValuesBatchErrorOther,
 
 };
 

@@ -77,16 +77,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param open Whether or not the file request should be open. If the file request is closed, it will not accept any
 /// file submissions, but it can be opened later.
 /// @param description_ A description of the file request.
+/// @param videoProjectId If this request was created from video project, its id.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILEREQUESTSFileRequest` object on success or a
 /// `DBFILEREQUESTSCreateFileRequestError` object on failure.
 ///
 - (DBRpcTask<DBFILEREQUESTSFileRequest *, DBFILEREQUESTSCreateFileRequestError *> *)
-          create:(NSString *)title
-     destination:(NSString *)destination
-        deadline:(nullable DBFILEREQUESTSFileRequestDeadline *)deadline
-            open:(nullable NSNumber *)open
-    description_:(nullable NSString *)description_;
+            create:(NSString *)title
+       destination:(NSString *)destination
+          deadline:(nullable DBFILEREQUESTSFileRequestDeadline *)deadline
+              open:(nullable NSNumber *)open
+      description_:(nullable NSString *)description_
+    videoProjectId:(nullable NSString *)videoProjectId;
 
 ///
 /// Delete a batch of closed file requests.

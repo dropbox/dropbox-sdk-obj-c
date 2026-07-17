@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESFileStatusTag` enum type represents the possible tag states with
 /// which the `DBFILESFileStatus` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileStatusTag){
-    /// (no description).
-    DBFILESFileStatusActive,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileStatusTag) {
+  /// (no description).
+  DBFILESFileStatusActive,
 
-    /// (no description).
-    DBFILESFileStatusDeleted,
+  /// (no description).
+  DBFILESFileStatusDeleted,
 
-    /// (no description).
-    DBFILESFileStatusOther,
+  /// (no description).
+  DBFILESFileStatusOther,
 
 };
 

@@ -32,7 +32,9 @@
 @class DBPAPERPaperDocCreateError;
 @class DBPAPERPaperDocCreateUpdateResult;
 @class DBPAPERPaperDocExportResult;
+@class DBPAPERPaperDocGetMetadataResult;
 @class DBPAPERPaperDocPermissionLevel;
+@class DBPAPERPaperDocStatus;
 @class DBPAPERPaperDocUpdateError;
 @class DBPAPERPaperDocUpdatePolicy;
 @class DBPAPERPaperFolderCreateError;
@@ -219,6 +221,31 @@ NS_ASSUME_NONNULL_BEGIN
 /// Paper. Refer to the Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide for
 /// migration information.
 ///
+/// @param includeComments When true, export includes comment threads (e.g. markdown footnotes). When false or omitted,
+/// body only. Other formats may adopt this later; currently only markdown uses it. Plain bool (not optional):
+/// protoc-gen-godbx does not support proto3 optional yet.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
+/// a `DBPAPERDocLookupError` object on failure.
+///
+- (DBDownloadUrlTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
+    docsDownloadUrl:(NSString *)docId
+       exportFormat:(DBPAPERExportFormat *)exportFormat
+    includeComments:(nullable NSNumber *)includeComments
+          overwrite:(BOOL)overwrite
+        destination:(NSURL *)destination __deprecated_msg("docsDownload is deprecated.");
+
+///
+/// DEPRECATED: Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to
+/// work for content created by users on the older version of Paper. To check which version of Paper a user is on, use
+/// /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of
+/// Paper. Refer to the Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide for
+/// migration information.
+///
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -246,6 +273,37 @@ NS_ASSUME_NONNULL_BEGIN
 /// Paper. Refer to the Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide for
 /// migration information.
 ///
+/// @param includeComments When true, export includes comment threads (e.g. markdown footnotes). When false or omitted,
+/// body only. Other formats may adopt this later; currently only markdown uses it. Plain bool (not optional):
+/// protoc-gen-godbx does not support proto3 optional yet.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
+/// a `DBPAPERDocLookupError` object on failure.
+///
+- (DBDownloadUrlTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
+    docsDownloadUrl:(NSString *)docId
+       exportFormat:(DBPAPERExportFormat *)exportFormat
+    includeComments:(nullable NSNumber *)includeComments
+          overwrite:(BOOL)overwrite
+        destination:(NSURL *)destination
+    byteOffsetStart:(NSNumber *)byteOffsetStart
+      byteOffsetEnd:(NSNumber *)byteOffsetEnd __deprecated_msg("docsDownload is deprecated.");
+
+///
+/// DEPRECATED: Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to
+/// work for content created by users on the older version of Paper. To check which version of Paper a user is on, use
+/// /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of
+/// Paper. Refer to the Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide for
+/// migration information.
+///
 ///
 /// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
 /// a `DBPAPERDocLookupError` object on failure.
@@ -253,6 +311,25 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
     docsDownloadData:(NSString *)docId
         exportFormat:(DBPAPERExportFormat *)exportFormat __deprecated_msg("docsDownload is deprecated.");
+
+///
+/// DEPRECATED: Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to
+/// work for content created by users on the older version of Paper. To check which version of Paper a user is on, use
+/// /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of
+/// Paper. Refer to the Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide for
+/// migration information.
+///
+/// @param includeComments When true, export includes comment threads (e.g. markdown footnotes). When false or omitted,
+/// body only. Other formats may adopt this later; currently only markdown uses it. Plain bool (not optional):
+/// protoc-gen-godbx does not support proto3 optional yet.
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
+/// a `DBPAPERDocLookupError` object on failure.
+///
+- (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
+    docsDownloadData:(NSString *)docId
+        exportFormat:(DBPAPERExportFormat *)exportFormat
+     includeComments:(nullable NSNumber *)includeComments __deprecated_msg("docsDownload is deprecated.");
 
 ///
 /// DEPRECATED: Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to
@@ -272,6 +349,31 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
     docsDownloadData:(NSString *)docId
         exportFormat:(DBPAPERExportFormat *)exportFormat
+     byteOffsetStart:(NSNumber *)byteOffsetStart
+       byteOffsetEnd:(NSNumber *)byteOffsetEnd __deprecated_msg("docsDownload is deprecated.");
+
+///
+/// DEPRECATED: Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to
+/// work for content created by users on the older version of Paper. To check which version of Paper a user is on, use
+/// /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of
+/// Paper. Refer to the Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide for
+/// migration information.
+///
+/// @param includeComments When true, export includes comment threads (e.g. markdown footnotes). When false or omitted,
+/// body only. Other formats may adopt this later; currently only markdown uses it. Plain bool (not optional):
+/// protoc-gen-godbx does not support proto3 optional yet.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
+/// a `DBPAPERDocLookupError` object on failure.
+///
+- (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> *)
+    docsDownloadData:(NSString *)docId
+        exportFormat:(DBPAPERExportFormat *)exportFormat
+     includeComments:(nullable NSNumber *)includeComments
      byteOffsetStart:(NSNumber *)byteOffsetStart
        byteOffsetEnd:(NSNumber *)byteOffsetEnd __deprecated_msg("docsDownload is deprecated.");
 
@@ -327,10 +429,10 @@ NS_ASSUME_NONNULL_BEGIN
                          cursor:(NSString *)cursor __deprecated_msg("docsFolderUsersListContinue is deprecated.");
 
 ///
-/// DEPRECATED: Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy;
-/// permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both
-/// folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  If the Paper doc
-/// is not in any folder (aka unfiled) the response will be empty. Note that this endpoint will continue to work for
+/// DEPRECATED: Retrieves folder information for the given Paper doc. This includes: - folder sharing policy;
+/// permissions for subfolders are set by the top-level folder. - full 'filepath', i.e. the list of folders (both
+/// folderId and folderName) from the root folder to the folder directly containing the Paper doc. If the Paper doc is
+/// not in any folder (aka unfiled) the response will be empty. Note that this endpoint will continue to work for
 /// content created by users on the older version of Paper. To check which version of Paper a user is on, use
 /// /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of
 /// Paper. Refer to the Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide for
@@ -343,6 +445,27 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBPAPERFoldersContainingPaperDoc *, DBPAPERDocLookupError *> *)docsGetFolderInfo:(NSString *)docId
     __deprecated_msg("docsGetFolderInfo is deprecated.");
+
+///
+/// Returns metadata for a Paper doc or Cloud Doc.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocGetMetadataResult` object on
+/// success or a `DBPAPERDocLookupError` object on failure.
+///
+- (DBRpcTask<DBPAPERPaperDocGetMetadataResult *, DBPAPERDocLookupError *> *)docsGetMetadata;
+
+///
+/// Returns metadata for a Paper doc or Cloud Doc.
+///
+/// @param docId Legacy Paper doc identifier.
+/// @param fileId Dropbox file ID for Cloud Docs (post-PiFS migration).
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocGetMetadataResult` object on
+/// success or a `DBPAPERDocLookupError` object on failure.
+///
+- (DBRpcTask<DBPAPERPaperDocGetMetadataResult *, DBPAPERDocLookupError *> *)docsGetMetadata:(nullable NSString *)docId
+                                                                                     fileId:(nullable NSString *)fileId;
 
 ///
 /// DEPRECATED: Return the list of all Paper docs according to the argument specifications. To iterate over through the
@@ -371,6 +494,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sortOrder Allows user to specify the sort order of the result.
 /// @param limit Size limit per batch. The maximum number of docs that can be retrieved per batch is 1000. Higher value
 /// results in invalid arguments error.
+/// @param stopAtDate Do not return results beyond this date. Behavior depends on sort order.
 ///
 /// @return Through the response callback, the caller will receive a `DBPAPERListPaperDocsResponse` object on success or
 /// a `void` object on failure.
@@ -380,6 +504,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                              sortOrder:
                                                                  (nullable DBPAPERListPaperDocsSortOrder *)sortOrder
                                                                  limit:(nullable NSNumber *)limit
+                                                            stopAtDate:(nullable NSDate *)stopAtDate
     __deprecated_msg("docsList is deprecated.");
 
 ///

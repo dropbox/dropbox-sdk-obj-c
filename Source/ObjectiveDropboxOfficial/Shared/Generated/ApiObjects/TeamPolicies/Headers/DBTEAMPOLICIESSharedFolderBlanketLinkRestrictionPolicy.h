@@ -31,16 +31,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyTag` enum type
 /// represents the possible tag states with which the
 /// `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyTag){
-    /// Only members of shared folders can access folder content via shared
-    /// link.
-    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyMembers,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyTag) {
+  /// Only members of shared folders can access folder content via shared
+  /// link.
+  DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyMembers,
 
-    /// Anyone can access folder content via shared link.
-    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyAnyone,
+  /// Anyone can access folder content via shared link.
+  DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyAnyone,
 
-    /// (no description).
-    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyOther,
+  /// (no description).
+  DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyOther,
 
 };
 

@@ -13,6 +13,7 @@
 @class DBTEAMPOLICIESSuggestMembersPolicy;
 @class DBTEAMPOLICIESTeamMemberPolicies;
 @class DBTEAMPOLICIESTeamSharingPolicies;
+@class DBTEAMPOLICIESTopLevelContentPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -48,6 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// invite to the team.
 @property (nonatomic, readonly) DBTEAMPOLICIESSuggestMembersPolicy *suggestMembersPolicy;
 
+/// Policy for deciding whether members can edit team folders at the top level
+/// of the team space.
+@property (nonatomic, readonly) DBTEAMPOLICIESTopLevelContentPolicy *topLevelContentPolicy;
+
 #pragma mark - Constructors
 
 ///
@@ -64,13 +69,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// this team.
 /// @param suggestMembersPolicy The team policy on if teammembers are allowed to
 /// suggest users for admins to invite to the team.
+/// @param topLevelContentPolicy Policy for deciding whether members can edit
+/// team folders at the top level of the team space.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharing:(DBTEAMPOLICIESTeamSharingPolicies *)sharing
                        emmState:(DBTEAMPOLICIESEmmState *)emmState
                     officeAddin:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddin
-           suggestMembersPolicy:(DBTEAMPOLICIESSuggestMembersPolicy *)suggestMembersPolicy;
+           suggestMembersPolicy:(DBTEAMPOLICIESSuggestMembersPolicy *)suggestMembersPolicy
+          topLevelContentPolicy:(DBTEAMPOLICIESTopLevelContentPolicy *)topLevelContentPolicy;
 
 - (instancetype)init NS_UNAVAILABLE;
 

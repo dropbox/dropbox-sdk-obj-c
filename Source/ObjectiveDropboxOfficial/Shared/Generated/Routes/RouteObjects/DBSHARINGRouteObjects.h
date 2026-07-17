@@ -98,6 +98,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the mountFolder route object.
 + (DBRoute *)DBSHARINGMountFolder;
 
+/// Accessor method for the relinquishAccess route object.
++ (DBRoute *)DBSHARINGRelinquishAccess;
+
 /// Accessor method for the relinquishFileMembership route object.
 + (DBRoute *)DBSHARINGRelinquishFileMembership;
 
@@ -136,6 +139,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the updateFileMember route object.
 + (DBRoute *)DBSHARINGUpdateFileMember;
+
+/// Accessor method for the updateFilePolicy route object.
++ (DBRoute *)DBSHARINGUpdateFilePolicy;
 
 /// Accessor method for the updateFolderMember route object.
 + (DBRoute *)DBSHARINGUpdateFolderMember;

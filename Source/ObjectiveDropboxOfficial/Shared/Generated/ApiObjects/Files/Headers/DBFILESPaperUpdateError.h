@@ -28,34 +28,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESPaperUpdateErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESPaperUpdateError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperUpdateErrorTag){
-    /// Your account does not have permissions to edit Paper docs.
-    DBFILESPaperUpdateErrorInsufficientPermissions,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESPaperUpdateErrorTag) {
+  /// Your account does not have permissions to edit Paper docs.
+  DBFILESPaperUpdateErrorInsufficientPermissions,
 
-    /// The provided content was malformed and cannot be imported to Paper.
-    DBFILESPaperUpdateErrorContentMalformed,
+  /// The provided content was malformed and cannot be imported to Paper.
+  DBFILESPaperUpdateErrorContentMalformed,
 
-    /// The Paper doc would be too large, split the content into multiple docs.
-    DBFILESPaperUpdateErrorDocLengthExceeded,
+  /// The Paper doc would be too large, split the content into multiple docs.
+  DBFILESPaperUpdateErrorDocLengthExceeded,
 
-    /// The imported document contains an image that is too large. The current
-    /// limit is 1MB. This only applies to HTML with data URI.
-    DBFILESPaperUpdateErrorImageSizeExceeded,
+  /// The imported document contains an image that is too large. The current
+  /// limit is 1MB. This only applies to HTML with data URI.
+  DBFILESPaperUpdateErrorImageSizeExceeded,
 
-    /// (no description).
-    DBFILESPaperUpdateErrorOther,
+  /// (no description).
+  DBFILESPaperUpdateErrorOther,
 
-    /// (no description).
-    DBFILESPaperUpdateErrorPath,
+  /// (no description).
+  DBFILESPaperUpdateErrorPath,
 
-    /// The provided revision does not match the document head.
-    DBFILESPaperUpdateErrorRevisionMismatch,
+  /// The provided revision does not match the document head.
+  DBFILESPaperUpdateErrorRevisionMismatch,
 
-    /// This operation is not allowed on archived Paper docs.
-    DBFILESPaperUpdateErrorDocArchived,
+  /// This operation is not allowed on archived Paper docs.
+  DBFILESPaperUpdateErrorDocArchived,
 
-    /// This operation is not allowed on deleted Paper docs.
-    DBFILESPaperUpdateErrorDocDeleted,
+  /// This operation is not allowed on deleted Paper docs.
+  DBFILESPaperUpdateErrorDocDeleted,
 
 };
 

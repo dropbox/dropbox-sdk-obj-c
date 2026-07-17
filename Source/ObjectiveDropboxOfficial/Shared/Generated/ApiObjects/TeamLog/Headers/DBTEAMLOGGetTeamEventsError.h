@@ -29,19 +29,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGGetTeamEventsErrorTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGGetTeamEventsError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGGetTeamEventsErrorTag){
-    /// No user found matching the provided account_id.
-    DBTEAMLOGGetTeamEventsErrorAccountIdNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGGetTeamEventsErrorTag) {
+  /// No user found matching the provided account_id.
+  DBTEAMLOGGetTeamEventsErrorAccountIdNotFound,
 
-    /// Invalid time range.
-    DBTEAMLOGGetTeamEventsErrorInvalidTimeRange,
+  /// Invalid time range.
+  DBTEAMLOGGetTeamEventsErrorInvalidTimeRange,
 
-    /// Invalid filters. Do not specify both event_type and category parameters
-    /// for the same call.
-    DBTEAMLOGGetTeamEventsErrorInvalidFilters,
+  /// Invalid filters. Do not specify both event_type and category parameters
+  /// for the same call.
+  DBTEAMLOGGetTeamEventsErrorInvalidFilters,
 
-    /// (no description).
-    DBTEAMLOGGetTeamEventsErrorOther,
+  /// (no description).
+  DBTEAMLOGGetTeamEventsErrorOther,
 
 };
 

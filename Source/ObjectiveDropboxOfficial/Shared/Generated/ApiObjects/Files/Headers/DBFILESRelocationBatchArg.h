@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// This flag has no effect.
+/// Field is deprecated. This flag has no effect.
 @property (nonatomic, readonly) NSNumber *allowSharedFolder;
 
 /// Allow moves by owner even if it would result in an ownership transfer for
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// RelocationPath.
 /// @param autorename If there's a conflict with any file, have the Dropbox
 /// server try to autorename that file to avoid the conflict.
-/// @param allowSharedFolder This flag has no effect.
+/// @param allowSharedFolder Field is deprecated. This flag has no effect.
 /// @param allowOwnershipTransfer Allow moves by owner even if it would result
 /// in an ownership transfer for the content being moved. This does not apply to
 /// copies.

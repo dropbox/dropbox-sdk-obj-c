@@ -28,38 +28,42 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESWriteErrorTag` enum type represents the possible tag states with
 /// which the `DBFILESWriteError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag){
-    /// The given path does not satisfy the required path format. Please refer
-    /// to the Path formats documentation
-    /// https://www.dropbox.com/developers/documentation/http/documentation#path-formats
-    /// for more information.
-    DBFILESWriteErrorMalformedPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag) {
+  /// The given path does not satisfy the required path format. Please refer
+  /// to the Path formats documentation
+  /// https://www.dropbox.com/developers/documentation/http/documentation#path-formats
+  /// for more information.
+  DBFILESWriteErrorMalformedPath,
 
-    /// Couldn't write to the target path because there was something in the
-    /// way.
-    DBFILESWriteErrorConflict,
+  /// Couldn't write to the target path because there was something in the
+  /// way.
+  DBFILESWriteErrorConflict,
 
-    /// The user doesn't have permissions to write to the target location.
-    DBFILESWriteErrorNoWritePermission,
+  /// The user doesn't have permissions to write to the target location.
+  DBFILESWriteErrorNoWritePermission,
 
-    /// The user doesn't have enough available space (bytes) to write more data.
-    DBFILESWriteErrorInsufficientSpace,
+  /// The user doesn't have enough available space (bytes) to write more data.
+  DBFILESWriteErrorInsufficientSpace,
 
-    /// Dropbox will not save the file or folder because of its name.
-    DBFILESWriteErrorDisallowedName,
+  /// Dropbox will not save the file or folder because of its name.
+  DBFILESWriteErrorDisallowedName,
 
-    /// This endpoint cannot move or delete team folders.
-    DBFILESWriteErrorTeamFolder,
+  /// This endpoint cannot move or delete team folders.
+  DBFILESWriteErrorTeamFolder,
 
-    /// This file operation is not allowed at this path.
-    DBFILESWriteErrorOperationSuppressed,
+  /// This file operation is not allowed at this path.
+  DBFILESWriteErrorOperationSuppressed,
 
-    /// There are too many write operations in user's Dropbox. Please retry this
-    /// request.
-    DBFILESWriteErrorTooManyWriteOperations,
+  /// There are too many write operations in user's Dropbox. Please retry this
+  /// request.
+  DBFILESWriteErrorTooManyWriteOperations,
 
-    /// (no description).
-    DBFILESWriteErrorOther,
+  /// The user doesn't have permission to perform the action due to
+  /// restrictions set by a team administrator
+  DBFILESWriteErrorAccessRestricted,
+
+  /// (no description).
+  DBFILESWriteErrorOther,
 
 };
 
@@ -172,6 +176,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag){
 - (instancetype)initWithTooManyWriteOperations;
 
 ///
+/// Initializes union class with tag state of "access_restricted".
+///
+/// Description of the "access_restricted" tag state: The user doesn't have
+/// permission to perform the action due to restrictions set by a team
+/// administrator
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAccessRestricted;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -251,6 +266,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag){
 /// "too_many_write_operations".
 ///
 - (BOOL)isTooManyWriteOperations;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "access_restricted".
+///
+/// @return Whether the union's current tag state has value "access_restricted".
+///
+- (BOOL)isAccessRestricted;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".
