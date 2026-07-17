@@ -57,8 +57,9 @@
                       description_:(NSString *)description_
                             fields:(NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)fields {
   DBRoute *route = DBFILEPROPERTIESRouteObjects.DBFILEPROPERTIESTemplatesAddForTeam;
-  DBFILEPROPERTIESAddTemplateArg *arg =
-      [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name description_:description_ fields:fields];
+  DBFILEPROPERTIESAddTemplateArg *arg = [[DBFILEPROPERTIESAddTemplateArg alloc] initWithName:name
+                                                                                description_:description_
+                                                                                      fields:fields];
   return [self.client requestRpc:route arg:arg];
 }
 

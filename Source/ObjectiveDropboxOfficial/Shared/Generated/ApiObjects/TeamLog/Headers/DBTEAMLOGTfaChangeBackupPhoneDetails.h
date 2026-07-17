@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TfaChangeBackupPhoneDetails` struct.
 ///
-/// Changed backup phone for two-step verification.
+/// Changed backup phone for two-factor authentication.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

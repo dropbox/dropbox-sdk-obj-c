@@ -28,18 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESExternalDriveBackupPolicyStateTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMPOLICIESExternalDriveBackupPolicyState` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESExternalDriveBackupPolicyStateTag){
-    /// External Drive Backup feature is disabled.
-    DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESExternalDriveBackupPolicyStateTag) {
+  /// External Drive Backup feature is disabled.
+  DBTEAMPOLICIESExternalDriveBackupPolicyStateDisabled,
 
-    /// External Drive Backup feature is enabled.
-    DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled,
+  /// External Drive Backup feature is enabled.
+  DBTEAMPOLICIESExternalDriveBackupPolicyStateEnabled,
 
-    /// External Drive Backup default value based on team tier.
-    DBTEAMPOLICIESExternalDriveBackupPolicyStateDefault_,
+  /// External Drive Backup default value based on team tier.
+  DBTEAMPOLICIESExternalDriveBackupPolicyStateDefault_,
 
-    /// (no description).
-    DBTEAMPOLICIESExternalDriveBackupPolicyStateOther,
+  /// (no description).
+  DBTEAMPOLICIESExternalDriveBackupPolicyStateOther,
 
 };
 

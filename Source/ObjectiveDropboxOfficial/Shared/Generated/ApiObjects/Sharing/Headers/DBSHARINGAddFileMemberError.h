@@ -31,21 +31,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGAddFileMemberErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGAddFileMemberError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag){
-    /// (no description).
-    DBSHARINGAddFileMemberErrorUserError,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
+  /// (no description).
+  DBSHARINGAddFileMemberErrorUserError,
 
-    /// (no description).
-    DBSHARINGAddFileMemberErrorAccessError,
+  /// (no description).
+  DBSHARINGAddFileMemberErrorAccessError,
 
-    /// The user has reached the rate limit for invitations.
-    DBSHARINGAddFileMemberErrorRateLimit,
+  /// The user has reached the rate limit for invitations.
+  DBSHARINGAddFileMemberErrorRateLimit,
 
-    /// The custom message did not pass comment permissions checks.
-    DBSHARINGAddFileMemberErrorInvalidComment,
+  /// The custom message did not pass comment permissions checks.
+  DBSHARINGAddFileMemberErrorInvalidComment,
 
-    /// (no description).
-    DBSHARINGAddFileMemberErrorOther,
+  /// The current user has been banned for abuse reasons.
+  DBSHARINGAddFileMemberErrorBannedMember,
+
+  /// (no description).
+  DBSHARINGAddFileMemberErrorOther,
 
 };
 
@@ -101,6 +104,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag){
 - (instancetype)initWithInvalidComment;
 
 ///
+/// Initializes union class with tag state of "banned_member".
+///
+/// Description of the "banned_member" tag state: The current user has been
+/// banned for abuse reasons.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithBannedMember;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -144,6 +157,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag){
 /// @return Whether the union's current tag state has value "invalid_comment".
 ///
 - (BOOL)isInvalidComment;
+
+///
+/// Retrieves whether the union's current tag state has value "banned_member".
+///
+/// @return Whether the union's current tag state has value "banned_member".
+///
+- (BOOL)isBannedMember;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

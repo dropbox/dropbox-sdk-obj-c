@@ -28,19 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESComputerBackupPolicyStateTag` enum type represents the
 /// possible tag states with which the `DBTEAMPOLICIESComputerBackupPolicyState`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESComputerBackupPolicyStateTag){
-    /// Computer Backup feature is disabled.
-    DBTEAMPOLICIESComputerBackupPolicyStateDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESComputerBackupPolicyStateTag) {
+  /// Computer Backup feature is disabled.
+  DBTEAMPOLICIESComputerBackupPolicyStateDisabled,
 
-    /// Computer Backup feature is enabled.
-    DBTEAMPOLICIESComputerBackupPolicyStateEnabled,
+  /// Computer Backup feature is enabled.
+  DBTEAMPOLICIESComputerBackupPolicyStateEnabled,
 
-    /// Computer Backup defaults to ON for SSB teams, and OFF for Enterprise
-    /// teams.
-    DBTEAMPOLICIESComputerBackupPolicyStateDefault_,
+  /// Computer Backup defaults to ON for SSB teams, and OFF for Enterprise
+  /// teams.
+  DBTEAMPOLICIESComputerBackupPolicyStateDefault_,
 
-    /// (no description).
-    DBTEAMPOLICIESComputerBackupPolicyStateOther,
+  /// (no description).
+  DBTEAMPOLICIESComputerBackupPolicyStateOther,
 
 };
 

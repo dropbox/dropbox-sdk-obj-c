@@ -41,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// batch is 1000. Higher value results in invalid arguments error.
 @property (nonatomic, readonly) NSNumber *limit;
 
+/// Do not return results beyond this date. Behavior depends on sort order.
+@property (nonatomic, readonly, nullable) NSDate *stopAtDate;
+
 #pragma mark - Constructors
 
 ///
@@ -53,13 +56,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param limit Size limit per batch. The maximum number of docs that can be
 /// retrieved per batch is 1000. Higher value results in invalid arguments
 /// error.
+/// @param stopAtDate Do not return results beyond this date. Behavior depends
+/// on sort order.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFilterBy:(nullable DBPAPERListPaperDocsFilterBy *)filterBy
                           sortBy:(nullable DBPAPERListPaperDocsSortBy *)sortBy
                        sortOrder:(nullable DBPAPERListPaperDocsSortOrder *)sortOrder
-                           limit:(nullable NSNumber *)limit;
+                           limit:(nullable NSNumber *)limit
+                      stopAtDate:(nullable NSDate *)stopAtDate;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

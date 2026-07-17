@@ -29,23 +29,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESUploadErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESUploadError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag){
-    /// Unable to save the uploaded contents to a file.
-    DBFILESUploadErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag) {
+  /// Unable to save the uploaded contents to a file.
+  DBFILESUploadErrorPath,
 
-    /// The supplied property group is invalid. The file has uploaded without
-    /// property groups.
-    DBFILESUploadErrorPropertiesError,
+  /// The supplied property group is invalid. The file has uploaded without
+  /// property groups.
+  DBFILESUploadErrorPropertiesError,
 
-    /// The request payload must be at most 150 MB.
-    DBFILESUploadErrorPayloadTooLarge,
+  /// The request payload must be at most 150 MiB.
+  DBFILESUploadErrorPayloadTooLarge,
 
-    /// The content received by the Dropbox server in this call does not match
-    /// the provided content hash.
-    DBFILESUploadErrorContentHashMismatch,
+  /// The content received by the Dropbox server in this call does not match
+  /// the provided content hash.
+  DBFILESUploadErrorContentHashMismatch,
 
-    /// (no description).
-    DBFILESUploadErrorOther,
+  /// The file is required to be encrypted, which is not supported in our
+  /// public API.
+  DBFILESUploadErrorEncryptionNotSupported,
+
+  /// (no description).
+  DBFILESUploadErrorOther,
 
 };
 
@@ -93,7 +97,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag){
 /// Initializes union class with tag state of "payload_too_large".
 ///
 /// Description of the "payload_too_large" tag state: The request payload must
-/// be at most 150 MB.
+/// be at most 150 MiB.
 ///
 /// @return An initialized instance.
 ///
@@ -108,6 +112,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithContentHashMismatch;
+
+///
+/// Initializes union class with tag state of "encryption_not_supported".
+///
+/// Description of the "encryption_not_supported" tag state: The file is
+/// required to be encrypted, which is not supported in our public API.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEncryptionNotSupported;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -157,6 +171,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag){
 /// "content_hash_mismatch".
 ///
 - (BOOL)isContentHashMismatch;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "encryption_not_supported".
+///
+/// @return Whether the union's current tag state has value
+/// "encryption_not_supported".
+///
+- (BOOL)isEncryptionNotSupported;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

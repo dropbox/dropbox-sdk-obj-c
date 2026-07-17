@@ -27,21 +27,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMNamespaceTypeTag` enum type represents the possible tag states
 /// with which the `DBTEAMNamespaceType` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMNamespaceTypeTag){
-    /// App sandbox folder.
-    DBTEAMNamespaceTypeAppFolder,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMNamespaceTypeTag) {
+  /// App sandbox folder.
+  DBTEAMNamespaceTypeAppFolder,
 
-    /// Shared folder.
-    DBTEAMNamespaceTypeSharedFolder,
+  /// Shared folder.
+  DBTEAMNamespaceTypeSharedFolder,
 
-    /// Top-level team-owned folder.
-    DBTEAMNamespaceTypeTeamFolder,
+  /// Top-level team-owned folder.
+  DBTEAMNamespaceTypeTeamFolder,
 
-    /// Team member's home folder.
-    DBTEAMNamespaceTypeTeamMemberFolder,
+  /// Team member's home folder.
+  DBTEAMNamespaceTypeTeamMemberFolder,
 
-    /// (no description).
-    DBTEAMNamespaceTypeOther,
+  /// Team member's root folder.
+  DBTEAMNamespaceTypeTeamMemberRoot,
+
+  /// (no description).
+  DBTEAMNamespaceTypeOther,
 
 };
 
@@ -88,6 +91,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMNamespaceTypeTag){
 - (instancetype)initWithTeamMemberFolder;
 
 ///
+/// Initializes union class with tag state of "team_member_root".
+///
+/// Description of the "team_member_root" tag state: Team member's root folder.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamMemberRoot;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -127,6 +139,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMNamespaceTypeTag){
 /// "team_member_folder".
 ///
 - (BOOL)isTeamMemberFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_member_root".
+///
+/// @return Whether the union's current tag state has value "team_member_root".
+///
+- (BOOL)isTeamMemberRoot;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

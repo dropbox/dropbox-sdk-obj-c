@@ -29,21 +29,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMFeatureTag` enum type represents the possible tag states with
 /// which the `DBTEAMFeature` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureTag){
-    /// The number of upload API calls allowed per month.
-    DBTEAMFeatureUploadApiRateLimit,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureTag) {
+  /// The number of upload API calls allowed per month.
+  DBTEAMFeatureUploadApiRateLimit,
 
-    /// Does this team have a shared team root.
-    DBTEAMFeatureHasTeamSharedDropbox,
+  /// Does this team have a shared team root.
+  DBTEAMFeatureHasTeamSharedDropbox,
 
-    /// Does this team have file events.
-    DBTEAMFeatureHasTeamFileEvents,
+  /// Does this team have file events.
+  DBTEAMFeatureHasTeamFileEvents,
 
-    /// Does this team have team selective sync enabled.
-    DBTEAMFeatureHasTeamSelectiveSync,
+  /// Does this team have team selective sync enabled.
+  DBTEAMFeatureHasTeamSelectiveSync,
 
-    /// (no description).
-    DBTEAMFeatureOther,
+  /// Does this team have team member folder.
+  DBTEAMFeatureHasDistinctMemberHomes,
+
+  /// (no description).
+  DBTEAMFeatureOther,
 
 };
 
@@ -93,6 +96,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureTag){
 - (instancetype)initWithHasTeamSelectiveSync;
 
 ///
+/// Initializes union class with tag state of "has_distinct_member_homes".
+///
+/// Description of the "has_distinct_member_homes" tag state: Does this team
+/// have team member folder.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithHasDistinctMemberHomes;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -138,6 +151,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeatureTag){
 /// "has_team_selective_sync".
 ///
 - (BOOL)isHasTeamSelectiveSync;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "has_distinct_member_homes".
+///
+/// @return Whether the union's current tag state has value
+/// "has_distinct_member_homes".
+///
+- (BOOL)isHasDistinctMemberHomes;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -29,26 +29,30 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGModifySharedLinkSettingsErrorTag` enum type represents the
 /// possible tag states with which the `DBSHARINGModifySharedLinkSettingsError`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag){
-    /// The shared link wasn't found.
-    DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
+  /// The shared link wasn't found.
+  DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound,
 
-    /// The caller is not allowed to access this shared link.
-    DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied,
+  /// The caller is not allowed to access this shared link.
+  DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied,
 
-    /// This type of link is not supported; use `files` instead.
-    DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType,
+  /// This type of link is not supported; use `files` instead.
+  DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType,
 
-    /// (no description).
-    DBSHARINGModifySharedLinkSettingsErrorOther,
+  /// Private shared links do not support `path` or `link_password` parameter
+  /// fields.
+  DBSHARINGModifySharedLinkSettingsErrorUnsupportedParameterField,
 
-    /// There is an error with the given settings.
-    DBSHARINGModifySharedLinkSettingsErrorSettingsError,
+  /// (no description).
+  DBSHARINGModifySharedLinkSettingsErrorOther,
 
-    /// This user's email address is not verified. This functionality is only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBSHARINGModifySharedLinkSettingsErrorEmailNotVerified,
+  /// There is an error with the given settings.
+  DBSHARINGModifySharedLinkSettingsErrorSettingsError,
+
+  /// This user's email address is not verified. This functionality is only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBSHARINGModifySharedLinkSettingsErrorEmailNotVerified,
 
 };
 
@@ -91,6 +95,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnsupportedLinkType;
+
+///
+/// Initializes union class with tag state of "unsupported_parameter_field".
+///
+/// Description of the "unsupported_parameter_field" tag state: Private shared
+/// links do not support `path` or `link_password` parameter fields.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnsupportedParameterField;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -153,6 +167,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag){
 /// "unsupported_link_type".
 ///
 - (BOOL)isUnsupportedLinkType;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_parameter_field".
+///
+/// @return Whether the union's current tag state has value
+/// "unsupported_parameter_field".
+///
+- (BOOL)isUnsupportedParameterField;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

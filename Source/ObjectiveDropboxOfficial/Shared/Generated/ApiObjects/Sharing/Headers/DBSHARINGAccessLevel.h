@@ -29,34 +29,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGAccessLevelTag` enum type represents the possible tag states
 /// with which the `DBSHARINGAccessLevel` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAccessLevelTag){
-    /// The collaborator is the owner of the shared folder. Owners can view and
-    /// edit the shared folder as well as set the folder's policies using
-    /// `updateFolderPolicy`.
-    DBSHARINGAccessLevelOwner,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
+  /// The collaborator is the owner of the shared folder. Owners can view and
+  /// edit the shared folder as well as set the folder's policies using
+  /// `updateFolderPolicy`.
+  DBSHARINGAccessLevelOwner,
 
-    /// The collaborator can both view and edit the shared folder.
-    DBSHARINGAccessLevelEditor,
+  /// The collaborator can both view and edit the shared folder.
+  DBSHARINGAccessLevelEditor,
 
-    /// The collaborator can only view the shared folder.
-    DBSHARINGAccessLevelViewer,
+  /// The collaborator can only view the shared folder.
+  DBSHARINGAccessLevelViewer,
 
-    /// The collaborator can only view the shared folder and does not have any
-    /// access to comments.
-    DBSHARINGAccessLevelViewerNoComment,
+  /// The collaborator can only view the shared folder and does not have any
+  /// access to comments.
+  DBSHARINGAccessLevelViewerNoComment,
 
-    /// The collaborator can only view the shared folder that they have access
-    /// to.
-    DBSHARINGAccessLevelTraverse,
+  /// The collaborator can only view the shared folder that they have access
+  /// to.
+  DBSHARINGAccessLevelTraverse,
 
-    /// If there is a Righteous Link on the folder which grants access and the
-    /// user has visited such link, they are allowed to perform certain action
-    /// (i.e. add themselves to the folder) via the link access even though the
-    /// user themselves are not a member on the shared folder yet.
-    DBSHARINGAccessLevelNoAccess,
+  /// If there is a Righteous Link on the folder which grants access and the
+  /// user has visited such link, they are allowed to perform certain action
+  /// (i.e. add themselves to the folder) via the link access even though the
+  /// user themselves are not a member on the shared folder yet.
+  DBSHARINGAccessLevelNoAccess,
 
-    /// (no description).
-    DBSHARINGAccessLevelOther,
+  /// (no description).
+  DBSHARINGAccessLevelOther,
 
 };
 

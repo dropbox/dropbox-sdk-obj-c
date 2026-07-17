@@ -27,39 +27,45 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGAdminRoleTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGAdminRole` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
-    /// (no description).
-    DBTEAMLOGAdminRoleBillingAdmin,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag) {
+  /// (no description).
+  DBTEAMLOGAdminRoleBillingAdmin,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleComplianceAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleComplianceAdmin,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleContentAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleContentAdmin,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleLimitedAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleDeprecatedFreemiumTeamMember,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleMemberOnly,
+  /// (no description).
+  DBTEAMLOGAdminRoleFreemiumTeamCreator,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleReportingAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleLimitedAdmin,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleSecurityAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleMemberOnly,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleSupportAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleReportingAdmin,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleTeamAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleSecurityAdmin,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleUserManagementAdmin,
+  /// (no description).
+  DBTEAMLOGAdminRoleSupportAdmin,
 
-    /// (no description).
-    DBTEAMLOGAdminRoleOther,
+  /// (no description).
+  DBTEAMLOGAdminRoleTeamAdmin,
+
+  /// (no description).
+  DBTEAMLOGAdminRoleUserManagementAdmin,
+
+  /// (no description).
+  DBTEAMLOGAdminRoleOther,
 
 };
 
@@ -88,6 +94,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithContentAdmin;
+
+///
+/// Initializes union class with tag state of "deprecated_freemium_team_member".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDeprecatedFreemiumTeamMember;
+
+///
+/// Initializes union class with tag state of "freemium_team_creator".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFreemiumTeamCreator;
 
 ///
 /// Initializes union class with tag state of "limited_admin".
@@ -170,6 +190,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminRoleTag){
 /// @return Whether the union's current tag state has value "content_admin".
 ///
 - (BOOL)isContentAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "deprecated_freemium_team_member".
+///
+/// @return Whether the union's current tag state has value
+/// "deprecated_freemium_team_member".
+///
+- (BOOL)isDeprecatedFreemiumTeamMember;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "freemium_team_creator".
+///
+/// @return Whether the union's current tag state has value
+/// "freemium_team_creator".
+///
+- (BOOL)isFreemiumTeamCreator;
 
 ///
 /// Retrieves whether the union's current tag state has value "limited_admin".

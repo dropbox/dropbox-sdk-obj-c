@@ -30,10 +30,25 @@ NS_ASSUME_NONNULL_BEGIN
 /// New shared link expiration date.
 @property (nonatomic, readonly) NSDate *dNewValue;
 
+/// Indicates whether this was a consolidation action by system.
+@property (nonatomic, readonly, nullable) NSNumber *isConsolidationAction;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param dNewValue New shared link expiration date.
+/// @param isConsolidationAction Indicates whether this was a consolidation
+/// action by system.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDNewValue:(NSDate *)dNewValue isConsolidationAction:(nullable NSNumber *)isConsolidationAction;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param dNewValue New shared link expiration date.
 ///

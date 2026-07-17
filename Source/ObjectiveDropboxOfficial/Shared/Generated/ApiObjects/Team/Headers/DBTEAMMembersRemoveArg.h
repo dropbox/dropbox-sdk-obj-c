@@ -37,9 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable) DBTEAMUserSelectorArg *transferAdminId;
 
 /// Downgrade the member to a Basic account. The user will retain the email
-/// address associated with their Dropbox  account and data in their account
-/// that is not restricted to team members. In order to keep the account the
-/// argument wipeData should be set to false.
+/// address associated with their Dropbox account and data in their account that
+/// is not restricted to team members. In order to keep the account the argument
+/// wipeData should be set to false.
 @property (nonatomic, readonly) NSNumber *keepAccount;
 
 /// If provided, allows removed users to keep access to Dropbox folders (not
@@ -49,6 +49,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// relationships, the arguments wipeData should be set to false and keepAccount
 /// should be set to true.
 @property (nonatomic, readonly) NSNumber *retainTeamShares;
+
+/// Permanently delete the data in the deleted member's account. After permanent
+/// deletion, the data is no longer available to be transferred to a different
+/// user.
+@property (nonatomic, readonly) NSNumber *permanentlyDeleteFiles;
 
 #pragma mark - Constructors
 
@@ -64,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// be sent via email to this user. If the transfer_dest_id argument was
 /// provided, then this argument must be provided as well.
 /// @param keepAccount Downgrade the member to a Basic account. The user will
-/// retain the email address associated with their Dropbox  account and data in
+/// retain the email address associated with their Dropbox account and data in
 /// their account that is not restricted to team members. In order to keep the
 /// account the argument wipeData should be set to false.
 /// @param retainTeamShares If provided, allows removed users to keep access to
@@ -73,6 +78,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// will not retain access to folders that do not allow external sharing. In
 /// order to keep the sharing relationships, the arguments wipeData should be
 /// set to false and keepAccount should be set to true.
+/// @param permanentlyDeleteFiles Permanently delete the data in the deleted
+/// member's account. After permanent deletion, the data is no longer available
+/// to be transferred to a different user.
 ///
 /// @return An initialized instance.
 ///
@@ -81,7 +89,8 @@ NS_ASSUME_NONNULL_BEGIN
               transferDestId:(nullable DBTEAMUserSelectorArg *)transferDestId
              transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
                  keepAccount:(nullable NSNumber *)keepAccount
-            retainTeamShares:(nullable NSNumber *)retainTeamShares;
+            retainTeamShares:(nullable NSNumber *)retainTeamShares
+      permanentlyDeleteFiles:(nullable NSNumber *)permanentlyDeleteFiles;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

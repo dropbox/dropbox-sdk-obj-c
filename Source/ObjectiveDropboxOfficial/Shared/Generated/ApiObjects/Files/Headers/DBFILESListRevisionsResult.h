@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// If the file identified by the latest revision in the response is either
-/// deleted or moved.
+/// deleted or moved. If before_rev is set, this refers to the latest revision
+/// of the file older than before_rev.
 @property (nonatomic, readonly) NSNumber *isDeleted;
 
 /// The time of deletion if the file was deleted.
@@ -37,21 +38,31 @@ NS_ASSUME_NONNULL_BEGIN
 /// here.
 @property (nonatomic, readonly) NSArray<DBFILESFileMetadata *> *entries;
 
+/// If true, then there are more entries available. Call list_revisions again
+/// with before_rev equal to the revision of the last returned entry to retrieve
+/// the rest.
+@property (nonatomic, readonly) NSNumber *hasMore;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param isDeleted If the file identified by the latest revision in the
-/// response is either deleted or moved.
+/// response is either deleted or moved. If before_rev is set, this refers to
+/// the latest revision of the file older than before_rev.
 /// @param entries The revisions for the file. Only revisions that are not
 /// deleted will show up here.
+/// @param hasMore If true, then there are more entries available. Call
+/// list_revisions again with before_rev equal to the revision of the last
+/// returned entry to retrieve the rest.
 /// @param serverDeleted The time of deletion if the file was deleted.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithIsDeleted:(NSNumber *)isDeleted
                           entries:(NSArray<DBFILESFileMetadata *> *)entries
+                          hasMore:(NSNumber *)hasMore
                     serverDeleted:(nullable NSDate *)serverDeleted;
 
 ///
@@ -59,13 +70,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// no default value).
 ///
 /// @param isDeleted If the file identified by the latest revision in the
-/// response is either deleted or moved.
+/// response is either deleted or moved. If before_rev is set, this refers to
+/// the latest revision of the file older than before_rev.
 /// @param entries The revisions for the file. Only revisions that are not
 /// deleted will show up here.
+/// @param hasMore If true, then there are more entries available. Call
+/// list_revisions again with before_rev equal to the revision of the last
+/// returned entry to retrieve the rest.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithIsDeleted:(NSNumber *)isDeleted entries:(NSArray<DBFILESFileMetadata *> *)entries;
+- (instancetype)initWithIsDeleted:(NSNumber *)isDeleted
+                          entries:(NSArray<DBFILESFileMetadata *> *)entries
+                          hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 

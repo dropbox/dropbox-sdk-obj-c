@@ -33,27 +33,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGContextLogInfoTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGContextLogInfo` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag){
-    /// Anonymous context.
-    DBTEAMLOGContextLogInfoAnonymous,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGContextLogInfoTag) {
+  /// Anonymous context.
+  DBTEAMLOGContextLogInfoAnonymous,
 
-    /// Action was done on behalf of a non team member.
-    DBTEAMLOGContextLogInfoNonTeamMember,
+  /// Action was done on behalf of a non team member.
+  DBTEAMLOGContextLogInfoNonTeamMember,
 
-    /// Action was done on behalf of a team that's part of an organization.
-    DBTEAMLOGContextLogInfoOrganizationTeam,
+  /// Action was done on behalf of a team that's part of an organization.
+  DBTEAMLOGContextLogInfoOrganizationTeam,
 
-    /// Action was done on behalf of the team.
-    DBTEAMLOGContextLogInfoTeam,
+  /// Action was done on behalf of the team.
+  DBTEAMLOGContextLogInfoTeam,
 
-    /// Action was done on behalf of a team member.
-    DBTEAMLOGContextLogInfoTeamMember,
+  /// Action was done on behalf of a team member.
+  DBTEAMLOGContextLogInfoTeamMember,
 
-    /// Action was done on behalf of a trusted non team member.
-    DBTEAMLOGContextLogInfoTrustedNonTeamMember,
+  /// Action was done on behalf of a trusted non team member.
+  DBTEAMLOGContextLogInfoTrustedNonTeamMember,
 
-    /// (no description).
-    DBTEAMLOGContextLogInfoOther,
+  /// (no description).
+  DBTEAMLOGContextLogInfoOther,
 
 };
 

@@ -6,6 +6,7 @@
 
 #import "DBCHECKRouteObjects.h"
 #import "DBCHECKAppAuthRoutes.h"
+#import "DBCHECKEchoError.h"
 #import "DBCHECKEchoResult.h"
 #import "DBCHECKUserAuthRoutes.h"
 #import "DBRequestErrors.h"
@@ -31,7 +32,7 @@ static NSObject *lockObj = nil;
                               namespace_:@"check"
                               deprecated:@NO
                               resultType:[DBCHECKEchoResult class]
-                               errorType:nil
+                               errorType:[DBCHECKEchoError class]
                                    attrs:@{@"auth" : @"app", @"host" : @"api", @"style" : @"rpc"}
                    dataStructSerialBlock:nil
                  dataStructDeserialBlock:nil];
@@ -47,7 +48,7 @@ static NSObject *lockObj = nil;
                                namespace_:@"check"
                                deprecated:@NO
                                resultType:[DBCHECKEchoResult class]
-                                errorType:nil
+                                errorType:[DBCHECKEchoError class]
                                     attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
                     dataStructSerialBlock:nil
                   dataStructDeserialBlock:nil];

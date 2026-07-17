@@ -37,7 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Options for search results match fields.
 @property (nonatomic, readonly, nullable) DBFILESSearchMatchFieldOptions *matchFieldOptions;
 
-/// Deprecated and moved this option to SearchMatchFieldOptions.
+/// Field is deprecated. Deprecated and moved this option to
+/// SearchMatchFieldOptions.
 @property (nonatomic, readonly, nullable) NSNumber *includeHighlights;
 
 #pragma mark - Constructors
@@ -49,8 +50,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// based on the request arguments.
 /// @param options Options for more targeted search results.
 /// @param matchFieldOptions Options for search results match fields.
-/// @param includeHighlights Deprecated and moved this option to
-/// SearchMatchFieldOptions.
+/// @param includeHighlights Field is deprecated. Deprecated and moved this
+/// option to SearchMatchFieldOptions.
 ///
 /// @return An initialized instance.
 ///

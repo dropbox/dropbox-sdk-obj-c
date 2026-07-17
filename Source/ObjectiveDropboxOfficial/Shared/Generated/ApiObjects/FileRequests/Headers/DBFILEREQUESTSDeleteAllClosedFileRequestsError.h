@@ -30,34 +30,37 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBFILEREQUESTSDeleteAllClosedFileRequestsErrorTag` enum type represents
 /// the possible tag states with which the
 /// `DBFILEREQUESTSDeleteAllClosedFileRequestsError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSDeleteAllClosedFileRequestsErrorTag){
-    /// This user's Dropbox Business team doesn't allow file requests.
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorDisabledForTeam,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSDeleteAllClosedFileRequestsErrorTag) {
+  /// This user's Dropbox Business team doesn't allow file requests.
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorDisabledForTeam,
 
-    /// (no description).
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorOther,
+  /// (no description).
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorOther,
 
-    /// This file request ID was not found.
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNotFound,
+  /// This file request ID was not found.
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNotFound,
 
-    /// The specified path is not a folder.
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNotAFolder,
+  /// The specified path is not a folder.
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNotAFolder,
 
-    /// This file request is not accessible to this app. Apps with the app
-    /// folder permission can only access file requests in their app folder.
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorAppLacksAccess,
+  /// This file request is not accessible to this app. Apps with the app
+  /// folder permission can only access file requests in their app folder.
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorAppLacksAccess,
 
-    /// This user doesn't have permission to access or modify this file request.
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoPermission,
+  /// This user doesn't have permission to access or modify this file request.
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoPermission,
 
-    /// This user's email address is not verified. File requests are only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorEmailUnverified,
+  /// This user's email address is not verified. File requests are only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorEmailUnverified,
 
-    /// There was an error validating the request. For example, the title was
-    /// invalid, or there were disallowed characters in the destination path.
-    DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError,
+  /// There was an error validating the request. For example, the title was
+  /// invalid, or there were disallowed characters in the destination path.
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError,
+
+  /// This user doesn't have permission to edit files in a destination folder
+  DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoWritePermission,
 
 };
 
@@ -147,6 +150,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSDeleteAllClosedFileRequestsError
 ///
 - (instancetype)initWithValidationError;
 
+///
+/// Initializes union class with tag state of "no_write_permission".
+///
+/// Description of the "no_write_permission" tag state: This user doesn't have
+/// permission to edit files in a destination folder
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoWritePermission;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -210,6 +223,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSDeleteAllClosedFileRequestsError
 /// @return Whether the union's current tag state has value "validation_error".
 ///
 - (BOOL)isValidationError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_write_permission".
+///
+/// @return Whether the union's current tag state has value
+/// "no_write_permission".
+///
+- (BOOL)isNoWritePermission;
 
 ///
 /// Retrieves string value of union's current tag state.

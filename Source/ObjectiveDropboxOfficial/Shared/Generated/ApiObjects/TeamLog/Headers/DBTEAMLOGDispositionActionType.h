@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGDispositionActionTypeTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGDispositionActionType` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDispositionActionTypeTag){
-    /// (no description).
-    DBTEAMLOGDispositionActionTypeAutomaticDelete,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDispositionActionTypeTag) {
+  /// (no description).
+  DBTEAMLOGDispositionActionTypeAutomaticDelete,
 
-    /// (no description).
-    DBTEAMLOGDispositionActionTypeAutomaticPermanentlyDelete,
+  /// (no description).
+  DBTEAMLOGDispositionActionTypeAutomaticPermanentlyDelete,
 
-    /// (no description).
-    DBTEAMLOGDispositionActionTypeOther,
+  /// (no description).
+  DBTEAMLOGDispositionActionTypeOther,
 
 };
 

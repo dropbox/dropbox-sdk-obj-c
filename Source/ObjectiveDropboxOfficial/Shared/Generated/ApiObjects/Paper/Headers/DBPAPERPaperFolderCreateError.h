@@ -27,21 +27,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBPAPERPaperFolderCreateErrorTag` enum type represents the possible tag
 /// states with which the `DBPAPERPaperFolderCreateError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperFolderCreateErrorTag){
-    /// Your account does not have permissions to perform this action. This may
-    /// be due to it only having access to Paper as files in the Dropbox
-    /// filesystem. For more information, refer to the Paper Migration Guide
-    /// https://www.dropbox.com/lp/developers/reference/paper-migration-guide.
-    DBPAPERPaperFolderCreateErrorInsufficientPermissions,
+typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperFolderCreateErrorTag) {
+  /// Your account does not have permissions to perform this action. This may
+  /// be due to it only having access to Paper as files in the Dropbox
+  /// filesystem. For more information, refer to the Paper Migration Guide
+  /// https://www.dropbox.com/lp/developers/reference/paper-migration-guide.
+  DBPAPERPaperFolderCreateErrorInsufficientPermissions,
 
-    /// (no description).
-    DBPAPERPaperFolderCreateErrorOther,
+  /// (no description).
+  DBPAPERPaperFolderCreateErrorOther,
 
-    /// The specified parent Paper folder cannot be found.
-    DBPAPERPaperFolderCreateErrorFolderNotFound,
+  /// The specified parent Paper folder cannot be found.
+  DBPAPERPaperFolderCreateErrorFolderNotFound,
 
-    /// The folder id cannot be decrypted to valid folder id.
-    DBPAPERPaperFolderCreateErrorInvalidFolderId,
+  /// The folder id cannot be decrypted to valid folder id.
+  DBPAPERPaperFolderCreateErrorInvalidFolderId,
 
 };
 

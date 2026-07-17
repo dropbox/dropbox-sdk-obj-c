@@ -23,6 +23,8 @@
 #import "DBPAPERPaperDocCreateError.h"
 #import "DBPAPERPaperDocCreateUpdateResult.h"
 #import "DBPAPERPaperDocExportResult.h"
+#import "DBPAPERPaperDocGetMetadataResult.h"
+#import "DBPAPERPaperDocStatus.h"
 #import "DBPAPERPaperDocUpdateError.h"
 #import "DBPAPERPaperFolderCreateError.h"
 #import "DBPAPERPaperFolderCreateResult.h"
@@ -45,6 +47,7 @@ static DBRoute *DBPAPERDocsDownload;
 static DBRoute *DBPAPERDocsFolderUsersList;
 static DBRoute *DBPAPERDocsFolderUsersListContinue;
 static DBRoute *DBPAPERDocsGetFolderInfo;
+static DBRoute *DBPAPERDocsGetMetadata;
 static DBRoute *DBPAPERDocsList;
 static DBRoute *DBPAPERDocsListContinue;
 static DBRoute *DBPAPERDocsPermanentlyDelete;
@@ -159,6 +162,22 @@ static NSObject *lockObj = nil;
                                dataStructDeserialBlock:nil];
     }
     return DBPAPERDocsGetFolderInfo;
+  }
+}
+
++ (DBRoute *)DBPAPERDocsGetMetadata {
+  @synchronized(lockObj) {
+    if (!DBPAPERDocsGetMetadata) {
+      DBPAPERDocsGetMetadata = [[DBRoute alloc] init:@"docs/get_metadata"
+                                          namespace_:@"paper"
+                                          deprecated:@NO
+                                          resultType:[DBPAPERPaperDocGetMetadataResult class]
+                                           errorType:[DBPAPERDocLookupError class]
+                                               attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
+                               dataStructSerialBlock:nil
+                             dataStructDeserialBlock:nil];
+    }
+    return DBPAPERDocsGetMetadata;
   }
 }
 

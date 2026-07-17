@@ -10,16 +10,12 @@
 
 @class DBASYNCPollError;
 @class DBFILEPROPERTIESAddPropertiesError;
-@class DBFILEPROPERTIESGetTemplateResult;
 @class DBFILEPROPERTIESInvalidPropertyGroupError;
-@class DBFILEPROPERTIESListTemplateResult;
 @class DBFILEPROPERTIESLookUpPropertiesError;
 @class DBFILEPROPERTIESLookupError;
 @class DBFILEPROPERTIESPropertyField;
-@class DBFILEPROPERTIESPropertyFieldTemplate;
 @class DBFILEPROPERTIESPropertyGroup;
 @class DBFILEPROPERTIESPropertyGroupUpdate;
-@class DBFILEPROPERTIESRemovePropertiesError;
 @class DBFILEPROPERTIESTemplateError;
 @class DBFILEPROPERTIESTemplateFilterBase;
 @class DBFILEPROPERTIESUpdatePropertiesError;
@@ -127,10 +123,15 @@
 @class DBFILESThumbnailError;
 @class DBFILESThumbnailFormat;
 @class DBFILESThumbnailMode;
+@class DBFILESThumbnailQuality;
 @class DBFILESThumbnailSize;
 @class DBFILESThumbnailV2Error;
 @class DBFILESUnlockFileArg;
 @class DBFILESUploadError;
+@class DBFILESUploadSessionAppendBatchArgEntry;
+@class DBFILESUploadSessionAppendBatchError;
+@class DBFILESUploadSessionAppendBatchResult;
+@class DBFILESUploadSessionAppendBatchResultEntry;
 @class DBFILESUploadSessionAppendError;
 @class DBFILESUploadSessionCursor;
 @class DBFILESUploadSessionFinishArg;
@@ -193,10 +194,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
-/// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
-/// preferred, while png is  better for screenshots and digital arts.
+/// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
+/// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
+/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
+/// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
+/// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
+/// is not needed.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -210,6 +215,8 @@ NS_ASSUME_NONNULL_BEGIN
                format:(nullable DBFILESThumbnailFormat *)format
                  size:(nullable DBFILESThumbnailSize *)size
                  mode:(nullable DBFILESThumbnailMode *)mode
+              quality:(nullable DBFILESThumbnailQuality *)quality
+     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
             overwrite:(BOOL)overwrite
           destination:(NSURL *)destination;
 
@@ -244,10 +251,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
-/// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
-/// preferred, while png is  better for screenshots and digital arts.
+/// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
+/// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
+/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
+/// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
+/// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
+/// is not needed.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -265,6 +276,8 @@ NS_ASSUME_NONNULL_BEGIN
                format:(nullable DBFILESThumbnailFormat *)format
                  size:(nullable DBFILESThumbnailSize *)size
                  mode:(nullable DBFILESThumbnailMode *)mode
+              quality:(nullable DBFILESThumbnailQuality *)quality
+     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
             overwrite:(BOOL)overwrite
           destination:(NSURL *)destination
       byteOffsetStart:(NSNumber *)byteOffsetStart
@@ -289,10 +302,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
-/// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
-/// preferred, while png is  better for screenshots and digital arts.
+/// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
+/// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
+/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
+/// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
+/// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
+/// is not needed.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
@@ -301,7 +318,9 @@ NS_ASSUME_NONNULL_BEGIN
     getThumbnailV2Data:(DBFILESPathOrLink *)resource
                 format:(nullable DBFILESThumbnailFormat *)format
                   size:(nullable DBFILESThumbnailSize *)size
-                  mode:(nullable DBFILESThumbnailMode *)mode;
+                  mode:(nullable DBFILESThumbnailMode *)mode
+               quality:(nullable DBFILESThumbnailQuality *)quality
+      excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
 
 ///
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -328,10 +347,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
-/// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
-/// preferred, while png is  better for screenshots and digital arts.
+/// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
+/// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
+/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
+/// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
+/// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
+/// is not needed.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
@@ -345,23 +368,25 @@ NS_ASSUME_NONNULL_BEGIN
                 format:(nullable DBFILESThumbnailFormat *)format
                   size:(nullable DBFILESThumbnailSize *)size
                   mode:(nullable DBFILESThumbnailMode *)mode
+               quality:(nullable DBFILESThumbnailQuality *)quality
+      excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
        byteOffsetStart:(NSNumber *)byteOffsetStart
          byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Starts returning the contents of a folder. If the result's `hasMore` in `DBFILESListFolderResult` field is true,
-/// call `listFolderContinue` with the returned `cursor` in `DBFILESListFolderResult` to retrieve more entries. If
-/// you're using `recursive` in `DBFILESListFolderArg` set to true to keep a local cache of the contents of a Dropbox
-/// account, iterate through each entry in order and process them as follows to keep your local state in sync: For each
-/// FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist
-/// yet, create them. If there's already something else at the given path, replace it and remove all its children. For
-/// each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't
-/// exist yet, create them. If there's already something else at the given path, replace it but leave the children as
-/// they are. Check the new entry's `readOnly` in `DBFILESFolderSharingInfo` and set all its children's read-only
-/// statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all
-/// its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if
-/// multiple `listFolder` or `listFolderContinue` calls with same parameters are made simultaneously by same API app for
-/// same user. If your app implements retry logic, please hold off the retry until the previous request finishes.
+/// call `listFolderContinue` with the returned ListFolderResult.cursor to retrieve more entries. If you're using
+/// ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each
+/// entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new
+/// entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's
+/// already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the
+/// new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If
+/// there's already something else at the given path, replace it but leave the children as they are. Check the new
+/// entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each
+/// DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's
+/// nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple `listFolder` or
+/// `listFolderContinue` calls with same parameters are made simultaneously by same API app for same user. If your app
+/// implements retry logic, please hold off the retry until the previous request finishes.
 ///
 /// @param path A unique identifier for the file.
 ///
@@ -372,28 +397,31 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///
 /// Starts returning the contents of a folder. If the result's `hasMore` in `DBFILESListFolderResult` field is true,
-/// call `listFolderContinue` with the returned `cursor` in `DBFILESListFolderResult` to retrieve more entries. If
-/// you're using `recursive` in `DBFILESListFolderArg` set to true to keep a local cache of the contents of a Dropbox
-/// account, iterate through each entry in order and process them as follows to keep your local state in sync: For each
-/// FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist
-/// yet, create them. If there's already something else at the given path, replace it and remove all its children. For
-/// each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't
-/// exist yet, create them. If there's already something else at the given path, replace it but leave the children as
-/// they are. Check the new entry's `readOnly` in `DBFILESFolderSharingInfo` and set all its children's read-only
-/// statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all
-/// its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if
-/// multiple `listFolder` or `listFolderContinue` calls with same parameters are made simultaneously by same API app for
-/// same user. If your app implements retry logic, please hold off the retry until the previous request finishes.
+/// call `listFolderContinue` with the returned ListFolderResult.cursor to retrieve more entries. If you're using
+/// ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each
+/// entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new
+/// entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's
+/// already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the
+/// new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If
+/// there's already something else at the given path, replace it but leave the children as they are. Check the new
+/// entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each
+/// DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's
+/// nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple `listFolder` or
+/// `listFolderContinue` calls with same parameters are made simultaneously by same API app for same user. If your app
+/// implements retry logic, please hold off the retry until the previous request finishes.
 ///
 /// @param path A unique identifier for the file.
 /// @param recursive If true, the list folder operation will be applied recursively to all subfolders and the response
-/// will contain contents of all subfolders.
-/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. This parameter
-/// will no longer have an effect starting December 2, 2019.
+/// will contain contents of all subfolders. In some cases, setting `recursive` in `DBFILESListFolderArg` to true may
+/// lead to performance issues or errors, especially when traversing folder structures with a large number of items. A
+/// workaround for such cases is to set `recursive` in `DBFILESListFolderArg` to false and traverse subfolders one at a
+/// time.
+/// @param includeMediaInfo Field is deprecated. If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and
+/// video. This parameter will no longer have an effect starting December 2, 2019.
 /// @param includeDeleted If true, the results will include entries for files and folders that used to exist but were
 /// deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
-/// not  that file has any explicit members.
+/// not that file has any explicit members.
 /// @param includeMountedFolders If true, the results will include entries under mounted folders which includes app
 /// folder, shared folder and team folder.
 /// @param limit The maximum number of results to return per request. Note: This is an approximate number and there can
@@ -404,6 +432,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param includePropertyGroups If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
 /// set if there exists property data associated with the file and each of the listed templates.
 /// @param includeNonDownloadableFiles If true, include files that are not downloadable, i.e. Google Docs.
+/// @param includeRestorableInfo If true, each returned deleted entry will include whether that entry can be restored.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderError` object on failure.
@@ -418,7 +447,8 @@ NS_ASSUME_NONNULL_BEGIN
                               limit:(nullable NSNumber *)limit
                          sharedLink:(nullable DBFILESSharedLink *)sharedLink
               includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
-        includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles;
+        includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles
+              includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
 
 ///
 /// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to

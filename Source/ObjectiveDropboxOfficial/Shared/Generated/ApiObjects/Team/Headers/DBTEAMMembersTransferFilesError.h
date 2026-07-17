@@ -27,44 +27,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMMembersTransferFilesErrorTag` enum type represents the possible
 /// tag states with which the `DBTEAMMembersTransferFilesError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersTransferFilesErrorTag){
-    /// No matching user found. The provided team_member_id, email, or
-    /// external_id does not exist on this team.
-    DBTEAMMembersTransferFilesErrorUserNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersTransferFilesErrorTag) {
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
+  DBTEAMMembersTransferFilesErrorUserNotFound,
 
-    /// The user is not a member of the team.
-    DBTEAMMembersTransferFilesErrorUserNotInTeam,
+  /// The user is not a member of the team.
+  DBTEAMMembersTransferFilesErrorUserNotInTeam,
 
-    /// (no description).
-    DBTEAMMembersTransferFilesErrorOther,
+  /// (no description).
+  DBTEAMMembersTransferFilesErrorOther,
 
-    /// Expected removed user and transfer_dest user to be different.
-    DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer,
+  /// Cannot permanently delete files while it's being transferred.
+  DBTEAMMembersTransferFilesErrorTransferInProgress,
 
-    /// Expected removed user and transfer_admin user to be different.
-    DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer,
+  /// Cannot permanently delete files that have already been transferred.
+  DBTEAMMembersTransferFilesErrorAlreadyTransferred,
 
-    /// No matching user found for the argument transfer_dest_id.
-    DBTEAMMembersTransferFilesErrorTransferDestUserNotFound,
+  /// Cannot permanently delete files that have already been transferred or
+  /// deleted.
+  DBTEAMMembersTransferFilesErrorAlreadyTransferredOrDeleted,
 
-    /// The provided transfer_dest_id does not exist on this team.
-    DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam,
+  /// Expected removed user and transfer_dest user to be different.
+  DBTEAMMembersTransferFilesErrorRemovedAndTransferDestShouldDiffer,
 
-    /// The provided transfer_admin_id does not exist on this team.
-    DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam,
+  /// Expected removed user and transfer_admin user to be different.
+  DBTEAMMembersTransferFilesErrorRemovedAndTransferAdminShouldDiffer,
 
-    /// No matching user found for the argument transfer_admin_id.
-    DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound,
+  /// No matching user found for the argument transfer_dest_id.
+  DBTEAMMembersTransferFilesErrorTransferDestUserNotFound,
 
-    /// The transfer_admin_id argument must be provided when file transfer is
-    /// requested.
-    DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId,
+  /// The provided transfer_dest_id does not exist on this team.
+  DBTEAMMembersTransferFilesErrorTransferDestUserNotInTeam,
 
-    /// Specified transfer_admin user is not a team admin.
-    DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin,
+  /// The provided transfer_admin_id does not exist on this team.
+  DBTEAMMembersTransferFilesErrorTransferAdminUserNotInTeam,
 
-    /// The recipient user's email is not verified.
-    DBTEAMMembersTransferFilesErrorRecipientNotVerified,
+  /// No matching user found for the argument transfer_admin_id.
+  DBTEAMMembersTransferFilesErrorTransferAdminUserNotFound,
+
+  /// The transfer_admin_id argument must be provided when file transfer is
+  /// requested.
+  DBTEAMMembersTransferFilesErrorUnspecifiedTransferAdminId,
+
+  /// Specified transfer_admin user is not a team admin.
+  DBTEAMMembersTransferFilesErrorTransferAdminIsNotAdmin,
+
+  /// The recipient user's email is not verified.
+  DBTEAMMembersTransferFilesErrorRecipientNotVerified,
 
 };
 
@@ -99,6 +109,36 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersTransferFilesErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithOther;
+
+///
+/// Initializes union class with tag state of "transfer_in_progress".
+///
+/// Description of the "transfer_in_progress" tag state: Cannot permanently
+/// delete files while it's being transferred.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTransferInProgress;
+
+///
+/// Initializes union class with tag state of "already_transferred".
+///
+/// Description of the "already_transferred" tag state: Cannot permanently
+/// delete files that have already been transferred.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAlreadyTransferred;
+
+///
+/// Initializes union class with tag state of "already_transferred_or_deleted".
+///
+/// Description of the "already_transferred_or_deleted" tag state: Cannot
+/// permanently delete files that have already been transferred or deleted.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAlreadyTransferredOrDeleted;
 
 ///
 /// Initializes union class with tag state of
@@ -217,6 +257,33 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersTransferFilesErrorTag){
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "transfer_in_progress".
+///
+/// @return Whether the union's current tag state has value
+/// "transfer_in_progress".
+///
+- (BOOL)isTransferInProgress;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "already_transferred".
+///
+/// @return Whether the union's current tag state has value
+/// "already_transferred".
+///
+- (BOOL)isAlreadyTransferred;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "already_transferred_or_deleted".
+///
+/// @return Whether the union's current tag state has value
+/// "already_transferred_or_deleted".
+///
+- (BOOL)isAlreadyTransferredOrDeleted;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -20,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GroupInfo` struct.
 ///
-/// The information about a group. Groups is a way to manage a list of users
-/// who need same access permission to the shared folder.
+/// The information about a group. Groups is a way to manage a list of users who
+/// need same access permission to the shared folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The type of group.
+/// Field is deprecated. The type of group.
 @property (nonatomic, readonly) DBTEAMCOMMONGroupType *groupType;
 
 /// If the current user is a member of the group.
@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
-/// @param groupType The type of group.
+/// @param groupType Field is deprecated. The type of group.
 /// @param isMember If the current user is a member of the group.
 /// @param isOwner If the current user is an owner of the group.
 /// @param sameTeam If the group is owned by the current user's team.
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
-/// @param groupType The type of group.
+/// @param groupType Field is deprecated. The type of group.
 /// @param isMember If the current user is a member of the group.
 /// @param isOwner If the current user is an owner of the group.
 /// @param sameTeam If the group is owned by the current user's team.

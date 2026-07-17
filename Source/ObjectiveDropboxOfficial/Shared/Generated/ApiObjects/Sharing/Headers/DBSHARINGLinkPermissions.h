@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBSHARINGChangeLinkExpirationPolicy;
 @class DBSHARINGLinkAccessLevel;
 @class DBSHARINGLinkAudience;
 @class DBSHARINGLinkAudienceOption;
@@ -16,6 +17,8 @@
 @class DBSHARINGResolvedVisibility;
 @class DBSHARINGSharedLinkAccessFailureReason;
 @class DBSHARINGVisibilityPolicy;
+@class DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy;
+@class DBTEAMPOLICIESEnforceLinkPasswordPolicy;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -88,11 +91,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// ability to impose a no-download restriction on the link.
 @property (nonatomic, readonly) NSNumber *canDisallowDownload;
 
-/// Whether comments are enabled for the linked file. This takes the team
-/// commenting policy into account.
+/// Field is deprecated. Whether comments are enabled for the linked file. This
+/// takes the team commenting policy into account.
 @property (nonatomic, readonly) NSNumber *allowComments;
 
-/// Whether the team has disabled commenting globally.
+/// Field is deprecated. Whether the team has disabled commenting globally.
 @property (nonatomic, readonly) NSNumber *teamRestrictsComments;
 
 /// A list of link audience options the user might be able to set as the new
@@ -112,6 +115,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// type.
 @property (nonatomic, readonly, nullable) NSNumber *canUseExtendedSharingControls;
 
+/// Whether a user can save the content to their Dropbox account.
+@property (nonatomic, readonly, nullable) NSNumber *canSync;
+
+/// Whether the user can request access to the content.
+@property (nonatomic, readonly, nullable) NSNumber *canRequestAccess;
+
+/// Whether the updated externally available shared link must have password set.
+/// Not provided if the link is not team owned.
+@property (nonatomic, readonly, nullable) DBTEAMPOLICIESEnforceLinkPasswordPolicy *enforceSharedLinkPasswordPolicy;
+
+/// Existing owning team's policy for default number of days from today to
+/// link's expiration. Not provided if the link is not team owned.
+@property (nonatomic, readonly, nullable) DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *daysToExpirePolicy;
+
+/// When owning team's policy changeSharedLinkExpirationPolicy is `notAllowed`
+/// in `DBTEAMLOGChangeLinkExpirationPolicy`, the updated externally available
+/// shared link expiration value cannot be less strict than daysToExpirePolicy.
+/// In this case daysToExpirePolicy is expected to be different from `none`. Not
+/// provided if the link is not team owned.
+@property (nonatomic, readonly, nullable) DBSHARINGChangeLinkExpirationPolicy *changeSharedLinkExpirationPolicy;
+
 #pragma mark - Constructors
 
 ///
@@ -130,10 +154,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param canDisallowDownload Whether the user can disallow downloads via the
 /// link. This refers to the ability to impose a no-download restriction on the
 /// link.
-/// @param allowComments Whether comments are enabled for the linked file. This
-/// takes the team commenting policy into account.
-/// @param teamRestrictsComments Whether the team has disabled commenting
-/// globally.
+/// @param allowComments Field is deprecated. Whether comments are enabled for
+/// the linked file. This takes the team commenting policy into account.
+/// @param teamRestrictsComments Field is deprecated. Whether the team has
+/// disabled commenting globally.
 /// @param resolvedVisibility The current visibility of the link after
 /// considering the shared links policies of the the team (in case the link's
 /// owner is part of a team) and the shared folder (in case the linked file is
@@ -166,28 +190,47 @@ NS_ASSUME_NONNULL_BEGIN
 /// view the link.
 /// @param canUseExtendedSharingControls Whether the user can use extended
 /// sharing controls, based on their account type.
+/// @param canSync Whether a user can save the content to their Dropbox account.
+/// @param canRequestAccess Whether the user can request access to the content.
+/// @param enforceSharedLinkPasswordPolicy Whether the updated externally
+/// available shared link must have password set. Not provided if the link is
+/// not team owned.
+/// @param daysToExpirePolicy Existing owning team's policy for default number
+/// of days from today to link's expiration. Not provided if the link is not
+/// team owned.
+/// @param changeSharedLinkExpirationPolicy When owning team's policy
+/// changeSharedLinkExpirationPolicy is `notAllowed` in
+/// `DBTEAMLOGChangeLinkExpirationPolicy`, the updated externally available
+/// shared link expiration value cannot be less strict than daysToExpirePolicy.
+/// In this case daysToExpirePolicy is expected to be different from `none`. Not
+/// provided if the link is not team owned.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithCanRevoke:(NSNumber *)canRevoke
-               visibilityPolicies:(NSArray<DBSHARINGVisibilityPolicy *> *)visibilityPolicies
-                     canSetExpiry:(NSNumber *)canSetExpiry
-                  canRemoveExpiry:(NSNumber *)canRemoveExpiry
-                    allowDownload:(NSNumber *)allowDownload
-                 canAllowDownload:(NSNumber *)canAllowDownload
-              canDisallowDownload:(NSNumber *)canDisallowDownload
-                    allowComments:(NSNumber *)allowComments
-            teamRestrictsComments:(NSNumber *)teamRestrictsComments
-               resolvedVisibility:(nullable DBSHARINGResolvedVisibility *)resolvedVisibility
-              requestedVisibility:(nullable DBSHARINGRequestedVisibility *)requestedVisibility
-              revokeFailureReason:(nullable DBSHARINGSharedLinkAccessFailureReason *)revokeFailureReason
-                effectiveAudience:(nullable DBSHARINGLinkAudience *)effectiveAudience
-                  linkAccessLevel:(nullable DBSHARINGLinkAccessLevel *)linkAccessLevel
-                  audienceOptions:(nullable NSArray<DBSHARINGLinkAudienceOption *> *)audienceOptions
-                   canSetPassword:(nullable NSNumber *)canSetPassword
-                canRemovePassword:(nullable NSNumber *)canRemovePassword
-                  requirePassword:(nullable NSNumber *)requirePassword
-    canUseExtendedSharingControls:(nullable NSNumber *)canUseExtendedSharingControls;
+                  visibilityPolicies:(NSArray<DBSHARINGVisibilityPolicy *> *)visibilityPolicies
+                        canSetExpiry:(NSNumber *)canSetExpiry
+                     canRemoveExpiry:(NSNumber *)canRemoveExpiry
+                       allowDownload:(NSNumber *)allowDownload
+                    canAllowDownload:(NSNumber *)canAllowDownload
+                 canDisallowDownload:(NSNumber *)canDisallowDownload
+                       allowComments:(NSNumber *)allowComments
+               teamRestrictsComments:(NSNumber *)teamRestrictsComments
+                  resolvedVisibility:(nullable DBSHARINGResolvedVisibility *)resolvedVisibility
+                 requestedVisibility:(nullable DBSHARINGRequestedVisibility *)requestedVisibility
+                 revokeFailureReason:(nullable DBSHARINGSharedLinkAccessFailureReason *)revokeFailureReason
+                   effectiveAudience:(nullable DBSHARINGLinkAudience *)effectiveAudience
+                     linkAccessLevel:(nullable DBSHARINGLinkAccessLevel *)linkAccessLevel
+                     audienceOptions:(nullable NSArray<DBSHARINGLinkAudienceOption *> *)audienceOptions
+                      canSetPassword:(nullable NSNumber *)canSetPassword
+                   canRemovePassword:(nullable NSNumber *)canRemovePassword
+                     requirePassword:(nullable NSNumber *)requirePassword
+       canUseExtendedSharingControls:(nullable NSNumber *)canUseExtendedSharingControls
+                             canSync:(nullable NSNumber *)canSync
+                    canRequestAccess:(nullable NSNumber *)canRequestAccess
+     enforceSharedLinkPasswordPolicy:(nullable DBTEAMPOLICIESEnforceLinkPasswordPolicy *)enforceSharedLinkPasswordPolicy
+                  daysToExpirePolicy:(nullable DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)daysToExpirePolicy
+    changeSharedLinkExpirationPolicy:(nullable DBSHARINGChangeLinkExpirationPolicy *)changeSharedLinkExpirationPolicy;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
@@ -206,10 +249,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param canDisallowDownload Whether the user can disallow downloads via the
 /// link. This refers to the ability to impose a no-download restriction on the
 /// link.
-/// @param allowComments Whether comments are enabled for the linked file. This
-/// takes the team commenting policy into account.
-/// @param teamRestrictsComments Whether the team has disabled commenting
-/// globally.
+/// @param allowComments Field is deprecated. Whether comments are enabled for
+/// the linked file. This takes the team commenting policy into account.
+/// @param teamRestrictsComments Field is deprecated. Whether the team has
+/// disabled commenting globally.
 ///
 /// @return An initialized instance.
 ///

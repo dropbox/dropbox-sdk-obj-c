@@ -31,11 +31,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy) NSString *path;
 
 /// If true, the list folder operation will be applied recursively to all
-/// subfolders and the response will contain contents of all subfolders.
+/// subfolders and the response will contain contents of all subfolders. In some
+/// cases, setting `recursive` in `DBFILESListFolderArg` to true may lead to
+/// performance issues or errors, especially when traversing folder structures
+/// with a large number of items. A workaround for such cases is to set
+/// `recursive` in `DBFILESListFolderArg` to false and traverse subfolders one
+/// at a time.
 @property (nonatomic, readonly) NSNumber *recursive;
 
-/// If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
-/// This parameter will no longer have an effect starting December 2, 2019.
+/// Field is deprecated. If true, `mediaInfo` in `DBFILESFileMetadata` is set
+/// for photo and video. This parameter will no longer have an effect starting
+/// December 2, 2019.
 @property (nonatomic, readonly) NSNumber *includeMediaInfo;
 
 /// If true, the results will include entries for files and folders that used to
@@ -43,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSNumber *includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or
-/// not  that file has any explicit members.
+/// not that file has any explicit members.
 @property (nonatomic, readonly) NSNumber *includeHasExplicitSharedMembers;
 
 /// If true, the results will include entries under mounted folders which
@@ -69,6 +75,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// If true, include files that are not downloadable, i.e. Google Docs.
 @property (nonatomic, readonly) NSNumber *includeNonDownloadableFiles;
 
+/// If true, each returned deleted entry will include whether that entry can be
+/// restored.
+@property (nonatomic, readonly) NSNumber *includeRestorableInfo;
+
 #pragma mark - Constructors
 
 ///
@@ -77,14 +87,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param path A unique identifier for the file.
 /// @param recursive If true, the list folder operation will be applied
 /// recursively to all subfolders and the response will contain contents of all
-/// subfolders.
-/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set
-/// for photo and video. This parameter will no longer have an effect starting
-/// December 2, 2019.
+/// subfolders. In some cases, setting `recursive` in `DBFILESListFolderArg` to
+/// true may lead to performance issues or errors, especially when traversing
+/// folder structures with a large number of items. A workaround for such cases
+/// is to set `recursive` in `DBFILESListFolderArg` to false and traverse
+/// subfolders one at a time.
+/// @param includeMediaInfo Field is deprecated. If true, `mediaInfo` in
+/// `DBFILESFileMetadata` is set for photo and video. This parameter will no
+/// longer have an effect starting December 2, 2019.
 /// @param includeDeleted If true, the results will include entries for files
 /// and folders that used to exist but were deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a
-/// flag for each file indicating whether or not  that file has any explicit
+/// flag for each file indicating whether or not that file has any explicit
 /// members.
 /// @param includeMountedFolders If true, the results will include entries under
 /// mounted folders which includes app folder, shared folder and team folder.
@@ -100,6 +114,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// data associated with the file and each of the listed templates.
 /// @param includeNonDownloadableFiles If true, include files that are not
 /// downloadable, i.e. Google Docs.
+/// @param includeRestorableInfo If true, each returned deleted entry will
+/// include whether that entry can be restored.
 ///
 /// @return An initialized instance.
 ///
@@ -112,7 +128,8 @@ NS_ASSUME_NONNULL_BEGIN
                               limit:(nullable NSNumber *)limit
                          sharedLink:(nullable DBFILESSharedLink *)sharedLink
               includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
-        includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles;
+        includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles
+              includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

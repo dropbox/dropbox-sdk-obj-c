@@ -35,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// gap.
 @property (nonatomic, readonly, nullable) DBTEAMLOGSharedLinkVisibility *previousValue;
 
+/// Indicates whether this was a consolidation action by system.
+@property (nonatomic, readonly, nullable) NSNumber *isConsolidationAction;
+
 #pragma mark - Constructors
 
 ///
@@ -43,11 +46,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param dNewValue New shared link visibility.
 /// @param previousValue Previous shared link visibility. Might be missing due
 /// to historical data gap.
+/// @param isConsolidationAction Indicates whether this was a consolidation
+/// action by system.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithDNewValue:(DBTEAMLOGSharedLinkVisibility *)dNewValue
-                    previousValue:(nullable DBTEAMLOGSharedLinkVisibility *)previousValue;
+                    previousValue:(nullable DBTEAMLOGSharedLinkVisibility *)previousValue
+            isConsolidationAction:(nullable NSNumber *)isConsolidationAction;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

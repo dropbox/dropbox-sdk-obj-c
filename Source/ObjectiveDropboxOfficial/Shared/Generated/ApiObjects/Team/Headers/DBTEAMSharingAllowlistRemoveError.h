@@ -28,24 +28,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMSharingAllowlistRemoveErrorTag` enum type represents the possible
 /// tag states with which the `DBTEAMSharingAllowlistRemoveError` union can
 /// exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSharingAllowlistRemoveErrorTag){
-    /// One of provided values is not valid.
-    DBTEAMSharingAllowlistRemoveErrorMalformedEntry,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSharingAllowlistRemoveErrorTag) {
+  /// One of provided values is not valid.
+  DBTEAMSharingAllowlistRemoveErrorMalformedEntry,
 
-    /// One or more provided values do not exist.
-    DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist,
+  /// One or more provided values do not exist.
+  DBTEAMSharingAllowlistRemoveErrorEntriesDoNotExist,
 
-    /// Neither single domain nor email provided.
-    DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided,
+  /// Neither single domain nor email provided.
+  DBTEAMSharingAllowlistRemoveErrorNoEntriesProvided,
 
-    /// Too many entries provided within one call.
-    DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided,
+  /// Too many entries provided within one call.
+  DBTEAMSharingAllowlistRemoveErrorTooManyEntriesProvided,
 
-    /// Unknown error.
-    DBTEAMSharingAllowlistRemoveErrorUnknownError,
+  /// Unknown error.
+  DBTEAMSharingAllowlistRemoveErrorUnknownError,
 
-    /// (no description).
-    DBTEAMSharingAllowlistRemoveErrorOther,
+  /// (no description).
+  DBTEAMSharingAllowlistRemoveErrorOther,
 
 };
 

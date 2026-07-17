@@ -25,8 +25,8 @@
 
 - (DBRpcTask *)tokenFromOauth1:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret {
   DBRoute *route = DBAUTHRouteObjects.DBAUTHTokenFromOauth1;
-  DBAUTHTokenFromOAuth1Arg *arg =
-      [[DBAUTHTokenFromOAuth1Arg alloc] initWithOauth1Token:oauth1Token oauth1TokenSecret:oauth1TokenSecret];
+  DBAUTHTokenFromOAuth1Arg *arg = [[DBAUTHTokenFromOAuth1Arg alloc] initWithOauth1Token:oauth1Token
+                                                                      oauth1TokenSecret:oauth1TokenSecret];
   return [self.client requestRpc:route arg:arg];
 }
 

@@ -28,26 +28,26 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGSharedLinkAccessFailureReasonTag` enum type represents the
 /// possible tag states with which the `DBSHARINGSharedLinkAccessFailureReason`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag){
-    /// User is not logged in.
-    DBSHARINGSharedLinkAccessFailureReasonLoginRequired,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
+  /// User is not logged in.
+  DBSHARINGSharedLinkAccessFailureReasonLoginRequired,
 
-    /// This user's email address is not verified. This functionality is only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBSHARINGSharedLinkAccessFailureReasonEmailVerifyRequired,
+  /// This user's email address is not verified. This functionality is only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBSHARINGSharedLinkAccessFailureReasonEmailVerifyRequired,
 
-    /// The link is password protected.
-    DBSHARINGSharedLinkAccessFailureReasonPasswordRequired,
+  /// The link is password protected.
+  DBSHARINGSharedLinkAccessFailureReasonPasswordRequired,
 
-    /// Access is allowed for team members only.
-    DBSHARINGSharedLinkAccessFailureReasonTeamOnly,
+  /// Access is allowed for team members only.
+  DBSHARINGSharedLinkAccessFailureReasonTeamOnly,
 
-    /// Access is allowed for the shared link's owner only.
-    DBSHARINGSharedLinkAccessFailureReasonOwnerOnly,
+  /// Access is allowed for the shared link's owner only.
+  DBSHARINGSharedLinkAccessFailureReasonOwnerOnly,
 
-    /// (no description).
-    DBSHARINGSharedLinkAccessFailureReasonOther,
+  /// (no description).
+  DBSHARINGSharedLinkAccessFailureReasonOther,
 
 };
 

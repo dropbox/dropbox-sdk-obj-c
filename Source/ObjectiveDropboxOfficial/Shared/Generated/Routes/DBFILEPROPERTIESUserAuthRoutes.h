@@ -74,8 +74,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// explicitly marked for deletion.
 ///
 /// @param path A unique identifier for the file or folder.
-/// @param propertyGroups The property groups "snapshot" updates to force apply. No two groups in the input should
-/// refer to the same template.
+/// @param propertyGroups The property groups "snapshot" updates to force apply. No two groups in the input should refer
+/// to the same template.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBFILEPROPERTIESInvalidPropertyGroupError` object on failure.

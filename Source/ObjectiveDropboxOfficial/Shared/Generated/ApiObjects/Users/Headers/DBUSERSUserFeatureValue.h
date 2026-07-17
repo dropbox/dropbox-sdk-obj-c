@@ -8,8 +8,10 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBUSERSDistinctMemberHomeValue;
 @class DBUSERSFileLockingValue;
 @class DBUSERSPaperAsFilesValue;
+@class DBUSERSTeamSharedDropboxValue;
 @class DBUSERSUserFeatureValue;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -31,15 +33,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBUSERSUserFeatureValueTag` enum type represents the possible tag
 /// states with which the `DBUSERSUserFeatureValue` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag){
-    /// (no description).
-    DBUSERSUserFeatureValuePaperAsFiles,
+typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag) {
+  /// (no description).
+  DBUSERSUserFeatureValuePaperAsFiles,
 
-    /// (no description).
-    DBUSERSUserFeatureValueFileLocking,
+  /// (no description).
+  DBUSERSUserFeatureValueFileLocking,
 
-    /// (no description).
-    DBUSERSUserFeatureValueOther,
+  /// (no description).
+  DBUSERSUserFeatureValueTeamSharedDropbox,
+
+  /// (no description).
+  DBUSERSUserFeatureValueDistinctMemberHome,
+
+  /// (no description).
+  DBUSERSUserFeatureValueOther,
 
 };
 
@@ -53,6 +61,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag){
 /// (no description). @note Ensure the `isFileLocking` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBUSERSFileLockingValue *fileLocking;
+
+/// (no description). @note Ensure the `isTeamSharedDropbox` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBUSERSTeamSharedDropboxValue *teamSharedDropbox;
+
+/// (no description). @note Ensure the `isDistinctMemberHome` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBUSERSDistinctMemberHomeValue *distinctMemberHome;
 
 #pragma mark - Constructors
 
@@ -73,6 +89,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithFileLocking:(DBUSERSFileLockingValue *)fileLocking;
+
+///
+/// Initializes union class with tag state of "team_shared_dropbox".
+///
+/// @param teamSharedDropbox (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamSharedDropbox:(DBUSERSTeamSharedDropboxValue *)teamSharedDropbox;
+
+///
+/// Initializes union class with tag state of "distinct_member_home".
+///
+/// @param distinctMemberHome (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDistinctMemberHome:(DBUSERSDistinctMemberHomeValue *)distinctMemberHome;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -104,6 +138,30 @@ typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag){
 /// @return Whether the union's current tag state has value "file_locking".
 ///
 - (BOOL)isFileLocking;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_shared_dropbox".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamSharedDropbox` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_shared_dropbox".
+///
+- (BOOL)isTeamSharedDropbox;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "distinct_member_home".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `distinctMemberHome` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "distinct_member_home".
+///
+- (BOOL)isDistinctMemberHome;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

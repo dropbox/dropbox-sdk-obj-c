@@ -30,10 +30,33 @@ NS_ASSUME_NONNULL_BEGIN
 /// (no description).
 @property (nonatomic, readonly) DBPAPERExportFormat *exportFormat;
 
+/// When true, export includes comment threads (e.g. markdown footnotes). When
+/// false or omitted, body only. Other formats may adopt this later; currently
+/// only markdown uses it. Plain bool (not optional): protoc-gen-godbx does not
+/// support proto3 optional yet.
+@property (nonatomic, readonly) NSNumber *includeComments;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param docId The Paper doc ID.
+/// @param exportFormat (no description).
+/// @param includeComments When true, export includes comment threads (e.g.
+/// markdown footnotes). When false or omitted, body only. Other formats may
+/// adopt this later; currently only markdown uses it. Plain bool (not
+/// optional): protoc-gen-godbx does not support proto3 optional yet.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDocId:(NSString *)docId
+                 exportFormat:(DBPAPERExportFormat *)exportFormat
+              includeComments:(nullable NSNumber *)includeComments;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param docId The Paper doc ID.
 /// @param exportFormat (no description).

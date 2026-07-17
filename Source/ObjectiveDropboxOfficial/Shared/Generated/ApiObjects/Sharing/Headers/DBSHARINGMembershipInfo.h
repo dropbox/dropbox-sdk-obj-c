@@ -37,10 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// permissions corresponds to the MemberActions in the request.
 @property (nonatomic, readonly, nullable) NSArray<DBSHARINGMemberPermission *> *permissions;
 
-/// Never set.
+/// Field is deprecated. Never set.
 @property (nonatomic, readonly, copy, nullable) NSString *initials;
 
-/// True if the member has access from a parent folder.
+/// True if the member has access on a parent folder.
 @property (nonatomic, readonly) NSNumber *isInherited;
 
 #pragma mark - Constructors
@@ -52,8 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// access type from parent folder, and acquired access type from this folder.
 /// @param permissions The permissions that requesting user has on this member.
 /// The set of permissions corresponds to the MemberActions in the request.
-/// @param initials Never set.
-/// @param isInherited True if the member has access from a parent folder.
+/// @param initials Field is deprecated. Never set.
+/// @param isInherited True if the member has access on a parent folder.
 ///
 /// @return An initialized instance.
 ///

@@ -29,15 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBPAPERExportFormatTag` enum type represents the possible tag states
 /// with which the `DBPAPERExportFormat` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBPAPERExportFormatTag){
-    /// The HTML export format.
-    DBPAPERExportFormatHtml,
+typedef NS_CLOSED_ENUM(NSInteger, DBPAPERExportFormatTag) {
+  /// The HTML export format.
+  DBPAPERExportFormatHtml,
 
-    /// The markdown export format.
-    DBPAPERExportFormatMarkdown,
+  /// The markdown export format.
+  DBPAPERExportFormatMarkdown,
 
-    /// (no description).
-    DBPAPERExportFormatOther,
+  /// Doc metadata JSON export format.
+  DBPAPERExportFormatJson,
+
+  /// (no description).
+  DBPAPERExportFormatOther,
 
 };
 
@@ -65,6 +68,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERExportFormatTag){
 - (instancetype)initWithMarkdown;
 
 ///
+/// Initializes union class with tag state of "json".
+///
+/// Description of the "json" tag state: Doc metadata JSON export format.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithJson;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -88,6 +100,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERExportFormatTag){
 /// @return Whether the union's current tag state has value "markdown".
 ///
 - (BOOL)isMarkdown;
+
+///
+/// Retrieves whether the union's current tag state has value "json".
+///
+/// @return Whether the union's current tag state has value "json".
+///
+- (BOOL)isJson;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

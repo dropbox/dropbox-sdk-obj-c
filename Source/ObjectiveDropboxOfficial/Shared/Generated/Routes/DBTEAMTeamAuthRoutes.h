@@ -15,12 +15,10 @@
 @class DBASYNCPollError;
 @class DBFILEPROPERTIESAddTemplateResult;
 @class DBFILEPROPERTIESGetTemplateResult;
-@class DBFILEPROPERTIESListTemplateResult;
 @class DBFILEPROPERTIESModifyTemplateError;
 @class DBFILEPROPERTIESPropertyFieldTemplate;
 @class DBFILEPROPERTIESPropertyType;
 @class DBFILEPROPERTIESTemplateError;
-@class DBFILEPROPERTIESUpdateTemplateResult;
 @class DBFILESContentSyncSetting;
 @class DBFILESContentSyncSettingArg;
 @class DBFILESSyncSetting;
@@ -110,6 +108,7 @@
 @class DBTEAMMembersAddJobStatusV2Result;
 @class DBTEAMMembersAddLaunch;
 @class DBTEAMMembersAddLaunchV2Result;
+@class DBTEAMMembersDeleteFormerMemberFilesError;
 @class DBTEAMMembersDeleteProfilePhotoError;
 @class DBTEAMMembersGetAvailableTeamMemberRolesResult;
 @class DBTEAMMembersGetInfoError;
@@ -172,6 +171,7 @@
 @class DBTEAMTeamFolderMetadata;
 @class DBTEAMTeamFolderPermanentlyDeleteError;
 @class DBTEAMTeamFolderRenameError;
+@class DBTEAMTeamFolderRestoreError;
 @class DBTEAMTeamFolderStatus;
 @class DBTEAMTeamFolderTeamSharedDropboxError;
 @class DBTEAMTeamFolderUpdateSyncSettingsError;
@@ -276,7 +276,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// a `DBTEAMListTeamDevicesError` object on failure.
 ///
 - (DBRpcTask<DBTEAMListTeamDevicesResult *, DBTEAMListTeamDevicesError *> *)
-    devicesListTeamDevices __deprecated_msg("devicesListTeamDevices is deprecated. Use devicesListMembersDevices.");
+    devicesListTeamDevices __deprecated_msg("devicesListTeamDevices is deprecated.");
 
 ///
 /// DEPRECATED: List all device sessions of a team. Permission : Team member file access.
@@ -296,7 +296,7 @@ NS_ASSUME_NONNULL_BEGIN
         includeWebSessions:(nullable NSNumber *)includeWebSessions
      includeDesktopClients:(nullable NSNumber *)includeDesktopClients
       includeMobileClients:(nullable NSNumber *)includeMobileClients
-    __deprecated_msg("devicesListTeamDevices is deprecated. Use devicesListMembersDevices.");
+    __deprecated_msg("devicesListTeamDevices is deprecated.");
 
 ///
 /// Revoke a device session of a team's member.
@@ -320,7 +320,7 @@ NS_ASSUME_NONNULL_BEGIN
     devicesRevokeDeviceSessionBatch:(NSArray<DBTEAMRevokeDeviceSessionArg *> *)revokeDevices;
 
 ///
-/// Get the values for one or more featues. This route allows you to check your account's capability for what feature
+/// Get the values for one or more features. This route allows you to check your account's capability for what feature
 /// you can access or what value you have for certain features. Permission : Team information.
 ///
 /// @param features A list of features in Feature. If the list is empty, this route will return
@@ -381,7 +381,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBASYNCLaunchEmptyResult *, DBTEAMGroupDeleteError *> *)groupsDelete:(DBTEAMGroupSelector *)groupSelector;
 
 ///
-/// Retrieves information about one or more groups. Note that the optional field  `members` in `DBTEAMGroupFullInfo` is
+/// Retrieves information about one or more groups. Note that the optional field `members` in `DBTEAMGroupFullInfo` is
 /// not returned for system-managed groups. Permission : Team Information.
 ///
 /// @param groupsSelector Argument for selecting a list of groups, either by group_ids, or external group IDs.
@@ -552,8 +552,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets a member's access type in a group. Permission : Team member management.
 ///
 /// @param accessType New group access type the user will have.
-/// @param returnMembers Whether to return the list of members in the group.  Note that the default value will cause all
-/// the group members  to be returned in the response. This may take a long time for large groups.
+/// @param returnMembers Whether to return the list of members in the group. Note that the default value will cause all
+/// the group members to be returned in the response. This may take a long time for large groups.
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBTEAMGroupsGetInfoItem *>` object on
 /// success or a `DBTEAMGroupMemberSetAccessTypeError` object on failure.
@@ -782,8 +782,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return Through the response callback, the caller will receive a `DBTEAMListTeamAppsResult` object on success or a
 /// `DBTEAMListTeamAppsError` object on failure.
 ///
-- (DBRpcTask<DBTEAMListTeamAppsResult *, DBTEAMListTeamAppsError *> *)linkedAppsListTeamLinkedApps __deprecated_msg(
-    "linkedAppsListTeamLinkedApps is deprecated. Use linkedAppsListMembersLinkedApps.");
+- (DBRpcTask<DBTEAMListTeamAppsResult *, DBTEAMListTeamAppsError *> *)
+    linkedAppsListTeamLinkedApps __deprecated_msg("linkedAppsListTeamLinkedApps is deprecated.");
 
 ///
 /// DEPRECATED: List all applications linked to the team members' accounts. Note, this endpoint doesn't list any
@@ -797,8 +797,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBTEAMListTeamAppsError` object on failure.
 ///
 - (DBRpcTask<DBTEAMListTeamAppsResult *, DBTEAMListTeamAppsError *> *)linkedAppsListTeamLinkedApps:
-    (nullable NSString *)cursor
-    __deprecated_msg("linkedAppsListTeamLinkedApps is deprecated. Use linkedAppsListMembersLinkedApps.");
+    (nullable NSString *)cursor __deprecated_msg("linkedAppsListTeamLinkedApps is deprecated.");
 
 ///
 /// Revoke a linked application of the team member.
@@ -817,8 +816,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param appId The application's unique id.
 /// @param teamMemberId The unique id of the member owning the device.
-/// @param keepAppFolder This flag is not longer supported, the application dedicated folder (in case the application
-/// uses  one) will be kept.
+/// @param keepAppFolder Field is deprecated. This flag is not longer supported, the application dedicated folder (in
+/// case the application uses one) will be kept.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBTEAMRevokeLinkedAppError` object on failure.
@@ -937,7 +936,7 @@ NS_ASSUME_NONNULL_BEGIN
     (NSArray<DBTEAMUserSelectorArg *> *)users;
 
 ///
-/// Set users custom quota. Custom quota has to be at least 15GB. A maximum of 1000 members can be specified in a single
+/// Set users custom quota. Custom quota has to be at least 2GB. A maximum of 1000 members can be specified in a single
 /// call. Note: to apply a custom space limit, a team admin needs to set a member space limit for the team first. (the
 /// team admin can check the settings here: https://www.dropbox.com/team/admin/settings/space).
 ///
@@ -987,9 +986,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// call. If no Dropbox account exists with the email address specified, a new Dropbox account will be created with the
 /// given email address, and that account will be invited to the team. If a personal Dropbox account exists with the
 /// email address specified in the call, this call will create a placeholder Dropbox account for the user on the team
-/// and send an email inviting the user to migrate their existing personal account onto the team. Team member management
-/// apps are required to set an initial given_name and surname for a user to use in the team invitation and for 'Perform
-/// as team member' actions taken on the user before they become 'active'.
+/// and send an email inviting the user to migrate their existing personal account onto the team.
 ///
 /// @param dNewMembers Details of new members to be added to the team.
 ///
@@ -1004,9 +1001,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// call. If no Dropbox account exists with the email address specified, a new Dropbox account will be created with the
 /// given email address, and that account will be invited to the team. If a personal Dropbox account exists with the
 /// email address specified in the call, this call will create a placeholder Dropbox account for the user on the team
-/// and send an email inviting the user to migrate their existing personal account onto the team. Team member management
-/// apps are required to set an initial given_name and surname for a user to use in the team invitation and for 'Perform
-/// as team member' actions taken on the user before they become 'active'.
+/// and send an email inviting the user to migrate their existing personal account onto the team.
 ///
 /// @param dNewMembers Details of new members to be added to the team.
 ///
@@ -1040,6 +1035,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// success or a `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBTEAMMembersAddJobStatusV2Result *, DBASYNCPollError *> *)membersAddJobStatusGetV2:(NSString *)asyncJobId;
+
+///
+/// Permanently delete the files of a user who has been removed from the team. After permanent deletion, those files
+/// will not be available to be transferred to another team member. Permission : Team member management Exactly one of
+/// team_member_id, email, or external_id must be provided to identify the user account.
+///
+/// @param user Identity of user whose files will be permanently deleted.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBTEAMMembersDeleteFormerMemberFilesError` object on failure.
+///
+- (DBRpcTask<DBNilObject *, DBTEAMMembersDeleteFormerMemberFilesError *> *)membersDeleteFormerMemberFiles:
+    (DBTEAMUserSelectorArg *)user;
 
 ///
 /// Deletes a team member's profile photo. Permission : Team member management.
@@ -1207,8 +1215,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// day period or until the account has been permanently deleted or transferred to another account (whichever comes
 /// first). Calling `membersAdd` while a user is still recoverable on your team will return with `userAlreadyOnTeam` in
 /// `DBTEAMMemberAddResult`. Accounts can have their files transferred via the admin console for a limited time, based
-/// on the version history length associated with the team (180 days for most teams). This endpoint may initiate an
-/// asynchronous job. To obtain the final result of the job, the client should periodically poll
+/// on the version history length associated with the team (180 days for most teams). Accounts can have their stacks
+/// transferred through the admin console. This only transfers stacks that they have created. This endpoint may initiate
+/// an asynchronous job. To obtain the final result of the job, the client should periodically poll
 /// `membersRemoveJobStatusGet`.
 ///
 ///
@@ -1223,31 +1232,35 @@ NS_ASSUME_NONNULL_BEGIN
 /// day period or until the account has been permanently deleted or transferred to another account (whichever comes
 /// first). Calling `membersAdd` while a user is still recoverable on your team will return with `userAlreadyOnTeam` in
 /// `DBTEAMMemberAddResult`. Accounts can have their files transferred via the admin console for a limited time, based
-/// on the version history length associated with the team (180 days for most teams). This endpoint may initiate an
-/// asynchronous job. To obtain the final result of the job, the client should periodically poll
+/// on the version history length associated with the team (180 days for most teams). Accounts can have their stacks
+/// transferred through the admin console. This only transfers stacks that they have created. This endpoint may initiate
+/// an asynchronous job. To obtain the final result of the job, the client should periodically poll
 /// `membersRemoveJobStatusGet`.
 ///
 /// @param transferDestId If provided, files from the deleted member account will be transferred to this user.
 /// @param transferAdminId If provided, errors during the transfer process will be sent via email to this user. If the
 /// transfer_dest_id argument was provided, then this argument must be provided as well.
 /// @param keepAccount Downgrade the member to a Basic account. The user will retain the email address associated with
-/// their Dropbox  account and data in their account that is not restricted to team members. In order to keep the
-/// account the argument wipeData should be set to false.
+/// their Dropbox account and data in their account that is not restricted to team members. In order to keep the account
+/// the argument wipeData should be set to false.
 /// @param retainTeamShares If provided, allows removed users to keep access to Dropbox folders (not Dropbox Paper
 /// folders) already explicitly shared with them (not via a group) when they are downgraded to a Basic account. Users
 /// will not retain access to folders that do not allow external sharing. In order to keep the sharing relationships,
 /// the arguments wipeData should be set to false and keepAccount should be set to true.
+/// @param permanentlyDeleteFiles Permanently delete the data in the deleted member's account. After permanent deletion,
+/// the data is no longer available to be transferred to a different user.
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
 /// `DBTEAMMembersRemoveError` object on failure.
 ///
 - (DBRpcTask<DBASYNCLaunchEmptyResult *, DBTEAMMembersRemoveError *> *)
-       membersRemove:(DBTEAMUserSelectorArg *)user
-            wipeData:(nullable NSNumber *)wipeData
-      transferDestId:(nullable DBTEAMUserSelectorArg *)transferDestId
-     transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
-         keepAccount:(nullable NSNumber *)keepAccount
-    retainTeamShares:(nullable NSNumber *)retainTeamShares;
+             membersRemove:(DBTEAMUserSelectorArg *)user
+                  wipeData:(nullable NSNumber *)wipeData
+            transferDestId:(nullable DBTEAMUserSelectorArg *)transferDestId
+           transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
+               keepAccount:(nullable NSNumber *)keepAccount
+          retainTeamShares:(nullable NSNumber *)retainTeamShares
+    permanentlyDeleteFiles:(nullable NSNumber *)permanentlyDeleteFiles;
 
 ///
 /// Once an async_job_id is returned from `membersRemove` , use this to poll the status of the asynchronous request.
@@ -1492,7 +1505,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// owned by this team or members of the team, but shared folders may be owned by other users or other teams. Duplicates
 /// may occur in the list.
 ///
-/// @param limit Specifying a value here has no effect.
+/// @param limit Field is deprecated. Specifying a value here has no effect.
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMTeamNamespacesListResult` object on success
 /// or a `DBTEAMTeamNamespacesListError` object on failure.
@@ -1537,46 +1550,6 @@ NS_ASSUME_NONNULL_BEGIN
     (NSString *)templateId __deprecated_msg("propertiesTemplateGet is deprecated.");
 
 ///
-/// DEPRECATED: Permission : Team member file access. The scope for the route is files.team_metadata.write.
-///
-///
-/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESListTemplateResult` object on
-/// success or a `DBFILEPROPERTIESTemplateError` object on failure.
-///
-- (DBRpcTask<DBFILEPROPERTIESListTemplateResult *, DBFILEPROPERTIESTemplateError *> *)
-    propertiesTemplateList __deprecated_msg("propertiesTemplateList is deprecated.");
-
-///
-/// DEPRECATED: Permission : Team member file access.
-///
-/// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
-///
-/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESUpdateTemplateResult` object on
-/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
-///
-- (DBRpcTask<DBFILEPROPERTIESUpdateTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)propertiesTemplateUpdate:
-    (NSString *)templateId __deprecated_msg("propertiesTemplateUpdate is deprecated.");
-
-///
-/// DEPRECATED: Permission : Team member file access.
-///
-/// @param templateId An identifier for template added by  See `templatesAddForUser` or `templatesAddForTeam`.
-/// @param name A display name for the template. template names can be up to 256 bytes.
-/// @param description_ Description for the new template. Template descriptions can be up to 1024 bytes.
-/// @param addFields Property field templates to be added to the group template. There can be up to 32 properties in a
-/// single template.
-///
-/// @return Through the response callback, the caller will receive a `DBFILEPROPERTIESUpdateTemplateResult` object on
-/// success or a `DBFILEPROPERTIESModifyTemplateError` object on failure.
-///
-- (DBRpcTask<DBFILEPROPERTIESUpdateTemplateResult *, DBFILEPROPERTIESModifyTemplateError *> *)
-    propertiesTemplateUpdate:(NSString *)templateId
-                        name:(nullable NSString *)name
-                description_:(nullable NSString *)description_
-                   addFields:(nullable NSArray<DBFILEPROPERTIESPropertyFieldTemplate *> *)addFields
-    __deprecated_msg("propertiesTemplateUpdate is deprecated.");
-
-///
 /// DEPRECATED: Retrieves reporting data about a team's user activity. Deprecated: Will be removed on July 1st 2021.
 ///
 ///
@@ -1589,7 +1562,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// DEPRECATED: Retrieves reporting data about a team's user activity. Deprecated: Will be removed on July 1st 2021.
 ///
-/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
+/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will be set
 /// to 6 months ago.
 /// @param endDate Optional ending date (exclusive).
 ///
@@ -1613,7 +1586,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// DEPRECATED: Retrieves reporting data about a team's linked devices. Deprecated: Will be removed on July 1st 2021.
 ///
-/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
+/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will be set
 /// to 6 months ago.
 /// @param endDate Optional ending date (exclusive).
 ///
@@ -1637,7 +1610,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// DEPRECATED: Retrieves reporting data about a team's membership. Deprecated: Will be removed on July 1st 2021.
 ///
-/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
+/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will be set
 /// to 6 months ago.
 /// @param endDate Optional ending date (exclusive).
 ///
@@ -1661,7 +1634,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// DEPRECATED: Retrieves reporting data about a team's storage usage. Deprecated: Will be removed on July 1st 2021.
 ///
-/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will  be set
+/// @param startDate Optional starting date (inclusive). If start_date is None or too long ago, this field will be set
 /// to 6 months ago.
 /// @param endDate Optional ending date (exclusive).
 ///
@@ -1771,7 +1744,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///
 /// Sets an active team folder's status to archived and removes all folder and file members. This endpoint cannot be
-/// used for teams that have a shared team space. Permission : Team member file access.
+/// used for teams that have a shared team space. This route will either finish synchronously, or return a job ID and do
+/// the async archive job in background. Please use team_folder/archive/check to check the job status. Permission : Team
+/// member file access.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderArchiveLaunch` object on success
@@ -1782,7 +1757,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///
 /// Sets an active team folder's status to archived and removes all folder and file members. This endpoint cannot be
-/// used for teams that have a shared team space. Permission : Team member file access.
+/// used for teams that have a shared team space. This route will either finish synchronously, or return a job ID and do
+/// the async archive job in background. Please use team_folder/archive/check to check the job status. Permission : Team
+/// member file access.
 ///
 /// @param forceAsyncOff Whether to force the archive to happen synchronously.
 ///
@@ -1794,7 +1771,10 @@ NS_ASSUME_NONNULL_BEGIN
         forceAsyncOff:(nullable NSNumber *)forceAsyncOff;
 
 ///
-/// Returns the status of an asynchronous job for archiving a team folder. Permission : Team member file access.
+/// Returns the status of an asynchronous job for archiving a team folder. The job may show '.tag' as complete, but the
+/// team folder could still be in the process of archiving (indicated by `status` in `DBTEAMTeamFolderMetadata` with
+/// 'archive_in_progress'). To confirm that the team folder is fully archived, check the field `status` in
+/// `DBTEAMTeamFolderMetadata` in the response for the value 'archived'. Permission : Team member file access.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -1894,6 +1874,16 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderRenameError *> *)teamFolderRename:(NSString *)teamFolderId
                                                                                       name:(NSString *)name;
+
+///
+/// Sets an inactive team folder's status to active. Permission: Team member file access.
+///
+/// @param teamFolderId The ID of the team folder.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderMetadata` object on success or a
+/// `DBTEAMTeamFolderRestoreError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderRestoreError *> *)teamFolderRestore:(NSString *)teamFolderId;
 
 ///
 /// Updates the sync settings on a team folder or its contents.  Use of this endpoint requires that the team has team

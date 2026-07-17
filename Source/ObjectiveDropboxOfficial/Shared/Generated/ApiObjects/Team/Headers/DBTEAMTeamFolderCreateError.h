@@ -28,21 +28,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMTeamFolderCreateErrorTag` enum type represents the possible tag
 /// states with which the `DBTEAMTeamFolderCreateError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag){
-    /// The provided name cannot be used.
-    DBTEAMTeamFolderCreateErrorInvalidFolderName,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
+  /// The provided name cannot be used.
+  DBTEAMTeamFolderCreateErrorInvalidFolderName,
 
-    /// There is already a team folder with the provided name.
-    DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed,
+  /// There is already a team folder with the provided name.
+  DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed,
 
-    /// The provided name cannot be used because it is reserved.
-    DBTEAMTeamFolderCreateErrorFolderNameReserved,
+  /// The provided name cannot be used because it is reserved.
+  DBTEAMTeamFolderCreateErrorFolderNameReserved,
 
-    /// An error occurred setting the sync settings.
-    DBTEAMTeamFolderCreateErrorSyncSettingsError,
+  /// An error occurred setting the sync settings.
+  DBTEAMTeamFolderCreateErrorSyncSettingsError,
 
-    /// (no description).
-    DBTEAMTeamFolderCreateErrorOther,
+  /// The team has reached the maximum number of team folders allowed by its
+  /// plan.
+  DBTEAMTeamFolderCreateErrorFolderCountLimitExceeded,
+
+  /// (no description).
+  DBTEAMTeamFolderCreateErrorOther,
 
 };
 
@@ -99,6 +103,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag){
 - (instancetype)initWithSyncSettingsError:(DBFILESSyncSettingsError *)syncSettingsError;
 
 ///
+/// Initializes union class with tag state of "folder_count_limit_exceeded".
+///
+/// Description of the "folder_count_limit_exceeded" tag state: The team has
+/// reached the maximum number of team folders allowed by its plan.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFolderCountLimitExceeded;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -147,6 +161,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag){
 /// "sync_settings_error".
 ///
 - (BOOL)isSyncSettingsError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_count_limit_exceeded".
+///
+/// @return Whether the union's current tag state has value
+/// "folder_count_limit_exceeded".
+///
+- (BOOL)isFolderCountLimitExceeded;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

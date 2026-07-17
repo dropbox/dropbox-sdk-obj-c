@@ -33,9 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSNumber *limit;
 
 /// A list of `FileAction`s corresponding to `FilePermission`s that should
-/// appear in the  response's `permissions` in `DBSHARINGSharedFileMetadata`
-/// field describing the actions the  authenticated user can perform on the
-/// file.
+/// appear in the response's `permissions` in `DBSHARINGSharedFileMetadata`
+/// field describing the actions the authenticated user can perform on the file.
 @property (nonatomic, readonly, nullable) NSArray<DBSHARINGFileAction *> *actions;
 
 #pragma mark - Constructors
@@ -46,9 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param limit Number of files to return max per query. Defaults to 100 if no
 /// limit is specified.
 /// @param actions A list of `FileAction`s corresponding to `FilePermission`s
-/// that should appear in the  response's `permissions` in
-/// `DBSHARINGSharedFileMetadata` field describing the actions the
-/// authenticated user can perform on the file.
+/// that should appear in the response's `permissions` in
+/// `DBSHARINGSharedFileMetadata` field describing the actions the authenticated
+/// user can perform on the file.
 ///
 /// @return An initialized instance.
 ///

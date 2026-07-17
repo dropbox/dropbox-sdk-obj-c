@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Metadata of the file.
 @property (nonatomic, readonly) DBFILESMetadata *metadata;
 
-/// The file lock state after the operation.
+/// Field is deprecated. The file lock state after the operation.
 @property (nonatomic, readonly) DBFILESFileLock *lock;
 
 #pragma mark - Constructors
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param metadata Metadata of the file.
-/// @param lock The file lock state after the operation.
+/// @param lock Field is deprecated. The file lock state after the operation.
 ///
 /// @return An initialized instance.
 ///

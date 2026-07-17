@@ -28,33 +28,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGTransferFolderErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGTransferFolderError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag){
-    /// (no description).
-    DBSHARINGTransferFolderErrorAccessError,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
+  /// (no description).
+  DBSHARINGTransferFolderErrorAccessError,
 
-    /// `toDropboxId` in `DBSHARINGTransferFolderArg` is invalid.
-    DBSHARINGTransferFolderErrorInvalidDropboxId,
+  /// `toDropboxId` in `DBSHARINGTransferFolderArg` is invalid.
+  DBSHARINGTransferFolderErrorInvalidDropboxId,
 
-    /// The new designated owner is not currently a member of the shared folder.
-    DBSHARINGTransferFolderErrorDNewOwnerNotAMember,
+  /// The new designated owner is not currently a member of the shared folder.
+  DBSHARINGTransferFolderErrorDNewOwnerNotAMember,
 
-    /// The new designated owner has not added the folder to their Dropbox.
-    DBSHARINGTransferFolderErrorDNewOwnerUnmounted,
+  /// The new designated owner has not added the folder to their Dropbox.
+  DBSHARINGTransferFolderErrorDNewOwnerUnmounted,
 
-    /// The new designated owner's email address is not verified. This
-    /// functionality is only available on accounts with a verified email
-    /// address. Users can verify their email address here
-    /// https://www.dropbox.com/help/317.
-    DBSHARINGTransferFolderErrorDNewOwnerEmailUnverified,
+  /// The new designated owner's email address is not verified. This
+  /// functionality is only available on accounts with a verified email
+  /// address. Users can verify their email address here
+  /// https://www.dropbox.com/help/317.
+  DBSHARINGTransferFolderErrorDNewOwnerEmailUnverified,
 
-    /// This action cannot be performed on a team shared folder.
-    DBSHARINGTransferFolderErrorTeamFolder,
+  /// This action cannot be performed on a team shared folder.
+  DBSHARINGTransferFolderErrorTeamFolder,
 
-    /// The current user does not have permission to perform this action.
-    DBSHARINGTransferFolderErrorNoPermission,
+  /// The current user does not have permission to perform this action.
+  DBSHARINGTransferFolderErrorNoPermission,
 
-    /// (no description).
-    DBSHARINGTransferFolderErrorOther,
+  /// (no description).
+  DBSHARINGTransferFolderErrorOther,
 
 };
 

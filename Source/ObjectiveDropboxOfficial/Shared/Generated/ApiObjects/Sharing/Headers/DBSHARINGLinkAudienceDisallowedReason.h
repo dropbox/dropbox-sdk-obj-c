@@ -30,30 +30,30 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGLinkAudienceDisallowedReasonTag` enum type represents the
 /// possible tag states with which the `DBSHARINGLinkAudienceDisallowedReason`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceDisallowedReasonTag){
-    /// The user needs to delete and recreate the link to change the visibility
-    /// policy.
-    DBSHARINGLinkAudienceDisallowedReasonDeleteAndRecreate,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceDisallowedReasonTag) {
+  /// The user needs to delete and recreate the link to change the visibility
+  /// policy.
+  DBSHARINGLinkAudienceDisallowedReasonDeleteAndRecreate,
 
-    /// The parent shared folder restricts sharing of links outside the shared
-    /// folder. To change the visibility policy, remove the restriction from the
-    /// parent shared folder.
-    DBSHARINGLinkAudienceDisallowedReasonRestrictedBySharedFolder,
+  /// The parent shared folder restricts sharing of links outside the shared
+  /// folder. To change the visibility policy, remove the restriction from the
+  /// parent shared folder.
+  DBSHARINGLinkAudienceDisallowedReasonRestrictedBySharedFolder,
 
-    /// The team policy prevents links being shared outside the team.
-    DBSHARINGLinkAudienceDisallowedReasonRestrictedByTeam,
+  /// The team policy prevents links being shared outside the team.
+  DBSHARINGLinkAudienceDisallowedReasonRestrictedByTeam,
 
-    /// The user needs to be on a team to set this policy.
-    DBSHARINGLinkAudienceDisallowedReasonUserNotOnTeam,
+  /// The user needs to be on a team to set this policy.
+  DBSHARINGLinkAudienceDisallowedReasonUserNotOnTeam,
 
-    /// The user is a basic user or is on a limited team.
-    DBSHARINGLinkAudienceDisallowedReasonUserAccountType,
+  /// The user is a basic user or is on a limited team.
+  DBSHARINGLinkAudienceDisallowedReasonUserAccountType,
 
-    /// The user does not have permission.
-    DBSHARINGLinkAudienceDisallowedReasonPermissionDenied,
+  /// The user does not have permission.
+  DBSHARINGLinkAudienceDisallowedReasonPermissionDenied,
 
-    /// (no description).
-    DBSHARINGLinkAudienceDisallowedReasonOther,
+  /// (no description).
+  DBSHARINGLinkAudienceDisallowedReasonOther,
 
 };
 

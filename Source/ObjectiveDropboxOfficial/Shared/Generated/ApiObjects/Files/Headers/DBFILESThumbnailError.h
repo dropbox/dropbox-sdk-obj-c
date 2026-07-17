@@ -28,18 +28,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESThumbnailErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESThumbnailError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailErrorTag){
-    /// An error occurs when downloading metadata for the image.
-    DBFILESThumbnailErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
+  /// An error occurs when downloading metadata for the image.
+  DBFILESThumbnailErrorPath,
 
-    /// The file extension doesn't allow conversion to a thumbnail.
-    DBFILESThumbnailErrorUnsupportedExtension,
+  /// The file extension doesn't allow conversion to a thumbnail.
+  DBFILESThumbnailErrorUnsupportedExtension,
 
-    /// The image cannot be converted to a thumbnail.
-    DBFILESThumbnailErrorUnsupportedImage,
+  /// The image cannot be converted to a thumbnail.
+  DBFILESThumbnailErrorUnsupportedImage,
 
-    /// An error occurs during thumbnail conversion.
-    DBFILESThumbnailErrorConversionError,
+  /// Encrypted content cannot be converted to a thumbnail.
+  DBFILESThumbnailErrorEncryptedContent,
+
+  /// An error occurs during thumbnail conversion.
+  DBFILESThumbnailErrorConversionError,
 
 };
 
@@ -86,6 +89,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailErrorTag){
 - (instancetype)initWithUnsupportedImage;
 
 ///
+/// Initializes union class with tag state of "encrypted_content".
+///
+/// Description of the "encrypted_content" tag state: Encrypted content cannot
+/// be converted to a thumbnail.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEncryptedContent;
+
+///
 /// Initializes union class with tag state of "conversion_error".
 ///
 /// Description of the "conversion_error" tag state: An error occurs during
@@ -125,6 +138,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailErrorTag){
 /// @return Whether the union's current tag state has value "unsupported_image".
 ///
 - (BOOL)isUnsupportedImage;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "encrypted_content".
+///
+/// @return Whether the union's current tag state has value "encrypted_content".
+///
+- (BOOL)isEncryptedContent;
 
 ///
 /// Retrieves whether the union's current tag state has value

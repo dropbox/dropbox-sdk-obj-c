@@ -427,10 +427,11 @@
                   destination:(NSString *)destination
                      deadline:(DBFILEREQUESTSFileRequestDeadline *)deadline
                          open:(NSNumber *)open
-                 description_:(NSString *)description_ {
+                 description_:(NSString *)description_
+               videoProjectId:(NSString *)videoProjectId {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"/(.|[\\r\\n])*"]](destination);
 
   self = [super init];
   if (self) {
@@ -439,12 +440,13 @@
     _deadline = deadline;
     _open = open ?: @YES;
     _description_ = description_;
+    _videoProjectId = videoProjectId;
   }
   return self;
 }
 
 - (instancetype)initWithTitle:(NSString *)title destination:(NSString *)destination {
-  return [self initWithTitle:title destination:destination deadline:nil open:nil description_:nil];
+  return [self initWithTitle:title destination:destination deadline:nil open:nil description_:nil videoProjectId:nil];
 }
 
 #pragma mark - Serialization methods
@@ -486,6 +488,9 @@
   if (self.description_ != nil) {
     result = prime * result + [self.description_ hash];
   }
+  if (self.videoProjectId != nil) {
+    result = prime * result + [self.videoProjectId hash];
+  }
 
   return prime * result;
 }
@@ -525,6 +530,11 @@
       return NO;
     }
   }
+  if (self.videoProjectId) {
+    if (![self.videoProjectId isEqual:aCreateFileRequestArgs.videoProjectId]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -546,6 +556,9 @@
   if (valueObj.description_) {
     jsonDict[@"description"] = valueObj.description_;
   }
+  if (valueObj.videoProjectId) {
+    jsonDict[@"video_project_id"] = valueObj.videoProjectId;
+  }
 
   return jsonDict;
 }
@@ -557,12 +570,14 @@
       valueDict[@"deadline"] ? [DBFILEREQUESTSFileRequestDeadlineSerializer deserialize:valueDict[@"deadline"]] : nil;
   NSNumber *open = valueDict[@"open"] ?: @YES;
   NSString *description_ = valueDict[@"description"] ?: nil;
+  NSString *videoProjectId = valueDict[@"video_project_id"] ?: nil;
 
   return [[DBFILEREQUESTSCreateFileRequestArgs alloc] initWithTitle:title
                                                         destination:destination
                                                            deadline:deadline
                                                                open:open
-                                                       description_:description_];
+                                                       description_:description_
+                                                     videoProjectId:videoProjectId];
 }
 
 @end
@@ -642,6 +657,14 @@
   return self;
 }
 
+- (instancetype)initWithNoWritePermission {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEREQUESTSFileRequestErrorNoWritePermission;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -678,6 +701,10 @@
   return _tag == DBFILEREQUESTSFileRequestErrorValidationError;
 }
 
+- (BOOL)isNoWritePermission {
+  return _tag == DBFILEREQUESTSFileRequestErrorNoWritePermission;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBFILEREQUESTSFileRequestErrorDisabledForTeam:
@@ -696,6 +723,8 @@
     return @"DBFILEREQUESTSFileRequestErrorEmailUnverified";
   case DBFILEREQUESTSFileRequestErrorValidationError:
     return @"DBFILEREQUESTSFileRequestErrorValidationError";
+  case DBFILEREQUESTSFileRequestErrorNoWritePermission:
+    return @"DBFILEREQUESTSFileRequestErrorNoWritePermission";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -756,6 +785,9 @@
   case DBFILEREQUESTSFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILEREQUESTSFileRequestErrorNoWritePermission:
+    result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -797,6 +829,8 @@
     return [[self tagName] isEqual:[aFileRequestError tagName]];
   case DBFILEREQUESTSFileRequestErrorValidationError:
     return [[self tagName] isEqual:[aFileRequestError tagName]];
+  case DBFILEREQUESTSFileRequestErrorNoWritePermission:
+    return [[self tagName] isEqual:[aFileRequestError tagName]];
   }
   return YES;
 }
@@ -826,6 +860,8 @@
     jsonDict[@".tag"] = @"email_unverified";
   } else if ([valueObj isValidationError]) {
     jsonDict[@".tag"] = @"validation_error";
+  } else if ([valueObj isNoWritePermission]) {
+    jsonDict[@".tag"] = @"no_write_permission";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -852,6 +888,8 @@
     return [[DBFILEREQUESTSFileRequestError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"validation_error"]) {
     return [[DBFILEREQUESTSFileRequestError alloc] initWithValidationError];
+  } else if ([tag isEqualToString:@"no_write_permission"]) {
+    return [[DBFILEREQUESTSFileRequestError alloc] initWithNoWritePermission];
   } else {
     return [[DBFILEREQUESTSFileRequestError alloc] initWithOther];
   }
@@ -934,6 +972,14 @@
   return self;
 }
 
+- (instancetype)initWithNoWritePermission {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEREQUESTSCreateFileRequestErrorNoWritePermission;
+  }
+  return self;
+}
+
 - (instancetype)initWithInvalidLocation {
   self = [super init];
   if (self) {
@@ -986,6 +1032,10 @@
   return _tag == DBFILEREQUESTSCreateFileRequestErrorValidationError;
 }
 
+- (BOOL)isNoWritePermission {
+  return _tag == DBFILEREQUESTSCreateFileRequestErrorNoWritePermission;
+}
+
 - (BOOL)isInvalidLocation {
   return _tag == DBFILEREQUESTSCreateFileRequestErrorInvalidLocation;
 }
@@ -1012,6 +1062,8 @@
     return @"DBFILEREQUESTSCreateFileRequestErrorEmailUnverified";
   case DBFILEREQUESTSCreateFileRequestErrorValidationError:
     return @"DBFILEREQUESTSCreateFileRequestErrorValidationError";
+  case DBFILEREQUESTSCreateFileRequestErrorNoWritePermission:
+    return @"DBFILEREQUESTSCreateFileRequestErrorNoWritePermission";
   case DBFILEREQUESTSCreateFileRequestErrorInvalidLocation:
     return @"DBFILEREQUESTSCreateFileRequestErrorInvalidLocation";
   case DBFILEREQUESTSCreateFileRequestErrorRateLimit:
@@ -1076,6 +1128,9 @@
   case DBFILEREQUESTSCreateFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILEREQUESTSCreateFileRequestErrorNoWritePermission:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSCreateFileRequestErrorInvalidLocation:
     result = prime * result + [[self tagName] hash];
     break;
@@ -1123,6 +1178,8 @@
     return [[self tagName] isEqual:[aCreateFileRequestError tagName]];
   case DBFILEREQUESTSCreateFileRequestErrorValidationError:
     return [[self tagName] isEqual:[aCreateFileRequestError tagName]];
+  case DBFILEREQUESTSCreateFileRequestErrorNoWritePermission:
+    return [[self tagName] isEqual:[aCreateFileRequestError tagName]];
   case DBFILEREQUESTSCreateFileRequestErrorInvalidLocation:
     return [[self tagName] isEqual:[aCreateFileRequestError tagName]];
   case DBFILEREQUESTSCreateFileRequestErrorRateLimit:
@@ -1156,6 +1213,8 @@
     jsonDict[@".tag"] = @"email_unverified";
   } else if ([valueObj isValidationError]) {
     jsonDict[@".tag"] = @"validation_error";
+  } else if ([valueObj isNoWritePermission]) {
+    jsonDict[@".tag"] = @"no_write_permission";
   } else if ([valueObj isInvalidLocation]) {
     jsonDict[@".tag"] = @"invalid_location";
   } else if ([valueObj isRateLimit]) {
@@ -1186,6 +1245,8 @@
     return [[DBFILEREQUESTSCreateFileRequestError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"validation_error"]) {
     return [[DBFILEREQUESTSCreateFileRequestError alloc] initWithValidationError];
+  } else if ([tag isEqualToString:@"no_write_permission"]) {
+    return [[DBFILEREQUESTSCreateFileRequestError alloc] initWithNoWritePermission];
   } else if ([tag isEqualToString:@"invalid_location"]) {
     return [[DBFILEREQUESTSCreateFileRequestError alloc] initWithInvalidLocation];
   } else if ([tag isEqualToString:@"rate_limit"]) {
@@ -1272,6 +1333,14 @@
   return self;
 }
 
+- (instancetype)initWithNoWritePermission {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoWritePermission;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -1308,6 +1377,10 @@
   return _tag == DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError;
 }
 
+- (BOOL)isNoWritePermission {
+  return _tag == DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoWritePermission;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorDisabledForTeam:
@@ -1326,6 +1399,8 @@
     return @"DBFILEREQUESTSDeleteAllClosedFileRequestsErrorEmailUnverified";
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError:
     return @"DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError";
+  case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoWritePermission:
+    return @"DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoWritePermission";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -1386,6 +1461,9 @@
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoWritePermission:
+    result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1428,6 +1506,8 @@
     return [[self tagName] isEqual:[aDeleteAllClosedFileRequestsError tagName]];
   case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorValidationError:
     return [[self tagName] isEqual:[aDeleteAllClosedFileRequestsError tagName]];
+  case DBFILEREQUESTSDeleteAllClosedFileRequestsErrorNoWritePermission:
+    return [[self tagName] isEqual:[aDeleteAllClosedFileRequestsError tagName]];
   }
   return YES;
 }
@@ -1457,6 +1537,8 @@
     jsonDict[@".tag"] = @"email_unverified";
   } else if ([valueObj isValidationError]) {
     jsonDict[@".tag"] = @"validation_error";
+  } else if ([valueObj isNoWritePermission]) {
+    jsonDict[@".tag"] = @"no_write_permission";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -1483,6 +1565,8 @@
     return [[DBFILEREQUESTSDeleteAllClosedFileRequestsError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"validation_error"]) {
     return [[DBFILEREQUESTSDeleteAllClosedFileRequestsError alloc] initWithValidationError];
+  } else if ([tag isEqualToString:@"no_write_permission"]) {
+    return [[DBFILEREQUESTSDeleteAllClosedFileRequestsError alloc] initWithNoWritePermission];
   } else {
     return [[DBFILEREQUESTSDeleteAllClosedFileRequestsError alloc] initWithOther];
   }
@@ -1789,6 +1873,14 @@
   return self;
 }
 
+- (instancetype)initWithNoWritePermission {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEREQUESTSDeleteFileRequestErrorNoWritePermission;
+  }
+  return self;
+}
+
 - (instancetype)initWithFileRequestOpen {
   self = [super init];
   if (self) {
@@ -1833,6 +1925,10 @@
   return _tag == DBFILEREQUESTSDeleteFileRequestErrorValidationError;
 }
 
+- (BOOL)isNoWritePermission {
+  return _tag == DBFILEREQUESTSDeleteFileRequestErrorNoWritePermission;
+}
+
 - (BOOL)isFileRequestOpen {
   return _tag == DBFILEREQUESTSDeleteFileRequestErrorFileRequestOpen;
 }
@@ -1855,6 +1951,8 @@
     return @"DBFILEREQUESTSDeleteFileRequestErrorEmailUnverified";
   case DBFILEREQUESTSDeleteFileRequestErrorValidationError:
     return @"DBFILEREQUESTSDeleteFileRequestErrorValidationError";
+  case DBFILEREQUESTSDeleteFileRequestErrorNoWritePermission:
+    return @"DBFILEREQUESTSDeleteFileRequestErrorNoWritePermission";
   case DBFILEREQUESTSDeleteFileRequestErrorFileRequestOpen:
     return @"DBFILEREQUESTSDeleteFileRequestErrorFileRequestOpen";
   }
@@ -1917,6 +2015,9 @@
   case DBFILEREQUESTSDeleteFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILEREQUESTSDeleteFileRequestErrorNoWritePermission:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBFILEREQUESTSDeleteFileRequestErrorFileRequestOpen:
     result = prime * result + [[self tagName] hash];
     break;
@@ -1961,6 +2062,8 @@
     return [[self tagName] isEqual:[aDeleteFileRequestError tagName]];
   case DBFILEREQUESTSDeleteFileRequestErrorValidationError:
     return [[self tagName] isEqual:[aDeleteFileRequestError tagName]];
+  case DBFILEREQUESTSDeleteFileRequestErrorNoWritePermission:
+    return [[self tagName] isEqual:[aDeleteFileRequestError tagName]];
   case DBFILEREQUESTSDeleteFileRequestErrorFileRequestOpen:
     return [[self tagName] isEqual:[aDeleteFileRequestError tagName]];
   }
@@ -1992,6 +2095,8 @@
     jsonDict[@".tag"] = @"email_unverified";
   } else if ([valueObj isValidationError]) {
     jsonDict[@".tag"] = @"validation_error";
+  } else if ([valueObj isNoWritePermission]) {
+    jsonDict[@".tag"] = @"no_write_permission";
   } else if ([valueObj isFileRequestOpen]) {
     jsonDict[@".tag"] = @"file_request_open";
   } else {
@@ -2020,6 +2125,8 @@
     return [[DBFILEREQUESTSDeleteFileRequestError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"validation_error"]) {
     return [[DBFILEREQUESTSDeleteFileRequestError alloc] initWithValidationError];
+  } else if ([tag isEqualToString:@"no_write_permission"]) {
+    return [[DBFILEREQUESTSDeleteFileRequestError alloc] initWithNoWritePermission];
   } else if ([tag isEqualToString:@"file_request_open"]) {
     return [[DBFILEREQUESTSDeleteFileRequestError alloc] initWithFileRequestOpen];
   } else {
@@ -2158,16 +2265,17 @@
                   fileCount:(NSNumber *)fileCount
                 destination:(NSString *)destination
                    deadline:(DBFILEREQUESTSFileRequestDeadline *)deadline
-               description_:(NSString *)description_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
+               description_:(NSString *)description_
+             videoProjectId:(NSString *)videoProjectId {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z]+"]](id_);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](url);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
   [DBStoneValidators nonnullValidator:nil](created);
   [DBStoneValidators nonnullValidator:nil](isOpen);
   [DBStoneValidators nonnullValidator:nil](fileCount);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                  pattern:@"/(.|[\\r\\n])*"]](destination);
 
   self = [super init];
   if (self) {
@@ -2180,6 +2288,7 @@
     _isOpen = isOpen;
     _fileCount = fileCount;
     _description_ = description_;
+    _videoProjectId = videoProjectId;
   }
   return self;
 }
@@ -2198,7 +2307,8 @@
                  fileCount:fileCount
                destination:nil
                   deadline:nil
-              description_:nil];
+              description_:nil
+            videoProjectId:nil];
 }
 
 #pragma mark - Serialization methods
@@ -2245,6 +2355,9 @@
   }
   if (self.description_ != nil) {
     result = prime * result + [self.description_ hash];
+  }
+  if (self.videoProjectId != nil) {
+    result = prime * result + [self.videoProjectId hash];
   }
 
   return prime * result;
@@ -2299,6 +2412,11 @@
       return NO;
     }
   }
+  if (self.videoProjectId) {
+    if (![self.videoProjectId isEqual:aFileRequest.videoProjectId]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -2326,6 +2444,9 @@
   if (valueObj.description_) {
     jsonDict[@"description"] = valueObj.description_;
   }
+  if (valueObj.videoProjectId) {
+    jsonDict[@"video_project_id"] = valueObj.videoProjectId;
+  }
 
   return jsonDict;
 }
@@ -2341,6 +2462,7 @@
   DBFILEREQUESTSFileRequestDeadline *deadline =
       valueDict[@"deadline"] ? [DBFILEREQUESTSFileRequestDeadlineSerializer deserialize:valueDict[@"deadline"]] : nil;
   NSString *description_ = valueDict[@"description"] ?: nil;
+  NSString *videoProjectId = valueDict[@"video_project_id"] ?: nil;
 
   return [[DBFILEREQUESTSFileRequest alloc] initWithId_:id_
                                                     url:url
@@ -2350,7 +2472,8 @@
                                               fileCount:fileCount
                                             destination:destination
                                                deadline:deadline
-                                           description_:description_];
+                                           description_:description_
+                                         videoProjectId:videoProjectId];
 }
 
 @end
@@ -2486,8 +2609,8 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithId_:(NSString *)id_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z]+"]](id_);
 
   self = [super init];
   if (self) {
@@ -2650,6 +2773,14 @@
   return self;
 }
 
+- (instancetype)initWithNoWritePermission {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEREQUESTSGetFileRequestErrorNoWritePermission;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -2686,6 +2817,10 @@
   return _tag == DBFILEREQUESTSGetFileRequestErrorValidationError;
 }
 
+- (BOOL)isNoWritePermission {
+  return _tag == DBFILEREQUESTSGetFileRequestErrorNoWritePermission;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBFILEREQUESTSGetFileRequestErrorDisabledForTeam:
@@ -2704,6 +2839,8 @@
     return @"DBFILEREQUESTSGetFileRequestErrorEmailUnverified";
   case DBFILEREQUESTSGetFileRequestErrorValidationError:
     return @"DBFILEREQUESTSGetFileRequestErrorValidationError";
+  case DBFILEREQUESTSGetFileRequestErrorNoWritePermission:
+    return @"DBFILEREQUESTSGetFileRequestErrorNoWritePermission";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -2764,6 +2901,9 @@
   case DBFILEREQUESTSGetFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILEREQUESTSGetFileRequestErrorNoWritePermission:
+    result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -2805,6 +2945,8 @@
     return [[self tagName] isEqual:[aGetFileRequestError tagName]];
   case DBFILEREQUESTSGetFileRequestErrorValidationError:
     return [[self tagName] isEqual:[aGetFileRequestError tagName]];
+  case DBFILEREQUESTSGetFileRequestErrorNoWritePermission:
+    return [[self tagName] isEqual:[aGetFileRequestError tagName]];
   }
   return YES;
 }
@@ -2834,6 +2976,8 @@
     jsonDict[@".tag"] = @"email_unverified";
   } else if ([valueObj isValidationError]) {
     jsonDict[@".tag"] = @"validation_error";
+  } else if ([valueObj isNoWritePermission]) {
+    jsonDict[@".tag"] = @"no_write_permission";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -2860,6 +3004,8 @@
     return [[DBFILEREQUESTSGetFileRequestError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"validation_error"]) {
     return [[DBFILEREQUESTSGetFileRequestError alloc] initWithValidationError];
+  } else if ([tag isEqualToString:@"no_write_permission"]) {
+    return [[DBFILEREQUESTSGetFileRequestError alloc] initWithNoWritePermission];
   } else {
     return [[DBFILEREQUESTSGetFileRequestError alloc] initWithOther];
   }
@@ -3878,8 +4024,9 @@
   NSString *cursor = valueDict[@"cursor"];
   NSNumber *hasMore = valueDict[@"has_more"];
 
-  return
-      [[DBFILEREQUESTSListFileRequestsV2Result alloc] initWithFileRequests:fileRequests cursor:cursor hasMore:hasMore];
+  return [[DBFILEREQUESTSListFileRequestsV2Result alloc] initWithFileRequests:fileRequests
+                                                                       cursor:cursor
+                                                                      hasMore:hasMore];
 }
 
 @end
@@ -3901,11 +4048,11 @@
                    deadline:(DBFILEREQUESTSUpdateFileRequestDeadline *)deadline
                        open:(NSNumber *)open
                description_:(NSString *)description_ {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"[-_0-9a-zA-Z]+"]](id_);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z]+"]](id_);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](title);
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](destination);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                  pattern:@"/(.|[\\r\\n])*"]](destination);
 
   self = [super init];
   if (self) {
@@ -4336,6 +4483,14 @@
   return self;
 }
 
+- (instancetype)initWithNoWritePermission {
+  self = [super init];
+  if (self) {
+    _tag = DBFILEREQUESTSUpdateFileRequestErrorNoWritePermission;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -4372,6 +4527,10 @@
   return _tag == DBFILEREQUESTSUpdateFileRequestErrorValidationError;
 }
 
+- (BOOL)isNoWritePermission {
+  return _tag == DBFILEREQUESTSUpdateFileRequestErrorNoWritePermission;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBFILEREQUESTSUpdateFileRequestErrorDisabledForTeam:
@@ -4390,6 +4549,8 @@
     return @"DBFILEREQUESTSUpdateFileRequestErrorEmailUnverified";
   case DBFILEREQUESTSUpdateFileRequestErrorValidationError:
     return @"DBFILEREQUESTSUpdateFileRequestErrorValidationError";
+  case DBFILEREQUESTSUpdateFileRequestErrorNoWritePermission:
+    return @"DBFILEREQUESTSUpdateFileRequestErrorNoWritePermission";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -4450,6 +4611,9 @@
   case DBFILEREQUESTSUpdateFileRequestErrorValidationError:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILEREQUESTSUpdateFileRequestErrorNoWritePermission:
+    result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -4491,6 +4655,8 @@
     return [[self tagName] isEqual:[anUpdateFileRequestError tagName]];
   case DBFILEREQUESTSUpdateFileRequestErrorValidationError:
     return [[self tagName] isEqual:[anUpdateFileRequestError tagName]];
+  case DBFILEREQUESTSUpdateFileRequestErrorNoWritePermission:
+    return [[self tagName] isEqual:[anUpdateFileRequestError tagName]];
   }
   return YES;
 }
@@ -4520,6 +4686,8 @@
     jsonDict[@".tag"] = @"email_unverified";
   } else if ([valueObj isValidationError]) {
     jsonDict[@".tag"] = @"validation_error";
+  } else if ([valueObj isNoWritePermission]) {
+    jsonDict[@".tag"] = @"no_write_permission";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -4546,6 +4714,8 @@
     return [[DBFILEREQUESTSUpdateFileRequestError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"validation_error"]) {
     return [[DBFILEREQUESTSUpdateFileRequestError alloc] initWithValidationError];
+  } else if ([tag isEqualToString:@"no_write_permission"]) {
+    return [[DBFILEREQUESTSUpdateFileRequestError alloc] initWithNoWritePermission];
   } else {
     return [[DBFILEREQUESTSUpdateFileRequestError alloc] initWithOther];
   }

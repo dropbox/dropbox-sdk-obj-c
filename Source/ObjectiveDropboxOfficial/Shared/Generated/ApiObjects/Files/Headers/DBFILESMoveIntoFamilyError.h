@@ -27,12 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESMoveIntoFamilyErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESMoveIntoFamilyError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESMoveIntoFamilyErrorTag){
-    /// Moving shared folder into Family Room folder is not allowed.
-    DBFILESMoveIntoFamilyErrorIsSharedFolder,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESMoveIntoFamilyErrorTag) {
+  /// Moving shared folder into Family Room folder is not allowed.
+  DBFILESMoveIntoFamilyErrorIsSharedFolder,
 
-    /// (no description).
-    DBFILESMoveIntoFamilyErrorOther,
+  /// (no description).
+  DBFILESMoveIntoFamilyErrorOther,
 
 };
 

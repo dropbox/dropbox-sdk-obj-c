@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `UserCustomQuotaResult` struct.
 ///
-/// User and their custom quota in GB (1 TB = 1024 GB).  No quota returns if the
+/// User and their custom quota in GB (1 TB = 1024 GB). No quota returns if the
 /// user has no custom quota set.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and

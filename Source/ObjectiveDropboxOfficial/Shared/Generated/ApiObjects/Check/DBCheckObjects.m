@@ -108,6 +108,159 @@
 
 @end
 
+#import "DBCHECKEchoError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBCHECKEchoError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUserRequested {
+  self = [super init];
+  if (self) {
+    _tag = DBCHECKEchoErrorUserRequested;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBCHECKEchoErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUserRequested {
+  return _tag == DBCHECKEchoErrorUserRequested;
+}
+
+- (BOOL)isOther {
+  return _tag == DBCHECKEchoErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBCHECKEchoErrorUserRequested:
+    return @"DBCHECKEchoErrorUserRequested";
+  case DBCHECKEchoErrorOther:
+    return @"DBCHECKEchoErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBCHECKEchoErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBCHECKEchoErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBCHECKEchoErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBCHECKEchoErrorUserRequested:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBCHECKEchoErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToEchoError:other];
+}
+
+- (BOOL)isEqualToEchoError:(DBCHECKEchoError *)anEchoError {
+  if (self == anEchoError) {
+    return YES;
+  }
+  if (self.tag != anEchoError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBCHECKEchoErrorUserRequested:
+    return [[self tagName] isEqual:[anEchoError tagName]];
+  case DBCHECKEchoErrorOther:
+    return [[self tagName] isEqual:[anEchoError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBCHECKEchoErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBCHECKEchoError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUserRequested]) {
+    jsonDict[@".tag"] = @"user_requested";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBCHECKEchoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"user_requested"]) {
+    return [[DBCHECKEchoError alloc] initWithUserRequested];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBCHECKEchoError alloc] initWithOther];
+  } else {
+    return [[DBCHECKEchoError alloc] initWithOther];
+  }
+}
+
+@end
+
 #import "DBCHECKEchoResult.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"

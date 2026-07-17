@@ -30,24 +30,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGSharedFolderAccessErrorTag` enum type represents the possible
 /// tag states with which the `DBSHARINGSharedFolderAccessError` union can
 /// exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag){
-    /// This shared folder ID is invalid.
-    DBSHARINGSharedFolderAccessErrorInvalidId,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
+  /// This shared folder ID is invalid.
+  DBSHARINGSharedFolderAccessErrorInvalidId,
 
-    /// The user is not a member of the shared folder thus cannot access it.
-    DBSHARINGSharedFolderAccessErrorNotAMember,
+  /// The user is not a member of the shared folder thus cannot access it.
+  DBSHARINGSharedFolderAccessErrorNotAMember,
 
-    /// The user does not exist or their account is disabled.
-    DBSHARINGSharedFolderAccessErrorInvalidMember,
+  /// The user does not exist or their account is disabled.
+  DBSHARINGSharedFolderAccessErrorInvalidMember,
 
-    /// Never set.
-    DBSHARINGSharedFolderAccessErrorEmailUnverified,
+  /// Field is deprecated. Never set.
+  DBSHARINGSharedFolderAccessErrorEmailUnverified,
 
-    /// The shared folder is unmounted.
-    DBSHARINGSharedFolderAccessErrorUnmounted,
+  /// The shared folder is unmounted.
+  DBSHARINGSharedFolderAccessErrorUnmounted,
 
-    /// (no description).
-    DBSHARINGSharedFolderAccessErrorOther,
+  /// (no description).
+  DBSHARINGSharedFolderAccessErrorOther,
 
 };
 
@@ -88,7 +88,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag){
 ///
 /// Initializes union class with tag state of "email_unverified".
 ///
-/// Description of the "email_unverified" tag state: Never set.
+/// Description of the "email_unverified" tag state: Field is deprecated. Never
+/// set.
 ///
 /// @return An initialized instance.
 ///

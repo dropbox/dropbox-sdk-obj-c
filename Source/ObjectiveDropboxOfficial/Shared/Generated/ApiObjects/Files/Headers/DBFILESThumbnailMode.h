@@ -27,16 +27,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESThumbnailModeTag` enum type represents the possible tag states
 /// with which the `DBFILESThumbnailMode` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailModeTag){
-    /// Scale down the image to fit within the given size.
-    DBFILESThumbnailModeStrict,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailModeTag) {
+  /// Scale down the image to fit within the given size.
+  DBFILESThumbnailModeStrict,
 
-    /// Scale down the image to fit within the given size or its transpose.
-    DBFILESThumbnailModeBestfit,
+  /// Scale down the image to fit within the given size or its transpose.
+  DBFILESThumbnailModeBestfit,
 
-    /// Scale down the image to completely cover the given size or its
-    /// transpose.
-    DBFILESThumbnailModeFitoneBestfit,
+  /// Scale down the image to completely cover the given size or its
+  /// transpose.
+  DBFILESThumbnailModeFitoneBestfit,
+
+  /// Don't resize the image at all.
+  DBFILESThumbnailModeOriginal,
 
 };
 
@@ -75,6 +78,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailModeTag){
 ///
 - (instancetype)initWithFitoneBestfit;
 
+///
+/// Initializes union class with tag state of "original".
+///
+/// Description of the "original" tag state: Don't resize the image at all.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithOriginal;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -99,6 +111,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailModeTag){
 /// @return Whether the union's current tag state has value "fitone_bestfit".
 ///
 - (BOOL)isFitoneBestfit;
+
+///
+/// Retrieves whether the union's current tag state has value "original".
+///
+/// @return Whether the union's current tag state has value "original".
+///
+- (BOOL)isOriginal;
 
 ///
 /// Retrieves string value of union's current tag state.

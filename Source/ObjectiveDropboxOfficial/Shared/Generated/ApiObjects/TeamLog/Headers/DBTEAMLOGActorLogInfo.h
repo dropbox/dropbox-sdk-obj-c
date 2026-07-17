@@ -32,27 +32,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGActorLogInfoTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGActorLogInfo` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGActorLogInfoTag){
-    /// The admin who did the action.
-    DBTEAMLOGActorLogInfoAdmin,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGActorLogInfoTag) {
+  /// The admin who did the action.
+  DBTEAMLOGActorLogInfoAdmin,
 
-    /// Anonymous actor.
-    DBTEAMLOGActorLogInfoAnonymous,
+  /// Anonymous actor.
+  DBTEAMLOGActorLogInfoAnonymous,
 
-    /// The application who did the action.
-    DBTEAMLOGActorLogInfoApp,
+  /// The application who did the action.
+  DBTEAMLOGActorLogInfoApp,
 
-    /// Action done by Dropbox.
-    DBTEAMLOGActorLogInfoDropbox,
+  /// Action done by Dropbox.
+  DBTEAMLOGActorLogInfoDropbox,
 
-    /// Action done by reseller.
-    DBTEAMLOGActorLogInfoReseller,
+  /// Action done by reseller.
+  DBTEAMLOGActorLogInfoReseller,
 
-    /// The user who did the action.
-    DBTEAMLOGActorLogInfoUser,
+  /// The user who did the action.
+  DBTEAMLOGActorLogInfoUser,
 
-    /// (no description).
-    DBTEAMLOGActorLogInfoOther,
+  /// (no description).
+  DBTEAMLOGActorLogInfoOther,
 
 };
 

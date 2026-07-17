@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param group Specify a group.
 /// @param returnMembers Whether to return the list of members in the group.
-/// Note that the default value will cause all the group members  to be returned
+/// Note that the default value will cause all the group members to be returned
 /// in the response. This may take a long time for large groups.
 /// @param dNewGroupName Optional argument. Set group name to this if provided.
 /// @param dNewGroupExternalId Optional argument. New group external ID. If the

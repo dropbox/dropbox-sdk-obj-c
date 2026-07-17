@@ -33,49 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMMemberAddV2ResultTag` enum type represents the possible tag
 /// states with which the `DBTEAMMemberAddV2Result` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMemberAddV2ResultTag){
-    /// Team is already full. The organization has no available licenses.
-    DBTEAMMemberAddV2ResultTeamLicenseLimit,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMemberAddV2ResultTag) {
+  /// Team is already full. The organization has no available licenses.
+  DBTEAMMemberAddV2ResultTeamLicenseLimit,
 
-    /// Team is already full. The free team member limit has been reached.
-    DBTEAMMemberAddV2ResultFreeTeamMemberLimitReached,
+  /// Team is already full. The free team member limit has been reached.
+  DBTEAMMemberAddV2ResultFreeTeamMemberLimitReached,
 
-    /// User is already on this team. The provided email address is associated
-    /// with a user who is already a member of (including in recoverable state)
-    /// or invited to the team.
-    DBTEAMMemberAddV2ResultUserAlreadyOnTeam,
+  /// User is already on this team. The provided email address is associated
+  /// with a user who is already a member of (including in recoverable state)
+  /// or invited to the team.
+  DBTEAMMemberAddV2ResultUserAlreadyOnTeam,
 
-    /// User is already on another team. The provided email address is
-    /// associated with a user that is already a member or invited to another
-    /// team.
-    DBTEAMMemberAddV2ResultUserOnAnotherTeam,
+  /// User is already on another team. The provided email address is
+  /// associated with a user that is already a member or invited to another
+  /// team.
+  DBTEAMMemberAddV2ResultUserOnAnotherTeam,
 
-    /// User is already paired.
-    DBTEAMMemberAddV2ResultUserAlreadyPaired,
+  /// User is already paired.
+  DBTEAMMemberAddV2ResultUserAlreadyPaired,
 
-    /// User migration has failed.
-    DBTEAMMemberAddV2ResultUserMigrationFailed,
+  /// User migration has failed.
+  DBTEAMMemberAddV2ResultUserMigrationFailed,
 
-    /// A user with the given external member ID already exists on the team
-    /// (including in recoverable state).
-    DBTEAMMemberAddV2ResultDuplicateExternalMemberId,
+  /// A user with the given external member ID already exists on the team
+  /// (including in recoverable state).
+  DBTEAMMemberAddV2ResultDuplicateExternalMemberId,
 
-    /// A user with the given persistent ID already exists on the team
-    /// (including in recoverable state).
-    DBTEAMMemberAddV2ResultDuplicateMemberPersistentId,
+  /// A user with the given persistent ID already exists on the team
+  /// (including in recoverable state).
+  DBTEAMMemberAddV2ResultDuplicateMemberPersistentId,
 
-    /// Persistent ID is only available to teams with persistent ID SAML
-    /// configuration. Please contact Dropbox for more information.
-    DBTEAMMemberAddV2ResultPersistentIdDisabled,
+  /// Persistent ID is only available to teams with persistent ID SAML
+  /// configuration. Please contact Dropbox for more information.
+  DBTEAMMemberAddV2ResultPersistentIdDisabled,
 
-    /// User creation has failed.
-    DBTEAMMemberAddV2ResultUserCreationFailed,
+  /// User creation has failed.
+  DBTEAMMemberAddV2ResultUserCreationFailed,
 
-    /// Describes a user that was successfully added to the team.
-    DBTEAMMemberAddV2ResultSuccess,
+  /// Describes a user that was successfully added to the team.
+  DBTEAMMemberAddV2ResultSuccess,
 
-    /// (no description).
-    DBTEAMMemberAddV2ResultOther,
+  /// (no description).
+  DBTEAMMemberAddV2ResultOther,
 
 };
 

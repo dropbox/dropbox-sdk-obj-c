@@ -27,18 +27,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGSharedLinkErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGSharedLinkError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag){
-    /// The shared link wasn't found.
-    DBSHARINGSharedLinkErrorSharedLinkNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
+  /// The shared link wasn't found.
+  DBSHARINGSharedLinkErrorSharedLinkNotFound,
 
-    /// The caller is not allowed to access this shared link.
-    DBSHARINGSharedLinkErrorSharedLinkAccessDenied,
+  /// The caller is not allowed to access this shared link.
+  DBSHARINGSharedLinkErrorSharedLinkAccessDenied,
 
-    /// This type of link is not supported; use `files` instead.
-    DBSHARINGSharedLinkErrorUnsupportedLinkType,
+  /// This type of link is not supported; use `files` instead.
+  DBSHARINGSharedLinkErrorUnsupportedLinkType,
 
-    /// (no description).
-    DBSHARINGSharedLinkErrorOther,
+  /// Private shared links do not support `path` or `link_password` parameter
+  /// fields.
+  DBSHARINGSharedLinkErrorUnsupportedParameterField,
+
+  /// (no description).
+  DBSHARINGSharedLinkErrorOther,
 
 };
 
@@ -78,6 +82,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag){
 - (instancetype)initWithUnsupportedLinkType;
 
 ///
+/// Initializes union class with tag state of "unsupported_parameter_field".
+///
+/// Description of the "unsupported_parameter_field" tag state: Private shared
+/// links do not support `path` or `link_password` parameter fields.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnsupportedParameterField;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -114,6 +128,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag){
 /// "unsupported_link_type".
 ///
 - (BOOL)isUnsupportedLinkType;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_parameter_field".
+///
+/// @return Whether the union's current tag state has value
+/// "unsupported_parameter_field".
+///
+- (BOOL)isUnsupportedParameterField;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

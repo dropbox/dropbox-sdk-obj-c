@@ -28,25 +28,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGShareFolderErrorBaseTag` enum type represents the possible tag
 /// states with which the `DBSHARINGShareFolderErrorBase` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorBaseTag){
-    /// This user's email address is not verified. This functionality is only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBSHARINGShareFolderErrorBaseEmailUnverified,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorBaseTag) {
+  /// This user's email address is not verified. This functionality is only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBSHARINGShareFolderErrorBaseEmailUnverified,
 
-    /// `path` in `DBSHARINGShareFolderArg` is invalid.
-    DBSHARINGShareFolderErrorBaseBadPath,
+  /// `path` in `DBSHARINGShareFolderArg` is invalid.
+  DBSHARINGShareFolderErrorBaseBadPath,
 
-    /// Team policy is more restrictive than `memberPolicy` in
-    /// `DBSHARINGShareFolderArg`.
-    DBSHARINGShareFolderErrorBaseTeamPolicyDisallowsMemberPolicy,
+  /// Team policy or group sharing settings are more restrictive than
+  /// `memberPolicy` in `DBSHARINGShareFolderArg`.
+  DBSHARINGShareFolderErrorBaseTeamPolicyDisallowsMemberPolicy,
 
-    /// The current user's account is not allowed to select the specified
-    /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
-    DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy,
+  /// The current user's account is not allowed to select the specified
+  /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
+  DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy,
 
-    /// (no description).
-    DBSHARINGShareFolderErrorBaseOther,
+  /// (no description).
+  DBSHARINGShareFolderErrorBaseOther,
 
 };
 
@@ -89,7 +89,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorBaseTag){
 /// "team_policy_disallows_member_policy".
 ///
 /// Description of the "team_policy_disallows_member_policy" tag state: Team
-/// policy is more restrictive than `memberPolicy` in `DBSHARINGShareFolderArg`.
+/// policy or group sharing settings are more restrictive than `memberPolicy` in
+/// `DBSHARINGShareFolderArg`.
 ///
 /// @return An initialized instance.
 ///

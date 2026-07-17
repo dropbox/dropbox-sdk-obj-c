@@ -14,6 +14,7 @@
 #import "DBFILESUserAuthRoutes.h"
 #import "DBOPENIDUserAuthRoutes.h"
 #import "DBPAPERUserAuthRoutes.h"
+#import "DBRIVIERAUserAuthRoutes.h"
 #import "DBSHARINGUserAuthRoutes.h"
 #import "DBTransportClientProtocol.h"
 #import "DBUSERSUserAuthRoutes.h"
@@ -33,6 +34,7 @@
     _filesRoutes = [[DBFILESUserAuthRoutes alloc] init:client];
     _openidRoutes = [[DBOPENIDUserAuthRoutes alloc] init:client];
     _paperRoutes = [[DBPAPERUserAuthRoutes alloc] init:client];
+    _rivieraRoutes = [[DBRIVIERAUserAuthRoutes alloc] init:client];
     _sharingRoutes = [[DBSHARINGUserAuthRoutes alloc] init:client];
     _usersRoutes = [[DBUSERSUserAuthRoutes alloc] init:client];
   }

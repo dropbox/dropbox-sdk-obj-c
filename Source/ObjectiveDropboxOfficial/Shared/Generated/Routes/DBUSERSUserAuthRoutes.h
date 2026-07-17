@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBUSERSBasicAccount *, DBUSERSGetAccountError *> *)getAccount:(NSString *)accountId;
 
 ///
-/// Get information about multiple user accounts.  At most 300 accounts may be queried per request.
+/// Get information about multiple user accounts. At most 300 accounts may be queried per request.
 ///
 /// @param accountIds List of user account identifiers.  Should not contain any duplicate account IDs.
 ///

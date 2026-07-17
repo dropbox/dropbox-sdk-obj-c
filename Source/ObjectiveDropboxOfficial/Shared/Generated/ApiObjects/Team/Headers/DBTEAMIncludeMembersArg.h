@@ -25,8 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Whether to return the list of members in the group.  Note that the default
-/// value will cause all the group members  to be returned in the response. This
+/// Whether to return the list of members in the group. Note that the default
+/// value will cause all the group members to be returned in the response. This
 /// may take a long time for large groups.
 @property (nonatomic, readonly) NSNumber *returnMembers;
 
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param returnMembers Whether to return the list of members in the group.
-/// Note that the default value will cause all the group members  to be returned
+/// Note that the default value will cause all the group members to be returned
 /// in the response. This may take a long time for large groups.
 ///
 /// @return An initialized instance.

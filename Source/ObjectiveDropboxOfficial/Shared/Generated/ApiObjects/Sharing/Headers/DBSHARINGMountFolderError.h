@@ -29,30 +29,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGMountFolderErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGMountFolderError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag){
-    /// (no description).
-    DBSHARINGMountFolderErrorAccessError,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
+  /// (no description).
+  DBSHARINGMountFolderErrorAccessError,
 
-    /// Mounting would cause a shared folder to be inside another, which is
-    /// disallowed.
-    DBSHARINGMountFolderErrorInsideSharedFolder,
+  /// Mounting would cause a shared folder to be inside another, which is
+  /// disallowed.
+  DBSHARINGMountFolderErrorInsideSharedFolder,
 
-    /// The current user does not have enough space to mount the shared folder.
-    DBSHARINGMountFolderErrorInsufficientQuota,
+  /// The current user does not have enough space to mount the shared folder.
+  DBSHARINGMountFolderErrorInsufficientQuota,
 
-    /// The shared folder is already mounted.
-    DBSHARINGMountFolderErrorAlreadyMounted,
+  /// The shared folder is already mounted.
+  DBSHARINGMountFolderErrorAlreadyMounted,
 
-    /// The current user does not have permission to perform this action.
-    DBSHARINGMountFolderErrorNoPermission,
+  /// The current user does not have permission to perform this action.
+  DBSHARINGMountFolderErrorNoPermission,
 
-    /// The shared folder is not mountable. One example where this can occur is
-    /// when the shared folder belongs within a team folder in the user's
-    /// Dropbox.
-    DBSHARINGMountFolderErrorNotMountable,
+  /// The shared folder is not mountable. One example where this can occur is
+  /// when the shared folder belongs within a team folder in the user's
+  /// Dropbox.
+  DBSHARINGMountFolderErrorNotMountable,
 
-    /// (no description).
-    DBSHARINGMountFolderErrorOther,
+  /// The shared folder is not mountable by directly call APIs, instead the
+  /// automounter is responsible for mounting it.
+  DBSHARINGMountFolderErrorMustAutomount,
+
+  /// (no description).
+  DBSHARINGMountFolderErrorOther,
 
 };
 
@@ -134,6 +138,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag){
 - (instancetype)initWithNotMountable;
 
 ///
+/// Initializes union class with tag state of "must_automount".
+///
+/// Description of the "must_automount" tag state: The shared folder is not
+/// mountable by directly call APIs, instead the automounter is responsible for
+/// mounting it.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMustAutomount;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -195,6 +210,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag){
 /// @return Whether the union's current tag state has value "not_mountable".
 ///
 - (BOOL)isNotMountable;
+
+///
+/// Retrieves whether the union's current tag state has value "must_automount".
+///
+/// @return Whether the union's current tag state has value "must_automount".
+///
+- (BOOL)isMustAutomount;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

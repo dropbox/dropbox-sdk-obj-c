@@ -48,8 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param invitee Recipient of the invitation.
 /// @param permissions The permissions that requesting user has on this member.
 /// The set of permissions corresponds to the MemberActions in the request.
-/// @param initials Never set.
-/// @param isInherited True if the member has access from a parent folder.
+/// @param initials Field is deprecated. Never set.
+/// @param isInherited True if the member has access on a parent folder.
 /// @param user The user this invitation is tied to, if available.
 ///
 /// @return An initialized instance.

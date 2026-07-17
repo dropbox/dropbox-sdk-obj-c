@@ -29,17 +29,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMUploadApiRateLimitValueTag` enum type represents the possible tag
 /// states with which the `DBTEAMUploadApiRateLimitValue` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMUploadApiRateLimitValueTag){
-    /// This team has unlimited upload API quota. So far both server version
-    /// account and legacy  account type have unlimited monthly upload api
-    /// quota.
-    DBTEAMUploadApiRateLimitValueUnlimited,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMUploadApiRateLimitValueTag) {
+  /// This team has unlimited upload API quota. So far both server version
+  /// account and legacy account type have unlimited monthly upload api quota.
+  DBTEAMUploadApiRateLimitValueUnlimited,
 
-    /// The number of upload API calls allowed per month.
-    DBTEAMUploadApiRateLimitValueLimit,
+  /// The number of upload API calls allowed per month.
+  DBTEAMUploadApiRateLimitValueLimit,
 
-    /// (no description).
-    DBTEAMUploadApiRateLimitValueOther,
+  /// (no description).
+  DBTEAMUploadApiRateLimitValueOther,
 
 };
 
@@ -57,7 +56,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMUploadApiRateLimitValueTag){
 /// Initializes union class with tag state of "unlimited".
 ///
 /// Description of the "unlimited" tag state: This team has unlimited upload API
-/// quota. So far both server version account and legacy  account type have
+/// quota. So far both server version account and legacy account type have
 /// unlimited monthly upload api quota.
 ///
 /// @return An initialized instance.

@@ -30,27 +30,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGAdminAlertingAlertSensitivityTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGAdminAlertingAlertSensitivity`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertingAlertSensitivityTag){
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertSensitivityHigh,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAdminAlertingAlertSensitivityTag) {
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertSensitivityHigh,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertSensitivityHighest,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertSensitivityHighest,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertSensitivityInvalid,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertSensitivityInvalid,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertSensitivityLow,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertSensitivityLow,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertSensitivityLowest,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertSensitivityLowest,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertSensitivityMedium,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertSensitivityMedium,
 
-    /// (no description).
-    DBTEAMLOGAdminAlertingAlertSensitivityOther,
+  /// (no description).
+  DBTEAMLOGAdminAlertingAlertSensitivityOther,
 
 };
 

@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESFileLockContentTag` enum type represents the possible tag states
 /// with which the `DBFILESFileLockContent` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileLockContentTag){
-    /// Empty type to indicate no lock.
-    DBFILESFileLockContentUnlocked,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileLockContentTag) {
+  /// Empty type to indicate no lock.
+  DBFILESFileLockContentUnlocked,
 
-    /// A lock held by a single user.
-    DBFILESFileLockContentSingleUser,
+  /// A lock held by a single user.
+  DBFILESFileLockContentSingleUser,
 
-    /// (no description).
-    DBFILESFileLockContentOther,
+  /// (no description).
+  DBFILESFileLockContentOther,
 
 };
 

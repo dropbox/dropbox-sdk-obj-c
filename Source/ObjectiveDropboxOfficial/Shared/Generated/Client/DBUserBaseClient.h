@@ -13,6 +13,7 @@
 #import "DBFILESUserAuthRoutes.h"
 #import "DBOPENIDUserAuthRoutes.h"
 #import "DBPAPERUserAuthRoutes.h"
+#import "DBRIVIERAUserAuthRoutes.h"
 #import "DBRequestErrors.h"
 #import "DBSHARINGUserAuthRoutes.h"
 #import "DBTasks.h"
@@ -60,6 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Routes within the `paper` namespace.
 @property (nonatomic, readonly) DBPAPERUserAuthRoutes *paperRoutes;
+
+/// Routes within the `riviera` namespace.
+@property (nonatomic, readonly) DBRIVIERAUserAuthRoutes *rivieraRoutes;
 
 /// Routes within the `sharing` namespace.
 @property (nonatomic, readonly) DBSHARINGUserAuthRoutes *sharingRoutes;

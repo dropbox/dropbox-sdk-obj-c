@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `PropertyGroupUpdate` struct.
 ///
+/// Property routes
+///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
@@ -30,7 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy) NSString *templateId;
 
 /// Property fields to update. If the property field already exists, it is
-/// updated. If the property field doesn't exist, the property group is added.
+/// updated. If the property field doesn't exist, it will be created as long as
+/// the property group already exists.
 @property (nonatomic, readonly, nullable) NSArray<DBFILEPROPERTIESPropertyField *> *addOrUpdateFields;
 
 /// Property fields to remove (by name), provided they exist.
@@ -43,8 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param templateId A unique identifier for a property template.
 /// @param addOrUpdateFields Property fields to update. If the property field
-/// already exists, it is updated. If the property field doesn't exist, the
-/// property group is added.
+/// already exists, it is updated. If the property field doesn't exist, it will
+/// be created as long as the property group already exists.
 /// @param removeFields Property fields to remove (by name), provided they
 /// exist.
 ///

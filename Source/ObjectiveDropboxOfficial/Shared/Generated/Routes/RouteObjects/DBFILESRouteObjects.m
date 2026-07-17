@@ -9,16 +9,11 @@
 #import "DBASYNCPollError.h"
 #import "DBASYNCPollResultBase.h"
 #import "DBFILEPROPERTIESAddPropertiesError.h"
-#import "DBFILEPROPERTIESGetTemplateResult.h"
 #import "DBFILEPROPERTIESInvalidPropertyGroupError.h"
-#import "DBFILEPROPERTIESListTemplateResult.h"
 #import "DBFILEPROPERTIESLookUpPropertiesError.h"
 #import "DBFILEPROPERTIESLookupError.h"
 #import "DBFILEPROPERTIESPropertiesError.h"
-#import "DBFILEPROPERTIESPropertyFieldTemplate.h"
 #import "DBFILEPROPERTIESPropertyGroup.h"
-#import "DBFILEPROPERTIESPropertyGroupTemplate.h"
-#import "DBFILEPROPERTIESRemovePropertiesError.h"
 #import "DBFILEPROPERTIESTemplateError.h"
 #import "DBFILEPROPERTIESUpdatePropertiesError.h"
 #import "DBFILESAddTagError.h"
@@ -112,6 +107,9 @@
 #import "DBFILESThumbnailError.h"
 #import "DBFILESThumbnailV2Error.h"
 #import "DBFILESUploadError.h"
+#import "DBFILESUploadSessionAppendBatchError.h"
+#import "DBFILESUploadSessionAppendBatchResult.h"
+#import "DBFILESUploadSessionAppendBatchResultEntry.h"
 #import "DBFILESUploadSessionAppendError.h"
 #import "DBFILESUploadSessionFinishBatchJobStatus.h"
 #import "DBFILESUploadSessionFinishBatchLaunch.h"
@@ -177,9 +175,6 @@ static DBRoute *DBFILESPaperUpdate;
 static DBRoute *DBFILESPermanentlyDelete;
 static DBRoute *DBFILESPropertiesAdd;
 static DBRoute *DBFILESPropertiesOverwrite;
-static DBRoute *DBFILESPropertiesRemove;
-static DBRoute *DBFILESPropertiesTemplateGet;
-static DBRoute *DBFILESPropertiesTemplateList;
 static DBRoute *DBFILESPropertiesUpdate;
 static DBRoute *DBFILESRestore;
 static DBRoute *DBFILESSaveUrl;
@@ -194,6 +189,7 @@ static DBRoute *DBFILESUnlockFileBatch;
 static DBRoute *DBFILESUpload;
 static DBRoute *DBFILESUploadSessionAppend;
 static DBRoute *DBFILESUploadSessionAppendV2;
+static DBRoute *DBFILESUploadSessionAppendBatch;
 static DBRoute *DBFILESUploadSessionFinish;
 static DBRoute *DBFILESUploadSessionFinishBatch;
 static DBRoute *DBFILESUploadSessionFinishBatchV2;
@@ -946,54 +942,6 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBFILESPropertiesRemove {
-  @synchronized(lockObj) {
-    if (!DBFILESPropertiesRemove) {
-      DBFILESPropertiesRemove = [[DBRoute alloc] init:@"properties/remove"
-                                           namespace_:@"files"
-                                           deprecated:@YES
-                                           resultType:nil
-                                            errorType:[DBFILEPROPERTIESRemovePropertiesError class]
-                                                attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
-                                dataStructSerialBlock:nil
-                              dataStructDeserialBlock:nil];
-    }
-    return DBFILESPropertiesRemove;
-  }
-}
-
-+ (DBRoute *)DBFILESPropertiesTemplateGet {
-  @synchronized(lockObj) {
-    if (!DBFILESPropertiesTemplateGet) {
-      DBFILESPropertiesTemplateGet = [[DBRoute alloc] init:@"properties/template/get"
-                                                namespace_:@"files"
-                                                deprecated:@YES
-                                                resultType:[DBFILEPROPERTIESGetTemplateResult class]
-                                                 errorType:[DBFILEPROPERTIESTemplateError class]
-                                                     attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
-                                     dataStructSerialBlock:nil
-                                   dataStructDeserialBlock:nil];
-    }
-    return DBFILESPropertiesTemplateGet;
-  }
-}
-
-+ (DBRoute *)DBFILESPropertiesTemplateList {
-  @synchronized(lockObj) {
-    if (!DBFILESPropertiesTemplateList) {
-      DBFILESPropertiesTemplateList = [[DBRoute alloc] init:@"properties/template/list"
-                                                 namespace_:@"files"
-                                                 deprecated:@YES
-                                                 resultType:[DBFILEPROPERTIESListTemplateResult class]
-                                                  errorType:[DBFILEPROPERTIESTemplateError class]
-                                                      attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
-                                      dataStructSerialBlock:nil
-                                    dataStructDeserialBlock:nil];
-    }
-    return DBFILESPropertiesTemplateList;
-  }
-}
-
 + (DBRoute *)DBFILESPropertiesUpdate {
   @synchronized(lockObj) {
     if (!DBFILESPropertiesUpdate) {
@@ -1217,6 +1165,23 @@ static NSObject *lockObj = nil;
               dataStructDeserialBlock:nil];
     }
     return DBFILESUploadSessionAppendV2;
+  }
+}
+
++ (DBRoute *)DBFILESUploadSessionAppendBatch {
+  @synchronized(lockObj) {
+    if (!DBFILESUploadSessionAppendBatch) {
+      DBFILESUploadSessionAppendBatch =
+          [[DBRoute alloc] init:@"upload_session/append_batch"
+                           namespace_:@"files"
+                           deprecated:@NO
+                           resultType:[DBFILESUploadSessionAppendBatchResult class]
+                            errorType:[DBFILESUploadSessionAppendBatchError class]
+                                attrs:@{@"auth" : @"user", @"host" : @"content", @"style" : @"upload"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
+    }
+    return DBFILESUploadSessionAppendBatch;
   }
 }
 

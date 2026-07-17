@@ -31,15 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGEnforceLinkPasswordPolicyTag` enum type represents the
 /// possible tag states with which the `DBTEAMLOGEnforceLinkPasswordPolicy`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEnforceLinkPasswordPolicyTag){
-    /// (no description).
-    DBTEAMLOGEnforceLinkPasswordPolicyOptional,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEnforceLinkPasswordPolicyTag) {
+  /// (no description).
+  DBTEAMLOGEnforceLinkPasswordPolicyOptional,
 
-    /// (no description).
-    DBTEAMLOGEnforceLinkPasswordPolicyRequired,
+  /// (no description).
+  DBTEAMLOGEnforceLinkPasswordPolicyRequired,
 
-    /// (no description).
-    DBTEAMLOGEnforceLinkPasswordPolicyOther,
+  /// (no description).
+  DBTEAMLOGEnforceLinkPasswordPolicyOther,
 
 };
 

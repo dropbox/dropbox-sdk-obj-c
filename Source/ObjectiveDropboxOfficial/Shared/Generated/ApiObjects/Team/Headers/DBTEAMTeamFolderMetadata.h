@@ -48,10 +48,37 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sync settings applied to contents of this team folder.
 @property (nonatomic, readonly) NSArray<DBFILESContentSyncSetting *> *contentSyncSettings;
 
+/// The quota limit in bytes for this team folder namespace tree.
+@property (nonatomic, readonly) NSNumber *quotaLimit;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param teamFolderId The ID of the team folder.
+/// @param name The name of the team folder.
+/// @param status The status of the team folder.
+/// @param isTeamSharedDropbox True if this team folder is a shared team root.
+/// @param syncSetting The sync setting applied to this team folder.
+/// @param contentSyncSettings Sync settings applied to contents of this team
+/// folder.
+/// @param quotaLimit The quota limit in bytes for this team folder namespace
+/// tree.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamFolderId:(NSString *)teamFolderId
+                                name:(NSString *)name
+                              status:(DBTEAMTeamFolderStatus *)status
+                 isTeamSharedDropbox:(NSNumber *)isTeamSharedDropbox
+                         syncSetting:(DBFILESSyncSetting *)syncSetting
+                 contentSyncSettings:(NSArray<DBFILESContentSyncSetting *> *)contentSyncSettings
+                          quotaLimit:(nullable NSNumber *)quotaLimit;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param teamFolderId The ID of the team folder.
 /// @param name The name of the team folder.

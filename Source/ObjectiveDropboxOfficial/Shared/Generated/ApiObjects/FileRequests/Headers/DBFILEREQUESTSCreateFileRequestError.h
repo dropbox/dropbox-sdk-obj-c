@@ -30,41 +30,44 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBFILEREQUESTSCreateFileRequestErrorTag` enum type represents the
 /// possible tag states with which the `DBFILEREQUESTSCreateFileRequestError`
 /// union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSCreateFileRequestErrorTag){
-    /// This user's Dropbox Business team doesn't allow file requests.
-    DBFILEREQUESTSCreateFileRequestErrorDisabledForTeam,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSCreateFileRequestErrorTag) {
+  /// This user's Dropbox Business team doesn't allow file requests.
+  DBFILEREQUESTSCreateFileRequestErrorDisabledForTeam,
 
-    /// (no description).
-    DBFILEREQUESTSCreateFileRequestErrorOther,
+  /// (no description).
+  DBFILEREQUESTSCreateFileRequestErrorOther,
 
-    /// This file request ID was not found.
-    DBFILEREQUESTSCreateFileRequestErrorNotFound,
+  /// This file request ID was not found.
+  DBFILEREQUESTSCreateFileRequestErrorNotFound,
 
-    /// The specified path is not a folder.
-    DBFILEREQUESTSCreateFileRequestErrorNotAFolder,
+  /// The specified path is not a folder.
+  DBFILEREQUESTSCreateFileRequestErrorNotAFolder,
 
-    /// This file request is not accessible to this app. Apps with the app
-    /// folder permission can only access file requests in their app folder.
-    DBFILEREQUESTSCreateFileRequestErrorAppLacksAccess,
+  /// This file request is not accessible to this app. Apps with the app
+  /// folder permission can only access file requests in their app folder.
+  DBFILEREQUESTSCreateFileRequestErrorAppLacksAccess,
 
-    /// This user doesn't have permission to access or modify this file request.
-    DBFILEREQUESTSCreateFileRequestErrorNoPermission,
+  /// This user doesn't have permission to access or modify this file request.
+  DBFILEREQUESTSCreateFileRequestErrorNoPermission,
 
-    /// This user's email address is not verified. File requests are only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBFILEREQUESTSCreateFileRequestErrorEmailUnverified,
+  /// This user's email address is not verified. File requests are only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBFILEREQUESTSCreateFileRequestErrorEmailUnverified,
 
-    /// There was an error validating the request. For example, the title was
-    /// invalid, or there were disallowed characters in the destination path.
-    DBFILEREQUESTSCreateFileRequestErrorValidationError,
+  /// There was an error validating the request. For example, the title was
+  /// invalid, or there were disallowed characters in the destination path.
+  DBFILEREQUESTSCreateFileRequestErrorValidationError,
 
-    /// File requests are not available on the specified folder.
-    DBFILEREQUESTSCreateFileRequestErrorInvalidLocation,
+  /// This user doesn't have permission to edit files in a destination folder
+  DBFILEREQUESTSCreateFileRequestErrorNoWritePermission,
 
-    /// The user has reached the rate limit for creating file requests. The
-    /// limit is currently 4000 file requests total.
-    DBFILEREQUESTSCreateFileRequestErrorRateLimit,
+  /// File requests are not available on the specified folder.
+  DBFILEREQUESTSCreateFileRequestErrorInvalidLocation,
+
+  /// The user has reached the rate limit for creating file requests. The
+  /// limit is currently 4000 file requests total.
+  DBFILEREQUESTSCreateFileRequestErrorRateLimit,
 
 };
 
@@ -155,6 +158,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSCreateFileRequestErrorTag){
 - (instancetype)initWithValidationError;
 
 ///
+/// Initializes union class with tag state of "no_write_permission".
+///
+/// Description of the "no_write_permission" tag state: This user doesn't have
+/// permission to edit files in a destination folder
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoWritePermission;
+
+///
 /// Initializes union class with tag state of "invalid_location".
 ///
 /// Description of the "invalid_location" tag state: File requests are not
@@ -238,6 +251,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSCreateFileRequestErrorTag){
 /// @return Whether the union's current tag state has value "validation_error".
 ///
 - (BOOL)isValidationError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_write_permission".
+///
+/// @return Whether the union's current tag state has value
+/// "no_write_permission".
+///
+- (BOOL)isNoWritePermission;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -30,13 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBPAPERFolderSharingPolicyTypeTag` enum type represents the possible
 /// tag states with which the `DBPAPERFolderSharingPolicyType` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBPAPERFolderSharingPolicyTypeTag){
-    /// Everyone in your team and anyone directly invited can access this
-    /// folder.
-    DBPAPERFolderSharingPolicyTypeTeam,
+typedef NS_CLOSED_ENUM(NSInteger, DBPAPERFolderSharingPolicyTypeTag) {
+  /// Everyone in your team and anyone directly invited can access this
+  /// folder.
+  DBPAPERFolderSharingPolicyTypeTeam,
 
-    /// Only people directly invited can access this folder.
-    DBPAPERFolderSharingPolicyTypeInviteOnly,
+  /// Only people directly invited can access this folder.
+  DBPAPERFolderSharingPolicyTypeInviteOnly,
 
 };
 

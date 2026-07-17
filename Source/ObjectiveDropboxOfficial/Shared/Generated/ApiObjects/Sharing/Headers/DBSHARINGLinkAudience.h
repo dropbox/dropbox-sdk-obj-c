@@ -27,28 +27,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGLinkAudienceTag` enum type represents the possible tag states
 /// with which the `DBSHARINGLinkAudience` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag){
-    /// Link is accessible by anyone.
-    DBSHARINGLinkAudiencePublic,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
+  /// Link is accessible by anyone.
+  DBSHARINGLinkAudiencePublic,
 
-    /// Link is accessible only by team members.
-    DBSHARINGLinkAudienceTeam,
+  /// Link is accessible only by team members.
+  DBSHARINGLinkAudienceTeam,
 
-    /// The link can be used by no one. The link merely points the user to the
-    /// content, and does not grant additional rights to the user. Members of
-    /// the content who use this link can only access the content with their
-    /// pre-existing access rights.
-    DBSHARINGLinkAudienceNoOne,
+  /// The link can be used by no one. The link merely points the user to the
+  /// content, and does not grant additional rights to the user. Members of
+  /// the content who use this link can only access the content with their
+  /// pre-existing access rights.
+  DBSHARINGLinkAudienceNoOne,
 
-    /// Use `require_password` instead. A link-specific password is required to
-    /// access the link. Login is not required.
-    DBSHARINGLinkAudiencePassword,
+  /// Field is deprecated. Use `require_password` instead. A link-specific
+  /// password is required to access the link. Login is not required.
+  DBSHARINGLinkAudiencePassword,
 
-    /// Link is accessible only by members of the content.
-    DBSHARINGLinkAudienceMembers,
+  /// Field is deprecated. Link is accessible only by members of the content.
+  DBSHARINGLinkAudienceMembers,
 
-    /// (no description).
-    DBSHARINGLinkAudienceOther,
+  /// (no description).
+  DBSHARINGLinkAudienceOther,
 
 };
 
@@ -91,9 +91,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag){
 ///
 /// Initializes union class with tag state of "password".
 ///
-/// Description of the "password" tag state: Use `require_password` instead. A
-/// link-specific password is required to access the link. Login is not
-/// required.
+/// Description of the "password" tag state: Field is deprecated. Use
+/// `require_password` instead. A link-specific password is required to access
+/// the link. Login is not required.
 ///
 /// @return An initialized instance.
 ///
@@ -102,8 +102,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag){
 ///
 /// Initializes union class with tag state of "members".
 ///
-/// Description of the "members" tag state: Link is accessible only by members
-/// of the content.
+/// Description of the "members" tag state: Field is deprecated. Link is
+/// accessible only by members of the content.
 ///
 /// @return An initialized instance.
 ///

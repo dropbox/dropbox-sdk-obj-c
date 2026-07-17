@@ -27,14 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESDeleteBatchErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESDeleteBatchError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESDeleteBatchErrorTag){
-    /// Use `tooManyWriteOperations` in `DBFILESDeleteError`. `deleteBatch` now
-    /// provides smaller granularity about which entry has failed because of
-    /// this.
-    DBFILESDeleteBatchErrorTooManyWriteOperations,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESDeleteBatchErrorTag) {
+  /// Field is deprecated. Use `tooManyWriteOperations` in
+  /// `DBFILESDeleteError`. `deleteBatch` now provides smaller granularity
+  /// about which entry has failed because of this.
+  DBFILESDeleteBatchErrorTooManyWriteOperations,
 
-    /// (no description).
-    DBFILESDeleteBatchErrorOther,
+  /// (no description).
+  DBFILESDeleteBatchErrorOther,
 
 };
 
@@ -46,9 +46,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESDeleteBatchErrorTag){
 ///
 /// Initializes union class with tag state of "too_many_write_operations".
 ///
-/// Description of the "too_many_write_operations" tag state: Use
-/// `tooManyWriteOperations` in `DBFILESDeleteError`. `deleteBatch` now provides
-/// smaller granularity about which entry has failed because of this.
+/// Description of the "too_many_write_operations" tag state: Field is
+/// deprecated. Use `tooManyWriteOperations` in `DBFILESDeleteError`.
+/// `deleteBatch` now provides smaller granularity about which entry has failed
+/// because of this.
 ///
 /// @return An initialized instance.
 ///

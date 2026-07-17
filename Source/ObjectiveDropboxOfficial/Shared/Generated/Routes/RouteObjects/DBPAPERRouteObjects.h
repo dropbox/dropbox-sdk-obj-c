@@ -35,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the docsGetFolderInfo route object.
 + (DBRoute *)DBPAPERDocsGetFolderInfo;
 
+/// Accessor method for the docsGetMetadata route object.
++ (DBRoute *)DBPAPERDocsGetMetadata;
+
 /// Accessor method for the docsList route object.
 + (DBRoute *)DBPAPERDocsList;
 

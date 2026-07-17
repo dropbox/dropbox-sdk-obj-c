@@ -29,34 +29,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILEREQUESTSFileRequestErrorTag` enum type represents the possible
 /// tag states with which the `DBFILEREQUESTSFileRequestError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSFileRequestErrorTag){
-    /// This user's Dropbox Business team doesn't allow file requests.
-    DBFILEREQUESTSFileRequestErrorDisabledForTeam,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSFileRequestErrorTag) {
+  /// This user's Dropbox Business team doesn't allow file requests.
+  DBFILEREQUESTSFileRequestErrorDisabledForTeam,
 
-    /// (no description).
-    DBFILEREQUESTSFileRequestErrorOther,
+  /// (no description).
+  DBFILEREQUESTSFileRequestErrorOther,
 
-    /// This file request ID was not found.
-    DBFILEREQUESTSFileRequestErrorNotFound,
+  /// This file request ID was not found.
+  DBFILEREQUESTSFileRequestErrorNotFound,
 
-    /// The specified path is not a folder.
-    DBFILEREQUESTSFileRequestErrorNotAFolder,
+  /// The specified path is not a folder.
+  DBFILEREQUESTSFileRequestErrorNotAFolder,
 
-    /// This file request is not accessible to this app. Apps with the app
-    /// folder permission can only access file requests in their app folder.
-    DBFILEREQUESTSFileRequestErrorAppLacksAccess,
+  /// This file request is not accessible to this app. Apps with the app
+  /// folder permission can only access file requests in their app folder.
+  DBFILEREQUESTSFileRequestErrorAppLacksAccess,
 
-    /// This user doesn't have permission to access or modify this file request.
-    DBFILEREQUESTSFileRequestErrorNoPermission,
+  /// This user doesn't have permission to access or modify this file request.
+  DBFILEREQUESTSFileRequestErrorNoPermission,
 
-    /// This user's email address is not verified. File requests are only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBFILEREQUESTSFileRequestErrorEmailUnverified,
+  /// This user's email address is not verified. File requests are only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBFILEREQUESTSFileRequestErrorEmailUnverified,
 
-    /// There was an error validating the request. For example, the title was
-    /// invalid, or there were disallowed characters in the destination path.
-    DBFILEREQUESTSFileRequestErrorValidationError,
+  /// There was an error validating the request. For example, the title was
+  /// invalid, or there were disallowed characters in the destination path.
+  DBFILEREQUESTSFileRequestErrorValidationError,
+
+  /// This user doesn't have permission to edit files in a destination folder
+  DBFILEREQUESTSFileRequestErrorNoWritePermission,
 
 };
 
@@ -146,6 +149,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSFileRequestErrorTag){
 ///
 - (instancetype)initWithValidationError;
 
+///
+/// Initializes union class with tag state of "no_write_permission".
+///
+/// Description of the "no_write_permission" tag state: This user doesn't have
+/// permission to edit files in a destination folder
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithNoWritePermission;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -209,6 +222,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSFileRequestErrorTag){
 /// @return Whether the union's current tag state has value "validation_error".
 ///
 - (BOOL)isValidationError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_write_permission".
+///
+/// @return Whether the union's current tag state has value
+/// "no_write_permission".
+///
+- (BOOL)isNoWritePermission;
 
 ///
 /// Retrieves string value of union's current tag state.

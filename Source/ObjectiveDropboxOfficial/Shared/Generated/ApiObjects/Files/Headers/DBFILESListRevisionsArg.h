@@ -36,6 +36,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The maximum number of revision entries returned.
 @property (nonatomic, readonly) NSNumber *limit;
 
+/// If set, ListRevisions will only return revisions prior to before_rev. Can be
+/// set using the last revision from a previous call to list_revisions to fetch
+/// the next page of revisions. Only supported in path mode.
+@property (nonatomic, readonly, copy, nullable) NSString *beforeRev;
+
+/// If true, each returned revision will include whether that revision can be
+/// restored.
+@property (nonatomic, readonly) NSNumber *includeRestorableInfo;
+
 #pragma mark - Constructors
 
 ///
@@ -45,12 +54,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param mode Determines the behavior of the API in listing the revisions for
 /// a given file path or id.
 /// @param limit The maximum number of revision entries returned.
+/// @param beforeRev If set, ListRevisions will only return revisions prior to
+/// before_rev. Can be set using the last revision from a previous call to
+/// list_revisions to fetch the next page of revisions. Only supported in path
+/// mode.
+/// @param includeRestorableInfo If true, each returned revision will include
+/// whether that revision can be restored.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPath:(NSString *)path
                         mode:(nullable DBFILESListRevisionsMode *)mode
-                       limit:(nullable NSNumber *)limit;
+                       limit:(nullable NSNumber *)limit
+                   beforeRev:(nullable NSString *)beforeRev
+       includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

@@ -11,6 +11,7 @@
 @class DBFILESPathOrLink;
 @class DBFILESThumbnailFormat;
 @class DBFILESThumbnailMode;
+@class DBFILESThumbnailQuality;
 @class DBFILESThumbnailSize;
 @class DBFILESThumbnailV2Arg;
 
@@ -34,9 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// folder, with a relative path.
 @property (nonatomic, readonly) DBFILESPathOrLink *resource;
 
-/// The format for the thumbnail image, jpeg (default) or png. For  images that
-/// are photos, jpeg should be preferred, while png is  better for screenshots
-/// and digital arts.
+/// The format for the thumbnail image, jpeg (default), png, or webp. For images
+/// that are photos, jpeg should be preferred, while png is better for
+/// screenshots and digital arts, and web for compression.
 @property (nonatomic, readonly) DBFILESThumbnailFormat *format;
 
 /// The size for the thumbnail image.
@@ -44,6 +45,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// How to resize and crop the image to achieve the desired size.
 @property (nonatomic, readonly) DBFILESThumbnailMode *mode;
+
+/// Field is only returned for "internal" callers. Quality of the thumbnail
+/// image.
+@property (nonatomic, readonly) DBFILESThumbnailQuality *quality;
+
+/// Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
+/// When this flag is true, `mediaInfo` in `DBFILESFileMetadata` is not
+/// populated. This improves latency for use cases where `media_info` is not
+/// needed.
+@property (nonatomic, readonly, nullable) NSNumber *excludeMediaInfo;
 
 #pragma mark - Constructors
 
@@ -53,18 +64,26 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param resource Information specifying which file to preview. This could be
 /// a path to a file, a shared link pointing to a file, or a shared link
 /// pointing to a folder, with a relative path.
-/// @param format The format for the thumbnail image, jpeg (default) or png. For
-/// images that are photos, jpeg should be preferred, while png is  better for
-/// screenshots and digital arts.
+/// @param format The format for the thumbnail image, jpeg (default), png, or
+/// webp. For images that are photos, jpeg should be preferred, while png is
+/// better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
+/// @param quality Field is only returned for "internal" callers. Quality of the
+/// thumbnail image.
+/// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is
+/// set for photo and video. When this flag is true, `mediaInfo` in
+/// `DBFILESFileMetadata` is not populated. This improves latency for use cases
+/// where `media_info` is not needed.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithResource:(DBFILESPathOrLink *)resource
                           format:(nullable DBFILESThumbnailFormat *)format
                             size:(nullable DBFILESThumbnailSize *)size
-                            mode:(nullable DBFILESThumbnailMode *)mode;
+                            mode:(nullable DBFILESThumbnailMode *)mode
+                         quality:(nullable DBFILESThumbnailQuality *)quality
+                excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

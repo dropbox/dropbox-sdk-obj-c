@@ -11,6 +11,7 @@
 
 @class DBTEAMPOLICIESOfficeAddInPolicy;
 @class DBTEAMPOLICIESTeamSharingPolicies;
+@class DBTEAMPOLICIESTopLevelContentPolicy;
 @class DBUSERSFullTeam;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -36,6 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Team policy governing the use of the Office Add-In.
 @property (nonatomic, readonly) DBTEAMPOLICIESOfficeAddInPolicy *officeAddinPolicy;
 
+/// Team policy governing whether members can edit team folders at the top level
+/// of the team space.
+@property (nonatomic, readonly) DBTEAMPOLICIESTopLevelContentPolicy *topLevelContentPolicy;
+
 #pragma mark - Constructors
 
 ///
@@ -45,13 +50,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param name The name of the team.
 /// @param sharingPolicies Team policies governing sharing.
 /// @param officeAddinPolicy Team policy governing the use of the Office Add-In.
+/// @param topLevelContentPolicy Team policy governing whether members can edit
+/// team folders at the top level of the team space.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithId_:(NSString *)id_
                        name:(NSString *)name
             sharingPolicies:(DBTEAMPOLICIESTeamSharingPolicies *)sharingPolicies
-          officeAddinPolicy:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddinPolicy;
+          officeAddinPolicy:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddinPolicy
+      topLevelContentPolicy:(DBTEAMPOLICIESTopLevelContentPolicy *)topLevelContentPolicy;
 
 @end
 

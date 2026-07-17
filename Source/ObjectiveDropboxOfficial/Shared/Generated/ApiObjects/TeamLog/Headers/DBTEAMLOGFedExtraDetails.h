@@ -31,15 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGFedExtraDetailsTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGFedExtraDetails` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFedExtraDetailsTag){
-    /// More details about the organization.
-    DBTEAMLOGFedExtraDetailsOrganization,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFedExtraDetailsTag) {
+  /// More details about the organization.
+  DBTEAMLOGFedExtraDetailsOrganization,
 
-    /// More details about the team.
-    DBTEAMLOGFedExtraDetailsTeam,
+  /// More details about the team.
+  DBTEAMLOGFedExtraDetailsTeam,
 
-    /// (no description).
-    DBTEAMLOGFedExtraDetailsOther,
+  /// (no description).
+  DBTEAMLOGFedExtraDetailsOther,
 
 };
 

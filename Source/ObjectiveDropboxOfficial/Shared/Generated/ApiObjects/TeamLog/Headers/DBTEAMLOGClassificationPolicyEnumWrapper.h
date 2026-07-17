@@ -30,21 +30,21 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGClassificationPolicyEnumWrapperTag` enum type represents the
 /// possible tag states with which the
 /// `DBTEAMLOGClassificationPolicyEnumWrapper` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGClassificationPolicyEnumWrapperTag){
-    /// (no description).
-    DBTEAMLOGClassificationPolicyEnumWrapperDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGClassificationPolicyEnumWrapperTag) {
+  /// (no description).
+  DBTEAMLOGClassificationPolicyEnumWrapperDisabled,
 
-    /// (no description).
-    DBTEAMLOGClassificationPolicyEnumWrapperEnabled,
+  /// (no description).
+  DBTEAMLOGClassificationPolicyEnumWrapperEnabled,
 
-    /// (no description).
-    DBTEAMLOGClassificationPolicyEnumWrapperMemberAndTeamFolders,
+  /// (no description).
+  DBTEAMLOGClassificationPolicyEnumWrapperMemberAndTeamFolders,
 
-    /// (no description).
-    DBTEAMLOGClassificationPolicyEnumWrapperTeamFolders,
+  /// (no description).
+  DBTEAMLOGClassificationPolicyEnumWrapperTeamFolders,
 
-    /// (no description).
-    DBTEAMLOGClassificationPolicyEnumWrapperOther,
+  /// (no description).
+  DBTEAMLOGClassificationPolicyEnumWrapperOther,
 
 };
 

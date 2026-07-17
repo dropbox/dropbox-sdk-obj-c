@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSNumber *includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or
-/// not  that file has any explicit members.
+/// not that file has any explicit members.
 @property (nonatomic, readonly) NSNumber *includeHasExplicitSharedMembers;
 
 /// If set to a valid list of template IDs, `propertyGroups` in
@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// file or folder, otherwise `notFound` in `DBFILESLookupError` will be
 /// returned.
 /// @param includeHasExplicitSharedMembers If true, the results will include a
-/// flag for each file indicating whether or not  that file has any explicit
+/// flag for each file indicating whether or not that file has any explicit
 /// members.
 /// @param includePropertyGroups If set to a valid list of template IDs,
 /// `propertyGroups` in `DBFILESFileMetadata` is set if there exists property

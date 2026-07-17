@@ -43,8 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// file or folder is not mounted.
 @property (nonatomic, readonly, copy, nullable) NSString *pathDisplay;
 
-/// Please use `parentSharedFolderId` in `DBFILESFileSharingInfo` or
-/// `parentSharedFolderId` in `DBFILESFolderSharingInfo` instead.
+/// Field is deprecated. Please use `parentSharedFolderId` in
+/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
+/// `DBFILESFolderSharingInfo` instead.
 @property (nonatomic, readonly, copy, nullable) NSString *parentSharedFolderId;
 
 /// The preview URL of the file.
@@ -66,9 +67,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// least the last path component will have the correct casing. Changes to only
 /// the casing of paths won't be returned by `listFolderContinue`. This field
 /// will be null if the file or folder is not mounted.
-/// @param parentSharedFolderId Please use `parentSharedFolderId` in
-/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
-/// `DBFILESFolderSharingInfo` instead.
+/// @param parentSharedFolderId Field is deprecated. Please use
+/// `parentSharedFolderId` in `DBFILESFileSharingInfo` or `parentSharedFolderId`
+/// in `DBFILESFolderSharingInfo` instead.
 /// @param previewUrl The preview URL of the file.
 ///
 /// @return An initialized instance.

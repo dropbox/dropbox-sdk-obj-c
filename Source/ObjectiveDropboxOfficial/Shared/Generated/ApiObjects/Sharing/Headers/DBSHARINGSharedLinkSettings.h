@@ -49,7 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// modifying access level for an existing link is not supported.
 @property (nonatomic, readonly, nullable) DBSHARINGRequestedLinkAccessLevel *access;
 
-/// Use audience instead.  The requested access for this shared link.
+/// Field is deprecated. Use audience instead.  The requested access for this
+/// shared link.
 @property (nonatomic, readonly, nullable) DBSHARINGRequestedVisibility *requestedVisibility;
 
 /// Boolean flag to allow or not download capabilities for shared links.
@@ -73,8 +74,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// the `effective_audience` field of `LinkPermissions.
 /// @param access Requested access level you want the audience to gain from this
 /// link. Note, modifying access level for an existing link is not supported.
-/// @param requestedVisibility Use audience instead.  The requested access for
-/// this shared link.
+/// @param requestedVisibility Field is deprecated. Use audience instead.  The
+/// requested access for this shared link.
 /// @param allowDownload Boolean flag to allow or not download capabilities for
 /// shared links.
 ///

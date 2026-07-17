@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGBackupStatusTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGBackupStatus` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGBackupStatusTag){
-    /// (no description).
-    DBTEAMLOGBackupStatusDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGBackupStatusTag) {
+  /// (no description).
+  DBTEAMLOGBackupStatusDisabled,
 
-    /// (no description).
-    DBTEAMLOGBackupStatusEnabled,
+  /// (no description).
+  DBTEAMLOGBackupStatusEnabled,
 
-    /// (no description).
-    DBTEAMLOGBackupStatusOther,
+  /// (no description).
+  DBTEAMLOGBackupStatusOther,
 
 };
 

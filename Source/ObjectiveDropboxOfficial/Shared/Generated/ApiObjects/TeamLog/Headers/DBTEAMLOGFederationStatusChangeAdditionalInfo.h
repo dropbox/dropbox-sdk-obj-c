@@ -33,34 +33,34 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGFederationStatusChangeAdditionalInfoTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoTag){
-    /// The name of the team.
-    DBTEAMLOGFederationStatusChangeAdditionalInfoConnectedTeamName,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoTag) {
+  /// The name of the team
+  DBTEAMLOGFederationStatusChangeAdditionalInfoConnectedTeamName,
 
-    /// The email to which the request was sent.
-    DBTEAMLOGFederationStatusChangeAdditionalInfoNonTrustedTeamDetails,
+  /// The email to which the request was sent
+  DBTEAMLOGFederationStatusChangeAdditionalInfoNonTrustedTeamDetails,
 
-    /// The name of the organization.
-    DBTEAMLOGFederationStatusChangeAdditionalInfoOrganizationName,
+  /// The name of the organization
+  DBTEAMLOGFederationStatusChangeAdditionalInfoOrganizationName,
 
-    /// (no description).
-    DBTEAMLOGFederationStatusChangeAdditionalInfoOther,
+  /// (no description).
+  DBTEAMLOGFederationStatusChangeAdditionalInfoOther,
 
 };
 
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBTEAMLOGFederationStatusChangeAdditionalInfoTag tag;
 
-/// The name of the team. @note Ensure the `isConnectedTeamName` method returns
+/// The name of the team @note Ensure the `isConnectedTeamName` method returns
 /// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGConnectedTeamName *connectedTeamName;
 
-/// The email to which the request was sent. @note Ensure the
+/// The email to which the request was sent @note Ensure the
 /// `isNonTrustedTeamDetails` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGNonTrustedTeamDetails *nonTrustedTeamDetails;
 
-/// The name of the organization. @note Ensure the `isOrganizationName` method
+/// The name of the organization @note Ensure the `isOrganizationName` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGOrganizationName *organizationName;
 
@@ -69,9 +69,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoT
 ///
 /// Initializes union class with tag state of "connected_team_name".
 ///
-/// Description of the "connected_team_name" tag state: The name of the team.
+/// Description of the "connected_team_name" tag state: The name of the team
 ///
-/// @param connectedTeamName The name of the team.
+/// @param connectedTeamName The name of the team
 ///
 /// @return An initialized instance.
 ///
@@ -81,9 +81,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoT
 /// Initializes union class with tag state of "non_trusted_team_details".
 ///
 /// Description of the "non_trusted_team_details" tag state: The email to which
-/// the request was sent.
+/// the request was sent
 ///
-/// @param nonTrustedTeamDetails The email to which the request was sent.
+/// @param nonTrustedTeamDetails The email to which the request was sent
 ///
 /// @return An initialized instance.
 ///
@@ -93,9 +93,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoT
 /// Initializes union class with tag state of "organization_name".
 ///
 /// Description of the "organization_name" tag state: The name of the
-/// organization.
+/// organization
 ///
-/// @param organizationName The name of the organization.
+/// @param organizationName The name of the organization
 ///
 /// @return An initialized instance.
 ///

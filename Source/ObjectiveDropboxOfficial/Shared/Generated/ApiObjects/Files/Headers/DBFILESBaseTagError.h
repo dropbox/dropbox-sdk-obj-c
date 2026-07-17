@@ -28,12 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESBaseTagErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESBaseTagError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESBaseTagErrorTag){
-    /// (no description).
-    DBFILESBaseTagErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESBaseTagErrorTag) {
+  /// (no description).
+  DBFILESBaseTagErrorPath,
 
-    /// (no description).
-    DBFILESBaseTagErrorOther,
+  /// (no description).
+  DBFILESBaseTagErrorOther,
 
 };
 

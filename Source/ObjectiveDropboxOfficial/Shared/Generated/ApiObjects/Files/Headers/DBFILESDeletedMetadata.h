@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// If present, indicates whether this deleted entry can be restored.
+@property (nonatomic, readonly, nullable) NSNumber *isRestorable;
+
 #pragma mark - Constructors
 
 ///
@@ -45,10 +48,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// least the last path component will have the correct casing. Changes to only
 /// the casing of paths won't be returned by `listFolderContinue`. This field
 /// will be null if the file or folder is not mounted.
-/// @param parentSharedFolderId Please use `parentSharedFolderId` in
-/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
-/// `DBFILESFolderSharingInfo` instead.
+/// @param parentSharedFolderId Field is deprecated. Please use
+/// `parentSharedFolderId` in `DBFILESFileSharingInfo` or `parentSharedFolderId`
+/// in `DBFILESFolderSharingInfo` instead.
 /// @param previewUrl The preview URL of the file.
+/// @param isRestorable If present, indicates whether this deleted entry can be
+/// restored.
 ///
 /// @return An initialized instance.
 ///
@@ -56,7 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
                    pathLower:(nullable NSString *)pathLower
                  pathDisplay:(nullable NSString *)pathDisplay
         parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                  previewUrl:(nullable NSString *)previewUrl;
+                  previewUrl:(nullable NSString *)previewUrl
+                isRestorable:(nullable NSNumber *)isRestorable;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

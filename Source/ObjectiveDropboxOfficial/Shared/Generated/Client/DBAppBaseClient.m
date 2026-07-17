@@ -8,6 +8,7 @@
 #import "DBAUTHAppAuthRoutes.h"
 #import "DBCHECKAppAuthRoutes.h"
 #import "DBFILESAppAuthRoutes.h"
+#import "DBRIVIERAAppAuthRoutes.h"
 #import "DBSHARINGAppAuthRoutes.h"
 #import "DBTransportClientProtocol.h"
 
@@ -20,6 +21,7 @@
     _authRoutes = [[DBAUTHAppAuthRoutes alloc] init:client];
     _checkRoutes = [[DBCHECKAppAuthRoutes alloc] init:client];
     _filesRoutes = [[DBFILESAppAuthRoutes alloc] init:client];
+    _rivieraRoutes = [[DBRIVIERAAppAuthRoutes alloc] init:client];
     _sharingRoutes = [[DBSHARINGAppAuthRoutes alloc] init:client];
   }
   return self;

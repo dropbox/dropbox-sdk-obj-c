@@ -27,39 +27,39 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESFileCategoryTag` enum type represents the possible tag states
 /// with which the `DBFILESFileCategory` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileCategoryTag){
-    /// jpg, png, gif, and more.
-    DBFILESFileCategoryImage,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileCategoryTag) {
+  /// jpg, png, gif, and more.
+  DBFILESFileCategoryImage,
 
-    /// doc, docx, txt, and more.
-    DBFILESFileCategoryDocument,
+  /// doc, docx, txt, and more.
+  DBFILESFileCategoryDocument,
 
-    /// pdf.
-    DBFILESFileCategoryPdf,
+  /// pdf.
+  DBFILESFileCategoryPdf,
 
-    /// xlsx, xls, csv, and more.
-    DBFILESFileCategorySpreadsheet,
+  /// xlsx, xls, csv, and more.
+  DBFILESFileCategorySpreadsheet,
 
-    /// ppt, pptx, key, and more.
-    DBFILESFileCategoryPresentation,
+  /// ppt, pptx, key, and more.
+  DBFILESFileCategoryPresentation,
 
-    /// mp3, wav, mid, and more.
-    DBFILESFileCategoryAudio,
+  /// mp3, wav, mid, and more.
+  DBFILESFileCategoryAudio,
 
-    /// mov, wmv, mp4, and more.
-    DBFILESFileCategoryVideo,
+  /// mov, wmv, mp4, and more.
+  DBFILESFileCategoryVideo,
 
-    /// dropbox folder.
-    DBFILESFileCategoryFolder,
+  /// dropbox folder.
+  DBFILESFileCategoryFolder,
 
-    /// dropbox paper doc.
-    DBFILESFileCategoryPaper,
+  /// dropbox paper doc.
+  DBFILESFileCategoryPaper,
 
-    /// any file not in one of the categories above.
-    DBFILESFileCategoryOthers,
+  /// any file not in one of the categories above.
+  DBFILESFileCategoryOthers,
 
-    /// (no description).
-    DBFILESFileCategoryOther,
+  /// (no description).
+  DBFILESFileCategoryOther,
 
 };
 

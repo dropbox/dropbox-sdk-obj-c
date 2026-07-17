@@ -28,19 +28,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMPOLICIESFileProviderMigrationPolicyStateTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyStateTag){
-    /// Team admin has opted out of File Provider Migration for team members.
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyStateTag) {
+  /// Team admin has opted out of File Provider Migration for team members.
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateDisabled,
 
-    /// Team admin has not opted out of File Provider Migration for team
-    /// members.
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateEnabled,
+  /// Team admin has not opted out of File Provider Migration for team
+  /// members.
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateEnabled,
 
-    /// Team admin has default value based on team tier.
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateDefault_,
+  /// Team admin has default value based on team tier.
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateDefault_,
 
-    /// (no description).
-    DBTEAMPOLICIESFileProviderMigrationPolicyStateOther,
+  /// Team admin has chosen to do File Provider Migration immediately for the
+  /// team.
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateImmediate,
+
+  /// (no description).
+  DBTEAMPOLICIESFileProviderMigrationPolicyStateOther,
 
 };
 
@@ -80,6 +84,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyState
 - (instancetype)initWithDefault_;
 
 ///
+/// Initializes union class with tag state of "immediate".
+///
+/// Description of the "immediate" tag state: Team admin has chosen to do File
+/// Provider Migration immediately for the team.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithImmediate;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -110,6 +124,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyState
 /// @return Whether the union's current tag state has value "default".
 ///
 - (BOOL)isDefault_;
+
+///
+/// Retrieves whether the union's current tag state has value "immediate".
+///
+/// @return Whether the union's current tag state has value "immediate".
+///
+- (BOOL)isImmediate;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

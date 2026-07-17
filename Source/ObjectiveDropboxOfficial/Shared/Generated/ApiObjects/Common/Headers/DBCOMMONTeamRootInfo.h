@@ -38,8 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param rootNamespaceId The namespace ID for user's root namespace. It will
 /// be the namespace ID of the shared team root if the user is member of a team
-/// with a separate team root. Otherwise it will be same as `homeNamespaceId` in
-/// `DBCOMMONRootInfo`.
+/// with a separate team root, or the user root if user is member of a team with
+/// separate distinct roots for users. Otherwise it will be the same as
+/// `homeNamespaceId` in `DBCOMMONRootInfo`.
 /// @param homeNamespaceId The namespace ID for user's home namespace.
 /// @param homePath The path for user's home directory under the shared team
 /// root.

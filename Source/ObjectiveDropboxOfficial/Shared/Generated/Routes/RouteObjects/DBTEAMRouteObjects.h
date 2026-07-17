@@ -143,6 +143,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the membersAddJobStatusGetV2 route object.
 + (DBRoute *)DBTEAMMembersAddJobStatusGetV2;
 
+/// Accessor method for the membersDeleteFormerMemberFiles route object.
++ (DBRoute *)DBTEAMMembersDeleteFormerMemberFiles;
+
 /// Accessor method for the membersDeleteProfilePhoto route object.
 + (DBRoute *)DBTEAMMembersDeleteProfilePhoto;
 
@@ -235,12 +238,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the propertiesTemplateGet route object.
 + (DBRoute *)DBTEAMPropertiesTemplateGet;
 
-/// Accessor method for the propertiesTemplateList route object.
-+ (DBRoute *)DBTEAMPropertiesTemplateList;
-
-/// Accessor method for the propertiesTemplateUpdate route object.
-+ (DBRoute *)DBTEAMPropertiesTemplateUpdate;
-
 /// Accessor method for the reportsGetActivity route object.
 + (DBRoute *)DBTEAMReportsGetActivity;
 
@@ -291,6 +288,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the teamFolderRename route object.
 + (DBRoute *)DBTEAMTeamFolderRename;
+
+/// Accessor method for the teamFolderRestore route object.
++ (DBRoute *)DBTEAMTeamFolderRestore;
 
 /// Accessor method for the teamFolderUpdateSyncSettings route object.
 + (DBRoute *)DBTEAMTeamFolderUpdateSyncSettings;

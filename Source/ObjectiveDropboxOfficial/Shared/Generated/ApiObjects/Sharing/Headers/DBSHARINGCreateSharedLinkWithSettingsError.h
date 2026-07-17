@@ -31,27 +31,40 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBSHARINGCreateSharedLinkWithSettingsErrorTag` enum type represents the
 /// possible tag states with which the
 /// `DBSHARINGCreateSharedLinkWithSettingsError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag){
-    /// (no description).
-    DBSHARINGCreateSharedLinkWithSettingsErrorPath,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag) {
+  /// (no description).
+  DBSHARINGCreateSharedLinkWithSettingsErrorPath,
 
-    /// This user's email address is not verified. This functionality is only
-    /// available on accounts with a verified email address. Users can verify
-    /// their email address here https://www.dropbox.com/help/317.
-    DBSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified,
+  /// This user's email address is not verified. This functionality is only
+  /// available on accounts with a verified email address. Users can verify
+  /// their email address here https://www.dropbox.com/help/317.
+  DBSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified,
 
-    /// The shared link already exists. You can call `listSharedLinks` to get
-    /// the  existing link, or use the provided metadata if it is returned.
-    DBSHARINGCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists,
+  /// The shared link already exists. You can call `listSharedLinks` to get
+  /// the existing link, or use the provided metadata if it is returned.
+  /// Existing link metadata will not be returned if custom settings were
+  /// specified in the request that could make the existing link incompatible
+  /// with the requested settings.
+  DBSHARINGCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists,
 
-    /// There is an error with the given settings.
-    DBSHARINGCreateSharedLinkWithSettingsErrorSettingsError,
+  /// There is an error with the given settings.
+  DBSHARINGCreateSharedLinkWithSettingsErrorSettingsError,
 
-    /// The user is not allowed to create a shared link to the specified file.
-    /// For  example, this can occur if the file is restricted or if the user's
-    /// links are  banned
-    /// https://help.dropbox.com/files-folders/share/banned-links.
-    DBSHARINGCreateSharedLinkWithSettingsErrorAccessDenied,
+  /// The user is not allowed to create a shared link to the specified file.
+  /// For example, this can occur if the file is restricted or if the user's
+  /// links are banned
+  /// https://help.dropbox.com/files-folders/share/banned-links.
+  DBSHARINGCreateSharedLinkWithSettingsErrorAccessDenied,
+
+  /// The current user has been banned
+  /// https://help.dropbox.com/files-folders/share/banned-links for abuse
+  /// reasons.
+  DBSHARINGCreateSharedLinkWithSettingsErrorBannedMember,
+
+  /// Your Dropbox folder will have too many shared folders after the
+  /// operation.
+  /// https://help.dropbox.com/share/shared-folder-faq#Is-there-a-limit-to-the-number-of-shared-folders-I-can-create
+  DBSHARINGCreateSharedLinkWithSettingsErrorTooManySharedFolders,
 
 };
 
@@ -63,9 +76,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
 @property (nonatomic, readonly) DBFILESLookupError *path;
 
 /// The shared link already exists. You can call `listSharedLinks` to get the
-/// existing link, or use the provided metadata if it is returned. @note Ensure
-/// the `isSharedLinkAlreadyExists` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// existing link, or use the provided metadata if it is returned. Existing link
+/// metadata will not be returned if custom settings were specified in the
+/// request that could make the existing link incompatible with the requested
+/// settings. @note Ensure the `isSharedLinkAlreadyExists` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, nullable) DBSHARINGSharedLinkAlreadyExistsMetadata *sharedLinkAlreadyExists;
 
 /// There is an error with the given settings. @note Ensure the
@@ -100,12 +115,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
 /// Initializes union class with tag state of "shared_link_already_exists".
 ///
 /// Description of the "shared_link_already_exists" tag state: The shared link
-/// already exists. You can call `listSharedLinks` to get the  existing link, or
-/// use the provided metadata if it is returned.
+/// already exists. You can call `listSharedLinks` to get the existing link, or
+/// use the provided metadata if it is returned. Existing link metadata will not
+/// be returned if custom settings were specified in the request that could make
+/// the existing link incompatible with the requested settings.
 ///
 /// @param sharedLinkAlreadyExists The shared link already exists. You can call
-/// `listSharedLinks` to get the  existing link, or use the provided metadata if
-/// it is returned.
+/// `listSharedLinks` to get the existing link, or use the provided metadata if
+/// it is returned. Existing link metadata will not be returned if custom
+/// settings were specified in the request that could make the existing link
+/// incompatible with the requested settings.
 ///
 /// @return An initialized instance.
 ///
@@ -128,13 +147,35 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
 /// Initializes union class with tag state of "access_denied".
 ///
 /// Description of the "access_denied" tag state: The user is not allowed to
-/// create a shared link to the specified file. For  example, this can occur if
-/// the file is restricted or if the user's links are  banned
+/// create a shared link to the specified file. For example, this can occur if
+/// the file is restricted or if the user's links are banned
 /// https://help.dropbox.com/files-folders/share/banned-links.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAccessDenied;
+
+///
+/// Initializes union class with tag state of "banned_member".
+///
+/// Description of the "banned_member" tag state: The current user has been
+/// banned https://help.dropbox.com/files-folders/share/banned-links for abuse
+/// reasons.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithBannedMember;
+
+///
+/// Initializes union class with tag state of "too_many_shared_folders".
+///
+/// Description of the "too_many_shared_folders" tag state: Your Dropbox folder
+/// will have too many shared folders after the operation.
+/// https://help.dropbox.com/share/shared-folder-faq#Is-there-a-limit-to-the-number-of-shared-folders-I-can-create
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTooManySharedFolders;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -188,6 +229,22 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGCreateSharedLinkWithSettingsErrorTag)
 /// @return Whether the union's current tag state has value "access_denied".
 ///
 - (BOOL)isAccessDenied;
+
+///
+/// Retrieves whether the union's current tag state has value "banned_member".
+///
+/// @return Whether the union's current tag state has value "banned_member".
+///
+- (BOOL)isBannedMember;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "too_many_shared_folders".
+///
+/// @return Whether the union's current tag state has value
+/// "too_many_shared_folders".
+///
+- (BOOL)isTooManySharedFolders;
 
 ///
 /// Retrieves string value of union's current tag state.

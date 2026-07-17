@@ -13,12 +13,10 @@
 #import "DBASYNCPollResultBase.h"
 #import "DBFILEPROPERTIESAddTemplateResult.h"
 #import "DBFILEPROPERTIESGetTemplateResult.h"
-#import "DBFILEPROPERTIESListTemplateResult.h"
 #import "DBFILEPROPERTIESModifyTemplateError.h"
 #import "DBFILEPROPERTIESPropertyFieldTemplate.h"
 #import "DBFILEPROPERTIESPropertyGroupTemplate.h"
 #import "DBFILEPROPERTIESTemplateError.h"
-#import "DBFILEPROPERTIESUpdateTemplateResult.h"
 #import "DBFILESContentSyncSetting.h"
 #import "DBFILESSyncSetting.h"
 #import "DBFILESSyncSettingsError.h"
@@ -107,6 +105,7 @@
 #import "DBTEAMMembersAddLaunch.h"
 #import "DBTEAMMembersAddLaunchV2Result.h"
 #import "DBTEAMMembersDeactivateError.h"
+#import "DBTEAMMembersDeleteFormerMemberFilesError.h"
 #import "DBTEAMMembersDeleteProfilePhotoError.h"
 #import "DBTEAMMembersGetAvailableTeamMemberRolesResult.h"
 #import "DBTEAMMembersGetInfoError.h"
@@ -119,6 +118,7 @@
 #import "DBTEAMMembersListError.h"
 #import "DBTEAMMembersListResult.h"
 #import "DBTEAMMembersListV2Result.h"
+#import "DBTEAMMembersPermanentlyDeleteFilesError.h"
 #import "DBTEAMMembersRecoverError.h"
 #import "DBTEAMMembersRemoveError.h"
 #import "DBTEAMMembersSendWelcomeError.h"
@@ -169,6 +169,7 @@
 #import "DBTEAMTeamFolderMetadata.h"
 #import "DBTEAMTeamFolderPermanentlyDeleteError.h"
 #import "DBTEAMTeamFolderRenameError.h"
+#import "DBTEAMTeamFolderRestoreError.h"
 #import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamFolderTeamSharedDropboxError.h"
 #import "DBTEAMTeamFolderUpdateSyncSettingsError.h"
@@ -234,6 +235,7 @@ static DBRoute *DBTEAMMembersAdd;
 static DBRoute *DBTEAMMembersAddV2;
 static DBRoute *DBTEAMMembersAddJobStatusGet;
 static DBRoute *DBTEAMMembersAddJobStatusGetV2;
+static DBRoute *DBTEAMMembersDeleteFormerMemberFiles;
 static DBRoute *DBTEAMMembersDeleteProfilePhoto;
 static DBRoute *DBTEAMMembersDeleteProfilePhotoV2;
 static DBRoute *DBTEAMMembersGetAvailableTeamMemberRoles;
@@ -264,8 +266,6 @@ static DBRoute *DBTEAMNamespacesList;
 static DBRoute *DBTEAMNamespacesListContinue;
 static DBRoute *DBTEAMPropertiesTemplateAdd;
 static DBRoute *DBTEAMPropertiesTemplateGet;
-static DBRoute *DBTEAMPropertiesTemplateList;
-static DBRoute *DBTEAMPropertiesTemplateUpdate;
 static DBRoute *DBTEAMReportsGetActivity;
 static DBRoute *DBTEAMReportsGetDevices;
 static DBRoute *DBTEAMReportsGetMembership;
@@ -283,6 +283,7 @@ static DBRoute *DBTEAMTeamFolderList;
 static DBRoute *DBTEAMTeamFolderListContinue;
 static DBRoute *DBTEAMTeamFolderPermanentlyDelete;
 static DBRoute *DBTEAMTeamFolderRename;
+static DBRoute *DBTEAMTeamFolderRestore;
 static DBRoute *DBTEAMTeamFolderUpdateSyncSettings;
 static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
 
@@ -1006,6 +1007,23 @@ static NSObject *lockObj = nil;
   }
 }
 
++ (DBRoute *)DBTEAMMembersDeleteFormerMemberFiles {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersDeleteFormerMemberFiles) {
+      DBTEAMMembersDeleteFormerMemberFiles =
+          [[DBRoute alloc] init:@"members/delete_former_member_files"
+                           namespace_:@"team"
+                           deprecated:@NO
+                           resultType:nil
+                            errorType:[DBTEAMMembersDeleteFormerMemberFilesError class]
+                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersDeleteFormerMemberFiles;
+  }
+}
+
 + (DBRoute *)DBTEAMMembersDeleteProfilePhoto {
   @synchronized(lockObj) {
     if (!DBTEAMMembersDeleteProfilePhoto) {
@@ -1499,38 +1517,6 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMPropertiesTemplateList {
-  @synchronized(lockObj) {
-    if (!DBTEAMPropertiesTemplateList) {
-      DBTEAMPropertiesTemplateList = [[DBRoute alloc] init:@"properties/template/list"
-                                                namespace_:@"team"
-                                                deprecated:@YES
-                                                resultType:[DBFILEPROPERTIESListTemplateResult class]
-                                                 errorType:[DBFILEPROPERTIESTemplateError class]
-                                                     attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                     dataStructSerialBlock:nil
-                                   dataStructDeserialBlock:nil];
-    }
-    return DBTEAMPropertiesTemplateList;
-  }
-}
-
-+ (DBRoute *)DBTEAMPropertiesTemplateUpdate {
-  @synchronized(lockObj) {
-    if (!DBTEAMPropertiesTemplateUpdate) {
-      DBTEAMPropertiesTemplateUpdate = [[DBRoute alloc] init:@"properties/template/update"
-                                                  namespace_:@"team"
-                                                  deprecated:@YES
-                                                  resultType:[DBFILEPROPERTIESUpdateTemplateResult class]
-                                                   errorType:[DBFILEPROPERTIESModifyTemplateError class]
-                                                       attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                       dataStructSerialBlock:nil
-                                     dataStructDeserialBlock:nil];
-    }
-    return DBTEAMPropertiesTemplateUpdate;
-  }
-}
-
 + (DBRoute *)DBTEAMReportsGetActivity {
   @synchronized(lockObj) {
     if (!DBTEAMReportsGetActivity) {
@@ -1808,6 +1794,22 @@ static NSObject *lockObj = nil;
                              dataStructDeserialBlock:nil];
     }
     return DBTEAMTeamFolderRename;
+  }
+}
+
++ (DBRoute *)DBTEAMTeamFolderRestore {
+  @synchronized(lockObj) {
+    if (!DBTEAMTeamFolderRestore) {
+      DBTEAMTeamFolderRestore = [[DBRoute alloc] init:@"team_folder/restore"
+                                           namespace_:@"team"
+                                           deprecated:@NO
+                                           resultType:[DBTEAMTeamFolderMetadata class]
+                                            errorType:[DBTEAMTeamFolderRestoreError class]
+                                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                dataStructSerialBlock:nil
+                              dataStructDeserialBlock:nil];
+    }
+    return DBTEAMTeamFolderRestore;
   }
 }
 

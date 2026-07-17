@@ -30,15 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGExternalDriveBackupEligibilityStatusTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMLOGExternalDriveBackupEligibilityStatus` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupEligibilityStatusTag){
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupEligibilityStatusExceedLicenseCap,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupEligibilityStatusTag) {
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupEligibilityStatusExceedLicenseCap,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupEligibilityStatusSuccess,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupEligibilityStatusSkip,
 
-    /// (no description).
-    DBTEAMLOGExternalDriveBackupEligibilityStatusOther,
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupEligibilityStatusSuccess,
+
+  /// (no description).
+  DBTEAMLOGExternalDriveBackupEligibilityStatusOther,
 
 };
 
@@ -53,6 +56,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupEligibilityStatusT
 /// @return An initialized instance.
 ///
 - (instancetype)initWithExceedLicenseCap;
+
+///
+/// Initializes union class with tag state of "skip".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSkip;
 
 ///
 /// Initializes union class with tag state of "success".
@@ -80,6 +90,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupEligibilityStatusT
 /// "exceed_license_cap".
 ///
 - (BOOL)isExceedLicenseCap;
+
+///
+/// Retrieves whether the union's current tag state has value "skip".
+///
+/// @return Whether the union's current tag state has value "skip".
+///
+- (BOOL)isSkip;
 
 ///
 /// Retrieves whether the union's current tag state has value "success".

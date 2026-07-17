@@ -51,8 +51,8 @@
 
 - (DBRpcTask *)create:(NSString *)title destination:(NSString *)destination {
   DBRoute *route = DBFILEREQUESTSRouteObjects.DBFILEREQUESTSCreate;
-  DBFILEREQUESTSCreateFileRequestArgs *arg =
-      [[DBFILEREQUESTSCreateFileRequestArgs alloc] initWithTitle:title destination:destination];
+  DBFILEREQUESTSCreateFileRequestArgs *arg = [[DBFILEREQUESTSCreateFileRequestArgs alloc] initWithTitle:title
+                                                                                            destination:destination];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -60,13 +60,15 @@
           destination:(NSString *)destination
              deadline:(DBFILEREQUESTSFileRequestDeadline *)deadline
                  open:(NSNumber *)open
-         description_:(NSString *)description_ {
+         description_:(NSString *)description_
+       videoProjectId:(NSString *)videoProjectId {
   DBRoute *route = DBFILEREQUESTSRouteObjects.DBFILEREQUESTSCreate;
   DBFILEREQUESTSCreateFileRequestArgs *arg = [[DBFILEREQUESTSCreateFileRequestArgs alloc] initWithTitle:title
                                                                                             destination:destination
                                                                                                deadline:deadline
                                                                                                    open:open
-                                                                                           description_:description_];
+                                                                                           description_:description_
+                                                                                         videoProjectId:videoProjectId];
   return [self.client requestRpc:route arg:arg];
 }
 

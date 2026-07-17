@@ -5,14 +5,21 @@
 ///
 
 #import "DBACCOUNTRouteObjects.h"
+#import "DBACCOUNTAccountPhotoGetError.h"
+#import "DBACCOUNTAccountPhotoGetResult.h"
+#import "DBACCOUNTDeleteProfilePhotoError.h"
+#import "DBACCOUNTDeleteProfilePhotoResult.h"
 #import "DBACCOUNTSetProfilePhotoError.h"
 #import "DBACCOUNTSetProfilePhotoResult.h"
+#import "DBACCOUNTThumbnailError.h"
 #import "DBACCOUNTUserAuthRoutes.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 
 @implementation DBACCOUNTRouteObjects
 
+static DBRoute *DBACCOUNTDeleteProfilePhoto;
+static DBRoute *DBACCOUNTGetPhoto;
 static DBRoute *DBACCOUNTSetProfilePhoto;
 
 static NSObject *lockObj = nil;
@@ -21,6 +28,38 @@ static NSObject *lockObj = nil;
   dispatch_once(&onceToken, ^{
     lockObj = [[NSObject alloc] init];
   });
+}
+
++ (DBRoute *)DBACCOUNTDeleteProfilePhoto {
+  @synchronized(lockObj) {
+    if (!DBACCOUNTDeleteProfilePhoto) {
+      DBACCOUNTDeleteProfilePhoto = [[DBRoute alloc] init:@"delete_profile_photo"
+                                               namespace_:@"account"
+                                               deprecated:@NO
+                                               resultType:[DBACCOUNTDeleteProfilePhotoResult class]
+                                                errorType:[DBACCOUNTDeleteProfilePhotoError class]
+                                                    attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
+                                    dataStructSerialBlock:nil
+                                  dataStructDeserialBlock:nil];
+    }
+    return DBACCOUNTDeleteProfilePhoto;
+  }
+}
+
++ (DBRoute *)DBACCOUNTGetPhoto {
+  @synchronized(lockObj) {
+    if (!DBACCOUNTGetPhoto) {
+      DBACCOUNTGetPhoto = [[DBRoute alloc] init:@"get_photo"
+                                     namespace_:@"account"
+                                     deprecated:@NO
+                                     resultType:[DBACCOUNTAccountPhotoGetResult class]
+                                      errorType:[DBACCOUNTAccountPhotoGetError class]
+                                          attrs:@{@"auth" : @"user", @"host" : @"content", @"style" : @"download"}
+                          dataStructSerialBlock:nil
+                        dataStructDeserialBlock:nil];
+    }
+    return DBACCOUNTGetPhoto;
+  }
 }
 
 + (DBRoute *)DBACCOUNTSetProfilePhoto {

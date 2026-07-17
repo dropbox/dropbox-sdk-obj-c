@@ -29,84 +29,93 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGEventCategoryTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGEventCategory` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag){
-    /// Events that involve team related alerts.
-    DBTEAMLOGEventCategoryAdminAlerting,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag) {
+  /// Events that involve team related alerts.
+  DBTEAMLOGEventCategoryAdminAlerting,
 
-    /// Events that apply to management of linked apps.
-    DBTEAMLOGEventCategoryApps,
+  /// Events that apply to management of linked apps.
+  DBTEAMLOGEventCategoryApps,
 
-    /// Events that have to do with comments on files and Paper documents.
-    DBTEAMLOGEventCategoryComments,
+  /// Events that have to do with comments on files and Paper documents.
+  DBTEAMLOGEventCategoryComments,
 
-    /// Events that involve data governance actions
-    DBTEAMLOGEventCategoryDataGovernance,
+  /// Events that apply to Dropbox Dash
+  DBTEAMLOGEventCategoryDash,
 
-    /// Events that apply to linked devices on mobile, desktop and Web
-    /// platforms.
-    DBTEAMLOGEventCategoryDevices,
+  /// Events that involve data governance actions
+  DBTEAMLOGEventCategoryDataGovernance,
 
-    /// Events that involve domain management feature: domain verification,
-    /// invite enforcement and account capture.
-    DBTEAMLOGEventCategoryDomains,
+  /// Events that apply to linked devices on mobile, desktop and Web
+  /// platforms.
+  DBTEAMLOGEventCategoryDevices,
 
-    /// Events that involve encryption.
-    DBTEAMLOGEventCategoryEncryption,
+  /// Events that involve domain management feature: domain verification,
+  /// invite enforcement and account capture.
+  DBTEAMLOGEventCategoryDomains,
 
-    /// Events that have to do with filesystem operations on files and folders:
-    /// copy, move, delete, etc.
-    DBTEAMLOGEventCategoryFileOperations,
+  /// Events that involve encryption.
+  DBTEAMLOGEventCategoryEncryption,
 
-    /// Events that apply to the file requests feature.
-    DBTEAMLOGEventCategoryFileRequests,
+  /// Events that have to do with filesystem operations on files and folders:
+  /// copy, move, delete, etc.
+  DBTEAMLOGEventCategoryFileOperations,
 
-    /// Events that involve group management.
-    DBTEAMLOGEventCategoryGroups,
+  /// Events that apply to the file requests feature.
+  DBTEAMLOGEventCategoryFileRequests,
 
-    /// Events that involve users signing in to or out of Dropbox.
-    DBTEAMLOGEventCategoryLogins,
+  /// Events that involve group management.
+  DBTEAMLOGEventCategoryGroups,
 
-    /// Events that involve team member management.
-    DBTEAMLOGEventCategoryMembers,
+  /// Events that involve users signing in to or out of Dropbox.
+  DBTEAMLOGEventCategoryLogins,
 
-    /// Events that apply to Dropbox Paper.
-    DBTEAMLOGEventCategoryPaper,
+  /// Events that involve team member management.
+  DBTEAMLOGEventCategoryMembers,
 
-    /// Events that involve using, changing or resetting passwords.
-    DBTEAMLOGEventCategoryPasswords,
+  /// Events that apply to Dropbox Paper.
+  DBTEAMLOGEventCategoryPaper,
 
-    /// Events that concern generation of admin reports, including team activity
-    /// and device usage.
-    DBTEAMLOGEventCategoryReports,
+  /// Events that involve using, changing or resetting passwords.
+  DBTEAMLOGEventCategoryPasswords,
 
-    /// Events that apply to all types of sharing and collaboration.
-    DBTEAMLOGEventCategorySharing,
+  /// Events that apply to Dropbox Protect
+  DBTEAMLOGEventCategoryProtect,
 
-    /// Events that apply to Dropbox Showcase.
-    DBTEAMLOGEventCategoryShowcase,
+  /// Events that concern generation of admin reports, including team activity
+  /// and device usage.
+  DBTEAMLOGEventCategoryReports,
 
-    /// Events that involve using or configuring single sign-on as well as
-    /// administrative policies concerning single sign-on.
-    DBTEAMLOGEventCategorySso,
+  /// Events that apply to all types of sharing and collaboration.
+  DBTEAMLOGEventCategorySharing,
 
-    /// Events that involve team folder management.
-    DBTEAMLOGEventCategoryTeamFolders,
+  /// Events that apply to Dropbox Showcase.
+  DBTEAMLOGEventCategoryShowcase,
 
-    /// Events that involve a change in team-wide policies.
-    DBTEAMLOGEventCategoryTeamPolicies,
+  /// Events that apply to Dropbox Sign
+  DBTEAMLOGEventCategorySignatures,
 
-    /// Events that involve a change in the team profile.
-    DBTEAMLOGEventCategoryTeamProfile,
+  /// Events that involve using or configuring single sign-on as well as
+  /// administrative policies concerning single sign-on.
+  DBTEAMLOGEventCategorySso,
 
-    /// Events that involve using or configuring two factor authentication as
-    /// well as administrative policies concerning two factor authentication.
-    DBTEAMLOGEventCategoryTfa,
+  /// Events that involve team folder management.
+  DBTEAMLOGEventCategoryTeamFolders,
 
-    /// Events that apply to cross-team trust establishment.
-    DBTEAMLOGEventCategoryTrustedTeams,
+  /// Events that involve a change in team-wide policies.
+  DBTEAMLOGEventCategoryTeamPolicies,
 
-    /// (no description).
-    DBTEAMLOGEventCategoryOther,
+  /// Events that involve a change in the team profile.
+  DBTEAMLOGEventCategoryTeamProfile,
+
+  /// Events that involve using or configuring two factor authentication as
+  /// well as administrative policies concerning two factor authentication.
+  DBTEAMLOGEventCategoryTfa,
+
+  /// Events that apply to cross-team trust establishment.
+  DBTEAMLOGEventCategoryTrustedTeams,
+
+  /// (no description).
+  DBTEAMLOGEventCategoryOther,
 
 };
 
@@ -144,6 +153,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithComments;
+
+///
+/// Initializes union class with tag state of "dash".
+///
+/// Description of the "dash" tag state: Events that apply to Dropbox Dash
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDash;
 
 ///
 /// Initializes union class with tag state of "data_governance".
@@ -254,6 +272,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag){
 - (instancetype)initWithPasswords;
 
 ///
+/// Initializes union class with tag state of "protect".
+///
+/// Description of the "protect" tag state: Events that apply to Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtect;
+
+///
 /// Initializes union class with tag state of "reports".
 ///
 /// Description of the "reports" tag state: Events that concern generation of
@@ -282,6 +309,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithShowcase;
+
+///
+/// Initializes union class with tag state of "signatures".
+///
+/// Description of the "signatures" tag state: Events that apply to Dropbox Sign
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSignatures;
 
 ///
 /// Initializes union class with tag state of "sso".
@@ -377,6 +413,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag){
 - (BOOL)isComments;
 
 ///
+/// Retrieves whether the union's current tag state has value "dash".
+///
+/// @return Whether the union's current tag state has value "dash".
+///
+- (BOOL)isDash;
+
+///
 /// Retrieves whether the union's current tag state has value "data_governance".
 ///
 /// @return Whether the union's current tag state has value "data_governance".
@@ -454,6 +497,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag){
 - (BOOL)isPasswords;
 
 ///
+/// Retrieves whether the union's current tag state has value "protect".
+///
+/// @return Whether the union's current tag state has value "protect".
+///
+- (BOOL)isProtect;
+
+///
 /// Retrieves whether the union's current tag state has value "reports".
 ///
 /// @return Whether the union's current tag state has value "reports".
@@ -473,6 +523,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventCategoryTag){
 /// @return Whether the union's current tag state has value "showcase".
 ///
 - (BOOL)isShowcase;
+
+///
+/// Retrieves whether the union's current tag state has value "signatures".
+///
+/// @return Whether the union's current tag state has value "signatures".
+///
+- (BOOL)isSignatures;
 
 ///
 /// Retrieves whether the union's current tag state has value "sso".

@@ -27,30 +27,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBSHARINGAddMemberSelectorErrorTag` enum type represents the possible
 /// tag states with which the `DBSHARINGAddMemberSelectorError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag){
-    /// Automatically created groups can only be added to team folders.
-    DBSHARINGAddMemberSelectorErrorAutomaticGroup,
+typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag) {
+  /// Automatically created groups can only be added to team folders.
+  DBSHARINGAddMemberSelectorErrorAutomaticGroup,
 
-    /// The value is the ID that could not be identified.
-    DBSHARINGAddMemberSelectorErrorInvalidDropboxId,
+  /// The value is the ID that could not be identified.
+  DBSHARINGAddMemberSelectorErrorInvalidDropboxId,
 
-    /// The value is the e-email address that is malformed.
-    DBSHARINGAddMemberSelectorErrorInvalidEmail,
+  /// The value is the e-email address that is malformed.
+  DBSHARINGAddMemberSelectorErrorInvalidEmail,
 
-    /// The value is the ID of the Dropbox user with an unverified email
-    /// address. Invite unverified users by email address instead of by their
-    /// Dropbox ID.
-    DBSHARINGAddMemberSelectorErrorUnverifiedDropboxId,
+  /// Provided group is invalid.
+  DBSHARINGAddMemberSelectorErrorInvalidGroup,
 
-    /// At least one of the specified groups in `members` in
-    /// `DBSHARINGAddFolderMemberArg` is deleted.
-    DBSHARINGAddMemberSelectorErrorGroupDeleted,
+  /// The value is the ID of the Dropbox user with an unverified email
+  /// address. Invite unverified users by email address instead of by their
+  /// Dropbox ID.
+  DBSHARINGAddMemberSelectorErrorUnverifiedDropboxId,
 
-    /// Sharing to a group that is not on the current user's team.
-    DBSHARINGAddMemberSelectorErrorGroupNotOnTeam,
+  /// At least one of the specified groups in `members` in
+  /// `DBSHARINGAddFolderMemberArg` is deleted.
+  DBSHARINGAddMemberSelectorErrorGroupDeleted,
 
-    /// (no description).
-    DBSHARINGAddMemberSelectorErrorOther,
+  /// Sharing to a group that is not on the current user's team.
+  DBSHARINGAddMemberSelectorErrorGroupNotOnTeam,
+
+  /// (no description).
+  DBSHARINGAddMemberSelectorErrorOther,
 
 };
 
@@ -108,6 +111,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithInvalidEmail:(NSString *)invalidEmail;
+
+///
+/// Initializes union class with tag state of "invalid_group".
+///
+/// Description of the "invalid_group" tag state: Provided group is invalid.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithInvalidGroup;
 
 ///
 /// Initializes union class with tag state of "unverified_dropbox_id".
@@ -183,6 +195,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag){
 /// @return Whether the union's current tag state has value "invalid_email".
 ///
 - (BOOL)isInvalidEmail;
+
+///
+/// Retrieves whether the union's current tag state has value "invalid_group".
+///
+/// @return Whether the union's current tag state has value "invalid_group".
+///
+- (BOOL)isInvalidGroup;
 
 ///
 /// Retrieves whether the union's current tag state has value

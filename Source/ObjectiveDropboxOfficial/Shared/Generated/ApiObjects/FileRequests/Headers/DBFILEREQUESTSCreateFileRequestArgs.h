@@ -47,6 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// A description of the file request.
 @property (nonatomic, readonly, copy, nullable) NSString *description_;
 
+/// If this request was created from video project, its id.
+@property (nonatomic, readonly, copy, nullable) NSString *videoProjectId;
+
 #pragma mark - Constructors
 
 ///
@@ -62,6 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// request is closed, it will not accept any file submissions, but it can be
 /// opened later.
 /// @param description_ A description of the file request.
+/// @param videoProjectId If this request was created from video project, its
+/// id.
 ///
 /// @return An initialized instance.
 ///
@@ -69,7 +74,8 @@ NS_ASSUME_NONNULL_BEGIN
                   destination:(NSString *)destination
                      deadline:(nullable DBFILEREQUESTSFileRequestDeadline *)deadline
                          open:(nullable NSNumber *)open
-                 description_:(nullable NSString *)description_;
+                 description_:(nullable NSString *)description_
+               videoProjectId:(nullable NSString *)videoProjectId;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

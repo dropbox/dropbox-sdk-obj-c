@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGSendForSignaturePolicyTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGSendForSignaturePolicy` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSendForSignaturePolicyTag){
-    /// (no description).
-    DBTEAMLOGSendForSignaturePolicyDisabled,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSendForSignaturePolicyTag) {
+  /// (no description).
+  DBTEAMLOGSendForSignaturePolicyDisabled,
 
-    /// (no description).
-    DBTEAMLOGSendForSignaturePolicyEnabled,
+  /// (no description).
+  DBTEAMLOGSendForSignaturePolicyEnabled,
 
-    /// (no description).
-    DBTEAMLOGSendForSignaturePolicyOther,
+  /// (no description).
+  DBTEAMLOGSendForSignaturePolicyOther,
 
 };
 

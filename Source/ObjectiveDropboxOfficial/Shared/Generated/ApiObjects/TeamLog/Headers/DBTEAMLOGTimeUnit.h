@@ -27,33 +27,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGTimeUnitTag` enum type represents the possible tag states with
 /// which the `DBTEAMLOGTimeUnit` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTimeUnitTag){
-    /// (no description).
-    DBTEAMLOGTimeUnitDays,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTimeUnitTag) {
+  /// (no description).
+  DBTEAMLOGTimeUnitDays,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitHours,
+  /// (no description).
+  DBTEAMLOGTimeUnitHours,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitMilliseconds,
+  /// (no description).
+  DBTEAMLOGTimeUnitMilliseconds,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitMinutes,
+  /// (no description).
+  DBTEAMLOGTimeUnitMinutes,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitMonths,
+  /// (no description).
+  DBTEAMLOGTimeUnitMonths,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitSeconds,
+  /// (no description).
+  DBTEAMLOGTimeUnitSeconds,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitWeeks,
+  /// (no description).
+  DBTEAMLOGTimeUnitWeeks,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitYears,
+  /// (no description).
+  DBTEAMLOGTimeUnitYears,
 
-    /// (no description).
-    DBTEAMLOGTimeUnitOther,
+  /// (no description).
+  DBTEAMLOGTimeUnitOther,
 
 };
 

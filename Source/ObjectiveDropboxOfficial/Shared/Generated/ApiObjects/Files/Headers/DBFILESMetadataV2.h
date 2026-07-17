@@ -30,12 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBFILESMetadataV2Tag` enum type represents the possible tag states with
 /// which the `DBFILESMetadataV2` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBFILESMetadataV2Tag){
-    /// (no description).
-    DBFILESMetadataV2Metadata,
+typedef NS_CLOSED_ENUM(NSInteger, DBFILESMetadataV2Tag) {
+  /// (no description).
+  DBFILESMetadataV2Metadata,
 
-    /// (no description).
-    DBFILESMetadataV2Other,
+  /// (no description).
+  DBFILESMetadataV2Other,
 
 };
 

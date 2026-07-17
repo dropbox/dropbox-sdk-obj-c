@@ -27,24 +27,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBACCOUNTSetProfilePhotoErrorTag` enum type represents the possible tag
 /// states with which the `DBACCOUNTSetProfilePhotoError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBACCOUNTSetProfilePhotoErrorTag){
-    /// File cannot be set as profile photo.
-    DBACCOUNTSetProfilePhotoErrorFileTypeError,
+typedef NS_CLOSED_ENUM(NSInteger, DBACCOUNTSetProfilePhotoErrorTag) {
+  /// File cannot be set as profile photo.
+  DBACCOUNTSetProfilePhotoErrorFileTypeError,
 
-    /// File cannot exceed 10 MB.
-    DBACCOUNTSetProfilePhotoErrorFileSizeError,
+  /// File cannot exceed 10 MB.
+  DBACCOUNTSetProfilePhotoErrorFileSizeError,
 
-    /// Image must be larger than 128 x 128.
-    DBACCOUNTSetProfilePhotoErrorDimensionError,
+  /// Image must be larger than 128 x 128.
+  DBACCOUNTSetProfilePhotoErrorDimensionError,
 
-    /// Image could not be thumbnailed.
-    DBACCOUNTSetProfilePhotoErrorThumbnailError,
+  /// Image could not be thumbnailed.
+  DBACCOUNTSetProfilePhotoErrorThumbnailError,
 
-    /// Temporary infrastructure failure, please retry.
-    DBACCOUNTSetProfilePhotoErrorTransientError,
+  /// Temporary infrastructure failure, please retry.
+  DBACCOUNTSetProfilePhotoErrorTransientError,
 
-    /// (no description).
-    DBACCOUNTSetProfilePhotoErrorOther,
+  /// (no description).
+  DBACCOUNTSetProfilePhotoErrorOther,
 
 };
 

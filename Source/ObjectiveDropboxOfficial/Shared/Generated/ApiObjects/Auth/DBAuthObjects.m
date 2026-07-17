@@ -8,6 +8,7 @@
 
 #import "DBAUTHAccessError.h"
 #import "DBAUTHInvalidAccountTypeError.h"
+#import "DBAUTHNoPermissionError.h"
 #import "DBAUTHPaperAccessError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -18,6 +19,7 @@
 
 @synthesize invalidAccountType = _invalidAccountType;
 @synthesize paperAccessDenied = _paperAccessDenied;
+@synthesize noPermission = _noPermission;
 
 #pragma mark - Constructors
 
@@ -35,6 +37,23 @@
   if (self) {
     _tag = DBAUTHAccessErrorPaperAccessDenied;
     _paperAccessDenied = paperAccessDenied;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamAccessDenied {
+  self = [super init];
+  if (self) {
+    _tag = DBAUTHAccessErrorTeamAccessDenied;
+  }
+  return self;
+}
+
+- (instancetype)initWithNoPermission:(DBAUTHNoPermissionError *)noPermission {
+  self = [super init];
+  if (self) {
+    _tag = DBAUTHAccessErrorNoPermission;
+    _noPermission = noPermission;
   }
   return self;
 }
@@ -65,6 +84,14 @@
   return _paperAccessDenied;
 }
 
+- (DBAUTHNoPermissionError *)noPermission {
+  if (![self isNoPermission]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBAUTHAccessErrorNoPermission, but was %@.", [self tagName]];
+  }
+  return _noPermission;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isInvalidAccountType {
@@ -73,6 +100,14 @@
 
 - (BOOL)isPaperAccessDenied {
   return _tag == DBAUTHAccessErrorPaperAccessDenied;
+}
+
+- (BOOL)isTeamAccessDenied {
+  return _tag == DBAUTHAccessErrorTeamAccessDenied;
+}
+
+- (BOOL)isNoPermission {
+  return _tag == DBAUTHAccessErrorNoPermission;
 }
 
 - (BOOL)isOther {
@@ -85,6 +120,10 @@
     return @"DBAUTHAccessErrorInvalidAccountType";
   case DBAUTHAccessErrorPaperAccessDenied:
     return @"DBAUTHAccessErrorPaperAccessDenied";
+  case DBAUTHAccessErrorTeamAccessDenied:
+    return @"DBAUTHAccessErrorTeamAccessDenied";
+  case DBAUTHAccessErrorNoPermission:
+    return @"DBAUTHAccessErrorNoPermission";
   case DBAUTHAccessErrorOther:
     return @"DBAUTHAccessErrorOther";
   }
@@ -129,6 +168,12 @@
   case DBAUTHAccessErrorPaperAccessDenied:
     result = prime * result + [self.paperAccessDenied hash];
     break;
+  case DBAUTHAccessErrorTeamAccessDenied:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBAUTHAccessErrorNoPermission:
+    result = prime * result + [self.noPermission hash];
+    break;
   case DBAUTHAccessErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -161,6 +206,10 @@
     return [self.invalidAccountType isEqual:anAccessError.invalidAccountType];
   case DBAUTHAccessErrorPaperAccessDenied:
     return [self.paperAccessDenied isEqual:anAccessError.paperAccessDenied];
+  case DBAUTHAccessErrorTeamAccessDenied:
+    return [[self tagName] isEqual:[anAccessError tagName]];
+  case DBAUTHAccessErrorNoPermission:
+    return [self.noPermission isEqual:anAccessError.noPermission];
   case DBAUTHAccessErrorOther:
     return [[self tagName] isEqual:[anAccessError tagName]];
   }
@@ -184,6 +233,11 @@
     jsonDict[@"paper_access_denied"] =
         [[DBAUTHPaperAccessErrorSerializer serialize:valueObj.paperAccessDenied] mutableCopy];
     jsonDict[@".tag"] = @"paper_access_denied";
+  } else if ([valueObj isTeamAccessDenied]) {
+    jsonDict[@".tag"] = @"team_access_denied";
+  } else if ([valueObj isNoPermission]) {
+    jsonDict[@"no_permission"] = [[DBAUTHNoPermissionErrorSerializer serialize:valueObj.noPermission] mutableCopy];
+    jsonDict[@".tag"] = @"no_permission";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -204,6 +258,11 @@
     DBAUTHPaperAccessError *paperAccessDenied =
         [DBAUTHPaperAccessErrorSerializer deserialize:valueDict[@"paper_access_denied"]];
     return [[DBAUTHAccessError alloc] initWithPaperAccessDenied:paperAccessDenied];
+  } else if ([tag isEqualToString:@"team_access_denied"]) {
+    return [[DBAUTHAccessError alloc] initWithTeamAccessDenied];
+  } else if ([tag isEqualToString:@"no_permission"]) {
+    DBAUTHNoPermissionError *noPermission = [DBAUTHNoPermissionErrorSerializer deserialize:valueDict[@"no_permission"]];
+    return [[DBAUTHAccessError alloc] initWithNoPermission:noPermission];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHAccessError alloc] initWithOther];
   } else {
@@ -694,6 +753,176 @@
 
 @end
 
+#import "DBAUTHNoPermissionError.h"
+#import "DBAUTHUnauthorizedAccountIdUsageError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBAUTHNoPermissionError
+
+@synthesize unauthorizedAccountIdUsage = _unauthorizedAccountIdUsage;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUnauthorizedAccountIdUsage:(DBAUTHUnauthorizedAccountIdUsageError *)unauthorizedAccountIdUsage {
+  self = [super init];
+  if (self) {
+    _tag = DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage;
+    _unauthorizedAccountIdUsage = unauthorizedAccountIdUsage;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBAUTHNoPermissionErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBAUTHUnauthorizedAccountIdUsageError *)unauthorizedAccountIdUsage {
+  if (![self isUnauthorizedAccountIdUsage]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage, but was %@.", [self tagName]];
+  }
+  return _unauthorizedAccountIdUsage;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUnauthorizedAccountIdUsage {
+  return _tag == DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage;
+}
+
+- (BOOL)isOther {
+  return _tag == DBAUTHNoPermissionErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
+    return @"DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage";
+  case DBAUTHNoPermissionErrorOther:
+    return @"DBAUTHNoPermissionErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBAUTHNoPermissionErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBAUTHNoPermissionErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBAUTHNoPermissionErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
+    result = prime * result + [self.unauthorizedAccountIdUsage hash];
+    break;
+  case DBAUTHNoPermissionErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToNoPermissionError:other];
+}
+
+- (BOOL)isEqualToNoPermissionError:(DBAUTHNoPermissionError *)aNoPermissionError {
+  if (self == aNoPermissionError) {
+    return YES;
+  }
+  if (self.tag != aNoPermissionError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
+    return [self.unauthorizedAccountIdUsage isEqual:aNoPermissionError.unauthorizedAccountIdUsage];
+  case DBAUTHNoPermissionErrorOther:
+    return [[self tagName] isEqual:[aNoPermissionError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBAUTHNoPermissionErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBAUTHNoPermissionError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUnauthorizedAccountIdUsage]) {
+    [jsonDict addEntriesFromDictionary:[DBAUTHUnauthorizedAccountIdUsageErrorSerializer
+                                           serialize:valueObj.unauthorizedAccountIdUsage]];
+    jsonDict[@".tag"] = @"unauthorized_account_id_usage";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBAUTHNoPermissionError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"unauthorized_account_id_usage"]) {
+    DBAUTHUnauthorizedAccountIdUsageError *unauthorizedAccountIdUsage =
+        [DBAUTHUnauthorizedAccountIdUsageErrorSerializer deserialize:valueDict];
+    return [[DBAUTHNoPermissionError alloc] initWithUnauthorizedAccountIdUsage:unauthorizedAccountIdUsage];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBAUTHNoPermissionError alloc] initWithOther];
+  } else {
+    return [[DBAUTHNoPermissionError alloc] initWithOther];
+  }
+}
+
+@end
+
 #import "DBAUTHPaperAccessError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -1169,8 +1398,8 @@
 
 - (instancetype)initWithOauth1Token:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth1Token);
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth1TokenSecret);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
+                                                                 pattern:nil]](oauth1TokenSecret);
 
   self = [super init];
   if (self) {
@@ -1635,6 +1864,115 @@
   NSString *requiredScope = valueDict[@"required_scope"];
 
   return [[DBAUTHTokenScopeError alloc] initWithRequiredScope:requiredScope];
+}
+
+@end
+
+#import "DBAUTHUnauthorizedAccountIdUsageError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBAUTHUnauthorizedAccountIdUsageError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUnauthorizedAccountIds:(NSArray<NSString *> *)unauthorizedAccountIds {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                                               maxItems:nil
+                                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](
+      unauthorizedAccountIds);
+
+  self = [super init];
+  if (self) {
+    _unauthorizedAccountIds = unauthorizedAccountIds;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBAUTHUnauthorizedAccountIdUsageErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBAUTHUnauthorizedAccountIdUsageErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBAUTHUnauthorizedAccountIdUsageErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.unauthorizedAccountIds hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUnauthorizedAccountIdUsageError:other];
+}
+
+- (BOOL)isEqualToUnauthorizedAccountIdUsageError:
+    (DBAUTHUnauthorizedAccountIdUsageError *)anUnauthorizedAccountIdUsageError {
+  if (self == anUnauthorizedAccountIdUsageError) {
+    return YES;
+  }
+  if (![self.unauthorizedAccountIds isEqual:anUnauthorizedAccountIdUsageError.unauthorizedAccountIds]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBAUTHUnauthorizedAccountIdUsageErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBAUTHUnauthorizedAccountIdUsageError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"unauthorized_account_ids"] = [DBArraySerializer serialize:valueObj.unauthorizedAccountIds
+                                                             withBlock:^id(id elem0) {
+                                                               return elem0;
+                                                             }];
+
+  return jsonDict;
+}
+
++ (DBAUTHUnauthorizedAccountIdUsageError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<NSString *> *unauthorizedAccountIds = [DBArraySerializer deserialize:valueDict[@"unauthorized_account_ids"]
+                                                                     withBlock:^id(id elem0) {
+                                                                       return elem0;
+                                                                     }];
+
+  return [[DBAUTHUnauthorizedAccountIdUsageError alloc] initWithUnauthorizedAccountIds:unauthorizedAccountIds];
 }
 
 @end

@@ -7,6 +7,7 @@
 #import "DBAUTHAppAuthRoutes.h"
 #import "DBCHECKAppAuthRoutes.h"
 #import "DBFILESAppAuthRoutes.h"
+#import "DBRIVIERAAppAuthRoutes.h"
 #import "DBRequestErrors.h"
 #import "DBSHARINGAppAuthRoutes.h"
 #import "DBTasks.h"
@@ -35,6 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Routes within the `files` namespace.
 @property (nonatomic, readonly) DBFILESAppAuthRoutes *filesRoutes;
+
+/// Routes within the `riviera` namespace.
+@property (nonatomic, readonly) DBRIVIERAAppAuthRoutes *rivieraRoutes;
 
 /// Routes within the `sharing` namespace.
 @property (nonatomic, readonly) DBSHARINGAppAuthRoutes *sharingRoutes;

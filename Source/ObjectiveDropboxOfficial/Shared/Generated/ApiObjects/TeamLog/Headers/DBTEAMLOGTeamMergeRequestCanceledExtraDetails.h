@@ -32,27 +32,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBTEAMLOGTeamMergeRequestCanceledExtraDetailsTag` enum type represents
 /// the possible tag states with which the
 /// `DBTEAMLOGTeamMergeRequestCanceledExtraDetails` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMergeRequestCanceledExtraDetailsTag){
-    /// Team merge request cancellation details shown to the primary team.
-    DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMergeRequestCanceledExtraDetailsTag) {
+  /// Team merge request cancellation details shown to the primary team
+  DBTEAMLOGTeamMergeRequestCanceledExtraDetailsPrimaryTeam,
 
-    /// Team merge request cancellation details shown to the secondary team.
-    DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam,
+  /// Team merge request cancellation details shown to the secondary team
+  DBTEAMLOGTeamMergeRequestCanceledExtraDetailsSecondaryTeam,
 
-    /// (no description).
-    DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther,
+  /// (no description).
+  DBTEAMLOGTeamMergeRequestCanceledExtraDetailsOther,
 
 };
 
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBTEAMLOGTeamMergeRequestCanceledExtraDetailsTag tag;
 
-/// Team merge request cancellation details shown to the primary team. @note
+/// Team merge request cancellation details shown to the primary team @note
 /// Ensure the `isPrimaryTeam` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPrimaryTeamRequestCanceledDetails *primaryTeam;
 
-/// Team merge request cancellation details shown to the secondary team. @note
+/// Team merge request cancellation details shown to the secondary team @note
 /// Ensure the `isSecondaryTeam` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSecondaryTeamRequestCanceledDetails *secondaryTeam;
@@ -63,10 +63,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMergeRequestCanceledExtraDetailsT
 /// Initializes union class with tag state of "primary_team".
 ///
 /// Description of the "primary_team" tag state: Team merge request cancellation
-/// details shown to the primary team.
+/// details shown to the primary team
 ///
 /// @param primaryTeam Team merge request cancellation details shown to the
-/// primary team.
+/// primary team
 ///
 /// @return An initialized instance.
 ///
@@ -76,10 +76,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMergeRequestCanceledExtraDetailsT
 /// Initializes union class with tag state of "secondary_team".
 ///
 /// Description of the "secondary_team" tag state: Team merge request
-/// cancellation details shown to the secondary team.
+/// cancellation details shown to the secondary team
 ///
 /// @param secondaryTeam Team merge request cancellation details shown to the
-/// secondary team.
+/// secondary team
 ///
 /// @return An initialized instance.
 ///

@@ -27,85 +27,108 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMMembersRemoveErrorTag` enum type represents the possible tag
 /// states with which the `DBTEAMMembersRemoveError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
-    /// No matching user found. The provided team_member_id, email, or
-    /// external_id does not exist on this team.
-    DBTEAMMembersRemoveErrorUserNotFound,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
+  DBTEAMMembersRemoveErrorUserNotFound,
 
-    /// The user is not a member of the team.
-    DBTEAMMembersRemoveErrorUserNotInTeam,
+  /// The user is not a member of the team.
+  DBTEAMMembersRemoveErrorUserNotInTeam,
 
-    /// (no description).
-    DBTEAMMembersRemoveErrorOther,
+  /// (no description).
+  DBTEAMMembersRemoveErrorOther,
 
-    /// Expected removed user and transfer_dest user to be different.
-    DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer,
+  /// Cannot permanently delete files while it's being transferred.
+  DBTEAMMembersRemoveErrorTransferInProgress,
 
-    /// Expected removed user and transfer_admin user to be different.
-    DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer,
+  /// Cannot permanently delete files that have already been transferred.
+  DBTEAMMembersRemoveErrorAlreadyTransferred,
 
-    /// No matching user found for the argument transfer_dest_id.
-    DBTEAMMembersRemoveErrorTransferDestUserNotFound,
+  /// Cannot permanently delete files that have already been transferred or
+  /// deleted.
+  DBTEAMMembersRemoveErrorAlreadyTransferredOrDeleted,
 
-    /// The provided transfer_dest_id does not exist on this team.
-    DBTEAMMembersRemoveErrorTransferDestUserNotInTeam,
+  /// Expected removed user and transfer_dest user to be different.
+  DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer,
 
-    /// The provided transfer_admin_id does not exist on this team.
-    DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam,
+  /// Expected removed user and transfer_admin user to be different.
+  DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer,
 
-    /// No matching user found for the argument transfer_admin_id.
-    DBTEAMMembersRemoveErrorTransferAdminUserNotFound,
+  /// No matching user found for the argument transfer_dest_id.
+  DBTEAMMembersRemoveErrorTransferDestUserNotFound,
 
-    /// The transfer_admin_id argument must be provided when file transfer is
-    /// requested.
-    DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId,
+  /// The provided transfer_dest_id does not exist on this team.
+  DBTEAMMembersRemoveErrorTransferDestUserNotInTeam,
 
-    /// Specified transfer_admin user is not a team admin.
-    DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin,
+  /// The provided transfer_admin_id does not exist on this team.
+  DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam,
 
-    /// The recipient user's email is not verified.
-    DBTEAMMembersRemoveErrorRecipientNotVerified,
+  /// No matching user found for the argument transfer_admin_id.
+  DBTEAMMembersRemoveErrorTransferAdminUserNotFound,
 
-    /// The user is the last admin of the team, so it cannot be removed from it.
-    DBTEAMMembersRemoveErrorRemoveLastAdmin,
+  /// The transfer_admin_id argument must be provided when file transfer is
+  /// requested.
+  DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId,
 
-    /// Cannot keep account and transfer the data to another user at the same
-    /// time.
-    DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer,
+  /// Specified transfer_admin user is not a team admin.
+  DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin,
 
-    /// Cannot keep account and delete the data at the same time. To keep the
-    /// account the argument wipe_data should be set to false.
-    DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData,
+  /// The recipient user's email is not verified.
+  DBTEAMMembersRemoveErrorRecipientNotVerified,
 
-    /// The email address of the user is too long to be disabled.
-    DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled,
+  /// The user is the last admin of the team, so it cannot be removed from it.
+  DBTEAMMembersRemoveErrorRemoveLastAdmin,
 
-    /// Cannot keep account of an invited user.
-    DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount,
+  /// Cannot keep account and transfer the data to another user at the same
+  /// time.
+  DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer,
 
-    /// Cannot retain team shares when the user's data is marked for deletion on
-    /// their linked devices. The argument wipe_data should be set to false.
-    DBTEAMMembersRemoveErrorCannotRetainSharesWhenDataWiped,
+  /// Cannot keep account and delete the data at the same time. To keep the
+  /// account the argument wipe_data should be set to false.
+  DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData,
 
-    /// The user's account must be kept in order to retain team shares. The
-    /// argument keep_account should be set to true.
-    DBTEAMMembersRemoveErrorCannotRetainSharesWhenNoAccountKept,
+  /// Cannot keep account and permanently delete the data at the same time. To
+  /// keep the account the argument permanently_delete_files should be set to
+  /// false.
+  DBTEAMMembersRemoveErrorCannotKeepAccountAndPermanentlyDelete,
 
-    /// Externally sharing files, folders, and links must be enabled in team
-    /// settings in order to retain team shares for the user.
-    DBTEAMMembersRemoveErrorCannotRetainSharesWhenTeamExternalSharingOff,
+  /// The email address of the user is too long to be disabled.
+  DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled,
 
-    /// Only a team admin, can convert this account to a Basic account.
-    DBTEAMMembersRemoveErrorCannotKeepAccount,
+  /// Cannot keep account of an invited user.
+  DBTEAMMembersRemoveErrorCannotKeepInvitedUserAccount,
 
-    /// This user content is currently being held. To convert this member's
-    /// account to a Basic account, you'll first need to remove them from the
-    /// hold.
-    DBTEAMMembersRemoveErrorCannotKeepAccountUnderLegalHold,
+  /// Cannot retain team shares when the user's data is marked for deletion on
+  /// their linked devices. The argument wipe_data should be set to false.
+  DBTEAMMembersRemoveErrorCannotRetainSharesWhenDataWiped,
 
-    /// To convert this member to a Basic account, they'll first need to sign in
-    /// to Dropbox and agree to the terms of service.
-    DBTEAMMembersRemoveErrorCannotKeepAccountRequiredToSignTos,
+  /// The user's account must be kept in order to retain team shares. The
+  /// argument keep_account should be set to true.
+  DBTEAMMembersRemoveErrorCannotRetainSharesWhenNoAccountKept,
+
+  /// Externally sharing files, folders, and links must be enabled in team
+  /// settings in order to retain team shares for the user.
+  DBTEAMMembersRemoveErrorCannotRetainSharesWhenTeamExternalSharingOff,
+
+  /// Only a team admin, can convert this account to a Basic account.
+  DBTEAMMembersRemoveErrorCannotKeepAccount,
+
+  /// This user content is currently being held. To convert this member's
+  /// account to a Basic account, you'll first need to remove them from the
+  /// hold.
+  DBTEAMMembersRemoveErrorCannotKeepAccountUnderLegalHold,
+
+  /// To convert this member to a Basic account, they'll first need to sign in
+  /// to Dropbox and agree to the terms of service.
+  DBTEAMMembersRemoveErrorCannotKeepAccountRequiredToSignTos,
+
+  /// Cannot permanently delete files and transfer the data to another user at
+  /// the same time.
+  DBTEAMMembersRemoveErrorCannotPermanentlyDeleteAndTransfer,
+
+  /// This user is the active destination of an in-progress file transfer.
+  /// Wait for the transfer to complete before removing this member.
+  DBTEAMMembersRemoveErrorMemberIsTransferDestination,
 
 };
 
@@ -140,6 +163,36 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
 /// @return An initialized instance.
 ///
 - (instancetype)initWithOther;
+
+///
+/// Initializes union class with tag state of "transfer_in_progress".
+///
+/// Description of the "transfer_in_progress" tag state: Cannot permanently
+/// delete files while it's being transferred.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTransferInProgress;
+
+///
+/// Initializes union class with tag state of "already_transferred".
+///
+/// Description of the "already_transferred" tag state: Cannot permanently
+/// delete files that have already been transferred.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAlreadyTransferred;
+
+///
+/// Initializes union class with tag state of "already_transferred_or_deleted".
+///
+/// Description of the "already_transferred_or_deleted" tag state: Cannot
+/// permanently delete files that have already been transferred or deleted.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithAlreadyTransferredOrDeleted;
 
 ///
 /// Initializes union class with tag state of
@@ -268,6 +321,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
 
 ///
 /// Initializes union class with tag state of
+/// "cannot_keep_account_and_permanently_delete".
+///
+/// Description of the "cannot_keep_account_and_permanently_delete" tag state:
+/// Cannot keep account and permanently delete the data at the same time. To
+/// keep the account the argument permanently_delete_files should be set to
+/// false.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotKeepAccountAndPermanentlyDelete;
+
+///
+/// Initializes union class with tag state of
 /// "email_address_too_long_to_be_disabled".
 ///
 /// Description of the "email_address_too_long_to_be_disabled" tag state: The
@@ -358,6 +424,29 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
 ///
 - (instancetype)initWithCannotKeepAccountRequiredToSignTos;
 
+///
+/// Initializes union class with tag state of
+/// "cannot_permanently_delete_and_transfer".
+///
+/// Description of the "cannot_permanently_delete_and_transfer" tag state:
+/// Cannot permanently delete files and transfer the data to another user at the
+/// same time.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithCannotPermanentlyDeleteAndTransfer;
+
+///
+/// Initializes union class with tag state of "member_is_transfer_destination".
+///
+/// Description of the "member_is_transfer_destination" tag state: This user is
+/// the active destination of an in-progress file transfer. Wait for the
+/// transfer to complete before removing this member.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberIsTransferDestination;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -383,6 +472,33 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "transfer_in_progress".
+///
+/// @return Whether the union's current tag state has value
+/// "transfer_in_progress".
+///
+- (BOOL)isTransferInProgress;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "already_transferred".
+///
+/// @return Whether the union's current tag state has value
+/// "already_transferred".
+///
+- (BOOL)isAlreadyTransferred;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "already_transferred_or_deleted".
+///
+/// @return Whether the union's current tag state has value
+/// "already_transferred_or_deleted".
+///
+- (BOOL)isAlreadyTransferredOrDeleted;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -493,6 +609,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "cannot_keep_account_and_permanently_delete".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_keep_account_and_permanently_delete".
+///
+- (BOOL)isCannotKeepAccountAndPermanentlyDelete;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "email_address_too_long_to_be_disabled".
 ///
 /// @return Whether the union's current tag state has value
@@ -562,6 +687,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag){
 /// "cannot_keep_account_required_to_sign_tos".
 ///
 - (BOOL)isCannotKeepAccountRequiredToSignTos;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "cannot_permanently_delete_and_transfer".
+///
+/// @return Whether the union's current tag state has value
+/// "cannot_permanently_delete_and_transfer".
+///
+- (BOOL)isCannotPermanentlyDeleteAndTransfer;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "member_is_transfer_destination".
+///
+/// @return Whether the union's current tag state has value
+/// "member_is_transfer_destination".
+///
+- (BOOL)isMemberIsTransferDestination;
 
 ///
 /// Retrieves string value of union's current tag state.

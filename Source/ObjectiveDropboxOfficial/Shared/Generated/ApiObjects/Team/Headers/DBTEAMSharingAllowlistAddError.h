@@ -27,27 +27,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMSharingAllowlistAddErrorTag` enum type represents the possible
 /// tag states with which the `DBTEAMSharingAllowlistAddError` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSharingAllowlistAddErrorTag){
-    /// One of provided values is not valid.
-    DBTEAMSharingAllowlistAddErrorMalformedEntry,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSharingAllowlistAddErrorTag) {
+  /// One of provided values is not valid.
+  DBTEAMSharingAllowlistAddErrorMalformedEntry,
 
-    /// Neither single domain nor email provided.
-    DBTEAMSharingAllowlistAddErrorNoEntriesProvided,
+  /// Neither single domain nor email provided.
+  DBTEAMSharingAllowlistAddErrorNoEntriesProvided,
 
-    /// Too many entries provided within one call.
-    DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided,
+  /// Too many entries provided within one call.
+  DBTEAMSharingAllowlistAddErrorTooManyEntriesProvided,
 
-    /// Team entries limit reached.
-    DBTEAMSharingAllowlistAddErrorTeamLimitReached,
+  /// Team entries limit reached.
+  DBTEAMSharingAllowlistAddErrorTeamLimitReached,
 
-    /// Unknown error.
-    DBTEAMSharingAllowlistAddErrorUnknownError,
+  /// Unknown error.
+  DBTEAMSharingAllowlistAddErrorUnknownError,
 
-    /// Entries already exists.
-    DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist,
+  /// Entries already exists.
+  DBTEAMSharingAllowlistAddErrorEntriesAlreadyExist,
 
-    /// (no description).
-    DBTEAMSharingAllowlistAddErrorOther,
+  /// (no description).
+  DBTEAMSharingAllowlistAddErrorOther,
 
 };
 

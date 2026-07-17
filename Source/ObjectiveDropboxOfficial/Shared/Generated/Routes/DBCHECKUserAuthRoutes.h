@@ -8,6 +8,7 @@
 
 #import "DBTasks.h"
 
+@class DBCHECKEchoError;
 @class DBCHECKEchoResult;
 @class DBNilObject;
 
@@ -36,10 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// the access token is valid.
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBCHECKEchoResult` object on success or a `void`
-/// object on failure.
+/// @return Through the response callback, the caller will receive a `DBCHECKEchoResult` object on success or a
+/// `DBCHECKEchoError` object on failure.
 ///
-- (DBRpcTask<DBCHECKEchoResult *, DBNilObject *> *)user;
+- (DBRpcTask<DBCHECKEchoResult *, DBCHECKEchoError *> *)user;
 
 ///
 /// This endpoint performs User Authentication, validating the supplied access token, and returns the supplied string,
@@ -49,10 +50,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param query The string that you'd like to be echoed back to you.
 ///
-/// @return Through the response callback, the caller will receive a `DBCHECKEchoResult` object on success or a `void`
-/// object on failure.
+/// @return Through the response callback, the caller will receive a `DBCHECKEchoResult` object on success or a
+/// `DBCHECKEchoError` object on failure.
 ///
-- (DBRpcTask<DBCHECKEchoResult *, DBNilObject *> *)user:(nullable NSString *)query;
+- (DBRpcTask<DBCHECKEchoResult *, DBCHECKEchoError *> *)user:(nullable NSString *)query;
 
 @end
 

@@ -33,18 +33,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The `DBTEAMLOGActionDetailsTag` enum type represents the possible tag states
 /// with which the `DBTEAMLOGActionDetails` union can exist.
-typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGActionDetailsTag){
-    /// Define how the user was removed from the team.
-    DBTEAMLOGActionDetailsRemoveAction,
+typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGActionDetailsTag) {
+  /// Define how the user was removed from the team.
+  DBTEAMLOGActionDetailsRemoveAction,
 
-    /// Additional information relevant when someone is invited to the team.
-    DBTEAMLOGActionDetailsTeamInviteDetails,
+  /// Additional information relevant when someone is invited to the team
+  DBTEAMLOGActionDetailsTeamInviteDetails,
 
-    /// Additional information relevant when a new member joins the team.
-    DBTEAMLOGActionDetailsTeamJoinDetails,
+  /// Additional information relevant when a new member joins the team.
+  DBTEAMLOGActionDetailsTeamJoinDetails,
 
-    /// (no description).
-    DBTEAMLOGActionDetailsOther,
+  /// (no description).
+  DBTEAMLOGActionDetailsOther,
 
 };
 
@@ -56,7 +56,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGActionDetailsTag){
 /// exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberRemoveActionType *removeAction;
 
-/// Additional information relevant when someone is invited to the team. @note
+/// Additional information relevant when someone is invited to the team @note
 /// Ensure the `isTeamInviteDetails` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamInviteDetails *teamInviteDetails;
@@ -84,10 +84,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGActionDetailsTag){
 /// Initializes union class with tag state of "team_invite_details".
 ///
 /// Description of the "team_invite_details" tag state: Additional information
-/// relevant when someone is invited to the team.
+/// relevant when someone is invited to the team
 ///
 /// @param teamInviteDetails Additional information relevant when someone is
-/// invited to the team.
+/// invited to the team
 ///
 /// @return An initialized instance.
 ///

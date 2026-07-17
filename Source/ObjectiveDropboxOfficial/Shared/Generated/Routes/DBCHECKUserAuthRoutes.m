@@ -6,6 +6,7 @@
 
 #import "DBCHECKUserAuthRoutes.h"
 #import "DBCHECKEchoArg.h"
+#import "DBCHECKEchoError.h"
 #import "DBCHECKEchoResult.h"
 #import "DBCHECKRouteObjects.h"
 #import "DBRequestErrors.h"
