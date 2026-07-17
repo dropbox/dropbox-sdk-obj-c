@@ -25,7 +25,7 @@ jobs:
       - name: Build iOS tests
         env:
           platform: 'iOS Simulator'
-          device: 'iPhone 16'
+          device: 'iPhone 17'
         run: |
           xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
             -destination "platform=$platform,name=$device" \
@@ -145,7 +145,7 @@ jobs:
       - name: Test iOS
         env:
           platform: 'iOS Simulator'
-          device: 'iPhone 16'
+          device: 'iPhone 17'
         run: |
           xcodebuild -workspace TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace/ -scheme TestObjectiveDropbox_iOS -sdk iphonesimulator \
             -destination "platform=$platform,name=$device" \
