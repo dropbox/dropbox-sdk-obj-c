@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   Update:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
