@@ -37,6 +37,8 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+      - name: Install clang-format
+        run: brew install clang-format
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
