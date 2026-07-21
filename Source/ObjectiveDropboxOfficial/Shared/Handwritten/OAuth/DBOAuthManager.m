@@ -191,47 +191,46 @@ static DBOAuthManager *s_sharedOAuthManager;
     NSString *title = NSLocalizedString(@"No internet connection",
                                         @"Displayed when commencing authorization flow without internet connection.");
 
-    NSDictionary<NSString *, void (^)(void)> *buttonHandlers = @{
-      @"Cancel" : ^{
+    NSDictionary<NSString *, void (^)(void)> *buttonHandlers = @{@"Cancel" : ^{
         cancelHandler();
-      },
-      @"Retry" : ^{
-        [self authorizeFromSharedApplication:sharedApplication usePkce:usePkce scopeRequest:scopeRequest];
-      }
-    };
-
-    [sharedApplication presentErrorMessageWithHandlers:message title:title buttonHandlers:buttonHandlers];
-
-    return;
   }
-
-  if (![self conformsToAppScheme]) {
-    NSString *message = [NSString stringWithFormat:@"DropboxSDK: unable to link; app isn't registered for correct URL "
-                                                   @"scheme (db-%@). Add this scheme to your project Info.plist file, "
-                                                   @"associated with following key: \"Information Property List\" > "
-                                                   @"\"URL types\" > \"Item 0\" > \"URL Schemes\" > \"Item <N>\".",
-                                                   _appKey];
-    NSString *title = @"DropboxSDK Error";
-
-    [sharedApplication presentErrorMessage:message title:title];
-
-    return;
+  , @"Retry" : ^{
+    [self authorizeFromSharedApplication:sharedApplication usePkce:usePkce scopeRequest:scopeRequest];
   }
+};
 
-  if (usePkce) {
-    _authSession = [[DBOAuthPKCESession alloc] initWithScopeRequest:scopeRequest];
-  } else {
-    _authSession = nil;
-  }
-  _sharedApplication = sharedApplication;
+[sharedApplication presentErrorMessageWithHandlers:message title:title buttonHandlers:buttonHandlers];
 
-  NSURL *authUrl = [self authURL];
+return;
+}
 
-  if ([self checkAndPresentPlatformSpecificAuth:sharedApplication]) {
-    return;
-  }
+if (![self conformsToAppScheme]) {
+  NSString *message = [NSString stringWithFormat:@"DropboxSDK: unable to link; app isn't registered for correct URL "
+                                                 @"scheme (db-%@). Add this scheme to your project Info.plist file, "
+                                                 @"associated with following key: \"Information Property List\" > "
+                                                 @"\"URL types\" > \"Item 0\" > \"URL Schemes\" > \"Item <N>\".",
+                                                 _appKey];
+  NSString *title = @"DropboxSDK Error";
 
-  [sharedApplication presentAuthChannel:authUrl cancelHandler:cancelHandler];
+  [sharedApplication presentErrorMessage:message title:title];
+
+  return;
+}
+
+if (usePkce) {
+  _authSession = [[DBOAuthPKCESession alloc] initWithScopeRequest:scopeRequest];
+} else {
+  _authSession = nil;
+}
+_sharedApplication = sharedApplication;
+
+NSURL *authUrl = [self authURL];
+
+if ([self checkAndPresentPlatformSpecificAuth:sharedApplication]) {
+  return;
+}
+
+[sharedApplication presentAuthChannel:authUrl cancelHandler:cancelHandler];
 }
 
 - (BOOL)conformsToAppScheme {
@@ -361,8 +360,8 @@ static DBOAuthManager *s_sharedOAuthManager;
       } else if (parametersMap[kDBUidKey] && parametersMap[@"access_token"]) {
         // Token flow
         NSString *uid = parametersMap[kDBUidKey];
-        DBAccessToken *accessToken =
-            [DBAccessToken createWithLongLivedAccessToken:parametersMap[@"access_token"] uid:uid];
+        DBAccessToken *accessToken = [DBAccessToken createWithLongLivedAccessToken:parametersMap[@"access_token"]
+                                                                               uid:uid];
         completion([[DBOAuthResult alloc] initWithSuccess:accessToken]);
       } else {
         completion([DBOAuthResult unknownErrorWithErrorDescription:@"Invalid response."]);
