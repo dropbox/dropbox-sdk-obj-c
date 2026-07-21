@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGShowcaseFileRemovedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseFileRemovedDetails` struct.
-///
+/// 
 /// Removed file from showcase.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseFileRemovedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseFileRemovedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseFileRemovedDetails` struct.
-///
-@interface DBTEAMLOGShowcaseFileRemovedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseFileRemovedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseFileRemovedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseFileRemovedDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseFileRemovedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileRemovedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseFileRemovedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseFileRemovedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseFileRemovedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseFileRemovedDetails`
 /// object.
-///
-+ (DBTEAMLOGShowcaseFileRemovedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseFileRemovedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

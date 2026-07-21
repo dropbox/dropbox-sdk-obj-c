@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGPaperDocMentionType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocMentionType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDocMentionType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDocMentionType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocMentionType` struct.
-///
-@interface DBTEAMLOGPaperDocMentionTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDocMentionTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDocMentionType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperDocMentionType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocMentionType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocMentionType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDocMentionType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDocMentionType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocMentionType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperDocMentionType` object.
-///
-+ (DBTEAMLOGPaperDocMentionType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDocMentionType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

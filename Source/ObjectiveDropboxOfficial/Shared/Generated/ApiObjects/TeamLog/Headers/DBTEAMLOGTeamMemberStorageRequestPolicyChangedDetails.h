@@ -11,20 +11,21 @@
 @class DBTEAMLOGTeamMemberStorageRequestPolicy;
 @class DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMemberStorageRequestPolicyChangedDetails` struct.
-///
+/// 
 /// Changed team member storage request policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,64 +38,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New team member storage request policy.
 /// @param previousValue Previous team member storage request policy. Might be
 /// missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGTeamMemberStorageRequestPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGTeamMemberStorageRequestPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGTeamMemberStorageRequestPolicy *)dNewValue previousValue:(nullable DBTEAMLOGTeamMemberStorageRequestPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New team member storage request policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGTeamMemberStorageRequestPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `TeamMemberStorageRequestPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

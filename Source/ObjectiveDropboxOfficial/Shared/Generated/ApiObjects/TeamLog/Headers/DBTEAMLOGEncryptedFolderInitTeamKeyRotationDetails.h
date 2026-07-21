@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EncryptedFolderInitTeamKeyRotationDetails` struct.
-///
+/// 
 /// Initiated team key rotation.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamKeyId Identifier of the team key.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamKeyId:(NSString *)teamKeyId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EncryptedFolderInitTeamKeyRotationDetails`
 /// struct.
-///
-@interface DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails` object.
-///
-+ (DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEncryptedFolderInitTeamKeyRotationDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

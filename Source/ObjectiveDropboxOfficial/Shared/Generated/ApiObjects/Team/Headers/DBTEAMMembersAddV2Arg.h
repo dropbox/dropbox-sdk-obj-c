@@ -12,18 +12,19 @@
 @class DBTEAMMemberAddV2Arg;
 @class DBTEAMMembersAddV2Arg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersAddV2Arg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersAddV2Arg : DBTEAMMembersAddArgBase <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersAddV2Arg : DBTEAMMembersAddArgBase <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,56 +33,57 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewMembers Details of new members to be added to the team.
 /// @param forceAsync Whether to force the add to happen asynchronously.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewMembers:(NSArray<DBTEAMMemberAddV2Arg *> *)dNewMembers
-                         forceAsync:(nullable NSNumber *)forceAsync;
+/// 
+- (instancetype)initWithDNewMembers:(NSArray<DBTEAMMemberAddV2Arg *> *)dNewMembers forceAsync:(nullable NSNumber *)forceAsync;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewMembers Details of new members to be added to the team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewMembers:(NSArray<DBTEAMMemberAddV2Arg *> *)dNewMembers;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersAddV2Arg` struct.
-///
-@interface DBTEAMMembersAddV2ArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersAddV2ArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersAddV2Arg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersAddV2Arg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersAddV2Arg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersAddV2Arg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersAddV2Arg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersAddV2Arg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersAddV2Arg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersAddV2Arg` object.
-///
-+ (DBTEAMMembersAddV2Arg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersAddV2Arg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

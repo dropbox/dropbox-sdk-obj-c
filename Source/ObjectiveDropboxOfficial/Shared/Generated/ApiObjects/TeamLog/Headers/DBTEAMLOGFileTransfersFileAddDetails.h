@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGFileTransfersFileAddDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileTransfersFileAddDetails` struct.
-///
+/// 
 /// Transfer files added.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileTransfersFileAddDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileTransfersFileAddDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileTransferId Transfer id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileTransferId:(NSString *)fileTransferId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileTransfersFileAddDetails` struct.
-///
-@interface DBTEAMLOGFileTransfersFileAddDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileTransfersFileAddDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileTransfersFileAddDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileTransfersFileAddDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileTransfersFileAddDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileTransfersFileAddDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileTransfersFileAddDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileTransfersFileAddDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileTransfersFileAddDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileTransfersFileAddDetails`
 /// object.
-///
-+ (DBTEAMLOGFileTransfersFileAddDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileTransfersFileAddDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

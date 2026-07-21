@@ -10,18 +10,19 @@
 
 @class DBTEAMPOLICIESTopLevelContentPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TopLevelContentPolicy` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESTopLevelContentPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESTopLevelContentPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,15 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMPOLICIESTopLevelContentPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESTopLevelContentPolicyTag) {
-  /// Only admins can edit team folders at the top level of the team space.
-  DBTEAMPOLICIESTopLevelContentPolicyAdminOnly,
+    /// Only admins can edit team folders at the top level of the team space.
+    DBTEAMPOLICIESTopLevelContentPolicyAdminOnly,
 
-  /// Everyone on the team can edit team folders at the top level of the team
-  /// space.
-  DBTEAMPOLICIESTopLevelContentPolicyEveryone,
+    /// Everyone on the team can edit team folders at the top level of the team
+    /// space.
+    DBTEAMPOLICIESTopLevelContentPolicyEveryone,
 
-  /// (no description).
-  DBTEAMPOLICIESTopLevelContentPolicyOther,
+    /// (no description).
+    DBTEAMPOLICIESTopLevelContentPolicyOther,
 
 };
 
@@ -46,96 +47,98 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESTopLevelContentPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "admin_only".
-///
+/// 
 /// Description of the "admin_only" tag state: Only admins can edit team folders
 /// at the top level of the team space.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAdminOnly;
 
-///
+/// 
 /// Initializes union class with tag state of "everyone".
-///
+/// 
 /// Description of the "everyone" tag state: Everyone on the team can edit team
 /// folders at the top level of the team space.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEveryone;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "admin_only".
-///
+/// 
 /// @return Whether the union's current tag state has value "admin_only".
-///
+/// 
 - (BOOL)isAdminOnly;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "everyone".
-///
+/// 
 /// @return Whether the union's current tag state has value "everyone".
-///
+/// 
 - (BOOL)isEveryone;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMPOLICIESTopLevelContentPolicy` union.
-///
-@interface DBTEAMPOLICIESTopLevelContentPolicySerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESTopLevelContentPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESTopLevelContentPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMPOLICIESTopLevelContentPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESTopLevelContentPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESTopLevelContentPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESTopLevelContentPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESTopLevelContentPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESTopLevelContentPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMPOLICIESTopLevelContentPolicy`
 /// object.
-///
-+ (DBTEAMPOLICIESTopLevelContentPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESTopLevelContentPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

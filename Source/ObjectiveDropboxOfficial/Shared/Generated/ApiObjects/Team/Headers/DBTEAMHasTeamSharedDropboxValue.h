@@ -10,31 +10,32 @@
 
 @class DBTEAMHasTeamSharedDropboxValue;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `HasTeamSharedDropboxValue` union.
-///
+/// 
 /// The value for `hasTeamSharedDropbox` in `DBTEAMFeature`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMHasTeamSharedDropboxValue : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMHasTeamSharedDropboxValue : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMHasTeamSharedDropboxValueTag` enum type represents the possible
 /// tag states with which the `DBTEAMHasTeamSharedDropboxValue` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMHasTeamSharedDropboxValueTag) {
-  /// Does this team have a shared team root.
-  DBTEAMHasTeamSharedDropboxValueHasTeamSharedDropbox,
+    /// Does this team have a shared team root.
+    DBTEAMHasTeamSharedDropboxValueHasTeamSharedDropbox,
 
-  /// (no description).
-  DBTEAMHasTeamSharedDropboxValueOther,
+    /// (no description).
+    DBTEAMHasTeamSharedDropboxValueOther,
 
 };
 
@@ -48,86 +49,88 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMHasTeamSharedDropboxValueTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "has_team_shared_dropbox".
-///
+/// 
 /// Description of the "has_team_shared_dropbox" tag state: Does this team have
 /// a shared team root.
-///
+/// 
 /// @param hasTeamSharedDropbox Does this team have a shared team root.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithHasTeamSharedDropbox:(NSNumber *)hasTeamSharedDropbox;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "has_team_shared_dropbox".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `hasTeamSharedDropbox` property, otherwise a runtime exception will be
 /// thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "has_team_shared_dropbox".
-///
+/// 
 - (BOOL)isHasTeamSharedDropbox;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMHasTeamSharedDropboxValue` union.
-///
-@interface DBTEAMHasTeamSharedDropboxValueSerializer : NSObject
+/// 
+@interface DBTEAMHasTeamSharedDropboxValueSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMHasTeamSharedDropboxValue` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMHasTeamSharedDropboxValue` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMHasTeamSharedDropboxValue` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMHasTeamSharedDropboxValue *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMHasTeamSharedDropboxValue *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMHasTeamSharedDropboxValue` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMHasTeamSharedDropboxValue` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMHasTeamSharedDropboxValue` object.
-///
-+ (DBTEAMHasTeamSharedDropboxValue *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMHasTeamSharedDropboxValue *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

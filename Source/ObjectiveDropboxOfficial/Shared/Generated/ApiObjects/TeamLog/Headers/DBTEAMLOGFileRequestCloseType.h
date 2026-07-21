@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGFileRequestCloseType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRequestCloseType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileRequestCloseType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileRequestCloseType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRequestCloseType` struct.
-///
-@interface DBTEAMLOGFileRequestCloseTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileRequestCloseTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileRequestCloseType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileRequestCloseType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestCloseType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestCloseType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileRequestCloseType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileRequestCloseType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestCloseType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileRequestCloseType` object.
-///
-+ (DBTEAMLOGFileRequestCloseType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileRequestCloseType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

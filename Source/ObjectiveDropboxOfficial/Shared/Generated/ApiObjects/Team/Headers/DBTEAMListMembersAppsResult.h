@@ -11,20 +11,21 @@
 @class DBTEAMListMembersAppsResult;
 @class DBTEAMMemberLinkedApps;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListMembersAppsResult` struct.
-///
+/// 
 /// Information returned by `linkedAppsListMembersLinkedApps`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMListMembersAppsResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMListMembersAppsResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,64 +42,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param apps The linked applications of each member of the team.
 /// @param hasMore If true, then there are more apps available. Pass the cursor
 /// to `linkedAppsListMembersLinkedApps` to retrieve the rest.
 /// @param cursor Pass the cursor into `linkedAppsListMembersLinkedApps` to
 /// receive the next sub list of team's applications.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> *)apps
-                     hasMore:(NSNumber *)hasMore
-                      cursor:(nullable NSString *)cursor;
+/// 
+- (instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> *)apps hasMore:(NSNumber *)hasMore cursor:(nullable NSString *)cursor;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param apps The linked applications of each member of the team.
 /// @param hasMore If true, then there are more apps available. Pass the cursor
 /// to `linkedAppsListMembersLinkedApps` to retrieve the rest.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithApps:(NSArray<DBTEAMMemberLinkedApps *> *)apps hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListMembersAppsResult` struct.
-///
-@interface DBTEAMListMembersAppsResultSerializer : NSObject
+/// 
+@interface DBTEAMListMembersAppsResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMListMembersAppsResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMListMembersAppsResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListMembersAppsResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMListMembersAppsResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMListMembersAppsResult *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMListMembersAppsResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMListMembersAppsResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMListMembersAppsResult` object.
-///
-+ (DBTEAMListMembersAppsResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMListMembersAppsResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

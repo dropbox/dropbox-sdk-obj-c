@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGAccountCaptureRelinquishAccountDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccountCaptureRelinquishAccountDetails` struct.
-///
+/// 
 /// Account-captured user changed account email to personal email.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAccountCaptureRelinquishAccountDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAccountCaptureRelinquishAccountDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param domainName Domain name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDomainName:(NSString *)domainName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AccountCaptureRelinquishAccountDetails`
 /// struct.
-///
-@interface DBTEAMLOGAccountCaptureRelinquishAccountDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAccountCaptureRelinquishAccountDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAccountCaptureRelinquishAccountDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAccountCaptureRelinquishAccountDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCaptureRelinquishAccountDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAccountCaptureRelinquishAccountDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAccountCaptureRelinquishAccountDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCaptureRelinquishAccountDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGAccountCaptureRelinquishAccountDetails` object.
-///
-+ (DBTEAMLOGAccountCaptureRelinquishAccountDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAccountCaptureRelinquishAccountDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

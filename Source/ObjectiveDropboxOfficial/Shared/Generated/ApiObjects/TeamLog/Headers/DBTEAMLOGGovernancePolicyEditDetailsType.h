@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGGovernancePolicyEditDetailsType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GovernancePolicyEditDetailsType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGovernancePolicyEditDetailsType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGovernancePolicyEditDetailsType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GovernancePolicyEditDetailsType` struct.
-///
-@interface DBTEAMLOGGovernancePolicyEditDetailsTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGGovernancePolicyEditDetailsTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGovernancePolicyEditDetailsType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGGovernancePolicyEditDetailsType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyEditDetailsType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGovernancePolicyEditDetailsType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGovernancePolicyEditDetailsType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGovernancePolicyEditDetailsType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyEditDetailsType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGovernancePolicyEditDetailsType`
 /// object.
-///
-+ (DBTEAMLOGGovernancePolicyEditDetailsType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGovernancePolicyEditDetailsType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

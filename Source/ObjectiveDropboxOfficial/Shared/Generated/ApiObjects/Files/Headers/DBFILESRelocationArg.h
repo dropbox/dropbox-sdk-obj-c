@@ -6,23 +6,24 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESRelocationPath.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESRelocationPath.h"
 
 @class DBFILESRelocationArg;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RelocationArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESRelocationArg : DBFILESRelocationPath <DBSerializable, NSCopying>
+/// 
+@interface DBFILESRelocationArg : DBFILESRelocationPath <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,9 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fromPath Path in the user's Dropbox to be copied or moved.
 /// @param toPath Path in the user's Dropbox that is the destination.
 /// @param allowSharedFolder Field is deprecated. This flag has no effect.
@@ -50,55 +51,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param allowOwnershipTransfer Allow moves by owner even if it would result
 /// in an ownership transfer for the content being moved. This does not apply to
 /// copies.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFromPath:(NSString *)fromPath
-                          toPath:(NSString *)toPath
-               allowSharedFolder:(nullable NSNumber *)allowSharedFolder
-                      autorename:(nullable NSNumber *)autorename
-          allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
+/// 
+- (instancetype)initWithFromPath:(NSString *)fromPath toPath:(NSString *)toPath allowSharedFolder:(nullable NSNumber *)allowSharedFolder autorename:(nullable NSNumber *)autorename allowOwnershipTransfer:(nullable NSNumber *)allowOwnershipTransfer;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param fromPath Path in the user's Dropbox to be copied or moved.
 /// @param toPath Path in the user's Dropbox that is the destination.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFromPath:(NSString *)fromPath toPath:(NSString *)toPath;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RelocationArg` struct.
-///
-@interface DBFILESRelocationArgSerializer : NSObject
+/// 
+@interface DBFILESRelocationArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESRelocationArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESRelocationArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESRelocationArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESRelocationArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESRelocationArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESRelocationArg` object.
-///
-+ (DBFILESRelocationArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESRelocationArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

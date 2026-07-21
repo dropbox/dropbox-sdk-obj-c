@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGCollectionShareDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `CollectionShareDetails` struct.
-///
+/// 
 /// Shared album.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGCollectionShareDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGCollectionShareDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param albumName Album name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAlbumName:(NSString *)albumName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `CollectionShareDetails` struct.
-///
-@interface DBTEAMLOGCollectionShareDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGCollectionShareDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGCollectionShareDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGCollectionShareDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGCollectionShareDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCollectionShareDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGCollectionShareDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGCollectionShareDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGCollectionShareDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGCollectionShareDetails` object.
-///
-+ (DBTEAMLOGCollectionShareDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGCollectionShareDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

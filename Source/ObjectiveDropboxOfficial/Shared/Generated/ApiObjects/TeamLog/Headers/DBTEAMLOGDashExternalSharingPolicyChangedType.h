@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDashExternalSharingPolicyChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashExternalSharingPolicyChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashExternalSharingPolicyChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashExternalSharingPolicyChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashExternalSharingPolicyChangedType`
 /// struct.
-///
-@interface DBTEAMLOGDashExternalSharingPolicyChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashExternalSharingPolicyChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashExternalSharingPolicyChangedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashExternalSharingPolicyChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashExternalSharingPolicyChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashExternalSharingPolicyChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedType` object.
-///
-+ (DBTEAMLOGDashExternalSharingPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashExternalSharingPolicyChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

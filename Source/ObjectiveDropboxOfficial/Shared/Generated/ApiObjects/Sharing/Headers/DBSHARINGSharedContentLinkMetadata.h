@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGSharedContentLinkMetadataBase.h"
 #import "DBSerializableProtocol.h"
+#import "DBSHARINGSharedContentLinkMetadataBase.h"
 
 @class DBSHARINGAccessLevel;
 @class DBSHARINGAudienceExceptions;
@@ -16,20 +16,21 @@
 @class DBSHARINGLinkPermission;
 @class DBSHARINGSharedContentLinkMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentLinkMetadata` struct.
-///
+/// 
 /// Metadata of a shared link for a file or folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGSharedContentLinkMetadata : DBSHARINGSharedContentLinkMetadataBase <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGSharedContentLinkMetadata : DBSHARINGSharedContentLinkMetadataBase <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -43,9 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param audienceOptions The audience options that are available for the
 /// content. Some audience options may be unavailable. For example, team_only
 /// may be unavailable if the content is not owned by a user on a team. The
@@ -65,24 +66,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// different than this folder's. This is only returned when an endpoint that
 /// returns metadata for a single shared folder is called, e.g.
 /// /get_folder_metadata.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions
-                        currentAudience:(DBSHARINGLinkAudience *)currentAudience
-                        linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions
-                      passwordProtected:(NSNumber *)passwordProtected
-                                    url:(NSString *)url
-                            accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
-        audienceRestrictingSharedFolder:
-            (nullable DBSHARINGAudienceRestrictingSharedFolder *)audienceRestrictingSharedFolder
-                                 expiry:(nullable NSDate *)expiry
-                     audienceExceptions:(nullable DBSHARINGAudienceExceptions *)audienceExceptions;
+/// 
+- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions currentAudience:(DBSHARINGLinkAudience *)currentAudience linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions passwordProtected:(NSNumber *)passwordProtected url:(NSString *)url accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel audienceRestrictingSharedFolder:(nullable DBSHARINGAudienceRestrictingSharedFolder *)audienceRestrictingSharedFolder expiry:(nullable NSDate *)expiry audienceExceptions:(nullable DBSHARINGAudienceExceptions *)audienceExceptions;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param audienceOptions The audience options that are available for the
 /// content. Some audience options may be unavailable. For example, team_only
 /// may be unavailable if the content is not owned by a user on a team. The
@@ -93,45 +85,43 @@ NS_ASSUME_NONNULL_BEGIN
 /// the link.
 /// @param passwordProtected Whether the link is protected by a password.
 /// @param url The URL of the link.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions
-                        currentAudience:(DBSHARINGLinkAudience *)currentAudience
-                        linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions
-                      passwordProtected:(NSNumber *)passwordProtected
-                                    url:(NSString *)url;
+/// 
+- (instancetype)initWithAudienceOptions:(NSArray<DBSHARINGLinkAudience *> *)audienceOptions currentAudience:(DBSHARINGLinkAudience *)currentAudience linkPermissions:(NSArray<DBSHARINGLinkPermission *> *)linkPermissions passwordProtected:(NSNumber *)passwordProtected url:(NSString *)url;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentLinkMetadata` struct.
-///
-@interface DBSHARINGSharedContentLinkMetadataSerializer : NSObject
+/// 
+@interface DBSHARINGSharedContentLinkMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGSharedContentLinkMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGSharedContentLinkMetadata` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedContentLinkMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedContentLinkMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGSharedContentLinkMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGSharedContentLinkMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGSharedContentLinkMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGSharedContentLinkMetadata` object.
-///
-+ (DBSHARINGSharedContentLinkMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGSharedContentLinkMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

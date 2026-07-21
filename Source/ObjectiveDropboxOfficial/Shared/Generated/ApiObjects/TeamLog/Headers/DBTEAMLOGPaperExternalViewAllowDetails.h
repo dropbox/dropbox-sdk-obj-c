@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperExternalViewAllowDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperExternalViewAllowDetails` struct.
-///
+/// 
 /// Changed Paper external sharing setting to anyone.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperExternalViewAllowDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperExternalViewAllowDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperExternalViewAllowDetails` struct.
-///
-@interface DBTEAMLOGPaperExternalViewAllowDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperExternalViewAllowDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperExternalViewAllowDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperExternalViewAllowDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperExternalViewAllowDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewAllowDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperExternalViewAllowDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperExternalViewAllowDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperExternalViewAllowDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperExternalViewAllowDetails`
 /// object.
-///
-+ (DBTEAMLOGPaperExternalViewAllowDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperExternalViewAllowDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBACCOUNTAccountPhotoGetArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccountPhotoGetArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBACCOUNTAccountPhotoGetArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBACCOUNTAccountPhotoGetArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,53 +40,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dbxAccountId Encoded ID of the user. Must start either with 'dbid:'
 /// or 'dbaphid:'.
 /// @param size A string representing the size of the photo.
 /// @param circleCrop True if the photo should be cropped and false otherwise.
 /// @param expectAccountPhoto True if we expect account photo to exist.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDbxAccountId:(NSString *)dbxAccountId
-                                size:(NSString *)size
-                          circleCrop:(NSNumber *)circleCrop
-                  expectAccountPhoto:(NSNumber *)expectAccountPhoto;
+/// 
+- (instancetype)initWithDbxAccountId:(NSString *)dbxAccountId size:(NSString *)size circleCrop:(NSNumber *)circleCrop expectAccountPhoto:(NSNumber *)expectAccountPhoto;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AccountPhotoGetArg` struct.
-///
-@interface DBACCOUNTAccountPhotoGetArgSerializer : NSObject
+/// 
+@interface DBACCOUNTAccountPhotoGetArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBACCOUNTAccountPhotoGetArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBACCOUNTAccountPhotoGetArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBACCOUNTAccountPhotoGetArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBACCOUNTAccountPhotoGetArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBACCOUNTAccountPhotoGetArg *)instance;
 
-///
+/// 
 /// Deserializes `DBACCOUNTAccountPhotoGetArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBACCOUNTAccountPhotoGetArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBACCOUNTAccountPhotoGetArg` object.
-///
-+ (DBACCOUNTAccountPhotoGetArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBACCOUNTAccountPhotoGetArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGPreviewsAiPolicy;
 @class DBTEAMLOGPreviewsAiPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PreviewsAiPolicyChangedDetails` struct.
-///
+/// 
 /// Changed Dropbox AI policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPreviewsAiPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPreviewsAiPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGPreviewsAiPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGPreviewsAiPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGPreviewsAiPolicy *)dNewValue previousValue:(DBTEAMLOGPreviewsAiPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PreviewsAiPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGPreviewsAiPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPreviewsAiPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPreviewsAiPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPreviewsAiPolicyChangedDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPreviewsAiPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPreviewsAiPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPreviewsAiPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPreviewsAiPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPreviewsAiPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPreviewsAiPolicyChangedDetails`
 /// object.
-///
-+ (DBTEAMLOGPreviewsAiPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPreviewsAiPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

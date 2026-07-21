@@ -11,20 +11,21 @@
 @class DBTEAMLOGCertificate;
 @class DBTEAMLOGSsoAddCertDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SsoAddCertDetails` struct.
-///
+/// 
 /// Added X.509 certificate for SSO.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSsoAddCertDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSsoAddCertDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,46 +34,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param certificateDetails SSO certificate details.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCertificateDetails:(DBTEAMLOGCertificate *)certificateDetails;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SsoAddCertDetails` struct.
-///
-@interface DBTEAMLOGSsoAddCertDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSsoAddCertDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSsoAddCertDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSsoAddCertDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoAddCertDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddCertDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSsoAddCertDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSsoAddCertDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoAddCertDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSsoAddCertDetails` object.
-///
-+ (DBTEAMLOGSsoAddCertDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSsoAddCertDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,33 +11,34 @@
 @class DBFILESLookupError;
 @class DBSHARINGListSharedLinksError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListSharedLinksError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGListSharedLinksError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGListSharedLinksError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBSHARINGListSharedLinksErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGListSharedLinksError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
-  /// (no description).
-  DBSHARINGListSharedLinksErrorPath,
+    /// (no description).
+    DBSHARINGListSharedLinksErrorPath,
 
-  /// Indicates that the cursor has been invalidated. Call `listSharedLinks`
-  /// to obtain a new cursor.
-  DBSHARINGListSharedLinksErrorReset,
+    /// Indicates that the cursor has been invalidated. Call `listSharedLinks`
+    /// to obtain a new cursor.
+    DBSHARINGListSharedLinksErrorReset,
 
-  /// (no description).
-  DBSHARINGListSharedLinksErrorOther,
+    /// (no description).
+    DBSHARINGListSharedLinksErrorOther,
 
 };
 
@@ -50,97 +51,99 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "path".
-///
+/// 
 /// @param path (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(DBFILESLookupError *)path;
 
-///
+/// 
 /// Initializes union class with tag state of "reset".
-///
+/// 
 /// Description of the "reset" tag state: Indicates that the cursor has been
 /// invalidated. Call `listSharedLinks` to obtain a new cursor.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithReset;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "path".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `path` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "path".
-///
+/// 
 - (BOOL)isPath;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "reset".
-///
+/// 
 /// @return Whether the union's current tag state has value "reset".
-///
+/// 
 - (BOOL)isReset;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGListSharedLinksError` union.
-///
-@interface DBSHARINGListSharedLinksErrorSerializer : NSObject
+/// 
+@interface DBSHARINGListSharedLinksErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGListSharedLinksError` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGListSharedLinksError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListSharedLinksError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGListSharedLinksError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGListSharedLinksError *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGListSharedLinksError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListSharedLinksError` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGListSharedLinksError` object.
-///
-+ (DBSHARINGListSharedLinksError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGListSharedLinksError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

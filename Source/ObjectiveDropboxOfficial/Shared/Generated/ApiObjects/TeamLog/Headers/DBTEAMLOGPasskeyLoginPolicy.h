@@ -10,37 +10,38 @@
 
 @class DBTEAMLOGPasskeyLoginPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PasskeyLoginPolicy` union.
-///
+/// 
 /// Passkey login policy
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPasskeyLoginPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPasskeyLoginPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMLOGPasskeyLoginPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGPasskeyLoginPolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPasskeyLoginPolicyTag) {
-  /// (no description).
-  DBTEAMLOGPasskeyLoginPolicyDefault_,
+    /// (no description).
+    DBTEAMLOGPasskeyLoginPolicyDefault_,
 
-  /// (no description).
-  DBTEAMLOGPasskeyLoginPolicyDisabled,
+    /// (no description).
+    DBTEAMLOGPasskeyLoginPolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGPasskeyLoginPolicyEnabled,
+    /// (no description).
+    DBTEAMLOGPasskeyLoginPolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGPasskeyLoginPolicyOther,
+    /// (no description).
+    DBTEAMLOGPasskeyLoginPolicyOther,
 
 };
 
@@ -49,102 +50,104 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPasskeyLoginPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGPasskeyLoginPolicy` union.
-///
-@interface DBTEAMLOGPasskeyLoginPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGPasskeyLoginPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPasskeyLoginPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPasskeyLoginPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasskeyLoginPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasskeyLoginPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPasskeyLoginPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPasskeyLoginPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasskeyLoginPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPasskeyLoginPolicy` object.
-///
-+ (DBTEAMLOGPasskeyLoginPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPasskeyLoginPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

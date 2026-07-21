@@ -11,20 +11,21 @@
 @class DBTEAMLOGGovernancePolicyZipPartDownloadedDetails;
 @class DBTEAMLOGPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GovernancePolicyZipPartDownloadedDetails` struct.
-///
+/// 
 /// Downloaded content from a policy.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGovernancePolicyZipPartDownloadedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGovernancePolicyZipPartDownloadedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -45,71 +46,67 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param governancePolicyId Policy ID.
 /// @param name Policy name.
 /// @param exportName Export name.
 /// @param policyType Policy type.
 /// @param part Part.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId
-                                      name:(NSString *)name
-                                exportName:(NSString *)exportName
-                                policyType:(nullable DBTEAMLOGPolicyType *)policyType
-                                      part:(nullable NSString *)part;
+/// 
+- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId name:(NSString *)name exportName:(NSString *)exportName policyType:(nullable DBTEAMLOGPolicyType *)policyType part:(nullable NSString *)part;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param governancePolicyId Policy ID.
 /// @param name Policy name.
 /// @param exportName Export name.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId
-                                      name:(NSString *)name
-                                exportName:(NSString *)exportName;
+/// 
+- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId name:(NSString *)name exportName:(NSString *)exportName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GovernancePolicyZipPartDownloadedDetails`
 /// struct.
-///
-@interface DBTEAMLOGGovernancePolicyZipPartDownloadedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGovernancePolicyZipPartDownloadedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGovernancePolicyZipPartDownloadedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGGovernancePolicyZipPartDownloadedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyZipPartDownloadedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGovernancePolicyZipPartDownloadedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGovernancePolicyZipPartDownloadedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGovernancePolicyZipPartDownloadedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyZipPartDownloadedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGGovernancePolicyZipPartDownloadedDetails` object.
-///
-+ (DBTEAMLOGGovernancePolicyZipPartDownloadedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGovernancePolicyZipPartDownloadedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

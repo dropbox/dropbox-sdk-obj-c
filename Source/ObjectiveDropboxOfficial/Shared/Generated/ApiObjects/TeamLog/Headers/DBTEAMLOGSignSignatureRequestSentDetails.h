@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSignSignatureRequestSentDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SignSignatureRequestSentDetails` struct.
-///
+/// 
 /// Sent signature request.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSignSignatureRequestSentDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSignSignatureRequestSentDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,49 +36,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param recipient The recipient of the signature request.
 /// @param fileName The name of the related file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRecipient:(NSString *)recipient fileName:(NSString *)fileName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SignSignatureRequestSentDetails` struct.
-///
-@interface DBTEAMLOGSignSignatureRequestSentDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSignSignatureRequestSentDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSignSignatureRequestSentDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSignSignatureRequestSentDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignSignatureRequestSentDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignSignatureRequestSentDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSignSignatureRequestSentDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSignSignatureRequestSentDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignSignatureRequestSentDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSignSignatureRequestSentDetails`
 /// object.
-///
-+ (DBTEAMLOGSignSignatureRequestSentDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSignSignatureRequestSentDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

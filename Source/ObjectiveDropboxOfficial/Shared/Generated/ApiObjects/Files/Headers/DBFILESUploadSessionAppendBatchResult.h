@@ -11,18 +11,19 @@
 @class DBFILESUploadSessionAppendBatchResult;
 @class DBFILESUploadSessionAppendBatchResultEntry;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionAppendBatchResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionAppendBatchResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionAppendBatchResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,50 +34,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries Each entry in `entries` in
 /// `DBFILESUploadSessionAppendBatchArg` will appear at the same position inside
 /// `entries` in `DBFILESUploadSessionAppendBatchResult`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESUploadSessionAppendBatchResultEntry *> *)entries;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UploadSessionAppendBatchResult` struct.
-///
-@interface DBFILESUploadSessionAppendBatchResultSerializer : NSObject
+/// 
+@interface DBFILESUploadSessionAppendBatchResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionAppendBatchResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionAppendBatchResult`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionAppendBatchResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionAppendBatchResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionAppendBatchResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionAppendBatchResult`
 /// object.
-///
-+ (DBFILESUploadSessionAppendBatchResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionAppendBatchResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

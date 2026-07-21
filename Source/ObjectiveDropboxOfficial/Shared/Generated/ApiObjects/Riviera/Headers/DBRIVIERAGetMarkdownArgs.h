@@ -11,22 +11,23 @@
 @class DBRIVIERAFileIdOrUrl;
 @class DBRIVIERAGetMarkdownArgs;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetMarkdownArgs` struct.
-///
+/// 
 /// Arguments for the asynchronous `get_markdown_async` route. Exactly one of
 /// `file_id`, `path`, or `url` must be supplied via `file_id_or_url` to
 /// identify the document to convert to markdown.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetMarkdownArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetMarkdownArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -56,9 +57,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileIdOrUrl Identifier of the document to convert. Callers must set
 /// exactly one of the oneof variants: - file_id: a Dropbox-issued file id
 /// (format: "id:<id>") for a file the authenticated user has access to. - path:
@@ -79,53 +80,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// enabled.
 /// @param embedImages When true, embed images as base64 data URIs in the
 /// markdown output. This can significantly increase output size.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFileIdOrUrl:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
-                          enableOcr:(nullable NSNumber *)enableOcr
-                        embedImages:(nullable NSNumber *)embedImages;
+/// 
+- (instancetype)initWithFileIdOrUrl:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl enableOcr:(nullable NSNumber *)enableOcr embedImages:(nullable NSNumber *)embedImages;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetMarkdownArgs` struct.
-///
-@interface DBRIVIERAGetMarkdownArgsSerializer : NSObject
+/// 
+@interface DBRIVIERAGetMarkdownArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetMarkdownArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetMarkdownArgs` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMarkdownArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMarkdownArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetMarkdownArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetMarkdownArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMarkdownArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetMarkdownArgs` object.
-///
-+ (DBRIVIERAGetMarkdownArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetMarkdownArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

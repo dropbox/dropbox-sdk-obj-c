@@ -10,20 +10,21 @@
 
 @class DBFILEREQUESTSCountFileRequestsResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `CountFileRequestsResult` struct.
-///
+/// 
 /// Result for `count`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSCountFileRequestsResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSCountFileRequestsResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileRequestCount The number file requests owner by this user.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileRequestCount:(NSNumber *)fileRequestCount;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `CountFileRequestsResult` struct.
-///
-@interface DBFILEREQUESTSCountFileRequestsResultSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSCountFileRequestsResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSCountFileRequestsResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSCountFileRequestsResult`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSCountFileRequestsResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSCountFileRequestsResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSCountFileRequestsResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSCountFileRequestsResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSCountFileRequestsResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSCountFileRequestsResult`
 /// object.
-///
-+ (DBFILEREQUESTSCountFileRequestsResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSCountFileRequestsResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

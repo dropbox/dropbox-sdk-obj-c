@@ -10,18 +10,19 @@
 
 @class DBFILESUploadSessionOffsetError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionOffsetError` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionOffsetError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionOffsetError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param correctOffset The offset up to which data has been collected.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCorrectOffset:(NSNumber *)correctOffset;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UploadSessionOffsetError` struct.
-///
-@interface DBFILESUploadSessionOffsetErrorSerializer : NSObject
+/// 
+@interface DBFILESUploadSessionOffsetErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionOffsetError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionOffsetError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionOffsetError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionOffsetError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionOffsetError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionOffsetError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionOffsetError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionOffsetError` object.
-///
-+ (DBFILESUploadSessionOffsetError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionOffsetError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

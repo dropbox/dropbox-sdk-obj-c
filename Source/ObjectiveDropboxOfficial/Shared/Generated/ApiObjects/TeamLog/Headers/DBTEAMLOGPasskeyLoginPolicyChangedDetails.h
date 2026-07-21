@@ -11,20 +11,21 @@
 @class DBTEAMLOGPasskeyLoginPolicy;
 @class DBTEAMLOGPasskeyLoginPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PasskeyLoginPolicyChangedDetails` struct.
-///
+/// 
 /// Changed passkey login policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPasskeyLoginPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPasskeyLoginPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,61 +37,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New passkey login policy.
 /// @param previousValue Previous passkey login policy. Might be missing due to
 /// historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGPasskeyLoginPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGPasskeyLoginPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGPasskeyLoginPolicy *)dNewValue previousValue:(nullable DBTEAMLOGPasskeyLoginPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New passkey login policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGPasskeyLoginPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PasskeyLoginPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGPasskeyLoginPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPasskeyLoginPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPasskeyLoginPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPasskeyLoginPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasskeyLoginPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasskeyLoginPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPasskeyLoginPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPasskeyLoginPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasskeyLoginPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPasskeyLoginPolicyChangedDetails`
 /// object.
-///
-+ (DBTEAMLOGPasskeyLoginPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPasskeyLoginPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

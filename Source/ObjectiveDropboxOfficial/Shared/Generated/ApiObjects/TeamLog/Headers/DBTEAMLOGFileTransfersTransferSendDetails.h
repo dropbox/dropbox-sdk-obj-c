@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGFileTransfersTransferSendDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileTransfersTransferSendDetails` struct.
-///
+/// 
 /// Sent transfer.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileTransfersTransferSendDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileTransfersTransferSendDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileTransferId Transfer id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileTransferId:(NSString *)fileTransferId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileTransfersTransferSendDetails` struct.
-///
-@interface DBTEAMLOGFileTransfersTransferSendDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileTransfersTransferSendDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileTransfersTransferSendDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFileTransfersTransferSendDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileTransfersTransferSendDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileTransfersTransferSendDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileTransfersTransferSendDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileTransfersTransferSendDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileTransfersTransferSendDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileTransfersTransferSendDetails`
 /// object.
-///
-+ (DBTEAMLOGFileTransfersTransferSendDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileTransfersTransferSendDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

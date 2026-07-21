@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGContentDeletionProtectionPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ContentDeletionProtectionPolicy` union.
-///
+/// 
 /// Content deletion protection policy
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGContentDeletionProtectionPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGContentDeletionProtectionPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,17 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the
 /// `DBTEAMLOGContentDeletionProtectionPolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGContentDeletionProtectionPolicyTag) {
-  /// (no description).
-  DBTEAMLOGContentDeletionProtectionPolicyOff,
+    /// (no description).
+    DBTEAMLOGContentDeletionProtectionPolicyOff,
 
-  /// (no description).
-  DBTEAMLOGContentDeletionProtectionPolicyOnAboveThreshold,
+    /// (no description).
+    DBTEAMLOGContentDeletionProtectionPolicyOnAboveThreshold,
 
-  /// (no description).
-  DBTEAMLOGContentDeletionProtectionPolicyOnAllFiles,
+    /// (no description).
+    DBTEAMLOGContentDeletionProtectionPolicyOnAllFiles,
 
-  /// (no description).
-  DBTEAMLOGContentDeletionProtectionPolicyOther,
+    /// (no description).
+    DBTEAMLOGContentDeletionProtectionPolicyOther,
 
 };
 
@@ -50,107 +51,109 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGContentDeletionProtectionPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "off".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOff;
 
-///
+/// 
 /// Initializes union class with tag state of "on_above_threshold".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOnAboveThreshold;
 
-///
+/// 
 /// Initializes union class with tag state of "on_all_files".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOnAllFiles;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "off".
-///
+/// 
 /// @return Whether the union's current tag state has value "off".
-///
+/// 
 - (BOOL)isOff;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "on_above_threshold".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "on_above_threshold".
-///
+/// 
 - (BOOL)isOnAboveThreshold;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "on_all_files".
-///
+/// 
 /// @return Whether the union's current tag state has value "on_all_files".
-///
+/// 
 - (BOOL)isOnAllFiles;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGContentDeletionProtectionPolicy`
 /// union.
-///
-@interface DBTEAMLOGContentDeletionProtectionPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGContentDeletionProtectionPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGContentDeletionProtectionPolicy` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGContentDeletionProtectionPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGContentDeletionProtectionPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGContentDeletionProtectionPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGContentDeletionProtectionPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGContentDeletionProtectionPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGContentDeletionProtectionPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGContentDeletionProtectionPolicy`
 /// object.
-///
-+ (DBTEAMLOGContentDeletionProtectionPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGContentDeletionProtectionPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

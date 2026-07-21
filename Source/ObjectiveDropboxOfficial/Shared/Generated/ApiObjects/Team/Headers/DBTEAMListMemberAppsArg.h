@@ -10,18 +10,19 @@
 
 @class DBTEAMListMemberAppsArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListMemberAppsArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMListMemberAppsArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMListMemberAppsArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamMemberId The team member id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListMemberAppsArg` struct.
-///
-@interface DBTEAMListMemberAppsArgSerializer : NSObject
+/// 
+@interface DBTEAMListMemberAppsArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMListMemberAppsArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMListMemberAppsArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListMemberAppsArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMListMemberAppsArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMListMemberAppsArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMListMemberAppsArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMListMemberAppsArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMListMemberAppsArg` object.
-///
-+ (DBTEAMListMemberAppsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMListMemberAppsArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

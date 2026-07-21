@@ -12,20 +12,21 @@
 @class DBTEAMLOGAddonLogInfo;
 @class DBTEAMLOGUserNameLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AddonAssignedDetails` struct.
-///
+/// 
 /// Add-on Assigned.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAddonAssignedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAddonAssignedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,48 +38,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param userName User's name.
 /// @param addonName Add-on name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUserName:(DBTEAMLOGUserNameLogInfo *)userName addonName:(DBTEAMLOGAddonLogInfo *)addonName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AddonAssignedDetails` struct.
-///
-@interface DBTEAMLOGAddonAssignedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAddonAssignedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAddonAssignedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAddonAssignedDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAddonAssignedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAddonAssignedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAddonAssignedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAddonAssignedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAddonAssignedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAddonAssignedDetails` object.
-///
-+ (DBTEAMLOGAddonAssignedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAddonAssignedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

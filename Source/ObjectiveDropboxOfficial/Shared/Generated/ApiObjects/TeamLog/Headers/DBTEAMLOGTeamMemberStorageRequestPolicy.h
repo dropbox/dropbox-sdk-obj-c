@@ -10,21 +10,22 @@
 
 @class DBTEAMLOGTeamMemberStorageRequestPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMemberStorageRequestPolicy` union.
-///
+/// 
 /// Policy for deciding whether team members can request increased storage
 /// limits from admins
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMemberStorageRequestPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMemberStorageRequestPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,17 +33,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGTeamMemberStorageRequestPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMemberStorageRequestPolicyTag) {
-  /// (no description).
-  DBTEAMLOGTeamMemberStorageRequestPolicyDefault_,
+    /// (no description).
+    DBTEAMLOGTeamMemberStorageRequestPolicyDefault_,
 
-  /// (no description).
-  DBTEAMLOGTeamMemberStorageRequestPolicyDisabled,
+    /// (no description).
+    DBTEAMLOGTeamMemberStorageRequestPolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGTeamMemberStorageRequestPolicyEnabled,
+    /// (no description).
+    DBTEAMLOGTeamMemberStorageRequestPolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGTeamMemberStorageRequestPolicyOther,
+    /// (no description).
+    DBTEAMLOGTeamMemberStorageRequestPolicyOther,
 
 };
 
@@ -51,105 +52,107 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMemberStorageRequestPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGTeamMemberStorageRequestPolicy`
 /// union.
-///
-@interface DBTEAMLOGTeamMemberStorageRequestPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMemberStorageRequestPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMemberStorageRequestPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamMemberStorageRequestPolicy`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMemberStorageRequestPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMemberStorageRequestPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMemberStorageRequestPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMemberStorageRequestPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMemberStorageRequestPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamMemberStorageRequestPolicy`
 /// object.
-///
-+ (DBTEAMLOGTeamMemberStorageRequestPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMemberStorageRequestPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

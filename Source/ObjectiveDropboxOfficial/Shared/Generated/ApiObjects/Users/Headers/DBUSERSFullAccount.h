@@ -15,20 +15,21 @@
 @class DBUSERSFullTeam;
 @class DBUSERSName;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FullAccount` struct.
-///
+/// 
 /// Detailed information about the current user's account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBUSERSFullAccount : DBUSERSAccount <DBSerializable, NSCopying>
+/// 
+@interface DBUSERSFullAccount : DBUSERSAccount <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -63,9 +64,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
 /// @param email The user's email address. Do not rely on this without checking
@@ -90,28 +91,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// team.
 /// @param teamMemberId This account's unique team member id. This field will
 /// only be present if team is present.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccountId:(NSString *)accountId
-                             name:(DBUSERSName *)name
-                            email:(NSString *)email
-                    emailVerified:(NSNumber *)emailVerified
-                         disabled:(NSNumber *)disabled
-                           locale:(NSString *)locale
-                     referralLink:(NSString *)referralLink
-                         isPaired:(NSNumber *)isPaired
-                      accountType:(DBUSERSCOMMONAccountType *)accountType
-                         rootInfo:(DBCOMMONRootInfo *)rootInfo
-                  profilePhotoUrl:(nullable NSString *)profilePhotoUrl
-                          country:(nullable NSString *)country
-                             team:(nullable DBUSERSFullTeam *)team
-                     teamMemberId:(nullable NSString *)teamMemberId;
+/// 
+- (instancetype)initWithAccountId:(NSString *)accountId name:(DBUSERSName *)name email:(NSString *)email emailVerified:(NSNumber *)emailVerified disabled:(NSNumber *)disabled locale:(NSString *)locale referralLink:(NSString *)referralLink isPaired:(NSNumber *)isPaired accountType:(DBUSERSCOMMONAccountType *)accountType rootInfo:(DBCOMMONRootInfo *)rootInfo profilePhotoUrl:(nullable NSString *)profilePhotoUrl country:(nullable NSString *)country team:(nullable DBUSERSFullTeam *)team teamMemberId:(nullable NSString *)teamMemberId;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
 /// @param email The user's email address. Do not rely on this without checking
@@ -128,49 +116,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// will indicate if a work account is linked.
 /// @param accountType What type of account this user has.
 /// @param rootInfo The root info for this account.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccountId:(NSString *)accountId
-                             name:(DBUSERSName *)name
-                            email:(NSString *)email
-                    emailVerified:(NSNumber *)emailVerified
-                         disabled:(NSNumber *)disabled
-                           locale:(NSString *)locale
-                     referralLink:(NSString *)referralLink
-                         isPaired:(NSNumber *)isPaired
-                      accountType:(DBUSERSCOMMONAccountType *)accountType
-                         rootInfo:(DBCOMMONRootInfo *)rootInfo;
+/// 
+- (instancetype)initWithAccountId:(NSString *)accountId name:(DBUSERSName *)name email:(NSString *)email emailVerified:(NSNumber *)emailVerified disabled:(NSNumber *)disabled locale:(NSString *)locale referralLink:(NSString *)referralLink isPaired:(NSNumber *)isPaired accountType:(DBUSERSCOMMONAccountType *)accountType rootInfo:(DBCOMMONRootInfo *)rootInfo;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FullAccount` struct.
-///
-@interface DBUSERSFullAccountSerializer : NSObject
+/// 
+@interface DBUSERSFullAccountSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBUSERSFullAccount` instances.
-///
+/// 
 /// @param instance An instance of the `DBUSERSFullAccount` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBUSERSFullAccount` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBUSERSFullAccount *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBUSERSFullAccount *)instance;
 
-///
+/// 
 /// Deserializes `DBUSERSFullAccount` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBUSERSFullAccount` API object.
-///
+/// 
 /// @return An instantiation of the `DBUSERSFullAccount` object.
-///
-+ (DBUSERSFullAccount *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBUSERSFullAccount *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

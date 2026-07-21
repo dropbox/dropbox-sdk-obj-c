@@ -10,42 +10,43 @@
 
 @class DBSHARINGShareFolderErrorV2;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShareFolderErrorV2` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGShareFolderErrorV2 : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGShareFolderErrorV2 : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBSHARINGShareFolderErrorV2Tag` enum type represents the possible tag
 /// states with which the `DBSHARINGShareFolderErrorV2` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorV2Tag) {
-  /// This user's email address is not verified. This functionality is only
-  /// available on accounts with a verified email address. Users can verify
-  /// their email address here https://www.dropbox.com/help/317.
-  DBSHARINGShareFolderErrorV2EmailUnverified,
+    /// This user's email address is not verified. This functionality is only
+    /// available on accounts with a verified email address. Users can verify
+    /// their email address here https://www.dropbox.com/help/317.
+    DBSHARINGShareFolderErrorV2EmailUnverified,
 
-  /// Team policy or group sharing settings are more restrictive than
-  /// `memberPolicy` in `DBSHARINGShareFolderArg`.
-  DBSHARINGShareFolderErrorV2TeamPolicyDisallowsMemberPolicy,
+    /// Team policy or group sharing settings are more restrictive than
+    /// `memberPolicy` in `DBSHARINGShareFolderArg`.
+    DBSHARINGShareFolderErrorV2TeamPolicyDisallowsMemberPolicy,
 
-  /// The current user's account is not allowed to select the specified
-  /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
-  DBSHARINGShareFolderErrorV2DisallowedSharedLinkPolicy,
+    /// The current user's account is not allowed to select the specified
+    /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
+    DBSHARINGShareFolderErrorV2DisallowedSharedLinkPolicy,
 
-  /// (no description).
-  DBSHARINGShareFolderErrorV2Other,
+    /// (no description).
+    DBSHARINGShareFolderErrorV2Other,
 
-  /// The current user does not have permission to perform this action.
-  DBSHARINGShareFolderErrorV2NoPermission,
+    /// The current user does not have permission to perform this action.
+    DBSHARINGShareFolderErrorV2NoPermission,
 
 };
 
@@ -54,138 +55,140 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorV2Tag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "email_unverified".
-///
+/// 
 /// Description of the "email_unverified" tag state: This user's email address
 /// is not verified. This functionality is only available on accounts with a
 /// verified email address. Users can verify their email address here
 /// https://www.dropbox.com/help/317.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEmailUnverified;
 
-///
+/// 
 /// Initializes union class with tag state of
 /// "team_policy_disallows_member_policy".
-///
+/// 
 /// Description of the "team_policy_disallows_member_policy" tag state: Team
 /// policy or group sharing settings are more restrictive than `memberPolicy` in
 /// `DBSHARINGShareFolderArg`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamPolicyDisallowsMemberPolicy;
 
-///
+/// 
 /// Initializes union class with tag state of "disallowed_shared_link_policy".
-///
+/// 
 /// Description of the "disallowed_shared_link_policy" tag state: The current
 /// user's account is not allowed to select the specified `sharedLinkPolicy` in
 /// `DBSHARINGShareFolderArg`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisallowedSharedLinkPolicy;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
-///
+/// 
 /// Initializes union class with tag state of "no_permission".
-///
+/// 
 /// Description of the "no_permission" tag state: The current user does not have
 /// permission to perform this action.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoPermission;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "email_unverified".
-///
+/// 
 /// @return Whether the union's current tag state has value "email_unverified".
-///
+/// 
 - (BOOL)isEmailUnverified;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "team_policy_disallows_member_policy".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "team_policy_disallows_member_policy".
-///
+/// 
 - (BOOL)isTeamPolicyDisallowsMemberPolicy;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "disallowed_shared_link_policy".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "disallowed_shared_link_policy".
-///
+/// 
 - (BOOL)isDisallowedSharedLinkPolicy;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "no_permission".
-///
+/// 
 /// @return Whether the union's current tag state has value "no_permission".
-///
+/// 
 - (BOOL)isNoPermission;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGShareFolderErrorV2` union.
-///
-@interface DBSHARINGShareFolderErrorV2Serializer : NSObject
+/// 
+@interface DBSHARINGShareFolderErrorV2Serializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGShareFolderErrorV2` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGShareFolderErrorV2` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGShareFolderErrorV2` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGShareFolderErrorV2 *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGShareFolderErrorV2 *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGShareFolderErrorV2` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGShareFolderErrorV2` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGShareFolderErrorV2` object.
-///
-+ (DBSHARINGShareFolderErrorV2 *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGShareFolderErrorV2 *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

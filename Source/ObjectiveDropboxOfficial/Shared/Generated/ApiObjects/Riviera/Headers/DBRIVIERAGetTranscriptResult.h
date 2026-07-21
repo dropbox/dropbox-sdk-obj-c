@@ -11,18 +11,19 @@
 @class DBRIVIERAApiStructuredTranscript;
 @class DBRIVIERAGetTranscriptResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetTranscriptResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetTranscriptResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetTranscriptResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,59 +34,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param structuredTranscript The structured transcript produced for the
 /// requested media asset, with per-segment text, start/end offsets (in seconds
 /// from the beginning of the media), and the detected or caller-supplied
 /// locale.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStructuredTranscript:(nullable DBRIVIERAApiStructuredTranscript *)structuredTranscript;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetTranscriptResult` struct.
-///
-@interface DBRIVIERAGetTranscriptResultSerializer : NSObject
+/// 
+@interface DBRIVIERAGetTranscriptResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetTranscriptResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetTranscriptResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetTranscriptResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetTranscriptResult *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetTranscriptResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetTranscriptResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetTranscriptResult` object.
-///
-+ (DBRIVIERAGetTranscriptResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetTranscriptResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

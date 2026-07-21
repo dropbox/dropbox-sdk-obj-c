@@ -11,22 +11,23 @@
 
 @class DBTEAMGetActivityReport;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetActivityReport` struct.
-///
+/// 
 /// Activity Report Result. Each of the items in the storage report is an array
 /// of values, one value per day. If there is no data for a day, then the value
 /// will be None.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMGetActivityReport : DBTEAMBaseDfbReport <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMGetActivityReport : DBTEAMBaseDfbReport <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -79,9 +80,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
 /// @param adds Array of total number of adds by team members.
 /// @param edits Array of number of edits by team members. If the same user
@@ -108,54 +109,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// non-logged-in users to shared links created by the team.
 /// @param sharedLinksViewedTotal Array of the total number of views to shared
 /// links created by the team.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithStartDate:(NSString *)startDate
-                              adds:(NSArray<NSNumber *> *)adds
-                             edits:(NSArray<NSNumber *> *)edits
-                           deletes:(NSArray<NSNumber *> *)deletes
-                  activeUsers28Day:(NSArray<NSNumber *> *)activeUsers28Day
-                   activeUsers7Day:(NSArray<NSNumber *> *)activeUsers7Day
-                   activeUsers1Day:(NSArray<NSNumber *> *)activeUsers1Day
-          activeSharedFolders28Day:(NSArray<NSNumber *> *)activeSharedFolders28Day
-           activeSharedFolders7Day:(NSArray<NSNumber *> *)activeSharedFolders7Day
-           activeSharedFolders1Day:(NSArray<NSNumber *> *)activeSharedFolders1Day
-                sharedLinksCreated:(NSArray<NSNumber *> *)sharedLinksCreated
-           sharedLinksViewedByTeam:(NSArray<NSNumber *> *)sharedLinksViewedByTeam
-    sharedLinksViewedByOutsideUser:(NSArray<NSNumber *> *)sharedLinksViewedByOutsideUser
-    sharedLinksViewedByNotLoggedIn:(NSArray<NSNumber *> *)sharedLinksViewedByNotLoggedIn
-            sharedLinksViewedTotal:(NSArray<NSNumber *> *)sharedLinksViewedTotal;
+/// 
+- (instancetype)initWithStartDate:(NSString *)startDate adds:(NSArray<NSNumber *> *)adds edits:(NSArray<NSNumber *> *)edits deletes:(NSArray<NSNumber *> *)deletes activeUsers28Day:(NSArray<NSNumber *> *)activeUsers28Day activeUsers7Day:(NSArray<NSNumber *> *)activeUsers7Day activeUsers1Day:(NSArray<NSNumber *> *)activeUsers1Day activeSharedFolders28Day:(NSArray<NSNumber *> *)activeSharedFolders28Day activeSharedFolders7Day:(NSArray<NSNumber *> *)activeSharedFolders7Day activeSharedFolders1Day:(NSArray<NSNumber *> *)activeSharedFolders1Day sharedLinksCreated:(NSArray<NSNumber *> *)sharedLinksCreated sharedLinksViewedByTeam:(NSArray<NSNumber *> *)sharedLinksViewedByTeam sharedLinksViewedByOutsideUser:(NSArray<NSNumber *> *)sharedLinksViewedByOutsideUser sharedLinksViewedByNotLoggedIn:(NSArray<NSNumber *> *)sharedLinksViewedByNotLoggedIn sharedLinksViewedTotal:(NSArray<NSNumber *> *)sharedLinksViewedTotal;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetActivityReport` struct.
-///
-@interface DBTEAMGetActivityReportSerializer : NSObject
+/// 
+@interface DBTEAMGetActivityReportSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMGetActivityReport` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMGetActivityReport` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGetActivityReport` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMGetActivityReport *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMGetActivityReport *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMGetActivityReport` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMGetActivityReport` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMGetActivityReport` object.
-///
-+ (DBTEAMGetActivityReport *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMGetActivityReport *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,18 +12,19 @@
 @class DBTEAMMembersRemoveArg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersRemoveArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersRemoveArg : DBTEAMMembersDeactivateArg <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersRemoveArg : DBTEAMMembersDeactivateArg <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -57,9 +58,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user Identity of user to remove/suspend/have their files moved.
 /// @param wipeData If provided, controls if the user's data will be deleted on
 /// their linked devices.
@@ -81,56 +82,52 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param permanentlyDeleteFiles Permanently delete the data in the deleted
 /// member's account. After permanent deletion, the data is no longer available
 /// to be transferred to a different user.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user
-                    wipeData:(nullable NSNumber *)wipeData
-              transferDestId:(nullable DBTEAMUserSelectorArg *)transferDestId
-             transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId
-                 keepAccount:(nullable NSNumber *)keepAccount
-            retainTeamShares:(nullable NSNumber *)retainTeamShares
-      permanentlyDeleteFiles:(nullable NSNumber *)permanentlyDeleteFiles;
+/// 
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user wipeData:(nullable NSNumber *)wipeData transferDestId:(nullable DBTEAMUserSelectorArg *)transferDestId transferAdminId:(nullable DBTEAMUserSelectorArg *)transferAdminId keepAccount:(nullable NSNumber *)keepAccount retainTeamShares:(nullable NSNumber *)retainTeamShares permanentlyDeleteFiles:(nullable NSNumber *)permanentlyDeleteFiles;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param user Identity of user to remove/suspend/have their files moved.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersRemoveArg` struct.
-///
-@interface DBTEAMMembersRemoveArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersRemoveArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersRemoveArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersRemoveArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersRemoveArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersRemoveArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersRemoveArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersRemoveArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersRemoveArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersRemoveArg` object.
-///
-+ (DBTEAMMembersRemoveArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersRemoveArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

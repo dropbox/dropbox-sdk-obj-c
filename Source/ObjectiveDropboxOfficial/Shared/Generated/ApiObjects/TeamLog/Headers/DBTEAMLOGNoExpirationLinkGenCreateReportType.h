@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGNoExpirationLinkGenCreateReportType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `NoExpirationLinkGenCreateReportType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGNoExpirationLinkGenCreateReportType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGNoExpirationLinkGenCreateReportType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `NoExpirationLinkGenCreateReportType`
 /// struct.
-///
-@interface DBTEAMLOGNoExpirationLinkGenCreateReportTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGNoExpirationLinkGenCreateReportTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGNoExpirationLinkGenCreateReportType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGNoExpirationLinkGenCreateReportType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoExpirationLinkGenCreateReportType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoExpirationLinkGenCreateReportType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGNoExpirationLinkGenCreateReportType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGNoExpirationLinkGenCreateReportType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoExpirationLinkGenCreateReportType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGNoExpirationLinkGenCreateReportType` object.
-///
-+ (DBTEAMLOGNoExpirationLinkGenCreateReportType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGNoExpirationLinkGenCreateReportType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

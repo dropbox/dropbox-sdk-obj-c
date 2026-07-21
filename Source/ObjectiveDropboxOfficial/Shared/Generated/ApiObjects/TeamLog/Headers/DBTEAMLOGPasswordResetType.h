@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGPasswordResetType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PasswordResetType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPasswordResetType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPasswordResetType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PasswordResetType` struct.
-///
-@interface DBTEAMLOGPasswordResetTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGPasswordResetTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPasswordResetType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPasswordResetType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasswordResetType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPasswordResetType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPasswordResetType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPasswordResetType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasswordResetType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPasswordResetType` object.
-///
-+ (DBTEAMLOGPasswordResetType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPasswordResetType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

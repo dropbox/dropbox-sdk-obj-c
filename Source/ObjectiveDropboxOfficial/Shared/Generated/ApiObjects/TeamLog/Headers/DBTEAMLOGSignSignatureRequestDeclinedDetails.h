@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSignSignatureRequestDeclinedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SignSignatureRequestDeclinedDetails` struct.
-///
+/// 
 /// Declined signature request.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSignSignatureRequestDeclinedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSignSignatureRequestDeclinedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param recipient The recipient of the signature request.
 /// @param fileName The name of the related file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRecipient:(NSString *)recipient fileName:(NSString *)fileName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SignSignatureRequestDeclinedDetails`
 /// struct.
-///
-@interface DBTEAMLOGSignSignatureRequestDeclinedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSignSignatureRequestDeclinedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSignSignatureRequestDeclinedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSignSignatureRequestDeclinedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignSignatureRequestDeclinedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignSignatureRequestDeclinedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSignSignatureRequestDeclinedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSignSignatureRequestDeclinedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignSignatureRequestDeclinedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSignSignatureRequestDeclinedDetails` object.
-///
-+ (DBTEAMLOGSignSignatureRequestDeclinedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSignSignatureRequestDeclinedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

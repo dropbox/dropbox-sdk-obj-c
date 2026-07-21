@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGShowcaseChangeDownloadPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseChangeDownloadPolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseChangeDownloadPolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseChangeDownloadPolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseChangeDownloadPolicyType` struct.
-///
-@interface DBTEAMLOGShowcaseChangeDownloadPolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseChangeDownloadPolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseChangeDownloadPolicyType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGShowcaseChangeDownloadPolicyType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeDownloadPolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeDownloadPolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseChangeDownloadPolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseChangeDownloadPolicyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeDownloadPolicyType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseChangeDownloadPolicyType`
 /// object.
-///
-+ (DBTEAMLOGShowcaseChangeDownloadPolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseChangeDownloadPolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGSendExternalSharingPolicy;
 @class DBTEAMLOGSendExternalSharingPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SendExternalSharingPolicyChangedDetails` struct.
-///
+/// 
 /// Changed “Send and track” external sharing policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSendExternalSharingPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSendExternalSharingPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGSendExternalSharingPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGSendExternalSharingPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGSendExternalSharingPolicy *)dNewValue previousValue:(DBTEAMLOGSendExternalSharingPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SendExternalSharingPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGSendExternalSharingPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSendExternalSharingPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSendExternalSharingPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSendExternalSharingPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendExternalSharingPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSendExternalSharingPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSendExternalSharingPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSendExternalSharingPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendExternalSharingPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSendExternalSharingPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGSendExternalSharingPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSendExternalSharingPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

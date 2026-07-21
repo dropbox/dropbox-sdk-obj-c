@@ -10,40 +10,41 @@
 
 @class DBTEAMLOGReplayLinkAccess;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ReplayLinkAccess` union.
-///
+/// 
 /// Who can access this Replay link
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGReplayLinkAccess : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGReplayLinkAccess : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMLOGReplayLinkAccessTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGReplayLinkAccess` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGReplayLinkAccessTag) {
-  /// (no description).
-  DBTEAMLOGReplayLinkAccessAnyoneLoggedIn,
+    /// (no description).
+    DBTEAMLOGReplayLinkAccessAnyoneLoggedIn,
 
-  /// (no description).
-  DBTEAMLOGReplayLinkAccessNoLoginRequired,
+    /// (no description).
+    DBTEAMLOGReplayLinkAccessNoLoginRequired,
 
-  /// (no description).
-  DBTEAMLOGReplayLinkAccessTeamAndApproved,
+    /// (no description).
+    DBTEAMLOGReplayLinkAccessTeamAndApproved,
 
-  /// (no description).
-  DBTEAMLOGReplayLinkAccessTeamOnly,
+    /// (no description).
+    DBTEAMLOGReplayLinkAccessTeamOnly,
 
-  /// (no description).
-  DBTEAMLOGReplayLinkAccessOther,
+    /// (no description).
+    DBTEAMLOGReplayLinkAccessOther,
 
 };
 
@@ -52,119 +53,121 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGReplayLinkAccessTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "anyone_logged_in".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAnyoneLoggedIn;
 
-///
+/// 
 /// Initializes union class with tag state of "no_login_required".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoLoginRequired;
 
-///
+/// 
 /// Initializes union class with tag state of "team_and_approved".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamAndApproved;
 
-///
+/// 
 /// Initializes union class with tag state of "team_only".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamOnly;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "anyone_logged_in".
-///
+/// 
 /// @return Whether the union's current tag state has value "anyone_logged_in".
-///
+/// 
 - (BOOL)isAnyoneLoggedIn;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "no_login_required".
-///
+/// 
 /// @return Whether the union's current tag state has value "no_login_required".
-///
+/// 
 - (BOOL)isNoLoginRequired;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "team_and_approved".
-///
+/// 
 /// @return Whether the union's current tag state has value "team_and_approved".
-///
+/// 
 - (BOOL)isTeamAndApproved;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "team_only".
-///
+/// 
 /// @return Whether the union's current tag state has value "team_only".
-///
+/// 
 - (BOOL)isTeamOnly;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGReplayLinkAccess` union.
-///
-@interface DBTEAMLOGReplayLinkAccessSerializer : NSObject
+/// 
+@interface DBTEAMLOGReplayLinkAccessSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGReplayLinkAccess` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGReplayLinkAccess` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayLinkAccess` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGReplayLinkAccess *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGReplayLinkAccess *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGReplayLinkAccess` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayLinkAccess` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGReplayLinkAccess` object.
-///
-+ (DBTEAMLOGReplayLinkAccess *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGReplayLinkAccess *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

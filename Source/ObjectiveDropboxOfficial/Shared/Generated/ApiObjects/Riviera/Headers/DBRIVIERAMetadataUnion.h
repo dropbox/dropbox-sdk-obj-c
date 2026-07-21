@@ -14,40 +14,41 @@
 @class DBRIVIERAApiPdfMetadata;
 @class DBRIVIERAMetadataUnion;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MetadataUnion` union.
-///
+/// 
 /// Exactly one variant is populated, corresponding to `metadata_type`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAMetadataUnion : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAMetadataUnion : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBRIVIERAMetadataUnionTag` enum type represents the possible tag states
 /// with which the `DBRIVIERAMetadataUnion` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
-  /// (no description).
-  DBRIVIERAMetadataUnionExif,
+    /// (no description).
+    DBRIVIERAMetadataUnionExif,
 
-  /// (no description).
-  DBRIVIERAMetadataUnionMedia,
+    /// (no description).
+    DBRIVIERAMetadataUnionMedia,
 
-  /// (no description).
-  DBRIVIERAMetadataUnionPdf,
+    /// (no description).
+    DBRIVIERAMetadataUnionPdf,
 
-  /// (no description).
-  DBRIVIERAMetadataUnionOffice,
+    /// (no description).
+    DBRIVIERAMetadataUnionOffice,
 
-  /// (no description).
-  DBRIVIERAMetadataUnionOther,
+    /// (no description).
+    DBRIVIERAMetadataUnionOther,
 
 };
 
@@ -72,136 +73,138 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "exif".
-///
+/// 
 /// @param exif (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithExif:(DBRIVIERAApiExifMetadata *)exif;
 
-///
+/// 
 /// Initializes union class with tag state of "media".
-///
+/// 
 /// @param media (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMedia:(DBRIVIERAApiMediaMetadata *)media;
 
-///
+/// 
 /// Initializes union class with tag state of "pdf".
-///
+/// 
 /// @param pdf (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPdf:(DBRIVIERAApiPdfMetadata *)pdf;
 
-///
+/// 
 /// Initializes union class with tag state of "office".
-///
+/// 
 /// @param office (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOffice:(DBRIVIERAApiOfficeMetadata *)office;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "exif".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `exif` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "exif".
-///
+/// 
 - (BOOL)isExif;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "media".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `media` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "media".
-///
+/// 
 - (BOOL)isMedia;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "pdf".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the `pdf`
 /// property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "pdf".
-///
+/// 
 - (BOOL)isPdf;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "office".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `office` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "office".
-///
+/// 
 - (BOOL)isOffice;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERAMetadataUnion` union.
-///
-@interface DBRIVIERAMetadataUnionSerializer : NSObject
+/// 
+@interface DBRIVIERAMetadataUnionSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAMetadataUnion` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAMetadataUnion` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAMetadataUnion` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMetadataUnion *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAMetadataUnion *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAMetadataUnion` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAMetadataUnion` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAMetadataUnion` object.
-///
-+ (DBRIVIERAMetadataUnion *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAMetadataUnion *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

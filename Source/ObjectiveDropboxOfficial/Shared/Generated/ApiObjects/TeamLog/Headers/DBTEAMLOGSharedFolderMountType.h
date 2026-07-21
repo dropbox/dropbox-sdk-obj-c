@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedFolderMountType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFolderMountType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedFolderMountType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedFolderMountType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFolderMountType` struct.
-///
-@interface DBTEAMLOGSharedFolderMountTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedFolderMountTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedFolderMountType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedFolderMountType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderMountType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderMountType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedFolderMountType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedFolderMountType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderMountType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedFolderMountType` object.
-///
-+ (DBTEAMLOGSharedFolderMountType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedFolderMountType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

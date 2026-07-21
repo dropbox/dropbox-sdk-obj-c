@@ -11,20 +11,21 @@
 @class DBSHARINGFileAction;
 @class DBSHARINGGetFileMetadataBatchArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetFileMetadataBatchArg` struct.
-///
+/// 
 /// Arguments of `getFileMetadataBatch`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGGetFileMetadataBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGGetFileMetadataBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,61 +39,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param files The files to query.
 /// @param actions A list of `FileAction`s corresponding to `FilePermission`s
 /// that should appear in the response's `permissions` in
 /// `DBSHARINGSharedFileMetadata` field describing the actions the authenticated
 /// user can perform on the file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFiles:(NSArray<NSString *> *)files actions:(nullable NSArray<DBSHARINGFileAction *> *)actions;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param files The files to query.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFiles:(NSArray<NSString *> *)files;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetFileMetadataBatchArg` struct.
-///
-@interface DBSHARINGGetFileMetadataBatchArgSerializer : NSObject
+/// 
+@interface DBSHARINGGetFileMetadataBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGGetFileMetadataBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGGetFileMetadataBatchArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetFileMetadataBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGGetFileMetadataBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGGetFileMetadataBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGGetFileMetadataBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGGetFileMetadataBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGGetFileMetadataBatchArg` object.
-///
-+ (DBSHARINGGetFileMetadataBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGGetFileMetadataBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

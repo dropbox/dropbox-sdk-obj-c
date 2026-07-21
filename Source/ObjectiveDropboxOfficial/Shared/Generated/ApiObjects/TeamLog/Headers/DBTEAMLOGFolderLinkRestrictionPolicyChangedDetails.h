@@ -11,20 +11,21 @@
 @class DBTEAMLOGFolderLinkRestrictionPolicy;
 @class DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FolderLinkRestrictionPolicyChangedDetails` struct.
-///
+/// 
 /// Changed folder link restrictions policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGFolderLinkRestrictionPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGFolderLinkRestrictionPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGFolderLinkRestrictionPolicy *)dNewValue previousValue:(DBTEAMLOGFolderLinkRestrictionPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FolderLinkRestrictionPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGFolderLinkRestrictionPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFolderLinkRestrictionPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFolderLinkRestrictionPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

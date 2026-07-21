@@ -14,20 +14,21 @@
 @class DBTEAMTeamMembershipType;
 @class DBUSERSName;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberProfile` struct.
-///
+/// 
 /// Basic member profile.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMemberProfile : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMemberProfile : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -84,9 +85,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamMemberId ID of user as a member of a team.
 /// @param email Email address of user.
 /// @param emailVerified Is true if the user's email is verified to be owned by
@@ -114,29 +115,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// user.
 /// @param profilePhotoUrl URL for the photo representing the user, if one is
 /// set.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId
-                               email:(NSString *)email
-                       emailVerified:(NSNumber *)emailVerified
-                              status:(DBTEAMTeamMemberStatus *)status
-                                name:(DBUSERSName *)name
-                      membershipType:(DBTEAMTeamMembershipType *)membershipType
-                          externalId:(nullable NSString *)externalId
-                           accountId:(nullable NSString *)accountId
-                     secondaryEmails:(nullable NSArray<DBSECONDARYEMAILSSecondaryEmail *> *)secondaryEmails
-                           invitedOn:(nullable NSDate *)invitedOn
-                            joinedOn:(nullable NSDate *)joinedOn
-                         suspendedOn:(nullable NSDate *)suspendedOn
-                        persistentId:(nullable NSString *)persistentId
-               isDirectoryRestricted:(nullable NSNumber *)isDirectoryRestricted
-                     profilePhotoUrl:(nullable NSString *)profilePhotoUrl;
+/// 
+- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId email:(NSString *)email emailVerified:(NSNumber *)emailVerified status:(DBTEAMTeamMemberStatus *)status name:(DBUSERSName *)name membershipType:(DBTEAMTeamMembershipType *)membershipType externalId:(nullable NSString *)externalId accountId:(nullable NSString *)accountId secondaryEmails:(nullable NSArray<DBSECONDARYEMAILSSecondaryEmail *> *)secondaryEmails invitedOn:(nullable NSDate *)invitedOn joinedOn:(nullable NSDate *)joinedOn suspendedOn:(nullable NSDate *)suspendedOn persistentId:(nullable NSString *)persistentId isDirectoryRestricted:(nullable NSNumber *)isDirectoryRestricted profilePhotoUrl:(nullable NSString *)profilePhotoUrl;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param teamMemberId ID of user as a member of a team.
 /// @param email Email address of user.
 /// @param emailVerified Is true if the user's email is verified to be owned by
@@ -145,47 +132,44 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param name Representations for a person's name.
 /// @param membershipType The user's membership type: full (normal team member)
 /// vs limited (does not use a license; no access to the team's shared quota).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId
-                               email:(NSString *)email
-                       emailVerified:(NSNumber *)emailVerified
-                              status:(DBTEAMTeamMemberStatus *)status
-                                name:(DBUSERSName *)name
-                      membershipType:(DBTEAMTeamMembershipType *)membershipType;
+/// 
+- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId email:(NSString *)email emailVerified:(NSNumber *)emailVerified status:(DBTEAMTeamMemberStatus *)status name:(DBUSERSName *)name membershipType:(DBTEAMTeamMembershipType *)membershipType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberProfile` struct.
-///
-@interface DBTEAMMemberProfileSerializer : NSObject
+/// 
+@interface DBTEAMMemberProfileSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMemberProfile` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMemberProfile` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMemberProfile` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMemberProfile *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMemberProfile *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMemberProfile` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMemberProfile` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMemberProfile` object.
-///
-+ (DBTEAMMemberProfile *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMemberProfile *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

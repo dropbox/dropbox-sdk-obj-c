@@ -12,20 +12,21 @@
 @class DBRIVIERAGetMetadataAsyncError;
 @class DBRIVIERAGetMetadataResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetMetadataAsyncCheckResult` union.
-///
+/// 
 /// Result type for EventBus async check - must end in "CheckResult"
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetMetadataAsyncCheckResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetMetadataAsyncCheckResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,17 +34,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBRIVIERAGetMetadataAsyncCheckResult`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
-  /// (no description).
-  DBRIVIERAGetMetadataAsyncCheckResultInProgress,
+    /// (no description).
+    DBRIVIERAGetMetadataAsyncCheckResultInProgress,
 
-  /// (no description).
-  DBRIVIERAGetMetadataAsyncCheckResultComplete,
+    /// (no description).
+    DBRIVIERAGetMetadataAsyncCheckResultComplete,
 
-  /// (no description).
-  DBRIVIERAGetMetadataAsyncCheckResultFailed,
+    /// (no description).
+    DBRIVIERAGetMetadataAsyncCheckResultFailed,
 
-  /// (no description).
-  DBRIVIERAGetMetadataAsyncCheckResultOther,
+    /// (no description).
+    DBRIVIERAGetMetadataAsyncCheckResultOther,
 
 };
 
@@ -60,115 +61,117 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "in_progress".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInProgress;
 
-///
+/// 
 /// Initializes union class with tag state of "complete".
-///
+/// 
 /// @param complete (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithComplete:(DBRIVIERAGetMetadataResult *)complete;
 
-///
+/// 
 /// Initializes union class with tag state of "failed".
-///
+/// 
 /// @param failed (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFailed:(DBRIVIERAGetMetadataAsyncError *)failed;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "in_progress".
-///
+/// 
 /// @return Whether the union's current tag state has value "in_progress".
-///
+/// 
 - (BOOL)isInProgress;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "complete".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `complete` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "complete".
-///
+/// 
 - (BOOL)isComplete;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "failed".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `failed` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "failed".
-///
+/// 
 - (BOOL)isFailed;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERAGetMetadataAsyncCheckResult`
 /// union.
-///
-@interface DBRIVIERAGetMetadataAsyncCheckResultSerializer : NSObject
+/// 
+@interface DBRIVIERAGetMetadataAsyncCheckResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetMetadataAsyncCheckResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetMetadataAsyncCheckResult`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMetadataAsyncCheckResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataAsyncCheckResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetMetadataAsyncCheckResult *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetMetadataAsyncCheckResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMetadataAsyncCheckResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetMetadataAsyncCheckResult`
 /// object.
-///
-+ (DBRIVIERAGetMetadataAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetMetadataAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

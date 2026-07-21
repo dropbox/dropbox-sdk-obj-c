@@ -11,21 +11,22 @@
 @class DBTEAMMembersUnsuspendArg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersUnsuspendArg` struct.
-///
+/// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersUnsuspendArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersUnsuspendArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,46 +35,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user Identity of user to unsuspend.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersUnsuspendArg` struct.
-///
-@interface DBTEAMMembersUnsuspendArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersUnsuspendArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersUnsuspendArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersUnsuspendArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersUnsuspendArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersUnsuspendArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersUnsuspendArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersUnsuspendArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersUnsuspendArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersUnsuspendArg` object.
-///
-+ (DBTEAMMembersUnsuspendArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersUnsuspendArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

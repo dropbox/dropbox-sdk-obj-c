@@ -11,18 +11,19 @@
 @class DBFILESUploadSessionAppendBatchArg;
 @class DBFILESUploadSessionAppendBatchArgEntry;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionAppendBatchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionAppendBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionAppendBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,63 +39,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries Append information for each file in the batch.
 /// @param contentHash A hash of the entire request body which is all the
 /// concatenated pieces of file content that were uploaded in this call. If
 /// provided and the uploaded content does not match this hash, an error will be
 /// returned. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithEntries:(NSArray<DBFILESUploadSessionAppendBatchArgEntry *> *)entries
-                    contentHash:(nullable NSString *)contentHash;
+/// 
+- (instancetype)initWithEntries:(NSArray<DBFILESUploadSessionAppendBatchArgEntry *> *)entries contentHash:(nullable NSString *)contentHash;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param entries Append information for each file in the batch.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESUploadSessionAppendBatchArgEntry *> *)entries;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UploadSessionAppendBatchArg` struct.
-///
-@interface DBFILESUploadSessionAppendBatchArgSerializer : NSObject
+/// 
+@interface DBFILESUploadSessionAppendBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionAppendBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionAppendBatchArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionAppendBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionAppendBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionAppendBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionAppendBatchArg` object.
-///
-+ (DBFILESUploadSessionAppendBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionAppendBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

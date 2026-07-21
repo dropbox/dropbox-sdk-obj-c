@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGLegalHoldsReleaseAHoldDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldsReleaseAHoldDetails` struct.
-///
+/// 
 /// Released a hold.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGLegalHoldsReleaseAHoldDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGLegalHoldsReleaseAHoldDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,49 +36,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param legalHoldId Hold ID.
 /// @param name Hold name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLegalHoldId:(NSString *)legalHoldId name:(NSString *)name;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LegalHoldsReleaseAHoldDetails` struct.
-///
-@interface DBTEAMLOGLegalHoldsReleaseAHoldDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGLegalHoldsReleaseAHoldDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGLegalHoldsReleaseAHoldDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGLegalHoldsReleaseAHoldDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGLegalHoldsReleaseAHoldDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLegalHoldsReleaseAHoldDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGLegalHoldsReleaseAHoldDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGLegalHoldsReleaseAHoldDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGLegalHoldsReleaseAHoldDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGLegalHoldsReleaseAHoldDetails`
 /// object.
-///
-+ (DBTEAMLOGLegalHoldsReleaseAHoldDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGLegalHoldsReleaseAHoldDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

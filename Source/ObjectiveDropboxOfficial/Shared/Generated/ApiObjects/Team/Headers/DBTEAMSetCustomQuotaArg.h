@@ -11,18 +11,19 @@
 @class DBTEAMSetCustomQuotaArg;
 @class DBTEAMUserCustomQuotaArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SetCustomQuotaArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMSetCustomQuotaArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMSetCustomQuotaArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,46 +32,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param usersAndQuotas List of users and their custom quotas.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUsersAndQuotas:(NSArray<DBTEAMUserCustomQuotaArg *> *)usersAndQuotas;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SetCustomQuotaArg` struct.
-///
-@interface DBTEAMSetCustomQuotaArgSerializer : NSObject
+/// 
+@interface DBTEAMSetCustomQuotaArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMSetCustomQuotaArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMSetCustomQuotaArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMSetCustomQuotaArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMSetCustomQuotaArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMSetCustomQuotaArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMSetCustomQuotaArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMSetCustomQuotaArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMSetCustomQuotaArg` object.
-///
-+ (DBTEAMSetCustomQuotaArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMSetCustomQuotaArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

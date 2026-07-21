@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGEmailIngestPolicyChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EmailIngestPolicyChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEmailIngestPolicyChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEmailIngestPolicyChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EmailIngestPolicyChangedType` struct.
-///
-@interface DBTEAMLOGEmailIngestPolicyChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGEmailIngestPolicyChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEmailIngestPolicyChangedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGEmailIngestPolicyChangedType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEmailIngestPolicyChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmailIngestPolicyChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEmailIngestPolicyChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEmailIngestPolicyChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEmailIngestPolicyChangedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGEmailIngestPolicyChangedType`
 /// object.
-///
-+ (DBTEAMLOGEmailIngestPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEmailIngestPolicyChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

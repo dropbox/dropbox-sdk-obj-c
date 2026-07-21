@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMergeRequestCanceledShownToSecondaryTeamDetails` struct.
-///
+/// 
 /// Canceled a team merge request.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,55 +36,56 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sentTo The email of the primary team admin that the request was sent
 /// to.
 /// @param sentBy The name of the secondary team admin who sent the request
 /// originally.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSentTo:(NSString *)sentTo sentBy:(NSString *)sentBy;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `TeamMergeRequestCanceledShownToSecondaryTeamDetails` struct.
-///
-@interface DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails` object.
-///
-+ (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMergeRequestCanceledShownToSecondaryTeamDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,42 +10,43 @@
 
 @class DBSHARINGGetSharedLinkFileError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetSharedLinkFileError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGGetSharedLinkFileError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGGetSharedLinkFileError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBSHARINGGetSharedLinkFileErrorTag` enum type represents the possible
 /// tag states with which the `DBSHARINGGetSharedLinkFileError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
-  /// The shared link wasn't found.
-  DBSHARINGGetSharedLinkFileErrorSharedLinkNotFound,
+    /// The shared link wasn't found.
+    DBSHARINGGetSharedLinkFileErrorSharedLinkNotFound,
 
-  /// The caller is not allowed to access this shared link.
-  DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied,
+    /// The caller is not allowed to access this shared link.
+    DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied,
 
-  /// This type of link is not supported; use `files` instead.
-  DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType,
+    /// This type of link is not supported; use `files` instead.
+    DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType,
 
-  /// Private shared links do not support `path` or `link_password` parameter
-  /// fields.
-  DBSHARINGGetSharedLinkFileErrorUnsupportedParameterField,
+    /// Private shared links do not support `path` or `link_password` parameter
+    /// fields.
+    DBSHARINGGetSharedLinkFileErrorUnsupportedParameterField,
 
-  /// (no description).
-  DBSHARINGGetSharedLinkFileErrorOther,
+    /// (no description).
+    DBSHARINGGetSharedLinkFileErrorOther,
 
-  /// Directories cannot be retrieved by this endpoint.
-  DBSHARINGGetSharedLinkFileErrorSharedLinkIsDirectory,
+    /// Directories cannot be retrieved by this endpoint.
+    DBSHARINGGetSharedLinkFileErrorSharedLinkIsDirectory,
 
 };
 
@@ -54,156 +55,158 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGGetSharedLinkFileErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "shared_link_not_found".
-///
+/// 
 /// Description of the "shared_link_not_found" tag state: The shared link wasn't
 /// found.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedLinkNotFound;
 
-///
+/// 
 /// Initializes union class with tag state of "shared_link_access_denied".
-///
+/// 
 /// Description of the "shared_link_access_denied" tag state: The caller is not
 /// allowed to access this shared link.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedLinkAccessDenied;
 
-///
+/// 
 /// Initializes union class with tag state of "unsupported_link_type".
-///
+/// 
 /// Description of the "unsupported_link_type" tag state: This type of link is
 /// not supported; use `files` instead.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnsupportedLinkType;
 
-///
+/// 
 /// Initializes union class with tag state of "unsupported_parameter_field".
-///
+/// 
 /// Description of the "unsupported_parameter_field" tag state: Private shared
 /// links do not support `path` or `link_password` parameter fields.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnsupportedParameterField;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
-///
+/// 
 /// Initializes union class with tag state of "shared_link_is_directory".
-///
+/// 
 /// Description of the "shared_link_is_directory" tag state: Directories cannot
 /// be retrieved by this endpoint.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedLinkIsDirectory;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "shared_link_not_found".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "shared_link_not_found".
-///
+/// 
 - (BOOL)isSharedLinkNotFound;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "shared_link_access_denied".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "shared_link_access_denied".
-///
+/// 
 - (BOOL)isSharedLinkAccessDenied;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "unsupported_link_type".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "unsupported_link_type".
-///
+/// 
 - (BOOL)isUnsupportedLinkType;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "unsupported_parameter_field".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "unsupported_parameter_field".
-///
+/// 
 - (BOOL)isUnsupportedParameterField;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "shared_link_is_directory".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "shared_link_is_directory".
-///
+/// 
 - (BOOL)isSharedLinkIsDirectory;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGGetSharedLinkFileError` union.
-///
-@interface DBSHARINGGetSharedLinkFileErrorSerializer : NSObject
+/// 
+@interface DBSHARINGGetSharedLinkFileErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGGetSharedLinkFileError` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGGetSharedLinkFileError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetSharedLinkFileError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGGetSharedLinkFileError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGGetSharedLinkFileError *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGGetSharedLinkFileError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGGetSharedLinkFileError` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGGetSharedLinkFileError` object.
-///
-+ (DBSHARINGGetSharedLinkFileError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGGetSharedLinkFileError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

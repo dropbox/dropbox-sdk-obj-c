@@ -14,18 +14,19 @@
 @class DBFILESThumbnailQuality;
 @class DBFILESThumbnailSize;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ThumbnailArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESThumbnailArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESThumbnailArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -55,9 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path The path to the image file you want to thumbnail.
 /// @param format The format for the thumbnail image, jpeg (default), png, or
 /// webp. For images that are photos, jpeg should be preferred, while png is
@@ -70,57 +71,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// set for photo and video. When this flag is true, `mediaInfo` in
 /// `DBFILESFileMetadata` is not populated. This improves latency for use cases
 /// where `media_info` is not needed.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPath:(NSString *)path
-                      format:(nullable DBFILESThumbnailFormat *)format
-                        size:(nullable DBFILESThumbnailSize *)size
-                        mode:(nullable DBFILESThumbnailMode *)mode
-                     quality:(nullable DBFILESThumbnailQuality *)quality
-            excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
+/// 
+- (instancetype)initWithPath:(NSString *)path format:(nullable DBFILESThumbnailFormat *)format size:(nullable DBFILESThumbnailSize *)size mode:(nullable DBFILESThumbnailMode *)mode quality:(nullable DBFILESThumbnailQuality *)quality excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param path The path to the image file you want to thumbnail.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ThumbnailArg` struct.
-///
-@interface DBFILESThumbnailArgSerializer : NSObject
+/// 
+@interface DBFILESThumbnailArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESThumbnailArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESThumbnailArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESThumbnailArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESThumbnailArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESThumbnailArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESThumbnailArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESThumbnailArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESThumbnailArg` object.
-///
-+ (DBFILESThumbnailArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESThumbnailArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

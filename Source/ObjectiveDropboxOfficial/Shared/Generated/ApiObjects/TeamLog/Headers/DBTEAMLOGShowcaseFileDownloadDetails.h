@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGShowcaseFileDownloadDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseFileDownloadDetails` struct.
-///
+/// 
 /// Downloaded file from showcase.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseFileDownloadDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseFileDownloadDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,49 +36,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param downloadType Showcase download type.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid downloadType:(NSString *)downloadType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseFileDownloadDetails` struct.
-///
-@interface DBTEAMLOGShowcaseFileDownloadDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseFileDownloadDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseFileDownloadDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseFileDownloadDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseFileDownloadDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileDownloadDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseFileDownloadDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseFileDownloadDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseFileDownloadDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseFileDownloadDetails`
 /// object.
-///
-+ (DBTEAMLOGShowcaseFileDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseFileDownloadDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

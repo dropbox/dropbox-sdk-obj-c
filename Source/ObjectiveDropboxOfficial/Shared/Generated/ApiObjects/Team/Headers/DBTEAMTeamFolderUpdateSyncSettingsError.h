@@ -14,18 +14,19 @@
 @class DBTEAMTeamFolderTeamSharedDropboxError;
 @class DBTEAMTeamFolderUpdateSyncSettingsError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderUpdateSyncSettingsError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderUpdateSyncSettingsError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderUpdateSyncSettingsError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,20 +34,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMTeamFolderUpdateSyncSettingsError`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderUpdateSyncSettingsErrorTag) {
-  /// (no description).
-  DBTEAMTeamFolderUpdateSyncSettingsErrorAccessError,
+    /// (no description).
+    DBTEAMTeamFolderUpdateSyncSettingsErrorAccessError,
 
-  /// (no description).
-  DBTEAMTeamFolderUpdateSyncSettingsErrorStatusError,
+    /// (no description).
+    DBTEAMTeamFolderUpdateSyncSettingsErrorStatusError,
 
-  /// (no description).
-  DBTEAMTeamFolderUpdateSyncSettingsErrorTeamSharedDropboxError,
+    /// (no description).
+    DBTEAMTeamFolderUpdateSyncSettingsErrorTeamSharedDropboxError,
 
-  /// (no description).
-  DBTEAMTeamFolderUpdateSyncSettingsErrorOther,
+    /// (no description).
+    DBTEAMTeamFolderUpdateSyncSettingsErrorOther,
 
-  /// An error occurred setting the sync settings.
-  DBTEAMTeamFolderUpdateSyncSettingsErrorSyncSettingsError,
+    /// An error occurred setting the sync settings.
+    DBTEAMTeamFolderUpdateSyncSettingsErrorSyncSettingsError,
 
 };
 
@@ -72,147 +73,149 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderUpdateSyncSettingsErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "access_error".
-///
+/// 
 /// @param accessError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError *)accessError;
 
-///
+/// 
 /// Initializes union class with tag state of "status_error".
-///
+/// 
 /// @param statusError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStatusError:(DBTEAMTeamFolderInvalidStatusError *)statusError;
 
-///
+/// 
 /// Initializes union class with tag state of "team_shared_dropbox_error".
-///
+/// 
 /// @param teamSharedDropboxError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamSharedDropboxError:(DBTEAMTeamFolderTeamSharedDropboxError *)teamSharedDropboxError;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
-///
+/// 
 /// Initializes union class with tag state of "sync_settings_error".
-///
+/// 
 /// Description of the "sync_settings_error" tag state: An error occurred
 /// setting the sync settings.
-///
+/// 
 /// @param syncSettingsError An error occurred setting the sync settings.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSyncSettingsError:(DBFILESSyncSettingsError *)syncSettingsError;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "access_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `accessError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "access_error".
-///
+/// 
 - (BOOL)isAccessError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "status_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `statusError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "status_error".
-///
+/// 
 - (BOOL)isStatusError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "team_shared_dropbox_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `teamSharedDropboxError` property, otherwise a runtime exception will be
 /// thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "team_shared_dropbox_error".
-///
+/// 
 - (BOOL)isTeamSharedDropboxError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "sync_settings_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `syncSettingsError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "sync_settings_error".
-///
+/// 
 - (BOOL)isSyncSettingsError;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMTeamFolderUpdateSyncSettingsError`
 /// union.
-///
-@interface DBTEAMTeamFolderUpdateSyncSettingsErrorSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderUpdateSyncSettingsErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderUpdateSyncSettingsError` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderUpdateSyncSettingsError`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderUpdateSyncSettingsError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderUpdateSyncSettingsError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderUpdateSyncSettingsError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderUpdateSyncSettingsError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderUpdateSyncSettingsError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderUpdateSyncSettingsError`
 /// object.
-///
-+ (DBTEAMTeamFolderUpdateSyncSettingsError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderUpdateSyncSettingsError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

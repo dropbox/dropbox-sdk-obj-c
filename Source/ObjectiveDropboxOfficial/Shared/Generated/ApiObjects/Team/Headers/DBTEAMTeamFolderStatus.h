@@ -10,40 +10,41 @@
 
 @class DBTEAMTeamFolderStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderStatus` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderStatus : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderStatus : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMTeamFolderStatusTag` enum type represents the possible tag states
 /// with which the `DBTEAMTeamFolderStatus` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderStatusTag) {
-  /// The team folder and sub-folders are available to all members.
-  DBTEAMTeamFolderStatusActive,
+    /// The team folder and sub-folders are available to all members.
+    DBTEAMTeamFolderStatusActive,
 
-  /// The team folder is archived and is not accessible outside of the team
-  /// folder manager.
-  DBTEAMTeamFolderStatusArchived,
+    /// The team folder is archived and is not accessible outside of the team
+    /// folder manager.
+    DBTEAMTeamFolderStatusArchived,
 
-  /// The team folder is in the process of being archived and is not
-  /// accessible outside of the team folder manager.
-  DBTEAMTeamFolderStatusArchiveInProgress,
+    /// The team folder is in the process of being archived and is not
+    /// accessible outside of the team folder manager.
+    DBTEAMTeamFolderStatusArchiveInProgress,
 
-  /// The team folder is unmounted and can be restored.
-  DBTEAMTeamFolderStatusInactive,
+    /// The team folder is unmounted and can be restored.
+    DBTEAMTeamFolderStatusInactive,
 
-  /// (no description).
-  DBTEAMTeamFolderStatusOther,
+    /// (no description).
+    DBTEAMTeamFolderStatusOther,
 
 };
 
@@ -52,131 +53,133 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderStatusTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "active".
-///
+/// 
 /// Description of the "active" tag state: The team folder and sub-folders are
 /// available to all members.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithActive;
 
-///
+/// 
 /// Initializes union class with tag state of "archived".
-///
+/// 
 /// Description of the "archived" tag state: The team folder is archived and is
 /// not accessible outside of the team folder manager.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithArchived;
 
-///
+/// 
 /// Initializes union class with tag state of "archive_in_progress".
-///
+/// 
 /// Description of the "archive_in_progress" tag state: The team folder is in
 /// the process of being archived and is not accessible outside of the team
 /// folder manager.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithArchiveInProgress;
 
-///
+/// 
 /// Initializes union class with tag state of "inactive".
-///
+/// 
 /// Description of the "inactive" tag state: The team folder is unmounted and
 /// can be restored.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInactive;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "active".
-///
+/// 
 /// @return Whether the union's current tag state has value "active".
-///
+/// 
 - (BOOL)isActive;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "archived".
-///
+/// 
 /// @return Whether the union's current tag state has value "archived".
-///
+/// 
 - (BOOL)isArchived;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "archive_in_progress".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "archive_in_progress".
-///
+/// 
 - (BOOL)isArchiveInProgress;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "inactive".
-///
+/// 
 /// @return Whether the union's current tag state has value "inactive".
-///
+/// 
 - (BOOL)isInactive;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMTeamFolderStatus` union.
-///
-@interface DBTEAMTeamFolderStatusSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderStatusSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderStatus` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderStatus` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderStatus` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderStatus *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderStatus *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderStatus` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderStatus` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderStatus` object.
-///
-+ (DBTEAMTeamFolderStatus *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderStatus *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

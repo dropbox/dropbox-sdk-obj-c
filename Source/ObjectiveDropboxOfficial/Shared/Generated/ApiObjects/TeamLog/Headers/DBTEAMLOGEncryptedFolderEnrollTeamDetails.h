@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGEncryptedFolderEnrollTeamDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EncryptedFolderEnrollTeamDetails` struct.
-///
+/// 
 /// Activated team folder encryption.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEncryptedFolderEnrollTeamDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEncryptedFolderEnrollTeamDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EncryptedFolderEnrollTeamDetails` struct.
-///
-@interface DBTEAMLOGEncryptedFolderEnrollTeamDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGEncryptedFolderEnrollTeamDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEncryptedFolderEnrollTeamDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGEncryptedFolderEnrollTeamDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderEnrollTeamDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEncryptedFolderEnrollTeamDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEncryptedFolderEnrollTeamDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEncryptedFolderEnrollTeamDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderEnrollTeamDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGEncryptedFolderEnrollTeamDetails`
 /// object.
-///
-+ (DBTEAMLOGEncryptedFolderEnrollTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEncryptedFolderEnrollTeamDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSfTeamUninviteDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SfTeamUninviteDetails` struct.
-///
+/// 
 /// Unshared folder with team member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSfTeamUninviteDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSfTeamUninviteDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,48 +36,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SfTeamUninviteDetails` struct.
-///
-@interface DBTEAMLOGSfTeamUninviteDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSfTeamUninviteDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSfTeamUninviteDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSfTeamUninviteDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfTeamUninviteDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfTeamUninviteDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSfTeamUninviteDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSfTeamUninviteDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfTeamUninviteDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSfTeamUninviteDetails` object.
-///
-+ (DBTEAMLOGSfTeamUninviteDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSfTeamUninviteDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGMediaHubAddingPeoplePolicy;
 @class DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubAddingPeoplePolicyChangedDetails` struct.
-///
+/// 
 /// Changed the policy for adding people to Media Hub content.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGMediaHubAddingPeoplePolicy *)dNewValue
-                    previousValue:(DBTEAMLOGMediaHubAddingPeoplePolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGMediaHubAddingPeoplePolicy *)dNewValue previousValue:(DBTEAMLOGMediaHubAddingPeoplePolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaHubAddingPeoplePolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails` object.
-///
-+ (DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubAddingPeoplePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

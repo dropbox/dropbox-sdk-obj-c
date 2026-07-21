@@ -10,34 +10,35 @@
 
 @class DBPAPERPaperDocStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocStatus` union.
-///
+/// 
 /// The status of a Paper doc.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERPaperDocStatus : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERPaperDocStatus : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBPAPERPaperDocStatusTag` enum type represents the possible tag states
 /// with which the `DBPAPERPaperDocStatus` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperDocStatusTag) {
-  /// The Paper doc is active.
-  DBPAPERPaperDocStatusActive,
+    /// The Paper doc is active.
+    DBPAPERPaperDocStatusActive,
 
-  /// The Paper doc is deleted.
-  DBPAPERPaperDocStatusDeleted,
+    /// The Paper doc is deleted.
+    DBPAPERPaperDocStatusDeleted,
 
-  /// (no description).
-  DBPAPERPaperDocStatusOther,
+    /// (no description).
+    DBPAPERPaperDocStatusOther,
 
 };
 
@@ -46,92 +47,94 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperDocStatusTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "active".
-///
+/// 
 /// Description of the "active" tag state: The Paper doc is active.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithActive;
 
-///
+/// 
 /// Initializes union class with tag state of "deleted".
-///
+/// 
 /// Description of the "deleted" tag state: The Paper doc is deleted.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDeleted;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "active".
-///
+/// 
 /// @return Whether the union's current tag state has value "active".
-///
+/// 
 - (BOOL)isActive;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "deleted".
-///
+/// 
 /// @return Whether the union's current tag state has value "deleted".
-///
+/// 
 - (BOOL)isDeleted;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBPAPERPaperDocStatus` union.
-///
-@interface DBPAPERPaperDocStatusSerializer : NSObject
+/// 
+@interface DBPAPERPaperDocStatusSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERPaperDocStatus` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERPaperDocStatus` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocStatus` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERPaperDocStatus *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERPaperDocStatus *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERPaperDocStatus` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocStatus` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERPaperDocStatus` object.
-///
-+ (DBPAPERPaperDocStatus *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERPaperDocStatus *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMPOLICIESFileProviderMigrationPolicyState;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileProviderMigrationPolicyState` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESFileProviderMigrationPolicyState : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESFileProviderMigrationPolicyState : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,22 +30,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// the possible tag states with which the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyStateTag) {
-  /// Team admin has opted out of File Provider Migration for team members.
-  DBTEAMPOLICIESFileProviderMigrationPolicyStateDisabled,
+    /// Team admin has opted out of File Provider Migration for team members.
+    DBTEAMPOLICIESFileProviderMigrationPolicyStateDisabled,
 
-  /// Team admin has not opted out of File Provider Migration for team
-  /// members.
-  DBTEAMPOLICIESFileProviderMigrationPolicyStateEnabled,
+    /// Team admin has not opted out of File Provider Migration for team
+    /// members.
+    DBTEAMPOLICIESFileProviderMigrationPolicyStateEnabled,
 
-  /// Team admin has default value based on team tier.
-  DBTEAMPOLICIESFileProviderMigrationPolicyStateDefault_,
+    /// Team admin has default value based on team tier.
+    DBTEAMPOLICIESFileProviderMigrationPolicyStateDefault_,
 
-  /// Team admin has chosen to do File Provider Migration immediately for the
-  /// team.
-  DBTEAMPOLICIESFileProviderMigrationPolicyStateImmediate,
+    /// Team admin has chosen to do File Provider Migration immediately for the
+    /// team.
+    DBTEAMPOLICIESFileProviderMigrationPolicyStateImmediate,
 
-  /// (no description).
-  DBTEAMPOLICIESFileProviderMigrationPolicyStateOther,
+    /// (no description).
+    DBTEAMPOLICIESFileProviderMigrationPolicyStateOther,
 
 };
 
@@ -53,131 +54,133 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESFileProviderMigrationPolicyState
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// Description of the "disabled" tag state: Team admin has opted out of File
 /// Provider Migration for team members.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// Description of the "enabled" tag state: Team admin has not opted out of File
 /// Provider Migration for team members.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// Description of the "default" tag state: Team admin has default value based
 /// on team tier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "immediate".
-///
+/// 
 /// Description of the "immediate" tag state: Team admin has chosen to do File
 /// Provider Migration immediately for the team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithImmediate;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "immediate".
-///
+/// 
 /// @return Whether the union's current tag state has value "immediate".
-///
+/// 
 - (BOOL)isImmediate;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` union.
-///
-@interface DBTEAMPOLICIESFileProviderMigrationPolicyStateSerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESFileProviderMigrationPolicyStateSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESFileProviderMigrationPolicyState` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESFileProviderMigrationPolicyState *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESFileProviderMigrationPolicyState *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESFileProviderMigrationPolicyState` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMPOLICIESFileProviderMigrationPolicyState` object.
-///
-+ (DBTEAMPOLICIESFileProviderMigrationPolicyState *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESFileProviderMigrationPolicyState *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

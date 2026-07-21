@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EncryptedFolderEnrollBackupKeyDetails` struct.
-///
+/// 
 /// Added recovery key.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param backupKeyId Identifier of the recovery key.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBackupKeyId:(NSString *)backupKeyId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EncryptedFolderEnrollBackupKeyDetails`
 /// struct.
-///
-@interface DBTEAMLOGEncryptedFolderEnrollBackupKeyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGEncryptedFolderEnrollBackupKeyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails` object.
-///
-+ (DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEncryptedFolderEnrollBackupKeyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

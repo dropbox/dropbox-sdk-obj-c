@@ -10,18 +10,19 @@
 
 @class DBSHARINGMountFolderArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MountFolderArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGMountFolderArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGMountFolderArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedFolderId The ID of the shared folder to mount.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MountFolderArg` struct.
-///
-@interface DBSHARINGMountFolderArgSerializer : NSObject
+/// 
+@interface DBSHARINGMountFolderArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGMountFolderArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGMountFolderArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGMountFolderArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGMountFolderArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGMountFolderArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGMountFolderArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGMountFolderArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGMountFolderArg` object.
-///
-+ (DBSHARINGMountFolderArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGMountFolderArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

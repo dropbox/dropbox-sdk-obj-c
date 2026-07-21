@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGMemberChangeEmailType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberChangeEmailType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberChangeEmailType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberChangeEmailType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberChangeEmailType` struct.
-///
-@interface DBTEAMLOGMemberChangeEmailTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberChangeEmailTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberChangeEmailType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberChangeEmailType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeEmailType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeEmailType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberChangeEmailType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberChangeEmailType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeEmailType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberChangeEmailType` object.
-///
-+ (DBTEAMLOGMemberChangeEmailType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberChangeEmailType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

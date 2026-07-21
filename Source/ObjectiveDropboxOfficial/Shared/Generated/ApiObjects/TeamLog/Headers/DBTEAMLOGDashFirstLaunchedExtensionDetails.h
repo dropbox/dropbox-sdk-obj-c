@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGDashFirstLaunchedExtensionDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashFirstLaunchedExtensionDetails` struct.
-///
+/// 
 /// Opened the extension for the first time.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashFirstLaunchedExtensionDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashFirstLaunchedExtensionDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param browserName The name of the web browser.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBrowserName:(NSString *)browserName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashFirstLaunchedExtensionDetails` struct.
-///
-@interface DBTEAMLOGDashFirstLaunchedExtensionDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashFirstLaunchedExtensionDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashFirstLaunchedExtensionDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashFirstLaunchedExtensionDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedExtensionDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashFirstLaunchedExtensionDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashFirstLaunchedExtensionDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashFirstLaunchedExtensionDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedExtensionDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashFirstLaunchedExtensionDetails`
 /// object.
-///
-+ (DBTEAMLOGDashFirstLaunchedExtensionDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashFirstLaunchedExtensionDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

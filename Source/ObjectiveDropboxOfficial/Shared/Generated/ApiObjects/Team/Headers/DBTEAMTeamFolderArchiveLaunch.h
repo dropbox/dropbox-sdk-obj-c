@@ -11,30 +11,31 @@
 @class DBTEAMTeamFolderArchiveLaunch;
 @class DBTEAMTeamFolderMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderArchiveLaunch` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderArchiveLaunch : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderArchiveLaunch : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMTeamFolderArchiveLaunchTag` enum type represents the possible tag
 /// states with which the `DBTEAMTeamFolderArchiveLaunch` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderArchiveLaunchTag) {
-  /// This response indicates that the processing is asynchronous. The string
-  /// is an id that can be used to obtain the status of the asynchronous job.
-  DBTEAMTeamFolderArchiveLaunchAsyncJobId,
+    /// This response indicates that the processing is asynchronous. The string
+    /// is an id that can be used to obtain the status of the asynchronous job.
+    DBTEAMTeamFolderArchiveLaunchAsyncJobId,
 
-  /// (no description).
-  DBTEAMTeamFolderArchiveLaunchComplete,
+    /// (no description).
+    DBTEAMTeamFolderArchiveLaunchComplete,
 
 };
 
@@ -53,91 +54,93 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderArchiveLaunchTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "async_job_id".
-///
+/// 
 /// Description of the "async_job_id" tag state: This response indicates that
 /// the processing is asynchronous. The string is an id that can be used to
 /// obtain the status of the asynchronous job.
-///
+/// 
 /// @param asyncJobId This response indicates that the processing is
 /// asynchronous. The string is an id that can be used to obtain the status of
 /// the asynchronous job.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId;
 
-///
+/// 
 /// Initializes union class with tag state of "complete".
-///
+/// 
 /// @param complete (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithComplete:(DBTEAMTeamFolderMetadata *)complete;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "async_job_id".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `asyncJobId` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "async_job_id".
-///
+/// 
 - (BOOL)isAsyncJobId;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "complete".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `complete` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "complete".
-///
+/// 
 - (BOOL)isComplete;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMTeamFolderArchiveLaunch` union.
-///
-@interface DBTEAMTeamFolderArchiveLaunchSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderArchiveLaunchSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderArchiveLaunch` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderArchiveLaunch` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderArchiveLaunch` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderArchiveLaunch *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderArchiveLaunch *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderArchiveLaunch` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderArchiveLaunch` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderArchiveLaunch` object.
-///
-+ (DBTEAMTeamFolderArchiveLaunch *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderArchiveLaunch *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

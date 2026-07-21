@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDashRemovedConnectorType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashRemovedConnectorType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashRemovedConnectorType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashRemovedConnectorType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashRemovedConnectorType` struct.
-///
-@interface DBTEAMLOGDashRemovedConnectorTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashRemovedConnectorTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashRemovedConnectorType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashRemovedConnectorType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRemovedConnectorType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashRemovedConnectorType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashRemovedConnectorType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashRemovedConnectorType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRemovedConnectorType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashRemovedConnectorType` object.
-///
-+ (DBTEAMLOGDashRemovedConnectorType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashRemovedConnectorType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

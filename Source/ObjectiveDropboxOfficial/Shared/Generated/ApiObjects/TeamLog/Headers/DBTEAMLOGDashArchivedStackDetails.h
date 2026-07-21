@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashArchivedStackDetails;
 @class DBTEAMLOGDashStackType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashArchivedStackDetails` struct.
-///
+/// 
 /// Archived a stack.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashArchivedStackDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashArchivedStackDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,58 +37,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param stackName The name of the stack.
 /// @param stackType The type of stack backend.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStackName:(NSString *)stackName stackType:(nullable DBTEAMLOGDashStackType *)stackType;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param stackName The name of the stack.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStackName:(NSString *)stackName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashArchivedStackDetails` struct.
-///
-@interface DBTEAMLOGDashArchivedStackDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashArchivedStackDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashArchivedStackDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashArchivedStackDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashArchivedStackDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashArchivedStackDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashArchivedStackDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashArchivedStackDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashArchivedStackDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashArchivedStackDetails` object.
-///
-+ (DBTEAMLOGDashArchivedStackDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashArchivedStackDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

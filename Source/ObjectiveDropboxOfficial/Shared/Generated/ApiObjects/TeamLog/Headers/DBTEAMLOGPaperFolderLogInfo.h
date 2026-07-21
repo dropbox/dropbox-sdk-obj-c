@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperFolderLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperFolderLogInfo` struct.
-///
+/// 
 /// Paper folder's logged information.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperFolderLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperFolderLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,47 +36,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param folderId Papers folder Id.
 /// @param folderName Paper folder name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFolderId:(NSString *)folderId folderName:(NSString *)folderName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperFolderLogInfo` struct.
-///
-@interface DBTEAMLOGPaperFolderLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperFolderLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperFolderLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperFolderLogInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperFolderLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperFolderLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperFolderLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperFolderLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperFolderLogInfo` object.
-///
-+ (DBTEAMLOGPaperFolderLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperFolderLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

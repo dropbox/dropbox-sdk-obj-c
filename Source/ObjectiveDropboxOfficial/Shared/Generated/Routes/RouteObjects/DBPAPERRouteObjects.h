@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Paper namespace. Each route in the Paper
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBPAPERRouteObjects : NSObject
+/// 
+@interface DBPAPERRouteObjects : NSObject 
 
 /// Accessor method for the docsArchive route object.
 + (DBRoute *)DBPAPERDocsArchive;
@@ -74,3 +75,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

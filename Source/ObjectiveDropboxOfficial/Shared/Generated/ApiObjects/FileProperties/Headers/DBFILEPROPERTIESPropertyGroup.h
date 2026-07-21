@@ -11,23 +11,24 @@
 @class DBFILEPROPERTIESPropertyField;
 @class DBFILEPROPERTIESPropertyGroup;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PropertyGroup` struct.
-///
+/// 
 /// A subset of the property fields described by the corresponding
 /// PropertyGroupTemplate. Properties are always added to a Dropbox file as a
 /// PropertyGroup. The possible key names and value types in this group are
 /// defined by the corresponding PropertyGroupTemplate.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEPROPERTIESPropertyGroup : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEPROPERTIESPropertyGroup : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,49 +41,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param templateId A unique identifier for the associated template.
 /// @param fields The actual properties associated with the template. There can
 /// be up to 32 property types per template.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTemplateId:(NSString *)templateId fields:(NSArray<DBFILEPROPERTIESPropertyField *> *)fields;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PropertyGroup` struct.
-///
-@interface DBFILEPROPERTIESPropertyGroupSerializer : NSObject
+/// 
+@interface DBFILEPROPERTIESPropertyGroupSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEPROPERTIESPropertyGroup` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEPROPERTIESPropertyGroup` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertyGroup` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEPROPERTIESPropertyGroup *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEPROPERTIESPropertyGroup *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEPROPERTIESPropertyGroup` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertyGroup` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEPROPERTIESPropertyGroup` object.
-///
-+ (DBFILEPROPERTIESPropertyGroup *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEPROPERTIESPropertyGroup *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

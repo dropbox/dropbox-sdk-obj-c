@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGTeamEncryptionKeyCreateKeyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamEncryptionKeyCreateKeyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamEncryptionKeyCreateKeyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyCreateKeyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamEncryptionKeyCreateKeyType` struct.
-///
-@interface DBTEAMLOGTeamEncryptionKeyCreateKeyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyCreateKeyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamEncryptionKeyCreateKeyType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamEncryptionKeyCreateKeyType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyCreateKeyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamEncryptionKeyCreateKeyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamEncryptionKeyCreateKeyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamEncryptionKeyCreateKeyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyCreateKeyType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamEncryptionKeyCreateKeyType`
 /// object.
-///
-+ (DBTEAMLOGTeamEncryptionKeyCreateKeyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamEncryptionKeyCreateKeyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

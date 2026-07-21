@@ -10,21 +10,22 @@
 
 @class DBTEAMLOGSharingFolderJoinPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharingFolderJoinPolicy` union.
-///
+/// 
 /// Policy for controlling if team members can join shared folders owned by non
 /// team members.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharingFolderJoinPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharingFolderJoinPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,14 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMLOGSharingFolderJoinPolicy` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSharingFolderJoinPolicyTag) {
-  /// (no description).
-  DBTEAMLOGSharingFolderJoinPolicyFromAnyone,
+    /// (no description).
+    DBTEAMLOGSharingFolderJoinPolicyFromAnyone,
 
-  /// (no description).
-  DBTEAMLOGSharingFolderJoinPolicyFromTeamOnly,
+    /// (no description).
+    DBTEAMLOGSharingFolderJoinPolicyFromTeamOnly,
 
-  /// (no description).
-  DBTEAMLOGSharingFolderJoinPolicyOther,
+    /// (no description).
+    DBTEAMLOGSharingFolderJoinPolicyOther,
 
 };
 
@@ -48,89 +49,91 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSharingFolderJoinPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "from_anyone".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFromAnyone;
 
-///
+/// 
 /// Initializes union class with tag state of "from_team_only".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFromTeamOnly;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "from_anyone".
-///
+/// 
 /// @return Whether the union's current tag state has value "from_anyone".
-///
+/// 
 - (BOOL)isFromAnyone;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "from_team_only".
-///
+/// 
 /// @return Whether the union's current tag state has value "from_team_only".
-///
+/// 
 - (BOOL)isFromTeamOnly;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGSharingFolderJoinPolicy` union.
-///
-@interface DBTEAMLOGSharingFolderJoinPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGSharingFolderJoinPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharingFolderJoinPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharingFolderJoinPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingFolderJoinPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingFolderJoinPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharingFolderJoinPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharingFolderJoinPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingFolderJoinPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharingFolderJoinPolicy` object.
-///
-+ (DBTEAMLOGSharingFolderJoinPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharingFolderJoinPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

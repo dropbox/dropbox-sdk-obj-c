@@ -11,21 +11,22 @@
 @class DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails;
 @class DBTEAMLOGDeviceApprovalsPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeviceApprovalsChangeDesktopPolicyDetails` struct.
-///
+/// 
 /// Set/removed limit on number of computers member can link to team Dropbox
 /// account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,62 +40,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New desktop device approvals policy. Might be missing due
 /// to historical data gap.
 /// @param previousValue Previous desktop device approvals policy. Might be
 /// missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(nullable DBTEAMLOGDeviceApprovalsPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGDeviceApprovalsPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(nullable DBTEAMLOGDeviceApprovalsPolicy *)dNewValue previousValue:(nullable DBTEAMLOGDeviceApprovalsPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeviceApprovalsChangeDesktopPolicyDetails`
 /// struct.
-///
-@interface DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails` object.
-///
-+ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

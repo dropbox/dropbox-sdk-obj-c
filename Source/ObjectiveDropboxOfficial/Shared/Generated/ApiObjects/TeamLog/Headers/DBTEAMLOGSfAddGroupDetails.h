@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSfAddGroupDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SfAddGroupDetails` struct.
-///
+/// 
 /// Added team to shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSfAddGroupDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSfAddGroupDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,66 +42,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
 /// @param teamName Team name.
 /// @param sharingPermission Sharing permission.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                      originalFolderName:(NSString *)originalFolderName
-                                teamName:(NSString *)teamName
-                       sharingPermission:(nullable NSString *)sharingPermission;
+/// 
+- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName teamName:(NSString *)teamName sharingPermission:(nullable NSString *)sharingPermission;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
 /// @param teamName Team name.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                      originalFolderName:(NSString *)originalFolderName
-                                teamName:(NSString *)teamName;
+/// 
+- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName teamName:(NSString *)teamName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SfAddGroupDetails` struct.
-///
-@interface DBTEAMLOGSfAddGroupDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSfAddGroupDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSfAddGroupDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSfAddGroupDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfAddGroupDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfAddGroupDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSfAddGroupDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSfAddGroupDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfAddGroupDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSfAddGroupDetails` object.
-///
-+ (DBTEAMLOGSfAddGroupDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSfAddGroupDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

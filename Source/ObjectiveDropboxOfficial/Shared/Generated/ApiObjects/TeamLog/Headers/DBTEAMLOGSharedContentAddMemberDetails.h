@@ -11,20 +11,21 @@
 @class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentAddMemberDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentAddMemberDetails` struct.
-///
+/// 
 /// Added users and/or groups to shared file/folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentAddMemberDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentAddMemberDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentAddMemberDetails` struct.
-///
-@interface DBTEAMLOGSharedContentAddMemberDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentAddMemberDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentAddMemberDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedContentAddMemberDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddMemberDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddMemberDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentAddMemberDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentAddMemberDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddMemberDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedContentAddMemberDetails`
 /// object.
-///
-+ (DBTEAMLOGSharedContentAddMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentAddMemberDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

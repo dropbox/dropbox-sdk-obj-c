@@ -11,20 +11,21 @@
 @class DBTEAMLOGGovernancePolicyAddFolderFailedDetails;
 @class DBTEAMLOGPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GovernancePolicyAddFolderFailedDetails` struct.
-///
+/// 
 /// Couldn't add a folder to a policy.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGovernancePolicyAddFolderFailedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGovernancePolicyAddFolderFailedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -45,71 +46,67 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param governancePolicyId Policy ID.
 /// @param name Policy name.
 /// @param folder Folder.
 /// @param policyType Policy type.
 /// @param reason Reason.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId
-                                      name:(NSString *)name
-                                    folder:(NSString *)folder
-                                policyType:(nullable DBTEAMLOGPolicyType *)policyType
-                                    reason:(nullable NSString *)reason;
+/// 
+- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId name:(NSString *)name folder:(NSString *)folder policyType:(nullable DBTEAMLOGPolicyType *)policyType reason:(nullable NSString *)reason;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param governancePolicyId Policy ID.
 /// @param name Policy name.
 /// @param folder Folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId
-                                      name:(NSString *)name
-                                    folder:(NSString *)folder;
+/// 
+- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId name:(NSString *)name folder:(NSString *)folder;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GovernancePolicyAddFolderFailedDetails`
 /// struct.
-///
-@interface DBTEAMLOGGovernancePolicyAddFolderFailedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGovernancePolicyAddFolderFailedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGovernancePolicyAddFolderFailedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGGovernancePolicyAddFolderFailedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyAddFolderFailedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGovernancePolicyAddFolderFailedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGovernancePolicyAddFolderFailedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGovernancePolicyAddFolderFailedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyAddFolderFailedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGGovernancePolicyAddFolderFailedDetails` object.
-///
-+ (DBTEAMLOGGovernancePolicyAddFolderFailedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGovernancePolicyAddFolderFailedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

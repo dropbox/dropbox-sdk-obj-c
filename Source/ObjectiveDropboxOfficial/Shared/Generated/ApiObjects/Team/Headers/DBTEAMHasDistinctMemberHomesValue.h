@@ -10,20 +10,21 @@
 
 @class DBTEAMHasDistinctMemberHomesValue;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `HasDistinctMemberHomesValue` union.
-///
+/// 
 /// The value for `hasDistinctMemberHomes` in `DBTEAMFeature`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMHasDistinctMemberHomesValue : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMHasDistinctMemberHomesValue : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,11 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMHasDistinctMemberHomesValue` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMHasDistinctMemberHomesValueTag) {
-  /// Does this team have distinct team member homes.
-  DBTEAMHasDistinctMemberHomesValueHasDistinctMemberHomes,
+    /// Does this team have distinct team member homes.
+    DBTEAMHasDistinctMemberHomesValueHasDistinctMemberHomes,
 
-  /// (no description).
-  DBTEAMHasDistinctMemberHomesValueOther,
+    /// (no description).
+    DBTEAMHasDistinctMemberHomesValueOther,
 
 };
 
@@ -49,87 +50,89 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMHasDistinctMemberHomesValueTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "has_distinct_member_homes".
-///
+/// 
 /// Description of the "has_distinct_member_homes" tag state: Does this team
 /// have distinct team member homes.
-///
+/// 
 /// @param hasDistinctMemberHomes Does this team have distinct team member
 /// homes.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithHasDistinctMemberHomes:(NSNumber *)hasDistinctMemberHomes;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "has_distinct_member_homes".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `hasDistinctMemberHomes` property, otherwise a runtime exception will be
 /// thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "has_distinct_member_homes".
-///
+/// 
 - (BOOL)isHasDistinctMemberHomes;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMHasDistinctMemberHomesValue` union.
-///
-@interface DBTEAMHasDistinctMemberHomesValueSerializer : NSObject
+/// 
+@interface DBTEAMHasDistinctMemberHomesValueSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMHasDistinctMemberHomesValue` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMHasDistinctMemberHomesValue` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMHasDistinctMemberHomesValue` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMHasDistinctMemberHomesValue *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMHasDistinctMemberHomesValue *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMHasDistinctMemberHomesValue` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMHasDistinctMemberHomesValue` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMHasDistinctMemberHomesValue` object.
-///
-+ (DBTEAMHasDistinctMemberHomesValue *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMHasDistinctMemberHomesValue *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

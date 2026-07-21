@@ -12,20 +12,21 @@
 @class DBTEAMMobileClientPlatform;
 @class DBTEAMMobileClientSession;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MobileClientSession` struct.
-///
+/// 
 /// Information about linked Dropbox mobile client sessions.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMobileClientSession : DBTEAMDeviceSession <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMobileClientSession : DBTEAMDeviceSession <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sessionId The session id.
 /// @param deviceName The device name.
 /// @param clientType The mobile application type.
@@ -60,63 +61,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param clientVersion The dropbox client version.
 /// @param osVersion The hosting OS version.
 /// @param lastCarrier last carrier used by the device.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSessionId:(NSString *)sessionId
-                       deviceName:(NSString *)deviceName
-                       clientType:(DBTEAMMobileClientPlatform *)clientType
-                        ipAddress:(nullable NSString *)ipAddress
-                          country:(nullable NSString *)country
-                          created:(nullable NSDate *)created
-                          updated:(nullable NSDate *)updated
-                    clientVersion:(nullable NSString *)clientVersion
-                        osVersion:(nullable NSString *)osVersion
-                      lastCarrier:(nullable NSString *)lastCarrier;
+/// 
+- (instancetype)initWithSessionId:(NSString *)sessionId deviceName:(NSString *)deviceName clientType:(DBTEAMMobileClientPlatform *)clientType ipAddress:(nullable NSString *)ipAddress country:(nullable NSString *)country created:(nullable NSDate *)created updated:(nullable NSDate *)updated clientVersion:(nullable NSString *)clientVersion osVersion:(nullable NSString *)osVersion lastCarrier:(nullable NSString *)lastCarrier;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sessionId The session id.
 /// @param deviceName The device name.
 /// @param clientType The mobile application type.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSessionId:(NSString *)sessionId
-                       deviceName:(NSString *)deviceName
-                       clientType:(DBTEAMMobileClientPlatform *)clientType;
+/// 
+- (instancetype)initWithSessionId:(NSString *)sessionId deviceName:(NSString *)deviceName clientType:(DBTEAMMobileClientPlatform *)clientType;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MobileClientSession` struct.
-///
-@interface DBTEAMMobileClientSessionSerializer : NSObject
+/// 
+@interface DBTEAMMobileClientSessionSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMobileClientSession` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMobileClientSession` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMobileClientSession` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMobileClientSession *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMobileClientSession *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMobileClientSession` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMobileClientSession` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMobileClientSession` object.
-///
-+ (DBTEAMMobileClientSession *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMobileClientSession *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBPAPERPaperFolderCreateResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperFolderCreateResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERPaperFolderCreateResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERPaperFolderCreateResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param folderId Folder ID of the newly created folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFolderId:(NSString *)folderId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperFolderCreateResult` struct.
-///
-@interface DBPAPERPaperFolderCreateResultSerializer : NSObject
+/// 
+@interface DBPAPERPaperFolderCreateResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERPaperFolderCreateResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERPaperFolderCreateResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERPaperFolderCreateResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERPaperFolderCreateResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERPaperFolderCreateResult *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERPaperFolderCreateResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERPaperFolderCreateResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERPaperFolderCreateResult` object.
-///
-+ (DBPAPERPaperFolderCreateResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERPaperFolderCreateResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

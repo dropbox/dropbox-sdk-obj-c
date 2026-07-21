@@ -115,13 +115,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Sharing` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBSHARINGAppAuthRoutes : NSObject
+@interface DBSHARINGAppAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -131,28 +131,25 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
 /// @param destination The file url of the desired download output location.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
-    getSharedLinkFileUrl:(NSString *)url
-               overwrite:(BOOL)overwrite
-             destination:(NSURL *)destination;
+/// 
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileUrl:(NSString *)url overwrite:(BOOL)overwrite destination:(NSURL *)destination;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param path If the shared link is to a folder, this parameter can be used to retrieve the metadata for a specific
 /// file or sub-folder in this folder. A relative path should be used.
@@ -161,21 +158,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
 /// @param destination The file url of the desired download output location.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
-    getSharedLinkFileUrl:(NSString *)url
-                    path:(nullable NSString *)path
-            linkPassword:(nullable NSString *)linkPassword
-               overwrite:(BOOL)overwrite
-             destination:(NSURL *)destination;
+/// 
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileUrl:(NSString *)url path:(nullable NSString *)path linkPassword:(nullable NSString *)linkPassword overwrite:(BOOL)overwrite destination:(NSURL *)destination;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
@@ -185,21 +177,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
-    getSharedLinkFileUrl:(NSString *)url
-               overwrite:(BOOL)overwrite
-             destination:(NSURL *)destination
-         byteOffsetStart:(NSNumber *)byteOffsetStart
-           byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileUrl:(NSString *)url overwrite:(BOOL)overwrite destination:(NSURL *)destination byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param path If the shared link is to a folder, this parameter can be used to retrieve the metadata for a specific
 /// file or sub-folder in this folder. A relative path should be used.
@@ -212,70 +199,56 @@ NS_ASSUME_NONNULL_BEGIN
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
-    getSharedLinkFileUrl:(NSString *)url
-                    path:(nullable NSString *)path
-            linkPassword:(nullable NSString *)linkPassword
-               overwrite:(BOOL)overwrite
-             destination:(NSURL *)destination
-         byteOffsetStart:(NSNumber *)byteOffsetStart
-           byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileUrl:(NSString *)url path:(nullable NSString *)path linkPassword:(nullable NSString *)linkPassword overwrite:(BOOL)overwrite destination:(NSURL *)destination byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileData:
-    (NSString *)url;
+/// 
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileData:(NSString *)url;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param path If the shared link is to a folder, this parameter can be used to retrieve the metadata for a specific
 /// file or sub-folder in this folder. A relative path should be used.
 /// @param linkPassword If the shared link has a password, this parameter can be used.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
-    getSharedLinkFileData:(NSString *)url
-                     path:(nullable NSString *)path
-             linkPassword:(nullable NSString *)linkPassword;
+/// 
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileData:(NSString *)url path:(nullable NSString *)path linkPassword:(nullable NSString *)linkPassword;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
-    getSharedLinkFileData:(NSString *)url
-          byteOffsetStart:(NSNumber *)byteOffsetStart
-            byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileData:(NSString *)url byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Download the shared link's file from a user's Dropbox. This is a download-style endpoint that returns the file
 /// content.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param path If the shared link is to a folder, this parameter can be used to retrieve the metadata for a specific
 /// file or sub-folder in this folder. A relative path should be used.
@@ -284,43 +257,36 @@ NS_ASSUME_NONNULL_BEGIN
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGGetSharedLinkFileError` object on failure.
-///
-- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)
-    getSharedLinkFileData:(NSString *)url
-                     path:(nullable NSString *)path
-             linkPassword:(nullable NSString *)linkPassword
-          byteOffsetStart:(NSNumber *)byteOffsetStart
-            byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadDataTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> *)getSharedLinkFileData:(NSString *)url path:(nullable NSString *)path linkPassword:(nullable NSString *)linkPassword byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Get the shared link's metadata.
-///
+/// 
 /// @param url URL of the shared link.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGSharedLinkMetadataError` object on failure.
-///
+/// 
 - (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGSharedLinkMetadataError *> *)getSharedLinkMetadata:(NSString *)url;
 
-///
+/// 
 /// Get the shared link's metadata.
-///
+/// 
 /// @param url URL of the shared link.
 /// @param path If the shared link is to a folder, this parameter can be used to retrieve the metadata for a specific
 /// file or sub-folder in this folder. A relative path should be used.
 /// @param linkPassword If the shared link has a password, this parameter can be used.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBSHARINGSharedLinkMetadata` object on success or
 /// a `DBSHARINGSharedLinkMetadataError` object on failure.
-///
-- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGSharedLinkMetadataError *> *)
-    getSharedLinkMetadata:(NSString *)url
-                     path:(nullable NSString *)path
-             linkPassword:(nullable NSString *)linkPassword;
+/// 
+- (DBRpcTask<DBSHARINGSharedLinkMetadata *, DBSHARINGSharedLinkMetadataError *> *)getSharedLinkMetadata:(NSString *)url path:(nullable NSString *)path linkPassword:(nullable NSString *)linkPassword;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

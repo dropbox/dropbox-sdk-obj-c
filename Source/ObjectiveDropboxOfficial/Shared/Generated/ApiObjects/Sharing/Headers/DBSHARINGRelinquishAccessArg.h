@@ -10,23 +10,24 @@
 
 @class DBSHARINGRelinquishAccessArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RelinquishAccessArg` struct.
-///
+/// 
 /// Removes all self-removable access from a file or folder. For folders: always
 /// relinquishes without keeping a local copy (leave_a_copy=false behavior). If
 /// you need control over keeping folder contents, use the
 /// relinquish_folder_membership endpoint instead.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGRelinquishAccessArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGRelinquishAccessArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,47 +36,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileId The id for the file or folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileId:(NSString *)fileId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RelinquishAccessArg` struct.
-///
-@interface DBSHARINGRelinquishAccessArgSerializer : NSObject
+/// 
+@interface DBSHARINGRelinquishAccessArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGRelinquishAccessArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGRelinquishAccessArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishAccessArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGRelinquishAccessArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGRelinquishAccessArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGRelinquishAccessArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishAccessArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGRelinquishAccessArg` object.
-///
-+ (DBSHARINGRelinquishAccessArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGRelinquishAccessArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

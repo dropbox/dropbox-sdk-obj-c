@@ -11,18 +11,19 @@
 @class DBTEAMMembersGetInfoV2Arg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersGetInfoV2Arg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersGetInfoV2Arg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersGetInfoV2Arg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,46 +32,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param members List of team members.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMembers:(NSArray<DBTEAMUserSelectorArg *> *)members;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersGetInfoV2Arg` struct.
-///
-@interface DBTEAMMembersGetInfoV2ArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersGetInfoV2ArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersGetInfoV2Arg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersGetInfoV2Arg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersGetInfoV2Arg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersGetInfoV2Arg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersGetInfoV2Arg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersGetInfoV2Arg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersGetInfoV2Arg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersGetInfoV2Arg` object.
-///
-+ (DBTEAMMembersGetInfoV2Arg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersGetInfoV2Arg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBRIVIERAApiMediaStream;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ApiMediaStream` struct.
-///
+/// 
 /// A single audio or video stream within a media file.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAApiMediaStream : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAApiMediaStream : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -71,9 +72,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param index (no description).
 /// @param codecType "audio", "video", etc.
 /// @param codecName (no description).
@@ -88,64 +89,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param channelLayout (no description).
 /// @param sampleRateS (no description).
 /// @param languageIso639 ISO 639 language code for the stream, when present.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIndex:(nullable NSNumber *)index
-                    codecType:(nullable NSString *)codecType
-                    codecName:(nullable NSString *)codecName
-                   bitrateBps:(nullable NSNumber *)bitrateBps
-                    durationS:(nullable NSNumber *)durationS
-                        width:(nullable NSNumber *)width
-                       height:(nullable NSNumber *)height
-              framesPerSecond:(nullable NSNumber *)framesPerSecond
-                     rotation:(nullable NSNumber *)rotation
-           displayAspectRatio:(nullable NSString *)displayAspectRatio
-                     channels:(nullable NSNumber *)channels
-                channelLayout:(nullable NSString *)channelLayout
-                  sampleRateS:(nullable NSNumber *)sampleRateS
-               languageIso639:(nullable NSString *)languageIso639;
+/// 
+- (instancetype)initWithIndex:(nullable NSNumber *)index codecType:(nullable NSString *)codecType codecName:(nullable NSString *)codecName bitrateBps:(nullable NSNumber *)bitrateBps durationS:(nullable NSNumber *)durationS width:(nullable NSNumber *)width height:(nullable NSNumber *)height framesPerSecond:(nullable NSNumber *)framesPerSecond rotation:(nullable NSNumber *)rotation displayAspectRatio:(nullable NSString *)displayAspectRatio channels:(nullable NSNumber *)channels channelLayout:(nullable NSString *)channelLayout sampleRateS:(nullable NSNumber *)sampleRateS languageIso639:(nullable NSString *)languageIso639;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ApiMediaStream` struct.
-///
-@interface DBRIVIERAApiMediaStreamSerializer : NSObject
+/// 
+@interface DBRIVIERAApiMediaStreamSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAApiMediaStream` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAApiMediaStream` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAApiMediaStream` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiMediaStream *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAApiMediaStream *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAApiMediaStream` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAApiMediaStream` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAApiMediaStream` object.
-///
-+ (DBRIVIERAApiMediaStream *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAApiMediaStream *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

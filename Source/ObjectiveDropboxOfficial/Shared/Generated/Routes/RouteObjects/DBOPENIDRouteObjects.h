@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Openid namespace. Each route in the Openid
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBOPENIDRouteObjects : NSObject
+/// 
+@interface DBOPENIDRouteObjects : NSObject 
 
 /// Accessor method for the userinfo route object.
 + (DBRoute *)DBOPENIDUserinfo;
@@ -23,3 +24,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

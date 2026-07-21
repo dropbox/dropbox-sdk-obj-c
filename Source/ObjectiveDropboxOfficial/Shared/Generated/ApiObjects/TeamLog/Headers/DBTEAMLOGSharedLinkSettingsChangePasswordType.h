@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedLinkSettingsChangePasswordType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkSettingsChangePasswordType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkSettingsChangePasswordType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkSettingsChangePasswordType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkSettingsChangePasswordType`
 /// struct.
-///
-@interface DBTEAMLOGSharedLinkSettingsChangePasswordTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkSettingsChangePasswordTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkSettingsChangePasswordType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedLinkSettingsChangePasswordType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsChangePasswordType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkSettingsChangePasswordType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkSettingsChangePasswordType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkSettingsChangePasswordType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsChangePasswordType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedLinkSettingsChangePasswordType` object.
-///
-+ (DBTEAMLOGSharedLinkSettingsChangePasswordType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkSettingsChangePasswordType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

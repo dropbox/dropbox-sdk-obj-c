@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharingChangeLinkEnforcePasswordPolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,50 +31,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharingChangeLinkEnforcePasswordPolicyType`
 /// struct.
-///
-@interface DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType` object.
-///
-+ (DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharingChangeLinkEnforcePasswordPolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

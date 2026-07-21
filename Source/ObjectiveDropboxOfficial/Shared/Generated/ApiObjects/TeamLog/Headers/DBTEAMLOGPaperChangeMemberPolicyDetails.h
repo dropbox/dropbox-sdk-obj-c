@@ -11,21 +11,22 @@
 @class DBTEAMLOGPaperChangeMemberPolicyDetails;
 @class DBTEAMLOGPaperMemberPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperChangeMemberPolicyDetails` struct.
-///
+/// 
 /// Changed whether members can share Paper docs outside team, and if docs are
 /// accessible only by team members or anyone by default.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperChangeMemberPolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperChangeMemberPolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,61 +39,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New paper external accessibility policy.
 /// @param previousValue Previous paper external accessibility policy. Might be
 /// missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGPaperMemberPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGPaperMemberPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGPaperMemberPolicy *)dNewValue previousValue:(nullable DBTEAMLOGPaperMemberPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New paper external accessibility policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGPaperMemberPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperChangeMemberPolicyDetails` struct.
-///
-@interface DBTEAMLOGPaperChangeMemberPolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperChangeMemberPolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperChangeMemberPolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperChangeMemberPolicyDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperChangeMemberPolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeMemberPolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperChangeMemberPolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperChangeMemberPolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperChangeMemberPolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperChangeMemberPolicyDetails`
 /// object.
-///
-+ (DBTEAMLOGPaperChangeMemberPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperChangeMemberPolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

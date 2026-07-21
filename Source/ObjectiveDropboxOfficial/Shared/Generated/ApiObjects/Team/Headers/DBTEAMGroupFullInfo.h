@@ -13,20 +13,21 @@
 @class DBTEAMGroupFullInfo;
 @class DBTEAMGroupMemberInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupFullInfo` struct.
-///
+/// 
 /// Full description of a group.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMGroupFullInfo : DBTEAMCOMMONGroupSummary <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMGroupFullInfo : DBTEAMCOMMONGroupSummary <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,9 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
@@ -51,63 +52,56 @@ NS_ASSUME_NONNULL_BEGIN
 /// admin can attach to a group.
 /// @param memberCount The number of members in the group.
 /// @param members List of group members.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGroupName:(NSString *)groupName
-                          groupId:(NSString *)groupId
-              groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType
-                          created:(NSNumber *)created
-                  groupExternalId:(nullable NSString *)groupExternalId
-                      memberCount:(nullable NSNumber *)memberCount
-                          members:(nullable NSArray<DBTEAMGroupMemberInfo *> *)members;
+/// 
+- (instancetype)initWithGroupName:(NSString *)groupName groupId:(NSString *)groupId groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType created:(NSNumber *)created groupExternalId:(nullable NSString *)groupExternalId memberCount:(nullable NSNumber *)memberCount members:(nullable NSArray<DBTEAMGroupMemberInfo *> *)members;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
 /// @param created The group creation time as a UTC timestamp in milliseconds
 /// since the Unix epoch.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGroupName:(NSString *)groupName
-                          groupId:(NSString *)groupId
-              groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType
-                          created:(NSNumber *)created;
+/// 
+- (instancetype)initWithGroupName:(NSString *)groupName groupId:(NSString *)groupId groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType created:(NSNumber *)created;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GroupFullInfo` struct.
-///
-@interface DBTEAMGroupFullInfoSerializer : NSObject
+/// 
+@interface DBTEAMGroupFullInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMGroupFullInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMGroupFullInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupFullInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMGroupFullInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMGroupFullInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMGroupFullInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMGroupFullInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMGroupFullInfo` object.
-///
-+ (DBTEAMGroupFullInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMGroupFullInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

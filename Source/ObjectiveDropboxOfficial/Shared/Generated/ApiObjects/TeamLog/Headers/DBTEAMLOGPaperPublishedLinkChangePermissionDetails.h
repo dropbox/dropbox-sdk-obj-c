@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperPublishedLinkChangePermissionDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperPublishedLinkChangePermissionDetails` struct.
-///
+/// 
 /// Changed permissions for published doc.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperPublishedLinkChangePermissionDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperPublishedLinkChangePermissionDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,53 +39,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param dNewPermissionLevel New permission level.
 /// @param previousPermissionLevel Previous permission level.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithEventUuid:(NSString *)eventUuid
-              dNewPermissionLevel:(NSString *)dNewPermissionLevel
-          previousPermissionLevel:(NSString *)previousPermissionLevel;
+/// 
+- (instancetype)initWithEventUuid:(NSString *)eventUuid dNewPermissionLevel:(NSString *)dNewPermissionLevel previousPermissionLevel:(NSString *)previousPermissionLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperPublishedLinkChangePermissionDetails`
 /// struct.
-///
-@interface DBTEAMLOGPaperPublishedLinkChangePermissionDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperPublishedLinkChangePermissionDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperPublishedLinkChangePermissionDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperPublishedLinkChangePermissionDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperPublishedLinkChangePermissionDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkChangePermissionDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperPublishedLinkChangePermissionDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperPublishedLinkChangePermissionDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperPublishedLinkChangePermissionDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGPaperPublishedLinkChangePermissionDetails` object.
-///
-+ (DBTEAMLOGPaperPublishedLinkChangePermissionDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperPublishedLinkChangePermissionDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

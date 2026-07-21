@@ -10,18 +10,19 @@
 
 @class DBCOMMONDropboxDuration;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DropboxDuration` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBCOMMONDropboxDuration : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBCOMMONDropboxDuration : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,47 +34,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param seconds (no description).
 /// @param nanos (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSeconds:(NSNumber *)seconds nanos:(NSNumber *)nanos;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DropboxDuration` struct.
-///
-@interface DBCOMMONDropboxDurationSerializer : NSObject
+/// 
+@interface DBCOMMONDropboxDurationSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBCOMMONDropboxDuration` instances.
-///
+/// 
 /// @param instance An instance of the `DBCOMMONDropboxDuration` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBCOMMONDropboxDuration` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBCOMMONDropboxDuration *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBCOMMONDropboxDuration *)instance;
 
-///
+/// 
 /// Deserializes `DBCOMMONDropboxDuration` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBCOMMONDropboxDuration` API object.
-///
+/// 
 /// @return An instantiation of the `DBCOMMONDropboxDuration` object.
-///
-+ (DBCOMMONDropboxDuration *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBCOMMONDropboxDuration *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGBinderRenamePageDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `BinderRenamePageDetails` struct.
-///
+/// 
 /// Renamed Binder page.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGBinderRenamePageDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGBinderRenamePageDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,67 +42,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param docTitle Title of the Binder doc.
 /// @param binderItemName Name of the Binder page/section.
 /// @param previousBinderItemName Previous name of the Binder page/section.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithEventUuid:(NSString *)eventUuid
-                         docTitle:(NSString *)docTitle
-                   binderItemName:(NSString *)binderItemName
-           previousBinderItemName:(nullable NSString *)previousBinderItemName;
+/// 
+- (instancetype)initWithEventUuid:(NSString *)eventUuid docTitle:(NSString *)docTitle binderItemName:(NSString *)binderItemName previousBinderItemName:(nullable NSString *)previousBinderItemName;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param docTitle Title of the Binder doc.
 /// @param binderItemName Name of the Binder page/section.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithEventUuid:(NSString *)eventUuid
-                         docTitle:(NSString *)docTitle
-                   binderItemName:(NSString *)binderItemName;
+/// 
+- (instancetype)initWithEventUuid:(NSString *)eventUuid docTitle:(NSString *)docTitle binderItemName:(NSString *)binderItemName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `BinderRenamePageDetails` struct.
-///
-@interface DBTEAMLOGBinderRenamePageDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGBinderRenamePageDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGBinderRenamePageDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGBinderRenamePageDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGBinderRenamePageDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGBinderRenamePageDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGBinderRenamePageDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGBinderRenamePageDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGBinderRenamePageDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGBinderRenamePageDetails` object.
-///
-+ (DBTEAMLOGBinderRenamePageDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGBinderRenamePageDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

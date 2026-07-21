@@ -11,20 +11,21 @@
 @class DBFILESGetThumbnailBatchArg;
 @class DBFILESThumbnailArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetThumbnailBatchArg` struct.
-///
+/// 
 /// Arguments for `getThumbnailBatch`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGetThumbnailBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGetThumbnailBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,46 +34,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries List of files to get thumbnails.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESThumbnailArg *> *)entries;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetThumbnailBatchArg` struct.
-///
-@interface DBFILESGetThumbnailBatchArgSerializer : NSObject
+/// 
+@interface DBFILESGetThumbnailBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGetThumbnailBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGetThumbnailBatchArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetThumbnailBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGetThumbnailBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGetThumbnailBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGetThumbnailBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGetThumbnailBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGetThumbnailBatchArg` object.
-///
-+ (DBFILESGetThumbnailBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGetThumbnailBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

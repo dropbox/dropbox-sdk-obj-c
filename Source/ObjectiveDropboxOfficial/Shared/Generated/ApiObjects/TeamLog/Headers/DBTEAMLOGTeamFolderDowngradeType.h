@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGTeamFolderDowngradeType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderDowngradeType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderDowngradeType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderDowngradeType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderDowngradeType` struct.
-///
-@interface DBTEAMLOGTeamFolderDowngradeTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderDowngradeTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderDowngradeType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamFolderDowngradeType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderDowngradeType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderDowngradeType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderDowngradeType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderDowngradeType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderDowngradeType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamFolderDowngradeType` object.
-///
-+ (DBTEAMLOGTeamFolderDowngradeType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderDowngradeType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

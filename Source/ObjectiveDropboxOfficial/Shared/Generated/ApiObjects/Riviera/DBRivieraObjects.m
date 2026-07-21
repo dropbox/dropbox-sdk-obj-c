@@ -12,134 +12,127 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiExifGpsMetadata
+@implementation DBRIVIERAApiExifGpsMetadata 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithLatitude:(NSNumber *)latitude
-                       longitude:(NSNumber *)longitude
-                        altitude:(NSString *)altitude
-                       timestamp:(NSString *)timestamp
-                       datestamp:(NSString *)datestamp {
+- (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude altitude:(NSString *)altitude timestamp:(NSString *)timestamp datestamp:(NSString *)datestamp {
 
-  self = [super init];
-  if (self) {
-    _latitude = latitude ?: @(0.0);
-    _longitude = longitude ?: @(0.0);
-    _altitude = altitude ?: @"";
-    _timestamp = timestamp ?: @"";
-    _datestamp = datestamp ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _latitude = latitude ?: @(0.0);
+        _longitude = longitude ?: @(0.0);
+        _altitude = altitude ?: @"";
+        _timestamp = timestamp ?: @"";
+        _datestamp = datestamp ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithLatitude:nil longitude:nil altitude:nil timestamp:nil datestamp:nil];
+    return [self initWithLatitude:nil longitude:nil altitude:nil timestamp:nil datestamp:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiExifGpsMetadataSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiExifGpsMetadataSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiExifGpsMetadataSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiExifGpsMetadataSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiExifGpsMetadataSerializer serialize:self] description];
+    return [[DBRIVIERAApiExifGpsMetadataSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.latitude hash];
-  result = prime * result + [self.longitude hash];
-  result = prime * result + [self.altitude hash];
-  result = prime * result + [self.timestamp hash];
-  result = prime * result + [self.datestamp hash];
+    result = prime * result + [self.latitude hash];
+    result = prime * result + [self.longitude hash];
+    result = prime * result + [self.altitude hash];
+    result = prime * result + [self.timestamp hash];
+    result = prime * result + [self.datestamp hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiExifGpsMetadata:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiExifGpsMetadata:other];
 }
 
 - (BOOL)isEqualToApiExifGpsMetadata:(DBRIVIERAApiExifGpsMetadata *)anApiExifGpsMetadata {
-  if (self == anApiExifGpsMetadata) {
+    if (self == anApiExifGpsMetadata) {
+        return YES;
+    }
+    if (![self.latitude isEqual:anApiExifGpsMetadata.latitude]) {
+        return NO;
+    }
+    if (![self.longitude isEqual:anApiExifGpsMetadata.longitude]) {
+        return NO;
+    }
+    if (![self.altitude isEqual:anApiExifGpsMetadata.altitude]) {
+        return NO;
+    }
+    if (![self.timestamp isEqual:anApiExifGpsMetadata.timestamp]) {
+        return NO;
+    }
+    if (![self.datestamp isEqual:anApiExifGpsMetadata.datestamp]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.latitude isEqual:anApiExifGpsMetadata.latitude]) {
-    return NO;
-  }
-  if (![self.longitude isEqual:anApiExifGpsMetadata.longitude]) {
-    return NO;
-  }
-  if (![self.altitude isEqual:anApiExifGpsMetadata.altitude]) {
-    return NO;
-  }
-  if (![self.timestamp isEqual:anApiExifGpsMetadata.timestamp]) {
-    return NO;
-  }
-  if (![self.datestamp isEqual:anApiExifGpsMetadata.datestamp]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiExifGpsMetadataSerializer
+@implementation DBRIVIERAApiExifGpsMetadataSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiExifGpsMetadata *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"latitude"] = valueObj.latitude;
-  jsonDict[@"longitude"] = valueObj.longitude;
-  jsonDict[@"altitude"] = valueObj.altitude;
-  jsonDict[@"timestamp"] = valueObj.timestamp;
-  jsonDict[@"datestamp"] = valueObj.datestamp;
+    jsonDict[@"latitude"] = valueObj.latitude;
+    jsonDict[@"longitude"] = valueObj.longitude;
+    jsonDict[@"altitude"] = valueObj.altitude;
+    jsonDict[@"timestamp"] = valueObj.timestamp;
+    jsonDict[@"datestamp"] = valueObj.datestamp;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiExifGpsMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSNumber *latitude = valueDict[@"latitude"] ?: @(0.0);
-  NSNumber *longitude = valueDict[@"longitude"] ?: @(0.0);
-  NSString *altitude = valueDict[@"altitude"] ?: @"";
-  NSString *timestamp = valueDict[@"timestamp"] ?: @"";
-  NSString *datestamp = valueDict[@"datestamp"] ?: @"";
+    NSNumber *latitude = valueDict[@"latitude"] ?: @(0.0);
+    NSNumber *longitude = valueDict[@"longitude"] ?: @(0.0);
+    NSString *altitude = valueDict[@"altitude"] ?: @"";
+    NSString *timestamp = valueDict[@"timestamp"] ?: @"";
+    NSString *datestamp = valueDict[@"datestamp"] ?: @"";
 
-  return [[DBRIVIERAApiExifGpsMetadata alloc] initWithLatitude:latitude
-                                                     longitude:longitude
-                                                      altitude:altitude
-                                                     timestamp:timestamp
-                                                     datestamp:datestamp];
+    return [[DBRIVIERAApiExifGpsMetadata alloc] initWithLatitude:latitude longitude:longitude altitude:altitude timestamp:timestamp datestamp:datestamp];
 }
 
 @end
@@ -151,255 +144,210 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiExifMetadata
+@implementation DBRIVIERAApiExifMetadata 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithImageWidth:(NSNumber *)imageWidth
-                       imageHeight:(NSNumber *)imageHeight
-                        cameraMake:(NSString *)cameraMake
-                       cameraModel:(NSString *)cameraModel
-                         lensModel:(NSString *)lensModel
-                  dateTimeOriginal:(NSString *)dateTimeOriginal
-                offsetTimeOriginal:(NSString *)offsetTimeOriginal
-                       orientation:(NSNumber *)orientation
-                      exposureTime:(NSString *)exposureTime
-                     apertureValue:(NSNumber *)apertureValue
-                          isoSpeed:(NSNumber *)isoSpeed
-                       focalLength:(NSString *)focalLength
-                        megapixels:(NSNumber *)megapixels
-                            artist:(NSString *)artist
-                        dCopyright:(NSString *)dCopyright
-                       gpsMetadata:(DBRIVIERAApiExifGpsMetadata *)gpsMetadata {
+- (instancetype)initWithImageWidth:(NSNumber *)imageWidth imageHeight:(NSNumber *)imageHeight cameraMake:(NSString *)cameraMake cameraModel:(NSString *)cameraModel lensModel:(NSString *)lensModel dateTimeOriginal:(NSString *)dateTimeOriginal offsetTimeOriginal:(NSString *)offsetTimeOriginal orientation:(NSNumber *)orientation exposureTime:(NSString *)exposureTime apertureValue:(NSNumber *)apertureValue isoSpeed:(NSNumber *)isoSpeed focalLength:(NSString *)focalLength megapixels:(NSNumber *)megapixels artist:(NSString *)artist dCopyright:(NSString *)dCopyright gpsMetadata:(DBRIVIERAApiExifGpsMetadata *)gpsMetadata {
 
-  self = [super init];
-  if (self) {
-    _imageWidth = imageWidth ?: @(0);
-    _imageHeight = imageHeight ?: @(0);
-    _cameraMake = cameraMake ?: @"";
-    _cameraModel = cameraModel ?: @"";
-    _lensModel = lensModel ?: @"";
-    _dateTimeOriginal = dateTimeOriginal ?: @"";
-    _offsetTimeOriginal = offsetTimeOriginal ?: @"";
-    _orientation = orientation ?: @(0);
-    _exposureTime = exposureTime ?: @"";
-    _apertureValue = apertureValue ?: @(0.0);
-    _isoSpeed = isoSpeed ?: @(0);
-    _focalLength = focalLength ?: @"";
-    _megapixels = megapixels ?: @(0.0);
-    _artist = artist ?: @"";
-    _dCopyright = dCopyright ?: @"";
-    _gpsMetadata = gpsMetadata;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _imageWidth = imageWidth ?: @(0);
+        _imageHeight = imageHeight ?: @(0);
+        _cameraMake = cameraMake ?: @"";
+        _cameraModel = cameraModel ?: @"";
+        _lensModel = lensModel ?: @"";
+        _dateTimeOriginal = dateTimeOriginal ?: @"";
+        _offsetTimeOriginal = offsetTimeOriginal ?: @"";
+        _orientation = orientation ?: @(0);
+        _exposureTime = exposureTime ?: @"";
+        _apertureValue = apertureValue ?: @(0.0);
+        _isoSpeed = isoSpeed ?: @(0);
+        _focalLength = focalLength ?: @"";
+        _megapixels = megapixels ?: @(0.0);
+        _artist = artist ?: @"";
+        _dCopyright = dCopyright ?: @"";
+        _gpsMetadata = gpsMetadata;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithImageWidth:nil
-                      imageHeight:nil
-                       cameraMake:nil
-                      cameraModel:nil
-                        lensModel:nil
-                 dateTimeOriginal:nil
-               offsetTimeOriginal:nil
-                      orientation:nil
-                     exposureTime:nil
-                    apertureValue:nil
-                         isoSpeed:nil
-                      focalLength:nil
-                       megapixels:nil
-                           artist:nil
-                       dCopyright:nil
-                      gpsMetadata:nil];
+    return [self initWithImageWidth:nil imageHeight:nil cameraMake:nil cameraModel:nil lensModel:nil dateTimeOriginal:nil offsetTimeOriginal:nil orientation:nil exposureTime:nil apertureValue:nil isoSpeed:nil focalLength:nil megapixels:nil artist:nil dCopyright:nil gpsMetadata:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiExifMetadataSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiExifMetadataSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiExifMetadataSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiExifMetadataSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiExifMetadataSerializer serialize:self] description];
+    return [[DBRIVIERAApiExifMetadataSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.imageWidth hash];
-  result = prime * result + [self.imageHeight hash];
-  result = prime * result + [self.cameraMake hash];
-  result = prime * result + [self.cameraModel hash];
-  result = prime * result + [self.lensModel hash];
-  result = prime * result + [self.dateTimeOriginal hash];
-  result = prime * result + [self.offsetTimeOriginal hash];
-  result = prime * result + [self.orientation hash];
-  result = prime * result + [self.exposureTime hash];
-  result = prime * result + [self.apertureValue hash];
-  result = prime * result + [self.isoSpeed hash];
-  result = prime * result + [self.focalLength hash];
-  result = prime * result + [self.megapixels hash];
-  result = prime * result + [self.artist hash];
-  result = prime * result + [self.dCopyright hash];
-  if (self.gpsMetadata != nil) {
-    result = prime * result + [self.gpsMetadata hash];
-  }
+    result = prime * result + [self.imageWidth hash];
+    result = prime * result + [self.imageHeight hash];
+    result = prime * result + [self.cameraMake hash];
+    result = prime * result + [self.cameraModel hash];
+    result = prime * result + [self.lensModel hash];
+    result = prime * result + [self.dateTimeOriginal hash];
+    result = prime * result + [self.offsetTimeOriginal hash];
+    result = prime * result + [self.orientation hash];
+    result = prime * result + [self.exposureTime hash];
+    result = prime * result + [self.apertureValue hash];
+    result = prime * result + [self.isoSpeed hash];
+    result = prime * result + [self.focalLength hash];
+    result = prime * result + [self.megapixels hash];
+    result = prime * result + [self.artist hash];
+    result = prime * result + [self.dCopyright hash];
+    if (self.gpsMetadata != nil) {
+        result = prime * result + [self.gpsMetadata hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiExifMetadata:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiExifMetadata:other];
 }
 
 - (BOOL)isEqualToApiExifMetadata:(DBRIVIERAApiExifMetadata *)anApiExifMetadata {
-  if (self == anApiExifMetadata) {
-    return YES;
-  }
-  if (![self.imageWidth isEqual:anApiExifMetadata.imageWidth]) {
-    return NO;
-  }
-  if (![self.imageHeight isEqual:anApiExifMetadata.imageHeight]) {
-    return NO;
-  }
-  if (![self.cameraMake isEqual:anApiExifMetadata.cameraMake]) {
-    return NO;
-  }
-  if (![self.cameraModel isEqual:anApiExifMetadata.cameraModel]) {
-    return NO;
-  }
-  if (![self.lensModel isEqual:anApiExifMetadata.lensModel]) {
-    return NO;
-  }
-  if (![self.dateTimeOriginal isEqual:anApiExifMetadata.dateTimeOriginal]) {
-    return NO;
-  }
-  if (![self.offsetTimeOriginal isEqual:anApiExifMetadata.offsetTimeOriginal]) {
-    return NO;
-  }
-  if (![self.orientation isEqual:anApiExifMetadata.orientation]) {
-    return NO;
-  }
-  if (![self.exposureTime isEqual:anApiExifMetadata.exposureTime]) {
-    return NO;
-  }
-  if (![self.apertureValue isEqual:anApiExifMetadata.apertureValue]) {
-    return NO;
-  }
-  if (![self.isoSpeed isEqual:anApiExifMetadata.isoSpeed]) {
-    return NO;
-  }
-  if (![self.focalLength isEqual:anApiExifMetadata.focalLength]) {
-    return NO;
-  }
-  if (![self.megapixels isEqual:anApiExifMetadata.megapixels]) {
-    return NO;
-  }
-  if (![self.artist isEqual:anApiExifMetadata.artist]) {
-    return NO;
-  }
-  if (![self.dCopyright isEqual:anApiExifMetadata.dCopyright]) {
-    return NO;
-  }
-  if (self.gpsMetadata) {
-    if (![self.gpsMetadata isEqual:anApiExifMetadata.gpsMetadata]) {
-      return NO;
+    if (self == anApiExifMetadata) {
+        return YES;
     }
-  }
-  return YES;
+    if (![self.imageWidth isEqual:anApiExifMetadata.imageWidth]) {
+        return NO;
+    }
+    if (![self.imageHeight isEqual:anApiExifMetadata.imageHeight]) {
+        return NO;
+    }
+    if (![self.cameraMake isEqual:anApiExifMetadata.cameraMake]) {
+        return NO;
+    }
+    if (![self.cameraModel isEqual:anApiExifMetadata.cameraModel]) {
+        return NO;
+    }
+    if (![self.lensModel isEqual:anApiExifMetadata.lensModel]) {
+        return NO;
+    }
+    if (![self.dateTimeOriginal isEqual:anApiExifMetadata.dateTimeOriginal]) {
+        return NO;
+    }
+    if (![self.offsetTimeOriginal isEqual:anApiExifMetadata.offsetTimeOriginal]) {
+        return NO;
+    }
+    if (![self.orientation isEqual:anApiExifMetadata.orientation]) {
+        return NO;
+    }
+    if (![self.exposureTime isEqual:anApiExifMetadata.exposureTime]) {
+        return NO;
+    }
+    if (![self.apertureValue isEqual:anApiExifMetadata.apertureValue]) {
+        return NO;
+    }
+    if (![self.isoSpeed isEqual:anApiExifMetadata.isoSpeed]) {
+        return NO;
+    }
+    if (![self.focalLength isEqual:anApiExifMetadata.focalLength]) {
+        return NO;
+    }
+    if (![self.megapixels isEqual:anApiExifMetadata.megapixels]) {
+        return NO;
+    }
+    if (![self.artist isEqual:anApiExifMetadata.artist]) {
+        return NO;
+    }
+    if (![self.dCopyright isEqual:anApiExifMetadata.dCopyright]) {
+        return NO;
+    }
+    if (self.gpsMetadata) {
+        if (![self.gpsMetadata isEqual:anApiExifMetadata.gpsMetadata]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiExifMetadataSerializer
+@implementation DBRIVIERAApiExifMetadataSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiExifMetadata *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"image_width"] = valueObj.imageWidth;
-  jsonDict[@"image_height"] = valueObj.imageHeight;
-  jsonDict[@"camera_make"] = valueObj.cameraMake;
-  jsonDict[@"camera_model"] = valueObj.cameraModel;
-  jsonDict[@"lens_model"] = valueObj.lensModel;
-  jsonDict[@"date_time_original"] = valueObj.dateTimeOriginal;
-  jsonDict[@"offset_time_original"] = valueObj.offsetTimeOriginal;
-  jsonDict[@"orientation"] = valueObj.orientation;
-  jsonDict[@"exposure_time"] = valueObj.exposureTime;
-  jsonDict[@"aperture_value"] = valueObj.apertureValue;
-  jsonDict[@"iso_speed"] = valueObj.isoSpeed;
-  jsonDict[@"focal_length"] = valueObj.focalLength;
-  jsonDict[@"megapixels"] = valueObj.megapixels;
-  jsonDict[@"artist"] = valueObj.artist;
-  jsonDict[@"copyright"] = valueObj.dCopyright;
-  if (valueObj.gpsMetadata) {
-    jsonDict[@"gps_metadata"] = [DBRIVIERAApiExifGpsMetadataSerializer serialize:valueObj.gpsMetadata];
-  }
+    jsonDict[@"image_width"] = valueObj.imageWidth;
+    jsonDict[@"image_height"] = valueObj.imageHeight;
+    jsonDict[@"camera_make"] = valueObj.cameraMake;
+    jsonDict[@"camera_model"] = valueObj.cameraModel;
+    jsonDict[@"lens_model"] = valueObj.lensModel;
+    jsonDict[@"date_time_original"] = valueObj.dateTimeOriginal;
+    jsonDict[@"offset_time_original"] = valueObj.offsetTimeOriginal;
+    jsonDict[@"orientation"] = valueObj.orientation;
+    jsonDict[@"exposure_time"] = valueObj.exposureTime;
+    jsonDict[@"aperture_value"] = valueObj.apertureValue;
+    jsonDict[@"iso_speed"] = valueObj.isoSpeed;
+    jsonDict[@"focal_length"] = valueObj.focalLength;
+    jsonDict[@"megapixels"] = valueObj.megapixels;
+    jsonDict[@"artist"] = valueObj.artist;
+    jsonDict[@"copyright"] = valueObj.dCopyright;
+    if (valueObj.gpsMetadata) {
+        jsonDict[@"gps_metadata"] = [DBRIVIERAApiExifGpsMetadataSerializer serialize:valueObj.gpsMetadata];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiExifMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSNumber *imageWidth = valueDict[@"image_width"] ?: @(0);
-  NSNumber *imageHeight = valueDict[@"image_height"] ?: @(0);
-  NSString *cameraMake = valueDict[@"camera_make"] ?: @"";
-  NSString *cameraModel = valueDict[@"camera_model"] ?: @"";
-  NSString *lensModel = valueDict[@"lens_model"] ?: @"";
-  NSString *dateTimeOriginal = valueDict[@"date_time_original"] ?: @"";
-  NSString *offsetTimeOriginal = valueDict[@"offset_time_original"] ?: @"";
-  NSNumber *orientation = valueDict[@"orientation"] ?: @(0);
-  NSString *exposureTime = valueDict[@"exposure_time"] ?: @"";
-  NSNumber *apertureValue = valueDict[@"aperture_value"] ?: @(0.0);
-  NSNumber *isoSpeed = valueDict[@"iso_speed"] ?: @(0);
-  NSString *focalLength = valueDict[@"focal_length"] ?: @"";
-  NSNumber *megapixels = valueDict[@"megapixels"] ?: @(0.0);
-  NSString *artist = valueDict[@"artist"] ?: @"";
-  NSString *dCopyright = valueDict[@"copyright"] ?: @"";
-  DBRIVIERAApiExifGpsMetadata *gpsMetadata =
-      valueDict[@"gps_metadata"] ? [DBRIVIERAApiExifGpsMetadataSerializer deserialize:valueDict[@"gps_metadata"]] : nil;
+    NSNumber *imageWidth = valueDict[@"image_width"] ?: @(0);
+    NSNumber *imageHeight = valueDict[@"image_height"] ?: @(0);
+    NSString *cameraMake = valueDict[@"camera_make"] ?: @"";
+    NSString *cameraModel = valueDict[@"camera_model"] ?: @"";
+    NSString *lensModel = valueDict[@"lens_model"] ?: @"";
+    NSString *dateTimeOriginal = valueDict[@"date_time_original"] ?: @"";
+    NSString *offsetTimeOriginal = valueDict[@"offset_time_original"] ?: @"";
+    NSNumber *orientation = valueDict[@"orientation"] ?: @(0);
+    NSString *exposureTime = valueDict[@"exposure_time"] ?: @"";
+    NSNumber *apertureValue = valueDict[@"aperture_value"] ?: @(0.0);
+    NSNumber *isoSpeed = valueDict[@"iso_speed"] ?: @(0);
+    NSString *focalLength = valueDict[@"focal_length"] ?: @"";
+    NSNumber *megapixels = valueDict[@"megapixels"] ?: @(0.0);
+    NSString *artist = valueDict[@"artist"] ?: @"";
+    NSString *dCopyright = valueDict[@"copyright"] ?: @"";
+    DBRIVIERAApiExifGpsMetadata *gpsMetadata = valueDict[@"gps_metadata"] ? [DBRIVIERAApiExifGpsMetadataSerializer deserialize:valueDict[@"gps_metadata"]] : nil;
 
-  return [[DBRIVIERAApiExifMetadata alloc] initWithImageWidth:imageWidth
-                                                  imageHeight:imageHeight
-                                                   cameraMake:cameraMake
-                                                  cameraModel:cameraModel
-                                                    lensModel:lensModel
-                                             dateTimeOriginal:dateTimeOriginal
-                                           offsetTimeOriginal:offsetTimeOriginal
-                                                  orientation:orientation
-                                                 exposureTime:exposureTime
-                                                apertureValue:apertureValue
-                                                     isoSpeed:isoSpeed
-                                                  focalLength:focalLength
-                                                   megapixels:megapixels
-                                                       artist:artist
-                                                   dCopyright:dCopyright
-                                                  gpsMetadata:gpsMetadata];
+    return [[DBRIVIERAApiExifMetadata alloc] initWithImageWidth:imageWidth imageHeight:imageHeight cameraMake:cameraMake cameraModel:cameraModel lensModel:lensModel dateTimeOriginal:dateTimeOriginal offsetTimeOriginal:offsetTimeOriginal orientation:orientation exposureTime:exposureTime apertureValue:apertureValue isoSpeed:isoSpeed focalLength:focalLength megapixels:megapixels artist:artist dCopyright:dCopyright gpsMetadata:gpsMetadata];
 }
 
 @end
@@ -411,143 +359,127 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiMediaMetadata
+@implementation DBRIVIERAApiMediaMetadata 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithBitrateBps:(NSNumber *)bitrateBps
-                         durationS:(NSNumber *)durationS
-                      creationTime:(NSString *)creationTime
-                           streams:(NSArray<DBRIVIERAApiMediaStream *> *)streams {
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil
-                                              maxItems:nil
-                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](streams);
+- (instancetype)initWithBitrateBps:(NSNumber *)bitrateBps durationS:(NSNumber *)durationS creationTime:(NSString *)creationTime streams:(NSArray<DBRIVIERAApiMediaStream *> *)streams {
+    [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBStoneValidators nonnullValidator:nil]]](streams);
 
-  self = [super init];
-  if (self) {
-    _bitrateBps = bitrateBps ?: @(0);
-    _durationS = durationS ?: @(0.0);
-    _creationTime = creationTime ?: @"";
-    _streams = streams;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _bitrateBps = bitrateBps ?: @(0);
+        _durationS = durationS ?: @(0.0);
+        _creationTime = creationTime ?: @"";
+        _streams = streams;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithBitrateBps:nil durationS:nil creationTime:nil streams:nil];
+    return [self initWithBitrateBps:nil durationS:nil creationTime:nil streams:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiMediaMetadataSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiMediaMetadataSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiMediaMetadataSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiMediaMetadataSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiMediaMetadataSerializer serialize:self] description];
+    return [[DBRIVIERAApiMediaMetadataSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.bitrateBps hash];
-  result = prime * result + [self.durationS hash];
-  result = prime * result + [self.creationTime hash];
-  if (self.streams != nil) {
-    result = prime * result + [self.streams hash];
-  }
+    result = prime * result + [self.bitrateBps hash];
+    result = prime * result + [self.durationS hash];
+    result = prime * result + [self.creationTime hash];
+    if (self.streams != nil) {
+        result = prime * result + [self.streams hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiMediaMetadata:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiMediaMetadata:other];
 }
 
 - (BOOL)isEqualToApiMediaMetadata:(DBRIVIERAApiMediaMetadata *)anApiMediaMetadata {
-  if (self == anApiMediaMetadata) {
-    return YES;
-  }
-  if (![self.bitrateBps isEqual:anApiMediaMetadata.bitrateBps]) {
-    return NO;
-  }
-  if (![self.durationS isEqual:anApiMediaMetadata.durationS]) {
-    return NO;
-  }
-  if (![self.creationTime isEqual:anApiMediaMetadata.creationTime]) {
-    return NO;
-  }
-  if (self.streams) {
-    if (![self.streams isEqual:anApiMediaMetadata.streams]) {
-      return NO;
+    if (self == anApiMediaMetadata) {
+        return YES;
     }
-  }
-  return YES;
+    if (![self.bitrateBps isEqual:anApiMediaMetadata.bitrateBps]) {
+        return NO;
+    }
+    if (![self.durationS isEqual:anApiMediaMetadata.durationS]) {
+        return NO;
+    }
+    if (![self.creationTime isEqual:anApiMediaMetadata.creationTime]) {
+        return NO;
+    }
+    if (self.streams) {
+        if (![self.streams isEqual:anApiMediaMetadata.streams]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiMediaMetadataSerializer
+@implementation DBRIVIERAApiMediaMetadataSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiMediaMetadata *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"bitrate_bps"] = valueObj.bitrateBps;
-  jsonDict[@"duration_s"] = valueObj.durationS;
-  jsonDict[@"creation_time"] = valueObj.creationTime;
-  if (valueObj.streams) {
-    jsonDict[@"streams"] = [DBArraySerializer serialize:valueObj.streams
-                                              withBlock:^id(id elem0) {
-                                                return [DBRIVIERAApiMediaStreamSerializer serialize:elem0];
-                                              }];
-  }
+    jsonDict[@"bitrate_bps"] = valueObj.bitrateBps;
+    jsonDict[@"duration_s"] = valueObj.durationS;
+    jsonDict[@"creation_time"] = valueObj.creationTime;
+    if (valueObj.streams) {
+        jsonDict[@"streams"] = [DBArraySerializer serialize:valueObj.streams withBlock:^id(id elem0) { return [DBRIVIERAApiMediaStreamSerializer serialize:elem0]; }];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiMediaMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSNumber *bitrateBps = valueDict[@"bitrate_bps"] ?: @(0);
-  NSNumber *durationS = valueDict[@"duration_s"] ?: @(0.0);
-  NSString *creationTime = valueDict[@"creation_time"] ?: @"";
-  NSArray<DBRIVIERAApiMediaStream *> *streams =
-      valueDict[@"streams"] ? [DBArraySerializer deserialize:valueDict[@"streams"]
-                                                   withBlock:^id(id elem0) {
-                                                     return [DBRIVIERAApiMediaStreamSerializer deserialize:elem0];
-                                                   }]
-                            : nil;
+    NSNumber *bitrateBps = valueDict[@"bitrate_bps"] ?: @(0);
+    NSNumber *durationS = valueDict[@"duration_s"] ?: @(0.0);
+    NSString *creationTime = valueDict[@"creation_time"] ?: @"";
+    NSArray<DBRIVIERAApiMediaStream *> *streams = valueDict[@"streams"] ? [DBArraySerializer deserialize:valueDict[@"streams"] withBlock:^id(id elem0) { return [DBRIVIERAApiMediaStreamSerializer deserialize:elem0]; }] : nil;
 
-  return [[DBRIVIERAApiMediaMetadata alloc] initWithBitrateBps:bitrateBps
-                                                     durationS:durationS
-                                                  creationTime:creationTime
-                                                       streams:streams];
+    return [[DBRIVIERAApiMediaMetadata alloc] initWithBitrateBps:bitrateBps durationS:durationS creationTime:creationTime streams:streams];
 }
 
 @end
@@ -558,228 +490,190 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiMediaStream
+@implementation DBRIVIERAApiMediaStream 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithIndex:(NSNumber *)index
-                    codecType:(NSString *)codecType
-                    codecName:(NSString *)codecName
-                   bitrateBps:(NSNumber *)bitrateBps
-                    durationS:(NSNumber *)durationS
-                        width:(NSNumber *)width
-                       height:(NSNumber *)height
-              framesPerSecond:(NSNumber *)framesPerSecond
-                     rotation:(NSNumber *)rotation
-           displayAspectRatio:(NSString *)displayAspectRatio
-                     channels:(NSNumber *)channels
-                channelLayout:(NSString *)channelLayout
-                  sampleRateS:(NSNumber *)sampleRateS
-               languageIso639:(NSString *)languageIso639 {
+- (instancetype)initWithIndex:(NSNumber *)index codecType:(NSString *)codecType codecName:(NSString *)codecName bitrateBps:(NSNumber *)bitrateBps durationS:(NSNumber *)durationS width:(NSNumber *)width height:(NSNumber *)height framesPerSecond:(NSNumber *)framesPerSecond rotation:(NSNumber *)rotation displayAspectRatio:(NSString *)displayAspectRatio channels:(NSNumber *)channels channelLayout:(NSString *)channelLayout sampleRateS:(NSNumber *)sampleRateS languageIso639:(NSString *)languageIso639 {
 
-  self = [super init];
-  if (self) {
-    _index = index ?: @(0);
-    _codecType = codecType ?: @"";
-    _codecName = codecName ?: @"";
-    _bitrateBps = bitrateBps ?: @(0);
-    _durationS = durationS ?: @(0.0);
-    _width = width ?: @(0);
-    _height = height ?: @(0);
-    _framesPerSecond = framesPerSecond ?: @(0.0);
-    _rotation = rotation ?: @(0);
-    _displayAspectRatio = displayAspectRatio ?: @"";
-    _channels = channels ?: @(0);
-    _channelLayout = channelLayout ?: @"";
-    _sampleRateS = sampleRateS ?: @(0);
-    _languageIso639 = languageIso639 ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _index = index ?: @(0);
+        _codecType = codecType ?: @"";
+        _codecName = codecName ?: @"";
+        _bitrateBps = bitrateBps ?: @(0);
+        _durationS = durationS ?: @(0.0);
+        _width = width ?: @(0);
+        _height = height ?: @(0);
+        _framesPerSecond = framesPerSecond ?: @(0.0);
+        _rotation = rotation ?: @(0);
+        _displayAspectRatio = displayAspectRatio ?: @"";
+        _channels = channels ?: @(0);
+        _channelLayout = channelLayout ?: @"";
+        _sampleRateS = sampleRateS ?: @(0);
+        _languageIso639 = languageIso639 ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithIndex:nil
-                   codecType:nil
-                   codecName:nil
-                  bitrateBps:nil
-                   durationS:nil
-                       width:nil
-                      height:nil
-             framesPerSecond:nil
-                    rotation:nil
-          displayAspectRatio:nil
-                    channels:nil
-               channelLayout:nil
-                 sampleRateS:nil
-              languageIso639:nil];
+    return [self initWithIndex:nil codecType:nil codecName:nil bitrateBps:nil durationS:nil width:nil height:nil framesPerSecond:nil rotation:nil displayAspectRatio:nil channels:nil channelLayout:nil sampleRateS:nil languageIso639:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiMediaStreamSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiMediaStreamSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiMediaStreamSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiMediaStreamSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiMediaStreamSerializer serialize:self] description];
+    return [[DBRIVIERAApiMediaStreamSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.index hash];
-  result = prime * result + [self.codecType hash];
-  result = prime * result + [self.codecName hash];
-  result = prime * result + [self.bitrateBps hash];
-  result = prime * result + [self.durationS hash];
-  result = prime * result + [self.width hash];
-  result = prime * result + [self.height hash];
-  result = prime * result + [self.framesPerSecond hash];
-  result = prime * result + [self.rotation hash];
-  result = prime * result + [self.displayAspectRatio hash];
-  result = prime * result + [self.channels hash];
-  result = prime * result + [self.channelLayout hash];
-  result = prime * result + [self.sampleRateS hash];
-  result = prime * result + [self.languageIso639 hash];
+    result = prime * result + [self.index hash];
+    result = prime * result + [self.codecType hash];
+    result = prime * result + [self.codecName hash];
+    result = prime * result + [self.bitrateBps hash];
+    result = prime * result + [self.durationS hash];
+    result = prime * result + [self.width hash];
+    result = prime * result + [self.height hash];
+    result = prime * result + [self.framesPerSecond hash];
+    result = prime * result + [self.rotation hash];
+    result = prime * result + [self.displayAspectRatio hash];
+    result = prime * result + [self.channels hash];
+    result = prime * result + [self.channelLayout hash];
+    result = prime * result + [self.sampleRateS hash];
+    result = prime * result + [self.languageIso639 hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiMediaStream:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiMediaStream:other];
 }
 
 - (BOOL)isEqualToApiMediaStream:(DBRIVIERAApiMediaStream *)anApiMediaStream {
-  if (self == anApiMediaStream) {
+    if (self == anApiMediaStream) {
+        return YES;
+    }
+    if (![self.index isEqual:anApiMediaStream.index]) {
+        return NO;
+    }
+    if (![self.codecType isEqual:anApiMediaStream.codecType]) {
+        return NO;
+    }
+    if (![self.codecName isEqual:anApiMediaStream.codecName]) {
+        return NO;
+    }
+    if (![self.bitrateBps isEqual:anApiMediaStream.bitrateBps]) {
+        return NO;
+    }
+    if (![self.durationS isEqual:anApiMediaStream.durationS]) {
+        return NO;
+    }
+    if (![self.width isEqual:anApiMediaStream.width]) {
+        return NO;
+    }
+    if (![self.height isEqual:anApiMediaStream.height]) {
+        return NO;
+    }
+    if (![self.framesPerSecond isEqual:anApiMediaStream.framesPerSecond]) {
+        return NO;
+    }
+    if (![self.rotation isEqual:anApiMediaStream.rotation]) {
+        return NO;
+    }
+    if (![self.displayAspectRatio isEqual:anApiMediaStream.displayAspectRatio]) {
+        return NO;
+    }
+    if (![self.channels isEqual:anApiMediaStream.channels]) {
+        return NO;
+    }
+    if (![self.channelLayout isEqual:anApiMediaStream.channelLayout]) {
+        return NO;
+    }
+    if (![self.sampleRateS isEqual:anApiMediaStream.sampleRateS]) {
+        return NO;
+    }
+    if (![self.languageIso639 isEqual:anApiMediaStream.languageIso639]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.index isEqual:anApiMediaStream.index]) {
-    return NO;
-  }
-  if (![self.codecType isEqual:anApiMediaStream.codecType]) {
-    return NO;
-  }
-  if (![self.codecName isEqual:anApiMediaStream.codecName]) {
-    return NO;
-  }
-  if (![self.bitrateBps isEqual:anApiMediaStream.bitrateBps]) {
-    return NO;
-  }
-  if (![self.durationS isEqual:anApiMediaStream.durationS]) {
-    return NO;
-  }
-  if (![self.width isEqual:anApiMediaStream.width]) {
-    return NO;
-  }
-  if (![self.height isEqual:anApiMediaStream.height]) {
-    return NO;
-  }
-  if (![self.framesPerSecond isEqual:anApiMediaStream.framesPerSecond]) {
-    return NO;
-  }
-  if (![self.rotation isEqual:anApiMediaStream.rotation]) {
-    return NO;
-  }
-  if (![self.displayAspectRatio isEqual:anApiMediaStream.displayAspectRatio]) {
-    return NO;
-  }
-  if (![self.channels isEqual:anApiMediaStream.channels]) {
-    return NO;
-  }
-  if (![self.channelLayout isEqual:anApiMediaStream.channelLayout]) {
-    return NO;
-  }
-  if (![self.sampleRateS isEqual:anApiMediaStream.sampleRateS]) {
-    return NO;
-  }
-  if (![self.languageIso639 isEqual:anApiMediaStream.languageIso639]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiMediaStreamSerializer
+@implementation DBRIVIERAApiMediaStreamSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiMediaStream *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"index"] = valueObj.index;
-  jsonDict[@"codec_type"] = valueObj.codecType;
-  jsonDict[@"codec_name"] = valueObj.codecName;
-  jsonDict[@"bitrate_bps"] = valueObj.bitrateBps;
-  jsonDict[@"duration_s"] = valueObj.durationS;
-  jsonDict[@"width"] = valueObj.width;
-  jsonDict[@"height"] = valueObj.height;
-  jsonDict[@"frames_per_second"] = valueObj.framesPerSecond;
-  jsonDict[@"rotation"] = valueObj.rotation;
-  jsonDict[@"display_aspect_ratio"] = valueObj.displayAspectRatio;
-  jsonDict[@"channels"] = valueObj.channels;
-  jsonDict[@"channel_layout"] = valueObj.channelLayout;
-  jsonDict[@"sample_rate_s"] = valueObj.sampleRateS;
-  jsonDict[@"language_iso_639"] = valueObj.languageIso639;
+    jsonDict[@"index"] = valueObj.index;
+    jsonDict[@"codec_type"] = valueObj.codecType;
+    jsonDict[@"codec_name"] = valueObj.codecName;
+    jsonDict[@"bitrate_bps"] = valueObj.bitrateBps;
+    jsonDict[@"duration_s"] = valueObj.durationS;
+    jsonDict[@"width"] = valueObj.width;
+    jsonDict[@"height"] = valueObj.height;
+    jsonDict[@"frames_per_second"] = valueObj.framesPerSecond;
+    jsonDict[@"rotation"] = valueObj.rotation;
+    jsonDict[@"display_aspect_ratio"] = valueObj.displayAspectRatio;
+    jsonDict[@"channels"] = valueObj.channels;
+    jsonDict[@"channel_layout"] = valueObj.channelLayout;
+    jsonDict[@"sample_rate_s"] = valueObj.sampleRateS;
+    jsonDict[@"language_iso_639"] = valueObj.languageIso639;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiMediaStream *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSNumber *index = valueDict[@"index"] ?: @(0);
-  NSString *codecType = valueDict[@"codec_type"] ?: @"";
-  NSString *codecName = valueDict[@"codec_name"] ?: @"";
-  NSNumber *bitrateBps = valueDict[@"bitrate_bps"] ?: @(0);
-  NSNumber *durationS = valueDict[@"duration_s"] ?: @(0.0);
-  NSNumber *width = valueDict[@"width"] ?: @(0);
-  NSNumber *height = valueDict[@"height"] ?: @(0);
-  NSNumber *framesPerSecond = valueDict[@"frames_per_second"] ?: @(0.0);
-  NSNumber *rotation = valueDict[@"rotation"] ?: @(0);
-  NSString *displayAspectRatio = valueDict[@"display_aspect_ratio"] ?: @"";
-  NSNumber *channels = valueDict[@"channels"] ?: @(0);
-  NSString *channelLayout = valueDict[@"channel_layout"] ?: @"";
-  NSNumber *sampleRateS = valueDict[@"sample_rate_s"] ?: @(0);
-  NSString *languageIso639 = valueDict[@"language_iso_639"] ?: @"";
+    NSNumber *index = valueDict[@"index"] ?: @(0);
+    NSString *codecType = valueDict[@"codec_type"] ?: @"";
+    NSString *codecName = valueDict[@"codec_name"] ?: @"";
+    NSNumber *bitrateBps = valueDict[@"bitrate_bps"] ?: @(0);
+    NSNumber *durationS = valueDict[@"duration_s"] ?: @(0.0);
+    NSNumber *width = valueDict[@"width"] ?: @(0);
+    NSNumber *height = valueDict[@"height"] ?: @(0);
+    NSNumber *framesPerSecond = valueDict[@"frames_per_second"] ?: @(0.0);
+    NSNumber *rotation = valueDict[@"rotation"] ?: @(0);
+    NSString *displayAspectRatio = valueDict[@"display_aspect_ratio"] ?: @"";
+    NSNumber *channels = valueDict[@"channels"] ?: @(0);
+    NSString *channelLayout = valueDict[@"channel_layout"] ?: @"";
+    NSNumber *sampleRateS = valueDict[@"sample_rate_s"] ?: @(0);
+    NSString *languageIso639 = valueDict[@"language_iso_639"] ?: @"";
 
-  return [[DBRIVIERAApiMediaStream alloc] initWithIndex:index
-                                              codecType:codecType
-                                              codecName:codecName
-                                             bitrateBps:bitrateBps
-                                              durationS:durationS
-                                                  width:width
-                                                 height:height
-                                        framesPerSecond:framesPerSecond
-                                               rotation:rotation
-                                     displayAspectRatio:displayAspectRatio
-                                               channels:channels
-                                          channelLayout:channelLayout
-                                            sampleRateS:sampleRateS
-                                         languageIso639:languageIso639];
+    return [[DBRIVIERAApiMediaStream alloc] initWithIndex:index codecType:codecType codecName:codecName bitrateBps:bitrateBps durationS:durationS width:width height:height framesPerSecond:framesPerSecond rotation:rotation displayAspectRatio:displayAspectRatio channels:channels channelLayout:channelLayout sampleRateS:sampleRateS languageIso639:languageIso639];
 }
 
 @end
@@ -791,210 +685,176 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiOfficeMetadata
+@implementation DBRIVIERAApiOfficeMetadata 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithFileType:(DBRIVIERAOfficeFileType *)fileType
-                         creator:(NSString *)creator
-                         company:(NSString *)company
-                           title:(NSString *)title
-                         subject:(NSString *)subject
-                        keywords:(NSString *)keywords
-                    description_:(NSString *)description_
-            totalEditTimeMinutes:(NSNumber *)totalEditTimeMinutes
-                           pages:(NSNumber *)pages
-                           words:(NSNumber *)words
-                          slides:(NSNumber *)slides
-                  revisionNumber:(NSString *)revisionNumber {
+- (instancetype)initWithFileType:(DBRIVIERAOfficeFileType *)fileType creator:(NSString *)creator company:(NSString *)company title:(NSString *)title subject:(NSString *)subject keywords:(NSString *)keywords description_:(NSString *)description_ totalEditTimeMinutes:(NSNumber *)totalEditTimeMinutes pages:(NSNumber *)pages words:(NSNumber *)words slides:(NSNumber *)slides revisionNumber:(NSString *)revisionNumber {
 
-  self = [super init];
-  if (self) {
-    _fileType = fileType ?: [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeUnknown];
-    _creator = creator ?: @"";
-    _company = company ?: @"";
-    _title = title ?: @"";
-    _subject = subject ?: @"";
-    _keywords = keywords ?: @"";
-    _description_ = description_ ?: @"";
-    _totalEditTimeMinutes = totalEditTimeMinutes ?: @(0);
-    _pages = pages ?: @(0);
-    _words = words ?: @(0);
-    _slides = slides ?: @(0);
-    _revisionNumber = revisionNumber ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _fileType = fileType ?: [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeUnknown];
+        _creator = creator ?: @"";
+        _company = company ?: @"";
+        _title = title ?: @"";
+        _subject = subject ?: @"";
+        _keywords = keywords ?: @"";
+        _description_ = description_ ?: @"";
+        _totalEditTimeMinutes = totalEditTimeMinutes ?: @(0);
+        _pages = pages ?: @(0);
+        _words = words ?: @(0);
+        _slides = slides ?: @(0);
+        _revisionNumber = revisionNumber ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithFileType:nil
-                        creator:nil
-                        company:nil
-                          title:nil
-                        subject:nil
-                       keywords:nil
-                   description_:nil
-           totalEditTimeMinutes:nil
-                          pages:nil
-                          words:nil
-                         slides:nil
-                 revisionNumber:nil];
+    return [self initWithFileType:nil creator:nil company:nil title:nil subject:nil keywords:nil description_:nil totalEditTimeMinutes:nil pages:nil words:nil slides:nil revisionNumber:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiOfficeMetadataSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiOfficeMetadataSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiOfficeMetadataSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiOfficeMetadataSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiOfficeMetadataSerializer serialize:self] description];
+    return [[DBRIVIERAApiOfficeMetadataSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.fileType hash];
-  result = prime * result + [self.creator hash];
-  result = prime * result + [self.company hash];
-  result = prime * result + [self.title hash];
-  result = prime * result + [self.subject hash];
-  result = prime * result + [self.keywords hash];
-  result = prime * result + [self.description_ hash];
-  result = prime * result + [self.totalEditTimeMinutes hash];
-  result = prime * result + [self.pages hash];
-  result = prime * result + [self.words hash];
-  result = prime * result + [self.slides hash];
-  result = prime * result + [self.revisionNumber hash];
+    result = prime * result + [self.fileType hash];
+    result = prime * result + [self.creator hash];
+    result = prime * result + [self.company hash];
+    result = prime * result + [self.title hash];
+    result = prime * result + [self.subject hash];
+    result = prime * result + [self.keywords hash];
+    result = prime * result + [self.description_ hash];
+    result = prime * result + [self.totalEditTimeMinutes hash];
+    result = prime * result + [self.pages hash];
+    result = prime * result + [self.words hash];
+    result = prime * result + [self.slides hash];
+    result = prime * result + [self.revisionNumber hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiOfficeMetadata:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiOfficeMetadata:other];
 }
 
 - (BOOL)isEqualToApiOfficeMetadata:(DBRIVIERAApiOfficeMetadata *)anApiOfficeMetadata {
-  if (self == anApiOfficeMetadata) {
+    if (self == anApiOfficeMetadata) {
+        return YES;
+    }
+    if (![self.fileType isEqual:anApiOfficeMetadata.fileType]) {
+        return NO;
+    }
+    if (![self.creator isEqual:anApiOfficeMetadata.creator]) {
+        return NO;
+    }
+    if (![self.company isEqual:anApiOfficeMetadata.company]) {
+        return NO;
+    }
+    if (![self.title isEqual:anApiOfficeMetadata.title]) {
+        return NO;
+    }
+    if (![self.subject isEqual:anApiOfficeMetadata.subject]) {
+        return NO;
+    }
+    if (![self.keywords isEqual:anApiOfficeMetadata.keywords]) {
+        return NO;
+    }
+    if (![self.description_ isEqual:anApiOfficeMetadata.description_]) {
+        return NO;
+    }
+    if (![self.totalEditTimeMinutes isEqual:anApiOfficeMetadata.totalEditTimeMinutes]) {
+        return NO;
+    }
+    if (![self.pages isEqual:anApiOfficeMetadata.pages]) {
+        return NO;
+    }
+    if (![self.words isEqual:anApiOfficeMetadata.words]) {
+        return NO;
+    }
+    if (![self.slides isEqual:anApiOfficeMetadata.slides]) {
+        return NO;
+    }
+    if (![self.revisionNumber isEqual:anApiOfficeMetadata.revisionNumber]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.fileType isEqual:anApiOfficeMetadata.fileType]) {
-    return NO;
-  }
-  if (![self.creator isEqual:anApiOfficeMetadata.creator]) {
-    return NO;
-  }
-  if (![self.company isEqual:anApiOfficeMetadata.company]) {
-    return NO;
-  }
-  if (![self.title isEqual:anApiOfficeMetadata.title]) {
-    return NO;
-  }
-  if (![self.subject isEqual:anApiOfficeMetadata.subject]) {
-    return NO;
-  }
-  if (![self.keywords isEqual:anApiOfficeMetadata.keywords]) {
-    return NO;
-  }
-  if (![self.description_ isEqual:anApiOfficeMetadata.description_]) {
-    return NO;
-  }
-  if (![self.totalEditTimeMinutes isEqual:anApiOfficeMetadata.totalEditTimeMinutes]) {
-    return NO;
-  }
-  if (![self.pages isEqual:anApiOfficeMetadata.pages]) {
-    return NO;
-  }
-  if (![self.words isEqual:anApiOfficeMetadata.words]) {
-    return NO;
-  }
-  if (![self.slides isEqual:anApiOfficeMetadata.slides]) {
-    return NO;
-  }
-  if (![self.revisionNumber isEqual:anApiOfficeMetadata.revisionNumber]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiOfficeMetadataSerializer
+@implementation DBRIVIERAApiOfficeMetadataSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiOfficeMetadata *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"file_type"] = [DBRIVIERAOfficeFileTypeSerializer serialize:valueObj.fileType];
-  jsonDict[@"creator"] = valueObj.creator;
-  jsonDict[@"company"] = valueObj.company;
-  jsonDict[@"title"] = valueObj.title;
-  jsonDict[@"subject"] = valueObj.subject;
-  jsonDict[@"keywords"] = valueObj.keywords;
-  jsonDict[@"description"] = valueObj.description_;
-  jsonDict[@"total_edit_time_minutes"] = valueObj.totalEditTimeMinutes;
-  jsonDict[@"pages"] = valueObj.pages;
-  jsonDict[@"words"] = valueObj.words;
-  jsonDict[@"slides"] = valueObj.slides;
-  jsonDict[@"revision_number"] = valueObj.revisionNumber;
+    jsonDict[@"file_type"] = [DBRIVIERAOfficeFileTypeSerializer serialize:valueObj.fileType];
+    jsonDict[@"creator"] = valueObj.creator;
+    jsonDict[@"company"] = valueObj.company;
+    jsonDict[@"title"] = valueObj.title;
+    jsonDict[@"subject"] = valueObj.subject;
+    jsonDict[@"keywords"] = valueObj.keywords;
+    jsonDict[@"description"] = valueObj.description_;
+    jsonDict[@"total_edit_time_minutes"] = valueObj.totalEditTimeMinutes;
+    jsonDict[@"pages"] = valueObj.pages;
+    jsonDict[@"words"] = valueObj.words;
+    jsonDict[@"slides"] = valueObj.slides;
+    jsonDict[@"revision_number"] = valueObj.revisionNumber;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiOfficeMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAOfficeFileType *fileType = valueDict[@"file_type"]
-                                          ? [DBRIVIERAOfficeFileTypeSerializer deserialize:valueDict[@"file_type"]]
-                                          : [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeUnknown];
-  NSString *creator = valueDict[@"creator"] ?: @"";
-  NSString *company = valueDict[@"company"] ?: @"";
-  NSString *title = valueDict[@"title"] ?: @"";
-  NSString *subject = valueDict[@"subject"] ?: @"";
-  NSString *keywords = valueDict[@"keywords"] ?: @"";
-  NSString *description_ = valueDict[@"description"] ?: @"";
-  NSNumber *totalEditTimeMinutes = valueDict[@"total_edit_time_minutes"] ?: @(0);
-  NSNumber *pages = valueDict[@"pages"] ?: @(0);
-  NSNumber *words = valueDict[@"words"] ?: @(0);
-  NSNumber *slides = valueDict[@"slides"] ?: @(0);
-  NSString *revisionNumber = valueDict[@"revision_number"] ?: @"";
+    DBRIVIERAOfficeFileType *fileType = valueDict[@"file_type"] ? [DBRIVIERAOfficeFileTypeSerializer deserialize:valueDict[@"file_type"]] : [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeUnknown];
+    NSString *creator = valueDict[@"creator"] ?: @"";
+    NSString *company = valueDict[@"company"] ?: @"";
+    NSString *title = valueDict[@"title"] ?: @"";
+    NSString *subject = valueDict[@"subject"] ?: @"";
+    NSString *keywords = valueDict[@"keywords"] ?: @"";
+    NSString *description_ = valueDict[@"description"] ?: @"";
+    NSNumber *totalEditTimeMinutes = valueDict[@"total_edit_time_minutes"] ?: @(0);
+    NSNumber *pages = valueDict[@"pages"] ?: @(0);
+    NSNumber *words = valueDict[@"words"] ?: @(0);
+    NSNumber *slides = valueDict[@"slides"] ?: @(0);
+    NSString *revisionNumber = valueDict[@"revision_number"] ?: @"";
 
-  return [[DBRIVIERAApiOfficeMetadata alloc] initWithFileType:fileType
-                                                      creator:creator
-                                                      company:company
-                                                        title:title
-                                                      subject:subject
-                                                     keywords:keywords
-                                                 description_:description_
-                                         totalEditTimeMinutes:totalEditTimeMinutes
-                                                        pages:pages
-                                                        words:words
-                                                       slides:slides
-                                               revisionNumber:revisionNumber];
+    return [[DBRIVIERAApiOfficeMetadata alloc] initWithFileType:fileType creator:creator company:company title:title subject:subject keywords:keywords description_:description_ totalEditTimeMinutes:totalEditTimeMinutes pages:pages words:words slides:slides revisionNumber:revisionNumber];
 }
 
 @end
@@ -1005,112 +865,113 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiPdfMetadata
+@implementation DBRIVIERAApiPdfMetadata 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithPages:(NSNumber *)pages width:(NSNumber *)width height:(NSNumber *)height {
 
-  self = [super init];
-  if (self) {
-    _pages = pages ?: @(0);
-    _width = width ?: @(0);
-    _height = height ?: @(0);
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _pages = pages ?: @(0);
+        _width = width ?: @(0);
+        _height = height ?: @(0);
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithPages:nil width:nil height:nil];
+    return [self initWithPages:nil width:nil height:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiPdfMetadataSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiPdfMetadataSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiPdfMetadataSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiPdfMetadataSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiPdfMetadataSerializer serialize:self] description];
+    return [[DBRIVIERAApiPdfMetadataSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.pages hash];
-  result = prime * result + [self.width hash];
-  result = prime * result + [self.height hash];
+    result = prime * result + [self.pages hash];
+    result = prime * result + [self.width hash];
+    result = prime * result + [self.height hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiPdfMetadata:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiPdfMetadata:other];
 }
 
 - (BOOL)isEqualToApiPdfMetadata:(DBRIVIERAApiPdfMetadata *)anApiPdfMetadata {
-  if (self == anApiPdfMetadata) {
+    if (self == anApiPdfMetadata) {
+        return YES;
+    }
+    if (![self.pages isEqual:anApiPdfMetadata.pages]) {
+        return NO;
+    }
+    if (![self.width isEqual:anApiPdfMetadata.width]) {
+        return NO;
+    }
+    if (![self.height isEqual:anApiPdfMetadata.height]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.pages isEqual:anApiPdfMetadata.pages]) {
-    return NO;
-  }
-  if (![self.width isEqual:anApiPdfMetadata.width]) {
-    return NO;
-  }
-  if (![self.height isEqual:anApiPdfMetadata.height]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiPdfMetadataSerializer
+@implementation DBRIVIERAApiPdfMetadataSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiPdfMetadata *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"pages"] = valueObj.pages;
-  jsonDict[@"width"] = valueObj.width;
-  jsonDict[@"height"] = valueObj.height;
+    jsonDict[@"pages"] = valueObj.pages;
+    jsonDict[@"width"] = valueObj.width;
+    jsonDict[@"height"] = valueObj.height;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiPdfMetadata *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSNumber *pages = valueDict[@"pages"] ?: @(0);
-  NSNumber *width = valueDict[@"width"] ?: @(0);
-  NSNumber *height = valueDict[@"height"] ?: @(0);
+    NSNumber *pages = valueDict[@"pages"] ?: @(0);
+    NSNumber *width = valueDict[@"width"] ?: @(0);
+    NSNumber *height = valueDict[@"height"] ?: @(0);
 
-  return [[DBRIVIERAApiPdfMetadata alloc] initWithPages:pages width:width height:height];
+    return [[DBRIVIERAApiPdfMetadata alloc] initWithPages:pages width:width height:height];
 }
 
 @end
@@ -1122,125 +983,113 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiStructuredTranscript
+@implementation DBRIVIERAApiStructuredTranscript 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithSegments:(NSArray<DBRIVIERAApiTranscriptSegment *> *)segments
-                transcriptLocale:(NSString *)transcriptLocale {
-  [DBStoneValidators
-   nullableValidator:[DBStoneValidators arrayValidator:nil
-                                              maxItems:nil
-                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](segments);
+- (instancetype)initWithSegments:(NSArray<DBRIVIERAApiTranscriptSegment *> *)segments transcriptLocale:(NSString *)transcriptLocale {
+    [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBStoneValidators nonnullValidator:nil]]](segments);
 
-  self = [super init];
-  if (self) {
-    _segments = segments;
-    _transcriptLocale = transcriptLocale ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _segments = segments;
+        _transcriptLocale = transcriptLocale ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithSegments:nil transcriptLocale:nil];
+    return [self initWithSegments:nil transcriptLocale:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiStructuredTranscriptSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiStructuredTranscriptSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiStructuredTranscriptSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiStructuredTranscriptSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiStructuredTranscriptSerializer serialize:self] description];
+    return [[DBRIVIERAApiStructuredTranscriptSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  if (self.segments != nil) {
-    result = prime * result + [self.segments hash];
-  }
-  result = prime * result + [self.transcriptLocale hash];
+    if (self.segments != nil) {
+        result = prime * result + [self.segments hash];
+    }
+    result = prime * result + [self.transcriptLocale hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiStructuredTranscript:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiStructuredTranscript:other];
 }
 
 - (BOOL)isEqualToApiStructuredTranscript:(DBRIVIERAApiStructuredTranscript *)anApiStructuredTranscript {
-  if (self == anApiStructuredTranscript) {
-    return YES;
-  }
-  if (self.segments) {
-    if (![self.segments isEqual:anApiStructuredTranscript.segments]) {
-      return NO;
+    if (self == anApiStructuredTranscript) {
+        return YES;
     }
-  }
-  if (![self.transcriptLocale isEqual:anApiStructuredTranscript.transcriptLocale]) {
-    return NO;
-  }
-  return YES;
+    if (self.segments) {
+        if (![self.segments isEqual:anApiStructuredTranscript.segments]) {
+            return NO;
+        }
+    }
+    if (![self.transcriptLocale isEqual:anApiStructuredTranscript.transcriptLocale]) {
+        return NO;
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiStructuredTranscriptSerializer
+@implementation DBRIVIERAApiStructuredTranscriptSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiStructuredTranscript *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.segments) {
-    jsonDict[@"segments"] = [DBArraySerializer serialize:valueObj.segments
-                                               withBlock:^id(id elem0) {
-                                                 return [DBRIVIERAApiTranscriptSegmentSerializer serialize:elem0];
-                                               }];
-  }
-  jsonDict[@"transcript_locale"] = valueObj.transcriptLocale;
+    if (valueObj.segments) {
+        jsonDict[@"segments"] = [DBArraySerializer serialize:valueObj.segments withBlock:^id(id elem0) { return [DBRIVIERAApiTranscriptSegmentSerializer serialize:elem0]; }];
+    }
+    jsonDict[@"transcript_locale"] = valueObj.transcriptLocale;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiStructuredTranscript *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSArray<DBRIVIERAApiTranscriptSegment *> *segments =
-      valueDict[@"segments"]
-          ? [DBArraySerializer deserialize:valueDict[@"segments"]
-                                 withBlock:^id(id elem0) {
-                                   return [DBRIVIERAApiTranscriptSegmentSerializer deserialize:elem0];
-                                 }]
-          : nil;
-  NSString *transcriptLocale = valueDict[@"transcript_locale"] ?: @"";
+    NSArray<DBRIVIERAApiTranscriptSegment *> *segments = valueDict[@"segments"] ? [DBArraySerializer deserialize:valueDict[@"segments"] withBlock:^id(id elem0) { return [DBRIVIERAApiTranscriptSegmentSerializer deserialize:elem0]; }] : nil;
+    NSString *transcriptLocale = valueDict[@"transcript_locale"] ?: @"";
 
-  return [[DBRIVIERAApiStructuredTranscript alloc] initWithSegments:segments transcriptLocale:transcriptLocale];
+    return [[DBRIVIERAApiStructuredTranscript alloc] initWithSegments:segments transcriptLocale:transcriptLocale];
 }
 
 @end
@@ -1251,112 +1100,113 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAApiTranscriptSegment
+@implementation DBRIVIERAApiTranscriptSegment 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithText:(NSString *)text startTime:(NSNumber *)startTime endTime:(NSNumber *)endTime {
 
-  self = [super init];
-  if (self) {
-    _text = text ?: @"";
-    _startTime = startTime ?: @(0.0);
-    _endTime = endTime ?: @(0.0);
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _text = text ?: @"";
+        _startTime = startTime ?: @(0.0);
+        _endTime = endTime ?: @(0.0);
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithText:nil startTime:nil endTime:nil];
+    return [self initWithText:nil startTime:nil endTime:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAApiTranscriptSegmentSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAApiTranscriptSegmentSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAApiTranscriptSegmentSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAApiTranscriptSegmentSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAApiTranscriptSegmentSerializer serialize:self] description];
+    return [[DBRIVIERAApiTranscriptSegmentSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.text hash];
-  result = prime * result + [self.startTime hash];
-  result = prime * result + [self.endTime hash];
+    result = prime * result + [self.text hash];
+    result = prime * result + [self.startTime hash];
+    result = prime * result + [self.endTime hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToApiTranscriptSegment:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToApiTranscriptSegment:other];
 }
 
 - (BOOL)isEqualToApiTranscriptSegment:(DBRIVIERAApiTranscriptSegment *)anApiTranscriptSegment {
-  if (self == anApiTranscriptSegment) {
+    if (self == anApiTranscriptSegment) {
+        return YES;
+    }
+    if (![self.text isEqual:anApiTranscriptSegment.text]) {
+        return NO;
+    }
+    if (![self.startTime isEqual:anApiTranscriptSegment.startTime]) {
+        return NO;
+    }
+    if (![self.endTime isEqual:anApiTranscriptSegment.endTime]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.text isEqual:anApiTranscriptSegment.text]) {
-    return NO;
-  }
-  if (![self.startTime isEqual:anApiTranscriptSegment.startTime]) {
-    return NO;
-  }
-  if (![self.endTime isEqual:anApiTranscriptSegment.endTime]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAApiTranscriptSegmentSerializer
+@implementation DBRIVIERAApiTranscriptSegmentSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiTranscriptSegment *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"text"] = valueObj.text;
-  jsonDict[@"start_time"] = valueObj.startTime;
-  jsonDict[@"end_time"] = valueObj.endTime;
+    jsonDict[@"text"] = valueObj.text;
+    jsonDict[@"start_time"] = valueObj.startTime;
+    jsonDict[@"end_time"] = valueObj.endTime;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAApiTranscriptSegment *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *text = valueDict[@"text"] ?: @"";
-  NSNumber *startTime = valueDict[@"start_time"] ?: @(0.0);
-  NSNumber *endTime = valueDict[@"end_time"] ?: @(0.0);
+    NSString *text = valueDict[@"text"] ?: @"";
+    NSNumber *startTime = valueDict[@"start_time"] ?: @(0.0);
+    NSNumber *endTime = valueDict[@"end_time"] ?: @(0.0);
 
-  return [[DBRIVIERAApiTranscriptSegment alloc] initWithText:text startTime:startTime endTime:endTime];
+    return [[DBRIVIERAApiTranscriptSegment alloc] initWithText:text startTime:startTime endTime:endTime];
 }
 
 @end
@@ -1368,7 +1218,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAContentApiV2Error
+@implementation DBRIVIERAContentApiV2Error 
 
 @synthesize serverError = _serverError;
 @synthesize userError = _userError;
@@ -1377,362 +1227,379 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithServerError:(NSString *)serverError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorServerError;
-    _serverError = serverError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorServerError;
+        _serverError = serverError;
+    }
+    return self;
 }
 
 - (instancetype)initWithUserError:(NSString *)userError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorUserError;
-    _userError = userError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorUserError;
+        _userError = userError;
+    }
+    return self;
 }
 
 - (instancetype)initWithMediaDurationError:(DBRIVIERAMediaDurationError *)mediaDurationError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorMediaDurationError;
-    _mediaDurationError = mediaDurationError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorMediaDurationError;
+        _mediaDurationError = mediaDurationError;
+    }
+    return self;
 }
 
 - (instancetype)initWithNoAudioError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorNoAudioError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorNoAudioError;
+    }
+    return self;
 }
 
 - (instancetype)initWithLinkDownloadDisabledError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError;
+    }
+    return self;
 }
 
 - (instancetype)initWithSharedLinkPasswordProtected {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected;
+    }
+    return self;
 }
 
 - (instancetype)initWithLimitExceededError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorLimitExceededError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorLimitExceededError;
+    }
+    return self;
 }
 
 - (instancetype)initWithNotFoundError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorNotFoundError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorNotFoundError;
+    }
+    return self;
 }
 
 - (instancetype)initWithIsAFolderError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorIsAFolderError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorIsAFolderError;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAContentApiV2ErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAContentApiV2ErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (NSString *)serverError {
-  if (![self isServerError]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAContentApiV2ErrorServerError, but was %@.", [self tagName]];
-  }
-  return _serverError;
+    if (![self isServerError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAContentApiV2ErrorServerError, but was %@.", [self tagName]];
+    }
+    return _serverError;
 }
 
 - (NSString *)userError {
-  if (![self isUserError]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAContentApiV2ErrorUserError, but was %@.", [self tagName]];
-  }
-  return _userError;
+    if (![self isUserError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAContentApiV2ErrorUserError, but was %@.", [self tagName]];
+    }
+    return _userError;
 }
 
 - (DBRIVIERAMediaDurationError *)mediaDurationError {
-  if (![self isMediaDurationError]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAContentApiV2ErrorMediaDurationError, but was %@.", [self tagName]];
-  }
-  return _mediaDurationError;
+    if (![self isMediaDurationError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAContentApiV2ErrorMediaDurationError, but was %@.", [self tagName]];
+    }
+    return _mediaDurationError;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isServerError {
-  return _tag == DBRIVIERAContentApiV2ErrorServerError;
+    return _tag == DBRIVIERAContentApiV2ErrorServerError;
 }
 
 - (BOOL)isUserError {
-  return _tag == DBRIVIERAContentApiV2ErrorUserError;
+    return _tag == DBRIVIERAContentApiV2ErrorUserError;
 }
 
 - (BOOL)isMediaDurationError {
-  return _tag == DBRIVIERAContentApiV2ErrorMediaDurationError;
+    return _tag == DBRIVIERAContentApiV2ErrorMediaDurationError;
 }
 
 - (BOOL)isNoAudioError {
-  return _tag == DBRIVIERAContentApiV2ErrorNoAudioError;
+    return _tag == DBRIVIERAContentApiV2ErrorNoAudioError;
 }
 
 - (BOOL)isLinkDownloadDisabledError {
-  return _tag == DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError;
+    return _tag == DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError;
 }
 
 - (BOOL)isSharedLinkPasswordProtected {
-  return _tag == DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected;
+    return _tag == DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected;
 }
 
 - (BOOL)isLimitExceededError {
-  return _tag == DBRIVIERAContentApiV2ErrorLimitExceededError;
+    return _tag == DBRIVIERAContentApiV2ErrorLimitExceededError;
 }
 
 - (BOOL)isNotFoundError {
-  return _tag == DBRIVIERAContentApiV2ErrorNotFoundError;
+    return _tag == DBRIVIERAContentApiV2ErrorNotFoundError;
 }
 
 - (BOOL)isIsAFolderError {
-  return _tag == DBRIVIERAContentApiV2ErrorIsAFolderError;
+    return _tag == DBRIVIERAContentApiV2ErrorIsAFolderError;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAContentApiV2ErrorOther;
+    return _tag == DBRIVIERAContentApiV2ErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAContentApiV2ErrorServerError:
-    return @"DBRIVIERAContentApiV2ErrorServerError";
-  case DBRIVIERAContentApiV2ErrorUserError:
-    return @"DBRIVIERAContentApiV2ErrorUserError";
-  case DBRIVIERAContentApiV2ErrorMediaDurationError:
-    return @"DBRIVIERAContentApiV2ErrorMediaDurationError";
-  case DBRIVIERAContentApiV2ErrorNoAudioError:
-    return @"DBRIVIERAContentApiV2ErrorNoAudioError";
-  case DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError:
-    return @"DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError";
-  case DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected:
-    return @"DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected";
-  case DBRIVIERAContentApiV2ErrorLimitExceededError:
-    return @"DBRIVIERAContentApiV2ErrorLimitExceededError";
-  case DBRIVIERAContentApiV2ErrorNotFoundError:
-    return @"DBRIVIERAContentApiV2ErrorNotFoundError";
-  case DBRIVIERAContentApiV2ErrorIsAFolderError:
-    return @"DBRIVIERAContentApiV2ErrorIsAFolderError";
-  case DBRIVIERAContentApiV2ErrorOther:
-    return @"DBRIVIERAContentApiV2ErrorOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAContentApiV2ErrorServerError:
+           return @"DBRIVIERAContentApiV2ErrorServerError";
+        case DBRIVIERAContentApiV2ErrorUserError:
+           return @"DBRIVIERAContentApiV2ErrorUserError";
+        case DBRIVIERAContentApiV2ErrorMediaDurationError:
+           return @"DBRIVIERAContentApiV2ErrorMediaDurationError";
+        case DBRIVIERAContentApiV2ErrorNoAudioError:
+           return @"DBRIVIERAContentApiV2ErrorNoAudioError";
+        case DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError:
+           return @"DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError";
+        case DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected:
+           return @"DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected";
+        case DBRIVIERAContentApiV2ErrorLimitExceededError:
+           return @"DBRIVIERAContentApiV2ErrorLimitExceededError";
+        case DBRIVIERAContentApiV2ErrorNotFoundError:
+           return @"DBRIVIERAContentApiV2ErrorNotFoundError";
+        case DBRIVIERAContentApiV2ErrorIsAFolderError:
+           return @"DBRIVIERAContentApiV2ErrorIsAFolderError";
+        case DBRIVIERAContentApiV2ErrorOther:
+           return @"DBRIVIERAContentApiV2ErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAContentApiV2ErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAContentApiV2ErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAContentApiV2ErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAContentApiV2ErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAContentApiV2ErrorSerializer serialize:self] description];
+    return [[DBRIVIERAContentApiV2ErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAContentApiV2ErrorServerError:
-    result = prime * result + [self.serverError hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorUserError:
-    result = prime * result + [self.userError hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorMediaDurationError:
-    result = prime * result + [self.mediaDurationError hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorNoAudioError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorLimitExceededError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorNotFoundError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorIsAFolderError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAContentApiV2ErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAContentApiV2ErrorServerError:
+        result = prime * result + [self.serverError hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorUserError:
+        result = prime * result + [self.userError hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorMediaDurationError:
+        result = prime * result + [self.mediaDurationError hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorNoAudioError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorLimitExceededError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorNotFoundError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorIsAFolderError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAContentApiV2ErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToContentApiV2Error:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToContentApiV2Error:other];
 }
 
 - (BOOL)isEqualToContentApiV2Error:(DBRIVIERAContentApiV2Error *)aContentApiV2Error {
-  if (self == aContentApiV2Error) {
+    if (self == aContentApiV2Error) {
+        return YES;
+    }
+    if (self.tag != aContentApiV2Error.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAContentApiV2ErrorServerError:
+        return [self.serverError isEqual:aContentApiV2Error.serverError];
+        case DBRIVIERAContentApiV2ErrorUserError:
+        return [self.userError isEqual:aContentApiV2Error.userError];
+        case DBRIVIERAContentApiV2ErrorMediaDurationError:
+        return [self.mediaDurationError isEqual:aContentApiV2Error.mediaDurationError];
+        case DBRIVIERAContentApiV2ErrorNoAudioError:
+        return [[self tagName] isEqual:[aContentApiV2Error tagName]];
+        case DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError:
+        return [[self tagName] isEqual:[aContentApiV2Error tagName]];
+        case DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected:
+        return [[self tagName] isEqual:[aContentApiV2Error tagName]];
+        case DBRIVIERAContentApiV2ErrorLimitExceededError:
+        return [[self tagName] isEqual:[aContentApiV2Error tagName]];
+        case DBRIVIERAContentApiV2ErrorNotFoundError:
+        return [[self tagName] isEqual:[aContentApiV2Error tagName]];
+        case DBRIVIERAContentApiV2ErrorIsAFolderError:
+        return [[self tagName] isEqual:[aContentApiV2Error tagName]];
+        case DBRIVIERAContentApiV2ErrorOther:
+        return [[self tagName] isEqual:[aContentApiV2Error tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aContentApiV2Error.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAContentApiV2ErrorServerError:
-    return [self.serverError isEqual:aContentApiV2Error.serverError];
-  case DBRIVIERAContentApiV2ErrorUserError:
-    return [self.userError isEqual:aContentApiV2Error.userError];
-  case DBRIVIERAContentApiV2ErrorMediaDurationError:
-    return [self.mediaDurationError isEqual:aContentApiV2Error.mediaDurationError];
-  case DBRIVIERAContentApiV2ErrorNoAudioError:
-    return [[self tagName] isEqual:[aContentApiV2Error tagName]];
-  case DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError:
-    return [[self tagName] isEqual:[aContentApiV2Error tagName]];
-  case DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected:
-    return [[self tagName] isEqual:[aContentApiV2Error tagName]];
-  case DBRIVIERAContentApiV2ErrorLimitExceededError:
-    return [[self tagName] isEqual:[aContentApiV2Error tagName]];
-  case DBRIVIERAContentApiV2ErrorNotFoundError:
-    return [[self tagName] isEqual:[aContentApiV2Error tagName]];
-  case DBRIVIERAContentApiV2ErrorIsAFolderError:
-    return [[self tagName] isEqual:[aContentApiV2Error tagName]];
-  case DBRIVIERAContentApiV2ErrorOther:
-    return [[self tagName] isEqual:[aContentApiV2Error tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAContentApiV2ErrorSerializer
+@implementation DBRIVIERAContentApiV2ErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAContentApiV2Error *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isServerError]) {
-    jsonDict[@"server_error"] = valueObj.serverError;
-    jsonDict[@".tag"] = @"server_error";
-  } else if ([valueObj isUserError]) {
-    jsonDict[@"user_error"] = valueObj.userError;
-    jsonDict[@".tag"] = @"user_error";
-  } else if ([valueObj isMediaDurationError]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAMediaDurationErrorSerializer serialize:valueObj.mediaDurationError]];
-    jsonDict[@".tag"] = @"media_duration_error";
-  } else if ([valueObj isNoAudioError]) {
-    jsonDict[@".tag"] = @"no_audio_error";
-  } else if ([valueObj isLinkDownloadDisabledError]) {
-    jsonDict[@".tag"] = @"link_download_disabled_error";
-  } else if ([valueObj isSharedLinkPasswordProtected]) {
-    jsonDict[@".tag"] = @"shared_link_password_protected";
-  } else if ([valueObj isLimitExceededError]) {
-    jsonDict[@".tag"] = @"limit_exceeded_error";
-  } else if ([valueObj isNotFoundError]) {
-    jsonDict[@".tag"] = @"not_found_error";
-  } else if ([valueObj isIsAFolderError]) {
-    jsonDict[@".tag"] = @"is_a_folder_error";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isServerError]) {
+        jsonDict[@"server_error"] = valueObj.serverError;
+        jsonDict[@".tag"] = @"server_error";
+    }
+    else if ([valueObj isUserError]) {
+        jsonDict[@"user_error"] = valueObj.userError;
+        jsonDict[@".tag"] = @"user_error";
+    }
+    else if ([valueObj isMediaDurationError]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAMediaDurationErrorSerializer serialize:valueObj.mediaDurationError]];
+        jsonDict[@".tag"] = @"media_duration_error";
+    }
+    else if ([valueObj isNoAudioError]) {
+        jsonDict[@".tag"] = @"no_audio_error";
+    }
+    else if ([valueObj isLinkDownloadDisabledError]) {
+        jsonDict[@".tag"] = @"link_download_disabled_error";
+    }
+    else if ([valueObj isSharedLinkPasswordProtected]) {
+        jsonDict[@".tag"] = @"shared_link_password_protected";
+    }
+    else if ([valueObj isLimitExceededError]) {
+        jsonDict[@".tag"] = @"limit_exceeded_error";
+    }
+    else if ([valueObj isNotFoundError]) {
+        jsonDict[@".tag"] = @"not_found_error";
+    }
+    else if ([valueObj isIsAFolderError]) {
+        jsonDict[@".tag"] = @"is_a_folder_error";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAContentApiV2Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"server_error"]) {
-    NSString *serverError = valueDict[@"server_error"];
-    return [[DBRIVIERAContentApiV2Error alloc] initWithServerError:serverError];
-  } else if ([tag isEqualToString:@"user_error"]) {
-    NSString *userError = valueDict[@"user_error"];
-    return [[DBRIVIERAContentApiV2Error alloc] initWithUserError:userError];
-  } else if ([tag isEqualToString:@"media_duration_error"]) {
-    DBRIVIERAMediaDurationError *mediaDurationError = [DBRIVIERAMediaDurationErrorSerializer deserialize:valueDict];
-    return [[DBRIVIERAContentApiV2Error alloc] initWithMediaDurationError:mediaDurationError];
-  } else if ([tag isEqualToString:@"no_audio_error"]) {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithNoAudioError];
-  } else if ([tag isEqualToString:@"link_download_disabled_error"]) {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithLinkDownloadDisabledError];
-  } else if ([tag isEqualToString:@"shared_link_password_protected"]) {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithSharedLinkPasswordProtected];
-  } else if ([tag isEqualToString:@"limit_exceeded_error"]) {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithLimitExceededError];
-  } else if ([tag isEqualToString:@"not_found_error"]) {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithNotFoundError];
-  } else if ([tag isEqualToString:@"is_a_folder_error"]) {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithIsAFolderError];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAContentApiV2Error alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"server_error"]) {
+        NSString *serverError = valueDict[@"server_error"];
+        return [[DBRIVIERAContentApiV2Error alloc] initWithServerError:serverError];
+    }
+    else if ([tag isEqualToString:@"user_error"]) {
+        NSString *userError = valueDict[@"user_error"];
+        return [[DBRIVIERAContentApiV2Error alloc] initWithUserError:userError];
+    }
+    else if ([tag isEqualToString:@"media_duration_error"]) {
+        DBRIVIERAMediaDurationError *mediaDurationError = [DBRIVIERAMediaDurationErrorSerializer deserialize:valueDict];
+        return [[DBRIVIERAContentApiV2Error alloc] initWithMediaDurationError:mediaDurationError];
+    }
+    else if ([tag isEqualToString:@"no_audio_error"]) {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithNoAudioError];
+    }
+    else if ([tag isEqualToString:@"link_download_disabled_error"]) {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithLinkDownloadDisabledError];
+    }
+    else if ([tag isEqualToString:@"shared_link_password_protected"]) {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithSharedLinkPasswordProtected];
+    }
+    else if ([tag isEqualToString:@"limit_exceeded_error"]) {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithLimitExceededError];
+    }
+    else if ([tag isEqualToString:@"not_found_error"]) {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithNotFoundError];
+    }
+    else if ([tag isEqualToString:@"is_a_folder_error"]) {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithIsAFolderError];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAContentApiV2Error alloc] initWithOther];
+    }
 }
 
 @end
@@ -1743,64 +1610,64 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAErrorCode
+@implementation DBRIVIERAErrorCode 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithUnknownError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeUnknownError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAErrorCodeUnknownError;
+    }
+    return self;
 }
 
 - (instancetype)initWithBadRequest {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeBadRequest;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAErrorCodeBadRequest;
+    }
+    return self;
 }
 
 - (instancetype)initWithApiError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeApiError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAErrorCodeApiError;
+    }
+    return self;
 }
 
 - (instancetype)initWithAccessError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeAccessError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAErrorCodeAccessError;
+    }
+    return self;
 }
 
 - (instancetype)initWithRatelimitError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeRatelimitError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAErrorCodeRatelimitError;
+    }
+    return self;
 }
 
 - (instancetype)initWithUnavailable {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeUnavailable;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAErrorCodeUnavailable;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAErrorCodeOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -1808,199 +1675,214 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isUnknownError {
-  return _tag == DBRIVIERAErrorCodeUnknownError;
+    return _tag == DBRIVIERAErrorCodeUnknownError;
 }
 
 - (BOOL)isBadRequest {
-  return _tag == DBRIVIERAErrorCodeBadRequest;
+    return _tag == DBRIVIERAErrorCodeBadRequest;
 }
 
 - (BOOL)isApiError {
-  return _tag == DBRIVIERAErrorCodeApiError;
+    return _tag == DBRIVIERAErrorCodeApiError;
 }
 
 - (BOOL)isAccessError {
-  return _tag == DBRIVIERAErrorCodeAccessError;
+    return _tag == DBRIVIERAErrorCodeAccessError;
 }
 
 - (BOOL)isRatelimitError {
-  return _tag == DBRIVIERAErrorCodeRatelimitError;
+    return _tag == DBRIVIERAErrorCodeRatelimitError;
 }
 
 - (BOOL)isUnavailable {
-  return _tag == DBRIVIERAErrorCodeUnavailable;
+    return _tag == DBRIVIERAErrorCodeUnavailable;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAErrorCodeOther;
+    return _tag == DBRIVIERAErrorCodeOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAErrorCodeUnknownError:
-    return @"DBRIVIERAErrorCodeUnknownError";
-  case DBRIVIERAErrorCodeBadRequest:
-    return @"DBRIVIERAErrorCodeBadRequest";
-  case DBRIVIERAErrorCodeApiError:
-    return @"DBRIVIERAErrorCodeApiError";
-  case DBRIVIERAErrorCodeAccessError:
-    return @"DBRIVIERAErrorCodeAccessError";
-  case DBRIVIERAErrorCodeRatelimitError:
-    return @"DBRIVIERAErrorCodeRatelimitError";
-  case DBRIVIERAErrorCodeUnavailable:
-    return @"DBRIVIERAErrorCodeUnavailable";
-  case DBRIVIERAErrorCodeOther:
-    return @"DBRIVIERAErrorCodeOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAErrorCodeUnknownError:
+           return @"DBRIVIERAErrorCodeUnknownError";
+        case DBRIVIERAErrorCodeBadRequest:
+           return @"DBRIVIERAErrorCodeBadRequest";
+        case DBRIVIERAErrorCodeApiError:
+           return @"DBRIVIERAErrorCodeApiError";
+        case DBRIVIERAErrorCodeAccessError:
+           return @"DBRIVIERAErrorCodeAccessError";
+        case DBRIVIERAErrorCodeRatelimitError:
+           return @"DBRIVIERAErrorCodeRatelimitError";
+        case DBRIVIERAErrorCodeUnavailable:
+           return @"DBRIVIERAErrorCodeUnavailable";
+        case DBRIVIERAErrorCodeOther:
+           return @"DBRIVIERAErrorCodeOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAErrorCodeSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAErrorCodeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAErrorCodeSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAErrorCodeSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAErrorCodeSerializer serialize:self] description];
+    return [[DBRIVIERAErrorCodeSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAErrorCodeUnknownError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeBadRequest:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeApiError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeAccessError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeRatelimitError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeUnavailable:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAErrorCodeUnknownError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAErrorCodeBadRequest:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAErrorCodeApiError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAErrorCodeAccessError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAErrorCodeRatelimitError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAErrorCodeUnavailable:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAErrorCodeOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToErrorCode:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToErrorCode:other];
 }
 
 - (BOOL)isEqualToErrorCode:(DBRIVIERAErrorCode *)anErrorCode {
-  if (self == anErrorCode) {
+    if (self == anErrorCode) {
+        return YES;
+    }
+    if (self.tag != anErrorCode.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAErrorCodeUnknownError:
+        return [[self tagName] isEqual:[anErrorCode tagName]];
+        case DBRIVIERAErrorCodeBadRequest:
+        return [[self tagName] isEqual:[anErrorCode tagName]];
+        case DBRIVIERAErrorCodeApiError:
+        return [[self tagName] isEqual:[anErrorCode tagName]];
+        case DBRIVIERAErrorCodeAccessError:
+        return [[self tagName] isEqual:[anErrorCode tagName]];
+        case DBRIVIERAErrorCodeRatelimitError:
+        return [[self tagName] isEqual:[anErrorCode tagName]];
+        case DBRIVIERAErrorCodeUnavailable:
+        return [[self tagName] isEqual:[anErrorCode tagName]];
+        case DBRIVIERAErrorCodeOther:
+        return [[self tagName] isEqual:[anErrorCode tagName]];
+    }
     return YES;
-  }
-  if (self.tag != anErrorCode.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAErrorCodeUnknownError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeBadRequest:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeApiError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeAccessError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeRatelimitError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeUnavailable:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeOther:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAErrorCodeSerializer
+@implementation DBRIVIERAErrorCodeSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAErrorCode *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isUnknownError]) {
-    jsonDict[@".tag"] = @"unknown_error";
-  } else if ([valueObj isBadRequest]) {
-    jsonDict[@".tag"] = @"bad_request";
-  } else if ([valueObj isApiError]) {
-    jsonDict[@".tag"] = @"api_error";
-  } else if ([valueObj isAccessError]) {
-    jsonDict[@".tag"] = @"access_error";
-  } else if ([valueObj isRatelimitError]) {
-    jsonDict[@".tag"] = @"ratelimit_error";
-  } else if ([valueObj isUnavailable]) {
-    jsonDict[@".tag"] = @"unavailable";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isUnknownError]) {
+        jsonDict[@".tag"] = @"unknown_error";
+    }
+    else if ([valueObj isBadRequest]) {
+        jsonDict[@".tag"] = @"bad_request";
+    }
+    else if ([valueObj isApiError]) {
+        jsonDict[@".tag"] = @"api_error";
+    }
+    else if ([valueObj isAccessError]) {
+        jsonDict[@".tag"] = @"access_error";
+    }
+    else if ([valueObj isRatelimitError]) {
+        jsonDict[@".tag"] = @"ratelimit_error";
+    }
+    else if ([valueObj isUnavailable]) {
+        jsonDict[@".tag"] = @"unavailable";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAErrorCode *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"unknown_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  } else if ([tag isEqualToString:@"bad_request"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithBadRequest];
-  } else if ([tag isEqualToString:@"api_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithApiError];
-  } else if ([tag isEqualToString:@"access_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithAccessError];
-  } else if ([tag isEqualToString:@"ratelimit_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithRatelimitError];
-  } else if ([tag isEqualToString:@"unavailable"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithUnavailable];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAErrorCode alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"unknown_error"]) {
+        return [[DBRIVIERAErrorCode alloc] initWithUnknownError];
+    }
+    else if ([tag isEqualToString:@"bad_request"]) {
+        return [[DBRIVIERAErrorCode alloc] initWithBadRequest];
+    }
+    else if ([tag isEqualToString:@"api_error"]) {
+        return [[DBRIVIERAErrorCode alloc] initWithApiError];
+    }
+    else if ([tag isEqualToString:@"access_error"]) {
+        return [[DBRIVIERAErrorCode alloc] initWithAccessError];
+    }
+    else if ([tag isEqualToString:@"ratelimit_error"]) {
+        return [[DBRIVIERAErrorCode alloc] initWithRatelimitError];
+    }
+    else if ([tag isEqualToString:@"unavailable"]) {
+        return [[DBRIVIERAErrorCode alloc] initWithUnavailable];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAErrorCode alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAErrorCode alloc] initWithOther];
+    }
 }
 
 @end
@@ -2011,7 +1893,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAFileIdOrUrl
+@implementation DBRIVIERAFileIdOrUrl 
 
 @synthesize fileId = _fileId;
 @synthesize url = _url;
@@ -2020,223 +1902,229 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithFileId:(NSString *)fileId {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAFileIdOrUrlFileId;
-    _fileId = fileId;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAFileIdOrUrlFileId;
+        _fileId = fileId;
+    }
+    return self;
 }
 
 - (instancetype)initWithUrl:(NSString *)url {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAFileIdOrUrlUrl;
-    _url = url;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAFileIdOrUrlUrl;
+        _url = url;
+    }
+    return self;
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAFileIdOrUrlPath;
-    _path = path;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAFileIdOrUrlPath;
+        _path = path;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAFileIdOrUrlOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAFileIdOrUrlOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (NSString *)fileId {
-  if (![self isFileId]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAFileIdOrUrlFileId, but was %@.", [self tagName]];
-  }
-  return _fileId;
+    if (![self isFileId]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAFileIdOrUrlFileId, but was %@.", [self tagName]];
+    }
+    return _fileId;
 }
 
 - (NSString *)url {
-  if (![self isUrl]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAFileIdOrUrlUrl, but was %@.", [self tagName]];
-  }
-  return _url;
+    if (![self isUrl]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAFileIdOrUrlUrl, but was %@.", [self tagName]];
+    }
+    return _url;
 }
 
 - (NSString *)path {
-  if (![self isPath]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAFileIdOrUrlPath, but was %@.", [self tagName]];
-  }
-  return _path;
+    if (![self isPath]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAFileIdOrUrlPath, but was %@.", [self tagName]];
+    }
+    return _path;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isFileId {
-  return _tag == DBRIVIERAFileIdOrUrlFileId;
+    return _tag == DBRIVIERAFileIdOrUrlFileId;
 }
 
 - (BOOL)isUrl {
-  return _tag == DBRIVIERAFileIdOrUrlUrl;
+    return _tag == DBRIVIERAFileIdOrUrlUrl;
 }
 
 - (BOOL)isPath {
-  return _tag == DBRIVIERAFileIdOrUrlPath;
+    return _tag == DBRIVIERAFileIdOrUrlPath;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAFileIdOrUrlOther;
+    return _tag == DBRIVIERAFileIdOrUrlOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAFileIdOrUrlFileId:
-    return @"DBRIVIERAFileIdOrUrlFileId";
-  case DBRIVIERAFileIdOrUrlUrl:
-    return @"DBRIVIERAFileIdOrUrlUrl";
-  case DBRIVIERAFileIdOrUrlPath:
-    return @"DBRIVIERAFileIdOrUrlPath";
-  case DBRIVIERAFileIdOrUrlOther:
-    return @"DBRIVIERAFileIdOrUrlOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAFileIdOrUrlFileId:
+           return @"DBRIVIERAFileIdOrUrlFileId";
+        case DBRIVIERAFileIdOrUrlUrl:
+           return @"DBRIVIERAFileIdOrUrlUrl";
+        case DBRIVIERAFileIdOrUrlPath:
+           return @"DBRIVIERAFileIdOrUrlPath";
+        case DBRIVIERAFileIdOrUrlOther:
+           return @"DBRIVIERAFileIdOrUrlOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAFileIdOrUrlSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAFileIdOrUrlSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAFileIdOrUrlSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAFileIdOrUrlSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAFileIdOrUrlSerializer serialize:self] description];
+    return [[DBRIVIERAFileIdOrUrlSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAFileIdOrUrlFileId:
-    result = prime * result + [self.fileId hash];
-    break;
-  case DBRIVIERAFileIdOrUrlUrl:
-    result = prime * result + [self.url hash];
-    break;
-  case DBRIVIERAFileIdOrUrlPath:
-    result = prime * result + [self.path hash];
-    break;
-  case DBRIVIERAFileIdOrUrlOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAFileIdOrUrlFileId:
+        result = prime * result + [self.fileId hash];
+        break;
+        case DBRIVIERAFileIdOrUrlUrl:
+        result = prime * result + [self.url hash];
+        break;
+        case DBRIVIERAFileIdOrUrlPath:
+        result = prime * result + [self.path hash];
+        break;
+        case DBRIVIERAFileIdOrUrlOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToFileIdOrUrl:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToFileIdOrUrl:other];
 }
 
 - (BOOL)isEqualToFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)aFileIdOrUrl {
-  if (self == aFileIdOrUrl) {
+    if (self == aFileIdOrUrl) {
+        return YES;
+    }
+    if (self.tag != aFileIdOrUrl.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAFileIdOrUrlFileId:
+        return [self.fileId isEqual:aFileIdOrUrl.fileId];
+        case DBRIVIERAFileIdOrUrlUrl:
+        return [self.url isEqual:aFileIdOrUrl.url];
+        case DBRIVIERAFileIdOrUrlPath:
+        return [self.path isEqual:aFileIdOrUrl.path];
+        case DBRIVIERAFileIdOrUrlOther:
+        return [[self tagName] isEqual:[aFileIdOrUrl tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aFileIdOrUrl.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAFileIdOrUrlFileId:
-    return [self.fileId isEqual:aFileIdOrUrl.fileId];
-  case DBRIVIERAFileIdOrUrlUrl:
-    return [self.url isEqual:aFileIdOrUrl.url];
-  case DBRIVIERAFileIdOrUrlPath:
-    return [self.path isEqual:aFileIdOrUrl.path];
-  case DBRIVIERAFileIdOrUrlOther:
-    return [[self tagName] isEqual:[aFileIdOrUrl tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAFileIdOrUrlSerializer
+@implementation DBRIVIERAFileIdOrUrlSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAFileIdOrUrl *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isFileId]) {
-    jsonDict[@"file_id"] = valueObj.fileId;
-    jsonDict[@".tag"] = @"file_id";
-  } else if ([valueObj isUrl]) {
-    jsonDict[@"url"] = valueObj.url;
-    jsonDict[@".tag"] = @"url";
-  } else if ([valueObj isPath]) {
-    jsonDict[@"path"] = valueObj.path;
-    jsonDict[@".tag"] = @"path";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isFileId]) {
+        jsonDict[@"file_id"] = valueObj.fileId;
+        jsonDict[@".tag"] = @"file_id";
+    }
+    else if ([valueObj isUrl]) {
+        jsonDict[@"url"] = valueObj.url;
+        jsonDict[@".tag"] = @"url";
+    }
+    else if ([valueObj isPath]) {
+        jsonDict[@"path"] = valueObj.path;
+        jsonDict[@".tag"] = @"path";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAFileIdOrUrl *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"file_id"]) {
-    NSString *fileId = valueDict[@"file_id"];
-    return [[DBRIVIERAFileIdOrUrl alloc] initWithFileId:fileId];
-  } else if ([tag isEqualToString:@"url"]) {
-    NSString *url = valueDict[@"url"];
-    return [[DBRIVIERAFileIdOrUrl alloc] initWithUrl:url];
-  } else if ([tag isEqualToString:@"path"]) {
-    NSString *path = valueDict[@"path"];
-    return [[DBRIVIERAFileIdOrUrl alloc] initWithPath:path];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAFileIdOrUrl alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAFileIdOrUrl alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"file_id"]) {
+        NSString *fileId = valueDict[@"file_id"];
+        return [[DBRIVIERAFileIdOrUrl alloc] initWithFileId:fileId];
+    }
+    else if ([tag isEqualToString:@"url"]) {
+        NSString *url = valueDict[@"url"];
+        return [[DBRIVIERAFileIdOrUrl alloc] initWithUrl:url];
+    }
+    else if ([tag isEqualToString:@"path"]) {
+        NSString *path = valueDict[@"path"];
+        return [[DBRIVIERAFileIdOrUrl alloc] initWithPath:path];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAFileIdOrUrl alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAFileIdOrUrl alloc] initWithOther];
+    }
 }
 
 @end
@@ -2248,121 +2136,119 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMarkdownArgs
+@implementation DBRIVIERAGetMarkdownArgs 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl
-                          enableOcr:(NSNumber *)enableOcr
-                        embedImages:(NSNumber *)embedImages {
+- (instancetype)initWithFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl enableOcr:(NSNumber *)enableOcr embedImages:(NSNumber *)embedImages {
 
-  self = [super init];
-  if (self) {
-    _fileIdOrUrl = fileIdOrUrl;
-    _enableOcr = enableOcr ?: @NO;
-    _embedImages = embedImages ?: @NO;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _fileIdOrUrl = fileIdOrUrl;
+        _enableOcr = enableOcr ?: @NO;
+        _embedImages = embedImages ?: @NO;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithFileIdOrUrl:nil enableOcr:nil embedImages:nil];
+    return [self initWithFileIdOrUrl:nil enableOcr:nil embedImages:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMarkdownArgsSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMarkdownArgsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMarkdownArgsSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMarkdownArgsSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMarkdownArgsSerializer serialize:self] description];
+    return [[DBRIVIERAGetMarkdownArgsSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  if (self.fileIdOrUrl != nil) {
-    result = prime * result + [self.fileIdOrUrl hash];
-  }
-  result = prime * result + [self.enableOcr hash];
-  result = prime * result + [self.embedImages hash];
+    if (self.fileIdOrUrl != nil) {
+        result = prime * result + [self.fileIdOrUrl hash];
+    }
+    result = prime * result + [self.enableOcr hash];
+    result = prime * result + [self.embedImages hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMarkdownArgs:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMarkdownArgs:other];
 }
 
 - (BOOL)isEqualToGetMarkdownArgs:(DBRIVIERAGetMarkdownArgs *)aGetMarkdownArgs {
-  if (self == aGetMarkdownArgs) {
-    return YES;
-  }
-  if (self.fileIdOrUrl) {
-    if (![self.fileIdOrUrl isEqual:aGetMarkdownArgs.fileIdOrUrl]) {
-      return NO;
+    if (self == aGetMarkdownArgs) {
+        return YES;
     }
-  }
-  if (![self.enableOcr isEqual:aGetMarkdownArgs.enableOcr]) {
-    return NO;
-  }
-  if (![self.embedImages isEqual:aGetMarkdownArgs.embedImages]) {
-    return NO;
-  }
-  return YES;
+    if (self.fileIdOrUrl) {
+        if (![self.fileIdOrUrl isEqual:aGetMarkdownArgs.fileIdOrUrl]) {
+            return NO;
+        }
+    }
+    if (![self.enableOcr isEqual:aGetMarkdownArgs.enableOcr]) {
+        return NO;
+    }
+    if (![self.embedImages isEqual:aGetMarkdownArgs.embedImages]) {
+        return NO;
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMarkdownArgsSerializer
+@implementation DBRIVIERAGetMarkdownArgsSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMarkdownArgs *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.fileIdOrUrl) {
-    jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
-  }
-  jsonDict[@"enable_ocr"] = valueObj.enableOcr;
-  jsonDict[@"embed_images"] = valueObj.embedImages;
+    if (valueObj.fileIdOrUrl) {
+        jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
+    }
+    jsonDict[@"enable_ocr"] = valueObj.enableOcr;
+    jsonDict[@"embed_images"] = valueObj.embedImages;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMarkdownArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAFileIdOrUrl *fileIdOrUrl =
-      valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
-  NSNumber *enableOcr = valueDict[@"enable_ocr"] ?: @NO;
-  NSNumber *embedImages = valueDict[@"embed_images"] ?: @NO;
+    DBRIVIERAFileIdOrUrl *fileIdOrUrl = valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
+    NSNumber *enableOcr = valueDict[@"enable_ocr"] ?: @NO;
+    NSNumber *embedImages = valueDict[@"embed_images"] ?: @NO;
 
-  return [[DBRIVIERAGetMarkdownArgs alloc] initWithFileIdOrUrl:fileIdOrUrl enableOcr:enableOcr embedImages:embedImages];
+    return [[DBRIVIERAGetMarkdownArgs alloc] initWithFileIdOrUrl:fileIdOrUrl enableOcr:enableOcr embedImages:embedImages];
 }
 
 @end
@@ -2375,7 +2261,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMarkdownAsyncCheckResult
+@implementation DBRIVIERAGetMarkdownAsyncCheckResult 
 
 @synthesize complete = _complete;
 @synthesize failed = _failed;
@@ -2383,214 +2269,219 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithInProgress {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMarkdownAsyncCheckResultInProgress;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMarkdownAsyncCheckResultInProgress;
+    }
+    return self;
 }
 
 - (instancetype)initWithComplete:(DBRIVIERAGetMarkdownResult *)complete {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMarkdownAsyncCheckResultComplete;
-    _complete = complete;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMarkdownAsyncCheckResultComplete;
+        _complete = complete;
+    }
+    return self;
 }
 
 - (instancetype)initWithFailed:(DBRIVIERAGetMarkdownAsyncError *)failed {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMarkdownAsyncCheckResultFailed;
-    _failed = failed;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMarkdownAsyncCheckResultFailed;
+        _failed = failed;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMarkdownAsyncCheckResultOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMarkdownAsyncCheckResultOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBRIVIERAGetMarkdownResult *)complete {
-  if (![self isComplete]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAGetMarkdownAsyncCheckResultComplete, but was %@.", [self tagName]];
-  }
-  return _complete;
+    if (![self isComplete]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAGetMarkdownAsyncCheckResultComplete, but was %@.", [self tagName]];
+    }
+    return _complete;
 }
 
 - (DBRIVIERAGetMarkdownAsyncError *)failed {
-  if (![self isFailed]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAGetMarkdownAsyncCheckResultFailed, but was %@.", [self tagName]];
-  }
-  return _failed;
+    if (![self isFailed]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAGetMarkdownAsyncCheckResultFailed, but was %@.", [self tagName]];
+    }
+    return _failed;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isInProgress {
-  return _tag == DBRIVIERAGetMarkdownAsyncCheckResultInProgress;
+    return _tag == DBRIVIERAGetMarkdownAsyncCheckResultInProgress;
 }
 
 - (BOOL)isComplete {
-  return _tag == DBRIVIERAGetMarkdownAsyncCheckResultComplete;
+    return _tag == DBRIVIERAGetMarkdownAsyncCheckResultComplete;
 }
 
 - (BOOL)isFailed {
-  return _tag == DBRIVIERAGetMarkdownAsyncCheckResultFailed;
+    return _tag == DBRIVIERAGetMarkdownAsyncCheckResultFailed;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAGetMarkdownAsyncCheckResultOther;
+    return _tag == DBRIVIERAGetMarkdownAsyncCheckResultOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAGetMarkdownAsyncCheckResultInProgress:
-    return @"DBRIVIERAGetMarkdownAsyncCheckResultInProgress";
-  case DBRIVIERAGetMarkdownAsyncCheckResultComplete:
-    return @"DBRIVIERAGetMarkdownAsyncCheckResultComplete";
-  case DBRIVIERAGetMarkdownAsyncCheckResultFailed:
-    return @"DBRIVIERAGetMarkdownAsyncCheckResultFailed";
-  case DBRIVIERAGetMarkdownAsyncCheckResultOther:
-    return @"DBRIVIERAGetMarkdownAsyncCheckResultOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAGetMarkdownAsyncCheckResultInProgress:
+           return @"DBRIVIERAGetMarkdownAsyncCheckResultInProgress";
+        case DBRIVIERAGetMarkdownAsyncCheckResultComplete:
+           return @"DBRIVIERAGetMarkdownAsyncCheckResultComplete";
+        case DBRIVIERAGetMarkdownAsyncCheckResultFailed:
+           return @"DBRIVIERAGetMarkdownAsyncCheckResultFailed";
+        case DBRIVIERAGetMarkdownAsyncCheckResultOther:
+           return @"DBRIVIERAGetMarkdownAsyncCheckResultOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMarkdownAsyncCheckResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMarkdownAsyncCheckResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMarkdownAsyncCheckResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMarkdownAsyncCheckResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMarkdownAsyncCheckResultSerializer serialize:self] description];
+    return [[DBRIVIERAGetMarkdownAsyncCheckResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAGetMarkdownAsyncCheckResultInProgress:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAGetMarkdownAsyncCheckResultComplete:
-    result = prime * result + [self.complete hash];
-    break;
-  case DBRIVIERAGetMarkdownAsyncCheckResultFailed:
-    result = prime * result + [self.failed hash];
-    break;
-  case DBRIVIERAGetMarkdownAsyncCheckResultOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAGetMarkdownAsyncCheckResultInProgress:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAGetMarkdownAsyncCheckResultComplete:
+        result = prime * result + [self.complete hash];
+        break;
+        case DBRIVIERAGetMarkdownAsyncCheckResultFailed:
+        result = prime * result + [self.failed hash];
+        break;
+        case DBRIVIERAGetMarkdownAsyncCheckResultOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMarkdownAsyncCheckResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMarkdownAsyncCheckResult:other];
 }
 
 - (BOOL)isEqualToGetMarkdownAsyncCheckResult:(DBRIVIERAGetMarkdownAsyncCheckResult *)aGetMarkdownAsyncCheckResult {
-  if (self == aGetMarkdownAsyncCheckResult) {
+    if (self == aGetMarkdownAsyncCheckResult) {
+        return YES;
+    }
+    if (self.tag != aGetMarkdownAsyncCheckResult.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAGetMarkdownAsyncCheckResultInProgress:
+        return [[self tagName] isEqual:[aGetMarkdownAsyncCheckResult tagName]];
+        case DBRIVIERAGetMarkdownAsyncCheckResultComplete:
+        return [self.complete isEqual:aGetMarkdownAsyncCheckResult.complete];
+        case DBRIVIERAGetMarkdownAsyncCheckResultFailed:
+        return [self.failed isEqual:aGetMarkdownAsyncCheckResult.failed];
+        case DBRIVIERAGetMarkdownAsyncCheckResultOther:
+        return [[self tagName] isEqual:[aGetMarkdownAsyncCheckResult tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aGetMarkdownAsyncCheckResult.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAGetMarkdownAsyncCheckResultInProgress:
-    return [[self tagName] isEqual:[aGetMarkdownAsyncCheckResult tagName]];
-  case DBRIVIERAGetMarkdownAsyncCheckResultComplete:
-    return [self.complete isEqual:aGetMarkdownAsyncCheckResult.complete];
-  case DBRIVIERAGetMarkdownAsyncCheckResultFailed:
-    return [self.failed isEqual:aGetMarkdownAsyncCheckResult.failed];
-  case DBRIVIERAGetMarkdownAsyncCheckResultOther:
-    return [[self tagName] isEqual:[aGetMarkdownAsyncCheckResult tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMarkdownAsyncCheckResultSerializer
+@implementation DBRIVIERAGetMarkdownAsyncCheckResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMarkdownAsyncCheckResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInProgress]) {
-    jsonDict[@".tag"] = @"in_progress";
-  } else if ([valueObj isComplete]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMarkdownResultSerializer serialize:valueObj.complete]];
-    jsonDict[@".tag"] = @"complete";
-  } else if ([valueObj isFailed]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:valueObj.failed]];
-    jsonDict[@".tag"] = @"failed";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isInProgress]) {
+        jsonDict[@".tag"] = @"in_progress";
+    }
+    else if ([valueObj isComplete]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMarkdownResultSerializer serialize:valueObj.complete]];
+        jsonDict[@".tag"] = @"complete";
+    }
+    else if ([valueObj isFailed]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:valueObj.failed]];
+        jsonDict[@".tag"] = @"failed";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMarkdownAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"in_progress"]) {
-    return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithInProgress];
-  } else if ([tag isEqualToString:@"complete"]) {
-    DBRIVIERAGetMarkdownResult *complete = [DBRIVIERAGetMarkdownResultSerializer deserialize:valueDict];
-    return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithComplete:complete];
-  } else if ([tag isEqualToString:@"failed"]) {
-    DBRIVIERAGetMarkdownAsyncError *failed = [DBRIVIERAGetMarkdownAsyncErrorSerializer deserialize:valueDict];
-    return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithFailed:failed];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"in_progress"]) {
+        return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithInProgress];
+    }
+    else if ([tag isEqualToString:@"complete"]) {
+        DBRIVIERAGetMarkdownResult *complete = [DBRIVIERAGetMarkdownResultSerializer deserialize:valueDict];
+        return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithComplete:complete];
+    }
+    else if ([tag isEqualToString:@"failed"]) {
+        DBRIVIERAGetMarkdownAsyncError *failed = [DBRIVIERAGetMarkdownAsyncErrorSerializer deserialize:valueDict];
+        return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithFailed:failed];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithOther];
+    }
 }
 
 @end
@@ -2603,117 +2494,112 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMarkdownAsyncError
+@implementation DBRIVIERAGetMarkdownAsyncError 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode
-                     errorDetails:(DBRIVIERAMarkdownConversionApiV2Error *)errorDetails {
+- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode errorDetails:(DBRIVIERAMarkdownConversionApiV2Error *)errorDetails {
 
-  self = [super init];
-  if (self) {
-    _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-    _errorDetails = errorDetails;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
+        _errorDetails = errorDetails;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithErrorCode:nil errorDetails:nil];
+    return [self initWithErrorCode:nil errorDetails:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMarkdownAsyncErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMarkdownAsyncErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:self] description];
+    return [[DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.errorCode hash];
-  if (self.errorDetails != nil) {
-    result = prime * result + [self.errorDetails hash];
-  }
+    result = prime * result + [self.errorCode hash];
+    if (self.errorDetails != nil) {
+        result = prime * result + [self.errorDetails hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMarkdownAsyncError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMarkdownAsyncError:other];
 }
 
 - (BOOL)isEqualToGetMarkdownAsyncError:(DBRIVIERAGetMarkdownAsyncError *)aGetMarkdownAsyncError {
-  if (self == aGetMarkdownAsyncError) {
-    return YES;
-  }
-  if (![self.errorCode isEqual:aGetMarkdownAsyncError.errorCode]) {
-    return NO;
-  }
-  if (self.errorDetails) {
-    if (![self.errorDetails isEqual:aGetMarkdownAsyncError.errorDetails]) {
-      return NO;
+    if (self == aGetMarkdownAsyncError) {
+        return YES;
     }
-  }
-  return YES;
+    if (![self.errorCode isEqual:aGetMarkdownAsyncError.errorCode]) {
+        return NO;
+    }
+    if (self.errorDetails) {
+        if (![self.errorDetails isEqual:aGetMarkdownAsyncError.errorDetails]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMarkdownAsyncErrorSerializer
+@implementation DBRIVIERAGetMarkdownAsyncErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMarkdownAsyncError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
-  if (valueObj.errorDetails) {
-    jsonDict[@"error_details"] = [DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:valueObj.errorDetails];
-  }
+    jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
+    if (valueObj.errorDetails) {
+        jsonDict[@"error_details"] = [DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:valueObj.errorDetails];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMarkdownAsyncError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"]
-                                      ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]]
-                                      : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  DBRIVIERAMarkdownConversionApiV2Error *errorDetails =
-      valueDict[@"error_details"]
-          ? [DBRIVIERAMarkdownConversionApiV2ErrorSerializer deserialize:valueDict[@"error_details"]]
-          : nil;
+    DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"] ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]] : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
+    DBRIVIERAMarkdownConversionApiV2Error *errorDetails = valueDict[@"error_details"] ? [DBRIVIERAMarkdownConversionApiV2ErrorSerializer deserialize:valueDict[@"error_details"]] : nil;
 
-  return [[DBRIVIERAGetMarkdownAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
+    return [[DBRIVIERAGetMarkdownAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
 }
 
 @end
@@ -2724,98 +2610,99 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMarkdownResult
+@implementation DBRIVIERAGetMarkdownResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithMarkdown:(NSString *)markdown {
 
-  self = [super init];
-  if (self) {
-    _markdown = markdown ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _markdown = markdown ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithMarkdown:nil];
+    return [self initWithMarkdown:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMarkdownResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMarkdownResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMarkdownResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMarkdownResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMarkdownResultSerializer serialize:self] description];
+    return [[DBRIVIERAGetMarkdownResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.markdown hash];
+    result = prime * result + [self.markdown hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMarkdownResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMarkdownResult:other];
 }
 
 - (BOOL)isEqualToGetMarkdownResult:(DBRIVIERAGetMarkdownResult *)aGetMarkdownResult {
-  if (self == aGetMarkdownResult) {
+    if (self == aGetMarkdownResult) {
+        return YES;
+    }
+    if (![self.markdown isEqual:aGetMarkdownResult.markdown]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.markdown isEqual:aGetMarkdownResult.markdown]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMarkdownResultSerializer
+@implementation DBRIVIERAGetMarkdownResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMarkdownResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"markdown"] = valueObj.markdown;
+    jsonDict[@"markdown"] = valueObj.markdown;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMarkdownResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *markdown = valueDict[@"markdown"] ?: @"";
+    NSString *markdown = valueDict[@"markdown"] ?: @"";
 
-  return [[DBRIVIERAGetMarkdownResult alloc] initWithMarkdown:markdown];
+    return [[DBRIVIERAGetMarkdownResult alloc] initWithMarkdown:markdown];
 }
 
 @end
@@ -2827,105 +2714,105 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMetadataArgs
+@implementation DBRIVIERAGetMetadataArgs 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl {
 
-  self = [super init];
-  if (self) {
-    _fileIdOrUrl = fileIdOrUrl;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _fileIdOrUrl = fileIdOrUrl;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithFileIdOrUrl:nil];
+    return [self initWithFileIdOrUrl:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMetadataArgsSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMetadataArgsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMetadataArgsSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMetadataArgsSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMetadataArgsSerializer serialize:self] description];
+    return [[DBRIVIERAGetMetadataArgsSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  if (self.fileIdOrUrl != nil) {
-    result = prime * result + [self.fileIdOrUrl hash];
-  }
+    if (self.fileIdOrUrl != nil) {
+        result = prime * result + [self.fileIdOrUrl hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMetadataArgs:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMetadataArgs:other];
 }
 
 - (BOOL)isEqualToGetMetadataArgs:(DBRIVIERAGetMetadataArgs *)aGetMetadataArgs {
-  if (self == aGetMetadataArgs) {
-    return YES;
-  }
-  if (self.fileIdOrUrl) {
-    if (![self.fileIdOrUrl isEqual:aGetMetadataArgs.fileIdOrUrl]) {
-      return NO;
+    if (self == aGetMetadataArgs) {
+        return YES;
     }
-  }
-  return YES;
+    if (self.fileIdOrUrl) {
+        if (![self.fileIdOrUrl isEqual:aGetMetadataArgs.fileIdOrUrl]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMetadataArgsSerializer
+@implementation DBRIVIERAGetMetadataArgsSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataArgs *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.fileIdOrUrl) {
-    jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
-  }
+    if (valueObj.fileIdOrUrl) {
+        jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMetadataArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAFileIdOrUrl *fileIdOrUrl =
-      valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
+    DBRIVIERAFileIdOrUrl *fileIdOrUrl = valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
 
-  return [[DBRIVIERAGetMetadataArgs alloc] initWithFileIdOrUrl:fileIdOrUrl];
+    return [[DBRIVIERAGetMetadataArgs alloc] initWithFileIdOrUrl:fileIdOrUrl];
 }
 
 @end
@@ -2938,7 +2825,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMetadataAsyncCheckResult
+@implementation DBRIVIERAGetMetadataAsyncCheckResult 
 
 @synthesize complete = _complete;
 @synthesize failed = _failed;
@@ -2946,214 +2833,219 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithInProgress {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMetadataAsyncCheckResultInProgress;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMetadataAsyncCheckResultInProgress;
+    }
+    return self;
 }
 
 - (instancetype)initWithComplete:(DBRIVIERAGetMetadataResult *)complete {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMetadataAsyncCheckResultComplete;
-    _complete = complete;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMetadataAsyncCheckResultComplete;
+        _complete = complete;
+    }
+    return self;
 }
 
 - (instancetype)initWithFailed:(DBRIVIERAGetMetadataAsyncError *)failed {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMetadataAsyncCheckResultFailed;
-    _failed = failed;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMetadataAsyncCheckResultFailed;
+        _failed = failed;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetMetadataAsyncCheckResultOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetMetadataAsyncCheckResultOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBRIVIERAGetMetadataResult *)complete {
-  if (![self isComplete]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAGetMetadataAsyncCheckResultComplete, but was %@.", [self tagName]];
-  }
-  return _complete;
+    if (![self isComplete]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAGetMetadataAsyncCheckResultComplete, but was %@.", [self tagName]];
+    }
+    return _complete;
 }
 
 - (DBRIVIERAGetMetadataAsyncError *)failed {
-  if (![self isFailed]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAGetMetadataAsyncCheckResultFailed, but was %@.", [self tagName]];
-  }
-  return _failed;
+    if (![self isFailed]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAGetMetadataAsyncCheckResultFailed, but was %@.", [self tagName]];
+    }
+    return _failed;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isInProgress {
-  return _tag == DBRIVIERAGetMetadataAsyncCheckResultInProgress;
+    return _tag == DBRIVIERAGetMetadataAsyncCheckResultInProgress;
 }
 
 - (BOOL)isComplete {
-  return _tag == DBRIVIERAGetMetadataAsyncCheckResultComplete;
+    return _tag == DBRIVIERAGetMetadataAsyncCheckResultComplete;
 }
 
 - (BOOL)isFailed {
-  return _tag == DBRIVIERAGetMetadataAsyncCheckResultFailed;
+    return _tag == DBRIVIERAGetMetadataAsyncCheckResultFailed;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAGetMetadataAsyncCheckResultOther;
+    return _tag == DBRIVIERAGetMetadataAsyncCheckResultOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAGetMetadataAsyncCheckResultInProgress:
-    return @"DBRIVIERAGetMetadataAsyncCheckResultInProgress";
-  case DBRIVIERAGetMetadataAsyncCheckResultComplete:
-    return @"DBRIVIERAGetMetadataAsyncCheckResultComplete";
-  case DBRIVIERAGetMetadataAsyncCheckResultFailed:
-    return @"DBRIVIERAGetMetadataAsyncCheckResultFailed";
-  case DBRIVIERAGetMetadataAsyncCheckResultOther:
-    return @"DBRIVIERAGetMetadataAsyncCheckResultOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAGetMetadataAsyncCheckResultInProgress:
+           return @"DBRIVIERAGetMetadataAsyncCheckResultInProgress";
+        case DBRIVIERAGetMetadataAsyncCheckResultComplete:
+           return @"DBRIVIERAGetMetadataAsyncCheckResultComplete";
+        case DBRIVIERAGetMetadataAsyncCheckResultFailed:
+           return @"DBRIVIERAGetMetadataAsyncCheckResultFailed";
+        case DBRIVIERAGetMetadataAsyncCheckResultOther:
+           return @"DBRIVIERAGetMetadataAsyncCheckResultOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMetadataAsyncCheckResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMetadataAsyncCheckResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMetadataAsyncCheckResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMetadataAsyncCheckResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMetadataAsyncCheckResultSerializer serialize:self] description];
+    return [[DBRIVIERAGetMetadataAsyncCheckResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAGetMetadataAsyncCheckResultInProgress:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAGetMetadataAsyncCheckResultComplete:
-    result = prime * result + [self.complete hash];
-    break;
-  case DBRIVIERAGetMetadataAsyncCheckResultFailed:
-    result = prime * result + [self.failed hash];
-    break;
-  case DBRIVIERAGetMetadataAsyncCheckResultOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAGetMetadataAsyncCheckResultInProgress:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAGetMetadataAsyncCheckResultComplete:
+        result = prime * result + [self.complete hash];
+        break;
+        case DBRIVIERAGetMetadataAsyncCheckResultFailed:
+        result = prime * result + [self.failed hash];
+        break;
+        case DBRIVIERAGetMetadataAsyncCheckResultOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMetadataAsyncCheckResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMetadataAsyncCheckResult:other];
 }
 
 - (BOOL)isEqualToGetMetadataAsyncCheckResult:(DBRIVIERAGetMetadataAsyncCheckResult *)aGetMetadataAsyncCheckResult {
-  if (self == aGetMetadataAsyncCheckResult) {
+    if (self == aGetMetadataAsyncCheckResult) {
+        return YES;
+    }
+    if (self.tag != aGetMetadataAsyncCheckResult.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAGetMetadataAsyncCheckResultInProgress:
+        return [[self tagName] isEqual:[aGetMetadataAsyncCheckResult tagName]];
+        case DBRIVIERAGetMetadataAsyncCheckResultComplete:
+        return [self.complete isEqual:aGetMetadataAsyncCheckResult.complete];
+        case DBRIVIERAGetMetadataAsyncCheckResultFailed:
+        return [self.failed isEqual:aGetMetadataAsyncCheckResult.failed];
+        case DBRIVIERAGetMetadataAsyncCheckResultOther:
+        return [[self tagName] isEqual:[aGetMetadataAsyncCheckResult tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aGetMetadataAsyncCheckResult.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAGetMetadataAsyncCheckResultInProgress:
-    return [[self tagName] isEqual:[aGetMetadataAsyncCheckResult tagName]];
-  case DBRIVIERAGetMetadataAsyncCheckResultComplete:
-    return [self.complete isEqual:aGetMetadataAsyncCheckResult.complete];
-  case DBRIVIERAGetMetadataAsyncCheckResultFailed:
-    return [self.failed isEqual:aGetMetadataAsyncCheckResult.failed];
-  case DBRIVIERAGetMetadataAsyncCheckResultOther:
-    return [[self tagName] isEqual:[aGetMetadataAsyncCheckResult tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMetadataAsyncCheckResultSerializer
+@implementation DBRIVIERAGetMetadataAsyncCheckResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataAsyncCheckResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInProgress]) {
-    jsonDict[@".tag"] = @"in_progress";
-  } else if ([valueObj isComplete]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMetadataResultSerializer serialize:valueObj.complete]];
-    jsonDict[@".tag"] = @"complete";
-  } else if ([valueObj isFailed]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMetadataAsyncErrorSerializer serialize:valueObj.failed]];
-    jsonDict[@".tag"] = @"failed";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isInProgress]) {
+        jsonDict[@".tag"] = @"in_progress";
+    }
+    else if ([valueObj isComplete]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMetadataResultSerializer serialize:valueObj.complete]];
+        jsonDict[@".tag"] = @"complete";
+    }
+    else if ([valueObj isFailed]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMetadataAsyncErrorSerializer serialize:valueObj.failed]];
+        jsonDict[@".tag"] = @"failed";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMetadataAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"in_progress"]) {
-    return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithInProgress];
-  } else if ([tag isEqualToString:@"complete"]) {
-    DBRIVIERAGetMetadataResult *complete = [DBRIVIERAGetMetadataResultSerializer deserialize:valueDict];
-    return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithComplete:complete];
-  } else if ([tag isEqualToString:@"failed"]) {
-    DBRIVIERAGetMetadataAsyncError *failed = [DBRIVIERAGetMetadataAsyncErrorSerializer deserialize:valueDict];
-    return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithFailed:failed];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"in_progress"]) {
+        return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithInProgress];
+    }
+    else if ([tag isEqualToString:@"complete"]) {
+        DBRIVIERAGetMetadataResult *complete = [DBRIVIERAGetMetadataResultSerializer deserialize:valueDict];
+        return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithComplete:complete];
+    }
+    else if ([tag isEqualToString:@"failed"]) {
+        DBRIVIERAGetMetadataAsyncError *failed = [DBRIVIERAGetMetadataAsyncErrorSerializer deserialize:valueDict];
+        return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithFailed:failed];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithOther];
+    }
 }
 
 @end
@@ -3166,117 +3058,112 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMetadataAsyncError
+@implementation DBRIVIERAGetMetadataAsyncError 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode
-                     errorDetails:(DBRIVIERAMetadataExtractionApiV2Error *)errorDetails {
+- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode errorDetails:(DBRIVIERAMetadataExtractionApiV2Error *)errorDetails {
 
-  self = [super init];
-  if (self) {
-    _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-    _errorDetails = errorDetails;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
+        _errorDetails = errorDetails;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithErrorCode:nil errorDetails:nil];
+    return [self initWithErrorCode:nil errorDetails:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMetadataAsyncErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMetadataAsyncErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMetadataAsyncErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMetadataAsyncErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMetadataAsyncErrorSerializer serialize:self] description];
+    return [[DBRIVIERAGetMetadataAsyncErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.errorCode hash];
-  if (self.errorDetails != nil) {
-    result = prime * result + [self.errorDetails hash];
-  }
+    result = prime * result + [self.errorCode hash];
+    if (self.errorDetails != nil) {
+        result = prime * result + [self.errorDetails hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMetadataAsyncError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMetadataAsyncError:other];
 }
 
 - (BOOL)isEqualToGetMetadataAsyncError:(DBRIVIERAGetMetadataAsyncError *)aGetMetadataAsyncError {
-  if (self == aGetMetadataAsyncError) {
-    return YES;
-  }
-  if (![self.errorCode isEqual:aGetMetadataAsyncError.errorCode]) {
-    return NO;
-  }
-  if (self.errorDetails) {
-    if (![self.errorDetails isEqual:aGetMetadataAsyncError.errorDetails]) {
-      return NO;
+    if (self == aGetMetadataAsyncError) {
+        return YES;
     }
-  }
-  return YES;
+    if (![self.errorCode isEqual:aGetMetadataAsyncError.errorCode]) {
+        return NO;
+    }
+    if (self.errorDetails) {
+        if (![self.errorDetails isEqual:aGetMetadataAsyncError.errorDetails]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMetadataAsyncErrorSerializer
+@implementation DBRIVIERAGetMetadataAsyncErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataAsyncError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
-  if (valueObj.errorDetails) {
-    jsonDict[@"error_details"] = [DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:valueObj.errorDetails];
-  }
+    jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
+    if (valueObj.errorDetails) {
+        jsonDict[@"error_details"] = [DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:valueObj.errorDetails];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMetadataAsyncError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"]
-                                      ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]]
-                                      : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  DBRIVIERAMetadataExtractionApiV2Error *errorDetails =
-      valueDict[@"error_details"]
-          ? [DBRIVIERAMetadataExtractionApiV2ErrorSerializer deserialize:valueDict[@"error_details"]]
-          : nil;
+    DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"] ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]] : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
+    DBRIVIERAMetadataExtractionApiV2Error *errorDetails = valueDict[@"error_details"] ? [DBRIVIERAMetadataExtractionApiV2ErrorSerializer deserialize:valueDict[@"error_details"]] : nil;
 
-  return [[DBRIVIERAGetMetadataAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
+    return [[DBRIVIERAGetMetadataAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
 }
 
 @end
@@ -3289,114 +3176,112 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetMetadataResult
+@implementation DBRIVIERAGetMetadataResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithMetadataType:(DBRIVIERAMetadataType *)metadataType metadata:(DBRIVIERAMetadataUnion *)metadata {
 
-  self = [super init];
-  if (self) {
-    _metadataType = metadataType ?: [[DBRIVIERAMetadataType alloc] initWithMetadataTypeUnknown];
-    _metadata = metadata;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _metadataType = metadataType ?: [[DBRIVIERAMetadataType alloc] initWithMetadataTypeUnknown];
+        _metadata = metadata;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithMetadataType:nil metadata:nil];
+    return [self initWithMetadataType:nil metadata:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMetadataResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetMetadataResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMetadataResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetMetadataResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetMetadataResultSerializer serialize:self] description];
+    return [[DBRIVIERAGetMetadataResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.metadataType hash];
-  if (self.metadata != nil) {
-    result = prime * result + [self.metadata hash];
-  }
+    result = prime * result + [self.metadataType hash];
+    if (self.metadata != nil) {
+        result = prime * result + [self.metadata hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMetadataResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetMetadataResult:other];
 }
 
 - (BOOL)isEqualToGetMetadataResult:(DBRIVIERAGetMetadataResult *)aGetMetadataResult {
-  if (self == aGetMetadataResult) {
-    return YES;
-  }
-  if (![self.metadataType isEqual:aGetMetadataResult.metadataType]) {
-    return NO;
-  }
-  if (self.metadata) {
-    if (![self.metadata isEqual:aGetMetadataResult.metadata]) {
-      return NO;
+    if (self == aGetMetadataResult) {
+        return YES;
     }
-  }
-  return YES;
+    if (![self.metadataType isEqual:aGetMetadataResult.metadataType]) {
+        return NO;
+    }
+    if (self.metadata) {
+        if (![self.metadata isEqual:aGetMetadataResult.metadata]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetMetadataResultSerializer
+@implementation DBRIVIERAGetMetadataResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"metadata_type"] = [DBRIVIERAMetadataTypeSerializer serialize:valueObj.metadataType];
-  if (valueObj.metadata) {
-    jsonDict[@"metadata"] = [DBRIVIERAMetadataUnionSerializer serialize:valueObj.metadata];
-  }
+    jsonDict[@"metadata_type"] = [DBRIVIERAMetadataTypeSerializer serialize:valueObj.metadataType];
+    if (valueObj.metadata) {
+        jsonDict[@"metadata"] = [DBRIVIERAMetadataUnionSerializer serialize:valueObj.metadata];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetMetadataResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAMetadataType *metadataType = valueDict[@"metadata_type"]
-                                            ? [DBRIVIERAMetadataTypeSerializer deserialize:valueDict[@"metadata_type"]]
-                                            : [[DBRIVIERAMetadataType alloc] initWithMetadataTypeUnknown];
-  DBRIVIERAMetadataUnion *metadata =
-      valueDict[@"metadata"] ? [DBRIVIERAMetadataUnionSerializer deserialize:valueDict[@"metadata"]] : nil;
+    DBRIVIERAMetadataType *metadataType = valueDict[@"metadata_type"] ? [DBRIVIERAMetadataTypeSerializer deserialize:valueDict[@"metadata_type"]] : [[DBRIVIERAMetadataType alloc] initWithMetadataTypeUnknown];
+    DBRIVIERAMetadataUnion *metadata = valueDict[@"metadata"] ? [DBRIVIERAMetadataUnionSerializer deserialize:valueDict[@"metadata"]] : nil;
 
-  return [[DBRIVIERAGetMetadataResult alloc] initWithMetadataType:metadataType metadata:metadata];
+    return [[DBRIVIERAGetMetadataResult alloc] initWithMetadataType:metadataType metadata:metadata];
 }
 
 @end
@@ -3409,134 +3294,126 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetTranscriptArgs
+@implementation DBRIVIERAGetTranscriptArgs 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl
-                     timestampLevel:(DBRIVIERATimestampLevel *)timestampLevel
-               includedSpecialWords:(NSString *)includedSpecialWords
-                      audioLanguage:(NSString *)audioLanguage {
+- (instancetype)initWithFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl timestampLevel:(DBRIVIERATimestampLevel *)timestampLevel includedSpecialWords:(NSString *)includedSpecialWords audioLanguage:(NSString *)audioLanguage {
 
-  self = [super init];
-  if (self) {
-    _fileIdOrUrl = fileIdOrUrl;
-    _timestampLevel = timestampLevel ?: [[DBRIVIERATimestampLevel alloc] initWithUnknown];
-    _includedSpecialWords = includedSpecialWords ?: @"";
-    _audioLanguage = audioLanguage ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _fileIdOrUrl = fileIdOrUrl;
+        _timestampLevel = timestampLevel ?: [[DBRIVIERATimestampLevel alloc] initWithUnknown];
+        _includedSpecialWords = includedSpecialWords ?: @"";
+        _audioLanguage = audioLanguage ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithFileIdOrUrl:nil timestampLevel:nil includedSpecialWords:nil audioLanguage:nil];
+    return [self initWithFileIdOrUrl:nil timestampLevel:nil includedSpecialWords:nil audioLanguage:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetTranscriptArgsSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetTranscriptArgsSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetTranscriptArgsSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetTranscriptArgsSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetTranscriptArgsSerializer serialize:self] description];
+    return [[DBRIVIERAGetTranscriptArgsSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  if (self.fileIdOrUrl != nil) {
-    result = prime * result + [self.fileIdOrUrl hash];
-  }
-  result = prime * result + [self.timestampLevel hash];
-  result = prime * result + [self.includedSpecialWords hash];
-  result = prime * result + [self.audioLanguage hash];
+    if (self.fileIdOrUrl != nil) {
+        result = prime * result + [self.fileIdOrUrl hash];
+    }
+    result = prime * result + [self.timestampLevel hash];
+    result = prime * result + [self.includedSpecialWords hash];
+    result = prime * result + [self.audioLanguage hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetTranscriptArgs:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetTranscriptArgs:other];
 }
 
 - (BOOL)isEqualToGetTranscriptArgs:(DBRIVIERAGetTranscriptArgs *)aGetTranscriptArgs {
-  if (self == aGetTranscriptArgs) {
-    return YES;
-  }
-  if (self.fileIdOrUrl) {
-    if (![self.fileIdOrUrl isEqual:aGetTranscriptArgs.fileIdOrUrl]) {
-      return NO;
+    if (self == aGetTranscriptArgs) {
+        return YES;
     }
-  }
-  if (![self.timestampLevel isEqual:aGetTranscriptArgs.timestampLevel]) {
-    return NO;
-  }
-  if (![self.includedSpecialWords isEqual:aGetTranscriptArgs.includedSpecialWords]) {
-    return NO;
-  }
-  if (![self.audioLanguage isEqual:aGetTranscriptArgs.audioLanguage]) {
-    return NO;
-  }
-  return YES;
+    if (self.fileIdOrUrl) {
+        if (![self.fileIdOrUrl isEqual:aGetTranscriptArgs.fileIdOrUrl]) {
+            return NO;
+        }
+    }
+    if (![self.timestampLevel isEqual:aGetTranscriptArgs.timestampLevel]) {
+        return NO;
+    }
+    if (![self.includedSpecialWords isEqual:aGetTranscriptArgs.includedSpecialWords]) {
+        return NO;
+    }
+    if (![self.audioLanguage isEqual:aGetTranscriptArgs.audioLanguage]) {
+        return NO;
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetTranscriptArgsSerializer
+@implementation DBRIVIERAGetTranscriptArgsSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptArgs *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.fileIdOrUrl) {
-    jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
-  }
-  jsonDict[@"timestamp_level"] = [DBRIVIERATimestampLevelSerializer serialize:valueObj.timestampLevel];
-  jsonDict[@"included_special_words"] = valueObj.includedSpecialWords;
-  jsonDict[@"audio_language"] = valueObj.audioLanguage;
+    if (valueObj.fileIdOrUrl) {
+        jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
+    }
+    jsonDict[@"timestamp_level"] = [DBRIVIERATimestampLevelSerializer serialize:valueObj.timestampLevel];
+    jsonDict[@"included_special_words"] = valueObj.includedSpecialWords;
+    jsonDict[@"audio_language"] = valueObj.audioLanguage;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetTranscriptArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAFileIdOrUrl *fileIdOrUrl =
-      valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
-  DBRIVIERATimestampLevel *timestampLevel =
-      valueDict[@"timestamp_level"] ? [DBRIVIERATimestampLevelSerializer deserialize:valueDict[@"timestamp_level"]]
-                                    : [[DBRIVIERATimestampLevel alloc] initWithUnknown];
-  NSString *includedSpecialWords = valueDict[@"included_special_words"] ?: @"";
-  NSString *audioLanguage = valueDict[@"audio_language"] ?: @"";
+    DBRIVIERAFileIdOrUrl *fileIdOrUrl = valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
+    DBRIVIERATimestampLevel *timestampLevel = valueDict[@"timestamp_level"] ? [DBRIVIERATimestampLevelSerializer deserialize:valueDict[@"timestamp_level"]] : [[DBRIVIERATimestampLevel alloc] initWithUnknown];
+    NSString *includedSpecialWords = valueDict[@"included_special_words"] ?: @"";
+    NSString *audioLanguage = valueDict[@"audio_language"] ?: @"";
 
-  return [[DBRIVIERAGetTranscriptArgs alloc] initWithFileIdOrUrl:fileIdOrUrl
-                                                  timestampLevel:timestampLevel
-                                            includedSpecialWords:includedSpecialWords
-                                                   audioLanguage:audioLanguage];
+    return [[DBRIVIERAGetTranscriptArgs alloc] initWithFileIdOrUrl:fileIdOrUrl timestampLevel:timestampLevel includedSpecialWords:includedSpecialWords audioLanguage:audioLanguage];
 }
 
 @end
@@ -3549,7 +3426,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetTranscriptAsyncCheckResult
+@implementation DBRIVIERAGetTranscriptAsyncCheckResult 
 
 @synthesize complete = _complete;
 @synthesize failed = _failed;
@@ -3557,215 +3434,219 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithInProgress {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetTranscriptAsyncCheckResultInProgress;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetTranscriptAsyncCheckResultInProgress;
+    }
+    return self;
 }
 
 - (instancetype)initWithComplete:(DBRIVIERAGetTranscriptResult *)complete {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetTranscriptAsyncCheckResultComplete;
-    _complete = complete;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetTranscriptAsyncCheckResultComplete;
+        _complete = complete;
+    }
+    return self;
 }
 
 - (instancetype)initWithFailed:(DBRIVIERAGetTranscriptAsyncError *)failed {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetTranscriptAsyncCheckResultFailed;
-    _failed = failed;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetTranscriptAsyncCheckResultFailed;
+        _failed = failed;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAGetTranscriptAsyncCheckResultOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAGetTranscriptAsyncCheckResultOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBRIVIERAGetTranscriptResult *)complete {
-  if (![self isComplete]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAGetTranscriptAsyncCheckResultComplete, but was %@.", [self tagName]];
-  }
-  return _complete;
+    if (![self isComplete]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAGetTranscriptAsyncCheckResultComplete, but was %@.", [self tagName]];
+    }
+    return _complete;
 }
 
 - (DBRIVIERAGetTranscriptAsyncError *)failed {
-  if (![self isFailed]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAGetTranscriptAsyncCheckResultFailed, but was %@.", [self tagName]];
-  }
-  return _failed;
+    if (![self isFailed]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAGetTranscriptAsyncCheckResultFailed, but was %@.", [self tagName]];
+    }
+    return _failed;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isInProgress {
-  return _tag == DBRIVIERAGetTranscriptAsyncCheckResultInProgress;
+    return _tag == DBRIVIERAGetTranscriptAsyncCheckResultInProgress;
 }
 
 - (BOOL)isComplete {
-  return _tag == DBRIVIERAGetTranscriptAsyncCheckResultComplete;
+    return _tag == DBRIVIERAGetTranscriptAsyncCheckResultComplete;
 }
 
 - (BOOL)isFailed {
-  return _tag == DBRIVIERAGetTranscriptAsyncCheckResultFailed;
+    return _tag == DBRIVIERAGetTranscriptAsyncCheckResultFailed;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAGetTranscriptAsyncCheckResultOther;
+    return _tag == DBRIVIERAGetTranscriptAsyncCheckResultOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAGetTranscriptAsyncCheckResultInProgress:
-    return @"DBRIVIERAGetTranscriptAsyncCheckResultInProgress";
-  case DBRIVIERAGetTranscriptAsyncCheckResultComplete:
-    return @"DBRIVIERAGetTranscriptAsyncCheckResultComplete";
-  case DBRIVIERAGetTranscriptAsyncCheckResultFailed:
-    return @"DBRIVIERAGetTranscriptAsyncCheckResultFailed";
-  case DBRIVIERAGetTranscriptAsyncCheckResultOther:
-    return @"DBRIVIERAGetTranscriptAsyncCheckResultOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAGetTranscriptAsyncCheckResultInProgress:
+           return @"DBRIVIERAGetTranscriptAsyncCheckResultInProgress";
+        case DBRIVIERAGetTranscriptAsyncCheckResultComplete:
+           return @"DBRIVIERAGetTranscriptAsyncCheckResultComplete";
+        case DBRIVIERAGetTranscriptAsyncCheckResultFailed:
+           return @"DBRIVIERAGetTranscriptAsyncCheckResultFailed";
+        case DBRIVIERAGetTranscriptAsyncCheckResultOther:
+           return @"DBRIVIERAGetTranscriptAsyncCheckResultOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetTranscriptAsyncCheckResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetTranscriptAsyncCheckResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetTranscriptAsyncCheckResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetTranscriptAsyncCheckResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetTranscriptAsyncCheckResultSerializer serialize:self] description];
+    return [[DBRIVIERAGetTranscriptAsyncCheckResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAGetTranscriptAsyncCheckResultInProgress:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAGetTranscriptAsyncCheckResultComplete:
-    result = prime * result + [self.complete hash];
-    break;
-  case DBRIVIERAGetTranscriptAsyncCheckResultFailed:
-    result = prime * result + [self.failed hash];
-    break;
-  case DBRIVIERAGetTranscriptAsyncCheckResultOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAGetTranscriptAsyncCheckResultInProgress:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAGetTranscriptAsyncCheckResultComplete:
+        result = prime * result + [self.complete hash];
+        break;
+        case DBRIVIERAGetTranscriptAsyncCheckResultFailed:
+        result = prime * result + [self.failed hash];
+        break;
+        case DBRIVIERAGetTranscriptAsyncCheckResultOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetTranscriptAsyncCheckResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetTranscriptAsyncCheckResult:other];
 }
 
-- (BOOL)isEqualToGetTranscriptAsyncCheckResult:
-    (DBRIVIERAGetTranscriptAsyncCheckResult *)aGetTranscriptAsyncCheckResult {
-  if (self == aGetTranscriptAsyncCheckResult) {
+- (BOOL)isEqualToGetTranscriptAsyncCheckResult:(DBRIVIERAGetTranscriptAsyncCheckResult *)aGetTranscriptAsyncCheckResult {
+    if (self == aGetTranscriptAsyncCheckResult) {
+        return YES;
+    }
+    if (self.tag != aGetTranscriptAsyncCheckResult.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAGetTranscriptAsyncCheckResultInProgress:
+        return [[self tagName] isEqual:[aGetTranscriptAsyncCheckResult tagName]];
+        case DBRIVIERAGetTranscriptAsyncCheckResultComplete:
+        return [self.complete isEqual:aGetTranscriptAsyncCheckResult.complete];
+        case DBRIVIERAGetTranscriptAsyncCheckResultFailed:
+        return [self.failed isEqual:aGetTranscriptAsyncCheckResult.failed];
+        case DBRIVIERAGetTranscriptAsyncCheckResultOther:
+        return [[self tagName] isEqual:[aGetTranscriptAsyncCheckResult tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aGetTranscriptAsyncCheckResult.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAGetTranscriptAsyncCheckResultInProgress:
-    return [[self tagName] isEqual:[aGetTranscriptAsyncCheckResult tagName]];
-  case DBRIVIERAGetTranscriptAsyncCheckResultComplete:
-    return [self.complete isEqual:aGetTranscriptAsyncCheckResult.complete];
-  case DBRIVIERAGetTranscriptAsyncCheckResultFailed:
-    return [self.failed isEqual:aGetTranscriptAsyncCheckResult.failed];
-  case DBRIVIERAGetTranscriptAsyncCheckResultOther:
-    return [[self tagName] isEqual:[aGetTranscriptAsyncCheckResult tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetTranscriptAsyncCheckResultSerializer
+@implementation DBRIVIERAGetTranscriptAsyncCheckResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptAsyncCheckResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInProgress]) {
-    jsonDict[@".tag"] = @"in_progress";
-  } else if ([valueObj isComplete]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetTranscriptResultSerializer serialize:valueObj.complete]];
-    jsonDict[@".tag"] = @"complete";
-  } else if ([valueObj isFailed]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:valueObj.failed]];
-    jsonDict[@".tag"] = @"failed";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isInProgress]) {
+        jsonDict[@".tag"] = @"in_progress";
+    }
+    else if ([valueObj isComplete]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAGetTranscriptResultSerializer serialize:valueObj.complete]];
+        jsonDict[@".tag"] = @"complete";
+    }
+    else if ([valueObj isFailed]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:valueObj.failed]];
+        jsonDict[@".tag"] = @"failed";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetTranscriptAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"in_progress"]) {
-    return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithInProgress];
-  } else if ([tag isEqualToString:@"complete"]) {
-    DBRIVIERAGetTranscriptResult *complete = [DBRIVIERAGetTranscriptResultSerializer deserialize:valueDict];
-    return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithComplete:complete];
-  } else if ([tag isEqualToString:@"failed"]) {
-    DBRIVIERAGetTranscriptAsyncError *failed = [DBRIVIERAGetTranscriptAsyncErrorSerializer deserialize:valueDict];
-    return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithFailed:failed];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"in_progress"]) {
+        return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithInProgress];
+    }
+    else if ([tag isEqualToString:@"complete"]) {
+        DBRIVIERAGetTranscriptResult *complete = [DBRIVIERAGetTranscriptResultSerializer deserialize:valueDict];
+        return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithComplete:complete];
+    }
+    else if ([tag isEqualToString:@"failed"]) {
+        DBRIVIERAGetTranscriptAsyncError *failed = [DBRIVIERAGetTranscriptAsyncErrorSerializer deserialize:valueDict];
+        return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithFailed:failed];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithOther];
+    }
 }
 
 @end
@@ -3778,116 +3659,112 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetTranscriptAsyncError
+@implementation DBRIVIERAGetTranscriptAsyncError 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode
-                     errorDetails:(DBRIVIERAContentApiV2Error *)errorDetails {
+- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode errorDetails:(DBRIVIERAContentApiV2Error *)errorDetails {
 
-  self = [super init];
-  if (self) {
-    _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-    _errorDetails = errorDetails;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
+        _errorDetails = errorDetails;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithErrorCode:nil errorDetails:nil];
+    return [self initWithErrorCode:nil errorDetails:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetTranscriptAsyncErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetTranscriptAsyncErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:self] description];
+    return [[DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.errorCode hash];
-  if (self.errorDetails != nil) {
-    result = prime * result + [self.errorDetails hash];
-  }
+    result = prime * result + [self.errorCode hash];
+    if (self.errorDetails != nil) {
+        result = prime * result + [self.errorDetails hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetTranscriptAsyncError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetTranscriptAsyncError:other];
 }
 
 - (BOOL)isEqualToGetTranscriptAsyncError:(DBRIVIERAGetTranscriptAsyncError *)aGetTranscriptAsyncError {
-  if (self == aGetTranscriptAsyncError) {
-    return YES;
-  }
-  if (![self.errorCode isEqual:aGetTranscriptAsyncError.errorCode]) {
-    return NO;
-  }
-  if (self.errorDetails) {
-    if (![self.errorDetails isEqual:aGetTranscriptAsyncError.errorDetails]) {
-      return NO;
+    if (self == aGetTranscriptAsyncError) {
+        return YES;
     }
-  }
-  return YES;
+    if (![self.errorCode isEqual:aGetTranscriptAsyncError.errorCode]) {
+        return NO;
+    }
+    if (self.errorDetails) {
+        if (![self.errorDetails isEqual:aGetTranscriptAsyncError.errorDetails]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetTranscriptAsyncErrorSerializer
+@implementation DBRIVIERAGetTranscriptAsyncErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptAsyncError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
-  if (valueObj.errorDetails) {
-    jsonDict[@"error_details"] = [DBRIVIERAContentApiV2ErrorSerializer serialize:valueObj.errorDetails];
-  }
+    jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
+    if (valueObj.errorDetails) {
+        jsonDict[@"error_details"] = [DBRIVIERAContentApiV2ErrorSerializer serialize:valueObj.errorDetails];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetTranscriptAsyncError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"]
-                                      ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]]
-                                      : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  DBRIVIERAContentApiV2Error *errorDetails =
-      valueDict[@"error_details"] ? [DBRIVIERAContentApiV2ErrorSerializer deserialize:valueDict[@"error_details"]]
-                                  : nil;
+    DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"] ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]] : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
+    DBRIVIERAContentApiV2Error *errorDetails = valueDict[@"error_details"] ? [DBRIVIERAContentApiV2ErrorSerializer deserialize:valueDict[@"error_details"]] : nil;
 
-  return [[DBRIVIERAGetTranscriptAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
+    return [[DBRIVIERAGetTranscriptAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
 }
 
 @end
@@ -3899,108 +3776,105 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAGetTranscriptResult
+@implementation DBRIVIERAGetTranscriptResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithStructuredTranscript:(DBRIVIERAApiStructuredTranscript *)structuredTranscript {
 
-  self = [super init];
-  if (self) {
-    _structuredTranscript = structuredTranscript;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _structuredTranscript = structuredTranscript;
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithStructuredTranscript:nil];
+    return [self initWithStructuredTranscript:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetTranscriptResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAGetTranscriptResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetTranscriptResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAGetTranscriptResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAGetTranscriptResultSerializer serialize:self] description];
+    return [[DBRIVIERAGetTranscriptResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  if (self.structuredTranscript != nil) {
-    result = prime * result + [self.structuredTranscript hash];
-  }
+    if (self.structuredTranscript != nil) {
+        result = prime * result + [self.structuredTranscript hash];
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetTranscriptResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToGetTranscriptResult:other];
 }
 
 - (BOOL)isEqualToGetTranscriptResult:(DBRIVIERAGetTranscriptResult *)aGetTranscriptResult {
-  if (self == aGetTranscriptResult) {
-    return YES;
-  }
-  if (self.structuredTranscript) {
-    if (![self.structuredTranscript isEqual:aGetTranscriptResult.structuredTranscript]) {
-      return NO;
+    if (self == aGetTranscriptResult) {
+        return YES;
     }
-  }
-  return YES;
+    if (self.structuredTranscript) {
+        if (![self.structuredTranscript isEqual:aGetTranscriptResult.structuredTranscript]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAGetTranscriptResultSerializer
+@implementation DBRIVIERAGetTranscriptResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if (valueObj.structuredTranscript) {
-    jsonDict[@"structured_transcript"] =
-        [DBRIVIERAApiStructuredTranscriptSerializer serialize:valueObj.structuredTranscript];
-  }
+    if (valueObj.structuredTranscript) {
+        jsonDict[@"structured_transcript"] = [DBRIVIERAApiStructuredTranscriptSerializer serialize:valueObj.structuredTranscript];
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAGetTranscriptResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAApiStructuredTranscript *structuredTranscript =
-      valueDict[@"structured_transcript"]
-          ? [DBRIVIERAApiStructuredTranscriptSerializer deserialize:valueDict[@"structured_transcript"]]
-          : nil;
+    DBRIVIERAApiStructuredTranscript *structuredTranscript = valueDict[@"structured_transcript"] ? [DBRIVIERAApiStructuredTranscriptSerializer deserialize:valueDict[@"structured_transcript"]] : nil;
 
-  return [[DBRIVIERAGetTranscriptResult alloc] initWithStructuredTranscript:structuredTranscript];
+    return [[DBRIVIERAGetTranscriptResult alloc] initWithStructuredTranscript:structuredTranscript];
 }
 
 @end
@@ -4011,7 +3885,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAMarkdownConversionApiV2Error
+@implementation DBRIVIERAMarkdownConversionApiV2Error 
 
 @synthesize serverError = _serverError;
 @synthesize userError = _userError;
@@ -4019,352 +3893,369 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithServerError:(NSString *)serverError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorServerError;
-    _serverError = serverError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorServerError;
+        _serverError = serverError;
+    }
+    return self;
 }
 
 - (instancetype)initWithUserError:(NSString *)userError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorUserError;
-    _userError = userError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorUserError;
+        _userError = userError;
+    }
+    return self;
 }
 
 - (instancetype)initWithUnsupportedFormatError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError;
+    }
+    return self;
 }
 
 - (instancetype)initWithLinkDownloadDisabledError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError;
+    }
+    return self;
 }
 
 - (instancetype)initWithSharedLinkPasswordProtected {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected;
+    }
+    return self;
 }
 
 - (instancetype)initWithLimitExceededError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError;
+    }
+    return self;
 }
 
 - (instancetype)initWithConversionFailureError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError;
+    }
+    return self;
 }
 
 - (instancetype)initWithNotFoundError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError;
+    }
+    return self;
 }
 
 - (instancetype)initWithIsAFolderError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMarkdownConversionApiV2ErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMarkdownConversionApiV2ErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (NSString *)serverError {
-  if (![self isServerError]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAMarkdownConversionApiV2ErrorServerError, but was %@.", [self tagName]];
-  }
-  return _serverError;
+    if (![self isServerError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMarkdownConversionApiV2ErrorServerError, but was %@.", [self tagName]];
+    }
+    return _serverError;
 }
 
 - (NSString *)userError {
-  if (![self isUserError]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAMarkdownConversionApiV2ErrorUserError, but was %@.", [self tagName]];
-  }
-  return _userError;
+    if (![self isUserError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMarkdownConversionApiV2ErrorUserError, but was %@.", [self tagName]];
+    }
+    return _userError;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isServerError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorServerError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorServerError;
 }
 
 - (BOOL)isUserError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorUserError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorUserError;
 }
 
 - (BOOL)isUnsupportedFormatError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError;
 }
 
 - (BOOL)isLinkDownloadDisabledError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError;
 }
 
 - (BOOL)isSharedLinkPasswordProtected {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected;
 }
 
 - (BOOL)isLimitExceededError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError;
 }
 
 - (BOOL)isConversionFailureError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError;
 }
 
 - (BOOL)isNotFoundError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError;
 }
 
 - (BOOL)isIsAFolderError {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAMarkdownConversionApiV2ErrorOther;
+    return _tag == DBRIVIERAMarkdownConversionApiV2ErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAMarkdownConversionApiV2ErrorServerError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorServerError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorUserError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorUserError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected";
-  case DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError";
-  case DBRIVIERAMarkdownConversionApiV2ErrorOther:
-    return @"DBRIVIERAMarkdownConversionApiV2ErrorOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAMarkdownConversionApiV2ErrorServerError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorServerError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorUserError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorUserError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected";
+        case DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError";
+        case DBRIVIERAMarkdownConversionApiV2ErrorOther:
+           return @"DBRIVIERAMarkdownConversionApiV2ErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAMarkdownConversionApiV2ErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAMarkdownConversionApiV2ErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:self] description];
+    return [[DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAMarkdownConversionApiV2ErrorServerError:
-    result = prime * result + [self.serverError hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorUserError:
-    result = prime * result + [self.userError hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMarkdownConversionApiV2ErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAMarkdownConversionApiV2ErrorServerError:
+        result = prime * result + [self.serverError hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorUserError:
+        result = prime * result + [self.userError hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMarkdownConversionApiV2ErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToMarkdownConversionApiV2Error:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToMarkdownConversionApiV2Error:other];
 }
 
 - (BOOL)isEqualToMarkdownConversionApiV2Error:(DBRIVIERAMarkdownConversionApiV2Error *)aMarkdownConversionApiV2Error {
-  if (self == aMarkdownConversionApiV2Error) {
+    if (self == aMarkdownConversionApiV2Error) {
+        return YES;
+    }
+    if (self.tag != aMarkdownConversionApiV2Error.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAMarkdownConversionApiV2ErrorServerError:
+        return [self.serverError isEqual:aMarkdownConversionApiV2Error.serverError];
+        case DBRIVIERAMarkdownConversionApiV2ErrorUserError:
+        return [self.userError isEqual:aMarkdownConversionApiV2Error.userError];
+        case DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+        case DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+        case DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+        case DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+        case DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+        case DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+        case DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+        case DBRIVIERAMarkdownConversionApiV2ErrorOther:
+        return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aMarkdownConversionApiV2Error.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAMarkdownConversionApiV2ErrorServerError:
-    return [self.serverError isEqual:aMarkdownConversionApiV2Error.serverError];
-  case DBRIVIERAMarkdownConversionApiV2ErrorUserError:
-    return [self.userError isEqual:aMarkdownConversionApiV2Error.userError];
-  case DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  case DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  case DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  case DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  case DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  case DBRIVIERAMarkdownConversionApiV2ErrorNotFoundError:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  case DBRIVIERAMarkdownConversionApiV2ErrorIsAFolderError:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  case DBRIVIERAMarkdownConversionApiV2ErrorOther:
-    return [[self tagName] isEqual:[aMarkdownConversionApiV2Error tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAMarkdownConversionApiV2ErrorSerializer
+@implementation DBRIVIERAMarkdownConversionApiV2ErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMarkdownConversionApiV2Error *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isServerError]) {
-    jsonDict[@"server_error"] = valueObj.serverError;
-    jsonDict[@".tag"] = @"server_error";
-  } else if ([valueObj isUserError]) {
-    jsonDict[@"user_error"] = valueObj.userError;
-    jsonDict[@".tag"] = @"user_error";
-  } else if ([valueObj isUnsupportedFormatError]) {
-    jsonDict[@".tag"] = @"unsupported_format_error";
-  } else if ([valueObj isLinkDownloadDisabledError]) {
-    jsonDict[@".tag"] = @"link_download_disabled_error";
-  } else if ([valueObj isSharedLinkPasswordProtected]) {
-    jsonDict[@".tag"] = @"shared_link_password_protected";
-  } else if ([valueObj isLimitExceededError]) {
-    jsonDict[@".tag"] = @"limit_exceeded_error";
-  } else if ([valueObj isConversionFailureError]) {
-    jsonDict[@".tag"] = @"conversion_failure_error";
-  } else if ([valueObj isNotFoundError]) {
-    jsonDict[@".tag"] = @"not_found_error";
-  } else if ([valueObj isIsAFolderError]) {
-    jsonDict[@".tag"] = @"is_a_folder_error";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isServerError]) {
+        jsonDict[@"server_error"] = valueObj.serverError;
+        jsonDict[@".tag"] = @"server_error";
+    }
+    else if ([valueObj isUserError]) {
+        jsonDict[@"user_error"] = valueObj.userError;
+        jsonDict[@".tag"] = @"user_error";
+    }
+    else if ([valueObj isUnsupportedFormatError]) {
+        jsonDict[@".tag"] = @"unsupported_format_error";
+    }
+    else if ([valueObj isLinkDownloadDisabledError]) {
+        jsonDict[@".tag"] = @"link_download_disabled_error";
+    }
+    else if ([valueObj isSharedLinkPasswordProtected]) {
+        jsonDict[@".tag"] = @"shared_link_password_protected";
+    }
+    else if ([valueObj isLimitExceededError]) {
+        jsonDict[@".tag"] = @"limit_exceeded_error";
+    }
+    else if ([valueObj isConversionFailureError]) {
+        jsonDict[@".tag"] = @"conversion_failure_error";
+    }
+    else if ([valueObj isNotFoundError]) {
+        jsonDict[@".tag"] = @"not_found_error";
+    }
+    else if ([valueObj isIsAFolderError]) {
+        jsonDict[@".tag"] = @"is_a_folder_error";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAMarkdownConversionApiV2Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"server_error"]) {
-    NSString *serverError = valueDict[@"server_error"];
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithServerError:serverError];
-  } else if ([tag isEqualToString:@"user_error"]) {
-    NSString *userError = valueDict[@"user_error"];
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithUserError:userError];
-  } else if ([tag isEqualToString:@"unsupported_format_error"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithUnsupportedFormatError];
-  } else if ([tag isEqualToString:@"link_download_disabled_error"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithLinkDownloadDisabledError];
-  } else if ([tag isEqualToString:@"shared_link_password_protected"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithSharedLinkPasswordProtected];
-  } else if ([tag isEqualToString:@"limit_exceeded_error"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithLimitExceededError];
-  } else if ([tag isEqualToString:@"conversion_failure_error"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithConversionFailureError];
-  } else if ([tag isEqualToString:@"not_found_error"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithNotFoundError];
-  } else if ([tag isEqualToString:@"is_a_folder_error"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithIsAFolderError];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"server_error"]) {
+        NSString *serverError = valueDict[@"server_error"];
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithServerError:serverError];
+    }
+    else if ([tag isEqualToString:@"user_error"]) {
+        NSString *userError = valueDict[@"user_error"];
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithUserError:userError];
+    }
+    else if ([tag isEqualToString:@"unsupported_format_error"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithUnsupportedFormatError];
+    }
+    else if ([tag isEqualToString:@"link_download_disabled_error"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithLinkDownloadDisabledError];
+    }
+    else if ([tag isEqualToString:@"shared_link_password_protected"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithSharedLinkPasswordProtected];
+    }
+    else if ([tag isEqualToString:@"limit_exceeded_error"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithLimitExceededError];
+    }
+    else if ([tag isEqualToString:@"conversion_failure_error"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithConversionFailureError];
+    }
+    else if ([tag isEqualToString:@"not_found_error"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithNotFoundError];
+    }
+    else if ([tag isEqualToString:@"is_a_folder_error"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithIsAFolderError];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAMarkdownConversionApiV2Error alloc] initWithOther];
+    }
 }
 
 @end
@@ -4375,98 +4266,99 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAMediaDurationError
+@implementation DBRIVIERAMediaDurationError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
 
-  self = [super init];
-  if (self) {
-    _limit = limit ?: @(0);
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _limit = limit ?: @(0);
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithLimit:nil];
+    return [self initWithLimit:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAMediaDurationErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAMediaDurationErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAMediaDurationErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAMediaDurationErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAMediaDurationErrorSerializer serialize:self] description];
+    return [[DBRIVIERAMediaDurationErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.limit hash];
+    result = prime * result + [self.limit hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToMediaDurationError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToMediaDurationError:other];
 }
 
 - (BOOL)isEqualToMediaDurationError:(DBRIVIERAMediaDurationError *)aMediaDurationError {
-  if (self == aMediaDurationError) {
+    if (self == aMediaDurationError) {
+        return YES;
+    }
+    if (![self.limit isEqual:aMediaDurationError.limit]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.limit isEqual:aMediaDurationError.limit]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAMediaDurationErrorSerializer
+@implementation DBRIVIERAMediaDurationErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMediaDurationError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"limit"] = valueObj.limit;
+    jsonDict[@"limit"] = valueObj.limit;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAMediaDurationError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSNumber *limit = valueDict[@"limit"] ?: @(0);
+    NSNumber *limit = valueDict[@"limit"] ?: @(0);
 
-  return [[DBRIVIERAMediaDurationError alloc] initWithLimit:limit];
+    return [[DBRIVIERAMediaDurationError alloc] initWithLimit:limit];
 }
 
 @end
@@ -4477,7 +4369,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAMetadataExtractionApiV2Error
+@implementation DBRIVIERAMetadataExtractionApiV2Error 
 
 @synthesize serverError = _serverError;
 @synthesize userError = _userError;
@@ -4485,352 +4377,369 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithServerError:(NSString *)serverError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorServerError;
-    _serverError = serverError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorServerError;
+        _serverError = serverError;
+    }
+    return self;
 }
 
 - (instancetype)initWithUserError:(NSString *)userError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorUserError;
-    _userError = userError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorUserError;
+        _userError = userError;
+    }
+    return self;
 }
 
 - (instancetype)initWithUnsupportedFormatError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError;
+    }
+    return self;
 }
 
 - (instancetype)initWithLinkDownloadDisabledError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError;
+    }
+    return self;
 }
 
 - (instancetype)initWithSharedLinkPasswordProtected {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected;
+    }
+    return self;
 }
 
 - (instancetype)initWithLimitExceededError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError;
+    }
+    return self;
 }
 
 - (instancetype)initWithConversionFailureError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError;
+    }
+    return self;
 }
 
 - (instancetype)initWithNotFoundError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError;
+    }
+    return self;
 }
 
 - (instancetype)initWithIsAFolderError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataExtractionApiV2ErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataExtractionApiV2ErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (NSString *)serverError {
-  if (![self isServerError]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAMetadataExtractionApiV2ErrorServerError, but was %@.", [self tagName]];
-  }
-  return _serverError;
+    if (![self isServerError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMetadataExtractionApiV2ErrorServerError, but was %@.", [self tagName]];
+    }
+    return _serverError;
 }
 
 - (NSString *)userError {
-  if (![self isUserError]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBRIVIERAMetadataExtractionApiV2ErrorUserError, but was %@.", [self tagName]];
-  }
-  return _userError;
+    if (![self isUserError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMetadataExtractionApiV2ErrorUserError, but was %@.", [self tagName]];
+    }
+    return _userError;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isServerError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorServerError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorServerError;
 }
 
 - (BOOL)isUserError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorUserError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorUserError;
 }
 
 - (BOOL)isUnsupportedFormatError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError;
 }
 
 - (BOOL)isLinkDownloadDisabledError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError;
 }
 
 - (BOOL)isSharedLinkPasswordProtected {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected;
 }
 
 - (BOOL)isLimitExceededError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError;
 }
 
 - (BOOL)isConversionFailureError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError;
 }
 
 - (BOOL)isNotFoundError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError;
 }
 
 - (BOOL)isIsAFolderError {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAMetadataExtractionApiV2ErrorOther;
+    return _tag == DBRIVIERAMetadataExtractionApiV2ErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAMetadataExtractionApiV2ErrorServerError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorServerError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorUserError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorUserError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected";
-  case DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError";
-  case DBRIVIERAMetadataExtractionApiV2ErrorOther:
-    return @"DBRIVIERAMetadataExtractionApiV2ErrorOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAMetadataExtractionApiV2ErrorServerError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorServerError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorUserError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorUserError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected";
+        case DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError";
+        case DBRIVIERAMetadataExtractionApiV2ErrorOther:
+           return @"DBRIVIERAMetadataExtractionApiV2ErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAMetadataExtractionApiV2ErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAMetadataExtractionApiV2ErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:self] description];
+    return [[DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAMetadataExtractionApiV2ErrorServerError:
-    result = prime * result + [self.serverError hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorUserError:
-    result = prime * result + [self.userError hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataExtractionApiV2ErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAMetadataExtractionApiV2ErrorServerError:
+        result = prime * result + [self.serverError hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorUserError:
+        result = prime * result + [self.userError hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataExtractionApiV2ErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToMetadataExtractionApiV2Error:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToMetadataExtractionApiV2Error:other];
 }
 
 - (BOOL)isEqualToMetadataExtractionApiV2Error:(DBRIVIERAMetadataExtractionApiV2Error *)aMetadataExtractionApiV2Error {
-  if (self == aMetadataExtractionApiV2Error) {
+    if (self == aMetadataExtractionApiV2Error) {
+        return YES;
+    }
+    if (self.tag != aMetadataExtractionApiV2Error.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAMetadataExtractionApiV2ErrorServerError:
+        return [self.serverError isEqual:aMetadataExtractionApiV2Error.serverError];
+        case DBRIVIERAMetadataExtractionApiV2ErrorUserError:
+        return [self.userError isEqual:aMetadataExtractionApiV2Error.userError];
+        case DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+        case DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+        case DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+        case DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+        case DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+        case DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+        case DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+        case DBRIVIERAMetadataExtractionApiV2ErrorOther:
+        return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aMetadataExtractionApiV2Error.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAMetadataExtractionApiV2ErrorServerError:
-    return [self.serverError isEqual:aMetadataExtractionApiV2Error.serverError];
-  case DBRIVIERAMetadataExtractionApiV2ErrorUserError:
-    return [self.userError isEqual:aMetadataExtractionApiV2Error.userError];
-  case DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  case DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  case DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  case DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  case DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  case DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  case DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  case DBRIVIERAMetadataExtractionApiV2ErrorOther:
-    return [[self tagName] isEqual:[aMetadataExtractionApiV2Error tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAMetadataExtractionApiV2ErrorSerializer
+@implementation DBRIVIERAMetadataExtractionApiV2ErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMetadataExtractionApiV2Error *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isServerError]) {
-    jsonDict[@"server_error"] = valueObj.serverError;
-    jsonDict[@".tag"] = @"server_error";
-  } else if ([valueObj isUserError]) {
-    jsonDict[@"user_error"] = valueObj.userError;
-    jsonDict[@".tag"] = @"user_error";
-  } else if ([valueObj isUnsupportedFormatError]) {
-    jsonDict[@".tag"] = @"unsupported_format_error";
-  } else if ([valueObj isLinkDownloadDisabledError]) {
-    jsonDict[@".tag"] = @"link_download_disabled_error";
-  } else if ([valueObj isSharedLinkPasswordProtected]) {
-    jsonDict[@".tag"] = @"shared_link_password_protected";
-  } else if ([valueObj isLimitExceededError]) {
-    jsonDict[@".tag"] = @"limit_exceeded_error";
-  } else if ([valueObj isConversionFailureError]) {
-    jsonDict[@".tag"] = @"conversion_failure_error";
-  } else if ([valueObj isNotFoundError]) {
-    jsonDict[@".tag"] = @"not_found_error";
-  } else if ([valueObj isIsAFolderError]) {
-    jsonDict[@".tag"] = @"is_a_folder_error";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isServerError]) {
+        jsonDict[@"server_error"] = valueObj.serverError;
+        jsonDict[@".tag"] = @"server_error";
+    }
+    else if ([valueObj isUserError]) {
+        jsonDict[@"user_error"] = valueObj.userError;
+        jsonDict[@".tag"] = @"user_error";
+    }
+    else if ([valueObj isUnsupportedFormatError]) {
+        jsonDict[@".tag"] = @"unsupported_format_error";
+    }
+    else if ([valueObj isLinkDownloadDisabledError]) {
+        jsonDict[@".tag"] = @"link_download_disabled_error";
+    }
+    else if ([valueObj isSharedLinkPasswordProtected]) {
+        jsonDict[@".tag"] = @"shared_link_password_protected";
+    }
+    else if ([valueObj isLimitExceededError]) {
+        jsonDict[@".tag"] = @"limit_exceeded_error";
+    }
+    else if ([valueObj isConversionFailureError]) {
+        jsonDict[@".tag"] = @"conversion_failure_error";
+    }
+    else if ([valueObj isNotFoundError]) {
+        jsonDict[@".tag"] = @"not_found_error";
+    }
+    else if ([valueObj isIsAFolderError]) {
+        jsonDict[@".tag"] = @"is_a_folder_error";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAMetadataExtractionApiV2Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"server_error"]) {
-    NSString *serverError = valueDict[@"server_error"];
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithServerError:serverError];
-  } else if ([tag isEqualToString:@"user_error"]) {
-    NSString *userError = valueDict[@"user_error"];
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithUserError:userError];
-  } else if ([tag isEqualToString:@"unsupported_format_error"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithUnsupportedFormatError];
-  } else if ([tag isEqualToString:@"link_download_disabled_error"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithLinkDownloadDisabledError];
-  } else if ([tag isEqualToString:@"shared_link_password_protected"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithSharedLinkPasswordProtected];
-  } else if ([tag isEqualToString:@"limit_exceeded_error"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithLimitExceededError];
-  } else if ([tag isEqualToString:@"conversion_failure_error"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithConversionFailureError];
-  } else if ([tag isEqualToString:@"not_found_error"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithNotFoundError];
-  } else if ([tag isEqualToString:@"is_a_folder_error"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithIsAFolderError];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"server_error"]) {
+        NSString *serverError = valueDict[@"server_error"];
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithServerError:serverError];
+    }
+    else if ([tag isEqualToString:@"user_error"]) {
+        NSString *userError = valueDict[@"user_error"];
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithUserError:userError];
+    }
+    else if ([tag isEqualToString:@"unsupported_format_error"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithUnsupportedFormatError];
+    }
+    else if ([tag isEqualToString:@"link_download_disabled_error"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithLinkDownloadDisabledError];
+    }
+    else if ([tag isEqualToString:@"shared_link_password_protected"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithSharedLinkPasswordProtected];
+    }
+    else if ([tag isEqualToString:@"limit_exceeded_error"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithLimitExceededError];
+    }
+    else if ([tag isEqualToString:@"conversion_failure_error"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithConversionFailureError];
+    }
+    else if ([tag isEqualToString:@"not_found_error"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithNotFoundError];
+    }
+    else if ([tag isEqualToString:@"is_a_folder_error"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithIsAFolderError];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAMetadataExtractionApiV2Error alloc] initWithOther];
+    }
 }
 
 @end
@@ -4841,56 +4750,56 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAMetadataType
+@implementation DBRIVIERAMetadataType 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithMetadataTypeUnknown {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataTypeMetadataTypeUnknown;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataTypeMetadataTypeUnknown;
+    }
+    return self;
 }
 
 - (instancetype)initWithMetadataTypeExif {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataTypeMetadataTypeExif;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataTypeMetadataTypeExif;
+    }
+    return self;
 }
 
 - (instancetype)initWithMetadataTypeMedia {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataTypeMetadataTypeMedia;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataTypeMetadataTypeMedia;
+    }
+    return self;
 }
 
 - (instancetype)initWithMetadataTypePdf {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataTypeMetadataTypePdf;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataTypeMetadataTypePdf;
+    }
+    return self;
 }
 
 - (instancetype)initWithMetadataTypeOffice {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataTypeMetadataTypeOffice;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataTypeMetadataTypeOffice;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataTypeOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataTypeOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -4898,184 +4807,197 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isMetadataTypeUnknown {
-  return _tag == DBRIVIERAMetadataTypeMetadataTypeUnknown;
+    return _tag == DBRIVIERAMetadataTypeMetadataTypeUnknown;
 }
 
 - (BOOL)isMetadataTypeExif {
-  return _tag == DBRIVIERAMetadataTypeMetadataTypeExif;
+    return _tag == DBRIVIERAMetadataTypeMetadataTypeExif;
 }
 
 - (BOOL)isMetadataTypeMedia {
-  return _tag == DBRIVIERAMetadataTypeMetadataTypeMedia;
+    return _tag == DBRIVIERAMetadataTypeMetadataTypeMedia;
 }
 
 - (BOOL)isMetadataTypePdf {
-  return _tag == DBRIVIERAMetadataTypeMetadataTypePdf;
+    return _tag == DBRIVIERAMetadataTypeMetadataTypePdf;
 }
 
 - (BOOL)isMetadataTypeOffice {
-  return _tag == DBRIVIERAMetadataTypeMetadataTypeOffice;
+    return _tag == DBRIVIERAMetadataTypeMetadataTypeOffice;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAMetadataTypeOther;
+    return _tag == DBRIVIERAMetadataTypeOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAMetadataTypeMetadataTypeUnknown:
-    return @"DBRIVIERAMetadataTypeMetadataTypeUnknown";
-  case DBRIVIERAMetadataTypeMetadataTypeExif:
-    return @"DBRIVIERAMetadataTypeMetadataTypeExif";
-  case DBRIVIERAMetadataTypeMetadataTypeMedia:
-    return @"DBRIVIERAMetadataTypeMetadataTypeMedia";
-  case DBRIVIERAMetadataTypeMetadataTypePdf:
-    return @"DBRIVIERAMetadataTypeMetadataTypePdf";
-  case DBRIVIERAMetadataTypeMetadataTypeOffice:
-    return @"DBRIVIERAMetadataTypeMetadataTypeOffice";
-  case DBRIVIERAMetadataTypeOther:
-    return @"DBRIVIERAMetadataTypeOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAMetadataTypeMetadataTypeUnknown:
+           return @"DBRIVIERAMetadataTypeMetadataTypeUnknown";
+        case DBRIVIERAMetadataTypeMetadataTypeExif:
+           return @"DBRIVIERAMetadataTypeMetadataTypeExif";
+        case DBRIVIERAMetadataTypeMetadataTypeMedia:
+           return @"DBRIVIERAMetadataTypeMetadataTypeMedia";
+        case DBRIVIERAMetadataTypeMetadataTypePdf:
+           return @"DBRIVIERAMetadataTypeMetadataTypePdf";
+        case DBRIVIERAMetadataTypeMetadataTypeOffice:
+           return @"DBRIVIERAMetadataTypeMetadataTypeOffice";
+        case DBRIVIERAMetadataTypeOther:
+           return @"DBRIVIERAMetadataTypeOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAMetadataTypeSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAMetadataTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAMetadataTypeSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAMetadataTypeSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAMetadataTypeSerializer serialize:self] description];
+    return [[DBRIVIERAMetadataTypeSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAMetadataTypeMetadataTypeUnknown:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataTypeMetadataTypeExif:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataTypeMetadataTypeMedia:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataTypeMetadataTypePdf:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataTypeMetadataTypeOffice:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAMetadataTypeOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAMetadataTypeMetadataTypeUnknown:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataTypeMetadataTypeExif:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataTypeMetadataTypeMedia:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataTypeMetadataTypePdf:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataTypeMetadataTypeOffice:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAMetadataTypeOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToMetadataType:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToMetadataType:other];
 }
 
 - (BOOL)isEqualToMetadataType:(DBRIVIERAMetadataType *)aMetadataType {
-  if (self == aMetadataType) {
+    if (self == aMetadataType) {
+        return YES;
+    }
+    if (self.tag != aMetadataType.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAMetadataTypeMetadataTypeUnknown:
+        return [[self tagName] isEqual:[aMetadataType tagName]];
+        case DBRIVIERAMetadataTypeMetadataTypeExif:
+        return [[self tagName] isEqual:[aMetadataType tagName]];
+        case DBRIVIERAMetadataTypeMetadataTypeMedia:
+        return [[self tagName] isEqual:[aMetadataType tagName]];
+        case DBRIVIERAMetadataTypeMetadataTypePdf:
+        return [[self tagName] isEqual:[aMetadataType tagName]];
+        case DBRIVIERAMetadataTypeMetadataTypeOffice:
+        return [[self tagName] isEqual:[aMetadataType tagName]];
+        case DBRIVIERAMetadataTypeOther:
+        return [[self tagName] isEqual:[aMetadataType tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aMetadataType.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAMetadataTypeMetadataTypeUnknown:
-    return [[self tagName] isEqual:[aMetadataType tagName]];
-  case DBRIVIERAMetadataTypeMetadataTypeExif:
-    return [[self tagName] isEqual:[aMetadataType tagName]];
-  case DBRIVIERAMetadataTypeMetadataTypeMedia:
-    return [[self tagName] isEqual:[aMetadataType tagName]];
-  case DBRIVIERAMetadataTypeMetadataTypePdf:
-    return [[self tagName] isEqual:[aMetadataType tagName]];
-  case DBRIVIERAMetadataTypeMetadataTypeOffice:
-    return [[self tagName] isEqual:[aMetadataType tagName]];
-  case DBRIVIERAMetadataTypeOther:
-    return [[self tagName] isEqual:[aMetadataType tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAMetadataTypeSerializer
+@implementation DBRIVIERAMetadataTypeSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMetadataType *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isMetadataTypeUnknown]) {
-    jsonDict[@".tag"] = @"metadata_type_unknown";
-  } else if ([valueObj isMetadataTypeExif]) {
-    jsonDict[@".tag"] = @"metadata_type_exif";
-  } else if ([valueObj isMetadataTypeMedia]) {
-    jsonDict[@".tag"] = @"metadata_type_media";
-  } else if ([valueObj isMetadataTypePdf]) {
-    jsonDict[@".tag"] = @"metadata_type_pdf";
-  } else if ([valueObj isMetadataTypeOffice]) {
-    jsonDict[@".tag"] = @"metadata_type_office";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isMetadataTypeUnknown]) {
+        jsonDict[@".tag"] = @"metadata_type_unknown";
+    }
+    else if ([valueObj isMetadataTypeExif]) {
+        jsonDict[@".tag"] = @"metadata_type_exif";
+    }
+    else if ([valueObj isMetadataTypeMedia]) {
+        jsonDict[@".tag"] = @"metadata_type_media";
+    }
+    else if ([valueObj isMetadataTypePdf]) {
+        jsonDict[@".tag"] = @"metadata_type_pdf";
+    }
+    else if ([valueObj isMetadataTypeOffice]) {
+        jsonDict[@".tag"] = @"metadata_type_office";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAMetadataType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"metadata_type_unknown"]) {
-    return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeUnknown];
-  } else if ([tag isEqualToString:@"metadata_type_exif"]) {
-    return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeExif];
-  } else if ([tag isEqualToString:@"metadata_type_media"]) {
-    return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeMedia];
-  } else if ([tag isEqualToString:@"metadata_type_pdf"]) {
-    return [[DBRIVIERAMetadataType alloc] initWithMetadataTypePdf];
-  } else if ([tag isEqualToString:@"metadata_type_office"]) {
-    return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeOffice];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAMetadataType alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAMetadataType alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"metadata_type_unknown"]) {
+        return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeUnknown];
+    }
+    else if ([tag isEqualToString:@"metadata_type_exif"]) {
+        return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeExif];
+    }
+    else if ([tag isEqualToString:@"metadata_type_media"]) {
+        return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeMedia];
+    }
+    else if ([tag isEqualToString:@"metadata_type_pdf"]) {
+        return [[DBRIVIERAMetadataType alloc] initWithMetadataTypePdf];
+    }
+    else if ([tag isEqualToString:@"metadata_type_office"]) {
+        return [[DBRIVIERAMetadataType alloc] initWithMetadataTypeOffice];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAMetadataType alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAMetadataType alloc] initWithOther];
+    }
 }
 
 @end
@@ -5086,48 +5008,48 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAOfficeFileType
+@implementation DBRIVIERAOfficeFileType 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithOfficeFiletypeUnknown {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown;
+    }
+    return self;
 }
 
 - (instancetype)initWithOfficeFiletypeWord {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAOfficeFileTypeOfficeFiletypeWord;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAOfficeFileTypeOfficeFiletypeWord;
+    }
+    return self;
 }
 
 - (instancetype)initWithOfficeFiletypePowerpoint {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint;
+    }
+    return self;
 }
 
 - (instancetype)initWithOfficeFiletypeExcel {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAOfficeFileTypeOfficeFiletypeExcel;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAOfficeFileTypeOfficeFiletypeExcel;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAOfficeFileTypeOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAOfficeFileTypeOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -5135,169 +5057,180 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isOfficeFiletypeUnknown {
-  return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown;
+    return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown;
 }
 
 - (BOOL)isOfficeFiletypeWord {
-  return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypeWord;
+    return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypeWord;
 }
 
 - (BOOL)isOfficeFiletypePowerpoint {
-  return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint;
+    return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint;
 }
 
 - (BOOL)isOfficeFiletypeExcel {
-  return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypeExcel;
+    return _tag == DBRIVIERAOfficeFileTypeOfficeFiletypeExcel;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAOfficeFileTypeOther;
+    return _tag == DBRIVIERAOfficeFileTypeOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown:
-    return @"DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown";
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeWord:
-    return @"DBRIVIERAOfficeFileTypeOfficeFiletypeWord";
-  case DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint:
-    return @"DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint";
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeExcel:
-    return @"DBRIVIERAOfficeFileTypeOfficeFiletypeExcel";
-  case DBRIVIERAOfficeFileTypeOther:
-    return @"DBRIVIERAOfficeFileTypeOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown:
+           return @"DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown";
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeWord:
+           return @"DBRIVIERAOfficeFileTypeOfficeFiletypeWord";
+        case DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint:
+           return @"DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint";
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeExcel:
+           return @"DBRIVIERAOfficeFileTypeOfficeFiletypeExcel";
+        case DBRIVIERAOfficeFileTypeOther:
+           return @"DBRIVIERAOfficeFileTypeOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAOfficeFileTypeSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAOfficeFileTypeSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAOfficeFileTypeSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAOfficeFileTypeSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAOfficeFileTypeSerializer serialize:self] description];
+    return [[DBRIVIERAOfficeFileTypeSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeWord:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeExcel:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAOfficeFileTypeOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeWord:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeExcel:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERAOfficeFileTypeOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToOfficeFileType:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToOfficeFileType:other];
 }
 
 - (BOOL)isEqualToOfficeFileType:(DBRIVIERAOfficeFileType *)anOfficeFileType {
-  if (self == anOfficeFileType) {
+    if (self == anOfficeFileType) {
+        return YES;
+    }
+    if (self.tag != anOfficeFileType.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown:
+        return [[self tagName] isEqual:[anOfficeFileType tagName]];
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeWord:
+        return [[self tagName] isEqual:[anOfficeFileType tagName]];
+        case DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint:
+        return [[self tagName] isEqual:[anOfficeFileType tagName]];
+        case DBRIVIERAOfficeFileTypeOfficeFiletypeExcel:
+        return [[self tagName] isEqual:[anOfficeFileType tagName]];
+        case DBRIVIERAOfficeFileTypeOther:
+        return [[self tagName] isEqual:[anOfficeFileType tagName]];
+    }
     return YES;
-  }
-  if (self.tag != anOfficeFileType.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown:
-    return [[self tagName] isEqual:[anOfficeFileType tagName]];
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeWord:
-    return [[self tagName] isEqual:[anOfficeFileType tagName]];
-  case DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint:
-    return [[self tagName] isEqual:[anOfficeFileType tagName]];
-  case DBRIVIERAOfficeFileTypeOfficeFiletypeExcel:
-    return [[self tagName] isEqual:[anOfficeFileType tagName]];
-  case DBRIVIERAOfficeFileTypeOther:
-    return [[self tagName] isEqual:[anOfficeFileType tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAOfficeFileTypeSerializer
+@implementation DBRIVIERAOfficeFileTypeSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAOfficeFileType *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isOfficeFiletypeUnknown]) {
-    jsonDict[@".tag"] = @"office_filetype_unknown";
-  } else if ([valueObj isOfficeFiletypeWord]) {
-    jsonDict[@".tag"] = @"office_filetype_word";
-  } else if ([valueObj isOfficeFiletypePowerpoint]) {
-    jsonDict[@".tag"] = @"office_filetype_powerpoint";
-  } else if ([valueObj isOfficeFiletypeExcel]) {
-    jsonDict[@".tag"] = @"office_filetype_excel";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isOfficeFiletypeUnknown]) {
+        jsonDict[@".tag"] = @"office_filetype_unknown";
+    }
+    else if ([valueObj isOfficeFiletypeWord]) {
+        jsonDict[@".tag"] = @"office_filetype_word";
+    }
+    else if ([valueObj isOfficeFiletypePowerpoint]) {
+        jsonDict[@".tag"] = @"office_filetype_powerpoint";
+    }
+    else if ([valueObj isOfficeFiletypeExcel]) {
+        jsonDict[@".tag"] = @"office_filetype_excel";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAOfficeFileType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"office_filetype_unknown"]) {
-    return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeUnknown];
-  } else if ([tag isEqualToString:@"office_filetype_word"]) {
-    return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeWord];
-  } else if ([tag isEqualToString:@"office_filetype_powerpoint"]) {
-    return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypePowerpoint];
-  } else if ([tag isEqualToString:@"office_filetype_excel"]) {
-    return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeExcel];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAOfficeFileType alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAOfficeFileType alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"office_filetype_unknown"]) {
+        return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeUnknown];
+    }
+    else if ([tag isEqualToString:@"office_filetype_word"]) {
+        return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeWord];
+    }
+    else if ([tag isEqualToString:@"office_filetype_powerpoint"]) {
+        return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypePowerpoint];
+    }
+    else if ([tag isEqualToString:@"office_filetype_excel"]) {
+        return [[DBRIVIERAOfficeFileType alloc] initWithOfficeFiletypeExcel];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAOfficeFileType alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAOfficeFileType alloc] initWithOther];
+    }
 }
 
 @end
@@ -5308,40 +5241,40 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERATimestampLevel
+@implementation DBRIVIERATimestampLevel 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithUnknown {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERATimestampLevelUnknown;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERATimestampLevelUnknown;
+    }
+    return self;
 }
 
 - (instancetype)initWithSentence {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERATimestampLevelSentence;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERATimestampLevelSentence;
+    }
+    return self;
 }
 
 - (instancetype)initWithWord {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERATimestampLevelWord;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERATimestampLevelWord;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERATimestampLevelOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERATimestampLevelOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -5349,154 +5282,163 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isUnknown {
-  return _tag == DBRIVIERATimestampLevelUnknown;
+    return _tag == DBRIVIERATimestampLevelUnknown;
 }
 
 - (BOOL)isSentence {
-  return _tag == DBRIVIERATimestampLevelSentence;
+    return _tag == DBRIVIERATimestampLevelSentence;
 }
 
 - (BOOL)isWord {
-  return _tag == DBRIVIERATimestampLevelWord;
+    return _tag == DBRIVIERATimestampLevelWord;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERATimestampLevelOther;
+    return _tag == DBRIVIERATimestampLevelOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERATimestampLevelUnknown:
-    return @"DBRIVIERATimestampLevelUnknown";
-  case DBRIVIERATimestampLevelSentence:
-    return @"DBRIVIERATimestampLevelSentence";
-  case DBRIVIERATimestampLevelWord:
-    return @"DBRIVIERATimestampLevelWord";
-  case DBRIVIERATimestampLevelOther:
-    return @"DBRIVIERATimestampLevelOther";
-  }
+    switch (_tag) {
+        case DBRIVIERATimestampLevelUnknown:
+           return @"DBRIVIERATimestampLevelUnknown";
+        case DBRIVIERATimestampLevelSentence:
+           return @"DBRIVIERATimestampLevelSentence";
+        case DBRIVIERATimestampLevelWord:
+           return @"DBRIVIERATimestampLevelWord";
+        case DBRIVIERATimestampLevelOther:
+           return @"DBRIVIERATimestampLevelOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERATimestampLevelSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERATimestampLevelSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERATimestampLevelSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERATimestampLevelSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERATimestampLevelSerializer serialize:self] description];
+    return [[DBRIVIERATimestampLevelSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERATimestampLevelUnknown:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERATimestampLevelSentence:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERATimestampLevelWord:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERATimestampLevelOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERATimestampLevelUnknown:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERATimestampLevelSentence:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERATimestampLevelWord:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBRIVIERATimestampLevelOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToTimestampLevel:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToTimestampLevel:other];
 }
 
 - (BOOL)isEqualToTimestampLevel:(DBRIVIERATimestampLevel *)aTimestampLevel {
-  if (self == aTimestampLevel) {
+    if (self == aTimestampLevel) {
+        return YES;
+    }
+    if (self.tag != aTimestampLevel.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERATimestampLevelUnknown:
+        return [[self tagName] isEqual:[aTimestampLevel tagName]];
+        case DBRIVIERATimestampLevelSentence:
+        return [[self tagName] isEqual:[aTimestampLevel tagName]];
+        case DBRIVIERATimestampLevelWord:
+        return [[self tagName] isEqual:[aTimestampLevel tagName]];
+        case DBRIVIERATimestampLevelOther:
+        return [[self tagName] isEqual:[aTimestampLevel tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aTimestampLevel.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERATimestampLevelUnknown:
-    return [[self tagName] isEqual:[aTimestampLevel tagName]];
-  case DBRIVIERATimestampLevelSentence:
-    return [[self tagName] isEqual:[aTimestampLevel tagName]];
-  case DBRIVIERATimestampLevelWord:
-    return [[self tagName] isEqual:[aTimestampLevel tagName]];
-  case DBRIVIERATimestampLevelOther:
-    return [[self tagName] isEqual:[aTimestampLevel tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERATimestampLevelSerializer
+@implementation DBRIVIERATimestampLevelSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERATimestampLevel *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isUnknown]) {
-    jsonDict[@".tag"] = @"unknown";
-  } else if ([valueObj isSentence]) {
-    jsonDict[@".tag"] = @"sentence";
-  } else if ([valueObj isWord]) {
-    jsonDict[@".tag"] = @"word";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isUnknown]) {
+        jsonDict[@".tag"] = @"unknown";
+    }
+    else if ([valueObj isSentence]) {
+        jsonDict[@".tag"] = @"sentence";
+    }
+    else if ([valueObj isWord]) {
+        jsonDict[@".tag"] = @"word";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERATimestampLevel *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"unknown"]) {
-    return [[DBRIVIERATimestampLevel alloc] initWithUnknown];
-  } else if ([tag isEqualToString:@"sentence"]) {
-    return [[DBRIVIERATimestampLevel alloc] initWithSentence];
-  } else if ([tag isEqualToString:@"word"]) {
-    return [[DBRIVIERATimestampLevel alloc] initWithWord];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERATimestampLevel alloc] initWithOther];
-  } else {
-    return [[DBRIVIERATimestampLevel alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"unknown"]) {
+        return [[DBRIVIERATimestampLevel alloc] initWithUnknown];
+    }
+    else if ([tag isEqualToString:@"sentence"]) {
+        return [[DBRIVIERATimestampLevel alloc] initWithSentence];
+    }
+    else if ([tag isEqualToString:@"word"]) {
+        return [[DBRIVIERATimestampLevel alloc] initWithWord];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERATimestampLevel alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERATimestampLevel alloc] initWithOther];
+    }
 }
 
 @end
@@ -5511,7 +5453,7 @@
 
 #pragma mark - API Object
 
-@implementation DBRIVIERAMetadataUnion
+@implementation DBRIVIERAMetadataUnion 
 
 @synthesize exif = _exif;
 @synthesize media = _media;
@@ -5521,257 +5463,264 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithExif:(DBRIVIERAApiExifMetadata *)exif {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataUnionExif;
-    _exif = exif;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataUnionExif;
+        _exif = exif;
+    }
+    return self;
 }
 
 - (instancetype)initWithMedia:(DBRIVIERAApiMediaMetadata *)media {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataUnionMedia;
-    _media = media;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataUnionMedia;
+        _media = media;
+    }
+    return self;
 }
 
 - (instancetype)initWithPdf:(DBRIVIERAApiPdfMetadata *)pdf {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataUnionPdf;
-    _pdf = pdf;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataUnionPdf;
+        _pdf = pdf;
+    }
+    return self;
 }
 
 - (instancetype)initWithOffice:(DBRIVIERAApiOfficeMetadata *)office {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataUnionOffice;
-    _office = office;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataUnionOffice;
+        _office = office;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAMetadataUnionOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBRIVIERAMetadataUnionOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBRIVIERAApiExifMetadata *)exif {
-  if (![self isExif]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAMetadataUnionExif, but was %@.", [self tagName]];
-  }
-  return _exif;
+    if (![self isExif]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMetadataUnionExif, but was %@.", [self tagName]];
+    }
+    return _exif;
 }
 
 - (DBRIVIERAApiMediaMetadata *)media {
-  if (![self isMedia]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAMetadataUnionMedia, but was %@.", [self tagName]];
-  }
-  return _media;
+    if (![self isMedia]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMetadataUnionMedia, but was %@.", [self tagName]];
+    }
+    return _media;
 }
 
 - (DBRIVIERAApiPdfMetadata *)pdf {
-  if (![self isPdf]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAMetadataUnionPdf, but was %@.", [self tagName]];
-  }
-  return _pdf;
+    if (![self isPdf]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMetadataUnionPdf, but was %@.", [self tagName]];
+    }
+    return _pdf;
 }
 
 - (DBRIVIERAApiOfficeMetadata *)office {
-  if (![self isOffice]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBRIVIERAMetadataUnionOffice, but was %@.", [self tagName]];
-  }
-  return _office;
+    if (![self isOffice]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBRIVIERAMetadataUnionOffice, but was %@.", [self tagName]];
+    }
+    return _office;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isExif {
-  return _tag == DBRIVIERAMetadataUnionExif;
+    return _tag == DBRIVIERAMetadataUnionExif;
 }
 
 - (BOOL)isMedia {
-  return _tag == DBRIVIERAMetadataUnionMedia;
+    return _tag == DBRIVIERAMetadataUnionMedia;
 }
 
 - (BOOL)isPdf {
-  return _tag == DBRIVIERAMetadataUnionPdf;
+    return _tag == DBRIVIERAMetadataUnionPdf;
 }
 
 - (BOOL)isOffice {
-  return _tag == DBRIVIERAMetadataUnionOffice;
+    return _tag == DBRIVIERAMetadataUnionOffice;
 }
 
 - (BOOL)isOther {
-  return _tag == DBRIVIERAMetadataUnionOther;
+    return _tag == DBRIVIERAMetadataUnionOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAMetadataUnionExif:
-    return @"DBRIVIERAMetadataUnionExif";
-  case DBRIVIERAMetadataUnionMedia:
-    return @"DBRIVIERAMetadataUnionMedia";
-  case DBRIVIERAMetadataUnionPdf:
-    return @"DBRIVIERAMetadataUnionPdf";
-  case DBRIVIERAMetadataUnionOffice:
-    return @"DBRIVIERAMetadataUnionOffice";
-  case DBRIVIERAMetadataUnionOther:
-    return @"DBRIVIERAMetadataUnionOther";
-  }
+    switch (_tag) {
+        case DBRIVIERAMetadataUnionExif:
+           return @"DBRIVIERAMetadataUnionExif";
+        case DBRIVIERAMetadataUnionMedia:
+           return @"DBRIVIERAMetadataUnionMedia";
+        case DBRIVIERAMetadataUnionPdf:
+           return @"DBRIVIERAMetadataUnionPdf";
+        case DBRIVIERAMetadataUnionOffice:
+           return @"DBRIVIERAMetadataUnionOffice";
+        case DBRIVIERAMetadataUnionOther:
+           return @"DBRIVIERAMetadataUnionOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAMetadataUnionSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBRIVIERAMetadataUnionSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAMetadataUnionSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBRIVIERAMetadataUnionSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBRIVIERAMetadataUnionSerializer serialize:self] description];
+    return [[DBRIVIERAMetadataUnionSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBRIVIERAMetadataUnionExif:
-    result = prime * result + [self.exif hash];
-    break;
-  case DBRIVIERAMetadataUnionMedia:
-    result = prime * result + [self.media hash];
-    break;
-  case DBRIVIERAMetadataUnionPdf:
-    result = prime * result + [self.pdf hash];
-    break;
-  case DBRIVIERAMetadataUnionOffice:
-    result = prime * result + [self.office hash];
-    break;
-  case DBRIVIERAMetadataUnionOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBRIVIERAMetadataUnionExif:
+        result = prime * result + [self.exif hash];
+        break;
+        case DBRIVIERAMetadataUnionMedia:
+        result = prime * result + [self.media hash];
+        break;
+        case DBRIVIERAMetadataUnionPdf:
+        result = prime * result + [self.pdf hash];
+        break;
+        case DBRIVIERAMetadataUnionOffice:
+        result = prime * result + [self.office hash];
+        break;
+        case DBRIVIERAMetadataUnionOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToMetadataUnion:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToMetadataUnion:other];
 }
 
 - (BOOL)isEqualToMetadataUnion:(DBRIVIERAMetadataUnion *)aMetadataUnion {
-  if (self == aMetadataUnion) {
+    if (self == aMetadataUnion) {
+        return YES;
+    }
+    if (self.tag != aMetadataUnion.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBRIVIERAMetadataUnionExif:
+        return [self.exif isEqual:aMetadataUnion.exif];
+        case DBRIVIERAMetadataUnionMedia:
+        return [self.media isEqual:aMetadataUnion.media];
+        case DBRIVIERAMetadataUnionPdf:
+        return [self.pdf isEqual:aMetadataUnion.pdf];
+        case DBRIVIERAMetadataUnionOffice:
+        return [self.office isEqual:aMetadataUnion.office];
+        case DBRIVIERAMetadataUnionOther:
+        return [[self tagName] isEqual:[aMetadataUnion tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aMetadataUnion.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAMetadataUnionExif:
-    return [self.exif isEqual:aMetadataUnion.exif];
-  case DBRIVIERAMetadataUnionMedia:
-    return [self.media isEqual:aMetadataUnion.media];
-  case DBRIVIERAMetadataUnionPdf:
-    return [self.pdf isEqual:aMetadataUnion.pdf];
-  case DBRIVIERAMetadataUnionOffice:
-    return [self.office isEqual:aMetadataUnion.office];
-  case DBRIVIERAMetadataUnionOther:
-    return [[self tagName] isEqual:[aMetadataUnion tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBRIVIERAMetadataUnionSerializer
+@implementation DBRIVIERAMetadataUnionSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMetadataUnion *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isExif]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAApiExifMetadataSerializer serialize:valueObj.exif]];
-    jsonDict[@".tag"] = @"exif";
-  } else if ([valueObj isMedia]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAApiMediaMetadataSerializer serialize:valueObj.media]];
-    jsonDict[@".tag"] = @"media";
-  } else if ([valueObj isPdf]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAApiPdfMetadataSerializer serialize:valueObj.pdf]];
-    jsonDict[@".tag"] = @"pdf";
-  } else if ([valueObj isOffice]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAApiOfficeMetadataSerializer serialize:valueObj.office]];
-    jsonDict[@".tag"] = @"office";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isExif]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAApiExifMetadataSerializer serialize:valueObj.exif]];
+        jsonDict[@".tag"] = @"exif";
+    }
+    else if ([valueObj isMedia]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAApiMediaMetadataSerializer serialize:valueObj.media]];
+        jsonDict[@".tag"] = @"media";
+    }
+    else if ([valueObj isPdf]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAApiPdfMetadataSerializer serialize:valueObj.pdf]];
+        jsonDict[@".tag"] = @"pdf";
+    }
+    else if ([valueObj isOffice]) {
+        [jsonDict addEntriesFromDictionary:[DBRIVIERAApiOfficeMetadataSerializer serialize:valueObj.office]];
+        jsonDict[@".tag"] = @"office";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBRIVIERAMetadataUnion *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"exif"]) {
-    DBRIVIERAApiExifMetadata *exif = [DBRIVIERAApiExifMetadataSerializer deserialize:valueDict];
-    return [[DBRIVIERAMetadataUnion alloc] initWithExif:exif];
-  } else if ([tag isEqualToString:@"media"]) {
-    DBRIVIERAApiMediaMetadata *media = [DBRIVIERAApiMediaMetadataSerializer deserialize:valueDict];
-    return [[DBRIVIERAMetadataUnion alloc] initWithMedia:media];
-  } else if ([tag isEqualToString:@"pdf"]) {
-    DBRIVIERAApiPdfMetadata *pdf = [DBRIVIERAApiPdfMetadataSerializer deserialize:valueDict];
-    return [[DBRIVIERAMetadataUnion alloc] initWithPdf:pdf];
-  } else if ([tag isEqualToString:@"office"]) {
-    DBRIVIERAApiOfficeMetadata *office = [DBRIVIERAApiOfficeMetadataSerializer deserialize:valueDict];
-    return [[DBRIVIERAMetadataUnion alloc] initWithOffice:office];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAMetadataUnion alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAMetadataUnion alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"exif"]) {
+        DBRIVIERAApiExifMetadata *exif = [DBRIVIERAApiExifMetadataSerializer deserialize:valueDict];
+        return [[DBRIVIERAMetadataUnion alloc] initWithExif:exif];
+    }
+    else if ([tag isEqualToString:@"media"]) {
+        DBRIVIERAApiMediaMetadata *media = [DBRIVIERAApiMediaMetadataSerializer deserialize:valueDict];
+        return [[DBRIVIERAMetadataUnion alloc] initWithMedia:media];
+    }
+    else if ([tag isEqualToString:@"pdf"]) {
+        DBRIVIERAApiPdfMetadata *pdf = [DBRIVIERAApiPdfMetadataSerializer deserialize:valueDict];
+        return [[DBRIVIERAMetadataUnion alloc] initWithPdf:pdf];
+    }
+    else if ([tag isEqualToString:@"office"]) {
+        DBRIVIERAApiOfficeMetadata *office = [DBRIVIERAApiOfficeMetadataSerializer deserialize:valueDict];
+        return [[DBRIVIERAMetadataUnion alloc] initWithOffice:office];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBRIVIERAMetadataUnion alloc] initWithOther];
+    }
+    else {
+        return [[DBRIVIERAMetadataUnion alloc] initWithOther];
+    }
 }
 
 @end

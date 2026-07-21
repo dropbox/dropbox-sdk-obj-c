@@ -10,31 +10,32 @@
 
 @class DBCHECKEchoError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EchoError` union.
-///
+/// 
 /// EchoError contains the error returned from the Dropbox servers.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBCHECKEchoError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBCHECKEchoError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBCHECKEchoErrorTag` enum type represents the possible tag states with
 /// which the `DBCHECKEchoError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBCHECKEchoErrorTag) {
-  /// The request was successful.
-  DBCHECKEchoErrorUserRequested,
+    /// The request was successful.
+    DBCHECKEchoErrorUserRequested,
 
-  /// (no description).
-  DBCHECKEchoErrorOther,
+    /// (no description).
+    DBCHECKEchoErrorOther,
 
 };
 
@@ -43,76 +44,78 @@ typedef NS_CLOSED_ENUM(NSInteger, DBCHECKEchoErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "user_requested".
-///
+/// 
 /// Description of the "user_requested" tag state: The request was successful.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUserRequested;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "user_requested".
-///
+/// 
 /// @return Whether the union's current tag state has value "user_requested".
-///
+/// 
 - (BOOL)isUserRequested;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBCHECKEchoError` union.
-///
-@interface DBCHECKEchoErrorSerializer : NSObject
+/// 
+@interface DBCHECKEchoErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBCHECKEchoError` instances.
-///
+/// 
 /// @param instance An instance of the `DBCHECKEchoError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBCHECKEchoError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBCHECKEchoError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBCHECKEchoError *)instance;
 
-///
+/// 
 /// Deserializes `DBCHECKEchoError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBCHECKEchoError` API object.
-///
+/// 
 /// @return An instantiation of the `DBCHECKEchoError` object.
-///
-+ (DBCHECKEchoError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBCHECKEchoError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMMembersDeleteFormerMemberFilesError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersDeleteFormerMemberFilesError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersDeleteFormerMemberFilesError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersDeleteFormerMemberFilesError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,28 +30,28 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the
 /// `DBTEAMMembersDeleteFormerMemberFilesError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersDeleteFormerMemberFilesErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or
-  /// external_id does not exist on this team.
-  DBTEAMMembersDeleteFormerMemberFilesErrorUserNotFound,
+    /// No matching user found. The provided team_member_id, email, or
+    /// external_id does not exist on this team.
+    DBTEAMMembersDeleteFormerMemberFilesErrorUserNotFound,
 
-  /// The user is not a member of the team.
-  DBTEAMMembersDeleteFormerMemberFilesErrorUserNotInTeam,
+    /// The user is not a member of the team.
+    DBTEAMMembersDeleteFormerMemberFilesErrorUserNotInTeam,
 
-  /// (no description).
-  DBTEAMMembersDeleteFormerMemberFilesErrorOther,
+    /// (no description).
+    DBTEAMMembersDeleteFormerMemberFilesErrorOther,
 
-  /// Cannot permanently delete files while it's being transferred.
-  DBTEAMMembersDeleteFormerMemberFilesErrorTransferInProgress,
+    /// Cannot permanently delete files while it's being transferred.
+    DBTEAMMembersDeleteFormerMemberFilesErrorTransferInProgress,
 
-  /// Cannot permanently delete files that have already been transferred.
-  DBTEAMMembersDeleteFormerMemberFilesErrorAlreadyTransferred,
+    /// Cannot permanently delete files that have already been transferred.
+    DBTEAMMembersDeleteFormerMemberFilesErrorAlreadyTransferred,
 
-  /// Cannot permanently delete files that have already been transferred or
-  /// deleted.
-  DBTEAMMembersDeleteFormerMemberFilesErrorAlreadyTransferredOrDeleted,
+    /// Cannot permanently delete files that have already been transferred or
+    /// deleted.
+    DBTEAMMembersDeleteFormerMemberFilesErrorAlreadyTransferredOrDeleted,
 
-  /// User has not been removed from the team.
-  DBTEAMMembersDeleteFormerMemberFilesErrorUserNotRemoved,
+    /// User has not been removed from the team.
+    DBTEAMMembersDeleteFormerMemberFilesErrorUserNotRemoved,
 
 };
 
@@ -59,173 +60,175 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMMembersDeleteFormerMemberFilesErrorTag) 
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "user_not_found".
-///
+/// 
 /// Description of the "user_not_found" tag state: No matching user found. The
 /// provided team_member_id, email, or external_id does not exist on this team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUserNotFound;
 
-///
+/// 
 /// Initializes union class with tag state of "user_not_in_team".
-///
+/// 
 /// Description of the "user_not_in_team" tag state: The user is not a member of
 /// the team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUserNotInTeam;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
-///
+/// 
 /// Initializes union class with tag state of "transfer_in_progress".
-///
+/// 
 /// Description of the "transfer_in_progress" tag state: Cannot permanently
 /// delete files while it's being transferred.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTransferInProgress;
 
-///
+/// 
 /// Initializes union class with tag state of "already_transferred".
-///
+/// 
 /// Description of the "already_transferred" tag state: Cannot permanently
 /// delete files that have already been transferred.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAlreadyTransferred;
 
-///
+/// 
 /// Initializes union class with tag state of "already_transferred_or_deleted".
-///
+/// 
 /// Description of the "already_transferred_or_deleted" tag state: Cannot
 /// permanently delete files that have already been transferred or deleted.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAlreadyTransferredOrDeleted;
 
-///
+/// 
 /// Initializes union class with tag state of "user_not_removed".
-///
+/// 
 /// Description of the "user_not_removed" tag state: User has not been removed
 /// from the team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUserNotRemoved;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "user_not_found".
-///
+/// 
 /// @return Whether the union's current tag state has value "user_not_found".
-///
+/// 
 - (BOOL)isUserNotFound;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "user_not_in_team".
-///
+/// 
 /// @return Whether the union's current tag state has value "user_not_in_team".
-///
+/// 
 - (BOOL)isUserNotInTeam;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "transfer_in_progress".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "transfer_in_progress".
-///
+/// 
 - (BOOL)isTransferInProgress;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "already_transferred".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "already_transferred".
-///
+/// 
 - (BOOL)isAlreadyTransferred;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "already_transferred_or_deleted".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "already_transferred_or_deleted".
-///
+/// 
 - (BOOL)isAlreadyTransferredOrDeleted;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "user_not_removed".
-///
+/// 
 /// @return Whether the union's current tag state has value "user_not_removed".
-///
+/// 
 - (BOOL)isUserNotRemoved;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMMembersDeleteFormerMemberFilesError`
 /// union.
-///
-@interface DBTEAMMembersDeleteFormerMemberFilesErrorSerializer : NSObject
+/// 
+@interface DBTEAMMembersDeleteFormerMemberFilesErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersDeleteFormerMemberFilesError` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMMembersDeleteFormerMemberFilesError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersDeleteFormerMemberFilesError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersDeleteFormerMemberFilesError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersDeleteFormerMemberFilesError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersDeleteFormerMemberFilesError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersDeleteFormerMemberFilesError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersDeleteFormerMemberFilesError`
 /// object.
-///
-+ (DBTEAMMembersDeleteFormerMemberFilesError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersDeleteFormerMemberFilesError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

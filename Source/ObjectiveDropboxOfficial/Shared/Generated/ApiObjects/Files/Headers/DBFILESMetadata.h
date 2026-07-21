@@ -10,20 +10,21 @@
 
 @class DBFILESMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `Metadata` struct.
-///
+/// 
 /// Metadata for a file or folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -53,9 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
 /// @param pathLower The lowercased full path in the user's Dropbox. This always
@@ -71,57 +72,55 @@ NS_ASSUME_NONNULL_BEGIN
 /// `parentSharedFolderId` in `DBFILESFileSharingInfo` or `parentSharedFolderId`
 /// in `DBFILESFolderSharingInfo` instead.
 /// @param previewUrl The preview URL of the file.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                   pathLower:(nullable NSString *)pathLower
-                 pathDisplay:(nullable NSString *)pathDisplay
-        parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                  previewUrl:(nullable NSString *)previewUrl;
+/// 
+- (instancetype)initWithName:(NSString *)name pathLower:(nullable NSString *)pathLower pathDisplay:(nullable NSString *)pathDisplay parentSharedFolderId:(nullable NSString *)parentSharedFolderId previewUrl:(nullable NSString *)previewUrl;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithName:(NSString *)name;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `Metadata` struct.
-///
-@interface DBFILESMetadataSerializer : NSObject
+/// 
+@interface DBFILESMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the `DBFILESMetadata`
 /// API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESMetadata` object.
-///
-+ (DBFILESMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,21 +11,22 @@
 @class DBFILEPROPERTIESPropertyFieldTemplate;
 @class DBFILEPROPERTIESPropertyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PropertyFieldTemplate` struct.
-///
+/// 
 /// Defines how a single property field may be structured. Used exclusively by
 /// PropertyGroupTemplate.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEPROPERTIESPropertyFieldTemplate : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEPROPERTIESPropertyFieldTemplate : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -42,54 +43,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param name Key of the property field being described. Property field keys
 /// can be up to 256 bytes.
 /// @param description_ Description of the property field. Property field
 /// descriptions can be up to 1024 bytes.
 /// @param type (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                description_:(NSString *)description_
-                        type:(DBFILEPROPERTIESPropertyType *)type;
+/// 
+- (instancetype)initWithName:(NSString *)name description_:(NSString *)description_ type:(DBFILEPROPERTIESPropertyType *)type;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PropertyFieldTemplate` struct.
-///
-@interface DBFILEPROPERTIESPropertyFieldTemplateSerializer : NSObject
+/// 
+@interface DBFILEPROPERTIESPropertyFieldTemplateSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEPROPERTIESPropertyFieldTemplate` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEPROPERTIESPropertyFieldTemplate`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertyFieldTemplate` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEPROPERTIESPropertyFieldTemplate *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEPROPERTIESPropertyFieldTemplate *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEPROPERTIESPropertyFieldTemplate` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertyFieldTemplate` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEPROPERTIESPropertyFieldTemplate`
 /// object.
-///
-+ (DBFILEPROPERTIESPropertyFieldTemplate *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEPROPERTIESPropertyFieldTemplate *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

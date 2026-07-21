@@ -10,37 +10,38 @@
 
 @class DBPAPERExportFormat;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ExportFormat` union.
-///
+/// 
 /// The desired export format of the Paper doc.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERExportFormat : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERExportFormat : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBPAPERExportFormatTag` enum type represents the possible tag states
 /// with which the `DBPAPERExportFormat` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBPAPERExportFormatTag) {
-  /// The HTML export format.
-  DBPAPERExportFormatHtml,
+    /// The HTML export format.
+    DBPAPERExportFormatHtml,
 
-  /// The markdown export format.
-  DBPAPERExportFormatMarkdown,
+    /// The markdown export format.
+    DBPAPERExportFormatMarkdown,
 
-  /// Doc metadata JSON export format.
-  DBPAPERExportFormatJson,
+    /// Doc metadata JSON export format.
+    DBPAPERExportFormatJson,
 
-  /// (no description).
-  DBPAPERExportFormatOther,
+    /// (no description).
+    DBPAPERExportFormatOther,
 
 };
 
@@ -49,108 +50,110 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERExportFormatTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "html".
-///
+/// 
 /// Description of the "html" tag state: The HTML export format.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithHtml;
 
-///
+/// 
 /// Initializes union class with tag state of "markdown".
-///
+/// 
 /// Description of the "markdown" tag state: The markdown export format.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMarkdown;
 
-///
+/// 
 /// Initializes union class with tag state of "json".
-///
+/// 
 /// Description of the "json" tag state: Doc metadata JSON export format.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithJson;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "html".
-///
+/// 
 /// @return Whether the union's current tag state has value "html".
-///
+/// 
 - (BOOL)isHtml;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "markdown".
-///
+/// 
 /// @return Whether the union's current tag state has value "markdown".
-///
+/// 
 - (BOOL)isMarkdown;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "json".
-///
+/// 
 /// @return Whether the union's current tag state has value "json".
-///
+/// 
 - (BOOL)isJson;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBPAPERExportFormat` union.
-///
-@interface DBPAPERExportFormatSerializer : NSObject
+/// 
+@interface DBPAPERExportFormatSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERExportFormat` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERExportFormat` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERExportFormat` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERExportFormat *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERExportFormat *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERExportFormat` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERExportFormat` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERExportFormat` object.
-///
-+ (DBPAPERExportFormat *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERExportFormat *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

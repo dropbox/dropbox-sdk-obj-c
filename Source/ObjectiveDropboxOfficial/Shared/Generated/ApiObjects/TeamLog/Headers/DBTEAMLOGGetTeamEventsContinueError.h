@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGGetTeamEventsContinueError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetTeamEventsContinueError` union.
-///
+/// 
 /// Errors that can be raised when calling `getEventsContinue`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGetTeamEventsContinueError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGetTeamEventsContinueError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,19 +32,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGGetTeamEventsContinueError`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGGetTeamEventsContinueErrorTag) {
-  /// Bad cursor.
-  DBTEAMLOGGetTeamEventsContinueErrorBadCursor,
+    /// Bad cursor.
+    DBTEAMLOGGetTeamEventsContinueErrorBadCursor,
 
-  /// Cursors are intended to be used quickly. Individual cursor values are
-  /// normally valid for days, but in rare cases may be reset sooner. Cursor
-  /// reset errors should be handled by fetching a new cursor from
-  /// `getEvents`. The associated value is the approximate timestamp of the
-  /// most recent event returned by the cursor. This should be used as a
-  /// resumption point when calling `getEvents` to obtain a new cursor.
-  DBTEAMLOGGetTeamEventsContinueErrorReset,
+    /// Cursors are intended to be used quickly. Individual cursor values are
+    /// normally valid for days, but in rare cases may be reset sooner. Cursor
+    /// reset errors should be handled by fetching a new cursor from
+    /// `getEvents`. The associated value is the approximate timestamp of the
+    /// most recent event returned by the cursor. This should be used as a
+    /// resumption point when calling `getEvents` to obtain a new cursor.
+    DBTEAMLOGGetTeamEventsContinueErrorReset,
 
-  /// (no description).
-  DBTEAMLOGGetTeamEventsContinueErrorOther,
+    /// (no description).
+    DBTEAMLOGGetTeamEventsContinueErrorOther,
 
 };
 
@@ -62,109 +63,111 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGGetTeamEventsContinueErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "bad_cursor".
-///
+/// 
 /// Description of the "bad_cursor" tag state: Bad cursor.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBadCursor;
 
-///
+/// 
 /// Initializes union class with tag state of "reset".
-///
+/// 
 /// Description of the "reset" tag state: Cursors are intended to be used
 /// quickly. Individual cursor values are normally valid for days, but in rare
 /// cases may be reset sooner. Cursor reset errors should be handled by fetching
 /// a new cursor from `getEvents`. The associated value is the approximate
 /// timestamp of the most recent event returned by the cursor. This should be
 /// used as a resumption point when calling `getEvents` to obtain a new cursor.
-///
+/// 
 /// @param reset Cursors are intended to be used quickly. Individual cursor
 /// values are normally valid for days, but in rare cases may be reset sooner.
 /// Cursor reset errors should be handled by fetching a new cursor from
 /// `getEvents`. The associated value is the approximate timestamp of the most
 /// recent event returned by the cursor. This should be used as a resumption
 /// point when calling `getEvents` to obtain a new cursor.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithReset:(NSDate *)reset;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "bad_cursor".
-///
+/// 
 /// @return Whether the union's current tag state has value "bad_cursor".
-///
+/// 
 - (BOOL)isBadCursor;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "reset".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `reset` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "reset".
-///
+/// 
 - (BOOL)isReset;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGGetTeamEventsContinueError` union.
-///
-@interface DBTEAMLOGGetTeamEventsContinueErrorSerializer : NSObject
+/// 
+@interface DBTEAMLOGGetTeamEventsContinueErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGetTeamEventsContinueError` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGGetTeamEventsContinueError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGetTeamEventsContinueError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsContinueError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGetTeamEventsContinueError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGetTeamEventsContinueError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGetTeamEventsContinueError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGetTeamEventsContinueError`
 /// object.
-///
-+ (DBTEAMLOGGetTeamEventsContinueError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGetTeamEventsContinueError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

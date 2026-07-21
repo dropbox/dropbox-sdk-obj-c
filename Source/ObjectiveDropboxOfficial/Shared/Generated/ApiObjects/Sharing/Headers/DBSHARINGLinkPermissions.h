@@ -20,18 +20,19 @@
 @class DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy;
 @class DBTEAMPOLICIESEnforceLinkPasswordPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LinkPermissions` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGLinkPermissions : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGLinkPermissions : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -138,9 +139,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param canRevoke Whether the caller can revoke the shared link.
 /// @param visibilityPolicies A list of policies that the user might be able to
 /// set for the visibility.
@@ -204,38 +205,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// shared link expiration value cannot be less strict than daysToExpirePolicy.
 /// In this case daysToExpirePolicy is expected to be different from `none`. Not
 /// provided if the link is not team owned.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithCanRevoke:(NSNumber *)canRevoke
-                  visibilityPolicies:(NSArray<DBSHARINGVisibilityPolicy *> *)visibilityPolicies
-                        canSetExpiry:(NSNumber *)canSetExpiry
-                     canRemoveExpiry:(NSNumber *)canRemoveExpiry
-                       allowDownload:(NSNumber *)allowDownload
-                    canAllowDownload:(NSNumber *)canAllowDownload
-                 canDisallowDownload:(NSNumber *)canDisallowDownload
-                       allowComments:(NSNumber *)allowComments
-               teamRestrictsComments:(NSNumber *)teamRestrictsComments
-                  resolvedVisibility:(nullable DBSHARINGResolvedVisibility *)resolvedVisibility
-                 requestedVisibility:(nullable DBSHARINGRequestedVisibility *)requestedVisibility
-                 revokeFailureReason:(nullable DBSHARINGSharedLinkAccessFailureReason *)revokeFailureReason
-                   effectiveAudience:(nullable DBSHARINGLinkAudience *)effectiveAudience
-                     linkAccessLevel:(nullable DBSHARINGLinkAccessLevel *)linkAccessLevel
-                     audienceOptions:(nullable NSArray<DBSHARINGLinkAudienceOption *> *)audienceOptions
-                      canSetPassword:(nullable NSNumber *)canSetPassword
-                   canRemovePassword:(nullable NSNumber *)canRemovePassword
-                     requirePassword:(nullable NSNumber *)requirePassword
-       canUseExtendedSharingControls:(nullable NSNumber *)canUseExtendedSharingControls
-                             canSync:(nullable NSNumber *)canSync
-                    canRequestAccess:(nullable NSNumber *)canRequestAccess
-     enforceSharedLinkPasswordPolicy:(nullable DBTEAMPOLICIESEnforceLinkPasswordPolicy *)enforceSharedLinkPasswordPolicy
-                  daysToExpirePolicy:(nullable DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)daysToExpirePolicy
-    changeSharedLinkExpirationPolicy:(nullable DBSHARINGChangeLinkExpirationPolicy *)changeSharedLinkExpirationPolicy;
+/// 
+- (instancetype)initWithCanRevoke:(NSNumber *)canRevoke visibilityPolicies:(NSArray<DBSHARINGVisibilityPolicy *> *)visibilityPolicies canSetExpiry:(NSNumber *)canSetExpiry canRemoveExpiry:(NSNumber *)canRemoveExpiry allowDownload:(NSNumber *)allowDownload canAllowDownload:(NSNumber *)canAllowDownload canDisallowDownload:(NSNumber *)canDisallowDownload allowComments:(NSNumber *)allowComments teamRestrictsComments:(NSNumber *)teamRestrictsComments resolvedVisibility:(nullable DBSHARINGResolvedVisibility *)resolvedVisibility requestedVisibility:(nullable DBSHARINGRequestedVisibility *)requestedVisibility revokeFailureReason:(nullable DBSHARINGSharedLinkAccessFailureReason *)revokeFailureReason effectiveAudience:(nullable DBSHARINGLinkAudience *)effectiveAudience linkAccessLevel:(nullable DBSHARINGLinkAccessLevel *)linkAccessLevel audienceOptions:(nullable NSArray<DBSHARINGLinkAudienceOption *> *)audienceOptions canSetPassword:(nullable NSNumber *)canSetPassword canRemovePassword:(nullable NSNumber *)canRemovePassword requirePassword:(nullable NSNumber *)requirePassword canUseExtendedSharingControls:(nullable NSNumber *)canUseExtendedSharingControls canSync:(nullable NSNumber *)canSync canRequestAccess:(nullable NSNumber *)canRequestAccess enforceSharedLinkPasswordPolicy:(nullable DBTEAMPOLICIESEnforceLinkPasswordPolicy *)enforceSharedLinkPasswordPolicy daysToExpirePolicy:(nullable DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)daysToExpirePolicy changeSharedLinkExpirationPolicy:(nullable DBSHARINGChangeLinkExpirationPolicy *)changeSharedLinkExpirationPolicy;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param canRevoke Whether the caller can revoke the shared link.
 /// @param visibilityPolicies A list of policies that the user might be able to
 /// set for the visibility.
@@ -253,50 +231,44 @@ NS_ASSUME_NONNULL_BEGIN
 /// the linked file. This takes the team commenting policy into account.
 /// @param teamRestrictsComments Field is deprecated. Whether the team has
 /// disabled commenting globally.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithCanRevoke:(NSNumber *)canRevoke
-               visibilityPolicies:(NSArray<DBSHARINGVisibilityPolicy *> *)visibilityPolicies
-                     canSetExpiry:(NSNumber *)canSetExpiry
-                  canRemoveExpiry:(NSNumber *)canRemoveExpiry
-                    allowDownload:(NSNumber *)allowDownload
-                 canAllowDownload:(NSNumber *)canAllowDownload
-              canDisallowDownload:(NSNumber *)canDisallowDownload
-                    allowComments:(NSNumber *)allowComments
-            teamRestrictsComments:(NSNumber *)teamRestrictsComments;
+/// 
+- (instancetype)initWithCanRevoke:(NSNumber *)canRevoke visibilityPolicies:(NSArray<DBSHARINGVisibilityPolicy *> *)visibilityPolicies canSetExpiry:(NSNumber *)canSetExpiry canRemoveExpiry:(NSNumber *)canRemoveExpiry allowDownload:(NSNumber *)allowDownload canAllowDownload:(NSNumber *)canAllowDownload canDisallowDownload:(NSNumber *)canDisallowDownload allowComments:(NSNumber *)allowComments teamRestrictsComments:(NSNumber *)teamRestrictsComments;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LinkPermissions` struct.
-///
-@interface DBSHARINGLinkPermissionsSerializer : NSObject
+/// 
+@interface DBSHARINGLinkPermissionsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGLinkPermissions` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGLinkPermissions` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGLinkPermissions` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGLinkPermissions *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGLinkPermissions *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGLinkPermissions` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGLinkPermissions` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGLinkPermissions` object.
-///
-+ (DBSHARINGLinkPermissions *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGLinkPermissions *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkSettingsAllowDownloadEnabledType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,50 +31,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkSettingsAllowDownloadEnabledType`
 /// struct.
-///
-@interface DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType` object.
-///
-+ (DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkSettingsAllowDownloadEnabledType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

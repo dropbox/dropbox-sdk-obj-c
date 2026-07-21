@@ -10,18 +10,19 @@
 
 @class DBTEAMSharingAllowlistListContinueArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharingAllowlistListContinueArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMSharingAllowlistListContinueArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMSharingAllowlistListContinueArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,49 +32,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param cursor The cursor returned from a previous call to
 /// `sharingAllowlistList` or `sharingAllowlistListContinue`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCursor:(NSString *)cursor;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharingAllowlistListContinueArg` struct.
-///
-@interface DBTEAMSharingAllowlistListContinueArgSerializer : NSObject
+/// 
+@interface DBTEAMSharingAllowlistListContinueArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMSharingAllowlistListContinueArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMSharingAllowlistListContinueArg`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMSharingAllowlistListContinueArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistListContinueArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMSharingAllowlistListContinueArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMSharingAllowlistListContinueArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMSharingAllowlistListContinueArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMSharingAllowlistListContinueArg`
 /// object.
-///
-+ (DBTEAMSharingAllowlistListContinueArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMSharingAllowlistListContinueArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

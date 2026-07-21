@@ -11,20 +11,21 @@
 @class DBFILEREQUESTSFileRequest;
 @class DBFILEREQUESTSListFileRequestsResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFileRequestsResult` struct.
-///
+/// 
 /// Result for `list`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSListFileRequestsResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSListFileRequestsResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,49 +35,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileRequests The file requests owned by this user. Apps with the app
 /// folder permission will only see file requests in their app folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileRequests:(NSArray<DBFILEREQUESTSFileRequest *> *)fileRequests;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFileRequestsResult` struct.
-///
-@interface DBFILEREQUESTSListFileRequestsResultSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSListFileRequestsResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSListFileRequestsResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSListFileRequestsResult`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSListFileRequestsResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSListFileRequestsResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSListFileRequestsResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSListFileRequestsResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSListFileRequestsResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSListFileRequestsResult`
 /// object.
-///
-+ (DBFILEREQUESTSListFileRequestsResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSListFileRequestsResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

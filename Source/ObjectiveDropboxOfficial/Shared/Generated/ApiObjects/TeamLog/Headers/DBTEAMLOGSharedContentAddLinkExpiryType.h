@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedContentAddLinkExpiryType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentAddLinkExpiryType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentAddLinkExpiryType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentAddLinkExpiryType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentAddLinkExpiryType` struct.
-///
-@interface DBTEAMLOGSharedContentAddLinkExpiryTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentAddLinkExpiryTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentAddLinkExpiryType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedContentAddLinkExpiryType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddLinkExpiryType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddLinkExpiryType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentAddLinkExpiryType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentAddLinkExpiryType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddLinkExpiryType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedContentAddLinkExpiryType`
 /// object.
-///
-+ (DBTEAMLOGSharedContentAddLinkExpiryType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentAddLinkExpiryType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

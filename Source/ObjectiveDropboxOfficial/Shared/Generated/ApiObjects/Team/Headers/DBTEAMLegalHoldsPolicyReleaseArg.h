@@ -10,18 +10,19 @@
 
 @class DBTEAMLegalHoldsPolicyReleaseArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldsPolicyReleaseArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLegalHoldsPolicyReleaseArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLegalHoldsPolicyReleaseArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param id_ The legal hold Id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithId_:(NSString *)id_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LegalHoldsPolicyReleaseArg` struct.
-///
-@interface DBTEAMLegalHoldsPolicyReleaseArgSerializer : NSObject
+/// 
+@interface DBTEAMLegalHoldsPolicyReleaseArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLegalHoldsPolicyReleaseArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLegalHoldsPolicyReleaseArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldsPolicyReleaseArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLegalHoldsPolicyReleaseArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLegalHoldsPolicyReleaseArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLegalHoldsPolicyReleaseArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldsPolicyReleaseArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLegalHoldsPolicyReleaseArg` object.
-///
-+ (DBTEAMLegalHoldsPolicyReleaseArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLegalHoldsPolicyReleaseArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

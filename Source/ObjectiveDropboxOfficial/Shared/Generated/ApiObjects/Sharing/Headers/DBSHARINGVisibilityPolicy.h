@@ -13,18 +13,19 @@
 @class DBSHARINGVisibilityPolicy;
 @class DBSHARINGVisibilityPolicyDisallowedReason;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `VisibilityPolicy` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGVisibilityPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGVisibilityPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param policy This is the value to submit when saving the visibility
 /// setting.
 /// @param resolvedPolicy This is what the effective policy would be, if you
@@ -59,18 +60,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// policy.
 /// @param disallowedReason If allowed is false, this will provide the reason
 /// that the user is not permitted to set the visibility to this policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPolicy:(DBSHARINGRequestedVisibility *)policy
-                resolvedPolicy:(DBSHARINGAlphaResolvedVisibility *)resolvedPolicy
-                       allowed:(NSNumber *)allowed
-              disallowedReason:(nullable DBSHARINGVisibilityPolicyDisallowedReason *)disallowedReason;
+/// 
+- (instancetype)initWithPolicy:(DBSHARINGRequestedVisibility *)policy resolvedPolicy:(DBSHARINGAlphaResolvedVisibility *)resolvedPolicy allowed:(NSNumber *)allowed disallowedReason:(nullable DBSHARINGVisibilityPolicyDisallowedReason *)disallowedReason;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param policy This is the value to submit when saving the visibility
 /// setting.
 /// @param resolvedPolicy This is what the effective policy would be, if you
@@ -79,44 +77,44 @@ NS_ASSUME_NONNULL_BEGIN
 /// is guaranteed to be provided.
 /// @param allowed Whether the user is permitted to set the visibility to this
 /// policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPolicy:(DBSHARINGRequestedVisibility *)policy
-                resolvedPolicy:(DBSHARINGAlphaResolvedVisibility *)resolvedPolicy
-                       allowed:(NSNumber *)allowed;
+/// 
+- (instancetype)initWithPolicy:(DBSHARINGRequestedVisibility *)policy resolvedPolicy:(DBSHARINGAlphaResolvedVisibility *)resolvedPolicy allowed:(NSNumber *)allowed;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `VisibilityPolicy` struct.
-///
-@interface DBSHARINGVisibilityPolicySerializer : NSObject
+/// 
+@interface DBSHARINGVisibilityPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGVisibilityPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGVisibilityPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGVisibilityPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGVisibilityPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGVisibilityPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGVisibilityPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGVisibilityPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGVisibilityPolicy` object.
-///
-+ (DBSHARINGVisibilityPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGVisibilityPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

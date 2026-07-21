@@ -10,40 +10,41 @@
 
 @class DBRIVIERAOfficeFileType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `OfficeFileType` union.
-///
+/// 
 /// The kind of MS Office document that produced an `ApiOfficeMetadata` result.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAOfficeFileType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAOfficeFileType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBRIVIERAOfficeFileTypeTag` enum type represents the possible tag
 /// states with which the `DBRIVIERAOfficeFileType` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAOfficeFileTypeTag) {
-  /// (no description).
-  DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown,
+    /// (no description).
+    DBRIVIERAOfficeFileTypeOfficeFiletypeUnknown,
 
-  /// (no description).
-  DBRIVIERAOfficeFileTypeOfficeFiletypeWord,
+    /// (no description).
+    DBRIVIERAOfficeFileTypeOfficeFiletypeWord,
 
-  /// (no description).
-  DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint,
+    /// (no description).
+    DBRIVIERAOfficeFileTypeOfficeFiletypePowerpoint,
 
-  /// (no description).
-  DBRIVIERAOfficeFileTypeOfficeFiletypeExcel,
+    /// (no description).
+    DBRIVIERAOfficeFileTypeOfficeFiletypeExcel,
 
-  /// (no description).
-  DBRIVIERAOfficeFileTypeOther,
+    /// (no description).
+    DBRIVIERAOfficeFileTypeOther,
 
 };
 
@@ -52,124 +53,126 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAOfficeFileTypeTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "office_filetype_unknown".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOfficeFiletypeUnknown;
 
-///
+/// 
 /// Initializes union class with tag state of "office_filetype_word".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOfficeFiletypeWord;
 
-///
+/// 
 /// Initializes union class with tag state of "office_filetype_powerpoint".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOfficeFiletypePowerpoint;
 
-///
+/// 
 /// Initializes union class with tag state of "office_filetype_excel".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOfficeFiletypeExcel;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "office_filetype_unknown".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "office_filetype_unknown".
-///
+/// 
 - (BOOL)isOfficeFiletypeUnknown;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "office_filetype_word".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "office_filetype_word".
-///
+/// 
 - (BOOL)isOfficeFiletypeWord;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "office_filetype_powerpoint".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "office_filetype_powerpoint".
-///
+/// 
 - (BOOL)isOfficeFiletypePowerpoint;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "office_filetype_excel".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "office_filetype_excel".
-///
+/// 
 - (BOOL)isOfficeFiletypeExcel;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERAOfficeFileType` union.
-///
-@interface DBRIVIERAOfficeFileTypeSerializer : NSObject
+/// 
+@interface DBRIVIERAOfficeFileTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAOfficeFileType` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAOfficeFileType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAOfficeFileType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAOfficeFileType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAOfficeFileType *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAOfficeFileType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAOfficeFileType` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAOfficeFileType` object.
-///
-+ (DBRIVIERAOfficeFileType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAOfficeFileType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

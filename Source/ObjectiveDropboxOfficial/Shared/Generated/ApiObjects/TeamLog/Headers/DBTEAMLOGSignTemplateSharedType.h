@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSignTemplateSharedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SignTemplateSharedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSignTemplateSharedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSignTemplateSharedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SignTemplateSharedType` struct.
-///
-@interface DBTEAMLOGSignTemplateSharedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSignTemplateSharedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSignTemplateSharedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSignTemplateSharedType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignTemplateSharedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignTemplateSharedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSignTemplateSharedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSignTemplateSharedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignTemplateSharedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSignTemplateSharedType` object.
-///
-+ (DBTEAMLOGSignTemplateSharedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSignTemplateSharedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

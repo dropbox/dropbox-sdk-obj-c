@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGPaperDocOwnershipChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocOwnershipChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDocOwnershipChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDocOwnershipChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocOwnershipChangedType` struct.
-///
-@interface DBTEAMLOGPaperDocOwnershipChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDocOwnershipChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDocOwnershipChangedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperDocOwnershipChangedType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocOwnershipChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocOwnershipChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDocOwnershipChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDocOwnershipChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocOwnershipChangedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperDocOwnershipChangedType`
 /// object.
-///
-+ (DBTEAMLOGPaperDocOwnershipChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDocOwnershipChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

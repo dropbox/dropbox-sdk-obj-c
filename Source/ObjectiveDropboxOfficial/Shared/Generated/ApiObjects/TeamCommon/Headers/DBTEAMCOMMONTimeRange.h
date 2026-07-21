@@ -10,20 +10,21 @@
 
 @class DBTEAMCOMMONTimeRange;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TimeRange` struct.
-///
+/// 
 /// Time range.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMCOMMONTimeRange : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMCOMMONTimeRange : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,56 +36,58 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param startTime Optional starting time (inclusive).
 /// @param endTime Optional ending time (exclusive).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStartTime:(nullable NSDate *)startTime endTime:(nullable NSDate *)endTime;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TimeRange` struct.
-///
-@interface DBTEAMCOMMONTimeRangeSerializer : NSObject
+/// 
+@interface DBTEAMCOMMONTimeRangeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMCOMMONTimeRange` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMCOMMONTimeRange` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMCOMMONTimeRange` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMCOMMONTimeRange *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMCOMMONTimeRange *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMCOMMONTimeRange` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMCOMMONTimeRange` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMCOMMONTimeRange` object.
-///
-+ (DBTEAMCOMMONTimeRange *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMCOMMONTimeRange *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

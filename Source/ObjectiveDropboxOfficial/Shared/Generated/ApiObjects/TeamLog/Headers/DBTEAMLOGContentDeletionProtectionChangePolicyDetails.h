@@ -11,20 +11,21 @@
 @class DBTEAMLOGContentDeletionProtectionChangePolicyDetails;
 @class DBTEAMLOGContentDeletionProtectionPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ContentDeletionProtectionChangePolicyDetails` struct.
-///
+/// 
 /// Changed content deletion protection policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGContentDeletionProtectionChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGContentDeletionProtectionChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -45,9 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New content deletion protection policy.
 /// @param dNewThresholdBytes New threshold value in bytes (only present when
 /// new policy is on_above_threshold).
@@ -55,60 +56,59 @@ NS_ASSUME_NONNULL_BEGIN
 /// missing due to historical data gap.
 /// @param previousThresholdBytes Previous threshold value in bytes (only
 /// present when previous policy was on_above_threshold).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGContentDeletionProtectionPolicy *)dNewValue
-               dNewThresholdBytes:(nullable NSNumber *)dNewThresholdBytes
-                    previousValue:(nullable DBTEAMLOGContentDeletionProtectionPolicy *)previousValue
-           previousThresholdBytes:(nullable NSNumber *)previousThresholdBytes;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGContentDeletionProtectionPolicy *)dNewValue dNewThresholdBytes:(nullable NSNumber *)dNewThresholdBytes previousValue:(nullable DBTEAMLOGContentDeletionProtectionPolicy *)previousValue previousThresholdBytes:(nullable NSNumber *)previousThresholdBytes;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New content deletion protection policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGContentDeletionProtectionPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `ContentDeletionProtectionChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGContentDeletionProtectionChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGContentDeletionProtectionChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGContentDeletionProtectionChangePolicyDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGContentDeletionProtectionChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGContentDeletionProtectionChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGContentDeletionProtectionChangePolicyDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyDetails` object.
-///
-+ (DBTEAMLOGContentDeletionProtectionChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGContentDeletionProtectionChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

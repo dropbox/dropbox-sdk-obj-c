@@ -11,20 +11,21 @@
 @class DBTEAMLOGFlexibleFileNamesPolicy;
 @class DBTEAMLOGFlexibleFileNamesPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FlexibleFileNamesPolicyChangedDetails` struct.
-///
+/// 
 /// Changed flexible file names policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFlexibleFileNamesPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFlexibleFileNamesPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,62 +38,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New flexible file names policy.
 /// @param previousValue Previous flexible file names policy. Might be missing
 /// due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGFlexibleFileNamesPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGFlexibleFileNamesPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGFlexibleFileNamesPolicy *)dNewValue previousValue:(nullable DBTEAMLOGFlexibleFileNamesPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New flexible file names policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGFlexibleFileNamesPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FlexibleFileNamesPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGFlexibleFileNamesPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFlexibleFileNamesPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFlexibleFileNamesPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFlexibleFileNamesPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFlexibleFileNamesPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFlexibleFileNamesPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFlexibleFileNamesPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFlexibleFileNamesPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFlexibleFileNamesPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGFlexibleFileNamesPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGFlexibleFileNamesPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFlexibleFileNamesPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

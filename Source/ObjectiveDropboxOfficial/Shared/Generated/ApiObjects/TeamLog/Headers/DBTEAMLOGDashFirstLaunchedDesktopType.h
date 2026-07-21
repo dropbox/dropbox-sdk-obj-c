@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDashFirstLaunchedDesktopType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashFirstLaunchedDesktopType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashFirstLaunchedDesktopType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashFirstLaunchedDesktopType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashFirstLaunchedDesktopType` struct.
-///
-@interface DBTEAMLOGDashFirstLaunchedDesktopTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashFirstLaunchedDesktopTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashFirstLaunchedDesktopType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashFirstLaunchedDesktopType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedDesktopType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashFirstLaunchedDesktopType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashFirstLaunchedDesktopType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashFirstLaunchedDesktopType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedDesktopType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashFirstLaunchedDesktopType`
 /// object.
-///
-+ (DBTEAMLOGDashFirstLaunchedDesktopType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashFirstLaunchedDesktopType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

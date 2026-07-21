@@ -11,20 +11,21 @@
 @class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentAddInviteesDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentAddInviteesDetails` struct.
-///
+/// 
 /// Invited user to Dropbox and added them to shared file/folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentAddInviteesDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentAddInviteesDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
 /// @param invitees A list of invitees.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel
-                                        invitees:(NSArray<NSString *> *)invitees;
+/// 
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel invitees:(NSArray<NSString *> *)invitees;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentAddInviteesDetails` struct.
-///
-@interface DBTEAMLOGSharedContentAddInviteesDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentAddInviteesDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentAddInviteesDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedContentAddInviteesDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddInviteesDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentAddInviteesDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentAddInviteesDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentAddInviteesDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentAddInviteesDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedContentAddInviteesDetails`
 /// object.
-///
-+ (DBTEAMLOGSharedContentAddInviteesDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentAddInviteesDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

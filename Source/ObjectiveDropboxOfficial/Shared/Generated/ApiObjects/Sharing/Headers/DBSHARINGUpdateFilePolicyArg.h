@@ -13,20 +13,21 @@
 @class DBSHARINGUpdateFilePolicyArg;
 @class DBSHARINGViewerInfoPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UpdateFilePolicyArg` struct.
-///
+/// 
 /// Arguments for `updateFilePolicy`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGUpdateFilePolicyArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGUpdateFilePolicyArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param file File that we are changing the policy for.
 /// @param actions A list of `FileAction`s corresponding to `FilePermission`s
 /// that should appear in the response's `permissions` in
@@ -56,56 +57,55 @@ NS_ASSUME_NONNULL_BEGIN
 /// user can perform on the file.
 /// @param linkSettings Field is deprecated. Settings on the link for the file.
 /// @param viewerInfoPolicy The presence and seen state policy on the file.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFile:(NSString *)file
-                     actions:(nullable NSArray<DBSHARINGFileAction *> *)actions
-                linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings
-            viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy;
+/// 
+- (instancetype)initWithFile:(NSString *)file actions:(nullable NSArray<DBSHARINGFileAction *> *)actions linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param file File that we are changing the policy for.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFile:(NSString *)file;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UpdateFilePolicyArg` struct.
-///
-@interface DBSHARINGUpdateFilePolicyArgSerializer : NSObject
+/// 
+@interface DBSHARINGUpdateFilePolicyArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGUpdateFilePolicyArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGUpdateFilePolicyArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGUpdateFilePolicyArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGUpdateFilePolicyArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGUpdateFilePolicyArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGUpdateFilePolicyArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGUpdateFilePolicyArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGUpdateFilePolicyArg` object.
-///
-+ (DBSHARINGUpdateFilePolicyArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGUpdateFilePolicyArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGMemberSpaceLimitsChangeStatusDetails;
 @class DBTEAMLOGSpaceLimitsStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberSpaceLimitsChangeStatusDetails` struct.
-///
+/// 
 /// Changed space limit status.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberSpaceLimitsChangeStatusDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberSpaceLimitsChangeStatusDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous storage quota status.
 /// @param dNewValue New storage quota status.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGSpaceLimitsStatus *)previousValue
-                            dNewValue:(DBTEAMLOGSpaceLimitsStatus *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGSpaceLimitsStatus *)previousValue dNewValue:(DBTEAMLOGSpaceLimitsStatus *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberSpaceLimitsChangeStatusDetails`
 /// struct.
-///
-@interface DBTEAMLOGMemberSpaceLimitsChangeStatusDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberSpaceLimitsChangeStatusDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeStatusDetails` object.
-///
-+ (DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberSpaceLimitsChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

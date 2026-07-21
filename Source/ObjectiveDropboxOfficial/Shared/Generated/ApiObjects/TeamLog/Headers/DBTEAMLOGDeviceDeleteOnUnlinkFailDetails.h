@@ -11,20 +11,21 @@
 @class DBTEAMLOGDeviceDeleteOnUnlinkFailDetails;
 @class DBTEAMLOGSessionLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeviceDeleteOnUnlinkFailDetails` struct.
-///
+/// 
 /// Failed to delete all files from unlinked device.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDeviceDeleteOnUnlinkFailDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDeviceDeleteOnUnlinkFailDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,63 +40,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param numFailures The number of times that remote file deletion failed.
 /// @param sessionInfo Session unique id.
 /// @param displayName The device name. Might be missing due to historical data
 /// gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithNumFailures:(NSNumber *)numFailures
-                        sessionInfo:(nullable DBTEAMLOGSessionLogInfo *)sessionInfo
-                        displayName:(nullable NSString *)displayName;
+/// 
+- (instancetype)initWithNumFailures:(NSNumber *)numFailures sessionInfo:(nullable DBTEAMLOGSessionLogInfo *)sessionInfo displayName:(nullable NSString *)displayName;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param numFailures The number of times that remote file deletion failed.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNumFailures:(NSNumber *)numFailures;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeviceDeleteOnUnlinkFailDetails` struct.
-///
-@interface DBTEAMLOGDeviceDeleteOnUnlinkFailDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDeviceDeleteOnUnlinkFailDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDeviceDeleteOnUnlinkFailDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDeviceDeleteOnUnlinkFailDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceDeleteOnUnlinkFailDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDeviceDeleteOnUnlinkFailDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceDeleteOnUnlinkFailDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDeviceDeleteOnUnlinkFailDetails`
 /// object.
-///
-+ (DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDeviceDeleteOnUnlinkFailDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

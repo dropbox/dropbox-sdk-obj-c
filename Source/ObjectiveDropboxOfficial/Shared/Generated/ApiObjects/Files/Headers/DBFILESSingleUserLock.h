@@ -10,18 +10,19 @@
 
 @class DBFILESSingleUserLock;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SingleUserLock` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESSingleUserLock : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESSingleUserLock : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,62 +37,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param created The time the lock was created.
 /// @param lockHolderAccountId The account ID of the lock holder if known.
 /// @param lockHolderTeamId The id of the team of the account holder if it
 /// exists.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithCreated:(NSDate *)created
-            lockHolderAccountId:(NSString *)lockHolderAccountId
-               lockHolderTeamId:(nullable NSString *)lockHolderTeamId;
+/// 
+- (instancetype)initWithCreated:(NSDate *)created lockHolderAccountId:(NSString *)lockHolderAccountId lockHolderTeamId:(nullable NSString *)lockHolderTeamId;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param created The time the lock was created.
 /// @param lockHolderAccountId The account ID of the lock holder if known.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCreated:(NSDate *)created lockHolderAccountId:(NSString *)lockHolderAccountId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SingleUserLock` struct.
-///
-@interface DBFILESSingleUserLockSerializer : NSObject
+/// 
+@interface DBFILESSingleUserLockSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESSingleUserLock` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESSingleUserLock` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSingleUserLock` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESSingleUserLock *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESSingleUserLock *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESSingleUserLock` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESSingleUserLock` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESSingleUserLock` object.
-///
-+ (DBFILESSingleUserLock *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESSingleUserLock *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -14,40 +14,41 @@
 @class DBUSERSTeamSharedDropboxValue;
 @class DBUSERSUserFeatureValue;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserFeatureValue` union.
-///
+/// 
 /// Values that correspond to entries in UserFeature.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBUSERSUserFeatureValue : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBUSERSUserFeatureValue : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBUSERSUserFeatureValueTag` enum type represents the possible tag
 /// states with which the `DBUSERSUserFeatureValue` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag) {
-  /// (no description).
-  DBUSERSUserFeatureValuePaperAsFiles,
+    /// (no description).
+    DBUSERSUserFeatureValuePaperAsFiles,
 
-  /// (no description).
-  DBUSERSUserFeatureValueFileLocking,
+    /// (no description).
+    DBUSERSUserFeatureValueFileLocking,
 
-  /// (no description).
-  DBUSERSUserFeatureValueTeamSharedDropbox,
+    /// (no description).
+    DBUSERSUserFeatureValueTeamSharedDropbox,
 
-  /// (no description).
-  DBUSERSUserFeatureValueDistinctMemberHome,
+    /// (no description).
+    DBUSERSUserFeatureValueDistinctMemberHome,
 
-  /// (no description).
-  DBUSERSUserFeatureValueOther,
+    /// (no description).
+    DBUSERSUserFeatureValueOther,
 
 };
 
@@ -72,140 +73,142 @@ typedef NS_CLOSED_ENUM(NSInteger, DBUSERSUserFeatureValueTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "paper_as_files".
-///
+/// 
 /// @param paperAsFiles (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPaperAsFiles:(DBUSERSPaperAsFilesValue *)paperAsFiles;
 
-///
+/// 
 /// Initializes union class with tag state of "file_locking".
-///
+/// 
 /// @param fileLocking (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileLocking:(DBUSERSFileLockingValue *)fileLocking;
 
-///
+/// 
 /// Initializes union class with tag state of "team_shared_dropbox".
-///
+/// 
 /// @param teamSharedDropbox (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamSharedDropbox:(DBUSERSTeamSharedDropboxValue *)teamSharedDropbox;
 
-///
+/// 
 /// Initializes union class with tag state of "distinct_member_home".
-///
+/// 
 /// @param distinctMemberHome (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDistinctMemberHome:(DBUSERSDistinctMemberHomeValue *)distinctMemberHome;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "paper_as_files".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `paperAsFiles` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "paper_as_files".
-///
+/// 
 - (BOOL)isPaperAsFiles;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "file_locking".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `fileLocking` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "file_locking".
-///
+/// 
 - (BOOL)isFileLocking;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "team_shared_dropbox".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `teamSharedDropbox` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "team_shared_dropbox".
-///
+/// 
 - (BOOL)isTeamSharedDropbox;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "distinct_member_home".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `distinctMemberHome` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "distinct_member_home".
-///
+/// 
 - (BOOL)isDistinctMemberHome;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBUSERSUserFeatureValue` union.
-///
-@interface DBUSERSUserFeatureValueSerializer : NSObject
+/// 
+@interface DBUSERSUserFeatureValueSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBUSERSUserFeatureValue` instances.
-///
+/// 
 /// @param instance An instance of the `DBUSERSUserFeatureValue` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBUSERSUserFeatureValue` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBUSERSUserFeatureValue *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBUSERSUserFeatureValue *)instance;
 
-///
+/// 
 /// Deserializes `DBUSERSUserFeatureValue` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBUSERSUserFeatureValue` API object.
-///
+/// 
 /// @return An instantiation of the `DBUSERSUserFeatureValue` object.
-///
-+ (DBUSERSUserFeatureValue *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBUSERSUserFeatureValue *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

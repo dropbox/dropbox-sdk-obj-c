@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSsoChangeSamlIdentityModeDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SsoChangeSamlIdentityModeDetails` struct.
-///
+/// 
 /// Changed SAML identity mode for SSO.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSsoChangeSamlIdentityModeDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSsoChangeSamlIdentityModeDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,49 +36,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous single sign-on identity mode.
 /// @param dNewValue New single sign-on identity mode.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPreviousValue:(NSNumber *)previousValue dNewValue:(NSNumber *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SsoChangeSamlIdentityModeDetails` struct.
-///
-@interface DBTEAMLOGSsoChangeSamlIdentityModeDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSsoChangeSamlIdentityModeDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSsoChangeSamlIdentityModeDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSsoChangeSamlIdentityModeDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoChangeSamlIdentityModeDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeSamlIdentityModeDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSsoChangeSamlIdentityModeDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSsoChangeSamlIdentityModeDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoChangeSamlIdentityModeDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSsoChangeSamlIdentityModeDetails`
 /// object.
-///
-+ (DBTEAMLOGSsoChangeSamlIdentityModeDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSsoChangeSamlIdentityModeDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

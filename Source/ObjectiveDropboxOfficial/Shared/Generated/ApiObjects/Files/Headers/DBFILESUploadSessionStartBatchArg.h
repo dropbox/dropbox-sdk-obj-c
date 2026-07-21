@@ -11,18 +11,19 @@
 @class DBFILESUploadSessionStartBatchArg;
 @class DBFILESUploadSessionType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionStartBatchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionStartBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionStartBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,60 +36,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param numSessions The number of upload sessions to start.
 /// @param sessionType Type of upload session you want to start. If not
 /// specified, default is `sequential` in `DBFILESUploadSessionType`.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithNumSessions:(NSNumber *)numSessions
-                        sessionType:(nullable DBFILESUploadSessionType *)sessionType;
+/// 
+- (instancetype)initWithNumSessions:(NSNumber *)numSessions sessionType:(nullable DBFILESUploadSessionType *)sessionType;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param numSessions The number of upload sessions to start.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNumSessions:(NSNumber *)numSessions;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UploadSessionStartBatchArg` struct.
-///
-@interface DBFILESUploadSessionStartBatchArgSerializer : NSObject
+/// 
+@interface DBFILESUploadSessionStartBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionStartBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionStartBatchArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionStartBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionStartBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionStartBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionStartBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionStartBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionStartBatchArg` object.
-///
-+ (DBFILESUploadSessionStartBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionStartBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

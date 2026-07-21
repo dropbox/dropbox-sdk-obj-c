@@ -12,20 +12,21 @@
 @class DBTEAMLOGMediaHubSharedLinkCreatedDetails;
 @class DBTEAMLOGMediaHubSharedLinkTargetType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubSharedLinkCreatedDetails` struct.
-///
+/// 
 /// Created Media Hub shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubSharedLinkCreatedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkCreatedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,50 +38,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetType Media Hub shared link target type.
 /// @param audience Media Hub shared link audience.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType
-                          audience:(DBTEAMLOGMediaHubSharedLinkAudience *)audience;
+/// 
+- (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType audience:(DBTEAMLOGMediaHubSharedLinkAudience *)audience;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaHubSharedLinkCreatedDetails` struct.
-///
-@interface DBTEAMLOGMediaHubSharedLinkCreatedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkCreatedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubSharedLinkCreatedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMediaHubSharedLinkCreatedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkCreatedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubSharedLinkCreatedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubSharedLinkCreatedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubSharedLinkCreatedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkCreatedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMediaHubSharedLinkCreatedDetails`
 /// object.
-///
-+ (DBTEAMLOGMediaHubSharedLinkCreatedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubSharedLinkCreatedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

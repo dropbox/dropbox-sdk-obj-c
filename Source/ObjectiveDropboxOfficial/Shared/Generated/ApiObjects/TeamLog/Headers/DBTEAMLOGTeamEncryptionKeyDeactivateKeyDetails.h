@@ -10,66 +10,69 @@
 
 @class DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamEncryptionKeyDeactivateKeyDetails` struct.
-///
+/// 
 /// Deactivated team encryption key.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamEncryptionKeyDeactivateKeyDetails`
 /// struct.
-///
-@interface DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails` object.
-///
-+ (DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamEncryptionKeyDeactivateKeyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

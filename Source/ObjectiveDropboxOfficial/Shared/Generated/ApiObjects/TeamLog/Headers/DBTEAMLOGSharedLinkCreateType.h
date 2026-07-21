@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedLinkCreateType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkCreateType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkCreateType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkCreateType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkCreateType` struct.
-///
-@interface DBTEAMLOGSharedLinkCreateTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkCreateTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkCreateType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedLinkCreateType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkCreateType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkCreateType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkCreateType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkCreateType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkCreateType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedLinkCreateType` object.
-///
-+ (DBTEAMLOGSharedLinkCreateType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkCreateType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

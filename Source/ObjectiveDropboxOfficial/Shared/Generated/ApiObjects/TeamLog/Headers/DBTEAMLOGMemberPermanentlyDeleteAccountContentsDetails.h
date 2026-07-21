@@ -10,68 +10,71 @@
 
 @class DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberPermanentlyDeleteAccountContentsDetails` struct.
-///
+/// 
 /// Permanently deleted contents of deleted team member account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `MemberPermanentlyDeleteAccountContentsDetails` struct.
-///
-@interface DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails` object.
-///
-+ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

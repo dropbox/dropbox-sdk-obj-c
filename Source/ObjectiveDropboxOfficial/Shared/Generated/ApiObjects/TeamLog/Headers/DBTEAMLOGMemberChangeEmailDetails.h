@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGMemberChangeEmailDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberChangeEmailDetails` struct.
-///
+/// 
 /// Changed team member email.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberChangeEmailDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberChangeEmailDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,59 +36,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New email.
 /// @param previousValue Previous email. Might be missing due to historical data
 /// gap.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue previousValue:(nullable NSString *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New email.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberChangeEmailDetails` struct.
-///
-@interface DBTEAMLOGMemberChangeEmailDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberChangeEmailDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberChangeEmailDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberChangeEmailDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeEmailDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeEmailDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberChangeEmailDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberChangeEmailDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeEmailDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberChangeEmailDetails` object.
-///
-+ (DBTEAMLOGMemberChangeEmailDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberChangeEmailDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

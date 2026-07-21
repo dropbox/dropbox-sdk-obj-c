@@ -11,20 +11,21 @@
 @class DBSHARINGMemberSelector;
 @class DBSHARINGRemoveFileMemberArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RemoveFileMemberArg` struct.
-///
+/// 
 /// Arguments for `removeFileMember2`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGRemoveFileMemberArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGRemoveFileMemberArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,50 +39,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param file File from which to remove members.
 /// @param member Member to remove from this file. Note that even if an email is
 /// specified, it may result in the removal of a user (not an invitee) if the
 /// user's main account corresponds to that email address.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFile:(NSString *)file member:(DBSHARINGMemberSelector *)member;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RemoveFileMemberArg` struct.
-///
-@interface DBSHARINGRemoveFileMemberArgSerializer : NSObject
+/// 
+@interface DBSHARINGRemoveFileMemberArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGRemoveFileMemberArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGRemoveFileMemberArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRemoveFileMemberArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGRemoveFileMemberArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGRemoveFileMemberArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGRemoveFileMemberArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGRemoveFileMemberArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGRemoveFileMemberArg` object.
-///
-+ (DBSHARINGRemoveFileMemberArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGRemoveFileMemberArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

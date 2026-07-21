@@ -11,18 +11,19 @@
 @class DBFILESListFolderResult;
 @class DBFILESMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFolderResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESListFolderResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESListFolderResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,52 +40,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries The files and (direct) subfolders in the folder.
 /// @param cursor Pass the cursor into `listFolderContinue` to see what's
 /// changed in the folder since your previous query.
 /// @param hasMore If true, then there are more entries available. Pass the
 /// cursor to `listFolderContinue` to retrieve the rest.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithEntries:(NSArray<DBFILESMetadata *> *)entries
-                         cursor:(NSString *)cursor
-                        hasMore:(NSNumber *)hasMore;
+/// 
+- (instancetype)initWithEntries:(NSArray<DBFILESMetadata *> *)entries cursor:(NSString *)cursor hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFolderResult` struct.
-///
-@interface DBFILESListFolderResultSerializer : NSObject
+/// 
+@interface DBFILESListFolderResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESListFolderResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESListFolderResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListFolderResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESListFolderResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESListFolderResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESListFolderResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESListFolderResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESListFolderResult` object.
-///
-+ (DBFILESListFolderResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESListFolderResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

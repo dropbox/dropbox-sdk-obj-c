@@ -10,18 +10,19 @@
 
 @class DBTEAMSharingAllowlistRemoveArgs;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharingAllowlistRemoveArgs` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMSharingAllowlistRemoveArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMSharingAllowlistRemoveArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,59 +34,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param domains List of domains represented by valid string representation
 /// (RFC-1034/5).
 /// @param emails List of emails represented by valid string representation
 /// (RFC-5322/822).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDomains:(nullable NSArray<NSString *> *)domains emails:(nullable NSArray<NSString *> *)emails;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharingAllowlistRemoveArgs` struct.
-///
-@interface DBTEAMSharingAllowlistRemoveArgsSerializer : NSObject
+/// 
+@interface DBTEAMSharingAllowlistRemoveArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMSharingAllowlistRemoveArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMSharingAllowlistRemoveArgs` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMSharingAllowlistRemoveArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMSharingAllowlistRemoveArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMSharingAllowlistRemoveArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMSharingAllowlistRemoveArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMSharingAllowlistRemoveArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMSharingAllowlistRemoveArgs` object.
-///
-+ (DBTEAMSharingAllowlistRemoveArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMSharingAllowlistRemoveArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

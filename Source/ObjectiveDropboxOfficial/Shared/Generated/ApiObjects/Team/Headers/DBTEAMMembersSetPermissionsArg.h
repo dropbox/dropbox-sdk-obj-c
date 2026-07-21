@@ -12,21 +12,22 @@
 @class DBTEAMMembersSetPermissionsArg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersSetPermissionsArg` struct.
-///
+/// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersSetPermissionsArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersSetPermissionsArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,48 +39,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user Identity of user whose role will be set.
 /// @param dNewRole The new role of the member.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user dNewRole:(DBTEAMAdminTier *)dNewRole;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersSetPermissionsArg` struct.
-///
-@interface DBTEAMMembersSetPermissionsArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersSetPermissionsArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersSetPermissionsArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersSetPermissionsArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersSetPermissionsArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersSetPermissionsArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersSetPermissionsArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersSetPermissionsArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersSetPermissionsArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersSetPermissionsArg` object.
-///
-+ (DBTEAMMembersSetPermissionsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersSetPermissionsArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

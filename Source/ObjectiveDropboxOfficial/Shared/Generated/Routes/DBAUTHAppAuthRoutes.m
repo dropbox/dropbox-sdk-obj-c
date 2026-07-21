@@ -13,21 +13,20 @@
 #import "DBStoneBase.h"
 #import "DBTransportClientProtocol.h"
 
-@implementation DBAUTHAppAuthRoutes
+@implementation DBAUTHAppAuthRoutes 
 
 - (instancetype)init:(id<DBTransportClient>)client {
-  self = [super init];
-  if (self) {
-    _client = client;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _client = client;
+    }
+    return self;
 }
 
 - (DBRpcTask *)tokenFromOauth1:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret {
-  DBRoute *route = DBAUTHRouteObjects.DBAUTHTokenFromOauth1;
-  DBAUTHTokenFromOAuth1Arg *arg = [[DBAUTHTokenFromOAuth1Arg alloc] initWithOauth1Token:oauth1Token
-                                                                      oauth1TokenSecret:oauth1TokenSecret];
-  return [self.client requestRpc:route arg:arg];
+    DBRoute *route = DBAUTHRouteObjects.DBAUTHTokenFromOauth1;
+    DBAUTHTokenFromOAuth1Arg *arg = [[DBAUTHTokenFromOAuth1Arg alloc] initWithOauth1Token:oauth1Token oauth1TokenSecret:oauth1TokenSecret];
+    return [self.client requestRpc:route arg:arg];
 }
 
 @end

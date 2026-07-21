@@ -11,20 +11,21 @@
 @class DBTEAMLOGPaperDocDownloadDetails;
 @class DBTEAMLOGPaperDownloadFormat;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocDownloadDetails` struct.
-///
+/// 
 /// Downloaded Paper doc in specific format.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDocDownloadDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDocDownloadDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,49 +37,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param exportFileFormat Export file format.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithEventUuid:(NSString *)eventUuid
-                 exportFileFormat:(DBTEAMLOGPaperDownloadFormat *)exportFileFormat;
+/// 
+- (instancetype)initWithEventUuid:(NSString *)eventUuid exportFileFormat:(DBTEAMLOGPaperDownloadFormat *)exportFileFormat;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocDownloadDetails` struct.
-///
-@interface DBTEAMLOGPaperDocDownloadDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDocDownloadDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDocDownloadDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperDocDownloadDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocDownloadDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocDownloadDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDocDownloadDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDocDownloadDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocDownloadDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperDocDownloadDetails` object.
-///
-+ (DBTEAMLOGPaperDocDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDocDownloadDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

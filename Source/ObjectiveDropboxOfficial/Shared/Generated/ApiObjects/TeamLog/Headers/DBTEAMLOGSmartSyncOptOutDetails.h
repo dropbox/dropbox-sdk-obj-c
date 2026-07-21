@@ -11,20 +11,21 @@
 @class DBTEAMLOGSmartSyncOptOutDetails;
 @class DBTEAMLOGSmartSyncOptOutPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SmartSyncOptOutDetails` struct.
-///
+/// 
 /// Opted team out of Smart Sync.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSmartSyncOptOutDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSmartSyncOptOutDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,49 +37,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous Smart Sync opt out policy.
 /// @param dNewValue New Smart Sync opt out policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGSmartSyncOptOutPolicy *)previousValue
-                            dNewValue:(DBTEAMLOGSmartSyncOptOutPolicy *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGSmartSyncOptOutPolicy *)previousValue dNewValue:(DBTEAMLOGSmartSyncOptOutPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SmartSyncOptOutDetails` struct.
-///
-@interface DBTEAMLOGSmartSyncOptOutDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSmartSyncOptOutDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSmartSyncOptOutDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSmartSyncOptOutDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSmartSyncOptOutDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmartSyncOptOutDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSmartSyncOptOutDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSmartSyncOptOutDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSmartSyncOptOutDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSmartSyncOptOutDetails` object.
-///
-+ (DBTEAMLOGSmartSyncOptOutDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSmartSyncOptOutDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

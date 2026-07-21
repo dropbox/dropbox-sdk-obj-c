@@ -12,125 +12,120 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTAccountPhotoGetArg
+@implementation DBACCOUNTAccountPhotoGetArg 
 
 #pragma mark - Constructors
 
-- (instancetype)initWithDbxAccountId:(NSString *)dbxAccountId
-                                size:(NSString *)size
-                          circleCrop:(NSNumber *)circleCrop
-                  expectAccountPhoto:(NSNumber *)expectAccountPhoto {
-  [DBStoneValidators nonnullValidator:nil](dbxAccountId);
-  [DBStoneValidators nonnullValidator:nil](size);
-  [DBStoneValidators nonnullValidator:nil](circleCrop);
-  [DBStoneValidators nonnullValidator:nil](expectAccountPhoto);
+- (instancetype)initWithDbxAccountId:(NSString *)dbxAccountId size:(NSString *)size circleCrop:(NSNumber *)circleCrop expectAccountPhoto:(NSNumber *)expectAccountPhoto {
+    [DBStoneValidators nonnullValidator:nil](dbxAccountId);
+    [DBStoneValidators nonnullValidator:nil](size);
+    [DBStoneValidators nonnullValidator:nil](circleCrop);
+    [DBStoneValidators nonnullValidator:nil](expectAccountPhoto);
 
-  self = [super init];
-  if (self) {
-    _dbxAccountId = dbxAccountId;
-    _size = size;
-    _circleCrop = circleCrop;
-    _expectAccountPhoto = expectAccountPhoto;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _dbxAccountId = dbxAccountId;
+        _size = size;
+        _circleCrop = circleCrop;
+        _expectAccountPhoto = expectAccountPhoto;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTAccountPhotoGetArgSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTAccountPhotoGetArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTAccountPhotoGetArgSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTAccountPhotoGetArgSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTAccountPhotoGetArgSerializer serialize:self] description];
+    return [[DBACCOUNTAccountPhotoGetArgSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.dbxAccountId hash];
-  result = prime * result + [self.size hash];
-  result = prime * result + [self.circleCrop hash];
-  result = prime * result + [self.expectAccountPhoto hash];
+    result = prime * result + [self.dbxAccountId hash];
+    result = prime * result + [self.size hash];
+    result = prime * result + [self.circleCrop hash];
+    result = prime * result + [self.expectAccountPhoto hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToAccountPhotoGetArg:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToAccountPhotoGetArg:other];
 }
 
 - (BOOL)isEqualToAccountPhotoGetArg:(DBACCOUNTAccountPhotoGetArg *)anAccountPhotoGetArg {
-  if (self == anAccountPhotoGetArg) {
+    if (self == anAccountPhotoGetArg) {
+        return YES;
+    }
+    if (![self.dbxAccountId isEqual:anAccountPhotoGetArg.dbxAccountId]) {
+        return NO;
+    }
+    if (![self.size isEqual:anAccountPhotoGetArg.size]) {
+        return NO;
+    }
+    if (![self.circleCrop isEqual:anAccountPhotoGetArg.circleCrop]) {
+        return NO;
+    }
+    if (![self.expectAccountPhoto isEqual:anAccountPhotoGetArg.expectAccountPhoto]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.dbxAccountId isEqual:anAccountPhotoGetArg.dbxAccountId]) {
-    return NO;
-  }
-  if (![self.size isEqual:anAccountPhotoGetArg.size]) {
-    return NO;
-  }
-  if (![self.circleCrop isEqual:anAccountPhotoGetArg.circleCrop]) {
-    return NO;
-  }
-  if (![self.expectAccountPhoto isEqual:anAccountPhotoGetArg.expectAccountPhoto]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTAccountPhotoGetArgSerializer
+@implementation DBACCOUNTAccountPhotoGetArgSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTAccountPhotoGetArg *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"dbx_account_id"] = valueObj.dbxAccountId;
-  jsonDict[@"size"] = valueObj.size;
-  jsonDict[@"circle_crop"] = valueObj.circleCrop;
-  jsonDict[@"expect_account_photo"] = valueObj.expectAccountPhoto;
+    jsonDict[@"dbx_account_id"] = valueObj.dbxAccountId;
+    jsonDict[@"size"] = valueObj.size;
+    jsonDict[@"circle_crop"] = valueObj.circleCrop;
+    jsonDict[@"expect_account_photo"] = valueObj.expectAccountPhoto;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTAccountPhotoGetArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *dbxAccountId = valueDict[@"dbx_account_id"];
-  NSString *size = valueDict[@"size"];
-  NSNumber *circleCrop = valueDict[@"circle_crop"];
-  NSNumber *expectAccountPhoto = valueDict[@"expect_account_photo"];
+    NSString *dbxAccountId = valueDict[@"dbx_account_id"];
+    NSString *size = valueDict[@"size"];
+    NSNumber *circleCrop = valueDict[@"circle_crop"];
+    NSNumber *expectAccountPhoto = valueDict[@"expect_account_photo"];
 
-  return [[DBACCOUNTAccountPhotoGetArg alloc] initWithDbxAccountId:dbxAccountId
-                                                              size:size
-                                                        circleCrop:circleCrop
-                                                expectAccountPhoto:expectAccountPhoto];
+    return [[DBACCOUNTAccountPhotoGetArg alloc] initWithDbxAccountId:dbxAccountId size:size circleCrop:circleCrop expectAccountPhoto:expectAccountPhoto];
 }
 
 @end
@@ -142,210 +137,216 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTAccountPhotoGetError
+@implementation DBACCOUNTAccountPhotoGetError 
 
 @synthesize thumbnailError = _thumbnailError;
 
 #pragma mark - Constructors
 
 - (instancetype)initWithThumbnailError:(DBACCOUNTThumbnailError *)thumbnailError {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTAccountPhotoGetErrorThumbnailError;
-    _thumbnailError = thumbnailError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTAccountPhotoGetErrorThumbnailError;
+        _thumbnailError = thumbnailError;
+    }
+    return self;
 }
 
 - (instancetype)initWithAccountPhotoMissing {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing;
+    }
+    return self;
 }
 
 - (instancetype)initWithExpectedAccountPhotoMissing {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTAccountPhotoGetErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTAccountPhotoGetErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBACCOUNTThumbnailError *)thumbnailError {
-  if (![self isThumbnailError]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBACCOUNTAccountPhotoGetErrorThumbnailError, but was %@.", [self tagName]];
-  }
-  return _thumbnailError;
+    if (![self isThumbnailError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBACCOUNTAccountPhotoGetErrorThumbnailError, but was %@.", [self tagName]];
+    }
+    return _thumbnailError;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isThumbnailError {
-  return _tag == DBACCOUNTAccountPhotoGetErrorThumbnailError;
+    return _tag == DBACCOUNTAccountPhotoGetErrorThumbnailError;
 }
 
 - (BOOL)isAccountPhotoMissing {
-  return _tag == DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing;
+    return _tag == DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing;
 }
 
 - (BOOL)isExpectedAccountPhotoMissing {
-  return _tag == DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing;
+    return _tag == DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing;
 }
 
 - (BOOL)isOther {
-  return _tag == DBACCOUNTAccountPhotoGetErrorOther;
+    return _tag == DBACCOUNTAccountPhotoGetErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBACCOUNTAccountPhotoGetErrorThumbnailError:
-    return @"DBACCOUNTAccountPhotoGetErrorThumbnailError";
-  case DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing:
-    return @"DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing";
-  case DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing:
-    return @"DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing";
-  case DBACCOUNTAccountPhotoGetErrorOther:
-    return @"DBACCOUNTAccountPhotoGetErrorOther";
-  }
+    switch (_tag) {
+        case DBACCOUNTAccountPhotoGetErrorThumbnailError:
+           return @"DBACCOUNTAccountPhotoGetErrorThumbnailError";
+        case DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing:
+           return @"DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing";
+        case DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing:
+           return @"DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing";
+        case DBACCOUNTAccountPhotoGetErrorOther:
+           return @"DBACCOUNTAccountPhotoGetErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTAccountPhotoGetErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTAccountPhotoGetErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTAccountPhotoGetErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTAccountPhotoGetErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTAccountPhotoGetErrorSerializer serialize:self] description];
+    return [[DBACCOUNTAccountPhotoGetErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBACCOUNTAccountPhotoGetErrorThumbnailError:
-    result = prime * result + [self.thumbnailError hash];
-    break;
-  case DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTAccountPhotoGetErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBACCOUNTAccountPhotoGetErrorThumbnailError:
+        result = prime * result + [self.thumbnailError hash];
+        break;
+        case DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTAccountPhotoGetErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToAccountPhotoGetError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToAccountPhotoGetError:other];
 }
 
 - (BOOL)isEqualToAccountPhotoGetError:(DBACCOUNTAccountPhotoGetError *)anAccountPhotoGetError {
-  if (self == anAccountPhotoGetError) {
+    if (self == anAccountPhotoGetError) {
+        return YES;
+    }
+    if (self.tag != anAccountPhotoGetError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBACCOUNTAccountPhotoGetErrorThumbnailError:
+        return [self.thumbnailError isEqual:anAccountPhotoGetError.thumbnailError];
+        case DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing:
+        return [[self tagName] isEqual:[anAccountPhotoGetError tagName]];
+        case DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing:
+        return [[self tagName] isEqual:[anAccountPhotoGetError tagName]];
+        case DBACCOUNTAccountPhotoGetErrorOther:
+        return [[self tagName] isEqual:[anAccountPhotoGetError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != anAccountPhotoGetError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBACCOUNTAccountPhotoGetErrorThumbnailError:
-    return [self.thumbnailError isEqual:anAccountPhotoGetError.thumbnailError];
-  case DBACCOUNTAccountPhotoGetErrorAccountPhotoMissing:
-    return [[self tagName] isEqual:[anAccountPhotoGetError tagName]];
-  case DBACCOUNTAccountPhotoGetErrorExpectedAccountPhotoMissing:
-    return [[self tagName] isEqual:[anAccountPhotoGetError tagName]];
-  case DBACCOUNTAccountPhotoGetErrorOther:
-    return [[self tagName] isEqual:[anAccountPhotoGetError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTAccountPhotoGetErrorSerializer
+@implementation DBACCOUNTAccountPhotoGetErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTAccountPhotoGetError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isThumbnailError]) {
-    jsonDict[@"thumbnail_error"] = [[DBACCOUNTThumbnailErrorSerializer serialize:valueObj.thumbnailError] mutableCopy];
-    jsonDict[@".tag"] = @"thumbnail_error";
-  } else if ([valueObj isAccountPhotoMissing]) {
-    jsonDict[@".tag"] = @"account_photo_missing";
-  } else if ([valueObj isExpectedAccountPhotoMissing]) {
-    jsonDict[@".tag"] = @"expected_account_photo_missing";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isThumbnailError]) {
+        jsonDict[@"thumbnail_error"] = [[DBACCOUNTThumbnailErrorSerializer serialize:valueObj.thumbnailError] mutableCopy];
+        jsonDict[@".tag"] = @"thumbnail_error";
+    }
+    else if ([valueObj isAccountPhotoMissing]) {
+        jsonDict[@".tag"] = @"account_photo_missing";
+    }
+    else if ([valueObj isExpectedAccountPhotoMissing]) {
+        jsonDict[@".tag"] = @"expected_account_photo_missing";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTAccountPhotoGetError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"thumbnail_error"]) {
-    DBACCOUNTThumbnailError *thumbnailError =
-        [DBACCOUNTThumbnailErrorSerializer deserialize:valueDict[@"thumbnail_error"]];
-    return [[DBACCOUNTAccountPhotoGetError alloc] initWithThumbnailError:thumbnailError];
-  } else if ([tag isEqualToString:@"account_photo_missing"]) {
-    return [[DBACCOUNTAccountPhotoGetError alloc] initWithAccountPhotoMissing];
-  } else if ([tag isEqualToString:@"expected_account_photo_missing"]) {
-    return [[DBACCOUNTAccountPhotoGetError alloc] initWithExpectedAccountPhotoMissing];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBACCOUNTAccountPhotoGetError alloc] initWithOther];
-  } else {
-    return [[DBACCOUNTAccountPhotoGetError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"thumbnail_error"]) {
+        DBACCOUNTThumbnailError *thumbnailError = [DBACCOUNTThumbnailErrorSerializer deserialize:valueDict[@"thumbnail_error"]];
+        return [[DBACCOUNTAccountPhotoGetError alloc] initWithThumbnailError:thumbnailError];
+    }
+    else if ([tag isEqualToString:@"account_photo_missing"]) {
+        return [[DBACCOUNTAccountPhotoGetError alloc] initWithAccountPhotoMissing];
+    }
+    else if ([tag isEqualToString:@"expected_account_photo_missing"]) {
+        return [[DBACCOUNTAccountPhotoGetError alloc] initWithExpectedAccountPhotoMissing];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBACCOUNTAccountPhotoGetError alloc] initWithOther];
+    }
+    else {
+        return [[DBACCOUNTAccountPhotoGetError alloc] initWithOther];
+    }
 }
 
 @end
@@ -356,95 +357,96 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTAccountPhotoGetResult
+@implementation DBACCOUNTAccountPhotoGetResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithContentType:(NSString *)contentType {
-  [DBStoneValidators nonnullValidator:nil](contentType);
+    [DBStoneValidators nonnullValidator:nil](contentType);
 
-  self = [super init];
-  if (self) {
-    _contentType = contentType;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _contentType = contentType;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTAccountPhotoGetResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTAccountPhotoGetResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTAccountPhotoGetResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTAccountPhotoGetResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTAccountPhotoGetResultSerializer serialize:self] description];
+    return [[DBACCOUNTAccountPhotoGetResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.contentType hash];
+    result = prime * result + [self.contentType hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToAccountPhotoGetResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToAccountPhotoGetResult:other];
 }
 
 - (BOOL)isEqualToAccountPhotoGetResult:(DBACCOUNTAccountPhotoGetResult *)anAccountPhotoGetResult {
-  if (self == anAccountPhotoGetResult) {
+    if (self == anAccountPhotoGetResult) {
+        return YES;
+    }
+    if (![self.contentType isEqual:anAccountPhotoGetResult.contentType]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.contentType isEqual:anAccountPhotoGetResult.contentType]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTAccountPhotoGetResultSerializer
+@implementation DBACCOUNTAccountPhotoGetResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTAccountPhotoGetResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"content_type"] = valueObj.contentType;
+    jsonDict[@"content_type"] = valueObj.contentType;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTAccountPhotoGetResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *contentType = valueDict[@"content_type"];
+    NSString *contentType = valueDict[@"content_type"];
 
-  return [[DBACCOUNTAccountPhotoGetResult alloc] initWithContentType:contentType];
+    return [[DBACCOUNTAccountPhotoGetResult alloc] initWithContentType:contentType];
 }
 
 @end
@@ -455,87 +457,90 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTDeleteProfilePhotoArg
+@implementation DBACCOUNTDeleteProfilePhotoArg 
 
 #pragma mark - Constructors
 
 - (instancetype)initDefault {
 
-  self = [super init];
-  if (self) {
-  }
-  return self;
+    self = [super init];
+    if (self) {
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTDeleteProfilePhotoArgSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTDeleteProfilePhotoArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTDeleteProfilePhotoArgSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTDeleteProfilePhotoArgSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTDeleteProfilePhotoArgSerializer serialize:self] description];
+    return [[DBACCOUNTDeleteProfilePhotoArgSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  return prime * result;
+
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToDeleteProfilePhotoArg:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToDeleteProfilePhotoArg:other];
 }
 
 - (BOOL)isEqualToDeleteProfilePhotoArg:(DBACCOUNTDeleteProfilePhotoArg *)aDeleteProfilePhotoArg {
-  if (self == aDeleteProfilePhotoArg) {
+    if (self == aDeleteProfilePhotoArg) {
+        return YES;
+    }
     return YES;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTDeleteProfilePhotoArgSerializer
+@implementation DBACCOUNTDeleteProfilePhotoArgSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTDeleteProfilePhotoArg *)valueObj {
-#pragma unused(valueObj)
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    #pragma unused(valueObj)
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  return jsonDict;
+
+    return jsonDict;
 }
 
 + (DBACCOUNTDeleteProfilePhotoArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-#pragma unused(valueDict)
+    #pragma unused(valueDict)
 
-  return [[DBACCOUNTDeleteProfilePhotoArg alloc] initDefault];
+    return [[DBACCOUNTDeleteProfilePhotoArg alloc] initDefault];
 }
 
 @end
@@ -546,16 +551,16 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTDeleteProfilePhotoError
+@implementation DBACCOUNTDeleteProfilePhotoError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTDeleteProfilePhotoErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTDeleteProfilePhotoErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -563,109 +568,112 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isOther {
-  return _tag == DBACCOUNTDeleteProfilePhotoErrorOther;
+    return _tag == DBACCOUNTDeleteProfilePhotoErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBACCOUNTDeleteProfilePhotoErrorOther:
-    return @"DBACCOUNTDeleteProfilePhotoErrorOther";
-  }
+    switch (_tag) {
+        case DBACCOUNTDeleteProfilePhotoErrorOther:
+           return @"DBACCOUNTDeleteProfilePhotoErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTDeleteProfilePhotoErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTDeleteProfilePhotoErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTDeleteProfilePhotoErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTDeleteProfilePhotoErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTDeleteProfilePhotoErrorSerializer serialize:self] description];
+    return [[DBACCOUNTDeleteProfilePhotoErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBACCOUNTDeleteProfilePhotoErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBACCOUNTDeleteProfilePhotoErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToDeleteProfilePhotoError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToDeleteProfilePhotoError:other];
 }
 
 - (BOOL)isEqualToDeleteProfilePhotoError:(DBACCOUNTDeleteProfilePhotoError *)aDeleteProfilePhotoError {
-  if (self == aDeleteProfilePhotoError) {
+    if (self == aDeleteProfilePhotoError) {
+        return YES;
+    }
+    if (self.tag != aDeleteProfilePhotoError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBACCOUNTDeleteProfilePhotoErrorOther:
+        return [[self tagName] isEqual:[aDeleteProfilePhotoError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aDeleteProfilePhotoError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBACCOUNTDeleteProfilePhotoErrorOther:
-    return [[self tagName] isEqual:[aDeleteProfilePhotoError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTDeleteProfilePhotoErrorSerializer
+@implementation DBACCOUNTDeleteProfilePhotoErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTDeleteProfilePhotoError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTDeleteProfilePhotoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"other"]) {
-    return [[DBACCOUNTDeleteProfilePhotoError alloc] initWithOther];
-  } else {
-    return [[DBACCOUNTDeleteProfilePhotoError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"other"]) {
+        return [[DBACCOUNTDeleteProfilePhotoError alloc] initWithOther];
+    }
+    else {
+        return [[DBACCOUNTDeleteProfilePhotoError alloc] initWithOther];
+    }
 }
 
 @end
@@ -676,87 +684,90 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTDeleteProfilePhotoResult
+@implementation DBACCOUNTDeleteProfilePhotoResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initDefault {
 
-  self = [super init];
-  if (self) {
-  }
-  return self;
+    self = [super init];
+    if (self) {
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTDeleteProfilePhotoResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTDeleteProfilePhotoResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTDeleteProfilePhotoResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTDeleteProfilePhotoResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTDeleteProfilePhotoResultSerializer serialize:self] description];
+    return [[DBACCOUNTDeleteProfilePhotoResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  return prime * result;
+
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToDeleteProfilePhotoResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToDeleteProfilePhotoResult:other];
 }
 
 - (BOOL)isEqualToDeleteProfilePhotoResult:(DBACCOUNTDeleteProfilePhotoResult *)aDeleteProfilePhotoResult {
-  if (self == aDeleteProfilePhotoResult) {
+    if (self == aDeleteProfilePhotoResult) {
+        return YES;
+    }
     return YES;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTDeleteProfilePhotoResultSerializer
+@implementation DBACCOUNTDeleteProfilePhotoResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTDeleteProfilePhotoResult *)valueObj {
-#pragma unused(valueObj)
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    #pragma unused(valueObj)
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  return jsonDict;
+
+    return jsonDict;
 }
 
 + (DBACCOUNTDeleteProfilePhotoResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-#pragma unused(valueDict)
+    #pragma unused(valueDict)
 
-  return [[DBACCOUNTDeleteProfilePhotoResult alloc] initDefault];
+    return [[DBACCOUNTDeleteProfilePhotoResult alloc] initDefault];
 }
 
 @end
@@ -767,162 +778,166 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTPhotoSourceArg
+@implementation DBACCOUNTPhotoSourceArg 
 
 @synthesize base64Data = _base64Data;
 
 #pragma mark - Constructors
 
 - (instancetype)initWithBase64Data:(NSString *)base64Data {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTPhotoSourceArgBase64Data;
-    _base64Data = base64Data;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTPhotoSourceArgBase64Data;
+        _base64Data = base64Data;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTPhotoSourceArgOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTPhotoSourceArgOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (NSString *)base64Data {
-  if (![self isBase64Data]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBACCOUNTPhotoSourceArgBase64Data, but was %@.", [self tagName]];
-  }
-  return _base64Data;
+    if (![self isBase64Data]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBACCOUNTPhotoSourceArgBase64Data, but was %@.", [self tagName]];
+    }
+    return _base64Data;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isBase64Data {
-  return _tag == DBACCOUNTPhotoSourceArgBase64Data;
+    return _tag == DBACCOUNTPhotoSourceArgBase64Data;
 }
 
 - (BOOL)isOther {
-  return _tag == DBACCOUNTPhotoSourceArgOther;
+    return _tag == DBACCOUNTPhotoSourceArgOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBACCOUNTPhotoSourceArgBase64Data:
-    return @"DBACCOUNTPhotoSourceArgBase64Data";
-  case DBACCOUNTPhotoSourceArgOther:
-    return @"DBACCOUNTPhotoSourceArgOther";
-  }
+    switch (_tag) {
+        case DBACCOUNTPhotoSourceArgBase64Data:
+           return @"DBACCOUNTPhotoSourceArgBase64Data";
+        case DBACCOUNTPhotoSourceArgOther:
+           return @"DBACCOUNTPhotoSourceArgOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTPhotoSourceArgSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTPhotoSourceArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTPhotoSourceArgSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTPhotoSourceArgSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTPhotoSourceArgSerializer serialize:self] description];
+    return [[DBACCOUNTPhotoSourceArgSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBACCOUNTPhotoSourceArgBase64Data:
-    result = prime * result + [self.base64Data hash];
-    break;
-  case DBACCOUNTPhotoSourceArgOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBACCOUNTPhotoSourceArgBase64Data:
+        result = prime * result + [self.base64Data hash];
+        break;
+        case DBACCOUNTPhotoSourceArgOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPhotoSourceArg:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToPhotoSourceArg:other];
 }
 
 - (BOOL)isEqualToPhotoSourceArg:(DBACCOUNTPhotoSourceArg *)aPhotoSourceArg {
-  if (self == aPhotoSourceArg) {
+    if (self == aPhotoSourceArg) {
+        return YES;
+    }
+    if (self.tag != aPhotoSourceArg.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBACCOUNTPhotoSourceArgBase64Data:
+        return [self.base64Data isEqual:aPhotoSourceArg.base64Data];
+        case DBACCOUNTPhotoSourceArgOther:
+        return [[self tagName] isEqual:[aPhotoSourceArg tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aPhotoSourceArg.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBACCOUNTPhotoSourceArgBase64Data:
-    return [self.base64Data isEqual:aPhotoSourceArg.base64Data];
-  case DBACCOUNTPhotoSourceArgOther:
-    return [[self tagName] isEqual:[aPhotoSourceArg tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTPhotoSourceArgSerializer
+@implementation DBACCOUNTPhotoSourceArgSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTPhotoSourceArg *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isBase64Data]) {
-    jsonDict[@"base64_data"] = valueObj.base64Data;
-    jsonDict[@".tag"] = @"base64_data";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isBase64Data]) {
+        jsonDict[@"base64_data"] = valueObj.base64Data;
+        jsonDict[@".tag"] = @"base64_data";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTPhotoSourceArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"base64_data"]) {
-    NSString *base64Data = valueDict[@"base64_data"];
-    return [[DBACCOUNTPhotoSourceArg alloc] initWithBase64Data:base64Data];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBACCOUNTPhotoSourceArg alloc] initWithOther];
-  } else {
-    return [[DBACCOUNTPhotoSourceArg alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"base64_data"]) {
+        NSString *base64Data = valueDict[@"base64_data"];
+        return [[DBACCOUNTPhotoSourceArg alloc] initWithBase64Data:base64Data];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBACCOUNTPhotoSourceArg alloc] initWithOther];
+    }
+    else {
+        return [[DBACCOUNTPhotoSourceArg alloc] initWithOther];
+    }
 }
 
 @end
@@ -934,95 +949,96 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTSetProfilePhotoArg
+@implementation DBACCOUNTSetProfilePhotoArg 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithPhoto:(DBACCOUNTPhotoSourceArg *)photo {
-  [DBStoneValidators nonnullValidator:nil](photo);
+    [DBStoneValidators nonnullValidator:nil](photo);
 
-  self = [super init];
-  if (self) {
-    _photo = photo;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _photo = photo;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTSetProfilePhotoArgSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTSetProfilePhotoArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTSetProfilePhotoArgSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTSetProfilePhotoArgSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTSetProfilePhotoArgSerializer serialize:self] description];
+    return [[DBACCOUNTSetProfilePhotoArgSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.photo hash];
+    result = prime * result + [self.photo hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToSetProfilePhotoArg:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToSetProfilePhotoArg:other];
 }
 
 - (BOOL)isEqualToSetProfilePhotoArg:(DBACCOUNTSetProfilePhotoArg *)aSetProfilePhotoArg {
-  if (self == aSetProfilePhotoArg) {
+    if (self == aSetProfilePhotoArg) {
+        return YES;
+    }
+    if (![self.photo isEqual:aSetProfilePhotoArg.photo]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.photo isEqual:aSetProfilePhotoArg.photo]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTSetProfilePhotoArgSerializer
+@implementation DBACCOUNTSetProfilePhotoArgSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTSetProfilePhotoArg *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"photo"] = [DBACCOUNTPhotoSourceArgSerializer serialize:valueObj.photo];
+    jsonDict[@"photo"] = [DBACCOUNTPhotoSourceArgSerializer serialize:valueObj.photo];
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTSetProfilePhotoArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBACCOUNTPhotoSourceArg *photo = [DBACCOUNTPhotoSourceArgSerializer deserialize:valueDict[@"photo"]];
+    DBACCOUNTPhotoSourceArg *photo = [DBACCOUNTPhotoSourceArgSerializer deserialize:valueDict[@"photo"]];
 
-  return [[DBACCOUNTSetProfilePhotoArg alloc] initWithPhoto:photo];
+    return [[DBACCOUNTSetProfilePhotoArg alloc] initWithPhoto:photo];
 }
 
 @end
@@ -1033,56 +1049,56 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTSetProfilePhotoError
+@implementation DBACCOUNTSetProfilePhotoError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithFileTypeError {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTSetProfilePhotoErrorFileTypeError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTSetProfilePhotoErrorFileTypeError;
+    }
+    return self;
 }
 
 - (instancetype)initWithFileSizeError {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTSetProfilePhotoErrorFileSizeError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTSetProfilePhotoErrorFileSizeError;
+    }
+    return self;
 }
 
 - (instancetype)initWithDimensionError {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTSetProfilePhotoErrorDimensionError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTSetProfilePhotoErrorDimensionError;
+    }
+    return self;
 }
 
 - (instancetype)initWithThumbnailError {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTSetProfilePhotoErrorThumbnailError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTSetProfilePhotoErrorThumbnailError;
+    }
+    return self;
 }
 
 - (instancetype)initWithTransientError {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTSetProfilePhotoErrorTransientError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTSetProfilePhotoErrorTransientError;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTSetProfilePhotoErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTSetProfilePhotoErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -1090,184 +1106,197 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isFileTypeError {
-  return _tag == DBACCOUNTSetProfilePhotoErrorFileTypeError;
+    return _tag == DBACCOUNTSetProfilePhotoErrorFileTypeError;
 }
 
 - (BOOL)isFileSizeError {
-  return _tag == DBACCOUNTSetProfilePhotoErrorFileSizeError;
+    return _tag == DBACCOUNTSetProfilePhotoErrorFileSizeError;
 }
 
 - (BOOL)isDimensionError {
-  return _tag == DBACCOUNTSetProfilePhotoErrorDimensionError;
+    return _tag == DBACCOUNTSetProfilePhotoErrorDimensionError;
 }
 
 - (BOOL)isThumbnailError {
-  return _tag == DBACCOUNTSetProfilePhotoErrorThumbnailError;
+    return _tag == DBACCOUNTSetProfilePhotoErrorThumbnailError;
 }
 
 - (BOOL)isTransientError {
-  return _tag == DBACCOUNTSetProfilePhotoErrorTransientError;
+    return _tag == DBACCOUNTSetProfilePhotoErrorTransientError;
 }
 
 - (BOOL)isOther {
-  return _tag == DBACCOUNTSetProfilePhotoErrorOther;
+    return _tag == DBACCOUNTSetProfilePhotoErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBACCOUNTSetProfilePhotoErrorFileTypeError:
-    return @"DBACCOUNTSetProfilePhotoErrorFileTypeError";
-  case DBACCOUNTSetProfilePhotoErrorFileSizeError:
-    return @"DBACCOUNTSetProfilePhotoErrorFileSizeError";
-  case DBACCOUNTSetProfilePhotoErrorDimensionError:
-    return @"DBACCOUNTSetProfilePhotoErrorDimensionError";
-  case DBACCOUNTSetProfilePhotoErrorThumbnailError:
-    return @"DBACCOUNTSetProfilePhotoErrorThumbnailError";
-  case DBACCOUNTSetProfilePhotoErrorTransientError:
-    return @"DBACCOUNTSetProfilePhotoErrorTransientError";
-  case DBACCOUNTSetProfilePhotoErrorOther:
-    return @"DBACCOUNTSetProfilePhotoErrorOther";
-  }
+    switch (_tag) {
+        case DBACCOUNTSetProfilePhotoErrorFileTypeError:
+           return @"DBACCOUNTSetProfilePhotoErrorFileTypeError";
+        case DBACCOUNTSetProfilePhotoErrorFileSizeError:
+           return @"DBACCOUNTSetProfilePhotoErrorFileSizeError";
+        case DBACCOUNTSetProfilePhotoErrorDimensionError:
+           return @"DBACCOUNTSetProfilePhotoErrorDimensionError";
+        case DBACCOUNTSetProfilePhotoErrorThumbnailError:
+           return @"DBACCOUNTSetProfilePhotoErrorThumbnailError";
+        case DBACCOUNTSetProfilePhotoErrorTransientError:
+           return @"DBACCOUNTSetProfilePhotoErrorTransientError";
+        case DBACCOUNTSetProfilePhotoErrorOther:
+           return @"DBACCOUNTSetProfilePhotoErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTSetProfilePhotoErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTSetProfilePhotoErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTSetProfilePhotoErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTSetProfilePhotoErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTSetProfilePhotoErrorSerializer serialize:self] description];
+    return [[DBACCOUNTSetProfilePhotoErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBACCOUNTSetProfilePhotoErrorFileTypeError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTSetProfilePhotoErrorFileSizeError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTSetProfilePhotoErrorDimensionError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTSetProfilePhotoErrorThumbnailError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTSetProfilePhotoErrorTransientError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTSetProfilePhotoErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBACCOUNTSetProfilePhotoErrorFileTypeError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTSetProfilePhotoErrorFileSizeError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTSetProfilePhotoErrorDimensionError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTSetProfilePhotoErrorThumbnailError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTSetProfilePhotoErrorTransientError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTSetProfilePhotoErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToSetProfilePhotoError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToSetProfilePhotoError:other];
 }
 
 - (BOOL)isEqualToSetProfilePhotoError:(DBACCOUNTSetProfilePhotoError *)aSetProfilePhotoError {
-  if (self == aSetProfilePhotoError) {
+    if (self == aSetProfilePhotoError) {
+        return YES;
+    }
+    if (self.tag != aSetProfilePhotoError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBACCOUNTSetProfilePhotoErrorFileTypeError:
+        return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
+        case DBACCOUNTSetProfilePhotoErrorFileSizeError:
+        return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
+        case DBACCOUNTSetProfilePhotoErrorDimensionError:
+        return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
+        case DBACCOUNTSetProfilePhotoErrorThumbnailError:
+        return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
+        case DBACCOUNTSetProfilePhotoErrorTransientError:
+        return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
+        case DBACCOUNTSetProfilePhotoErrorOther:
+        return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aSetProfilePhotoError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBACCOUNTSetProfilePhotoErrorFileTypeError:
-    return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
-  case DBACCOUNTSetProfilePhotoErrorFileSizeError:
-    return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
-  case DBACCOUNTSetProfilePhotoErrorDimensionError:
-    return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
-  case DBACCOUNTSetProfilePhotoErrorThumbnailError:
-    return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
-  case DBACCOUNTSetProfilePhotoErrorTransientError:
-    return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
-  case DBACCOUNTSetProfilePhotoErrorOther:
-    return [[self tagName] isEqual:[aSetProfilePhotoError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTSetProfilePhotoErrorSerializer
+@implementation DBACCOUNTSetProfilePhotoErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTSetProfilePhotoError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isFileTypeError]) {
-    jsonDict[@".tag"] = @"file_type_error";
-  } else if ([valueObj isFileSizeError]) {
-    jsonDict[@".tag"] = @"file_size_error";
-  } else if ([valueObj isDimensionError]) {
-    jsonDict[@".tag"] = @"dimension_error";
-  } else if ([valueObj isThumbnailError]) {
-    jsonDict[@".tag"] = @"thumbnail_error";
-  } else if ([valueObj isTransientError]) {
-    jsonDict[@".tag"] = @"transient_error";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isFileTypeError]) {
+        jsonDict[@".tag"] = @"file_type_error";
+    }
+    else if ([valueObj isFileSizeError]) {
+        jsonDict[@".tag"] = @"file_size_error";
+    }
+    else if ([valueObj isDimensionError]) {
+        jsonDict[@".tag"] = @"dimension_error";
+    }
+    else if ([valueObj isThumbnailError]) {
+        jsonDict[@".tag"] = @"thumbnail_error";
+    }
+    else if ([valueObj isTransientError]) {
+        jsonDict[@".tag"] = @"transient_error";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTSetProfilePhotoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"file_type_error"]) {
-    return [[DBACCOUNTSetProfilePhotoError alloc] initWithFileTypeError];
-  } else if ([tag isEqualToString:@"file_size_error"]) {
-    return [[DBACCOUNTSetProfilePhotoError alloc] initWithFileSizeError];
-  } else if ([tag isEqualToString:@"dimension_error"]) {
-    return [[DBACCOUNTSetProfilePhotoError alloc] initWithDimensionError];
-  } else if ([tag isEqualToString:@"thumbnail_error"]) {
-    return [[DBACCOUNTSetProfilePhotoError alloc] initWithThumbnailError];
-  } else if ([tag isEqualToString:@"transient_error"]) {
-    return [[DBACCOUNTSetProfilePhotoError alloc] initWithTransientError];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBACCOUNTSetProfilePhotoError alloc] initWithOther];
-  } else {
-    return [[DBACCOUNTSetProfilePhotoError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"file_type_error"]) {
+        return [[DBACCOUNTSetProfilePhotoError alloc] initWithFileTypeError];
+    }
+    else if ([tag isEqualToString:@"file_size_error"]) {
+        return [[DBACCOUNTSetProfilePhotoError alloc] initWithFileSizeError];
+    }
+    else if ([tag isEqualToString:@"dimension_error"]) {
+        return [[DBACCOUNTSetProfilePhotoError alloc] initWithDimensionError];
+    }
+    else if ([tag isEqualToString:@"thumbnail_error"]) {
+        return [[DBACCOUNTSetProfilePhotoError alloc] initWithThumbnailError];
+    }
+    else if ([tag isEqualToString:@"transient_error"]) {
+        return [[DBACCOUNTSetProfilePhotoError alloc] initWithTransientError];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBACCOUNTSetProfilePhotoError alloc] initWithOther];
+    }
+    else {
+        return [[DBACCOUNTSetProfilePhotoError alloc] initWithOther];
+    }
 }
 
 @end
@@ -1278,95 +1307,96 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTSetProfilePhotoResult
+@implementation DBACCOUNTSetProfilePhotoResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithProfilePhotoUrl:(NSString *)profilePhotoUrl {
-  [DBStoneValidators nonnullValidator:nil](profilePhotoUrl);
+    [DBStoneValidators nonnullValidator:nil](profilePhotoUrl);
 
-  self = [super init];
-  if (self) {
-    _profilePhotoUrl = profilePhotoUrl;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _profilePhotoUrl = profilePhotoUrl;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTSetProfilePhotoResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTSetProfilePhotoResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTSetProfilePhotoResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTSetProfilePhotoResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTSetProfilePhotoResultSerializer serialize:self] description];
+    return [[DBACCOUNTSetProfilePhotoResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.profilePhotoUrl hash];
+    result = prime * result + [self.profilePhotoUrl hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToSetProfilePhotoResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToSetProfilePhotoResult:other];
 }
 
 - (BOOL)isEqualToSetProfilePhotoResult:(DBACCOUNTSetProfilePhotoResult *)aSetProfilePhotoResult {
-  if (self == aSetProfilePhotoResult) {
+    if (self == aSetProfilePhotoResult) {
+        return YES;
+    }
+    if (![self.profilePhotoUrl isEqual:aSetProfilePhotoResult.profilePhotoUrl]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.profilePhotoUrl isEqual:aSetProfilePhotoResult.profilePhotoUrl]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTSetProfilePhotoResultSerializer
+@implementation DBACCOUNTSetProfilePhotoResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTSetProfilePhotoResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
+    jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTSetProfilePhotoResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *profilePhotoUrl = valueDict[@"profile_photo_url"];
+    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"];
 
-  return [[DBACCOUNTSetProfilePhotoResult alloc] initWithProfilePhotoUrl:profilePhotoUrl];
+    return [[DBACCOUNTSetProfilePhotoResult alloc] initWithProfilePhotoUrl:profilePhotoUrl];
 }
 
 @end
@@ -1377,32 +1407,32 @@
 
 #pragma mark - API Object
 
-@implementation DBACCOUNTThumbnailError
+@implementation DBACCOUNTThumbnailError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithPermanentFailure {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTThumbnailErrorPermanentFailure;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTThumbnailErrorPermanentFailure;
+    }
+    return self;
 }
 
 - (instancetype)initWithTemporaryFailure {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTThumbnailErrorTemporaryFailure;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTThumbnailErrorTemporaryFailure;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBACCOUNTThumbnailErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBACCOUNTThumbnailErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -1410,139 +1440,146 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isPermanentFailure {
-  return _tag == DBACCOUNTThumbnailErrorPermanentFailure;
+    return _tag == DBACCOUNTThumbnailErrorPermanentFailure;
 }
 
 - (BOOL)isTemporaryFailure {
-  return _tag == DBACCOUNTThumbnailErrorTemporaryFailure;
+    return _tag == DBACCOUNTThumbnailErrorTemporaryFailure;
 }
 
 - (BOOL)isOther {
-  return _tag == DBACCOUNTThumbnailErrorOther;
+    return _tag == DBACCOUNTThumbnailErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBACCOUNTThumbnailErrorPermanentFailure:
-    return @"DBACCOUNTThumbnailErrorPermanentFailure";
-  case DBACCOUNTThumbnailErrorTemporaryFailure:
-    return @"DBACCOUNTThumbnailErrorTemporaryFailure";
-  case DBACCOUNTThumbnailErrorOther:
-    return @"DBACCOUNTThumbnailErrorOther";
-  }
+    switch (_tag) {
+        case DBACCOUNTThumbnailErrorPermanentFailure:
+           return @"DBACCOUNTThumbnailErrorPermanentFailure";
+        case DBACCOUNTThumbnailErrorTemporaryFailure:
+           return @"DBACCOUNTThumbnailErrorTemporaryFailure";
+        case DBACCOUNTThumbnailErrorOther:
+           return @"DBACCOUNTThumbnailErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBACCOUNTThumbnailErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBACCOUNTThumbnailErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBACCOUNTThumbnailErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBACCOUNTThumbnailErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBACCOUNTThumbnailErrorSerializer serialize:self] description];
+    return [[DBACCOUNTThumbnailErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBACCOUNTThumbnailErrorPermanentFailure:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTThumbnailErrorTemporaryFailure:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBACCOUNTThumbnailErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBACCOUNTThumbnailErrorPermanentFailure:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTThumbnailErrorTemporaryFailure:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBACCOUNTThumbnailErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToThumbnailError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToThumbnailError:other];
 }
 
 - (BOOL)isEqualToThumbnailError:(DBACCOUNTThumbnailError *)aThumbnailError {
-  if (self == aThumbnailError) {
+    if (self == aThumbnailError) {
+        return YES;
+    }
+    if (self.tag != aThumbnailError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBACCOUNTThumbnailErrorPermanentFailure:
+        return [[self tagName] isEqual:[aThumbnailError tagName]];
+        case DBACCOUNTThumbnailErrorTemporaryFailure:
+        return [[self tagName] isEqual:[aThumbnailError tagName]];
+        case DBACCOUNTThumbnailErrorOther:
+        return [[self tagName] isEqual:[aThumbnailError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aThumbnailError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBACCOUNTThumbnailErrorPermanentFailure:
-    return [[self tagName] isEqual:[aThumbnailError tagName]];
-  case DBACCOUNTThumbnailErrorTemporaryFailure:
-    return [[self tagName] isEqual:[aThumbnailError tagName]];
-  case DBACCOUNTThumbnailErrorOther:
-    return [[self tagName] isEqual:[aThumbnailError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBACCOUNTThumbnailErrorSerializer
+@implementation DBACCOUNTThumbnailErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBACCOUNTThumbnailError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isPermanentFailure]) {
-    jsonDict[@".tag"] = @"permanent_failure";
-  } else if ([valueObj isTemporaryFailure]) {
-    jsonDict[@".tag"] = @"temporary_failure";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isPermanentFailure]) {
+        jsonDict[@".tag"] = @"permanent_failure";
+    }
+    else if ([valueObj isTemporaryFailure]) {
+        jsonDict[@".tag"] = @"temporary_failure";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBACCOUNTThumbnailError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"permanent_failure"]) {
-    return [[DBACCOUNTThumbnailError alloc] initWithPermanentFailure];
-  } else if ([tag isEqualToString:@"temporary_failure"]) {
-    return [[DBACCOUNTThumbnailError alloc] initWithTemporaryFailure];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBACCOUNTThumbnailError alloc] initWithOther];
-  } else {
-    return [[DBACCOUNTThumbnailError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"permanent_failure"]) {
+        return [[DBACCOUNTThumbnailError alloc] initWithPermanentFailure];
+    }
+    else if ([tag isEqualToString:@"temporary_failure"]) {
+        return [[DBACCOUNTThumbnailError alloc] initWithTemporaryFailure];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBACCOUNTThumbnailError alloc] initWithOther];
+    }
+    else {
+        return [[DBACCOUNTThumbnailError alloc] initWithOther];
+    }
 }
 
 @end

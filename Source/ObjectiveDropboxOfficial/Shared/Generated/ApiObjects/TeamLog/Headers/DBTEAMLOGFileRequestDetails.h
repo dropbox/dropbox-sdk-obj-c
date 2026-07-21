@@ -11,20 +11,21 @@
 @class DBTEAMLOGFileRequestDeadline;
 @class DBTEAMLOGFileRequestDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRequestDetails` struct.
-///
+/// 
 /// File request details
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileRequestDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileRequestDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,60 +40,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param assetIndex Asset position in the Assets list.
 /// @param deadline File request deadline.
 /// @param hasPassword Flag represents if this file request has password.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAssetIndex:(NSNumber *)assetIndex
-                          deadline:(nullable DBTEAMLOGFileRequestDeadline *)deadline
-                       hasPassword:(nullable NSNumber *)hasPassword;
+/// 
+- (instancetype)initWithAssetIndex:(NSNumber *)assetIndex deadline:(nullable DBTEAMLOGFileRequestDeadline *)deadline hasPassword:(nullable NSNumber *)hasPassword;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param assetIndex Asset position in the Assets list.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAssetIndex:(NSNumber *)assetIndex;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRequestDetails` struct.
-///
-@interface DBTEAMLOGFileRequestDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileRequestDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileRequestDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileRequestDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileRequestDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileRequestDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileRequestDetails` object.
-///
-+ (DBTEAMLOGFileRequestDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileRequestDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

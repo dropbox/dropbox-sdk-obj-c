@@ -11,18 +11,19 @@
 @class DBFILESFileMetadata;
 @class DBFILESGetThumbnailBatchResultData;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetThumbnailBatchResultData` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGetThumbnailBatchResultData : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGetThumbnailBatchResultData : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,49 +35,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param metadata (no description).
 /// @param thumbnail A string containing the base64-encoded thumbnail data for
 /// this file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadata:(DBFILESFileMetadata *)metadata thumbnail:(NSString *)thumbnail;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetThumbnailBatchResultData` struct.
-///
-@interface DBFILESGetThumbnailBatchResultDataSerializer : NSObject
+/// 
+@interface DBFILESGetThumbnailBatchResultDataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGetThumbnailBatchResultData` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGetThumbnailBatchResultData` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetThumbnailBatchResultData` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGetThumbnailBatchResultData *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGetThumbnailBatchResultData *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGetThumbnailBatchResultData` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGetThumbnailBatchResultData` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGetThumbnailBatchResultData` object.
-///
-+ (DBFILESGetThumbnailBatchResultData *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGetThumbnailBatchResultData *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

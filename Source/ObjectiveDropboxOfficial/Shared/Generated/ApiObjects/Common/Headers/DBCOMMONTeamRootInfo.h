@@ -6,25 +6,26 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBCOMMONRootInfo.h"
 #import "DBSerializableProtocol.h"
+#import "DBCOMMONRootInfo.h"
 
 @class DBCOMMONTeamRootInfo;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamRootInfo` struct.
-///
+/// 
 /// Root info when user is member of a team with a separate root namespace ID.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBCOMMONTeamRootInfo : DBCOMMONRootInfo <DBSerializable, NSCopying>
+/// 
+@interface DBCOMMONTeamRootInfo : DBCOMMONRootInfo <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,9 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param rootNamespaceId The namespace ID for user's root namespace. It will
 /// be the namespace ID of the shared team root if the user is member of a team
 /// with a separate team root, or the user root if user is member of a team with
@@ -44,42 +45,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param homeNamespaceId The namespace ID for user's home namespace.
 /// @param homePath The path for user's home directory under the shared team
 /// root.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId
-                        homeNamespaceId:(NSString *)homeNamespaceId
-                               homePath:(NSString *)homePath;
+/// 
+- (instancetype)initWithRootNamespaceId:(NSString *)rootNamespaceId homeNamespaceId:(NSString *)homeNamespaceId homePath:(NSString *)homePath;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamRootInfo` struct.
-///
-@interface DBCOMMONTeamRootInfoSerializer : NSObject
+/// 
+@interface DBCOMMONTeamRootInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBCOMMONTeamRootInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBCOMMONTeamRootInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBCOMMONTeamRootInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBCOMMONTeamRootInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBCOMMONTeamRootInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBCOMMONTeamRootInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBCOMMONTeamRootInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBCOMMONTeamRootInfo` object.
-///
-+ (DBCOMMONTeamRootInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBCOMMONTeamRootInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,51 +10,52 @@
 
 @class DBSHARINGRelinquishAccessError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RelinquishAccessError` union.
-///
+/// 
 /// Error result for the relinquish_access endpoint.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGRelinquishAccessError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGRelinquishAccessError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBSHARINGRelinquishAccessErrorTag` enum type represents the possible
 /// tag states with which the `DBSHARINGRelinquishAccessError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGRelinquishAccessErrorTag) {
-  /// File or folder not found or has been deleted.
-  DBSHARINGRelinquishAccessErrorInvalidFileId,
+    /// File or folder not found or has been deleted.
+    DBSHARINGRelinquishAccessErrorInvalidFileId,
 
-  /// Caller's email address is not verified.
-  DBSHARINGRelinquishAccessErrorEmailUnverified,
+    /// Caller's email address is not verified.
+    DBSHARINGRelinquishAccessErrorEmailUnverified,
 
-  /// User is the owner of the file/folder.
-  DBSHARINGRelinquishAccessErrorOwner,
+    /// User is the owner of the file/folder.
+    DBSHARINGRelinquishAccessErrorOwner,
 
-  /// User has only non-removable access — inherited from a parent folder or
-  /// via group membership. Either way, relinquish_access cannot remove the
-  /// caller's access from this surface; the caller must take action on the
-  /// source of the access (e.g. leave the parent shared folder, or be removed
-  /// from the group).
-  DBSHARINGRelinquishAccessErrorNoExplicitAccess,
+    /// User has only non-removable access — inherited from a parent folder or
+    /// via group membership. Either way, relinquish_access cannot remove the
+    /// caller's access from this surface; the caller must take action on the
+    /// source of the access (e.g. leave the parent shared folder, or be removed
+    /// from the group).
+    DBSHARINGRelinquishAccessErrorNoExplicitAccess,
 
-  /// Team folder restrictions apply.
-  DBSHARINGRelinquishAccessErrorTeamFolder,
+    /// Team folder restrictions apply.
+    DBSHARINGRelinquishAccessErrorTeamFolder,
 
-  /// Caller does not have permission to perform this action. Generic
-  /// fallback.
-  DBSHARINGRelinquishAccessErrorNoPermission,
+    /// Caller does not have permission to perform this action. Generic
+    /// fallback.
+    DBSHARINGRelinquishAccessErrorNoPermission,
 
-  /// (no description).
-  DBSHARINGRelinquishAccessErrorOther,
+    /// (no description).
+    DBSHARINGRelinquishAccessErrorOther,
 
 };
 
@@ -63,167 +64,169 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGRelinquishAccessErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "invalid_file_id".
-///
+/// 
 /// Description of the "invalid_file_id" tag state: File or folder not found or
 /// has been deleted.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvalidFileId;
 
-///
+/// 
 /// Initializes union class with tag state of "email_unverified".
-///
+/// 
 /// Description of the "email_unverified" tag state: Caller's email address is
 /// not verified.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEmailUnverified;
 
-///
+/// 
 /// Initializes union class with tag state of "owner".
-///
+/// 
 /// Description of the "owner" tag state: User is the owner of the file/folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOwner;
 
-///
+/// 
 /// Initializes union class with tag state of "no_explicit_access".
-///
+/// 
 /// Description of the "no_explicit_access" tag state: User has only
 /// non-removable access — inherited from a parent folder or via group
 /// membership. Either way, relinquish_access cannot remove the caller's access
 /// from this surface; the caller must take action on the source of the access
 /// (e.g. leave the parent shared folder, or be removed from the group).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoExplicitAccess;
 
-///
+/// 
 /// Initializes union class with tag state of "team_folder".
-///
+/// 
 /// Description of the "team_folder" tag state: Team folder restrictions apply.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamFolder;
 
-///
+/// 
 /// Initializes union class with tag state of "no_permission".
-///
+/// 
 /// Description of the "no_permission" tag state: Caller does not have
 /// permission to perform this action. Generic fallback.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoPermission;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invalid_file_id".
-///
+/// 
 /// @return Whether the union's current tag state has value "invalid_file_id".
-///
+/// 
 - (BOOL)isInvalidFileId;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "email_unverified".
-///
+/// 
 /// @return Whether the union's current tag state has value "email_unverified".
-///
+/// 
 - (BOOL)isEmailUnverified;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "owner".
-///
+/// 
 /// @return Whether the union's current tag state has value "owner".
-///
+/// 
 - (BOOL)isOwner;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "no_explicit_access".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "no_explicit_access".
-///
+/// 
 - (BOOL)isNoExplicitAccess;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "team_folder".
-///
+/// 
 /// @return Whether the union's current tag state has value "team_folder".
-///
+/// 
 - (BOOL)isTeamFolder;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "no_permission".
-///
+/// 
 /// @return Whether the union's current tag state has value "no_permission".
-///
+/// 
 - (BOOL)isNoPermission;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGRelinquishAccessError` union.
-///
-@interface DBSHARINGRelinquishAccessErrorSerializer : NSObject
+/// 
+@interface DBSHARINGRelinquishAccessErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGRelinquishAccessError` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGRelinquishAccessError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishAccessError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGRelinquishAccessError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGRelinquishAccessError *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGRelinquishAccessError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishAccessError` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGRelinquishAccessError` object.
-///
-+ (DBSHARINGRelinquishAccessError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGRelinquishAccessError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

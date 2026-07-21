@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamFolderDowngradeDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderDowngradeDetails` struct.
-///
+/// 
 /// Downgraded team folder to regular shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderDowngradeDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderDowngradeDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderDowngradeDetails` struct.
-///
-@interface DBTEAMLOGTeamFolderDowngradeDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderDowngradeDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderDowngradeDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamFolderDowngradeDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderDowngradeDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderDowngradeDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderDowngradeDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderDowngradeDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderDowngradeDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamFolderDowngradeDetails`
 /// object.
-///
-+ (DBTEAMLOGTeamFolderDowngradeDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderDowngradeDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

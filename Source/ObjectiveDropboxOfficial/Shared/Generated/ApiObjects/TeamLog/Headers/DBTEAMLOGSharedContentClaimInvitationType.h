@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedContentClaimInvitationType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentClaimInvitationType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentClaimInvitationType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentClaimInvitationType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentClaimInvitationType` struct.
-///
-@interface DBTEAMLOGSharedContentClaimInvitationTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentClaimInvitationTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentClaimInvitationType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedContentClaimInvitationType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentClaimInvitationType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentClaimInvitationType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentClaimInvitationType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentClaimInvitationType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentClaimInvitationType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedContentClaimInvitationType`
 /// object.
-///
-+ (DBTEAMLOGSharedContentClaimInvitationType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentClaimInvitationType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

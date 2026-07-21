@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGSharedContentUnshareDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentUnshareDetails` struct.
-///
+/// 
 /// Unshared file/folder by clearing membership.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentUnshareDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentUnshareDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentUnshareDetails` struct.
-///
-@interface DBTEAMLOGSharedContentUnshareDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentUnshareDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentUnshareDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedContentUnshareDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentUnshareDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentUnshareDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentUnshareDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentUnshareDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentUnshareDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedContentUnshareDetails`
 /// object.
-///
-+ (DBTEAMLOGSharedContentUnshareDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentUnshareDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

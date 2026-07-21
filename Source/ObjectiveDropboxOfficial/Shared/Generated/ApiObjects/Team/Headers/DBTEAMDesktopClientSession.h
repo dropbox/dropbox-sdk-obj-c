@@ -12,20 +12,21 @@
 @class DBTEAMDesktopClientSession;
 @class DBTEAMDesktopPlatform;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DesktopClientSession` struct.
-///
+/// 
 /// Information about linked Dropbox desktop client sessions.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMDesktopClientSession : DBTEAMDeviceSession <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMDesktopClientSession : DBTEAMDeviceSession <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sessionId The session id.
 /// @param hostName Name of the hosting desktop.
 /// @param clientType The Dropbox desktop client type.
@@ -61,24 +62,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// was made.
 /// @param created The time this session was created.
 /// @param updated The time of the last activity from this session.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSessionId:(NSString *)sessionId
-                         hostName:(NSString *)hostName
-                       clientType:(DBTEAMDesktopPlatform *)clientType
-                    clientVersion:(NSString *)clientVersion
-                         platform:(NSString *)platform
-        isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported
-                        ipAddress:(nullable NSString *)ipAddress
-                          country:(nullable NSString *)country
-                          created:(nullable NSDate *)created
-                          updated:(nullable NSDate *)updated;
+/// 
+- (instancetype)initWithSessionId:(NSString *)sessionId hostName:(NSString *)hostName clientType:(DBTEAMDesktopPlatform *)clientType clientVersion:(NSString *)clientVersion platform:(NSString *)platform isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported ipAddress:(nullable NSString *)ipAddress country:(nullable NSString *)country created:(nullable NSDate *)created updated:(nullable NSDate *)updated;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sessionId The session id.
 /// @param hostName Name of the hosting desktop.
 /// @param clientType The Dropbox desktop client type.
@@ -86,45 +78,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param platform Information on the hosting platform.
 /// @param isDeleteOnUnlinkSupported Whether it's possible to delete all of the
 /// account files upon unlinking.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSessionId:(NSString *)sessionId
-                         hostName:(NSString *)hostName
-                       clientType:(DBTEAMDesktopPlatform *)clientType
-                    clientVersion:(NSString *)clientVersion
-                         platform:(NSString *)platform
-        isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported;
+/// 
+- (instancetype)initWithSessionId:(NSString *)sessionId hostName:(NSString *)hostName clientType:(DBTEAMDesktopPlatform *)clientType clientVersion:(NSString *)clientVersion platform:(NSString *)platform isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DesktopClientSession` struct.
-///
-@interface DBTEAMDesktopClientSessionSerializer : NSObject
+/// 
+@interface DBTEAMDesktopClientSessionSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMDesktopClientSession` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMDesktopClientSession` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMDesktopClientSession` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMDesktopClientSession *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMDesktopClientSession *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMDesktopClientSession` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMDesktopClientSession` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMDesktopClientSession` object.
-///
-+ (DBTEAMDesktopClientSession *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMDesktopClientSession *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

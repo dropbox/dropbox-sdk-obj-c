@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDeviceSyncBackupStatusChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeviceSyncBackupStatusChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDeviceSyncBackupStatusChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDeviceSyncBackupStatusChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeviceSyncBackupStatusChangedType` struct.
-///
-@interface DBTEAMLOGDeviceSyncBackupStatusChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDeviceSyncBackupStatusChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDeviceSyncBackupStatusChangedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDeviceSyncBackupStatusChangedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceSyncBackupStatusChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceSyncBackupStatusChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDeviceSyncBackupStatusChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDeviceSyncBackupStatusChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceSyncBackupStatusChangedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDeviceSyncBackupStatusChangedType`
 /// object.
-///
-+ (DBTEAMLOGDeviceSyncBackupStatusChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDeviceSyncBackupStatusChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

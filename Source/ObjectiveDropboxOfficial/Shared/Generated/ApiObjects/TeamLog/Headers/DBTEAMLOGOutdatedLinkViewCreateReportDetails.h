@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGOutdatedLinkViewCreateReportDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `OutdatedLinkViewCreateReportDetails` struct.
-///
+/// 
 /// Report created: Views of old links.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGOutdatedLinkViewCreateReportDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGOutdatedLinkViewCreateReportDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param startDate Report start date.
 /// @param endDate Report end date.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `OutdatedLinkViewCreateReportDetails`
 /// struct.
-///
-@interface DBTEAMLOGOutdatedLinkViewCreateReportDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGOutdatedLinkViewCreateReportDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGOutdatedLinkViewCreateReportDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGOutdatedLinkViewCreateReportDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGOutdatedLinkViewCreateReportDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGOutdatedLinkViewCreateReportDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGOutdatedLinkViewCreateReportDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGOutdatedLinkViewCreateReportDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGOutdatedLinkViewCreateReportDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGOutdatedLinkViewCreateReportDetails` object.
-///
-+ (DBTEAMLOGOutdatedLinkViewCreateReportDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGOutdatedLinkViewCreateReportDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGMediaHubProjectRole;
 @class DBTEAMLOGMediaHubProjectTeamRoleChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubProjectTeamRoleChangedDetails` struct.
-///
+/// 
 /// Changed member role in Media Hub project.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubProjectTeamRoleChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubProjectTeamRoleChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousRole Previous Media Hub project role.
 /// @param dNewRole New Media Hub project role.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousRole:(DBTEAMLOGMediaHubProjectRole *)previousRole
-                            dNewRole:(DBTEAMLOGMediaHubProjectRole *)dNewRole;
+/// 
+- (instancetype)initWithPreviousRole:(DBTEAMLOGMediaHubProjectRole *)previousRole dNewRole:(DBTEAMLOGMediaHubProjectRole *)dNewRole;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaHubProjectTeamRoleChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGMediaHubProjectTeamRoleChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubProjectTeamRoleChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubProjectTeamRoleChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMediaHubProjectTeamRoleChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubProjectTeamRoleChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubProjectTeamRoleChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubProjectTeamRoleChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubProjectTeamRoleChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubProjectTeamRoleChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMediaHubProjectTeamRoleChangedDetails` object.
-///
-+ (DBTEAMLOGMediaHubProjectTeamRoleChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubProjectTeamRoleChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

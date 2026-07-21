@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EncryptedFolderCancelTeamKeyRotationType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EncryptedFolderCancelTeamKeyRotationType`
 /// struct.
-///
-@interface DBTEAMLOGEncryptedFolderCancelTeamKeyRotationTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGEncryptedFolderCancelTeamKeyRotationTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType` object.
-///
-+ (DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEncryptedFolderCancelTeamKeyRotationType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,65 +10,68 @@
 
 @class DBACCOUNTDeleteProfilePhotoResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeleteProfilePhotoResult` struct.
-///
+/// 
 /// This struct is empty. The comment here is intentionally emitted to avoid
 /// indentation issues with Stone.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBACCOUNTDeleteProfilePhotoResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBACCOUNTDeleteProfilePhotoResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeleteProfilePhotoResult` struct.
-///
-@interface DBACCOUNTDeleteProfilePhotoResultSerializer : NSObject
+/// 
+@interface DBACCOUNTDeleteProfilePhotoResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBACCOUNTDeleteProfilePhotoResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBACCOUNTDeleteProfilePhotoResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBACCOUNTDeleteProfilePhotoResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBACCOUNTDeleteProfilePhotoResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBACCOUNTDeleteProfilePhotoResult *)instance;
 
-///
+/// 
 /// Deserializes `DBACCOUNTDeleteProfilePhotoResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBACCOUNTDeleteProfilePhotoResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBACCOUNTDeleteProfilePhotoResult` object.
-///
-+ (DBACCOUNTDeleteProfilePhotoResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBACCOUNTDeleteProfilePhotoResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

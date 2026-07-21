@@ -11,20 +11,21 @@
 @class DBTEAMLOGTeamFolderNotificationTarget;
 @class DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderSpaceLimitsChangeNotificationTargetDetails` struct.
-///
+/// 
 /// Changed team folder space limit notification target.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,64 +37,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewTarget New notification target.
 /// @param previousTarget Previous notification target.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewTarget:(DBTEAMLOGTeamFolderNotificationTarget *)dNewTarget
-                    previousTarget:(nullable DBTEAMLOGTeamFolderNotificationTarget *)previousTarget;
+/// 
+- (instancetype)initWithDNewTarget:(DBTEAMLOGTeamFolderNotificationTarget *)dNewTarget previousTarget:(nullable DBTEAMLOGTeamFolderNotificationTarget *)previousTarget;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewTarget New notification target.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewTarget:(DBTEAMLOGTeamFolderNotificationTarget *)dNewTarget;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `TeamFolderSpaceLimitsChangeNotificationTargetDetails` struct.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails` object.
-///
-+ (DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderSpaceLimitsChangeNotificationTargetDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

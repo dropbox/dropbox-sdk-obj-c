@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperExternalViewDefaultTeamDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperExternalViewDefaultTeamDetails` struct.
-///
+/// 
 /// Changed Paper external sharing setting to default team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperExternalViewDefaultTeamDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperExternalViewDefaultTeamDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperExternalViewDefaultTeamDetails`
 /// struct.
-///
-@interface DBTEAMLOGPaperExternalViewDefaultTeamDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperExternalViewDefaultTeamDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperExternalViewDefaultTeamDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperExternalViewDefaultTeamDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperExternalViewDefaultTeamDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewDefaultTeamDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperExternalViewDefaultTeamDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperExternalViewDefaultTeamDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperExternalViewDefaultTeamDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGPaperExternalViewDefaultTeamDetails` object.
-///
-+ (DBTEAMLOGPaperExternalViewDefaultTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperExternalViewDefaultTeamDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

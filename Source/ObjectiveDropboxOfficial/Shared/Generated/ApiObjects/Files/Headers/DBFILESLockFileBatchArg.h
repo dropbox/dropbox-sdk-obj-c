@@ -11,18 +11,19 @@
 @class DBFILESLockFileArg;
 @class DBFILESLockFileBatchArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LockFileBatchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESLockFileBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESLockFileBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries List of 'entries'. Each 'entry' contains a path of the file
 /// which will be locked or queried. Duplicate path arguments in the batch are
 /// considered only once.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESLockFileArg *> *)entries;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LockFileBatchArg` struct.
-///
-@interface DBFILESLockFileBatchArgSerializer : NSObject
+/// 
+@interface DBFILESLockFileBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESLockFileBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESLockFileBatchArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESLockFileBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESLockFileBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESLockFileBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESLockFileBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESLockFileBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESLockFileBatchArg` object.
-///
-+ (DBFILESLockFileBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESLockFileBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

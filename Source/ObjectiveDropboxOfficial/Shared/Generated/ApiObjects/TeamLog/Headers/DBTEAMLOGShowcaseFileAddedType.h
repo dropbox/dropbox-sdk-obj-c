@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGShowcaseFileAddedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseFileAddedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseFileAddedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseFileAddedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseFileAddedType` struct.
-///
-@interface DBTEAMLOGShowcaseFileAddedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseFileAddedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseFileAddedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseFileAddedType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseFileAddedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseFileAddedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseFileAddedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseFileAddedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseFileAddedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseFileAddedType` object.
-///
-+ (DBTEAMLOGShowcaseFileAddedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseFileAddedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

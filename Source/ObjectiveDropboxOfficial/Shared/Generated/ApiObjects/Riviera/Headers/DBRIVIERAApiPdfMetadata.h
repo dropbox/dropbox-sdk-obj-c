@@ -10,20 +10,21 @@
 
 @class DBRIVIERAApiPdfMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ApiPdfMetadata` struct.
-///
+/// 
 /// PDF document metadata.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAApiPdfMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAApiPdfMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,59 +39,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param pages (no description).
 /// @param width Width / height of the first page, in PDF points.
 /// @param height (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPages:(nullable NSNumber *)pages
-                        width:(nullable NSNumber *)width
-                       height:(nullable NSNumber *)height;
+/// 
+- (instancetype)initWithPages:(nullable NSNumber *)pages width:(nullable NSNumber *)width height:(nullable NSNumber *)height;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ApiPdfMetadata` struct.
-///
-@interface DBRIVIERAApiPdfMetadataSerializer : NSObject
+/// 
+@interface DBRIVIERAApiPdfMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAApiPdfMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAApiPdfMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAApiPdfMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiPdfMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAApiPdfMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAApiPdfMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAApiPdfMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAApiPdfMetadata` object.
-///
-+ (DBRIVIERAApiPdfMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAApiPdfMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

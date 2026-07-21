@@ -12,144 +12,141 @@
 
 #pragma mark - API Object
 
-@implementation DBASYNCLaunchResultBase
+@implementation DBASYNCLaunchResultBase 
 
 @synthesize asyncJobId = _asyncJobId;
 
 #pragma mark - Constructors
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCLaunchResultBaseAsyncJobId;
-    _asyncJobId = asyncJobId;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCLaunchResultBaseAsyncJobId;
+        _asyncJobId = asyncJobId;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (NSString *)asyncJobId {
-  if (![self isAsyncJobId]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBASYNCLaunchResultBaseAsyncJobId, but was %@.", [self tagName]];
-  }
-  return _asyncJobId;
+    if (![self isAsyncJobId]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBASYNCLaunchResultBaseAsyncJobId, but was %@.", [self tagName]];
+    }
+    return _asyncJobId;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isAsyncJobId {
-  return _tag == DBASYNCLaunchResultBaseAsyncJobId;
+    return _tag == DBASYNCLaunchResultBaseAsyncJobId;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBASYNCLaunchResultBaseAsyncJobId:
-    return @"DBASYNCLaunchResultBaseAsyncJobId";
-  }
+    switch (_tag) {
+        case DBASYNCLaunchResultBaseAsyncJobId:
+           return @"DBASYNCLaunchResultBaseAsyncJobId";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBASYNCLaunchResultBaseSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBASYNCLaunchResultBaseSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBASYNCLaunchResultBaseSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBASYNCLaunchResultBaseSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBASYNCLaunchResultBaseSerializer serialize:self] description];
+    return [[DBASYNCLaunchResultBaseSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBASYNCLaunchResultBaseAsyncJobId:
-    result = prime * result + [self.asyncJobId hash];
-    break;
-  }
+    switch (_tag) {
+        case DBASYNCLaunchResultBaseAsyncJobId:
+        result = prime * result + [self.asyncJobId hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToLaunchResultBase:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToLaunchResultBase:other];
 }
 
 - (BOOL)isEqualToLaunchResultBase:(DBASYNCLaunchResultBase *)aLaunchResultBase {
-  if (self == aLaunchResultBase) {
+    if (self == aLaunchResultBase) {
+        return YES;
+    }
+    if (self.tag != aLaunchResultBase.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBASYNCLaunchResultBaseAsyncJobId:
+        return [self.asyncJobId isEqual:aLaunchResultBase.asyncJobId];
+    }
     return YES;
-  }
-  if (self.tag != aLaunchResultBase.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBASYNCLaunchResultBaseAsyncJobId:
-    return [self.asyncJobId isEqual:aLaunchResultBase.asyncJobId];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBASYNCLaunchResultBaseSerializer
+@implementation DBASYNCLaunchResultBaseSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBASYNCLaunchResultBase *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isAsyncJobId]) {
-    jsonDict[@"async_job_id"] = valueObj.asyncJobId;
-    jsonDict[@".tag"] = @"async_job_id";
-  } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
-  }
+    if ([valueObj isAsyncJobId]) {
+        jsonDict[@"async_job_id"] = valueObj.asyncJobId;
+        jsonDict[@".tag"] = @"async_job_id";
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Object not properly initialized. Tag has an unknown value." userInfo:nil]);
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBASYNCLaunchResultBase *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"async_job_id"]) {
-    NSString *asyncJobId = valueDict[@"async_job_id"];
-    return [[DBASYNCLaunchResultBase alloc] initWithAsyncJobId:asyncJobId];
-  } else {
-    @throw([NSException
-        exceptionWithName:@"InvalidTag"
-                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-                 userInfo:nil]);
-  }
+    if ([tag isEqualToString:@"async_job_id"]) {
+        NSString *asyncJobId = valueDict[@"async_job_id"];
+        return [[DBASYNCLaunchResultBase alloc] initWithAsyncJobId:asyncJobId];
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]] userInfo:nil]);
+    }
 }
 
 @end
@@ -161,167 +158,166 @@
 
 #pragma mark - API Object
 
-@implementation DBASYNCLaunchEmptyResult
+@implementation DBASYNCLaunchEmptyResult 
 
 @synthesize asyncJobId = _asyncJobId;
 
 #pragma mark - Constructors
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCLaunchEmptyResultAsyncJobId;
-    _asyncJobId = asyncJobId;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCLaunchEmptyResultAsyncJobId;
+        _asyncJobId = asyncJobId;
+    }
+    return self;
 }
 
 - (instancetype)initWithComplete {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCLaunchEmptyResultComplete;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCLaunchEmptyResultComplete;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (NSString *)asyncJobId {
-  if (![self isAsyncJobId]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBASYNCLaunchEmptyResultAsyncJobId, but was %@.", [self tagName]];
-  }
-  return _asyncJobId;
+    if (![self isAsyncJobId]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBASYNCLaunchEmptyResultAsyncJobId, but was %@.", [self tagName]];
+    }
+    return _asyncJobId;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isAsyncJobId {
-  return _tag == DBASYNCLaunchEmptyResultAsyncJobId;
+    return _tag == DBASYNCLaunchEmptyResultAsyncJobId;
 }
 
 - (BOOL)isComplete {
-  return _tag == DBASYNCLaunchEmptyResultComplete;
+    return _tag == DBASYNCLaunchEmptyResultComplete;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBASYNCLaunchEmptyResultAsyncJobId:
-    return @"DBASYNCLaunchEmptyResultAsyncJobId";
-  case DBASYNCLaunchEmptyResultComplete:
-    return @"DBASYNCLaunchEmptyResultComplete";
-  }
+    switch (_tag) {
+        case DBASYNCLaunchEmptyResultAsyncJobId:
+           return @"DBASYNCLaunchEmptyResultAsyncJobId";
+        case DBASYNCLaunchEmptyResultComplete:
+           return @"DBASYNCLaunchEmptyResultComplete";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBASYNCLaunchEmptyResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBASYNCLaunchEmptyResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBASYNCLaunchEmptyResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBASYNCLaunchEmptyResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBASYNCLaunchEmptyResultSerializer serialize:self] description];
+    return [[DBASYNCLaunchEmptyResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBASYNCLaunchEmptyResultAsyncJobId:
-    result = prime * result + [self.asyncJobId hash];
-    break;
-  case DBASYNCLaunchEmptyResultComplete:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBASYNCLaunchEmptyResultAsyncJobId:
+        result = prime * result + [self.asyncJobId hash];
+        break;
+        case DBASYNCLaunchEmptyResultComplete:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToLaunchEmptyResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToLaunchEmptyResult:other];
 }
 
 - (BOOL)isEqualToLaunchEmptyResult:(DBASYNCLaunchEmptyResult *)aLaunchEmptyResult {
-  if (self == aLaunchEmptyResult) {
+    if (self == aLaunchEmptyResult) {
+        return YES;
+    }
+    if (self.tag != aLaunchEmptyResult.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBASYNCLaunchEmptyResultAsyncJobId:
+        return [self.asyncJobId isEqual:aLaunchEmptyResult.asyncJobId];
+        case DBASYNCLaunchEmptyResultComplete:
+        return [[self tagName] isEqual:[aLaunchEmptyResult tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aLaunchEmptyResult.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBASYNCLaunchEmptyResultAsyncJobId:
-    return [self.asyncJobId isEqual:aLaunchEmptyResult.asyncJobId];
-  case DBASYNCLaunchEmptyResultComplete:
-    return [[self tagName] isEqual:[aLaunchEmptyResult tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBASYNCLaunchEmptyResultSerializer
+@implementation DBASYNCLaunchEmptyResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBASYNCLaunchEmptyResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isAsyncJobId]) {
-    jsonDict[@"async_job_id"] = valueObj.asyncJobId;
-    jsonDict[@".tag"] = @"async_job_id";
-  } else if ([valueObj isComplete]) {
-    jsonDict[@".tag"] = @"complete";
-  } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
-  }
+    if ([valueObj isAsyncJobId]) {
+        jsonDict[@"async_job_id"] = valueObj.asyncJobId;
+        jsonDict[@".tag"] = @"async_job_id";
+    }
+    else if ([valueObj isComplete]) {
+        jsonDict[@".tag"] = @"complete";
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Object not properly initialized. Tag has an unknown value." userInfo:nil]);
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBASYNCLaunchEmptyResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"async_job_id"]) {
-    NSString *asyncJobId = valueDict[@"async_job_id"];
-    return [[DBASYNCLaunchEmptyResult alloc] initWithAsyncJobId:asyncJobId];
-  } else if ([tag isEqualToString:@"complete"]) {
-    return [[DBASYNCLaunchEmptyResult alloc] initWithComplete];
-  } else {
-    @throw([NSException
-        exceptionWithName:@"InvalidTag"
-                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-                 userInfo:nil]);
-  }
+    if ([tag isEqualToString:@"async_job_id"]) {
+        NSString *asyncJobId = valueDict[@"async_job_id"];
+        return [[DBASYNCLaunchEmptyResult alloc] initWithAsyncJobId:asyncJobId];
+    }
+    else if ([tag isEqualToString:@"complete"]) {
+        return [[DBASYNCLaunchEmptyResult alloc] initWithComplete];
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]] userInfo:nil]);
+    }
 }
 
 @end
@@ -332,95 +328,96 @@
 
 #pragma mark - API Object
 
-@implementation DBASYNCPollArg
+@implementation DBASYNCPollArg 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](asyncJobId);
+    [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](asyncJobId);
 
-  self = [super init];
-  if (self) {
-    _asyncJobId = asyncJobId;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _asyncJobId = asyncJobId;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBASYNCPollArgSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBASYNCPollArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBASYNCPollArgSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBASYNCPollArgSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBASYNCPollArgSerializer serialize:self] description];
+    return [[DBASYNCPollArgSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.asyncJobId hash];
+    result = prime * result + [self.asyncJobId hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPollArg:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToPollArg:other];
 }
 
 - (BOOL)isEqualToPollArg:(DBASYNCPollArg *)aPollArg {
-  if (self == aPollArg) {
+    if (self == aPollArg) {
+        return YES;
+    }
+    if (![self.asyncJobId isEqual:aPollArg.asyncJobId]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.asyncJobId isEqual:aPollArg.asyncJobId]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBASYNCPollArgSerializer
+@implementation DBASYNCPollArgSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBASYNCPollArg *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"async_job_id"] = valueObj.asyncJobId;
+    jsonDict[@"async_job_id"] = valueObj.asyncJobId;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBASYNCPollArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *asyncJobId = valueDict[@"async_job_id"];
+    NSString *asyncJobId = valueDict[@"async_job_id"];
 
-  return [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+    return [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
 }
 
 @end
@@ -431,16 +428,16 @@
 
 #pragma mark - API Object
 
-@implementation DBASYNCPollResultBase
+@implementation DBASYNCPollResultBase 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithInProgress {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCPollResultBaseInProgress;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCPollResultBaseInProgress;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -448,114 +445,112 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isInProgress {
-  return _tag == DBASYNCPollResultBaseInProgress;
+    return _tag == DBASYNCPollResultBaseInProgress;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBASYNCPollResultBaseInProgress:
-    return @"DBASYNCPollResultBaseInProgress";
-  }
+    switch (_tag) {
+        case DBASYNCPollResultBaseInProgress:
+           return @"DBASYNCPollResultBaseInProgress";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBASYNCPollResultBaseSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBASYNCPollResultBaseSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBASYNCPollResultBaseSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBASYNCPollResultBaseSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBASYNCPollResultBaseSerializer serialize:self] description];
+    return [[DBASYNCPollResultBaseSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBASYNCPollResultBaseInProgress:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBASYNCPollResultBaseInProgress:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPollResultBase:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToPollResultBase:other];
 }
 
 - (BOOL)isEqualToPollResultBase:(DBASYNCPollResultBase *)aPollResultBase {
-  if (self == aPollResultBase) {
+    if (self == aPollResultBase) {
+        return YES;
+    }
+    if (self.tag != aPollResultBase.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBASYNCPollResultBaseInProgress:
+        return [[self tagName] isEqual:[aPollResultBase tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aPollResultBase.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBASYNCPollResultBaseInProgress:
-    return [[self tagName] isEqual:[aPollResultBase tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBASYNCPollResultBaseSerializer
+@implementation DBASYNCPollResultBaseSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBASYNCPollResultBase *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInProgress]) {
-    jsonDict[@".tag"] = @"in_progress";
-  } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
-  }
+    if ([valueObj isInProgress]) {
+        jsonDict[@".tag"] = @"in_progress";
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Object not properly initialized. Tag has an unknown value." userInfo:nil]);
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBASYNCPollResultBase *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"in_progress"]) {
-    return [[DBASYNCPollResultBase alloc] initWithInProgress];
-  } else {
-    @throw([NSException
-        exceptionWithName:@"InvalidTag"
-                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-                 userInfo:nil]);
-  }
+    if ([tag isEqualToString:@"in_progress"]) {
+        return [[DBASYNCPollResultBase alloc] initWithInProgress];
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]] userInfo:nil]);
+    }
 }
 
 @end
@@ -567,24 +562,24 @@
 
 #pragma mark - API Object
 
-@implementation DBASYNCPollEmptyResult
+@implementation DBASYNCPollEmptyResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithInProgress {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCPollEmptyResultInProgress;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCPollEmptyResultInProgress;
+    }
+    return self;
 }
 
 - (instancetype)initWithComplete {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCPollEmptyResultComplete;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCPollEmptyResultComplete;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -592,129 +587,129 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isInProgress {
-  return _tag == DBASYNCPollEmptyResultInProgress;
+    return _tag == DBASYNCPollEmptyResultInProgress;
 }
 
 - (BOOL)isComplete {
-  return _tag == DBASYNCPollEmptyResultComplete;
+    return _tag == DBASYNCPollEmptyResultComplete;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBASYNCPollEmptyResultInProgress:
-    return @"DBASYNCPollEmptyResultInProgress";
-  case DBASYNCPollEmptyResultComplete:
-    return @"DBASYNCPollEmptyResultComplete";
-  }
+    switch (_tag) {
+        case DBASYNCPollEmptyResultInProgress:
+           return @"DBASYNCPollEmptyResultInProgress";
+        case DBASYNCPollEmptyResultComplete:
+           return @"DBASYNCPollEmptyResultComplete";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBASYNCPollEmptyResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBASYNCPollEmptyResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBASYNCPollEmptyResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBASYNCPollEmptyResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBASYNCPollEmptyResultSerializer serialize:self] description];
+    return [[DBASYNCPollEmptyResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBASYNCPollEmptyResultInProgress:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBASYNCPollEmptyResultComplete:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBASYNCPollEmptyResultInProgress:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBASYNCPollEmptyResultComplete:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPollEmptyResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToPollEmptyResult:other];
 }
 
 - (BOOL)isEqualToPollEmptyResult:(DBASYNCPollEmptyResult *)aPollEmptyResult {
-  if (self == aPollEmptyResult) {
+    if (self == aPollEmptyResult) {
+        return YES;
+    }
+    if (self.tag != aPollEmptyResult.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBASYNCPollEmptyResultInProgress:
+        return [[self tagName] isEqual:[aPollEmptyResult tagName]];
+        case DBASYNCPollEmptyResultComplete:
+        return [[self tagName] isEqual:[aPollEmptyResult tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aPollEmptyResult.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBASYNCPollEmptyResultInProgress:
-    return [[self tagName] isEqual:[aPollEmptyResult tagName]];
-  case DBASYNCPollEmptyResultComplete:
-    return [[self tagName] isEqual:[aPollEmptyResult tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBASYNCPollEmptyResultSerializer
+@implementation DBASYNCPollEmptyResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBASYNCPollEmptyResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInProgress]) {
-    jsonDict[@".tag"] = @"in_progress";
-  } else if ([valueObj isComplete]) {
-    jsonDict[@".tag"] = @"complete";
-  } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
-  }
+    if ([valueObj isInProgress]) {
+        jsonDict[@".tag"] = @"in_progress";
+    }
+    else if ([valueObj isComplete]) {
+        jsonDict[@".tag"] = @"complete";
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Object not properly initialized. Tag has an unknown value." userInfo:nil]);
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBASYNCPollEmptyResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"in_progress"]) {
-    return [[DBASYNCPollEmptyResult alloc] initWithInProgress];
-  } else if ([tag isEqualToString:@"complete"]) {
-    return [[DBASYNCPollEmptyResult alloc] initWithComplete];
-  } else {
-    @throw([NSException
-        exceptionWithName:@"InvalidTag"
-                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-                 userInfo:nil]);
-  }
+    if ([tag isEqualToString:@"in_progress"]) {
+        return [[DBASYNCPollEmptyResult alloc] initWithInProgress];
+    }
+    else if ([tag isEqualToString:@"complete"]) {
+        return [[DBASYNCPollEmptyResult alloc] initWithComplete];
+    }
+    else {
+        @throw([NSException exceptionWithName:@"InvalidTag" reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]] userInfo:nil]);
+    }
 }
 
 @end
@@ -725,32 +720,32 @@
 
 #pragma mark - API Object
 
-@implementation DBASYNCPollError
+@implementation DBASYNCPollError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithInvalidAsyncJobId {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCPollErrorInvalidAsyncJobId;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCPollErrorInvalidAsyncJobId;
+    }
+    return self;
 }
 
 - (instancetype)initWithInternalError {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCPollErrorInternalError;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCPollErrorInternalError;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBASYNCPollErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBASYNCPollErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -758,139 +753,146 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isInvalidAsyncJobId {
-  return _tag == DBASYNCPollErrorInvalidAsyncJobId;
+    return _tag == DBASYNCPollErrorInvalidAsyncJobId;
 }
 
 - (BOOL)isInternalError {
-  return _tag == DBASYNCPollErrorInternalError;
+    return _tag == DBASYNCPollErrorInternalError;
 }
 
 - (BOOL)isOther {
-  return _tag == DBASYNCPollErrorOther;
+    return _tag == DBASYNCPollErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBASYNCPollErrorInvalidAsyncJobId:
-    return @"DBASYNCPollErrorInvalidAsyncJobId";
-  case DBASYNCPollErrorInternalError:
-    return @"DBASYNCPollErrorInternalError";
-  case DBASYNCPollErrorOther:
-    return @"DBASYNCPollErrorOther";
-  }
+    switch (_tag) {
+        case DBASYNCPollErrorInvalidAsyncJobId:
+           return @"DBASYNCPollErrorInvalidAsyncJobId";
+        case DBASYNCPollErrorInternalError:
+           return @"DBASYNCPollErrorInternalError";
+        case DBASYNCPollErrorOther:
+           return @"DBASYNCPollErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBASYNCPollErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBASYNCPollErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBASYNCPollErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBASYNCPollErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBASYNCPollErrorSerializer serialize:self] description];
+    return [[DBASYNCPollErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBASYNCPollErrorInvalidAsyncJobId:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBASYNCPollErrorInternalError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBASYNCPollErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBASYNCPollErrorInvalidAsyncJobId:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBASYNCPollErrorInternalError:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBASYNCPollErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPollError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToPollError:other];
 }
 
 - (BOOL)isEqualToPollError:(DBASYNCPollError *)aPollError {
-  if (self == aPollError) {
+    if (self == aPollError) {
+        return YES;
+    }
+    if (self.tag != aPollError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBASYNCPollErrorInvalidAsyncJobId:
+        return [[self tagName] isEqual:[aPollError tagName]];
+        case DBASYNCPollErrorInternalError:
+        return [[self tagName] isEqual:[aPollError tagName]];
+        case DBASYNCPollErrorOther:
+        return [[self tagName] isEqual:[aPollError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aPollError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBASYNCPollErrorInvalidAsyncJobId:
-    return [[self tagName] isEqual:[aPollError tagName]];
-  case DBASYNCPollErrorInternalError:
-    return [[self tagName] isEqual:[aPollError tagName]];
-  case DBASYNCPollErrorOther:
-    return [[self tagName] isEqual:[aPollError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBASYNCPollErrorSerializer
+@implementation DBASYNCPollErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBASYNCPollError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInvalidAsyncJobId]) {
-    jsonDict[@".tag"] = @"invalid_async_job_id";
-  } else if ([valueObj isInternalError]) {
-    jsonDict[@".tag"] = @"internal_error";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isInvalidAsyncJobId]) {
+        jsonDict[@".tag"] = @"invalid_async_job_id";
+    }
+    else if ([valueObj isInternalError]) {
+        jsonDict[@".tag"] = @"internal_error";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBASYNCPollError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"invalid_async_job_id"]) {
-    return [[DBASYNCPollError alloc] initWithInvalidAsyncJobId];
-  } else if ([tag isEqualToString:@"internal_error"]) {
-    return [[DBASYNCPollError alloc] initWithInternalError];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBASYNCPollError alloc] initWithOther];
-  } else {
-    return [[DBASYNCPollError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"invalid_async_job_id"]) {
+        return [[DBASYNCPollError alloc] initWithInvalidAsyncJobId];
+    }
+    else if ([tag isEqualToString:@"internal_error"]) {
+        return [[DBASYNCPollError alloc] initWithInternalError];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBASYNCPollError alloc] initWithOther];
+    }
+    else {
+        return [[DBASYNCPollError alloc] initWithOther];
+    }
 }
 
 @end

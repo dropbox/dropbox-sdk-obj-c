@@ -11,22 +11,23 @@
 @class DBTEAMMembersSetProfileArg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersSetProfileArg` struct.
-///
+/// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account. At least one of new_email, new_external_id,
 /// new_given_name, and/or new_surname must be provided.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersSetProfileArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersSetProfileArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -54,9 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user Identity of user whose profile will be set.
 /// @param dNewEmail New email for member.
 /// @param dNewExternalId New external ID for member.
@@ -66,58 +67,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// teams using persistent ID SAML configuration.
 /// @param dNewIsDirectoryRestricted New value for whether the user is a
 /// directory restricted user.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user
-                    dNewEmail:(nullable NSString *)dNewEmail
-               dNewExternalId:(nullable NSString *)dNewExternalId
-                dNewGivenName:(nullable NSString *)dNewGivenName
-                  dNewSurname:(nullable NSString *)dNewSurname
-             dNewPersistentId:(nullable NSString *)dNewPersistentId
-    dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
+/// 
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user dNewEmail:(nullable NSString *)dNewEmail dNewExternalId:(nullable NSString *)dNewExternalId dNewGivenName:(nullable NSString *)dNewGivenName dNewSurname:(nullable NSString *)dNewSurname dNewPersistentId:(nullable NSString *)dNewPersistentId dNewIsDirectoryRestricted:(nullable NSNumber *)dNewIsDirectoryRestricted;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param user Identity of user whose profile will be set.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersSetProfileArg` struct.
-///
-@interface DBTEAMMembersSetProfileArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersSetProfileArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersSetProfileArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersSetProfileArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersSetProfileArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersSetProfileArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersSetProfileArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersSetProfileArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersSetProfileArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersSetProfileArg` object.
-///
-+ (DBTEAMMembersSetProfileArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersSetProfileArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,22 +12,23 @@
 @class DBRIVIERAGetTranscriptArgs;
 @class DBRIVIERATimestampLevel;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetTranscriptArgs` struct.
-///
+/// 
 /// Arguments for the asynchronous `get_transcript_async` route. Exactly one of
 /// `file_id`, `path`, or `url` must be supplied via `file_id_or_url` to
 /// identify the audio or video asset to transcribe.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetTranscriptArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetTranscriptArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -69,9 +70,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must
 /// set exactly one of the oneof variants: - file_id: a Dropbox-issued file id
 /// (format: "id:<id>") for a file the authenticated user has access to. - path:
@@ -102,54 +103,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// service auto-detects the language; supplying a hint improves accuracy and
 /// latency for short or ambiguous clips. Unsupported languages fall back to
 /// auto-detection.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFileIdOrUrl:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
-                     timestampLevel:(nullable DBRIVIERATimestampLevel *)timestampLevel
-               includedSpecialWords:(nullable NSString *)includedSpecialWords
-                      audioLanguage:(nullable NSString *)audioLanguage;
+/// 
+- (instancetype)initWithFileIdOrUrl:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl timestampLevel:(nullable DBRIVIERATimestampLevel *)timestampLevel includedSpecialWords:(nullable NSString *)includedSpecialWords audioLanguage:(nullable NSString *)audioLanguage;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetTranscriptArgs` struct.
-///
-@interface DBRIVIERAGetTranscriptArgsSerializer : NSObject
+/// 
+@interface DBRIVIERAGetTranscriptArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetTranscriptArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetTranscriptArgs` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetTranscriptArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetTranscriptArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetTranscriptArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetTranscriptArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetTranscriptArgs` object.
-///
-+ (DBRIVIERAGetTranscriptArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetTranscriptArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamFolderNotificationTarget;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderNotificationTarget` union.
-///
+/// 
 /// Team folder space limit notification target
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderNotificationTarget : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderNotificationTarget : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,20 +32,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGTeamFolderNotificationTarget`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamFolderNotificationTargetTag) {
-  /// (no description).
-  DBTEAMLOGTeamFolderNotificationTargetAdmins,
+    /// (no description).
+    DBTEAMLOGTeamFolderNotificationTargetAdmins,
 
-  /// (no description).
-  DBTEAMLOGTeamFolderNotificationTargetBoth,
+    /// (no description).
+    DBTEAMLOGTeamFolderNotificationTargetBoth,
 
-  /// (no description).
-  DBTEAMLOGTeamFolderNotificationTargetEditors,
+    /// (no description).
+    DBTEAMLOGTeamFolderNotificationTargetEditors,
 
-  /// (no description).
-  DBTEAMLOGTeamFolderNotificationTargetSilent,
+    /// (no description).
+    DBTEAMLOGTeamFolderNotificationTargetSilent,
 
-  /// (no description).
-  DBTEAMLOGTeamFolderNotificationTargetOther,
+    /// (no description).
+    DBTEAMLOGTeamFolderNotificationTargetOther,
 
 };
 
@@ -53,119 +54,121 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamFolderNotificationTargetTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "admins".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAdmins;
 
-///
+/// 
 /// Initializes union class with tag state of "both".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBoth;
 
-///
+/// 
 /// Initializes union class with tag state of "editors".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEditors;
 
-///
+/// 
 /// Initializes union class with tag state of "silent".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSilent;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "admins".
-///
+/// 
 /// @return Whether the union's current tag state has value "admins".
-///
+/// 
 - (BOOL)isAdmins;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "both".
-///
+/// 
 /// @return Whether the union's current tag state has value "both".
-///
+/// 
 - (BOOL)isBoth;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "editors".
-///
+/// 
 /// @return Whether the union's current tag state has value "editors".
-///
+/// 
 - (BOOL)isEditors;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "silent".
-///
+/// 
 /// @return Whether the union's current tag state has value "silent".
-///
+/// 
 - (BOOL)isSilent;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGTeamFolderNotificationTarget`
 /// union.
-///
-@interface DBTEAMLOGTeamFolderNotificationTargetSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderNotificationTargetSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderNotificationTarget` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamFolderNotificationTarget`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderNotificationTarget` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderNotificationTarget *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderNotificationTarget *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderNotificationTarget` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderNotificationTarget` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamFolderNotificationTarget`
 /// object.
-///
-+ (DBTEAMLOGTeamFolderNotificationTarget *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderNotificationTarget *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

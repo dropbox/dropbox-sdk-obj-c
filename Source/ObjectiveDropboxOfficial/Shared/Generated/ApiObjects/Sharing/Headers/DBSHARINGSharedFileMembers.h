@@ -13,22 +13,23 @@
 @class DBSHARINGSharedFileMembers;
 @class DBSHARINGUserFileMembershipInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFileMembers` struct.
-///
+/// 
 /// Shared file user, group, and invitee membership. Used for the results of
 /// `listFileMembers` and `listFileMembersContinue`, and used as part of the
 /// results for `listFileMembersBatch`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGSharedFileMembers : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGSharedFileMembers : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -49,9 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param users The list of user members of the shared file.
 /// @param groups The list of group members of the shared file.
 /// @param invitees The list of invited members of a file, but have not logged
@@ -59,60 +60,57 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param cursor Present if there are additional shared file members that have
 /// not been returned yet. Pass the cursor into `listFileMembersContinue` to
 /// list additional members.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUsers:(NSArray<DBSHARINGUserFileMembershipInfo *> *)users
-                       groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups
-                     invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees
-                       cursor:(nullable NSString *)cursor;
+/// 
+- (instancetype)initWithUsers:(NSArray<DBSHARINGUserFileMembershipInfo *> *)users groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees cursor:(nullable NSString *)cursor;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param users The list of user members of the shared file.
 /// @param groups The list of group members of the shared file.
 /// @param invitees The list of invited members of a file, but have not logged
 /// in and claimed this.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUsers:(NSArray<DBSHARINGUserFileMembershipInfo *> *)users
-                       groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups
-                     invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees;
+/// 
+- (instancetype)initWithUsers:(NSArray<DBSHARINGUserFileMembershipInfo *> *)users groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFileMembers` struct.
-///
-@interface DBSHARINGSharedFileMembersSerializer : NSObject
+/// 
+@interface DBSHARINGSharedFileMembersSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGSharedFileMembers` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGSharedFileMembers` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFileMembers` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedFileMembers *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGSharedFileMembers *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGSharedFileMembers` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFileMembers` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGSharedFileMembers` object.
-///
-+ (DBSHARINGSharedFileMembers *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGSharedFileMembers *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

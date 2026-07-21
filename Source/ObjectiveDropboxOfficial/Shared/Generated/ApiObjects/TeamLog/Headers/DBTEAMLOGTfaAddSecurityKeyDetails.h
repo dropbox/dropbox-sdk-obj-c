@@ -10,64 +10,67 @@
 
 @class DBTEAMLOGTfaAddSecurityKeyDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TfaAddSecurityKeyDetails` struct.
-///
+/// 
 /// Added security key for two-factor authentication.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTfaAddSecurityKeyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTfaAddSecurityKeyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TfaAddSecurityKeyDetails` struct.
-///
-@interface DBTEAMLOGTfaAddSecurityKeyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTfaAddSecurityKeyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTfaAddSecurityKeyDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTfaAddSecurityKeyDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaAddSecurityKeyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaAddSecurityKeyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTfaAddSecurityKeyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTfaAddSecurityKeyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaAddSecurityKeyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTfaAddSecurityKeyDetails` object.
-///
-+ (DBTEAMLOGTfaAddSecurityKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTfaAddSecurityKeyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

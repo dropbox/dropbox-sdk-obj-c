@@ -11,29 +11,30 @@
 @class DBOPENIDOpenIdError;
 @class DBOPENIDUserInfoError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserInfoError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBOPENIDUserInfoError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBOPENIDUserInfoError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBOPENIDUserInfoErrorTag` enum type represents the possible tag states
 /// with which the `DBOPENIDUserInfoError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBOPENIDUserInfoErrorTag) {
-  /// (no description).
-  DBOPENIDUserInfoErrorOpenidError,
+    /// (no description).
+    DBOPENIDUserInfoErrorOpenidError,
 
-  /// (no description).
-  DBOPENIDUserInfoErrorOther,
+    /// (no description).
+    DBOPENIDUserInfoErrorOther,
 
 };
 
@@ -46,79 +47,81 @@ typedef NS_CLOSED_ENUM(NSInteger, DBOPENIDUserInfoErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "openid_error".
-///
+/// 
 /// @param openidError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOpenidError:(DBOPENIDOpenIdError *)openidError;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "openid_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `openidError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "openid_error".
-///
+/// 
 - (BOOL)isOpenidError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBOPENIDUserInfoError` union.
-///
-@interface DBOPENIDUserInfoErrorSerializer : NSObject
+/// 
+@interface DBOPENIDUserInfoErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBOPENIDUserInfoError` instances.
-///
+/// 
 /// @param instance An instance of the `DBOPENIDUserInfoError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBOPENIDUserInfoError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBOPENIDUserInfoError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBOPENIDUserInfoError *)instance;
 
-///
+/// 
 /// Deserializes `DBOPENIDUserInfoError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBOPENIDUserInfoError` API object.
-///
+/// 
 /// @return An instantiation of the `DBOPENIDUserInfoError` object.
-///
-+ (DBOPENIDUserInfoError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBOPENIDUserInfoError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

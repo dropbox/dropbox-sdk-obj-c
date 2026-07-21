@@ -11,32 +11,33 @@
 @class DBFILESFileLockContent;
 @class DBFILESSingleUserLock;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileLockContent` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESFileLockContent : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESFileLockContent : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBFILESFileLockContentTag` enum type represents the possible tag states
 /// with which the `DBFILESFileLockContent` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileLockContentTag) {
-  /// Empty type to indicate no lock.
-  DBFILESFileLockContentUnlocked,
+    /// Empty type to indicate no lock.
+    DBFILESFileLockContentUnlocked,
 
-  /// A lock held by a single user.
-  DBFILESFileLockContentSingleUser,
+    /// A lock held by a single user.
+    DBFILESFileLockContentSingleUser,
 
-  /// (no description).
-  DBFILESFileLockContentOther,
+    /// (no description).
+    DBFILESFileLockContentOther,
 
 };
 
@@ -49,97 +50,99 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileLockContentTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "unlocked".
-///
+/// 
 /// Description of the "unlocked" tag state: Empty type to indicate no lock.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnlocked;
 
-///
+/// 
 /// Initializes union class with tag state of "single_user".
-///
+/// 
 /// Description of the "single_user" tag state: A lock held by a single user.
-///
+/// 
 /// @param singleUser A lock held by a single user.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSingleUser:(DBFILESSingleUserLock *)singleUser;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "unlocked".
-///
+/// 
 /// @return Whether the union's current tag state has value "unlocked".
-///
+/// 
 - (BOOL)isUnlocked;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "single_user".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `singleUser` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "single_user".
-///
+/// 
 - (BOOL)isSingleUser;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESFileLockContent` union.
-///
-@interface DBFILESFileLockContentSerializer : NSObject
+/// 
+@interface DBFILESFileLockContentSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESFileLockContent` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESFileLockContent` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESFileLockContent` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESFileLockContent *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESFileLockContent *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESFileLockContent` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESFileLockContent` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESFileLockContent` object.
-///
-+ (DBFILESFileLockContent *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESFileLockContent *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

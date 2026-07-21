@@ -6,28 +6,29 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGMembershipInfo.h"
 #import "DBSerializableProtocol.h"
+#import "DBSHARINGMembershipInfo.h"
 
 @class DBSHARINGAccessLevel;
 @class DBSHARINGGroupInfo;
 @class DBSHARINGGroupMembershipInfo;
 @class DBSHARINGMemberPermission;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupMembershipInfo` struct.
-///
+/// 
 /// The information about a group member of the shared content.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGGroupMembershipInfo : DBSHARINGMembershipInfo <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGGroupMembershipInfo : DBSHARINGMembershipInfo <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,9 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accessType The access type for this member. It contains inherited
 /// access type from parent folder, and acquired access type from this folder.
 /// @param group The information about the membership group.
@@ -46,57 +47,55 @@ NS_ASSUME_NONNULL_BEGIN
 /// The set of permissions corresponds to the MemberActions in the request.
 /// @param initials Field is deprecated. Never set.
 /// @param isInherited True if the member has access on a parent folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType
-                             group:(DBSHARINGGroupInfo *)group
-                       permissions:(nullable NSArray<DBSHARINGMemberPermission *> *)permissions
-                          initials:(nullable NSString *)initials
-                       isInherited:(nullable NSNumber *)isInherited;
+/// 
+- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType group:(DBSHARINGGroupInfo *)group permissions:(nullable NSArray<DBSHARINGMemberPermission *> *)permissions initials:(nullable NSString *)initials isInherited:(nullable NSNumber *)isInherited;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param accessType The access type for this member. It contains inherited
 /// access type from parent folder, and acquired access type from this folder.
 /// @param group The information about the membership group.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType group:(DBSHARINGGroupInfo *)group;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GroupMembershipInfo` struct.
-///
-@interface DBSHARINGGroupMembershipInfoSerializer : NSObject
+/// 
+@interface DBSHARINGGroupMembershipInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGGroupMembershipInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGGroupMembershipInfo` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGroupMembershipInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGGroupMembershipInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGGroupMembershipInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGGroupMembershipInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGGroupMembershipInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGGroupMembershipInfo` object.
-///
-+ (DBSHARINGGroupMembershipInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGGroupMembershipInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

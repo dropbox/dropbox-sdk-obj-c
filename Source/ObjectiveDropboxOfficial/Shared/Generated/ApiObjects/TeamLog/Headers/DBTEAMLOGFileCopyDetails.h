@@ -11,20 +11,21 @@
 @class DBTEAMLOGFileCopyDetails;
 @class DBTEAMLOGRelocateAssetReferencesLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileCopyDetails` struct.
-///
+/// 
 /// Copied files and/or folders.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileCopyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileCopyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,47 +34,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param relocateActionDetails Relocate action details.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithRelocateActionDetails:
-    (NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails;
+/// 
+- (instancetype)initWithRelocateActionDetails:(NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileCopyDetails` struct.
-///
-@interface DBTEAMLOGFileCopyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileCopyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileCopyDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileCopyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileCopyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileCopyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileCopyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileCopyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileCopyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileCopyDetails` object.
-///
-+ (DBTEAMLOGFileCopyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileCopyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

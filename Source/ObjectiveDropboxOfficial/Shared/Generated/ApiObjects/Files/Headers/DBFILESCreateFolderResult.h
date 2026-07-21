@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESFileOpsResult.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESFileOpsResult.h"
 
 @class DBFILESCreateFolderResult;
 @class DBFILESFolderMetadata;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `CreateFolderResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESCreateFolderResult : DBFILESFileOpsResult <DBSerializable, NSCopying>
+/// 
+@interface DBFILESCreateFolderResult : DBFILESFileOpsResult <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,44 +33,46 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param metadata Metadata of the created folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadata:(DBFILESFolderMetadata *)metadata;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `CreateFolderResult` struct.
-///
-@interface DBFILESCreateFolderResultSerializer : NSObject
+/// 
+@interface DBFILESCreateFolderResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESCreateFolderResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESCreateFolderResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESCreateFolderResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESCreateFolderResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESCreateFolderResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESCreateFolderResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESCreateFolderResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESCreateFolderResult` object.
-///
-+ (DBFILESCreateFolderResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESCreateFolderResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

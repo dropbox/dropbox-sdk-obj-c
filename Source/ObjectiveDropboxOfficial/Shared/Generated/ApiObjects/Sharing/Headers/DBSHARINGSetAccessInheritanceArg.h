@@ -11,18 +11,19 @@
 @class DBSHARINGAccessInheritance;
 @class DBSHARINGSetAccessInheritanceArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SetAccessInheritanceArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGSetAccessInheritanceArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGSetAccessInheritanceArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,59 +35,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedFolderId The ID for the shared folder.
 /// @param accessInheritance The access inheritance settings for the folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId
-                     accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance;
+/// 
+- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sharedFolderId The ID for the shared folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SetAccessInheritanceArg` struct.
-///
-@interface DBSHARINGSetAccessInheritanceArgSerializer : NSObject
+/// 
+@interface DBSHARINGSetAccessInheritanceArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGSetAccessInheritanceArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGSetAccessInheritanceArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSetAccessInheritanceArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSetAccessInheritanceArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGSetAccessInheritanceArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGSetAccessInheritanceArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGSetAccessInheritanceArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGSetAccessInheritanceArg` object.
-///
-+ (DBSHARINGSetAccessInheritanceArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGSetAccessInheritanceArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

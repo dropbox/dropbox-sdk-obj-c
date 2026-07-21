@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGNoteSharedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `NoteSharedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGNoteSharedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGNoteSharedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `NoteSharedType` struct.
-///
-@interface DBTEAMLOGNoteSharedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGNoteSharedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGNoteSharedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGNoteSharedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoteSharedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteSharedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGNoteSharedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGNoteSharedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoteSharedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGNoteSharedType` object.
-///
-+ (DBTEAMLOGNoteSharedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGNoteSharedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMListTeamAppsArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListTeamAppsArg` struct.
-///
+/// 
 /// Arguments for `linkedAppsListTeamLinkedApps`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMListTeamAppsArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMListTeamAppsArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,58 +36,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param cursor At the first call to the `linkedAppsListTeamLinkedApps` the
 /// cursor shouldn't be passed. Then, if the result of the call includes a
 /// cursor, the following requests should include the received cursors in order
 /// to receive the next sub list of the team applications.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCursor:(nullable NSString *)cursor;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListTeamAppsArg` struct.
-///
-@interface DBTEAMListTeamAppsArgSerializer : NSObject
+/// 
+@interface DBTEAMListTeamAppsArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMListTeamAppsArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMListTeamAppsArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListTeamAppsArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMListTeamAppsArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMListTeamAppsArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMListTeamAppsArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMListTeamAppsArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMListTeamAppsArg` object.
-///
-+ (DBTEAMListTeamAppsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMListTeamAppsArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

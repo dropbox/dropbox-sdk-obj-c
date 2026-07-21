@@ -10,18 +10,19 @@
 
 @class DBFILESExportArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ExportArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESExportArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESExportArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,60 +37,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path The path of the file to be exported.
 /// @param exportFormat The file format to which the file should be exported.
 /// This must be one of the formats listed in the file's export_options returned
 /// by `getMetadata`. If none is specified, the default format (specified in
 /// export_as in file metadata) will be used.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path exportFormat:(nullable NSString *)exportFormat;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param path The path of the file to be exported.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ExportArg` struct.
-///
-@interface DBFILESExportArgSerializer : NSObject
+/// 
+@interface DBFILESExportArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESExportArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESExportArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESExportArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESExportArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESExportArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESExportArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESExportArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESExportArg` object.
-///
-+ (DBFILESExportArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESExportArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

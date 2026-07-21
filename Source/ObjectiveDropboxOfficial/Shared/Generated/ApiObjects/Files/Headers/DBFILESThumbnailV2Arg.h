@@ -15,18 +15,19 @@
 @class DBFILESThumbnailSize;
 @class DBFILESThumbnailV2Arg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ThumbnailV2Arg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESThumbnailV2Arg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESThumbnailV2Arg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -58,9 +59,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be
 /// a path to a file, a shared link pointing to a file, or a shared link
 /// pointing to a folder, with a relative path.
@@ -75,59 +76,56 @@ NS_ASSUME_NONNULL_BEGIN
 /// set for photo and video. When this flag is true, `mediaInfo` in
 /// `DBFILESFileMetadata` is not populated. This improves latency for use cases
 /// where `media_info` is not needed.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithResource:(DBFILESPathOrLink *)resource
-                          format:(nullable DBFILESThumbnailFormat *)format
-                            size:(nullable DBFILESThumbnailSize *)size
-                            mode:(nullable DBFILESThumbnailMode *)mode
-                         quality:(nullable DBFILESThumbnailQuality *)quality
-                excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
+/// 
+- (instancetype)initWithResource:(DBFILESPathOrLink *)resource format:(nullable DBFILESThumbnailFormat *)format size:(nullable DBFILESThumbnailSize *)size mode:(nullable DBFILESThumbnailMode *)mode quality:(nullable DBFILESThumbnailQuality *)quality excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be
 /// a path to a file, a shared link pointing to a file, or a shared link
 /// pointing to a folder, with a relative path.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithResource:(DBFILESPathOrLink *)resource;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ThumbnailV2Arg` struct.
-///
-@interface DBFILESThumbnailV2ArgSerializer : NSObject
+/// 
+@interface DBFILESThumbnailV2ArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESThumbnailV2Arg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESThumbnailV2Arg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESThumbnailV2Arg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESThumbnailV2Arg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESThumbnailV2Arg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESThumbnailV2Arg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESThumbnailV2Arg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESThumbnailV2Arg` object.
-///
-+ (DBFILESThumbnailV2Arg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESThumbnailV2Arg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

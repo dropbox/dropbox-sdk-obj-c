@@ -10,18 +10,19 @@
 
 @class DBPAPERCursor;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `Cursor` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERCursor : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERCursor : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -44,9 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param value The actual cursor value.
 /// @param expiration Expiration time of value. Some cursors might have
 /// expiration time assigned. This is a UTC value after which the cursor is no
@@ -60,52 +61,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// other hand, listing docs sorted by the last modified time will have a very
 /// short expiration as docs do get modified very often and the modified time
 /// can be changed while the iteration is happening thus altering the results.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithValue:(NSString *)value expiration:(nullable NSDate *)expiration;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param value The actual cursor value.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithValue:(NSString *)value;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `Cursor` struct.
-///
-@interface DBPAPERCursorSerializer : NSObject
+/// 
+@interface DBPAPERCursorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERCursor` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERCursor` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the `DBPAPERCursor`
 /// API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERCursor *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERCursor *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERCursor` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERCursor` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERCursor` object.
-///
-+ (DBPAPERCursor *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERCursor *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGDashExternalSharingPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashExternalSharingPolicy` union.
-///
+/// 
 /// Policy for deciding whether team users can share Dash content externally
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashExternalSharingPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashExternalSharingPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,17 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGDashExternalSharingPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDashExternalSharingPolicyTag) {
-  /// (no description).
-  DBTEAMLOGDashExternalSharingPolicyDefault_,
+    /// (no description).
+    DBTEAMLOGDashExternalSharingPolicyDefault_,
 
-  /// (no description).
-  DBTEAMLOGDashExternalSharingPolicyDisabled,
+    /// (no description).
+    DBTEAMLOGDashExternalSharingPolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGDashExternalSharingPolicyEnabled,
+    /// (no description).
+    DBTEAMLOGDashExternalSharingPolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGDashExternalSharingPolicyOther,
+    /// (no description).
+    DBTEAMLOGDashExternalSharingPolicyOther,
 
 };
 
@@ -50,103 +51,105 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDashExternalSharingPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGDashExternalSharingPolicy` union.
-///
-@interface DBTEAMLOGDashExternalSharingPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGDashExternalSharingPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashExternalSharingPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashExternalSharingPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalSharingPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashExternalSharingPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashExternalSharingPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashExternalSharingPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalSharingPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashExternalSharingPolicy` object.
-///
-+ (DBTEAMLOGDashExternalSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashExternalSharingPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

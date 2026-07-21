@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESFileOpsResult.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESFileOpsResult.h"
 
 @class DBFILESMetadata;
 @class DBFILESRelocationResult;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RelocationResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESRelocationResult : DBFILESFileOpsResult <DBSerializable, NSCopying>
+/// 
+@interface DBFILESRelocationResult : DBFILESFileOpsResult <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,44 +33,46 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param metadata Metadata of the relocated object.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadata:(DBFILESMetadata *)metadata;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RelocationResult` struct.
-///
-@interface DBFILESRelocationResultSerializer : NSObject
+/// 
+@interface DBFILESRelocationResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESRelocationResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESRelocationResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESRelocationResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESRelocationResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESRelocationResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESRelocationResult` object.
-///
-+ (DBFILESRelocationResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESRelocationResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

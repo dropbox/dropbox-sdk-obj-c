@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGNoPasswordLinkGenCreateReportDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `NoPasswordLinkGenCreateReportDetails` struct.
-///
+/// 
 /// Report created: Links created without passwords.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGNoPasswordLinkGenCreateReportDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGNoPasswordLinkGenCreateReportDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param startDate Report start date.
 /// @param endDate Report end date.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `NoPasswordLinkGenCreateReportDetails`
 /// struct.
-///
-@interface DBTEAMLOGNoPasswordLinkGenCreateReportDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGNoPasswordLinkGenCreateReportDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGNoPasswordLinkGenCreateReportDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGNoPasswordLinkGenCreateReportDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoPasswordLinkGenCreateReportDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoPasswordLinkGenCreateReportDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGNoPasswordLinkGenCreateReportDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGNoPasswordLinkGenCreateReportDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoPasswordLinkGenCreateReportDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGNoPasswordLinkGenCreateReportDetails` object.
-///
-+ (DBTEAMLOGNoPasswordLinkGenCreateReportDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGNoPasswordLinkGenCreateReportDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

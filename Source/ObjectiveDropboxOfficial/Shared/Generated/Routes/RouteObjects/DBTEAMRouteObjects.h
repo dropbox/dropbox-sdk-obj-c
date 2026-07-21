@@ -8,13 +8,14 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Team namespace. Each route in the Team namespace
 /// has its own static object, which contains information about the route.
-///
-@interface DBTEAMRouteObjects : NSObject
+/// 
+@interface DBTEAMRouteObjects : NSObject 
 
 /// Accessor method for the devicesListMemberDevices route object.
 + (DBRoute *)DBTEAMDevicesListMemberDevices;
@@ -301,3 +302,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

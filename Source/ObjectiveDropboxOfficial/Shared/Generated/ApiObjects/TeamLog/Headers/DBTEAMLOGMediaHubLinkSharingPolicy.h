@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGMediaHubLinkSharingPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubLinkSharingPolicy` union.
-///
+/// 
 /// Policy for deciding who Media Hub content can be shared with through links
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubLinkSharingPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubLinkSharingPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,17 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGMediaHubLinkSharingPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMediaHubLinkSharingPolicyTag) {
-  /// (no description).
-  DBTEAMLOGMediaHubLinkSharingPolicyNoOne,
+    /// (no description).
+    DBTEAMLOGMediaHubLinkSharingPolicyNoOne,
 
-  /// (no description).
-  DBTEAMLOGMediaHubLinkSharingPolicyPublic,
+    /// (no description).
+    DBTEAMLOGMediaHubLinkSharingPolicyPublic,
 
-  /// (no description).
-  DBTEAMLOGMediaHubLinkSharingPolicyTeamOnly,
+    /// (no description).
+    DBTEAMLOGMediaHubLinkSharingPolicyTeamOnly,
 
-  /// (no description).
-  DBTEAMLOGMediaHubLinkSharingPolicyOther,
+    /// (no description).
+    DBTEAMLOGMediaHubLinkSharingPolicyOther,
 
 };
 
@@ -50,103 +51,105 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMediaHubLinkSharingPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "no_one".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoOne;
 
-///
+/// 
 /// Initializes union class with tag state of "public".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPublic;
 
-///
+/// 
 /// Initializes union class with tag state of "team_only".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamOnly;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "no_one".
-///
+/// 
 /// @return Whether the union's current tag state has value "no_one".
-///
+/// 
 - (BOOL)isNoOne;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "public".
-///
+/// 
 /// @return Whether the union's current tag state has value "public".
-///
+/// 
 - (BOOL)isPublic;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "team_only".
-///
+/// 
 /// @return Whether the union's current tag state has value "team_only".
-///
+/// 
 - (BOOL)isTeamOnly;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGMediaHubLinkSharingPolicy` union.
-///
-@interface DBTEAMLOGMediaHubLinkSharingPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubLinkSharingPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubLinkSharingPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMediaHubLinkSharingPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubLinkSharingPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubLinkSharingPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubLinkSharingPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubLinkSharingPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubLinkSharingPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMediaHubLinkSharingPolicy` object.
-///
-+ (DBTEAMLOGMediaHubLinkSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubLinkSharingPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

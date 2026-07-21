@@ -10,20 +10,21 @@
 
 @class DBUSERSTeam;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `Team` struct.
-///
+/// 
 /// Information about a team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBUSERSTeam : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBUSERSTeam : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,47 +36,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param id_ The team's unique ID.
 /// @param name The name of the team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `Team` struct.
-///
-@interface DBUSERSTeamSerializer : NSObject
+/// 
+@interface DBUSERSTeamSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBUSERSTeam` instances.
-///
+/// 
 /// @param instance An instance of the `DBUSERSTeam` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the `DBUSERSTeam` API
 /// object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBUSERSTeam *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBUSERSTeam *)instance;
 
-///
+/// 
 /// Deserializes `DBUSERSTeam` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the `DBUSERSTeam`
 /// API object.
-///
+/// 
 /// @return An instantiation of the `DBUSERSTeam` object.
-///
-+ (DBUSERSTeam *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBUSERSTeam *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

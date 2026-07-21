@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGDashPreviewOptOutStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashPreviewOptOutStatus` union.
-///
+/// 
 /// The new preview opt-out status
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashPreviewOptOutStatus : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashPreviewOptOutStatus : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,14 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMLOGDashPreviewOptOutStatus` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDashPreviewOptOutStatusTag) {
-  /// (no description).
-  DBTEAMLOGDashPreviewOptOutStatusOptedIn,
+    /// (no description).
+    DBTEAMLOGDashPreviewOptOutStatusOptedIn,
 
-  /// (no description).
-  DBTEAMLOGDashPreviewOptOutStatusOptedOut,
+    /// (no description).
+    DBTEAMLOGDashPreviewOptOutStatusOptedOut,
 
-  /// (no description).
-  DBTEAMLOGDashPreviewOptOutStatusOther,
+    /// (no description).
+    DBTEAMLOGDashPreviewOptOutStatusOther,
 
 };
 
@@ -47,89 +48,91 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDashPreviewOptOutStatusTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "opted_in".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOptedIn;
 
-///
+/// 
 /// Initializes union class with tag state of "opted_out".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOptedOut;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "opted_in".
-///
+/// 
 /// @return Whether the union's current tag state has value "opted_in".
-///
+/// 
 - (BOOL)isOptedIn;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "opted_out".
-///
+/// 
 /// @return Whether the union's current tag state has value "opted_out".
-///
+/// 
 - (BOOL)isOptedOut;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGDashPreviewOptOutStatus` union.
-///
-@interface DBTEAMLOGDashPreviewOptOutStatusSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashPreviewOptOutStatusSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashPreviewOptOutStatus` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashPreviewOptOutStatus` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashPreviewOptOutStatus` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashPreviewOptOutStatus *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashPreviewOptOutStatus *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashPreviewOptOutStatus` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashPreviewOptOutStatus` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashPreviewOptOutStatus` object.
-///
-+ (DBTEAMLOGDashPreviewOptOutStatus *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashPreviewOptOutStatus *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

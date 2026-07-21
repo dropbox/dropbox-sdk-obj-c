@@ -13,18 +13,19 @@
 @class DBPAPERListPaperDocsSortBy;
 @class DBPAPERListPaperDocsSortOrder;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListPaperDocsArgs` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERListPaperDocsArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERListPaperDocsArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param filterBy Allows user to specify how the Paper docs should be
 /// filtered.
 /// @param sortBy Allows user to specify how the Paper docs should be sorted.
@@ -58,55 +59,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// error.
 /// @param stopAtDate Do not return results beyond this date. Behavior depends
 /// on sort order.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFilterBy:(nullable DBPAPERListPaperDocsFilterBy *)filterBy
-                          sortBy:(nullable DBPAPERListPaperDocsSortBy *)sortBy
-                       sortOrder:(nullable DBPAPERListPaperDocsSortOrder *)sortOrder
-                           limit:(nullable NSNumber *)limit
-                      stopAtDate:(nullable NSDate *)stopAtDate;
+/// 
+- (instancetype)initWithFilterBy:(nullable DBPAPERListPaperDocsFilterBy *)filterBy sortBy:(nullable DBPAPERListPaperDocsSortBy *)sortBy sortOrder:(nullable DBPAPERListPaperDocsSortOrder *)sortOrder limit:(nullable NSNumber *)limit stopAtDate:(nullable NSDate *)stopAtDate;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListPaperDocsArgs` struct.
-///
-@interface DBPAPERListPaperDocsArgsSerializer : NSObject
+/// 
+@interface DBPAPERListPaperDocsArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERListPaperDocsArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERListPaperDocsArgs` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERListPaperDocsArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERListPaperDocsArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERListPaperDocsArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERListPaperDocsArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERListPaperDocsArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERListPaperDocsArgs` object.
-///
-+ (DBPAPERListPaperDocsArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERListPaperDocsArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

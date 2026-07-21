@@ -12,20 +12,21 @@
 @class DBTEAMLOGClassificationPolicyEnumWrapper;
 @class DBTEAMLOGClassificationType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ClassificationChangePolicyDetails` struct.
-///
+/// 
 /// Changed classification policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGClassificationChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGClassificationChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,52 +41,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous classification policy.
 /// @param dNewValue New classification policy.
 /// @param classificationType Policy type.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGClassificationPolicyEnumWrapper *)previousValue
-                            dNewValue:(DBTEAMLOGClassificationPolicyEnumWrapper *)dNewValue
-                   classificationType:(DBTEAMLOGClassificationType *)classificationType;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGClassificationPolicyEnumWrapper *)previousValue dNewValue:(DBTEAMLOGClassificationPolicyEnumWrapper *)dNewValue classificationType:(DBTEAMLOGClassificationType *)classificationType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ClassificationChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGClassificationChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGClassificationChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGClassificationChangePolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGClassificationChangePolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGClassificationChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGClassificationChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGClassificationChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGClassificationChangePolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGClassificationChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGClassificationChangePolicyDetails`
 /// object.
-///
-+ (DBTEAMLOGClassificationChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGClassificationChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

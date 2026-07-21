@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGReplayFileDownloadedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ReplayFileDownloadedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGReplayFileDownloadedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGReplayFileDownloadedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ReplayFileDownloadedType` struct.
-///
-@interface DBTEAMLOGReplayFileDownloadedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGReplayFileDownloadedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGReplayFileDownloadedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGReplayFileDownloadedType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayFileDownloadedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGReplayFileDownloadedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGReplayFileDownloadedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGReplayFileDownloadedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayFileDownloadedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGReplayFileDownloadedType` object.
-///
-+ (DBTEAMLOGReplayFileDownloadedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGReplayFileDownloadedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

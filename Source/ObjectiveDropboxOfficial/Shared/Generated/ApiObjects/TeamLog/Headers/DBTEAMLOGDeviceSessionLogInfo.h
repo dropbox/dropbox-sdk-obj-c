@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGDeviceSessionLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeviceSessionLogInfo` struct.
-///
+/// 
 /// Device's session logged information.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDeviceSessionLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDeviceSessionLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,60 +39,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param ipAddress The IP address of the last activity from this session.
 /// @param created The time this session was created.
 /// @param updated The time of the last activity from this session.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIpAddress:(nullable NSString *)ipAddress
-                          created:(nullable NSDate *)created
-                          updated:(nullable NSDate *)updated;
+/// 
+- (instancetype)initWithIpAddress:(nullable NSString *)ipAddress created:(nullable NSDate *)created updated:(nullable NSDate *)updated;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeviceSessionLogInfo` struct.
-///
-@interface DBTEAMLOGDeviceSessionLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGDeviceSessionLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDeviceSessionLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDeviceSessionLogInfo` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceSessionLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceSessionLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDeviceSessionLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDeviceSessionLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceSessionLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDeviceSessionLogInfo` object.
-///
-+ (DBTEAMLOGDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

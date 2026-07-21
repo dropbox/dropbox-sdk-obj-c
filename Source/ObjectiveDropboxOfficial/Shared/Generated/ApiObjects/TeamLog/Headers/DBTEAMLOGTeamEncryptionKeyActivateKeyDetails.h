@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamEncryptionKeyActivateKeyDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamEncryptionKeyActivateKeyDetails` struct.
-///
+/// 
 /// Activated team encryption key.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamEncryptionKeyActivateKeyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyActivateKeyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param keyManagementType Type of key management.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithKeyManagementType:(NSString *)keyManagementType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamEncryptionKeyActivateKeyDetails`
 /// struct.
-///
-@interface DBTEAMLOGTeamEncryptionKeyActivateKeyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyActivateKeyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamEncryptionKeyActivateKeyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamEncryptionKeyActivateKeyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyActivateKeyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamEncryptionKeyActivateKeyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamEncryptionKeyActivateKeyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamEncryptionKeyActivateKeyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyActivateKeyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamEncryptionKeyActivateKeyDetails` object.
-///
-+ (DBTEAMLOGTeamEncryptionKeyActivateKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamEncryptionKeyActivateKeyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

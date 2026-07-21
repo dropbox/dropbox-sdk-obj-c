@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGPaperDocEditCommentType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocEditCommentType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDocEditCommentType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDocEditCommentType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocEditCommentType` struct.
-///
-@interface DBTEAMLOGPaperDocEditCommentTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDocEditCommentTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDocEditCommentType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperDocEditCommentType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocEditCommentType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocEditCommentType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDocEditCommentType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDocEditCommentType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocEditCommentType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperDocEditCommentType` object.
-///
-+ (DBTEAMLOGPaperDocEditCommentType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDocEditCommentType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

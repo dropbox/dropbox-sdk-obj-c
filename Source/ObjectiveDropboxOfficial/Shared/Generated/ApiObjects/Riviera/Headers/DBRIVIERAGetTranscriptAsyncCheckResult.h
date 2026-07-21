@@ -12,20 +12,21 @@
 @class DBRIVIERAGetTranscriptAsyncError;
 @class DBRIVIERAGetTranscriptResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetTranscriptAsyncCheckResult` union.
-///
+/// 
 /// Result type for EventBus async check - must end in "CheckResult"
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetTranscriptAsyncCheckResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetTranscriptAsyncCheckResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,17 +34,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBRIVIERAGetTranscriptAsyncCheckResult`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetTranscriptAsyncCheckResultTag) {
-  /// (no description).
-  DBRIVIERAGetTranscriptAsyncCheckResultInProgress,
+    /// (no description).
+    DBRIVIERAGetTranscriptAsyncCheckResultInProgress,
 
-  /// (no description).
-  DBRIVIERAGetTranscriptAsyncCheckResultComplete,
+    /// (no description).
+    DBRIVIERAGetTranscriptAsyncCheckResultComplete,
 
-  /// (no description).
-  DBRIVIERAGetTranscriptAsyncCheckResultFailed,
+    /// (no description).
+    DBRIVIERAGetTranscriptAsyncCheckResultFailed,
 
-  /// (no description).
-  DBRIVIERAGetTranscriptAsyncCheckResultOther,
+    /// (no description).
+    DBRIVIERAGetTranscriptAsyncCheckResultOther,
 
 };
 
@@ -60,115 +61,117 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetTranscriptAsyncCheckResultTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "in_progress".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInProgress;
 
-///
+/// 
 /// Initializes union class with tag state of "complete".
-///
+/// 
 /// @param complete (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithComplete:(DBRIVIERAGetTranscriptResult *)complete;
 
-///
+/// 
 /// Initializes union class with tag state of "failed".
-///
+/// 
 /// @param failed (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFailed:(DBRIVIERAGetTranscriptAsyncError *)failed;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "in_progress".
-///
+/// 
 /// @return Whether the union's current tag state has value "in_progress".
-///
+/// 
 - (BOOL)isInProgress;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "complete".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `complete` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "complete".
-///
+/// 
 - (BOOL)isComplete;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "failed".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `failed` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "failed".
-///
+/// 
 - (BOOL)isFailed;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERAGetTranscriptAsyncCheckResult`
 /// union.
-///
-@interface DBRIVIERAGetTranscriptAsyncCheckResultSerializer : NSObject
+/// 
+@interface DBRIVIERAGetTranscriptAsyncCheckResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetTranscriptAsyncCheckResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetTranscriptAsyncCheckResult`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetTranscriptAsyncCheckResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptAsyncCheckResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetTranscriptAsyncCheckResult *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetTranscriptAsyncCheckResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetTranscriptAsyncCheckResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetTranscriptAsyncCheckResult`
 /// object.
-///
-+ (DBRIVIERAGetTranscriptAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetTranscriptAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

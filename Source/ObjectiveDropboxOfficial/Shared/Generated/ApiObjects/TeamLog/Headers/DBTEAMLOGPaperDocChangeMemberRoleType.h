@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGPaperDocChangeMemberRoleType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocChangeMemberRoleType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDocChangeMemberRoleType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDocChangeMemberRoleType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocChangeMemberRoleType` struct.
-///
-@interface DBTEAMLOGPaperDocChangeMemberRoleTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDocChangeMemberRoleTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDocChangeMemberRoleType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperDocChangeMemberRoleType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocChangeMemberRoleType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDocChangeMemberRoleType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDocChangeMemberRoleType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocChangeMemberRoleType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperDocChangeMemberRoleType`
 /// object.
-///
-+ (DBTEAMLOGPaperDocChangeMemberRoleType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDocChangeMemberRoleType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

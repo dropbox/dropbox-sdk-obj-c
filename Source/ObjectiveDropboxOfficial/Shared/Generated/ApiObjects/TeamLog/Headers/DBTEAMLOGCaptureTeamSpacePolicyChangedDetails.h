@@ -11,20 +11,21 @@
 @class DBTEAMLOGCaptureTeamSpacePolicy;
 @class DBTEAMLOGCaptureTeamSpacePolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `CaptureTeamSpacePolicyChangedDetails` struct.
-///
+/// 
 /// Changed Capture team space policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGCaptureTeamSpacePolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGCaptureTeamSpacePolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGCaptureTeamSpacePolicy *)dNewValue
-                    previousValue:(DBTEAMLOGCaptureTeamSpacePolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGCaptureTeamSpacePolicy *)dNewValue previousValue:(DBTEAMLOGCaptureTeamSpacePolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `CaptureTeamSpacePolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGCaptureTeamSpacePolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGCaptureTeamSpacePolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGCaptureTeamSpacePolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGCaptureTeamSpacePolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGCaptureTeamSpacePolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCaptureTeamSpacePolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGCaptureTeamSpacePolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGCaptureTeamSpacePolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGCaptureTeamSpacePolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGCaptureTeamSpacePolicyChangedDetails` object.
-///
-+ (DBTEAMLOGCaptureTeamSpacePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGCaptureTeamSpacePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

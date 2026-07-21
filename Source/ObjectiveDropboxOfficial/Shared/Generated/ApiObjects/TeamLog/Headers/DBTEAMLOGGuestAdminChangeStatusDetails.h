@@ -12,20 +12,21 @@
 @class DBTEAMLOGTrustedTeamsRequestAction;
 @class DBTEAMLOGTrustedTeamsRequestState;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GuestAdminChangeStatusDetails` struct.
-///
+/// 
 /// Changed guest team admin status.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGuestAdminChangeStatusDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGuestAdminChangeStatusDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -49,74 +50,68 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param isGuest True for guest, false for host.
 /// @param previousValue Previous request state.
 /// @param dNewValue New request state.
 /// @param actionDetails Action details.
 /// @param guestTeamName The name of the guest team.
 /// @param hostTeamName The name of the host team.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIsGuest:(NSNumber *)isGuest
-                  previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue
-                      dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue
-                  actionDetails:(DBTEAMLOGTrustedTeamsRequestAction *)actionDetails
-                  guestTeamName:(nullable NSString *)guestTeamName
-                   hostTeamName:(nullable NSString *)hostTeamName;
+/// 
+- (instancetype)initWithIsGuest:(NSNumber *)isGuest previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue actionDetails:(DBTEAMLOGTrustedTeamsRequestAction *)actionDetails guestTeamName:(nullable NSString *)guestTeamName hostTeamName:(nullable NSString *)hostTeamName;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param isGuest True for guest, false for host.
 /// @param previousValue Previous request state.
 /// @param dNewValue New request state.
 /// @param actionDetails Action details.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIsGuest:(NSNumber *)isGuest
-                  previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue
-                      dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue
-                  actionDetails:(DBTEAMLOGTrustedTeamsRequestAction *)actionDetails;
+/// 
+- (instancetype)initWithIsGuest:(NSNumber *)isGuest previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue actionDetails:(DBTEAMLOGTrustedTeamsRequestAction *)actionDetails;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GuestAdminChangeStatusDetails` struct.
-///
-@interface DBTEAMLOGGuestAdminChangeStatusDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGuestAdminChangeStatusDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGuestAdminChangeStatusDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGGuestAdminChangeStatusDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGuestAdminChangeStatusDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGuestAdminChangeStatusDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGuestAdminChangeStatusDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGuestAdminChangeStatusDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGuestAdminChangeStatusDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGuestAdminChangeStatusDetails`
 /// object.
-///
-+ (DBTEAMLOGGuestAdminChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGuestAdminChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

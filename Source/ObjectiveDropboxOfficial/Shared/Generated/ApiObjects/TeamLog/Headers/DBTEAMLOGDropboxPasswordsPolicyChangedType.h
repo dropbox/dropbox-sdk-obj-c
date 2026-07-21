@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDropboxPasswordsPolicyChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DropboxPasswordsPolicyChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDropboxPasswordsPolicyChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDropboxPasswordsPolicyChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DropboxPasswordsPolicyChangedType` struct.
-///
-@interface DBTEAMLOGDropboxPasswordsPolicyChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDropboxPasswordsPolicyChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDropboxPasswordsPolicyChangedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDropboxPasswordsPolicyChangedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDropboxPasswordsPolicyChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDropboxPasswordsPolicyChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDropboxPasswordsPolicyChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDropboxPasswordsPolicyChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDropboxPasswordsPolicyChangedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDropboxPasswordsPolicyChangedType`
 /// object.
-///
-+ (DBTEAMLOGDropboxPasswordsPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDropboxPasswordsPolicyChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

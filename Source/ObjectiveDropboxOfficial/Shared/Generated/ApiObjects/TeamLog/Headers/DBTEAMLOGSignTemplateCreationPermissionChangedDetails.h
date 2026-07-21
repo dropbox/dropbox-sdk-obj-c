@@ -11,20 +11,21 @@
 @class DBTEAMLOGSignTemplateCreationPermissionChangedDetails;
 @class DBTEAMLOGSignTemplateCreationPermissionPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SignTemplateCreationPermissionChangedDetails` struct.
-///
+/// 
 /// Changed template creation permission.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSignTemplateCreationPermissionChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSignTemplateCreationPermissionChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,53 +37,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New template creation permission policy.
 /// @param previousValue Previous template creation permission policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGSignTemplateCreationPermissionPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGSignTemplateCreationPermissionPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGSignTemplateCreationPermissionPolicy *)dNewValue previousValue:(DBTEAMLOGSignTemplateCreationPermissionPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `SignTemplateCreationPermissionChangedDetails` struct.
-///
-@interface DBTEAMLOGSignTemplateCreationPermissionChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSignTemplateCreationPermissionChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSignTemplateCreationPermissionChangedDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSignTemplateCreationPermissionChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignTemplateCreationPermissionChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignTemplateCreationPermissionChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSignTemplateCreationPermissionChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSignTemplateCreationPermissionChangedDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignTemplateCreationPermissionChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSignTemplateCreationPermissionChangedDetails` object.
-///
-+ (DBTEAMLOGSignTemplateCreationPermissionChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSignTemplateCreationPermissionChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

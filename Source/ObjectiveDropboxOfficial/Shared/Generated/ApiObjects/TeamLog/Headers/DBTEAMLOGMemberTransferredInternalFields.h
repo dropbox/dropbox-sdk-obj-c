@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGMemberTransferredInternalFields;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberTransferredInternalFields` struct.
-///
+/// 
 /// Internal only - fields for target team computations
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberTransferredInternalFields : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberTransferredInternalFields : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,49 +36,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sourceTeamId Internal only - team user was moved from.
 /// @param targetTeamId Internal only - team user was moved to.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSourceTeamId:(NSString *)sourceTeamId targetTeamId:(NSString *)targetTeamId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberTransferredInternalFields` struct.
-///
-@interface DBTEAMLOGMemberTransferredInternalFieldsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberTransferredInternalFieldsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberTransferredInternalFields` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberTransferredInternalFields` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberTransferredInternalFields` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberTransferredInternalFields *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberTransferredInternalFields *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberTransferredInternalFields` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberTransferredInternalFields` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberTransferredInternalFields`
 /// object.
-///
-+ (DBTEAMLOGMemberTransferredInternalFields *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberTransferredInternalFields *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGMediaHubProjectTeamAddDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubProjectTeamAddDetails` struct.
-///
+/// 
 /// Added member to Media Hub project.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubProjectTeamAddDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubProjectTeamAddDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaHubProjectTeamAddDetails` struct.
-///
-@interface DBTEAMLOGMediaHubProjectTeamAddDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubProjectTeamAddDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubProjectTeamAddDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMediaHubProjectTeamAddDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubProjectTeamAddDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubProjectTeamAddDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubProjectTeamAddDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubProjectTeamAddDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubProjectTeamAddDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMediaHubProjectTeamAddDetails`
 /// object.
-///
-+ (DBTEAMLOGMediaHubProjectTeamAddDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubProjectTeamAddDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -6,26 +6,27 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESSharingInfo.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESSharingInfo.h"
 
 @class DBFILESFolderSharingInfo;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FolderSharingInfo` struct.
-///
+/// 
 /// Sharing info for a folder which is contained in a shared folder or is a
 /// shared folder mount point.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESFolderSharingInfo : DBFILESSharingInfo <DBSerializable, NSCopying>
+/// 
+@interface DBFILESFolderSharingInfo : DBFILESSharingInfo <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param readOnly True if the file or folder is inside a read-only shared
 /// folder.
 /// @param parentSharedFolderId Set if the folder is contained by a shared
@@ -60,55 +61,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// they don't have read access to this folder. They do, however, have access to
 /// some sub folder.
 /// @param noAccess Specifies that the folder cannot be accessed by the user.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithReadOnly:(NSNumber *)readOnly
-            parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                  sharedFolderId:(nullable NSString *)sharedFolderId
-                    traverseOnly:(nullable NSNumber *)traverseOnly
-                        noAccess:(nullable NSNumber *)noAccess;
+/// 
+- (instancetype)initWithReadOnly:(NSNumber *)readOnly parentSharedFolderId:(nullable NSString *)parentSharedFolderId sharedFolderId:(nullable NSString *)sharedFolderId traverseOnly:(nullable NSNumber *)traverseOnly noAccess:(nullable NSNumber *)noAccess;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param readOnly True if the file or folder is inside a read-only shared
 /// folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithReadOnly:(NSNumber *)readOnly;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FolderSharingInfo` struct.
-///
-@interface DBFILESFolderSharingInfoSerializer : NSObject
+/// 
+@interface DBFILESFolderSharingInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESFolderSharingInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESFolderSharingInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESFolderSharingInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESFolderSharingInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESFolderSharingInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESFolderSharingInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESFolderSharingInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESFolderSharingInfo` object.
-///
-+ (DBFILESFolderSharingInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESFolderSharingInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

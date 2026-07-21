@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamMergeRequestRevokedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMergeRequestRevokedDetails` struct.
-///
+/// 
 /// Canceled the team merge.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMergeRequestRevokedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMergeRequestRevokedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param team The name of the other team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeam:(NSString *)team;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamMergeRequestRevokedDetails` struct.
-///
-@interface DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMergeRequestRevokedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMergeRequestRevokedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamMergeRequestRevokedDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestRevokedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestRevokedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMergeRequestRevokedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMergeRequestRevokedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestRevokedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamMergeRequestRevokedDetails`
 /// object.
-///
-+ (DBTEAMLOGTeamMergeRequestRevokedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMergeRequestRevokedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGDataPlacementRestrictionChangePolicyDetails;
 @class DBTEAMLOGPlacementRestriction;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DataPlacementRestrictionChangePolicyDetails` struct.
-///
+/// 
 /// Set restrictions on data center locations where team data resides.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDataPlacementRestrictionChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDataPlacementRestrictionChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,52 +37,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous placement restriction.
 /// @param dNewValue New placement restriction.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGPlacementRestriction *)previousValue
-                            dNewValue:(DBTEAMLOGPlacementRestriction *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGPlacementRestriction *)previousValue dNewValue:(DBTEAMLOGPlacementRestriction *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DataPlacementRestrictionChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGDataPlacementRestrictionChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDataPlacementRestrictionChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDataPlacementRestrictionChangePolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDataPlacementRestrictionChangePolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDataPlacementRestrictionChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDataPlacementRestrictionChangePolicyDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDataPlacementRestrictionChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDataPlacementRestrictionChangePolicyDetails` object.
-///
-+ (DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDataPlacementRestrictionChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

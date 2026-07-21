@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the FileProperties namespace. Each route in the
 /// FileProperties namespace has its own static object, which contains
 /// information about the route.
-///
-@interface DBFILEPROPERTIESRouteObjects : NSObject
+/// 
+@interface DBFILEPROPERTIESRouteObjects : NSObject 
 
 /// Accessor method for the propertiesAdd route object.
 + (DBRoute *)DBFILEPROPERTIESPropertiesAdd;
@@ -68,3 +69,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

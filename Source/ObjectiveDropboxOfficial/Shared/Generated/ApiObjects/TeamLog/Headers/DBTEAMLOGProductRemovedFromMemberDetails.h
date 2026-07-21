@@ -12,20 +12,21 @@
 @class DBTEAMLOGProductRemovedFromMemberDetails;
 @class DBTEAMLOGUserNameLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ProductRemovedFromMemberDetails` struct.
-///
+/// 
 /// Product removed from team member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGProductRemovedFromMemberDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGProductRemovedFromMemberDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,50 +38,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param userName User's name.
 /// @param productName Product name.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUserName:(DBTEAMLOGUserNameLogInfo *)userName
-                     productName:(DBTEAMLOGProductLogInfo *)productName;
+/// 
+- (instancetype)initWithUserName:(DBTEAMLOGUserNameLogInfo *)userName productName:(DBTEAMLOGProductLogInfo *)productName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ProductRemovedFromMemberDetails` struct.
-///
-@interface DBTEAMLOGProductRemovedFromMemberDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGProductRemovedFromMemberDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGProductRemovedFromMemberDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGProductRemovedFromMemberDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGProductRemovedFromMemberDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProductRemovedFromMemberDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGProductRemovedFromMemberDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGProductRemovedFromMemberDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGProductRemovedFromMemberDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGProductRemovedFromMemberDetails`
 /// object.
-///
-+ (DBTEAMLOGProductRemovedFromMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGProductRemovedFromMemberDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

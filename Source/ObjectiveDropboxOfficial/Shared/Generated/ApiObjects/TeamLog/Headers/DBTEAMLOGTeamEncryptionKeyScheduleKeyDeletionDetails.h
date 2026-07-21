@@ -10,67 +10,70 @@
 
 @class DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamEncryptionKeyScheduleKeyDeletionDetails` struct.
-///
+/// 
 /// Scheduled encryption key deletion.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `TeamEncryptionKeyScheduleKeyDeletionDetails` struct.
-///
-@interface DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails` object.
-///
-+ (DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

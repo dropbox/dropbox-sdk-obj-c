@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPrimaryTeamRequestAcceptedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PrimaryTeamRequestAcceptedDetails` struct.
-///
+/// 
 /// Team merge request acceptance details shown to the primary team
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPrimaryTeamRequestAcceptedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPrimaryTeamRequestAcceptedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param secondaryTeam The secondary team name.
 /// @param sentBy The name of the secondary team admin who sent the request
 /// originally.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PrimaryTeamRequestAcceptedDetails` struct.
-///
-@interface DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPrimaryTeamRequestAcceptedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPrimaryTeamRequestAcceptedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPrimaryTeamRequestAcceptedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPrimaryTeamRequestAcceptedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPrimaryTeamRequestAcceptedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPrimaryTeamRequestAcceptedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPrimaryTeamRequestAcceptedDetails`
 /// object.
-///
-+ (DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPrimaryTeamRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

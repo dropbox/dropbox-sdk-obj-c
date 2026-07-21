@@ -11,20 +11,21 @@
 @class DBPAPERPaperDocGetMetadataResult;
 @class DBPAPERPaperDocStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocGetMetadataResult` struct.
-///
+/// 
 /// Metadata returned by docs/get_metadata.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERPaperDocGetMetadataResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERPaperDocGetMetadataResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -54,9 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param docId The Paper doc ID.
 /// @param owner The Paper doc owner's email address.
 /// @param title The Paper doc title.
@@ -65,50 +66,45 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param revision The Paper doc revision. Simply an ever increasing number.
 /// @param lastUpdatedDate The date when the Paper doc was last edited.
 /// @param lastEditor The email address of the last editor of the Paper doc.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDocId:(NSString *)docId
-                        owner:(NSString *)owner
-                        title:(NSString *)title
-                  createdDate:(NSDate *)createdDate
-                       status:(DBPAPERPaperDocStatus *)status
-                     revision:(NSNumber *)revision
-              lastUpdatedDate:(NSDate *)lastUpdatedDate
-                   lastEditor:(NSString *)lastEditor;
+/// 
+- (instancetype)initWithDocId:(NSString *)docId owner:(NSString *)owner title:(NSString *)title createdDate:(NSDate *)createdDate status:(DBPAPERPaperDocStatus *)status revision:(NSNumber *)revision lastUpdatedDate:(NSDate *)lastUpdatedDate lastEditor:(NSString *)lastEditor;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocGetMetadataResult` struct.
-///
-@interface DBPAPERPaperDocGetMetadataResultSerializer : NSObject
+/// 
+@interface DBPAPERPaperDocGetMetadataResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERPaperDocGetMetadataResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERPaperDocGetMetadataResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocGetMetadataResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERPaperDocGetMetadataResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERPaperDocGetMetadataResult *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERPaperDocGetMetadataResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocGetMetadataResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERPaperDocGetMetadataResult` object.
-///
-+ (DBPAPERPaperDocGetMetadataResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERPaperDocGetMetadataResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

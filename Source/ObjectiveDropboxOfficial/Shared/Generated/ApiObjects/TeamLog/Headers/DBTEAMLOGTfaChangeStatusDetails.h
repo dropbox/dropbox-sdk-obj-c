@@ -11,20 +11,21 @@
 @class DBTEAMLOGTfaChangeStatusDetails;
 @class DBTEAMLOGTfaConfiguration;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TfaChangeStatusDetails` struct.
-///
+/// 
 /// Enabled/disabled/changed two-factor authentication setting.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTfaChangeStatusDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTfaChangeStatusDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,63 +42,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue The new two factor authentication configuration.
 /// @param previousValue The previous two factor authentication configuration.
 /// Might be missing due to historical data gap.
 /// @param usedRescueCode Used two factor authentication rescue code. This flag
 /// is relevant when the two factor authentication configuration is disabled.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGTfaConfiguration *)dNewValue
-                    previousValue:(nullable DBTEAMLOGTfaConfiguration *)previousValue
-                   usedRescueCode:(nullable NSNumber *)usedRescueCode;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGTfaConfiguration *)dNewValue previousValue:(nullable DBTEAMLOGTfaConfiguration *)previousValue usedRescueCode:(nullable NSNumber *)usedRescueCode;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue The new two factor authentication configuration.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGTfaConfiguration *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TfaChangeStatusDetails` struct.
-///
-@interface DBTEAMLOGTfaChangeStatusDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTfaChangeStatusDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTfaChangeStatusDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTfaChangeStatusDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaChangeStatusDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangeStatusDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTfaChangeStatusDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTfaChangeStatusDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaChangeStatusDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTfaChangeStatusDetails` object.
-///
-+ (DBTEAMLOGTfaChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTfaChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDashExternalUserOpenedStackType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashExternalUserOpenedStackType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashExternalUserOpenedStackType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashExternalUserOpenedStackType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashExternalUserOpenedStackType` struct.
-///
-@interface DBTEAMLOGDashExternalUserOpenedStackTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashExternalUserOpenedStackTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashExternalUserOpenedStackType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashExternalUserOpenedStackType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalUserOpenedStackType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashExternalUserOpenedStackType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashExternalUserOpenedStackType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashExternalUserOpenedStackType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalUserOpenedStackType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashExternalUserOpenedStackType`
 /// object.
-///
-+ (DBTEAMLOGDashExternalUserOpenedStackType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashExternalUserOpenedStackType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -13,20 +13,21 @@
 @class DBTEAMLOGDesktopDeviceSessionLogInfo;
 @class DBTEAMLOGDesktopSessionLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DesktopDeviceSessionLogInfo` struct.
-///
+/// 
 /// Information about linked Dropbox desktop client sessions
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDesktopDeviceSessionLogInfo : DBTEAMLOGDeviceSessionLogInfo <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDesktopDeviceSessionLogInfo : DBTEAMLOGDeviceSessionLogInfo <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -50,9 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param hostName Name of the hosting desktop.
 /// @param clientType The Dropbox desktop client type.
 /// @param platform Information on the hosting platform.
@@ -63,67 +64,58 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param updated The time of the last activity from this session.
 /// @param sessionInfo Desktop session unique id.
 /// @param clientVersion The Dropbox client version.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithHostName:(NSString *)hostName
-                      clientType:(DBTEAMDesktopPlatform *)clientType
-                        platform:(NSString *)platform
-       isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported
-                       ipAddress:(nullable NSString *)ipAddress
-                         created:(nullable NSDate *)created
-                         updated:(nullable NSDate *)updated
-                     sessionInfo:(nullable DBTEAMLOGDesktopSessionLogInfo *)sessionInfo
-                   clientVersion:(nullable NSString *)clientVersion;
+/// 
+- (instancetype)initWithHostName:(NSString *)hostName clientType:(DBTEAMDesktopPlatform *)clientType platform:(NSString *)platform isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported ipAddress:(nullable NSString *)ipAddress created:(nullable NSDate *)created updated:(nullable NSDate *)updated sessionInfo:(nullable DBTEAMLOGDesktopSessionLogInfo *)sessionInfo clientVersion:(nullable NSString *)clientVersion;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param hostName Name of the hosting desktop.
 /// @param clientType The Dropbox desktop client type.
 /// @param platform Information on the hosting platform.
 /// @param isDeleteOnUnlinkSupported Whether itu2019s possible to delete all of
 /// the account files upon unlinking.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithHostName:(NSString *)hostName
-                      clientType:(DBTEAMDesktopPlatform *)clientType
-                        platform:(NSString *)platform
-       isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported;
+/// 
+- (instancetype)initWithHostName:(NSString *)hostName clientType:(DBTEAMDesktopPlatform *)clientType platform:(NSString *)platform isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DesktopDeviceSessionLogInfo` struct.
-///
-@interface DBTEAMLOGDesktopDeviceSessionLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGDesktopDeviceSessionLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDesktopDeviceSessionLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDesktopDeviceSessionLogInfo`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDesktopDeviceSessionLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDesktopDeviceSessionLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDesktopDeviceSessionLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDesktopDeviceSessionLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDesktopDeviceSessionLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDesktopDeviceSessionLogInfo`
 /// object.
-///
-+ (DBTEAMLOGDesktopDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDesktopDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

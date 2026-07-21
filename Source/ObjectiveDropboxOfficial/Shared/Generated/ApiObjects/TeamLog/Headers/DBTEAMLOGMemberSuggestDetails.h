@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGMemberSuggestDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberSuggestDetails` struct.
-///
+/// 
 /// Suggested person to add to team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberSuggestDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberSuggestDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param suggestedMembers suggested users emails.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSuggestedMembers:(NSArray<NSString *> *)suggestedMembers;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberSuggestDetails` struct.
-///
-@interface DBTEAMLOGMemberSuggestDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberSuggestDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberSuggestDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberSuggestDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSuggestDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSuggestDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberSuggestDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberSuggestDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSuggestDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberSuggestDetails` object.
-///
-+ (DBTEAMLOGMemberSuggestDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberSuggestDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

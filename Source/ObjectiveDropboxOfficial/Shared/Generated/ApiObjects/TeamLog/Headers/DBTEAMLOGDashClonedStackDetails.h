@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashClonedStackDetails;
 @class DBTEAMLOGDashStackType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashClonedStackDetails` struct.
-///
+/// 
 /// Cloned stack.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashClonedStackDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashClonedStackDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -42,67 +43,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param stackName The name of the stack.
 /// @param actorEmail Email of the actor.
 /// @param dNewClonedStackName New cloned stack name.
 /// @param stackType The type of stack backend.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithStackName:(NSString *)stackName
-                       actorEmail:(NSString *)actorEmail
-              dNewClonedStackName:(NSString *)dNewClonedStackName
-                        stackType:(nullable DBTEAMLOGDashStackType *)stackType;
+/// 
+- (instancetype)initWithStackName:(NSString *)stackName actorEmail:(NSString *)actorEmail dNewClonedStackName:(NSString *)dNewClonedStackName stackType:(nullable DBTEAMLOGDashStackType *)stackType;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param stackName The name of the stack.
 /// @param actorEmail Email of the actor.
 /// @param dNewClonedStackName New cloned stack name.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithStackName:(NSString *)stackName
-                       actorEmail:(NSString *)actorEmail
-              dNewClonedStackName:(NSString *)dNewClonedStackName;
+/// 
+- (instancetype)initWithStackName:(NSString *)stackName actorEmail:(NSString *)actorEmail dNewClonedStackName:(NSString *)dNewClonedStackName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashClonedStackDetails` struct.
-///
-@interface DBTEAMLOGDashClonedStackDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashClonedStackDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashClonedStackDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashClonedStackDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashClonedStackDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashClonedStackDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashClonedStackDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashClonedStackDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashClonedStackDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashClonedStackDetails` object.
-///
-+ (DBTEAMLOGDashClonedStackDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashClonedStackDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

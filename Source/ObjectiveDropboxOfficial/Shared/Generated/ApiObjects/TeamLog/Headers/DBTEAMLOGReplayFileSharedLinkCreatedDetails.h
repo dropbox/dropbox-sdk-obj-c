@@ -11,20 +11,21 @@
 @class DBTEAMLOGReplayFileSharedLinkCreatedDetails;
 @class DBTEAMLOGReplayLinkAccess;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ReplayFileSharedLinkCreatedDetails` struct.
-///
+/// 
 /// Created shared link in Replay.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGReplayFileSharedLinkCreatedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGReplayFileSharedLinkCreatedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,60 +38,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param isWatermarked Indicates whether it was a watermark share link.
 /// @param access The Replay sharing policy in place when the link was created.
 /// Might be missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIsWatermarked:(nullable NSNumber *)isWatermarked
-                               access:(nullable DBTEAMLOGReplayLinkAccess *)access;
+/// 
+- (instancetype)initWithIsWatermarked:(nullable NSNumber *)isWatermarked access:(nullable DBTEAMLOGReplayLinkAccess *)access;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ReplayFileSharedLinkCreatedDetails` struct.
-///
-@interface DBTEAMLOGReplayFileSharedLinkCreatedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGReplayFileSharedLinkCreatedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGReplayFileSharedLinkCreatedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGReplayFileSharedLinkCreatedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayFileSharedLinkCreatedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGReplayFileSharedLinkCreatedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGReplayFileSharedLinkCreatedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGReplayFileSharedLinkCreatedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayFileSharedLinkCreatedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGReplayFileSharedLinkCreatedDetails` object.
-///
-+ (DBTEAMLOGReplayFileSharedLinkCreatedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGReplayFileSharedLinkCreatedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

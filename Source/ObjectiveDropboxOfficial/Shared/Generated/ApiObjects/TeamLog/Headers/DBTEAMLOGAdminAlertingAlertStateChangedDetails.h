@@ -13,20 +13,21 @@
 @class DBTEAMLOGAdminAlertSeverityEnum;
 @class DBTEAMLOGAdminAlertingAlertStateChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AdminAlertingAlertStateChangedDetails` struct.
-///
+/// 
 /// Changed an alert state.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAdminAlertingAlertStateChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAdminAlertingAlertStateChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -50,59 +51,56 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param alertName Alert name.
 /// @param alertSeverity Alert severity.
 /// @param alertCategory Alert category.
 /// @param alertInstanceId Alert ID.
 /// @param previousValue Alert state before the change.
 /// @param dNewValue Alert state after the change.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAlertName:(NSString *)alertName
-                    alertSeverity:(DBTEAMLOGAdminAlertSeverityEnum *)alertSeverity
-                    alertCategory:(DBTEAMLOGAdminAlertCategoryEnum *)alertCategory
-                  alertInstanceId:(NSString *)alertInstanceId
-                    previousValue:(DBTEAMLOGAdminAlertGeneralStateEnum *)previousValue
-                        dNewValue:(DBTEAMLOGAdminAlertGeneralStateEnum *)dNewValue;
+/// 
+- (instancetype)initWithAlertName:(NSString *)alertName alertSeverity:(DBTEAMLOGAdminAlertSeverityEnum *)alertSeverity alertCategory:(DBTEAMLOGAdminAlertCategoryEnum *)alertCategory alertInstanceId:(NSString *)alertInstanceId previousValue:(DBTEAMLOGAdminAlertGeneralStateEnum *)previousValue dNewValue:(DBTEAMLOGAdminAlertGeneralStateEnum *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AdminAlertingAlertStateChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGAdminAlertingAlertStateChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAdminAlertingAlertStateChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAdminAlertingAlertStateChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAdminAlertingAlertStateChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAdminAlertingAlertStateChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAdminAlertingAlertStateChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAdminAlertingAlertStateChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAdminAlertingAlertStateChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAdminAlertingAlertStateChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGAdminAlertingAlertStateChangedDetails` object.
-///
-+ (DBTEAMLOGAdminAlertingAlertStateChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAdminAlertingAlertStateChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

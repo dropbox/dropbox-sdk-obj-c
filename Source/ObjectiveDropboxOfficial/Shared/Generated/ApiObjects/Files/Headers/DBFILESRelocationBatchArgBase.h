@@ -11,18 +11,19 @@
 @class DBFILESRelocationBatchArgBase;
 @class DBFILESRelocationPath;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RelocationBatchArgBase` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESRelocationBatchArgBase : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESRelocationBatchArgBase : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,61 +36,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries List of entries to be moved or copied. Each entry is
 /// RelocationPath.
 /// @param autorename If there's a conflict with any file, have the Dropbox
 /// server try to autorename that file to avoid the conflict.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries autorename:(nullable NSNumber *)autorename;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param entries List of entries to be moved or copied. Each entry is
 /// RelocationPath.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESRelocationPath *> *)entries;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RelocationBatchArgBase` struct.
-///
-@interface DBFILESRelocationBatchArgBaseSerializer : NSObject
+/// 
+@interface DBFILESRelocationBatchArgBaseSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESRelocationBatchArgBase` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESRelocationBatchArgBase` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationBatchArgBase` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchArgBase *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESRelocationBatchArgBase *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESRelocationBatchArgBase` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESRelocationBatchArgBase` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESRelocationBatchArgBase` object.
-///
-+ (DBFILESRelocationBatchArgBase *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESRelocationBatchArgBase *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

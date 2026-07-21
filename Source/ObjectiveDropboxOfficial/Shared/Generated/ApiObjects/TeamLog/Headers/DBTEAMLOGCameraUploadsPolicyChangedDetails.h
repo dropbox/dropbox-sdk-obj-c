@@ -11,20 +11,21 @@
 @class DBTEAMLOGCameraUploadsPolicy;
 @class DBTEAMLOGCameraUploadsPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `CameraUploadsPolicyChangedDetails` struct.
-///
+/// 
 /// Changed camera uploads setting for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGCameraUploadsPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGCameraUploadsPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New camera uploads setting.
 /// @param previousValue Previous camera uploads setting.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGCameraUploadsPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGCameraUploadsPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGCameraUploadsPolicy *)dNewValue previousValue:(DBTEAMLOGCameraUploadsPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `CameraUploadsPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGCameraUploadsPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGCameraUploadsPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGCameraUploadsPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGCameraUploadsPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCameraUploadsPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGCameraUploadsPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGCameraUploadsPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGCameraUploadsPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGCameraUploadsPolicyChangedDetails`
 /// object.
-///
-+ (DBTEAMLOGCameraUploadsPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGCameraUploadsPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

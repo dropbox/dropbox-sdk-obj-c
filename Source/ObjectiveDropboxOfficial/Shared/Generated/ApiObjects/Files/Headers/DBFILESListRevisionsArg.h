@@ -11,18 +11,19 @@
 @class DBFILESListRevisionsArg;
 @class DBFILESListRevisionsMode;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListRevisionsArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESListRevisionsArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESListRevisionsArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -47,9 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path The path to the file you want to see the revisions of.
 /// @param mode Determines the behavior of the API in listing the revisions for
 /// a given file path or id.
@@ -60,56 +61,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// mode.
 /// @param includeRestorableInfo If true, each returned revision will include
 /// whether that revision can be restored.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPath:(NSString *)path
-                        mode:(nullable DBFILESListRevisionsMode *)mode
-                       limit:(nullable NSNumber *)limit
-                   beforeRev:(nullable NSString *)beforeRev
-       includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
+/// 
+- (instancetype)initWithPath:(NSString *)path mode:(nullable DBFILESListRevisionsMode *)mode limit:(nullable NSNumber *)limit beforeRev:(nullable NSString *)beforeRev includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param path The path to the file you want to see the revisions of.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListRevisionsArg` struct.
-///
-@interface DBFILESListRevisionsArgSerializer : NSObject
+/// 
+@interface DBFILESListRevisionsArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESListRevisionsArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESListRevisionsArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListRevisionsArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESListRevisionsArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESListRevisionsArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESListRevisionsArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESListRevisionsArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESListRevisionsArg` object.
-///
-+ (DBFILESListRevisionsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESListRevisionsArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

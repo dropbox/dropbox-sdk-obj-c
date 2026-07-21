@@ -10,35 +10,36 @@
 
 @class DBSHARINGFileErrorResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileErrorResult` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGFileErrorResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGFileErrorResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBSHARINGFileErrorResultTag` enum type represents the possible tag
 /// states with which the `DBSHARINGFileErrorResult` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
-  /// File specified by id was not found.
-  DBSHARINGFileErrorResultFileNotFoundError,
+    /// File specified by id was not found.
+    DBSHARINGFileErrorResultFileNotFoundError,
 
-  /// User does not have permission to take the specified action on the file.
-  DBSHARINGFileErrorResultInvalidFileActionError,
+    /// User does not have permission to take the specified action on the file.
+    DBSHARINGFileErrorResultInvalidFileActionError,
 
-  /// User does not have permission to access file specified by file.Id.
-  DBSHARINGFileErrorResultPermissionDeniedError,
+    /// User does not have permission to access file specified by file.Id.
+    DBSHARINGFileErrorResultPermissionDeniedError,
 
-  /// (no description).
-  DBSHARINGFileErrorResultOther,
+    /// (no description).
+    DBSHARINGFileErrorResultOther,
 
 };
 
@@ -62,136 +63,138 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "file_not_found_error".
-///
+/// 
 /// Description of the "file_not_found_error" tag state: File specified by id
 /// was not found.
-///
+/// 
 /// @param fileNotFoundError File specified by id was not found.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileNotFoundError:(NSString *)fileNotFoundError;
 
-///
+/// 
 /// Initializes union class with tag state of "invalid_file_action_error".
-///
+/// 
 /// Description of the "invalid_file_action_error" tag state: User does not have
 /// permission to take the specified action on the file.
-///
+/// 
 /// @param invalidFileActionError User does not have permission to take the
 /// specified action on the file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvalidFileActionError:(NSString *)invalidFileActionError;
 
-///
+/// 
 /// Initializes union class with tag state of "permission_denied_error".
-///
+/// 
 /// Description of the "permission_denied_error" tag state: User does not have
 /// permission to access file specified by file.Id.
-///
+/// 
 /// @param permissionDeniedError User does not have permission to access file
 /// specified by file.Id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPermissionDeniedError:(NSString *)permissionDeniedError;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "file_not_found_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `fileNotFoundError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "file_not_found_error".
-///
+/// 
 - (BOOL)isFileNotFoundError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "invalid_file_action_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `invalidFileActionError` property, otherwise a runtime exception will be
 /// thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "invalid_file_action_error".
-///
+/// 
 - (BOOL)isInvalidFileActionError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "permission_denied_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `permissionDeniedError` property, otherwise a runtime exception will be
 /// thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "permission_denied_error".
-///
+/// 
 - (BOOL)isPermissionDeniedError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGFileErrorResult` union.
-///
-@interface DBSHARINGFileErrorResultSerializer : NSObject
+/// 
+@interface DBSHARINGFileErrorResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGFileErrorResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGFileErrorResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGFileErrorResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGFileErrorResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGFileErrorResult *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGFileErrorResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGFileErrorResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGFileErrorResult` object.
-///
-+ (DBSHARINGFileErrorResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGFileErrorResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

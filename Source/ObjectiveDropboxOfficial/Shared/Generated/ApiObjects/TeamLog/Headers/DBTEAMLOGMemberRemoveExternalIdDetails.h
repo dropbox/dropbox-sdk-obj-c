@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGMemberRemoveExternalIdDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberRemoveExternalIdDetails` struct.
-///
+/// 
 /// Removed the external ID for team member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberRemoveExternalIdDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberRemoveExternalIdDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Old external id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPreviousValue:(NSString *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberRemoveExternalIdDetails` struct.
-///
-@interface DBTEAMLOGMemberRemoveExternalIdDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberRemoveExternalIdDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberRemoveExternalIdDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberRemoveExternalIdDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberRemoveExternalIdDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRemoveExternalIdDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberRemoveExternalIdDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberRemoveExternalIdDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberRemoveExternalIdDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberRemoveExternalIdDetails`
 /// object.
-///
-+ (DBTEAMLOGMemberRemoveExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberRemoveExternalIdDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

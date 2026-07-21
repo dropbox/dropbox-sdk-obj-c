@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashRenamedStackDetails;
 @class DBTEAMLOGDashStackType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashRenamedStackDetails` struct.
-///
+/// 
 /// Renamed a stack.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashRenamedStackDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashRenamedStackDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,62 +40,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param oldName The old name of the stack.
 /// @param dNewName The new name of the stack.
 /// @param stackType The type of stack backend.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithOldName:(NSString *)oldName
-                       dNewName:(NSString *)dNewName
-                      stackType:(nullable DBTEAMLOGDashStackType *)stackType;
+/// 
+- (instancetype)initWithOldName:(NSString *)oldName dNewName:(NSString *)dNewName stackType:(nullable DBTEAMLOGDashStackType *)stackType;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param oldName The old name of the stack.
 /// @param dNewName The new name of the stack.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOldName:(NSString *)oldName dNewName:(NSString *)dNewName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashRenamedStackDetails` struct.
-///
-@interface DBTEAMLOGDashRenamedStackDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashRenamedStackDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashRenamedStackDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashRenamedStackDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRenamedStackDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashRenamedStackDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashRenamedStackDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashRenamedStackDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRenamedStackDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashRenamedStackDetails` object.
-///
-+ (DBTEAMLOGDashRenamedStackDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashRenamedStackDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

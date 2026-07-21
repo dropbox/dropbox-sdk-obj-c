@@ -12,98 +12,99 @@
 
 #pragma mark - API Object
 
-@implementation DBCHECKEchoArg
+@implementation DBCHECKEchoArg 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithQuery:(NSString *)query {
 
-  self = [super init];
-  if (self) {
-    _query = query ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _query = query ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithQuery:nil];
+    return [self initWithQuery:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBCHECKEchoArgSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBCHECKEchoArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBCHECKEchoArgSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBCHECKEchoArgSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBCHECKEchoArgSerializer serialize:self] description];
+    return [[DBCHECKEchoArgSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.query hash];
+    result = prime * result + [self.query hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToEchoArg:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToEchoArg:other];
 }
 
 - (BOOL)isEqualToEchoArg:(DBCHECKEchoArg *)anEchoArg {
-  if (self == anEchoArg) {
+    if (self == anEchoArg) {
+        return YES;
+    }
+    if (![self.query isEqual:anEchoArg.query]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.query isEqual:anEchoArg.query]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBCHECKEchoArgSerializer
+@implementation DBCHECKEchoArgSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBCHECKEchoArg *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"query"] = valueObj.query;
+    jsonDict[@"query"] = valueObj.query;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBCHECKEchoArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *query = valueDict[@"query"] ?: @"";
+    NSString *query = valueDict[@"query"] ?: @"";
 
-  return [[DBCHECKEchoArg alloc] initWithQuery:query];
+    return [[DBCHECKEchoArg alloc] initWithQuery:query];
 }
 
 @end
@@ -114,24 +115,24 @@
 
 #pragma mark - API Object
 
-@implementation DBCHECKEchoError
+@implementation DBCHECKEchoError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithUserRequested {
-  self = [super init];
-  if (self) {
-    _tag = DBCHECKEchoErrorUserRequested;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBCHECKEchoErrorUserRequested;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBCHECKEchoErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBCHECKEchoErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -139,124 +140,129 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isUserRequested {
-  return _tag == DBCHECKEchoErrorUserRequested;
+    return _tag == DBCHECKEchoErrorUserRequested;
 }
 
 - (BOOL)isOther {
-  return _tag == DBCHECKEchoErrorOther;
+    return _tag == DBCHECKEchoErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBCHECKEchoErrorUserRequested:
-    return @"DBCHECKEchoErrorUserRequested";
-  case DBCHECKEchoErrorOther:
-    return @"DBCHECKEchoErrorOther";
-  }
+    switch (_tag) {
+        case DBCHECKEchoErrorUserRequested:
+           return @"DBCHECKEchoErrorUserRequested";
+        case DBCHECKEchoErrorOther:
+           return @"DBCHECKEchoErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBCHECKEchoErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBCHECKEchoErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBCHECKEchoErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBCHECKEchoErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBCHECKEchoErrorSerializer serialize:self] description];
+    return [[DBCHECKEchoErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBCHECKEchoErrorUserRequested:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBCHECKEchoErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBCHECKEchoErrorUserRequested:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBCHECKEchoErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToEchoError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToEchoError:other];
 }
 
 - (BOOL)isEqualToEchoError:(DBCHECKEchoError *)anEchoError {
-  if (self == anEchoError) {
+    if (self == anEchoError) {
+        return YES;
+    }
+    if (self.tag != anEchoError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBCHECKEchoErrorUserRequested:
+        return [[self tagName] isEqual:[anEchoError tagName]];
+        case DBCHECKEchoErrorOther:
+        return [[self tagName] isEqual:[anEchoError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != anEchoError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBCHECKEchoErrorUserRequested:
-    return [[self tagName] isEqual:[anEchoError tagName]];
-  case DBCHECKEchoErrorOther:
-    return [[self tagName] isEqual:[anEchoError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBCHECKEchoErrorSerializer
+@implementation DBCHECKEchoErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBCHECKEchoError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isUserRequested]) {
-    jsonDict[@".tag"] = @"user_requested";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isUserRequested]) {
+        jsonDict[@".tag"] = @"user_requested";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBCHECKEchoError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"user_requested"]) {
-    return [[DBCHECKEchoError alloc] initWithUserRequested];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBCHECKEchoError alloc] initWithOther];
-  } else {
-    return [[DBCHECKEchoError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"user_requested"]) {
+        return [[DBCHECKEchoError alloc] initWithUserRequested];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBCHECKEchoError alloc] initWithOther];
+    }
+    else {
+        return [[DBCHECKEchoError alloc] initWithOther];
+    }
 }
 
 @end
@@ -267,98 +273,99 @@
 
 #pragma mark - API Object
 
-@implementation DBCHECKEchoResult
+@implementation DBCHECKEchoResult 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithResult:(NSString *)result {
 
-  self = [super init];
-  if (self) {
-    _result = result ?: @"";
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _result = result ?: @"";
+    }
+    return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithResult:nil];
+    return [self initWithResult:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBCHECKEchoResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBCHECKEchoResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBCHECKEchoResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBCHECKEchoResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBCHECKEchoResultSerializer serialize:self] description];
+    return [[DBCHECKEchoResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.result hash];
+    result = prime * result + [self.result hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToEchoResult:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToEchoResult:other];
 }
 
 - (BOOL)isEqualToEchoResult:(DBCHECKEchoResult *)anEchoResult {
-  if (self == anEchoResult) {
+    if (self == anEchoResult) {
+        return YES;
+    }
+    if (![self.result isEqual:anEchoResult.result]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.result isEqual:anEchoResult.result]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBCHECKEchoResultSerializer
+@implementation DBCHECKEchoResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBCHECKEchoResult *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"result"] = valueObj.result;
+    jsonDict[@"result"] = valueObj.result;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBCHECKEchoResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *result = valueDict[@"result"] ?: @"";
+    NSString *result = valueDict[@"result"] ?: @"";
 
-  return [[DBCHECKEchoResult alloc] initWithResult:result];
+    return [[DBCHECKEchoResult alloc] initWithResult:result];
 }
 
 @end

@@ -11,20 +11,21 @@
 @class DBTEAMLOGStackCrossTeamAccessPolicy;
 @class DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `StackCrossTeamAccessPolicyChangedDetails` struct.
-///
+/// 
 /// Changed cross-team Stack access policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,62 +38,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New cross-team Stack access policy.
 /// @param previousValue Previous cross-team Stack access policy. Might be
 /// missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGStackCrossTeamAccessPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGStackCrossTeamAccessPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGStackCrossTeamAccessPolicy *)dNewValue previousValue:(nullable DBTEAMLOGStackCrossTeamAccessPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New cross-team Stack access policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGStackCrossTeamAccessPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `StackCrossTeamAccessPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGStackCrossTeamAccessPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGStackCrossTeamAccessPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGStackCrossTeamAccessPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

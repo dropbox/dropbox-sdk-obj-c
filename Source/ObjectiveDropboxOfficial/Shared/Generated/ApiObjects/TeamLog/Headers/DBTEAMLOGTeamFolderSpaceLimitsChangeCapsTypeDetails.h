@@ -11,20 +11,21 @@
 @class DBTEAMLOGTeamFolderSpaceCapsType;
 @class DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderSpaceLimitsChangeCapsTypeDetails` struct.
-///
+/// 
 /// Changed team folder space limit enforcement type.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,62 +37,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewCapsType New enforcement type.
 /// @param previousCapsType Previous enforcement type.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewCapsType:(DBTEAMLOGTeamFolderSpaceCapsType *)dNewCapsType
-                    previousCapsType:(nullable DBTEAMLOGTeamFolderSpaceCapsType *)previousCapsType;
+/// 
+- (instancetype)initWithDNewCapsType:(DBTEAMLOGTeamFolderSpaceCapsType *)dNewCapsType previousCapsType:(nullable DBTEAMLOGTeamFolderSpaceCapsType *)previousCapsType;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewCapsType New enforcement type.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewCapsType:(DBTEAMLOGTeamFolderSpaceCapsType *)dNewCapsType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderSpaceLimitsChangeCapsTypeDetails`
 /// struct.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails` object.
-///
-+ (DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderSpaceLimitsChangeCapsTypeDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGReplayTeamProjectCreatedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ReplayTeamProjectCreatedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGReplayTeamProjectCreatedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGReplayTeamProjectCreatedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ReplayTeamProjectCreatedType` struct.
-///
-@interface DBTEAMLOGReplayTeamProjectCreatedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGReplayTeamProjectCreatedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGReplayTeamProjectCreatedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGReplayTeamProjectCreatedType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayTeamProjectCreatedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGReplayTeamProjectCreatedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGReplayTeamProjectCreatedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGReplayTeamProjectCreatedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayTeamProjectCreatedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGReplayTeamProjectCreatedType`
 /// object.
-///
-+ (DBTEAMLOGReplayTeamProjectCreatedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGReplayTeamProjectCreatedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

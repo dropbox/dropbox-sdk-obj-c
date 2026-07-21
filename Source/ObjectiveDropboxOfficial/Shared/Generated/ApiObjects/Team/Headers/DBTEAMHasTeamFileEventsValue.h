@@ -10,31 +10,32 @@
 
 @class DBTEAMHasTeamFileEventsValue;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `HasTeamFileEventsValue` union.
-///
+/// 
 /// The value for `hasTeamFileEvents` in `DBTEAMFeature`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMHasTeamFileEventsValue : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMHasTeamFileEventsValue : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMHasTeamFileEventsValueTag` enum type represents the possible tag
 /// states with which the `DBTEAMHasTeamFileEventsValue` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMHasTeamFileEventsValueTag) {
-  /// Does this team have file events.
-  DBTEAMHasTeamFileEventsValueEnabled,
+    /// Does this team have file events.
+    DBTEAMHasTeamFileEventsValueEnabled,
 
-  /// (no description).
-  DBTEAMHasTeamFileEventsValueOther,
+    /// (no description).
+    DBTEAMHasTeamFileEventsValueOther,
 
 };
 
@@ -47,82 +48,84 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMHasTeamFileEventsValueTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// Description of the "enabled" tag state: Does this team have file events.
-///
+/// 
 /// @param enabled Does this team have file events.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled:(NSNumber *)enabled;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `enabled` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMHasTeamFileEventsValue` union.
-///
-@interface DBTEAMHasTeamFileEventsValueSerializer : NSObject
+/// 
+@interface DBTEAMHasTeamFileEventsValueSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMHasTeamFileEventsValue` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMHasTeamFileEventsValue` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMHasTeamFileEventsValue` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMHasTeamFileEventsValue *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMHasTeamFileEventsValue *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMHasTeamFileEventsValue` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMHasTeamFileEventsValue` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMHasTeamFileEventsValue` object.
-///
-+ (DBTEAMHasTeamFileEventsValue *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMHasTeamFileEventsValue *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

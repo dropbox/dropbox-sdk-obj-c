@@ -15,20 +15,21 @@
 @class DBTEAMPOLICIESTeamSharingPolicies;
 @class DBTEAMPOLICIESTopLevelContentPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMemberPolicies` struct.
-///
+/// 
 /// Policies governing team members.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESTeamMemberPolicies : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESTeamMemberPolicies : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -55,9 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharing Policies governing sharing.
 /// @param emmState This describes the Enterprise Mobility Management (EMM)
 /// state for this team. This information can be used to understand if an
@@ -71,47 +72,45 @@ NS_ASSUME_NONNULL_BEGIN
 /// suggest users for admins to invite to the team.
 /// @param topLevelContentPolicy Policy for deciding whether members can edit
 /// team folders at the top level of the team space.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharing:(DBTEAMPOLICIESTeamSharingPolicies *)sharing
-                       emmState:(DBTEAMPOLICIESEmmState *)emmState
-                    officeAddin:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddin
-           suggestMembersPolicy:(DBTEAMPOLICIESSuggestMembersPolicy *)suggestMembersPolicy
-          topLevelContentPolicy:(DBTEAMPOLICIESTopLevelContentPolicy *)topLevelContentPolicy;
+/// 
+- (instancetype)initWithSharing:(DBTEAMPOLICIESTeamSharingPolicies *)sharing emmState:(DBTEAMPOLICIESEmmState *)emmState officeAddin:(DBTEAMPOLICIESOfficeAddInPolicy *)officeAddin suggestMembersPolicy:(DBTEAMPOLICIESSuggestMembersPolicy *)suggestMembersPolicy topLevelContentPolicy:(DBTEAMPOLICIESTopLevelContentPolicy *)topLevelContentPolicy;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamMemberPolicies` struct.
-///
-@interface DBTEAMPOLICIESTeamMemberPoliciesSerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESTeamMemberPoliciesSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESTeamMemberPolicies` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMPOLICIESTeamMemberPolicies` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESTeamMemberPolicies` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESTeamMemberPolicies *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESTeamMemberPolicies *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESTeamMemberPolicies` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESTeamMemberPolicies` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMPOLICIESTeamMemberPolicies` object.
-///
-+ (DBTEAMPOLICIESTeamMemberPolicies *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESTeamMemberPolicies *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

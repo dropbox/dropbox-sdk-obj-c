@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGShowcaseRequestAccessDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseRequestAccessDetails` struct.
-///
+/// 
 /// Requested access to showcase.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseRequestAccessDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseRequestAccessDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseRequestAccessDetails` struct.
-///
-@interface DBTEAMLOGShowcaseRequestAccessDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseRequestAccessDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseRequestAccessDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseRequestAccessDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseRequestAccessDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRequestAccessDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseRequestAccessDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseRequestAccessDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseRequestAccessDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseRequestAccessDetails`
 /// object.
-///
-+ (DBTEAMLOGShowcaseRequestAccessDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseRequestAccessDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

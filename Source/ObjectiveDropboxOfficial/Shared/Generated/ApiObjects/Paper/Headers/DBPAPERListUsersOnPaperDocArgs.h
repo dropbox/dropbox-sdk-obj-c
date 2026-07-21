@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBPAPERRefPaperDoc.h"
 #import "DBSerializableProtocol.h"
+#import "DBPAPERRefPaperDoc.h"
 
 @class DBPAPERListUsersOnPaperDocArgs;
 @class DBPAPERUserOnPaperDocFilter;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListUsersOnPaperDocArgs` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERListUsersOnPaperDocArgs : DBPAPERRefPaperDoc <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERListUsersOnPaperDocArgs : DBPAPERRefPaperDoc <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,62 +38,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param docId The Paper doc ID.
 /// @param limit Size limit per batch. The maximum number of users that can be
 /// retrieved per batch is 1000. Higher value results in invalid arguments
 /// error.
 /// @param filterBy Specify this attribute if you want to obtain users that have
 /// already accessed the Paper doc.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDocId:(NSString *)docId
-                        limit:(nullable NSNumber *)limit
-                     filterBy:(nullable DBPAPERUserOnPaperDocFilter *)filterBy;
+/// 
+- (instancetype)initWithDocId:(NSString *)docId limit:(nullable NSNumber *)limit filterBy:(nullable DBPAPERUserOnPaperDocFilter *)filterBy;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param docId The Paper doc ID.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDocId:(NSString *)docId;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListUsersOnPaperDocArgs` struct.
-///
-@interface DBPAPERListUsersOnPaperDocArgsSerializer : NSObject
+/// 
+@interface DBPAPERListUsersOnPaperDocArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERListUsersOnPaperDocArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERListUsersOnPaperDocArgs` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnPaperDocArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERListUsersOnPaperDocArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERListUsersOnPaperDocArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERListUsersOnPaperDocArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnPaperDocArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERListUsersOnPaperDocArgs` object.
-///
-+ (DBPAPERListUsersOnPaperDocArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERListUsersOnPaperDocArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

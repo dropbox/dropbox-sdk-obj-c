@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DomainInvitesDeclineRequestToJoinTeamType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DomainInvitesDeclineRequestToJoinTeamType`
 /// struct.
-///
-@interface DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType` object.
-///
-+ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDomainInvitesDeclineRequestToJoinTeamType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

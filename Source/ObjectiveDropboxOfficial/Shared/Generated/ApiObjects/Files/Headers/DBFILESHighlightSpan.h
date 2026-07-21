@@ -10,18 +10,19 @@
 
 @class DBFILESHighlightSpan;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `HighlightSpan` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESHighlightSpan : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESHighlightSpan : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param highlightStr String to be determined whether it should be highlighted
 /// or not.
 /// @param isHighlighted The string should be highlighted or not.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithHighlightStr:(NSString *)highlightStr isHighlighted:(NSNumber *)isHighlighted;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `HighlightSpan` struct.
-///
-@interface DBFILESHighlightSpanSerializer : NSObject
+/// 
+@interface DBFILESHighlightSpanSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESHighlightSpan` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESHighlightSpan` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESHighlightSpan` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESHighlightSpan *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESHighlightSpan *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESHighlightSpan` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESHighlightSpan` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESHighlightSpan` object.
-///
-+ (DBFILESHighlightSpan *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESHighlightSpan *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

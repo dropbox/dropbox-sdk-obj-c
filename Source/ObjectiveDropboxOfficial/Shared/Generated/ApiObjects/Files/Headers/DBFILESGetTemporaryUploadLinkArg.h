@@ -11,18 +11,19 @@
 @class DBFILESCommitInfo;
 @class DBFILESGetTemporaryUploadLinkArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetTemporaryUploadLinkArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGetTemporaryUploadLinkArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGetTemporaryUploadLinkArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,62 +38,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param commitInfo Contains the path and other optional modifiers for the
 /// future upload commit. Equivalent to the parameters provided to `upload`.
 /// @param duration How long before this link expires, in seconds. Attempting to
 /// start an upload with this link longer than this period of time after link
 /// creation will result in an error.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCommitInfo:(DBFILESCommitInfo *)commitInfo duration:(nullable NSNumber *)duration;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param commitInfo Contains the path and other optional modifiers for the
 /// future upload commit. Equivalent to the parameters provided to `upload`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCommitInfo:(DBFILESCommitInfo *)commitInfo;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetTemporaryUploadLinkArg` struct.
-///
-@interface DBFILESGetTemporaryUploadLinkArgSerializer : NSObject
+/// 
+@interface DBFILESGetTemporaryUploadLinkArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGetTemporaryUploadLinkArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGetTemporaryUploadLinkArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetTemporaryUploadLinkArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGetTemporaryUploadLinkArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGetTemporaryUploadLinkArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGetTemporaryUploadLinkArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGetTemporaryUploadLinkArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGetTemporaryUploadLinkArg` object.
-///
-+ (DBFILESGetTemporaryUploadLinkArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGetTemporaryUploadLinkArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

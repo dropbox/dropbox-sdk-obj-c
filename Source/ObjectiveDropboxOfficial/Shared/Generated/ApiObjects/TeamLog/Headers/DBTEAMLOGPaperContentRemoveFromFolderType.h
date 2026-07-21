@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGPaperContentRemoveFromFolderType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperContentRemoveFromFolderType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperContentRemoveFromFolderType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperContentRemoveFromFolderType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperContentRemoveFromFolderType` struct.
-///
-@interface DBTEAMLOGPaperContentRemoveFromFolderTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperContentRemoveFromFolderTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperContentRemoveFromFolderType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperContentRemoveFromFolderType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperContentRemoveFromFolderType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRemoveFromFolderType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperContentRemoveFromFolderType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperContentRemoveFromFolderType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperContentRemoveFromFolderType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperContentRemoveFromFolderType`
 /// object.
-///
-+ (DBTEAMLOGPaperContentRemoveFromFolderType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperContentRemoveFromFolderType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

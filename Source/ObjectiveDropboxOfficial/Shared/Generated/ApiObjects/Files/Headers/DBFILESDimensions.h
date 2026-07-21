@@ -10,20 +10,21 @@
 
 @class DBFILESDimensions;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `Dimensions` struct.
-///
+/// 
 /// Dimensions for a photo or video.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESDimensions : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESDimensions : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,47 +36,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param height Height of the photo/video.
 /// @param width Width of the photo/video.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithHeight:(NSNumber *)height width:(NSNumber *)width;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `Dimensions` struct.
-///
-@interface DBFILESDimensionsSerializer : NSObject
+/// 
+@interface DBFILESDimensionsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESDimensions` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESDimensions` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESDimensions` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESDimensions *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESDimensions *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESDimensions` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESDimensions` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESDimensions` object.
-///
-+ (DBFILESDimensions *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESDimensions *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,35 +11,36 @@
 @class DBFILESLookupError;
 @class DBFILESSearchError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SearchError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESSearchError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESSearchError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBFILESSearchErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESSearchError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchErrorTag) {
-  /// (no description).
-  DBFILESSearchErrorPath,
+    /// (no description).
+    DBFILESSearchErrorPath,
 
-  /// (no description).
-  DBFILESSearchErrorInvalidArgument,
+    /// (no description).
+    DBFILESSearchErrorInvalidArgument,
 
-  /// Something went wrong, please try again.
-  DBFILESSearchErrorInternalError,
+    /// Something went wrong, please try again.
+    DBFILESSearchErrorInternalError,
 
-  /// (no description).
-  DBFILESSearchErrorOther,
+    /// (no description).
+    DBFILESSearchErrorOther,
 
 };
 
@@ -56,116 +57,118 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESSearchErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "path".
-///
+/// 
 /// @param path (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(DBFILESLookupError *)path;
 
-///
+/// 
 /// Initializes union class with tag state of "invalid_argument".
-///
+/// 
 /// @param invalidArgument (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvalidArgument:(nullable NSString *)invalidArgument;
 
-///
+/// 
 /// Initializes union class with tag state of "internal_error".
-///
+/// 
 /// Description of the "internal_error" tag state: Something went wrong, please
 /// try again.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInternalError;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "path".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `path` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "path".
-///
+/// 
 - (BOOL)isPath;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "invalid_argument".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `invalidArgument` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "invalid_argument".
-///
+/// 
 - (BOOL)isInvalidArgument;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "internal_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "internal_error".
-///
+/// 
 - (BOOL)isInternalError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESSearchError` union.
-///
-@interface DBFILESSearchErrorSerializer : NSObject
+/// 
+@interface DBFILESSearchErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESSearchError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESSearchError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSearchError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESSearchError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESSearchError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESSearchError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESSearchError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESSearchError` object.
-///
-+ (DBFILESSearchError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESSearchError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMRevokeDeviceSessionBatchError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RevokeDeviceSessionBatchError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMRevokeDeviceSessionBatchError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMRevokeDeviceSessionBatchError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,8 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMRevokeDeviceSessionBatchError`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMRevokeDeviceSessionBatchErrorTag) {
-  /// (no description).
-  DBTEAMRevokeDeviceSessionBatchErrorOther,
+    /// (no description).
+    DBTEAMRevokeDeviceSessionBatchErrorOther,
 
 };
 
@@ -39,62 +40,64 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMRevokeDeviceSessionBatchErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMRevokeDeviceSessionBatchError` union.
-///
-@interface DBTEAMRevokeDeviceSessionBatchErrorSerializer : NSObject
+/// 
+@interface DBTEAMRevokeDeviceSessionBatchErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMRevokeDeviceSessionBatchError` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMRevokeDeviceSessionBatchError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeDeviceSessionBatchError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMRevokeDeviceSessionBatchError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMRevokeDeviceSessionBatchError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMRevokeDeviceSessionBatchError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMRevokeDeviceSessionBatchError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMRevokeDeviceSessionBatchError`
 /// object.
-///
-+ (DBTEAMRevokeDeviceSessionBatchError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMRevokeDeviceSessionBatchError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

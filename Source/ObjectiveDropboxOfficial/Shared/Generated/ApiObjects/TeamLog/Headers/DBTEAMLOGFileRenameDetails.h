@@ -11,20 +11,21 @@
 @class DBTEAMLOGFileRenameDetails;
 @class DBTEAMLOGRelocateAssetReferencesLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRenameDetails` struct.
-///
+/// 
 /// Renamed files and/or folders.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileRenameDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileRenameDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,47 +34,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param relocateActionDetails Relocate action details.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithRelocateActionDetails:
-    (NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails;
+/// 
+- (instancetype)initWithRelocateActionDetails:(NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRenameDetails` struct.
-///
-@interface DBTEAMLOGFileRenameDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileRenameDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileRenameDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileRenameDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRenameDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRenameDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileRenameDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileRenameDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRenameDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileRenameDetails` object.
-///
-+ (DBTEAMLOGFileRenameDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileRenameDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

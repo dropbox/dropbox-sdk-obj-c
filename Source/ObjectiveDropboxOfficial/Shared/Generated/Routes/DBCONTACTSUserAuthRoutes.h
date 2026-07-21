@@ -13,13 +13,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Contacts` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBCONTACTSUserAuthRoutes : NSObject
+@interface DBCONTACTSUserAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -29,27 +29,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// Removes all manually added contacts. You'll still keep contacts who are on your team or who you imported. New
 /// contacts will be added when you share.
-///
-///
+/// 
+/// 
 /// @return Through the response callback, the caller will receive a `void` object on success or a `void` object on
 /// failure.
-///
+/// 
 - (DBRpcTask<DBNilObject *, DBNilObject *> *)deleteManualContacts;
 
-///
+/// 
 /// Removes manually added contacts from the given list.
-///
+/// 
 /// @param emailAddresses List of manually added contacts to be deleted.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBCONTACTSDeleteManualContactsError` object on failure.
-///
-- (DBRpcTask<DBNilObject *, DBCONTACTSDeleteManualContactsError *> *)deleteManualContactsBatch:
-    (NSArray<NSString *> *)emailAddresses;
+/// 
+- (DBRpcTask<DBNilObject *, DBCONTACTSDeleteManualContactsError *> *)deleteManualContactsBatch:(NSArray<NSString *> *)emailAddresses;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

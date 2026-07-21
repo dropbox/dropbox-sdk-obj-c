@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGProductLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ProductLogInfo` struct.
-///
+/// 
 /// Product logged information
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGProductLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGProductLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,46 +33,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param productName Product name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithProductName:(NSString *)productName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ProductLogInfo` struct.
-///
-@interface DBTEAMLOGProductLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGProductLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGProductLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGProductLogInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGProductLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProductLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGProductLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGProductLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGProductLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGProductLogInfo` object.
-///
-+ (DBTEAMLOGProductLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGProductLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

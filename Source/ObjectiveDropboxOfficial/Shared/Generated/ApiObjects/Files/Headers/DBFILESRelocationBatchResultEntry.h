@@ -12,18 +12,19 @@
 @class DBFILESRelocationBatchErrorEntry;
 @class DBFILESRelocationBatchResultEntry;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RelocationBatchResultEntry` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESRelocationBatchResultEntry : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESRelocationBatchResultEntry : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,14 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBFILESRelocationBatchResultEntry` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationBatchResultEntryTag) {
-  /// (no description).
-  DBFILESRelocationBatchResultEntrySuccess,
+    /// (no description).
+    DBFILESRelocationBatchResultEntrySuccess,
 
-  /// (no description).
-  DBFILESRelocationBatchResultEntryFailure,
+    /// (no description).
+    DBFILESRelocationBatchResultEntryFailure,
 
-  /// (no description).
-  DBFILESRelocationBatchResultEntryOther,
+    /// (no description).
+    DBFILESRelocationBatchResultEntryOther,
 
 };
 
@@ -55,99 +56,101 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationBatchResultEntryTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "success".
-///
+/// 
 /// @param success (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSuccess:(DBFILESMetadata *)success;
 
-///
+/// 
 /// Initializes union class with tag state of "failure".
-///
+/// 
 /// @param failure (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFailure:(DBFILESRelocationBatchErrorEntry *)failure;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "success".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `success` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "success".
-///
+/// 
 - (BOOL)isSuccess;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "failure".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `failure` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "failure".
-///
+/// 
 - (BOOL)isFailure;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESRelocationBatchResultEntry` union.
-///
-@interface DBFILESRelocationBatchResultEntrySerializer : NSObject
+/// 
+@interface DBFILESRelocationBatchResultEntrySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESRelocationBatchResultEntry` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESRelocationBatchResultEntry` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationBatchResultEntry` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationBatchResultEntry *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESRelocationBatchResultEntry *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESRelocationBatchResultEntry` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESRelocationBatchResultEntry` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESRelocationBatchResultEntry` object.
-///
-+ (DBFILESRelocationBatchResultEntry *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESRelocationBatchResultEntry *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGClassificationCreateReportFailType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ClassificationCreateReportFailType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGClassificationCreateReportFailType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGClassificationCreateReportFailType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ClassificationCreateReportFailType` struct.
-///
-@interface DBTEAMLOGClassificationCreateReportFailTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGClassificationCreateReportFailTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGClassificationCreateReportFailType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGClassificationCreateReportFailType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGClassificationCreateReportFailType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGClassificationCreateReportFailType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGClassificationCreateReportFailType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGClassificationCreateReportFailType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGClassificationCreateReportFailType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGClassificationCreateReportFailType` object.
-///
-+ (DBTEAMLOGClassificationCreateReportFailType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGClassificationCreateReportFailType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

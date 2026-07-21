@@ -12,18 +12,19 @@
 @class DBPAPERUserInfoWithPermissionLevel;
 @class DBSHARINGUserInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserInfoWithPermissionLevel` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERUserInfoWithPermissionLevel : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERUserInfoWithPermissionLevel : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,49 +36,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user User shared on the Paper doc.
 /// @param permissionLevel Permission level for the user.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUser:(DBSHARINGUserInfo *)user
-             permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel;
+/// 
+- (instancetype)initWithUser:(DBSHARINGUserInfo *)user permissionLevel:(DBPAPERPaperDocPermissionLevel *)permissionLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UserInfoWithPermissionLevel` struct.
-///
-@interface DBPAPERUserInfoWithPermissionLevelSerializer : NSObject
+/// 
+@interface DBPAPERUserInfoWithPermissionLevelSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERUserInfoWithPermissionLevel` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERUserInfoWithPermissionLevel` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERUserInfoWithPermissionLevel` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERUserInfoWithPermissionLevel *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERUserInfoWithPermissionLevel *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERUserInfoWithPermissionLevel` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERUserInfoWithPermissionLevel` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERUserInfoWithPermissionLevel` object.
-///
-+ (DBPAPERUserInfoWithPermissionLevel *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERUserInfoWithPermissionLevel *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

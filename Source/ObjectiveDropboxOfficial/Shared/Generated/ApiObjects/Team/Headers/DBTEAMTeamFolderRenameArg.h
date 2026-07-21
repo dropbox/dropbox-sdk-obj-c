@@ -11,18 +11,19 @@
 
 @class DBTEAMTeamFolderRenameArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderRenameArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderRenameArg : DBTEAMTeamFolderIdArg <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderRenameArg : DBTEAMTeamFolderIdArg <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,45 +32,47 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamFolderId The ID of the team folder.
 /// @param name New team folder name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId name:(NSString *)name;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderRenameArg` struct.
-///
-@interface DBTEAMTeamFolderRenameArgSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderRenameArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderRenameArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderRenameArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderRenameArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderRenameArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderRenameArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderRenameArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderRenameArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderRenameArg` object.
-///
-+ (DBTEAMTeamFolderRenameArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderRenameArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,18 +12,19 @@
 @class DBRIVIERAMetadataType;
 @class DBRIVIERAMetadataUnion;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetMetadataResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetMetadataResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetMetadataResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,59 +37,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param metadataType The kind of metadata that was extracted for the
 /// requested file. Callers should read the matching field of the `metadata`
 /// oneof.
 /// @param metadata (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithMetadataType:(nullable DBRIVIERAMetadataType *)metadataType
-                            metadata:(nullable DBRIVIERAMetadataUnion *)metadata;
+/// 
+- (instancetype)initWithMetadataType:(nullable DBRIVIERAMetadataType *)metadataType metadata:(nullable DBRIVIERAMetadataUnion *)metadata;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetMetadataResult` struct.
-///
-@interface DBRIVIERAGetMetadataResultSerializer : NSObject
+/// 
+@interface DBRIVIERAGetMetadataResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetMetadataResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetMetadataResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMetadataResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetMetadataResult *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetMetadataResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMetadataResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetMetadataResult` object.
-///
-+ (DBRIVIERAGetMetadataResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetMetadataResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

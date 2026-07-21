@@ -12,18 +12,19 @@
 @class DBTEAMLegalHoldStatus;
 @class DBTEAMMembersInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldPolicy` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLegalHoldPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLegalHoldPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -53,9 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param id_ The legal hold id.
 /// @param name Policy name.
 /// @param members Team members IDs and number of permanently deleted members
@@ -65,68 +66,59 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param description_ A description of the legal hold policy.
 /// @param activationTime The time at which the legal hold was activated.
 /// @param endDate End date of the legal hold policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithId_:(NSString *)id_
-                       name:(NSString *)name
-                    members:(DBTEAMMembersInfo *)members
-                     status:(DBTEAMLegalHoldStatus *)status
-                  startDate:(NSDate *)startDate
-               description_:(nullable NSString *)description_
-             activationTime:(nullable NSDate *)activationTime
-                    endDate:(nullable NSDate *)endDate;
+/// 
+- (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name members:(DBTEAMMembersInfo *)members status:(DBTEAMLegalHoldStatus *)status startDate:(NSDate *)startDate description_:(nullable NSString *)description_ activationTime:(nullable NSDate *)activationTime endDate:(nullable NSDate *)endDate;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param id_ The legal hold id.
 /// @param name Policy name.
 /// @param members Team members IDs and number of permanently deleted members
 /// under hold.
 /// @param status The current state of the hold.
 /// @param startDate Start date of the legal hold policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithId_:(NSString *)id_
-                       name:(NSString *)name
-                    members:(DBTEAMMembersInfo *)members
-                     status:(DBTEAMLegalHoldStatus *)status
-                  startDate:(NSDate *)startDate;
+/// 
+- (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name members:(DBTEAMMembersInfo *)members status:(DBTEAMLegalHoldStatus *)status startDate:(NSDate *)startDate;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LegalHoldPolicy` struct.
-///
-@interface DBTEAMLegalHoldPolicySerializer : NSObject
+/// 
+@interface DBTEAMLegalHoldPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLegalHoldPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLegalHoldPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLegalHoldPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLegalHoldPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLegalHoldPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLegalHoldPolicy` object.
-///
-+ (DBTEAMLegalHoldPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLegalHoldPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

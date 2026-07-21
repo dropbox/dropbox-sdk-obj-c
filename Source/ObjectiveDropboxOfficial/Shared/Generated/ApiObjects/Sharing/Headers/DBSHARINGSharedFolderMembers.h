@@ -13,20 +13,21 @@
 @class DBSHARINGSharedFolderMembers;
 @class DBSHARINGUserMembershipInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFolderMembers` struct.
-///
+/// 
 /// Shared folder user and group membership.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGSharedFolderMembers : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGSharedFolderMembers : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,69 +47,66 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param users The list of user members of the shared folder.
 /// @param groups The list of group members of the shared folder.
 /// @param invitees The list of invitees to the shared folder.
 /// @param cursor Present if there are additional shared folder members that
 /// have not been returned yet. Pass the cursor into `listFolderMembersContinue`
 /// to list additional members.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUsers:(NSArray<DBSHARINGUserMembershipInfo *> *)users
-                       groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups
-                     invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees
-                       cursor:(nullable NSString *)cursor;
+/// 
+- (instancetype)initWithUsers:(NSArray<DBSHARINGUserMembershipInfo *> *)users groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees cursor:(nullable NSString *)cursor;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param users The list of user members of the shared folder.
 /// @param groups The list of group members of the shared folder.
 /// @param invitees The list of invitees to the shared folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUsers:(NSArray<DBSHARINGUserMembershipInfo *> *)users
-                       groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups
-                     invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees;
+/// 
+- (instancetype)initWithUsers:(NSArray<DBSHARINGUserMembershipInfo *> *)users groups:(NSArray<DBSHARINGGroupMembershipInfo *> *)groups invitees:(NSArray<DBSHARINGInviteeMembershipInfo *> *)invitees;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFolderMembers` struct.
-///
-@interface DBSHARINGSharedFolderMembersSerializer : NSObject
+/// 
+@interface DBSHARINGSharedFolderMembersSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGSharedFolderMembers` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGSharedFolderMembers` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFolderMembers` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedFolderMembers *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGSharedFolderMembers *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGSharedFolderMembers` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFolderMembers` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGSharedFolderMembers` object.
-///
-+ (DBSHARINGSharedFolderMembers *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGSharedFolderMembers *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,18 +12,19 @@
 @class DBFILESLockFileResult;
 @class DBFILESMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LockFileResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESLockFileResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESLockFileResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,47 +36,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param metadata Metadata of the file.
 /// @param lock Field is deprecated. The file lock state after the operation.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadata:(DBFILESMetadata *)metadata lock:(DBFILESFileLock *)lock;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LockFileResult` struct.
-///
-@interface DBFILESLockFileResultSerializer : NSObject
+/// 
+@interface DBFILESLockFileResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESLockFileResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESLockFileResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESLockFileResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESLockFileResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESLockFileResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESLockFileResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESLockFileResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESLockFileResult` object.
-///
-+ (DBFILESLockFileResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESLockFileResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

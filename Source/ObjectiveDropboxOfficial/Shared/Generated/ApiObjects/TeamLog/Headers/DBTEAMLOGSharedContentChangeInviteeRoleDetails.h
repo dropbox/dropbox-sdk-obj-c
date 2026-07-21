@@ -11,21 +11,22 @@
 @class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedContentChangeInviteeRoleDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentChangeInviteeRoleDetails` struct.
-///
+/// 
 /// Changed access type of invitee to shared file/folder before invite was
 /// accepted.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentChangeInviteeRoleDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentChangeInviteeRoleDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,65 +41,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewAccessLevel New access level.
 /// @param invitee The invitee whose role was changed.
 /// @param previousAccessLevel Previous access level. Might be missing due to
 /// historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewAccessLevel:(DBSHARINGAccessLevel *)dNewAccessLevel
-                                invitee:(NSString *)invitee
-                    previousAccessLevel:(nullable DBSHARINGAccessLevel *)previousAccessLevel;
+/// 
+- (instancetype)initWithDNewAccessLevel:(DBSHARINGAccessLevel *)dNewAccessLevel invitee:(NSString *)invitee previousAccessLevel:(nullable DBSHARINGAccessLevel *)previousAccessLevel;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewAccessLevel New access level.
 /// @param invitee The invitee whose role was changed.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewAccessLevel:(DBSHARINGAccessLevel *)dNewAccessLevel invitee:(NSString *)invitee;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentChangeInviteeRoleDetails`
 /// struct.
-///
-@interface DBTEAMLOGSharedContentChangeInviteeRoleDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentChangeInviteeRoleDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentChangeInviteeRoleDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedContentChangeInviteeRoleDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeInviteeRoleDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentChangeInviteeRoleDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentChangeInviteeRoleDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeInviteeRoleDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentChangeInviteeRoleDetails` object.
-///
-+ (DBTEAMLOGSharedContentChangeInviteeRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentChangeInviteeRoleDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

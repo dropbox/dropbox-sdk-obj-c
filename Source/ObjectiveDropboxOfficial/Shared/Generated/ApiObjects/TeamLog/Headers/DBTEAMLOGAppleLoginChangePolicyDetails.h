@@ -11,20 +11,21 @@
 @class DBTEAMLOGAppleLoginChangePolicyDetails;
 @class DBTEAMLOGAppleLoginPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AppleLoginChangePolicyDetails` struct.
-///
+/// 
 /// Enabled/disabled Apple login for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAppleLoginChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAppleLoginChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,61 +37,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New Apple login policy.
 /// @param previousValue Previous Apple login policy. Might be missing due to
 /// historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGAppleLoginPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGAppleLoginPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGAppleLoginPolicy *)dNewValue previousValue:(nullable DBTEAMLOGAppleLoginPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New Apple login policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGAppleLoginPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AppleLoginChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGAppleLoginChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAppleLoginChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAppleLoginChangePolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAppleLoginChangePolicyDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppleLoginChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppleLoginChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAppleLoginChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAppleLoginChangePolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppleLoginChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAppleLoginChangePolicyDetails`
 /// object.
-///
-+ (DBTEAMLOGAppleLoginChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAppleLoginChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMFeaturesGetValuesBatchError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FeaturesGetValuesBatchError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMFeaturesGetValuesBatchError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMFeaturesGetValuesBatchError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,12 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMFeaturesGetValuesBatchError` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeaturesGetValuesBatchErrorTag) {
-  /// At least one Feature must be included in the
-  /// FeaturesGetValuesBatchArg.features list.
-  DBTEAMFeaturesGetValuesBatchErrorEmptyFeaturesList,
+    /// At least one Feature must be included in the
+    /// FeaturesGetValuesBatchArg.features list.
+    DBTEAMFeaturesGetValuesBatchErrorEmptyFeaturesList,
 
-  /// (no description).
-  DBTEAMFeaturesGetValuesBatchErrorOther,
+    /// (no description).
+    DBTEAMFeaturesGetValuesBatchErrorOther,
 
 };
 
@@ -43,80 +44,82 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMFeaturesGetValuesBatchErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "empty_features_list".
-///
+/// 
 /// Description of the "empty_features_list" tag state: At least one Feature
 /// must be included in the FeaturesGetValuesBatchArg.features list.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEmptyFeaturesList;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "empty_features_list".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "empty_features_list".
-///
+/// 
 - (BOOL)isEmptyFeaturesList;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMFeaturesGetValuesBatchError` union.
-///
-@interface DBTEAMFeaturesGetValuesBatchErrorSerializer : NSObject
+/// 
+@interface DBTEAMFeaturesGetValuesBatchErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMFeaturesGetValuesBatchError` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMFeaturesGetValuesBatchError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMFeaturesGetValuesBatchError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMFeaturesGetValuesBatchError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMFeaturesGetValuesBatchError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMFeaturesGetValuesBatchError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMFeaturesGetValuesBatchError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMFeaturesGetValuesBatchError` object.
-///
-+ (DBTEAMFeaturesGetValuesBatchError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMFeaturesGetValuesBatchError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

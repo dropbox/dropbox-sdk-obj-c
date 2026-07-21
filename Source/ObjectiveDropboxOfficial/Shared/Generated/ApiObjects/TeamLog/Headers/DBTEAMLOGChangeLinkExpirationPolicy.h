@@ -10,21 +10,22 @@
 
 @class DBTEAMLOGChangeLinkExpirationPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ChangeLinkExpirationPolicy` union.
-///
+/// 
 /// Policy for deciding whether the team's default expiration days policy must
 /// be enforced when an externally shared link is updated
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGChangeLinkExpirationPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGChangeLinkExpirationPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,14 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGChangeLinkExpirationPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGChangeLinkExpirationPolicyTag) {
-  /// (no description).
-  DBTEAMLOGChangeLinkExpirationPolicyAllowed,
+    /// (no description).
+    DBTEAMLOGChangeLinkExpirationPolicyAllowed,
 
-  /// (no description).
-  DBTEAMLOGChangeLinkExpirationPolicyNotAllowed,
+    /// (no description).
+    DBTEAMLOGChangeLinkExpirationPolicyNotAllowed,
 
-  /// (no description).
-  DBTEAMLOGChangeLinkExpirationPolicyOther,
+    /// (no description).
+    DBTEAMLOGChangeLinkExpirationPolicyOther,
 
 };
 
@@ -48,90 +49,92 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGChangeLinkExpirationPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "allowed".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAllowed;
 
-///
+/// 
 /// Initializes union class with tag state of "not_allowed".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNotAllowed;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "allowed".
-///
+/// 
 /// @return Whether the union's current tag state has value "allowed".
-///
+/// 
 - (BOOL)isAllowed;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "not_allowed".
-///
+/// 
 /// @return Whether the union's current tag state has value "not_allowed".
-///
+/// 
 - (BOOL)isNotAllowed;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGChangeLinkExpirationPolicy` union.
-///
-@interface DBTEAMLOGChangeLinkExpirationPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGChangeLinkExpirationPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGChangeLinkExpirationPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGChangeLinkExpirationPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGChangeLinkExpirationPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGChangeLinkExpirationPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGChangeLinkExpirationPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGChangeLinkExpirationPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGChangeLinkExpirationPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGChangeLinkExpirationPolicy`
 /// object.
-///
-+ (DBTEAMLOGChangeLinkExpirationPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGChangeLinkExpirationPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

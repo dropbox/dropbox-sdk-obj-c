@@ -12,18 +12,19 @@
 @class DBTEAMTeamFolderArchiveJobStatus;
 @class DBTEAMTeamFolderMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderArchiveJobStatus` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderArchiveJobStatus : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderArchiveJobStatus : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,16 +32,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMTeamFolderArchiveJobStatus` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderArchiveJobStatusTag) {
-  /// The asynchronous job is still in progress.
-  DBTEAMTeamFolderArchiveJobStatusInProgress,
+    /// The asynchronous job is still in progress.
+    DBTEAMTeamFolderArchiveJobStatusInProgress,
 
-  /// The archive job has finished. The value is the metadata for the
-  /// resulting team folder.
-  DBTEAMTeamFolderArchiveJobStatusComplete,
+    /// The archive job has finished. The value is the metadata for the
+    /// resulting team folder.
+    DBTEAMTeamFolderArchiveJobStatusComplete,
 
-  /// Error occurred while performing an asynchronous job from
-  /// `teamFolderArchive`.
-  DBTEAMTeamFolderArchiveJobStatusFailed,
+    /// Error occurred while performing an asynchronous job from
+    /// `teamFolderArchive`.
+    DBTEAMTeamFolderArchiveJobStatusFailed,
 
 };
 
@@ -59,110 +60,112 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderArchiveJobStatusTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "in_progress".
-///
+/// 
 /// Description of the "in_progress" tag state: The asynchronous job is still in
 /// progress.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInProgress;
 
-///
+/// 
 /// Initializes union class with tag state of "complete".
-///
+/// 
 /// Description of the "complete" tag state: The archive job has finished. The
 /// value is the metadata for the resulting team folder.
-///
+/// 
 /// @param complete The archive job has finished. The value is the metadata for
 /// the resulting team folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithComplete:(DBTEAMTeamFolderMetadata *)complete;
 
-///
+/// 
 /// Initializes union class with tag state of "failed".
-///
+/// 
 /// Description of the "failed" tag state: Error occurred while performing an
 /// asynchronous job from `teamFolderArchive`.
-///
+/// 
 /// @param failed Error occurred while performing an asynchronous job from
 /// `teamFolderArchive`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFailed:(DBTEAMTeamFolderArchiveError *)failed;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "in_progress".
-///
+/// 
 /// @return Whether the union's current tag state has value "in_progress".
-///
+/// 
 - (BOOL)isInProgress;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "complete".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `complete` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "complete".
-///
+/// 
 - (BOOL)isComplete;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "failed".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `failed` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "failed".
-///
+/// 
 - (BOOL)isFailed;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMTeamFolderArchiveJobStatus` union.
-///
-@interface DBTEAMTeamFolderArchiveJobStatusSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderArchiveJobStatusSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderArchiveJobStatus` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderArchiveJobStatus` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderArchiveJobStatus` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderArchiveJobStatus *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderArchiveJobStatus *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderArchiveJobStatus` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderArchiveJobStatus` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderArchiveJobStatus` object.
-///
-+ (DBTEAMTeamFolderArchiveJobStatus *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderArchiveJobStatus *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

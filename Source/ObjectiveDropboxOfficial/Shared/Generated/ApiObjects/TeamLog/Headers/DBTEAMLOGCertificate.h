@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGCertificate;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `Certificate` struct.
-///
+/// 
 /// Certificate details.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGCertificate : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGCertificate : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -50,9 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param subject Certificate subject.
 /// @param issuer Certificate issuer.
 /// @param issueDate Certificate issue date.
@@ -60,68 +61,59 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param serialNumber Certificate serial number.
 /// @param sha1Fingerprint Certificate sha1 fingerprint.
 /// @param commonName Certificate common name.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSubject:(NSString *)subject
-                         issuer:(NSString *)issuer
-                      issueDate:(NSString *)issueDate
-                 expirationDate:(NSString *)expirationDate
-                   serialNumber:(NSString *)serialNumber
-                sha1Fingerprint:(NSString *)sha1Fingerprint
-                     commonName:(nullable NSString *)commonName;
+/// 
+- (instancetype)initWithSubject:(NSString *)subject issuer:(NSString *)issuer issueDate:(NSString *)issueDate expirationDate:(NSString *)expirationDate serialNumber:(NSString *)serialNumber sha1Fingerprint:(NSString *)sha1Fingerprint commonName:(nullable NSString *)commonName;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param subject Certificate subject.
 /// @param issuer Certificate issuer.
 /// @param issueDate Certificate issue date.
 /// @param expirationDate Certificate expiration date.
 /// @param serialNumber Certificate serial number.
 /// @param sha1Fingerprint Certificate sha1 fingerprint.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSubject:(NSString *)subject
-                         issuer:(NSString *)issuer
-                      issueDate:(NSString *)issueDate
-                 expirationDate:(NSString *)expirationDate
-                   serialNumber:(NSString *)serialNumber
-                sha1Fingerprint:(NSString *)sha1Fingerprint;
+/// 
+- (instancetype)initWithSubject:(NSString *)subject issuer:(NSString *)issuer issueDate:(NSString *)issueDate expirationDate:(NSString *)expirationDate serialNumber:(NSString *)serialNumber sha1Fingerprint:(NSString *)sha1Fingerprint;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `Certificate` struct.
-///
-@interface DBTEAMLOGCertificateSerializer : NSObject
+/// 
+@interface DBTEAMLOGCertificateSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGCertificate` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGCertificate` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGCertificate` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCertificate *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGCertificate *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGCertificate` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGCertificate` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGCertificate` object.
-///
-+ (DBTEAMLOGCertificate *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGCertificate *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

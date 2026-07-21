@@ -13,26 +13,26 @@
 #import "DBStoneBase.h"
 #import "DBTransportClientProtocol.h"
 
-@implementation DBCHECKAppAuthRoutes
+@implementation DBCHECKAppAuthRoutes 
 
 - (instancetype)init:(id<DBTransportClient>)client {
-  self = [super init];
-  if (self) {
-    _client = client;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _client = client;
+    }
+    return self;
 }
 
 - (DBRpcTask *)app {
-  DBRoute *route = DBCHECKRouteObjects.DBCHECKApp;
-  DBCHECKEchoArg *arg = [[DBCHECKEchoArg alloc] initDefault];
-  return [self.client requestRpc:route arg:arg];
+    DBRoute *route = DBCHECKRouteObjects.DBCHECKApp;
+    DBCHECKEchoArg *arg = [[DBCHECKEchoArg alloc] initDefault];
+    return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)app:(NSString *)query {
-  DBRoute *route = DBCHECKRouteObjects.DBCHECKApp;
-  DBCHECKEchoArg *arg = [[DBCHECKEchoArg alloc] initWithQuery:query];
-  return [self.client requestRpc:route arg:arg];
+    DBRoute *route = DBCHECKRouteObjects.DBCHECKApp;
+    DBCHECKEchoArg *arg = [[DBCHECKEchoArg alloc] initWithQuery:query];
+    return [self.client requestRpc:route arg:arg];
 }
 
 @end

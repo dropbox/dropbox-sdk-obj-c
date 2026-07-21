@@ -11,20 +11,21 @@
 @class DBTEAMLOGNetworkControlChangePolicyDetails;
 @class DBTEAMLOGNetworkControlPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `NetworkControlChangePolicyDetails` struct.
-///
+/// 
 /// Enabled/disabled network control.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGNetworkControlChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGNetworkControlChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,61 +38,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New network control policy.
 /// @param previousValue Previous network control policy. Might be missing due
 /// to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGNetworkControlPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGNetworkControlPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGNetworkControlPolicy *)dNewValue previousValue:(nullable DBTEAMLOGNetworkControlPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New network control policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGNetworkControlPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `NetworkControlChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGNetworkControlChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGNetworkControlChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGNetworkControlChangePolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGNetworkControlChangePolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNetworkControlChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNetworkControlChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGNetworkControlChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGNetworkControlChangePolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGNetworkControlChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGNetworkControlChangePolicyDetails`
 /// object.
-///
-+ (DBTEAMLOGNetworkControlChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGNetworkControlChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

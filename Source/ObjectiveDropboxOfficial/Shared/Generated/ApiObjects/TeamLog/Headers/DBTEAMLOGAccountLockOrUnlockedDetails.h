@@ -11,20 +11,21 @@
 @class DBTEAMLOGAccountLockOrUnlockedDetails;
 @class DBTEAMLOGAccountState;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccountLockOrUnlockedDetails` struct.
-///
+/// 
 /// Unlocked/locked account after failed sign in attempts.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAccountLockOrUnlockedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAccountLockOrUnlockedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue The previous account status.
 /// @param dNewValue The new account status.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGAccountState *)previousValue
-                            dNewValue:(DBTEAMLOGAccountState *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGAccountState *)previousValue dNewValue:(DBTEAMLOGAccountState *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AccountLockOrUnlockedDetails` struct.
-///
-@interface DBTEAMLOGAccountLockOrUnlockedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAccountLockOrUnlockedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAccountLockOrUnlockedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAccountLockOrUnlockedDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountLockOrUnlockedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountLockOrUnlockedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAccountLockOrUnlockedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAccountLockOrUnlockedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountLockOrUnlockedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAccountLockOrUnlockedDetails`
 /// object.
-///
-+ (DBTEAMLOGAccountLockOrUnlockedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAccountLockOrUnlockedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

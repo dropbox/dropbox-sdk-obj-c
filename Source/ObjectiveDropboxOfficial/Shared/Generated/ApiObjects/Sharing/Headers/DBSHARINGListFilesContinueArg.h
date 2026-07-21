@@ -10,20 +10,21 @@
 
 @class DBSHARINGListFilesContinueArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFilesContinueArg` struct.
-///
+/// 
 /// Arguments for `listReceivedFilesContinue`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGListFilesContinueArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGListFilesContinueArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param cursor Cursor in `cursor` in `DBSHARINGListFilesResult`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCursor:(NSString *)cursor;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFilesContinueArg` struct.
-///
-@interface DBSHARINGListFilesContinueArgSerializer : NSObject
+/// 
+@interface DBSHARINGListFilesContinueArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGListFilesContinueArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGListFilesContinueArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFilesContinueArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGListFilesContinueArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGListFilesContinueArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGListFilesContinueArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFilesContinueArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGListFilesContinueArg` object.
-///
-+ (DBSHARINGListFilesContinueArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGListFilesContinueArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

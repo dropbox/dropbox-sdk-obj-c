@@ -11,20 +11,21 @@
 @class DBTEAMLOGMemberChangeNameDetails;
 @class DBTEAMLOGUserNameLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberChangeNameDetails` struct.
-///
+/// 
 /// Changed team member name.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberChangeNameDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberChangeNameDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,60 +37,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New user's name.
 /// @param previousValue Previous user's name. Might be missing due to
 /// historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGUserNameLogInfo *)dNewValue
-                    previousValue:(nullable DBTEAMLOGUserNameLogInfo *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGUserNameLogInfo *)dNewValue previousValue:(nullable DBTEAMLOGUserNameLogInfo *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New user's name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGUserNameLogInfo *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberChangeNameDetails` struct.
-///
-@interface DBTEAMLOGMemberChangeNameDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberChangeNameDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberChangeNameDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberChangeNameDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeNameDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeNameDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberChangeNameDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberChangeNameDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeNameDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberChangeNameDetails` object.
-///
-+ (DBTEAMLOGMemberChangeNameDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberChangeNameDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

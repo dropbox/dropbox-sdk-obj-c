@@ -11,18 +11,19 @@
 @class DBTEAMMembersDeleteProfilePhotoArg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersDeleteProfilePhotoArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersDeleteProfilePhotoArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersDeleteProfilePhotoArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,47 +32,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user Identity of the user whose profile photo will be deleted.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersDeleteProfilePhotoArg` struct.
-///
-@interface DBTEAMMembersDeleteProfilePhotoArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersDeleteProfilePhotoArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersDeleteProfilePhotoArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersDeleteProfilePhotoArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersDeleteProfilePhotoArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersDeleteProfilePhotoArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersDeleteProfilePhotoArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersDeleteProfilePhotoArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersDeleteProfilePhotoArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersDeleteProfilePhotoArg` object.
-///
-+ (DBTEAMMembersDeleteProfilePhotoArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersDeleteProfilePhotoArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

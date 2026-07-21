@@ -13,21 +13,22 @@
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMCOMMONGroupType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupInfo` struct.
-///
+/// 
 /// The information about a group. Groups is a way to manage a list of users who
 /// need same access permission to the shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGGroupInfo : DBTEAMCOMMONGroupSummary <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGGroupInfo : DBTEAMCOMMONGroupSummary <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -45,9 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
@@ -58,23 +59,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param groupExternalId External ID of group. This is an arbitrary ID that an
 /// admin can attach to a group.
 /// @param memberCount The number of members in the group.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGroupName:(NSString *)groupName
-                          groupId:(NSString *)groupId
-              groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType
-                        groupType:(DBTEAMCOMMONGroupType *)groupType
-                         isMember:(NSNumber *)isMember
-                          isOwner:(NSNumber *)isOwner
-                         sameTeam:(NSNumber *)sameTeam
-                  groupExternalId:(nullable NSString *)groupExternalId
-                      memberCount:(nullable NSNumber *)memberCount;
+/// 
+- (instancetype)initWithGroupName:(NSString *)groupName groupId:(NSString *)groupId groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType groupType:(DBTEAMCOMMONGroupType *)groupType isMember:(NSNumber *)isMember isOwner:(NSNumber *)isOwner sameTeam:(NSNumber *)sameTeam groupExternalId:(nullable NSString *)groupExternalId memberCount:(nullable NSNumber *)memberCount;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
@@ -82,46 +75,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param isMember If the current user is a member of the group.
 /// @param isOwner If the current user is an owner of the group.
 /// @param sameTeam If the group is owned by the current user's team.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGroupName:(NSString *)groupName
-                          groupId:(NSString *)groupId
-              groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType
-                        groupType:(DBTEAMCOMMONGroupType *)groupType
-                         isMember:(NSNumber *)isMember
-                          isOwner:(NSNumber *)isOwner
-                         sameTeam:(NSNumber *)sameTeam;
+/// 
+- (instancetype)initWithGroupName:(NSString *)groupName groupId:(NSString *)groupId groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType groupType:(DBTEAMCOMMONGroupType *)groupType isMember:(NSNumber *)isMember isOwner:(NSNumber *)isOwner sameTeam:(NSNumber *)sameTeam;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GroupInfo` struct.
-///
-@interface DBSHARINGGroupInfoSerializer : NSObject
+/// 
+@interface DBSHARINGGroupInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGGroupInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGGroupInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGroupInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGGroupInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGGroupInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGGroupInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGGroupInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGGroupInfo` object.
-///
-+ (DBSHARINGGroupInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGGroupInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+
