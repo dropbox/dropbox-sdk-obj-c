@@ -11,18 +11,19 @@
 @class DBFILESUploadSessionAppendBatchEntryError;
 @class DBFILESUploadSessionAppendBatchResultEntry;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionAppendBatchResultEntry` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionAppendBatchResultEntry : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionAppendBatchResultEntry : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,11 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the
 /// `DBFILESUploadSessionAppendBatchResultEntry` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendBatchResultEntryTag) {
-  /// (no description).
-  DBFILESUploadSessionAppendBatchResultEntrySuccess,
+    /// (no description).
+    DBFILESUploadSessionAppendBatchResultEntrySuccess,
 
-  /// (no description).
-  DBFILESUploadSessionAppendBatchResultEntryFailure,
+    /// (no description).
+    DBFILESUploadSessionAppendBatchResultEntryFailure,
 
 };
 
@@ -47,82 +48,84 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendBatchResultEntryTag)
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "success".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSuccess;
 
-///
+/// 
 /// Initializes union class with tag state of "failure".
-///
+/// 
 /// @param failure (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFailure:(DBFILESUploadSessionAppendBatchEntryError *)failure;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "success".
-///
+/// 
 /// @return Whether the union's current tag state has value "success".
-///
+/// 
 - (BOOL)isSuccess;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "failure".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `failure` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "failure".
-///
+/// 
 - (BOOL)isFailure;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESUploadSessionAppendBatchResultEntry`
 /// union.
-///
-@interface DBFILESUploadSessionAppendBatchResultEntrySerializer : NSObject
+/// 
+@interface DBFILESUploadSessionAppendBatchResultEntrySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionAppendBatchResultEntry` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBFILESUploadSessionAppendBatchResultEntry` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchResultEntry` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionAppendBatchResultEntry *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionAppendBatchResultEntry *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionAppendBatchResultEntry` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchResultEntry` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionAppendBatchResultEntry`
 /// object.
-///
-+ (DBFILESUploadSessionAppendBatchResultEntry *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionAppendBatchResultEntry *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

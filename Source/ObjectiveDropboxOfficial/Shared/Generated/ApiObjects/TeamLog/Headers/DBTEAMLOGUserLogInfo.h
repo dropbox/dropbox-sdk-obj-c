@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGUserLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserLogInfo` struct.
-///
+/// 
 /// User's logged information.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGUserLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGUserLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,59 +39,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accountId User unique ID.
 /// @param displayName User display name.
 /// @param email User email address.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccountId:(nullable NSString *)accountId
-                      displayName:(nullable NSString *)displayName
-                            email:(nullable NSString *)email;
+/// 
+- (instancetype)initWithAccountId:(nullable NSString *)accountId displayName:(nullable NSString *)displayName email:(nullable NSString *)email;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UserLogInfo` struct.
-///
-@interface DBTEAMLOGUserLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGUserLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGUserLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGUserLogInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGUserLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGUserLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGUserLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGUserLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGUserLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGUserLogInfo` object.
-///
-+ (DBTEAMLOGUserLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGUserLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

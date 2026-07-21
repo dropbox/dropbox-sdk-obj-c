@@ -12,18 +12,19 @@
 @class DBFILESListFolderArg;
 @class DBFILESSharedLink;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFolderArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESListFolderArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESListFolderArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -81,9 +82,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path A unique identifier for the file.
 /// @param recursive If true, the list folder operation will be applied
 /// recursively to all subfolders and the response will contain contents of all
@@ -116,62 +117,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// downloadable, i.e. Google Docs.
 /// @param includeRestorableInfo If true, each returned deleted entry will
 /// include whether that entry can be restored.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPath:(NSString *)path
-                          recursive:(nullable NSNumber *)recursive
-                   includeMediaInfo:(nullable NSNumber *)includeMediaInfo
-                     includeDeleted:(nullable NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
-              includeMountedFolders:(nullable NSNumber *)includeMountedFolders
-                              limit:(nullable NSNumber *)limit
-                         sharedLink:(nullable DBFILESSharedLink *)sharedLink
-              includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
-        includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles
-              includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
+/// 
+- (instancetype)initWithPath:(NSString *)path recursive:(nullable NSNumber *)recursive includeMediaInfo:(nullable NSNumber *)includeMediaInfo includeDeleted:(nullable NSNumber *)includeDeleted includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers includeMountedFolders:(nullable NSNumber *)includeMountedFolders limit:(nullable NSNumber *)limit sharedLink:(nullable DBFILESSharedLink *)sharedLink includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param path A unique identifier for the file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFolderArg` struct.
-///
-@interface DBFILESListFolderArgSerializer : NSObject
+/// 
+@interface DBFILESListFolderArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESListFolderArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESListFolderArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListFolderArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESListFolderArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESListFolderArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESListFolderArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESListFolderArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESListFolderArg` object.
-///
-+ (DBFILESListFolderArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESListFolderArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

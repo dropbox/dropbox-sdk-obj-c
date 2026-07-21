@@ -11,20 +11,21 @@
 @class DBTEAMLOGPaperDesktopPolicy;
 @class DBTEAMLOGPaperDesktopPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDesktopPolicyChangedDetails` struct.
-///
+/// 
 /// Enabled/disabled Paper Desktop for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDesktopPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDesktopPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New Paper Desktop policy.
 /// @param previousValue Previous Paper Desktop policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGPaperDesktopPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGPaperDesktopPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGPaperDesktopPolicy *)dNewValue previousValue:(DBTEAMLOGPaperDesktopPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDesktopPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDesktopPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDesktopPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperDesktopPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDesktopPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDesktopPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDesktopPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDesktopPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDesktopPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperDesktopPolicyChangedDetails`
 /// object.
-///
-+ (DBTEAMLOGPaperDesktopPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDesktopPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

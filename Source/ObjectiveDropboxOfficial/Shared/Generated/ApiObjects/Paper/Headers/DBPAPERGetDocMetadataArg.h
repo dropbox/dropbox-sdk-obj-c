@@ -10,21 +10,22 @@
 
 @class DBPAPERGetDocMetadataArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetDocMetadataArg` struct.
-///
+/// 
 /// Argument for retrieving Paper doc metadata. Accepts either a legacy Paper
 /// doc ID or a Cloud Doc file ID.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERGetDocMetadataArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERGetDocMetadataArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,56 +37,58 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param docId Legacy Paper doc identifier.
 /// @param fileId Dropbox file ID for Cloud Docs (post-PiFS migration).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDocId:(nullable NSString *)docId fileId:(nullable NSString *)fileId;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetDocMetadataArg` struct.
-///
-@interface DBPAPERGetDocMetadataArgSerializer : NSObject
+/// 
+@interface DBPAPERGetDocMetadataArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERGetDocMetadataArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERGetDocMetadataArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERGetDocMetadataArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERGetDocMetadataArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERGetDocMetadataArg *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERGetDocMetadataArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERGetDocMetadataArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERGetDocMetadataArg` object.
-///
-+ (DBPAPERGetDocMetadataArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERGetDocMetadataArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

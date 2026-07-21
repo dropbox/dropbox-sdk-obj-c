@@ -11,20 +11,21 @@
 @class DBTEAMLOGTeamMergeRequestAcceptedDetails;
 @class DBTEAMLOGTeamMergeRequestAcceptedExtraDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMergeRequestAcceptedDetails` struct.
-///
+/// 
 /// Accepted a team merge request.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMergeRequestAcceptedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMergeRequestAcceptedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param requestAcceptedDetails Team merge request acceptance details.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRequestAcceptedDetails:(DBTEAMLOGTeamMergeRequestAcceptedExtraDetails *)requestAcceptedDetails;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamMergeRequestAcceptedDetails` struct.
-///
-@interface DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMergeRequestAcceptedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMergeRequestAcceptedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamMergeRequestAcceptedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestAcceptedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMergeRequestAcceptedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMergeRequestAcceptedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestAcceptedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamMergeRequestAcceptedDetails`
 /// object.
-///
-+ (DBTEAMLOGTeamMergeRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMergeRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

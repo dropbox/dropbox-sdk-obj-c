@@ -11,20 +11,21 @@
 @class DBTEAMLOGPaperChangeMemberLinkPolicyDetails;
 @class DBTEAMLOGPaperMemberPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperChangeMemberLinkPolicyDetails` struct.
-///
+/// 
 /// Changed whether non-members can view Paper docs with link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperChangeMemberLinkPolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperChangeMemberLinkPolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New paper external link accessibility policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGPaperMemberPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperChangeMemberLinkPolicyDetails` struct.
-///
-@interface DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperChangeMemberLinkPolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperChangeMemberLinkPolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperChangeMemberLinkPolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperChangeMemberLinkPolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperChangeMemberLinkPolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperChangeMemberLinkPolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGPaperChangeMemberLinkPolicyDetails` object.
-///
-+ (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperChangeMemberLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

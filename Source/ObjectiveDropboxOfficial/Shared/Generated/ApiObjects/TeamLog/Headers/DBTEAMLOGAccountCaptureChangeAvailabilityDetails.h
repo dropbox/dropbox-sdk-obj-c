@@ -11,20 +11,21 @@
 @class DBTEAMLOGAccountCaptureAvailability;
 @class DBTEAMLOGAccountCaptureChangeAvailabilityDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccountCaptureChangeAvailabilityDetails` struct.
-///
+/// 
 /// Granted/revoked option to enable account capture on team domains.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAccountCaptureChangeAvailabilityDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAccountCaptureChangeAvailabilityDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,62 +38,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New account capture availabilty value.
 /// @param previousValue Previous account capture availabilty value. Might be
 /// missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGAccountCaptureAvailability *)dNewValue
-                    previousValue:(nullable DBTEAMLOGAccountCaptureAvailability *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGAccountCaptureAvailability *)dNewValue previousValue:(nullable DBTEAMLOGAccountCaptureAvailability *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New account capture availabilty value.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGAccountCaptureAvailability *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AccountCaptureChangeAvailabilityDetails`
 /// struct.
-///
-@interface DBTEAMLOGAccountCaptureChangeAvailabilityDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAccountCaptureChangeAvailabilityDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAccountCaptureChangeAvailabilityDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAccountCaptureChangeAvailabilityDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCaptureChangeAvailabilityDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAccountCaptureChangeAvailabilityDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCaptureChangeAvailabilityDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGAccountCaptureChangeAvailabilityDetails` object.
-///
-+ (DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAccountCaptureChangeAvailabilityDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

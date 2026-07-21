@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBPAPERRefPaperDoc.h"
 #import "DBSerializableProtocol.h"
+#import "DBPAPERRefPaperDoc.h"
 
 @class DBPAPERPaperDocSharingPolicy;
 @class DBPAPERSharingPolicy;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocSharingPolicy` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERPaperDocSharingPolicy : DBPAPERRefPaperDoc <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERPaperDocSharingPolicy : DBPAPERRefPaperDoc <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,46 +33,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param docId The Paper doc ID.
 /// @param sharingPolicy The default sharing policy to be set for the Paper doc.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDocId:(NSString *)docId sharingPolicy:(DBPAPERSharingPolicy *)sharingPolicy;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocSharingPolicy` struct.
-///
-@interface DBPAPERPaperDocSharingPolicySerializer : NSObject
+/// 
+@interface DBPAPERPaperDocSharingPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERPaperDocSharingPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERPaperDocSharingPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocSharingPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERPaperDocSharingPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERPaperDocSharingPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERPaperDocSharingPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocSharingPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERPaperDocSharingPolicy` object.
-///
-+ (DBPAPERPaperDocSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERPaperDocSharingPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

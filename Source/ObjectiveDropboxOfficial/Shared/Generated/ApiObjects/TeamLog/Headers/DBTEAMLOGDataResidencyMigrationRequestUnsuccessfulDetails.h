@@ -10,69 +10,71 @@
 
 @class DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DataResidencyMigrationRequestUnsuccessfulDetails` struct.
-///
+/// 
 /// Request for data residency migration for team data has failed.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DataResidencyMigrationRequestUnsuccessfulDetails` struct.
-///
-@interface DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails` object.
-///
-+ (DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

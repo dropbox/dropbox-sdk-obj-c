@@ -153,13 +153,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Files` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBFILESAppAuthRoutes : NSObject
+@interface DBFILESAppAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -169,29 +169,26 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
 /// @param destination The file url of the desired download output location.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Url:
-                                                                              (DBFILESPathOrLink *)resource
-                                                                                  overwrite:(BOOL)overwrite
-                                                                                destination:(NSURL *)destination;
+/// 
+- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Url:(DBFILESPathOrLink *)resource overwrite:(BOOL)overwrite destination:(NSURL *)destination;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
 /// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
@@ -206,24 +203,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
 /// @param destination The file url of the desired download output location.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Url:(DBFILESPathOrLink *)resource
-               format:(nullable DBFILESThumbnailFormat *)format
-                 size:(nullable DBFILESThumbnailSize *)size
-                 mode:(nullable DBFILESThumbnailMode *)mode
-              quality:(nullable DBFILESThumbnailQuality *)quality
-     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
-            overwrite:(BOOL)overwrite
-          destination:(NSURL *)destination;
+/// 
+- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Url:(DBFILESPathOrLink *)resource format:(nullable DBFILESThumbnailFormat *)format size:(nullable DBFILESThumbnailSize *)size mode:(nullable DBFILESThumbnailMode *)mode quality:(nullable DBFILESThumbnailQuality *)quality excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo overwrite:(BOOL)overwrite destination:(NSURL *)destination;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
@@ -234,21 +223,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Url:
-                                                                              (DBFILESPathOrLink *)resource
-                                                                                  overwrite:(BOOL)overwrite
-                                                                                destination:(NSURL *)destination
-                                                                            byteOffsetStart:(NSNumber *)byteOffsetStart
-                                                                              byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Url:(DBFILESPathOrLink *)resource overwrite:(BOOL)overwrite destination:(NSURL *)destination byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
 /// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
@@ -267,39 +251,28 @@ NS_ASSUME_NONNULL_BEGIN
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Url:(DBFILESPathOrLink *)resource
-               format:(nullable DBFILESThumbnailFormat *)format
-                 size:(nullable DBFILESThumbnailSize *)size
-                 mode:(nullable DBFILESThumbnailMode *)mode
-              quality:(nullable DBFILESThumbnailQuality *)quality
-     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
-            overwrite:(BOOL)overwrite
-          destination:(NSURL *)destination
-      byteOffsetStart:(NSNumber *)byteOffsetStart
-        byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Url:(DBFILESPathOrLink *)resource format:(nullable DBFILESThumbnailFormat *)format size:(nullable DBFILESThumbnailSize *)size mode:(nullable DBFILESThumbnailMode *)mode quality:(nullable DBFILESThumbnailQuality *)quality excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo overwrite:(BOOL)overwrite destination:(NSURL *)destination byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Data:
-    (DBFILESPathOrLink *)resource;
+/// 
+- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Data:(DBFILESPathOrLink *)resource;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
 /// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
@@ -310,41 +283,32 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Data:(DBFILESPathOrLink *)resource
-                format:(nullable DBFILESThumbnailFormat *)format
-                  size:(nullable DBFILESThumbnailSize *)size
-                  mode:(nullable DBFILESThumbnailMode *)mode
-               quality:(nullable DBFILESThumbnailQuality *)quality
-      excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
+/// 
+- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Data:(DBFILESPathOrLink *)resource format:(nullable DBFILESThumbnailFormat *)format size:(nullable DBFILESThumbnailSize *)size mode:(nullable DBFILESThumbnailMode *)mode quality:(nullable DBFILESThumbnailQuality *)quality excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Data:(DBFILESPathOrLink *)resource
-       byteOffsetStart:(NSNumber *)byteOffsetStart
-         byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Data:(DBFILESPathOrLink *)resource byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
 /// png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
-///
+/// 
 /// @param resource Information specifying which file to preview. This could be a path to a file, a shared link pointing
 /// to a file, or a shared link pointing to a folder, with a relative path.
 /// @param format The format for the thumbnail image, jpeg (default), png, or webp. For images that are photos, jpeg
@@ -359,21 +323,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
 /// start range value.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
-///
-- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Data:(DBFILESPathOrLink *)resource
-                format:(nullable DBFILESThumbnailFormat *)format
-                  size:(nullable DBFILESThumbnailSize *)size
-                  mode:(nullable DBFILESThumbnailMode *)mode
-               quality:(nullable DBFILESThumbnailQuality *)quality
-      excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
-       byteOffsetStart:(NSNumber *)byteOffsetStart
-         byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+/// 
+- (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)getThumbnailV2Data:(DBFILESPathOrLink *)resource format:(nullable DBFILESThumbnailFormat *)format size:(nullable DBFILESThumbnailSize *)size mode:(nullable DBFILESThumbnailMode *)mode quality:(nullable DBFILESThumbnailQuality *)quality excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo byteOffsetStart:(NSNumber *)byteOffsetStart byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
-///
+/// 
 /// Starts returning the contents of a folder. If the result's `hasMore` in `DBFILESListFolderResult` field is true,
 /// call `listFolderContinue` with the returned ListFolderResult.cursor to retrieve more entries. If you're using
 /// ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each
@@ -387,15 +343,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple `listFolder` or
 /// `listFolderContinue` calls with same parameters are made simultaneously by same API app for same user. If your app
 /// implements retry logic, please hold off the retry until the previous request finishes.
-///
+/// 
 /// @param path A unique identifier for the file.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderError` object on failure.
-///
+/// 
 - (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> *)listFolder:(NSString *)path;
 
-///
+/// 
 /// Starts returning the contents of a folder. If the result's `hasMore` in `DBFILESListFolderResult` field is true,
 /// call `listFolderContinue` with the returned ListFolderResult.cursor to retrieve more entries. If you're using
 /// ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each
@@ -409,7 +365,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple `listFolder` or
 /// `listFolderContinue` calls with same parameters are made simultaneously by same API app for same user. If your app
 /// implements retry logic, please hold off the retry until the previous request finishes.
-///
+/// 
 /// @param path A unique identifier for the file.
 /// @param recursive If true, the list folder operation will be applied recursively to all subfolders and the response
 /// will contain contents of all subfolders. In some cases, setting `recursive` in `DBFILESListFolderArg` to true may
@@ -433,34 +389,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// set if there exists property data associated with the file and each of the listed templates.
 /// @param includeNonDownloadableFiles If true, include files that are not downloadable, i.e. Google Docs.
 /// @param includeRestorableInfo If true, each returned deleted entry will include whether that entry can be restored.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderError` object on failure.
-///
-- (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> *)
-                         listFolder:(NSString *)path
-                          recursive:(nullable NSNumber *)recursive
-                   includeMediaInfo:(nullable NSNumber *)includeMediaInfo
-                     includeDeleted:(nullable NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
-              includeMountedFolders:(nullable NSNumber *)includeMountedFolders
-                              limit:(nullable NSNumber *)limit
-                         sharedLink:(nullable DBFILESSharedLink *)sharedLink
-              includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups
-        includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles
-              includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
+/// 
+- (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> *)listFolder:(NSString *)path recursive:(nullable NSNumber *)recursive includeMediaInfo:(nullable NSNumber *)includeMediaInfo includeDeleted:(nullable NSNumber *)includeDeleted includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers includeMountedFolders:(nullable NSNumber *)includeMountedFolders limit:(nullable NSNumber *)limit sharedLink:(nullable DBFILESSharedLink *)sharedLink includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups includeNonDownloadableFiles:(nullable NSNumber *)includeNonDownloadableFiles includeRestorableInfo:(nullable NSNumber *)includeRestorableInfo;
 
-///
+/// 
 /// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to
 /// the folder, following the same rules as documented for `listFolder`.
-///
+/// 
 /// @param cursor The cursor returned by your last call to `listFolder` or `listFolderContinue`.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
 /// `DBFILESListFolderContinueError` object on failure.
-///
+/// 
 - (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderContinueError *> *)listFolderContinue:(NSString *)cursor;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

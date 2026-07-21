@@ -11,20 +11,21 @@
 @class DBTEAMTeamMemberProfile;
 @class DBTEAMTokenGetAuthenticatedAdminResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TokenGetAuthenticatedAdminResult` struct.
-///
+/// 
 /// Results for `tokenGetAuthenticatedAdmin`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTokenGetAuthenticatedAdminResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTokenGetAuthenticatedAdminResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param adminProfile The admin who authorized the token.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAdminProfile:(DBTEAMTeamMemberProfile *)adminProfile;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TokenGetAuthenticatedAdminResult` struct.
-///
-@interface DBTEAMTokenGetAuthenticatedAdminResultSerializer : NSObject
+/// 
+@interface DBTEAMTokenGetAuthenticatedAdminResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTokenGetAuthenticatedAdminResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTokenGetAuthenticatedAdminResult`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTokenGetAuthenticatedAdminResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTokenGetAuthenticatedAdminResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTokenGetAuthenticatedAdminResult *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTokenGetAuthenticatedAdminResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTokenGetAuthenticatedAdminResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTokenGetAuthenticatedAdminResult`
 /// object.
-///
-+ (DBTEAMTokenGetAuthenticatedAdminResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTokenGetAuthenticatedAdminResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

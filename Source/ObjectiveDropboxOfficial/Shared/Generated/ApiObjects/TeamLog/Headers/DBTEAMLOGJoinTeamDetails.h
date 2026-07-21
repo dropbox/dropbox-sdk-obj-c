@@ -13,20 +13,21 @@
 @class DBTEAMLOGLinkedDeviceLogInfo;
 @class DBTEAMLOGUserLinkedAppLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `JoinTeamDetails` struct.
-///
+/// 
 /// Additional information relevant when a new member joins the team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGJoinTeamDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGJoinTeamDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -65,9 +66,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param linkedApps Field is deprecated. Linked applications. (Deprecated)
 /// Please use has_linked_apps boolean field instead.
 /// @param linkedDevices Field is deprecated. Linked devices. (Deprecated)
@@ -85,67 +86,59 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param hasLinkedDevices True if the user had linked apps at event time.
 /// @param hasLinkedSharedFolders True if the user had linked shared folders at
 /// event time.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithLinkedApps:(NSArray<DBTEAMLOGUserLinkedAppLogInfo *> *)linkedApps
-                      linkedDevices:(NSArray<DBTEAMLOGLinkedDeviceLogInfo *> *)linkedDevices
-                linkedSharedFolders:(NSArray<DBTEAMLOGFolderLogInfo *> *)linkedSharedFolders
-             wasLinkedAppsTruncated:(nullable NSNumber *)wasLinkedAppsTruncated
-          wasLinkedDevicesTruncated:(nullable NSNumber *)wasLinkedDevicesTruncated
-    wasLinkedSharedFoldersTruncated:(nullable NSNumber *)wasLinkedSharedFoldersTruncated
-                      hasLinkedApps:(nullable NSNumber *)hasLinkedApps
-                   hasLinkedDevices:(nullable NSNumber *)hasLinkedDevices
-             hasLinkedSharedFolders:(nullable NSNumber *)hasLinkedSharedFolders;
+/// 
+- (instancetype)initWithLinkedApps:(NSArray<DBTEAMLOGUserLinkedAppLogInfo *> *)linkedApps linkedDevices:(NSArray<DBTEAMLOGLinkedDeviceLogInfo *> *)linkedDevices linkedSharedFolders:(NSArray<DBTEAMLOGFolderLogInfo *> *)linkedSharedFolders wasLinkedAppsTruncated:(nullable NSNumber *)wasLinkedAppsTruncated wasLinkedDevicesTruncated:(nullable NSNumber *)wasLinkedDevicesTruncated wasLinkedSharedFoldersTruncated:(nullable NSNumber *)wasLinkedSharedFoldersTruncated hasLinkedApps:(nullable NSNumber *)hasLinkedApps hasLinkedDevices:(nullable NSNumber *)hasLinkedDevices hasLinkedSharedFolders:(nullable NSNumber *)hasLinkedSharedFolders;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param linkedApps Field is deprecated. Linked applications. (Deprecated)
 /// Please use has_linked_apps boolean field instead.
 /// @param linkedDevices Field is deprecated. Linked devices. (Deprecated)
 /// Please use has_linked_devices boolean field instead.
 /// @param linkedSharedFolders Field is deprecated. Linked shared folders.
 /// (Deprecated) Please use has_linked_shared_folders boolean field instead.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithLinkedApps:(NSArray<DBTEAMLOGUserLinkedAppLogInfo *> *)linkedApps
-                     linkedDevices:(NSArray<DBTEAMLOGLinkedDeviceLogInfo *> *)linkedDevices
-               linkedSharedFolders:(NSArray<DBTEAMLOGFolderLogInfo *> *)linkedSharedFolders;
+/// 
+- (instancetype)initWithLinkedApps:(NSArray<DBTEAMLOGUserLinkedAppLogInfo *> *)linkedApps linkedDevices:(NSArray<DBTEAMLOGLinkedDeviceLogInfo *> *)linkedDevices linkedSharedFolders:(NSArray<DBTEAMLOGFolderLogInfo *> *)linkedSharedFolders;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `JoinTeamDetails` struct.
-///
-@interface DBTEAMLOGJoinTeamDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGJoinTeamDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGJoinTeamDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGJoinTeamDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGJoinTeamDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGJoinTeamDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGJoinTeamDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGJoinTeamDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGJoinTeamDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGJoinTeamDetails` object.
-///
-+ (DBTEAMLOGJoinTeamDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGJoinTeamDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

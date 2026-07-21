@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSharedFolderNestDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFolderNestDetails` struct.
-///
+/// 
 /// Changed parent of shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedFolderNestDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedFolderNestDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,62 +42,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousParentNsId Previous parent namespace ID.
 /// @param dNewParentNsId New parent namespace ID.
 /// @param previousNsPath Previous namespace path.
 /// @param dNewNsPath New namespace path.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousParentNsId:(nullable NSString *)previousParentNsId
-                            dNewParentNsId:(nullable NSString *)dNewParentNsId
-                            previousNsPath:(nullable NSString *)previousNsPath
-                                dNewNsPath:(nullable NSString *)dNewNsPath;
+/// 
+- (instancetype)initWithPreviousParentNsId:(nullable NSString *)previousParentNsId dNewParentNsId:(nullable NSString *)dNewParentNsId previousNsPath:(nullable NSString *)previousNsPath dNewNsPath:(nullable NSString *)dNewNsPath;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFolderNestDetails` struct.
-///
-@interface DBTEAMLOGSharedFolderNestDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedFolderNestDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedFolderNestDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedFolderNestDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderNestDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderNestDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedFolderNestDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedFolderNestDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderNestDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedFolderNestDetails` object.
-///
-+ (DBTEAMLOGSharedFolderNestDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedFolderNestDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

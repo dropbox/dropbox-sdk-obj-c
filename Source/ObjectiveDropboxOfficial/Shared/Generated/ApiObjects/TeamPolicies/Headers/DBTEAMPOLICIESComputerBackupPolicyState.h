@@ -10,18 +10,19 @@
 
 @class DBTEAMPOLICIESComputerBackupPolicyState;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ComputerBackupPolicyState` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESComputerBackupPolicyState : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESComputerBackupPolicyState : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,18 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMPOLICIESComputerBackupPolicyState`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESComputerBackupPolicyStateTag) {
-  /// Computer Backup feature is disabled.
-  DBTEAMPOLICIESComputerBackupPolicyStateDisabled,
+    /// Computer Backup feature is disabled.
+    DBTEAMPOLICIESComputerBackupPolicyStateDisabled,
 
-  /// Computer Backup feature is enabled.
-  DBTEAMPOLICIESComputerBackupPolicyStateEnabled,
+    /// Computer Backup feature is enabled.
+    DBTEAMPOLICIESComputerBackupPolicyStateEnabled,
 
-  /// Computer Backup defaults to ON for SSB teams, and OFF for Enterprise
-  /// teams.
-  DBTEAMPOLICIESComputerBackupPolicyStateDefault_,
+    /// Computer Backup defaults to ON for SSB teams, and OFF for Enterprise
+    /// teams.
+    DBTEAMPOLICIESComputerBackupPolicyStateDefault_,
 
-  /// (no description).
-  DBTEAMPOLICIESComputerBackupPolicyStateOther,
+    /// (no description).
+    DBTEAMPOLICIESComputerBackupPolicyStateOther,
 
 };
 
@@ -49,113 +50,115 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESComputerBackupPolicyStateTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// Description of the "disabled" tag state: Computer Backup feature is
 /// disabled.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// Description of the "enabled" tag state: Computer Backup feature is enabled.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// Description of the "default" tag state: Computer Backup defaults to ON for
 /// SSB teams, and OFF for Enterprise teams.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMPOLICIESComputerBackupPolicyState`
 /// union.
-///
-@interface DBTEAMPOLICIESComputerBackupPolicyStateSerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESComputerBackupPolicyStateSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESComputerBackupPolicyState` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMPOLICIESComputerBackupPolicyState`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESComputerBackupPolicyState` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESComputerBackupPolicyState *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESComputerBackupPolicyState *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESComputerBackupPolicyState` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESComputerBackupPolicyState` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMPOLICIESComputerBackupPolicyState`
 /// object.
-///
-+ (DBTEAMPOLICIESComputerBackupPolicyState *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESComputerBackupPolicyState *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

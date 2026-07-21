@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSfFbInviteDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SfFbInviteDetails` struct.
-///
+/// 
 /// Invited Facebook users to shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSfFbInviteDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSfFbInviteDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,61 +39,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
 /// @param sharingPermission Sharing permission.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                      originalFolderName:(NSString *)originalFolderName
-                       sharingPermission:(nullable NSString *)sharingPermission;
+/// 
+- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName sharingPermission:(nullable NSString *)sharingPermission;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SfFbInviteDetails` struct.
-///
-@interface DBTEAMLOGSfFbInviteDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSfFbInviteDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSfFbInviteDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSfFbInviteDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfFbInviteDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbInviteDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSfFbInviteDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSfFbInviteDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfFbInviteDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSfFbInviteDetails` object.
-///
-+ (DBTEAMLOGSfFbInviteDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSfFbInviteDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

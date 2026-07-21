@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGShowcaseDocumentLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseDocumentLogInfo` struct.
-///
+/// 
 /// Showcase document's logged information.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseDocumentLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseDocumentLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,48 +36,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param showcaseId Showcase document Id.
 /// @param showcaseTitle Showcase document title.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithShowcaseId:(NSString *)showcaseId showcaseTitle:(NSString *)showcaseTitle;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseDocumentLogInfo` struct.
-///
-@interface DBTEAMLOGShowcaseDocumentLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseDocumentLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseDocumentLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseDocumentLogInfo` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseDocumentLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseDocumentLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseDocumentLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseDocumentLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseDocumentLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseDocumentLogInfo` object.
-///
-+ (DBTEAMLOGShowcaseDocumentLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseDocumentLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

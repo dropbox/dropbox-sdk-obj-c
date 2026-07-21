@@ -11,21 +11,22 @@
 @class DBTEAMLOGTwoAccountChangePolicyDetails;
 @class DBTEAMLOGTwoAccountPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TwoAccountChangePolicyDetails` struct.
-///
+/// 
 /// Enabled/disabled option for members to link personal Dropbox account and
 /// team account to same computer.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTwoAccountChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTwoAccountChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,61 +38,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New two account policy.
 /// @param previousValue Previous two account policy. Might be missing due to
 /// historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGTwoAccountPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGTwoAccountPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGTwoAccountPolicy *)dNewValue previousValue:(nullable DBTEAMLOGTwoAccountPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New two account policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGTwoAccountPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TwoAccountChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGTwoAccountChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTwoAccountChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTwoAccountChangePolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTwoAccountChangePolicyDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTwoAccountChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTwoAccountChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTwoAccountChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTwoAccountChangePolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTwoAccountChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTwoAccountChangePolicyDetails`
 /// object.
-///
-+ (DBTEAMLOGTwoAccountChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTwoAccountChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

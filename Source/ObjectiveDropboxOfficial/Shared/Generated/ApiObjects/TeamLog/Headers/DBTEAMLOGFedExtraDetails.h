@@ -12,34 +12,35 @@
 @class DBTEAMLOGOrganizationDetails;
 @class DBTEAMLOGTeamDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FedExtraDetails` union.
-///
+/// 
 /// More details about the organization or team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFedExtraDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFedExtraDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMLOGFedExtraDetailsTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGFedExtraDetails` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFedExtraDetailsTag) {
-  /// More details about the organization.
-  DBTEAMLOGFedExtraDetailsOrganization,
+    /// More details about the organization.
+    DBTEAMLOGFedExtraDetailsOrganization,
 
-  /// More details about the team.
-  DBTEAMLOGFedExtraDetailsTeam,
+    /// More details about the team.
+    DBTEAMLOGFedExtraDetailsTeam,
 
-  /// (no description).
-  DBTEAMLOGFedExtraDetailsOther,
+    /// (no description).
+    DBTEAMLOGFedExtraDetailsOther,
 
 };
 
@@ -57,103 +58,105 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFedExtraDetailsTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "organization".
-///
+/// 
 /// Description of the "organization" tag state: More details about the
 /// organization.
-///
+/// 
 /// @param organization More details about the organization.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOrganization:(DBTEAMLOGOrganizationDetails *)organization;
 
-///
+/// 
 /// Initializes union class with tag state of "team".
-///
+/// 
 /// Description of the "team" tag state: More details about the team.
-///
+/// 
 /// @param team More details about the team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeam:(DBTEAMLOGTeamDetails *)team;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "organization".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `organization` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "organization".
-///
+/// 
 - (BOOL)isOrganization;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "team".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `team` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "team".
-///
+/// 
 - (BOOL)isTeam;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGFedExtraDetails` union.
-///
-@interface DBTEAMLOGFedExtraDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFedExtraDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFedExtraDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFedExtraDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFedExtraDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFedExtraDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFedExtraDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFedExtraDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFedExtraDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFedExtraDetails` object.
-///
-+ (DBTEAMLOGFedExtraDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFedExtraDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

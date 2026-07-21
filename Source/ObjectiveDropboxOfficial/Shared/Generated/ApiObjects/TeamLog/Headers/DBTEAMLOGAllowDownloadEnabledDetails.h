@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGAllowDownloadEnabledDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AllowDownloadEnabledDetails` struct.
-///
+/// 
 /// Enabled downloads.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAllowDownloadEnabledDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAllowDownloadEnabledDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AllowDownloadEnabledDetails` struct.
-///
-@interface DBTEAMLOGAllowDownloadEnabledDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAllowDownloadEnabledDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAllowDownloadEnabledDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAllowDownloadEnabledDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAllowDownloadEnabledDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAllowDownloadEnabledDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAllowDownloadEnabledDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAllowDownloadEnabledDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAllowDownloadEnabledDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAllowDownloadEnabledDetails`
 /// object.
-///
-+ (DBTEAMLOGAllowDownloadEnabledDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAllowDownloadEnabledDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

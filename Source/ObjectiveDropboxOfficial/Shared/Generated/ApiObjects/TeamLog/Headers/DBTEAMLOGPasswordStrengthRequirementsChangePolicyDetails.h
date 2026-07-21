@@ -11,20 +11,21 @@
 @class DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails;
 @class DBTEAMPOLICIESPasswordStrengthPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PasswordStrengthRequirementsChangePolicyDetails` struct.
-///
+/// 
 /// Changed team password strength requirements.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,54 +37,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Old password strength policy.
 /// @param dNewValue New password strength policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMPOLICIESPasswordStrengthPolicy *)previousValue
-                            dNewValue:(DBTEAMPOLICIESPasswordStrengthPolicy *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMPOLICIESPasswordStrengthPolicy *)previousValue dNewValue:(DBTEAMPOLICIESPasswordStrengthPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `PasswordStrengthRequirementsChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails` object.
-///
-+ (DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPasswordStrengthRequirementsChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

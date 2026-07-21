@@ -12,40 +12,41 @@
 @class DBSHARINGMemberAccessLevelResult;
 @class DBSHARINGSharingFileAccessError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileMemberActionError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGFileMemberActionError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGFileMemberActionError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBSHARINGFileMemberActionErrorTag` enum type represents the possible
 /// tag states with which the `DBSHARINGFileMemberActionError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
-  /// Specified member was not found.
-  DBSHARINGFileMemberActionErrorInvalidMember,
+    /// Specified member was not found.
+    DBSHARINGFileMemberActionErrorInvalidMember,
 
-  /// User does not have permission to perform this action on this member.
-  DBSHARINGFileMemberActionErrorNoPermission,
+    /// User does not have permission to perform this action on this member.
+    DBSHARINGFileMemberActionErrorNoPermission,
 
-  /// Specified file was invalid or user does not have access.
-  DBSHARINGFileMemberActionErrorAccessError,
+    /// Specified file was invalid or user does not have access.
+    DBSHARINGFileMemberActionErrorAccessError,
 
-  /// The action cannot be completed because the target member does not have
-  /// explicit access to the file. The return value is the access that the
-  /// member has to the file from a parent folder.
-  DBSHARINGFileMemberActionErrorNoExplicitAccess,
+    /// The action cannot be completed because the target member does not have
+    /// explicit access to the file. The return value is the access that the
+    /// member has to the file from a parent folder.
+    DBSHARINGFileMemberActionErrorNoExplicitAccess,
 
-  /// (no description).
-  DBSHARINGFileMemberActionErrorOther,
+    /// (no description).
+    DBSHARINGFileMemberActionErrorOther,
 
 };
 
@@ -66,145 +67,147 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "invalid_member".
-///
+/// 
 /// Description of the "invalid_member" tag state: Specified member was not
 /// found.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvalidMember;
 
-///
+/// 
 /// Initializes union class with tag state of "no_permission".
-///
+/// 
 /// Description of the "no_permission" tag state: User does not have permission
 /// to perform this action on this member.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoPermission;
 
-///
+/// 
 /// Initializes union class with tag state of "access_error".
-///
+/// 
 /// Description of the "access_error" tag state: Specified file was invalid or
 /// user does not have access.
-///
+/// 
 /// @param accessError Specified file was invalid or user does not have access.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError *)accessError;
 
-///
+/// 
 /// Initializes union class with tag state of "no_explicit_access".
-///
+/// 
 /// Description of the "no_explicit_access" tag state: The action cannot be
 /// completed because the target member does not have explicit access to the
 /// file. The return value is the access that the member has to the file from a
 /// parent folder.
-///
+/// 
 /// @param noExplicitAccess The action cannot be completed because the target
 /// member does not have explicit access to the file. The return value is the
 /// access that the member has to the file from a parent folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoExplicitAccess:(DBSHARINGMemberAccessLevelResult *)noExplicitAccess;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invalid_member".
-///
+/// 
 /// @return Whether the union's current tag state has value "invalid_member".
-///
+/// 
 - (BOOL)isInvalidMember;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "no_permission".
-///
+/// 
 /// @return Whether the union's current tag state has value "no_permission".
-///
+/// 
 - (BOOL)isNoPermission;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "access_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `accessError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "access_error".
-///
+/// 
 - (BOOL)isAccessError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "no_explicit_access".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `noExplicitAccess` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "no_explicit_access".
-///
+/// 
 - (BOOL)isNoExplicitAccess;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGFileMemberActionError` union.
-///
-@interface DBSHARINGFileMemberActionErrorSerializer : NSObject
+/// 
+@interface DBSHARINGFileMemberActionErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGFileMemberActionError` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGFileMemberActionError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGFileMemberActionError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGFileMemberActionError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGFileMemberActionError *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGFileMemberActionError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGFileMemberActionError` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGFileMemberActionError` object.
-///
-+ (DBSHARINGFileMemberActionError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGFileMemberActionError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

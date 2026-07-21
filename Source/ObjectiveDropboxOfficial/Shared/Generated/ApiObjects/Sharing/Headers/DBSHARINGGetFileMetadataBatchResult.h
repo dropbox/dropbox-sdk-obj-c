@@ -11,20 +11,21 @@
 @class DBSHARINGGetFileMetadataBatchResult;
 @class DBSHARINGGetFileMetadataIndividualResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetFileMetadataBatchResult` struct.
-///
+/// 
 /// Per file results of `getFileMetadataBatch`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGGetFileMetadataBatchResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGGetFileMetadataBatchResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,50 +38,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param file This is the input file identifier corresponding to one of
 /// `files` in `DBSHARINGGetFileMetadataBatchArg`.
 /// @param result The result for this particular file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFile:(NSString *)file result:(DBSHARINGGetFileMetadataIndividualResult *)result;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetFileMetadataBatchResult` struct.
-///
-@interface DBSHARINGGetFileMetadataBatchResultSerializer : NSObject
+/// 
+@interface DBSHARINGGetFileMetadataBatchResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGGetFileMetadataBatchResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGGetFileMetadataBatchResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetFileMetadataBatchResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGGetFileMetadataBatchResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGGetFileMetadataBatchResult *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGGetFileMetadataBatchResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGGetFileMetadataBatchResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGGetFileMetadataBatchResult`
 /// object.
-///
-+ (DBSHARINGGetFileMetadataBatchResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGGetFileMetadataBatchResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

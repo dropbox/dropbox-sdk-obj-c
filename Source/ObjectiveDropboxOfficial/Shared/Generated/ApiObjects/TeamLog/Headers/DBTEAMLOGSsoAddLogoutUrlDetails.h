@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSsoAddLogoutUrlDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SsoAddLogoutUrlDetails` struct.
-///
+/// 
 /// Added sign-out URL for SSO.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSsoAddLogoutUrlDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSsoAddLogoutUrlDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,56 +33,58 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New single sign-on logout URL.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(nullable NSString *)dNewValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SsoAddLogoutUrlDetails` struct.
-///
-@interface DBTEAMLOGSsoAddLogoutUrlDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSsoAddLogoutUrlDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSsoAddLogoutUrlDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSsoAddLogoutUrlDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoAddLogoutUrlDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddLogoutUrlDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSsoAddLogoutUrlDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSsoAddLogoutUrlDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoAddLogoutUrlDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSsoAddLogoutUrlDetails` object.
-///
-+ (DBTEAMLOGSsoAddLogoutUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSsoAddLogoutUrlDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

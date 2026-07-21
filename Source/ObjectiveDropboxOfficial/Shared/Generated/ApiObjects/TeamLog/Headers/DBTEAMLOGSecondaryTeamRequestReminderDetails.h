@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSecondaryTeamRequestReminderDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SecondaryTeamRequestReminderDetails` struct.
-///
+/// 
 /// Team merge request reminder details shown to the secondary team
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSecondaryTeamRequestReminderDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSecondaryTeamRequestReminderDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sentTo The email of the primary team admin the request was sent to.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSentTo:(NSString *)sentTo;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SecondaryTeamRequestReminderDetails`
 /// struct.
-///
-@interface DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSecondaryTeamRequestReminderDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSecondaryTeamRequestReminderDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSecondaryTeamRequestReminderDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSecondaryTeamRequestReminderDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryTeamRequestReminderDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSecondaryTeamRequestReminderDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSecondaryTeamRequestReminderDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSecondaryTeamRequestReminderDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSecondaryTeamRequestReminderDetails` object.
-///
-+ (DBTEAMLOGSecondaryTeamRequestReminderDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSecondaryTeamRequestReminderDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

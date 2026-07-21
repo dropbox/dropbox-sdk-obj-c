@@ -10,35 +10,36 @@
 
 @class DBTEAMLOGTopLevelContentPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TopLevelContentPolicy` union.
-///
+/// 
 /// Policy for deciding whether members can edit team folders at the top level
 /// of the team space
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTopLevelContentPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTopLevelContentPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMLOGTopLevelContentPolicyTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGTopLevelContentPolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTopLevelContentPolicyTag) {
-  /// (no description).
-  DBTEAMLOGTopLevelContentPolicyAdminsOnly,
+    /// (no description).
+    DBTEAMLOGTopLevelContentPolicyAdminsOnly,
 
-  /// (no description).
-  DBTEAMLOGTopLevelContentPolicyEveryone,
+    /// (no description).
+    DBTEAMLOGTopLevelContentPolicyEveryone,
 
-  /// (no description).
-  DBTEAMLOGTopLevelContentPolicyOther,
+    /// (no description).
+    DBTEAMLOGTopLevelContentPolicyOther,
 
 };
 
@@ -47,89 +48,91 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTopLevelContentPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "admins_only".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAdminsOnly;
 
-///
+/// 
 /// Initializes union class with tag state of "everyone".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEveryone;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "admins_only".
-///
+/// 
 /// @return Whether the union's current tag state has value "admins_only".
-///
+/// 
 - (BOOL)isAdminsOnly;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "everyone".
-///
+/// 
 /// @return Whether the union's current tag state has value "everyone".
-///
+/// 
 - (BOOL)isEveryone;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGTopLevelContentPolicy` union.
-///
-@interface DBTEAMLOGTopLevelContentPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGTopLevelContentPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTopLevelContentPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTopLevelContentPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTopLevelContentPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTopLevelContentPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTopLevelContentPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTopLevelContentPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTopLevelContentPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTopLevelContentPolicy` object.
-///
-+ (DBTEAMLOGTopLevelContentPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTopLevelContentPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

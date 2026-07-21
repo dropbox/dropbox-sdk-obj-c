@@ -10,37 +10,38 @@
 
 @class DBTEAMLOGPreviewsAiPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PreviewsAiPolicy` union.
-///
+/// 
 /// Policy for deciding whether team users can use Previews AI
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPreviewsAiPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPreviewsAiPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMLOGPreviewsAiPolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGPreviewsAiPolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPreviewsAiPolicyTag) {
-  /// (no description).
-  DBTEAMLOGPreviewsAiPolicyDefault_,
+    /// (no description).
+    DBTEAMLOGPreviewsAiPolicyDefault_,
 
-  /// (no description).
-  DBTEAMLOGPreviewsAiPolicyDisabled,
+    /// (no description).
+    DBTEAMLOGPreviewsAiPolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGPreviewsAiPolicyEnabled,
+    /// (no description).
+    DBTEAMLOGPreviewsAiPolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGPreviewsAiPolicyOther,
+    /// (no description).
+    DBTEAMLOGPreviewsAiPolicyOther,
 
 };
 
@@ -49,102 +50,104 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGPreviewsAiPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGPreviewsAiPolicy` union.
-///
-@interface DBTEAMLOGPreviewsAiPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGPreviewsAiPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPreviewsAiPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPreviewsAiPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPreviewsAiPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPreviewsAiPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPreviewsAiPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPreviewsAiPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPreviewsAiPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPreviewsAiPolicy` object.
-///
-+ (DBTEAMLOGPreviewsAiPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPreviewsAiPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

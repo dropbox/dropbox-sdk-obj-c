@@ -12,20 +12,21 @@
 @class DBUSERSBasicAccount;
 @class DBUSERSName;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `BasicAccount` struct.
-///
+/// 
 /// Basic information about any account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBUSERSBasicAccount : DBUSERSAccount <DBSerializable, NSCopying>
+/// 
+@interface DBUSERSBasicAccount : DBUSERSAccount <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,9 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
 /// @param email The user's email address. Do not rely on this without checking
@@ -55,22 +56,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// set.
 /// @param teamMemberId The user's unique team member id. This field will only
 /// be present if the user is part of a team and isTeammate is true.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccountId:(NSString *)accountId
-                             name:(DBUSERSName *)name
-                            email:(NSString *)email
-                    emailVerified:(NSNumber *)emailVerified
-                         disabled:(NSNumber *)disabled
-                       isTeammate:(NSNumber *)isTeammate
-                  profilePhotoUrl:(nullable NSString *)profilePhotoUrl
-                     teamMemberId:(nullable NSString *)teamMemberId;
+/// 
+- (instancetype)initWithAccountId:(NSString *)accountId name:(DBUSERSName *)name email:(NSString *)email emailVerified:(NSNumber *)emailVerified disabled:(NSNumber *)disabled isTeammate:(NSNumber *)isTeammate profilePhotoUrl:(nullable NSString *)profilePhotoUrl teamMemberId:(nullable NSString *)teamMemberId;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
 /// @param email The user's email address. Do not rely on this without checking
@@ -80,45 +74,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param disabled Whether the user has been disabled.
 /// @param isTeammate Whether this user is a teammate of the current user. If
 /// this account is the current user's account, then this will be true.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccountId:(NSString *)accountId
-                             name:(DBUSERSName *)name
-                            email:(NSString *)email
-                    emailVerified:(NSNumber *)emailVerified
-                         disabled:(NSNumber *)disabled
-                       isTeammate:(NSNumber *)isTeammate;
+/// 
+- (instancetype)initWithAccountId:(NSString *)accountId name:(DBUSERSName *)name email:(NSString *)email emailVerified:(NSNumber *)emailVerified disabled:(NSNumber *)disabled isTeammate:(NSNumber *)isTeammate;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `BasicAccount` struct.
-///
-@interface DBUSERSBasicAccountSerializer : NSObject
+/// 
+@interface DBUSERSBasicAccountSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBUSERSBasicAccount` instances.
-///
+/// 
 /// @param instance An instance of the `DBUSERSBasicAccount` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBUSERSBasicAccount` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBUSERSBasicAccount *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBUSERSBasicAccount *)instance;
 
-///
+/// 
 /// Deserializes `DBUSERSBasicAccount` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBUSERSBasicAccount` API object.
-///
+/// 
 /// @return An instantiation of the `DBUSERSBasicAccount` object.
-///
-+ (DBUSERSBasicAccount *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBUSERSBasicAccount *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

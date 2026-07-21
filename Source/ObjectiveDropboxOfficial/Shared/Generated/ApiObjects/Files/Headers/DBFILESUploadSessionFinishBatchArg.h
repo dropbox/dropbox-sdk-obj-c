@@ -11,18 +11,19 @@
 @class DBFILESUploadSessionFinishArg;
 @class DBFILESUploadSessionFinishBatchArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionFinishBatchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionFinishBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionFinishBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,47 +32,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries Commit information for each file in the batch.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESUploadSessionFinishArg *> *)entries;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UploadSessionFinishBatchArg` struct.
-///
-@interface DBFILESUploadSessionFinishBatchArgSerializer : NSObject
+/// 
+@interface DBFILESUploadSessionFinishBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionFinishBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionFinishBatchArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionFinishBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionFinishBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionFinishBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionFinishBatchArg` object.
-///
-+ (DBFILESUploadSessionFinishBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionFinishBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

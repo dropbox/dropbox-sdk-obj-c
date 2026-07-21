@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGEmmErrorType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EmmErrorType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEmmErrorType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEmmErrorType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EmmErrorType` struct.
-///
-@interface DBTEAMLOGEmmErrorTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGEmmErrorTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEmmErrorType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGEmmErrorType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEmmErrorType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEmmErrorType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEmmErrorType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEmmErrorType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEmmErrorType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGEmmErrorType` object.
-///
-+ (DBTEAMLOGEmmErrorType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEmmErrorType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

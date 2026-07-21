@@ -10,44 +10,45 @@
 
 @class DBRIVIERAErrorCode;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ErrorCode` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAErrorCode : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAErrorCode : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBRIVIERAErrorCodeTag` enum type represents the possible tag states
 /// with which the `DBRIVIERAErrorCode` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAErrorCodeTag) {
-  /// (no description).
-  DBRIVIERAErrorCodeUnknownError,
+    /// (no description).
+    DBRIVIERAErrorCodeUnknownError,
 
-  /// 400
-  DBRIVIERAErrorCodeBadRequest,
+    /// 400
+    DBRIVIERAErrorCodeBadRequest,
 
-  /// 409
-  DBRIVIERAErrorCodeApiError,
+    /// 409
+    DBRIVIERAErrorCodeApiError,
 
-  /// 403
-  DBRIVIERAErrorCodeAccessError,
+    /// 403
+    DBRIVIERAErrorCodeAccessError,
 
-  /// 429
-  DBRIVIERAErrorCodeRatelimitError,
+    /// 429
+    DBRIVIERAErrorCodeRatelimitError,
 
-  /// 503
-  DBRIVIERAErrorCodeUnavailable,
+    /// 503
+    DBRIVIERAErrorCodeUnavailable,
 
-  /// (no description).
-  DBRIVIERAErrorCodeOther,
+    /// (no description).
+    DBRIVIERAErrorCodeOther,
 
 };
 
@@ -56,154 +57,156 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAErrorCodeTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "unknown_error".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnknownError;
 
-///
+/// 
 /// Initializes union class with tag state of "bad_request".
-///
+/// 
 /// Description of the "bad_request" tag state: 400
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBadRequest;
 
-///
+/// 
 /// Initializes union class with tag state of "api_error".
-///
+/// 
 /// Description of the "api_error" tag state: 409
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithApiError;
 
-///
+/// 
 /// Initializes union class with tag state of "access_error".
-///
+/// 
 /// Description of the "access_error" tag state: 403
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessError;
 
-///
+/// 
 /// Initializes union class with tag state of "ratelimit_error".
-///
+/// 
 /// Description of the "ratelimit_error" tag state: 429
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRatelimitError;
 
-///
+/// 
 /// Initializes union class with tag state of "unavailable".
-///
+/// 
 /// Description of the "unavailable" tag state: 503
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnavailable;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "unknown_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "unknown_error".
-///
+/// 
 - (BOOL)isUnknownError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "bad_request".
-///
+/// 
 /// @return Whether the union's current tag state has value "bad_request".
-///
+/// 
 - (BOOL)isBadRequest;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "api_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "api_error".
-///
+/// 
 - (BOOL)isApiError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "access_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "access_error".
-///
+/// 
 - (BOOL)isAccessError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "ratelimit_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "ratelimit_error".
-///
+/// 
 - (BOOL)isRatelimitError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "unavailable".
-///
+/// 
 /// @return Whether the union's current tag state has value "unavailable".
-///
+/// 
 - (BOOL)isUnavailable;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERAErrorCode` union.
-///
-@interface DBRIVIERAErrorCodeSerializer : NSObject
+/// 
+@interface DBRIVIERAErrorCodeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAErrorCode` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAErrorCode` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAErrorCode` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAErrorCode *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAErrorCode *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAErrorCode` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAErrorCode` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAErrorCode` object.
-///
-+ (DBRIVIERAErrorCode *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAErrorCode *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

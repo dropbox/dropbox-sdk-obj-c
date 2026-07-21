@@ -10,35 +10,36 @@
 
 @class DBTEAMSetCustomQuotaError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SetCustomQuotaError` union.
-///
+/// 
 /// Error returned when setting member custom quota.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMSetCustomQuotaError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMSetCustomQuotaError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMSetCustomQuotaErrorTag` enum type represents the possible tag
 /// states with which the `DBTEAMSetCustomQuotaError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSetCustomQuotaErrorTag) {
-  /// A maximum of 1000 users can be set for a single call.
-  DBTEAMSetCustomQuotaErrorTooManyUsers,
+    /// A maximum of 1000 users can be set for a single call.
+    DBTEAMSetCustomQuotaErrorTooManyUsers,
 
-  /// (no description).
-  DBTEAMSetCustomQuotaErrorOther,
+    /// (no description).
+    DBTEAMSetCustomQuotaErrorOther,
 
-  /// Some of the users are on the excluded users list and can't have custom
-  /// quota set.
-  DBTEAMSetCustomQuotaErrorSomeUsersAreExcluded,
+    /// Some of the users are on the excluded users list and can't have custom
+    /// quota set.
+    DBTEAMSetCustomQuotaErrorSomeUsersAreExcluded,
 
 };
 
@@ -47,96 +48,98 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMSetCustomQuotaErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "too_many_users".
-///
+/// 
 /// Description of the "too_many_users" tag state: A maximum of 1000 users can
 /// be set for a single call.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTooManyUsers;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
-///
+/// 
 /// Initializes union class with tag state of "some_users_are_excluded".
-///
+/// 
 /// Description of the "some_users_are_excluded" tag state: Some of the users
 /// are on the excluded users list and can't have custom quota set.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSomeUsersAreExcluded;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "too_many_users".
-///
+/// 
 /// @return Whether the union's current tag state has value "too_many_users".
-///
+/// 
 - (BOOL)isTooManyUsers;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "some_users_are_excluded".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "some_users_are_excluded".
-///
+/// 
 - (BOOL)isSomeUsersAreExcluded;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMSetCustomQuotaError` union.
-///
-@interface DBTEAMSetCustomQuotaErrorSerializer : NSObject
+/// 
+@interface DBTEAMSetCustomQuotaErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMSetCustomQuotaError` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMSetCustomQuotaError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMSetCustomQuotaError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMSetCustomQuotaError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMSetCustomQuotaError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMSetCustomQuotaError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMSetCustomQuotaError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMSetCustomQuotaError` object.
-///
-+ (DBTEAMSetCustomQuotaError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMSetCustomQuotaError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

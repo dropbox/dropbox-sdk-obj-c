@@ -13,20 +13,21 @@
 @class DBTEAMLOGNonTrustedTeamDetails;
 @class DBTEAMLOGOrganizationName;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FederationStatusChangeAdditionalInfo` union.
-///
+/// 
 /// Additional information about the organization or connected team
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFederationStatusChangeAdditionalInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFederationStatusChangeAdditionalInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,17 +35,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// the possible tag states with which the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoTag) {
-  /// The name of the team
-  DBTEAMLOGFederationStatusChangeAdditionalInfoConnectedTeamName,
+    /// The name of the team
+    DBTEAMLOGFederationStatusChangeAdditionalInfoConnectedTeamName,
 
-  /// The email to which the request was sent
-  DBTEAMLOGFederationStatusChangeAdditionalInfoNonTrustedTeamDetails,
+    /// The email to which the request was sent
+    DBTEAMLOGFederationStatusChangeAdditionalInfoNonTrustedTeamDetails,
 
-  /// The name of the organization
-  DBTEAMLOGFederationStatusChangeAdditionalInfoOrganizationName,
+    /// The name of the organization
+    DBTEAMLOGFederationStatusChangeAdditionalInfoOrganizationName,
 
-  /// (no description).
-  DBTEAMLOGFederationStatusChangeAdditionalInfoOther,
+    /// (no description).
+    DBTEAMLOGFederationStatusChangeAdditionalInfoOther,
 
 };
 
@@ -66,134 +67,136 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFederationStatusChangeAdditionalInfoT
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "connected_team_name".
-///
+/// 
 /// Description of the "connected_team_name" tag state: The name of the team
-///
+/// 
 /// @param connectedTeamName The name of the team
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithConnectedTeamName:(DBTEAMLOGConnectedTeamName *)connectedTeamName;
 
-///
+/// 
 /// Initializes union class with tag state of "non_trusted_team_details".
-///
+/// 
 /// Description of the "non_trusted_team_details" tag state: The email to which
 /// the request was sent
-///
+/// 
 /// @param nonTrustedTeamDetails The email to which the request was sent
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNonTrustedTeamDetails:(DBTEAMLOGNonTrustedTeamDetails *)nonTrustedTeamDetails;
 
-///
+/// 
 /// Initializes union class with tag state of "organization_name".
-///
+/// 
 /// Description of the "organization_name" tag state: The name of the
 /// organization
-///
+/// 
 /// @param organizationName The name of the organization
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOrganizationName:(DBTEAMLOGOrganizationName *)organizationName;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "connected_team_name".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `connectedTeamName` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "connected_team_name".
-///
+/// 
 - (BOOL)isConnectedTeamName;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "non_trusted_team_details".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `nonTrustedTeamDetails` property, otherwise a runtime exception will be
 /// thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "non_trusted_team_details".
-///
+/// 
 - (BOOL)isNonTrustedTeamDetails;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "organization_name".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `organizationName` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "organization_name".
-///
+/// 
 - (BOOL)isOrganizationName;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` union.
-///
-@interface DBTEAMLOGFederationStatusChangeAdditionalInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGFederationStatusChangeAdditionalInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFederationStatusChangeAdditionalInfo` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFederationStatusChangeAdditionalInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFederationStatusChangeAdditionalInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFederationStatusChangeAdditionalInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGFederationStatusChangeAdditionalInfo` object.
-///
-+ (DBTEAMLOGFederationStatusChangeAdditionalInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFederationStatusChangeAdditionalInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

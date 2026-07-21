@@ -12,20 +12,21 @@
 @class DBFILESGpsCoordinates;
 @class DBFILESMediaMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaMetadata` struct.
-///
+/// 
 /// Metadata for a photo or video.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESMediaMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESMediaMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,59 +41,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dimensions Dimension of the photo/video.
 /// @param location The GPS coordinate of the photo/video.
 /// @param timeTaken The timestamp when the photo/video is taken.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDimensions:(nullable DBFILESDimensions *)dimensions
-                          location:(nullable DBFILESGpsCoordinates *)location
-                         timeTaken:(nullable NSDate *)timeTaken;
+/// 
+- (instancetype)initWithDimensions:(nullable DBFILESDimensions *)dimensions location:(nullable DBFILESGpsCoordinates *)location timeTaken:(nullable NSDate *)timeTaken;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaMetadata` struct.
-///
-@interface DBFILESMediaMetadataSerializer : NSObject
+/// 
+@interface DBFILESMediaMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESMediaMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESMediaMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESMediaMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESMediaMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESMediaMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESMediaMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESMediaMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESMediaMetadata` object.
-///
-+ (DBFILESMediaMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESMediaMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

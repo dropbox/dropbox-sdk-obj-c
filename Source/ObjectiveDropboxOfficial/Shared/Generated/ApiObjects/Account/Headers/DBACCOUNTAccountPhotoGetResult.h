@@ -10,18 +10,19 @@
 
 @class DBACCOUNTAccountPhotoGetResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccountPhotoGetResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBACCOUNTAccountPhotoGetResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBACCOUNTAccountPhotoGetResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param contentType The data returned by get_photo.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithContentType:(NSString *)contentType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AccountPhotoGetResult` struct.
-///
-@interface DBACCOUNTAccountPhotoGetResultSerializer : NSObject
+/// 
+@interface DBACCOUNTAccountPhotoGetResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBACCOUNTAccountPhotoGetResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBACCOUNTAccountPhotoGetResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBACCOUNTAccountPhotoGetResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBACCOUNTAccountPhotoGetResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBACCOUNTAccountPhotoGetResult *)instance;
 
-///
+/// 
 /// Deserializes `DBACCOUNTAccountPhotoGetResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBACCOUNTAccountPhotoGetResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBACCOUNTAccountPhotoGetResult` object.
-///
-+ (DBACCOUNTAccountPhotoGetResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBACCOUNTAccountPhotoGetResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

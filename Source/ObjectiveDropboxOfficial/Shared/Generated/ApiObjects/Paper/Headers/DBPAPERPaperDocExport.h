@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBPAPERRefPaperDoc.h"
 #import "DBSerializableProtocol.h"
+#import "DBPAPERRefPaperDoc.h"
 
 @class DBPAPERExportFormat;
 @class DBPAPERPaperDocExport;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocExport` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERPaperDocExport : DBPAPERRefPaperDoc <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERPaperDocExport : DBPAPERRefPaperDoc <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,62 +39,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param docId The Paper doc ID.
 /// @param exportFormat (no description).
 /// @param includeComments When true, export includes comment threads (e.g.
 /// markdown footnotes). When false or omitted, body only. Other formats may
 /// adopt this later; currently only markdown uses it. Plain bool (not
 /// optional): protoc-gen-godbx does not support proto3 optional yet.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDocId:(NSString *)docId
-                 exportFormat:(DBPAPERExportFormat *)exportFormat
-              includeComments:(nullable NSNumber *)includeComments;
+/// 
+- (instancetype)initWithDocId:(NSString *)docId exportFormat:(DBPAPERExportFormat *)exportFormat includeComments:(nullable NSNumber *)includeComments;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param docId The Paper doc ID.
 /// @param exportFormat (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDocId:(NSString *)docId exportFormat:(DBPAPERExportFormat *)exportFormat;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocExport` struct.
-///
-@interface DBPAPERPaperDocExportSerializer : NSObject
+/// 
+@interface DBPAPERPaperDocExportSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERPaperDocExport` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERPaperDocExport` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocExport` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERPaperDocExport *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERPaperDocExport *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERPaperDocExport` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocExport` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERPaperDocExport` object.
-///
-+ (DBPAPERPaperDocExport *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERPaperDocExport *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

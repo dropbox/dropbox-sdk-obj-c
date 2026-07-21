@@ -11,18 +11,19 @@
 @class DBFILESPathToTags;
 @class DBFILESTag;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PathToTags` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESPathToTags : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESPathToTags : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,47 +35,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path Path of the item.
 /// @param tags Tags assigned to this item.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path tags:(NSArray<DBFILESTag *> *)tags;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PathToTags` struct.
-///
-@interface DBFILESPathToTagsSerializer : NSObject
+/// 
+@interface DBFILESPathToTagsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESPathToTags` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESPathToTags` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESPathToTags` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESPathToTags *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESPathToTags *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESPathToTags` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESPathToTags` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESPathToTags` object.
-///
-+ (DBFILESPathToTags *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESPathToTags *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

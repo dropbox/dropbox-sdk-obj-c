@@ -12,18 +12,19 @@
 @class DBTEAMMembersDataTransferArg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersDataTransferArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersDataTransferArg : DBTEAMMembersDeactivateBaseArg <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersDataTransferArg : DBTEAMMembersDeactivateBaseArg <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,51 +36,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user Identity of user to remove/suspend/have their files moved.
 /// @param transferDestId Files from the deleted member account will be
 /// transferred to this user.
 /// @param transferAdminId Errors during the transfer process will be sent via
 /// email to this user.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user
-              transferDestId:(DBTEAMUserSelectorArg *)transferDestId
-             transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId;
+/// 
+- (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user transferDestId:(DBTEAMUserSelectorArg *)transferDestId transferAdminId:(DBTEAMUserSelectorArg *)transferAdminId;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersDataTransferArg` struct.
-///
-@interface DBTEAMMembersDataTransferArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersDataTransferArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersDataTransferArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersDataTransferArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersDataTransferArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersDataTransferArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersDataTransferArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersDataTransferArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersDataTransferArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersDataTransferArg` object.
-///
-+ (DBTEAMMembersDataTransferArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersDataTransferArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperPublishedLinkCreateDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperPublishedLinkCreateDetails` struct.
-///
+/// 
 /// Published doc.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperPublishedLinkCreateDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperPublishedLinkCreateDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperPublishedLinkCreateDetails` struct.
-///
-@interface DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperPublishedLinkCreateDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperPublishedLinkCreateDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperPublishedLinkCreateDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperPublishedLinkCreateDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperPublishedLinkCreateDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperPublishedLinkCreateDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperPublishedLinkCreateDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperPublishedLinkCreateDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperPublishedLinkCreateDetails`
 /// object.
-///
-+ (DBTEAMLOGPaperPublishedLinkCreateDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperPublishedLinkCreateDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

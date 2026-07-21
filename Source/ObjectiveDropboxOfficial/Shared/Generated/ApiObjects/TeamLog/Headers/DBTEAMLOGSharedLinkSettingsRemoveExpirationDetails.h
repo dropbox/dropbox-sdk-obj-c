@@ -11,20 +11,21 @@
 @class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkSettingsRemoveExpirationDetails` struct.
-///
+/// 
 /// Removed the expiration date from the shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,64 +41,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
 /// @param sharedContentLink Shared content link.
 /// @param previousValue Previous shared link expiration date. Might be missing
 /// due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel
-                               sharedContentLink:(nullable NSString *)sharedContentLink
-                                   previousValue:(nullable NSDate *)previousValue;
+/// 
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel sharedContentLink:(nullable NSString *)sharedContentLink previousValue:(nullable NSDate *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkSettingsRemoveExpirationDetails`
 /// struct.
-///
-@interface DBTEAMLOGSharedLinkSettingsRemoveExpirationDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkSettingsRemoveExpirationDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails` object.
-///
-+ (DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkSettingsRemoveExpirationDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

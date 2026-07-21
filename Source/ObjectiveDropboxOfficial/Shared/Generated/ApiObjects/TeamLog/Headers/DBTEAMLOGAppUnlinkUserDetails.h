@@ -11,20 +11,21 @@
 @class DBTEAMLOGAppLogInfo;
 @class DBTEAMLOGAppUnlinkUserDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AppUnlinkUserDetails` struct.
-///
+/// 
 /// Unlinked app for member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAppUnlinkUserDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAppUnlinkUserDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,47 +34,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param appInfo Relevant application details.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAppInfo:(DBTEAMLOGAppLogInfo *)appInfo;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AppUnlinkUserDetails` struct.
-///
-@interface DBTEAMLOGAppUnlinkUserDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAppUnlinkUserDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAppUnlinkUserDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAppUnlinkUserDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppUnlinkUserDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppUnlinkUserDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAppUnlinkUserDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAppUnlinkUserDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppUnlinkUserDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAppUnlinkUserDetails` object.
-///
-+ (DBTEAMLOGAppUnlinkUserDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAppUnlinkUserDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

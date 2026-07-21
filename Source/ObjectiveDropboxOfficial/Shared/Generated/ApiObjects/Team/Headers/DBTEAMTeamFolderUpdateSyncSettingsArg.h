@@ -13,18 +13,19 @@
 @class DBFILESSyncSettingArg;
 @class DBTEAMTeamFolderUpdateSyncSettingsArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderUpdateSyncSettingsArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderUpdateSyncSettingsArg : DBTEAMTeamFolderIdArg <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderUpdateSyncSettingsArg : DBTEAMTeamFolderIdArg <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,62 +38,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamFolderId The ID of the team folder.
 /// @param syncSetting Sync setting to apply to the team folder itself. Only
 /// meaningful if the team folder is not a shared team root.
 /// @param contentSyncSettings Sync settings to apply to contents of this team
 /// folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTeamFolderId:(NSString *)teamFolderId
-                         syncSetting:(nullable DBFILESSyncSettingArg *)syncSetting
-                 contentSyncSettings:(nullable NSArray<DBFILESContentSyncSettingArg *> *)contentSyncSettings;
+/// 
+- (instancetype)initWithTeamFolderId:(NSString *)teamFolderId syncSetting:(nullable DBFILESSyncSettingArg *)syncSetting contentSyncSettings:(nullable NSArray<DBFILESContentSyncSettingArg *> *)contentSyncSettings;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param teamFolderId The ID of the team folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamFolderId:(NSString *)teamFolderId;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderUpdateSyncSettingsArg` struct.
-///
-@interface DBTEAMTeamFolderUpdateSyncSettingsArgSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderUpdateSyncSettingsArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderUpdateSyncSettingsArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderUpdateSyncSettingsArg`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderUpdateSyncSettingsArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderUpdateSyncSettingsArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderUpdateSyncSettingsArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderUpdateSyncSettingsArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderUpdateSyncSettingsArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderUpdateSyncSettingsArg`
 /// object.
-///
-+ (DBTEAMTeamFolderUpdateSyncSettingsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderUpdateSyncSettingsArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

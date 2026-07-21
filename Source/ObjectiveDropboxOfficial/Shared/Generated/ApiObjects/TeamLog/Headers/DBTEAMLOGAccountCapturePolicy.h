@@ -10,35 +10,36 @@
 
 @class DBTEAMLOGAccountCapturePolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccountCapturePolicy` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAccountCapturePolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAccountCapturePolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMLOGAccountCapturePolicyTag` enum type represents the possible tag
 /// states with which the `DBTEAMLOGAccountCapturePolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAccountCapturePolicyTag) {
-  /// (no description).
-  DBTEAMLOGAccountCapturePolicyAllUsers,
+    /// (no description).
+    DBTEAMLOGAccountCapturePolicyAllUsers,
 
-  /// (no description).
-  DBTEAMLOGAccountCapturePolicyDisabled,
+    /// (no description).
+    DBTEAMLOGAccountCapturePolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGAccountCapturePolicyInvitedUsers,
+    /// (no description).
+    DBTEAMLOGAccountCapturePolicyInvitedUsers,
 
-  /// (no description).
-  DBTEAMLOGAccountCapturePolicyOther,
+    /// (no description).
+    DBTEAMLOGAccountCapturePolicyOther,
 
 };
 
@@ -47,103 +48,105 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAccountCapturePolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "all_users".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAllUsers;
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "invited_users".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvitedUsers;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "all_users".
-///
+/// 
 /// @return Whether the union's current tag state has value "all_users".
-///
+/// 
 - (BOOL)isAllUsers;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invited_users".
-///
+/// 
 /// @return Whether the union's current tag state has value "invited_users".
-///
+/// 
 - (BOOL)isInvitedUsers;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGAccountCapturePolicy` union.
-///
-@interface DBTEAMLOGAccountCapturePolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGAccountCapturePolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAccountCapturePolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAccountCapturePolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCapturePolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCapturePolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAccountCapturePolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAccountCapturePolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCapturePolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAccountCapturePolicy` object.
-///
-+ (DBTEAMLOGAccountCapturePolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAccountCapturePolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

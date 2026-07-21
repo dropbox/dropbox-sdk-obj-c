@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSendAndTrackFileUpdatedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SendAndTrackFileUpdatedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSendAndTrackFileUpdatedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSendAndTrackFileUpdatedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SendAndTrackFileUpdatedType` struct.
-///
-@interface DBTEAMLOGSendAndTrackFileUpdatedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSendAndTrackFileUpdatedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSendAndTrackFileUpdatedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSendAndTrackFileUpdatedType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendAndTrackFileUpdatedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSendAndTrackFileUpdatedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSendAndTrackFileUpdatedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSendAndTrackFileUpdatedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendAndTrackFileUpdatedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSendAndTrackFileUpdatedType`
 /// object.
-///
-+ (DBTEAMLOGSendAndTrackFileUpdatedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSendAndTrackFileUpdatedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGSecondaryMailsPolicy;
 @class DBTEAMLOGSecondaryMailsPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SecondaryMailsPolicyChangedDetails` struct.
-///
+/// 
 /// Secondary mails policy changed.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSecondaryMailsPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSecondaryMailsPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous secondary mails policy.
 /// @param dNewValue New secondary mails policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGSecondaryMailsPolicy *)previousValue
-                            dNewValue:(DBTEAMLOGSecondaryMailsPolicy *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGSecondaryMailsPolicy *)previousValue dNewValue:(DBTEAMLOGSecondaryMailsPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SecondaryMailsPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGSecondaryMailsPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSecondaryMailsPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSecondaryMailsPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSecondaryMailsPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSecondaryMailsPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryMailsPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSecondaryMailsPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSecondaryMailsPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSecondaryMailsPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSecondaryMailsPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGSecondaryMailsPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSecondaryMailsPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperDocUnresolveCommentDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocUnresolveCommentDetails` struct.
-///
+/// 
 /// Unresolved Paper doc comment.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDocUnresolveCommentDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDocUnresolveCommentDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,59 +36,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param commentText Comment text.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(nullable NSString *)commentText;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocUnresolveCommentDetails` struct.
-///
-@interface DBTEAMLOGPaperDocUnresolveCommentDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDocUnresolveCommentDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDocUnresolveCommentDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperDocUnresolveCommentDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocUnresolveCommentDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDocUnresolveCommentDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDocUnresolveCommentDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDocUnresolveCommentDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDocUnresolveCommentDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperDocUnresolveCommentDetails`
 /// object.
-///
-+ (DBTEAMLOGPaperDocUnresolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDocUnresolveCommentDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

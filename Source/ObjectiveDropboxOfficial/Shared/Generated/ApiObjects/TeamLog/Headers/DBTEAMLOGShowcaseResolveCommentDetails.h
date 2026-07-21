@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGShowcaseResolveCommentDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseResolveCommentDetails` struct.
-///
+/// 
 /// Resolved showcase comment.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseResolveCommentDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseResolveCommentDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,59 +36,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param commentText Comment text.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid commentText:(nullable NSString *)commentText;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseResolveCommentDetails` struct.
-///
-@interface DBTEAMLOGShowcaseResolveCommentDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseResolveCommentDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseResolveCommentDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseResolveCommentDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseResolveCommentDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseResolveCommentDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseResolveCommentDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseResolveCommentDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseResolveCommentDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseResolveCommentDetails`
 /// object.
-///
-+ (DBTEAMLOGShowcaseResolveCommentDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseResolveCommentDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

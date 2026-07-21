@@ -11,18 +11,19 @@
 @class DBTEAMDeleteSecondaryEmailsResult;
 @class DBTEAMUserDeleteResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeleteSecondaryEmailsResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMDeleteSecondaryEmailsResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMDeleteSecondaryEmailsResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,47 +32,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param results (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithResults:(NSArray<DBTEAMUserDeleteResult *> *)results;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeleteSecondaryEmailsResult` struct.
-///
-@interface DBTEAMDeleteSecondaryEmailsResultSerializer : NSObject
+/// 
+@interface DBTEAMDeleteSecondaryEmailsResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMDeleteSecondaryEmailsResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMDeleteSecondaryEmailsResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMDeleteSecondaryEmailsResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMDeleteSecondaryEmailsResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMDeleteSecondaryEmailsResult *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMDeleteSecondaryEmailsResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMDeleteSecondaryEmailsResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMDeleteSecondaryEmailsResult` object.
-///
-+ (DBTEAMDeleteSecondaryEmailsResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMDeleteSecondaryEmailsResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

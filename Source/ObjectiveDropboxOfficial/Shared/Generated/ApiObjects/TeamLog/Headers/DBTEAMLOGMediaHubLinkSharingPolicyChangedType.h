@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGMediaHubLinkSharingPolicyChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubLinkSharingPolicyChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubLinkSharingPolicyChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubLinkSharingPolicyChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaHubLinkSharingPolicyChangedType`
 /// struct.
-///
-@interface DBTEAMLOGMediaHubLinkSharingPolicyChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubLinkSharingPolicyChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubLinkSharingPolicyChangedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMediaHubLinkSharingPolicyChangedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubLinkSharingPolicyChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubLinkSharingPolicyChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubLinkSharingPolicyChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubLinkSharingPolicyChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubLinkSharingPolicyChangedType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMediaHubLinkSharingPolicyChangedType` object.
-///
-+ (DBTEAMLOGMediaHubLinkSharingPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubLinkSharingPolicyChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

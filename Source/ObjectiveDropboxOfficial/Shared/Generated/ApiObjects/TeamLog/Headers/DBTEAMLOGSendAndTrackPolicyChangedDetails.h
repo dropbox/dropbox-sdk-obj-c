@@ -11,20 +11,21 @@
 @class DBTEAMLOGSendAndTrackPolicy;
 @class DBTEAMLOGSendAndTrackPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SendAndTrackPolicyChangedDetails` struct.
-///
+/// 
 /// Changed “Send and track” policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSendAndTrackPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSendAndTrackPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGSendAndTrackPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGSendAndTrackPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGSendAndTrackPolicy *)dNewValue previousValue:(DBTEAMLOGSendAndTrackPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SendAndTrackPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGSendAndTrackPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSendAndTrackPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSendAndTrackPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSendAndTrackPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendAndTrackPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSendAndTrackPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSendAndTrackPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSendAndTrackPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendAndTrackPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSendAndTrackPolicyChangedDetails`
 /// object.
-///
-+ (DBTEAMLOGSendAndTrackPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSendAndTrackPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

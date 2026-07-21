@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderSpaceLimitsChangeLimitType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderSpaceLimitsChangeLimitType`
 /// struct.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType` object.
-///
-+ (DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderSpaceLimitsChangeLimitType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

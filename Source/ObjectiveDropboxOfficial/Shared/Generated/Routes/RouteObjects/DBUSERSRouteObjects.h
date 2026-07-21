@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Users namespace. Each route in the Users
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBUSERSRouteObjects : NSObject
+/// 
+@interface DBUSERSRouteObjects : NSObject 
 
 /// Accessor method for the featuresGetValues route object.
 + (DBRoute *)DBUSERSFeaturesGetValues;
@@ -35,3 +36,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

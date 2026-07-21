@@ -12,18 +12,19 @@
 @class DBFILEPROPERTIESPropertiesSearchQuery;
 @class DBFILEPROPERTIESTemplateFilter;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PropertiesSearchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEPROPERTIESPropertiesSearchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEPROPERTIESPropertiesSearchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,61 +37,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param queries Queries to search.
 /// @param templateFilter Filter results to contain only properties associated
 /// with these template IDs.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithQueries:(NSArray<DBFILEPROPERTIESPropertiesSearchQuery *> *)queries
-                 templateFilter:(nullable DBFILEPROPERTIESTemplateFilter *)templateFilter;
+/// 
+- (instancetype)initWithQueries:(NSArray<DBFILEPROPERTIESPropertiesSearchQuery *> *)queries templateFilter:(nullable DBFILEPROPERTIESTemplateFilter *)templateFilter;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param queries Queries to search.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithQueries:(NSArray<DBFILEPROPERTIESPropertiesSearchQuery *> *)queries;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PropertiesSearchArg` struct.
-///
-@interface DBFILEPROPERTIESPropertiesSearchArgSerializer : NSObject
+/// 
+@interface DBFILEPROPERTIESPropertiesSearchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEPROPERTIESPropertiesSearchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEPROPERTIESPropertiesSearchArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertiesSearchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEPROPERTIESPropertiesSearchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEPROPERTIESPropertiesSearchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEPROPERTIESPropertiesSearchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertiesSearchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEPROPERTIESPropertiesSearchArg`
 /// object.
-///
-+ (DBFILEPROPERTIESPropertiesSearchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEPROPERTIESPropertiesSearchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

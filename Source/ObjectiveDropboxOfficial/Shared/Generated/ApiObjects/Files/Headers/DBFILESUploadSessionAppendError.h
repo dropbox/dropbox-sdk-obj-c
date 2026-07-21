@@ -11,60 +11,61 @@
 @class DBFILESUploadSessionAppendError;
 @class DBFILESUploadSessionOffsetError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionAppendError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionAppendError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionAppendError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBFILESUploadSessionAppendErrorTag` enum type represents the possible
 /// tag states with which the `DBFILESUploadSessionAppendError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag) {
-  /// The upload session ID was not found or has expired. Upload sessions are
-  /// valid for 7 days.
-  DBFILESUploadSessionAppendErrorNotFound,
+    /// The upload session ID was not found or has expired. Upload sessions are
+    /// valid for 7 days.
+    DBFILESUploadSessionAppendErrorNotFound,
 
-  /// The specified offset was incorrect. See the value for the correct
-  /// offset. This error may occur when a previous request was received and
-  /// processed successfully but the client did not receive the response, e.g.
-  /// due to a network error.
-  DBFILESUploadSessionAppendErrorIncorrectOffset,
+    /// The specified offset was incorrect. See the value for the correct
+    /// offset. This error may occur when a previous request was received and
+    /// processed successfully but the client did not receive the response, e.g.
+    /// due to a network error.
+    DBFILESUploadSessionAppendErrorIncorrectOffset,
 
-  /// You are attempting to append data to an upload session that has already
-  /// been closed (i.e. committed).
-  DBFILESUploadSessionAppendErrorClosed,
+    /// You are attempting to append data to an upload session that has already
+    /// been closed (i.e. committed).
+    DBFILESUploadSessionAppendErrorClosed,
 
-  /// You can not append to the upload session because the size of a file
-  /// should not exceed the max file size limit (i.e. 2^41 - 2^22 or
-  /// 2,199,019,061,248 bytes).
-  DBFILESUploadSessionAppendErrorTooLarge,
+    /// You can not append to the upload session because the size of a file
+    /// should not exceed the max file size limit (i.e. 2^41 - 2^22 or
+    /// 2,199,019,061,248 bytes).
+    DBFILESUploadSessionAppendErrorTooLarge,
 
-  /// For concurrent upload sessions, offset needs to be multiple of 2^22
-  /// (4,194,304) bytes.
-  DBFILESUploadSessionAppendErrorConcurrentSessionInvalidOffset,
+    /// For concurrent upload sessions, offset needs to be multiple of 2^22
+    /// (4,194,304) bytes.
+    DBFILESUploadSessionAppendErrorConcurrentSessionInvalidOffset,
 
-  /// For concurrent upload sessions, only chunks with size multiple of 2^22
-  /// (4,194,304) bytes can be uploaded.
-  DBFILESUploadSessionAppendErrorConcurrentSessionInvalidDataSize,
+    /// For concurrent upload sessions, only chunks with size multiple of 2^22
+    /// (4,194,304) bytes can be uploaded.
+    DBFILESUploadSessionAppendErrorConcurrentSessionInvalidDataSize,
 
-  /// The request payload must be at most 150 MiB.
-  DBFILESUploadSessionAppendErrorPayloadTooLarge,
+    /// The request payload must be at most 150 MiB.
+    DBFILESUploadSessionAppendErrorPayloadTooLarge,
 
-  /// The content received by the Dropbox server in this call does not match
-  /// the provided content hash.
-  DBFILESUploadSessionAppendErrorContentHashMismatch,
+    /// The content received by the Dropbox server in this call does not match
+    /// the provided content hash.
+    DBFILESUploadSessionAppendErrorContentHashMismatch,
 
-  /// (no description).
-  DBFILESUploadSessionAppendErrorOther,
+    /// (no description).
+    DBFILESUploadSessionAppendErrorOther,
 
 };
 
@@ -80,220 +81,222 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "not_found".
-///
+/// 
 /// Description of the "not_found" tag state: The upload session ID was not
 /// found or has expired. Upload sessions are valid for 7 days.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNotFound;
 
-///
+/// 
 /// Initializes union class with tag state of "incorrect_offset".
-///
+/// 
 /// Description of the "incorrect_offset" tag state: The specified offset was
 /// incorrect. See the value for the correct offset. This error may occur when a
 /// previous request was received and processed successfully but the client did
 /// not receive the response, e.g. due to a network error.
-///
+/// 
 /// @param incorrectOffset The specified offset was incorrect. See the value for
 /// the correct offset. This error may occur when a previous request was
 /// received and processed successfully but the client did not receive the
 /// response, e.g. due to a network error.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithIncorrectOffset:(DBFILESUploadSessionOffsetError *)incorrectOffset;
 
-///
+/// 
 /// Initializes union class with tag state of "closed".
-///
+/// 
 /// Description of the "closed" tag state: You are attempting to append data to
 /// an upload session that has already been closed (i.e. committed).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithClosed;
 
-///
+/// 
 /// Initializes union class with tag state of "too_large".
-///
+/// 
 /// Description of the "too_large" tag state: You can not append to the upload
 /// session because the size of a file should not exceed the max file size limit
 /// (i.e. 2^41 - 2^22 or 2,199,019,061,248 bytes).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTooLarge;
 
-///
+/// 
 /// Initializes union class with tag state of
 /// "concurrent_session_invalid_offset".
-///
+/// 
 /// Description of the "concurrent_session_invalid_offset" tag state: For
 /// concurrent upload sessions, offset needs to be multiple of 2^22 (4,194,304)
 /// bytes.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithConcurrentSessionInvalidOffset;
 
-///
+/// 
 /// Initializes union class with tag state of
 /// "concurrent_session_invalid_data_size".
-///
+/// 
 /// Description of the "concurrent_session_invalid_data_size" tag state: For
 /// concurrent upload sessions, only chunks with size multiple of 2^22
 /// (4,194,304) bytes can be uploaded.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithConcurrentSessionInvalidDataSize;
 
-///
+/// 
 /// Initializes union class with tag state of "payload_too_large".
-///
+/// 
 /// Description of the "payload_too_large" tag state: The request payload must
 /// be at most 150 MiB.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPayloadTooLarge;
 
-///
+/// 
 /// Initializes union class with tag state of "content_hash_mismatch".
-///
+/// 
 /// Description of the "content_hash_mismatch" tag state: The content received
 /// by the Dropbox server in this call does not match the provided content hash.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithContentHashMismatch;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "not_found".
-///
+/// 
 /// @return Whether the union's current tag state has value "not_found".
-///
+/// 
 - (BOOL)isNotFound;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "incorrect_offset".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `incorrectOffset` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "incorrect_offset".
-///
+/// 
 - (BOOL)isIncorrectOffset;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "closed".
-///
+/// 
 /// @return Whether the union's current tag state has value "closed".
-///
+/// 
 - (BOOL)isClosed;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "too_large".
-///
+/// 
 /// @return Whether the union's current tag state has value "too_large".
-///
+/// 
 - (BOOL)isTooLarge;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "concurrent_session_invalid_offset".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "concurrent_session_invalid_offset".
-///
+/// 
 - (BOOL)isConcurrentSessionInvalidOffset;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "concurrent_session_invalid_data_size".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "concurrent_session_invalid_data_size".
-///
+/// 
 - (BOOL)isConcurrentSessionInvalidDataSize;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "payload_too_large".
-///
+/// 
 /// @return Whether the union's current tag state has value "payload_too_large".
-///
+/// 
 - (BOOL)isPayloadTooLarge;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "content_hash_mismatch".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "content_hash_mismatch".
-///
+/// 
 - (BOOL)isContentHashMismatch;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESUploadSessionAppendError` union.
-///
-@interface DBFILESUploadSessionAppendErrorSerializer : NSObject
+/// 
+@interface DBFILESUploadSessionAppendErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionAppendError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionAppendError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionAppendError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionAppendError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionAppendError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionAppendError` object.
-///
-+ (DBFILESUploadSessionAppendError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionAppendError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

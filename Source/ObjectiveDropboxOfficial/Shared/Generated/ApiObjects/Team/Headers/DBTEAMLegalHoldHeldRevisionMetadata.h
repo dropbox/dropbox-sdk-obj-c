@@ -11,18 +11,19 @@
 @class DBTEAMLegalHoldHeldRevisionMetadata;
 @class DBTEAMTeamMemberStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldHeldRevisionMetadata` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLegalHoldHeldRevisionMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLegalHoldHeldRevisionMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -60,9 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewFilename The held revision filename.
 /// @param originalRevisionId The id of the held revision.
 /// @param originalFilePath The original path of the held revision.
@@ -75,53 +76,46 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param contentHash A hash of the file content. This field can be used to
 /// verify data integrity. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewFilename:(NSString *)dNewFilename
-                  originalRevisionId:(NSString *)originalRevisionId
-                    originalFilePath:(NSString *)originalFilePath
-                      serverModified:(NSDate *)serverModified
-                      authorMemberId:(NSString *)authorMemberId
-                  authorMemberStatus:(DBTEAMTeamMemberStatus *)authorMemberStatus
-                         authorEmail:(NSString *)authorEmail
-                            fileType:(NSString *)fileType
-                                size:(NSNumber *)size
-                         contentHash:(NSString *)contentHash;
+/// 
+- (instancetype)initWithDNewFilename:(NSString *)dNewFilename originalRevisionId:(NSString *)originalRevisionId originalFilePath:(NSString *)originalFilePath serverModified:(NSDate *)serverModified authorMemberId:(NSString *)authorMemberId authorMemberStatus:(DBTEAMTeamMemberStatus *)authorMemberStatus authorEmail:(NSString *)authorEmail fileType:(NSString *)fileType size:(NSNumber *)size contentHash:(NSString *)contentHash;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LegalHoldHeldRevisionMetadata` struct.
-///
-@interface DBTEAMLegalHoldHeldRevisionMetadataSerializer : NSObject
+/// 
+@interface DBTEAMLegalHoldHeldRevisionMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLegalHoldHeldRevisionMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLegalHoldHeldRevisionMetadata` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldHeldRevisionMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLegalHoldHeldRevisionMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLegalHoldHeldRevisionMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLegalHoldHeldRevisionMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldHeldRevisionMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLegalHoldHeldRevisionMetadata`
 /// object.
-///
-+ (DBTEAMLegalHoldHeldRevisionMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLegalHoldHeldRevisionMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

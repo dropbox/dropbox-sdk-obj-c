@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashAdminAddedOrgWideConnectorDetails;
 @class DBTEAMLOGDashConnectorStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashAdminAddedOrgWideConnectorDetails` struct.
-///
+/// 
 /// Admin added an admin connector.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashAdminAddedOrgWideConnectorDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashAdminAddedOrgWideConnectorDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param connectorName The name of the Connector.
 /// @param connectorStatus The status of the Connector.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithConnectorName:(NSString *)connectorName
-                      connectorStatus:(DBTEAMLOGDashConnectorStatus *)connectorStatus;
+/// 
+- (instancetype)initWithConnectorName:(NSString *)connectorName connectorStatus:(DBTEAMLOGDashConnectorStatus *)connectorStatus;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashAdminAddedOrgWideConnectorDetails`
 /// struct.
-///
-@interface DBTEAMLOGDashAdminAddedOrgWideConnectorDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashAdminAddedOrgWideConnectorDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashAdminAddedOrgWideConnectorDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashAdminAddedOrgWideConnectorDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashAdminAddedOrgWideConnectorDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashAdminAddedOrgWideConnectorDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashAdminAddedOrgWideConnectorDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashAdminAddedOrgWideConnectorDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashAdminAddedOrgWideConnectorDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDashAdminAddedOrgWideConnectorDetails` object.
-///
-+ (DBTEAMLOGDashAdminAddedOrgWideConnectorDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashAdminAddedOrgWideConnectorDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,20 +12,21 @@
 @class DBPAPERSharingPublicPolicyType;
 @class DBPAPERSharingTeamPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharingPolicy` struct.
-///
+/// 
 /// Sharing policy of Paper doc.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERSharingPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERSharingPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,58 +39,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param publicSharingPolicy This value applies to the non-team members.
 /// @param teamSharingPolicy This value applies to the team members only. The
 /// value is null for all personal accounts.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPublicSharingPolicy:(nullable DBPAPERSharingPublicPolicyType *)publicSharingPolicy
-                          teamSharingPolicy:(nullable DBPAPERSharingTeamPolicyType *)teamSharingPolicy;
+/// 
+- (instancetype)initWithPublicSharingPolicy:(nullable DBPAPERSharingPublicPolicyType *)publicSharingPolicy teamSharingPolicy:(nullable DBPAPERSharingTeamPolicyType *)teamSharingPolicy;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharingPolicy` struct.
-///
-@interface DBPAPERSharingPolicySerializer : NSObject
+/// 
+@interface DBPAPERSharingPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERSharingPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERSharingPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERSharingPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERSharingPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERSharingPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERSharingPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERSharingPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERSharingPolicy` object.
-///
-+ (DBPAPERSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERSharingPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

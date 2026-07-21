@@ -25,13 +25,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Riviera` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBRIVIERAUserAuthRoutes : NSObject
+@interface DBRIVIERAUserAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -41,18 +41,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// Asynchronous document-to-markdown conversion for supported file formats.
-///
-///
+/// 
+/// 
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
-///
+/// 
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMarkdownAsync;
 
-///
+/// 
 /// Asynchronous document-to-markdown conversion for supported file formats.
-///
+/// 
 /// @param fileIdOrUrl Identifier of the document to convert. Callers must set exactly one of the oneof variants: -
 /// file_id: a Dropbox-issued file id (format: "id:<id>") for a file the authenticated user has access to. - path: an
 /// absolute Dropbox path, e.g. "/folder/report.docx". - url: either a Dropbox shared link (www.dropbox.com) or an
@@ -66,37 +66,35 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param enableOcr Enable OCR for PDF documents. Processing is slower when enabled.
 /// @param embedImages When true, embed images as base64 data URIs in the markdown output. This can significantly
 /// increase output size.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
-///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMarkdownAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
-                                                                enableOcr:(nullable NSNumber *)enableOcr
-                                                              embedImages:(nullable NSNumber *)embedImages;
+/// 
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMarkdownAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl enableOcr:(nullable NSNumber *)enableOcr embedImages:(nullable NSNumber *)embedImages;
 
-///
+/// 
 /// Returns the status or result of specified get_markdown_async task.
-///
+/// 
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBRIVIERAGetMarkdownAsyncCheckResult` object on
 /// success or a `DBASYNCPollError` object on failure.
-///
+/// 
 - (DBRpcTask<DBRIVIERAGetMarkdownAsyncCheckResult *, DBASYNCPollError *> *)getMarkdownAsyncCheck:(NSString *)asyncJobId;
 
-///
+/// 
 /// Asynchronous file metadata extraction for supported file formats.
-///
-///
+/// 
+/// 
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
-///
+/// 
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMetadataAsync;
 
-///
+/// 
 /// Asynchronous file metadata extraction for supported file formats.
-///
+/// 
 /// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers must set exactly one of the oneof
 /// variants: - file_id: a Dropbox-issued file id (format: "id:<id>") for a file the authenticated user has access to. -
 /// path: an absolute Dropbox path, e.g. "/folder/photo.jpg". - url: either a Dropbox shared link (www.dropbox.com) or
@@ -109,35 +107,35 @@ NS_ASSUME_NONNULL_BEGIN
 /// image files return EXIF metadata, audio/video files return media metadata, PDFs return PDF metadata, and MS Office
 /// documents (docx, pptx, xlsx) return Office metadata. Requests against unsupported formats return
 /// `unsupported_format_error`.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
-///
+/// 
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMetadataAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl;
 
-///
+/// 
 /// Returns the status or result of specified get_metadata_async task.
-///
+/// 
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBRIVIERAGetMetadataAsyncCheckResult` object on
 /// success or a `DBASYNCPollError` object on failure.
-///
+/// 
 - (DBRpcTask<DBRIVIERAGetMetadataAsyncCheckResult *, DBASYNCPollError *> *)getMetadataAsyncCheck:(NSString *)asyncJobId;
 
-///
+/// 
 /// Asynchronous transcript generation for audio and video files.
-///
-///
+/// 
+/// 
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
-///
+/// 
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTranscriptAsync;
 
-///
+/// 
 /// Asynchronous transcript generation for audio and video files.
-///
+/// 
 /// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must set exactly one of the oneof variants:
 /// - file_id: a Dropbox-issued file id (format: "id:<id>") for a file the authenticated user has access to. - path: an
 /// absolute Dropbox path, e.g. "/folder/recording.mp4". - url: either a Dropbox shared link (www.dropbox.com) or an
@@ -157,28 +155,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param audioLanguage Optional ISO 639-1 two-letter language code hinting the spoken language of the source audio
 /// (e.g. "en", "ja"). When empty, the service auto-detects the language; supplying a hint improves accuracy and latency
 /// for short or ambiguous clips. Unsupported languages fall back to auto-detection.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
-///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTranscriptAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
-                                                             timestampLevel:
-                                                                 (nullable DBRIVIERATimestampLevel *)timestampLevel
-                                                       includedSpecialWords:(nullable NSString *)includedSpecialWords
-                                                              audioLanguage:(nullable NSString *)audioLanguage;
+/// 
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTranscriptAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl timestampLevel:(nullable DBRIVIERATimestampLevel *)timestampLevel includedSpecialWords:(nullable NSString *)includedSpecialWords audioLanguage:(nullable NSString *)audioLanguage;
 
-///
+/// 
 /// Returns the status or result of specified get_transcript_async task.
-///
+/// 
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBRIVIERAGetTranscriptAsyncCheckResult` object on
 /// success or a `DBASYNCPollError` object on failure.
-///
-- (DBRpcTask<DBRIVIERAGetTranscriptAsyncCheckResult *, DBASYNCPollError *> *)getTranscriptAsyncCheck:
-    (NSString *)asyncJobId;
+/// 
+- (DBRpcTask<DBRIVIERAGetTranscriptAsyncCheckResult *, DBASYNCPollError *> *)getTranscriptAsyncCheck:(NSString *)asyncJobId;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

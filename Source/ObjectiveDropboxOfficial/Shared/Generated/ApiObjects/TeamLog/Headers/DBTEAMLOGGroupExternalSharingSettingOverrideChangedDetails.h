@@ -11,20 +11,21 @@
 @class DBTEAMLOGExternalSharingSetting;
 @class DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupExternalSharingSettingOverrideChangedDetails` struct.
-///
+/// 
 /// Changed group's external sharing setting.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,54 +37,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New external sharing setting.
 /// @param previousValue Previous external sharing setting.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGExternalSharingSetting *)dNewValue
-                    previousValue:(DBTEAMLOGExternalSharingSetting *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGExternalSharingSetting *)dNewValue previousValue:(DBTEAMLOGExternalSharingSetting *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `GroupExternalSharingSettingOverrideChangedDetails` struct.
-///
-@interface DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails` object.
-///
-+ (DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGroupExternalSharingSettingOverrideChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

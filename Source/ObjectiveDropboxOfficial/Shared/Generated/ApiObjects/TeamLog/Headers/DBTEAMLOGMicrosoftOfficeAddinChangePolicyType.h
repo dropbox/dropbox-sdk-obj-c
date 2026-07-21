@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGMicrosoftOfficeAddinChangePolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MicrosoftOfficeAddinChangePolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMicrosoftOfficeAddinChangePolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMicrosoftOfficeAddinChangePolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MicrosoftOfficeAddinChangePolicyType`
 /// struct.
-///
-@interface DBTEAMLOGMicrosoftOfficeAddinChangePolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGMicrosoftOfficeAddinChangePolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMicrosoftOfficeAddinChangePolicyType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMicrosoftOfficeAddinChangePolicyType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMicrosoftOfficeAddinChangePolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMicrosoftOfficeAddinChangePolicyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMicrosoftOfficeAddinChangePolicyType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMicrosoftOfficeAddinChangePolicyType` object.
-///
-+ (DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMicrosoftOfficeAddinChangePolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

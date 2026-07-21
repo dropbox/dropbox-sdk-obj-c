@@ -11,18 +11,19 @@
 @class DBFILESUploadSessionAppendBatchArgEntry;
 @class DBFILESUploadSessionCursor;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionAppendBatchArgEntry` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionAppendBatchArgEntry : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionAppendBatchArgEntry : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,67 +40,67 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param cursor Contains the upload session ID and the offset.
 /// @param length Length in bytes of the data that should be appended for this
 /// session. Used to split the batched upload data for multiple upload sessions.
 /// @param close If true, the current session will be closed, at which point you
 /// won't be able to call `uploadSessionAppendBatch` anymore with the current
 /// session.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithCursor:(DBFILESUploadSessionCursor *)cursor
-                        length:(NSNumber *)length
-                         close:(nullable NSNumber *)close;
+/// 
+- (instancetype)initWithCursor:(DBFILESUploadSessionCursor *)cursor length:(NSNumber *)length close:(nullable NSNumber *)close;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param cursor Contains the upload session ID and the offset.
 /// @param length Length in bytes of the data that should be appended for this
 /// session. Used to split the batched upload data for multiple upload sessions.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCursor:(DBFILESUploadSessionCursor *)cursor length:(NSNumber *)length;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UploadSessionAppendBatchArgEntry` struct.
-///
-@interface DBFILESUploadSessionAppendBatchArgEntrySerializer : NSObject
+/// 
+@interface DBFILESUploadSessionAppendBatchArgEntrySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionAppendBatchArgEntry` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionAppendBatchArgEntry`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchArgEntry` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionAppendBatchArgEntry *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionAppendBatchArgEntry *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionAppendBatchArgEntry` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchArgEntry` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionAppendBatchArgEntry`
 /// object.
-///
-+ (DBFILESUploadSessionAppendBatchArgEntry *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionAppendBatchArgEntry *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

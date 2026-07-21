@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGAddonAssignedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AddonAssignedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAddonAssignedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAddonAssignedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AddonAssignedType` struct.
-///
-@interface DBTEAMLOGAddonAssignedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGAddonAssignedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAddonAssignedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAddonAssignedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAddonAssignedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAddonAssignedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAddonAssignedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAddonAssignedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAddonAssignedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAddonAssignedType` object.
-///
-+ (DBTEAMLOGAddonAssignedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAddonAssignedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

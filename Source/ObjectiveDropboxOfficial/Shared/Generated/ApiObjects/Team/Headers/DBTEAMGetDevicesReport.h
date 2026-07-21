@@ -12,23 +12,24 @@
 @class DBTEAMDevicesActive;
 @class DBTEAMGetDevicesReport;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetDevicesReport` struct.
-///
+/// 
 /// Devices Report Result. Contains subsections for different time ranges of
 /// activity. Each of the items in each subsection of the storage report is an
 /// array of values, one value per day. If there is no data for a day, then the
 /// value will be None.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMGetDevicesReport : DBTEAMBaseDfbReport <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMGetDevicesReport : DBTEAMBaseDfbReport <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -43,51 +44,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
 /// @param active1Day Report of the number of devices active in the last day.
 /// @param active7Day Report of the number of devices active in the last 7 days.
 /// @param active28Day Report of the number of devices active in the last 28
 /// days.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithStartDate:(NSString *)startDate
-                       active1Day:(DBTEAMDevicesActive *)active1Day
-                       active7Day:(DBTEAMDevicesActive *)active7Day
-                      active28Day:(DBTEAMDevicesActive *)active28Day;
+/// 
+- (instancetype)initWithStartDate:(NSString *)startDate active1Day:(DBTEAMDevicesActive *)active1Day active7Day:(DBTEAMDevicesActive *)active7Day active28Day:(DBTEAMDevicesActive *)active28Day;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetDevicesReport` struct.
-///
-@interface DBTEAMGetDevicesReportSerializer : NSObject
+/// 
+@interface DBTEAMGetDevicesReportSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMGetDevicesReport` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMGetDevicesReport` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGetDevicesReport` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMGetDevicesReport *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMGetDevicesReport *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMGetDevicesReport` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMGetDevicesReport` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMGetDevicesReport` object.
-///
-+ (DBTEAMGetDevicesReport *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMGetDevicesReport *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

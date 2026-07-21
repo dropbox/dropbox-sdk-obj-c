@@ -11,20 +11,21 @@
 @class DBTEAMLOGTopLevelContentPolicy;
 @class DBTEAMLOGTopLevelContentPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TopLevelContentPolicyChangedDetails` struct.
-///
+/// 
 /// Changed top level content setting for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTopLevelContentPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTopLevelContentPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGTopLevelContentPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGTopLevelContentPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGTopLevelContentPolicy *)dNewValue previousValue:(DBTEAMLOGTopLevelContentPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TopLevelContentPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGTopLevelContentPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTopLevelContentPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTopLevelContentPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTopLevelContentPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTopLevelContentPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTopLevelContentPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTopLevelContentPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTopLevelContentPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTopLevelContentPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTopLevelContentPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGTopLevelContentPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTopLevelContentPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

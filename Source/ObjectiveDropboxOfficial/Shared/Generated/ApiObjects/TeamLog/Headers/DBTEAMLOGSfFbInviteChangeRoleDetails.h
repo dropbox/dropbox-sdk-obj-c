@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSfFbInviteChangeRoleDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SfFbInviteChangeRoleDetails` struct.
-///
+/// 
 /// Changed Facebook user's role in shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSfFbInviteChangeRoleDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSfFbInviteChangeRoleDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,65 +42,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
 /// @param previousSharingPermission Previous sharing permission.
 /// @param dNewSharingPermission New sharing permission.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                      originalFolderName:(NSString *)originalFolderName
-               previousSharingPermission:(nullable NSString *)previousSharingPermission
-                   dNewSharingPermission:(nullable NSString *)dNewSharingPermission;
+/// 
+- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName previousSharingPermission:(nullable NSString *)previousSharingPermission dNewSharingPermission:(nullable NSString *)dNewSharingPermission;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SfFbInviteChangeRoleDetails` struct.
-///
-@interface DBTEAMLOGSfFbInviteChangeRoleDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSfFbInviteChangeRoleDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSfFbInviteChangeRoleDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSfFbInviteChangeRoleDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfFbInviteChangeRoleDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfFbInviteChangeRoleDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSfFbInviteChangeRoleDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSfFbInviteChangeRoleDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfFbInviteChangeRoleDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSfFbInviteChangeRoleDetails`
 /// object.
-///
-+ (DBTEAMLOGSfFbInviteChangeRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSfFbInviteChangeRoleDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

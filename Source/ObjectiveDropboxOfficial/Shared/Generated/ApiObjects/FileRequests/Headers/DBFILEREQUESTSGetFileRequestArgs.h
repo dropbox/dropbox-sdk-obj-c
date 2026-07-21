@@ -10,20 +10,21 @@
 
 @class DBFILEREQUESTSGetFileRequestArgs;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetFileRequestArgs` struct.
-///
+/// 
 /// Arguments for `get`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSGetFileRequestArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSGetFileRequestArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param id_ The ID of the file request to retrieve.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithId_:(NSString *)id_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetFileRequestArgs` struct.
-///
-@interface DBFILEREQUESTSGetFileRequestArgsSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSGetFileRequestArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSGetFileRequestArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSGetFileRequestArgs` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSGetFileRequestArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSGetFileRequestArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSGetFileRequestArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSGetFileRequestArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSGetFileRequestArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSGetFileRequestArgs` object.
-///
-+ (DBFILEREQUESTSGetFileRequestArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSGetFileRequestArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

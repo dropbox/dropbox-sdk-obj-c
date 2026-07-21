@@ -11,18 +11,19 @@
 @class DBFILEPROPERTIESTemplateFilterBase;
 @class DBFILESGetMetadataArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetMetadataArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGetMetadataArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGetMetadataArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -47,9 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path The path of a file or folder on Dropbox.
 /// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set
 /// for photo and video.
@@ -62,56 +63,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param includePropertyGroups If set to a valid list of template IDs,
 /// `propertyGroups` in `DBFILESFileMetadata` is set if there exists property
 /// data associated with the file and each of the listed templates.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPath:(NSString *)path
-                   includeMediaInfo:(nullable NSNumber *)includeMediaInfo
-                     includeDeleted:(nullable NSNumber *)includeDeleted
-    includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers
-              includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
+/// 
+- (instancetype)initWithPath:(NSString *)path includeMediaInfo:(nullable NSNumber *)includeMediaInfo includeDeleted:(nullable NSNumber *)includeDeleted includeHasExplicitSharedMembers:(nullable NSNumber *)includeHasExplicitSharedMembers includePropertyGroups:(nullable DBFILEPROPERTIESTemplateFilterBase *)includePropertyGroups;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param path The path of a file or folder on Dropbox.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetMetadataArg` struct.
-///
-@interface DBFILESGetMetadataArgSerializer : NSObject
+/// 
+@interface DBFILESGetMetadataArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGetMetadataArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGetMetadataArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetMetadataArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGetMetadataArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGetMetadataArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGetMetadataArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGetMetadataArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGetMetadataArg` object.
-///
-+ (DBFILESGetMetadataArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGetMetadataArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -13,20 +13,21 @@
 @class DBTEAMLOGFederationStatusChangeAdditionalInfo;
 @class DBTEAMLOGTrustedTeamsRequestState;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ChangedEnterpriseConnectedTeamStatusDetails` struct.
-///
+/// 
 /// Changed enterprise-connected team status.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -44,56 +45,55 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param action The preformed change in the team&#x2019s connection status.
 /// @param additionalInfo Additional information about the organization or team.
 /// @param previousValue Previous request state.
 /// @param dNewValue New request state.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAction:(DBTEAMLOGFedHandshakeAction *)action
-                additionalInfo:(DBTEAMLOGFederationStatusChangeAdditionalInfo *)additionalInfo
-                 previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue
-                     dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue;
+/// 
+- (instancetype)initWithAction:(DBTEAMLOGFedHandshakeAction *)action additionalInfo:(DBTEAMLOGFederationStatusChangeAdditionalInfo *)additionalInfo previousValue:(DBTEAMLOGTrustedTeamsRequestState *)previousValue dNewValue:(DBTEAMLOGTrustedTeamsRequestState *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `ChangedEnterpriseConnectedTeamStatusDetails` struct.
-///
-@interface DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails` object.
-///
-+ (DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGChangedEnterpriseConnectedTeamStatusDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

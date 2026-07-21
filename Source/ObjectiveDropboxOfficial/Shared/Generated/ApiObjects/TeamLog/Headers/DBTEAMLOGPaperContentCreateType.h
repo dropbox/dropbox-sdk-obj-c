@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGPaperContentCreateType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperContentCreateType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperContentCreateType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperContentCreateType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperContentCreateType` struct.
-///
-@interface DBTEAMLOGPaperContentCreateTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperContentCreateTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperContentCreateType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperContentCreateType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperContentCreateType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentCreateType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperContentCreateType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperContentCreateType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperContentCreateType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperContentCreateType` object.
-///
-+ (DBTEAMLOGPaperContentCreateType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperContentCreateType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

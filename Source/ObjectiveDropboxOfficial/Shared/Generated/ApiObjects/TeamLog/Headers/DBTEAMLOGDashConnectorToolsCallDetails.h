@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGDashConnectorToolsCallDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashConnectorToolsCallDetails` struct.
-///
+/// 
 /// Called a tool on a connector.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashConnectorToolsCallDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashConnectorToolsCallDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,63 +39,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param connectorName The name of the connector.
 /// @param toolName The name of the tool that was called.
 /// @param surface The surface from which the tool was called.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithConnectorName:(NSString *)connectorName
-                             toolName:(NSString *)toolName
-                              surface:(nullable NSString *)surface;
+/// 
+- (instancetype)initWithConnectorName:(NSString *)connectorName toolName:(NSString *)toolName surface:(nullable NSString *)surface;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param connectorName The name of the connector.
 /// @param toolName The name of the tool that was called.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithConnectorName:(NSString *)connectorName toolName:(NSString *)toolName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashConnectorToolsCallDetails` struct.
-///
-@interface DBTEAMLOGDashConnectorToolsCallDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashConnectorToolsCallDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashConnectorToolsCallDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashConnectorToolsCallDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashConnectorToolsCallDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashConnectorToolsCallDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashConnectorToolsCallDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashConnectorToolsCallDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashConnectorToolsCallDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashConnectorToolsCallDetails`
 /// object.
-///
-+ (DBTEAMLOGDashConnectorToolsCallDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashConnectorToolsCallDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

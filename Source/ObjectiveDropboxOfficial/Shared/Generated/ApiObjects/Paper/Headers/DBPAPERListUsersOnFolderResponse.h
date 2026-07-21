@@ -13,18 +13,19 @@
 @class DBSHARINGInviteeInfo;
 @class DBSHARINGUserInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListUsersOnFolderResponse` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERListUsersOnFolderResponse : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERListUsersOnFolderResponse : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -47,9 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param invitees List of email addresses that are invited on the Paper
 /// folder.
 /// @param users List of users that are invited on the Paper folder.
@@ -60,46 +61,45 @@ NS_ASSUME_NONNULL_BEGIN
 /// cursor to `docsFolderUsersListContinue` returns immediately with some
 /// results. If set to False please allow some delay before making another call
 /// to `docsFolderUsersListContinue`.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithInvitees:(NSArray<DBSHARINGInviteeInfo *> *)invitees
-                           users:(NSArray<DBSHARINGUserInfo *> *)users
-                          cursor:(DBPAPERCursor *)cursor
-                         hasMore:(NSNumber *)hasMore;
+/// 
+- (instancetype)initWithInvitees:(NSArray<DBSHARINGInviteeInfo *> *)invitees users:(NSArray<DBSHARINGUserInfo *> *)users cursor:(DBPAPERCursor *)cursor hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListUsersOnFolderResponse` struct.
-///
-@interface DBPAPERListUsersOnFolderResponseSerializer : NSObject
+/// 
+@interface DBPAPERListUsersOnFolderResponseSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERListUsersOnFolderResponse` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERListUsersOnFolderResponse` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnFolderResponse` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERListUsersOnFolderResponse *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERListUsersOnFolderResponse *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERListUsersOnFolderResponse` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnFolderResponse` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERListUsersOnFolderResponse` object.
-///
-+ (DBPAPERListUsersOnFolderResponse *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERListUsersOnFolderResponse *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

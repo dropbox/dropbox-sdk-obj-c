@@ -10,18 +10,19 @@
 
 @class DBAUTHTokenFromOAuth1Result;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TokenFromOAuth1Result` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBAUTHTokenFromOAuth1Result : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBAUTHTokenFromOAuth1Result : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param oauth2Token The OAuth 2.0 token generated from the supplied OAuth 1.0
 /// token.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOauth2Token:(NSString *)oauth2Token;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TokenFromOAuth1Result` struct.
-///
-@interface DBAUTHTokenFromOAuth1ResultSerializer : NSObject
+/// 
+@interface DBAUTHTokenFromOAuth1ResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBAUTHTokenFromOAuth1Result` instances.
-///
+/// 
 /// @param instance An instance of the `DBAUTHTokenFromOAuth1Result` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBAUTHTokenFromOAuth1Result` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBAUTHTokenFromOAuth1Result *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBAUTHTokenFromOAuth1Result *)instance;
 
-///
+/// 
 /// Deserializes `DBAUTHTokenFromOAuth1Result` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBAUTHTokenFromOAuth1Result` API object.
-///
+/// 
 /// @return An instantiation of the `DBAUTHTokenFromOAuth1Result` object.
-///
-+ (DBAUTHTokenFromOAuth1Result *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBAUTHTokenFromOAuth1Result *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

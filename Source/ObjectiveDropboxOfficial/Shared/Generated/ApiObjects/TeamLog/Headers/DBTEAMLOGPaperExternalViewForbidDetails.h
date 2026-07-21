@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperExternalViewForbidDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperExternalViewForbidDetails` struct.
-///
+/// 
 /// Changed Paper external sharing setting to team-only.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperExternalViewForbidDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperExternalViewForbidDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperExternalViewForbidDetails` struct.
-///
-@interface DBTEAMLOGPaperExternalViewForbidDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperExternalViewForbidDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperExternalViewForbidDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperExternalViewForbidDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperExternalViewForbidDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperExternalViewForbidDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperExternalViewForbidDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperExternalViewForbidDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperExternalViewForbidDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperExternalViewForbidDetails`
 /// object.
-///
-+ (DBTEAMLOGPaperExternalViewForbidDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperExternalViewForbidDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,22 +11,23 @@
 @class DBRIVIERAFileIdOrUrl;
 @class DBRIVIERAGetMetadataArgs;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetMetadataArgs` struct.
-///
+/// 
 /// Arguments for the asynchronous `get_metadata_async` route. Exactly one of
 /// `file_id`, `path`, or `url` must be supplied via `file_id_or_url` to
 /// identify the file whose metadata should be extracted.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetMetadataArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetMetadataArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -52,9 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers
 /// must set exactly one of the oneof variants: - file_id: a Dropbox-issued file
 /// id (format: "id:<id>") for a file the authenticated user has access to. -
@@ -73,51 +74,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// PDFs return PDF metadata, and MS Office documents (docx, pptx, xlsx) return
 /// Office metadata. Requests against unsupported formats return
 /// `unsupported_format_error`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFileIdOrUrl:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetMetadataArgs` struct.
-///
-@interface DBRIVIERAGetMetadataArgsSerializer : NSObject
+/// 
+@interface DBRIVIERAGetMetadataArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetMetadataArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetMetadataArgs` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMetadataArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetMetadataArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetMetadataArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMetadataArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetMetadataArgs` object.
-///
-+ (DBRIVIERAGetMetadataArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetMetadataArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

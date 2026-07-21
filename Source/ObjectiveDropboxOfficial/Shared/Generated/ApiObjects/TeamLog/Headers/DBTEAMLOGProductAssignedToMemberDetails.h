@@ -12,20 +12,21 @@
 @class DBTEAMLOGProductLogInfo;
 @class DBTEAMLOGUserNameLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ProductAssignedToMemberDetails` struct.
-///
+/// 
 /// Product assigned to team member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGProductAssignedToMemberDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGProductAssignedToMemberDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,50 +38,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param userName User's name.
 /// @param productName Product name.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUserName:(DBTEAMLOGUserNameLogInfo *)userName
-                     productName:(DBTEAMLOGProductLogInfo *)productName;
+/// 
+- (instancetype)initWithUserName:(DBTEAMLOGUserNameLogInfo *)userName productName:(DBTEAMLOGProductLogInfo *)productName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ProductAssignedToMemberDetails` struct.
-///
-@interface DBTEAMLOGProductAssignedToMemberDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGProductAssignedToMemberDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGProductAssignedToMemberDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGProductAssignedToMemberDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGProductAssignedToMemberDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProductAssignedToMemberDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGProductAssignedToMemberDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGProductAssignedToMemberDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGProductAssignedToMemberDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGProductAssignedToMemberDetails`
 /// object.
-///
-+ (DBTEAMLOGProductAssignedToMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGProductAssignedToMemberDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGShowcaseChangeEnabledPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseChangeEnabledPolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseChangeEnabledPolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseChangeEnabledPolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseChangeEnabledPolicyType` struct.
-///
-@interface DBTEAMLOGShowcaseChangeEnabledPolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseChangeEnabledPolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseChangeEnabledPolicyType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGShowcaseChangeEnabledPolicyType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeEnabledPolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseChangeEnabledPolicyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeEnabledPolicyType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseChangeEnabledPolicyType`
 /// object.
-///
-+ (DBTEAMLOGShowcaseChangeEnabledPolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseChangeEnabledPolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMExcludedUsersUpdateResult;
 @class DBTEAMExcludedUsersUpdateStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ExcludedUsersUpdateResult` struct.
-///
+/// 
 /// Excluded users update result.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMExcludedUsersUpdateResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMExcludedUsersUpdateResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,47 +34,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param status Update status.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStatus:(DBTEAMExcludedUsersUpdateStatus *)status;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ExcludedUsersUpdateResult` struct.
-///
-@interface DBTEAMExcludedUsersUpdateResultSerializer : NSObject
+/// 
+@interface DBTEAMExcludedUsersUpdateResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMExcludedUsersUpdateResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMExcludedUsersUpdateResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMExcludedUsersUpdateResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMExcludedUsersUpdateResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMExcludedUsersUpdateResult *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMExcludedUsersUpdateResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMExcludedUsersUpdateResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMExcludedUsersUpdateResult` object.
-///
-+ (DBTEAMExcludedUsersUpdateResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMExcludedUsersUpdateResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

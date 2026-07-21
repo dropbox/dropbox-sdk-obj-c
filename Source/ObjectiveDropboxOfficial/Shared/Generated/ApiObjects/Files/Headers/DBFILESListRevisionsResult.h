@@ -11,18 +11,19 @@
 @class DBFILESFileMetadata;
 @class DBFILESListRevisionsResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListRevisionsResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESListRevisionsResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESListRevisionsResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -45,9 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param isDeleted If the file identified by the latest revision in the
 /// response is either deleted or moved. If before_rev is set, this refers to
 /// the latest revision of the file older than before_rev.
@@ -57,18 +58,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// list_revisions again with before_rev equal to the revision of the last
 /// returned entry to retrieve the rest.
 /// @param serverDeleted The time of deletion if the file was deleted.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIsDeleted:(NSNumber *)isDeleted
-                          entries:(NSArray<DBFILESFileMetadata *> *)entries
-                          hasMore:(NSNumber *)hasMore
-                    serverDeleted:(nullable NSDate *)serverDeleted;
+/// 
+- (instancetype)initWithIsDeleted:(NSNumber *)isDeleted entries:(NSArray<DBFILESFileMetadata *> *)entries hasMore:(NSNumber *)hasMore serverDeleted:(nullable NSDate *)serverDeleted;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param isDeleted If the file identified by the latest revision in the
 /// response is either deleted or moved. If before_rev is set, this refers to
 /// the latest revision of the file older than before_rev.
@@ -77,44 +75,44 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param hasMore If true, then there are more entries available. Call
 /// list_revisions again with before_rev equal to the revision of the last
 /// returned entry to retrieve the rest.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIsDeleted:(NSNumber *)isDeleted
-                          entries:(NSArray<DBFILESFileMetadata *> *)entries
-                          hasMore:(NSNumber *)hasMore;
+/// 
+- (instancetype)initWithIsDeleted:(NSNumber *)isDeleted entries:(NSArray<DBFILESFileMetadata *> *)entries hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListRevisionsResult` struct.
-///
-@interface DBFILESListRevisionsResultSerializer : NSObject
+/// 
+@interface DBFILESListRevisionsResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESListRevisionsResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESListRevisionsResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESListRevisionsResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESListRevisionsResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESListRevisionsResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESListRevisionsResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESListRevisionsResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESListRevisionsResult` object.
-///
-+ (DBFILESListRevisionsResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESListRevisionsResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,18 +11,19 @@
 @class DBFILEREQUESTSFileRequestDeadline;
 @class DBFILEREQUESTSGracePeriod;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRequestDeadline` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSFileRequestDeadline : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSFileRequestDeadline : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,60 +36,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param deadline The deadline for this file request.
 /// @param allowLateUploads If set, allow uploads after the deadline has passed.
 /// These uploads will be marked overdue.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDeadline:(NSDate *)deadline
-                allowLateUploads:(nullable DBFILEREQUESTSGracePeriod *)allowLateUploads;
+/// 
+- (instancetype)initWithDeadline:(NSDate *)deadline allowLateUploads:(nullable DBFILEREQUESTSGracePeriod *)allowLateUploads;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param deadline The deadline for this file request.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDeadline:(NSDate *)deadline;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRequestDeadline` struct.
-///
-@interface DBFILEREQUESTSFileRequestDeadlineSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSFileRequestDeadlineSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSFileRequestDeadline` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSFileRequestDeadline` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSFileRequestDeadline` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSFileRequestDeadline *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSFileRequestDeadline *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSFileRequestDeadline` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSFileRequestDeadline` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSFileRequestDeadline` object.
-///
-+ (DBFILEREQUESTSFileRequestDeadline *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSFileRequestDeadline *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

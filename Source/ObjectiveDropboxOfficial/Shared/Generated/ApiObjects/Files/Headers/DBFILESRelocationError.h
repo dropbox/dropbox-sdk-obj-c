@@ -14,76 +14,77 @@
 @class DBFILESRelocationError;
 @class DBFILESWriteError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RelocationError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESRelocationError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESRelocationError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBFILESRelocationErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESRelocationError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationErrorTag) {
-  /// (no description).
-  DBFILESRelocationErrorFromLookup,
+    /// (no description).
+    DBFILESRelocationErrorFromLookup,
 
-  /// (no description).
-  DBFILESRelocationErrorFromWrite,
+    /// (no description).
+    DBFILESRelocationErrorFromWrite,
 
-  /// (no description).
-  DBFILESRelocationErrorTo,
+    /// (no description).
+    DBFILESRelocationErrorTo,
 
-  /// Shared folders can't be copied.
-  DBFILESRelocationErrorCantCopySharedFolder,
+    /// Shared folders can't be copied.
+    DBFILESRelocationErrorCantCopySharedFolder,
 
-  /// Your move operation would result in nested shared folders.  This is not
-  /// allowed.
-  DBFILESRelocationErrorCantNestSharedFolder,
+    /// Your move operation would result in nested shared folders.  This is not
+    /// allowed.
+    DBFILESRelocationErrorCantNestSharedFolder,
 
-  /// You cannot move a folder into itself.
-  DBFILESRelocationErrorCantMoveFolderIntoItself,
+    /// You cannot move a folder into itself.
+    DBFILESRelocationErrorCantMoveFolderIntoItself,
 
-  /// The operation would involve more than 10,000 files and folders.
-  DBFILESRelocationErrorTooManyFiles,
+    /// The operation would involve more than 10,000 files and folders.
+    DBFILESRelocationErrorTooManyFiles,
 
-  /// There are duplicated/nested paths among `fromPath` in
-  /// `DBFILESRelocationArg` and `toPath` in `DBFILESRelocationArg`.
-  DBFILESRelocationErrorDuplicatedOrNestedPaths,
+    /// There are duplicated/nested paths among `fromPath` in
+    /// `DBFILESRelocationArg` and `toPath` in `DBFILESRelocationArg`.
+    DBFILESRelocationErrorDuplicatedOrNestedPaths,
 
-  /// Your move operation would result in an ownership transfer. You may
-  /// reissue the request with the field `allowOwnershipTransfer` in
-  /// `DBFILESRelocationArg` to true.
-  DBFILESRelocationErrorCantTransferOwnership,
+    /// Your move operation would result in an ownership transfer. You may
+    /// reissue the request with the field `allowOwnershipTransfer` in
+    /// `DBFILESRelocationArg` to true.
+    DBFILESRelocationErrorCantTransferOwnership,
 
-  /// The current user does not have enough space to move or copy the files.
-  DBFILESRelocationErrorInsufficientQuota,
+    /// The current user does not have enough space to move or copy the files.
+    DBFILESRelocationErrorInsufficientQuota,
 
-  /// Something went wrong with the job on Dropbox's end. You'll need to
-  /// verify that the action you were taking succeeded, and if not, try again.
-  /// This should happen very rarely.
-  DBFILESRelocationErrorInternalError,
+    /// Something went wrong with the job on Dropbox's end. You'll need to
+    /// verify that the action you were taking succeeded, and if not, try again.
+    /// This should happen very rarely.
+    DBFILESRelocationErrorInternalError,
 
-  /// Can't move the shared folder to the given destination.
-  DBFILESRelocationErrorCantMoveSharedFolder,
+    /// Can't move the shared folder to the given destination.
+    DBFILESRelocationErrorCantMoveSharedFolder,
 
-  /// Some content cannot be moved into Vault under certain circumstances, see
-  /// detailed error.
-  DBFILESRelocationErrorCantMoveIntoVault,
+    /// Some content cannot be moved into Vault under certain circumstances, see
+    /// detailed error.
+    DBFILESRelocationErrorCantMoveIntoVault,
 
-  /// Some content cannot be moved into the Family Room folder under certain
-  /// circumstances, see detailed error.
-  DBFILESRelocationErrorCantMoveIntoFamily,
+    /// Some content cannot be moved into the Family Room folder under certain
+    /// circumstances, see detailed error.
+    DBFILESRelocationErrorCantMoveIntoFamily,
 
-  /// (no description).
-  DBFILESRelocationErrorOther,
+    /// (no description).
+    DBFILESRelocationErrorOther,
 
 };
 
@@ -115,338 +116,340 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "from_lookup".
-///
+/// 
 /// @param fromLookup (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFromLookup:(DBFILESLookupError *)fromLookup;
 
-///
+/// 
 /// Initializes union class with tag state of "from_write".
-///
+/// 
 /// @param fromWrite (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFromWrite:(DBFILESWriteError *)fromWrite;
 
-///
+/// 
 /// Initializes union class with tag state of "to".
-///
+/// 
 /// @param to (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTo:(DBFILESWriteError *)to;
 
-///
+/// 
 /// Initializes union class with tag state of "cant_copy_shared_folder".
-///
+/// 
 /// Description of the "cant_copy_shared_folder" tag state: Shared folders can't
 /// be copied.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCantCopySharedFolder;
 
-///
+/// 
 /// Initializes union class with tag state of "cant_nest_shared_folder".
-///
+/// 
 /// Description of the "cant_nest_shared_folder" tag state: Your move operation
 /// would result in nested shared folders.  This is not allowed.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCantNestSharedFolder;
 
-///
+/// 
 /// Initializes union class with tag state of "cant_move_folder_into_itself".
-///
+/// 
 /// Description of the "cant_move_folder_into_itself" tag state: You cannot move
 /// a folder into itself.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCantMoveFolderIntoItself;
 
-///
+/// 
 /// Initializes union class with tag state of "too_many_files".
-///
+/// 
 /// Description of the "too_many_files" tag state: The operation would involve
 /// more than 10,000 files and folders.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTooManyFiles;
 
-///
+/// 
 /// Initializes union class with tag state of "duplicated_or_nested_paths".
-///
+/// 
 /// Description of the "duplicated_or_nested_paths" tag state: There are
 /// duplicated/nested paths among `fromPath` in `DBFILESRelocationArg` and
 /// `toPath` in `DBFILESRelocationArg`.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDuplicatedOrNestedPaths;
 
-///
+/// 
 /// Initializes union class with tag state of "cant_transfer_ownership".
-///
+/// 
 /// Description of the "cant_transfer_ownership" tag state: Your move operation
 /// would result in an ownership transfer. You may reissue the request with the
 /// field `allowOwnershipTransfer` in `DBFILESRelocationArg` to true.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCantTransferOwnership;
 
-///
+/// 
 /// Initializes union class with tag state of "insufficient_quota".
-///
+/// 
 /// Description of the "insufficient_quota" tag state: The current user does not
 /// have enough space to move or copy the files.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInsufficientQuota;
 
-///
+/// 
 /// Initializes union class with tag state of "internal_error".
-///
+/// 
 /// Description of the "internal_error" tag state: Something went wrong with the
 /// job on Dropbox's end. You'll need to verify that the action you were taking
 /// succeeded, and if not, try again. This should happen very rarely.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInternalError;
 
-///
+/// 
 /// Initializes union class with tag state of "cant_move_shared_folder".
-///
+/// 
 /// Description of the "cant_move_shared_folder" tag state: Can't move the
 /// shared folder to the given destination.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCantMoveSharedFolder;
 
-///
+/// 
 /// Initializes union class with tag state of "cant_move_into_vault".
-///
+/// 
 /// Description of the "cant_move_into_vault" tag state: Some content cannot be
 /// moved into Vault under certain circumstances, see detailed error.
-///
+/// 
 /// @param cantMoveIntoVault Some content cannot be moved into Vault under
 /// certain circumstances, see detailed error.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCantMoveIntoVault:(DBFILESMoveIntoVaultError *)cantMoveIntoVault;
 
-///
+/// 
 /// Initializes union class with tag state of "cant_move_into_family".
-///
+/// 
 /// Description of the "cant_move_into_family" tag state: Some content cannot be
 /// moved into the Family Room folder under certain circumstances, see detailed
 /// error.
-///
+/// 
 /// @param cantMoveIntoFamily Some content cannot be moved into the Family Room
 /// folder under certain circumstances, see detailed error.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCantMoveIntoFamily:(DBFILESMoveIntoFamilyError *)cantMoveIntoFamily;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "from_lookup".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `fromLookup` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "from_lookup".
-///
+/// 
 - (BOOL)isFromLookup;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "from_write".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `fromWrite` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "from_write".
-///
+/// 
 - (BOOL)isFromWrite;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "to".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the `to`
 /// property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "to".
-///
+/// 
 - (BOOL)isTo;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "cant_copy_shared_folder".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "cant_copy_shared_folder".
-///
+/// 
 - (BOOL)isCantCopySharedFolder;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "cant_nest_shared_folder".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "cant_nest_shared_folder".
-///
+/// 
 - (BOOL)isCantNestSharedFolder;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "cant_move_folder_into_itself".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "cant_move_folder_into_itself".
-///
+/// 
 - (BOOL)isCantMoveFolderIntoItself;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "too_many_files".
-///
+/// 
 /// @return Whether the union's current tag state has value "too_many_files".
-///
+/// 
 - (BOOL)isTooManyFiles;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "duplicated_or_nested_paths".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "duplicated_or_nested_paths".
-///
+/// 
 - (BOOL)isDuplicatedOrNestedPaths;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "cant_transfer_ownership".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "cant_transfer_ownership".
-///
+/// 
 - (BOOL)isCantTransferOwnership;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "insufficient_quota".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "insufficient_quota".
-///
+/// 
 - (BOOL)isInsufficientQuota;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "internal_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "internal_error".
-///
+/// 
 - (BOOL)isInternalError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "cant_move_shared_folder".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "cant_move_shared_folder".
-///
+/// 
 - (BOOL)isCantMoveSharedFolder;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "cant_move_into_vault".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `cantMoveIntoVault` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "cant_move_into_vault".
-///
+/// 
 - (BOOL)isCantMoveIntoVault;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "cant_move_into_family".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `cantMoveIntoFamily` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "cant_move_into_family".
-///
+/// 
 - (BOOL)isCantMoveIntoFamily;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESRelocationError` union.
-///
-@interface DBFILESRelocationErrorSerializer : NSObject
+/// 
+@interface DBFILESRelocationErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESRelocationError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESRelocationError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESRelocationError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESRelocationError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESRelocationError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESRelocationError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESRelocationError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESRelocationError` object.
-///
-+ (DBFILESRelocationError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESRelocationError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

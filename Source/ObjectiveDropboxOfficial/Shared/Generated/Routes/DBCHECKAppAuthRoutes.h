@@ -14,13 +14,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Check` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBCHECKAppAuthRoutes : NSObject
+@interface DBCHECKAppAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -30,31 +30,32 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// This endpoint performs App Authentication, validating the supplied app key and secret, and returns the supplied
 /// string, to allow you to test your code and connection to the Dropbox API. It has no other effect. If you receive an
 /// HTTP 200 response with the supplied query, it indicates at least part of the Dropbox API infrastructure is working
 /// and that the app key and secret valid.
-///
-///
+/// 
+/// 
 /// @return Through the response callback, the caller will receive a `DBCHECKEchoResult` object on success or a
 /// `DBCHECKEchoError` object on failure.
-///
+/// 
 - (DBRpcTask<DBCHECKEchoResult *, DBCHECKEchoError *> *)app;
 
-///
+/// 
 /// This endpoint performs App Authentication, validating the supplied app key and secret, and returns the supplied
 /// string, to allow you to test your code and connection to the Dropbox API. It has no other effect. If you receive an
 /// HTTP 200 response with the supplied query, it indicates at least part of the Dropbox API infrastructure is working
 /// and that the app key and secret valid.
-///
+/// 
 /// @param query The string that you'd like to be echoed back to you.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBCHECKEchoResult` object on success or a
 /// `DBCHECKEchoError` object on failure.
-///
+/// 
 - (DBRpcTask<DBCHECKEchoResult *, DBCHECKEchoError *> *)app:(nullable NSString *)query;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

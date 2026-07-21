@@ -11,18 +11,19 @@
 @class DBTEAMMembersSetPermissions2Result;
 @class DBTEAMTeamMemberRole;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersSetPermissions2Result` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersSetPermissions2Result : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersSetPermissions2Result : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,61 +35,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamMemberId The member ID of the user to which the change was
 /// applied.
 /// @param roles The roles after the change. Empty in case the user become a
 /// non-admin.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId roles:(nullable NSArray<DBTEAMTeamMemberRole *> *)roles;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param teamMemberId The member ID of the user to which the change was
 /// applied.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersSetPermissions2Result` struct.
-///
-@interface DBTEAMMembersSetPermissions2ResultSerializer : NSObject
+/// 
+@interface DBTEAMMembersSetPermissions2ResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersSetPermissions2Result` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersSetPermissions2Result` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersSetPermissions2Result` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersSetPermissions2Result *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersSetPermissions2Result *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersSetPermissions2Result` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersSetPermissions2Result` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersSetPermissions2Result` object.
-///
-+ (DBTEAMMembersSetPermissions2Result *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersSetPermissions2Result *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

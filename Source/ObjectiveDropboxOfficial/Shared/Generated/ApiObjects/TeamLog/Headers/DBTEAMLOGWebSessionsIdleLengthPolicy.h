@@ -11,20 +11,21 @@
 @class DBTEAMLOGDurationLogInfo;
 @class DBTEAMLOGWebSessionsIdleLengthPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `WebSessionsIdleLengthPolicy` union.
-///
+/// 
 /// Web sessions idle length policy.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGWebSessionsIdleLengthPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGWebSessionsIdleLengthPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,14 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGWebSessionsIdleLengthPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGWebSessionsIdleLengthPolicyTag) {
-  /// Defined idle session length.
-  DBTEAMLOGWebSessionsIdleLengthPolicyDefined,
+    /// Defined idle session length.
+    DBTEAMLOGWebSessionsIdleLengthPolicyDefined,
 
-  /// Undefined idle session length.
-  DBTEAMLOGWebSessionsIdleLengthPolicyUndefined,
+    /// Undefined idle session length.
+    DBTEAMLOGWebSessionsIdleLengthPolicyUndefined,
 
-  /// (no description).
-  DBTEAMLOGWebSessionsIdleLengthPolicyOther,
+    /// (no description).
+    DBTEAMLOGWebSessionsIdleLengthPolicyOther,
 
 };
 
@@ -52,100 +53,102 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGWebSessionsIdleLengthPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "defined".
-///
+/// 
 /// Description of the "defined" tag state: Defined idle session length.
-///
+/// 
 /// @param defined Defined idle session length.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefined:(DBTEAMLOGDurationLogInfo *)defined;
 
-///
+/// 
 /// Initializes union class with tag state of "undefined".
-///
+/// 
 /// Description of the "undefined" tag state: Undefined idle session length.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUndefined;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "defined".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `defined` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "defined".
-///
+/// 
 - (BOOL)isDefined;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "undefined".
-///
+/// 
 /// @return Whether the union's current tag state has value "undefined".
-///
+/// 
 - (BOOL)isUndefined;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGWebSessionsIdleLengthPolicy`
 /// union.
-///
-@interface DBTEAMLOGWebSessionsIdleLengthPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGWebSessionsIdleLengthPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGWebSessionsIdleLengthPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGWebSessionsIdleLengthPolicy`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGWebSessionsIdleLengthPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGWebSessionsIdleLengthPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGWebSessionsIdleLengthPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGWebSessionsIdleLengthPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGWebSessionsIdleLengthPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGWebSessionsIdleLengthPolicy`
 /// object.
-///
-+ (DBTEAMLOGWebSessionsIdleLengthPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGWebSessionsIdleLengthPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

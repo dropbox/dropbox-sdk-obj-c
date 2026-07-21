@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharingChangeFolderJoinPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharingChangeFolderJoinPolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharingChangeFolderJoinPolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharingChangeFolderJoinPolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharingChangeFolderJoinPolicyType` struct.
-///
-@interface DBTEAMLOGSharingChangeFolderJoinPolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharingChangeFolderJoinPolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharingChangeFolderJoinPolicyType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharingChangeFolderJoinPolicyType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeFolderJoinPolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharingChangeFolderJoinPolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharingChangeFolderJoinPolicyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeFolderJoinPolicyType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharingChangeFolderJoinPolicyType`
 /// object.
-///
-+ (DBTEAMLOGSharingChangeFolderJoinPolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharingChangeFolderJoinPolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

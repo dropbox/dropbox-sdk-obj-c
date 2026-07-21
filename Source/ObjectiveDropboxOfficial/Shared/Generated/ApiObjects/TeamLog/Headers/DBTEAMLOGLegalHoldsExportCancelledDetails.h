@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGLegalHoldsExportCancelledDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldsExportCancelledDetails` struct.
-///
+/// 
 /// Canceled export for a hold.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGLegalHoldsExportCancelledDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGLegalHoldsExportCancelledDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,50 +39,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param legalHoldId Hold ID.
 /// @param name Hold name.
 /// @param exportName Export name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLegalHoldId:(NSString *)legalHoldId name:(NSString *)name exportName:(NSString *)exportName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LegalHoldsExportCancelledDetails` struct.
-///
-@interface DBTEAMLOGLegalHoldsExportCancelledDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGLegalHoldsExportCancelledDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGLegalHoldsExportCancelledDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGLegalHoldsExportCancelledDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGLegalHoldsExportCancelledDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLegalHoldsExportCancelledDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGLegalHoldsExportCancelledDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGLegalHoldsExportCancelledDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGLegalHoldsExportCancelledDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGLegalHoldsExportCancelledDetails`
 /// object.
-///
-+ (DBTEAMLOGLegalHoldsExportCancelledDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGLegalHoldsExportCancelledDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

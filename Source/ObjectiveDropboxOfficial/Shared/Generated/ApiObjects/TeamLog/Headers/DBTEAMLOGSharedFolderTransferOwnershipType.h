@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedFolderTransferOwnershipType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFolderTransferOwnershipType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedFolderTransferOwnershipType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedFolderTransferOwnershipType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFolderTransferOwnershipType` struct.
-///
-@interface DBTEAMLOGSharedFolderTransferOwnershipTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedFolderTransferOwnershipTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedFolderTransferOwnershipType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedFolderTransferOwnershipType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderTransferOwnershipType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedFolderTransferOwnershipType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedFolderTransferOwnershipType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderTransferOwnershipType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedFolderTransferOwnershipType`
 /// object.
-///
-+ (DBTEAMLOGSharedFolderTransferOwnershipType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedFolderTransferOwnershipType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

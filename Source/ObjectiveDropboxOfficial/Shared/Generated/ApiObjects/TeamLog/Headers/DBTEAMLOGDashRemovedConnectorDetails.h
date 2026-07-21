@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashConnectorStatus;
 @class DBTEAMLOGDashRemovedConnectorDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashRemovedConnectorDetails` struct.
-///
+/// 
 /// Disconnected a user connector.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashRemovedConnectorDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashRemovedConnectorDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param connectorName The name of the Connector.
 /// @param connectorStatus The status of the Connector.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithConnectorName:(NSString *)connectorName
-                      connectorStatus:(DBTEAMLOGDashConnectorStatus *)connectorStatus;
+/// 
+- (instancetype)initWithConnectorName:(NSString *)connectorName connectorStatus:(DBTEAMLOGDashConnectorStatus *)connectorStatus;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashRemovedConnectorDetails` struct.
-///
-@interface DBTEAMLOGDashRemovedConnectorDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashRemovedConnectorDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashRemovedConnectorDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashRemovedConnectorDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRemovedConnectorDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashRemovedConnectorDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashRemovedConnectorDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashRemovedConnectorDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRemovedConnectorDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashRemovedConnectorDetails`
 /// object.
-///
-+ (DBTEAMLOGDashRemovedConnectorDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashRemovedConnectorDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -16,20 +16,21 @@
 @class DBSHARINGSharedFileMetadata;
 @class DBUSERSTeam;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFileMetadata` struct.
-///
+/// 
 /// Properties of the shared file.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGSharedFileMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGSharedFileMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -92,9 +93,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param id_ The ID of the file.
 /// @param name The name of this file.
 /// @param policy Policies governing this shared file.
@@ -126,71 +127,57 @@ NS_ASSUME_NONNULL_BEGIN
 /// this shared file. If the user was not invited to the shared file, the
 /// timestamp will indicate when the user was invited to the parent shared
 /// folder. This value may be absent.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithId_:(NSString *)id_
-                       name:(NSString *)name
-                     policy:(DBSHARINGFolderPolicy *)policy
-                 previewUrl:(NSString *)previewUrl
-                 accessType:(nullable DBSHARINGAccessLevel *)accessType
-       expectedLinkMetadata:(nullable DBSHARINGExpectedSharedContentLinkMetadata *)expectedLinkMetadata
-               linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata
-          ownerDisplayNames:(nullable NSArray<NSString *> *)ownerDisplayNames
-                  ownerTeam:(nullable DBUSERSTeam *)ownerTeam
-       parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                pathDisplay:(nullable NSString *)pathDisplay
-                  pathLower:(nullable NSString *)pathLower
-                permissions:(nullable NSArray<DBSHARINGFilePermission *> *)permissions
-                timeInvited:(nullable NSDate *)timeInvited;
+/// 
+- (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name policy:(DBSHARINGFolderPolicy *)policy previewUrl:(NSString *)previewUrl accessType:(nullable DBSHARINGAccessLevel *)accessType expectedLinkMetadata:(nullable DBSHARINGExpectedSharedContentLinkMetadata *)expectedLinkMetadata linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata ownerDisplayNames:(nullable NSArray<NSString *> *)ownerDisplayNames ownerTeam:(nullable DBUSERSTeam *)ownerTeam parentSharedFolderId:(nullable NSString *)parentSharedFolderId pathDisplay:(nullable NSString *)pathDisplay pathLower:(nullable NSString *)pathLower permissions:(nullable NSArray<DBSHARINGFilePermission *> *)permissions timeInvited:(nullable NSDate *)timeInvited;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param id_ The ID of the file.
 /// @param name The name of this file.
 /// @param policy Policies governing this shared file.
 /// @param previewUrl URL for displaying a web preview of the shared file.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithId_:(NSString *)id_
-                       name:(NSString *)name
-                     policy:(DBSHARINGFolderPolicy *)policy
-                 previewUrl:(NSString *)previewUrl;
+/// 
+- (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name policy:(DBSHARINGFolderPolicy *)policy previewUrl:(NSString *)previewUrl;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFileMetadata` struct.
-///
-@interface DBSHARINGSharedFileMetadataSerializer : NSObject
+/// 
+@interface DBSHARINGSharedFileMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGSharedFileMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGSharedFileMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFileMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedFileMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGSharedFileMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGSharedFileMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFileMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGSharedFileMetadata` object.
-///
-+ (DBSHARINGSharedFileMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGSharedFileMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGFileProviderMigrationPolicyChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileProviderMigrationPolicyChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileProviderMigrationPolicyChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileProviderMigrationPolicyChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileProviderMigrationPolicyChangedType`
 /// struct.
-///
-@interface DBTEAMLOGFileProviderMigrationPolicyChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileProviderMigrationPolicyChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileProviderMigrationPolicyChangedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFileProviderMigrationPolicyChangedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileProviderMigrationPolicyChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileProviderMigrationPolicyChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileProviderMigrationPolicyChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileProviderMigrationPolicyChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileProviderMigrationPolicyChangedType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGFileProviderMigrationPolicyChangedType` object.
-///
-+ (DBTEAMLOGFileProviderMigrationPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileProviderMigrationPolicyChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

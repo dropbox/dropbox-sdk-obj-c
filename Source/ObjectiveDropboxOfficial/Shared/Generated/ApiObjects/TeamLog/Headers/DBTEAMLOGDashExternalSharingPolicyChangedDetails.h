@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashExternalSharingPolicy;
 @class DBTEAMLOGDashExternalSharingPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashExternalSharingPolicyChangedDetails` struct.
-///
+/// 
 /// Changed Dash external sharing policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashExternalSharingPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashExternalSharingPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGDashExternalSharingPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGDashExternalSharingPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGDashExternalSharingPolicy *)dNewValue previousValue:(DBTEAMLOGDashExternalSharingPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashExternalSharingPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGDashExternalSharingPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashExternalSharingPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashExternalSharingPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashExternalSharingPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashExternalSharingPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashExternalSharingPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDashExternalSharingPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGDashExternalSharingPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashExternalSharingPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

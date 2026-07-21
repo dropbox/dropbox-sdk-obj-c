@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESMetadata.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESMetadata.h"
 
 @class DBFILEPROPERTIESPropertyGroup;
 @class DBFILESExportInfo;
@@ -17,18 +17,19 @@
 @class DBFILESMediaInfo;
 @class DBFILESSymlinkInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileMetadata` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESFileMetadata : DBFILESMetadata <DBSerializable, NSCopying>
+/// 
+@interface DBFILESFileMetadata : DBFILESMetadata <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -95,9 +96,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
 /// @param id_ A unique identifier for the file.
@@ -148,34 +149,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// current lock.
 /// @param isRestorable If present, indicates whether this file revision can be
 /// restored.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                         id_:(NSString *)id_
-              clientModified:(NSDate *)clientModified
-              serverModified:(NSDate *)serverModified
-                         rev:(NSString *)rev
-                        size:(NSNumber *)size
-                   pathLower:(nullable NSString *)pathLower
-                 pathDisplay:(nullable NSString *)pathDisplay
-        parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                  previewUrl:(nullable NSString *)previewUrl
-                   mediaInfo:(nullable DBFILESMediaInfo *)mediaInfo
-                 symlinkInfo:(nullable DBFILESSymlinkInfo *)symlinkInfo
-                 sharingInfo:(nullable DBFILESFileSharingInfo *)sharingInfo
-              isDownloadable:(nullable NSNumber *)isDownloadable
-                  exportInfo:(nullable DBFILESExportInfo *)exportInfo
-              propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups
-    hasExplicitSharedMembers:(nullable NSNumber *)hasExplicitSharedMembers
-                 contentHash:(nullable NSString *)contentHash
-                fileLockInfo:(nullable DBFILESFileLockMetadata *)fileLockInfo
-                isRestorable:(nullable NSNumber *)isRestorable;
+/// 
+- (instancetype)initWithName:(NSString *)name id_:(NSString *)id_ clientModified:(NSDate *)clientModified serverModified:(NSDate *)serverModified rev:(NSString *)rev size:(NSNumber *)size pathLower:(nullable NSString *)pathLower pathDisplay:(nullable NSString *)pathDisplay parentSharedFolderId:(nullable NSString *)parentSharedFolderId previewUrl:(nullable NSString *)previewUrl mediaInfo:(nullable DBFILESMediaInfo *)mediaInfo symlinkInfo:(nullable DBFILESSymlinkInfo *)symlinkInfo sharingInfo:(nullable DBFILESFileSharingInfo *)sharingInfo isDownloadable:(nullable NSNumber *)isDownloadable exportInfo:(nullable DBFILESExportInfo *)exportInfo propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups hasExplicitSharedMembers:(nullable NSNumber *)hasExplicitSharedMembers contentHash:(nullable NSString *)contentHash fileLockInfo:(nullable DBFILESFileLockMetadata *)fileLockInfo isRestorable:(nullable NSNumber *)isRestorable;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
 /// @param id_ A unique identifier for the file.
@@ -189,45 +171,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// field is the same rev as elsewhere in the API and can be used to detect
 /// changes and avoid conflicts.
 /// @param size The file size in bytes.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                         id_:(NSString *)id_
-              clientModified:(NSDate *)clientModified
-              serverModified:(NSDate *)serverModified
-                         rev:(NSString *)rev
-                        size:(NSNumber *)size;
+/// 
+- (instancetype)initWithName:(NSString *)name id_:(NSString *)id_ clientModified:(NSDate *)clientModified serverModified:(NSDate *)serverModified rev:(NSString *)rev size:(NSNumber *)size;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileMetadata` struct.
-///
-@interface DBFILESFileMetadataSerializer : NSObject
+/// 
+@interface DBFILESFileMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESFileMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESFileMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESFileMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESFileMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESFileMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESFileMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESFileMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESFileMetadata` object.
-///
-+ (DBFILESFileMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESFileMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGFileTransfersTransferDownloadType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileTransfersTransferDownloadType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileTransfersTransferDownloadType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileTransfersTransferDownloadType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileTransfersTransferDownloadType` struct.
-///
-@interface DBTEAMLOGFileTransfersTransferDownloadTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileTransfersTransferDownloadTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileTransfersTransferDownloadType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFileTransfersTransferDownloadType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileTransfersTransferDownloadType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileTransfersTransferDownloadType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileTransfersTransferDownloadType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileTransfersTransferDownloadType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileTransfersTransferDownloadType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileTransfersTransferDownloadType`
 /// object.
-///
-+ (DBTEAMLOGFileTransfersTransferDownloadType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileTransfersTransferDownloadType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

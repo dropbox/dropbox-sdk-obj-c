@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGChangedEnterpriseAdminRoleType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ChangedEnterpriseAdminRoleType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGChangedEnterpriseAdminRoleType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGChangedEnterpriseAdminRoleType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ChangedEnterpriseAdminRoleType` struct.
-///
-@interface DBTEAMLOGChangedEnterpriseAdminRoleTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGChangedEnterpriseAdminRoleTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGChangedEnterpriseAdminRoleType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGChangedEnterpriseAdminRoleType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGChangedEnterpriseAdminRoleType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGChangedEnterpriseAdminRoleType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGChangedEnterpriseAdminRoleType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGChangedEnterpriseAdminRoleType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGChangedEnterpriseAdminRoleType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGChangedEnterpriseAdminRoleType`
 /// object.
-///
-+ (DBTEAMLOGChangedEnterpriseAdminRoleType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGChangedEnterpriseAdminRoleType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

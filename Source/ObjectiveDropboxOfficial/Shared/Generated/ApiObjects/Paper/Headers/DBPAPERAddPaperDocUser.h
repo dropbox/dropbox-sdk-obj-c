@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBPAPERRefPaperDoc.h"
 #import "DBSerializableProtocol.h"
+#import "DBPAPERRefPaperDoc.h"
 
 @class DBPAPERAddMember;
 @class DBPAPERAddPaperDocUser;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AddPaperDocUser` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERAddPaperDocUser : DBPAPERRefPaperDoc <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERAddPaperDocUser : DBPAPERRefPaperDoc <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,9 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param docId The Paper doc ID.
 /// @param members User which should be added to the Paper doc. Specify only
 /// email address or Dropbox account ID.
@@ -50,55 +51,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// successfully added member.
 /// @param quiet Clients should set this to true if no email message shall be
 /// sent to added users.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDocId:(NSString *)docId
-                      members:(NSArray<DBPAPERAddMember *> *)members
-                customMessage:(nullable NSString *)customMessage
-                        quiet:(nullable NSNumber *)quiet;
+/// 
+- (instancetype)initWithDocId:(NSString *)docId members:(NSArray<DBPAPERAddMember *> *)members customMessage:(nullable NSString *)customMessage quiet:(nullable NSNumber *)quiet;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param docId The Paper doc ID.
 /// @param members User which should be added to the Paper doc. Specify only
 /// email address or Dropbox account ID.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDocId:(NSString *)docId members:(NSArray<DBPAPERAddMember *> *)members;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AddPaperDocUser` struct.
-///
-@interface DBPAPERAddPaperDocUserSerializer : NSObject
+/// 
+@interface DBPAPERAddPaperDocUserSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERAddPaperDocUser` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERAddPaperDocUser` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERAddPaperDocUser` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERAddPaperDocUser *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERAddPaperDocUser *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERAddPaperDocUser` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERAddPaperDocUser` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERAddPaperDocUser` object.
-///
-+ (DBPAPERAddPaperDocUser *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERAddPaperDocUser *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

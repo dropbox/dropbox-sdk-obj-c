@@ -10,18 +10,19 @@
 
 @class DBTEAMLegalHoldsListHeldRevisionsError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldsListHeldRevisionsError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLegalHoldsListHeldRevisionsError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLegalHoldsListHeldRevisionsError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,23 +30,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLegalHoldsListHeldRevisionsError`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
-  /// There has been an unknown legal hold error.
-  DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError,
+    /// There has been an unknown legal hold error.
+    DBTEAMLegalHoldsListHeldRevisionsErrorUnknownLegalHoldError,
 
-  /// You don't have permissions to perform this action.
-  DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions,
+    /// You don't have permissions to perform this action.
+    DBTEAMLegalHoldsListHeldRevisionsErrorInsufficientPermissions,
 
-  /// (no description).
-  DBTEAMLegalHoldsListHeldRevisionsErrorOther,
+    /// (no description).
+    DBTEAMLegalHoldsListHeldRevisionsErrorOther,
 
-  /// Temporary infrastructure failure, please retry.
-  DBTEAMLegalHoldsListHeldRevisionsErrorTransientError,
+    /// Temporary infrastructure failure, please retry.
+    DBTEAMLegalHoldsListHeldRevisionsErrorTransientError,
 
-  /// The legal hold is not holding any revisions yet.
-  DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty,
+    /// The legal hold is not holding any revisions yet.
+    DBTEAMLegalHoldsListHeldRevisionsErrorLegalHoldStillEmpty,
 
-  /// Trying to list revisions for an inactive legal hold.
-  DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold,
+    /// Trying to list revisions for an inactive legal hold.
+    DBTEAMLegalHoldsListHeldRevisionsErrorInactiveLegalHold,
 
 };
 
@@ -54,156 +55,158 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLegalHoldsListHeldRevisionsErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "unknown_legal_hold_error".
-///
+/// 
 /// Description of the "unknown_legal_hold_error" tag state: There has been an
 /// unknown legal hold error.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnknownLegalHoldError;
 
-///
+/// 
 /// Initializes union class with tag state of "insufficient_permissions".
-///
+/// 
 /// Description of the "insufficient_permissions" tag state: You don't have
 /// permissions to perform this action.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInsufficientPermissions;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
-///
+/// 
 /// Initializes union class with tag state of "transient_error".
-///
+/// 
 /// Description of the "transient_error" tag state: Temporary infrastructure
 /// failure, please retry.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTransientError;
 
-///
+/// 
 /// Initializes union class with tag state of "legal_hold_still_empty".
-///
+/// 
 /// Description of the "legal_hold_still_empty" tag state: The legal hold is not
 /// holding any revisions yet.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLegalHoldStillEmpty;
 
-///
+/// 
 /// Initializes union class with tag state of "inactive_legal_hold".
-///
+/// 
 /// Description of the "inactive_legal_hold" tag state: Trying to list revisions
 /// for an inactive legal hold.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInactiveLegalHold;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "unknown_legal_hold_error".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "unknown_legal_hold_error".
-///
+/// 
 - (BOOL)isUnknownLegalHoldError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "insufficient_permissions".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "insufficient_permissions".
-///
+/// 
 - (BOOL)isInsufficientPermissions;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "transient_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "transient_error".
-///
+/// 
 - (BOOL)isTransientError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "legal_hold_still_empty".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "legal_hold_still_empty".
-///
+/// 
 - (BOOL)isLegalHoldStillEmpty;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "inactive_legal_hold".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "inactive_legal_hold".
-///
+/// 
 - (BOOL)isInactiveLegalHold;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLegalHoldsListHeldRevisionsError`
 /// union.
-///
-@interface DBTEAMLegalHoldsListHeldRevisionsErrorSerializer : NSObject
+/// 
+@interface DBTEAMLegalHoldsListHeldRevisionsErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLegalHoldsListHeldRevisionsError` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLegalHoldsListHeldRevisionsError`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldsListHeldRevisionsError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLegalHoldsListHeldRevisionsError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLegalHoldsListHeldRevisionsError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLegalHoldsListHeldRevisionsError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldsListHeldRevisionsError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLegalHoldsListHeldRevisionsError`
 /// object.
-///
-+ (DBTEAMLegalHoldsListHeldRevisionsError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLegalHoldsListHeldRevisionsError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

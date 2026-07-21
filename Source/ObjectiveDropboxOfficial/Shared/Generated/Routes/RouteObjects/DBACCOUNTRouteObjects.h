@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Account namespace. Each route in the Account
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBACCOUNTRouteObjects : NSObject
+/// 
+@interface DBACCOUNTRouteObjects : NSObject 
 
 /// Accessor method for the deleteProfilePhoto route object.
 + (DBRoute *)DBACCOUNTDeleteProfilePhoto;
@@ -29,3 +30,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

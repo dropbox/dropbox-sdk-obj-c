@@ -15,13 +15,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Openid` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBOPENIDUserAuthRoutes : NSObject
+@interface DBOPENIDUserAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -31,16 +31,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// This route is used for refreshing the info that is found in the id_token during the OIDC flow. This route doesn't
 /// require any arguments and will use the scopes approved for the given access token.
-///
-///
+/// 
+/// 
 /// @return Through the response callback, the caller will receive a `DBOPENIDUserInfoResult` object on success or a
 /// `DBOPENIDUserInfoError` object on failure.
-///
+/// 
 - (DBRpcTask<DBOPENIDUserInfoResult *, DBOPENIDUserInfoError *> *)userinfo;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

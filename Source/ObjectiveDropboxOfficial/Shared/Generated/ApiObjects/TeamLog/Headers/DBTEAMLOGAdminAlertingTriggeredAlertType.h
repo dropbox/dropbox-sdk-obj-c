@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGAdminAlertingTriggeredAlertType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AdminAlertingTriggeredAlertType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAdminAlertingTriggeredAlertType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAdminAlertingTriggeredAlertType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AdminAlertingTriggeredAlertType` struct.
-///
-@interface DBTEAMLOGAdminAlertingTriggeredAlertTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGAdminAlertingTriggeredAlertTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAdminAlertingTriggeredAlertType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAdminAlertingTriggeredAlertType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAdminAlertingTriggeredAlertType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAdminAlertingTriggeredAlertType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAdminAlertingTriggeredAlertType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAdminAlertingTriggeredAlertType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAdminAlertingTriggeredAlertType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAdminAlertingTriggeredAlertType`
 /// object.
-///
-+ (DBTEAMLOGAdminAlertingTriggeredAlertType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAdminAlertingTriggeredAlertType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGTeamMergeRequestReminderType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMergeRequestReminderType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMergeRequestReminderType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMergeRequestReminderType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamMergeRequestReminderType` struct.
-///
-@interface DBTEAMLOGTeamMergeRequestReminderTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMergeRequestReminderTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMergeRequestReminderType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamMergeRequestReminderType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestReminderType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMergeRequestReminderType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMergeRequestReminderType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestReminderType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamMergeRequestReminderType`
 /// object.
-///
-+ (DBTEAMLOGTeamMergeRequestReminderType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMergeRequestReminderType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSsoChangeLogoutUrlType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SsoChangeLogoutUrlType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSsoChangeLogoutUrlType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSsoChangeLogoutUrlType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SsoChangeLogoutUrlType` struct.
-///
-@interface DBTEAMLOGSsoChangeLogoutUrlTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSsoChangeLogoutUrlTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSsoChangeLogoutUrlType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSsoChangeLogoutUrlType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoChangeLogoutUrlType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoChangeLogoutUrlType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSsoChangeLogoutUrlType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSsoChangeLogoutUrlType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoChangeLogoutUrlType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSsoChangeLogoutUrlType` object.
-///
-+ (DBTEAMLOGSsoChangeLogoutUrlType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSsoChangeLogoutUrlType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

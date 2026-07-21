@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGRiscSecurityEventType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RiscSecurityEventType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGRiscSecurityEventType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGRiscSecurityEventType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RiscSecurityEventType` struct.
-///
-@interface DBTEAMLOGRiscSecurityEventTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGRiscSecurityEventTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGRiscSecurityEventType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGRiscSecurityEventType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGRiscSecurityEventType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGRiscSecurityEventType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGRiscSecurityEventType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGRiscSecurityEventType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGRiscSecurityEventType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGRiscSecurityEventType` object.
-///
-+ (DBTEAMLOGRiscSecurityEventType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGRiscSecurityEventType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

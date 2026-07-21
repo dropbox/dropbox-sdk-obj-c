@@ -12,18 +12,19 @@
 @class DBRIVIERAGetMarkdownAsyncError;
 @class DBRIVIERAMarkdownConversionApiV2Error;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetMarkdownAsyncError` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAGetMarkdownAsyncError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAGetMarkdownAsyncError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,58 +36,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param errorCode (no description).
 /// @param errorDetails (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithErrorCode:(nullable DBRIVIERAErrorCode *)errorCode
-                     errorDetails:(nullable DBRIVIERAMarkdownConversionApiV2Error *)errorDetails;
+/// 
+- (instancetype)initWithErrorCode:(nullable DBRIVIERAErrorCode *)errorCode errorDetails:(nullable DBRIVIERAMarkdownConversionApiV2Error *)errorDetails;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetMarkdownAsyncError` struct.
-///
-@interface DBRIVIERAGetMarkdownAsyncErrorSerializer : NSObject
+/// 
+@interface DBRIVIERAGetMarkdownAsyncErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAGetMarkdownAsyncError` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAGetMarkdownAsyncError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMarkdownAsyncError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMarkdownAsyncError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAGetMarkdownAsyncError *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAGetMarkdownAsyncError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAGetMarkdownAsyncError` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAGetMarkdownAsyncError` object.
-///
-+ (DBRIVIERAGetMarkdownAsyncError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAGetMarkdownAsyncError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

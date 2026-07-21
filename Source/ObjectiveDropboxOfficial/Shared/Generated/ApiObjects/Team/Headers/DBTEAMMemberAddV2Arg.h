@@ -11,18 +11,19 @@
 
 @class DBTEAMMemberAddV2Arg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberAddV2Arg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMemberAddV2Arg : DBTEAMMemberAddArgBase <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMemberAddV2Arg : DBTEAMMemberAddArgBase <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,9 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param memberEmail (no description).
 /// @param memberGivenName Member's first name.
 /// @param memberSurname Member's last name.
@@ -46,57 +47,52 @@ NS_ASSUME_NONNULL_BEGIN
 /// that want to handle announcements themselves.
 /// @param isDirectoryRestricted Whether a user is directory restricted.
 /// @param roleIds (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithMemberEmail:(NSString *)memberEmail
-                    memberGivenName:(nullable NSString *)memberGivenName
-                      memberSurname:(nullable NSString *)memberSurname
-                   memberExternalId:(nullable NSString *)memberExternalId
-                 memberPersistentId:(nullable NSString *)memberPersistentId
-                   sendWelcomeEmail:(nullable NSNumber *)sendWelcomeEmail
-              isDirectoryRestricted:(nullable NSNumber *)isDirectoryRestricted
-                            roleIds:(nullable NSArray<NSString *> *)roleIds;
+/// 
+- (instancetype)initWithMemberEmail:(NSString *)memberEmail memberGivenName:(nullable NSString *)memberGivenName memberSurname:(nullable NSString *)memberSurname memberExternalId:(nullable NSString *)memberExternalId memberPersistentId:(nullable NSString *)memberPersistentId sendWelcomeEmail:(nullable NSNumber *)sendWelcomeEmail isDirectoryRestricted:(nullable NSNumber *)isDirectoryRestricted roleIds:(nullable NSArray<NSString *> *)roleIds;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param memberEmail (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMemberEmail:(NSString *)memberEmail;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberAddV2Arg` struct.
-///
-@interface DBTEAMMemberAddV2ArgSerializer : NSObject
+/// 
+@interface DBTEAMMemberAddV2ArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMemberAddV2Arg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMemberAddV2Arg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMemberAddV2Arg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMemberAddV2Arg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMemberAddV2Arg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMemberAddV2Arg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMemberAddV2Arg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMemberAddV2Arg` object.
-///
-+ (DBTEAMMemberAddV2Arg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMemberAddV2Arg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

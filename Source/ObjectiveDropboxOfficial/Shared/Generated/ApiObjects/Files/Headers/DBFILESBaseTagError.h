@@ -11,29 +11,30 @@
 @class DBFILESBaseTagError;
 @class DBFILESLookupError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `BaseTagError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESBaseTagError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESBaseTagError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBFILESBaseTagErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESBaseTagError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESBaseTagErrorTag) {
-  /// (no description).
-  DBFILESBaseTagErrorPath,
+    /// (no description).
+    DBFILESBaseTagErrorPath,
 
-  /// (no description).
-  DBFILESBaseTagErrorOther,
+    /// (no description).
+    DBFILESBaseTagErrorOther,
 
 };
 
@@ -46,79 +47,81 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESBaseTagErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "path".
-///
+/// 
 /// @param path (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(DBFILESLookupError *)path;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "path".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `path` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "path".
-///
+/// 
 - (BOOL)isPath;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESBaseTagError` union.
-///
-@interface DBFILESBaseTagErrorSerializer : NSObject
+/// 
+@interface DBFILESBaseTagErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESBaseTagError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESBaseTagError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESBaseTagError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESBaseTagError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESBaseTagError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESBaseTagError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESBaseTagError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESBaseTagError` object.
-///
-+ (DBFILESBaseTagError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESBaseTagError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

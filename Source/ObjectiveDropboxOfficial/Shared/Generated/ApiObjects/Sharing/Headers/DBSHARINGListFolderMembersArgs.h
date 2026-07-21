@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGListFolderMembersCursorArg.h"
 #import "DBSerializableProtocol.h"
+#import "DBSHARINGListFolderMembersCursorArg.h"
 
 @class DBSHARINGListFolderMembersArgs;
 @class DBSHARINGMemberAction;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFolderMembersArgs` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGListFolderMembersArgs : DBSHARINGListFolderMembersCursorArg <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGListFolderMembersArgs : DBSHARINGListFolderMembersCursorArg <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,9 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedFolderId The ID for the shared folder. When path is provided,
 /// the folder ID will be extracted from the path instead.
 /// @param actions This is a list indicating whether each returned member will
@@ -53,55 +54,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// shared_folder_id to return direct members. When provided, extracts folder ID
 /// from this path and returns users who have access through parent shared
 /// folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId
-                               actions:(nullable NSArray<DBSHARINGMemberAction *> *)actions
-                                 limit:(nullable NSNumber *)limit
-                                  path:(nullable NSString *)path;
+/// 
+- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId actions:(nullable NSArray<DBSHARINGMemberAction *> *)actions limit:(nullable NSNumber *)limit path:(nullable NSString *)path;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sharedFolderId The ID for the shared folder. When path is provided,
 /// the folder ID will be extracted from the path instead.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFolderMembersArgs` struct.
-///
-@interface DBSHARINGListFolderMembersArgsSerializer : NSObject
+/// 
+@interface DBSHARINGListFolderMembersArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGListFolderMembersArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGListFolderMembersArgs` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFolderMembersArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGListFolderMembersArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGListFolderMembersArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGListFolderMembersArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFolderMembersArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGListFolderMembersArgs` object.
-///
-+ (DBSHARINGListFolderMembersArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGListFolderMembersArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

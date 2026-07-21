@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamLogInfo` struct.
-///
+/// 
 /// Team's logged information.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,46 +33,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param displayName Team display name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisplayName:(NSString *)displayName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamLogInfo` struct.
-///
-@interface DBTEAMLOGTeamLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamLogInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamLogInfo` object.
-///
-+ (DBTEAMLOGTeamLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

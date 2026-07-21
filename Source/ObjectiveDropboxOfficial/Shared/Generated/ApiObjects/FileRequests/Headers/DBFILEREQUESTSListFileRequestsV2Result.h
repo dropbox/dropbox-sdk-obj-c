@@ -11,20 +11,21 @@
 @class DBFILEREQUESTSFileRequest;
 @class DBFILEREQUESTSListFileRequestsV2Result;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFileRequestsV2Result` struct.
-///
+/// 
 /// Result for `list` and `listContinue`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSListFileRequestsV2Result : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSListFileRequestsV2Result : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,9 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileRequests The file requests owned by this user. Apps with the app
 /// folder permission will only see file requests in their app folder.
 /// @param cursor Pass the cursor into `listContinue` to obtain additional file
@@ -51,46 +52,46 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param hasMore Is true if there are additional file requests that have not
 /// been returned yet. An additional call to :route:list/continue` can retrieve
 /// them.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFileRequests:(NSArray<DBFILEREQUESTSFileRequest *> *)fileRequests
-                              cursor:(NSString *)cursor
-                             hasMore:(NSNumber *)hasMore;
+/// 
+- (instancetype)initWithFileRequests:(NSArray<DBFILEREQUESTSFileRequest *> *)fileRequests cursor:(NSString *)cursor hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFileRequestsV2Result` struct.
-///
-@interface DBFILEREQUESTSListFileRequestsV2ResultSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSListFileRequestsV2ResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSListFileRequestsV2Result` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSListFileRequestsV2Result`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSListFileRequestsV2Result` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSListFileRequestsV2Result *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSListFileRequestsV2Result *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSListFileRequestsV2Result` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSListFileRequestsV2Result` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSListFileRequestsV2Result`
 /// object.
-///
-+ (DBFILEREQUESTSListFileRequestsV2Result *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSListFileRequestsV2Result *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

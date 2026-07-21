@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGGroupChangeMemberRoleDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupChangeMemberRoleDetails` struct.
-///
+/// 
 /// Changed manager permissions of group member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGroupChangeMemberRoleDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGroupChangeMemberRoleDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param isGroupOwner Is group owner.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithIsGroupOwner:(NSNumber *)isGroupOwner;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GroupChangeMemberRoleDetails` struct.
-///
-@interface DBTEAMLOGGroupChangeMemberRoleDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGroupChangeMemberRoleDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGroupChangeMemberRoleDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGGroupChangeMemberRoleDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupChangeMemberRoleDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeMemberRoleDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGroupChangeMemberRoleDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGroupChangeMemberRoleDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupChangeMemberRoleDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGroupChangeMemberRoleDetails`
 /// object.
-///
-+ (DBTEAMLOGGroupChangeMemberRoleDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGroupChangeMemberRoleDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

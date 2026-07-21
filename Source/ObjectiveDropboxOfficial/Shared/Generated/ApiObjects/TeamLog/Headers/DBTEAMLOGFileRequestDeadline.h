@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGFileRequestDeadline;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRequestDeadline` struct.
-///
+/// 
 /// File request deadline
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileRequestDeadline : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileRequestDeadline : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,58 +37,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param deadline The deadline for this file request. Might be missing due to
 /// historical data gap.
 /// @param allowLateUploads If set, allow uploads after the deadline has passed.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDeadline:(nullable NSDate *)deadline allowLateUploads:(nullable NSString *)allowLateUploads;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRequestDeadline` struct.
-///
-@interface DBTEAMLOGFileRequestDeadlineSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileRequestDeadlineSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileRequestDeadline` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileRequestDeadline` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestDeadline` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestDeadline *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileRequestDeadline *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileRequestDeadline` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestDeadline` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileRequestDeadline` object.
-///
-+ (DBTEAMLOGFileRequestDeadline *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileRequestDeadline *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

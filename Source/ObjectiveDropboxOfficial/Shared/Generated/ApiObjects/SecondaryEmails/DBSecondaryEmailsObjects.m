@@ -12,107 +12,104 @@
 
 #pragma mark - API Object
 
-@implementation DBSECONDARYEMAILSSecondaryEmail
+@implementation DBSECONDARYEMAILSSecondaryEmail 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithEmail:(NSString *)email isVerified:(NSNumber *)isVerified {
-  [DBStoneValidators
-   nonnullValidator:[DBStoneValidators
-                        stringValidator:nil
-                              maxLength:@(255)
-                                pattern:@"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$"]](email);
-  [DBStoneValidators nonnullValidator:nil](isVerified);
+    [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:@"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$"]](email);
+    [DBStoneValidators nonnullValidator:nil](isVerified);
 
-  self = [super init];
-  if (self) {
-    _email = email;
-    _isVerified = isVerified;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _email = email;
+        _isVerified = isVerified;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBSECONDARYEMAILSSecondaryEmailSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBSECONDARYEMAILSSecondaryEmailSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBSECONDARYEMAILSSecondaryEmailSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBSECONDARYEMAILSSecondaryEmailSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBSECONDARYEMAILSSecondaryEmailSerializer serialize:self] description];
+    return [[DBSECONDARYEMAILSSecondaryEmailSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.email hash];
-  result = prime * result + [self.isVerified hash];
+    result = prime * result + [self.email hash];
+    result = prime * result + [self.isVerified hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToSecondaryEmail:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToSecondaryEmail:other];
 }
 
 - (BOOL)isEqualToSecondaryEmail:(DBSECONDARYEMAILSSecondaryEmail *)aSecondaryEmail {
-  if (self == aSecondaryEmail) {
+    if (self == aSecondaryEmail) {
+        return YES;
+    }
+    if (![self.email isEqual:aSecondaryEmail.email]) {
+        return NO;
+    }
+    if (![self.isVerified isEqual:aSecondaryEmail.isVerified]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.email isEqual:aSecondaryEmail.email]) {
-    return NO;
-  }
-  if (![self.isVerified isEqual:aSecondaryEmail.isVerified]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBSECONDARYEMAILSSecondaryEmailSerializer
+@implementation DBSECONDARYEMAILSSecondaryEmailSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBSECONDARYEMAILSSecondaryEmail *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"email"] = valueObj.email;
-  jsonDict[@"is_verified"] = valueObj.isVerified;
+    jsonDict[@"email"] = valueObj.email;
+    jsonDict[@"is_verified"] = valueObj.isVerified;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBSECONDARYEMAILSSecondaryEmail *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *email = valueDict[@"email"];
-  NSNumber *isVerified = valueDict[@"is_verified"];
+    NSString *email = valueDict[@"email"];
+    NSNumber *isVerified = valueDict[@"is_verified"];
 
-  return [[DBSECONDARYEMAILSSecondaryEmail alloc] initWithEmail:email isVerified:isVerified];
+    return [[DBSECONDARYEMAILSSecondaryEmail alloc] initWithEmail:email isVerified:isVerified];
 }
 
 @end

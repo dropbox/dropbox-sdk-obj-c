@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGTfaChangeBackupPhoneDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TfaChangeBackupPhoneDetails` struct.
-///
+/// 
 /// Changed backup phone for two-factor authentication.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTfaChangeBackupPhoneDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTfaChangeBackupPhoneDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TfaChangeBackupPhoneDetails` struct.
-///
-@interface DBTEAMLOGTfaChangeBackupPhoneDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTfaChangeBackupPhoneDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTfaChangeBackupPhoneDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTfaChangeBackupPhoneDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaChangeBackupPhoneDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTfaChangeBackupPhoneDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTfaChangeBackupPhoneDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTfaChangeBackupPhoneDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTfaChangeBackupPhoneDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTfaChangeBackupPhoneDetails`
 /// object.
-///
-+ (DBTEAMLOGTfaChangeBackupPhoneDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTfaChangeBackupPhoneDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

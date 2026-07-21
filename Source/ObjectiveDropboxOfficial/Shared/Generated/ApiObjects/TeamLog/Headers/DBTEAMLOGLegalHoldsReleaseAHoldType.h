@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGLegalHoldsReleaseAHoldType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldsReleaseAHoldType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGLegalHoldsReleaseAHoldType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGLegalHoldsReleaseAHoldType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LegalHoldsReleaseAHoldType` struct.
-///
-@interface DBTEAMLOGLegalHoldsReleaseAHoldTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGLegalHoldsReleaseAHoldTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGLegalHoldsReleaseAHoldType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGLegalHoldsReleaseAHoldType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGLegalHoldsReleaseAHoldType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLegalHoldsReleaseAHoldType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGLegalHoldsReleaseAHoldType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGLegalHoldsReleaseAHoldType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGLegalHoldsReleaseAHoldType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGLegalHoldsReleaseAHoldType`
 /// object.
-///
-+ (DBTEAMLOGLegalHoldsReleaseAHoldType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGLegalHoldsReleaseAHoldType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGTeamStorageCreateReportDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamStorageCreateReportDetails` struct.
-///
+/// 
 /// Created team storage report.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamStorageCreateReportDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamStorageCreateReportDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamStorageCreateReportDetails` struct.
-///
-@interface DBTEAMLOGTeamStorageCreateReportDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamStorageCreateReportDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamStorageCreateReportDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamStorageCreateReportDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamStorageCreateReportDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamStorageCreateReportDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamStorageCreateReportDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamStorageCreateReportDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamStorageCreateReportDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamStorageCreateReportDetails`
 /// object.
-///
-+ (DBTEAMLOGTeamStorageCreateReportDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamStorageCreateReportDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

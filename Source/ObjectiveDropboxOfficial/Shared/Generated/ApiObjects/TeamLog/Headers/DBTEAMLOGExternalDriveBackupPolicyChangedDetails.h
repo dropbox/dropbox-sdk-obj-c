@@ -11,20 +11,21 @@
 @class DBTEAMLOGExternalDriveBackupPolicy;
 @class DBTEAMLOGExternalDriveBackupPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ExternalDriveBackupPolicyChangedDetails` struct.
-///
+/// 
 /// Changed external drive backup policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGExternalDriveBackupPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGExternalDriveBackupPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New external drive backup policy.
 /// @param previousValue Previous external drive backup policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGExternalDriveBackupPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGExternalDriveBackupPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGExternalDriveBackupPolicy *)dNewValue previousValue:(DBTEAMLOGExternalDriveBackupPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ExternalDriveBackupPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGExternalDriveBackupPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGExternalDriveBackupPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGExternalDriveBackupPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGExternalDriveBackupPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGExternalDriveBackupPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExternalDriveBackupPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGExternalDriveBackupPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGExternalDriveBackupPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGExternalDriveBackupPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGExternalDriveBackupPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGExternalDriveBackupPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGExternalDriveBackupPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

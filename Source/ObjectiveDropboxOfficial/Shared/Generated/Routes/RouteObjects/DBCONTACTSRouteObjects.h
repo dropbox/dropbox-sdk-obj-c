@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Contacts namespace. Each route in the Contacts
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBCONTACTSRouteObjects : NSObject
+/// 
+@interface DBCONTACTSRouteObjects : NSObject 
 
 /// Accessor method for the deleteManualContacts route object.
 + (DBRoute *)DBCONTACTSDeleteManualContacts;
@@ -26,3 +27,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBFILESFileLockMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileLockMetadata` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESFileLockMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESFileLockMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,61 +40,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param isLockholder True if caller holds the file lock.
 /// @param lockholderName The display name of the lock holder.
 /// @param lockholderAccountId The account ID of the lock holder if known.
 /// @param created The timestamp of the lock was created.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIsLockholder:(nullable NSNumber *)isLockholder
-                      lockholderName:(nullable NSString *)lockholderName
-                 lockholderAccountId:(nullable NSString *)lockholderAccountId
-                             created:(nullable NSDate *)created;
+/// 
+- (instancetype)initWithIsLockholder:(nullable NSNumber *)isLockholder lockholderName:(nullable NSString *)lockholderName lockholderAccountId:(nullable NSString *)lockholderAccountId created:(nullable NSDate *)created;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileLockMetadata` struct.
-///
-@interface DBFILESFileLockMetadataSerializer : NSObject
+/// 
+@interface DBFILESFileLockMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESFileLockMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESFileLockMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESFileLockMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESFileLockMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESFileLockMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESFileLockMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESFileLockMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESFileLockMetadata` object.
-///
-+ (DBFILESFileLockMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESFileLockMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

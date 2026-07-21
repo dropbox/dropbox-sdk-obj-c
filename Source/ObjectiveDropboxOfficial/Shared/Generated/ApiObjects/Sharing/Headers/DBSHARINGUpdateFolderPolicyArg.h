@@ -16,20 +16,21 @@
 @class DBSHARINGUpdateFolderPolicyArg;
 @class DBSHARINGViewerInfoPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UpdateFolderPolicyArg` struct.
-///
+/// 
 /// If any of the policies are unset, then they retain their current setting.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGUpdateFolderPolicyArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGUpdateFolderPolicyArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -62,9 +63,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedFolderId The ID for the shared folder.
 /// @param memberPolicy Who can be a member of this shared folder. Only
 /// applicable if the current user is on a team.
@@ -79,59 +80,55 @@ NS_ASSUME_NONNULL_BEGIN
 /// `FolderPermission`s that should appear in the response's `permissions` in
 /// `DBSHARINGSharedFolderMetadata` field describing the actions the
 /// authenticated user can perform on the folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId
-                          memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy
-                       aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
-                      viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
-                      sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
-                          linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings
-                               actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions;
+/// 
+- (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sharedFolderId The ID for the shared folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UpdateFolderPolicyArg` struct.
-///
-@interface DBSHARINGUpdateFolderPolicyArgSerializer : NSObject
+/// 
+@interface DBSHARINGUpdateFolderPolicyArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGUpdateFolderPolicyArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGUpdateFolderPolicyArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGUpdateFolderPolicyArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGUpdateFolderPolicyArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGUpdateFolderPolicyArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGUpdateFolderPolicyArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGUpdateFolderPolicyArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGUpdateFolderPolicyArg` object.
-///
-+ (DBSHARINGUpdateFolderPolicyArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGUpdateFolderPolicyArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

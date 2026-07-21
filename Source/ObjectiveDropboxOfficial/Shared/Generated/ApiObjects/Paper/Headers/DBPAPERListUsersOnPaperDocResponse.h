@@ -14,18 +14,19 @@
 @class DBPAPERUserInfoWithPermissionLevel;
 @class DBSHARINGUserInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListUsersOnPaperDocResponse` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERListUsersOnPaperDocResponse : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERListUsersOnPaperDocResponse : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -53,9 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param invitees List of email addresses with their respective permission
 /// levels that are invited on the Paper doc.
 /// @param users List of users with their respective permission levels that are
@@ -69,47 +70,45 @@ NS_ASSUME_NONNULL_BEGIN
 /// cursor to `docsUsersListContinue` returns immediately with some results. If
 /// set to False please allow some delay before making another call to
 /// `docsUsersListContinue`.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithInvitees:(NSArray<DBPAPERInviteeInfoWithPermissionLevel *> *)invitees
-                           users:(NSArray<DBPAPERUserInfoWithPermissionLevel *> *)users
-                        docOwner:(DBSHARINGUserInfo *)docOwner
-                          cursor:(DBPAPERCursor *)cursor
-                         hasMore:(NSNumber *)hasMore;
+/// 
+- (instancetype)initWithInvitees:(NSArray<DBPAPERInviteeInfoWithPermissionLevel *> *)invitees users:(NSArray<DBPAPERUserInfoWithPermissionLevel *> *)users docOwner:(DBSHARINGUserInfo *)docOwner cursor:(DBPAPERCursor *)cursor hasMore:(NSNumber *)hasMore;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListUsersOnPaperDocResponse` struct.
-///
-@interface DBPAPERListUsersOnPaperDocResponseSerializer : NSObject
+/// 
+@interface DBPAPERListUsersOnPaperDocResponseSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERListUsersOnPaperDocResponse` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERListUsersOnPaperDocResponse` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnPaperDocResponse` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERListUsersOnPaperDocResponse *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERListUsersOnPaperDocResponse *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERListUsersOnPaperDocResponse` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERListUsersOnPaperDocResponse` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERListUsersOnPaperDocResponse` object.
-///
-+ (DBPAPERListUsersOnPaperDocResponse *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERListUsersOnPaperDocResponse *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

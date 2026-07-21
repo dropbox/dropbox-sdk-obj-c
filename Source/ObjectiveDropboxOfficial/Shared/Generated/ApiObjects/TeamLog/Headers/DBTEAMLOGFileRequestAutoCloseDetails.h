@@ -11,20 +11,21 @@
 @class DBTEAMLOGFileRequestAutoCloseDetails;
 @class DBTEAMLOGFileRequestDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRequestAutoCloseDetails` struct.
-///
+/// 
 /// Auto closed file request.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileRequestAutoCloseDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileRequestAutoCloseDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,63 +40,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileRequestId File request id. Might be missing due to historical
 /// data gap.
 /// @param reason Reason for the auto close.
 /// @param previousDetails Previous file request details. Might be missing due
 /// to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFileRequestId:(nullable NSString *)fileRequestId
-                               reason:(nullable NSString *)reason
-                      previousDetails:(nullable DBTEAMLOGFileRequestDetails *)previousDetails;
+/// 
+- (instancetype)initWithFileRequestId:(nullable NSString *)fileRequestId reason:(nullable NSString *)reason previousDetails:(nullable DBTEAMLOGFileRequestDetails *)previousDetails;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRequestAutoCloseDetails` struct.
-///
-@interface DBTEAMLOGFileRequestAutoCloseDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileRequestAutoCloseDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileRequestAutoCloseDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileRequestAutoCloseDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestAutoCloseDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRequestAutoCloseDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileRequestAutoCloseDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileRequestAutoCloseDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRequestAutoCloseDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileRequestAutoCloseDetails`
 /// object.
-///
-+ (DBTEAMLOGFileRequestAutoCloseDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileRequestAutoCloseDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

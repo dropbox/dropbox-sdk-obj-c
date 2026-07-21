@@ -15,7 +15,7 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHAccessError
+@implementation DBAUTHAccessError 
 
 @synthesize invalidAccountType = _invalidAccountType;
 @synthesize paperAccessDenied = _paperAccessDenied;
@@ -24,250 +24,254 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithInvalidAccountType:(DBAUTHInvalidAccountTypeError *)invalidAccountType {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAccessErrorInvalidAccountType;
-    _invalidAccountType = invalidAccountType;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAccessErrorInvalidAccountType;
+        _invalidAccountType = invalidAccountType;
+    }
+    return self;
 }
 
 - (instancetype)initWithPaperAccessDenied:(DBAUTHPaperAccessError *)paperAccessDenied {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAccessErrorPaperAccessDenied;
-    _paperAccessDenied = paperAccessDenied;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAccessErrorPaperAccessDenied;
+        _paperAccessDenied = paperAccessDenied;
+    }
+    return self;
 }
 
 - (instancetype)initWithTeamAccessDenied {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAccessErrorTeamAccessDenied;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAccessErrorTeamAccessDenied;
+    }
+    return self;
 }
 
 - (instancetype)initWithNoPermission:(DBAUTHNoPermissionError *)noPermission {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAccessErrorNoPermission;
-    _noPermission = noPermission;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAccessErrorNoPermission;
+        _noPermission = noPermission;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAccessErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAccessErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBAUTHInvalidAccountTypeError *)invalidAccountType {
-  if (![self isInvalidAccountType]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBAUTHAccessErrorInvalidAccountType, but was %@.", [self tagName]];
-  }
-  return _invalidAccountType;
+    if (![self isInvalidAccountType]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBAUTHAccessErrorInvalidAccountType, but was %@.", [self tagName]];
+    }
+    return _invalidAccountType;
 }
 
 - (DBAUTHPaperAccessError *)paperAccessDenied {
-  if (![self isPaperAccessDenied]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBAUTHAccessErrorPaperAccessDenied, but was %@.", [self tagName]];
-  }
-  return _paperAccessDenied;
+    if (![self isPaperAccessDenied]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBAUTHAccessErrorPaperAccessDenied, but was %@.", [self tagName]];
+    }
+    return _paperAccessDenied;
 }
 
 - (DBAUTHNoPermissionError *)noPermission {
-  if (![self isNoPermission]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBAUTHAccessErrorNoPermission, but was %@.", [self tagName]];
-  }
-  return _noPermission;
+    if (![self isNoPermission]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBAUTHAccessErrorNoPermission, but was %@.", [self tagName]];
+    }
+    return _noPermission;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isInvalidAccountType {
-  return _tag == DBAUTHAccessErrorInvalidAccountType;
+    return _tag == DBAUTHAccessErrorInvalidAccountType;
 }
 
 - (BOOL)isPaperAccessDenied {
-  return _tag == DBAUTHAccessErrorPaperAccessDenied;
+    return _tag == DBAUTHAccessErrorPaperAccessDenied;
 }
 
 - (BOOL)isTeamAccessDenied {
-  return _tag == DBAUTHAccessErrorTeamAccessDenied;
+    return _tag == DBAUTHAccessErrorTeamAccessDenied;
 }
 
 - (BOOL)isNoPermission {
-  return _tag == DBAUTHAccessErrorNoPermission;
+    return _tag == DBAUTHAccessErrorNoPermission;
 }
 
 - (BOOL)isOther {
-  return _tag == DBAUTHAccessErrorOther;
+    return _tag == DBAUTHAccessErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBAUTHAccessErrorInvalidAccountType:
-    return @"DBAUTHAccessErrorInvalidAccountType";
-  case DBAUTHAccessErrorPaperAccessDenied:
-    return @"DBAUTHAccessErrorPaperAccessDenied";
-  case DBAUTHAccessErrorTeamAccessDenied:
-    return @"DBAUTHAccessErrorTeamAccessDenied";
-  case DBAUTHAccessErrorNoPermission:
-    return @"DBAUTHAccessErrorNoPermission";
-  case DBAUTHAccessErrorOther:
-    return @"DBAUTHAccessErrorOther";
-  }
+    switch (_tag) {
+        case DBAUTHAccessErrorInvalidAccountType:
+           return @"DBAUTHAccessErrorInvalidAccountType";
+        case DBAUTHAccessErrorPaperAccessDenied:
+           return @"DBAUTHAccessErrorPaperAccessDenied";
+        case DBAUTHAccessErrorTeamAccessDenied:
+           return @"DBAUTHAccessErrorTeamAccessDenied";
+        case DBAUTHAccessErrorNoPermission:
+           return @"DBAUTHAccessErrorNoPermission";
+        case DBAUTHAccessErrorOther:
+           return @"DBAUTHAccessErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHAccessErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHAccessErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHAccessErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHAccessErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHAccessErrorSerializer serialize:self] description];
+    return [[DBAUTHAccessErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBAUTHAccessErrorInvalidAccountType:
-    result = prime * result + [self.invalidAccountType hash];
-    break;
-  case DBAUTHAccessErrorPaperAccessDenied:
-    result = prime * result + [self.paperAccessDenied hash];
-    break;
-  case DBAUTHAccessErrorTeamAccessDenied:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHAccessErrorNoPermission:
-    result = prime * result + [self.noPermission hash];
-    break;
-  case DBAUTHAccessErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBAUTHAccessErrorInvalidAccountType:
+        result = prime * result + [self.invalidAccountType hash];
+        break;
+        case DBAUTHAccessErrorPaperAccessDenied:
+        result = prime * result + [self.paperAccessDenied hash];
+        break;
+        case DBAUTHAccessErrorTeamAccessDenied:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHAccessErrorNoPermission:
+        result = prime * result + [self.noPermission hash];
+        break;
+        case DBAUTHAccessErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToAccessError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToAccessError:other];
 }
 
 - (BOOL)isEqualToAccessError:(DBAUTHAccessError *)anAccessError {
-  if (self == anAccessError) {
+    if (self == anAccessError) {
+        return YES;
+    }
+    if (self.tag != anAccessError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBAUTHAccessErrorInvalidAccountType:
+        return [self.invalidAccountType isEqual:anAccessError.invalidAccountType];
+        case DBAUTHAccessErrorPaperAccessDenied:
+        return [self.paperAccessDenied isEqual:anAccessError.paperAccessDenied];
+        case DBAUTHAccessErrorTeamAccessDenied:
+        return [[self tagName] isEqual:[anAccessError tagName]];
+        case DBAUTHAccessErrorNoPermission:
+        return [self.noPermission isEqual:anAccessError.noPermission];
+        case DBAUTHAccessErrorOther:
+        return [[self tagName] isEqual:[anAccessError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != anAccessError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBAUTHAccessErrorInvalidAccountType:
-    return [self.invalidAccountType isEqual:anAccessError.invalidAccountType];
-  case DBAUTHAccessErrorPaperAccessDenied:
-    return [self.paperAccessDenied isEqual:anAccessError.paperAccessDenied];
-  case DBAUTHAccessErrorTeamAccessDenied:
-    return [[self tagName] isEqual:[anAccessError tagName]];
-  case DBAUTHAccessErrorNoPermission:
-    return [self.noPermission isEqual:anAccessError.noPermission];
-  case DBAUTHAccessErrorOther:
-    return [[self tagName] isEqual:[anAccessError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHAccessErrorSerializer
+@implementation DBAUTHAccessErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHAccessError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInvalidAccountType]) {
-    jsonDict[@"invalid_account_type"] =
-        [[DBAUTHInvalidAccountTypeErrorSerializer serialize:valueObj.invalidAccountType] mutableCopy];
-    jsonDict[@".tag"] = @"invalid_account_type";
-  } else if ([valueObj isPaperAccessDenied]) {
-    jsonDict[@"paper_access_denied"] =
-        [[DBAUTHPaperAccessErrorSerializer serialize:valueObj.paperAccessDenied] mutableCopy];
-    jsonDict[@".tag"] = @"paper_access_denied";
-  } else if ([valueObj isTeamAccessDenied]) {
-    jsonDict[@".tag"] = @"team_access_denied";
-  } else if ([valueObj isNoPermission]) {
-    jsonDict[@"no_permission"] = [[DBAUTHNoPermissionErrorSerializer serialize:valueObj.noPermission] mutableCopy];
-    jsonDict[@".tag"] = @"no_permission";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isInvalidAccountType]) {
+        jsonDict[@"invalid_account_type"] = [[DBAUTHInvalidAccountTypeErrorSerializer serialize:valueObj.invalidAccountType] mutableCopy];
+        jsonDict[@".tag"] = @"invalid_account_type";
+    }
+    else if ([valueObj isPaperAccessDenied]) {
+        jsonDict[@"paper_access_denied"] = [[DBAUTHPaperAccessErrorSerializer serialize:valueObj.paperAccessDenied] mutableCopy];
+        jsonDict[@".tag"] = @"paper_access_denied";
+    }
+    else if ([valueObj isTeamAccessDenied]) {
+        jsonDict[@".tag"] = @"team_access_denied";
+    }
+    else if ([valueObj isNoPermission]) {
+        jsonDict[@"no_permission"] = [[DBAUTHNoPermissionErrorSerializer serialize:valueObj.noPermission] mutableCopy];
+        jsonDict[@".tag"] = @"no_permission";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHAccessError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"invalid_account_type"]) {
-    DBAUTHInvalidAccountTypeError *invalidAccountType =
-        [DBAUTHInvalidAccountTypeErrorSerializer deserialize:valueDict[@"invalid_account_type"]];
-    return [[DBAUTHAccessError alloc] initWithInvalidAccountType:invalidAccountType];
-  } else if ([tag isEqualToString:@"paper_access_denied"]) {
-    DBAUTHPaperAccessError *paperAccessDenied =
-        [DBAUTHPaperAccessErrorSerializer deserialize:valueDict[@"paper_access_denied"]];
-    return [[DBAUTHAccessError alloc] initWithPaperAccessDenied:paperAccessDenied];
-  } else if ([tag isEqualToString:@"team_access_denied"]) {
-    return [[DBAUTHAccessError alloc] initWithTeamAccessDenied];
-  } else if ([tag isEqualToString:@"no_permission"]) {
-    DBAUTHNoPermissionError *noPermission = [DBAUTHNoPermissionErrorSerializer deserialize:valueDict[@"no_permission"]];
-    return [[DBAUTHAccessError alloc] initWithNoPermission:noPermission];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBAUTHAccessError alloc] initWithOther];
-  } else {
-    return [[DBAUTHAccessError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"invalid_account_type"]) {
+        DBAUTHInvalidAccountTypeError *invalidAccountType = [DBAUTHInvalidAccountTypeErrorSerializer deserialize:valueDict[@"invalid_account_type"]];
+        return [[DBAUTHAccessError alloc] initWithInvalidAccountType:invalidAccountType];
+    }
+    else if ([tag isEqualToString:@"paper_access_denied"]) {
+        DBAUTHPaperAccessError *paperAccessDenied = [DBAUTHPaperAccessErrorSerializer deserialize:valueDict[@"paper_access_denied"]];
+        return [[DBAUTHAccessError alloc] initWithPaperAccessDenied:paperAccessDenied];
+    }
+    else if ([tag isEqualToString:@"team_access_denied"]) {
+        return [[DBAUTHAccessError alloc] initWithTeamAccessDenied];
+    }
+    else if ([tag isEqualToString:@"no_permission"]) {
+        DBAUTHNoPermissionError *noPermission = [DBAUTHNoPermissionErrorSerializer deserialize:valueDict[@"no_permission"]];
+        return [[DBAUTHAccessError alloc] initWithNoPermission:noPermission];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBAUTHAccessError alloc] initWithOther];
+    }
+    else {
+        return [[DBAUTHAccessError alloc] initWithOther];
+    }
 }
 
 @end
@@ -279,300 +283,316 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHAuthError
+@implementation DBAUTHAuthError 
 
 @synthesize missingScope = _missingScope;
 
 #pragma mark - Constructors
 
 - (instancetype)initWithInvalidAccessToken {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorInvalidAccessToken;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorInvalidAccessToken;
+    }
+    return self;
 }
 
 - (instancetype)initWithInvalidSelectUser {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorInvalidSelectUser;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorInvalidSelectUser;
+    }
+    return self;
 }
 
 - (instancetype)initWithInvalidSelectAdmin {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorInvalidSelectAdmin;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorInvalidSelectAdmin;
+    }
+    return self;
 }
 
 - (instancetype)initWithUserSuspended {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorUserSuspended;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorUserSuspended;
+    }
+    return self;
 }
 
 - (instancetype)initWithExpiredAccessToken {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorExpiredAccessToken;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorExpiredAccessToken;
+    }
+    return self;
 }
 
 - (instancetype)initWithMissingScope:(DBAUTHTokenScopeError *)missingScope {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorMissingScope;
-    _missingScope = missingScope;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorMissingScope;
+        _missingScope = missingScope;
+    }
+    return self;
 }
 
 - (instancetype)initWithRouteAccessDenied {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorRouteAccessDenied;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorRouteAccessDenied;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHAuthErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHAuthErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBAUTHTokenScopeError *)missingScope {
-  if (![self isMissingScope]) {
-    [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required DBAUTHAuthErrorMissingScope, but was %@.", [self tagName]];
-  }
-  return _missingScope;
+    if (![self isMissingScope]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBAUTHAuthErrorMissingScope, but was %@.", [self tagName]];
+    }
+    return _missingScope;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isInvalidAccessToken {
-  return _tag == DBAUTHAuthErrorInvalidAccessToken;
+    return _tag == DBAUTHAuthErrorInvalidAccessToken;
 }
 
 - (BOOL)isInvalidSelectUser {
-  return _tag == DBAUTHAuthErrorInvalidSelectUser;
+    return _tag == DBAUTHAuthErrorInvalidSelectUser;
 }
 
 - (BOOL)isInvalidSelectAdmin {
-  return _tag == DBAUTHAuthErrorInvalidSelectAdmin;
+    return _tag == DBAUTHAuthErrorInvalidSelectAdmin;
 }
 
 - (BOOL)isUserSuspended {
-  return _tag == DBAUTHAuthErrorUserSuspended;
+    return _tag == DBAUTHAuthErrorUserSuspended;
 }
 
 - (BOOL)isExpiredAccessToken {
-  return _tag == DBAUTHAuthErrorExpiredAccessToken;
+    return _tag == DBAUTHAuthErrorExpiredAccessToken;
 }
 
 - (BOOL)isMissingScope {
-  return _tag == DBAUTHAuthErrorMissingScope;
+    return _tag == DBAUTHAuthErrorMissingScope;
 }
 
 - (BOOL)isRouteAccessDenied {
-  return _tag == DBAUTHAuthErrorRouteAccessDenied;
+    return _tag == DBAUTHAuthErrorRouteAccessDenied;
 }
 
 - (BOOL)isOther {
-  return _tag == DBAUTHAuthErrorOther;
+    return _tag == DBAUTHAuthErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBAUTHAuthErrorInvalidAccessToken:
-    return @"DBAUTHAuthErrorInvalidAccessToken";
-  case DBAUTHAuthErrorInvalidSelectUser:
-    return @"DBAUTHAuthErrorInvalidSelectUser";
-  case DBAUTHAuthErrorInvalidSelectAdmin:
-    return @"DBAUTHAuthErrorInvalidSelectAdmin";
-  case DBAUTHAuthErrorUserSuspended:
-    return @"DBAUTHAuthErrorUserSuspended";
-  case DBAUTHAuthErrorExpiredAccessToken:
-    return @"DBAUTHAuthErrorExpiredAccessToken";
-  case DBAUTHAuthErrorMissingScope:
-    return @"DBAUTHAuthErrorMissingScope";
-  case DBAUTHAuthErrorRouteAccessDenied:
-    return @"DBAUTHAuthErrorRouteAccessDenied";
-  case DBAUTHAuthErrorOther:
-    return @"DBAUTHAuthErrorOther";
-  }
+    switch (_tag) {
+        case DBAUTHAuthErrorInvalidAccessToken:
+           return @"DBAUTHAuthErrorInvalidAccessToken";
+        case DBAUTHAuthErrorInvalidSelectUser:
+           return @"DBAUTHAuthErrorInvalidSelectUser";
+        case DBAUTHAuthErrorInvalidSelectAdmin:
+           return @"DBAUTHAuthErrorInvalidSelectAdmin";
+        case DBAUTHAuthErrorUserSuspended:
+           return @"DBAUTHAuthErrorUserSuspended";
+        case DBAUTHAuthErrorExpiredAccessToken:
+           return @"DBAUTHAuthErrorExpiredAccessToken";
+        case DBAUTHAuthErrorMissingScope:
+           return @"DBAUTHAuthErrorMissingScope";
+        case DBAUTHAuthErrorRouteAccessDenied:
+           return @"DBAUTHAuthErrorRouteAccessDenied";
+        case DBAUTHAuthErrorOther:
+           return @"DBAUTHAuthErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHAuthErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHAuthErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHAuthErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHAuthErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHAuthErrorSerializer serialize:self] description];
+    return [[DBAUTHAuthErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBAUTHAuthErrorInvalidAccessToken:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHAuthErrorInvalidSelectUser:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHAuthErrorInvalidSelectAdmin:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHAuthErrorUserSuspended:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHAuthErrorExpiredAccessToken:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHAuthErrorMissingScope:
-    result = prime * result + [self.missingScope hash];
-    break;
-  case DBAUTHAuthErrorRouteAccessDenied:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHAuthErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBAUTHAuthErrorInvalidAccessToken:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHAuthErrorInvalidSelectUser:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHAuthErrorInvalidSelectAdmin:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHAuthErrorUserSuspended:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHAuthErrorExpiredAccessToken:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHAuthErrorMissingScope:
+        result = prime * result + [self.missingScope hash];
+        break;
+        case DBAUTHAuthErrorRouteAccessDenied:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHAuthErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToAuthError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToAuthError:other];
 }
 
 - (BOOL)isEqualToAuthError:(DBAUTHAuthError *)anAuthError {
-  if (self == anAuthError) {
+    if (self == anAuthError) {
+        return YES;
+    }
+    if (self.tag != anAuthError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBAUTHAuthErrorInvalidAccessToken:
+        return [[self tagName] isEqual:[anAuthError tagName]];
+        case DBAUTHAuthErrorInvalidSelectUser:
+        return [[self tagName] isEqual:[anAuthError tagName]];
+        case DBAUTHAuthErrorInvalidSelectAdmin:
+        return [[self tagName] isEqual:[anAuthError tagName]];
+        case DBAUTHAuthErrorUserSuspended:
+        return [[self tagName] isEqual:[anAuthError tagName]];
+        case DBAUTHAuthErrorExpiredAccessToken:
+        return [[self tagName] isEqual:[anAuthError tagName]];
+        case DBAUTHAuthErrorMissingScope:
+        return [self.missingScope isEqual:anAuthError.missingScope];
+        case DBAUTHAuthErrorRouteAccessDenied:
+        return [[self tagName] isEqual:[anAuthError tagName]];
+        case DBAUTHAuthErrorOther:
+        return [[self tagName] isEqual:[anAuthError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != anAuthError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBAUTHAuthErrorInvalidAccessToken:
-    return [[self tagName] isEqual:[anAuthError tagName]];
-  case DBAUTHAuthErrorInvalidSelectUser:
-    return [[self tagName] isEqual:[anAuthError tagName]];
-  case DBAUTHAuthErrorInvalidSelectAdmin:
-    return [[self tagName] isEqual:[anAuthError tagName]];
-  case DBAUTHAuthErrorUserSuspended:
-    return [[self tagName] isEqual:[anAuthError tagName]];
-  case DBAUTHAuthErrorExpiredAccessToken:
-    return [[self tagName] isEqual:[anAuthError tagName]];
-  case DBAUTHAuthErrorMissingScope:
-    return [self.missingScope isEqual:anAuthError.missingScope];
-  case DBAUTHAuthErrorRouteAccessDenied:
-    return [[self tagName] isEqual:[anAuthError tagName]];
-  case DBAUTHAuthErrorOther:
-    return [[self tagName] isEqual:[anAuthError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHAuthErrorSerializer
+@implementation DBAUTHAuthErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHAuthError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInvalidAccessToken]) {
-    jsonDict[@".tag"] = @"invalid_access_token";
-  } else if ([valueObj isInvalidSelectUser]) {
-    jsonDict[@".tag"] = @"invalid_select_user";
-  } else if ([valueObj isInvalidSelectAdmin]) {
-    jsonDict[@".tag"] = @"invalid_select_admin";
-  } else if ([valueObj isUserSuspended]) {
-    jsonDict[@".tag"] = @"user_suspended";
-  } else if ([valueObj isExpiredAccessToken]) {
-    jsonDict[@".tag"] = @"expired_access_token";
-  } else if ([valueObj isMissingScope]) {
-    [jsonDict addEntriesFromDictionary:[DBAUTHTokenScopeErrorSerializer serialize:valueObj.missingScope]];
-    jsonDict[@".tag"] = @"missing_scope";
-  } else if ([valueObj isRouteAccessDenied]) {
-    jsonDict[@".tag"] = @"route_access_denied";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isInvalidAccessToken]) {
+        jsonDict[@".tag"] = @"invalid_access_token";
+    }
+    else if ([valueObj isInvalidSelectUser]) {
+        jsonDict[@".tag"] = @"invalid_select_user";
+    }
+    else if ([valueObj isInvalidSelectAdmin]) {
+        jsonDict[@".tag"] = @"invalid_select_admin";
+    }
+    else if ([valueObj isUserSuspended]) {
+        jsonDict[@".tag"] = @"user_suspended";
+    }
+    else if ([valueObj isExpiredAccessToken]) {
+        jsonDict[@".tag"] = @"expired_access_token";
+    }
+    else if ([valueObj isMissingScope]) {
+        [jsonDict addEntriesFromDictionary:[DBAUTHTokenScopeErrorSerializer serialize:valueObj.missingScope]];
+        jsonDict[@".tag"] = @"missing_scope";
+    }
+    else if ([valueObj isRouteAccessDenied]) {
+        jsonDict[@".tag"] = @"route_access_denied";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHAuthError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"invalid_access_token"]) {
-    return [[DBAUTHAuthError alloc] initWithInvalidAccessToken];
-  } else if ([tag isEqualToString:@"invalid_select_user"]) {
-    return [[DBAUTHAuthError alloc] initWithInvalidSelectUser];
-  } else if ([tag isEqualToString:@"invalid_select_admin"]) {
-    return [[DBAUTHAuthError alloc] initWithInvalidSelectAdmin];
-  } else if ([tag isEqualToString:@"user_suspended"]) {
-    return [[DBAUTHAuthError alloc] initWithUserSuspended];
-  } else if ([tag isEqualToString:@"expired_access_token"]) {
-    return [[DBAUTHAuthError alloc] initWithExpiredAccessToken];
-  } else if ([tag isEqualToString:@"missing_scope"]) {
-    DBAUTHTokenScopeError *missingScope = [DBAUTHTokenScopeErrorSerializer deserialize:valueDict];
-    return [[DBAUTHAuthError alloc] initWithMissingScope:missingScope];
-  } else if ([tag isEqualToString:@"route_access_denied"]) {
-    return [[DBAUTHAuthError alloc] initWithRouteAccessDenied];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBAUTHAuthError alloc] initWithOther];
-  } else {
-    return [[DBAUTHAuthError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"invalid_access_token"]) {
+        return [[DBAUTHAuthError alloc] initWithInvalidAccessToken];
+    }
+    else if ([tag isEqualToString:@"invalid_select_user"]) {
+        return [[DBAUTHAuthError alloc] initWithInvalidSelectUser];
+    }
+    else if ([tag isEqualToString:@"invalid_select_admin"]) {
+        return [[DBAUTHAuthError alloc] initWithInvalidSelectAdmin];
+    }
+    else if ([tag isEqualToString:@"user_suspended"]) {
+        return [[DBAUTHAuthError alloc] initWithUserSuspended];
+    }
+    else if ([tag isEqualToString:@"expired_access_token"]) {
+        return [[DBAUTHAuthError alloc] initWithExpiredAccessToken];
+    }
+    else if ([tag isEqualToString:@"missing_scope"]) {
+        DBAUTHTokenScopeError *missingScope = [DBAUTHTokenScopeErrorSerializer deserialize:valueDict];
+        return [[DBAUTHAuthError alloc] initWithMissingScope:missingScope];
+    }
+    else if ([tag isEqualToString:@"route_access_denied"]) {
+        return [[DBAUTHAuthError alloc] initWithRouteAccessDenied];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBAUTHAuthError alloc] initWithOther];
+    }
+    else {
+        return [[DBAUTHAuthError alloc] initWithOther];
+    }
 }
 
 @end
@@ -583,32 +603,32 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHInvalidAccountTypeError
+@implementation DBAUTHInvalidAccountTypeError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithEndpoint {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHInvalidAccountTypeErrorEndpoint;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHInvalidAccountTypeErrorEndpoint;
+    }
+    return self;
 }
 
 - (instancetype)initWithFeature {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHInvalidAccountTypeErrorFeature;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHInvalidAccountTypeErrorFeature;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHInvalidAccountTypeErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHInvalidAccountTypeErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -616,139 +636,146 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isEndpoint {
-  return _tag == DBAUTHInvalidAccountTypeErrorEndpoint;
+    return _tag == DBAUTHInvalidAccountTypeErrorEndpoint;
 }
 
 - (BOOL)isFeature {
-  return _tag == DBAUTHInvalidAccountTypeErrorFeature;
+    return _tag == DBAUTHInvalidAccountTypeErrorFeature;
 }
 
 - (BOOL)isOther {
-  return _tag == DBAUTHInvalidAccountTypeErrorOther;
+    return _tag == DBAUTHInvalidAccountTypeErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBAUTHInvalidAccountTypeErrorEndpoint:
-    return @"DBAUTHInvalidAccountTypeErrorEndpoint";
-  case DBAUTHInvalidAccountTypeErrorFeature:
-    return @"DBAUTHInvalidAccountTypeErrorFeature";
-  case DBAUTHInvalidAccountTypeErrorOther:
-    return @"DBAUTHInvalidAccountTypeErrorOther";
-  }
+    switch (_tag) {
+        case DBAUTHInvalidAccountTypeErrorEndpoint:
+           return @"DBAUTHInvalidAccountTypeErrorEndpoint";
+        case DBAUTHInvalidAccountTypeErrorFeature:
+           return @"DBAUTHInvalidAccountTypeErrorFeature";
+        case DBAUTHInvalidAccountTypeErrorOther:
+           return @"DBAUTHInvalidAccountTypeErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHInvalidAccountTypeErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHInvalidAccountTypeErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHInvalidAccountTypeErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHInvalidAccountTypeErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHInvalidAccountTypeErrorSerializer serialize:self] description];
+    return [[DBAUTHInvalidAccountTypeErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBAUTHInvalidAccountTypeErrorEndpoint:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHInvalidAccountTypeErrorFeature:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHInvalidAccountTypeErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBAUTHInvalidAccountTypeErrorEndpoint:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHInvalidAccountTypeErrorFeature:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHInvalidAccountTypeErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToInvalidAccountTypeError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToInvalidAccountTypeError:other];
 }
 
 - (BOOL)isEqualToInvalidAccountTypeError:(DBAUTHInvalidAccountTypeError *)anInvalidAccountTypeError {
-  if (self == anInvalidAccountTypeError) {
+    if (self == anInvalidAccountTypeError) {
+        return YES;
+    }
+    if (self.tag != anInvalidAccountTypeError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBAUTHInvalidAccountTypeErrorEndpoint:
+        return [[self tagName] isEqual:[anInvalidAccountTypeError tagName]];
+        case DBAUTHInvalidAccountTypeErrorFeature:
+        return [[self tagName] isEqual:[anInvalidAccountTypeError tagName]];
+        case DBAUTHInvalidAccountTypeErrorOther:
+        return [[self tagName] isEqual:[anInvalidAccountTypeError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != anInvalidAccountTypeError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBAUTHInvalidAccountTypeErrorEndpoint:
-    return [[self tagName] isEqual:[anInvalidAccountTypeError tagName]];
-  case DBAUTHInvalidAccountTypeErrorFeature:
-    return [[self tagName] isEqual:[anInvalidAccountTypeError tagName]];
-  case DBAUTHInvalidAccountTypeErrorOther:
-    return [[self tagName] isEqual:[anInvalidAccountTypeError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHInvalidAccountTypeErrorSerializer
+@implementation DBAUTHInvalidAccountTypeErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHInvalidAccountTypeError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isEndpoint]) {
-    jsonDict[@".tag"] = @"endpoint";
-  } else if ([valueObj isFeature]) {
-    jsonDict[@".tag"] = @"feature";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isEndpoint]) {
+        jsonDict[@".tag"] = @"endpoint";
+    }
+    else if ([valueObj isFeature]) {
+        jsonDict[@".tag"] = @"feature";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHInvalidAccountTypeError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"endpoint"]) {
-    return [[DBAUTHInvalidAccountTypeError alloc] initWithEndpoint];
-  } else if ([tag isEqualToString:@"feature"]) {
-    return [[DBAUTHInvalidAccountTypeError alloc] initWithFeature];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBAUTHInvalidAccountTypeError alloc] initWithOther];
-  } else {
-    return [[DBAUTHInvalidAccountTypeError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"endpoint"]) {
+        return [[DBAUTHInvalidAccountTypeError alloc] initWithEndpoint];
+    }
+    else if ([tag isEqualToString:@"feature"]) {
+        return [[DBAUTHInvalidAccountTypeError alloc] initWithFeature];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBAUTHInvalidAccountTypeError alloc] initWithOther];
+    }
+    else {
+        return [[DBAUTHInvalidAccountTypeError alloc] initWithOther];
+    }
 }
 
 @end
@@ -760,165 +787,166 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHNoPermissionError
+@implementation DBAUTHNoPermissionError 
 
 @synthesize unauthorizedAccountIdUsage = _unauthorizedAccountIdUsage;
 
 #pragma mark - Constructors
 
 - (instancetype)initWithUnauthorizedAccountIdUsage:(DBAUTHUnauthorizedAccountIdUsageError *)unauthorizedAccountIdUsage {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage;
-    _unauthorizedAccountIdUsage = unauthorizedAccountIdUsage;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage;
+        _unauthorizedAccountIdUsage = unauthorizedAccountIdUsage;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHNoPermissionErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHNoPermissionErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
 
 - (DBAUTHUnauthorizedAccountIdUsageError *)unauthorizedAccountIdUsage {
-  if (![self isUnauthorizedAccountIdUsage]) {
-    [NSException
-         raise:@"IllegalStateException"
-        format:@"Invalid tag: required DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage, but was %@.", [self tagName]];
-  }
-  return _unauthorizedAccountIdUsage;
+    if (![self isUnauthorizedAccountIdUsage]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage, but was %@.", [self tagName]];
+    }
+    return _unauthorizedAccountIdUsage;
 }
 
 #pragma mark - Tag state methods
 
 - (BOOL)isUnauthorizedAccountIdUsage {
-  return _tag == DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage;
+    return _tag == DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage;
 }
 
 - (BOOL)isOther {
-  return _tag == DBAUTHNoPermissionErrorOther;
+    return _tag == DBAUTHNoPermissionErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
-    return @"DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage";
-  case DBAUTHNoPermissionErrorOther:
-    return @"DBAUTHNoPermissionErrorOther";
-  }
+    switch (_tag) {
+        case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
+           return @"DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage";
+        case DBAUTHNoPermissionErrorOther:
+           return @"DBAUTHNoPermissionErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHNoPermissionErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHNoPermissionErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHNoPermissionErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHNoPermissionErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHNoPermissionErrorSerializer serialize:self] description];
+    return [[DBAUTHNoPermissionErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
-    result = prime * result + [self.unauthorizedAccountIdUsage hash];
-    break;
-  case DBAUTHNoPermissionErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
+        result = prime * result + [self.unauthorizedAccountIdUsage hash];
+        break;
+        case DBAUTHNoPermissionErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToNoPermissionError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToNoPermissionError:other];
 }
 
 - (BOOL)isEqualToNoPermissionError:(DBAUTHNoPermissionError *)aNoPermissionError {
-  if (self == aNoPermissionError) {
+    if (self == aNoPermissionError) {
+        return YES;
+    }
+    if (self.tag != aNoPermissionError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
+        return [self.unauthorizedAccountIdUsage isEqual:aNoPermissionError.unauthorizedAccountIdUsage];
+        case DBAUTHNoPermissionErrorOther:
+        return [[self tagName] isEqual:[aNoPermissionError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aNoPermissionError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBAUTHNoPermissionErrorUnauthorizedAccountIdUsage:
-    return [self.unauthorizedAccountIdUsage isEqual:aNoPermissionError.unauthorizedAccountIdUsage];
-  case DBAUTHNoPermissionErrorOther:
-    return [[self tagName] isEqual:[aNoPermissionError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHNoPermissionErrorSerializer
+@implementation DBAUTHNoPermissionErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHNoPermissionError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isUnauthorizedAccountIdUsage]) {
-    [jsonDict addEntriesFromDictionary:[DBAUTHUnauthorizedAccountIdUsageErrorSerializer
-                                           serialize:valueObj.unauthorizedAccountIdUsage]];
-    jsonDict[@".tag"] = @"unauthorized_account_id_usage";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isUnauthorizedAccountIdUsage]) {
+        [jsonDict addEntriesFromDictionary:[DBAUTHUnauthorizedAccountIdUsageErrorSerializer serialize:valueObj.unauthorizedAccountIdUsage]];
+        jsonDict[@".tag"] = @"unauthorized_account_id_usage";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHNoPermissionError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"unauthorized_account_id_usage"]) {
-    DBAUTHUnauthorizedAccountIdUsageError *unauthorizedAccountIdUsage =
-        [DBAUTHUnauthorizedAccountIdUsageErrorSerializer deserialize:valueDict];
-    return [[DBAUTHNoPermissionError alloc] initWithUnauthorizedAccountIdUsage:unauthorizedAccountIdUsage];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBAUTHNoPermissionError alloc] initWithOther];
-  } else {
-    return [[DBAUTHNoPermissionError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"unauthorized_account_id_usage"]) {
+        DBAUTHUnauthorizedAccountIdUsageError *unauthorizedAccountIdUsage = [DBAUTHUnauthorizedAccountIdUsageErrorSerializer deserialize:valueDict];
+        return [[DBAUTHNoPermissionError alloc] initWithUnauthorizedAccountIdUsage:unauthorizedAccountIdUsage];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBAUTHNoPermissionError alloc] initWithOther];
+    }
+    else {
+        return [[DBAUTHNoPermissionError alloc] initWithOther];
+    }
 }
 
 @end
@@ -929,32 +957,32 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHPaperAccessError
+@implementation DBAUTHPaperAccessError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithPaperDisabled {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHPaperAccessErrorPaperDisabled;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHPaperAccessErrorPaperDisabled;
+    }
+    return self;
 }
 
 - (instancetype)initWithNotPaperUser {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHPaperAccessErrorNotPaperUser;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHPaperAccessErrorNotPaperUser;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHPaperAccessErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHPaperAccessErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -962,139 +990,146 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isPaperDisabled {
-  return _tag == DBAUTHPaperAccessErrorPaperDisabled;
+    return _tag == DBAUTHPaperAccessErrorPaperDisabled;
 }
 
 - (BOOL)isNotPaperUser {
-  return _tag == DBAUTHPaperAccessErrorNotPaperUser;
+    return _tag == DBAUTHPaperAccessErrorNotPaperUser;
 }
 
 - (BOOL)isOther {
-  return _tag == DBAUTHPaperAccessErrorOther;
+    return _tag == DBAUTHPaperAccessErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBAUTHPaperAccessErrorPaperDisabled:
-    return @"DBAUTHPaperAccessErrorPaperDisabled";
-  case DBAUTHPaperAccessErrorNotPaperUser:
-    return @"DBAUTHPaperAccessErrorNotPaperUser";
-  case DBAUTHPaperAccessErrorOther:
-    return @"DBAUTHPaperAccessErrorOther";
-  }
+    switch (_tag) {
+        case DBAUTHPaperAccessErrorPaperDisabled:
+           return @"DBAUTHPaperAccessErrorPaperDisabled";
+        case DBAUTHPaperAccessErrorNotPaperUser:
+           return @"DBAUTHPaperAccessErrorNotPaperUser";
+        case DBAUTHPaperAccessErrorOther:
+           return @"DBAUTHPaperAccessErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHPaperAccessErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHPaperAccessErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHPaperAccessErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHPaperAccessErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHPaperAccessErrorSerializer serialize:self] description];
+    return [[DBAUTHPaperAccessErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBAUTHPaperAccessErrorPaperDisabled:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHPaperAccessErrorNotPaperUser:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHPaperAccessErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBAUTHPaperAccessErrorPaperDisabled:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHPaperAccessErrorNotPaperUser:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHPaperAccessErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToPaperAccessError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToPaperAccessError:other];
 }
 
 - (BOOL)isEqualToPaperAccessError:(DBAUTHPaperAccessError *)aPaperAccessError {
-  if (self == aPaperAccessError) {
+    if (self == aPaperAccessError) {
+        return YES;
+    }
+    if (self.tag != aPaperAccessError.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBAUTHPaperAccessErrorPaperDisabled:
+        return [[self tagName] isEqual:[aPaperAccessError tagName]];
+        case DBAUTHPaperAccessErrorNotPaperUser:
+        return [[self tagName] isEqual:[aPaperAccessError tagName]];
+        case DBAUTHPaperAccessErrorOther:
+        return [[self tagName] isEqual:[aPaperAccessError tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aPaperAccessError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBAUTHPaperAccessErrorPaperDisabled:
-    return [[self tagName] isEqual:[aPaperAccessError tagName]];
-  case DBAUTHPaperAccessErrorNotPaperUser:
-    return [[self tagName] isEqual:[aPaperAccessError tagName]];
-  case DBAUTHPaperAccessErrorOther:
-    return [[self tagName] isEqual:[aPaperAccessError tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHPaperAccessErrorSerializer
+@implementation DBAUTHPaperAccessErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHPaperAccessError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isPaperDisabled]) {
-    jsonDict[@".tag"] = @"paper_disabled";
-  } else if ([valueObj isNotPaperUser]) {
-    jsonDict[@".tag"] = @"not_paper_user";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isPaperDisabled]) {
+        jsonDict[@".tag"] = @"paper_disabled";
+    }
+    else if ([valueObj isNotPaperUser]) {
+        jsonDict[@".tag"] = @"not_paper_user";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHPaperAccessError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"paper_disabled"]) {
-    return [[DBAUTHPaperAccessError alloc] initWithPaperDisabled];
-  } else if ([tag isEqualToString:@"not_paper_user"]) {
-    return [[DBAUTHPaperAccessError alloc] initWithNotPaperUser];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBAUTHPaperAccessError alloc] initWithOther];
-  } else {
-    return [[DBAUTHPaperAccessError alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"paper_disabled"]) {
+        return [[DBAUTHPaperAccessError alloc] initWithPaperDisabled];
+    }
+    else if ([tag isEqualToString:@"not_paper_user"]) {
+        return [[DBAUTHPaperAccessError alloc] initWithNotPaperUser];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBAUTHPaperAccessError alloc] initWithOther];
+    }
+    else {
+        return [[DBAUTHPaperAccessError alloc] initWithOther];
+    }
 }
 
 @end
@@ -1106,106 +1141,107 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHRateLimitError
+@implementation DBAUTHRateLimitError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason retryAfter:(NSNumber *)retryAfter {
-  [DBStoneValidators nonnullValidator:nil](reason);
+    [DBStoneValidators nonnullValidator:nil](reason);
 
-  self = [super init];
-  if (self) {
-    _reason = reason;
-    _retryAfter = retryAfter ?: @(1);
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _reason = reason;
+        _retryAfter = retryAfter ?: @(1);
+    }
+    return self;
 }
 
 - (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason {
-  return [self initWithReason:reason retryAfter:nil];
+    return [self initWithReason:reason retryAfter:nil];
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHRateLimitErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHRateLimitErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHRateLimitErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHRateLimitErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHRateLimitErrorSerializer serialize:self] description];
+    return [[DBAUTHRateLimitErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.reason hash];
-  result = prime * result + [self.retryAfter hash];
+    result = prime * result + [self.reason hash];
+    result = prime * result + [self.retryAfter hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToRateLimitError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToRateLimitError:other];
 }
 
 - (BOOL)isEqualToRateLimitError:(DBAUTHRateLimitError *)aRateLimitError {
-  if (self == aRateLimitError) {
+    if (self == aRateLimitError) {
+        return YES;
+    }
+    if (![self.reason isEqual:aRateLimitError.reason]) {
+        return NO;
+    }
+    if (![self.retryAfter isEqual:aRateLimitError.retryAfter]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.reason isEqual:aRateLimitError.reason]) {
-    return NO;
-  }
-  if (![self.retryAfter isEqual:aRateLimitError.retryAfter]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHRateLimitErrorSerializer
+@implementation DBAUTHRateLimitErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHRateLimitError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"reason"] = [DBAUTHRateLimitReasonSerializer serialize:valueObj.reason];
-  jsonDict[@"retry_after"] = valueObj.retryAfter;
+    jsonDict[@"reason"] = [DBAUTHRateLimitReasonSerializer serialize:valueObj.reason];
+    jsonDict[@"retry_after"] = valueObj.retryAfter;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHRateLimitError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBAUTHRateLimitReason *reason = [DBAUTHRateLimitReasonSerializer deserialize:valueDict[@"reason"]];
-  NSNumber *retryAfter = valueDict[@"retry_after"] ?: @(1);
+    DBAUTHRateLimitReason *reason = [DBAUTHRateLimitReasonSerializer deserialize:valueDict[@"reason"]];
+    NSNumber *retryAfter = valueDict[@"retry_after"] ?: @(1);
 
-  return [[DBAUTHRateLimitError alloc] initWithReason:reason retryAfter:retryAfter];
+    return [[DBAUTHRateLimitError alloc] initWithReason:reason retryAfter:retryAfter];
 }
 
 @end
@@ -1216,32 +1252,32 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHRateLimitReason
+@implementation DBAUTHRateLimitReason 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithTooManyRequests {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHRateLimitReasonTooManyRequests;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHRateLimitReasonTooManyRequests;
+    }
+    return self;
 }
 
 - (instancetype)initWithTooManyWriteOperations {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHRateLimitReasonTooManyWriteOperations;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHRateLimitReasonTooManyWriteOperations;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHRateLimitReasonOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHRateLimitReasonOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -1249,139 +1285,146 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isTooManyRequests {
-  return _tag == DBAUTHRateLimitReasonTooManyRequests;
+    return _tag == DBAUTHRateLimitReasonTooManyRequests;
 }
 
 - (BOOL)isTooManyWriteOperations {
-  return _tag == DBAUTHRateLimitReasonTooManyWriteOperations;
+    return _tag == DBAUTHRateLimitReasonTooManyWriteOperations;
 }
 
 - (BOOL)isOther {
-  return _tag == DBAUTHRateLimitReasonOther;
+    return _tag == DBAUTHRateLimitReasonOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBAUTHRateLimitReasonTooManyRequests:
-    return @"DBAUTHRateLimitReasonTooManyRequests";
-  case DBAUTHRateLimitReasonTooManyWriteOperations:
-    return @"DBAUTHRateLimitReasonTooManyWriteOperations";
-  case DBAUTHRateLimitReasonOther:
-    return @"DBAUTHRateLimitReasonOther";
-  }
+    switch (_tag) {
+        case DBAUTHRateLimitReasonTooManyRequests:
+           return @"DBAUTHRateLimitReasonTooManyRequests";
+        case DBAUTHRateLimitReasonTooManyWriteOperations:
+           return @"DBAUTHRateLimitReasonTooManyWriteOperations";
+        case DBAUTHRateLimitReasonOther:
+           return @"DBAUTHRateLimitReasonOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHRateLimitReasonSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHRateLimitReasonSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHRateLimitReasonSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHRateLimitReasonSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHRateLimitReasonSerializer serialize:self] description];
+    return [[DBAUTHRateLimitReasonSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBAUTHRateLimitReasonTooManyRequests:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHRateLimitReasonTooManyWriteOperations:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHRateLimitReasonOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBAUTHRateLimitReasonTooManyRequests:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHRateLimitReasonTooManyWriteOperations:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHRateLimitReasonOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToRateLimitReason:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToRateLimitReason:other];
 }
 
 - (BOOL)isEqualToRateLimitReason:(DBAUTHRateLimitReason *)aRateLimitReason {
-  if (self == aRateLimitReason) {
+    if (self == aRateLimitReason) {
+        return YES;
+    }
+    if (self.tag != aRateLimitReason.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBAUTHRateLimitReasonTooManyRequests:
+        return [[self tagName] isEqual:[aRateLimitReason tagName]];
+        case DBAUTHRateLimitReasonTooManyWriteOperations:
+        return [[self tagName] isEqual:[aRateLimitReason tagName]];
+        case DBAUTHRateLimitReasonOther:
+        return [[self tagName] isEqual:[aRateLimitReason tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aRateLimitReason.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBAUTHRateLimitReasonTooManyRequests:
-    return [[self tagName] isEqual:[aRateLimitReason tagName]];
-  case DBAUTHRateLimitReasonTooManyWriteOperations:
-    return [[self tagName] isEqual:[aRateLimitReason tagName]];
-  case DBAUTHRateLimitReasonOther:
-    return [[self tagName] isEqual:[aRateLimitReason tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHRateLimitReasonSerializer
+@implementation DBAUTHRateLimitReasonSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHRateLimitReason *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isTooManyRequests]) {
-    jsonDict[@".tag"] = @"too_many_requests";
-  } else if ([valueObj isTooManyWriteOperations]) {
-    jsonDict[@".tag"] = @"too_many_write_operations";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isTooManyRequests]) {
+        jsonDict[@".tag"] = @"too_many_requests";
+    }
+    else if ([valueObj isTooManyWriteOperations]) {
+        jsonDict[@".tag"] = @"too_many_write_operations";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHRateLimitReason *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"too_many_requests"]) {
-    return [[DBAUTHRateLimitReason alloc] initWithTooManyRequests];
-  } else if ([tag isEqualToString:@"too_many_write_operations"]) {
-    return [[DBAUTHRateLimitReason alloc] initWithTooManyWriteOperations];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBAUTHRateLimitReason alloc] initWithOther];
-  } else {
-    return [[DBAUTHRateLimitReason alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"too_many_requests"]) {
+        return [[DBAUTHRateLimitReason alloc] initWithTooManyRequests];
+    }
+    else if ([tag isEqualToString:@"too_many_write_operations"]) {
+        return [[DBAUTHRateLimitReason alloc] initWithTooManyWriteOperations];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBAUTHRateLimitReason alloc] initWithOther];
+    }
+    else {
+        return [[DBAUTHRateLimitReason alloc] initWithOther];
+    }
 }
 
 @end
@@ -1392,104 +1435,104 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHTokenFromOAuth1Arg
+@implementation DBAUTHTokenFromOAuth1Arg 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithOauth1Token:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth1Token);
-  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil
-                                                                 pattern:nil]](oauth1TokenSecret);
+    [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth1Token);
+    [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth1TokenSecret);
 
-  self = [super init];
-  if (self) {
-    _oauth1Token = oauth1Token;
-    _oauth1TokenSecret = oauth1TokenSecret;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _oauth1Token = oauth1Token;
+        _oauth1TokenSecret = oauth1TokenSecret;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHTokenFromOAuth1ArgSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHTokenFromOAuth1ArgSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHTokenFromOAuth1ArgSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHTokenFromOAuth1ArgSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHTokenFromOAuth1ArgSerializer serialize:self] description];
+    return [[DBAUTHTokenFromOAuth1ArgSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.oauth1Token hash];
-  result = prime * result + [self.oauth1TokenSecret hash];
+    result = prime * result + [self.oauth1Token hash];
+    result = prime * result + [self.oauth1TokenSecret hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToTokenFromOAuth1Arg:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToTokenFromOAuth1Arg:other];
 }
 
 - (BOOL)isEqualToTokenFromOAuth1Arg:(DBAUTHTokenFromOAuth1Arg *)aTokenFromOAuth1Arg {
-  if (self == aTokenFromOAuth1Arg) {
+    if (self == aTokenFromOAuth1Arg) {
+        return YES;
+    }
+    if (![self.oauth1Token isEqual:aTokenFromOAuth1Arg.oauth1Token]) {
+        return NO;
+    }
+    if (![self.oauth1TokenSecret isEqual:aTokenFromOAuth1Arg.oauth1TokenSecret]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.oauth1Token isEqual:aTokenFromOAuth1Arg.oauth1Token]) {
-    return NO;
-  }
-  if (![self.oauth1TokenSecret isEqual:aTokenFromOAuth1Arg.oauth1TokenSecret]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHTokenFromOAuth1ArgSerializer
+@implementation DBAUTHTokenFromOAuth1ArgSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHTokenFromOAuth1Arg *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"oauth1_token"] = valueObj.oauth1Token;
-  jsonDict[@"oauth1_token_secret"] = valueObj.oauth1TokenSecret;
+    jsonDict[@"oauth1_token"] = valueObj.oauth1Token;
+    jsonDict[@"oauth1_token_secret"] = valueObj.oauth1TokenSecret;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHTokenFromOAuth1Arg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *oauth1Token = valueDict[@"oauth1_token"];
-  NSString *oauth1TokenSecret = valueDict[@"oauth1_token_secret"];
+    NSString *oauth1Token = valueDict[@"oauth1_token"];
+    NSString *oauth1TokenSecret = valueDict[@"oauth1_token_secret"];
 
-  return [[DBAUTHTokenFromOAuth1Arg alloc] initWithOauth1Token:oauth1Token oauth1TokenSecret:oauth1TokenSecret];
+    return [[DBAUTHTokenFromOAuth1Arg alloc] initWithOauth1Token:oauth1Token oauth1TokenSecret:oauth1TokenSecret];
 }
 
 @end
@@ -1500,32 +1543,32 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHTokenFromOAuth1Error
+@implementation DBAUTHTokenFromOAuth1Error 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithInvalidOauth1TokenInfo {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo;
+    }
+    return self;
 }
 
 - (instancetype)initWithAppIdMismatch {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHTokenFromOAuth1ErrorAppIdMismatch;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHTokenFromOAuth1ErrorAppIdMismatch;
+    }
+    return self;
 }
 
 - (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBAUTHTokenFromOAuth1ErrorOther;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _tag = DBAUTHTokenFromOAuth1ErrorOther;
+    }
+    return self;
 }
 
 #pragma mark - Instance field accessors
@@ -1533,139 +1576,146 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isInvalidOauth1TokenInfo {
-  return _tag == DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo;
+    return _tag == DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo;
 }
 
 - (BOOL)isAppIdMismatch {
-  return _tag == DBAUTHTokenFromOAuth1ErrorAppIdMismatch;
+    return _tag == DBAUTHTokenFromOAuth1ErrorAppIdMismatch;
 }
 
 - (BOOL)isOther {
-  return _tag == DBAUTHTokenFromOAuth1ErrorOther;
+    return _tag == DBAUTHTokenFromOAuth1ErrorOther;
 }
 
 - (NSString *)tagName {
-  switch (_tag) {
-  case DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo:
-    return @"DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo";
-  case DBAUTHTokenFromOAuth1ErrorAppIdMismatch:
-    return @"DBAUTHTokenFromOAuth1ErrorAppIdMismatch";
-  case DBAUTHTokenFromOAuth1ErrorOther:
-    return @"DBAUTHTokenFromOAuth1ErrorOther";
-  }
+    switch (_tag) {
+        case DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo:
+           return @"DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo";
+        case DBAUTHTokenFromOAuth1ErrorAppIdMismatch:
+           return @"DBAUTHTokenFromOAuth1ErrorAppIdMismatch";
+        case DBAUTHTokenFromOAuth1ErrorOther:
+           return @"DBAUTHTokenFromOAuth1ErrorOther";
+    }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHTokenFromOAuth1ErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHTokenFromOAuth1ErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHTokenFromOAuth1ErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHTokenFromOAuth1ErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHTokenFromOAuth1ErrorSerializer serialize:self] description];
+    return [[DBAUTHTokenFromOAuth1ErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  switch (_tag) {
-  case DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHTokenFromOAuth1ErrorAppIdMismatch:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBAUTHTokenFromOAuth1ErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
+    switch (_tag) {
+        case DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHTokenFromOAuth1ErrorAppIdMismatch:
+        result = prime * result + [[self tagName] hash];
+        break;
+        case DBAUTHTokenFromOAuth1ErrorOther:
+        result = prime * result + [[self tagName] hash];
+        break;
+    }
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToTokenFromOAuth1Error:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToTokenFromOAuth1Error:other];
 }
 
 - (BOOL)isEqualToTokenFromOAuth1Error:(DBAUTHTokenFromOAuth1Error *)aTokenFromOAuth1Error {
-  if (self == aTokenFromOAuth1Error) {
+    if (self == aTokenFromOAuth1Error) {
+        return YES;
+    }
+    if (self.tag != aTokenFromOAuth1Error.tag) {
+        return NO;
+    }
+    switch (_tag) {
+        case DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo:
+        return [[self tagName] isEqual:[aTokenFromOAuth1Error tagName]];
+        case DBAUTHTokenFromOAuth1ErrorAppIdMismatch:
+        return [[self tagName] isEqual:[aTokenFromOAuth1Error tagName]];
+        case DBAUTHTokenFromOAuth1ErrorOther:
+        return [[self tagName] isEqual:[aTokenFromOAuth1Error tagName]];
+    }
     return YES;
-  }
-  if (self.tag != aTokenFromOAuth1Error.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBAUTHTokenFromOAuth1ErrorInvalidOauth1TokenInfo:
-    return [[self tagName] isEqual:[aTokenFromOAuth1Error tagName]];
-  case DBAUTHTokenFromOAuth1ErrorAppIdMismatch:
-    return [[self tagName] isEqual:[aTokenFromOAuth1Error tagName]];
-  case DBAUTHTokenFromOAuth1ErrorOther:
-    return [[self tagName] isEqual:[aTokenFromOAuth1Error tagName]];
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHTokenFromOAuth1ErrorSerializer
+@implementation DBAUTHTokenFromOAuth1ErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHTokenFromOAuth1Error *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isInvalidOauth1TokenInfo]) {
-    jsonDict[@".tag"] = @"invalid_oauth1_token_info";
-  } else if ([valueObj isAppIdMismatch]) {
-    jsonDict[@".tag"] = @"app_id_mismatch";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
+    if ([valueObj isInvalidOauth1TokenInfo]) {
+        jsonDict[@".tag"] = @"invalid_oauth1_token_info";
+    }
+    else if ([valueObj isAppIdMismatch]) {
+        jsonDict[@".tag"] = @"app_id_mismatch";
+    }
+    else if ([valueObj isOther]) {
+        jsonDict[@".tag"] = @"other";
+    }
+    else {
+        jsonDict[@".tag"] = @"other";
+    }
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHTokenFromOAuth1Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
+    NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"invalid_oauth1_token_info"]) {
-    return [[DBAUTHTokenFromOAuth1Error alloc] initWithInvalidOauth1TokenInfo];
-  } else if ([tag isEqualToString:@"app_id_mismatch"]) {
-    return [[DBAUTHTokenFromOAuth1Error alloc] initWithAppIdMismatch];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBAUTHTokenFromOAuth1Error alloc] initWithOther];
-  } else {
-    return [[DBAUTHTokenFromOAuth1Error alloc] initWithOther];
-  }
+    if ([tag isEqualToString:@"invalid_oauth1_token_info"]) {
+        return [[DBAUTHTokenFromOAuth1Error alloc] initWithInvalidOauth1TokenInfo];
+    }
+    else if ([tag isEqualToString:@"app_id_mismatch"]) {
+        return [[DBAUTHTokenFromOAuth1Error alloc] initWithAppIdMismatch];
+    }
+    else if ([tag isEqualToString:@"other"]) {
+        return [[DBAUTHTokenFromOAuth1Error alloc] initWithOther];
+    }
+    else {
+        return [[DBAUTHTokenFromOAuth1Error alloc] initWithOther];
+    }
 }
 
 @end
@@ -1676,95 +1726,96 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHTokenFromOAuth1Result
+@implementation DBAUTHTokenFromOAuth1Result 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithOauth2Token:(NSString *)oauth2Token {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth2Token);
+    [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](oauth2Token);
 
-  self = [super init];
-  if (self) {
-    _oauth2Token = oauth2Token;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _oauth2Token = oauth2Token;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHTokenFromOAuth1ResultSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHTokenFromOAuth1ResultSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHTokenFromOAuth1ResultSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHTokenFromOAuth1ResultSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHTokenFromOAuth1ResultSerializer serialize:self] description];
+    return [[DBAUTHTokenFromOAuth1ResultSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.oauth2Token hash];
+    result = prime * result + [self.oauth2Token hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToTokenFromOAuth1Result:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToTokenFromOAuth1Result:other];
 }
 
 - (BOOL)isEqualToTokenFromOAuth1Result:(DBAUTHTokenFromOAuth1Result *)aTokenFromOAuth1Result {
-  if (self == aTokenFromOAuth1Result) {
+    if (self == aTokenFromOAuth1Result) {
+        return YES;
+    }
+    if (![self.oauth2Token isEqual:aTokenFromOAuth1Result.oauth2Token]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.oauth2Token isEqual:aTokenFromOAuth1Result.oauth2Token]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHTokenFromOAuth1ResultSerializer
+@implementation DBAUTHTokenFromOAuth1ResultSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHTokenFromOAuth1Result *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"oauth2_token"] = valueObj.oauth2Token;
+    jsonDict[@"oauth2_token"] = valueObj.oauth2Token;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHTokenFromOAuth1Result *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *oauth2Token = valueDict[@"oauth2_token"];
+    NSString *oauth2Token = valueDict[@"oauth2_token"];
 
-  return [[DBAUTHTokenFromOAuth1Result alloc] initWithOauth2Token:oauth2Token];
+    return [[DBAUTHTokenFromOAuth1Result alloc] initWithOauth2Token:oauth2Token];
 }
 
 @end
@@ -1775,95 +1826,96 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHTokenScopeError
+@implementation DBAUTHTokenScopeError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithRequiredScope:(NSString *)requiredScope {
-  [DBStoneValidators nonnullValidator:nil](requiredScope);
+    [DBStoneValidators nonnullValidator:nil](requiredScope);
 
-  self = [super init];
-  if (self) {
-    _requiredScope = requiredScope;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _requiredScope = requiredScope;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHTokenScopeErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHTokenScopeErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHTokenScopeErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHTokenScopeErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHTokenScopeErrorSerializer serialize:self] description];
+    return [[DBAUTHTokenScopeErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.requiredScope hash];
+    result = prime * result + [self.requiredScope hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToTokenScopeError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToTokenScopeError:other];
 }
 
 - (BOOL)isEqualToTokenScopeError:(DBAUTHTokenScopeError *)aTokenScopeError {
-  if (self == aTokenScopeError) {
+    if (self == aTokenScopeError) {
+        return YES;
+    }
+    if (![self.requiredScope isEqual:aTokenScopeError.requiredScope]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.requiredScope isEqual:aTokenScopeError.requiredScope]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHTokenScopeErrorSerializer
+@implementation DBAUTHTokenScopeErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHTokenScopeError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"required_scope"] = valueObj.requiredScope;
+    jsonDict[@"required_scope"] = valueObj.requiredScope;
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHTokenScopeError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *requiredScope = valueDict[@"required_scope"];
+    NSString *requiredScope = valueDict[@"required_scope"];
 
-  return [[DBAUTHTokenScopeError alloc] initWithRequiredScope:requiredScope];
+    return [[DBAUTHTokenScopeError alloc] initWithRequiredScope:requiredScope];
 }
 
 @end
@@ -1874,105 +1926,96 @@
 
 #pragma mark - API Object
 
-@implementation DBAUTHUnauthorizedAccountIdUsageError
+@implementation DBAUTHUnauthorizedAccountIdUsageError 
 
 #pragma mark - Constructors
 
 - (instancetype)initWithUnauthorizedAccountIds:(NSArray<NSString *> *)unauthorizedAccountIds {
-  [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil
-                                                               maxItems:nil
-                                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](
-      unauthorizedAccountIds);
+    [DBStoneValidators nonnullValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBStoneValidators nonnullValidator:nil]]](unauthorizedAccountIds);
 
-  self = [super init];
-  if (self) {
-    _unauthorizedAccountIds = unauthorizedAccountIds;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _unauthorizedAccountIds = unauthorizedAccountIds;
+    }
+    return self;
 }
 
 #pragma mark - Serialization methods
 
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBAUTHUnauthorizedAccountIdUsageErrorSerializer serialize:instance];
++ (nullable NSDictionary<NSString *, id>  *)serialize:(id)instance {
+    return [DBAUTHUnauthorizedAccountIdUsageErrorSerializer serialize:instance];
 }
 
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBAUTHUnauthorizedAccountIdUsageErrorSerializer deserialize:dict];
++ (id)deserialize:(NSDictionary<NSString *, id>  *)dict {
+    return [DBAUTHUnauthorizedAccountIdUsageErrorSerializer deserialize:dict];
 }
 
 #pragma mark - Debug Description method
 
 - (NSString *)debugDescription {
-  return [[DBAUTHUnauthorizedAccountIdUsageErrorSerializer serialize:self] description];
+    return [[DBAUTHUnauthorizedAccountIdUsageErrorSerializer serialize:self] description];
 }
 
 #pragma mark - Copyable method
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
+    #pragma unused(zone)
+    /// object is immutable
+    return self;
 }
 
 #pragma mark - Hash method
 
 - (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
 
-  result = prime * result + [self.unauthorizedAccountIds hash];
+    result = prime * result + [self.unauthorizedAccountIds hash];
 
-  return prime * result;
+    return prime * result;
 }
 
 #pragma mark - Equality method
 
 - (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToUnauthorizedAccountIdUsageError:other];
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToUnauthorizedAccountIdUsageError:other];
 }
 
-- (BOOL)isEqualToUnauthorizedAccountIdUsageError:
-    (DBAUTHUnauthorizedAccountIdUsageError *)anUnauthorizedAccountIdUsageError {
-  if (self == anUnauthorizedAccountIdUsageError) {
+- (BOOL)isEqualToUnauthorizedAccountIdUsageError:(DBAUTHUnauthorizedAccountIdUsageError *)anUnauthorizedAccountIdUsageError {
+    if (self == anUnauthorizedAccountIdUsageError) {
+        return YES;
+    }
+    if (![self.unauthorizedAccountIds isEqual:anUnauthorizedAccountIdUsageError.unauthorizedAccountIds]) {
+        return NO;
+    }
     return YES;
-  }
-  if (![self.unauthorizedAccountIds isEqual:anUnauthorizedAccountIdUsageError.unauthorizedAccountIds]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end
 
+
 #pragma mark - Serializer Object
 
-@implementation DBAUTHUnauthorizedAccountIdUsageErrorSerializer
+@implementation DBAUTHUnauthorizedAccountIdUsageErrorSerializer 
 
 + (NSDictionary<NSString *, id> *)serialize:(DBAUTHUnauthorizedAccountIdUsageError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  jsonDict[@"unauthorized_account_ids"] = [DBArraySerializer serialize:valueObj.unauthorizedAccountIds
-                                                             withBlock:^id(id elem0) {
-                                                               return elem0;
-                                                             }];
+    jsonDict[@"unauthorized_account_ids"] = [DBArraySerializer serialize:valueObj.unauthorizedAccountIds withBlock:^id(id elem0) { return elem0; }];
 
-  return jsonDict;
+    return jsonDict;
 }
 
 + (DBAUTHUnauthorizedAccountIdUsageError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSArray<NSString *> *unauthorizedAccountIds = [DBArraySerializer deserialize:valueDict[@"unauthorized_account_ids"]
-                                                                     withBlock:^id(id elem0) {
-                                                                       return elem0;
-                                                                     }];
+    NSArray<NSString *> *unauthorizedAccountIds = [DBArraySerializer deserialize:valueDict[@"unauthorized_account_ids"] withBlock:^id(id elem0) { return elem0; }];
 
-  return [[DBAUTHUnauthorizedAccountIdUsageError alloc] initWithUnauthorizedAccountIds:unauthorizedAccountIds];
+    return [[DBAUTHUnauthorizedAccountIdUsageError alloc] initWithUnauthorizedAccountIds:unauthorizedAccountIds];
 }
 
 @end

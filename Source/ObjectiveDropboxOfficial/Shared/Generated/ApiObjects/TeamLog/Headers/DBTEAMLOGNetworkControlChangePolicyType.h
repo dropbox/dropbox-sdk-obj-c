@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGNetworkControlChangePolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `NetworkControlChangePolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGNetworkControlChangePolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGNetworkControlChangePolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `NetworkControlChangePolicyType` struct.
-///
-@interface DBTEAMLOGNetworkControlChangePolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGNetworkControlChangePolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGNetworkControlChangePolicyType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGNetworkControlChangePolicyType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNetworkControlChangePolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNetworkControlChangePolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGNetworkControlChangePolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGNetworkControlChangePolicyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGNetworkControlChangePolicyType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGNetworkControlChangePolicyType`
 /// object.
-///
-+ (DBTEAMLOGNetworkControlChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGNetworkControlChangePolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

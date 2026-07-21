@@ -11,20 +11,21 @@
 @class DBTEAMLOGFileMoveDetails;
 @class DBTEAMLOGRelocateAssetReferencesLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileMoveDetails` struct.
-///
+/// 
 /// Moved files and/or folders.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileMoveDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileMoveDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,47 +34,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param relocateActionDetails Relocate action details.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithRelocateActionDetails:
-    (NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails;
+/// 
+- (instancetype)initWithRelocateActionDetails:(NSArray<DBTEAMLOGRelocateAssetReferencesLogInfo *> *)relocateActionDetails;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileMoveDetails` struct.
-///
-@interface DBTEAMLOGFileMoveDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileMoveDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileMoveDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileMoveDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileMoveDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileMoveDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileMoveDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileMoveDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileMoveDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileMoveDetails` object.
-///
-+ (DBTEAMLOGFileMoveDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileMoveDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,18 +11,19 @@
 @class DBSHARINGGetSharedLinksResult;
 @class DBSHARINGLinkMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetSharedLinksResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGGetSharedLinksResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGGetSharedLinksResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,47 +32,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param links Shared links applicable to the path argument.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLinks:(NSArray<DBSHARINGLinkMetadata *> *)links;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetSharedLinksResult` struct.
-///
-@interface DBSHARINGGetSharedLinksResultSerializer : NSObject
+/// 
+@interface DBSHARINGGetSharedLinksResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGGetSharedLinksResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGGetSharedLinksResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGGetSharedLinksResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGGetSharedLinksResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGGetSharedLinksResult *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGGetSharedLinksResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGGetSharedLinksResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGGetSharedLinksResult` object.
-///
-+ (DBSHARINGGetSharedLinksResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGGetSharedLinksResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

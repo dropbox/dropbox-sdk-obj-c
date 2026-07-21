@@ -10,18 +10,19 @@
 
 @class DBTEAMTeamFolderIdListArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderIdListArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderIdListArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderIdListArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamFolderIds The list of team folder IDs.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamFolderIds:(NSArray<NSString *> *)teamFolderIds;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderIdListArg` struct.
-///
-@interface DBTEAMTeamFolderIdListArgSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderIdListArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderIdListArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderIdListArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderIdListArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderIdListArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderIdListArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderIdListArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderIdListArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderIdListArg` object.
-///
-+ (DBTEAMTeamFolderIdListArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderIdListArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

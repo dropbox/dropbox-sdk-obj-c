@@ -10,66 +10,69 @@
 
 @class DBTEAMLOGMemberTransferAccountContentsDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberTransferAccountContentsDetails` struct.
-///
+/// 
 /// Transferred contents of deleted member account to another member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberTransferAccountContentsDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberTransferAccountContentsDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberTransferAccountContentsDetails`
 /// struct.
-///
-@interface DBTEAMLOGMemberTransferAccountContentsDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberTransferAccountContentsDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberTransferAccountContentsDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberTransferAccountContentsDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberTransferAccountContentsDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberTransferAccountContentsDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberTransferAccountContentsDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberTransferAccountContentsDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberTransferAccountContentsDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberTransferAccountContentsDetails` object.
-///
-+ (DBTEAMLOGMemberTransferAccountContentsDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberTransferAccountContentsDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

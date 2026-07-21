@@ -10,20 +10,21 @@
 
 @class DBFILEREQUESTSGetFileRequestError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetFileRequestError` union.
-///
+/// 
 /// There was an error retrieving the specified file request.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSGetFileRequestError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSGetFileRequestError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,36 +32,36 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBFILEREQUESTSGetFileRequestError` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSGetFileRequestErrorTag) {
-  /// This user's Dropbox Business team doesn't allow file requests.
-  DBFILEREQUESTSGetFileRequestErrorDisabledForTeam,
+    /// This user's Dropbox Business team doesn't allow file requests.
+    DBFILEREQUESTSGetFileRequestErrorDisabledForTeam,
 
-  /// (no description).
-  DBFILEREQUESTSGetFileRequestErrorOther,
+    /// (no description).
+    DBFILEREQUESTSGetFileRequestErrorOther,
 
-  /// This file request ID was not found.
-  DBFILEREQUESTSGetFileRequestErrorNotFound,
+    /// This file request ID was not found.
+    DBFILEREQUESTSGetFileRequestErrorNotFound,
 
-  /// The specified path is not a folder.
-  DBFILEREQUESTSGetFileRequestErrorNotAFolder,
+    /// The specified path is not a folder.
+    DBFILEREQUESTSGetFileRequestErrorNotAFolder,
 
-  /// This file request is not accessible to this app. Apps with the app
-  /// folder permission can only access file requests in their app folder.
-  DBFILEREQUESTSGetFileRequestErrorAppLacksAccess,
+    /// This file request is not accessible to this app. Apps with the app
+    /// folder permission can only access file requests in their app folder.
+    DBFILEREQUESTSGetFileRequestErrorAppLacksAccess,
 
-  /// This user doesn't have permission to access or modify this file request.
-  DBFILEREQUESTSGetFileRequestErrorNoPermission,
+    /// This user doesn't have permission to access or modify this file request.
+    DBFILEREQUESTSGetFileRequestErrorNoPermission,
 
-  /// This user's email address is not verified. File requests are only
-  /// available on accounts with a verified email address. Users can verify
-  /// their email address here https://www.dropbox.com/help/317.
-  DBFILEREQUESTSGetFileRequestErrorEmailUnverified,
+    /// This user's email address is not verified. File requests are only
+    /// available on accounts with a verified email address. Users can verify
+    /// their email address here https://www.dropbox.com/help/317.
+    DBFILEREQUESTSGetFileRequestErrorEmailUnverified,
 
-  /// There was an error validating the request. For example, the title was
-  /// invalid, or there were disallowed characters in the destination path.
-  DBFILEREQUESTSGetFileRequestErrorValidationError,
+    /// There was an error validating the request. For example, the title was
+    /// invalid, or there were disallowed characters in the destination path.
+    DBFILEREQUESTSGetFileRequestErrorValidationError,
 
-  /// This user doesn't have permission to edit files in a destination folder
-  DBFILEREQUESTSGetFileRequestErrorNoWritePermission,
+    /// This user doesn't have permission to edit files in a destination folder
+    DBFILEREQUESTSGetFileRequestErrorNoWritePermission,
 
 };
 
@@ -69,207 +70,209 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEREQUESTSGetFileRequestErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "disabled_for_team".
-///
+/// 
 /// Description of the "disabled_for_team" tag state: This user's Dropbox
 /// Business team doesn't allow file requests.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabledForTeam;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
-///
+/// 
 /// Initializes union class with tag state of "not_found".
-///
+/// 
 /// Description of the "not_found" tag state: This file request ID was not
 /// found.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNotFound;
 
-///
+/// 
 /// Initializes union class with tag state of "not_a_folder".
-///
+/// 
 /// Description of the "not_a_folder" tag state: The specified path is not a
 /// folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNotAFolder;
 
-///
+/// 
 /// Initializes union class with tag state of "app_lacks_access".
-///
+/// 
 /// Description of the "app_lacks_access" tag state: This file request is not
 /// accessible to this app. Apps with the app folder permission can only access
 /// file requests in their app folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAppLacksAccess;
 
-///
+/// 
 /// Initializes union class with tag state of "no_permission".
-///
+/// 
 /// Description of the "no_permission" tag state: This user doesn't have
 /// permission to access or modify this file request.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoPermission;
 
-///
+/// 
 /// Initializes union class with tag state of "email_unverified".
-///
+/// 
 /// Description of the "email_unverified" tag state: This user's email address
 /// is not verified. File requests are only available on accounts with a
 /// verified email address. Users can verify their email address here
 /// https://www.dropbox.com/help/317.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEmailUnverified;
 
-///
+/// 
 /// Initializes union class with tag state of "validation_error".
-///
+/// 
 /// Description of the "validation_error" tag state: There was an error
 /// validating the request. For example, the title was invalid, or there were
 /// disallowed characters in the destination path.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithValidationError;
 
-///
+/// 
 /// Initializes union class with tag state of "no_write_permission".
-///
+/// 
 /// Description of the "no_write_permission" tag state: This user doesn't have
 /// permission to edit files in a destination folder
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoWritePermission;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "disabled_for_team".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled_for_team".
-///
+/// 
 - (BOOL)isDisabledForTeam;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "not_found".
-///
+/// 
 /// @return Whether the union's current tag state has value "not_found".
-///
+/// 
 - (BOOL)isNotFound;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "not_a_folder".
-///
+/// 
 /// @return Whether the union's current tag state has value "not_a_folder".
-///
+/// 
 - (BOOL)isNotAFolder;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "app_lacks_access".
-///
+/// 
 /// @return Whether the union's current tag state has value "app_lacks_access".
-///
+/// 
 - (BOOL)isAppLacksAccess;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "no_permission".
-///
+/// 
 /// @return Whether the union's current tag state has value "no_permission".
-///
+/// 
 - (BOOL)isNoPermission;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "email_unverified".
-///
+/// 
 /// @return Whether the union's current tag state has value "email_unverified".
-///
+/// 
 - (BOOL)isEmailUnverified;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "validation_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "validation_error".
-///
+/// 
 - (BOOL)isValidationError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "no_write_permission".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "no_write_permission".
-///
+/// 
 - (BOOL)isNoWritePermission;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILEREQUESTSGetFileRequestError` union.
-///
-@interface DBFILEREQUESTSGetFileRequestErrorSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSGetFileRequestErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSGetFileRequestError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSGetFileRequestError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSGetFileRequestError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSGetFileRequestError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSGetFileRequestError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSGetFileRequestError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSGetFileRequestError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSGetFileRequestError` object.
-///
-+ (DBFILEREQUESTSGetFileRequestError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSGetFileRequestError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

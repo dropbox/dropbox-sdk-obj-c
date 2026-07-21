@@ -11,20 +11,21 @@
 @class DBTEAMLOGAccountCaptureChangePolicyDetails;
 @class DBTEAMLOGAccountCapturePolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccountCaptureChangePolicyDetails` struct.
-///
+/// 
 /// Changed account capture setting on team domain.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAccountCaptureChangePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAccountCaptureChangePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,61 +38,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New account capture policy.
 /// @param previousValue Previous account capture policy. Might be missing due
 /// to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGAccountCapturePolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGAccountCapturePolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGAccountCapturePolicy *)dNewValue previousValue:(nullable DBTEAMLOGAccountCapturePolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New account capture policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGAccountCapturePolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AccountCaptureChangePolicyDetails` struct.
-///
-@interface DBTEAMLOGAccountCaptureChangePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAccountCaptureChangePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAccountCaptureChangePolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAccountCaptureChangePolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCaptureChangePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAccountCaptureChangePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAccountCaptureChangePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAccountCaptureChangePolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAccountCaptureChangePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAccountCaptureChangePolicyDetails`
 /// object.
-///
-+ (DBTEAMLOGAccountCaptureChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAccountCaptureChangePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

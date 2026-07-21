@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGExternalDriveBackupStatusChangedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ExternalDriveBackupStatusChangedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGExternalDriveBackupStatusChangedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGExternalDriveBackupStatusChangedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ExternalDriveBackupStatusChangedType`
 /// struct.
-///
-@interface DBTEAMLOGExternalDriveBackupStatusChangedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGExternalDriveBackupStatusChangedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGExternalDriveBackupStatusChangedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGExternalDriveBackupStatusChangedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGExternalDriveBackupStatusChangedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExternalDriveBackupStatusChangedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGExternalDriveBackupStatusChangedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGExternalDriveBackupStatusChangedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGExternalDriveBackupStatusChangedType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGExternalDriveBackupStatusChangedType` object.
-///
-+ (DBTEAMLOGExternalDriveBackupStatusChangedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGExternalDriveBackupStatusChangedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

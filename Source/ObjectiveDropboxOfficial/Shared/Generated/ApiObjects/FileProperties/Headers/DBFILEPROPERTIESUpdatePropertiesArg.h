@@ -11,18 +11,19 @@
 @class DBFILEPROPERTIESPropertyGroupUpdate;
 @class DBFILEPROPERTIESUpdatePropertiesArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UpdatePropertiesArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEPROPERTIESUpdatePropertiesArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEPROPERTIESUpdatePropertiesArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,50 +35,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path A unique identifier for the file or folder.
 /// @param updatePropertyGroups The property groups "delta" updates to apply.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPath:(NSString *)path
-        updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePropertyGroups;
+/// 
+- (instancetype)initWithPath:(NSString *)path updatePropertyGroups:(NSArray<DBFILEPROPERTIESPropertyGroupUpdate *> *)updatePropertyGroups;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UpdatePropertiesArg` struct.
-///
-@interface DBFILEPROPERTIESUpdatePropertiesArgSerializer : NSObject
+/// 
+@interface DBFILEPROPERTIESUpdatePropertiesArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEPROPERTIESUpdatePropertiesArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEPROPERTIESUpdatePropertiesArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESUpdatePropertiesArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEPROPERTIESUpdatePropertiesArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEPROPERTIESUpdatePropertiesArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEPROPERTIESUpdatePropertiesArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESUpdatePropertiesArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEPROPERTIESUpdatePropertiesArg`
 /// object.
-///
-+ (DBFILEPROPERTIESUpdatePropertiesArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEPROPERTIESUpdatePropertiesArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

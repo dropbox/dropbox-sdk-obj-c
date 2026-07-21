@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the TeamLog namespace. Each route in the TeamLog
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBTEAMLOGRouteObjects : NSObject
+/// 
+@interface DBTEAMLOGRouteObjects : NSObject 
 
 /// Accessor method for the getEvents route object.
 + (DBRoute *)DBTEAMLOGGetEvents;
@@ -26,3 +27,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

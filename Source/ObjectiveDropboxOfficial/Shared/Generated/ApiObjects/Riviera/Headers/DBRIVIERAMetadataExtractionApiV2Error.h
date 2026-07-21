@@ -10,18 +10,19 @@
 
 @class DBRIVIERAMetadataExtractionApiV2Error;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MetadataExtractionApiV2Error` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAMetadataExtractionApiV2Error : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAMetadataExtractionApiV2Error : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,35 +30,35 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBRIVIERAMetadataExtractionApiV2Error`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataExtractionApiV2ErrorTag) {
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorServerError,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorServerError,
 
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorUserError,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorUserError,
 
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorUnsupportedFormatError,
 
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorLinkDownloadDisabledError,
 
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorSharedLinkPasswordProtected,
 
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorLimitExceededError,
 
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorConversionFailureError,
 
-  /// The referenced file does not exist or is not accessible.
-  DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError,
+    /// The referenced file does not exist or is not accessible.
+    DBRIVIERAMetadataExtractionApiV2ErrorNotFoundError,
 
-  /// The target is a folder, not a file.
-  DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError,
+    /// The target is a folder, not a file.
+    DBRIVIERAMetadataExtractionApiV2ErrorIsAFolderError,
 
-  /// (no description).
-  DBRIVIERAMetadataExtractionApiV2ErrorOther,
+    /// (no description).
+    DBRIVIERAMetadataExtractionApiV2ErrorOther,
 
 };
 
@@ -74,216 +75,218 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataExtractionApiV2ErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "server_error".
-///
+/// 
 /// @param serverError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithServerError:(NSString *)serverError;
 
-///
+/// 
 /// Initializes union class with tag state of "user_error".
-///
+/// 
 /// @param userError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUserError:(NSString *)userError;
 
-///
+/// 
 /// Initializes union class with tag state of "unsupported_format_error".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnsupportedFormatError;
 
-///
+/// 
 /// Initializes union class with tag state of "link_download_disabled_error".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLinkDownloadDisabledError;
 
-///
+/// 
 /// Initializes union class with tag state of "shared_link_password_protected".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedLinkPasswordProtected;
 
-///
+/// 
 /// Initializes union class with tag state of "limit_exceeded_error".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLimitExceededError;
 
-///
+/// 
 /// Initializes union class with tag state of "conversion_failure_error".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithConversionFailureError;
 
-///
+/// 
 /// Initializes union class with tag state of "not_found_error".
-///
+/// 
 /// Description of the "not_found_error" tag state: The referenced file does not
 /// exist or is not accessible.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNotFoundError;
 
-///
+/// 
 /// Initializes union class with tag state of "is_a_folder_error".
-///
+/// 
 /// Description of the "is_a_folder_error" tag state: The target is a folder,
 /// not a file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithIsAFolderError;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "server_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `serverError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "server_error".
-///
+/// 
 - (BOOL)isServerError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "user_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `userError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "user_error".
-///
+/// 
 - (BOOL)isUserError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "unsupported_format_error".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "unsupported_format_error".
-///
+/// 
 - (BOOL)isUnsupportedFormatError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "link_download_disabled_error".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "link_download_disabled_error".
-///
+/// 
 - (BOOL)isLinkDownloadDisabledError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "shared_link_password_protected".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "shared_link_password_protected".
-///
+/// 
 - (BOOL)isSharedLinkPasswordProtected;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "limit_exceeded_error".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "limit_exceeded_error".
-///
+/// 
 - (BOOL)isLimitExceededError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "conversion_failure_error".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "conversion_failure_error".
-///
+/// 
 - (BOOL)isConversionFailureError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "not_found_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "not_found_error".
-///
+/// 
 - (BOOL)isNotFoundError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "is_a_folder_error".
-///
+/// 
 /// @return Whether the union's current tag state has value "is_a_folder_error".
-///
+/// 
 - (BOOL)isIsAFolderError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERAMetadataExtractionApiV2Error`
 /// union.
-///
-@interface DBRIVIERAMetadataExtractionApiV2ErrorSerializer : NSObject
+/// 
+@interface DBRIVIERAMetadataExtractionApiV2ErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAMetadataExtractionApiV2Error` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAMetadataExtractionApiV2Error`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAMetadataExtractionApiV2Error` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMetadataExtractionApiV2Error *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAMetadataExtractionApiV2Error *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAMetadataExtractionApiV2Error` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAMetadataExtractionApiV2Error` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAMetadataExtractionApiV2Error`
 /// object.
-///
-+ (DBRIVIERAMetadataExtractionApiV2Error *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAMetadataExtractionApiV2Error *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

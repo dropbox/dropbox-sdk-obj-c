@@ -11,20 +11,21 @@
 @class DBTEAMLOGSharedLinkViewDetails;
 @class DBTEAMLOGUserLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkViewDetails` struct.
-///
+/// 
 /// Opened shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkViewDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkViewDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,57 +34,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedLinkOwner Shared link owner details. Might be missing due to
 /// historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedLinkOwner:(nullable DBTEAMLOGUserLogInfo *)sharedLinkOwner;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkViewDetails` struct.
-///
-@interface DBTEAMLOGSharedLinkViewDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkViewDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkViewDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedLinkViewDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkViewDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkViewDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkViewDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkViewDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkViewDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedLinkViewDetails` object.
-///
-+ (DBTEAMLOGSharedLinkViewDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkViewDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

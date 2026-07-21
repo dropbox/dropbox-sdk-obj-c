@@ -14,20 +14,21 @@
 @class DBTEAMLOGMalwareExclusionState;
 @class DBTEAMLOGRecipientsConfiguration;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AdminAlertingAlertConfiguration` struct.
-///
+/// 
 /// Alert configurations
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAdminAlertingAlertConfiguration : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAdminAlertingAlertConfiguration : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -51,67 +52,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param alertState Alert state.
 /// @param sensitivityLevel Sensitivity level.
 /// @param recipientsSettings Recipient settings.
 /// @param text Text.
 /// @param excludedFileExtensions Excluded file extensions.
 /// @param malwareExclusionState Malware exclusion list state.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAlertState:(nullable DBTEAMLOGAdminAlertingAlertStatePolicy *)alertState
-                  sensitivityLevel:(nullable DBTEAMLOGAdminAlertingAlertSensitivity *)sensitivityLevel
-                recipientsSettings:(nullable DBTEAMLOGRecipientsConfiguration *)recipientsSettings
-                              text:(nullable NSString *)text
-            excludedFileExtensions:(nullable NSString *)excludedFileExtensions
-             malwareExclusionState:(nullable DBTEAMLOGMalwareExclusionState *)malwareExclusionState;
+/// 
+- (instancetype)initWithAlertState:(nullable DBTEAMLOGAdminAlertingAlertStatePolicy *)alertState sensitivityLevel:(nullable DBTEAMLOGAdminAlertingAlertSensitivity *)sensitivityLevel recipientsSettings:(nullable DBTEAMLOGRecipientsConfiguration *)recipientsSettings text:(nullable NSString *)text excludedFileExtensions:(nullable NSString *)excludedFileExtensions malwareExclusionState:(nullable DBTEAMLOGMalwareExclusionState *)malwareExclusionState;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AdminAlertingAlertConfiguration` struct.
-///
-@interface DBTEAMLOGAdminAlertingAlertConfigurationSerializer : NSObject
+/// 
+@interface DBTEAMLOGAdminAlertingAlertConfigurationSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAdminAlertingAlertConfiguration` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAdminAlertingAlertConfiguration` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAdminAlertingAlertConfiguration` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAdminAlertingAlertConfiguration *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAdminAlertingAlertConfiguration *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAdminAlertingAlertConfiguration` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAdminAlertingAlertConfiguration` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAdminAlertingAlertConfiguration`
 /// object.
-///
-+ (DBTEAMLOGAdminAlertingAlertConfiguration *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAdminAlertingAlertConfiguration *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

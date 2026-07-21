@@ -10,20 +10,21 @@
 
 @class DBFILESGpsCoordinates;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GpsCoordinates` struct.
-///
+/// 
 /// GPS coordinates for a photo or video.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGpsCoordinates : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGpsCoordinates : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,47 +36,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param latitude Latitude of the GPS coordinates.
 /// @param longitude Longitude of the GPS coordinates.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GpsCoordinates` struct.
-///
-@interface DBFILESGpsCoordinatesSerializer : NSObject
+/// 
+@interface DBFILESGpsCoordinatesSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGpsCoordinates` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGpsCoordinates` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGpsCoordinates` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGpsCoordinates *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGpsCoordinates *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGpsCoordinates` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGpsCoordinates` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGpsCoordinates` object.
-///
-+ (DBFILESGpsCoordinates *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGpsCoordinates *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

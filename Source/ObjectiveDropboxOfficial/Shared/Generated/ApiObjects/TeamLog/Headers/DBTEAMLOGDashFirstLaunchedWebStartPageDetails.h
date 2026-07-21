@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGDashFirstLaunchedWebStartPageDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashFirstLaunchedWebStartPageDetails` struct.
-///
+/// 
 /// Opened the web Start Page for the first time.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashFirstLaunchedWebStartPageDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashFirstLaunchedWebStartPageDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param browserName The name of the web browser.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBrowserName:(NSString *)browserName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashFirstLaunchedWebStartPageDetails`
 /// struct.
-///
-@interface DBTEAMLOGDashFirstLaunchedWebStartPageDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashFirstLaunchedWebStartPageDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashFirstLaunchedWebStartPageDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashFirstLaunchedWebStartPageDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedWebStartPageDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashFirstLaunchedWebStartPageDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashFirstLaunchedWebStartPageDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashFirstLaunchedWebStartPageDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedWebStartPageDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDashFirstLaunchedWebStartPageDetails` object.
-///
-+ (DBTEAMLOGDashFirstLaunchedWebStartPageDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashFirstLaunchedWebStartPageDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

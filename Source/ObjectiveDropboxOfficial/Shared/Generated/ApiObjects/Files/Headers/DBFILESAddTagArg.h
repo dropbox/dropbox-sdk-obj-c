@@ -10,18 +10,19 @@
 
 @class DBFILESAddTagArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AddTagArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESAddTagArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESAddTagArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,48 +35,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path Path to the item to be tagged.
 /// @param tagText The value of the tag to add. Will be automatically converted
 /// to lowercase letters.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path tagText:(NSString *)tagText;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AddTagArg` struct.
-///
-@interface DBFILESAddTagArgSerializer : NSObject
+/// 
+@interface DBFILESAddTagArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESAddTagArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESAddTagArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESAddTagArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESAddTagArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESAddTagArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESAddTagArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESAddTagArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESAddTagArg` object.
-///
-+ (DBFILESAddTagArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESAddTagArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

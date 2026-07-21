@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDashFirstLaunchedExtensionType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashFirstLaunchedExtensionType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashFirstLaunchedExtensionType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashFirstLaunchedExtensionType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashFirstLaunchedExtensionType` struct.
-///
-@interface DBTEAMLOGDashFirstLaunchedExtensionTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashFirstLaunchedExtensionTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashFirstLaunchedExtensionType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashFirstLaunchedExtensionType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedExtensionType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashFirstLaunchedExtensionType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashFirstLaunchedExtensionType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashFirstLaunchedExtensionType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashFirstLaunchedExtensionType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashFirstLaunchedExtensionType`
 /// object.
-///
-+ (DBTEAMLOGDashFirstLaunchedExtensionType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashFirstLaunchedExtensionType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

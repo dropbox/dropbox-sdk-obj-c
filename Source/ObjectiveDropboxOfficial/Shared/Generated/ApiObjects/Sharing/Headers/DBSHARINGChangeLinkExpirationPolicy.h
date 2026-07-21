@@ -10,20 +10,21 @@
 
 @class DBSHARINGChangeLinkExpirationPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ChangeLinkExpirationPolicy` union.
-///
+/// 
 /// Enumerates acceptable values for team's ChangeLinkExpirationPolicy setting.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGChangeLinkExpirationPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGChangeLinkExpirationPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,14 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBSHARINGChangeLinkExpirationPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGChangeLinkExpirationPolicyTag) {
-  /// (no description).
-  DBSHARINGChangeLinkExpirationPolicyAllowed,
+    /// (no description).
+    DBSHARINGChangeLinkExpirationPolicyAllowed,
 
-  /// (no description).
-  DBSHARINGChangeLinkExpirationPolicyNotAllowed,
+    /// (no description).
+    DBSHARINGChangeLinkExpirationPolicyNotAllowed,
 
-  /// (no description).
-  DBSHARINGChangeLinkExpirationPolicyOther,
+    /// (no description).
+    DBSHARINGChangeLinkExpirationPolicyOther,
 
 };
 
@@ -47,90 +48,92 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGChangeLinkExpirationPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "allowed".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAllowed;
 
-///
+/// 
 /// Initializes union class with tag state of "not_allowed".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNotAllowed;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "allowed".
-///
+/// 
 /// @return Whether the union's current tag state has value "allowed".
-///
+/// 
 - (BOOL)isAllowed;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "not_allowed".
-///
+/// 
 /// @return Whether the union's current tag state has value "not_allowed".
-///
+/// 
 - (BOOL)isNotAllowed;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGChangeLinkExpirationPolicy` union.
-///
-@interface DBSHARINGChangeLinkExpirationPolicySerializer : NSObject
+/// 
+@interface DBSHARINGChangeLinkExpirationPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGChangeLinkExpirationPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGChangeLinkExpirationPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGChangeLinkExpirationPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGChangeLinkExpirationPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGChangeLinkExpirationPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGChangeLinkExpirationPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGChangeLinkExpirationPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGChangeLinkExpirationPolicy`
 /// object.
-///
-+ (DBSHARINGChangeLinkExpirationPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGChangeLinkExpirationPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

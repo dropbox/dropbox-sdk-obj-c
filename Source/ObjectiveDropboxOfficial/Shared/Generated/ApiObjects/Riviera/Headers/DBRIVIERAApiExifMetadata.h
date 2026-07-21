@@ -11,21 +11,22 @@
 @class DBRIVIERAApiExifGpsMetadata;
 @class DBRIVIERAApiExifMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ApiExifMetadata` struct.
-///
+/// 
 /// Image EXIF metadata. Mirrors the useful subset of the internal
 /// `riviera.ExifMetadata` message. Fields are best-effort and may be empty.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAApiExifMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAApiExifMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -80,9 +81,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param imageWidth (no description).
 /// @param imageHeight (no description).
 /// @param cameraMake (no description).
@@ -102,66 +103,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param artist (no description).
 /// @param dCopyright (no description).
 /// @param gpsMetadata (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithImageWidth:(nullable NSNumber *)imageWidth
-                       imageHeight:(nullable NSNumber *)imageHeight
-                        cameraMake:(nullable NSString *)cameraMake
-                       cameraModel:(nullable NSString *)cameraModel
-                         lensModel:(nullable NSString *)lensModel
-                  dateTimeOriginal:(nullable NSString *)dateTimeOriginal
-                offsetTimeOriginal:(nullable NSString *)offsetTimeOriginal
-                       orientation:(nullable NSNumber *)orientation
-                      exposureTime:(nullable NSString *)exposureTime
-                     apertureValue:(nullable NSNumber *)apertureValue
-                          isoSpeed:(nullable NSNumber *)isoSpeed
-                       focalLength:(nullable NSString *)focalLength
-                        megapixels:(nullable NSNumber *)megapixels
-                            artist:(nullable NSString *)artist
-                        dCopyright:(nullable NSString *)dCopyright
-                       gpsMetadata:(nullable DBRIVIERAApiExifGpsMetadata *)gpsMetadata;
+/// 
+- (instancetype)initWithImageWidth:(nullable NSNumber *)imageWidth imageHeight:(nullable NSNumber *)imageHeight cameraMake:(nullable NSString *)cameraMake cameraModel:(nullable NSString *)cameraModel lensModel:(nullable NSString *)lensModel dateTimeOriginal:(nullable NSString *)dateTimeOriginal offsetTimeOriginal:(nullable NSString *)offsetTimeOriginal orientation:(nullable NSNumber *)orientation exposureTime:(nullable NSString *)exposureTime apertureValue:(nullable NSNumber *)apertureValue isoSpeed:(nullable NSNumber *)isoSpeed focalLength:(nullable NSString *)focalLength megapixels:(nullable NSNumber *)megapixels artist:(nullable NSString *)artist dCopyright:(nullable NSString *)dCopyright gpsMetadata:(nullable DBRIVIERAApiExifGpsMetadata *)gpsMetadata;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ApiExifMetadata` struct.
-///
-@interface DBRIVIERAApiExifMetadataSerializer : NSObject
+/// 
+@interface DBRIVIERAApiExifMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAApiExifMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAApiExifMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAApiExifMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiExifMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAApiExifMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAApiExifMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAApiExifMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAApiExifMetadata` object.
-///
-+ (DBRIVIERAApiExifMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAApiExifMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

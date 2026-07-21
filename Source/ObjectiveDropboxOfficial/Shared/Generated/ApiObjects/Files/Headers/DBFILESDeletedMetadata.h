@@ -6,26 +6,27 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESMetadata.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESMetadata.h"
 
 @class DBFILESDeletedMetadata;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeletedMetadata` struct.
-///
+/// 
 /// Indicates that there used to be a file or folder at this path, but it no
 /// longer exists.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESDeletedMetadata : DBFILESMetadata <DBSerializable, NSCopying>
+/// 
+@interface DBFILESDeletedMetadata : DBFILESMetadata <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,9 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
 /// @param pathLower The lowercased full path in the user's Dropbox. This always
@@ -54,56 +55,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param previewUrl The preview URL of the file.
 /// @param isRestorable If present, indicates whether this deleted entry can be
 /// restored.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                   pathLower:(nullable NSString *)pathLower
-                 pathDisplay:(nullable NSString *)pathDisplay
-        parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                  previewUrl:(nullable NSString *)previewUrl
-                isRestorable:(nullable NSNumber *)isRestorable;
+/// 
+- (instancetype)initWithName:(NSString *)name pathLower:(nullable NSString *)pathLower pathDisplay:(nullable NSString *)pathDisplay parentSharedFolderId:(nullable NSString *)parentSharedFolderId previewUrl:(nullable NSString *)previewUrl isRestorable:(nullable NSNumber *)isRestorable;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithName:(NSString *)name;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeletedMetadata` struct.
-///
-@interface DBFILESDeletedMetadataSerializer : NSObject
+/// 
+@interface DBFILESDeletedMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESDeletedMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESDeletedMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESDeletedMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESDeletedMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESDeletedMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESDeletedMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESDeletedMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESDeletedMetadata` object.
-///
-+ (DBFILESDeletedMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESDeletedMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

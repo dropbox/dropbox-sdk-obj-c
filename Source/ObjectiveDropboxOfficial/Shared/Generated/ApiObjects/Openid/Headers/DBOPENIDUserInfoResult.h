@@ -10,18 +10,19 @@
 
 @class DBOPENIDUserInfoResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserInfoResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBOPENIDUserInfoResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBOPENIDUserInfoResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -46,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param familyName Last name of user.
 /// @param givenName First name of user.
 /// @param email Email address of user.
@@ -56,56 +57,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param iss Issuer of token (in this case Dropbox).
 /// @param sub An identifier for the user. This is the Dropbox account_id, a
 /// string value such as dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFamilyName:(nullable NSString *)familyName
-                         givenName:(nullable NSString *)givenName
-                             email:(nullable NSString *)email
-                     emailVerified:(nullable NSNumber *)emailVerified
-                               iss:(nullable NSString *)iss
-                               sub:(nullable NSString *)sub;
+/// 
+- (instancetype)initWithFamilyName:(nullable NSString *)familyName givenName:(nullable NSString *)givenName email:(nullable NSString *)email emailVerified:(nullable NSNumber *)emailVerified iss:(nullable NSString *)iss sub:(nullable NSString *)sub;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UserInfoResult` struct.
-///
-@interface DBOPENIDUserInfoResultSerializer : NSObject
+/// 
+@interface DBOPENIDUserInfoResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBOPENIDUserInfoResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBOPENIDUserInfoResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBOPENIDUserInfoResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBOPENIDUserInfoResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBOPENIDUserInfoResult *)instance;
 
-///
+/// 
 /// Deserializes `DBOPENIDUserInfoResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBOPENIDUserInfoResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBOPENIDUserInfoResult` object.
-///
-+ (DBOPENIDUserInfoResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBOPENIDUserInfoResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

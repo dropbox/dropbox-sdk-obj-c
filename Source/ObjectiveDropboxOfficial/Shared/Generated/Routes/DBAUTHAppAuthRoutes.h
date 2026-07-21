@@ -14,13 +14,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Auth` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBAUTHAppAuthRoutes : NSObject
+@interface DBAUTHAppAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -30,20 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// DEPRECATED: Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.
-///
+/// 
 /// @param oauth1Token The supplied OAuth 1.0 access token.
 /// @param oauth1TokenSecret The token secret associated with the supplied access token.
-///
+/// 
 /// @return Through the response callback, the caller will receive a `DBAUTHTokenFromOAuth1Result` object on success or
 /// a `DBAUTHTokenFromOAuth1Error` object on failure.
-///
-- (DBRpcTask<DBAUTHTokenFromOAuth1Result *, DBAUTHTokenFromOAuth1Error *> *)tokenFromOauth1:(NSString *)oauth1Token
-                                                                          oauth1TokenSecret:
-                                                                              (NSString *)oauth1TokenSecret
-    __deprecated_msg("tokenFromOauth1 is deprecated.");
+/// 
+- (DBRpcTask<DBAUTHTokenFromOAuth1Result *, DBAUTHTokenFromOAuth1Error *> *)tokenFromOauth1:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret __deprecated_msg("tokenFromOauth1 is deprecated.");
 
 @end
 
 NS_ASSUME_NONNULL_END
+

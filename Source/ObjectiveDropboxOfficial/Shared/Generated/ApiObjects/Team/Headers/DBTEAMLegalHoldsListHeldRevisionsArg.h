@@ -10,18 +10,19 @@
 
 @class DBTEAMLegalHoldsListHeldRevisionsArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LegalHoldsListHeldRevisionsArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLegalHoldsListHeldRevisionsArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLegalHoldsListHeldRevisionsArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param id_ The legal hold Id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithId_:(NSString *)id_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LegalHoldsListHeldRevisionsArg` struct.
-///
-@interface DBTEAMLegalHoldsListHeldRevisionsArgSerializer : NSObject
+/// 
+@interface DBTEAMLegalHoldsListHeldRevisionsArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLegalHoldsListHeldRevisionsArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLegalHoldsListHeldRevisionsArg`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldsListHeldRevisionsArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLegalHoldsListHeldRevisionsArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLegalHoldsListHeldRevisionsArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLegalHoldsListHeldRevisionsArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLegalHoldsListHeldRevisionsArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLegalHoldsListHeldRevisionsArg`
 /// object.
-///
-+ (DBTEAMLegalHoldsListHeldRevisionsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLegalHoldsListHeldRevisionsArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

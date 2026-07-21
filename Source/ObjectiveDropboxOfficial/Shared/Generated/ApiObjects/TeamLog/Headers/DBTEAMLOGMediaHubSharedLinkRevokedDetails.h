@@ -11,20 +11,21 @@
 @class DBTEAMLOGMediaHubSharedLinkRevokedDetails;
 @class DBTEAMLOGMediaHubSharedLinkTargetType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubSharedLinkRevokedDetails` struct.
-///
+/// 
 /// Revoked Media Hub shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubSharedLinkRevokedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkRevokedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetType Media Hub shared link target type.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaHubSharedLinkRevokedDetails` struct.
-///
-@interface DBTEAMLOGMediaHubSharedLinkRevokedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkRevokedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubSharedLinkRevokedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMediaHubSharedLinkRevokedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkRevokedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubSharedLinkRevokedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubSharedLinkRevokedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubSharedLinkRevokedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkRevokedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMediaHubSharedLinkRevokedDetails`
 /// object.
-///
-+ (DBTEAMLOGMediaHubSharedLinkRevokedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubSharedLinkRevokedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

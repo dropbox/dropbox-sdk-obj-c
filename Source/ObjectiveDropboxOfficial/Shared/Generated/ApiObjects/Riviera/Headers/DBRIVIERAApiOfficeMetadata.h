@@ -11,22 +11,23 @@
 @class DBRIVIERAApiOfficeMetadata;
 @class DBRIVIERAOfficeFileType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ApiOfficeMetadata` struct.
-///
+/// 
 /// MS Office document metadata. Mirrors the internal `riviera.OfficeMetadata`
 /// message. Some fields apply only to specific document types (e.g. `slides`
 /// for PowerPoint, `words`/`pages` for Word).
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAApiOfficeMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAApiOfficeMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -68,9 +69,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param fileType (no description).
 /// @param creator (no description).
 /// @param company (no description).
@@ -83,62 +84,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param words (no description).
 /// @param slides PowerPoint only.
 /// @param revisionNumber (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFileType:(nullable DBRIVIERAOfficeFileType *)fileType
-                         creator:(nullable NSString *)creator
-                         company:(nullable NSString *)company
-                           title:(nullable NSString *)title
-                         subject:(nullable NSString *)subject
-                        keywords:(nullable NSString *)keywords
-                    description_:(nullable NSString *)description_
-            totalEditTimeMinutes:(nullable NSNumber *)totalEditTimeMinutes
-                           pages:(nullable NSNumber *)pages
-                           words:(nullable NSNumber *)words
-                          slides:(nullable NSNumber *)slides
-                  revisionNumber:(nullable NSString *)revisionNumber;
+/// 
+- (instancetype)initWithFileType:(nullable DBRIVIERAOfficeFileType *)fileType creator:(nullable NSString *)creator company:(nullable NSString *)company title:(nullable NSString *)title subject:(nullable NSString *)subject keywords:(nullable NSString *)keywords description_:(nullable NSString *)description_ totalEditTimeMinutes:(nullable NSNumber *)totalEditTimeMinutes pages:(nullable NSNumber *)pages words:(nullable NSNumber *)words slides:(nullable NSNumber *)slides revisionNumber:(nullable NSString *)revisionNumber;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ApiOfficeMetadata` struct.
-///
-@interface DBRIVIERAApiOfficeMetadataSerializer : NSObject
+/// 
+@interface DBRIVIERAApiOfficeMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAApiOfficeMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAApiOfficeMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAApiOfficeMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiOfficeMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAApiOfficeMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAApiOfficeMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAApiOfficeMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAApiOfficeMetadata` object.
-///
-+ (DBRIVIERAApiOfficeMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAApiOfficeMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

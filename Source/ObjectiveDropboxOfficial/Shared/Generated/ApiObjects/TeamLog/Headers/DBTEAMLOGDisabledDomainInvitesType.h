@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDisabledDomainInvitesType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DisabledDomainInvitesType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDisabledDomainInvitesType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDisabledDomainInvitesType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DisabledDomainInvitesType` struct.
-///
-@interface DBTEAMLOGDisabledDomainInvitesTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDisabledDomainInvitesTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDisabledDomainInvitesType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDisabledDomainInvitesType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDisabledDomainInvitesType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDisabledDomainInvitesType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDisabledDomainInvitesType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDisabledDomainInvitesType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDisabledDomainInvitesType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDisabledDomainInvitesType` object.
-///
-+ (DBTEAMLOGDisabledDomainInvitesType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDisabledDomainInvitesType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

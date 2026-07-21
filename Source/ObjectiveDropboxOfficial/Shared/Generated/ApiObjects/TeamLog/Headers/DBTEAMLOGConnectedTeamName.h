@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGConnectedTeamName;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ConnectedTeamName` struct.
-///
+/// 
 /// The name of the team
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGConnectedTeamName : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGConnectedTeamName : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,46 +33,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param team The name of the team.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeam:(NSString *)team;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ConnectedTeamName` struct.
-///
-@interface DBTEAMLOGConnectedTeamNameSerializer : NSObject
+/// 
+@interface DBTEAMLOGConnectedTeamNameSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGConnectedTeamName` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGConnectedTeamName` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGConnectedTeamName` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGConnectedTeamName *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGConnectedTeamName *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGConnectedTeamName` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGConnectedTeamName` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGConnectedTeamName` object.
-///
-+ (DBTEAMLOGConnectedTeamName *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGConnectedTeamName *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

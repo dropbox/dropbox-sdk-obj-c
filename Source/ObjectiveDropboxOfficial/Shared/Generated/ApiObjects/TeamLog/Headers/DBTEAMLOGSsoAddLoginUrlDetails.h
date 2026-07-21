@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSsoAddLoginUrlDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SsoAddLoginUrlDetails` struct.
-///
+/// 
 /// Added sign-in URL for SSO.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSsoAddLoginUrlDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSsoAddLoginUrlDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New single sign-on login URL.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SsoAddLoginUrlDetails` struct.
-///
-@interface DBTEAMLOGSsoAddLoginUrlDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSsoAddLoginUrlDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSsoAddLoginUrlDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSsoAddLoginUrlDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoAddLoginUrlDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSsoAddLoginUrlDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSsoAddLoginUrlDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSsoAddLoginUrlDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSsoAddLoginUrlDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSsoAddLoginUrlDetails` object.
-///
-+ (DBTEAMLOGSsoAddLoginUrlDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSsoAddLoginUrlDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperFolderDeletedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperFolderDeletedDetails` struct.
-///
+/// 
 /// Archived Paper folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperFolderDeletedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperFolderDeletedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperFolderDeletedDetails` struct.
-///
-@interface DBTEAMLOGPaperFolderDeletedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperFolderDeletedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperFolderDeletedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGPaperFolderDeletedDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperFolderDeletedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderDeletedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperFolderDeletedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperFolderDeletedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperFolderDeletedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperFolderDeletedDetails` object.
-///
-+ (DBTEAMLOGPaperFolderDeletedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperFolderDeletedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

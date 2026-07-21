@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGDashClonedStackType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashClonedStackType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashClonedStackType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashClonedStackType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashClonedStackType` struct.
-///
-@interface DBTEAMLOGDashClonedStackTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashClonedStackTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashClonedStackType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashClonedStackType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashClonedStackType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashClonedStackType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashClonedStackType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashClonedStackType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashClonedStackType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashClonedStackType` object.
-///
-+ (DBTEAMLOGDashClonedStackType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashClonedStackType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

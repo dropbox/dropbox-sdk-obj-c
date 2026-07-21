@@ -11,20 +11,21 @@
 @class DBSHARINGAccessLevel;
 @class DBTEAMLOGSharedLinkSettingsRemovePasswordDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkSettingsRemovePasswordDetails` struct.
-///
+/// 
 /// Removed the password from the shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkSettingsRemovePasswordDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkSettingsRemovePasswordDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,61 +37,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
 /// @param sharedContentLink Shared content link.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel
-                               sharedContentLink:(nullable NSString *)sharedContentLink;
+/// 
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel sharedContentLink:(nullable NSString *)sharedContentLink;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkSettingsRemovePasswordDetails`
 /// struct.
-///
-@interface DBTEAMLOGSharedLinkSettingsRemovePasswordDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkSettingsRemovePasswordDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkSettingsRemovePasswordDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedLinkSettingsRemovePasswordDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsRemovePasswordDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkSettingsRemovePasswordDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkSettingsRemovePasswordDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkSettingsRemovePasswordDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsRemovePasswordDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedLinkSettingsRemovePasswordDetails` object.
-///
-+ (DBTEAMLOGSharedLinkSettingsRemovePasswordDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkSettingsRemovePasswordDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

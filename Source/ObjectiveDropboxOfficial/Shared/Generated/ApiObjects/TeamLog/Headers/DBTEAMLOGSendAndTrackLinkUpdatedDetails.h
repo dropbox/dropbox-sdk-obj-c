@@ -11,20 +11,21 @@
 @class DBTEAMLOGLinkSettingsLogInfo;
 @class DBTEAMLOGSendAndTrackLinkUpdatedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SendAndTrackLinkUpdatedDetails` struct.
-///
+/// 
 /// Send and Track Link Updated.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSendAndTrackLinkUpdatedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSendAndTrackLinkUpdatedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,60 +37,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param linkSettings Link Settings.
 /// @param previousLinkName Previous link name.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithLinkSettings:(DBTEAMLOGLinkSettingsLogInfo *)linkSettings
-                    previousLinkName:(nullable NSString *)previousLinkName;
+/// 
+- (instancetype)initWithLinkSettings:(DBTEAMLOGLinkSettingsLogInfo *)linkSettings previousLinkName:(nullable NSString *)previousLinkName;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param linkSettings Link Settings.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLinkSettings:(DBTEAMLOGLinkSettingsLogInfo *)linkSettings;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SendAndTrackLinkUpdatedDetails` struct.
-///
-@interface DBTEAMLOGSendAndTrackLinkUpdatedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSendAndTrackLinkUpdatedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSendAndTrackLinkUpdatedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSendAndTrackLinkUpdatedDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendAndTrackLinkUpdatedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSendAndTrackLinkUpdatedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSendAndTrackLinkUpdatedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSendAndTrackLinkUpdatedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSendAndTrackLinkUpdatedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSendAndTrackLinkUpdatedDetails`
 /// object.
-///
-+ (DBTEAMLOGSendAndTrackLinkUpdatedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSendAndTrackLinkUpdatedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

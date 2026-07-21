@@ -6,24 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESFileOpsResult.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESFileOpsResult.h"
 
 @class DBFILESLockFileBatchResult;
 @class DBFILESLockFileResultEntry;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LockFileBatchResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESLockFileBatchResult : DBFILESFileOpsResult <DBSerializable, NSCopying>
+/// 
+@interface DBFILESLockFileBatchResult : DBFILESFileOpsResult <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,46 +34,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param entries Each Entry in the 'entries' will have '.tag' with the
 /// operation status (e.g. success), the metadata for the file and the lock
 /// state after the operation.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEntries:(NSArray<DBFILESLockFileResultEntry *> *)entries;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LockFileBatchResult` struct.
-///
-@interface DBFILESLockFileBatchResultSerializer : NSObject
+/// 
+@interface DBFILESLockFileBatchResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESLockFileBatchResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESLockFileBatchResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESLockFileBatchResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESLockFileBatchResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESLockFileBatchResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESLockFileBatchResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESLockFileBatchResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESLockFileBatchResult` object.
-///
-+ (DBFILESLockFileBatchResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESLockFileBatchResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

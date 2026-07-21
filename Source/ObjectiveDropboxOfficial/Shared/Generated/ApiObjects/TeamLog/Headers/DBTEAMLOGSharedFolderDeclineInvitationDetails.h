@@ -10,66 +10,69 @@
 
 @class DBTEAMLOGSharedFolderDeclineInvitationDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFolderDeclineInvitationDetails` struct.
-///
+/// 
 /// Declined team member's invite to shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedFolderDeclineInvitationDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedFolderDeclineInvitationDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFolderDeclineInvitationDetails`
 /// struct.
-///
-@interface DBTEAMLOGSharedFolderDeclineInvitationDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedFolderDeclineInvitationDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedFolderDeclineInvitationDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedFolderDeclineInvitationDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderDeclineInvitationDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderDeclineInvitationDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedFolderDeclineInvitationDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedFolderDeclineInvitationDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFolderDeclineInvitationDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedFolderDeclineInvitationDetails` object.
-///
-+ (DBTEAMLOGSharedFolderDeclineInvitationDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedFolderDeclineInvitationDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,35 +10,36 @@
 
 @class DBRIVIERATimestampLevel;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TimestampLevel` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERATimestampLevel : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERATimestampLevel : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBRIVIERATimestampLevelTag` enum type represents the possible tag
 /// states with which the `DBRIVIERATimestampLevel` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERATimestampLevelTag) {
-  /// (no description).
-  DBRIVIERATimestampLevelUnknown,
+    /// (no description).
+    DBRIVIERATimestampLevelUnknown,
 
-  /// (no description).
-  DBRIVIERATimestampLevelSentence,
+    /// (no description).
+    DBRIVIERATimestampLevelSentence,
 
-  /// (no description).
-  DBRIVIERATimestampLevelWord,
+    /// (no description).
+    DBRIVIERATimestampLevelWord,
 
-  /// (no description).
-  DBRIVIERATimestampLevelOther,
+    /// (no description).
+    DBRIVIERATimestampLevelOther,
 
 };
 
@@ -47,102 +48,104 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERATimestampLevelTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "unknown".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnknown;
 
-///
+/// 
 /// Initializes union class with tag state of "sentence".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSentence;
 
-///
+/// 
 /// Initializes union class with tag state of "word".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithWord;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "unknown".
-///
+/// 
 /// @return Whether the union's current tag state has value "unknown".
-///
+/// 
 - (BOOL)isUnknown;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "sentence".
-///
+/// 
 /// @return Whether the union's current tag state has value "sentence".
-///
+/// 
 - (BOOL)isSentence;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "word".
-///
+/// 
 /// @return Whether the union's current tag state has value "word".
-///
+/// 
 - (BOOL)isWord;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERATimestampLevel` union.
-///
-@interface DBRIVIERATimestampLevelSerializer : NSObject
+/// 
+@interface DBRIVIERATimestampLevelSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERATimestampLevel` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERATimestampLevel` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERATimestampLevel` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERATimestampLevel *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERATimestampLevel *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERATimestampLevel` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERATimestampLevel` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERATimestampLevel` object.
-///
-+ (DBRIVIERATimestampLevel *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERATimestampLevel *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

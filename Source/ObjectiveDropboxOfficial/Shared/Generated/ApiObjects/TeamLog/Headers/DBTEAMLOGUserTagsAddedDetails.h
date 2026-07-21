@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGUserTagsAddedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserTagsAddedDetails` struct.
-///
+/// 
 /// Tagged a file.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGUserTagsAddedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGUserTagsAddedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param values values.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithValues:(NSArray<NSString *> *)values;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UserTagsAddedDetails` struct.
-///
-@interface DBTEAMLOGUserTagsAddedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGUserTagsAddedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGUserTagsAddedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGUserTagsAddedDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGUserTagsAddedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGUserTagsAddedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGUserTagsAddedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGUserTagsAddedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGUserTagsAddedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGUserTagsAddedDetails` object.
-///
-+ (DBTEAMLOGUserTagsAddedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGUserTagsAddedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

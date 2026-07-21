@@ -11,18 +11,19 @@
 @class DBSHARINGListFileMembersCountResult;
 @class DBSHARINGSharedFileMembers;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFileMembersCountResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGListFileMembersCountResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGListFileMembersCountResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,50 +35,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param members A list of members on this file.
 /// @param memberCount The number of members on this file. This does not include
 /// inherited members.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMembers:(DBSHARINGSharedFileMembers *)members memberCount:(NSNumber *)memberCount;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFileMembersCountResult` struct.
-///
-@interface DBSHARINGListFileMembersCountResultSerializer : NSObject
+/// 
+@interface DBSHARINGListFileMembersCountResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGListFileMembersCountResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGListFileMembersCountResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFileMembersCountResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGListFileMembersCountResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGListFileMembersCountResult *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGListFileMembersCountResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFileMembersCountResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGListFileMembersCountResult`
 /// object.
-///
-+ (DBSHARINGListFileMembersCountResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGListFileMembersCountResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMPOLICIESPaperDefaultFolderPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDefaultFolderPolicy` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESPaperDefaultFolderPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESPaperDefaultFolderPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,15 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMPOLICIESPaperDefaultFolderPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPaperDefaultFolderPolicyTag) {
-  /// Everyone in team will be the default option when creating a folder in
-  /// Paper.
-  DBTEAMPOLICIESPaperDefaultFolderPolicyEveryoneInTeam,
+    /// Everyone in team will be the default option when creating a folder in
+    /// Paper.
+    DBTEAMPOLICIESPaperDefaultFolderPolicyEveryoneInTeam,
 
-  /// Invite only will be the default option when creating a folder in Paper.
-  DBTEAMPOLICIESPaperDefaultFolderPolicyInviteOnly,
+    /// Invite only will be the default option when creating a folder in Paper.
+    DBTEAMPOLICIESPaperDefaultFolderPolicyInviteOnly,
 
-  /// (no description).
-  DBTEAMPOLICIESPaperDefaultFolderPolicyOther,
+    /// (no description).
+    DBTEAMPOLICIESPaperDefaultFolderPolicyOther,
 
 };
 
@@ -46,98 +47,100 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESPaperDefaultFolderPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "everyone_in_team".
-///
+/// 
 /// Description of the "everyone_in_team" tag state: Everyone in team will be
 /// the default option when creating a folder in Paper.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEveryoneInTeam;
 
-///
+/// 
 /// Initializes union class with tag state of "invite_only".
-///
+/// 
 /// Description of the "invite_only" tag state: Invite only will be the default
 /// option when creating a folder in Paper.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInviteOnly;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "everyone_in_team".
-///
+/// 
 /// @return Whether the union's current tag state has value "everyone_in_team".
-///
+/// 
 - (BOOL)isEveryoneInTeam;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invite_only".
-///
+/// 
 /// @return Whether the union's current tag state has value "invite_only".
-///
+/// 
 - (BOOL)isInviteOnly;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMPOLICIESPaperDefaultFolderPolicy`
 /// union.
-///
-@interface DBTEAMPOLICIESPaperDefaultFolderPolicySerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESPaperDefaultFolderPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESPaperDefaultFolderPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMPOLICIESPaperDefaultFolderPolicy`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESPaperDefaultFolderPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESPaperDefaultFolderPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESPaperDefaultFolderPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESPaperDefaultFolderPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESPaperDefaultFolderPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMPOLICIESPaperDefaultFolderPolicy`
 /// object.
-///
-+ (DBTEAMPOLICIESPaperDefaultFolderPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESPaperDefaultFolderPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGMemberRemoveExternalIdType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberRemoveExternalIdType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberRemoveExternalIdType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberRemoveExternalIdType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberRemoveExternalIdType` struct.
-///
-@interface DBTEAMLOGMemberRemoveExternalIdTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberRemoveExternalIdTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberRemoveExternalIdType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberRemoveExternalIdType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberRemoveExternalIdType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRemoveExternalIdType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberRemoveExternalIdType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberRemoveExternalIdType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberRemoveExternalIdType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberRemoveExternalIdType`
 /// object.
-///
-+ (DBTEAMLOGMemberRemoveExternalIdType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberRemoveExternalIdType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

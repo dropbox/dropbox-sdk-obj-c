@@ -12,20 +12,21 @@
 @class DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails;
 @class DBTEAMLOGMediaHubSharedLinkTargetType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubSharedLinkDownloadSettingChangedDetails` struct.
-///
+/// 
 /// Changed Media Hub shared link download setting.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,56 +41,55 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetType Media Hub shared link target type.
 /// @param previousValue Previous Media Hub shared link download setting.
 /// @param dNewValue New Media Hub shared link download setting.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType
-                     previousValue:(DBTEAMLOGMediaHubSharedLinkDownloadSetting *)previousValue
-                         dNewValue:(DBTEAMLOGMediaHubSharedLinkDownloadSetting *)dNewValue;
+/// 
+- (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType previousValue:(DBTEAMLOGMediaHubSharedLinkDownloadSetting *)previousValue dNewValue:(DBTEAMLOGMediaHubSharedLinkDownloadSetting *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `MediaHubSharedLinkDownloadSettingChangedDetails` struct.
-///
-@interface DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails` object.
-///
-+ (DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

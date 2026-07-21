@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberSpaceLimitsChangeCustomQuotaDetails` struct.
-///
+/// 
 /// Changed custom member space limit.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous custom quota value in bytes.
 /// @param dNewValue New custom quota value in bytes.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPreviousValue:(NSNumber *)previousValue dNewValue:(NSNumber *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberSpaceLimitsChangeCustomQuotaDetails`
 /// struct.
-///
-@interface DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails` object.
-///
-+ (DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberSpaceLimitsChangeCustomQuotaDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

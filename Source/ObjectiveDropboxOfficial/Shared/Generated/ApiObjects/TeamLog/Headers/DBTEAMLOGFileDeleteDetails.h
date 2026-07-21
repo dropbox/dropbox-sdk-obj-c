@@ -10,63 +10,66 @@
 
 @class DBTEAMLOGFileDeleteDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileDeleteDetails` struct.
-///
+/// 
 /// Deleted files and/or folders.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileDeleteDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileDeleteDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileDeleteDetails` struct.
-///
-@interface DBTEAMLOGFileDeleteDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileDeleteDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileDeleteDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileDeleteDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileDeleteDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileDeleteDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileDeleteDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileDeleteDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileDeleteDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileDeleteDetails` object.
-///
-+ (DBTEAMLOGFileDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileDeleteDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

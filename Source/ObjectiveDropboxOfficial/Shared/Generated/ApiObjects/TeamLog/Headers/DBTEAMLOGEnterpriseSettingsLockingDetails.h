@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGEnterpriseSettingsLockingDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EnterpriseSettingsLockingDetails` struct.
-///
+/// 
 /// Changed who can update a setting.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEnterpriseSettingsLockingDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEnterpriseSettingsLockingDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,54 +42,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamName The secondary team name.
 /// @param settingsPageName Settings page name.
 /// @param previousSettingsPageLockingState Previous locked settings page state.
 /// @param dNewSettingsPageLockingState New locked settings page state.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTeamName:(NSString *)teamName
-                    settingsPageName:(NSString *)settingsPageName
-    previousSettingsPageLockingState:(NSString *)previousSettingsPageLockingState
-        dNewSettingsPageLockingState:(NSString *)dNewSettingsPageLockingState;
+/// 
+- (instancetype)initWithTeamName:(NSString *)teamName settingsPageName:(NSString *)settingsPageName previousSettingsPageLockingState:(NSString *)previousSettingsPageLockingState dNewSettingsPageLockingState:(NSString *)dNewSettingsPageLockingState;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EnterpriseSettingsLockingDetails` struct.
-///
-@interface DBTEAMLOGEnterpriseSettingsLockingDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGEnterpriseSettingsLockingDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEnterpriseSettingsLockingDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGEnterpriseSettingsLockingDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEnterpriseSettingsLockingDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEnterpriseSettingsLockingDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEnterpriseSettingsLockingDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEnterpriseSettingsLockingDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEnterpriseSettingsLockingDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGEnterpriseSettingsLockingDetails`
 /// object.
-///
-+ (DBTEAMLOGEnterpriseSettingsLockingDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEnterpriseSettingsLockingDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

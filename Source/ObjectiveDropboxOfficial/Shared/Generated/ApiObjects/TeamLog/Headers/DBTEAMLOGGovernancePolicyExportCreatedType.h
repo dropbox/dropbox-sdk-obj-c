@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGGovernancePolicyExportCreatedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GovernancePolicyExportCreatedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGovernancePolicyExportCreatedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGovernancePolicyExportCreatedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GovernancePolicyExportCreatedType` struct.
-///
-@interface DBTEAMLOGGovernancePolicyExportCreatedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGGovernancePolicyExportCreatedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGovernancePolicyExportCreatedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGGovernancePolicyExportCreatedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyExportCreatedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGovernancePolicyExportCreatedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGovernancePolicyExportCreatedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGovernancePolicyExportCreatedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyExportCreatedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGovernancePolicyExportCreatedType`
 /// object.
-///
-+ (DBTEAMLOGGovernancePolicyExportCreatedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGovernancePolicyExportCreatedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

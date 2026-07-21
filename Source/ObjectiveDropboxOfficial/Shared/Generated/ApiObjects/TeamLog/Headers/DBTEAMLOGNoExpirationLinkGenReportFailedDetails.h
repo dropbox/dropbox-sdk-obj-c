@@ -11,20 +11,21 @@
 @class DBTEAMLOGNoExpirationLinkGenReportFailedDetails;
 @class DBTEAMTeamReportFailureReason;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `NoExpirationLinkGenReportFailedDetails` struct.
-///
+/// 
 /// Couldn't create report: Links created with no expiration.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGNoExpirationLinkGenReportFailedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGNoExpirationLinkGenReportFailedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,49 +34,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param failureReason Failure reason.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFailureReason:(DBTEAMTeamReportFailureReason *)failureReason;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `NoExpirationLinkGenReportFailedDetails`
 /// struct.
-///
-@interface DBTEAMLOGNoExpirationLinkGenReportFailedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGNoExpirationLinkGenReportFailedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGNoExpirationLinkGenReportFailedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGNoExpirationLinkGenReportFailedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoExpirationLinkGenReportFailedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoExpirationLinkGenReportFailedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGNoExpirationLinkGenReportFailedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGNoExpirationLinkGenReportFailedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoExpirationLinkGenReportFailedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGNoExpirationLinkGenReportFailedDetails` object.
-///
-+ (DBTEAMLOGNoExpirationLinkGenReportFailedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGNoExpirationLinkGenReportFailedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGBinderRemovePageType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `BinderRemovePageType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGBinderRemovePageType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGBinderRemovePageType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `BinderRemovePageType` struct.
-///
-@interface DBTEAMLOGBinderRemovePageTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGBinderRemovePageTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGBinderRemovePageType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGBinderRemovePageType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGBinderRemovePageType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGBinderRemovePageType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGBinderRemovePageType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGBinderRemovePageType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGBinderRemovePageType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGBinderRemovePageType` object.
-///
-+ (DBTEAMLOGBinderRemovePageType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGBinderRemovePageType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

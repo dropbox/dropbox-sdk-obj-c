@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGShmodelEnableDownloadsType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShmodelEnableDownloadsType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShmodelEnableDownloadsType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShmodelEnableDownloadsType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShmodelEnableDownloadsType` struct.
-///
-@interface DBTEAMLOGShmodelEnableDownloadsTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGShmodelEnableDownloadsTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShmodelEnableDownloadsType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShmodelEnableDownloadsType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShmodelEnableDownloadsType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShmodelEnableDownloadsType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShmodelEnableDownloadsType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShmodelEnableDownloadsType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShmodelEnableDownloadsType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShmodelEnableDownloadsType`
 /// object.
-///
-+ (DBTEAMLOGShmodelEnableDownloadsType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShmodelEnableDownloadsType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

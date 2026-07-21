@@ -11,20 +11,21 @@
 @class DBTEAMLOGShowcaseChangeEnabledPolicyDetails;
 @class DBTEAMLOGShowcaseEnabledPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseChangeEnabledPolicyDetails` struct.
-///
+/// 
 /// Enabled/disabled Dropbox Showcase for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseChangeEnabledPolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseChangeEnabledPolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,50 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New Dropbox Showcase policy.
 /// @param previousValue Previous Dropbox Showcase policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGShowcaseEnabledPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGShowcaseEnabledPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGShowcaseEnabledPolicy *)dNewValue previousValue:(DBTEAMLOGShowcaseEnabledPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseChangeEnabledPolicyDetails` struct.
-///
-@interface DBTEAMLOGShowcaseChangeEnabledPolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseChangeEnabledPolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseChangeEnabledPolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGShowcaseChangeEnabledPolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeEnabledPolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseChangeEnabledPolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeEnabledPolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGShowcaseChangeEnabledPolicyDetails` object.
-///
-+ (DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseChangeEnabledPolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

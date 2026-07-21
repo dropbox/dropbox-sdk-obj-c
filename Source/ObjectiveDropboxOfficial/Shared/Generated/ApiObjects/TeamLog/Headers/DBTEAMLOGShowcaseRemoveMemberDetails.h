@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGShowcaseRemoveMemberDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseRemoveMemberDetails` struct.
-///
+/// 
 /// Removed member from showcase.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseRemoveMemberDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseRemoveMemberDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseRemoveMemberDetails` struct.
-///
-@interface DBTEAMLOGShowcaseRemoveMemberDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseRemoveMemberDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseRemoveMemberDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseRemoveMemberDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseRemoveMemberDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseRemoveMemberDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseRemoveMemberDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseRemoveMemberDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseRemoveMemberDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseRemoveMemberDetails`
 /// object.
-///
-+ (DBTEAMLOGShowcaseRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

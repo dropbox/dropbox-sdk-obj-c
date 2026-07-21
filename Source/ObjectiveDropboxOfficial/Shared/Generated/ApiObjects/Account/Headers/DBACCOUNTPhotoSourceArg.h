@@ -10,29 +10,30 @@
 
 @class DBACCOUNTPhotoSourceArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PhotoSourceArg` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBACCOUNTPhotoSourceArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBACCOUNTPhotoSourceArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBACCOUNTPhotoSourceArgTag` enum type represents the possible tag
 /// states with which the `DBACCOUNTPhotoSourceArg` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBACCOUNTPhotoSourceArgTag) {
-  /// Image data in base64-encoded bytes.
-  DBACCOUNTPhotoSourceArgBase64Data,
+    /// Image data in base64-encoded bytes.
+    DBACCOUNTPhotoSourceArgBase64Data,
 
-  /// (no description).
-  DBACCOUNTPhotoSourceArgOther,
+    /// (no description).
+    DBACCOUNTPhotoSourceArgOther,
 
 };
 
@@ -45,82 +46,84 @@ typedef NS_CLOSED_ENUM(NSInteger, DBACCOUNTPhotoSourceArgTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "base64_data".
-///
+/// 
 /// Description of the "base64_data" tag state: Image data in base64-encoded
 /// bytes.
-///
+/// 
 /// @param base64Data Image data in base64-encoded bytes.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBase64Data:(NSString *)base64Data;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "base64_data".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `base64Data` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "base64_data".
-///
+/// 
 - (BOOL)isBase64Data;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBACCOUNTPhotoSourceArg` union.
-///
-@interface DBACCOUNTPhotoSourceArgSerializer : NSObject
+/// 
+@interface DBACCOUNTPhotoSourceArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBACCOUNTPhotoSourceArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBACCOUNTPhotoSourceArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBACCOUNTPhotoSourceArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBACCOUNTPhotoSourceArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBACCOUNTPhotoSourceArg *)instance;
 
-///
+/// 
 /// Deserializes `DBACCOUNTPhotoSourceArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBACCOUNTPhotoSourceArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBACCOUNTPhotoSourceArg` object.
-///
-+ (DBACCOUNTPhotoSourceArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBACCOUNTPhotoSourceArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

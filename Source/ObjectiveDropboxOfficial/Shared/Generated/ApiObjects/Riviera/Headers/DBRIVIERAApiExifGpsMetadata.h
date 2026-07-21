@@ -10,22 +10,23 @@
 
 @class DBRIVIERAApiExifGpsMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ApiExifGpsMetadata` struct.
-///
+/// 
 /// GPS coordinates and related tags extracted from image EXIF data. Fields are
 /// populated on a best-effort basis and may be empty when absent from the
 /// source file.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAApiExifGpsMetadata : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAApiExifGpsMetadata : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -47,9 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param latitude Latitude / longitude in decimal degrees (positive = N/E,
 /// negative = S/W).
 /// @param longitude (no description).
@@ -59,55 +60,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param timestamp Timestamp / datestamp of the GPS fix, in the EXIF-provided
 /// format.
 /// @param datestamp (no description).
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithLatitude:(nullable NSNumber *)latitude
-                       longitude:(nullable NSNumber *)longitude
-                        altitude:(nullable NSString *)altitude
-                       timestamp:(nullable NSString *)timestamp
-                       datestamp:(nullable NSString *)datestamp;
+/// 
+- (instancetype)initWithLatitude:(nullable NSNumber *)latitude longitude:(nullable NSNumber *)longitude altitude:(nullable NSString *)altitude timestamp:(nullable NSString *)timestamp datestamp:(nullable NSString *)datestamp;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ApiExifGpsMetadata` struct.
-///
-@interface DBRIVIERAApiExifGpsMetadataSerializer : NSObject
+/// 
+@interface DBRIVIERAApiExifGpsMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAApiExifGpsMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAApiExifGpsMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAApiExifGpsMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiExifGpsMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAApiExifGpsMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAApiExifGpsMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAApiExifGpsMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAApiExifGpsMetadata` object.
-///
-+ (DBRIVIERAApiExifGpsMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAApiExifGpsMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

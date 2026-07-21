@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGTrustedTeamsRequestState;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TrustedTeamsRequestState` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTrustedTeamsRequestState : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTrustedTeamsRequestState : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,17 +30,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMLOGTrustedTeamsRequestState` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTrustedTeamsRequestStateTag) {
-  /// (no description).
-  DBTEAMLOGTrustedTeamsRequestStateInvited,
+    /// (no description).
+    DBTEAMLOGTrustedTeamsRequestStateInvited,
 
-  /// (no description).
-  DBTEAMLOGTrustedTeamsRequestStateLinked,
+    /// (no description).
+    DBTEAMLOGTrustedTeamsRequestStateLinked,
 
-  /// (no description).
-  DBTEAMLOGTrustedTeamsRequestStateUnlinked,
+    /// (no description).
+    DBTEAMLOGTrustedTeamsRequestStateUnlinked,
 
-  /// (no description).
-  DBTEAMLOGTrustedTeamsRequestStateOther,
+    /// (no description).
+    DBTEAMLOGTrustedTeamsRequestStateOther,
 
 };
 
@@ -48,103 +49,105 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTrustedTeamsRequestStateTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "invited".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvited;
 
-///
+/// 
 /// Initializes union class with tag state of "linked".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLinked;
 
-///
+/// 
 /// Initializes union class with tag state of "unlinked".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnlinked;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invited".
-///
+/// 
 /// @return Whether the union's current tag state has value "invited".
-///
+/// 
 - (BOOL)isInvited;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "linked".
-///
+/// 
 /// @return Whether the union's current tag state has value "linked".
-///
+/// 
 - (BOOL)isLinked;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "unlinked".
-///
+/// 
 /// @return Whether the union's current tag state has value "unlinked".
-///
+/// 
 - (BOOL)isUnlinked;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGTrustedTeamsRequestState` union.
-///
-@interface DBTEAMLOGTrustedTeamsRequestStateSerializer : NSObject
+/// 
+@interface DBTEAMLOGTrustedTeamsRequestStateSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTrustedTeamsRequestState` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTrustedTeamsRequestState` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTrustedTeamsRequestState` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTrustedTeamsRequestState *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTrustedTeamsRequestState *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTrustedTeamsRequestState` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTrustedTeamsRequestState` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTrustedTeamsRequestState` object.
-///
-+ (DBTEAMLOGTrustedTeamsRequestState *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTrustedTeamsRequestState *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

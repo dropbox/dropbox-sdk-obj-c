@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperContentRemoveMemberDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperContentRemoveMemberDetails` struct.
-///
+/// 
 /// Removed users and/or groups from Paper doc/folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperContentRemoveMemberDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperContentRemoveMemberDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperContentRemoveMemberDetails` struct.
-///
-@interface DBTEAMLOGPaperContentRemoveMemberDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperContentRemoveMemberDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperContentRemoveMemberDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperContentRemoveMemberDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperContentRemoveMemberDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperContentRemoveMemberDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperContentRemoveMemberDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperContentRemoveMemberDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperContentRemoveMemberDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPaperContentRemoveMemberDetails`
 /// object.
-///
-+ (DBTEAMLOGPaperContentRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperContentRemoveMemberDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

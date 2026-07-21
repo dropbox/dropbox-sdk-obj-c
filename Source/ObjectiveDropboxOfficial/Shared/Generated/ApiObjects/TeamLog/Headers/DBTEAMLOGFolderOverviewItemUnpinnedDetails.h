@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGFolderOverviewItemUnpinnedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FolderOverviewItemUnpinnedDetails` struct.
-///
+/// 
 /// Unpinned item from folder overview.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFolderOverviewItemUnpinnedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFolderOverviewItemUnpinnedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,51 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param folderOverviewLocationAsset Folder Overview location position in the
 /// Assets list.
 /// @param pinnedItemsAssetIndices Pinned items positions in the Assets list.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFolderOverviewLocationAsset:(NSNumber *)folderOverviewLocationAsset
-                            pinnedItemsAssetIndices:(NSArray<NSNumber *> *)pinnedItemsAssetIndices;
+/// 
+- (instancetype)initWithFolderOverviewLocationAsset:(NSNumber *)folderOverviewLocationAsset pinnedItemsAssetIndices:(NSArray<NSNumber *> *)pinnedItemsAssetIndices;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FolderOverviewItemUnpinnedDetails` struct.
-///
-@interface DBTEAMLOGFolderOverviewItemUnpinnedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFolderOverviewItemUnpinnedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFolderOverviewItemUnpinnedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFolderOverviewItemUnpinnedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFolderOverviewItemUnpinnedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFolderOverviewItemUnpinnedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFolderOverviewItemUnpinnedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFolderOverviewItemUnpinnedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFolderOverviewItemUnpinnedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFolderOverviewItemUnpinnedDetails`
 /// object.
-///
-+ (DBTEAMLOGFolderOverviewItemUnpinnedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFolderOverviewItemUnpinnedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

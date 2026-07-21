@@ -11,18 +11,19 @@
 @class DBTEAMGroupSelector;
 @class DBTEAMGroupsMembersListArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupsMembersListArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMGroupsMembersListArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMGroupsMembersListArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,57 +35,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param group The group whose members are to be listed.
 /// @param limit Number of results to return per call.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group limit:(nullable NSNumber *)limit;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param group The group whose members are to be listed.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithGroup:(DBTEAMGroupSelector *)group;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GroupsMembersListArg` struct.
-///
-@interface DBTEAMGroupsMembersListArgSerializer : NSObject
+/// 
+@interface DBTEAMGroupsMembersListArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMGroupsMembersListArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMGroupsMembersListArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupsMembersListArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMGroupsMembersListArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMGroupsMembersListArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMGroupsMembersListArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMGroupsMembersListArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMGroupsMembersListArg` object.
-///
-+ (DBTEAMGroupsMembersListArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMGroupsMembersListArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

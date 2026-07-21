@@ -11,21 +11,22 @@
 @class DBTEAMLOGSharingChangeLinkPolicyDetails;
 @class DBTEAMLOGSharingLinkPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharingChangeLinkPolicyDetails` struct.
-///
+/// 
 /// Changed whether members can share links outside team, and if links are
 /// accessible only by team members or anyone by default.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharingChangeLinkPolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharingChangeLinkPolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,61 +39,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New external link accessibility policy.
 /// @param previousValue Previous external link accessibility policy. Might be
 /// missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGSharingLinkPolicy *)dNewValue
-                    previousValue:(nullable DBTEAMLOGSharingLinkPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGSharingLinkPolicy *)dNewValue previousValue:(nullable DBTEAMLOGSharingLinkPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New external link accessibility policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGSharingLinkPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharingChangeLinkPolicyDetails` struct.
-///
-@interface DBTEAMLOGSharingChangeLinkPolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharingChangeLinkPolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharingChangeLinkPolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharingChangeLinkPolicyDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeLinkPolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharingChangeLinkPolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharingChangeLinkPolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharingChangeLinkPolicyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharingChangeLinkPolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharingChangeLinkPolicyDetails`
 /// object.
-///
-+ (DBTEAMLOGSharingChangeLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharingChangeLinkPolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

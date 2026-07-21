@@ -11,20 +11,21 @@
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMLOGGroupChangeManagementTypeDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupChangeManagementTypeDetails` struct.
-///
+/// 
 /// Changed group management type.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGroupChangeManagementTypeDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGroupChangeManagementTypeDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,61 +37,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New group management type.
 /// @param previousValue Previous group management type. Might be missing due to
 /// historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMCOMMONGroupManagementType *)dNewValue
-                    previousValue:(nullable DBTEAMCOMMONGroupManagementType *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMCOMMONGroupManagementType *)dNewValue previousValue:(nullable DBTEAMCOMMONGroupManagementType *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New group management type.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMCOMMONGroupManagementType *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GroupChangeManagementTypeDetails` struct.
-///
-@interface DBTEAMLOGGroupChangeManagementTypeDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGroupChangeManagementTypeDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGroupChangeManagementTypeDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGGroupChangeManagementTypeDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupChangeManagementTypeDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupChangeManagementTypeDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGroupChangeManagementTypeDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGroupChangeManagementTypeDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupChangeManagementTypeDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGroupChangeManagementTypeDetails`
 /// object.
-///
-+ (DBTEAMLOGGroupChangeManagementTypeDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGroupChangeManagementTypeDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

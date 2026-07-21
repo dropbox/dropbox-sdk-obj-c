@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGCreateTeamInviteLinkDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `CreateTeamInviteLinkDetails` struct.
-///
+/// 
 /// Created team invite link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGCreateTeamInviteLinkDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGCreateTeamInviteLinkDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,49 +36,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param linkUrl The invite link url that was created.
 /// @param expiryDate The expiration date of the invite link.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLinkUrl:(NSString *)linkUrl expiryDate:(NSString *)expiryDate;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `CreateTeamInviteLinkDetails` struct.
-///
-@interface DBTEAMLOGCreateTeamInviteLinkDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGCreateTeamInviteLinkDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGCreateTeamInviteLinkDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGCreateTeamInviteLinkDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGCreateTeamInviteLinkDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGCreateTeamInviteLinkDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGCreateTeamInviteLinkDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGCreateTeamInviteLinkDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGCreateTeamInviteLinkDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGCreateTeamInviteLinkDetails`
 /// object.
-///
-+ (DBTEAMLOGCreateTeamInviteLinkDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGCreateTeamInviteLinkDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

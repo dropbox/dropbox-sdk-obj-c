@@ -12,18 +12,19 @@
 @class DBTEAMUserSecondaryEmailsResult;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserSecondaryEmailsResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMUserSecondaryEmailsResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMUserSecondaryEmailsResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,48 +36,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user (no description).
 /// @param results (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user results:(NSArray<DBTEAMAddSecondaryEmailResult *> *)results;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UserSecondaryEmailsResult` struct.
-///
-@interface DBTEAMUserSecondaryEmailsResultSerializer : NSObject
+/// 
+@interface DBTEAMUserSecondaryEmailsResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMUserSecondaryEmailsResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMUserSecondaryEmailsResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMUserSecondaryEmailsResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMUserSecondaryEmailsResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMUserSecondaryEmailsResult *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMUserSecondaryEmailsResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMUserSecondaryEmailsResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMUserSecondaryEmailsResult` object.
-///
-+ (DBTEAMUserSecondaryEmailsResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMUserSecondaryEmailsResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

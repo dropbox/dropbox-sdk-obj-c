@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGExternalDriveBackupStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ExternalDriveBackupStatus` union.
-///
+/// 
 /// External Drive Backup status
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGExternalDriveBackupStatus : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGExternalDriveBackupStatus : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,26 +32,26 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGExternalDriveBackupStatus`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupStatusTag) {
-  /// (no description).
-  DBTEAMLOGExternalDriveBackupStatusBroken,
+    /// (no description).
+    DBTEAMLOGExternalDriveBackupStatusBroken,
 
-  /// (no description).
-  DBTEAMLOGExternalDriveBackupStatusCreated,
+    /// (no description).
+    DBTEAMLOGExternalDriveBackupStatusCreated,
 
-  /// (no description).
-  DBTEAMLOGExternalDriveBackupStatusCreatedOrBroken,
+    /// (no description).
+    DBTEAMLOGExternalDriveBackupStatusCreatedOrBroken,
 
-  /// (no description).
-  DBTEAMLOGExternalDriveBackupStatusDeleted,
+    /// (no description).
+    DBTEAMLOGExternalDriveBackupStatusDeleted,
 
-  /// (no description).
-  DBTEAMLOGExternalDriveBackupStatusEmpty,
+    /// (no description).
+    DBTEAMLOGExternalDriveBackupStatusEmpty,
 
-  /// (no description).
-  DBTEAMLOGExternalDriveBackupStatusUnknown,
+    /// (no description).
+    DBTEAMLOGExternalDriveBackupStatusUnknown,
 
-  /// (no description).
-  DBTEAMLOGExternalDriveBackupStatusOther,
+    /// (no description).
+    DBTEAMLOGExternalDriveBackupStatusOther,
 
 };
 
@@ -59,146 +60,148 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGExternalDriveBackupStatusTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "broken".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithBroken;
 
-///
+/// 
 /// Initializes union class with tag state of "created".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCreated;
 
-///
+/// 
 /// Initializes union class with tag state of "created_or_broken".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCreatedOrBroken;
 
-///
+/// 
 /// Initializes union class with tag state of "deleted".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDeleted;
 
-///
+/// 
 /// Initializes union class with tag state of "empty".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEmpty;
 
-///
+/// 
 /// Initializes union class with tag state of "unknown".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnknown;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "broken".
-///
+/// 
 /// @return Whether the union's current tag state has value "broken".
-///
+/// 
 - (BOOL)isBroken;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "created".
-///
+/// 
 /// @return Whether the union's current tag state has value "created".
-///
+/// 
 - (BOOL)isCreated;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "created_or_broken".
-///
+/// 
 /// @return Whether the union's current tag state has value "created_or_broken".
-///
+/// 
 - (BOOL)isCreatedOrBroken;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "deleted".
-///
+/// 
 /// @return Whether the union's current tag state has value "deleted".
-///
+/// 
 - (BOOL)isDeleted;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "empty".
-///
+/// 
 /// @return Whether the union's current tag state has value "empty".
-///
+/// 
 - (BOOL)isEmpty;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "unknown".
-///
+/// 
 /// @return Whether the union's current tag state has value "unknown".
-///
+/// 
 - (BOOL)isUnknown;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGExternalDriveBackupStatus` union.
-///
-@interface DBTEAMLOGExternalDriveBackupStatusSerializer : NSObject
+/// 
+@interface DBTEAMLOGExternalDriveBackupStatusSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGExternalDriveBackupStatus` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGExternalDriveBackupStatus` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGExternalDriveBackupStatus` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExternalDriveBackupStatus *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGExternalDriveBackupStatus *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGExternalDriveBackupStatus` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGExternalDriveBackupStatus` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGExternalDriveBackupStatus` object.
-///
-+ (DBTEAMLOGExternalDriveBackupStatus *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGExternalDriveBackupStatus *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

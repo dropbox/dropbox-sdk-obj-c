@@ -12,18 +12,19 @@
 @class DBSHARINGFileMemberActionError;
 @class DBSHARINGFileMemberActionIndividualResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileMemberActionIndividualResult` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGFileMemberActionIndividualResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGFileMemberActionIndividualResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,15 +32,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the
 /// `DBSHARINGFileMemberActionIndividualResult` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
-  /// Part of the response for both add_file_member and remove_file_member_v1
-  /// (deprecated). For add_file_member, indicates giving access was
-  /// successful and at what AccessLevel. For remove_file_member_v1, indicates
-  /// member was successfully removed from the file. If AccessLevel is given,
-  /// the member still has access via a parent shared folder.
-  DBSHARINGFileMemberActionIndividualResultSuccess,
+    /// Part of the response for both add_file_member and remove_file_member_v1
+    /// (deprecated). For add_file_member, indicates giving access was
+    /// successful and at what AccessLevel. For remove_file_member_v1, indicates
+    /// member was successfully removed from the file. If AccessLevel is given,
+    /// the member still has access via a parent shared folder.
+    DBSHARINGFileMemberActionIndividualResultSuccess,
 
-  /// User was not able to perform this action.
-  DBSHARINGFileMemberActionIndividualResultMemberError,
+    /// User was not able to perform this action.
+    DBSHARINGFileMemberActionIndividualResultMemberError,
 
 };
 
@@ -62,101 +63,103 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) 
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "success".
-///
+/// 
 /// Description of the "success" tag state: Part of the response for both
 /// add_file_member and remove_file_member_v1 (deprecated). For add_file_member,
 /// indicates giving access was successful and at what AccessLevel. For
 /// remove_file_member_v1, indicates member was successfully removed from the
 /// file. If AccessLevel is given, the member still has access via a parent
 /// shared folder.
-///
+/// 
 /// @param success Part of the response for both add_file_member and
 /// remove_file_member_v1 (deprecated). For add_file_member, indicates giving
 /// access was successful and at what AccessLevel. For remove_file_member_v1,
 /// indicates member was successfully removed from the file. If AccessLevel is
 /// given, the member still has access via a parent shared folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSuccess:(nullable DBSHARINGAccessLevel *)success;
 
-///
+/// 
 /// Initializes union class with tag state of "member_error".
-///
+/// 
 /// Description of the "member_error" tag state: User was not able to perform
 /// this action.
-///
+/// 
 /// @param memberError User was not able to perform this action.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMemberError:(DBSHARINGFileMemberActionError *)memberError;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "success".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `success` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "success".
-///
+/// 
 - (BOOL)isSuccess;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "member_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `memberError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "member_error".
-///
+/// 
 - (BOOL)isMemberError;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGFileMemberActionIndividualResult`
 /// union.
-///
-@interface DBSHARINGFileMemberActionIndividualResultSerializer : NSObject
+/// 
+@interface DBSHARINGFileMemberActionIndividualResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGFileMemberActionIndividualResult` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBSHARINGFileMemberActionIndividualResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGFileMemberActionIndividualResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGFileMemberActionIndividualResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGFileMemberActionIndividualResult *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGFileMemberActionIndividualResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGFileMemberActionIndividualResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGFileMemberActionIndividualResult`
 /// object.
-///
-+ (DBSHARINGFileMemberActionIndividualResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGFileMemberActionIndividualResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

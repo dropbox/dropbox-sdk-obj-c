@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedFoldersCreateReportType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFoldersCreateReportType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedFoldersCreateReportType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedFoldersCreateReportType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFoldersCreateReportType` struct.
-///
-@interface DBTEAMLOGSharedFoldersCreateReportTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedFoldersCreateReportTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedFoldersCreateReportType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedFoldersCreateReportType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFoldersCreateReportType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFoldersCreateReportType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedFoldersCreateReportType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedFoldersCreateReportType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedFoldersCreateReportType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedFoldersCreateReportType`
 /// object.
-///
-+ (DBTEAMLOGSharedFoldersCreateReportType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedFoldersCreateReportType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

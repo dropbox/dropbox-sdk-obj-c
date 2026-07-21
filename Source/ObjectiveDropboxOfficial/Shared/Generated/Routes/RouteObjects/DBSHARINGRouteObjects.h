@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Sharing namespace. Each route in the Sharing
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBSHARINGRouteObjects : NSObject
+/// 
+@interface DBSHARINGRouteObjects : NSObject 
 
 /// Accessor method for the addFileMember route object.
 + (DBRoute *)DBSHARINGAddFileMember;
@@ -152,3 +153,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

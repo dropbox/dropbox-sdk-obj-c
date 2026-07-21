@@ -12,20 +12,21 @@
 @class DBSHARINGLinkAudience;
 @class DBTEAMLOGSharedLinkSettingsChangeAudienceDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkSettingsChangeAudienceDetails` struct.
-///
+/// 
 /// Changed the audience of the shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkSettingsChangeAudienceDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkSettingsChangeAudienceDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -43,67 +44,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
 /// @param dNewValue New link audience value.
 /// @param sharedContentLink Shared content link.
 /// @param previousValue Previous link audience value.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel
-                                       dNewValue:(DBSHARINGLinkAudience *)dNewValue
-                               sharedContentLink:(nullable NSString *)sharedContentLink
-                                   previousValue:(nullable DBSHARINGLinkAudience *)previousValue;
+/// 
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel dNewValue:(DBSHARINGLinkAudience *)dNewValue sharedContentLink:(nullable NSString *)sharedContentLink previousValue:(nullable DBSHARINGLinkAudience *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sharedContentAccessLevel Shared content access level.
 /// @param dNewValue New link audience value.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel
-                                       dNewValue:(DBSHARINGLinkAudience *)dNewValue;
+/// 
+- (instancetype)initWithSharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel dNewValue:(DBSHARINGLinkAudience *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkSettingsChangeAudienceDetails`
 /// struct.
-///
-@interface DBTEAMLOGSharedLinkSettingsChangeAudienceDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkSettingsChangeAudienceDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkSettingsChangeAudienceDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedLinkSettingsChangeAudienceDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsChangeAudienceDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkSettingsChangeAudienceDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkSettingsChangeAudienceDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkSettingsChangeAudienceDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkSettingsChangeAudienceDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedLinkSettingsChangeAudienceDetails` object.
-///
-+ (DBTEAMLOGSharedLinkSettingsChangeAudienceDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkSettingsChangeAudienceDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

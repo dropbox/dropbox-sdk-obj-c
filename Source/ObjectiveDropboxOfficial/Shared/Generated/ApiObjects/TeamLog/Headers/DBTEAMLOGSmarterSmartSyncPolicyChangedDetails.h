@@ -11,20 +11,21 @@
 @class DBTEAMLOGSmarterSmartSyncPolicyChangedDetails;
 @class DBTEAMPOLICIESSmarterSmartSyncPolicyState;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SmarterSmartSyncPolicyChangedDetails` struct.
-///
+/// 
 /// Changed automatic Smart Sync setting for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSmarterSmartSyncPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSmarterSmartSyncPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous automatic Smart Sync setting.
 /// @param dNewValue New automatic Smart Sync setting.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMPOLICIESSmarterSmartSyncPolicyState *)previousValue
-                            dNewValue:(DBTEAMPOLICIESSmarterSmartSyncPolicyState *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMPOLICIESSmarterSmartSyncPolicyState *)previousValue dNewValue:(DBTEAMPOLICIESSmarterSmartSyncPolicyState *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SmarterSmartSyncPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGSmarterSmartSyncPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSmarterSmartSyncPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSmarterSmartSyncPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSmarterSmartSyncPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSmarterSmartSyncPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSmarterSmartSyncPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSmarterSmartSyncPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSmarterSmartSyncPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSmarterSmartSyncPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSmarterSmartSyncPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGSmarterSmartSyncPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSmarterSmartSyncPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

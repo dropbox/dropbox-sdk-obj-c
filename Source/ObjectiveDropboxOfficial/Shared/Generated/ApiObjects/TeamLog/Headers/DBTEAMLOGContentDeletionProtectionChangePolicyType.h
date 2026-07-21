@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGContentDeletionProtectionChangePolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ContentDeletionProtectionChangePolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGContentDeletionProtectionChangePolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGContentDeletionProtectionChangePolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ContentDeletionProtectionChangePolicyType`
 /// struct.
-///
-@interface DBTEAMLOGContentDeletionProtectionChangePolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGContentDeletionProtectionChangePolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGContentDeletionProtectionChangePolicyType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGContentDeletionProtectionChangePolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGContentDeletionProtectionChangePolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGContentDeletionProtectionChangePolicyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGContentDeletionProtectionChangePolicyType` object.
-///
-+ (DBTEAMLOGContentDeletionProtectionChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGContentDeletionProtectionChangePolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

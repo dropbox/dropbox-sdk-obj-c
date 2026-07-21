@@ -11,20 +11,21 @@
 @class DBFILEPROPERTIESPropertyField;
 @class DBFILEPROPERTIESPropertyGroupUpdate;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PropertyGroupUpdate` struct.
-///
+/// 
 /// Property routes
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEPROPERTIESPropertyGroupUpdate : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEPROPERTIESPropertyGroupUpdate : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,65 +42,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param templateId A unique identifier for a property template.
 /// @param addOrUpdateFields Property fields to update. If the property field
 /// already exists, it is updated. If the property field doesn't exist, it will
 /// be created as long as the property group already exists.
 /// @param removeFields Property fields to remove (by name), provided they
 /// exist.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTemplateId:(NSString *)templateId
-                 addOrUpdateFields:(nullable NSArray<DBFILEPROPERTIESPropertyField *> *)addOrUpdateFields
-                      removeFields:(nullable NSArray<NSString *> *)removeFields;
+/// 
+- (instancetype)initWithTemplateId:(NSString *)templateId addOrUpdateFields:(nullable NSArray<DBFILEPROPERTIESPropertyField *> *)addOrUpdateFields removeFields:(nullable NSArray<NSString *> *)removeFields;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param templateId A unique identifier for a property template.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTemplateId:(NSString *)templateId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PropertyGroupUpdate` struct.
-///
-@interface DBFILEPROPERTIESPropertyGroupUpdateSerializer : NSObject
+/// 
+@interface DBFILEPROPERTIESPropertyGroupUpdateSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEPROPERTIESPropertyGroupUpdate` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEPROPERTIESPropertyGroupUpdate` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertyGroupUpdate` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEPROPERTIESPropertyGroupUpdate *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEPROPERTIESPropertyGroupUpdate *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEPROPERTIESPropertyGroupUpdate` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertyGroupUpdate` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEPROPERTIESPropertyGroupUpdate`
 /// object.
-///
-+ (DBFILEPROPERTIESPropertyGroupUpdate *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEPROPERTIESPropertyGroupUpdate *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

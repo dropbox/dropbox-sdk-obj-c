@@ -11,20 +11,21 @@
 @class DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails;
 @class DBTEAMLOGSpaceCapsType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberSpaceLimitsChangeCapsTypePolicyDetails` struct.
-///
+/// 
 /// Changed member space limit type for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,53 +37,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous space limit type.
 /// @param dNewValue New space limit type.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGSpaceCapsType *)previousValue
-                            dNewValue:(DBTEAMLOGSpaceCapsType *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGSpaceCapsType *)previousValue dNewValue:(DBTEAMLOGSpaceCapsType *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `MemberSpaceLimitsChangeCapsTypePolicyDetails` struct.
-///
-@interface DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails` object.
-///
-+ (DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberSpaceLimitsChangeCapsTypePolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

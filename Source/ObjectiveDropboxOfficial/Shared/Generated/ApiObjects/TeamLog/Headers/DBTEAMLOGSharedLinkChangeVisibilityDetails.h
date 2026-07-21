@@ -11,20 +11,21 @@
 @class DBTEAMLOGSharedLinkChangeVisibilityDetails;
 @class DBTEAMLOGSharedLinkVisibility;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkChangeVisibilityDetails` struct.
-///
+/// 
 /// Changed visibility of shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkChangeVisibilityDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkChangeVisibilityDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,64 +41,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New shared link visibility.
 /// @param previousValue Previous shared link visibility. Might be missing due
 /// to historical data gap.
 /// @param isConsolidationAction Indicates whether this was a consolidation
 /// action by system.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGSharedLinkVisibility *)dNewValue
-                    previousValue:(nullable DBTEAMLOGSharedLinkVisibility *)previousValue
-            isConsolidationAction:(nullable NSNumber *)isConsolidationAction;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGSharedLinkVisibility *)dNewValue previousValue:(nullable DBTEAMLOGSharedLinkVisibility *)previousValue isConsolidationAction:(nullable NSNumber *)isConsolidationAction;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New shared link visibility.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGSharedLinkVisibility *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkChangeVisibilityDetails` struct.
-///
-@interface DBTEAMLOGSharedLinkChangeVisibilityDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkChangeVisibilityDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkChangeVisibilityDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedLinkChangeVisibilityDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkChangeVisibilityDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkChangeVisibilityDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkChangeVisibilityDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkChangeVisibilityDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkChangeVisibilityDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedLinkChangeVisibilityDetails`
 /// object.
-///
-+ (DBTEAMLOGSharedLinkChangeVisibilityDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkChangeVisibilityDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

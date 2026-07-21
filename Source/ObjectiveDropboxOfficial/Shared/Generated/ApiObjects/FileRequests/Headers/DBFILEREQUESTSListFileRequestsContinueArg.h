@@ -10,18 +10,19 @@
 
 @class DBFILEREQUESTSListFileRequestsContinueArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFileRequestsContinueArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSListFileRequestsContinueArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSListFileRequestsContinueArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,49 +32,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param cursor The cursor returned by the previous API call specified in the
 /// endpoint description.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCursor:(NSString *)cursor;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListFileRequestsContinueArg` struct.
-///
-@interface DBFILEREQUESTSListFileRequestsContinueArgSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSListFileRequestsContinueArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSListFileRequestsContinueArg` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBFILEREQUESTSListFileRequestsContinueArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSListFileRequestsContinueArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSListFileRequestsContinueArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSListFileRequestsContinueArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSListFileRequestsContinueArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSListFileRequestsContinueArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSListFileRequestsContinueArg`
 /// object.
-///
-+ (DBFILEREQUESTSListFileRequestsContinueArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSListFileRequestsContinueArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

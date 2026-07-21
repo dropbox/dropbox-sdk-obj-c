@@ -11,29 +11,30 @@
 @class DBFILESGetCopyReferenceError;
 @class DBFILESLookupError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetCopyReferenceError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGetCopyReferenceError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGetCopyReferenceError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBFILESGetCopyReferenceErrorTag` enum type represents the possible tag
 /// states with which the `DBFILESGetCopyReferenceError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetCopyReferenceErrorTag) {
-  /// (no description).
-  DBFILESGetCopyReferenceErrorPath,
+    /// (no description).
+    DBFILESGetCopyReferenceErrorPath,
 
-  /// (no description).
-  DBFILESGetCopyReferenceErrorOther,
+    /// (no description).
+    DBFILESGetCopyReferenceErrorOther,
 
 };
 
@@ -46,80 +47,82 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESGetCopyReferenceErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "path".
-///
+/// 
 /// @param path (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(DBFILESLookupError *)path;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "path".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `path` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "path".
-///
+/// 
 - (BOOL)isPath;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESGetCopyReferenceError` union.
-///
-@interface DBFILESGetCopyReferenceErrorSerializer : NSObject
+/// 
+@interface DBFILESGetCopyReferenceErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGetCopyReferenceError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGetCopyReferenceError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetCopyReferenceError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGetCopyReferenceError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGetCopyReferenceError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGetCopyReferenceError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGetCopyReferenceError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGetCopyReferenceError` object.
-///
-+ (DBFILESGetCopyReferenceError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGetCopyReferenceError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

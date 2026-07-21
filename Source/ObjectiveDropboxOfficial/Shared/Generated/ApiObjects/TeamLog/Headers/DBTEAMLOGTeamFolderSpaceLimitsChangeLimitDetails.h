@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderSpaceLimitsChangeLimitDetails` struct.
-///
+/// 
 /// Changed team folder space limit.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,61 +36,62 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewLimitBytes New limit in bytes.
 /// @param previousLimitBytes Previous limit in bytes.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewLimitBytes:(NSNumber *)dNewLimitBytes
-                    previousLimitBytes:(nullable NSNumber *)previousLimitBytes;
+/// 
+- (instancetype)initWithDNewLimitBytes:(NSNumber *)dNewLimitBytes previousLimitBytes:(nullable NSNumber *)previousLimitBytes;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewLimitBytes New limit in bytes.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewLimitBytes:(NSNumber *)dNewLimitBytes;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamFolderSpaceLimitsChangeLimitDetails`
 /// struct.
-///
-@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails` object.
-///
-+ (DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderSpaceLimitsChangeLimitDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

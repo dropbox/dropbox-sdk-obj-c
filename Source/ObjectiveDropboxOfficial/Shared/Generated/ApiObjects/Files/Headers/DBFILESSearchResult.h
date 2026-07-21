@@ -11,18 +11,19 @@
 @class DBFILESSearchMatch;
 @class DBFILESSearchResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SearchResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESSearchResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESSearchResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,50 +40,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param matches A list (possibly empty) of matches for the query.
 /// @param more Used for paging. If true, indicates there is another page of
 /// results available that can be fetched by calling `search` again.
 /// @param start Used for paging. Value to set the start argument to when
 /// calling `search` to fetch the next page of results.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMatches:(NSArray<DBFILESSearchMatch *> *)matches more:(NSNumber *)more start:(NSNumber *)start;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SearchResult` struct.
-///
-@interface DBFILESSearchResultSerializer : NSObject
+/// 
+@interface DBFILESSearchResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESSearchResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESSearchResult` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSearchResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESSearchResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESSearchResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESSearchResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESSearchResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESSearchResult` object.
-///
-+ (DBFILESSearchResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESSearchResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

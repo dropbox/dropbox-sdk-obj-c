@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSignSignatureRequestReminderSentDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SignSignatureRequestReminderSentDetails` struct.
-///
+/// 
 /// Sent signature request reminder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSignSignatureRequestReminderSentDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSignSignatureRequestReminderSentDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param recipient The recipient of the signature request.
 /// @param fileName The name of the related file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRecipient:(NSString *)recipient fileName:(NSString *)fileName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SignSignatureRequestReminderSentDetails`
 /// struct.
-///
-@interface DBTEAMLOGSignSignatureRequestReminderSentDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSignSignatureRequestReminderSentDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSignSignatureRequestReminderSentDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSignSignatureRequestReminderSentDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignSignatureRequestReminderSentDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignSignatureRequestReminderSentDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSignSignatureRequestReminderSentDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSignSignatureRequestReminderSentDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignSignatureRequestReminderSentDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSignSignatureRequestReminderSentDetails` object.
-///
-+ (DBTEAMLOGSignSignatureRequestReminderSentDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSignSignatureRequestReminderSentDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

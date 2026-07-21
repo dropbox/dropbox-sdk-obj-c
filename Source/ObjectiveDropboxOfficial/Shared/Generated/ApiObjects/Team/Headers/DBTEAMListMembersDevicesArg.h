@@ -10,18 +10,19 @@
 
 @class DBTEAMListMembersDevicesArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListMembersDevicesArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMListMembersDevicesArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMListMembersDevicesArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -42,9 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param cursor At the first call to the `devicesListMembersDevices` the
 /// cursor shouldn't be passed. Then, if the result of the call includes a
 /// cursor, the following requests should include the received cursors in order
@@ -54,54 +55,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// members.
 /// @param includeMobileClients Whether to list mobile clients of the team
 /// members.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithCursor:(nullable NSString *)cursor
-            includeWebSessions:(nullable NSNumber *)includeWebSessions
-         includeDesktopClients:(nullable NSNumber *)includeDesktopClients
-          includeMobileClients:(nullable NSNumber *)includeMobileClients;
+/// 
+- (instancetype)initWithCursor:(nullable NSString *)cursor includeWebSessions:(nullable NSNumber *)includeWebSessions includeDesktopClients:(nullable NSNumber *)includeDesktopClients includeMobileClients:(nullable NSNumber *)includeMobileClients;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ListMembersDevicesArg` struct.
-///
-@interface DBTEAMListMembersDevicesArgSerializer : NSObject
+/// 
+@interface DBTEAMListMembersDevicesArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMListMembersDevicesArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMListMembersDevicesArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMListMembersDevicesArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMListMembersDevicesArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMListMembersDevicesArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMListMembersDevicesArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMListMembersDevicesArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMListMembersDevicesArg` object.
-///
-+ (DBTEAMListMembersDevicesArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMListMembersDevicesArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

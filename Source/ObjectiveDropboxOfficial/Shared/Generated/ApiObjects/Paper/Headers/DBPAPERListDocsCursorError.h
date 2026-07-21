@@ -11,29 +11,30 @@
 @class DBPAPERListDocsCursorError;
 @class DBPAPERPaperApiCursorError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListDocsCursorError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERListDocsCursorError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERListDocsCursorError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBPAPERListDocsCursorErrorTag` enum type represents the possible tag
 /// states with which the `DBPAPERListDocsCursorError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBPAPERListDocsCursorErrorTag) {
-  /// (no description).
-  DBPAPERListDocsCursorErrorCursorError,
+    /// (no description).
+    DBPAPERListDocsCursorErrorCursorError,
 
-  /// (no description).
-  DBPAPERListDocsCursorErrorOther,
+    /// (no description).
+    DBPAPERListDocsCursorErrorOther,
 
 };
 
@@ -46,79 +47,81 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERListDocsCursorErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "cursor_error".
-///
+/// 
 /// @param cursorError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithCursorError:(DBPAPERPaperApiCursorError *)cursorError;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "cursor_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `cursorError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "cursor_error".
-///
+/// 
 - (BOOL)isCursorError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBPAPERListDocsCursorError` union.
-///
-@interface DBPAPERListDocsCursorErrorSerializer : NSObject
+/// 
+@interface DBPAPERListDocsCursorErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERListDocsCursorError` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERListDocsCursorError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERListDocsCursorError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERListDocsCursorError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERListDocsCursorError *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERListDocsCursorError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERListDocsCursorError` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERListDocsCursorError` object.
-///
-+ (DBPAPERListDocsCursorError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERListDocsCursorError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

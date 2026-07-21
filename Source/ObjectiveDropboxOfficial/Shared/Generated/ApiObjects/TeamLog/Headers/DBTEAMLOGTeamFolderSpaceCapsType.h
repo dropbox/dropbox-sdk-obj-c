@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamFolderSpaceCapsType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderSpaceCapsType` union.
-///
+/// 
 /// Team folder space limit enforcement type
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamFolderSpaceCapsType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamFolderSpaceCapsType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,17 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMLOGTeamFolderSpaceCapsType` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamFolderSpaceCapsTypeTag) {
-  /// (no description).
-  DBTEAMLOGTeamFolderSpaceCapsTypeHard,
+    /// (no description).
+    DBTEAMLOGTeamFolderSpaceCapsTypeHard,
 
-  /// (no description).
-  DBTEAMLOGTeamFolderSpaceCapsTypeOff,
+    /// (no description).
+    DBTEAMLOGTeamFolderSpaceCapsTypeOff,
 
-  /// (no description).
-  DBTEAMLOGTeamFolderSpaceCapsTypeSoft,
+    /// (no description).
+    DBTEAMLOGTeamFolderSpaceCapsTypeSoft,
 
-  /// (no description).
-  DBTEAMLOGTeamFolderSpaceCapsTypeOther,
+    /// (no description).
+    DBTEAMLOGTeamFolderSpaceCapsTypeOther,
 
 };
 
@@ -50,103 +51,105 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamFolderSpaceCapsTypeTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "hard".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithHard;
 
-///
+/// 
 /// Initializes union class with tag state of "off".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOff;
 
-///
+/// 
 /// Initializes union class with tag state of "soft".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSoft;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "hard".
-///
+/// 
 /// @return Whether the union's current tag state has value "hard".
-///
+/// 
 - (BOOL)isHard;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "off".
-///
+/// 
 /// @return Whether the union's current tag state has value "off".
-///
+/// 
 - (BOOL)isOff;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "soft".
-///
+/// 
 /// @return Whether the union's current tag state has value "soft".
-///
+/// 
 - (BOOL)isSoft;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGTeamFolderSpaceCapsType` union.
-///
-@interface DBTEAMLOGTeamFolderSpaceCapsTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamFolderSpaceCapsTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamFolderSpaceCapsType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGTeamFolderSpaceCapsType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceCapsType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamFolderSpaceCapsType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamFolderSpaceCapsType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamFolderSpaceCapsType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamFolderSpaceCapsType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamFolderSpaceCapsType` object.
-///
-+ (DBTEAMLOGTeamFolderSpaceCapsType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamFolderSpaceCapsType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

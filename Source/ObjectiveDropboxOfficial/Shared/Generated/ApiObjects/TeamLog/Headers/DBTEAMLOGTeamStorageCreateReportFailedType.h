@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGTeamStorageCreateReportFailedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamStorageCreateReportFailedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamStorageCreateReportFailedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamStorageCreateReportFailedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamStorageCreateReportFailedType` struct.
-///
-@interface DBTEAMLOGTeamStorageCreateReportFailedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamStorageCreateReportFailedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamStorageCreateReportFailedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamStorageCreateReportFailedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamStorageCreateReportFailedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamStorageCreateReportFailedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamStorageCreateReportFailedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamStorageCreateReportFailedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamStorageCreateReportFailedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamStorageCreateReportFailedType`
 /// object.
-///
-+ (DBTEAMLOGTeamStorageCreateReportFailedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamStorageCreateReportFailedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

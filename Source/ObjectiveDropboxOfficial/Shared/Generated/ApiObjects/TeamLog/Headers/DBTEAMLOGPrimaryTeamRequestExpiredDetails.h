@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPrimaryTeamRequestExpiredDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PrimaryTeamRequestExpiredDetails` struct.
-///
+/// 
 /// Team merge request expiration details shown to the primary team
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPrimaryTeamRequestExpiredDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPrimaryTeamRequestExpiredDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param secondaryTeam The secondary team name.
 /// @param sentBy The name of the secondary team admin who sent the request
 /// originally.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSecondaryTeam:(NSString *)secondaryTeam sentBy:(NSString *)sentBy;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PrimaryTeamRequestExpiredDetails` struct.
-///
-@interface DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPrimaryTeamRequestExpiredDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPrimaryTeamRequestExpiredDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPrimaryTeamRequestExpiredDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPrimaryTeamRequestExpiredDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPrimaryTeamRequestExpiredDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPrimaryTeamRequestExpiredDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPrimaryTeamRequestExpiredDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPrimaryTeamRequestExpiredDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGPrimaryTeamRequestExpiredDetails`
 /// object.
-///
-+ (DBTEAMLOGPrimaryTeamRequestExpiredDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPrimaryTeamRequestExpiredDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

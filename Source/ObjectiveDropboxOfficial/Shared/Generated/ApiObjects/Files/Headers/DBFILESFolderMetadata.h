@@ -6,25 +6,26 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESMetadata.h"
 #import "DBSerializableProtocol.h"
+#import "DBFILESMetadata.h"
 
 @class DBFILEPROPERTIESPropertyGroup;
 @class DBFILESFolderMetadata;
 @class DBFILESFolderSharingInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FolderMetadata` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESFolderMetadata : DBFILESMetadata <DBSerializable, NSCopying>
+/// 
+@interface DBFILESFolderMetadata : DBFILESMetadata <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -45,9 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
 /// @param id_ A unique identifier for the folder.
@@ -71,60 +72,54 @@ NS_ASSUME_NONNULL_BEGIN
 /// properties with the property template specified. Note that only properties
 /// associated with user-owned templates, not team-owned templates, can be
 /// attached to folders.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                         id_:(NSString *)id_
-                   pathLower:(nullable NSString *)pathLower
-                 pathDisplay:(nullable NSString *)pathDisplay
-        parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                  previewUrl:(nullable NSString *)previewUrl
-              sharedFolderId:(nullable NSString *)sharedFolderId
-                 sharingInfo:(nullable DBFILESFolderSharingInfo *)sharingInfo
-              propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups;
+/// 
+- (instancetype)initWithName:(NSString *)name id_:(NSString *)id_ pathLower:(nullable NSString *)pathLower pathDisplay:(nullable NSString *)pathDisplay parentSharedFolderId:(nullable NSString *)parentSharedFolderId previewUrl:(nullable NSString *)previewUrl sharedFolderId:(nullable NSString *)sharedFolderId sharingInfo:(nullable DBFILESFolderSharingInfo *)sharingInfo propertyGroups:(nullable NSArray<DBFILEPROPERTIESPropertyGroup *> *)propertyGroups;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param name The last component of the path (including extension). This never
 /// contains a slash.
 /// @param id_ A unique identifier for the folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithName:(NSString *)name id_:(NSString *)id_;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FolderMetadata` struct.
-///
-@interface DBFILESFolderMetadataSerializer : NSObject
+/// 
+@interface DBFILESFolderMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESFolderMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESFolderMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESFolderMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESFolderMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESFolderMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESFolderMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESFolderMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESFolderMetadata` object.
-///
-+ (DBFILESFolderMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESFolderMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

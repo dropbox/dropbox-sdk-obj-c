@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGShareFolderArgBase.h"
 #import "DBSerializableProtocol.h"
+#import "DBSHARINGShareFolderArgBase.h"
 
 @class DBSHARINGAccessInheritance;
 @class DBSHARINGAclUpdatePolicy;
@@ -18,18 +18,19 @@
 @class DBSHARINGSharedLinkPolicy;
 @class DBSHARINGViewerInfoPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShareFolderArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGShareFolderArg : DBSHARINGShareFolderArgBase <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGShareFolderArg : DBSHARINGShareFolderArgBase <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -44,9 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path The path or the file id to the folder to share. If it does not
 /// exist, then a new one is created.
 /// @param aclUpdatePolicy Who can add and remove members of this shared folder.
@@ -64,59 +65,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBSHARINGSharedFolderMetadata` field describing the actions the
 /// authenticated user can perform on the folder.
 /// @param linkSettings Settings on the link for this folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPath:(NSString *)path
-             aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
-                  forceAsync:(nullable NSNumber *)forceAsync
-                memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy
-            sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
-            viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy
-           accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance
-                     actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions
-                linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings;
+/// 
+- (instancetype)initWithPath:(NSString *)path aclUpdatePolicy:(nullable DBSHARINGAclUpdatePolicy *)aclUpdatePolicy forceAsync:(nullable NSNumber *)forceAsync memberPolicy:(nullable DBSHARINGMemberPolicy *)memberPolicy sharedLinkPolicy:(nullable DBSHARINGSharedLinkPolicy *)sharedLinkPolicy viewerInfoPolicy:(nullable DBSHARINGViewerInfoPolicy *)viewerInfoPolicy accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance actions:(nullable NSArray<DBSHARINGFolderAction *> *)actions linkSettings:(nullable DBSHARINGLinkSettings *)linkSettings;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param path The path or the file id to the folder to share. If it does not
 /// exist, then a new one is created.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShareFolderArg` struct.
-///
-@interface DBSHARINGShareFolderArgSerializer : NSObject
+/// 
+@interface DBSHARINGShareFolderArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGShareFolderArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGShareFolderArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGShareFolderArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGShareFolderArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGShareFolderArg *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGShareFolderArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGShareFolderArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGShareFolderArg` object.
-///
-+ (DBSHARINGShareFolderArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGShareFolderArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

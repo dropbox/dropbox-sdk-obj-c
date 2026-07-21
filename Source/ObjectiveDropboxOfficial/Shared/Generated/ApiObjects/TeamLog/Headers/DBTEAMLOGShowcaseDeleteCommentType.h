@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGShowcaseDeleteCommentType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseDeleteCommentType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseDeleteCommentType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseDeleteCommentType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseDeleteCommentType` struct.
-///
-@interface DBTEAMLOGShowcaseDeleteCommentTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseDeleteCommentTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseDeleteCommentType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGShowcaseDeleteCommentType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseDeleteCommentType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseDeleteCommentType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseDeleteCommentType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseDeleteCommentType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseDeleteCommentType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGShowcaseDeleteCommentType` object.
-///
-+ (DBTEAMLOGShowcaseDeleteCommentType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseDeleteCommentType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

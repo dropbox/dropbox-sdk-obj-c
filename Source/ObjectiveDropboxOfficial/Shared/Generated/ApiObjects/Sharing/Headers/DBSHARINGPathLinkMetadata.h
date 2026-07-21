@@ -6,26 +6,27 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGLinkMetadata.h"
 #import "DBSerializableProtocol.h"
+#import "DBSHARINGLinkMetadata.h"
 
 @class DBSHARINGPathLinkMetadata;
 @class DBSHARINGVisibility;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PathLinkMetadata` struct.
-///
+/// 
 /// Metadata for a path-based shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGPathLinkMetadata : DBSHARINGLinkMetadata <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGPathLinkMetadata : DBSHARINGLinkMetadata <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,62 +35,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param url URL of the shared link.
 /// @param visibility Who can access the link.
 /// @param path Path in user's Dropbox.
 /// @param expires Expiration time, if set. By default the link won't expire.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithUrl:(NSString *)url
-                 visibility:(DBSHARINGVisibility *)visibility
-                       path:(NSString *)path
-                    expires:(nullable NSDate *)expires;
+/// 
+- (instancetype)initWithUrl:(NSString *)url visibility:(DBSHARINGVisibility *)visibility path:(NSString *)path expires:(nullable NSDate *)expires;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param url URL of the shared link.
 /// @param visibility Who can access the link.
 /// @param path Path in user's Dropbox.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUrl:(NSString *)url visibility:(DBSHARINGVisibility *)visibility path:(NSString *)path;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PathLinkMetadata` struct.
-///
-@interface DBSHARINGPathLinkMetadataSerializer : NSObject
+/// 
+@interface DBSHARINGPathLinkMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGPathLinkMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGPathLinkMetadata` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGPathLinkMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGPathLinkMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGPathLinkMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGPathLinkMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGPathLinkMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGPathLinkMetadata` object.
-///
-+ (DBSHARINGPathLinkMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGPathLinkMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,20 +12,21 @@
 @class DBTEAMLOGGeoLocationLogInfo;
 @class DBTEAMLOGOriginLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `OriginLogInfo` struct.
-///
+/// 
 /// The origin from which the actor performed the action.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGOriginLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGOriginLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,58 +38,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accessMethod The method that was used to perform the action.
 /// @param geoLocation Geographic location details.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccessMethod:(DBTEAMLOGAccessMethodLogInfo *)accessMethod
-                         geoLocation:(nullable DBTEAMLOGGeoLocationLogInfo *)geoLocation;
+/// 
+- (instancetype)initWithAccessMethod:(DBTEAMLOGAccessMethodLogInfo *)accessMethod geoLocation:(nullable DBTEAMLOGGeoLocationLogInfo *)geoLocation;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param accessMethod The method that was used to perform the action.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessMethod:(DBTEAMLOGAccessMethodLogInfo *)accessMethod;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `OriginLogInfo` struct.
-///
-@interface DBTEAMLOGOriginLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGOriginLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGOriginLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGOriginLogInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGOriginLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGOriginLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGOriginLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGOriginLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGOriginLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGOriginLogInfo` object.
-///
-+ (DBTEAMLOGOriginLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGOriginLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

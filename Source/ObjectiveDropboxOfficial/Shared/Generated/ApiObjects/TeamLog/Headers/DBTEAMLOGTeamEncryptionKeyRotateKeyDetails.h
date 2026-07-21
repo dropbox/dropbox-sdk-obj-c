@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGTeamEncryptionKeyRotateKeyDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamEncryptionKeyRotateKeyDetails` struct.
-///
+/// 
 /// Rotated team encryption key.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamEncryptionKeyRotateKeyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyRotateKeyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamEncryptionKeyRotateKeyDetails` struct.
-///
-@interface DBTEAMLOGTeamEncryptionKeyRotateKeyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamEncryptionKeyRotateKeyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamEncryptionKeyRotateKeyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamEncryptionKeyRotateKeyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyRotateKeyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamEncryptionKeyRotateKeyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamEncryptionKeyRotateKeyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamEncryptionKeyRotateKeyDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamEncryptionKeyRotateKeyDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGTeamEncryptionKeyRotateKeyDetails`
 /// object.
-///
-+ (DBTEAMLOGTeamEncryptionKeyRotateKeyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamEncryptionKeyRotateKeyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

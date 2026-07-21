@@ -11,20 +11,21 @@
 @class DBAUTHRateLimitError;
 @class DBAUTHRateLimitReason;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RateLimitError` struct.
-///
+/// 
 /// Error occurred because the app is being rate limited.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBAUTHRateLimitError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBAUTHRateLimitError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,58 +38,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param reason The reason why the app is being rate limited.
 /// @param retryAfter The number of seconds that the app should wait before
 /// making another request.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason retryAfter:(nullable NSNumber *)retryAfter;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param reason The reason why the app is being rate limited.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithReason:(DBAUTHRateLimitReason *)reason;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RateLimitError` struct.
-///
-@interface DBAUTHRateLimitErrorSerializer : NSObject
+/// 
+@interface DBAUTHRateLimitErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBAUTHRateLimitError` instances.
-///
+/// 
 /// @param instance An instance of the `DBAUTHRateLimitError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBAUTHRateLimitError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBAUTHRateLimitError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBAUTHRateLimitError *)instance;
 
-///
+/// 
 /// Deserializes `DBAUTHRateLimitError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBAUTHRateLimitError` API object.
-///
+/// 
 /// @return An instantiation of the `DBAUTHRateLimitError` object.
-///
-+ (DBAUTHRateLimitError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBAUTHRateLimitError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

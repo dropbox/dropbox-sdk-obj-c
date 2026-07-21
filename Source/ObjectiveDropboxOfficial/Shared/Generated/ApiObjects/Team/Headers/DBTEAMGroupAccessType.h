@@ -10,31 +10,32 @@
 
 @class DBTEAMGroupAccessType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupAccessType` union.
-///
+/// 
 /// Role of a user in group.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMGroupAccessType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMGroupAccessType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMGroupAccessTypeTag` enum type represents the possible tag states
 /// with which the `DBTEAMGroupAccessType` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMGroupAccessTypeTag) {
-  /// User is a member of the group, but has no special permissions.
-  DBTEAMGroupAccessTypeMember,
+    /// User is a member of the group, but has no special permissions.
+    DBTEAMGroupAccessTypeMember,
 
-  /// User can rename the group, and add/remove members.
-  DBTEAMGroupAccessTypeOwner,
+    /// User can rename the group, and add/remove members.
+    DBTEAMGroupAccessTypeOwner,
 
 };
 
@@ -43,80 +44,82 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMGroupAccessTypeTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "member".
-///
+/// 
 /// Description of the "member" tag state: User is a member of the group, but
 /// has no special permissions.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMember;
 
-///
+/// 
 /// Initializes union class with tag state of "owner".
-///
+/// 
 /// Description of the "owner" tag state: User can rename the group, and
 /// add/remove members.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOwner;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "member".
-///
+/// 
 /// @return Whether the union's current tag state has value "member".
-///
+/// 
 - (BOOL)isMember;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "owner".
-///
+/// 
 /// @return Whether the union's current tag state has value "owner".
-///
+/// 
 - (BOOL)isOwner;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMGroupAccessType` union.
-///
-@interface DBTEAMGroupAccessTypeSerializer : NSObject
+/// 
+@interface DBTEAMGroupAccessTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMGroupAccessType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMGroupAccessType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupAccessType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMGroupAccessType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMGroupAccessType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMGroupAccessType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMGroupAccessType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMGroupAccessType` object.
-///
-+ (DBTEAMGroupAccessType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMGroupAccessType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

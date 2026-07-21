@@ -13,18 +13,19 @@
 @class DBTEAMTeamFolderPermanentlyDeleteError;
 @class DBTEAMTeamFolderTeamSharedDropboxError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamFolderPermanentlyDeleteError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamFolderPermanentlyDeleteError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamFolderPermanentlyDeleteError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,17 +33,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMTeamFolderPermanentlyDeleteError`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderPermanentlyDeleteErrorTag) {
-  /// (no description).
-  DBTEAMTeamFolderPermanentlyDeleteErrorAccessError,
+    /// (no description).
+    DBTEAMTeamFolderPermanentlyDeleteErrorAccessError,
 
-  /// (no description).
-  DBTEAMTeamFolderPermanentlyDeleteErrorStatusError,
+    /// (no description).
+    DBTEAMTeamFolderPermanentlyDeleteErrorStatusError,
 
-  /// (no description).
-  DBTEAMTeamFolderPermanentlyDeleteErrorTeamSharedDropboxError,
+    /// (no description).
+    DBTEAMTeamFolderPermanentlyDeleteErrorTeamSharedDropboxError,
 
-  /// (no description).
-  DBTEAMTeamFolderPermanentlyDeleteErrorOther,
+    /// (no description).
+    DBTEAMTeamFolderPermanentlyDeleteErrorOther,
 
 };
 
@@ -63,123 +64,125 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderPermanentlyDeleteErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "access_error".
-///
+/// 
 /// @param accessError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError *)accessError;
 
-///
+/// 
 /// Initializes union class with tag state of "status_error".
-///
+/// 
 /// @param statusError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithStatusError:(DBTEAMTeamFolderInvalidStatusError *)statusError;
 
-///
+/// 
 /// Initializes union class with tag state of "team_shared_dropbox_error".
-///
+/// 
 /// @param teamSharedDropboxError (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamSharedDropboxError:(DBTEAMTeamFolderTeamSharedDropboxError *)teamSharedDropboxError;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "access_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `accessError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "access_error".
-///
+/// 
 - (BOOL)isAccessError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "status_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `statusError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "status_error".
-///
+/// 
 - (BOOL)isStatusError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "team_shared_dropbox_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `teamSharedDropboxError` property, otherwise a runtime exception will be
 /// thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "team_shared_dropbox_error".
-///
+/// 
 - (BOOL)isTeamSharedDropboxError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMTeamFolderPermanentlyDeleteError`
 /// union.
-///
-@interface DBTEAMTeamFolderPermanentlyDeleteErrorSerializer : NSObject
+/// 
+@interface DBTEAMTeamFolderPermanentlyDeleteErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamFolderPermanentlyDeleteError` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamFolderPermanentlyDeleteError`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderPermanentlyDeleteError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderPermanentlyDeleteError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamFolderPermanentlyDeleteError *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamFolderPermanentlyDeleteError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamFolderPermanentlyDeleteError` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamFolderPermanentlyDeleteError`
 /// object.
-///
-+ (DBTEAMTeamFolderPermanentlyDeleteError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamFolderPermanentlyDeleteError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

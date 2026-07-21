@@ -11,20 +11,21 @@
 @class DBTEAMLOGMemberSendInvitePolicy;
 @class DBTEAMLOGMemberSendInvitePolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberSendInvitePolicyChangedDetails` struct.
-///
+/// 
 /// Changed member send invite policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberSendInvitePolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberSendInvitePolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New team member send invite policy.
 /// @param previousValue Previous team member send invite policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGMemberSendInvitePolicy *)dNewValue
-                    previousValue:(DBTEAMLOGMemberSendInvitePolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGMemberSendInvitePolicy *)dNewValue previousValue:(DBTEAMLOGMemberSendInvitePolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberSendInvitePolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGMemberSendInvitePolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberSendInvitePolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberSendInvitePolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberSendInvitePolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSendInvitePolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberSendInvitePolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberSendInvitePolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberSendInvitePolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberSendInvitePolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberSendInvitePolicyChangedDetails` object.
-///
-+ (DBTEAMLOGMemberSendInvitePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberSendInvitePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBFILESUploadSessionAppendBatchError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadSessionAppendBatchError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadSessionAppendBatchError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadSessionAppendBatchError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,20 +30,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBFILESUploadSessionAppendBatchError`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendBatchErrorTag) {
-  /// The request payload must be at most 150 MiB.
-  DBFILESUploadSessionAppendBatchErrorPayloadTooLarge,
+    /// The request payload must be at most 150 MiB.
+    DBFILESUploadSessionAppendBatchErrorPayloadTooLarge,
 
-  /// The content received by the Dropbox server in this call does not match
-  /// the provided content hash.
-  DBFILESUploadSessionAppendBatchErrorContentHashMismatch,
+    /// The content received by the Dropbox server in this call does not match
+    /// the provided content hash.
+    DBFILESUploadSessionAppendBatchErrorContentHashMismatch,
 
-  /// The total length of the content received by the Dropbox server in this
-  /// call does not match the total of the provided lengths in the batch
-  /// arguments.
-  DBFILESUploadSessionAppendBatchErrorLengthMismatch,
+    /// The total length of the content received by the Dropbox server in this
+    /// call does not match the total of the provided lengths in the batch
+    /// arguments.
+    DBFILESUploadSessionAppendBatchErrorLengthMismatch,
 
-  /// (no description).
-  DBFILESUploadSessionAppendBatchErrorOther,
+    /// (no description).
+    DBFILESUploadSessionAppendBatchErrorOther,
 
 };
 
@@ -51,118 +52,120 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadSessionAppendBatchErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "payload_too_large".
-///
+/// 
 /// Description of the "payload_too_large" tag state: The request payload must
 /// be at most 150 MiB.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPayloadTooLarge;
 
-///
+/// 
 /// Initializes union class with tag state of "content_hash_mismatch".
-///
+/// 
 /// Description of the "content_hash_mismatch" tag state: The content received
 /// by the Dropbox server in this call does not match the provided content hash.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithContentHashMismatch;
 
-///
+/// 
 /// Initializes union class with tag state of "length_mismatch".
-///
+/// 
 /// Description of the "length_mismatch" tag state: The total length of the
 /// content received by the Dropbox server in this call does not match the total
 /// of the provided lengths in the batch arguments.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLengthMismatch;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "payload_too_large".
-///
+/// 
 /// @return Whether the union's current tag state has value "payload_too_large".
-///
+/// 
 - (BOOL)isPayloadTooLarge;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "content_hash_mismatch".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "content_hash_mismatch".
-///
+/// 
 - (BOOL)isContentHashMismatch;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "length_mismatch".
-///
+/// 
 /// @return Whether the union's current tag state has value "length_mismatch".
-///
+/// 
 - (BOOL)isLengthMismatch;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESUploadSessionAppendBatchError`
 /// union.
-///
-@interface DBFILESUploadSessionAppendBatchErrorSerializer : NSObject
+/// 
+@interface DBFILESUploadSessionAppendBatchErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadSessionAppendBatchError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadSessionAppendBatchError`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadSessionAppendBatchError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadSessionAppendBatchError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadSessionAppendBatchError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionAppendBatchError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadSessionAppendBatchError`
 /// object.
-///
-+ (DBFILESUploadSessionAppendBatchError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadSessionAppendBatchError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

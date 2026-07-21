@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashPreviewOptOutStatus;
 @class DBTEAMLOGDashPreviewOptOutStatusChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashPreviewOptOutStatusChangedDetails` struct.
-///
+/// 
 /// Changed the preview opt-out status.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashPreviewOptOutStatusChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashPreviewOptOutStatusChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,49 +34,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param optOutStatus The new preview opt-out status.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOptOutStatus:(DBTEAMLOGDashPreviewOptOutStatus *)optOutStatus;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashPreviewOptOutStatusChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGDashPreviewOptOutStatusChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashPreviewOptOutStatusChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashPreviewOptOutStatusChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashPreviewOptOutStatusChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashPreviewOptOutStatusChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashPreviewOptOutStatusChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashPreviewOptOutStatusChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashPreviewOptOutStatusChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashPreviewOptOutStatusChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDashPreviewOptOutStatusChangedDetails` object.
-///
-+ (DBTEAMLOGDashPreviewOptOutStatusChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashPreviewOptOutStatusChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

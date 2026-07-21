@@ -11,18 +11,19 @@
 @class DBFILESImportFormat;
 @class DBFILESPaperCreateArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperCreateArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESPaperCreateArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESPaperCreateArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,49 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param path The fully qualified path to the location in the user's Dropbox
 /// where the Paper Doc should be created. This should include the document's
 /// title and end with .paper.
 /// @param importFormat The format of the provided data.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(NSString *)path importFormat:(DBFILESImportFormat *)importFormat;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperCreateArg` struct.
-///
-@interface DBFILESPaperCreateArgSerializer : NSObject
+/// 
+@interface DBFILESPaperCreateArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESPaperCreateArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESPaperCreateArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESPaperCreateArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESPaperCreateArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESPaperCreateArg *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESPaperCreateArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESPaperCreateArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESPaperCreateArg` object.
-///
-+ (DBFILESPaperCreateArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESPaperCreateArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

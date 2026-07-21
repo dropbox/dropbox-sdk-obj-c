@@ -10,44 +10,45 @@
 
 @class DBRIVIERAMetadataType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MetadataType` union.
-///
+/// 
 /// Which metadata variant is populated in a `GetMetadataResult`, derived from
 /// the file type.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBRIVIERAMetadataType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBRIVIERAMetadataType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBRIVIERAMetadataTypeTag` enum type represents the possible tag states
 /// with which the `DBRIVIERAMetadataType` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataTypeTag) {
-  /// (no description).
-  DBRIVIERAMetadataTypeMetadataTypeUnknown,
+    /// (no description).
+    DBRIVIERAMetadataTypeMetadataTypeUnknown,
 
-  /// (no description).
-  DBRIVIERAMetadataTypeMetadataTypeExif,
+    /// (no description).
+    DBRIVIERAMetadataTypeMetadataTypeExif,
 
-  /// (no description).
-  DBRIVIERAMetadataTypeMetadataTypeMedia,
+    /// (no description).
+    DBRIVIERAMetadataTypeMetadataTypeMedia,
 
-  /// (no description).
-  DBRIVIERAMetadataTypeMetadataTypePdf,
+    /// (no description).
+    DBRIVIERAMetadataTypeMetadataTypePdf,
 
-  /// (no description).
-  DBRIVIERAMetadataTypeMetadataTypeOffice,
+    /// (no description).
+    DBRIVIERAMetadataTypeMetadataTypeOffice,
 
-  /// (no description).
-  DBRIVIERAMetadataTypeOther,
+    /// (no description).
+    DBRIVIERAMetadataTypeOther,
 
 };
 
@@ -56,139 +57,141 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataTypeTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "metadata_type_unknown".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadataTypeUnknown;
 
-///
+/// 
 /// Initializes union class with tag state of "metadata_type_exif".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadataTypeExif;
 
-///
+/// 
 /// Initializes union class with tag state of "metadata_type_media".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadataTypeMedia;
 
-///
+/// 
 /// Initializes union class with tag state of "metadata_type_pdf".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadataTypePdf;
 
-///
+/// 
 /// Initializes union class with tag state of "metadata_type_office".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMetadataTypeOffice;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "metadata_type_unknown".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "metadata_type_unknown".
-///
+/// 
 - (BOOL)isMetadataTypeUnknown;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "metadata_type_exif".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "metadata_type_exif".
-///
+/// 
 - (BOOL)isMetadataTypeExif;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "metadata_type_media".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "metadata_type_media".
-///
+/// 
 - (BOOL)isMetadataTypeMedia;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "metadata_type_pdf".
-///
+/// 
 /// @return Whether the union's current tag state has value "metadata_type_pdf".
-///
+/// 
 - (BOOL)isMetadataTypePdf;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "metadata_type_office".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "metadata_type_office".
-///
+/// 
 - (BOOL)isMetadataTypeOffice;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBRIVIERAMetadataType` union.
-///
-@interface DBRIVIERAMetadataTypeSerializer : NSObject
+/// 
+@interface DBRIVIERAMetadataTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBRIVIERAMetadataType` instances.
-///
+/// 
 /// @param instance An instance of the `DBRIVIERAMetadataType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBRIVIERAMetadataType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBRIVIERAMetadataType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBRIVIERAMetadataType *)instance;
 
-///
+/// 
 /// Deserializes `DBRIVIERAMetadataType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBRIVIERAMetadataType` API object.
-///
+/// 
 /// @return An instantiation of the `DBRIVIERAMetadataType` object.
-///
-+ (DBRIVIERAMetadataType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBRIVIERAMetadataType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGAppBlockedByPermissionsDetails;
 @class DBTEAMLOGAppLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AppBlockedByPermissionsDetails` struct.
-///
+/// 
 /// Failed to connect app for member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAppBlockedByPermissionsDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAppBlockedByPermissionsDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param appInfo Relevant application details.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAppInfo:(DBTEAMLOGAppLogInfo *)appInfo;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AppBlockedByPermissionsDetails` struct.
-///
-@interface DBTEAMLOGAppBlockedByPermissionsDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAppBlockedByPermissionsDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAppBlockedByPermissionsDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAppBlockedByPermissionsDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppBlockedByPermissionsDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppBlockedByPermissionsDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAppBlockedByPermissionsDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAppBlockedByPermissionsDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppBlockedByPermissionsDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAppBlockedByPermissionsDetails`
 /// object.
-///
-+ (DBTEAMLOGAppBlockedByPermissionsDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAppBlockedByPermissionsDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

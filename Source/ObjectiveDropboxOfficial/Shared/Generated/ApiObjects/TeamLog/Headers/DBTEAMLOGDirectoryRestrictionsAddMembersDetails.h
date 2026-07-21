@@ -10,66 +10,69 @@
 
 @class DBTEAMLOGDirectoryRestrictionsAddMembersDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DirectoryRestrictionsAddMembersDetails` struct.
-///
+/// 
 /// Added members to directory restrictions list.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDirectoryRestrictionsAddMembersDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDirectoryRestrictionsAddMembersDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DirectoryRestrictionsAddMembersDetails`
 /// struct.
-///
-@interface DBTEAMLOGDirectoryRestrictionsAddMembersDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDirectoryRestrictionsAddMembersDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDirectoryRestrictionsAddMembersDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDirectoryRestrictionsAddMembersDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDirectoryRestrictionsAddMembersDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDirectoryRestrictionsAddMembersDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDirectoryRestrictionsAddMembersDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDirectoryRestrictionsAddMembersDetails` object.
-///
-+ (DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDirectoryRestrictionsAddMembersDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

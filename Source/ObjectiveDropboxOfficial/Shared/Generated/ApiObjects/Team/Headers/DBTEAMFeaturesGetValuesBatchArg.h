@@ -11,18 +11,19 @@
 @class DBTEAMFeature;
 @class DBTEAMFeaturesGetValuesBatchArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FeaturesGetValuesBatchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMFeaturesGetValuesBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMFeaturesGetValuesBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param features A list of features in Feature. If the list is empty, this
 /// route will return FeaturesGetValuesBatchError.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFeatures:(NSArray<DBTEAMFeature *> *)features;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FeaturesGetValuesBatchArg` struct.
-///
-@interface DBTEAMFeaturesGetValuesBatchArgSerializer : NSObject
+/// 
+@interface DBTEAMFeaturesGetValuesBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMFeaturesGetValuesBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMFeaturesGetValuesBatchArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMFeaturesGetValuesBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMFeaturesGetValuesBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMFeaturesGetValuesBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMFeaturesGetValuesBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMFeaturesGetValuesBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMFeaturesGetValuesBatchArg` object.
-///
-+ (DBTEAMFeaturesGetValuesBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMFeaturesGetValuesBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

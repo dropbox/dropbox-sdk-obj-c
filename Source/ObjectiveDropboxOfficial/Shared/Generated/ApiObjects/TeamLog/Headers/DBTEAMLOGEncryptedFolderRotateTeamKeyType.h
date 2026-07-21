@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGEncryptedFolderRotateTeamKeyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `EncryptedFolderRotateTeamKeyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGEncryptedFolderRotateTeamKeyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGEncryptedFolderRotateTeamKeyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `EncryptedFolderRotateTeamKeyType` struct.
-///
-@interface DBTEAMLOGEncryptedFolderRotateTeamKeyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGEncryptedFolderRotateTeamKeyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGEncryptedFolderRotateTeamKeyType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGEncryptedFolderRotateTeamKeyType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderRotateTeamKeyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEncryptedFolderRotateTeamKeyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGEncryptedFolderRotateTeamKeyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGEncryptedFolderRotateTeamKeyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGEncryptedFolderRotateTeamKeyType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGEncryptedFolderRotateTeamKeyType`
 /// object.
-///
-+ (DBTEAMLOGEncryptedFolderRotateTeamKeyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGEncryptedFolderRotateTeamKeyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

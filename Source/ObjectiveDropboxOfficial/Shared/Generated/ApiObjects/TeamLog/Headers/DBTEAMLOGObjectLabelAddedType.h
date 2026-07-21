@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGObjectLabelAddedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ObjectLabelAddedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGObjectLabelAddedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGObjectLabelAddedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ObjectLabelAddedType` struct.
-///
-@interface DBTEAMLOGObjectLabelAddedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGObjectLabelAddedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGObjectLabelAddedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGObjectLabelAddedType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGObjectLabelAddedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGObjectLabelAddedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGObjectLabelAddedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGObjectLabelAddedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGObjectLabelAddedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGObjectLabelAddedType` object.
-///
-+ (DBTEAMLOGObjectLabelAddedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGObjectLabelAddedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

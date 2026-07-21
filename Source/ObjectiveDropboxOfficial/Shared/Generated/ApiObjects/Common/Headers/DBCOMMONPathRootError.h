@@ -11,34 +11,35 @@
 @class DBCOMMONPathRootError;
 @class DBCOMMONRootInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PathRootError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBCOMMONPathRootError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBCOMMONPathRootError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBCOMMONPathRootErrorTag` enum type represents the possible tag states
 /// with which the `DBCOMMONPathRootError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBCOMMONPathRootErrorTag) {
-  /// The root namespace id in Dropbox-API-Path-Root header is not valid. The
-  /// value of this error is the user's latest root info.
-  DBCOMMONPathRootErrorInvalidRoot,
+    /// The root namespace id in Dropbox-API-Path-Root header is not valid. The
+    /// value of this error is the user's latest root info.
+    DBCOMMONPathRootErrorInvalidRoot,
 
-  /// You don't have permission to access the namespace id in
-  /// Dropbox-API-Path-Root header.
-  DBCOMMONPathRootErrorNoPermission,
+    /// You don't have permission to access the namespace id in
+    /// Dropbox-API-Path-Root header.
+    DBCOMMONPathRootErrorNoPermission,
 
-  /// (no description).
-  DBCOMMONPathRootErrorOther,
+    /// (no description).
+    DBCOMMONPathRootErrorOther,
 
 };
 
@@ -53,101 +54,103 @@ typedef NS_CLOSED_ENUM(NSInteger, DBCOMMONPathRootErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "invalid_root".
-///
+/// 
 /// Description of the "invalid_root" tag state: The root namespace id in
 /// Dropbox-API-Path-Root header is not valid. The value of this error is the
 /// user's latest root info.
-///
+/// 
 /// @param invalidRoot The root namespace id in Dropbox-API-Path-Root header is
 /// not valid. The value of this error is the user's latest root info.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvalidRoot:(DBCOMMONRootInfo *)invalidRoot;
 
-///
+/// 
 /// Initializes union class with tag state of "no_permission".
-///
+/// 
 /// Description of the "no_permission" tag state: You don't have permission to
 /// access the namespace id in Dropbox-API-Path-Root header.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoPermission;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invalid_root".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `invalidRoot` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "invalid_root".
-///
+/// 
 - (BOOL)isInvalidRoot;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "no_permission".
-///
+/// 
 /// @return Whether the union's current tag state has value "no_permission".
-///
+/// 
 - (BOOL)isNoPermission;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBCOMMONPathRootError` union.
-///
-@interface DBCOMMONPathRootErrorSerializer : NSObject
+/// 
+@interface DBCOMMONPathRootErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBCOMMONPathRootError` instances.
-///
+/// 
 /// @param instance An instance of the `DBCOMMONPathRootError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBCOMMONPathRootError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBCOMMONPathRootError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBCOMMONPathRootError *)instance;
 
-///
+/// 
 /// Deserializes `DBCOMMONPathRootError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBCOMMONPathRootError` API object.
-///
+/// 
 /// @return An instantiation of the `DBCOMMONPathRootError` object.
-///
-+ (DBCOMMONPathRootError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBCOMMONPathRootError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBPAPERPaperDocCreateUpdateResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDocCreateUpdateResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBPAPERPaperDocCreateUpdateResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBPAPERPaperDocCreateUpdateResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,49 +37,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param docId Doc ID of the newly created doc.
 /// @param revision The Paper doc revision. Simply an ever increasing number.
 /// @param title The Paper doc title.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDocId:(NSString *)docId revision:(NSNumber *)revision title:(NSString *)title;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDocCreateUpdateResult` struct.
-///
-@interface DBPAPERPaperDocCreateUpdateResultSerializer : NSObject
+/// 
+@interface DBPAPERPaperDocCreateUpdateResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBPAPERPaperDocCreateUpdateResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBPAPERPaperDocCreateUpdateResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocCreateUpdateResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBPAPERPaperDocCreateUpdateResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBPAPERPaperDocCreateUpdateResult *)instance;
 
-///
+/// 
 /// Deserializes `DBPAPERPaperDocCreateUpdateResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPAPERPaperDocCreateUpdateResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBPAPERPaperDocCreateUpdateResult` object.
-///
-+ (DBPAPERPaperDocCreateUpdateResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBPAPERPaperDocCreateUpdateResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

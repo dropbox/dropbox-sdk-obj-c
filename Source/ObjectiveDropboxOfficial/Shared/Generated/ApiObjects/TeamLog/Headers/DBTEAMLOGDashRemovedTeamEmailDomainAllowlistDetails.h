@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashRemovedTeamEmailDomainAllowlistDetails` struct.
-///
+/// 
 /// Admin removed an email domain from the team allowlist.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,51 +33,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param emailDomain The email domain that gets added/removed from the team
 /// allowlist.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEmailDomain:(NSString *)emailDomain;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashRemovedTeamEmailDomainAllowlistDetails`
 /// struct.
-///
-@interface DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails` object.
-///
-+ (DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashRemovedTeamEmailDomainAllowlistDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,18 +11,19 @@
 @class DBUSERSUserFeature;
 @class DBUSERSUserFeaturesGetValuesBatchArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UserFeaturesGetValuesBatchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBUSERSUserFeaturesGetValuesBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBUSERSUserFeaturesGetValuesBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,49 +33,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param features A list of features in UserFeature. If the list is empty,
 /// this route will return UserFeaturesGetValuesBatchError.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFeatures:(NSArray<DBUSERSUserFeature *> *)features;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `UserFeaturesGetValuesBatchArg` struct.
-///
-@interface DBUSERSUserFeaturesGetValuesBatchArgSerializer : NSObject
+/// 
+@interface DBUSERSUserFeaturesGetValuesBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBUSERSUserFeaturesGetValuesBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBUSERSUserFeaturesGetValuesBatchArg`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBUSERSUserFeaturesGetValuesBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBUSERSUserFeaturesGetValuesBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBUSERSUserFeaturesGetValuesBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBUSERSUserFeaturesGetValuesBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBUSERSUserFeaturesGetValuesBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBUSERSUserFeaturesGetValuesBatchArg`
 /// object.
-///
-+ (DBUSERSUserFeaturesGetValuesBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBUSERSUserFeaturesGetValuesBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

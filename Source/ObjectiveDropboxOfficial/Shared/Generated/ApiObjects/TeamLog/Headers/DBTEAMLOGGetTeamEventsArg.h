@@ -13,18 +13,19 @@
 @class DBTEAMLOGEventTypeArg;
 @class DBTEAMLOGGetTeamEventsArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetTeamEventsArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGetTeamEventsArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGetTeamEventsArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -51,9 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param limit The maximal number of results to return per call. Note that
 /// some calls may not return limit number of events, and may even return no
 /// events, even with `has_more` set to true. In this case, callers should fetch
@@ -65,55 +66,53 @@ NS_ASSUME_NONNULL_BEGIN
 /// category shouldn't be provided together with event_type.
 /// @param eventType Filter the returned events to a single event type. Note
 /// that event_type shouldn't be provided together with category.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithLimit:(nullable NSNumber *)limit
-                    accountId:(nullable NSString *)accountId
-                         time:(nullable DBTEAMCOMMONTimeRange *)time
-                     category:(nullable DBTEAMLOGEventCategory *)category
-                    eventType:(nullable DBTEAMLOGEventTypeArg *)eventType;
+/// 
+- (instancetype)initWithLimit:(nullable NSNumber *)limit accountId:(nullable NSString *)accountId time:(nullable DBTEAMCOMMONTimeRange *)time category:(nullable DBTEAMLOGEventCategory *)category eventType:(nullable DBTEAMLOGEventTypeArg *)eventType;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetTeamEventsArg` struct.
-///
-@interface DBTEAMLOGGetTeamEventsArgSerializer : NSObject
+/// 
+@interface DBTEAMLOGGetTeamEventsArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGetTeamEventsArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGGetTeamEventsArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGetTeamEventsArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGetTeamEventsArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGetTeamEventsArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGetTeamEventsArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGetTeamEventsArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGetTeamEventsArg` object.
-///
-+ (DBTEAMLOGGetTeamEventsArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGetTeamEventsArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

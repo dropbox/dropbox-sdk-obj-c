@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSfExternalInviteWarnDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SfExternalInviteWarnDetails` struct.
-///
+/// 
 /// Set team members to see warning before sharing folders outside team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSfExternalInviteWarnDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSfExternalInviteWarnDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -41,65 +42,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
 /// @param dNewSharingPermission New sharing permission.
 /// @param previousSharingPermission Previous sharing permission.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex
-                      originalFolderName:(NSString *)originalFolderName
-                   dNewSharingPermission:(nullable NSString *)dNewSharingPermission
-               previousSharingPermission:(nullable NSString *)previousSharingPermission;
+/// 
+- (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName dNewSharingPermission:(nullable NSString *)dNewSharingPermission previousSharingPermission:(nullable NSString *)previousSharingPermission;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param targetAssetIndex Target asset position in the Assets list.
 /// @param originalFolderName Original shared folder name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTargetAssetIndex:(NSNumber *)targetAssetIndex originalFolderName:(NSString *)originalFolderName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SfExternalInviteWarnDetails` struct.
-///
-@interface DBTEAMLOGSfExternalInviteWarnDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSfExternalInviteWarnDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSfExternalInviteWarnDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSfExternalInviteWarnDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfExternalInviteWarnDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSfExternalInviteWarnDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSfExternalInviteWarnDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSfExternalInviteWarnDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSfExternalInviteWarnDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSfExternalInviteWarnDetails`
 /// object.
-///
-+ (DBTEAMLOGSfExternalInviteWarnDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSfExternalInviteWarnDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

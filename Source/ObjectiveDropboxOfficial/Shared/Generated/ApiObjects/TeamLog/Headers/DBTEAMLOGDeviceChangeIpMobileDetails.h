@@ -11,20 +11,21 @@
 @class DBTEAMLOGDeviceChangeIpMobileDetails;
 @class DBTEAMLOGDeviceSessionLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeviceChangeIpMobileDetails` struct.
-///
+/// 
 /// Changed IP address associated with active mobile session.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDeviceChangeIpMobileDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDeviceChangeIpMobileDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,57 +34,59 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param deviceSessionInfo Device's session logged information.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDeviceSessionInfo:(nullable DBTEAMLOGDeviceSessionLogInfo *)deviceSessionInfo;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeviceChangeIpMobileDetails` struct.
-///
-@interface DBTEAMLOGDeviceChangeIpMobileDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDeviceChangeIpMobileDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDeviceChangeIpMobileDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDeviceChangeIpMobileDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceChangeIpMobileDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDeviceChangeIpMobileDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDeviceChangeIpMobileDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDeviceChangeIpMobileDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDeviceChangeIpMobileDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDeviceChangeIpMobileDetails`
 /// object.
-///
-+ (DBTEAMLOGDeviceChangeIpMobileDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDeviceChangeIpMobileDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

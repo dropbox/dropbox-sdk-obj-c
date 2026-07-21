@@ -12,20 +12,21 @@
 @class DBTEAMLOGMemberChangeStatusDetails;
 @class DBTEAMLOGMemberStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberChangeStatusDetails` struct.
-///
+/// 
 /// Changed member status (invited, joined, suspended, etc.).
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberChangeStatusDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberChangeStatusDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -49,9 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New member status.
 /// @param previousValue Previous member status. Might be missing due to
 /// historical data gap.
@@ -61,57 +62,55 @@ NS_ASSUME_NONNULL_BEGIN
 /// user is transferred off the team.
 /// @param previousTeam The user's previous team name. This field is relevant
 /// when the user is transferred onto the team.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGMemberStatus *)dNewValue
-                    previousValue:(nullable DBTEAMLOGMemberStatus *)previousValue
-                           action:(nullable DBTEAMLOGActionDetails *)action
-                         dNewTeam:(nullable NSString *)dNewTeam
-                     previousTeam:(nullable NSString *)previousTeam;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGMemberStatus *)dNewValue previousValue:(nullable DBTEAMLOGMemberStatus *)previousValue action:(nullable DBTEAMLOGActionDetails *)action dNewTeam:(nullable NSString *)dNewTeam previousTeam:(nullable NSString *)previousTeam;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New member status.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBTEAMLOGMemberStatus *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberChangeStatusDetails` struct.
-///
-@interface DBTEAMLOGMemberChangeStatusDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberChangeStatusDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberChangeStatusDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberChangeStatusDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeStatusDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeStatusDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberChangeStatusDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberChangeStatusDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeStatusDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberChangeStatusDetails` object.
-///
-+ (DBTEAMLOGMemberChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberChangeStatusDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

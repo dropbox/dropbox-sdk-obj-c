@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Files namespace. Each route in the Files
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBFILESRouteObjects : NSObject
+/// 
+@interface DBFILESRouteObjects : NSObject 
 
 /// Accessor method for the alphaGetMetadata route object.
 + (DBRoute *)DBFILESAlphaGetMetadata;
@@ -221,3 +222,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

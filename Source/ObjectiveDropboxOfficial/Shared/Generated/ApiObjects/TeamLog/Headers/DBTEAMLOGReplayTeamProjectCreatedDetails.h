@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGReplayTeamProjectCreatedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ReplayTeamProjectCreatedDetails` struct.
-///
+/// 
 /// Created a team project in Replay.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGReplayTeamProjectCreatedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGReplayTeamProjectCreatedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,48 +33,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param name Name of the newly created team project.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithName:(NSString *)name;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ReplayTeamProjectCreatedDetails` struct.
-///
-@interface DBTEAMLOGReplayTeamProjectCreatedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGReplayTeamProjectCreatedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGReplayTeamProjectCreatedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGReplayTeamProjectCreatedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayTeamProjectCreatedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGReplayTeamProjectCreatedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGReplayTeamProjectCreatedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGReplayTeamProjectCreatedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayTeamProjectCreatedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGReplayTeamProjectCreatedDetails`
 /// object.
-///
-+ (DBTEAMLOGReplayTeamProjectCreatedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGReplayTeamProjectCreatedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

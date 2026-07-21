@@ -11,21 +11,22 @@
 @class DBTEAMMembersRecoverArg;
 @class DBTEAMUserSelectorArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembersRecoverArg` struct.
-///
+/// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMembersRecoverArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMembersRecoverArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,46 +35,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param user Identity of user to recover.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembersRecoverArg` struct.
-///
-@interface DBTEAMMembersRecoverArgSerializer : NSObject
+/// 
+@interface DBTEAMMembersRecoverArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMembersRecoverArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMembersRecoverArg` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMembersRecoverArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersRecoverArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMembersRecoverArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMembersRecoverArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMembersRecoverArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMembersRecoverArg` object.
-///
-+ (DBTEAMMembersRecoverArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMembersRecoverArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

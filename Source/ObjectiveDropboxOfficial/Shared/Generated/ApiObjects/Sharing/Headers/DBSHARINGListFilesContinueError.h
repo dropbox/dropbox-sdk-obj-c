@@ -11,34 +11,35 @@
 @class DBSHARINGListFilesContinueError;
 @class DBSHARINGSharingUserError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ListFilesContinueError` union.
-///
+/// 
 /// Error results for `listReceivedFilesContinue`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGListFilesContinueError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGListFilesContinueError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBSHARINGListFilesContinueErrorTag` enum type represents the possible
 /// tag states with which the `DBSHARINGListFilesContinueError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGListFilesContinueErrorTag) {
-  /// User account had a problem.
-  DBSHARINGListFilesContinueErrorUserError,
+    /// User account had a problem.
+    DBSHARINGListFilesContinueErrorUserError,
 
-  /// `cursor` in `DBSHARINGListFilesContinueArg` is invalid.
-  DBSHARINGListFilesContinueErrorInvalidCursor,
+    /// `cursor` in `DBSHARINGListFilesContinueArg` is invalid.
+    DBSHARINGListFilesContinueErrorInvalidCursor,
 
-  /// (no description).
-  DBSHARINGListFilesContinueErrorOther,
+    /// (no description).
+    DBSHARINGListFilesContinueErrorOther,
 
 };
 
@@ -51,99 +52,101 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGListFilesContinueErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "user_error".
-///
+/// 
 /// Description of the "user_error" tag state: User account had a problem.
-///
+/// 
 /// @param userError User account had a problem.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUserError:(DBSHARINGSharingUserError *)userError;
 
-///
+/// 
 /// Initializes union class with tag state of "invalid_cursor".
-///
+/// 
 /// Description of the "invalid_cursor" tag state: `cursor` in
 /// `DBSHARINGListFilesContinueArg` is invalid.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvalidCursor;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "user_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `userError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "user_error".
-///
+/// 
 - (BOOL)isUserError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invalid_cursor".
-///
+/// 
 /// @return Whether the union's current tag state has value "invalid_cursor".
-///
+/// 
 - (BOOL)isInvalidCursor;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBSHARINGListFilesContinueError` union.
-///
-@interface DBSHARINGListFilesContinueErrorSerializer : NSObject
+/// 
+@interface DBSHARINGListFilesContinueErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGListFilesContinueError` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGListFilesContinueError` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFilesContinueError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGListFilesContinueError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGListFilesContinueError *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGListFilesContinueError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFilesContinueError` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGListFilesContinueError` object.
-///
-+ (DBSHARINGListFilesContinueError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGListFilesContinueError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,44 +12,45 @@
 @class DBFILESUploadError;
 @class DBFILESUploadWriteFailed;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `UploadError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESUploadError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESUploadError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBFILESUploadErrorTag` enum type represents the possible tag states
 /// with which the `DBFILESUploadError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag) {
-  /// Unable to save the uploaded contents to a file.
-  DBFILESUploadErrorPath,
+    /// Unable to save the uploaded contents to a file.
+    DBFILESUploadErrorPath,
 
-  /// The supplied property group is invalid. The file has uploaded without
-  /// property groups.
-  DBFILESUploadErrorPropertiesError,
+    /// The supplied property group is invalid. The file has uploaded without
+    /// property groups.
+    DBFILESUploadErrorPropertiesError,
 
-  /// The request payload must be at most 150 MiB.
-  DBFILESUploadErrorPayloadTooLarge,
+    /// The request payload must be at most 150 MiB.
+    DBFILESUploadErrorPayloadTooLarge,
 
-  /// The content received by the Dropbox server in this call does not match
-  /// the provided content hash.
-  DBFILESUploadErrorContentHashMismatch,
+    /// The content received by the Dropbox server in this call does not match
+    /// the provided content hash.
+    DBFILESUploadErrorContentHashMismatch,
 
-  /// The file is required to be encrypted, which is not supported in our
-  /// public API.
-  DBFILESUploadErrorEncryptionNotSupported,
+    /// The file is required to be encrypted, which is not supported in our
+    /// public API.
+    DBFILESUploadErrorEncryptionNotSupported,
 
-  /// (no description).
-  DBFILESUploadErrorOther,
+    /// (no description).
+    DBFILESUploadErrorOther,
 
 };
 
@@ -68,162 +69,164 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESUploadErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "path".
-///
+/// 
 /// Description of the "path" tag state: Unable to save the uploaded contents to
 /// a file.
-///
+/// 
 /// @param path Unable to save the uploaded contents to a file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPath:(DBFILESUploadWriteFailed *)path;
 
-///
+/// 
 /// Initializes union class with tag state of "properties_error".
-///
+/// 
 /// Description of the "properties_error" tag state: The supplied property group
 /// is invalid. The file has uploaded without property groups.
-///
+/// 
 /// @param propertiesError The supplied property group is invalid. The file has
 /// uploaded without property groups.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPropertiesError:(DBFILEPROPERTIESInvalidPropertyGroupError *)propertiesError;
 
-///
+/// 
 /// Initializes union class with tag state of "payload_too_large".
-///
+/// 
 /// Description of the "payload_too_large" tag state: The request payload must
 /// be at most 150 MiB.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPayloadTooLarge;
 
-///
+/// 
 /// Initializes union class with tag state of "content_hash_mismatch".
-///
+/// 
 /// Description of the "content_hash_mismatch" tag state: The content received
 /// by the Dropbox server in this call does not match the provided content hash.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithContentHashMismatch;
 
-///
+/// 
 /// Initializes union class with tag state of "encryption_not_supported".
-///
+/// 
 /// Description of the "encryption_not_supported" tag state: The file is
 /// required to be encrypted, which is not supported in our public API.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEncryptionNotSupported;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "path".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `path` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "path".
-///
+/// 
 - (BOOL)isPath;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "properties_error".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `propertiesError` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "properties_error".
-///
+/// 
 - (BOOL)isPropertiesError;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "payload_too_large".
-///
+/// 
 /// @return Whether the union's current tag state has value "payload_too_large".
-///
+/// 
 - (BOOL)isPayloadTooLarge;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "content_hash_mismatch".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "content_hash_mismatch".
-///
+/// 
 - (BOOL)isContentHashMismatch;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "encryption_not_supported".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "encryption_not_supported".
-///
+/// 
 - (BOOL)isEncryptionNotSupported;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBFILESUploadError` union.
-///
-@interface DBFILESUploadErrorSerializer : NSObject
+/// 
+@interface DBFILESUploadErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESUploadError` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESUploadError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESUploadError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESUploadError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESUploadError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadError` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESUploadError` object.
-///
-+ (DBFILESUploadError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESUploadError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

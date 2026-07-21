@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGFileRollbackChangesDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRollbackChangesDetails` struct.
-///
+/// 
 /// Rolled back file actions.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFileRollbackChangesDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFileRollbackChangesDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRollbackChangesDetails` struct.
-///
-@interface DBTEAMLOGFileRollbackChangesDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFileRollbackChangesDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFileRollbackChangesDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFileRollbackChangesDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRollbackChangesDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFileRollbackChangesDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFileRollbackChangesDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFileRollbackChangesDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFileRollbackChangesDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFileRollbackChangesDetails`
 /// object.
-///
-+ (DBTEAMLOGFileRollbackChangesDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFileRollbackChangesDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

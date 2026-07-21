@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGFolderOverviewDescriptionChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FolderOverviewDescriptionChangedDetails` struct.
-///
+/// 
 /// Updated folder overview.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFolderOverviewDescriptionChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFolderOverviewDescriptionChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,50 +33,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param folderOverviewLocationAsset Folder Overview location position in the
 /// Assets list.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFolderOverviewLocationAsset:(NSNumber *)folderOverviewLocationAsset;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FolderOverviewDescriptionChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGFolderOverviewDescriptionChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGFolderOverviewDescriptionChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFolderOverviewDescriptionChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGFolderOverviewDescriptionChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFolderOverviewDescriptionChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFolderOverviewDescriptionChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFolderOverviewDescriptionChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFolderOverviewDescriptionChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFolderOverviewDescriptionChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGFolderOverviewDescriptionChangedDetails` object.
-///
-+ (DBTEAMLOGFolderOverviewDescriptionChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFolderOverviewDescriptionChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

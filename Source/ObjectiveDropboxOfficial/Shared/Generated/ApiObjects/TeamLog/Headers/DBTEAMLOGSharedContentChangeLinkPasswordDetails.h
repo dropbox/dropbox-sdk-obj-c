@@ -10,66 +10,69 @@
 
 @class DBTEAMLOGSharedContentChangeLinkPasswordDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentChangeLinkPasswordDetails` struct.
-///
+/// 
 /// Changed link password of shared file/folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentChangeLinkPasswordDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentChangeLinkPasswordDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentChangeLinkPasswordDetails`
 /// struct.
-///
-@interface DBTEAMLOGSharedContentChangeLinkPasswordDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentChangeLinkPasswordDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentChangeLinkPasswordDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedContentChangeLinkPasswordDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeLinkPasswordDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeLinkPasswordDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentChangeLinkPasswordDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentChangeLinkPasswordDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeLinkPasswordDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentChangeLinkPasswordDetails` object.
-///
-+ (DBTEAMLOGSharedContentChangeLinkPasswordDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentChangeLinkPasswordDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

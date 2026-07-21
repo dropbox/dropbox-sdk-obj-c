@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGMemberRequestsChangePolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberRequestsChangePolicyType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberRequestsChangePolicyType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberRequestsChangePolicyType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberRequestsChangePolicyType` struct.
-///
-@interface DBTEAMLOGMemberRequestsChangePolicyTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberRequestsChangePolicyTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberRequestsChangePolicyType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberRequestsChangePolicyType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberRequestsChangePolicyType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberRequestsChangePolicyType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberRequestsChangePolicyType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberRequestsChangePolicyType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberRequestsChangePolicyType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberRequestsChangePolicyType`
 /// object.
-///
-+ (DBTEAMLOGMemberRequestsChangePolicyType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberRequestsChangePolicyType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

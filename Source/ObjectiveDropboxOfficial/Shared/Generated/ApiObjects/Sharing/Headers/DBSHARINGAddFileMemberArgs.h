@@ -12,20 +12,21 @@
 @class DBSHARINGAddFileMemberArgs;
 @class DBSHARINGMemberSelector;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AddFileMemberArgs` struct.
-///
+/// 
 /// Arguments for `addFileMember`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGAddFileMemberArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGAddFileMemberArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -58,9 +59,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param file File to which to add members.
 /// @param members Members to add. Note that even an email address is given,
 /// this may result in a user being directly added to the membership if that
@@ -74,61 +75,57 @@ NS_ASSUME_NONNULL_BEGIN
 /// comment on the file. Only meant for Paper files.
 /// @param fpSealedResult Field is only returned for "internal" callers. The
 /// FingerprintJS Sealed Client Result value
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithFile:(NSString *)file
-                     members:(NSArray<DBSHARINGMemberSelector *> *)members
-               customMessage:(nullable NSString *)customMessage
-                       quiet:(nullable NSNumber *)quiet
-                 accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
-         addMessageAsComment:(nullable NSNumber *)addMessageAsComment
-              fpSealedResult:(nullable NSString *)fpSealedResult;
+/// 
+- (instancetype)initWithFile:(NSString *)file members:(NSArray<DBSHARINGMemberSelector *> *)members customMessage:(nullable NSString *)customMessage quiet:(nullable NSNumber *)quiet accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel addMessageAsComment:(nullable NSNumber *)addMessageAsComment fpSealedResult:(nullable NSString *)fpSealedResult;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param file File to which to add members.
 /// @param members Members to add. Note that even an email address is given,
 /// this may result in a user being directly added to the membership if that
 /// email is the user's main account email.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithFile:(NSString *)file members:(NSArray<DBSHARINGMemberSelector *> *)members;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AddFileMemberArgs` struct.
-///
-@interface DBSHARINGAddFileMemberArgsSerializer : NSObject
+/// 
+@interface DBSHARINGAddFileMemberArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGAddFileMemberArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGAddFileMemberArgs` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGAddFileMemberArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGAddFileMemberArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGAddFileMemberArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGAddFileMemberArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGAddFileMemberArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGAddFileMemberArgs` object.
-///
-+ (DBSHARINGAddFileMemberArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGAddFileMemberArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

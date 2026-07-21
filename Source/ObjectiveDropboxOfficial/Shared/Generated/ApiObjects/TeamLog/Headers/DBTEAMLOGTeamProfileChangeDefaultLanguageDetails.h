@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamProfileChangeDefaultLanguageDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamProfileChangeDefaultLanguageDetails` struct.
-///
+/// 
 /// Changed default language for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamProfileChangeDefaultLanguageDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamProfileChangeDefaultLanguageDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,50 +36,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New team's default language.
 /// @param previousValue Previous team's default language.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue previousValue:(NSString *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamProfileChangeDefaultLanguageDetails`
 /// struct.
-///
-@interface DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamProfileChangeDefaultLanguageDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamProfileChangeDefaultLanguageDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamProfileChangeDefaultLanguageDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamProfileChangeDefaultLanguageDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamProfileChangeDefaultLanguageDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamProfileChangeDefaultLanguageDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamProfileChangeDefaultLanguageDetails` object.
-///
-+ (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamProfileChangeDefaultLanguageDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

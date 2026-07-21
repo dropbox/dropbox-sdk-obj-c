@@ -12,20 +12,21 @@
 @class DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails;
 @class DBTEAMLOGMediaHubSharedLinkTargetType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MediaHubSharedLinkAudienceChangedDetails` struct.
-///
+/// 
 /// Changed Media Hub shared link audience.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,53 +41,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param targetType Media Hub shared link target type.
 /// @param previousValue Previous Media Hub shared link audience.
 /// @param dNewValue New Media Hub shared link audience.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType
-                     previousValue:(DBTEAMLOGMediaHubSharedLinkAudience *)previousValue
-                         dNewValue:(DBTEAMLOGMediaHubSharedLinkAudience *)dNewValue;
+/// 
+- (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType previousValue:(DBTEAMLOGMediaHubSharedLinkAudience *)previousValue dNewValue:(DBTEAMLOGMediaHubSharedLinkAudience *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MediaHubSharedLinkAudienceChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGMediaHubSharedLinkAudienceChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMediaHubSharedLinkAudienceChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails` object.
-///
-+ (DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMediaHubSharedLinkAudienceChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

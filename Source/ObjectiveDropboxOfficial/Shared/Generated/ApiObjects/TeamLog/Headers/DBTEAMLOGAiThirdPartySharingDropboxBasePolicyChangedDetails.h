@@ -11,20 +11,21 @@
 @class DBTEAMLOGAiThirdPartySharingDropboxBasePolicy;
 @class DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AiThirdPartySharingDropboxBasePolicyChangedDetails` struct.
-///
+/// 
 /// Changed AI third party sharing policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,54 +37,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)dNewValue
-                    previousValue:(DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)dNewValue previousValue:(DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `AiThirdPartySharingDropboxBasePolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails` object.
-///
-+ (DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAiThirdPartySharingDropboxBasePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGSharedContentRemoveLinkExpiryType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentRemoveLinkExpiryType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentRemoveLinkExpiryType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentRemoveLinkExpiryType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentRemoveLinkExpiryType` struct.
-///
-@interface DBTEAMLOGSharedContentRemoveLinkExpiryTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentRemoveLinkExpiryTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentRemoveLinkExpiryType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedContentRemoveLinkExpiryType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentRemoveLinkExpiryType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentRemoveLinkExpiryType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentRemoveLinkExpiryType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentRemoveLinkExpiryType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedContentRemoveLinkExpiryType`
 /// object.
-///
-+ (DBTEAMLOGSharedContentRemoveLinkExpiryType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentRemoveLinkExpiryType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

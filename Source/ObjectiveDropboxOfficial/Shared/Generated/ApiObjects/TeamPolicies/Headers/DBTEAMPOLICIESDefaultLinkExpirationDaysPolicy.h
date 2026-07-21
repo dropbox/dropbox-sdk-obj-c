@@ -10,21 +10,22 @@
 
 @class DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DefaultLinkExpirationDaysPolicy` union.
-///
+/// 
 /// Policy governing default expiration date for new links shared outside the
 /// team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,32 +33,32 @@ NS_ASSUME_NONNULL_BEGIN
 /// the possible tag states with which the
 /// `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyTag) {
-  /// New links shared outside the team default to no expiration date.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyNone,
+    /// New links shared outside the team default to no expiration date.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyNone,
 
-  /// New links shared outside the team default to expire in one day.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay1,
+    /// New links shared outside the team default to expire in one day.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay1,
 
-  /// New links shared outside the team default to expire in three days.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay3,
+    /// New links shared outside the team default to expire in three days.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay3,
 
-  /// New links shared outside the team default to expire in seven days.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay7,
+    /// New links shared outside the team default to expire in seven days.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay7,
 
-  /// New links shared outside the team default to expire in 30 days.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay30,
+    /// New links shared outside the team default to expire in 30 days.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay30,
 
-  /// New links shared outside the team default to expire in 90 days.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay90,
+    /// New links shared outside the team default to expire in 90 days.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay90,
 
-  /// New links shared outside the team default to expire in 180 days.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay180,
+    /// New links shared outside the team default to expire in 180 days.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyDay180,
 
-  /// New links shared outside the team default to expire in 365 days.
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyYear1,
+    /// New links shared outside the team default to expire in 365 days.
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyYear1,
 
-  /// (no description).
-  DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyOther,
+    /// (no description).
+    DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyOther,
 
 };
 
@@ -66,199 +67,201 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESDefaultLinkExpirationDaysPolicyT
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "none".
-///
+/// 
 /// Description of the "none" tag state: New links shared outside the team
 /// default to no expiration date.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNone;
 
-///
+/// 
 /// Initializes union class with tag state of "day_1".
-///
+/// 
 /// Description of the "day_1" tag state: New links shared outside the team
 /// default to expire in one day.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDay1;
 
-///
+/// 
 /// Initializes union class with tag state of "day_3".
-///
+/// 
 /// Description of the "day_3" tag state: New links shared outside the team
 /// default to expire in three days.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDay3;
 
-///
+/// 
 /// Initializes union class with tag state of "day_7".
-///
+/// 
 /// Description of the "day_7" tag state: New links shared outside the team
 /// default to expire in seven days.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDay7;
 
-///
+/// 
 /// Initializes union class with tag state of "day_30".
-///
+/// 
 /// Description of the "day_30" tag state: New links shared outside the team
 /// default to expire in 30 days.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDay30;
 
-///
+/// 
 /// Initializes union class with tag state of "day_90".
-///
+/// 
 /// Description of the "day_90" tag state: New links shared outside the team
 /// default to expire in 90 days.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDay90;
 
-///
+/// 
 /// Initializes union class with tag state of "day_180".
-///
+/// 
 /// Description of the "day_180" tag state: New links shared outside the team
 /// default to expire in 180 days.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDay180;
 
-///
+/// 
 /// Initializes union class with tag state of "year_1".
-///
+/// 
 /// Description of the "year_1" tag state: New links shared outside the team
 /// default to expire in 365 days.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithYear1;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "none".
-///
+/// 
 /// @return Whether the union's current tag state has value "none".
-///
+/// 
 - (BOOL)isNone;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "day_1".
-///
+/// 
 /// @return Whether the union's current tag state has value "day_1".
-///
+/// 
 - (BOOL)isDay1;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "day_3".
-///
+/// 
 /// @return Whether the union's current tag state has value "day_3".
-///
+/// 
 - (BOOL)isDay3;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "day_7".
-///
+/// 
 /// @return Whether the union's current tag state has value "day_7".
-///
+/// 
 - (BOOL)isDay7;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "day_30".
-///
+/// 
 /// @return Whether the union's current tag state has value "day_30".
-///
+/// 
 - (BOOL)isDay30;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "day_90".
-///
+/// 
 /// @return Whether the union's current tag state has value "day_90".
-///
+/// 
 - (BOOL)isDay90;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "day_180".
-///
+/// 
 /// @return Whether the union's current tag state has value "day_180".
-///
+/// 
 - (BOOL)isDay180;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "year_1".
-///
+/// 
 /// @return Whether the union's current tag state has value "year_1".
-///
+/// 
 - (BOOL)isYear1;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` union.
-///
-@interface DBTEAMPOLICIESDefaultLinkExpirationDaysPolicySerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESDefaultLinkExpirationDaysPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy` object.
-///
-+ (DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

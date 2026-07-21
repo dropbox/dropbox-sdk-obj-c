@@ -11,20 +11,21 @@
 @class DBTEAMLOGIntegrationPolicy;
 @class DBTEAMLOGIntegrationPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `IntegrationPolicyChangedDetails` struct.
-///
+/// 
 /// Changed integration policy for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGIntegrationPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGIntegrationPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,52 +40,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param integrationName Name of the third-party integration.
 /// @param dNewValue New integration policy.
 /// @param previousValue Previous integration policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithIntegrationName:(NSString *)integrationName
-                              dNewValue:(DBTEAMLOGIntegrationPolicy *)dNewValue
-                          previousValue:(DBTEAMLOGIntegrationPolicy *)previousValue;
+/// 
+- (instancetype)initWithIntegrationName:(NSString *)integrationName dNewValue:(DBTEAMLOGIntegrationPolicy *)dNewValue previousValue:(DBTEAMLOGIntegrationPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `IntegrationPolicyChangedDetails` struct.
-///
-@interface DBTEAMLOGIntegrationPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGIntegrationPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGIntegrationPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGIntegrationPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGIntegrationPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGIntegrationPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGIntegrationPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGIntegrationPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGIntegrationPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGIntegrationPolicyChangedDetails`
 /// object.
-///
-+ (DBTEAMLOGIntegrationPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGIntegrationPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

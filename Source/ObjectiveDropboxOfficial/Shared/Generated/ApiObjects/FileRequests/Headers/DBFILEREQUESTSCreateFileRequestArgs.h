@@ -11,20 +11,21 @@
 @class DBFILEREQUESTSCreateFileRequestArgs;
 @class DBFILEREQUESTSFileRequestDeadline;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `CreateFileRequestArgs` struct.
-///
+/// 
 /// Arguments for `create`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSCreateFileRequestArgs : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSCreateFileRequestArgs : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -52,9 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param title The title of the file request. Must not be empty.
 /// @param destination The path of the folder in the Dropbox where uploaded
 /// files will be sent. For apps with the app folder permission, this will be
@@ -67,62 +68,59 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param description_ A description of the file request.
 /// @param videoProjectId If this request was created from video project, its
 /// id.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTitle:(NSString *)title
-                  destination:(NSString *)destination
-                     deadline:(nullable DBFILEREQUESTSFileRequestDeadline *)deadline
-                         open:(nullable NSNumber *)open
-                 description_:(nullable NSString *)description_
-               videoProjectId:(nullable NSString *)videoProjectId;
+/// 
+- (instancetype)initWithTitle:(NSString *)title destination:(NSString *)destination deadline:(nullable DBFILEREQUESTSFileRequestDeadline *)deadline open:(nullable NSNumber *)open description_:(nullable NSString *)description_ videoProjectId:(nullable NSString *)videoProjectId;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param title The title of the file request. Must not be empty.
 /// @param destination The path of the folder in the Dropbox where uploaded
 /// files will be sent. For apps with the app folder permission, this will be
 /// relative to the app folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTitle:(NSString *)title destination:(NSString *)destination;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `CreateFileRequestArgs` struct.
-///
-@interface DBFILEREQUESTSCreateFileRequestArgsSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSCreateFileRequestArgsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSCreateFileRequestArgs` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSCreateFileRequestArgs` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSCreateFileRequestArgs` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSCreateFileRequestArgs *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSCreateFileRequestArgs *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSCreateFileRequestArgs` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSCreateFileRequestArgs` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSCreateFileRequestArgs`
 /// object.
-///
-+ (DBFILEREQUESTSCreateFileRequestArgs *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSCreateFileRequestArgs *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

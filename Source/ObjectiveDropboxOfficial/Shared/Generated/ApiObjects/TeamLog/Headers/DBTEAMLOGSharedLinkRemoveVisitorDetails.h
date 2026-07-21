@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGSharedLinkRemoveVisitorDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkRemoveVisitorDetails` struct.
-///
+/// 
 /// Removed link visitor.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkRemoveVisitorDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkRemoveVisitorDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkRemoveVisitorDetails` struct.
-///
-@interface DBTEAMLOGSharedLinkRemoveVisitorDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkRemoveVisitorDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkRemoveVisitorDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedLinkRemoveVisitorDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkRemoveVisitorDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkRemoveVisitorDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkRemoveVisitorDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkRemoveVisitorDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkRemoveVisitorDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedLinkRemoveVisitorDetails`
 /// object.
-///
-+ (DBTEAMLOGSharedLinkRemoveVisitorDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkRemoveVisitorDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

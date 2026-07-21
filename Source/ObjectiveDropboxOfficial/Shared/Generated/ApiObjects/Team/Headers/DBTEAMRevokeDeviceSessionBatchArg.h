@@ -11,18 +11,19 @@
 @class DBTEAMRevokeDeviceSessionArg;
 @class DBTEAMRevokeDeviceSessionBatchArg;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `RevokeDeviceSessionBatchArg` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMRevokeDeviceSessionBatchArg : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMRevokeDeviceSessionBatchArg : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,47 +32,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param revokeDevices (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRevokeDevices:(NSArray<DBTEAMRevokeDeviceSessionArg *> *)revokeDevices;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `RevokeDeviceSessionBatchArg` struct.
-///
-@interface DBTEAMRevokeDeviceSessionBatchArgSerializer : NSObject
+/// 
+@interface DBTEAMRevokeDeviceSessionBatchArgSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMRevokeDeviceSessionBatchArg` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMRevokeDeviceSessionBatchArg` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeDeviceSessionBatchArg` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMRevokeDeviceSessionBatchArg *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMRevokeDeviceSessionBatchArg *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMRevokeDeviceSessionBatchArg` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMRevokeDeviceSessionBatchArg` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMRevokeDeviceSessionBatchArg` object.
-///
-+ (DBTEAMRevokeDeviceSessionBatchArg *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMRevokeDeviceSessionBatchArg *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

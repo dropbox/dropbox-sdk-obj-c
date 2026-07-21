@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSecondaryTeamRequestAcceptedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SecondaryTeamRequestAcceptedDetails` struct.
-///
+/// 
 /// Team merge request acceptance details shown to the secondary team
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSecondaryTeamRequestAcceptedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSecondaryTeamRequestAcceptedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,51 +36,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param primaryTeam The primary team name.
 /// @param sentBy The name of the secondary team admin who sent the request
 /// originally.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPrimaryTeam:(NSString *)primaryTeam sentBy:(NSString *)sentBy;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SecondaryTeamRequestAcceptedDetails`
 /// struct.
-///
-@interface DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSecondaryTeamRequestAcceptedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSecondaryTeamRequestAcceptedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSecondaryTeamRequestAcceptedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSecondaryTeamRequestAcceptedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSecondaryTeamRequestAcceptedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSecondaryTeamRequestAcceptedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSecondaryTeamRequestAcceptedDetails` object.
-///
-+ (DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSecondaryTeamRequestAcceptedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

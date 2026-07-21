@@ -12,20 +12,21 @@
 @class DBTEAMLOGSharedContentDownloadDetails;
 @class DBTEAMLOGUserLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentDownloadDetails` struct.
-///
+/// 
 /// Downloaded shared file/folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentDownloadDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentDownloadDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -40,64 +41,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedContentLink Shared content link.
 /// @param sharedContentAccessLevel Shared content access level.
 /// @param sharedContentOwner The shared content owner.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedContentLink:(NSString *)sharedContentLink
-                 sharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel
-                       sharedContentOwner:(nullable DBTEAMLOGUserLogInfo *)sharedContentOwner;
+/// 
+- (instancetype)initWithSharedContentLink:(NSString *)sharedContentLink sharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel sharedContentOwner:(nullable DBTEAMLOGUserLogInfo *)sharedContentOwner;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sharedContentLink Shared content link.
 /// @param sharedContentAccessLevel Shared content access level.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedContentLink:(NSString *)sharedContentLink
-                 sharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel;
+/// 
+- (instancetype)initWithSharedContentLink:(NSString *)sharedContentLink sharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentDownloadDetails` struct.
-///
-@interface DBTEAMLOGSharedContentDownloadDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentDownloadDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentDownloadDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedContentDownloadDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentDownloadDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentDownloadDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentDownloadDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentDownloadDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentDownloadDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedContentDownloadDetails`
 /// object.
-///
-+ (DBTEAMLOGSharedContentDownloadDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentDownloadDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

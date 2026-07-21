@@ -10,40 +10,41 @@
 
 @class DBTEAMLOGDashStackSharingScope;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashStackSharingScope` union.
-///
+/// 
 /// The stack sharing scope
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashStackSharingScope : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashStackSharingScope : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBTEAMLOGDashStackSharingScopeTag` enum type represents the possible
 /// tag states with which the `DBTEAMLOGDashStackSharingScope` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDashStackSharingScopeTag) {
-  /// (no description).
-  DBTEAMLOGDashStackSharingScopeInvited,
+    /// (no description).
+    DBTEAMLOGDashStackSharingScopeInvited,
 
-  /// (no description).
-  DBTEAMLOGDashStackSharingScopePublic,
+    /// (no description).
+    DBTEAMLOGDashStackSharingScopePublic,
 
-  /// (no description).
-  DBTEAMLOGDashStackSharingScopeTeam,
+    /// (no description).
+    DBTEAMLOGDashStackSharingScopeTeam,
 
-  /// (no description).
-  DBTEAMLOGDashStackSharingScopeUnknown,
+    /// (no description).
+    DBTEAMLOGDashStackSharingScopeUnknown,
 
-  /// (no description).
-  DBTEAMLOGDashStackSharingScopeOther,
+    /// (no description).
+    DBTEAMLOGDashStackSharingScopeOther,
 
 };
 
@@ -52,117 +53,119 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGDashStackSharingScopeTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "invited".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvited;
 
-///
+/// 
 /// Initializes union class with tag state of "public".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPublic;
 
-///
+/// 
 /// Initializes union class with tag state of "team".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeam;
 
-///
+/// 
 /// Initializes union class with tag state of "unknown".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithUnknown;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "invited".
-///
+/// 
 /// @return Whether the union's current tag state has value "invited".
-///
+/// 
 - (BOOL)isInvited;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "public".
-///
+/// 
 /// @return Whether the union's current tag state has value "public".
-///
+/// 
 - (BOOL)isPublic;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "team".
-///
+/// 
 /// @return Whether the union's current tag state has value "team".
-///
+/// 
 - (BOOL)isTeam;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "unknown".
-///
+/// 
 /// @return Whether the union's current tag state has value "unknown".
-///
+/// 
 - (BOOL)isUnknown;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGDashStackSharingScope` union.
-///
-@interface DBTEAMLOGDashStackSharingScopeSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashStackSharingScopeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashStackSharingScope` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGDashStackSharingScope` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashStackSharingScope` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashStackSharingScope *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashStackSharingScope *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashStackSharingScope` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashStackSharingScope` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashStackSharingScope` object.
-///
-+ (DBTEAMLOGDashStackSharingScope *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashStackSharingScope *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

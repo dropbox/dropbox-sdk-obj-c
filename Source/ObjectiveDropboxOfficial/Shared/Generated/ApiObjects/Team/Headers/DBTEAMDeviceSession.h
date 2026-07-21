@@ -10,18 +10,19 @@
 
 @class DBTEAMDeviceSession;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DeviceSession` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMDeviceSession : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMDeviceSession : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -42,65 +43,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sessionId The session id.
 /// @param ipAddress The IP address of the last activity from this session.
 /// @param country The country from which the last activity from this session
 /// was made.
 /// @param created The time this session was created.
 /// @param updated The time of the last activity from this session.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSessionId:(NSString *)sessionId
-                        ipAddress:(nullable NSString *)ipAddress
-                          country:(nullable NSString *)country
-                          created:(nullable NSDate *)created
-                          updated:(nullable NSDate *)updated;
+/// 
+- (instancetype)initWithSessionId:(NSString *)sessionId ipAddress:(nullable NSString *)ipAddress country:(nullable NSString *)country created:(nullable NSDate *)created updated:(nullable NSDate *)updated;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param sessionId The session id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSessionId:(NSString *)sessionId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DeviceSession` struct.
-///
-@interface DBTEAMDeviceSessionSerializer : NSObject
+/// 
+@interface DBTEAMDeviceSessionSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMDeviceSession` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMDeviceSession` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMDeviceSession` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMDeviceSession *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMDeviceSession *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMDeviceSession` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMDeviceSession` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMDeviceSession` object.
-///
-+ (DBTEAMDeviceSession *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMDeviceSession *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

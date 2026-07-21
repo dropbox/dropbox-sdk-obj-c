@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMergeRequestExpiredShownToSecondaryTeamType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,52 +31,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `TeamMergeRequestExpiredShownToSecondaryTeamType` struct.
-///
-@interface DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:
-    (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType` object.
-///
-+ (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMergeRequestExpiredShownToSecondaryTeamType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

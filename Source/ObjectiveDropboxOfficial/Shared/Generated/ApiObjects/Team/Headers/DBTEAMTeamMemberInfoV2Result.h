@@ -11,21 +11,22 @@
 @class DBTEAMTeamMemberInfoV2;
 @class DBTEAMTeamMemberInfoV2Result;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMemberInfoV2Result` struct.
-///
+/// 
 /// Information about a team member, after the change, like at
 /// `membersSetProfile`.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMTeamMemberInfoV2Result : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMTeamMemberInfoV2Result : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -34,47 +35,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param memberInfo Member info, after the change.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMemberInfo:(DBTEAMTeamMemberInfoV2 *)memberInfo;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamMemberInfoV2Result` struct.
-///
-@interface DBTEAMTeamMemberInfoV2ResultSerializer : NSObject
+/// 
+@interface DBTEAMTeamMemberInfoV2ResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMTeamMemberInfoV2Result` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMTeamMemberInfoV2Result` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMTeamMemberInfoV2Result` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamMemberInfoV2Result *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMTeamMemberInfoV2Result *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMTeamMemberInfoV2Result` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMTeamMemberInfoV2Result` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMTeamMemberInfoV2Result` object.
-///
-+ (DBTEAMTeamMemberInfoV2Result *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMTeamMemberInfoV2Result *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

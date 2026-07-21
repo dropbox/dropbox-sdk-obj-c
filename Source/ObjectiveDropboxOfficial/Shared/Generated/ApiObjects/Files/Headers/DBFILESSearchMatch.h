@@ -12,18 +12,19 @@
 @class DBFILESSearchMatch;
 @class DBFILESSearchMatchType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SearchMatch` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESSearchMatch : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESSearchMatch : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,47 +36,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param matchType The type of the match.
 /// @param metadata The metadata for the matched file or folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMatchType:(DBFILESSearchMatchType *)matchType metadata:(DBFILESMetadata *)metadata;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SearchMatch` struct.
-///
-@interface DBFILESSearchMatchSerializer : NSObject
+/// 
+@interface DBFILESSearchMatchSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESSearchMatch` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESSearchMatch` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESSearchMatch` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESSearchMatch *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESSearchMatch *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESSearchMatch` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESSearchMatch` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESSearchMatch` object.
-///
-+ (DBFILESSearchMatch *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESSearchMatch *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

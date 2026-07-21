@@ -11,18 +11,19 @@
 @class DBFILESGetCopyReferenceResult;
 @class DBFILESMetadata;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetCopyReferenceResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGetCopyReferenceResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGetCopyReferenceResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -38,53 +39,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param metadata Metadata of the file or folder.
 /// @param dCopyReference A copy reference to the file or folder.
 /// @param expires The expiration date of the copy reference. This value is
 /// currently set to be far enough in the future so that expiration is
 /// effectively not an issue.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithMetadata:(DBFILESMetadata *)metadata
-                  dCopyReference:(NSString *)dCopyReference
-                         expires:(NSDate *)expires;
+/// 
+- (instancetype)initWithMetadata:(DBFILESMetadata *)metadata dCopyReference:(NSString *)dCopyReference expires:(NSDate *)expires;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetCopyReferenceResult` struct.
-///
-@interface DBFILESGetCopyReferenceResultSerializer : NSObject
+/// 
+@interface DBFILESGetCopyReferenceResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGetCopyReferenceResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGetCopyReferenceResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetCopyReferenceResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGetCopyReferenceResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGetCopyReferenceResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGetCopyReferenceResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGetCopyReferenceResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGetCopyReferenceResult` object.
-///
-+ (DBFILESGetCopyReferenceResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGetCopyReferenceResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

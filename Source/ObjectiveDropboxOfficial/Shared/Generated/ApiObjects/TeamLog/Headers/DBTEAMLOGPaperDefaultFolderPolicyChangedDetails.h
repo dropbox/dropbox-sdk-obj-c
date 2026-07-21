@@ -11,20 +11,21 @@
 @class DBTEAMLOGPaperDefaultFolderPolicy;
 @class DBTEAMLOGPaperDefaultFolderPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperDefaultFolderPolicyChangedDetails` struct.
-///
+/// 
 /// Changed Paper Default Folder Policy setting for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperDefaultFolderPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperDefaultFolderPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New Paper Default Folder Policy.
 /// @param previousValue Previous Paper Default Folder Policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGPaperDefaultFolderPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGPaperDefaultFolderPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGPaperDefaultFolderPolicy *)dNewValue previousValue:(DBTEAMLOGPaperDefaultFolderPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperDefaultFolderPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperDefaultFolderPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperDefaultFolderPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperDefaultFolderPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDefaultFolderPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperDefaultFolderPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperDefaultFolderPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGPaperDefaultFolderPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperDefaultFolderPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

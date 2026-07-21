@@ -14,13 +14,13 @@
 
 @protocol DBTransportClient;
 
-///
+/// 
 /// Routes for the `Auth` namespace
-///
+/// 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBAUTHUserAuthRoutes : NSObject
+@interface DBAUTHUserAuthRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
@@ -30,16 +30,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
 
-///
+/// 
 /// Disables the access token used to authenticate the call. If there is a corresponding refresh token for the access
 /// token, this disables that refresh token, as well as any other access tokens for that refresh token.
-///
-///
+/// 
+/// 
 /// @return Through the response callback, the caller will receive a `void` object on success or a `void` object on
 /// failure.
-///
+/// 
 - (DBRpcTask<DBNilObject *, DBNilObject *> *)tokenRevoke;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

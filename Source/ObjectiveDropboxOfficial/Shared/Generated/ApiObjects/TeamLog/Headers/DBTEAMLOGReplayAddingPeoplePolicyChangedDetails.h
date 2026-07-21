@@ -11,20 +11,21 @@
 @class DBTEAMLOGReplayAddingPeoplePolicy;
 @class DBTEAMLOGReplayAddingPeoplePolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ReplayAddingPeoplePolicyChangedDetails` struct.
-///
+/// 
 /// Changed the policy for adding people to Replay content.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGReplayAddingPeoplePolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGReplayAddingPeoplePolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue To.
 /// @param previousValue From.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGReplayAddingPeoplePolicy *)dNewValue
-                    previousValue:(DBTEAMLOGReplayAddingPeoplePolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGReplayAddingPeoplePolicy *)dNewValue previousValue:(DBTEAMLOGReplayAddingPeoplePolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ReplayAddingPeoplePolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGReplayAddingPeoplePolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGReplayAddingPeoplePolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGReplayAddingPeoplePolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGReplayAddingPeoplePolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayAddingPeoplePolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGReplayAddingPeoplePolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGReplayAddingPeoplePolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGReplayAddingPeoplePolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGReplayAddingPeoplePolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGReplayAddingPeoplePolicyChangedDetails` object.
-///
-+ (DBTEAMLOGReplayAddingPeoplePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGReplayAddingPeoplePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

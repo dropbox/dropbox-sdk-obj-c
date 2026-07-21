@@ -11,20 +11,21 @@
 @class DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails;
 @class DBTEAMLOGShowcaseExternalSharingPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ShowcaseChangeExternalSharingPolicyDetails` struct.
-///
+/// 
 /// Enabled/disabled sharing Dropbox Showcase externally for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,52 +37,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New Dropbox Showcase external sharing policy.
 /// @param previousValue Previous Dropbox Showcase external sharing policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGShowcaseExternalSharingPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGShowcaseExternalSharingPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGShowcaseExternalSharingPolicy *)dNewValue previousValue:(DBTEAMLOGShowcaseExternalSharingPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ShowcaseChangeExternalSharingPolicyDetails`
 /// struct.
-///
-@interface DBTEAMLOGShowcaseChangeExternalSharingPolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGShowcaseChangeExternalSharingPolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails` object.
-///
-+ (DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGShowcaseChangeExternalSharingPolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

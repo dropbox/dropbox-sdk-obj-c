@@ -13,20 +13,21 @@
 @class DBTEAMMemberDevices;
 @class DBTEAMMobileClientSession;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberDevices` struct.
-///
+/// 
 /// Information on devices of a team's member.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMMemberDevices : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMMemberDevices : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -44,62 +45,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param teamMemberId The member unique Id.
 /// @param webSessions List of web sessions made by this team member.
 /// @param desktopClients List of desktop clients by this team member.
 /// @param mobileClients List of mobile clients by this team member.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId
-                         webSessions:(nullable NSArray<DBTEAMActiveWebSession *> *)webSessions
-                      desktopClients:(nullable NSArray<DBTEAMDesktopClientSession *> *)desktopClients
-                       mobileClients:(nullable NSArray<DBTEAMMobileClientSession *> *)mobileClients;
+/// 
+- (instancetype)initWithTeamMemberId:(NSString *)teamMemberId webSessions:(nullable NSArray<DBTEAMActiveWebSession *> *)webSessions desktopClients:(nullable NSArray<DBTEAMDesktopClientSession *> *)desktopClients mobileClients:(nullable NSArray<DBTEAMMobileClientSession *> *)mobileClients;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param teamMemberId The member unique Id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberDevices` struct.
-///
-@interface DBTEAMMemberDevicesSerializer : NSObject
+/// 
+@interface DBTEAMMemberDevicesSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMMemberDevices` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMMemberDevices` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMMemberDevices` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMMemberDevices *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMMemberDevices *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMMemberDevices` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMMemberDevices` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMMemberDevices` object.
-///
-+ (DBTEAMMemberDevices *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMMemberDevices *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

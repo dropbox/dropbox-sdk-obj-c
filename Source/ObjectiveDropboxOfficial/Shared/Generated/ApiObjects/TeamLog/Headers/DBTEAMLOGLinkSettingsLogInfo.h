@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGLinkSettingsLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `LinkSettingsLogInfo` struct.
-///
+/// 
 /// Link Settings
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGLinkSettingsLogInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGLinkSettingsLogInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -47,75 +48,68 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param name Link Name.
 /// @param requireEmail Email Required.
 /// @param downloadable Downloadable.
 /// @param passwordRequired Password required.
 /// @param url Link URL.
 /// @param expireAt Expires at.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                requireEmail:(NSNumber *)requireEmail
-                downloadable:(NSNumber *)downloadable
-            passwordRequired:(NSNumber *)passwordRequired
-                         url:(NSString *)url
-                    expireAt:(nullable NSDate *)expireAt;
+/// 
+- (instancetype)initWithName:(NSString *)name requireEmail:(NSNumber *)requireEmail downloadable:(NSNumber *)downloadable passwordRequired:(NSNumber *)passwordRequired url:(NSString *)url expireAt:(nullable NSDate *)expireAt;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param name Link Name.
 /// @param requireEmail Email Required.
 /// @param downloadable Downloadable.
 /// @param passwordRequired Password required.
 /// @param url Link URL.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithName:(NSString *)name
-                requireEmail:(NSNumber *)requireEmail
-                downloadable:(NSNumber *)downloadable
-            passwordRequired:(NSNumber *)passwordRequired
-                         url:(NSString *)url;
+/// 
+- (instancetype)initWithName:(NSString *)name requireEmail:(NSNumber *)requireEmail downloadable:(NSNumber *)downloadable passwordRequired:(NSNumber *)passwordRequired url:(NSString *)url;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `LinkSettingsLogInfo` struct.
-///
-@interface DBTEAMLOGLinkSettingsLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGLinkSettingsLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGLinkSettingsLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGLinkSettingsLogInfo` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGLinkSettingsLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGLinkSettingsLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGLinkSettingsLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGLinkSettingsLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGLinkSettingsLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGLinkSettingsLogInfo` object.
-///
-+ (DBTEAMLOGLinkSettingsLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGLinkSettingsLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

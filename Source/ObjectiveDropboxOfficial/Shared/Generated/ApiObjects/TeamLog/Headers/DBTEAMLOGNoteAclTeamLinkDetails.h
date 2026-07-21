@@ -10,64 +10,67 @@
 
 @class DBTEAMLOGNoteAclTeamLinkDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `NoteAclTeamLinkDetails` struct.
-///
+/// 
 /// Changed Paper doc to link-accessible for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGNoteAclTeamLinkDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGNoteAclTeamLinkDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `NoteAclTeamLinkDetails` struct.
-///
-@interface DBTEAMLOGNoteAclTeamLinkDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGNoteAclTeamLinkDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGNoteAclTeamLinkDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGNoteAclTeamLinkDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoteAclTeamLinkDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGNoteAclTeamLinkDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGNoteAclTeamLinkDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGNoteAclTeamLinkDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGNoteAclTeamLinkDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGNoteAclTeamLinkDetails` object.
-///
-+ (DBTEAMLOGNoteAclTeamLinkDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGNoteAclTeamLinkDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

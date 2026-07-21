@@ -10,18 +10,19 @@
 
 @class DBFILEPROPERTIESPropertiesSearchContinueError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PropertiesSearchContinueError` union.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEPROPERTIESPropertiesSearchContinueError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEPROPERTIESPropertiesSearchContinueError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -29,12 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// the possible tag states with which the
 /// `DBFILEPROPERTIESPropertiesSearchContinueError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBFILEPROPERTIESPropertiesSearchContinueErrorTag) {
-  /// Indicates that the cursor has been invalidated. Call `propertiesSearch`
-  /// to obtain a new cursor.
-  DBFILEPROPERTIESPropertiesSearchContinueErrorReset,
+    /// Indicates that the cursor has been invalidated. Call `propertiesSearch`
+    /// to obtain a new cursor.
+    DBFILEPROPERTIESPropertiesSearchContinueErrorReset,
 
-  /// (no description).
-  DBFILEPROPERTIESPropertiesSearchContinueErrorOther,
+    /// (no description).
+    DBFILEPROPERTIESPropertiesSearchContinueErrorOther,
 
 };
 
@@ -43,80 +44,82 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILEPROPERTIESPropertiesSearchContinueErrorT
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "reset".
-///
+/// 
 /// Description of the "reset" tag state: Indicates that the cursor has been
 /// invalidated. Call `propertiesSearch` to obtain a new cursor.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithReset;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "reset".
-///
+/// 
 /// @return Whether the union's current tag state has value "reset".
-///
+/// 
 - (BOOL)isReset;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DBFILEPROPERTIESPropertiesSearchContinueError` union.
-///
-@interface DBFILEPROPERTIESPropertiesSearchContinueErrorSerializer : NSObject
+/// 
+@interface DBFILEPROPERTIESPropertiesSearchContinueErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEPROPERTIESPropertiesSearchContinueError` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBFILEPROPERTIESPropertiesSearchContinueError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertiesSearchContinueError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEPROPERTIESPropertiesSearchContinueError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEPROPERTIESPropertiesSearchContinueError *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEPROPERTIESPropertiesSearchContinueError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEPROPERTIESPropertiesSearchContinueError` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBFILEPROPERTIESPropertiesSearchContinueError` object.
-///
-+ (DBFILEPROPERTIESPropertiesSearchContinueError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEPROPERTIESPropertiesSearchContinueError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

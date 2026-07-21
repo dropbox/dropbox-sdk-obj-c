@@ -11,20 +11,21 @@
 @class DBTEAMResendVerificationEmailResult;
 @class DBTEAMUserResendResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `ResendVerificationEmailResult` struct.
-///
+/// 
 /// List of users and resend results.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMResendVerificationEmailResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMResendVerificationEmailResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,48 +34,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param results (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithResults:(NSArray<DBTEAMUserResendResult *> *)results;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `ResendVerificationEmailResult` struct.
-///
-@interface DBTEAMResendVerificationEmailResultSerializer : NSObject
+/// 
+@interface DBTEAMResendVerificationEmailResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMResendVerificationEmailResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMResendVerificationEmailResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMResendVerificationEmailResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMResendVerificationEmailResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMResendVerificationEmailResult *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMResendVerificationEmailResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMResendVerificationEmailResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMResendVerificationEmailResult`
 /// object.
-///
-+ (DBTEAMResendVerificationEmailResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMResendVerificationEmailResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

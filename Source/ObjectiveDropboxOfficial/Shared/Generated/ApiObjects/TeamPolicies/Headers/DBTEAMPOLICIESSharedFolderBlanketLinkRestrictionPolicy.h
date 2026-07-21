@@ -10,21 +10,22 @@
 
 @class DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFolderBlanketLinkRestrictionPolicy` union.
-///
+/// 
 /// Policy governing whether shared folder membership is required to access
 /// shared links.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,15 +33,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// represents the possible tag states with which the
 /// `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyTag) {
-  /// Only members of shared folders can access folder content via shared
-  /// link.
-  DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyMembers,
+    /// Only members of shared folders can access folder content via shared
+    /// link.
+    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyMembers,
 
-  /// Anyone can access folder content via shared link.
-  DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyAnyone,
+    /// Anyone can access folder content via shared link.
+    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyAnyone,
 
-  /// (no description).
-  DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyOther,
+    /// (no description).
+    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicyOther,
 
 };
 
@@ -49,99 +50,101 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderBlanketLinkRestricti
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "members".
-///
+/// 
 /// Description of the "members" tag state: Only members of shared folders can
 /// access folder content via shared link.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithMembers;
 
-///
+/// 
 /// Initializes union class with tag state of "anyone".
-///
+/// 
 /// Description of the "anyone" tag state: Anyone can access folder content via
 /// shared link.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAnyone;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "members".
-///
+/// 
 /// @return Whether the union's current tag state has value "members".
-///
+/// 
 - (BOOL)isMembers;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "anyone".
-///
+/// 
 /// @return Whether the union's current tag state has value "anyone".
-///
+/// 
 - (BOOL)isAnyone;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy` union.
-///
-@interface DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicySerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy`
 /// instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy` object.
-///
-+ (DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBSHARINGViewerInfoPolicy;
 @class DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedContentChangeViewerInfoPolicyDetails` struct.
-///
+/// 
 /// Changed whether members can see who viewed shared file/folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,62 +37,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New viewer info policy.
 /// @param previousValue Previous view info policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBSHARINGViewerInfoPolicy *)dNewValue
-                    previousValue:(nullable DBSHARINGViewerInfoPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBSHARINGViewerInfoPolicy *)dNewValue previousValue:(nullable DBSHARINGViewerInfoPolicy *)previousValue;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param dNewValue New viewer info policy.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(DBSHARINGViewerInfoPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedContentChangeViewerInfoPolicyDetails`
 /// struct.
-///
-@interface DBTEAMLOGSharedContentChangeViewerInfoPolicyDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedContentChangeViewerInfoPolicyDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails` object.
-///
-+ (DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedContentChangeViewerInfoPolicyDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

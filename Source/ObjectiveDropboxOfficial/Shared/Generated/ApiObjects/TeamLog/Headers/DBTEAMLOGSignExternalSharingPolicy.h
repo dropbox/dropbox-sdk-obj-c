@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSignExternalSharingPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SignExternalSharingPolicy` union.
-///
+/// 
 /// Policy for deciding whether team users can share Sign content externally
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSignExternalSharingPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSignExternalSharingPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,17 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBTEAMLOGSignExternalSharingPolicy`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSignExternalSharingPolicyTag) {
-  /// (no description).
-  DBTEAMLOGSignExternalSharingPolicyDefault_,
+    /// (no description).
+    DBTEAMLOGSignExternalSharingPolicyDefault_,
 
-  /// (no description).
-  DBTEAMLOGSignExternalSharingPolicyDisabled,
+    /// (no description).
+    DBTEAMLOGSignExternalSharingPolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGSignExternalSharingPolicyEnabled,
+    /// (no description).
+    DBTEAMLOGSignExternalSharingPolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGSignExternalSharingPolicyOther,
+    /// (no description).
+    DBTEAMLOGSignExternalSharingPolicyOther,
 
 };
 
@@ -50,103 +51,105 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGSignExternalSharingPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGSignExternalSharingPolicy` union.
-///
-@interface DBTEAMLOGSignExternalSharingPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGSignExternalSharingPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSignExternalSharingPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSignExternalSharingPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignExternalSharingPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignExternalSharingPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSignExternalSharingPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSignExternalSharingPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignExternalSharingPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSignExternalSharingPolicy` object.
-///
-+ (DBTEAMLOGSignExternalSharingPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSignExternalSharingPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGFlexibleFileNamesPolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FlexibleFileNamesPolicy` union.
-///
+/// 
 /// Flexible file names policy
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGFlexibleFileNamesPolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGFlexibleFileNamesPolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,26 +32,26 @@ NS_ASSUME_NONNULL_BEGIN
 /// tag states with which the `DBTEAMLOGFlexibleFileNamesPolicy` union can
 /// exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFlexibleFileNamesPolicyTag) {
-  /// (no description).
-  DBTEAMLOGFlexibleFileNamesPolicyOff,
+    /// (no description).
+    DBTEAMLOGFlexibleFileNamesPolicyOff,
 
-  /// (no description).
-  DBTEAMLOGFlexibleFileNamesPolicyOffDefault,
+    /// (no description).
+    DBTEAMLOGFlexibleFileNamesPolicyOffDefault,
 
-  /// (no description).
-  DBTEAMLOGFlexibleFileNamesPolicyOptional,
+    /// (no description).
+    DBTEAMLOGFlexibleFileNamesPolicyOptional,
 
-  /// (no description).
-  DBTEAMLOGFlexibleFileNamesPolicyOptionalDefault,
+    /// (no description).
+    DBTEAMLOGFlexibleFileNamesPolicyOptionalDefault,
 
-  /// (no description).
-  DBTEAMLOGFlexibleFileNamesPolicyRequired,
+    /// (no description).
+    DBTEAMLOGFlexibleFileNamesPolicyRequired,
 
-  /// (no description).
-  DBTEAMLOGFlexibleFileNamesPolicyRequiredDefault,
+    /// (no description).
+    DBTEAMLOGFlexibleFileNamesPolicyRequiredDefault,
 
-  /// (no description).
-  DBTEAMLOGFlexibleFileNamesPolicyOther,
+    /// (no description).
+    DBTEAMLOGFlexibleFileNamesPolicyOther,
 
 };
 
@@ -59,147 +60,149 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGFlexibleFileNamesPolicyTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "off".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOff;
 
-///
+/// 
 /// Initializes union class with tag state of "off_default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOffDefault;
 
-///
+/// 
 /// Initializes union class with tag state of "optional".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOptional;
 
-///
+/// 
 /// Initializes union class with tag state of "optional_default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOptionalDefault;
 
-///
+/// 
 /// Initializes union class with tag state of "required".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRequired;
 
-///
+/// 
 /// Initializes union class with tag state of "required_default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithRequiredDefault;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "off".
-///
+/// 
 /// @return Whether the union's current tag state has value "off".
-///
+/// 
 - (BOOL)isOff;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "off_default".
-///
+/// 
 /// @return Whether the union's current tag state has value "off_default".
-///
+/// 
 - (BOOL)isOffDefault;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "optional".
-///
+/// 
 /// @return Whether the union's current tag state has value "optional".
-///
+/// 
 - (BOOL)isOptional;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "optional_default".
-///
+/// 
 /// @return Whether the union's current tag state has value "optional_default".
-///
+/// 
 - (BOOL)isOptionalDefault;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "required".
-///
+/// 
 /// @return Whether the union's current tag state has value "required".
-///
+/// 
 - (BOOL)isRequired;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "required_default".
-///
+/// 
 /// @return Whether the union's current tag state has value "required_default".
-///
+/// 
 - (BOOL)isRequiredDefault;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBTEAMLOGFlexibleFileNamesPolicy` union.
-///
-@interface DBTEAMLOGFlexibleFileNamesPolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGFlexibleFileNamesPolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGFlexibleFileNamesPolicy` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGFlexibleFileNamesPolicy` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGFlexibleFileNamesPolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGFlexibleFileNamesPolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGFlexibleFileNamesPolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGFlexibleFileNamesPolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGFlexibleFileNamesPolicy` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGFlexibleFileNamesPolicy` object.
-///
-+ (DBTEAMLOGFlexibleFileNamesPolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGFlexibleFileNamesPolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

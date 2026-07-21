@@ -12,20 +12,21 @@
 @class DBTEAMLOGAdminConsoleAppPolicy;
 @class DBTEAMLOGAppPermissionsChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AppPermissionsChangedDetails` struct.
-///
+/// 
 /// Changed app permissions.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAppPermissionsChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAppPermissionsChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -43,66 +44,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param previousValue Previous policy.
 /// @param dNewValue New policy.
 /// @param appName Name of the app.
 /// @param permission Permission that was changed.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGAdminConsoleAppPolicy *)previousValue
-                            dNewValue:(DBTEAMLOGAdminConsoleAppPolicy *)dNewValue
-                              appName:(nullable NSString *)appName
-                           permission:(nullable DBTEAMLOGAdminConsoleAppPermission *)permission;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGAdminConsoleAppPolicy *)previousValue dNewValue:(DBTEAMLOGAdminConsoleAppPolicy *)dNewValue appName:(nullable NSString *)appName permission:(nullable DBTEAMLOGAdminConsoleAppPermission *)permission;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param previousValue Previous policy.
 /// @param dNewValue New policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithPreviousValue:(DBTEAMLOGAdminConsoleAppPolicy *)previousValue
-                            dNewValue:(DBTEAMLOGAdminConsoleAppPolicy *)dNewValue;
+/// 
+- (instancetype)initWithPreviousValue:(DBTEAMLOGAdminConsoleAppPolicy *)previousValue dNewValue:(DBTEAMLOGAdminConsoleAppPolicy *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AppPermissionsChangedDetails` struct.
-///
-@interface DBTEAMLOGAppPermissionsChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGAppPermissionsChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAppPermissionsChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAppPermissionsChangedDetails`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppPermissionsChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAppPermissionsChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAppPermissionsChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAppPermissionsChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAppPermissionsChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAppPermissionsChangedDetails`
 /// object.
-///
-+ (DBTEAMLOGAppPermissionsChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAppPermissionsChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

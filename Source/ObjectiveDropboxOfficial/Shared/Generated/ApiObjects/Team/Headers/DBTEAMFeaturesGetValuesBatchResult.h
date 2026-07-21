@@ -11,18 +11,19 @@
 @class DBTEAMFeatureValue;
 @class DBTEAMFeaturesGetValuesBatchResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FeaturesGetValuesBatchResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMFeaturesGetValuesBatchResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMFeaturesGetValuesBatchResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,47 +32,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param values (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithValues:(NSArray<DBTEAMFeatureValue *> *)values;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FeaturesGetValuesBatchResult` struct.
-///
-@interface DBTEAMFeaturesGetValuesBatchResultSerializer : NSObject
+/// 
+@interface DBTEAMFeaturesGetValuesBatchResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMFeaturesGetValuesBatchResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMFeaturesGetValuesBatchResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMFeaturesGetValuesBatchResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMFeaturesGetValuesBatchResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMFeaturesGetValuesBatchResult *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMFeaturesGetValuesBatchResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMFeaturesGetValuesBatchResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMFeaturesGetValuesBatchResult` object.
-///
-+ (DBTEAMFeaturesGetValuesBatchResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMFeaturesGetValuesBatchResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

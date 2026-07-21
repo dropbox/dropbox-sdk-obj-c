@@ -11,20 +11,21 @@
 @class DBTEAMLOGGovernancePolicyAddFoldersDetails;
 @class DBTEAMLOGPolicyType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GovernancePolicyAddFoldersDetails` struct.
-///
+/// 
 /// Added folders to policy.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGovernancePolicyAddFoldersDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGovernancePolicyAddFoldersDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -42,65 +43,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param governancePolicyId Policy ID.
 /// @param name Policy name.
 /// @param policyType Policy type.
 /// @param folders Folders.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId
-                                      name:(NSString *)name
-                                policyType:(nullable DBTEAMLOGPolicyType *)policyType
-                                   folders:(nullable NSArray<NSString *> *)folders;
+/// 
+- (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId name:(NSString *)name policyType:(nullable DBTEAMLOGPolicyType *)policyType folders:(nullable NSArray<NSString *> *)folders;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param governancePolicyId Policy ID.
 /// @param name Policy name.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithGovernancePolicyId:(NSString *)governancePolicyId name:(NSString *)name;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GovernancePolicyAddFoldersDetails` struct.
-///
-@interface DBTEAMLOGGovernancePolicyAddFoldersDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGovernancePolicyAddFoldersDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGovernancePolicyAddFoldersDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGGovernancePolicyAddFoldersDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyAddFoldersDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGovernancePolicyAddFoldersDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGovernancePolicyAddFoldersDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGovernancePolicyAddFoldersDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGovernancePolicyAddFoldersDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGovernancePolicyAddFoldersDetails`
 /// object.
-///
-+ (DBTEAMLOGGovernancePolicyAddFoldersDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGovernancePolicyAddFoldersDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSHARINGSharedFolderMetadataBase.h"
 #import "DBSerializableProtocol.h"
+#import "DBSHARINGSharedFolderMetadataBase.h"
 
 @class DBSHARINGAccessInheritance;
 @class DBSHARINGAccessLevel;
@@ -17,20 +17,21 @@
 @class DBSHARINGSharedFolderMetadata;
 @class DBUSERSTeam;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedFolderMetadata` struct.
-///
+/// 
 /// The metadata which includes basic information about the shared folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGSharedFolderMetadata : DBSHARINGSharedFolderMetadataBase <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGSharedFolderMetadata : DBSHARINGSharedFolderMetadataBase <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -67,9 +68,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accessType The current user's access level for this shared folder.
 /// @param isInsideTeamFolder Whether this folder is inside of a team folder.
 /// @param isTeamFolder Whether this folder is a team folder
@@ -101,32 +102,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param accessInheritance Whether the folder inherits its members from its
 /// parent.
 /// @param folderId The ID of the content.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType
-                isInsideTeamFolder:(NSNumber *)isInsideTeamFolder
-                      isTeamFolder:(NSNumber *)isTeamFolder
-                              name:(NSString *)name
-                            policy:(DBSHARINGFolderPolicy *)policy
-                        previewUrl:(NSString *)previewUrl
-                    sharedFolderId:(NSString *)sharedFolderId
-                       timeInvited:(NSDate *)timeInvited
-                 ownerDisplayNames:(nullable NSArray<NSString *> *)ownerDisplayNames
-                         ownerTeam:(nullable DBUSERSTeam *)ownerTeam
-              parentSharedFolderId:(nullable NSString *)parentSharedFolderId
-                       pathDisplay:(nullable NSString *)pathDisplay
-                         pathLower:(nullable NSString *)pathLower
-                  parentFolderName:(nullable NSString *)parentFolderName
-                      linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata
-                       permissions:(nullable NSArray<DBSHARINGFolderPermission *> *)permissions
-                 accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance
-                          folderId:(nullable NSString *)folderId;
+/// 
+- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType isInsideTeamFolder:(NSNumber *)isInsideTeamFolder isTeamFolder:(NSNumber *)isTeamFolder name:(NSString *)name policy:(DBSHARINGFolderPolicy *)policy previewUrl:(NSString *)previewUrl sharedFolderId:(NSString *)sharedFolderId timeInvited:(NSDate *)timeInvited ownerDisplayNames:(nullable NSArray<NSString *> *)ownerDisplayNames ownerTeam:(nullable DBUSERSTeam *)ownerTeam parentSharedFolderId:(nullable NSString *)parentSharedFolderId pathDisplay:(nullable NSString *)pathDisplay pathLower:(nullable NSString *)pathLower parentFolderName:(nullable NSString *)parentFolderName linkMetadata:(nullable DBSHARINGSharedContentLinkMetadata *)linkMetadata permissions:(nullable NSArray<DBSHARINGFolderPermission *> *)permissions accessInheritance:(nullable DBSHARINGAccessInheritance *)accessInheritance folderId:(nullable NSString *)folderId;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param accessType The current user's access level for this shared folder.
 /// @param isInsideTeamFolder Whether this folder is inside of a team folder.
 /// @param isTeamFolder Whether this folder is a team folder
@@ -137,48 +121,43 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sharedFolderId The ID of the shared folder.
 /// @param timeInvited Timestamp indicating when the current user was invited to
 /// this shared folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType
-                isInsideTeamFolder:(NSNumber *)isInsideTeamFolder
-                      isTeamFolder:(NSNumber *)isTeamFolder
-                              name:(NSString *)name
-                            policy:(DBSHARINGFolderPolicy *)policy
-                        previewUrl:(NSString *)previewUrl
-                    sharedFolderId:(NSString *)sharedFolderId
-                       timeInvited:(NSDate *)timeInvited;
+/// 
+- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType isInsideTeamFolder:(NSNumber *)isInsideTeamFolder isTeamFolder:(NSNumber *)isTeamFolder name:(NSString *)name policy:(DBSHARINGFolderPolicy *)policy previewUrl:(NSString *)previewUrl sharedFolderId:(NSString *)sharedFolderId timeInvited:(NSDate *)timeInvited;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedFolderMetadata` struct.
-///
-@interface DBSHARINGSharedFolderMetadataSerializer : NSObject
+/// 
+@interface DBSHARINGSharedFolderMetadataSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGSharedFolderMetadata` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGSharedFolderMetadata` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFolderMetadata` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGSharedFolderMetadata *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGSharedFolderMetadata *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGSharedFolderMetadata` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGSharedFolderMetadata` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGSharedFolderMetadata` object.
-///
-+ (DBSHARINGSharedFolderMetadata *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGSharedFolderMetadata *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

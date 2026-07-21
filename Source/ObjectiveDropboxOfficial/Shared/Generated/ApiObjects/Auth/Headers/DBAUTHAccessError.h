@@ -13,41 +13,42 @@
 @class DBAUTHNoPermissionError;
 @class DBAUTHPaperAccessError;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AccessError` union.
-///
+/// 
 /// Error occurred because the account doesn't have permission to access the
 /// resource.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBAUTHAccessError : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBAUTHAccessError : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 /// The `DBAUTHAccessErrorTag` enum type represents the possible tag states with
 /// which the `DBAUTHAccessError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAccessErrorTag) {
-  /// Current account type cannot access the resource.
-  DBAUTHAccessErrorInvalidAccountType,
+    /// Current account type cannot access the resource.
+    DBAUTHAccessErrorInvalidAccountType,
 
-  /// Current account cannot access Paper.
-  DBAUTHAccessErrorPaperAccessDenied,
+    /// Current account cannot access Paper.
+    DBAUTHAccessErrorPaperAccessDenied,
 
-  /// Team doesn't have permission to access.
-  DBAUTHAccessErrorTeamAccessDenied,
+    /// Team doesn't have permission to access.
+    DBAUTHAccessErrorTeamAccessDenied,
 
-  /// Caller does not have permission to access the resource.
-  DBAUTHAccessErrorNoPermission,
+    /// Caller does not have permission to access the resource.
+    DBAUTHAccessErrorNoPermission,
 
-  /// (no description).
-  DBAUTHAccessErrorOther,
+    /// (no description).
+    DBAUTHAccessErrorOther,
 
 };
 
@@ -71,149 +72,151 @@ typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAccessErrorTag) {
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "invalid_account_type".
-///
+/// 
 /// Description of the "invalid_account_type" tag state: Current account type
 /// cannot access the resource.
-///
+/// 
 /// @param invalidAccountType Current account type cannot access the resource.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithInvalidAccountType:(DBAUTHInvalidAccountTypeError *)invalidAccountType;
 
-///
+/// 
 /// Initializes union class with tag state of "paper_access_denied".
-///
+/// 
 /// Description of the "paper_access_denied" tag state: Current account cannot
 /// access Paper.
-///
+/// 
 /// @param paperAccessDenied Current account cannot access Paper.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPaperAccessDenied:(DBAUTHPaperAccessError *)paperAccessDenied;
 
-///
+/// 
 /// Initializes union class with tag state of "team_access_denied".
-///
+/// 
 /// Description of the "team_access_denied" tag state: Team doesn't have
 /// permission to access.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithTeamAccessDenied;
 
-///
+/// 
 /// Initializes union class with tag state of "no_permission".
-///
+/// 
 /// Description of the "no_permission" tag state: Caller does not have
 /// permission to access the resource.
-///
+/// 
 /// @param noPermission Caller does not have permission to access the resource.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithNoPermission:(DBAUTHNoPermissionError *)noPermission;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "invalid_account_type".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `invalidAccountType` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "invalid_account_type".
-///
+/// 
 - (BOOL)isInvalidAccountType;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "paper_access_denied".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `paperAccessDenied` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "paper_access_denied".
-///
+/// 
 - (BOOL)isPaperAccessDenied;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value
 /// "team_access_denied".
-///
+/// 
 /// @return Whether the union's current tag state has value
 /// "team_access_denied".
-///
+/// 
 - (BOOL)isTeamAccessDenied;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "no_permission".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `noPermission` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "no_permission".
-///
+/// 
 - (BOOL)isNoPermission;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DBAUTHAccessError` union.
-///
-@interface DBAUTHAccessErrorSerializer : NSObject
+/// 
+@interface DBAUTHAccessErrorSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBAUTHAccessError` instances.
-///
+/// 
 /// @param instance An instance of the `DBAUTHAccessError` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBAUTHAccessError` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBAUTHAccessError *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBAUTHAccessError *)instance;
 
-///
+/// 
 /// Deserializes `DBAUTHAccessError` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBAUTHAccessError` API object.
-///
+/// 
 /// @return An instantiation of the `DBAUTHAccessError` object.
-///
-+ (DBAUTHAccessError *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBAUTHAccessError *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

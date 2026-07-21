@@ -12,20 +12,21 @@
 @class DBSHARINGMemberPermission;
 @class DBSHARINGMembershipInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MembershipInfo` struct.
-///
+/// 
 /// The information about a member of the shared content.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGMembershipInfo : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGMembershipInfo : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -45,65 +46,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accessType The access type for this member. It contains inherited
 /// access type from parent folder, and acquired access type from this folder.
 /// @param permissions The permissions that requesting user has on this member.
 /// The set of permissions corresponds to the MemberActions in the request.
 /// @param initials Field is deprecated. Never set.
 /// @param isInherited True if the member has access on a parent folder.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType
-                       permissions:(nullable NSArray<DBSHARINGMemberPermission *> *)permissions
-                          initials:(nullable NSString *)initials
-                       isInherited:(nullable NSNumber *)isInherited;
+/// 
+- (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType permissions:(nullable NSArray<DBSHARINGMemberPermission *> *)permissions initials:(nullable NSString *)initials isInherited:(nullable NSNumber *)isInherited;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param accessType The access type for this member. It contains inherited
 /// access type from parent folder, and acquired access type from this folder.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MembershipInfo` struct.
-///
-@interface DBSHARINGMembershipInfoSerializer : NSObject
+/// 
+@interface DBSHARINGMembershipInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGMembershipInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGMembershipInfo` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGMembershipInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGMembershipInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGMembershipInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGMembershipInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGMembershipInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGMembershipInfo` object.
-///
-+ (DBSHARINGMembershipInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGMembershipInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

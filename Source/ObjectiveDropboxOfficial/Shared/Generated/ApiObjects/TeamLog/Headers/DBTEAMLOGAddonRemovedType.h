@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGAddonRemovedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AddonRemovedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAddonRemovedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAddonRemovedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,46 +31,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `AddonRemovedType` struct.
-///
-@interface DBTEAMLOGAddonRemovedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGAddonRemovedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAddonRemovedType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGAddonRemovedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAddonRemovedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAddonRemovedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAddonRemovedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAddonRemovedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAddonRemovedType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGAddonRemovedType` object.
-///
-+ (DBTEAMLOGAddonRemovedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAddonRemovedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

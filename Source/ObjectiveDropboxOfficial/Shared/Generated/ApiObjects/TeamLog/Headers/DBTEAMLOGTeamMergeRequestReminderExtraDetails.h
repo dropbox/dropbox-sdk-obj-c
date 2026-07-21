@@ -12,20 +12,21 @@
 @class DBTEAMLOGSecondaryTeamRequestReminderDetails;
 @class DBTEAMLOGTeamMergeRequestReminderExtraDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamMergeRequestReminderExtraDetails` union.
-///
+/// 
 /// Team merge request reminder details
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamMergeRequestReminderExtraDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamMergeRequestReminderExtraDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -33,14 +34,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// the possible tag states with which the
 /// `DBTEAMLOGTeamMergeRequestReminderExtraDetails` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMergeRequestReminderExtraDetailsTag) {
-  /// Team merge request reminder details shown to the primary team
-  DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam,
+    /// Team merge request reminder details shown to the primary team
+    DBTEAMLOGTeamMergeRequestReminderExtraDetailsPrimaryTeam,
 
-  /// Team merge request reminder details shown to the secondary team
-  DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam,
+    /// Team merge request reminder details shown to the secondary team
+    DBTEAMLOGTeamMergeRequestReminderExtraDetailsSecondaryTeam,
 
-  /// (no description).
-  DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther,
+    /// (no description).
+    DBTEAMLOGTeamMergeRequestReminderExtraDetailsOther,
 
 };
 
@@ -59,109 +60,111 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGTeamMergeRequestReminderExtraDetailsT
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "primary_team".
-///
+/// 
 /// Description of the "primary_team" tag state: Team merge request reminder
 /// details shown to the primary team
-///
+/// 
 /// @param primaryTeam Team merge request reminder details shown to the primary
 /// team
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithPrimaryTeam:(DBTEAMLOGPrimaryTeamRequestReminderDetails *)primaryTeam;
 
-///
+/// 
 /// Initializes union class with tag state of "secondary_team".
-///
+/// 
 /// Description of the "secondary_team" tag state: Team merge request reminder
 /// details shown to the secondary team
-///
+/// 
 /// @param secondaryTeam Team merge request reminder details shown to the
 /// secondary team
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithSecondaryTeam:(DBTEAMLOGSecondaryTeamRequestReminderDetails *)secondaryTeam;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "primary_team".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `primaryTeam` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "primary_team".
-///
+/// 
 - (BOOL)isPrimaryTeam;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "secondary_team".
-///
+/// 
 /// @note Call this method and ensure it returns true before accessing the
 /// `secondaryTeam` property, otherwise a runtime exception will be thrown.
-///
+/// 
 /// @return Whether the union's current tag state has value "secondary_team".
-///
+/// 
 - (BOOL)isSecondaryTeam;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DBTEAMLOGTeamMergeRequestReminderExtraDetails` union.
-///
-@interface DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamMergeRequestReminderExtraDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamMergeRequestReminderExtraDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamMergeRequestReminderExtraDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestReminderExtraDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamMergeRequestReminderExtraDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamMergeRequestReminderExtraDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamMergeRequestReminderExtraDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamMergeRequestReminderExtraDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamMergeRequestReminderExtraDetails` object.
-///
-+ (DBTEAMLOGTeamMergeRequestReminderExtraDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamMergeRequestReminderExtraDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

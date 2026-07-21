@@ -12,20 +12,21 @@
 @class DBTEAMLOGSharedLinkShareDetails;
 @class DBTEAMLOGUserLogInfo;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SharedLinkShareDetails` struct.
-///
+/// 
 /// Added members as audience of shared link.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSharedLinkShareDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSharedLinkShareDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -37,60 +38,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedLinkOwner Shared link owner details. Might be missing due to
 /// historical data gap.
 /// @param externalUsers Users without a Dropbox account that were added as
 /// shared link audience.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedLinkOwner:(nullable DBTEAMLOGUserLogInfo *)sharedLinkOwner
-                          externalUsers:(nullable NSArray<DBTEAMLOGExternalUserLogInfo *> *)externalUsers;
+/// 
+- (instancetype)initWithSharedLinkOwner:(nullable DBTEAMLOGUserLogInfo *)sharedLinkOwner externalUsers:(nullable NSArray<DBTEAMLOGExternalUserLogInfo *> *)externalUsers;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
-///
+/// 
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SharedLinkShareDetails` struct.
-///
-@interface DBTEAMLOGSharedLinkShareDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSharedLinkShareDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSharedLinkShareDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSharedLinkShareDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkShareDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedLinkShareDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSharedLinkShareDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSharedLinkShareDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSharedLinkShareDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSharedLinkShareDetails` object.
-///
-+ (DBTEAMLOGSharedLinkShareDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSharedLinkShareDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

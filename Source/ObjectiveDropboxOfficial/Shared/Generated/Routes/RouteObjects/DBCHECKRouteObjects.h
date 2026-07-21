@@ -8,14 +8,15 @@
 
 @class DBRoute;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
-///
+/// 
 /// Stone route objects for the Check namespace. Each route in the Check
 /// namespace has its own static object, which contains information about the
 /// route.
-///
-@interface DBCHECKRouteObjects : NSObject
+/// 
+@interface DBCHECKRouteObjects : NSObject 
 
 /// Accessor method for the app route object.
 + (DBRoute *)DBCHECKApp;
@@ -26,3 +27,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

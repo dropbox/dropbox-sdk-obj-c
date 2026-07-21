@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGBackupAdminInvitationSentType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `BackupAdminInvitationSentType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGBackupAdminInvitationSentType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGBackupAdminInvitationSentType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,48 +31,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `BackupAdminInvitationSentType` struct.
-///
-@interface DBTEAMLOGBackupAdminInvitationSentTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGBackupAdminInvitationSentTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGBackupAdminInvitationSentType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGBackupAdminInvitationSentType`
 /// API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGBackupAdminInvitationSentType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGBackupAdminInvitationSentType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGBackupAdminInvitationSentType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGBackupAdminInvitationSentType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGBackupAdminInvitationSentType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGBackupAdminInvitationSentType`
 /// object.
-///
-+ (DBTEAMLOGBackupAdminInvitationSentType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGBackupAdminInvitationSentType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

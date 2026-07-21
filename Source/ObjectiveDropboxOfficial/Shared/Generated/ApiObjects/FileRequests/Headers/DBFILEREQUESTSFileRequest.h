@@ -11,21 +11,22 @@
 @class DBFILEREQUESTSFileRequest;
 @class DBFILEREQUESTSFileRequestDeadline;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `FileRequest` struct.
-///
+/// 
 /// A file request https://www.dropbox.com/help/9090 for receiving files into
 /// the user's Dropbox account.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILEREQUESTSFileRequest : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILEREQUESTSFileRequest : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -64,9 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param id_ The ID of the file request.
 /// @param url The URL of the file request.
 /// @param title The title of the file request.
@@ -83,24 +84,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param description_ A description of the file request.
 /// @param videoProjectId If this request was created from video project, its
 /// id.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithId_:(NSString *)id_
-                        url:(NSString *)url
-                      title:(NSString *)title
-                    created:(NSDate *)created
-                     isOpen:(NSNumber *)isOpen
-                  fileCount:(NSNumber *)fileCount
-                destination:(nullable NSString *)destination
-                   deadline:(nullable DBFILEREQUESTSFileRequestDeadline *)deadline
-               description_:(nullable NSString *)description_
-             videoProjectId:(nullable NSString *)videoProjectId;
+/// 
+- (instancetype)initWithId_:(NSString *)id_ url:(NSString *)url title:(NSString *)title created:(NSDate *)created isOpen:(NSNumber *)isOpen fileCount:(NSNumber *)fileCount destination:(nullable NSString *)destination deadline:(nullable DBFILEREQUESTSFileRequestDeadline *)deadline description_:(nullable NSString *)description_ videoProjectId:(nullable NSString *)videoProjectId;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param id_ The ID of the file request.
 /// @param url The URL of the file request.
 /// @param title The title of the file request.
@@ -108,47 +100,44 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param isOpen Whether or not the file request is open. If the file request
 /// is closed, it will not accept any more file submissions.
 /// @param fileCount The number of files this file request has received.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithId_:(NSString *)id_
-                        url:(NSString *)url
-                      title:(NSString *)title
-                    created:(NSDate *)created
-                     isOpen:(NSNumber *)isOpen
-                  fileCount:(NSNumber *)fileCount;
+/// 
+- (instancetype)initWithId_:(NSString *)id_ url:(NSString *)url title:(NSString *)title created:(NSDate *)created isOpen:(NSNumber *)isOpen fileCount:(NSNumber *)fileCount;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `FileRequest` struct.
-///
-@interface DBFILEREQUESTSFileRequestSerializer : NSObject
+/// 
+@interface DBFILEREQUESTSFileRequestSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILEREQUESTSFileRequest` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILEREQUESTSFileRequest` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSFileRequest` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILEREQUESTSFileRequest *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILEREQUESTSFileRequest *)instance;
 
-///
+/// 
 /// Deserializes `DBFILEREQUESTSFileRequest` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILEREQUESTSFileRequest` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILEREQUESTSFileRequest` object.
-///
-+ (DBFILEREQUESTSFileRequest *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILEREQUESTSFileRequest *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

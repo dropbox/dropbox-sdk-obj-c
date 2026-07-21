@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGSignTemplateSharedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `SignTemplateSharedDetails` struct.
-///
+/// 
 /// Shared template.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGSignTemplateSharedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGSignTemplateSharedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,48 +36,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param accessLevel The access level of the template.
 /// @param fileName The name of the related file.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAccessLevel:(NSString *)accessLevel fileName:(NSString *)fileName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `SignTemplateSharedDetails` struct.
-///
-@interface DBTEAMLOGSignTemplateSharedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGSignTemplateSharedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGSignTemplateSharedDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGSignTemplateSharedDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignTemplateSharedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSignTemplateSharedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGSignTemplateSharedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGSignTemplateSharedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGSignTemplateSharedDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGSignTemplateSharedDetails` object.
-///
-+ (DBTEAMLOGSignTemplateSharedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGSignTemplateSharedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

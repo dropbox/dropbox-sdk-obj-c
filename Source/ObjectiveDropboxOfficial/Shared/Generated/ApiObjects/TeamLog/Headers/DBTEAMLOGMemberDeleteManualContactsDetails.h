@@ -10,65 +10,68 @@
 
 @class DBTEAMLOGMemberDeleteManualContactsDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberDeleteManualContactsDetails` struct.
-///
+/// 
 /// Cleared manually added contacts.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberDeleteManualContactsDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberDeleteManualContactsDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initDefault;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberDeleteManualContactsDetails` struct.
-///
-@interface DBTEAMLOGMemberDeleteManualContactsDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberDeleteManualContactsDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberDeleteManualContactsDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberDeleteManualContactsDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberDeleteManualContactsDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberDeleteManualContactsDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberDeleteManualContactsDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberDeleteManualContactsDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberDeleteManualContactsDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberDeleteManualContactsDetails`
 /// object.
-///
-+ (DBTEAMLOGMemberDeleteManualContactsDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberDeleteManualContactsDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

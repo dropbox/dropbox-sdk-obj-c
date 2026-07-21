@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamSharingWhitelistSubjectsChangedDetails` struct.
-///
+/// 
 /// Edited the approved list for sharing externally.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -35,54 +36,55 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param addedWhitelistSubjects Domains or emails added to the approved list
 /// for sharing externally.
 /// @param removedWhitelistSubjects Domains or emails removed from the approved
 /// list for sharing externally.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithAddedWhitelistSubjects:(NSArray<NSString *> *)addedWhitelistSubjects
-                      removedWhitelistSubjects:(NSArray<NSString *> *)removedWhitelistSubjects;
+/// 
+- (instancetype)initWithAddedWhitelistSubjects:(NSArray<NSString *> *)addedWhitelistSubjects removedWhitelistSubjects:(NSArray<NSString *> *)removedWhitelistSubjects;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamSharingWhitelistSubjectsChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails`
 /// instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails` object.
-///
-+ (DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamSharingWhitelistSubjectsChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

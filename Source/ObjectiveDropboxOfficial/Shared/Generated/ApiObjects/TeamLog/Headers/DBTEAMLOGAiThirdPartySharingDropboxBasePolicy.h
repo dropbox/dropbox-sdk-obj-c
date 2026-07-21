@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGAiThirdPartySharingDropboxBasePolicy;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `AiThirdPartySharingDropboxBasePolicy` union.
-///
+/// 
 /// Policy for deciding whether team users can use third party AI services
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicy : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicy : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -31,20 +32,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// the possible tag states with which the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAiThirdPartySharingDropboxBasePolicyTag) {
-  /// (no description).
-  DBTEAMLOGAiThirdPartySharingDropboxBasePolicyAdminsOnly,
+    /// (no description).
+    DBTEAMLOGAiThirdPartySharingDropboxBasePolicyAdminsOnly,
 
-  /// (no description).
-  DBTEAMLOGAiThirdPartySharingDropboxBasePolicyDefault_,
+    /// (no description).
+    DBTEAMLOGAiThirdPartySharingDropboxBasePolicyDefault_,
 
-  /// (no description).
-  DBTEAMLOGAiThirdPartySharingDropboxBasePolicyDisabled,
+    /// (no description).
+    DBTEAMLOGAiThirdPartySharingDropboxBasePolicyDisabled,
 
-  /// (no description).
-  DBTEAMLOGAiThirdPartySharingDropboxBasePolicyEnabled,
+    /// (no description).
+    DBTEAMLOGAiThirdPartySharingDropboxBasePolicyEnabled,
 
-  /// (no description).
-  DBTEAMLOGAiThirdPartySharingDropboxBasePolicyOther,
+    /// (no description).
+    DBTEAMLOGAiThirdPartySharingDropboxBasePolicyOther,
 
 };
 
@@ -53,119 +54,121 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGAiThirdPartySharingDropboxBasePolicyT
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Initializes union class with tag state of "admins_only".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithAdminsOnly;
 
-///
+/// 
 /// Initializes union class with tag state of "default".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDefault_;
 
-///
+/// 
 /// Initializes union class with tag state of "disabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDisabled;
 
-///
+/// 
 /// Initializes union class with tag state of "enabled".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEnabled;
 
-///
+/// 
 /// Initializes union class with tag state of "other".
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithOther;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "admins_only".
-///
+/// 
 /// @return Whether the union's current tag state has value "admins_only".
-///
+/// 
 - (BOOL)isAdminsOnly;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "default".
-///
+/// 
 /// @return Whether the union's current tag state has value "default".
-///
+/// 
 - (BOOL)isDefault_;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "disabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "disabled".
-///
+/// 
 - (BOOL)isDisabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "enabled".
-///
+/// 
 /// @return Whether the union's current tag state has value "enabled".
-///
+/// 
 - (BOOL)isEnabled;
 
-///
+/// 
 /// Retrieves whether the union's current tag state has value "other".
-///
+/// 
 /// @return Whether the union's current tag state has value "other".
-///
+/// 
 - (BOOL)isOther;
 
-///
+/// 
 /// Retrieves string value of union's current tag state.
-///
+/// 
 /// @return A human-readable string representing the union's current tag state.
-///
+/// 
 - (NSString *)tagName;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` union.
-///
-@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicySerializer : NSObject
+/// 
+@interface DBTEAMLOGAiThirdPartySharingDropboxBasePolicySerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGAiThirdPartySharingDropboxBasePolicy` object.
-///
-+ (DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGAiThirdPartySharingDropboxBasePolicy *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

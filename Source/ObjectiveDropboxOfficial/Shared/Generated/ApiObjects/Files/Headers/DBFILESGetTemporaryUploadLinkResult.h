@@ -10,18 +10,19 @@
 
 @class DBFILESGetTemporaryUploadLinkResult;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetTemporaryUploadLinkResult` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBFILESGetTemporaryUploadLinkResult : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBFILESGetTemporaryUploadLinkResult : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param link The temporary link which can be used to stream a file to a
 /// Dropbox location.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithLink:(NSString *)link;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetTemporaryUploadLinkResult` struct.
-///
-@interface DBFILESGetTemporaryUploadLinkResultSerializer : NSObject
+/// 
+@interface DBFILESGetTemporaryUploadLinkResultSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBFILESGetTemporaryUploadLinkResult` instances.
-///
+/// 
 /// @param instance An instance of the `DBFILESGetTemporaryUploadLinkResult` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESGetTemporaryUploadLinkResult` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBFILESGetTemporaryUploadLinkResult *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBFILESGetTemporaryUploadLinkResult *)instance;
 
-///
+/// 
 /// Deserializes `DBFILESGetTemporaryUploadLinkResult` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESGetTemporaryUploadLinkResult` API object.
-///
+/// 
 /// @return An instantiation of the `DBFILESGetTemporaryUploadLinkResult`
 /// object.
-///
-+ (DBFILESGetTemporaryUploadLinkResult *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBFILESGetTemporaryUploadLinkResult *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

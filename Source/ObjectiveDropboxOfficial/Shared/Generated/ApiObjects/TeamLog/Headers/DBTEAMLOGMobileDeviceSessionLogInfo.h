@@ -13,20 +13,21 @@
 @class DBTEAMLOGMobileSessionLogInfo;
 @class DBTEAMMobileClientPlatform;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MobileDeviceSessionLogInfo` struct.
-///
+/// 
 /// Information about linked Dropbox mobile client sessions
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMobileDeviceSessionLogInfo : DBTEAMLOGDeviceSessionLogInfo <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMobileDeviceSessionLogInfo : DBTEAMLOGDeviceSessionLogInfo <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -50,9 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param deviceName The device name.
 /// @param clientType The mobile application type.
 /// @param ipAddress The IP address of the last activity from this session.
@@ -62,61 +63,55 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param clientVersion The Dropbox client version.
 /// @param osVersion The hosting OS version.
 /// @param lastCarrier last carrier used by the device.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDeviceName:(NSString *)deviceName
-                        clientType:(DBTEAMMobileClientPlatform *)clientType
-                         ipAddress:(nullable NSString *)ipAddress
-                           created:(nullable NSDate *)created
-                           updated:(nullable NSDate *)updated
-                       sessionInfo:(nullable DBTEAMLOGMobileSessionLogInfo *)sessionInfo
-                     clientVersion:(nullable NSString *)clientVersion
-                         osVersion:(nullable NSString *)osVersion
-                       lastCarrier:(nullable NSString *)lastCarrier;
+/// 
+- (instancetype)initWithDeviceName:(NSString *)deviceName clientType:(DBTEAMMobileClientPlatform *)clientType ipAddress:(nullable NSString *)ipAddress created:(nullable NSDate *)created updated:(nullable NSDate *)updated sessionInfo:(nullable DBTEAMLOGMobileSessionLogInfo *)sessionInfo clientVersion:(nullable NSString *)clientVersion osVersion:(nullable NSString *)osVersion lastCarrier:(nullable NSString *)lastCarrier;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param deviceName The device name.
 /// @param clientType The mobile application type.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDeviceName:(NSString *)deviceName clientType:(DBTEAMMobileClientPlatform *)clientType;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MobileDeviceSessionLogInfo` struct.
-///
-@interface DBTEAMLOGMobileDeviceSessionLogInfoSerializer : NSObject
+/// 
+@interface DBTEAMLOGMobileDeviceSessionLogInfoSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMobileDeviceSessionLogInfo` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMobileDeviceSessionLogInfo` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMobileDeviceSessionLogInfo` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMobileDeviceSessionLogInfo *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMobileDeviceSessionLogInfo *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMobileDeviceSessionLogInfo` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMobileDeviceSessionLogInfo` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMobileDeviceSessionLogInfo`
 /// object.
-///
-+ (DBTEAMLOGMobileDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMobileDeviceSessionLogInfo *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -11,20 +11,21 @@
 @class DBTEAMLOGTeamSelectiveSyncPolicy;
 @class DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamSelectiveSyncPolicyChangedDetails` struct.
-///
+/// 
 /// Enabled/disabled Team Selective Sync for team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,51 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue New Team Selective Sync policy.
 /// @param previousValue Previous Team Selective Sync policy.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithDNewValue:(DBTEAMLOGTeamSelectiveSyncPolicy *)dNewValue
-                    previousValue:(DBTEAMLOGTeamSelectiveSyncPolicy *)previousValue;
+/// 
+- (instancetype)initWithDNewValue:(DBTEAMLOGTeamSelectiveSyncPolicy *)dNewValue previousValue:(DBTEAMLOGTeamSelectiveSyncPolicy *)previousValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamSelectiveSyncPolicyChangedDetails`
 /// struct.
-///
-@interface DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGTeamSelectiveSyncPolicyChangedDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails` object.
-///
-+ (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGTeamSelectiveSyncPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -12,22 +12,23 @@
 @class DBTEAMGetStorageReport;
 @class DBTEAMStorageBucket;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GetStorageReport` struct.
-///
+/// 
 /// Storage Report Result. Each of the items in the storage report is an array
 /// of values, one value per day. If there is no data for a day, then the value
 /// will be None.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMGetStorageReport : DBTEAMBaseDfbReport <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMGetStorageReport : DBTEAMBaseDfbReport <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -54,9 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
 /// @param totalUsage Sum of the shared, unshared, and datastore usages, for
 /// each day.
@@ -72,45 +73,42 @@ NS_ASSUME_NONNULL_BEGIN
 /// and the value is the number of users in that bucket. There is one such
 /// summary per day. If there is no data for a day, the storage summary will be
 /// empty.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithStartDate:(NSString *)startDate
-                       totalUsage:(NSArray<NSNumber *> *)totalUsage
-                      sharedUsage:(NSArray<NSNumber *> *)sharedUsage
-                    unsharedUsage:(NSArray<NSNumber *> *)unsharedUsage
-                    sharedFolders:(NSArray<NSNumber *> *)sharedFolders
-                 memberStorageMap:(NSArray<NSArray<DBTEAMStorageBucket *> *> *)memberStorageMap;
+/// 
+- (instancetype)initWithStartDate:(NSString *)startDate totalUsage:(NSArray<NSNumber *> *)totalUsage sharedUsage:(NSArray<NSNumber *> *)sharedUsage unsharedUsage:(NSArray<NSNumber *> *)unsharedUsage sharedFolders:(NSArray<NSNumber *> *)sharedFolders memberStorageMap:(NSArray<NSArray<DBTEAMStorageBucket *> *> *)memberStorageMap;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GetStorageReport` struct.
-///
-@interface DBTEAMGetStorageReportSerializer : NSObject
+/// 
+@interface DBTEAMGetStorageReportSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMGetStorageReport` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMGetStorageReport` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGetStorageReport` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMGetStorageReport *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMGetStorageReport *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMGetStorageReport` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMGetStorageReport` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMGetStorageReport` object.
-///
-+ (DBTEAMGetStorageReport *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMGetStorageReport *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

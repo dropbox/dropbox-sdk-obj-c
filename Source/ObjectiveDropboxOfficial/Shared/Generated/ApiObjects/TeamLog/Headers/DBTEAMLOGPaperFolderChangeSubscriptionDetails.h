@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGPaperFolderChangeSubscriptionDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `PaperFolderChangeSubscriptionDetails` struct.
-///
+/// 
 /// Followed/unfollowed Paper folder.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGPaperFolderChangeSubscriptionDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGPaperFolderChangeSubscriptionDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -39,65 +40,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param dNewSubscriptionLevel New folder subscription level.
 /// @param previousSubscriptionLevel Previous folder subscription level. Might
 /// be missing due to historical data gap.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithEventUuid:(NSString *)eventUuid
-            dNewSubscriptionLevel:(NSString *)dNewSubscriptionLevel
-        previousSubscriptionLevel:(nullable NSString *)previousSubscriptionLevel;
+/// 
+- (instancetype)initWithEventUuid:(NSString *)eventUuid dNewSubscriptionLevel:(NSString *)dNewSubscriptionLevel previousSubscriptionLevel:(nullable NSString *)previousSubscriptionLevel;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param eventUuid Event unique identifier.
 /// @param dNewSubscriptionLevel New folder subscription level.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithEventUuid:(NSString *)eventUuid dNewSubscriptionLevel:(NSString *)dNewSubscriptionLevel;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `PaperFolderChangeSubscriptionDetails`
 /// struct.
-///
-@interface DBTEAMLOGPaperFolderChangeSubscriptionDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGPaperFolderChangeSubscriptionDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGPaperFolderChangeSubscriptionDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGPaperFolderChangeSubscriptionDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperFolderChangeSubscriptionDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperFolderChangeSubscriptionDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGPaperFolderChangeSubscriptionDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGPaperFolderChangeSubscriptionDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGPaperFolderChangeSubscriptionDetails` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGPaperFolderChangeSubscriptionDetails` object.
-///
-+ (DBTEAMLOGPaperFolderChangeSubscriptionDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGPaperFolderChangeSubscriptionDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -18,20 +18,21 @@
 @class DBTEAMPOLICIESSharedLinkDefaultPermissionsPolicy;
 @class DBTEAMPOLICIESTeamSharingPolicies;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `TeamSharingPolicies` struct.
-///
+/// 
 /// Policies governing sharing within and outside of the team.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMPOLICIESTeamSharingPolicies : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMPOLICIESTeamSharingPolicies : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -48,8 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) DBTEAMPOLICIESGroupCreation *groupCreationPolicy;
 
 /// Who can view links to content in shared folders.
-@property (nonatomic, readonly)
-    DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *sharedFolderLinkRestrictionPolicy;
+@property (nonatomic, readonly) DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *sharedFolderLinkRestrictionPolicy;
 
 /// If passwords are required for new links shared outside the team.
 @property (nonatomic, readonly) DBTEAMPOLICIESEnforceLinkPasswordPolicy *enforceLinkPasswordPolicy;
@@ -62,9 +62,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param sharedFolderMemberPolicy Who can join folders shared by team members.
 /// @param sharedFolderJoinPolicy Which shared folders team members can join.
 /// @param sharedLinkCreatePolicy Who can view shared links owned by team
@@ -78,53 +78,45 @@ NS_ASSUME_NONNULL_BEGIN
 /// shared outside the team.
 /// @param sharedLinkDefaultPermissionsPolicy Default access level for new links
 /// shared by team members.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy
-                          sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy
-                          sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy
-                             groupCreationPolicy:(DBTEAMPOLICIESGroupCreation *)groupCreationPolicy
-               sharedFolderLinkRestrictionPolicy:
-                   (DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)sharedFolderLinkRestrictionPolicy
-                       enforceLinkPasswordPolicy:(DBTEAMPOLICIESEnforceLinkPasswordPolicy *)enforceLinkPasswordPolicy
-                 defaultLinkExpirationDaysPolicy:
-                     (DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)defaultLinkExpirationDaysPolicy
-              sharedLinkDefaultPermissionsPolicy:
-                  (DBTEAMPOLICIESSharedLinkDefaultPermissionsPolicy *)sharedLinkDefaultPermissionsPolicy;
+/// 
+- (instancetype)initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy sharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy sharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy groupCreationPolicy:(DBTEAMPOLICIESGroupCreation *)groupCreationPolicy sharedFolderLinkRestrictionPolicy:(DBTEAMPOLICIESSharedFolderBlanketLinkRestrictionPolicy *)sharedFolderLinkRestrictionPolicy enforceLinkPasswordPolicy:(DBTEAMPOLICIESEnforceLinkPasswordPolicy *)enforceLinkPasswordPolicy defaultLinkExpirationDaysPolicy:(DBTEAMPOLICIESDefaultLinkExpirationDaysPolicy *)defaultLinkExpirationDaysPolicy sharedLinkDefaultPermissionsPolicy:(DBTEAMPOLICIESSharedLinkDefaultPermissionsPolicy *)sharedLinkDefaultPermissionsPolicy;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `TeamSharingPolicies` struct.
-///
-@interface DBTEAMPOLICIESTeamSharingPoliciesSerializer : NSObject
+/// 
+@interface DBTEAMPOLICIESTeamSharingPoliciesSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMPOLICIESTeamSharingPolicies` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMPOLICIESTeamSharingPolicies` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESTeamSharingPolicies` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMPOLICIESTeamSharingPolicies *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMPOLICIESTeamSharingPolicies *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMPOLICIESTeamSharingPolicies` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMPOLICIESTeamSharingPolicies` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMPOLICIESTeamSharingPolicies` object.
-///
-+ (DBTEAMPOLICIESTeamSharingPolicies *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMPOLICIESTeamSharingPolicies *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

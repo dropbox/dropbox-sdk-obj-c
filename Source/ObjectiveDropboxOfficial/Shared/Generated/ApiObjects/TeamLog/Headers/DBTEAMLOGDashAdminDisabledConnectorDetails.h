@@ -11,20 +11,21 @@
 @class DBTEAMLOGDashAdminDisabledConnectorDetails;
 @class DBTEAMLOGDashConnectorStatus;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `DashAdminDisabledConnectorDetails` struct.
-///
+/// 
 /// Admin disabled a user connector.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGDashAdminDisabledConnectorDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGDashAdminDisabledConnectorDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,60 +37,61 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param connectorName The name of the Connector.
 /// @param connectorStatus The status of the Connector.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithConnectorName:(NSString *)connectorName
-                      connectorStatus:(nullable DBTEAMLOGDashConnectorStatus *)connectorStatus;
+/// 
+- (instancetype)initWithConnectorName:(NSString *)connectorName connectorStatus:(nullable DBTEAMLOGDashConnectorStatus *)connectorStatus;
 
-///
+/// 
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
-///
+/// 
 /// @param connectorName The name of the Connector.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithConnectorName:(NSString *)connectorName;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `DashAdminDisabledConnectorDetails` struct.
-///
-@interface DBTEAMLOGDashAdminDisabledConnectorDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGDashAdminDisabledConnectorDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGDashAdminDisabledConnectorDetails` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGDashAdminDisabledConnectorDetails` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashAdminDisabledConnectorDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDashAdminDisabledConnectorDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGDashAdminDisabledConnectorDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGDashAdminDisabledConnectorDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGDashAdminDisabledConnectorDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGDashAdminDisabledConnectorDetails`
 /// object.
-///
-+ (DBTEAMLOGDashAdminDisabledConnectorDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGDashAdminDisabledConnectorDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

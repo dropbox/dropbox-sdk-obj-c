@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGMemberAccessDetailsCreateReportFailedType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberAccessDetailsCreateReportFailedType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberAccessDetailsCreateReportFailedType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberAccessDetailsCreateReportFailedType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,49 +31,51 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberAccessDetailsCreateReportFailedType`
 /// struct.
-///
-@interface DBTEAMLOGMemberAccessDetailsCreateReportFailedTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberAccessDetailsCreateReportFailedTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberAccessDetailsCreateReportFailedType` instances.
-///
+/// 
 /// @param instance An instance of the
 /// `DBTEAMLOGMemberAccessDetailsCreateReportFailedType` API object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberAccessDetailsCreateReportFailedType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberAccessDetailsCreateReportFailedType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberAccessDetailsCreateReportFailedType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberAccessDetailsCreateReportFailedType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberAccessDetailsCreateReportFailedType` API object.
-///
+/// 
 /// @return An instantiation of the
 /// `DBTEAMLOGMemberAccessDetailsCreateReportFailedType` object.
-///
-+ (DBTEAMLOGMemberAccessDetailsCreateReportFailedType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberAccessDetailsCreateReportFailedType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

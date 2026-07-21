@@ -10,18 +10,19 @@
 
 @class DBTEAMLOGMemberChangeStatusType;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `MemberChangeStatusType` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGMemberChangeStatusType : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGMemberChangeStatusType : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -30,47 +31,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param description_ (no description).
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDescription_:(NSString *)description_;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `MemberChangeStatusType` struct.
-///
-@interface DBTEAMLOGMemberChangeStatusTypeSerializer : NSObject
+/// 
+@interface DBTEAMLOGMemberChangeStatusTypeSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGMemberChangeStatusType` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGMemberChangeStatusType` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeStatusType` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGMemberChangeStatusType *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGMemberChangeStatusType *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGMemberChangeStatusType` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGMemberChangeStatusType` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGMemberChangeStatusType` object.
-///
-+ (DBTEAMLOGMemberChangeStatusType *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGMemberChangeStatusType *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

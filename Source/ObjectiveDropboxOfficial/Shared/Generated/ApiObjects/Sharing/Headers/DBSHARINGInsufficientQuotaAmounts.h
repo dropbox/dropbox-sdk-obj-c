@@ -10,18 +10,19 @@
 
 @class DBSHARINGInsufficientQuotaAmounts;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `InsufficientQuotaAmounts` struct.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBSHARINGInsufficientQuotaAmounts : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBSHARINGInsufficientQuotaAmounts : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -36,53 +37,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param spaceNeeded The amount of space needed to add the item (the size of
 /// the item).
 /// @param spaceShortage The amount of extra space needed to add the item.
 /// @param spaceLeft The amount of space left in the user's Dropbox, less than
 /// space_needed.
-///
+/// 
 /// @return An initialized instance.
-///
-- (instancetype)initWithSpaceNeeded:(NSNumber *)spaceNeeded
-                      spaceShortage:(NSNumber *)spaceShortage
-                          spaceLeft:(NSNumber *)spaceLeft;
+/// 
+- (instancetype)initWithSpaceNeeded:(NSNumber *)spaceNeeded spaceShortage:(NSNumber *)spaceShortage spaceLeft:(NSNumber *)spaceLeft;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `InsufficientQuotaAmounts` struct.
-///
-@interface DBSHARINGInsufficientQuotaAmountsSerializer : NSObject
+/// 
+@interface DBSHARINGInsufficientQuotaAmountsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBSHARINGInsufficientQuotaAmounts` instances.
-///
+/// 
 /// @param instance An instance of the `DBSHARINGInsufficientQuotaAmounts` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGInsufficientQuotaAmounts` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBSHARINGInsufficientQuotaAmounts *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBSHARINGInsufficientQuotaAmounts *)instance;
 
-///
+/// 
 /// Deserializes `DBSHARINGInsufficientQuotaAmounts` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGInsufficientQuotaAmounts` API object.
-///
+/// 
 /// @return An instantiation of the `DBSHARINGInsufficientQuotaAmounts` object.
-///
-+ (DBSHARINGInsufficientQuotaAmounts *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBSHARINGInsufficientQuotaAmounts *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+

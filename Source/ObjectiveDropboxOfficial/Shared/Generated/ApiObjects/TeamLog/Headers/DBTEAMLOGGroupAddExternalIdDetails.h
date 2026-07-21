@@ -10,20 +10,21 @@
 
 @class DBTEAMLOGGroupAddExternalIdDetails;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - API Object
 
-///
+/// 
 /// The `GroupAddExternalIdDetails` struct.
-///
+/// 
 /// Added external ID for group.
-///
+/// 
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
-///
-@interface DBTEAMLOGGroupAddExternalIdDetails : NSObject <DBSerializable, NSCopying>
+/// 
+@interface DBTEAMLOGGroupAddExternalIdDetails : NSObject <DBSerializable, NSCopying> 
 
 #pragma mark - Instance fields
 
@@ -32,47 +33,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constructors
 
-///
+/// 
 /// Full constructor for the struct (exposes all instance variables).
-///
+/// 
 /// @param dNewValue Current external id.
-///
+/// 
 /// @return An initialized instance.
-///
+/// 
 - (instancetype)initWithDNewValue:(NSString *)dNewValue;
 
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
+
 #pragma mark - Serializer Object
 
-///
+/// 
 /// The serialization class for the `GroupAddExternalIdDetails` struct.
-///
-@interface DBTEAMLOGGroupAddExternalIdDetailsSerializer : NSObject
+/// 
+@interface DBTEAMLOGGroupAddExternalIdDetailsSerializer : NSObject 
 
-///
+/// 
 /// Serializes `DBTEAMLOGGroupAddExternalIdDetails` instances.
-///
+/// 
 /// @param instance An instance of the `DBTEAMLOGGroupAddExternalIdDetails` API
 /// object.
-///
+/// 
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupAddExternalIdDetails` API object.
-///
-+ (nullable NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGGroupAddExternalIdDetails *)instance;
+/// 
++ (nullable NSDictionary<NSString *, id>  *)serialize:(DBTEAMLOGGroupAddExternalIdDetails *)instance;
 
-///
+/// 
 /// Deserializes `DBTEAMLOGGroupAddExternalIdDetails` instances.
-///
+/// 
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMLOGGroupAddExternalIdDetails` API object.
-///
+/// 
 /// @return An instantiation of the `DBTEAMLOGGroupAddExternalIdDetails` object.
-///
-+ (DBTEAMLOGGroupAddExternalIdDetails *)deserialize:(NSDictionary<NSString *, id> *)dict;
+/// 
++ (DBTEAMLOGGroupAddExternalIdDetails *)deserialize:(NSDictionary<NSString *, id>  *)dict;
 
 @end
 
 NS_ASSUME_NONNULL_END
+
