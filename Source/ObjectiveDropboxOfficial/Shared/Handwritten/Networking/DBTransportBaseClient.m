@@ -403,8 +403,9 @@ static NSLock *kAsciiEscapeSelectorLock;
   if (!route.resultType) {
     return nil;
   }
-  id jsonData =
-      [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:serializationError];
+  id jsonData = [NSJSONSerialization JSONObjectWithData:data
+                                                options:NSJSONReadingMutableContainers
+                                                  error:serializationError];
   if (*serializationError) {
     return nil;
   }

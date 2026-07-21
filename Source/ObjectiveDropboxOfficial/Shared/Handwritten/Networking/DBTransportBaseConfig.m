@@ -36,8 +36,11 @@
                      appSecret:(NSString *)appSecret
                      userAgent:(NSString *)userAgent
                     asMemberId:(NSString *)asMemberId {
-  return
-      [self initWithAppKey:appKey appSecret:appSecret userAgent:userAgent asMemberId:asMemberId additionalHeaders:nil];
+  return [self initWithAppKey:appKey
+                    appSecret:appSecret
+                    userAgent:userAgent
+                   asMemberId:asMemberId
+            additionalHeaders:nil];
 }
 
 - (instancetype)initWithAppKey:(NSString *)appKey
